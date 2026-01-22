@@ -15,8 +15,7 @@ import '@fontsource/inter/700.css';
 
 // Theme CSS loaded via previewHead in main.ts (vendor/designsystemet.css)
 
-import { DesignsystemetProvider } from '../src/ui/provider';
-import { I18nProvider } from '../src/i18n';
+import { DesignsystemetProvider } from '../src/provider';
 
 // Suppress React 18 act() warnings and WebSocket HMR noise
 const originalError = console.error;
@@ -200,26 +199,23 @@ const withTheme: Decorator = (Story) => {
   }, [theme]);
 
   // Note: For Storybook, we use a simplified provider setup.
-  // In production apps, use RuntimeProvider from @xala/runtime.
-  // For component isolation testing, use createRuntime().TestWrapper.
+  // In production apps, use RuntimeProvider from @xala-technologies/platform.
   return (
-    <I18nProvider initialLocale="nb">
-      <DesignsystemetProvider theme="xala" colorScheme={theme}>
-        <div
-          data-color-scheme={theme}
-          data-size="md"
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            fontFamily: 'Inter, system-ui, sans-serif',
-            minHeight: 'var(--ds-sizing-25)',
-            backgroundColor: isDarkMode ? 'var(--ds-color-neutral-background-default)' : undefined,
-            color: isDarkMode ? 'var(--ds-color-neutral-text-default)' : undefined,
-          }}
-        >
-          <Story />
-        </div>
-      </DesignsystemetProvider>
-    </I18nProvider>
+    <DesignsystemetProvider theme="xala" colorScheme={theme}>
+      <div
+        data-color-scheme={theme}
+        data-size="md"
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          fontFamily: 'Inter, system-ui, sans-serif',
+          minHeight: 'var(--ds-sizing-25)',
+          backgroundColor: isDarkMode ? 'var(--ds-color-neutral-background-default)' : undefined,
+          color: isDarkMode ? 'var(--ds-color-neutral-text-default)' : undefined,
+        }}
+      >
+        <Story />
+      </div>
+    </DesignsystemetProvider>
   );
 };
 
