@@ -1,10 +1,10 @@
-# @xala-technologies/ui
+# @xala-technologies/platform-ui
 
 Design system components built on Norwegian Designsystemet for modern React applications
 
 ## Overview
 
-`@xala-technologies/ui` is a comprehensive React component library built on top of [Designsystemet](https://designsystemet.no/) - Norway's official design system. It provides a complete set of accessible, customizable UI components for building modern web applications.
+`@xala-technologies/platform-ui` is a comprehensive React component library built on top of [Designsystemet](https://designsystemet.no/) - Norway's official design system. It provides a complete set of accessible, customizable UI components for building modern web applications.
 
 ## Features
 
@@ -21,13 +21,13 @@ Design system components built on Norwegian Designsystemet for modern React appl
 
 ```bash
 # Using pnpm (recommended)
-pnpm add @xala-technologies/ui
+pnpm add @xala-technologies/platform-ui
 
 # Using npm
-npm install @xala-technologies/ui
+npm install @xala-technologies/platform-ui
 
 # Using yarn
-yarn add @xala-technologies/ui
+yarn add @xala-technologies/platform-ui
 ```
 
 ### GitHub Packages Setup
@@ -42,7 +42,7 @@ This package is published to GitHub Packages. Configure your `.npmrc`:
 ## Quick Start
 
 ```tsx
-import { Button, Card, Badge } from '@xala-technologies/ui';
+import { Button, Card, Badge } from '@xala-technologies/platform-ui';
 
 function App() {
   return (
@@ -71,7 +71,7 @@ import {
   Checkbox,
   Radio,
   Switch
-} from '@xala-technologies/ui/primitives';
+} from '@xala-technologies/platform-ui/primitives';
 ```
 
 ### Composed Components
@@ -85,7 +85,7 @@ import {
   Tabs,
   Accordion,
   Breadcrumbs
-} from '@xala-technologies/ui/composed';
+} from '@xala-technologies/platform-ui/composed';
 ```
 
 ### Blocks
@@ -97,7 +97,7 @@ import {
   UserMenu,
   SearchBar,
   FilterPanel
-} from '@xala-technologies/ui/blocks';
+} from '@xala-technologies/platform-ui/blocks';
 ```
 
 ### Shells
@@ -108,7 +108,7 @@ import {
   AppLayout,
   DashboardLayout,
   DashboardSidebar
-} from '@xala-technologies/ui/shells';
+} from '@xala-technologies/platform-ui/shells';
 ```
 
 ### Patterns
@@ -120,13 +120,13 @@ import {
   ResourceGrid,
   SlotCalendar,
   PricingSummary
-} from '@xala-technologies/ui/patterns';
+} from '@xala-technologies/platform-ui/patterns';
 ```
 
 ## Theming
 
 ```tsx
-import { ThemeProvider } from '@xala-technologies/ui';
+import { ThemeProvider } from '@xala-technologies/platform-ui';
 
 function App() {
   return (
@@ -153,7 +153,7 @@ Visit http://localhost:6006 to browse the component library.
 Full TypeScript support with comprehensive type definitions:
 
 ```tsx
-import type { ButtonProps } from '@xala-technologies/ui/primitives';
+import type { ButtonProps } from '@xala-technologies/platform-ui/primitives';
 
 const MyButton: React.FC<ButtonProps> = (props) => {
   return <Button {...props} />;
@@ -193,19 +193,19 @@ The package provides multiple entry points for optimal tree-shaking:
 
 ```tsx
 // Main export
-import { Button } from '@xala-technologies/ui';
+import { Button } from '@xala-technologies/platform-ui';
 
 // Specific categories
-import { Button } from '@xala-technologies/ui/primitives';
-import { DataTable } from '@xala-technologies/ui/composed';
-import { AppLayout } from '@xala-technologies/ui/shells';
-import { ResourceCard } from '@xala-technologies/ui/patterns';
+import { Button } from '@xala-technologies/platform-ui/primitives';
+import { DataTable } from '@xala-technologies/platform-ui/composed';
+import { AppLayout } from '@xala-technologies/platform-ui/shells';
+import { ResourceCard } from '@xala-technologies/platform-ui/patterns';
 
 // Themes
-import { theme } from '@xala-technologies/ui/themes';
+import { theme } from '@xala-technologies/platform-ui/themes';
 
 // Tokens
-import { tokens } from '@xala-technologies/ui/tokens';
+import { tokens } from '@xala-technologies/platform-ui/tokens';
 ```
 
 ## Contributing

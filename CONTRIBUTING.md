@@ -1,4 +1,4 @@
-# Contributing to @xala-technologies/ui
+# Contributing to @xala-technologies/platform-ui
 
 Thank you for your interest in contributing to our UI component library!
 
