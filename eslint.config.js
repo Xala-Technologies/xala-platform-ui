@@ -31,6 +31,22 @@ export default [
       'react/prop-types': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['@xala-technologies/platform', '@xala-technologies/platform/*'],
+            message: '❌ BOUNDARY VIOLATION: UI package must not import from platform package. UI should be pure presentation components with no platform dependencies.',
+          },
+          {
+            group: ['@xala-technologies/platform-schema', '@xala-technologies/platform-schema/*'],
+            message: '❌ BOUNDARY VIOLATION: UI package must not import from platform-schema. UI components should not depend on database schemas.',
+          },
+          {
+            group: ['@xala-technologies/governance', '@xala-technologies/governance/*'],
+            message: '❌ BOUNDARY VIOLATION: UI package must not import from governance package. Keep UI dependencies minimal.',
+          },
+        ],
+      }],
     },
     settings: {
       react: {
