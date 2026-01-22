@@ -1,0 +1,171 @@
+{
+  "name": "@xala-technologies/ui",
+  "version": "1.0.1",
+  "description": "Design system components built on Norwegian Designsystemet for React applications",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js",
+      "require": "./dist/primitives/index.cjs"
+    },
+    "./composed": {
+      "types": "./dist/composed/index.d.ts",
+      "import": "./dist/composed/index.js",
+      "require": "./dist/composed/index.cjs"
+    },
+    "./shells": {
+      "types": "./dist/shells/index.d.ts",
+      "import": "./dist/shells/index.js",
+      "require": "./dist/shells/index.cjs"
+    },
+    "./blocks": {
+      "types": "./dist/blocks/index.d.ts",
+      "import": "./dist/blocks/index.js",
+      "require": "./dist/blocks/index.cjs"
+    },
+    "./themes": {
+      "types": "./dist/themes/index.d.ts",
+      "import": "./dist/themes/index.js",
+      "require": "./dist/themes/index.cjs"
+    },
+    "./patterns": {
+      "types": "./dist/patterns/index.d.ts",
+      "import": "./dist/patterns/index.js",
+      "require": "./dist/patterns/index.cjs"
+    },
+    "./pages": {
+      "types": "./dist/pages/index.d.ts",
+      "import": "./dist/pages/index.js",
+      "require": "./dist/pages/index.cjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js",
+      "require": "./dist/tokens/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
+    },
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "import": "./dist/styles.js",
+      "require": "./dist/styles.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "primitives": ["./dist/primitives/index.d.ts"],
+      "composed": ["./dist/composed/index.d.ts"],
+      "shells": ["./dist/shells/index.d.ts"],
+      "blocks": ["./dist/blocks/index.d.ts"],
+      "themes": ["./dist/themes/index.d.ts"],
+      "patterns": ["./dist/patterns/index.d.ts"],
+      "pages": ["./dist/pages/index.d.ts"],
+      "tokens": ["./dist/tokens/index.d.ts"],
+      "types": ["./dist/types/index.d.ts"],
+      "styles": ["./dist/styles.d.ts"]
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prepublishOnly": "pnpm build",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "test:storybook": "test-storybook",
+    "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpm storybook:build && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:127.0.0.1:6006 && pnpm test:storybook\"",
+    "test:a11y": "pnpm test:storybook"
+  },
+  "keywords": [
+    "xala",
+    "xalatechnologies",
+    "ui",
+    "react",
+    "typescript",
+    "designsystemet",
+    "design-system",
+    "components"
+  ],
+  "author": "Xala Technologies",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xala-Technologies/xala-platform-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Xala-Technologies/xala-platform-ui/issues"
+  },
+  "homepage": "https://github.com/Xala-Technologies/xala-platform-ui#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-react": "^1.9.0",
+    "@navikt/aksel-icons": "^8.0.1",
+    "lucide-react": "^0.562.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@digdir/designsystemet-css": "^1.0.0",
+    "@fontsource/inter": "^5.2.8",
+    "@storybook/addon-a11y": "^8.6.15",
+    "@storybook/addon-coverage": "^3.0.0",
+    "@storybook/addon-docs": "^8.6.15",
+    "@storybook/addon-essentials": "^8.6.15",
+    "@storybook/addon-links": "^8.6.15",
+    "@storybook/blocks": "^8.6.15",
+    "@storybook/manager-api": "^8.6.15",
+    "@storybook/react-vite": "^8.6.15",
+    "@storybook/test-runner": "^0.24.2",
+    "@storybook/theming": "^8.6.15",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vueless/storybook-dark-mode": "^10.0.6",
+    "axe-playwright": "^2.2.2",
+    "concurrently": "^9.2.1",
+    "http-server": "^14.1.1",
+    "playwright": "^1.57.0",
+    "storybook": "^8.6.15",
+    "storybook-dark-mode": "^4.0.2",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0",
+    "wait-on": "^9.0.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "react-router-dom": ">=6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    },
+    "react-router-dom": {
+      "optional": true
+    }
+  }
+}

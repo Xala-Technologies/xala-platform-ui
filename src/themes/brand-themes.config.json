@@ -1,0 +1,53 @@
+{
+  "$schema": "https://designsystemet.no/schemas/theme.schema.json",
+  "themes": {
+    "facebook": {
+      "colors": {
+        "brand": {
+          "primary": "#1877F2"
+        }
+      }
+    },
+    "twitter": {
+      "colors": {
+        "brand": {
+          "primary": "#000000"
+        }
+      }
+    },
+    "linkedin": {
+      "colors": {
+        "brand": {
+          "primary": "#0A66C2"
+        }
+      }
+    },
+    "whatsapp": {
+      "colors": {
+        "brand": {
+          "primary": "#25D366"
+        }
+      }
+    },
+    "microsoft": {
+      "colors": {
+        "brand": {
+          "red": "#F25022",
+          "green": "#7FBA00",
+          "blue": "#00A4EF",
+          "yellow": "#FFB900"
+        }
+      }
+    },
+    "google": {
+      "colors": {
+        "brand": {
+          "blue": "#4285F4",
+          "green": "#34A853",
+          "yellow": "#FBBC05",
+          "red": "#EA4335"
+        }
+      }
+    }
+  }
+}
