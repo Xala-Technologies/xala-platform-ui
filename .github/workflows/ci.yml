@@ -37,6 +37,12 @@ jobs:
       - name: Format check
         run: pnpm format:check
       
+      - name: Verify boundaries
+        run: pnpm verify:boundaries
+      
+      - name: Verify design tokens
+        run: pnpm verify:design-tokens
+      
       - name: Build
         run: pnpm build
 
