@@ -226,16 +226,17 @@ MIT - Xala Technologies
 - [GitHub Repository](https://github.com/Xala-Technologies/xala-platform-ui)
 - [Issue Tracker](https://github.com/Xala-Technologies/xala-platform-ui/issues)
 
-## Governance
+## Documentation
 
-This package follows strict governance rules:
+Complete documentation is available in the [docs](./docs) folder:
 
-- **UI components only** - No business logic or API calls
-- **Boundary enforcement** - ESLint prevents platform package imports
-- **Quality gates** - Automated type checking, linting, and formatting
-- **CI/CD** - GitHub Actions for automated testing and publishing
-
-See [GOVERNANCE.md](./GOVERNANCE.md) for complete governance rules.
+- **[Getting Started](./docs/README.md)** - Quick start guide
+- **[Design Tokens](./docs/guides/DESIGN_TOKENS.md)** - Using Designsystemet tokens
+- **[Storybook Guide](./docs/guides/STORYBOOK.md)** - Component documentation
+- **[Governance](./docs/governance/GOVERNANCE.md)** - Rules and standards
+- **[AI Agents](./docs/governance/AGENTS.md)** - AI agent guidelines
+- **[Architecture](./docs/architecture/ARCHITECTURE.md)** - Package architecture
+- **[Components](./docs/architecture/COMPONENTS.md)** - Component structure
 
 ## Development
 
