@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Details, Paragraph } from '@xala-technologies/platform/ui';
+import { Details, Paragraph } from '../../index';
 import React from 'react';
 
 const meta: Meta = {

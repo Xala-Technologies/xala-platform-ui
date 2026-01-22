@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Textfield, Heading, Paragraph, Card } from '@xala-technologies/platform/ui';
+import { Button, Textfield, Heading, Paragraph, Card } from '../../index';
 
 const meta: Meta = {
   title: 'Fundamentals/Sizes and Spacing',

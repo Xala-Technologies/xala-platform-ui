@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Switch, Fieldset, Heading } from '@xala-technologies/platform/ui';
+import { Switch, Fieldset, Heading } from '../../index';
 
 /**
  * Switch component from Digdir Designsystemet.

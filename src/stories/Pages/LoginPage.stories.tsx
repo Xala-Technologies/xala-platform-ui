@@ -7,8 +7,8 @@ import {
   Button,
   Input,
   Alert,
-} from '@xala-technologies/platform/ui';
-import { IdPortenIcon, VippsIcon, BankIdIcon } from '@xala-technologies/platform/ui';
+} from '../../index';
+import { IdPortenIcon, VippsIcon, BankIdIcon } from '../../index';
 
 /**
  * LoginPage components for authentication screens.

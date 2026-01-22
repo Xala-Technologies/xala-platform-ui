@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
-import { DashboardSidebar, type SidebarSection } from '@xala-technologies/platform/ui';
-import { HomeIcon, CalendarIcon, SettingsIcon, UserIcon, BellIcon, InboxIcon, ChartIcon, BuildingIcon } from '@xala-technologies/platform/ui';
+import { DashboardSidebar, type SidebarSection } from '../../index';
+import { HomeIcon, CalendarIcon, SettingsIcon, UserIcon, BellIcon, InboxIcon, ChartIcon, BuildingIcon } from '../../index';
 
 /**
  * DashboardSidebar provides navigation for dashboard applications.

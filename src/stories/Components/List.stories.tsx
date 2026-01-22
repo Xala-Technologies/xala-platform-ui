@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { List } from '@xala-technologies/platform/ui';
+import { List } from '../../index';
 
 const meta: Meta<typeof List> = {
   title: 'Components/List',

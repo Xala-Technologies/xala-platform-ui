@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn, expect, userEvent, within } from '@storybook/test';
-import { Button, Heading } from '@xala-technologies/platform/ui';
+import { Button, Heading } from '../../index';
 import { PlusIcon, FloppydiskIcon, TrashIcon, PencilIcon, ArrowRightIcon } from '@navikt/aksel-icons';
 
 /**

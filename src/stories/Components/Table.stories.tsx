@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Table } from '@xala-technologies/platform/ui';
+import { Table } from '../../index';
 
 const meta: Meta = {
   title: 'Components/Table',

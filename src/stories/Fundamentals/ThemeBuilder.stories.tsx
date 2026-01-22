@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Heading, Paragraph } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph } from '../../index';
 import { Palette, Settings, Wrench, Download, Check } from 'lucide-react';
 
 const meta: Meta = {

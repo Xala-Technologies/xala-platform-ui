@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Select, Label, Field, ValidationMessage } from '@xala-technologies/platform/ui';
+import { Select, Label, Field, ValidationMessage } from '../../index';
 
 /**
  * Select component from Digdir Designsystemet.

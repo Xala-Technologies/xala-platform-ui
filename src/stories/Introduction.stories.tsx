@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '../../index';
 import { WheelchairIcon, PaletteIcon, InboxIcon, GlobeIcon, Buildings2Icon, PencilIcon, BookIcon, LightningIcon, PersonGroupIcon, ShieldLockIcon, CodeIcon, SparklesIcon, CheckmarkCircleIcon, ArrowRightIcon, PlayIcon } from '@navikt/aksel-icons';
 
 const meta: Meta = {
@@ -313,7 +313,7 @@ export const InteractiveLiveDemo: Story = {
             fontSize: 'var(--ds-font-size-xs)',
             lineHeight: '1.6',
           }}>
-{`import { Button, Card, Textfield, Checkbox } from '@xala-technologies/platform/ui';
+{`import { Button, Card, Textfield, Checkbox } from '../../index';
 import { useState } from 'react';
 
 export function WelcomeForm() {

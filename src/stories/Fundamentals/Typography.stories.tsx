@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Heading, Paragraph, Label } from '@xala-technologies/platform/ui';
+import { Heading, Paragraph, Label } from '../../index';
 
 const meta: Meta = {
   title: 'Fundamentals/Typography',

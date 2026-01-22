@@ -1,10 +1,10 @@
-# @xala-technologies/platform-ui
+# Xala Platform UI
 
 Design system components built on Norwegian Designsystemet for modern React applications
 
 ## Overview
 
-`@xala-technologies/platform-ui` is a comprehensive React component library built on top of [Designsystemet](https://designsystemet.no/) - Norway's official design system. It provides a complete set of accessible, customizable UI components for building modern web applications.
+Xala Platform UI is a comprehensive React component library built on top of [Designsystemet](https://designsystemet.no/) - Norway's official design system. It provides a complete set of accessible, customizable UI components for building modern web applications.
 
 ## Features
 

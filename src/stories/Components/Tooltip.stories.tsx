@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tooltip, Button } from '@xala-technologies/platform/ui';
+import { Tooltip, Button } from '../../index';
 
 const meta: Meta = {
   title: 'Components/Tooltip',

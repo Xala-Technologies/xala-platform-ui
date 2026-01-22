@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Container, Grid, Stack } from '@xala-technologies/platform/ui/primitives';
+import { Container, Grid, Stack } from '../../primitives';
 
 const meta: Meta = {
   title: 'Primitives/Layout',

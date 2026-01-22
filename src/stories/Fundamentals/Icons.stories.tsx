@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button, Card, Heading, Paragraph } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph } from '../../index';
 import { 
   EnvelopeClosedIcon, 
   CalendarIcon, 

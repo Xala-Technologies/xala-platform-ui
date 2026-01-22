@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Pagination, Heading } from '@xala-technologies/platform/ui';
+import { Pagination, Heading } from '../../index';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Pagination',

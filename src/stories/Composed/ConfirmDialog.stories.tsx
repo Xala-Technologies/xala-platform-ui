@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConfirmDialog } from '@xala-technologies/platform/ui/composed';
-import { Button } from '@xala-technologies/platform/ui/primitives';
+import { ConfirmDialog } from '../composed';
+import { Button } from '../../primitives';
 import { useState } from 'react';
 
 const meta = {

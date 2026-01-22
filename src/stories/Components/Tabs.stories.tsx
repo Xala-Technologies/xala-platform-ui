@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tabs, Paragraph } from '@xala-technologies/platform/ui';
+import { Tabs, Paragraph } from '../../index';
 
 const meta: Meta = {
   title: 'Components/Tabs',

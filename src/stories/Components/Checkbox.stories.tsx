@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState, useEffect } from 'react';
-import { Checkbox, Fieldset, ValidationMessage, Heading } from '@xala-technologies/platform/ui';
+import { Checkbox, Fieldset, ValidationMessage, Heading } from '../../index';
 
 /**
  * Checkbox component from Digdir Designsystemet.

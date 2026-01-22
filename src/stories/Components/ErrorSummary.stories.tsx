@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ErrorSummary } from '@xala-technologies/platform/ui';
+import { ErrorSummary } from '../../index';
 
 const meta: Meta = {
   title: 'Components/ErrorSummary',

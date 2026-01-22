@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NotificationBell } from '@xala-technologies/platform/ui/blocks';
+import { NotificationBell } from '../../blocks';
 
 const meta = {
   title: 'Blocks/NotificationBell',

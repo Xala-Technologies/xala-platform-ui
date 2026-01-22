@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Alert, Heading, Paragraph, Link } from '@xala-technologies/platform/ui';
+import { Alert, Heading, Paragraph, Link } from '../../index';
 
 /**
  * Alert component from Digdir Designsystemet.

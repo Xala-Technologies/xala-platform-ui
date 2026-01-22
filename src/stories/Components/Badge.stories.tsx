@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Badge, Button, Heading } from '@xala-technologies/platform/ui';
+import { Badge, Button, Heading } from '../../index';
 
 /**
  * Badge component from Digdir Designsystemet.

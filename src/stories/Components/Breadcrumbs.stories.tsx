@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Breadcrumbs, Heading } from '@xala-technologies/platform/ui';
+import { Breadcrumbs, Heading } from '../../index';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Breadcrumbs',

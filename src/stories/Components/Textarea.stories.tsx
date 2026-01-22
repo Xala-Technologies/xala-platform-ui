@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Textarea, Label, Field, ValidationMessage } from '@xala-technologies/platform/ui';
+import { Textarea, Label, Field, ValidationMessage } from '../../index';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Textarea',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Tag, Heading } from '@xala-technologies/platform/ui';
+import { Tag, Heading } from '../../index';
 import { SparklesIcon, CheckmarkCircleIcon, ExclamationmarkTriangleIcon, XMarkOctagonIcon, InformationSquareIcon } from '@navikt/aksel-icons';
 
 /**

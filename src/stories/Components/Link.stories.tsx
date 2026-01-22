@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Link, Paragraph } from '@xala-technologies/platform/ui';
+import { Link, Paragraph } from '../../index';
 import { ExternalLinkIcon, ArrowRightIcon, DownloadIcon } from '@navikt/aksel-icons';
 
 /**

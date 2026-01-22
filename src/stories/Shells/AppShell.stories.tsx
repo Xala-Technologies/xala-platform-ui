@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AppShell } from '@xala-technologies/platform/ui';
-import { Heading, Paragraph, Card, Button } from '@xala-technologies/platform/ui';
+import { AppShell } from '../../index';
+import { Heading, Paragraph, Card, Button } from '../../index';
 
 /**
  * AppShell is the main application container that provides:

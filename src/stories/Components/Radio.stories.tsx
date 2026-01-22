@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Radio, Fieldset, ValidationMessage, Heading } from '@xala-technologies/platform/ui';
+import { Radio, Fieldset, ValidationMessage, Heading } from '../../index';
 
 /**
  * Radio component from Digdir Designsystemet.

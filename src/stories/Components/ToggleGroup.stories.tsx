@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ToggleGroup } from '@xala-technologies/platform/ui';
+import { ToggleGroup } from '../../index';
 
 const meta: Meta = {
   title: 'Components/ToggleGroup',

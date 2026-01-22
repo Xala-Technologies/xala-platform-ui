@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Textfield } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph, Textfield } from '../../index';
 import { BookOpen, Palette, Globe, Code, Zap, CheckCircle, ArrowRight, Play, Layers, Package, Terminal, Shield } from 'lucide-react';
 
 const meta: Meta = {
@@ -184,7 +184,7 @@ function App() {
           overflow: 'auto',
           fontSize: 'var(--ds-font-size-sm)',
         }}>
-{`import { Button, Card, Heading } from '@xala-technologies/platform/ui';
+{`import { Button, Card, Heading } from '../../index';
 
 export function MyComponent() {
   return (
@@ -228,7 +228,7 @@ export const FirstComponent: Story = {
   Card, 
   Heading, 
   Paragraph 
-} from '@xala-technologies/platform/ui';
+} from '../../index';
 import { useTranslation } from '@xala-technologies/platform/i18n';
 
 export function WelcomeCard() {
@@ -494,7 +494,7 @@ export const RealWorldPatterns: Story = {
           {
             title: 'Form with Validation',
             description: 'Handle user input with proper validation and error states',
-            code: `import { Textfield, Button } from '@xala-technologies/platform/ui';
+            code: `import { Textfield, Button } from '../../index';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from '@xala-technologies/platform/i18n';
 
@@ -535,7 +535,7 @@ export function ContactForm() {
           {
             title: 'Loading States',
             description: 'Provide feedback during async operations',
-            code: `import { Button, Spinner } from '@xala-technologies/platform/ui';
+            code: `import { Button, Spinner } from '../../index';
 import { useState } from 'react';
 
 export function SaveButton() {
@@ -575,7 +575,7 @@ export function SaveButton() {
           {
             title: 'Conditional Rendering',
             description: 'Show different UI based on data state',
-            code: `import { DataTable, EmptyState, ErrorState } from '@xala-technologies/platform/ui';
+            code: `import { DataTable, EmptyState, ErrorState } from '../../index';
 import { useQuery } from '@tanstack/react-query';
 
 export function UserList() {
@@ -612,7 +612,7 @@ export function UserList() {
           {
             title: 'Responsive Layout',
             description: 'Build layouts that adapt to screen size',
-            code: `import { Card, Heading } from '@xala-technologies/platform/ui';
+            code: `import { Card, Heading } from '../../index';
 
 export function DashboardGrid() {
   return (

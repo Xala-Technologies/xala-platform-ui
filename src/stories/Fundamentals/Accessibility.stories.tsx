@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Textfield, Checkbox, Heading, Paragraph, Card } from '@xala-technologies/platform/ui';
+import { Button, Textfield, Checkbox, Heading, Paragraph, Card } from '../../index';
 import { useState } from 'react';
 
 const meta: Meta = {

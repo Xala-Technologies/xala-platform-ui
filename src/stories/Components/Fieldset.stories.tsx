@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Fieldset, Checkbox, Radio, ValidationMessage } from '@xala-technologies/platform/ui';
+import { Fieldset, Checkbox, Radio, ValidationMessage } from '../../index';
 
 const meta: Meta = {
   title: 'Components/Fieldset',

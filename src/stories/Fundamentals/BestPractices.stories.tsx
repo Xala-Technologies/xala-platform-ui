@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Heading, Paragraph } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph } from '../../index';
 
 const meta: Meta = {
   title: 'Fundamentals/Best Practices',
@@ -136,7 +136,7 @@ export const ComponentComposition: Story = {
           fontSize: 'var(--ds-font-size-xs)',
           overflow: 'auto',
         }}>
-{`import { Button } from '@xala-technologies/platform/ui';
+{`import { Button } from '../../index';
 
 <Button data-variant="primary">
   Click me

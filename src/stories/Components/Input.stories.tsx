@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { expect, userEvent, within } from '@storybook/test';
-import { Textfield, Tag, Heading } from '@xala-technologies/platform/ui';
+import { Textfield, Tag, Heading } from '../../index';
 
 /**
  * Textfield component from Digdir Designsystemet.

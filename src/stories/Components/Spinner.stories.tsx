@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Button, Spinner } from '@xala-technologies/platform/ui';
+import { Button, Spinner } from '../../index';
 
 /**
  * Spinner component from Digdir Designsystemet.

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Field, Label, Input, Textarea, Select, ValidationMessage } from '@xala-technologies/platform/ui';
+import { Field, Label, Input, Textarea, Select, ValidationMessage } from '../../index';
 
 const meta: Meta = {
   title: 'Components/Field',

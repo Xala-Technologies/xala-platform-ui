@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within, waitFor } from '@storybook/test';
-import { Dialog, Button, Paragraph, Heading } from '@xala-technologies/platform/ui';
+import { Dialog, Button, Paragraph, Heading } from '../../index';
 import { useRef } from 'react';
 
 const meta: Meta = {

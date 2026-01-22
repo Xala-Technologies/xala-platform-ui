@@ -420,7 +420,7 @@ export const CustomComponents: Story = {
           overflow: 'auto',
         }}>
 {`// Using platform Button component
-import { Button } from '@xala-technologies/platform/ui';
+import { Button } from '../../index';
 
 <Button data-variant="primary" data-size="md">
   Platform Button

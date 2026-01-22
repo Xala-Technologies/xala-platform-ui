@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Checkbox } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph, Checkbox } from '../../index';
 import { CheckCircle, XCircle, Code, FileCode, TestTube, Layers, Shield, Zap, AlertTriangle, BookOpen } from 'lucide-react';
 
 const meta: Meta = {

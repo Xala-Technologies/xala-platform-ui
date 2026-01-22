@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Heading, Paragraph, Textfield } from '@xala-technologies/platform/ui';
+import { Button, Card, Heading, Paragraph, Textfield } from '../../index';
 import { useState } from 'react';
 import { Inbox, Search, AlertCircle } from 'lucide-react';
 

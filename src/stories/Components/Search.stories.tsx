@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Search } from '@xala-technologies/platform/ui';
+import { Search } from '../../index';
 
 const meta: Meta = {
   title: 'Components/Search',

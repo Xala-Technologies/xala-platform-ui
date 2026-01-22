@@ -5,7 +5,7 @@ import {
   ResourceStatusBadge,
   RequestStatusBadge,
   UserStatusBadge,
-} from '@xala-technologies/platform/ui/blocks';
+} from '../../blocks';
 
 const meta = {
   title: 'Blocks/Status Badges',
