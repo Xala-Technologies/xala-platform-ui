@@ -20,7 +20,13 @@ This document defines the governance rules, quality gates, and automated checks 
 - No database schema dependencies
 - No domain-specific packages
 
-### 3. Accessibility First
+### 3. Designsystemet Design Tokens Only
+- **No raw HTML elements** - Use Designsystemet components (Card, Heading, Paragraph, etc.)
+- **No inline styles** - Use design tokens via data attributes
+- **No custom CSS** - Only Designsystemet tokens and extensions
+- **Design token variables** - Use `var(--ds-*)` for any custom styling
+
+### 4. Accessibility First
 - All components must be WCAG 2.1 AA compliant
 - Keyboard navigation required
 - Screen reader support required
@@ -113,7 +119,7 @@ This ensures no broken code is published.
 
 ## Component Standards
 
-### File Structure
+### ✅ CORRECT - Using Designsystemet Components and Tokens
 ```typescript
 // src/primitives/Button.tsx
 import { Button as DSButton } from '@digdir/designsystemet-react';
@@ -129,11 +135,58 @@ export function Button({ children, onClick, variant, disabled }: ButtonProps) {
   return (
     <DSButton 
       data-color={variant === 'primary' ? 'accent' : 'neutral'}
+      data-size="medium"
       onClick={onClick}
       disabled={disabled}
     >
       {children}
     </DSButton>
+  );
+}
+```
+
+### ❌ WRONG - Raw HTML and Inline Styles
+```typescript
+// DON'T DO THIS
+export function Button({ children, onClick }: ButtonProps) {
+  return (
+    <button 
+      style={{ padding: '12px 24px', backgroundColor: '#0062BA' }} // ❌ Inline styles
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+### ❌ WRONG - Custom CSS Classes
+```typescript
+// DON'T DO THIS
+export function Card({ children }: CardProps) {
+  return (
+    <div className="custom-card"> {/* ❌ Raw div + custom class */}
+      {children}
+    </div>
+  );
+}
+```
+
+### ✅ CORRECT - Design Token Variables (if needed)
+```typescript
+// Only when extending Designsystemet
+export function CustomCard({ children }: CardProps) {
+  return (
+    <Card 
+      data-color="neutral"
+      data-size="medium"
+      style={{
+        padding: 'var(--ds-spacing-4)', // ✅ Design token variable
+        gap: 'var(--ds-spacing-2)',      // ✅ Design token variable
+      }}
+    >
+      {children}
+    </Card>
   );
 }
 ```

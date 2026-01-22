@@ -47,6 +47,20 @@ export default [
           },
         ],
       }],
+      'no-restricted-syntax': ['error',
+        {
+          selector: 'JSXElement[openingElement.name.name=/^(div|span|p|h1|h2|h3|h4|h5|h6|section|article|header|footer|nav|aside|main)$/]',
+          message: '❌ DESIGN SYSTEM VIOLATION: Use Designsystemet components instead of raw HTML elements. Import semantic components from @digdir/designsystemet-react.',
+        },
+        {
+          selector: 'JSXAttribute[name.name="style"]',
+          message: '❌ DESIGN SYSTEM VIOLATION: No inline styles allowed. Use Designsystemet design tokens (data-size, data-color, data-spacing) or CSS classes with design token variables.',
+        },
+        {
+          selector: 'JSXAttribute[name.name="className"][value.value=/^(?!.*ds-).*$/]',
+          message: '⚠️  DESIGN SYSTEM WARNING: Prefer Designsystemet data attributes (data-size, data-color) over custom classes. Only use ds- prefixed classes from Designsystemet.',
+        },
+      ],
     },
     settings: {
       react: {

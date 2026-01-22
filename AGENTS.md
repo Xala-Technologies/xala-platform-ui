@@ -29,7 +29,14 @@ This package must NEVER contain:
 - ❌ Database queries
 - ❌ i18n translations (use platform package)
 
-### RULE 3: Pure Presentation
+### RULE 3: Designsystemet Design Tokens Only
+Components must follow Designsystemet standards:
+- **No raw HTML** - Use Designsystemet components (Card, Heading, Paragraph, Button, etc.)
+- **No inline styles** - Use data attributes (data-size, data-color, data-spacing)
+- **No custom CSS** - Only design token variables (`var(--ds-*)`)
+- **No custom classes** - Only `ds-` prefixed classes from Designsystemet
+
+### RULE 4: Pure Presentation
 Components should:
 - Accept data via props
 - Render UI based on props
@@ -80,9 +87,10 @@ export function Button({ children, onClick, variant, disabled }: ButtonProps) {
 }
 ```
 
-### ❌ Bad Component Example
+### ❌ Bad Component Examples
+
+**Example 1: Business Logic Violation**
 ```typescript
-// ❌ WRONG - Has business logic and API calls
 import { useAuth } from '@xala-technologies/platform/auth';
 import { fetchUserData } from '@xala-technologies/platform/sdk';
 
@@ -95,6 +103,34 @@ export function UserProfile() {
   }
   
   return <div>{data.name}</div>;
+}
+```
+
+**Example 2: Design System Violations**
+```typescript
+// ❌ WRONG - Raw HTML and inline styles
+export function ProfileCard({ name, email }: ProfileProps) {
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ccc' }}> {/* ❌ Raw div + inline styles */}
+      <h2 style={{ color: '#0062BA' }}>{name}</h2> {/* ❌ Raw h2 + inline styles */}
+      <p className="custom-email">{email}</p> {/* ❌ Raw p + custom class */}
+    </div>
+  );
+}
+```
+
+**Example 3: Correct Designsystemet Usage**
+```typescript
+// ✅ CORRECT - Designsystemet components and tokens
+import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+export function ProfileCard({ name, email }: ProfileProps) {
+  return (
+    <Card data-color="neutral" data-size="medium">
+      <Heading level={2} data-size="medium">{name}</Heading>
+      <Paragraph data-size="medium">{email}</Paragraph>
+    </Card>
+  );
 }
 ```
 
