@@ -32,7 +32,10 @@ export interface SimpleSidebarProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 export const SimpleSidebar = forwardRef<HTMLDivElement, SimpleSidebarProps>(
-  ({ width = 'var(--ds-sizing-80)', bordered = true, children, className, style, ...props }, ref) => {
+  (
+    { width = 'var(--ds-sizing-80)', bordered = true, children, className, style, ...props },
+    ref
+  ) => {
     return (
       <div
         ref={ref}

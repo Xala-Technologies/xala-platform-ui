@@ -75,9 +75,7 @@ export function checkDependency(appDir: string): ComplianceCheck {
       name: 'Platform UI Dependency',
       passed: false,
       message: '@xala-technologies/guardrails must also be installed',
-      details: [
-        'Run: pnpm add -D @xala-technologies/guardrails',
-      ],
+      details: ['Run: pnpm add -D @xala-technologies/guardrails'],
     };
   }
 

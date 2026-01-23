@@ -40,8 +40,12 @@ export const CenterBoth: StoryObj<typeof Center> = {
     <div style={{ height: '400px', border: '1px dashed var(--ds-color-neutral-border-default)' }}>
       <Center>
         <Stack spacing="var(--ds-spacing-2)" align="center">
-          <Heading level={2} data-size="md">Centered Content</Heading>
-          <Paragraph data-size="sm">This content is centered both horizontally and vertically</Paragraph>
+          <Heading level={2} data-size="md">
+            Centered Content
+          </Heading>
+          <Paragraph data-size="sm">
+            This content is centered both horizontally and vertically
+          </Paragraph>
         </Stack>
       </Center>
     </div>
@@ -67,7 +71,9 @@ export const SidebarExample: StoryObj<typeof SimpleSidebar> = {
     <div style={{ height: '500px', display: 'flex' }}>
       <SimpleSidebar>
         <SidebarHeaderArea>
-          <Heading level={1} data-size="md">App Name</Heading>
+          <Heading level={1} data-size="md">
+            App Name
+          </Heading>
           <Paragraph data-size="sm">Subtitle text</Paragraph>
         </SidebarHeaderArea>
 
@@ -83,7 +89,9 @@ export const SidebarExample: StoryObj<typeof SimpleSidebar> = {
       </SimpleSidebar>
 
       <MainContent>
-        <Heading level={2} data-size="lg">Main Content Area</Heading>
+        <Heading level={2} data-size="lg">
+          Main Content Area
+        </Heading>
       </MainContent>
     </div>
   ),
@@ -101,7 +109,9 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
     <HorizontalLayout>
       <SimpleSidebar>
         <SidebarHeaderArea>
-          <Heading level={1} data-size="md">Playground</Heading>
+          <Heading level={1} data-size="md">
+            Playground
+          </Heading>
           <Paragraph data-size="sm">Component Explorer</Paragraph>
         </SidebarHeaderArea>
 
@@ -120,7 +130,9 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
 
       <MainContent>
         <Stack spacing="var(--ds-spacing-4)">
-          <Heading level={2} data-size="lg">Button</Heading>
+          <Heading level={2} data-size="lg">
+            Button
+          </Heading>
           <Paragraph data-size="md">Interactive button component for user actions.</Paragraph>
           <Button variant="primary">Example Button</Button>
         </Stack>
@@ -135,10 +147,18 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
 
 export const MainContentPadding: StoryObj<typeof MainContent> = {
   render: () => (
-    <div style={{ height: '300px', display: 'flex', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+    <div
+      style={{
+        height: '300px',
+        display: 'flex',
+        border: '1px solid var(--ds-color-neutral-border-default)',
+      }}
+    >
       <MainContent padding="lg">
         <Stack spacing="var(--ds-spacing-2)">
-          <Heading level={2} data-size="md">Large Padding</Heading>
+          <Heading level={2} data-size="md">
+            Large Padding
+          </Heading>
           <Paragraph data-size="sm">This content has large padding around it.</Paragraph>
         </Stack>
       </MainContent>
@@ -148,10 +168,18 @@ export const MainContentPadding: StoryObj<typeof MainContent> = {
 
 export const MainContentSmallPadding: StoryObj<typeof MainContent> = {
   render: () => (
-    <div style={{ height: '300px', display: 'flex', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+    <div
+      style={{
+        height: '300px',
+        display: 'flex',
+        border: '1px solid var(--ds-color-neutral-border-default)',
+      }}
+    >
       <MainContent padding="sm">
         <Stack spacing="var(--ds-spacing-2)">
-          <Heading level={2} data-size="md">Small Padding</Heading>
+          <Heading level={2} data-size="md">
+            Small Padding
+          </Heading>
           <Paragraph data-size="sm">This content has small padding around it.</Paragraph>
         </Stack>
       </MainContent>

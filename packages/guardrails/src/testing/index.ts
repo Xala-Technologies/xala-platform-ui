@@ -52,37 +52,45 @@ export interface ViolationReport {
 // ============================================================================
 
 const RAW_HTML_ELEMENTS = [
-  'div', 'span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-  'section', 'article', 'header', 'footer', 'nav', 'aside', 'main',
-  'button', 'input', 'select', 'textarea', 'label', 'form',
-  'ul', 'ol', 'li', 'table', 'tr', 'td', 'th', 'a',
+  'div',
+  'span',
+  'p',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'section',
+  'article',
+  'header',
+  'footer',
+  'nav',
+  'aside',
+  'main',
+  'button',
+  'input',
+  'select',
+  'textarea',
+  'label',
+  'form',
+  'ul',
+  'ol',
+  'li',
+  'table',
+  'tr',
+  'td',
+  'th',
+  'a',
 ];
 
-const FORBIDDEN_IMPORTS = [
-  '@digdir/designsystemet-react',
-  '@digdir/designsystemet-css',
-];
+const FORBIDDEN_IMPORTS = ['@digdir/designsystemet-react', '@digdir/designsystemet-css'];
 
-const DEFAULT_EXCLUDE_PATTERNS = [
-  'node_modules',
-  'dist',
-  '.git',
-  'coverage',
-  '__mocks__',
-];
+const DEFAULT_EXCLUDE_PATTERNS = ['node_modules', 'dist', '.git', 'coverage', '__mocks__'];
 
-const DEFAULT_ALLOW_RAW_HTML = [
-  '.stories.',
-  '.story.',
-  '.test.',
-  '.spec.',
-  '__tests__',
-];
+const DEFAULT_ALLOW_RAW_HTML = ['.stories.', '.story.', '.test.', '.spec.', '__tests__'];
 
-const DEFAULT_ALLOW_INLINE_STYLE = [
-  '.stories.',
-  '.story.',
-];
+const DEFAULT_ALLOW_INLINE_STYLE = ['.stories.', '.story.'];
 
 // ============================================================================
 // Scanner Functions
@@ -136,8 +144,13 @@ export function checkRawHtml(
   lines.forEach((line, index) => {
     // Skip comments and imports
     const trimmed = line.trim();
-    if (trimmed.startsWith('//') || trimmed.startsWith('/*') || trimmed.startsWith('*') ||
-        trimmed.startsWith('import') || trimmed.startsWith('export')) {
+    if (
+      trimmed.startsWith('//') ||
+      trimmed.startsWith('/*') ||
+      trimmed.startsWith('*') ||
+      trimmed.startsWith('import') ||
+      trimmed.startsWith('export')
+    ) {
       return;
     }
 
@@ -264,16 +277,17 @@ export function formatViolationReport(report: ViolationReport): string {
     return `✅ Platform UI compliance check passed (${report.filesScanned} files scanned)`;
   }
 
-  const lines = [
-    `❌ Found ${report.violations.length} Platform UI violations:\n`,
-  ];
+  const lines = [`❌ Found ${report.violations.length} Platform UI violations:\n`];
 
   // Group by type
-  const byType = report.violations.reduce((acc, v) => {
-    if (!acc[v.type]) acc[v.type] = [];
-    acc[v.type].push(v);
-    return acc;
-  }, {} as Record<string, Violation[]>);
+  const byType = report.violations.reduce(
+    (acc, v) => {
+      if (!acc[v.type]) acc[v.type] = [];
+      acc[v.type].push(v);
+      return acc;
+    },
+    {} as Record<string, Violation[]>
+  );
 
   if (byType['raw-html']) {
     lines.push(`\n📋 RAW HTML ELEMENTS (${byType['raw-html'].length}):`);

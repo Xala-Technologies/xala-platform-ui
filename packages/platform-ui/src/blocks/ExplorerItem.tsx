@@ -50,9 +50,7 @@ export const ExplorerItem = forwardRef<HTMLButtonElement, ExplorerItemProps>(
           marginBottom: 'var(--ds-spacing-2)',
           borderRadius: 'var(--ds-border-radius-md)',
           cursor: 'pointer',
-          backgroundColor: selected
-            ? 'var(--ds-color-accent-surface-default)'
-            : 'transparent',
+          backgroundColor: selected ? 'var(--ds-color-accent-surface-default)' : 'transparent',
           border: selected
             ? '1px solid var(--ds-color-accent-border-default)'
             : '1px solid transparent',

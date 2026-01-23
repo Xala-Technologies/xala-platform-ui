@@ -32,15 +32,7 @@ export interface CenterProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Center = forwardRef<HTMLDivElement, CenterProps>(
   (
-    {
-      axis = 'both',
-      fill = true,
-      textAlign = 'center',
-      children,
-      className,
-      style,
-      ...props
-    },
+    { axis = 'both', fill = true, textAlign = 'center', children, className, style, ...props },
     ref
   ) => {
     const getJustify = () => {

@@ -70,9 +70,15 @@ export const NotCentered: Story = {
   render: () => (
     <PreviewArea centered={false}>
       <Stack spacing="var(--ds-spacing-2)">
-        <Button variant="primary" data-size="sm">First</Button>
-        <Button variant="secondary" data-size="sm">Second</Button>
-        <Button variant="tertiary" data-size="sm">Third</Button>
+        <Button variant="primary" data-size="sm">
+          First
+        </Button>
+        <Button variant="secondary" data-size="sm">
+          Second
+        </Button>
+        <Button variant="tertiary" data-size="sm">
+          Third
+        </Button>
       </Stack>
     </PreviewArea>
   ),

@@ -63,10 +63,30 @@ export const ExplorerList: Story = {
     const [selected, setSelected] = useState<string | null>('button');
 
     const items = [
-      { id: 'button', title: 'Button', description: 'Interactive button component', icon: <FileTextIcon size={18} /> },
-      { id: 'card', title: 'Card', description: 'Content container with borders', icon: <FileTextIcon size={18} /> },
-      { id: 'table', title: 'DataTable', description: 'Sortable, filterable table', icon: <FileTextIcon size={18} /> },
-      { id: 'settings', title: 'Settings', description: 'Application configuration', icon: <SettingsIcon size={18} /> },
+      {
+        id: 'button',
+        title: 'Button',
+        description: 'Interactive button component',
+        icon: <FileTextIcon size={18} />,
+      },
+      {
+        id: 'card',
+        title: 'Card',
+        description: 'Content container with borders',
+        icon: <FileTextIcon size={18} />,
+      },
+      {
+        id: 'table',
+        title: 'DataTable',
+        description: 'Sortable, filterable table',
+        icon: <FileTextIcon size={18} />,
+      },
+      {
+        id: 'settings',
+        title: 'Settings',
+        description: 'Application configuration',
+        icon: <SettingsIcon size={18} />,
+      },
     ];
 
     return (

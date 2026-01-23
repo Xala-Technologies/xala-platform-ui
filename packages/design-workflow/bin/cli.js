@@ -240,15 +240,16 @@ async function main() {
 
     case 'list-components': {
       try {
-        const { getComponentsByCategory } = await import('../dist/adapters/index.js');
-        const components = getComponentsByCategory();
+        const { getComponentsByCategory, componentMap } = await import('../dist/adapters/index.js');
+        const categories = getComponentsByCategory();
 
-        log('cyan', '\n📋 Available Components\n');
+        log('cyan', '\n📋 Available Platform UI Components\n');
 
-        for (const [category, comps] of Object.entries(components)) {
-          log('bright', `\n${category.toUpperCase()}:`);
-          comps.forEach(c => {
-            log('dim', `  - ${c.type}: ${c.description}`);
+        for (const [category, componentTypes] of Object.entries(categories)) {
+          log('bright', `\n${category.toUpperCase()} (${componentTypes.length}):`);
+          componentTypes.forEach(type => {
+            const mapping = componentMap[type];
+            log('dim', `  - ${type} → ${mapping?.component || type}`);
           });
         }
         console.log('');
