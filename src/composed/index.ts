@@ -218,8 +218,7 @@ export {
   type ListToolbarSortOption,
 } from './ListToolbar';
 
-export { DashboardHeader } from './DashboardHeader';
-export type { DashboardHeaderProps, DashboardHeaderUser } from './DashboardHeader';
+// DashboardHeader moved to shells/ (uses blocks-level components)
 
 export { DashboardPageHeader } from './DashboardPageHeader';
 export type { DashboardPageHeaderProps, PageHeaderMetaItem, PageHeaderTab } from './DashboardPageHeader';

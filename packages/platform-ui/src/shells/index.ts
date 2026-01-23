@@ -15,3 +15,6 @@ export type { DashboardSidebarProps, SidebarNavItem, SidebarSection } from './Da
 
 export { DashboardContent } from './DashboardContent';
 export type { DashboardContentProps } from './DashboardContent';
+
+export { DashboardHeader } from './DashboardHeader';
+export type { DashboardHeaderProps, DashboardHeaderUser } from './DashboardHeader';

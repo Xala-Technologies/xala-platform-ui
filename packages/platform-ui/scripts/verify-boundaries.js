@@ -61,17 +61,31 @@ function getLayerLevel(filePath) {
 }
 
 /**
+ * Strip comments from content to avoid false positives from JSDoc/TSDoc
+ */
+function stripComments(content) {
+  // Remove multi-line comments (/* ... */)
+  let stripped = content.replace(/\/\*[\s\S]*?\*\//g, '');
+  // Remove single-line comments (// ...)
+  stripped = stripped.replace(/\/\/.*$/gm, '');
+  return stripped;
+}
+
+/**
  * Extract imports from file content
  */
 function extractImports(content) {
+  // Strip comments first to avoid matching example imports in JSDoc
+  const strippedContent = stripComments(content);
+
   const importRegex = /import\s+(?:{[^}]*}|\*\s+as\s+\w+|\w+)\s+from\s+['"]([^'"]+)['"]/g;
   const imports = [];
   let match;
-  
-  while ((match = importRegex.exec(content)) !== null) {
+
+  while ((match = importRegex.exec(strippedContent)) !== null) {
     imports.push(match[1]);
   }
-  
+
   return imports;
 }
 
@@ -105,21 +119,29 @@ function checkLayerViolations(filePath, content) {
 
 /**
  * Check for forbidden import patterns
+ * Only checks actual import statements, not JSDoc comments or other content
  */
 function checkForbiddenImports(filePath, content) {
   const violations = [];
   const relativePath = relative(ROOT_DIR, filePath);
-  
-  for (const forbidden of FORBIDDEN_IMPORTS) {
-    if (forbidden.pattern.test(content)) {
-      violations.push({
-        file: relativePath,
-        type: 'forbidden-import',
-        message: forbidden.message,
-      });
+
+  // Extract actual import statements
+  const imports = extractImports(content);
+
+  for (const importPath of imports) {
+    for (const forbidden of FORBIDDEN_IMPORTS) {
+      if (forbidden.pattern.test(importPath)) {
+        violations.push({
+          file: relativePath,
+          type: 'forbidden-import',
+          message: forbidden.message,
+          import: importPath,
+        });
+        break; // Only report one violation per import
+      }
     }
   }
-  
+
   return violations;
 }
 

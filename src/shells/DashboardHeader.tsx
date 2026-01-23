@@ -21,8 +21,8 @@
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useRef, useCallback } from 'react';
 import { Button, Paragraph } from '@digdir/designsystemet-react';
-import { HeaderSearch, type SearchResultItem, type SearchResultGroup } from './header-parts';
-import { HeaderThemeToggle } from './header-parts';
+import { HeaderSearch, type SearchResultItem, type SearchResultGroup } from '../composed/header-parts';
+import { HeaderThemeToggle } from '../composed/header-parts';
 import { NotificationBell } from '../blocks/NotificationBell';
 import { UserIcon, SettingsIcon, LogOutIcon } from '../primitives/icons';
 import { cn } from '../utils';
