@@ -25,8 +25,11 @@ import {
   FormGrid,
   ButtonGroup,
   Stack,
+  Drawer,
 } from '@xala-technologies/platform-ui';
 import { getLayerOptions } from '../constants';
+import { CompositionPreview } from '../components/preview/CompositionPreview';
+import { TESTIDS } from '../constants/testids';
 
 /** WCAG accessibility requirements for component specs */
 const ACCESSIBILITY_REQUIREMENTS = [
@@ -44,6 +47,7 @@ export function SpecEditor() {
     description: '',
     purpose: '',
   });
+  const [showPreview, setShowPreview] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -71,7 +75,12 @@ export function SpecEditor() {
         title={componentName ? `Edit: ${componentName}` : 'New Component Spec'}
         subtitle="Define component specifications using design workflow templates"
         secondaryAction={
-          <Button variant="secondary" data-size="sm">
+          <Button
+            variant="secondary"
+            data-size="sm"
+            onClick={() => setShowPreview(true)}
+            data-testid={TESTIDS.specEditor.previewBtn}
+          >
             Preview
           </Button>
         }
@@ -192,6 +201,29 @@ export function SpecEditor() {
           </SectionCard>
         </Tabs.Panel>
       </Tabs>
+
+      {/* Preview Drawer */}
+      {showPreview && (
+        <Drawer
+          open={showPreview}
+          onClose={() => setShowPreview(false)}
+          title={`Preview: ${componentNameSafe}`}
+          size="large"
+        >
+          <CompositionPreview
+            componentName={componentNameSafe}
+            composeData={{
+              componentName: componentNameSafe,
+              layer: formData.layer,
+              description: formData.description,
+              props: {
+                // Would parse from props tab
+              },
+            }}
+            data-testid={TESTIDS.preview.root}
+          />
+        </Drawer>
+      )}
     </PageContainer>
   );
 }

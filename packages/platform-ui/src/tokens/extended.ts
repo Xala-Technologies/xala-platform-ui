@@ -663,6 +663,504 @@ export const layout = {
 } as const;
 
 // =============================================================================
+// Form & Validation Tokens
+// =============================================================================
+
+/**
+ * Tokens for form states and validation feedback.
+ * Designed for clear user feedback while maintaining accessibility.
+ */
+export const form = {
+  // Validation states
+  validation: {
+    success: {
+      borderColor: 'var(--ds-color-success-border-default)',
+      backgroundColor: 'var(--ds-color-success-surface-default)',
+      textColor: 'var(--ds-color-success-text-default)',
+      iconColor: 'var(--ds-color-success-base-default)',
+    },
+    error: {
+      borderColor: 'var(--ds-color-danger-border-default)',
+      backgroundColor: 'var(--ds-color-danger-surface-default)',
+      textColor: 'var(--ds-color-danger-text-default)',
+      iconColor: 'var(--ds-color-danger-base-default)',
+    },
+    warning: {
+      borderColor: 'var(--ds-color-warning-border-default)',
+      backgroundColor: 'var(--ds-color-warning-surface-default)',
+      textColor: 'var(--ds-color-warning-text-default)',
+      iconColor: 'var(--ds-color-warning-base-default)',
+    },
+    info: {
+      borderColor: 'var(--ds-color-info-border-default)',
+      backgroundColor: 'var(--ds-color-info-surface-default)',
+      textColor: 'var(--ds-color-info-text-default)',
+      iconColor: 'var(--ds-color-info-base-default)',
+    },
+  },
+  // Input states
+  input: {
+    default: {
+      border: '1px solid var(--ds-color-neutral-border-default)',
+      background: 'var(--ds-color-neutral-background-default)',
+    },
+    hover: {
+      border: '1px solid var(--ds-color-neutral-border-strong)',
+      background: 'var(--ds-color-neutral-background-default)',
+    },
+    focus: {
+      border: '1px solid var(--ds-color-accent-border-default)',
+      outline: '2px solid var(--ds-color-focus-outer)',
+      outlineOffset: '2px',
+    },
+    disabled: {
+      border: '1px solid var(--ds-color-neutral-border-subtle)',
+      background: 'var(--ds-color-neutral-surface-default)',
+      opacity: '0.6',
+      cursor: 'not-allowed',
+    },
+    readonly: {
+      border: '1px solid var(--ds-color-neutral-border-subtle)',
+      background: 'var(--ds-color-neutral-surface-subtle)',
+    },
+  },
+  // Label styling
+  label: {
+    color: 'var(--ds-color-neutral-text-default)',
+    requiredIndicator: 'var(--ds-color-danger-text-default)',
+    optionalText: 'var(--ds-color-neutral-text-subtle)',
+    disabledColor: 'var(--ds-color-neutral-text-subtle)',
+  },
+  // Helper/description text
+  helper: {
+    color: 'var(--ds-color-neutral-text-subtle)',
+    errorColor: 'var(--ds-color-danger-text-default)',
+    fontSize: 'var(--ds-font-size-sm)',
+  },
+  // Character counter
+  counter: {
+    color: 'var(--ds-color-neutral-text-subtle)',
+    warningColor: 'var(--ds-color-warning-text-default)',
+    errorColor: 'var(--ds-color-danger-text-default)',
+  },
+} as const;
+
+// =============================================================================
+// Notification & Alert Tokens
+// =============================================================================
+
+/**
+ * Tokens for notifications, alerts, toasts, and banners.
+ */
+export const notification = {
+  // Severity levels
+  severity: {
+    info: {
+      background: 'var(--ds-color-info-surface-default)',
+      border: 'var(--ds-color-info-border-default)',
+      icon: 'var(--ds-color-info-base-default)',
+      text: 'var(--ds-color-info-text-default)',
+    },
+    success: {
+      background: 'var(--ds-color-success-surface-default)',
+      border: 'var(--ds-color-success-border-default)',
+      icon: 'var(--ds-color-success-base-default)',
+      text: 'var(--ds-color-success-text-default)',
+    },
+    warning: {
+      background: 'var(--ds-color-warning-surface-default)',
+      border: 'var(--ds-color-warning-border-default)',
+      icon: 'var(--ds-color-warning-base-default)',
+      text: 'var(--ds-color-warning-text-default)',
+    },
+    error: {
+      background: 'var(--ds-color-danger-surface-default)',
+      border: 'var(--ds-color-danger-border-default)',
+      icon: 'var(--ds-color-danger-base-default)',
+      text: 'var(--ds-color-danger-text-default)',
+    },
+  },
+  // Toast positioning
+  toast: {
+    offset: 'var(--ds-spacing-4)',
+    gap: 'var(--ds-spacing-3)',
+    maxWidth: '400px',
+    minWidth: '300px',
+    zIndex: zIndex.toast,
+  },
+  // Banner styling
+  banner: {
+    padding: 'var(--ds-spacing-4)',
+    iconSize: 'var(--ds-sizing-5)',
+    closeButtonSize: 'var(--ds-sizing-8)',
+  },
+  // Badge/count indicators
+  badge: {
+    minSize: 'var(--ds-sizing-5)',
+    fontSize: 'var(--ds-font-size-xs)',
+    fontWeight: 'var(--ds-font-weight-semibold)',
+    background: 'var(--ds-color-danger-base-default)',
+    color: 'var(--ds-color-danger-contrast-default)',
+  },
+} as const;
+
+// =============================================================================
+// Table & Data Grid Tokens
+// =============================================================================
+
+/**
+ * Tokens for tables, data grids, and list views.
+ */
+export const table = {
+  // Cell styling
+  cell: {
+    padding: {
+      compact: 'var(--ds-spacing-2) var(--ds-spacing-3)',
+      default: 'var(--ds-spacing-3) var(--ds-spacing-4)',
+      comfortable: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+    },
+    borderColor: 'var(--ds-color-neutral-border-subtle)',
+  },
+  // Header styling
+  header: {
+    background: 'var(--ds-color-neutral-surface-default)',
+    fontWeight: 'var(--ds-font-weight-semibold)',
+    textColor: 'var(--ds-color-neutral-text-default)',
+    borderColor: 'var(--ds-color-neutral-border-default)',
+  },
+  // Row states
+  row: {
+    default: {
+      background: 'var(--ds-color-neutral-background-default)',
+    },
+    hover: {
+      background: 'var(--ds-color-neutral-surface-hover)',
+    },
+    selected: {
+      background: 'var(--ds-color-accent-surface-default)',
+      borderColor: 'var(--ds-color-accent-border-default)',
+    },
+    striped: {
+      background: 'var(--ds-color-neutral-surface-default)',
+    },
+    disabled: {
+      background: 'var(--ds-color-neutral-surface-default)',
+      opacity: '0.5',
+    },
+  },
+  // Sorting indicators
+  sort: {
+    activeColor: 'var(--ds-color-accent-base-default)',
+    inactiveColor: 'var(--ds-color-neutral-text-subtle)',
+    iconSize: 'var(--ds-sizing-4)',
+  },
+  // Pagination
+  pagination: {
+    gap: 'var(--ds-spacing-2)',
+    buttonSize: 'var(--ds-sizing-9)',
+  },
+  // Empty state
+  empty: {
+    padding: 'var(--ds-spacing-10)',
+    iconSize: 'var(--ds-sizing-12)',
+    textColor: 'var(--ds-color-neutral-text-subtle)',
+  },
+} as const;
+
+// =============================================================================
+// Navigation Tokens
+// =============================================================================
+
+/**
+ * Tokens for navigation components (menus, tabs, breadcrumbs).
+ */
+export const navigation = {
+  // Menu items
+  menu: {
+    item: {
+      padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+      gap: 'var(--ds-spacing-3)',
+      borderRadius: 'var(--ds-border-radius-md)',
+    },
+    hover: {
+      background: 'var(--ds-color-neutral-surface-hover)',
+    },
+    active: {
+      background: 'var(--ds-color-accent-surface-default)',
+      textColor: 'var(--ds-color-accent-text-default)',
+      fontWeight: 'var(--ds-font-weight-medium)',
+    },
+    disabled: {
+      opacity: '0.5',
+      cursor: 'not-allowed',
+    },
+  },
+  // Tabs
+  tabs: {
+    gap: 'var(--ds-spacing-1)',
+    indicator: {
+      height: '2px',
+      color: 'var(--ds-color-accent-base-default)',
+      transition: 'all 0.2s ease',
+    },
+    item: {
+      padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
+      fontWeight: {
+        default: 'var(--ds-font-weight-regular)',
+        active: 'var(--ds-font-weight-medium)',
+      },
+    },
+  },
+  // Breadcrumbs
+  breadcrumb: {
+    gap: 'var(--ds-spacing-2)',
+    separator: {
+      color: 'var(--ds-color-neutral-text-subtle)',
+      content: "'/'",
+    },
+    link: {
+      color: 'var(--ds-color-neutral-text-subtle)',
+      hoverColor: 'var(--ds-color-accent-text-default)',
+    },
+    current: {
+      color: 'var(--ds-color-neutral-text-default)',
+      fontWeight: 'var(--ds-font-weight-medium)',
+    },
+  },
+  // Sidebar navigation
+  sidebar: {
+    width: layout.sidebar,
+    background: 'var(--ds-color-neutral-background-default)',
+    borderColor: 'var(--ds-color-neutral-border-default)',
+    section: {
+      padding: 'var(--ds-spacing-4)',
+      titleColor: 'var(--ds-color-neutral-text-subtle)',
+      titleFontSize: 'var(--ds-font-size-xs)',
+      titleFontWeight: 'var(--ds-font-weight-semibold)',
+      titleTextTransform: 'uppercase',
+      titleLetterSpacing: '0.05em',
+    },
+  },
+} as const;
+
+// =============================================================================
+// Theme Mode Tokens (Light/Dark)
+// =============================================================================
+
+/**
+ * Tokens for theme mode switching.
+ * Use CSS custom properties that change based on [data-color-scheme].
+ */
+export const themeMode = {
+  // Surface backgrounds (adapt to theme)
+  surface: {
+    page: 'var(--ds-color-neutral-background-default)',
+    raised: 'var(--ds-color-neutral-background-default)',
+    overlay: 'var(--ds-color-neutral-background-default)',
+    sunken: 'var(--ds-color-neutral-surface-default)',
+  },
+  // Text colors (adapt to theme)
+  text: {
+    primary: 'var(--ds-color-neutral-text-default)',
+    secondary: 'var(--ds-color-neutral-text-subtle)',
+    disabled: 'var(--ds-color-neutral-text-subtle)',
+    inverse: 'var(--ds-color-neutral-contrast-default)',
+  },
+  // Border colors (adapt to theme)
+  border: {
+    default: 'var(--ds-color-neutral-border-default)',
+    subtle: 'var(--ds-color-neutral-border-subtle)',
+    strong: 'var(--ds-color-neutral-border-strong)',
+  },
+  // Transition for theme switching
+  transition: 'background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease',
+} as const;
+
+// =============================================================================
+// Semantic State Tokens
+// =============================================================================
+
+/**
+ * Semantic tokens for common UI states.
+ */
+export const states = {
+  // Interactive states
+  interactive: {
+    default: {
+      opacity: '1',
+      cursor: 'pointer',
+    },
+    hover: {
+      opacity: '0.9',
+      transform: 'translateY(-1px)',
+    },
+    active: {
+      opacity: '0.95',
+      transform: 'translateY(0)',
+    },
+    focus: {
+      outline: '2px solid var(--ds-color-focus-outer)',
+      outlineOffset: '2px',
+    },
+    disabled: {
+      opacity: '0.5',
+      cursor: 'not-allowed',
+      pointerEvents: 'none',
+    },
+  },
+  // Loading states
+  loading: {
+    opacity: '0.7',
+    cursor: 'wait',
+    animation: motion.continuous.pulse,
+  },
+  // Empty states
+  empty: {
+    textColor: 'var(--ds-color-neutral-text-subtle)',
+    iconColor: 'var(--ds-color-neutral-text-subtle)',
+    background: 'var(--ds-color-neutral-surface-default)',
+  },
+  // Selected states
+  selected: {
+    background: 'var(--ds-color-accent-surface-default)',
+    borderColor: 'var(--ds-color-accent-border-default)',
+    textColor: 'var(--ds-color-accent-text-default)',
+  },
+  // Dragging states (drag-and-drop)
+  dragging: {
+    opacity: '0.8',
+    shadow: shadows.lg,
+    cursor: 'grabbing',
+  },
+  dropTarget: {
+    background: 'var(--ds-color-accent-surface-default)',
+    borderColor: 'var(--ds-color-accent-border-default)',
+    borderStyle: 'dashed',
+  },
+} as const;
+
+// =============================================================================
+// Print Tokens
+// =============================================================================
+
+/**
+ * Tokens for print-friendly styling.
+ * Apply via @media print.
+ */
+export const print = {
+  // Page setup
+  page: {
+    margin: '2cm',
+    fontSize: '12pt',
+    lineHeight: '1.5',
+  },
+  // Color overrides for print
+  colors: {
+    text: '#000000',
+    background: '#ffffff',
+    border: '#cccccc',
+    link: '#000000',
+  },
+  // Hide elements in print
+  hide: {
+    display: 'none',
+    visibility: 'hidden',
+  },
+  // Break controls
+  breaks: {
+    avoidInside: 'avoid',
+    beforePage: 'page',
+    afterPage: 'page',
+  },
+} as const;
+
+// =============================================================================
+// High Contrast Mode Tokens (WCAG AAA)
+// =============================================================================
+
+/**
+ * Tokens for forced high contrast mode.
+ * These are used when user has high contrast preferences.
+ */
+export const highContrast = {
+  // Forced colors
+  colors: {
+    text: 'CanvasText',
+    background: 'Canvas',
+    link: 'LinkText',
+    button: 'ButtonText',
+    buttonBackground: 'ButtonFace',
+    highlight: 'Highlight',
+    highlightText: 'HighlightText',
+  },
+  // Border emphasis
+  borders: {
+    width: '2px',
+    style: 'solid',
+    color: 'CanvasText',
+  },
+  // Focus indicators (extra visible)
+  focus: {
+    outline: '3px solid Highlight',
+    outlineOffset: '2px',
+  },
+} as const;
+
+// =============================================================================
+// Icon Tokens
+// =============================================================================
+
+/**
+ * Tokens for icon styling and sizing.
+ */
+export const icons = {
+  // Size scale
+  size: {
+    xs: 'var(--ds-sizing-3)', // 12px
+    sm: 'var(--ds-sizing-4)', // 16px
+    md: 'var(--ds-sizing-5)', // 20px
+    lg: 'var(--ds-sizing-6)', // 24px
+    xl: 'var(--ds-sizing-8)', // 32px
+    '2xl': 'var(--ds-sizing-10)', // 40px
+  },
+  // Stroke width for outlined icons
+  stroke: {
+    thin: '1',
+    regular: '1.5',
+    medium: '2',
+    bold: '2.5',
+  },
+  // Default colors
+  color: {
+    default: 'currentColor',
+    subtle: 'var(--ds-color-neutral-text-subtle)',
+    accent: 'var(--ds-color-accent-base-default)',
+    success: 'var(--ds-color-success-base-default)',
+    warning: 'var(--ds-color-warning-base-default)',
+    danger: 'var(--ds-color-danger-base-default)',
+    info: 'var(--ds-color-info-base-default)',
+  },
+} as const;
+
+// =============================================================================
+// Aspect Ratio Tokens
+// =============================================================================
+
+/**
+ * Common aspect ratios for media containers.
+ */
+export const aspectRatio = {
+  square: '1 / 1',
+  landscape: '4 / 3',
+  portrait: '3 / 4',
+  video: '16 / 9',
+  cinema: '21 / 9',
+  golden: '1.618 / 1',
+  card: '3 / 2',
+  thumbnail: '1 / 1',
+} as const;
+
+// =============================================================================
 // Export all tokens
 // =============================================================================
 
@@ -691,6 +1189,26 @@ export const extendedTokens = {
   motion,
   breakpoints,
   layout,
+  // Form & validation
+  form,
+  // Notifications & alerts
+  notification,
+  // Tables & data grids
+  table,
+  // Navigation
+  navigation,
+  // Theme mode (light/dark)
+  themeMode,
+  // Semantic states
+  states,
+  // Print styles
+  print,
+  // High contrast mode (WCAG AAA)
+  highContrast,
+  // Icons
+  icons,
+  // Aspect ratios
+  aspectRatio,
 } as const;
 
 export default extendedTokens;

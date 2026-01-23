@@ -10,7 +10,7 @@ import {
     Heading,
     Paragraph,
     Checkbox,
-    Badge,
+    Tag,
     Card,
 } from '@xala-technologies/platform-ui';
 import { ApprovalChecklistItem } from '../../registry/types';
@@ -39,12 +39,12 @@ export function ApprovalChecklist({
                 <Heading level={3} data-size="md" style={{ margin: 0 }}>
                     Approval Checklist
                 </Heading>
-                <Badge
-                    color={allRequiredChecked ? 'success' : 'warning'}
-                    size="sm"
+                <Tag
+                    data-color={allRequiredChecked ? 'success' : 'warning'}
+                    data-size="sm"
                 >
                     {checkedRequiredItems.length}/{requiredItems.length} Required
-                </Badge>
+                </Tag>
             </Stack>
 
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
@@ -77,12 +77,12 @@ export function ApprovalChecklist({
                                     }
                                 }}
                                 disabled={readOnly}
-                                data-testid={`${TESTIDS.approval.checklistItem}-${item.id}`}
+                                data-testid={`${TESTIDS.approvals.checklistItem}-${item.id}`}
                             />
                             {item.required && (
-                                <Badge color="neutral" size="sm">
+                                <Tag data-color="neutral" data-size="sm">
                                     Required
-                                </Badge>
+                                </Tag>
                             )}
                             {item.checked && item.checkedBy && (
                                 <Paragraph

@@ -8,18 +8,14 @@
 import {
     CodeBlock,
     HorizontalLayout,
-    SimpleSidebar,
-    SidebarHeaderArea,
-    SidebarScrollArea,
     MainContent,
     Heading,
     Paragraph,
     Stack,
     Card,
-    Badge,
+    Tag,
 } from '@xala-technologies/platform-ui';
 import { GeneratedArtifact, ArtifactChange } from '../../registry/types';
-import { TESTIDS } from '../../constants/testids';
 
 export interface ArtifactDiffViewerProps {
     artifact: GeneratedArtifact;
@@ -90,9 +86,9 @@ export function ArtifactDiffViewer({
                                 }}
                             >
                                 <Stack direction="horizontal" align="center" spacing="var(--ds-spacing-2)">
-                                    <Badge color="neutral" size="sm">
+                                    <Tag data-color="neutral" data-size="sm">
                                         Previous
-                                    </Badge>
+                                    </Tag>
                                     <Heading level={4} data-size="xs">
                                         {previousArtifact.name || previousArtifact.path.split('/').pop() || 'Untitled'}
                                     </Heading>
@@ -125,16 +121,16 @@ export function ArtifactDiffViewer({
                             }}
                         >
                             <Stack direction="horizontal" align="center" spacing="var(--ds-spacing-2)">
-                                <Badge color="accent" size="sm">
+                                <Tag data-color="accent" data-size="sm">
                                     Current
-                                </Badge>
+                                </Tag>
                                 <Heading level={4} data-size="xs">
                                     {artifact.name || artifact.path.split('/').pop() || 'Untitled'}
                                 </Heading>
                                 {hasChanges && (
-                                    <Badge color="info" size="sm">
+                                    <Tag data-color="info" data-size="sm">
                                         {changes.length} change{changes.length !== 1 ? 's' : ''}
-                                    </Badge>
+                                    </Tag>
                                 )}
                             </Stack>
                         </div>
@@ -174,18 +170,18 @@ export function ArtifactDiffViewer({
                                         borderRadius: 'var(--ds-border-radius-sm)',
                                     }}
                                 >
-                                    <Badge
-                                        color={
+                                    <Tag
+                                        data-color={
                                             change.type === 'added'
                                                 ? 'success'
                                                 : change.type === 'removed'
                                                   ? 'danger'
                                                   : 'info'
                                         }
-                                        size="sm"
+                                        data-size="sm"
                                     >
                                         {change.type}
-                                    </Badge>
+                                    </Tag>
                                     <Paragraph data-size="sm" style={{ margin: 0 }}>
                                         {change.path}
                                     </Paragraph>

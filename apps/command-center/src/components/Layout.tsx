@@ -54,6 +54,12 @@ const sidebarSections: SidebarSection[] = [
         href: '/revisions',
         icon: <ClockIcon size={20} />,
       },
+      {
+        name: 'Commands',
+        description: 'Execute CLI commands safely',
+        href: '/commands',
+        icon: <RefreshIcon size={20} />,
+      },
     ],
   },
 ];

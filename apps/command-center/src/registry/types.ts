@@ -69,12 +69,22 @@ export interface WorkflowSession {
 
 export interface Command {
     id: string;
+    name?: string;
     description: string;
+    category?: 'scaffold' | 'validate' | 'generate' | 'deploy' | 'test';
     executable: string;
     args?: string[];
     workingDir?: string;
     requiredSecrets?: string[];
+    requiredEnvVars?: string[];
+    timeout?: number; // Milliseconds
     isLongRunning?: boolean;
+    dryRun?: boolean;
+    environment?: 'dev' | 'stage' | 'prod';
+    inputSchema?: Record<string, any>; // JSON Schema for inputs
+    outputSchema?: Record<string, any>; // JSON Schema for outputs
+    riskLevel?: 'low' | 'medium' | 'high';
+    confirmationPrompt?: string;
 }
 
 export interface CommandResult {

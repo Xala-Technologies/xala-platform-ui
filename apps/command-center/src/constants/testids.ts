@@ -45,7 +45,13 @@ export const TESTIDS = {
         root: 'cc-approvals-root',
         table: 'cc-approvals-table',
         approveBtn: 'cc-approvals-approve-btn',
+        rejectBtn: 'cc-approvals-reject-btn',
         viewBtn: 'cc-approvals-view-btn',
+        promoteBtn: 'cc-approvals-promote-btn',
+        requestApprovalBtn: 'cc-approvals-request-btn',
+        checklist: 'cc-approval-checklist',
+        checklistItem: 'cc-approval-checklist-item',
+        gate: 'cc-approval-gate',
     },
     revisions: {
         root: 'cc-revisions-root',
@@ -59,6 +65,20 @@ export const TESTIDS = {
     artifacts: {
         diffViewer: 'cc-artifacts-diff-viewer',
         validationPanel: 'cc-artifacts-validation-panel',
+    },
+    commands: {
+        root: 'cc-commands-root',
+        card: 'cc-commands-card',
+        modal: 'cc-commands-modal',
+        formField: 'cc-commands-form-field',
+        terminal: 'cc-commands-terminal',
+        confirmBtn: 'cc-commands-confirm-btn',
+    },
+    preview: {
+        root: 'cc-preview-root',
+        placeholder: 'cc-preview-placeholder',
+        renderBtn: 'cc-preview-render-btn',
+        errorMessage: 'cc-preview-error-message',
     },
 } as const;
 

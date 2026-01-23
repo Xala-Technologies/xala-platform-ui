@@ -24,6 +24,7 @@ import {
     Label,
 } from '@xala-technologies/platform-ui';
 import { revisionManager } from '../services/revision-manager';
+import { approvalManager } from '../services/approval-manager';
 import { ArtifactDiffViewer } from '../components/artifacts/ArtifactDiffViewer';
 import { TESTIDS } from '../constants/testids';
 import type { Revision } from '../registry/types';
@@ -105,33 +106,70 @@ export function RevisionsPage() {
         {
             key: 'actions',
             header: 'Actions',
-            render: (revision: Revision) => (
-                <Stack direction="horizontal" spacing="var(--ds-spacing-2)">
-                    <Button
-                        variant="secondary"
-                        data-size="sm"
-                        onClick={() => setSelectedRevision(revision)}
-                        data-testid={`${TESTIDS.revisions.row}-${revision.id}`}
-                    >
-                        View
-                    </Button>
-                    {allRevisions.length > 1 && (
+            render: (revision: Revision) => {
+                const existingApproval = approvalManager.getApprovalByRevision(revision.id);
+                const canRequestApproval = revision.status === 'draft' && !existingApproval;
+
+                return (
+                    <Stack direction="horizontal" spacing="var(--ds-spacing-2)">
                         <Button
                             variant="secondary"
                             data-size="sm"
-                            onClick={() => {
-                                setSelectedRevision(revision);
-                                setCompareRevisionId(
-                                    compareRevisionId === revision.id ? null : revision.id
-                                );
-                            }}
-                            data-testid={`${TESTIDS.revisions.compareBtn}-${revision.id}`}
+                            onClick={() => setSelectedRevision(revision)}
+                            data-testid={`${TESTIDS.revisions.row}-${revision.id}`}
                         >
-                            Compare
+                            View
                         </Button>
-                    )}
-                </Stack>
-            ),
+                        {allRevisions.length > 1 && (
+                            <Button
+                                variant="secondary"
+                                data-size="sm"
+                                onClick={() => {
+                                    setSelectedRevision(revision);
+                                    setCompareRevisionId(
+                                        compareRevisionId === revision.id ? null : revision.id
+                                    );
+                                }}
+                                data-testid={`${TESTIDS.revisions.compareBtn}-${revision.id}`}
+                            >
+                                Compare
+                            </Button>
+                        )}
+                        {canRequestApproval && (
+                            <Button
+                                variant="primary"
+                                data-size="sm"
+                                onClick={async () => {
+                                    try {
+                                        await approvalManager.createApprovalRequest(revision.id, {
+                                            name: 'Admin User',
+                                            email: 'admin@xala.no',
+                                        });
+                                        alert('Approval request created successfully!');
+                                        window.location.reload();
+                                    } catch (error) {
+                                        alert(`Failed to create approval request: ${error instanceof Error ? error.message : 'Unknown error'}`);
+                                    }
+                                }}
+                                data-testid={`${TESTIDS.approvals.requestApprovalBtn}-${revision.id}`}
+                            >
+                                Request Approval
+                            </Button>
+                        )}
+                        {existingApproval && (
+                            <Button
+                                variant="secondary"
+                                data-size="sm"
+                                onClick={() => {
+                                    window.location.href = '/approvals';
+                                }}
+                            >
+                                View Approval
+                            </Button>
+                        )}
+                    </Stack>
+                );
+            },
         },
     ];
 

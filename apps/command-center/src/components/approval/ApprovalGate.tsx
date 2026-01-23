@@ -10,7 +10,7 @@ import {
     Stack,
     Heading,
     Paragraph,
-    Badge,
+    Tag,
     Alert,
 } from '@xala-technologies/platform-ui';
 import { ApprovalGate as ApprovalGateType } from '../../registry/types';
@@ -41,20 +41,20 @@ export function ApprovalGate({ gate, 'data-testid': testId }: ApprovalGateProps)
                           ? 'var(--ds-color-danger-surface-subtle)'
                           : 'var(--ds-color-neutral-surface-subtle)',
             }}
-            data-testid={testId || `${TESTIDS.approval.gate}-${gate.id}`}
+            data-testid={testId || `${TESTIDS.approvals.gate}-${gate.id}`}
         >
             <Stack spacing="var(--ds-spacing-3)">
                 <Stack direction="horizontal" align="center" spacing="var(--ds-spacing-2)">
-                    <Badge
-                        color={statusColor}
-                        size="sm"
+                    <Tag
+                        data-color={statusColor === 'success' ? 'success' : statusColor === 'danger' ? 'danger' : 'neutral'}
+                        data-size="sm"
                     >
                         {gate.status === 'pass' ? 'Pass' : gate.status === 'fail' ? 'Fail' : 'Pending'}
-                    </Badge>
+                    </Tag>
                     {gate.required && (
-                        <Badge color="neutral" size="sm">
+                        <Tag data-color="neutral" data-size="sm">
                             Required
-                        </Badge>
+                        </Tag>
                     )}
                     <Heading level={4} data-size="sm" style={{ margin: 0, flex: 1 }}>
                         {gate.name}
@@ -69,11 +69,9 @@ export function ApprovalGate({ gate, 'data-testid': testId }: ApprovalGateProps)
                     <Alert
                         variant={gate.status === 'fail' ? 'error' : gate.status === 'pass' ? 'success' : 'info'}
                     >
-                        <Alert.Description>
-                            <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                {gate.details}
-                            </Paragraph>
-                        </Alert.Description>
+                        <Paragraph data-size="sm" style={{ margin: 0 }}>
+                            {gate.details}
+                        </Paragraph>
                     </Alert>
                 )}
             </Stack>
