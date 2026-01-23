@@ -136,7 +136,7 @@ const DEFAULT_LABELS: ProfileTabLabels = {
 // =============================================================================
 
 export function ProfileTab({
-  currentUser,
+  currentUser: _currentUser,
   profileData,
   avatarPreview,
   isSaving = false,

@@ -95,7 +95,7 @@ export interface HelpPanelProps {
  */
 function TooltipHelp({
   content,
-  position = 'bottom',
+  position: _position = 'bottom',
   closeable = true,
   onClose,
 }: {
@@ -359,7 +359,7 @@ function FAQHelp({
   onClose?: () => void;
 }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<HelpCategory | 'all'>(category || 'all');
+  const [selectedCategory, _setSelectedCategory] = useState<HelpCategory | 'all'>(category || 'all');
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
 
   // Filter FAQs
@@ -453,7 +453,7 @@ function FAQHelp({
               {cat} ({faqs.length})
             </Heading>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-              {faqs.map((faq, index) => {
+              {faqs.map((faq, _index) => {
                 const globalIndex = content.indexOf(faq);
                 const isExpanded = expandedItems.has(globalIndex);
 
@@ -546,7 +546,7 @@ function FAQHelp({
  */
 export function HelpPanel({
   level,
-  title,
+  title: _title,
   content,
   category,
   position,

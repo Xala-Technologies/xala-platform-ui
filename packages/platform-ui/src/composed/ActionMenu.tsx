@@ -9,7 +9,7 @@
 
 'use client';
 
-import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useMemo, type ReactNode } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
@@ -86,7 +86,10 @@ function MenuContent({ items, groups, onClose, style }: MenuContentProps): React
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const allItems = groups ? groups.flatMap((g) => g.items) : items || [];
+  const allItems = useMemo(
+    () => (groups ? groups.flatMap((g) => g.items) : items || []),
+    [groups, items]
+  );
 
   useEffect(() => {
     menuRef.current?.focus();

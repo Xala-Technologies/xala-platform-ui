@@ -19,7 +19,7 @@
  */
 
 import * as React from 'react';
-import { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
+import { forwardRef, useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
@@ -197,9 +197,13 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
     const [focusedIndex, setFocusedIndex] = useState(-1);
 
     // Get all focusable items (including logout)
-    const allItems: (UserMenuItem | { id: 'logout'; label: string; danger: true })[] = [
-      ...items,
-      ...(showLogout ? [{ id: 'logout' as const, label: logoutLabel, danger: true as const }] : []),
+    const allItems = useMemo(
+      (): (UserMenuItem | { id: 'logout'; label: string; danger: true })[] => [
+        ...items,
+        ...(showLogout ? [{ id: 'logout' as const, label: logoutLabel, danger: true as const }] : []),
+      ],
+      [items, showLogout, logoutLabel]
+    );
     ];
 
     // Close menu when clicking outside

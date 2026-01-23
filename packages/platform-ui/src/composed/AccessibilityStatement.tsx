@@ -113,7 +113,7 @@ function ConformanceBadge({ level }: { level: ConformanceLevel }) {
 export function AccessibilityStatement({
   organizationName,
   websiteName,
-  websiteUrl,
+  websiteUrl: _websiteUrl,
   conformanceLevel,
   wcagLevel,
   lastUpdated,

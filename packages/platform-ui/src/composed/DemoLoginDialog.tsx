@@ -64,7 +64,7 @@ export function DemoLoginDialog({
   onClose,
   onSubmit,
   title,
-  description,
+  description: _description,
   cancelText,
   submitText,
   loadingText,
@@ -141,8 +141,10 @@ export function DemoLoginDialog({
 
     try {
       await onSubmit(formData);
-    } catch (error: any) {
-      setLoginError(error.message || 'An error occurred during login');
+    } catch (error: unknown) {
+      setLoginError(
+        error instanceof Error ? error.message : 'An error occurred during login'
+      );
     } finally {
       setIsLoading(false);
     }

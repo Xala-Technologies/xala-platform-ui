@@ -220,6 +220,7 @@ export function PDFPreview({
   const [hasError, setHasError] = useState(false);
   const [zoom, setZoom] = useState(initialZoom);
   const [currentPage, setCurrentPage] = useState(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [totalPages, _setTotalPages] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
