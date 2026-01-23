@@ -6,12 +6,7 @@
  */
 import * as React from 'react';
 import { cn } from '../utils';
-import {
-  UsersIcon,
-  CalendarIcon,
-  ClockIcon,
-  CheckCircleIcon,
-} from '../primitives/icons';
+import { UsersIcon, CalendarIcon, ClockIcon, CheckCircleIcon } from '../primitives/icons';
 
 // =============================================================================
 // Types
@@ -186,14 +181,10 @@ export function KeyFactsRow({
             color: isProminent
               ? 'var(--ds-color-accent-text-default)'
               : 'var(--ds-color-neutral-text-default)',
-            fontSize: isCompact
-              ? 'var(--ds-font-size-xs)'
-              : 'var(--ds-font-size-sm)',
+            fontSize: isCompact ? 'var(--ds-font-size-xs)' : 'var(--ds-font-size-sm)',
             fontWeight: 'var(--ds-font-weight-medium)',
             whiteSpace: 'nowrap',
-            border: isProminent
-              ? 'none'
-              : '1px solid var(--ds-color-neutral-border-subtle)',
+            border: isProminent ? 'none' : '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
           <span
@@ -223,9 +214,7 @@ export function KeyFactsRow({
             backgroundColor: 'var(--ds-color-neutral-surface-hover)',
             borderRadius: 'var(--ds-border-radius-full)',
             color: 'var(--ds-color-neutral-text-subtle)',
-            fontSize: isCompact
-              ? 'var(--ds-font-size-xs)'
-              : 'var(--ds-font-size-sm)',
+            fontSize: isCompact ? 'var(--ds-font-size-xs)' : 'var(--ds-font-size-sm)',
           }}
         >
           +{hiddenCount} mer

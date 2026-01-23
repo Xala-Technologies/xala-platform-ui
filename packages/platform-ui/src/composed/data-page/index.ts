@@ -1,6 +1,6 @@
 /**
  * Data Page Components
- * 
+ *
  * Reusable components for data-heavy pages (resources, resourceRequests, etc.)
  * Consolidates common patterns across dashboard apps
  */
@@ -24,9 +24,4 @@ export { DataPageToolbar } from './DataPageToolbar';
 export type { DataPageToolbarProps, FilterConfig, ViewMode } from './DataPageToolbar';
 
 export { Wizard, WizardStepper, WizardNavigation } from './Wizard';
-export type {
-  WizardProps,
-  WizardStep,
-  WizardStepperProps,
-  WizardNavigationProps,
-} from './Wizard';
+export type { WizardProps, WizardStep, WizardStepperProps, WizardNavigationProps } from './Wizard';

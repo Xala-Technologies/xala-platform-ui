@@ -39,7 +39,14 @@ export interface MessageItem {
 
 function BellIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
       <path d="M13.73 21a2 2 0 0 1-3.46 0" />
     </svg>
@@ -48,7 +55,14 @@ function BellIcon({ size = 20 }: { size?: number }) {
 
 function SendIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="22" y1="2" x2="11" y2="13" />
       <polygon points="22 2 15 22 11 13 2 9 22 2" />
     </svg>
@@ -57,7 +71,14 @@ function SendIcon({ size = 20 }: { size?: number }) {
 
 function SearchIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
@@ -66,7 +87,14 @@ function SearchIcon({ size = 20 }: { size?: number }) {
 
 function CheckIcon({ size = 14 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -74,7 +102,14 @@ function CheckIcon({ size = 14 }: { size?: number }) {
 
 function DoubleCheckIcon({ size = 14 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="18 6 9 17 4 12" />
       <polyline points="22 6 13 17" />
     </svg>
@@ -96,7 +131,7 @@ export interface NotificationBellProps {
  */
 export function NotificationBell({ count = 0, onClick, maxCount = 99 }: NotificationBellProps) {
   const displayCount = count > maxCount ? `${maxCount}+` : count;
-  
+
   return (
     <button
       type="button"
@@ -165,7 +200,7 @@ export function ConversationListItem({
   formatTimeAgo = defaultFormatTimeAgo,
 }: ConversationListItemProps) {
   const hasUnread = (conversation.unreadCount ?? 0) > 0;
-  
+
   return (
     <button
       type="button"
@@ -177,13 +212,11 @@ export function ConversationListItem({
         padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
         width: '100%',
         border: 'none',
-        background: isSelected 
-          ? 'var(--ds-color-accent-surface-default)' 
-          : 'transparent',
+        background: isSelected ? 'var(--ds-color-accent-surface-default)' : 'transparent',
         cursor: 'pointer',
         textAlign: 'left',
-        borderLeft: isSelected 
-          ? '3px solid var(--ds-color-accent-base-default)' 
+        borderLeft: isSelected
+          ? '3px solid var(--ds-color-accent-base-default)'
           : '3px solid transparent',
         transition: 'background-color 0.2s',
       }}
@@ -246,8 +279,8 @@ export function ConversationListItem({
         <div
           style={{
             fontSize: 'var(--ds-font-size-xs)',
-            color: hasUnread 
-              ? 'var(--ds-color-neutral-text-default)' 
+            color: hasUnread
+              ? 'var(--ds-color-neutral-text-default)'
               : 'var(--ds-color-neutral-text-subtle)',
             fontWeight: hasUnread ? 500 : 400,
             whiteSpace: 'nowrap',
@@ -317,18 +350,24 @@ export function ConversationList({
   onFilterChange,
 }: ConversationListProps) {
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   const filteredConversations = searchQuery
-    ? conversations.filter(c =>
-        c.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.subject?.toLowerCase().includes(searchQuery.toLowerCase())
+    ? conversations.filter(
+        (c) =>
+          c.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.subject?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : conversations;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Search */}
-      <div style={{ padding: 'var(--ds-spacing-4)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
         <div
           style={{
             display: 'flex',
@@ -382,12 +421,11 @@ export function ConversationList({
                 fontWeight: 500,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
-                backgroundColor: activeFilter === tab.id
-                  ? 'var(--ds-color-accent-base-default)'
-                  : 'var(--ds-color-neutral-surface-default)',
-                color: activeFilter === tab.id
-                  ? 'white'
-                  : 'var(--ds-color-neutral-text-default)',
+                backgroundColor:
+                  activeFilter === tab.id
+                    ? 'var(--ds-color-accent-base-default)'
+                    : 'var(--ds-color-neutral-surface-default)',
+                color: activeFilter === tab.id ? 'white' : 'var(--ds-color-neutral-text-default)',
               }}
             >
               {tab.label}
@@ -402,7 +440,9 @@ export function ConversationList({
       {/* Conversation list */}
       <div style={{ flex: 1, overflowY: 'auto' }}>
         {isLoading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ds-spacing-8)' }}>
+          <div
+            style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ds-spacing-8)' }}
+          >
             <Spinner aria-label="Laster samtaler..." />
           </div>
         ) : filteredConversations.length === 0 ? (
@@ -442,7 +482,7 @@ export interface MessageBubbleProps {
  */
 export function MessageBubble({ message, isFromCurrentUser, showReadReceipt }: MessageBubbleProps) {
   const fromMe = isFromCurrentUser ?? message.isFromCurrentUser;
-  
+
   return (
     <div
       style={{
@@ -566,7 +606,9 @@ export function ChatThread({
       {/* Messages */}
       <div style={{ flex: 1, overflowY: 'auto', padding: 'var(--ds-spacing-4)' }}>
         {isLoading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ds-spacing-8)' }}>
+          <div
+            style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ds-spacing-8)' }}
+          >
             <Spinner aria-label="Laster meldinger..." />
           </div>
         ) : messages.length === 0 ? (

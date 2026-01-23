@@ -50,7 +50,14 @@ export interface InlineCodeProps {
 
 function CopyIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
     </svg>
@@ -59,7 +66,14 @@ function CopyIcon() {
 
 function CheckIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -109,12 +123,15 @@ export function CopyButton({
         alignItems: 'center',
         justifyContent: 'center',
         padding: sizeStyle.padding,
-        backgroundColor: variant === 'ghost' ? 'transparent' : 'var(--ds-color-neutral-surface-subtle)',
+        backgroundColor:
+          variant === 'ghost' ? 'transparent' : 'var(--ds-color-neutral-surface-subtle)',
         borderWidth: variant === 'ghost' ? '0' : 'var(--ds-border-width-default)',
         borderStyle: 'solid',
         borderColor: 'var(--ds-color-neutral-border-subtle)',
         borderRadius: 'var(--ds-border-radius-md)',
-        color: copied ? 'var(--ds-color-success-text-default)' : 'var(--ds-color-neutral-text-subtle)',
+        color: copied
+          ? 'var(--ds-color-success-text-default)'
+          : 'var(--ds-color-neutral-text-subtle)',
         cursor: 'pointer',
         transition: 'color 0.15s ease, background-color 0.15s ease',
         ...style,
@@ -230,7 +247,9 @@ export function CodeBlock({
                     key={index}
                     style={{
                       display: 'table-row',
-                      backgroundColor: isHighlighted ? 'var(--ds-color-warning-surface-subtle)' : 'transparent',
+                      backgroundColor: isHighlighted
+                        ? 'var(--ds-color-warning-surface-subtle)'
+                        : 'transparent',
                     }}
                   >
                     <span
@@ -295,7 +314,9 @@ export function InlineCode({
         fontSize: '0.875em',
         fontFamily: 'var(--ds-font-family-mono)',
         backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-        color: copied ? 'var(--ds-color-success-text-default)' : 'var(--ds-color-accent-text-default)',
+        color: copied
+          ? 'var(--ds-color-success-text-default)'
+          : 'var(--ds-color-accent-text-default)',
         borderRadius: 'var(--ds-border-radius-sm)',
         cursor: copyable ? 'pointer' : 'default',
         transition: 'color 0.15s ease',

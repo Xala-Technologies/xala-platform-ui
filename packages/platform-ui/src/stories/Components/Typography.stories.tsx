@@ -54,13 +54,27 @@ export const Headings: Story = {
 export const HeadingSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Heading level={2} data-size="2xs">2XS Heading</Heading>
-      <Heading level={2} data-size="xs">XS Heading</Heading>
-      <Heading level={2} data-size="sm">SM Heading</Heading>
-      <Heading level={2} data-size="md">MD Heading</Heading>
-      <Heading level={2} data-size="lg">LG Heading</Heading>
-      <Heading level={2} data-size="xl">XL Heading</Heading>
-      <Heading level={2} data-size="2xl">2XL Heading</Heading>
+      <Heading level={2} data-size="2xs">
+        2XS Heading
+      </Heading>
+      <Heading level={2} data-size="xs">
+        XS Heading
+      </Heading>
+      <Heading level={2} data-size="sm">
+        SM Heading
+      </Heading>
+      <Heading level={2} data-size="md">
+        MD Heading
+      </Heading>
+      <Heading level={2} data-size="lg">
+        LG Heading
+      </Heading>
+      <Heading level={2} data-size="xl">
+        XL Heading
+      </Heading>
+      <Heading level={2} data-size="2xl">
+        2XL Heading
+      </Heading>
     </div>
   ),
 };
@@ -69,16 +83,16 @@ export const Paragraphs: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <Paragraph data-size="sm">
-        Small paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Small paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
       </Paragraph>
       <Paragraph data-size="md">
-        Medium paragraph (default). Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Medium paragraph (default). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </Paragraph>
       <Paragraph data-size="lg">
-        Large paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Large paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
       </Paragraph>
     </div>
   ),
@@ -89,12 +103,12 @@ export const LeadParagraph: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <Heading level={1}>Article Title</Heading>
       <Paragraph data-size="lg">
-        This is a lead paragraph that summarizes the article. It's styled 
-        larger than regular paragraphs to stand out as a lead-in text.
+        This is a lead paragraph that summarizes the article. It's styled larger than regular
+        paragraphs to stand out as a lead-in text.
       </Paragraph>
       <Paragraph>
-        This is a regular paragraph that follows the lead. It contains the 
-        main body text of the article.
+        This is a regular paragraph that follows the lead. It contains the main body text of the
+        article.
       </Paragraph>
     </div>
   ),
@@ -113,7 +127,7 @@ export const Labels: Story = {
 export const InlineLink: Story = {
   render: () => (
     <Paragraph>
-      Read more about our <Link href="#">resourceRequest policies</Link> and 
+      Read more about our <Link href="#">resourceRequest policies</Link> and
       <Link href="#">terms of service</Link> before making a reservation.
     </Paragraph>
   ),
@@ -122,20 +136,26 @@ export const InlineLink: Story = {
 export const CombinedExample: Story = {
   render: () => (
     <article>
-      <Heading level={1} data-size="xl">Welcome to the Platform</Heading>
+      <Heading level={1} data-size="xl">
+        Welcome to the Platform
+      </Heading>
       <Paragraph data-size="lg">
-        The modern platform for booking municipal facilities and services. 
-        Easily find and reserve spaces for your activities.
+        The modern platform for booking municipal facilities and services. Easily find and reserve
+        spaces for your activities.
       </Paragraph>
-      <Heading level={2} data-size="md">How it works</Heading>
+      <Heading level={2} data-size="md">
+        How it works
+      </Heading>
       <Paragraph>
-        Browse available <Link href="#">listings</Link>, select your preferred 
-        date and time, and complete your booking in minutes. It's that simple.
+        Browse available <Link href="#">listings</Link>, select your preferred date and time, and
+        complete your booking in minutes. It's that simple.
       </Paragraph>
-      <Heading level={2} data-size="md">Get started</Heading>
+      <Heading level={2} data-size="md">
+        Get started
+      </Heading>
       <Paragraph>
-        Create an account to start booking today. Need help? 
-        Check out our <Link href="#">FAQ</Link> or <Link href="#">contact us</Link>.
+        Create an account to start booking today. Need help? Check out our <Link href="#">FAQ</Link>{' '}
+        or <Link href="#">contact us</Link>.
       </Paragraph>
     </article>
   ),
@@ -145,15 +165,25 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Heading Levels</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Heading Levels
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-          <Heading level={1} data-size="lg">H1 Heading</Heading>
-          <Heading level={2} data-size="md">H2 Heading</Heading>
-          <Heading level={3} data-size="sm">H3 Heading</Heading>
+          <Heading level={1} data-size="lg">
+            H1 Heading
+          </Heading>
+          <Heading level={2} data-size="md">
+            H2 Heading
+          </Heading>
+          <Heading level={3} data-size="sm">
+            H3 Heading
+          </Heading>
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Paragraph Sizes</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Paragraph Sizes
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Paragraph data-size="sm">Small paragraph text</Paragraph>
           <Paragraph data-size="md">Medium paragraph text (default)</Paragraph>
@@ -161,7 +191,9 @@ export const AllVariants: Story = {
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Labels</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Labels
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
           <Label data-size="sm">Small label</Label>
           <Label data-size="md">Medium label</Label>

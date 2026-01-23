@@ -208,9 +208,17 @@ export const Default: Story = {
           Open Dialog
         </Button>
         <Dialog ref={dialogRef}>
-          <Heading level={2} data-size="sm">Dialog Title</Heading>
+          <Heading level={2} data-size="sm">
+            Dialog Title
+          </Heading>
           <Paragraph>This is the dialog content. You can put any content here.</Paragraph>
-          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-4)' }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-spacing-2)',
+              marginTop: 'var(--ds-spacing-4)',
+            }}
+          >
             <Button variant="secondary" onClick={() => dialogRef.current?.close()} type="button">
               Cancel
             </Button>
@@ -258,9 +266,19 @@ export const Confirmation: Story = {
           Delete Item
         </Button>
         <Dialog ref={dialogRef}>
-          <Heading level={2} data-size="sm">Delete Confirmation</Heading>
-          <Paragraph>Are you sure you want to delete this item? This action cannot be undone.</Paragraph>
-          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-4)' }}>
+          <Heading level={2} data-size="sm">
+            Delete Confirmation
+          </Heading>
+          <Paragraph>
+            Are you sure you want to delete this item? This action cannot be undone.
+          </Paragraph>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-spacing-2)',
+              marginTop: 'var(--ds-spacing-4)',
+            }}
+          >
             <Button variant="secondary" onClick={() => dialogRef.current?.close()} type="button">
               Cancel
             </Button>
@@ -283,9 +301,20 @@ export const Information: Story = {
           Show Info
         </Button>
         <Dialog ref={dialogRef}>
-          <Heading level={2} data-size="sm">Information</Heading>
-          <Paragraph>Your resourceRequest has been successfully created. You will receive a confirmation email shortly.</Paragraph>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'var(--ds-spacing-4)' }}>
+          <Heading level={2} data-size="sm">
+            Information
+          </Heading>
+          <Paragraph>
+            Your resourceRequest has been successfully created. You will receive a confirmation
+            email shortly.
+          </Paragraph>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              marginTop: 'var(--ds-spacing-4)',
+            }}
+          >
             <Button variant="primary" onClick={() => dialogRef.current?.close()} type="button">
               OK
             </Button>

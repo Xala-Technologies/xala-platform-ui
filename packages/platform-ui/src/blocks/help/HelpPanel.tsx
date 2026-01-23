@@ -201,17 +201,36 @@ function GuideHelp({
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
           <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-2)' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-2)',
+              }}
+            >
               <BookOpenIcon style={{ color: 'var(--ds-color-accent-base-default)' }} />
               <Heading data-size="sm" style={{ margin: 0 }}>
                 {title}
               </Heading>
             </div>
-            <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               {description}
             </Paragraph>
             {estimatedTime && (
-              <span style={{ backgroundColor: 'var(--ds-color-neutral-surface-subtle)', padding: '0.25rem 0.5rem', borderRadius: 'var(--ds-border-radius-sm)', fontSize: 'var(--ds-font-size-xs)', marginTop: 'var(--ds-spacing-2)', display: 'inline-block' }}>
+              <span
+                style={{
+                  backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-xs)',
+                  marginTop: 'var(--ds-spacing-2)',
+                  display: 'inline-block',
+                }}
+              >
                 {estimatedTime}
               </span>
             )}
@@ -245,15 +264,23 @@ function GuideHelp({
         {/* Step content */}
         {step && (
           <div>
-            <span style={{backgroundColor:'var(--ds-color-neutral-surface-subtle)',padding:'0.25rem 0.5rem',borderRadius:'var(--ds-border-radius-sm)',fontSize:'var(--ds-font-size-xs)'}}>
+            <span
+              style={{
+                backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                padding: '0.25rem 0.5rem',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+              }}
+            >
               Step {currentStep + 1} of {steps.length}
             </span>
-            <Heading data-size="xs" style={{ marginTop: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-3)' }}>
+            <Heading
+              data-size="xs"
+              style={{ marginTop: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-3)' }}
+            >
               {step.title}
             </Heading>
-            <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              {step.content}
-            </Paragraph>
+            <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>{step.content}</Paragraph>
 
             {step.screenshot && (
               <img
@@ -346,13 +373,16 @@ function FAQHelp({
   });
 
   // Group by category
-  const categorizedFAQs = filteredFAQs.reduce((acc, faq) => {
-    if (!acc[faq.category]) {
-      acc[faq.category] = [];
-    }
-    acc[faq.category].push(faq);
-    return acc;
-  }, {} as Record<HelpCategory, FAQItem[]>);
+  const categorizedFAQs = filteredFAQs.reduce(
+    (acc, faq) => {
+      if (!acc[faq.category]) {
+        acc[faq.category] = [];
+      }
+      acc[faq.category].push(faq);
+      return acc;
+    },
+    {} as Record<HelpCategory, FAQItem[]>
+  );
 
   const toggleItem = (index: number) => {
     setExpandedItems((prev) => {
@@ -380,7 +410,14 @@ function FAQHelp({
             <Heading data-size="sm" style={{ margin: 0 }}>
               Frequently Asked Questions
             </Heading>
-            <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginTop: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Find answers to common questions
             </Paragraph>
           </div>
@@ -409,7 +446,10 @@ function FAQHelp({
         {/* FAQ Items */}
         {Object.entries(categorizedFAQs).map(([cat, faqs]) => (
           <div key={cat}>
-            <Heading data-size="xs" style={{ marginBottom: 'var(--ds-spacing-3)', textTransform: 'capitalize' }}>
+            <Heading
+              data-size="xs"
+              style={{ marginBottom: 'var(--ds-spacing-3)', textTransform: 'capitalize' }}
+            >
               {cat} ({faqs.length})
             </Heading>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
@@ -451,12 +491,31 @@ function FAQHelp({
                       />
                     </button>
                     {isExpanded && (
-                      <div style={{ padding: 'var(--ds-spacing-4)', borderTop: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+                      <div
+                        style={{
+                          padding: 'var(--ds-spacing-4)',
+                          borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+                        }}
+                      >
                         <Paragraph>{faq.answer}</Paragraph>
                         {faq.tags && faq.tags.length > 0 && (
-                          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-3)' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              gap: 'var(--ds-spacing-2)',
+                              marginTop: 'var(--ds-spacing-3)',
+                            }}
+                          >
                             {faq.tags.map((tag) => (
-                              <span key={tag} style={{backgroundColor:'var(--ds-color-neutral-surface-subtle)',padding:'0.25rem 0.5rem',borderRadius:'var(--ds-border-radius-sm)',fontSize:'var(--ds-font-size-xs)'}}>
+                              <span
+                                key={tag}
+                                style={{
+                                  backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                                  padding: '0.25rem 0.5rem',
+                                  borderRadius: 'var(--ds-border-radius-sm)',
+                                  fontSize: 'var(--ds-font-size-xs)',
+                                }}
+                              >
                                 {tag}
                               </span>
                             ))}
@@ -505,13 +564,7 @@ export function HelpPanel({
   }
 
   if (level === 2) {
-    return (
-      <GuideHelp
-        content={content as GuideContent}
-        closeable={closeable}
-        onClose={onClose}
-      />
-    );
+    return <GuideHelp content={content as GuideContent} closeable={closeable} onClose={onClose} />;
   }
 
   if (level === 3) {

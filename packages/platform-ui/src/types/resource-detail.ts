@@ -3,14 +3,13 @@
  *
  * Type definitions for resource detail page components.
  * Platform-neutral terminology - use generic "resource" or "item".
- * 
+ *
  * Note: ResourceType is defined in filters.ts and imported via index.ts
  */
 
 // ResourceType is imported from filters.ts via the parent index.ts
 // This avoids circular dependencies
 type ResourceType = 'SPACE' | 'EQUIPMENT' | 'VEHICLE' | 'OUTDOOR' | 'SERVICE';
-
 
 /**
  * Time slot availability status
@@ -35,7 +34,6 @@ export interface Amenity {
   label: string;
   icon?: string;
 }
-
 
 /**
  * Additional service with pricing
@@ -107,13 +105,13 @@ export interface ResourceRequestStep {
  * Activity type for resourceRequest
  */
 export type ActivityType =
-  | 'meeting'      // Mote
-  | 'training'     // Trening
-  | 'event'        // Arrangement
-  | 'workshop'     // Workshop
+  | 'meeting' // Mote
+  | 'training' // Trening
+  | 'event' // Arrangement
+  | 'workshop' // Workshop
   | 'presentation' // Presentasjon
-  | 'party'        // Fest/Selskap
-  | 'other';       // Annet
+  | 'party' // Fest/Selskap
+  | 'other'; // Annet
 
 /**
  * ResourceRequest details form data
@@ -197,7 +195,6 @@ export interface ResourceDetail {
   currency?: string;
 }
 
-
 // =============================================================================
 // Calendar Component Types
 // =============================================================================
@@ -215,12 +212,12 @@ export type CalendarMode = 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY';
  * Matches API SlotStatus for consistency
  */
 export type CalendarSlotStatus =
-  | 'AVAILABLE'  // Slot can be booked
-  | 'RESERVED'   // Temporarily held (lock)
-  | 'BOOKED'     // Confirmed resourceRequest
-  | 'BLOCKED'    // Manually blocked by admin
-  | 'BLACKOUT'   // System blackout period
-  | 'CLOSED';    // Outside opening hours
+  | 'AVAILABLE' // Slot can be booked
+  | 'RESERVED' // Temporarily held (lock)
+  | 'BOOKED' // Confirmed resourceRequest
+  | 'BLOCKED' // Manually blocked by admin
+  | 'BLACKOUT' // System blackout period
+  | 'CLOSED'; // Outside opening hours
 
 /**
  * Selection type for calendar interaction

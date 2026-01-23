@@ -209,7 +209,9 @@ export const Multiple: Story = {
       <Details>
         <Details.Summary>Section 1: Getting Started</Details.Summary>
         <Details.Content>
-          <Paragraph>Learn how to set up your account and make your first resourceRequest.</Paragraph>
+          <Paragraph>
+            Learn how to set up your account and make your first resourceRequest.
+          </Paragraph>
         </Details.Content>
       </Details>
       <Details>
@@ -274,8 +276,9 @@ export const FAQ: Story = {
         <Details.Summary>How do I cancel my resourceRequest?</Details.Summary>
         <Details.Content>
           <Paragraph>
-            You can cancel your resourceRequest up to 24 hours before the scheduled time. 
-            Go to My ResourceRequests, find the resourceRequest you want to cancel, and click the Cancel button.
+            You can cancel your resourceRequest up to 24 hours before the scheduled time. Go to My
+            ResourceRequests, find the resourceRequest you want to cancel, and click the Cancel
+            button.
           </Paragraph>
         </Details.Content>
       </Details>
@@ -283,8 +286,8 @@ export const FAQ: Story = {
         <Details.Summary>What is the refund policy?</Details.Summary>
         <Details.Content>
           <Paragraph>
-            Cancellations made more than 48 hours in advance receive a full refund. 
-            Cancellations within 24-48 hours receive a 50% refund.
+            Cancellations made more than 48 hours in advance receive a full refund. Cancellations
+            within 24-48 hours receive a 50% refund.
           </Paragraph>
         </Details.Content>
       </Details>
@@ -292,7 +295,7 @@ export const FAQ: Story = {
         <Details.Summary>Can I modify my resourceRequest?</Details.Summary>
         <Details.Content>
           <Paragraph>
-            Yes, you can modify your resourceRequest up to 24 hours before the scheduled time, 
+            Yes, you can modify your resourceRequest up to 24 hours before the scheduled time,
             subject to availability.
           </Paragraph>
         </Details.Content>

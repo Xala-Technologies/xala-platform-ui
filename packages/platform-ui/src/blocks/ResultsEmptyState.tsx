@@ -206,11 +206,7 @@ export function ResultsEmptyState({
       )}
 
       {/* Action */}
-      {action && (
-        <div style={{ marginTop: 'var(--ds-spacing-2)' }}>
-          {action}
-        </div>
-      )}
+      {action && <div style={{ marginTop: 'var(--ds-spacing-2)' }}>{action}</div>}
     </div>
   );
 }

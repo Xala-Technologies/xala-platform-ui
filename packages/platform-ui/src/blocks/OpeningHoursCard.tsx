@@ -23,20 +23,20 @@ export interface OpeningHoursCardProps {
 
 // Norwegian day names
 const dayNames: Record<string, number> = {
-  'mandag': 1,
-  'tirsdag': 2,
-  'onsdag': 3,
-  'torsdag': 4,
-  'fredag': 5,
-  'lørdag': 6,
-  'søndag': 0,
-  'man': 1,
-  'tir': 2,
-  'ons': 3,
-  'tor': 4,
-  'fre': 5,
-  'lør': 6,
-  'søn': 0,
+  mandag: 1,
+  tirsdag: 2,
+  onsdag: 3,
+  torsdag: 4,
+  fredag: 5,
+  lørdag: 6,
+  søndag: 0,
+  man: 1,
+  tir: 2,
+  ons: 3,
+  tor: 4,
+  fre: 5,
+  lør: 6,
+  søn: 0,
 };
 
 /**
@@ -94,10 +94,7 @@ export function OpeningHoursCard({
             marginBottom: 'var(--ds-spacing-4)',
           }}
         >
-          <ClockIcon
-            size={18}
-            style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-          />
+          <ClockIcon size={18} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />
           <Heading
             level={3}
             data-size="xs"
@@ -130,7 +127,10 @@ export function OpeningHoursCard({
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 paddingBottom: index < hours.length - 1 ? 'var(--ds-spacing-3)' : 0,
-                borderBottom: index < hours.length - 1 ? '1px solid var(--ds-color-neutral-border-subtle)' : 'none',
+                borderBottom:
+                  index < hours.length - 1
+                    ? '1px solid var(--ds-color-neutral-border-subtle)'
+                    : 'none',
               }}
             >
               <Paragraph
@@ -140,9 +140,7 @@ export function OpeningHoursCard({
                   color: isTodayRow
                     ? 'var(--ds-color-accent-text-default)'
                     : 'var(--ds-color-neutral-text-default)',
-                  fontWeight: isTodayRow
-                    ? 'var(--ds-font-weight-medium)'
-                    : 'inherit',
+                  fontWeight: isTodayRow ? 'var(--ds-font-weight-medium)' : 'inherit',
                 }}
               >
                 {item.day}

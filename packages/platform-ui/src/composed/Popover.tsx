@@ -15,7 +15,15 @@ import React, { useState, useRef, useEffect, useCallback, type ReactNode } from 
 // Types
 // =============================================================================
 
-export type PopoverPosition = 'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
+export type PopoverPosition =
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end';
 export type PopoverTrigger = 'click' | 'hover' | 'focus';
 
 export interface PopoverProps {
@@ -42,21 +50,45 @@ const getPositionStyles = (position: PopoverPosition, offset: number): React.CSS
 
   switch (position) {
     case 'top':
-      return { ...base, bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: offsetPx };
+      return {
+        ...base,
+        bottom: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginBottom: offsetPx,
+      };
     case 'top-start':
       return { ...base, bottom: '100%', left: 0, marginBottom: offsetPx };
     case 'top-end':
       return { ...base, bottom: '100%', right: 0, marginBottom: offsetPx };
     case 'bottom':
-      return { ...base, top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: offsetPx };
+      return {
+        ...base,
+        top: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginTop: offsetPx,
+      };
     case 'bottom-start':
       return { ...base, top: '100%', left: 0, marginTop: offsetPx };
     case 'bottom-end':
       return { ...base, top: '100%', right: 0, marginTop: offsetPx };
     case 'left':
-      return { ...base, right: '100%', top: '50%', transform: 'translateY(-50%)', marginRight: offsetPx };
+      return {
+        ...base,
+        right: '100%',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        marginRight: offsetPx,
+      };
     case 'right':
-      return { ...base, left: '100%', top: '50%', transform: 'translateY(-50%)', marginLeft: offsetPx };
+      return {
+        ...base,
+        left: '100%',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        marginLeft: offsetPx,
+      };
     default:
       return { ...base, top: '100%', left: 0, marginTop: offsetPx };
   }
@@ -211,7 +243,11 @@ export interface PopoverHeaderProps {
   style?: React.CSSProperties;
 }
 
-export function PopoverHeader({ children, className, style }: PopoverHeaderProps): React.ReactElement {
+export function PopoverHeader({
+  children,
+  className,
+  style,
+}: PopoverHeaderProps): React.ReactElement {
   return (
     <div
       className={className}
@@ -267,7 +303,11 @@ export interface PopoverFooterProps {
   style?: React.CSSProperties;
 }
 
-export function PopoverFooter({ children, className, style }: PopoverFooterProps): React.ReactElement {
+export function PopoverFooter({
+  children,
+  className,
+  style,
+}: PopoverFooterProps): React.ReactElement {
   return (
     <div
       className={className}

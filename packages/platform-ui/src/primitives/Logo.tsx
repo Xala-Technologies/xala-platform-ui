@@ -1,6 +1,6 @@
 /**
  * Logo component
- * 
+ *
  * Centralized logo for use across all apps.
  * Note: The logo.svg should be copied to each app's public folder,
  * or served from a shared CDN/asset server.
@@ -19,12 +19,7 @@ export interface LogoProps {
   className?: string;
 }
 
-export function Logo({ 
-  src = '/logo.svg', 
-  height = 40, 
-  alt = 'Platform', 
-  className 
-}: LogoProps) {
+export function Logo({ src = '/logo.svg', height = 40, alt = 'Platform', className }: LogoProps) {
   return (
     <img
       src={src}

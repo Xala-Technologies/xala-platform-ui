@@ -149,18 +149,14 @@ function isProblemDetails(value: unknown): value is ProblemDetails {
 
   // RFC 7807 requires type, title, and status
   return (
-    typeof obj.type === 'string' &&
-    typeof obj.title === 'string' &&
-    typeof obj.status === 'number'
+    typeof obj.type === 'string' && typeof obj.title === 'string' && typeof obj.status === 'number'
   );
 }
 
 /**
  * Extract Problem Details from various error response formats
  */
-function extractProblemDetails(
-  response: unknown
-): ProblemDetails | null {
+function extractProblemDetails(response: unknown): ProblemDetails | null {
   // Direct Problem Details format
   if (isProblemDetails(response)) {
     return response;
@@ -204,9 +200,7 @@ function extractProblemDetails(
 /**
  * Check if details is a validation errors object
  */
-function isValidationErrors(
-  details: unknown
-): details is Record<string, string[]> {
+function isValidationErrors(details: unknown): details is Record<string, string[]> {
   if (typeof details !== 'object' || details === null) {
     return false;
   }
@@ -237,10 +231,7 @@ function isValidationErrors(
  * }
  * ```
  */
-export function parseApiError(
-  response: unknown,
-  status?: number
-): ParsedApiError {
+export function parseApiError(response: unknown, status?: number): ParsedApiError {
   const problemDetails = extractProblemDetails(response);
 
   // Extract status from problem details if not provided
@@ -403,9 +394,7 @@ export function getStatusMessage(status: number): { title: string; description: 
  * }
  * ```
  */
-export function formatFieldErrors(
-  fieldErrors: Record<string, string[]>
-): Record<string, string[]> {
+export function formatFieldErrors(fieldErrors: Record<string, string[]>): Record<string, string[]> {
   // Pass through as-is - validation messages should already be Norwegian from API
   // This function provides a hook for future field name translations if needed
   return fieldErrors;
@@ -432,9 +421,7 @@ export function shouldOfferRetry(error: Error | ParsedApiError): boolean {
  * @param overrides - Fields to override
  * @returns Problem Details object
  */
-export function createProblemDetails(
-  overrides: Partial<ProblemDetails>
-): ProblemDetails {
+export function createProblemDetails(overrides: Partial<ProblemDetails>): ProblemDetails {
   return {
     type: 'about:blank',
     title: 'An error occurred',

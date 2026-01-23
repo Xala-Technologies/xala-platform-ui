@@ -1,6 +1,6 @@
 /**
  * GDPR Blocks
- * 
+ *
  * Privacy and data management components
  */
 

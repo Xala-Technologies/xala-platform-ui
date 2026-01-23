@@ -5,14 +5,7 @@
  * Supports grouping by category, risk indicators, and permission toggling.
  */
 import React, { useMemo, useState, useCallback } from 'react';
-import {
-  Card,
-  Heading,
-  Paragraph,
-  Table,
-  Checkbox,
-  Textfield,
-} from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Table, Checkbox, Textfield } from '@digdir/designsystemet-react';
 import { Badge } from '../../composed/Badge';
 
 export interface Permission {
@@ -142,9 +135,7 @@ export function PermissionMatrix({
       <Card style={{ padding: 'var(--ds-spacing-4)' }}>
         <Heading data-size="sm">Permission Matrix</Heading>
         <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          {roles.length === 0
-            ? 'No roles defined.'
-            : 'No permissions defined.'}
+          {roles.length === 0 ? 'No roles defined.' : 'No permissions defined.'}
         </Paragraph>
       </Card>
     );
@@ -156,7 +147,13 @@ export function PermissionMatrix({
     <Card style={{ padding: 'var(--ds-spacing-4)' }}>
       <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         <Heading data-size="sm">Permission Matrix</Heading>
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)', marginBottom: 'var(--ds-spacing-2)' }}>
+        <Paragraph
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginBottom: 'var(--ds-spacing-2)',
+          }}
+        >
           {roles.length} roles × {permissions.length} permissions
         </Paragraph>
         <Textfield
@@ -188,7 +185,9 @@ export function PermissionMatrix({
             <Paragraph data-size="sm">Low</Paragraph>
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
-            <span style={{ color: 'var(--ds-color-warning-text-default)' }}>{riskIcons.medium}</span>
+            <span style={{ color: 'var(--ds-color-warning-text-default)' }}>
+              {riskIcons.medium}
+            </span>
             <Paragraph data-size="sm">Medium</Paragraph>
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
@@ -210,7 +209,14 @@ export function PermissionMatrix({
                   style={{ textAlign: 'center', minWidth: 'var(--ds-sizing-25)' }}
                   title={role.description}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: 'var(--ds-spacing-1)',
+                    }}
+                  >
                     <span>{role.name}</span>
                     {role.color && (
                       <span
@@ -246,7 +252,13 @@ export function PermissionMatrix({
                         }}
                         onClick={() => toggleCategory(category)}
                       >
-                        <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                        <span
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--ds-spacing-2)',
+                          }}
+                        >
                           <span>{isExpanded ? '▼' : '▶'}</span>
                           {category}
                           <Badge variant="default" size="sm">
@@ -262,7 +274,13 @@ export function PermissionMatrix({
                     categoryPermissions.map((permission) => (
                       <Table.Row key={permission.id}>
                         <Table.Cell>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 'var(--ds-spacing-2)',
+                            }}
+                          >
                             {showRiskIndicators && permission.risk && (
                               <span
                                 style={{
@@ -330,7 +348,10 @@ export function PermissionMatrix({
       >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
           {roles.map((role) => (
-            <div key={role.id} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
+            <div
+              key={role.id}
+              style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
+            >
               {role.color && (
                 <span
                   style={{

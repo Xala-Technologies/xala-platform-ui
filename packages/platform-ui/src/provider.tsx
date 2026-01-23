@@ -80,13 +80,15 @@ function ensureThemeLinks(hrefs: string[]): void {
 
   // Add new theme links in order (base first, then extensions)
   // Filter out undefined/null URLs to prevent 404 errors
-  hrefs.filter(href => href && href !== 'undefined').forEach((href, index) => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.setAttribute(THEME_LINK_DATA_ATTR, String(index));
-    head.appendChild(link);
-  });
+  hrefs
+    .filter((href) => href && href !== 'undefined')
+    .forEach((href, index) => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.setAttribute(THEME_LINK_DATA_ATTR, String(index));
+      head.appendChild(link);
+    });
 }
 
 /**
@@ -119,11 +121,7 @@ export function DesignsystemetProvider({
   }, [theme, colorScheme, size, typography]);
 
   return (
-    <Root
-      data-color-scheme={colorScheme}
-      data-size={size}
-      data-typography={typography}
-    >
+    <Root data-color-scheme={colorScheme} data-size={size} data-typography={typography}>
       {children}
     </Root>
   );

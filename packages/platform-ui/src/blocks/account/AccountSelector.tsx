@@ -196,9 +196,7 @@ function OrganizationOption<TOrganization extends BaseOrganization>({
         alignItems: 'center',
         gap: 'var(--ds-spacing-3)',
         cursor: 'pointer',
-        backgroundColor: isSelected
-          ? 'var(--ds-color-success-surface-default)'
-          : 'transparent',
+        backgroundColor: isSelected ? 'var(--ds-color-success-surface-default)' : 'transparent',
         borderRadius: 'var(--ds-border-radius-md)',
         transition: 'background-color 0.2s',
         border: isSelected
@@ -341,7 +339,9 @@ export function AccountSelector<TOrganization extends BaseOrganization = BaseOrg
           >
             <Checkbox
               checked={rememberChoice}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onRememberChoiceChange(e.target.checked)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onRememberChoiceChange(e.target.checked)
+              }
               value="remember"
               label={labels.rememberChoice}
             />
@@ -426,7 +426,9 @@ export function AccountSelector<TOrganization extends BaseOrganization = BaseOrg
         >
           <Checkbox
             checked={rememberChoice}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => onRememberChoiceChange(e.target.checked)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onRememberChoiceChange(e.target.checked)
+            }
             value="remember"
             label={labels.rememberChoice}
           />

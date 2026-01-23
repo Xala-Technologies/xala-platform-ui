@@ -109,7 +109,10 @@ export function Skeleton({
 
   return (
     <>
-      <style>{pulseKeyframes}{waveKeyframes}</style>
+      <style>
+        {pulseKeyframes}
+        {waveKeyframes}
+      </style>
       <span
         className={className}
         style={{
@@ -127,7 +130,8 @@ export function Skeleton({
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(90deg, transparent, var(--ds-color-neutral-surface-default), transparent)',
+              background:
+                'linear-gradient(90deg, transparent, var(--ds-color-neutral-surface-default), transparent)',
               animation: 'skeleton-wave 1.5s linear infinite',
             }}
           />
@@ -150,7 +154,10 @@ export function SkeletonText({
   style,
 }: SkeletonTextProps): React.ReactElement {
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)', ...style }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)', ...style }}
+    >
       {Array.from({ length: lines }).map((_, index) => (
         <Skeleton
           key={index}
@@ -191,7 +198,13 @@ export function SkeletonCard({
     >
       {hasImage && <Skeleton variant="rectangular" height={imageHeight} animation={animation} />}
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Skeleton variant="text" height="var(--ds-sizing-6)" width="70%" animation={animation} style={{ marginBottom: 'var(--ds-spacing-3)' }} />
+        <Skeleton
+          variant="text"
+          height="var(--ds-sizing-6)"
+          width="70%"
+          animation={animation}
+          style={{ marginBottom: 'var(--ds-spacing-3)' }}
+        />
         <SkeletonText lines={lines} animation={animation} />
       </div>
     </div>
@@ -237,7 +250,12 @@ export function SkeletonTable({
           }}
         >
           {Array.from({ length: columns }).map((_, index) => (
-            <Skeleton key={index} variant="text" height="var(--ds-sizing-5)" animation={animation} />
+            <Skeleton
+              key={index}
+              variant="text"
+              height="var(--ds-sizing-5)"
+              animation={animation}
+            />
           ))}
         </div>
       )}
@@ -255,7 +273,13 @@ export function SkeletonTable({
           }}
         >
           {Array.from({ length: columns }).map((_, colIndex) => (
-            <Skeleton key={colIndex} variant="text" height="var(--ds-sizing-4)" width={colIndex === 0 ? '80%' : '60%'} animation={animation} />
+            <Skeleton
+              key={colIndex}
+              variant="text"
+              height="var(--ds-sizing-4)"
+              width={colIndex === 0 ? '80%' : '60%'}
+              animation={animation}
+            />
           ))}
         </div>
       ))}
@@ -272,9 +296,14 @@ export interface SkeletonAvatarProps {
   animation?: 'pulse' | 'wave' | 'none';
 }
 
-export function SkeletonAvatar({ size = 'md', animation = 'pulse' }: SkeletonAvatarProps): React.ReactElement {
+export function SkeletonAvatar({
+  size = 'md',
+  animation = 'pulse',
+}: SkeletonAvatarProps): React.ReactElement {
   const sizes = { sm: 'var(--ds-sizing-8)', md: 'var(--ds-sizing-10)', lg: 'var(--ds-sizing-12)' };
-  return <Skeleton variant="circular" width={sizes[size]} height={sizes[size]} animation={animation} />;
+  return (
+    <Skeleton variant="circular" width={sizes[size]} height={sizes[size]} animation={animation} />
+  );
 }
 
 export default { Skeleton, SkeletonText, SkeletonCard, SkeletonTable, SkeletonAvatar };

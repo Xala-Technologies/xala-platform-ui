@@ -27,30 +27,32 @@ export function ResourceGrid({
   children,
   className,
 }: ResourceGridProps): React.ReactElement {
-  const gapValue = gap !== undefined
-    ? (typeof gap === 'number' ? `${gap}px` : gap)
-    : 'var(--ds-spacing-6, 24px)';
+  const gapValue =
+    gap !== undefined ? (typeof gap === 'number' ? `${gap}px` : gap) : 'var(--ds-spacing-6, 24px)';
 
   // Use repeat(maxColumns, 1fr) on large screens to enforce strict column limit
   // Fall back to auto-fill for responsive behavior on smaller screens
   // The minmax ensures cards don't get too small
-  const gridTemplateColumns = maxColumns === 3
-    ? `repeat(auto-fill, minmax(min(max(${minCardWidth}px, calc((100% - ${maxColumns - 1} * ${gapValue}) / ${maxColumns})), 100%), 1fr))`
-    : `repeat(${maxColumns}, 1fr)`;
+  const gridTemplateColumns =
+    maxColumns === 3
+      ? `repeat(auto-fill, minmax(min(max(${minCardWidth}px, calc((100% - ${maxColumns - 1} * ${gapValue}) / ${maxColumns})), 100%), 1fr))`
+      : `repeat(${maxColumns}, 1fr)`;
 
   return (
     <div
       className={cn('resource-object-grid', className)}
       data-max-columns={maxColumns}
-      style={{
-        '--resource-object-grid-gap': gapValue,
-        '--resource-object-grid-min-card-width': `${minCardWidth}px`,
-        '--resource-object-grid-max-columns': maxColumns,
-        display: 'grid',
-        gap: gapValue,
-        gridTemplateColumns,
-        width: '100%', // Full width to align with header content
-      } as React.CSSProperties}
+      style={
+        {
+          '--resource-object-grid-gap': gapValue,
+          '--resource-object-grid-min-card-width': `${minCardWidth}px`,
+          '--resource-object-grid-max-columns': maxColumns,
+          display: 'grid',
+          gap: gapValue,
+          gridTemplateColumns,
+          width: '100%', // Full width to align with header content
+        } as React.CSSProperties
+      }
     >
       {children}
     </div>

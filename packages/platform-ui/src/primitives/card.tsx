@@ -1,6 +1,6 @@
 /**
  * Card Component
- * 
+ *
  * Container component for content
  */
 

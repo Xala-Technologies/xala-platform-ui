@@ -247,9 +247,7 @@ export const ListToolbar = forwardRef<HTMLDivElement, ListToolbarProps>(
             <div style={{ flex: '1 1 auto' }} />
 
             {/* Primary Action */}
-            {primaryAction && (
-              <div data-testid={`${testId}-primary-action`}>{primaryAction}</div>
-            )}
+            {primaryAction && <div data-testid={`${testId}-primary-action`}>{primaryAction}</div>}
           </div>
         )}
 

@@ -1,6 +1,6 @@
 /**
  * Shells
- * 
+ *
  * Application shell components for complete layouts
  */
 

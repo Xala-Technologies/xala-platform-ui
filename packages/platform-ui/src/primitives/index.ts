@@ -1,6 +1,6 @@
 /**
  * Primitives
- * 
+ *
  * Low-level building blocks for the design system
  */
 

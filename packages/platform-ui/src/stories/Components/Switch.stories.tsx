@@ -4,9 +4,9 @@ import { Switch, Fieldset, Heading } from '../../index';
 
 /**
  * Switch component from Digdir Designsystemet.
- * 
+ *
  * Switch gives users a choice between two alternatives (on/off).
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/switch/overview
  */
 const meta: Meta<typeof Switch> = {
@@ -187,24 +187,15 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Switch label="Enable notifications" />
-  ),
+  render: () => <Switch label="Enable notifications" />,
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Switch 
-      label="Dark mode"
-      description="Switch between light and dark theme"
-    />
-  ),
+  render: () => <Switch label="Dark mode" description="Switch between light and dark theme" />,
 };
 
 export const Checked: Story = {
-  render: () => (
-    <Switch label="Email notifications" defaultChecked />
-  ),
+  render: () => <Switch label="Email notifications" defaultChecked />,
 };
 
 export const Disabled: Story = {
@@ -262,24 +253,34 @@ export const Interactive: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Fieldset>
           <Fieldset.Legend>Notification preferences</Fieldset.Legend>
-          <Switch 
-            label="Email notifications" 
+          <Switch
+            label="Email notifications"
             checked={notifications.email}
             onChange={(e) => setNotifications({ ...notifications, email: e.target.checked })}
           />
-          <Switch 
-            label="SMS notifications" 
+          <Switch
+            label="SMS notifications"
             checked={notifications.sms}
             onChange={(e) => setNotifications({ ...notifications, sms: e.target.checked })}
           />
-          <Switch 
-            label="Push notifications" 
+          <Switch
+            label="Push notifications"
             checked={notifications.push}
             onChange={(e) => setNotifications({ ...notifications, push: e.target.checked })}
           />
         </Fieldset>
-        <div style={{ padding: 'var(--ds-spacing-3)', backgroundColor: 'var(--ds-color-neutral-surface-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
-          <strong>Active notifications:</strong> {Object.entries(notifications).filter(([, v]) => v).map(([k]) => k).join(', ') || 'None'}
+        <div
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <strong>Active notifications:</strong>{' '}
+          {Object.entries(notifications)
+            .filter(([, v]) => v)
+            .map(([k]) => k)
+            .join(', ') || 'None'}
         </div>
       </div>
     );
@@ -293,7 +294,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>States</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          States
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Switch label="Default (off)" />
           <Switch label="Checked (on)" defaultChecked />
@@ -306,7 +309,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Sizes</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Sizes
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Switch label="Small" data-size="sm" />
           <Switch label="Medium" data-size="md" />
@@ -315,7 +320,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Grouped</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Grouped
+        </Heading>
         <Fieldset>
           <Fieldset.Legend>Settings</Fieldset.Legend>
           <Switch label="Option 1" defaultChecked />

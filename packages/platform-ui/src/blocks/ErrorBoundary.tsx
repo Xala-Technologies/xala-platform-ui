@@ -146,11 +146,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       return (
         <ErrorScreen
           title={errorTitle || labels.title}
-          description={
-            errorDescription ||
-            this.state.error?.message ||
-            labels.defaultDescription
-          }
+          description={errorDescription || this.state.error?.message || labels.defaultDescription}
           showRetryButton={showRetryButton}
           retryButtonText={retryButtonText || labels.retryButton}
           onRetry={this.handleRetry}

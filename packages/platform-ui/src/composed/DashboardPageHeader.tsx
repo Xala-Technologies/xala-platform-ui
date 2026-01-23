@@ -38,7 +38,10 @@ export interface PageHeaderTab {
   href?: string;
 }
 
-export interface DashboardPageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface DashboardPageHeaderProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'title'
+> {
   /** Page title (required) */
   title: string;
   /** Page subtitle/description */
@@ -117,7 +120,9 @@ function Tab({ label, count, active, onClick, href, variant }: TabProps) {
   const underlineStyles: React.CSSProperties = {
     ...baseStyles,
     padding: 'var(--ds-spacing-3) 0',
-    borderBottom: active ? '2px solid var(--ds-color-accent-base-default)' : '2px solid transparent',
+    borderBottom: active
+      ? '2px solid var(--ds-color-accent-base-default)'
+      : '2px solid transparent',
     marginBottom: '-1px',
   };
 
@@ -137,8 +142,12 @@ function Tab({ label, count, active, onClick, href, variant }: TabProps) {
         <span
           style={{
             fontSize: 'var(--ds-font-size-xs)',
-            backgroundColor: active ? 'var(--ds-color-accent-surface-default)' : 'var(--ds-color-neutral-surface-hover)',
-            color: active ? 'var(--ds-color-accent-text-default)' : 'var(--ds-color-neutral-text-subtle)',
+            backgroundColor: active
+              ? 'var(--ds-color-accent-surface-default)'
+              : 'var(--ds-color-neutral-surface-hover)',
+            color: active
+              ? 'var(--ds-color-accent-text-default)'
+              : 'var(--ds-color-neutral-text-subtle)',
             padding: '0 var(--ds-spacing-2)',
             borderRadius: 'var(--ds-border-radius-full)',
             minWidth: '20px',
@@ -206,11 +215,7 @@ export const DashboardPageHeader = forwardRef<HTMLDivElement, DashboardPageHeade
         {...props}
       >
         {/* Breadcrumb row */}
-        {breadcrumb && (
-          <div style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {breadcrumb}
-          </div>
-        )}
+        {breadcrumb && <div style={{ marginBottom: 'var(--ds-spacing-3)' }}>{breadcrumb}</div>}
 
         {/* Main header row: Title + Actions */}
         <div
@@ -225,7 +230,14 @@ export const DashboardPageHeader = forwardRef<HTMLDivElement, DashboardPageHeade
         >
           {/* Left: Title + Badge */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                flexWrap: 'wrap',
+              }}
+            >
               <Heading level={1} data-size="lg" style={{ margin: 0 }}>
                 {title}
               </Heading>
@@ -268,7 +280,14 @@ export const DashboardPageHeader = forwardRef<HTMLDivElement, DashboardPageHeade
           </div>
 
           {/* Right: Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', flexShrink: 0 }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-3)',
+              flexShrink: 0,
+            }}
+          >
             {/* Last updated text */}
             {lastUpdated && (
               <Paragraph
@@ -302,7 +321,10 @@ export const DashboardPageHeader = forwardRef<HTMLDivElement, DashboardPageHeade
               alignItems: 'center',
               gap: tabVariant === 'pill' ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-6)',
               marginTop: 'var(--ds-spacing-5)',
-              borderBottom: tabVariant === 'underline' ? '1px solid var(--ds-color-neutral-border-subtle)' : 'none',
+              borderBottom:
+                tabVariant === 'underline'
+                  ? '1px solid var(--ds-color-neutral-border-subtle)'
+                  : 'none',
               overflowX: 'auto',
             }}
             aria-label="Page navigation"

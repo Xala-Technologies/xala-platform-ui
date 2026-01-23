@@ -1,9 +1,9 @@
 /**
  * DemoRoleSwitcher Component
- * 
+ *
  * Role-based demo login switcher that replaces manual token entry.
  * Shows role options as buttons - clicking logs in as that role.
- * 
+ *
  * Features:
  * - One-click demo login per role
  * - No manual token entry required
@@ -16,12 +16,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
 import { Dialog } from '@digdir/designsystemet-react';
 import { Stack } from '../primitives';
-import {
-  ShieldCheckIcon,
-  ClipboardListIcon,
-  BuildingIcon,
-  UserIcon,
-} from '../primitives/icons';
+import { ShieldCheckIcon, ClipboardListIcon, BuildingIcon, UserIcon } from '../primitives/icons';
 
 export type DemoRoleKey = 'admin' | 'case_handler' | 'org_admin' | 'org_member';
 
@@ -203,8 +198,10 @@ export function DemoRoleSwitcher({
                   >
                     {isLoading ? (
                       <Spinner data-size="sm" aria-label="Logger inn..." />
+                    ) : typeof IconComponent === 'function' ? (
+                      <IconComponent size={24} />
                     ) : (
-                      typeof IconComponent === 'function' ? <IconComponent size={24} /> : IconComponent
+                      IconComponent
                     )}
                   </div>
                   <div style={{ flex: 1 }}>

@@ -261,93 +261,94 @@ export function ShareSheet({
   >[];
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      style={{ maxWidth: '400px' }}
-    >
+    <Dialog open={isOpen} onClose={onClose} style={{ maxWidth: '400px' }}>
       <Dialog.Block>
-          <div
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
+          <Heading level={2} data-size="sm" style={{ margin: 0 }}>
+            Del
+          </Heading>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Lukk"
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: 'var(--ds-spacing-4)',
+              justifyContent: 'center',
+              width: 'var(--ds-spacing-8)',
+              height: 'var(--ds-spacing-8)',
+              border: 'none',
+              borderRadius: 'var(--ds-border-radius-full)',
+              backgroundColor: 'transparent',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              cursor: 'pointer',
             }}
           >
-            <Heading level={2} data-size="sm" style={{ margin: 0 }}>
-              Del
-            </Heading>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Lukk"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 'var(--ds-spacing-8)',
-                height: 'var(--ds-spacing-8)',
-                border: 'none',
-                borderRadius: 'var(--ds-border-radius-full)',
-                backgroundColor: 'transparent',
-                color: 'var(--ds-color-neutral-text-subtle)',
-                cursor: 'pointer',
-              }}
-            >
-              <CloseIcon size={20} />
-            </button>
-          </div>
+            <CloseIcon size={20} />
+          </button>
+        </div>
 
-          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
-            {shareData.title}
-          </Paragraph>
+        <Paragraph
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
+          {shareData.title}
+        </Paragraph>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 'var(--ds-spacing-3)',
-            }}
-          >
-            {visiblePlatforms.map((platform) => {
-              const config = platformConfig[platform];
-              return (
-                <button
-                  key={platform}
-                  type="button"
-                  onClick={() =>
-                    platform === 'copy'
-                      ? handleCopyLink()
-                      : handlePlatformShare(platform)
-                  }
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 'var(--ds-spacing-3)',
+          }}
+        >
+          {visiblePlatforms.map((platform) => {
+            const config = platformConfig[platform];
+            return (
+              <button
+                key={platform}
+                type="button"
+                onClick={() =>
+                  platform === 'copy' ? handleCopyLink() : handlePlatformShare(platform)
+                }
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-2)',
+                  padding: 'var(--ds-spacing-3)',
+                  border: '1px solid var(--ds-color-neutral-border-subtle)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  backgroundColor: 'var(--ds-color-neutral-background-default)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <span style={{ color: config.color }}>{config.icon}</span>
+                <span
                   style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 'var(--ds-spacing-2)',
-                    padding: 'var(--ds-spacing-3)',
-                    border: '1px solid var(--ds-color-neutral-border-subtle)',
-                    borderRadius: 'var(--ds-border-radius-md)',
-                    backgroundColor: 'var(--ds-color-neutral-background-default)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-neutral-text-default)',
                   }}
                 >
-                  <span style={{ color: config.color }}>{config.icon}</span>
-                  <span
-                    style={{
-                      fontSize: 'var(--ds-font-size-xs)',
-                      color: 'var(--ds-color-neutral-text-default)',
-                    }}
-                  >
-                    {config.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </Dialog.Block>
+                  {config.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </Dialog.Block>
     </Dialog>
   );
 }
@@ -383,11 +384,7 @@ export function ShareButton({
     if (disabled) return;
 
     // Try native share API first
-    if (
-      platforms.includes('native') &&
-      typeof navigator !== 'undefined' &&
-      navigator.share
-    ) {
+    if (platforms.includes('native') && typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: shareData.title,

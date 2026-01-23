@@ -146,7 +146,17 @@ export const StackHorizontal: Story = {
 export const StackAligned: Story = {
   name: 'Stack Aligned',
   render: () => (
-    <Stack direction="horizontal" spacing="var(--ds-spacing-4)" justify="between" align="center" style={{ minHeight: 'var(--ds-spacing-32)', backgroundColor: 'var(--ds-color-neutral-surface-hover)', padding: 'var(--ds-spacing-4)' }}>
+    <Stack
+      direction="horizontal"
+      spacing="var(--ds-spacing-4)"
+      justify="between"
+      align="center"
+      style={{
+        minHeight: 'var(--ds-spacing-32)',
+        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
       <Box>Left</Box>
       <Box>Center</Box>
       <Box>Right</Box>

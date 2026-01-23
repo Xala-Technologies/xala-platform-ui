@@ -1,6 +1,6 @@
 /**
  * Icon Component
- * 
+ *
  * Simple SVG icon wrapper
  */
 
@@ -12,7 +12,7 @@ export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
    * @default 20
    */
   size?: number;
-  
+
   /**
    * Icon color (CSS variable or color)
    */

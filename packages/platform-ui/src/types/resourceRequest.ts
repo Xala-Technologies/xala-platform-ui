@@ -10,18 +10,24 @@
 /**
  * Resource type for resourceRequest configuration
  */
-export type ResourceRequestResourceType = 'SPACE' | 'RESOURCE' | 'EVENT' | 'SERVICE' | 'VEHICLE' | 'OTHER';
+export type ResourceRequestResourceType =
+  | 'SPACE'
+  | 'RESOURCE'
+  | 'EVENT'
+  | 'SERVICE'
+  | 'VEHICLE'
+  | 'OTHER';
 
 /**
  * ResourceRequest mode determines the UI and flow
  */
 export type ResourceRequestMode =
-  | 'slots'      // Hourly time slots (e.g., meeting rooms, sports halls)
-  | 'daily'      // Full day resourceRequest (e.g., conference rooms, outdoor spaces)
-  | 'dateRange'  // Multi-day range (e.g., vehicles, equipment resource)
-  | 'event'      // Event/ticket based (e.g., workshops, classes)
-  | 'recurring'  // Seasonal/recurring (e.g., sports clubs weekly slot)
-  | 'instant';   // Instant resourceRequest without calendar (e.g., digital services)
+  | 'slots' // Hourly time slots (e.g., meeting rooms, sports halls)
+  | 'daily' // Full day resourceRequest (e.g., conference rooms, outdoor spaces)
+  | 'dateRange' // Multi-day range (e.g., vehicles, equipment resource)
+  | 'event' // Event/ticket based (e.g., workshops, classes)
+  | 'recurring' // Seasonal/recurring (e.g., sports clubs weekly slot)
+  | 'instant'; // Instant resourceRequest without calendar (e.g., digital services)
 
 /**
  * Pricing unit for display and calculation
@@ -38,13 +44,7 @@ export type ResourceRequestPriceUnit =
 /**
  * Availability slot status
  */
-export type SlotStatus =
-  | 'available'
-  | 'selected'
-  | 'occupied'
-  | 'blocked'
-  | 'maintenance'
-  | 'past';
+export type SlotStatus = 'available' | 'selected' | 'occupied' | 'blocked' | 'maintenance' | 'past';
 
 /**
  * Single availability slot
@@ -169,7 +169,6 @@ export interface ResourceRequestConfig {
   eventDate?: Date;
   /** Supported activity types */
   activityTypes?: string[];
-
 }
 
 /**
@@ -263,7 +262,10 @@ export interface ResourceRequestStepConfig {
  * @param requirePayment - Whether payment step is required
  * @returns Array of resourceRequest step configurations
  */
-export function getResourceRequestSteps(mode: ResourceRequestMode, requirePayment: boolean = false): ResourceRequestStepConfig[] {
+export function getResourceRequestSteps(
+  mode: ResourceRequestMode,
+  requirePayment: boolean = false
+): ResourceRequestStepConfig[] {
   const baseSteps: ResourceRequestStepConfig[] = [
     { id: 'select', label: 'Velg tid', icon: 'calendar' },
     { id: 'details', label: 'Detaljer', icon: 'form' },

@@ -102,9 +102,29 @@ export function ProgressBar({
   return (
     <div className={className} style={style}>
       {showLabel && labelPosition === 'top' && (
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--ds-spacing-1)' }}>
-          <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-default)' }}>Progress</span>
-          <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>{Math.round(percentage)}%</span>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: 'var(--ds-spacing-1)',
+          }}
+        >
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-default)',
+            }}
+          >
+            Progress
+          </span>
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            {Math.round(percentage)}%
+          </span>
         </div>
       )}
       <div
@@ -157,7 +177,14 @@ export function ProgressBar({
           </div>
         </div>
         {showLabel && labelPosition === 'outside' && (
-          <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)', minWidth: 'var(--ds-sizing-10)', textAlign: 'right' }}>
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              minWidth: 'var(--ds-sizing-10)',
+              textAlign: 'right',
+            }}
+          >
             {Math.round(percentage)}%
           </span>
         )}
@@ -280,7 +307,8 @@ export function ProgressSteps({
                   width: 'var(--ds-sizing-8)',
                   height: 'var(--ds-sizing-8)',
                   borderRadius: 'var(--ds-border-radius-full)',
-                  backgroundColor: isCompleted || isCurrent ? color : 'var(--ds-color-neutral-surface-default)',
+                  backgroundColor:
+                    isCompleted || isCurrent ? color : 'var(--ds-color-neutral-surface-default)',
                   color: isCompleted || isCurrent ? 'white' : 'var(--ds-color-neutral-text-subtle)',
                   fontSize: 'var(--ds-font-size-sm)',
                   fontWeight: 'var(--ds-font-weight-medium)',
@@ -295,8 +323,12 @@ export function ProgressSteps({
                 style={{
                   marginTop: 'var(--ds-spacing-2)',
                   fontSize: 'var(--ds-font-size-xs)',
-                  color: isCurrent ? 'var(--ds-color-neutral-text-default)' : 'var(--ds-color-neutral-text-subtle)',
-                  fontWeight: isCurrent ? 'var(--ds-font-weight-medium)' : 'var(--ds-font-weight-normal)',
+                  color: isCurrent
+                    ? 'var(--ds-color-neutral-text-default)'
+                    : 'var(--ds-color-neutral-text-subtle)',
+                  fontWeight: isCurrent
+                    ? 'var(--ds-font-weight-medium)'
+                    : 'var(--ds-font-weight-normal)',
                   textAlign: 'center',
                   maxWidth: 'var(--ds-sizing-20)',
                 }}

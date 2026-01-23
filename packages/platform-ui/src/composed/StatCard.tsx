@@ -39,7 +39,16 @@ export interface StatCardProps {
 
 function TrendUpIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
       <polyline points="17 6 23 6 23 12" />
     </svg>
@@ -48,7 +57,16 @@ function TrendUpIcon() {
 
 function TrendDownIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
       <polyline points="17 18 23 18 23 12" />
     </svg>
@@ -57,7 +75,16 @@ function TrendDownIcon() {
 
 function TrendNeutralIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   );
@@ -68,8 +95,13 @@ function TrendNeutralIcon() {
 // =============================================================================
 
 function StatSkeleton({ size }: { size: 'sm' | 'md' | 'lg' }) {
-  const valueHeight = size === 'sm' ? 'var(--ds-sizing-6)' : size === 'lg' ? 'var(--ds-sizing-10)' : 'var(--ds-sizing-8)';
-  
+  const valueHeight =
+    size === 'sm'
+      ? 'var(--ds-sizing-6)'
+      : size === 'lg'
+        ? 'var(--ds-sizing-10)'
+        : 'var(--ds-sizing-8)';
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
       <div
@@ -171,11 +203,12 @@ export function StatCard({
   const variantStyle = variantStyles[variant];
   const sizeStyle = sizeStyles[size];
 
-  const TrendIcon = trend?.direction === 'up' 
-    ? TrendUpIcon 
-    : trend?.direction === 'down' 
-    ? TrendDownIcon 
-    : TrendNeutralIcon;
+  const TrendIcon =
+    trend?.direction === 'up'
+      ? TrendUpIcon
+      : trend?.direction === 'down'
+        ? TrendDownIcon
+        : TrendNeutralIcon;
 
   return (
     <div
@@ -232,7 +265,13 @@ export function StatCard({
                   marginTop: 'var(--ds-spacing-2)',
                 }}
               >
-                <span style={{ color: trendColors[trend.direction], display: 'flex', alignItems: 'center' }}>
+                <span
+                  style={{
+                    color: trendColors[trend.direction],
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
                   <TrendIcon />
                 </span>
                 <span
@@ -299,7 +338,12 @@ export function StatCardGrid({
   className,
   style,
 }: StatCardGridProps): React.ReactElement {
-  const gapSize = gap === 'sm' ? 'var(--ds-spacing-3)' : gap === 'lg' ? 'var(--ds-spacing-6)' : 'var(--ds-spacing-4)';
+  const gapSize =
+    gap === 'sm'
+      ? 'var(--ds-spacing-3)'
+      : gap === 'lg'
+        ? 'var(--ds-spacing-6)'
+        : 'var(--ds-spacing-4)';
 
   return (
     <div

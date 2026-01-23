@@ -25,9 +25,7 @@ export function getFocusableElements(container: HTMLElement): HTMLElement[] {
   ].join(', ');
 
   const elements = container.querySelectorAll<HTMLElement>(focusableSelectors);
-  return Array.from(elements).filter(
-    (el) => el.offsetParent !== null && !el.hasAttribute('inert')
-  );
+  return Array.from(elements).filter((el) => el.offsetParent !== null && !el.hasAttribute('inert'));
 }
 
 /**
@@ -112,10 +110,7 @@ function getLiveRegion(): HTMLElement {
 /**
  * Announce a message to screen readers
  */
-export function announce(
-  message: string,
-  priority: 'polite' | 'assertive' = 'polite'
-): void {
+export function announce(message: string, priority: 'polite' | 'assertive' = 'polite'): void {
   const region = getLiveRegion();
   region.setAttribute('aria-live', priority);
 
@@ -223,20 +218,14 @@ export function getContrastRatio(
 /**
  * Check if contrast ratio meets WCAG AA requirements
  */
-export function meetsContrastAA(
-  contrastRatio: number,
-  isLargeText: boolean = false
-): boolean {
+export function meetsContrastAA(contrastRatio: number, isLargeText: boolean = false): boolean {
   return isLargeText ? contrastRatio >= 3 : contrastRatio >= 4.5;
 }
 
 /**
  * Check if contrast ratio meets WCAG AAA requirements
  */
-export function meetsContrastAAA(
-  contrastRatio: number,
-  isLargeText: boolean = false
-): boolean {
+export function meetsContrastAAA(contrastRatio: number, isLargeText: boolean = false): boolean {
   return isLargeText ? contrastRatio >= 4.5 : contrastRatio >= 7;
 }
 
@@ -269,13 +258,13 @@ export function getAnimationDuration(defaultMs: number): number {
 export function mightHaveScreenReader(): boolean {
   if (typeof window === 'undefined') return false;
 
-  const hasScreenReaderHints = 
-    'speechSynthesis' in window ||
-    document.querySelector('[role="application"]') !== null;
-  
-  const hasForcedColors = typeof window.matchMedia === 'function' 
-    ? window.matchMedia('(forced-colors: active)').matches 
-    : false;
+  const hasScreenReaderHints =
+    'speechSynthesis' in window || document.querySelector('[role="application"]') !== null;
+
+  const hasForcedColors =
+    typeof window.matchMedia === 'function'
+      ? window.matchMedia('(forced-colors: active)').matches
+      : false;
 
   return hasScreenReaderHints || hasForcedColors;
 }

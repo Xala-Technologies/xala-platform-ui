@@ -27,7 +27,13 @@ import { createPortal } from 'react-dom';
 // =============================================================================
 
 export type ToastVariant = 'info' | 'success' | 'warning' | 'error';
-export type ToastPosition = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
+export type ToastPosition =
+  | 'top-right'
+  | 'top-left'
+  | 'top-center'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'bottom-center';
 
 export interface ToastOptions {
   title: string;
@@ -70,7 +76,16 @@ export interface ToastProviderProps {
 
 function CheckCircleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <polyline points="9 12 12 15 16 10" />
     </svg>
@@ -79,7 +94,16 @@ function CheckCircleIcon() {
 
 function XCircleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="15" y1="9" x2="9" y2="15" />
       <line x1="9" y1="9" x2="15" y2="15" />
@@ -89,7 +113,16 @@ function XCircleIcon() {
 
 function AlertTriangleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
       <line x1="12" y1="9" x2="12" y2="13" />
       <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -99,7 +132,16 @@ function AlertTriangleIcon() {
 
 function InfoIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="16" x2="12" y2="12" />
       <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -109,7 +151,16 @@ function InfoIcon() {
 
 function CloseIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -220,15 +271,29 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
         transition: 'opacity 0.2s ease, transform 0.2s ease',
       }}
     >
-      <div style={{ color: styles.icon, flexShrink: 0, marginTop: 'var(--ds-border-width-medium)' }}>
+      <div
+        style={{ color: styles.icon, flexShrink: 0, marginTop: 'var(--ds-border-width-medium)' }}
+      >
         {getVariantIcon(toast.variant || 'info')}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontWeight: 'var(--ds-font-weight-medium)', fontSize: 'var(--ds-font-size-sm)', marginBottom: toast.description ? 'var(--ds-spacing-1)' : 0 }}>
+        <div
+          style={{
+            fontWeight: 'var(--ds-font-weight-medium)',
+            fontSize: 'var(--ds-font-size-sm)',
+            marginBottom: toast.description ? 'var(--ds-spacing-1)' : 0,
+          }}
+        >
           {toast.title}
         </div>
         {toast.description && (
-          <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)', lineHeight: 1.5 }}>
+          <div
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              lineHeight: 1.5,
+            }}
+          >
             {toast.description}
           </div>
         )}
@@ -321,22 +386,25 @@ export function ToastProvider({
 }: ToastProviderProps) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const addToast = useCallback((options: ToastOptions): string => {
-    const id = `toast-${++toastId}`;
-    const newToast: Toast = {
-      ...options,
-      id,
-      duration: options.duration ?? defaultDuration,
-      createdAt: Date.now(),
-    };
+  const addToast = useCallback(
+    (options: ToastOptions): string => {
+      const id = `toast-${++toastId}`;
+      const newToast: Toast = {
+        ...options,
+        id,
+        duration: options.duration ?? defaultDuration,
+        createdAt: Date.now(),
+      };
 
-    setToasts((prev) => {
-      const updated = [newToast, ...prev];
-      return updated.slice(0, maxToasts);
-    });
+      setToasts((prev) => {
+        const updated = [newToast, ...prev];
+        return updated.slice(0, maxToasts);
+      });
 
-    return id;
-  }, [defaultDuration, maxToasts]);
+      return id;
+    },
+    [defaultDuration, maxToasts]
+  );
 
   const dismiss = useCallback((id: string) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
@@ -347,10 +415,22 @@ export function ToastProvider({
   }, []);
 
   const toast = useCallback((options: ToastOptions) => addToast(options), [addToast]);
-  const success = useCallback((title: string, description?: string) => addToast({ title, description, variant: 'success' }), [addToast]);
-  const error = useCallback((title: string, description?: string) => addToast({ title, description, variant: 'error' }), [addToast]);
-  const warning = useCallback((title: string, description?: string) => addToast({ title, description, variant: 'warning' }), [addToast]);
-  const info = useCallback((title: string, description?: string) => addToast({ title, description, variant: 'info' }), [addToast]);
+  const success = useCallback(
+    (title: string, description?: string) => addToast({ title, description, variant: 'success' }),
+    [addToast]
+  );
+  const error = useCallback(
+    (title: string, description?: string) => addToast({ title, description, variant: 'error' }),
+    [addToast]
+  );
+  const warning = useCallback(
+    (title: string, description?: string) => addToast({ title, description, variant: 'warning' }),
+    [addToast]
+  );
+  const info = useCallback(
+    (title: string, description?: string) => addToast({ title, description, variant: 'info' }),
+    [addToast]
+  );
 
   const value: ToastContextValue = {
     toasts,

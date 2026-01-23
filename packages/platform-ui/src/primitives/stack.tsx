@@ -1,6 +1,6 @@
 /**
  * Stack Primitive
- * 
+ *
  * Low-level stack component for vertical/horizontal layouts
  */
 
@@ -13,23 +13,23 @@ export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default 'vertical'
    */
   direction?: 'vertical' | 'horizontal';
-  
+
   /**
    * Spacing between items
    * @default '0'
    */
   spacing?: string | number;
-  
+
   /**
    * Align items
    */
   align?: 'start' | 'center' | 'end' | 'stretch';
-  
+
   /**
    * Justify items
    */
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
-  
+
   /**
    * Whether to wrap items
    * @default false
@@ -38,17 +38,20 @@ export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
-  ({
-    children,
-    direction = 'vertical',
-    spacing = 0,
-    align,
-    justify,
-    wrap = false,
-    className,
-    style,
-    ...props
-  }, ref) => {
+  (
+    {
+      children,
+      direction = 'vertical',
+      spacing = 0,
+      align,
+      justify,
+      wrap = false,
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
     const stackStyle: React.CSSProperties = {
       display: 'flex',
       flexDirection: direction === 'vertical' ? 'column' : 'row',
@@ -56,7 +59,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
       alignItems: align,
       justifyContent: justify,
       flexWrap: wrap ? 'wrap' : 'nowrap',
-      ...style
+      ...style,
     };
 
     return (

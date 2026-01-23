@@ -35,51 +35,71 @@ export const FontFamilies: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
         <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Default Font (Inter)</Label>
-        <div style={{ 
-          fontFamily: 'var(--ds-font-family-default, Inter, system-ui, sans-serif)',
-          fontSize: 'var(--ds-font-size-5)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            fontFamily: 'var(--ds-font-family-default, Inter, system-ui, sans-serif)',
+            fontSize: 'var(--ds-font-size-5)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
           <p>Digilist – ResourceRequest for alle</p>
         </div>
-        <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)', marginTop: 'var(--ds-spacing-2)', display: 'block' }}>
+        <code
+          style={{
+            fontSize: 'var(--ds-font-size-xs)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginTop: 'var(--ds-spacing-2)',
+            display: 'block',
+          }}
+        >
           font-family: var(--ds-font-family-default)
         </code>
       </div>
-      
+
       <div>
         <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Monospace Font (Code)</Label>
-        <div style={{ 
-          fontFamily: 'var(--ds-font-family-mono, ui-monospace, monospace)',
-          fontSize: 'var(--ds-font-size-3)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            fontFamily: 'var(--ds-font-family-mono, ui-monospace, monospace)',
+            fontSize: 'var(--ds-font-size-3)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
           <p>{`const resourceRequest = await createResourceRequest(data);`}</p>
         </div>
-        <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)', marginTop: 'var(--ds-spacing-2)', display: 'block' }}>
+        <code
+          style={{
+            fontSize: 'var(--ds-font-size-xs)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginTop: 'var(--ds-spacing-2)',
+            display: 'block',
+          }}
+        >
           font-family: var(--ds-font-family-mono)
         </code>
       </div>
-      
-      <div style={{ 
-        padding: 'var(--ds-spacing-4)', 
-        backgroundColor: 'var(--ds-color-info-surface-default)',
-        borderRadius: 'var(--ds-border-radius-md)',
-        borderLeft: '4px solid var(--ds-color-info-border-default)',
-      }}>
+
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-info-surface-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+          borderLeft: '4px solid var(--ds-color-info-border-default)',
+        }}
+      >
         <Paragraph data-size="sm">
-          <strong>Note:</strong> Inter is loaded via Google Fonts or self-hosted. 
-          The system falls back to system-ui for optimal performance if Inter is unavailable.
+          <strong>Note:</strong> Inter is loaded via Google Fonts or self-hosted. The system falls
+          back to system-ui for optimal performance if Inter is unavailable.
         </Paragraph>
       </div>
     </div>
@@ -98,15 +118,25 @@ export const FontWeights: Story = {
         { weight: 600, name: 'Semibold', variable: '--ds-font-weight-semibold' },
         { weight: 700, name: 'Bold', variable: '--ds-font-weight-bold' },
       ].map(({ weight, name, variable }) => (
-        <div key={weight} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-4)' }}>
-          <span style={{ 
-            fontWeight: weight, 
-            fontSize: 'var(--ds-font-size-5)',
-            minWidth: 'var(--ds-size-50)',
-          }}>
+        <div
+          key={weight}
+          style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-4)' }}
+        >
+          <span
+            style={{
+              fontWeight: weight,
+              fontSize: 'var(--ds-font-size-5)',
+              minWidth: 'var(--ds-size-50)',
+            }}
+          >
             {name} ({weight})
           </span>
-          <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <code
+            style={{
+              fontSize: 'var(--ds-font-size-xs)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             {variable}
           </code>
         </div>
@@ -121,13 +151,27 @@ export const FontWeights: Story = {
 export const Headings: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Heading level={1} data-size="2xl">Heading 2XL (h1)</Heading>
-      <Heading level={1} data-size="xl">Heading XL (h1)</Heading>
-      <Heading level={2} data-size="lg">Heading LG (h2)</Heading>
-      <Heading level={2} data-size="md">Heading MD (h2)</Heading>
-      <Heading level={3} data-size="sm">Heading SM (h3)</Heading>
-      <Heading level={3} data-size="xs">Heading XS (h3)</Heading>
-      <Heading level={4} data-size="2xs">Heading 2XS (h4)</Heading>
+      <Heading level={1} data-size="2xl">
+        Heading 2XL (h1)
+      </Heading>
+      <Heading level={1} data-size="xl">
+        Heading XL (h1)
+      </Heading>
+      <Heading level={2} data-size="lg">
+        Heading LG (h2)
+      </Heading>
+      <Heading level={2} data-size="md">
+        Heading MD (h2)
+      </Heading>
+      <Heading level={3} data-size="sm">
+        Heading SM (h3)
+      </Heading>
+      <Heading level={3} data-size="xs">
+        Heading XS (h3)
+      </Heading>
+      <Heading level={4} data-size="2xs">
+        Heading 2XS (h4)
+      </Heading>
     </div>
   ),
 };
@@ -137,7 +181,14 @@ export const Headings: Story = {
  */
 export const BodyText: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', maxWidth: 'var(--ds-size-150)' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        maxWidth: 'var(--ds-size-150)',
+      }}
+    >
       <div>
         <Label>Body XL</Label>
         <Paragraph data-size="xl">
@@ -153,8 +204,8 @@ export const BodyText: Story = {
       <div>
         <Label>Body MD (default)</Label>
         <Paragraph data-size="md">
-          Dette er standard brødtekst. Den brukes for mesteparten av innholdet på siden.
-          Lengre avsnitt bør bruke denne størrelsen for optimal lesbarhet.
+          Dette er standard brødtekst. Den brukes for mesteparten av innholdet på siden. Lengre
+          avsnitt bør bruke denne størrelsen for optimal lesbarhet.
         </Paragraph>
       </div>
       <div>
@@ -178,21 +229,27 @@ export const BodyText: Story = {
  */
 export const ParagraphVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)', maxWidth: 'var(--ds-size-175)' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-6)',
+        maxWidth: 'var(--ds-size-175)',
+      }}
+    >
       <div>
         <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Short (compact line-height)</Label>
         <Paragraph variant="short">
-          Kort variant har tettere linjeavstand og passer for UI-tekst, 
-          knapper, og korte beskrivelser hvor kompakthet er ønsket.
+          Kort variant har tettere linjeavstand og passer for UI-tekst, knapper, og korte
+          beskrivelser hvor kompakthet er ønsket.
         </Paragraph>
       </div>
       <div>
         <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Long (relaxed line-height)</Label>
         <Paragraph variant="long">
-          Lang variant har romsligere linjeavstand og er ideell for lengre tekster 
-          som artikler og dokumentasjon. Den økte linjeavstanden gjør det lettere 
-          å følge teksten over flere linjer og forbedrer lesbarheten betydelig 
-          for omfattende innhold.
+          Lang variant har romsligere linjeavstand og er ideell for lengre tekster som artikler og
+          dokumentasjon. Den økte linjeavstanden gjør det lettere å følge teksten over flere linjer
+          og forbedrer lesbarheten betydelig for omfattende innhold.
         </Paragraph>
       </div>
     </div>
@@ -204,7 +261,14 @@ export const ParagraphVariants: Story = {
  */
 export const FormTypography: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', maxWidth: 'var(--ds-size-100)' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        maxWidth: 'var(--ds-size-100)',
+      }}
+    >
       <div>
         <Label data-size="lg">Large Label</Label>
         <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
@@ -239,16 +303,43 @@ export const FormTypography: Story = {
 export const ResponsiveSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div data-size="sm" style={{ padding: 'var(--ds-spacing-4)', backgroundColor: 'var(--ds-color-neutral-surface-hover)', borderRadius: 'var(--ds-border-radius-md)' }}>
-        <Heading level={3} data-size="sm">Small Size Context</Heading>
+      <div
+        data-size="sm"
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Heading level={3} data-size="sm">
+          Small Size Context
+        </Heading>
         <Paragraph>All text in this container uses small size tokens.</Paragraph>
       </div>
-      <div data-size="md" style={{ padding: 'var(--ds-spacing-4)', backgroundColor: 'var(--ds-color-neutral-surface-hover)', borderRadius: 'var(--ds-border-radius-md)' }}>
-        <Heading level={3} data-size="sm">Medium Size Context (default)</Heading>
+      <div
+        data-size="md"
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Heading level={3} data-size="sm">
+          Medium Size Context (default)
+        </Heading>
         <Paragraph>All text in this container uses medium size tokens.</Paragraph>
       </div>
-      <div data-size="lg" style={{ padding: 'var(--ds-spacing-4)', backgroundColor: 'var(--ds-color-neutral-surface-hover)', borderRadius: 'var(--ds-border-radius-md)' }}>
-        <Heading level={3} data-size="sm">Large Size Context</Heading>
+      <div
+        data-size="lg"
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Heading level={3} data-size="sm">
+          Large Size Context
+        </Heading>
         <Paragraph>All text in this container uses large size tokens.</Paragraph>
       </div>
     </div>
@@ -292,27 +383,34 @@ export const ArticleExample: Story = {
       <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         Velkommen til Digilist
       </Heading>
-      <Paragraph data-size="lg" variant="short" style={{ marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+      <Paragraph
+        data-size="lg"
+        variant="short"
+        style={{
+          marginBottom: 'var(--ds-spacing-6)',
+          color: 'var(--ds-color-neutral-text-subtle)',
+        }}
+      >
         En moderne plattform for resourceRequest og utleie av lokaler og ressurser.
       </Paragraph>
-      
+
       <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
         Slik fungerer det
       </Heading>
       <Paragraph variant="long" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Digilist gjør det enkelt å finne og reservere lokaler i din kommune. 
-        Søk blant tilgjengelige rom, sjekk ledighet i sanntid, og book direkte. 
-        Alt fra møterom til idrettshaller er samlet på ett sted.
+        Digilist gjør det enkelt å finne og reservere lokaler i din kommune. Søk blant tilgjengelige
+        rom, sjekk ledighet i sanntid, og book direkte. Alt fra møterom til idrettshaller er samlet
+        på ett sted.
       </Paragraph>
-      
+
       <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         For utleiere
       </Heading>
       <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Administrer dine lokaler effektivt med full oversikt over resourceRequester, 
-        tilgjengelighet og inntekter.
+        Administrer dine lokaler effektivt med full oversikt over resourceRequester, tilgjengelighet
+        og inntekter.
       </Paragraph>
-      
+
       <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
         Sist oppdatert: Januar 2026
       </Paragraph>

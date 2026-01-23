@@ -36,13 +36,7 @@
  * ```
  */
 import { useRef } from 'react';
-import {
-  Card,
-  Heading,
-  Paragraph,
-  Button,
-  Textfield,
-} from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Textfield } from '@digdir/designsystemet-react';
 import { Stack, SaveIcon, UserIcon, CameraIcon } from '../../primitives';
 import { FormField } from '../../composed';
 
@@ -178,17 +172,19 @@ export function ProfileTab({
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}>
-            <div style={{
-              position: 'relative',
-              width: '120px',
-              height: '120px',
-              borderRadius: 'var(--ds-border-radius-full)',
-              overflow: 'hidden',
-              backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
+            <div
+              style={{
+                position: 'relative',
+                width: '120px',
+                height: '120px',
+                borderRadius: 'var(--ds-border-radius-full)',
+                overflow: 'hidden',
+                backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
               {avatarPreview ? (
                 <img
                   src={avatarPreview}
@@ -200,7 +196,12 @@ export function ProfileTab({
                   }}
                 />
               ) : (
-                <UserIcon style={{ fontSize: 'var(--ds-font-size-2xl)', color: 'var(--ds-color-neutral-text-subtle)' }} />
+                <UserIcon
+                  style={{
+                    fontSize: 'var(--ds-font-size-2xl)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
+                />
               )}
             </div>
 
@@ -273,7 +274,13 @@ export function ProfileTab({
               />
             </FormField>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-3)' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 'var(--ds-spacing-3)',
+              }}
+            >
               <FormField label={labels.dateOfBirth}>
                 <Textfield
                   type="date"
@@ -295,8 +302,18 @@ export function ProfileTab({
             </div>
           </Stack>
 
-          <div style={{ paddingTop: 'var(--ds-spacing-4)', borderTop: '1px solid var(--ds-color-neutral-border-subtle)' }}>
-            <Button onClick={onSaveProfile} disabled={isSaving} type="button" aria-label={labels.saveProfileSettings}>
+          <div
+            style={{
+              paddingTop: 'var(--ds-spacing-4)',
+              borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+            }}
+          >
+            <Button
+              onClick={onSaveProfile}
+              disabled={isSaving}
+              type="button"
+              aria-label={labels.saveProfileSettings}
+            >
               <SaveIcon />
               {isSaving ? labels.saving : labels.saveChanges}
             </Button>

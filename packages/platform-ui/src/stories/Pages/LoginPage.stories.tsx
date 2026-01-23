@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import {
-  Card,
-  Heading,
-  Paragraph,
-  Button,
-  Input,
-  Alert,
-} from '../../index';
+import { Card, Heading, Paragraph, Button, Input, Alert } from '../../index';
 import { IdPortenIcon, VippsIcon, BankIdIcon } from '../../index';
 
 /**
@@ -81,7 +74,9 @@ function LoginOptionDemo({ icon, title, description, onClick, disabled }: LoginO
         gap: 'var(--ds-spacing-4)',
         width: '100%',
         padding: 'var(--ds-spacing-4)',
-        backgroundColor: isHovered ? 'var(--ds-color-neutral-surface-hover)' : 'var(--ds-color-neutral-background-default)',
+        backgroundColor: isHovered
+          ? 'var(--ds-color-neutral-surface-hover)'
+          : 'var(--ds-color-neutral-background-default)',
         border: '1px solid var(--ds-color-neutral-border-default)',
         borderRadius: 'var(--ds-border-radius-md)',
         cursor: disabled ? 'not-allowed' : 'pointer',
@@ -90,22 +85,30 @@ function LoginOptionDemo({ icon, title, description, onClick, disabled }: LoginO
         textAlign: 'left',
       }}
     >
-      <div style={{
-        width: 'var(--ds-spacing-12)',
-        height: 'var(--ds-spacing-12)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 'var(--ds-border-radius-md)',
-        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-      }}>
+      <div
+        style={{
+          width: 'var(--ds-spacing-12)',
+          height: 'var(--ds-spacing-12)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 'var(--ds-border-radius-md)',
+          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+        }}
+      >
         {icon}
       </div>
       <div style={{ flex: 1 }}>
-        <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+        <Paragraph
+          data-size="md"
+          style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+        >
           {title}
         </Paragraph>
-        <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <Paragraph
+          data-size="sm"
+          style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+        >
           {description}
         </Paragraph>
       </div>
@@ -118,34 +121,63 @@ function LoginOptionDemo({ icon, title, description, onClick, disabled }: LoginO
  */
 export const Default: Story = {
   render: () => (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      minHeight: '100vh',
-    }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        minHeight: '100vh',
+      }}
+    >
       {/* Left Panel - Login Options */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        padding: 'var(--ds-spacing-8)',
-        backgroundColor: 'var(--ds-color-neutral-background-default)',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: 'var(--ds-spacing-8)',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         {/* Logo and Branding */}
         <div style={{ marginBottom: 'var(--ds-spacing-8)' }}>
-          <Heading level={1} data-size="lg" style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}>
+          <Heading
+            level={1}
+            data-size="lg"
+            style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+          >
             DIGILIST
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', letterSpacing: '0.1em' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: 0,
+              color: 'var(--ds-color-neutral-text-subtle)',
+              letterSpacing: '0.1em',
+            }}
+          >
             ENKEL BOOKING
           </Paragraph>
         </div>
 
         {/* Login Form */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '400px' }}>
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            maxWidth: '400px',
+          }}
+        >
           <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
             Logg inn
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-6) 0', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: '0 0 var(--ds-spacing-6) 0',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Velg hvordan du vil logge inn
           </Paragraph>
 
@@ -172,61 +204,114 @@ export const Default: Story = {
         </div>
 
         {/* Footer Links */}
-        <div style={{
-          display: 'flex',
-          gap: 'var(--ds-spacing-4)',
-          marginTop: 'var(--ds-spacing-8)',
-        }}>
-          <a href="#" style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-4)',
+            marginTop: 'var(--ds-spacing-8)',
+          }}
+        >
+          <a
+            href="#"
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Personvern
           </a>
-          <a href="#" style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <a
+            href="#"
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Vilkår
           </a>
-          <a href="#" style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <a
+            href="#"
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Hjelp
           </a>
         </div>
       </div>
 
       {/* Right Panel - Feature Panel */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: 'var(--ds-spacing-8)',
-        backgroundColor: 'var(--ds-color-accent-surface-default)',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: 'var(--ds-spacing-8)',
+          backgroundColor: 'var(--ds-color-accent-surface-default)',
+        }}
+      >
         <div style={{ maxWidth: '500px' }}>
-          <Heading level={2} data-size="lg" style={{ margin: '0 0 var(--ds-spacing-2) 0', color: 'var(--ds-color-accent-text-default)' }}>
+          <Heading
+            level={2}
+            data-size="lg"
+            style={{
+              margin: '0 0 var(--ds-spacing-2) 0',
+              color: 'var(--ds-color-accent-text-default)',
+            }}
+          >
             Backoffice
           </Heading>
-          <Paragraph data-size="md" style={{ margin: '0 0 var(--ds-spacing-6) 0', color: 'var(--ds-color-accent-text-default)' }}>
+          <Paragraph
+            data-size="md"
+            style={{
+              margin: '0 0 var(--ds-spacing-6) 0',
+              color: 'var(--ds-color-accent-text-default)',
+            }}
+          >
             Administrer resourceRequester og utleieobjekter
           </Paragraph>
 
           {/* Features List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             {[
-              { title: 'ResourceRequest-administrasjon', description: 'Oversikt over alle resourceRequester med kalendervisning' },
+              {
+                title: 'ResourceRequest-administrasjon',
+                description: 'Oversikt over alle resourceRequester med kalendervisning',
+              },
               { title: 'Utleieobjekter', description: 'Administrer lokaler, utstyr og tjenester' },
               { title: 'Rapporter', description: 'Detaljerte rapporter og statistikk' },
               { title: 'Brukerhåndtering', description: 'Administrer brukere og tilganger' },
             ].map((feature, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}>
-                <div style={{
-                  width: 'var(--ds-spacing-2)',
-                  height: 'var(--ds-spacing-2)',
-                  borderRadius: 'var(--ds-border-radius-full)',
-                  backgroundColor: 'var(--ds-color-accent-base-default)',
-                  marginTop: 'var(--ds-spacing-2)',
-                  flexShrink: 0,
-                }} />
+              <div
+                key={i}
+                style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}
+              >
+                <div
+                  style={{
+                    width: 'var(--ds-spacing-2)',
+                    height: 'var(--ds-spacing-2)',
+                    borderRadius: 'var(--ds-border-radius-full)',
+                    backgroundColor: 'var(--ds-color-accent-base-default)',
+                    marginTop: 'var(--ds-spacing-2)',
+                    flexShrink: 0,
+                  }}
+                />
                 <div>
-                  <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-accent-text-default)' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{
+                      margin: 0,
+                      fontWeight: 'var(--ds-font-weight-semibold)',
+                      color: 'var(--ds-color-accent-text-default)',
+                    }}
+                  >
                     {feature.title}
                   </Paragraph>
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)' }}
+                  >
                     {feature.description}
                   </Paragraph>
                 </div>
@@ -236,18 +321,29 @@ export const Default: Story = {
 
           {/* Integrations */}
           <div style={{ marginTop: 'var(--ds-spacing-8)' }}>
-            <Paragraph data-size="xs" style={{ margin: '0 0 var(--ds-spacing-2) 0', color: 'var(--ds-color-accent-text-subtle)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                margin: '0 0 var(--ds-spacing-2) 0',
+                color: 'var(--ds-color-accent-text-subtle)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+              }}
+            >
               Integrasjoner
             </Paragraph>
             <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
               {['FEIDE', 'BankID', 'Vipps', 'ID-porten'].map((name) => (
-                <span key={name} style={{
-                  padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-                  backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-accent-text-default)',
-                }}>
+                <span
+                  key={name}
+                  style={{
+                    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                    backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-accent-text-default)',
+                  }}
+                >
                   {name}
                 </span>
               ))}
@@ -272,7 +368,7 @@ export const DemoLoginDialog: Story = {
 
     const handleSubmit = async () => {
       setIsLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       setIsLoading(false);
       setIsOpen(false);
       console.log('Demo login:', { name, email, token });
@@ -282,7 +378,9 @@ export const DemoLoginDialog: Story = {
       return (
         <div style={{ padding: 'var(--ds-spacing-6)', textAlign: 'center' }}>
           <Alert data-color="success">
-            <Paragraph style={{ margin: 0 }}>Demo-innlogging fullført som <strong>{name}</strong></Paragraph>
+            <Paragraph style={{ margin: 0 }}>
+              Demo-innlogging fullført som <strong>{name}</strong>
+            </Paragraph>
           </Alert>
           <Button style={{ marginTop: 'var(--ds-spacing-4)' }} onClick={() => setIsOpen(true)}>
             Vis dialog igjen
@@ -292,28 +390,45 @@ export const DemoLoginDialog: Story = {
     }
 
     return (
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        backgroundColor: 'var(--ds-color-neutral-background-backdrop)',
-      }}>
-        <Card style={{
-          width: '100%',
-          maxWidth: '420px',
-          padding: 'var(--ds-spacing-6)',
-        }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          backgroundColor: 'var(--ds-color-neutral-background-backdrop)',
+        }}
+      >
+        <Card
+          style={{
+            width: '100%',
+            maxWidth: '420px',
+            padding: 'var(--ds-spacing-6)',
+          }}
+        >
           <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
             Demo-innlogging
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-4) 0', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: '0 0 var(--ds-spacing-4) 0',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Logg inn med en testbruker for å prøve systemet
           </Paragraph>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+              <label
+                style={{
+                  display: 'block',
+                  marginBottom: 'var(--ds-spacing-1)',
+                  fontSize: 'var(--ds-font-size-sm)',
+                  fontWeight: 'var(--ds-font-weight-medium)',
+                }}
+              >
                 Navn
               </label>
               <Input
@@ -323,7 +438,14 @@ export const DemoLoginDialog: Story = {
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+              <label
+                style={{
+                  display: 'block',
+                  marginBottom: 'var(--ds-spacing-1)',
+                  fontSize: 'var(--ds-font-size-sm)',
+                  fontWeight: 'var(--ds-font-weight-medium)',
+                }}
+              >
                 E-post
               </label>
               <Input
@@ -334,7 +456,14 @@ export const DemoLoginDialog: Story = {
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+              <label
+                style={{
+                  display: 'block',
+                  marginBottom: 'var(--ds-spacing-1)',
+                  fontSize: 'var(--ds-font-size-sm)',
+                  fontWeight: 'var(--ds-font-weight-medium)',
+                }}
+              >
                 Demo-token
               </label>
               <Input
@@ -342,13 +471,25 @@ export const DemoLoginDialog: Story = {
                 onChange={(e) => setToken(e.target.value)}
                 placeholder="demo-token-123"
               />
-              <Paragraph data-size="xs" style={{ margin: 'var(--ds-spacing-1) 0 0 0', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: 'var(--ds-spacing-1) 0 0 0',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 Bruk &quot;demo&quot; for standard tilgang
               </Paragraph>
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', marginTop: 'var(--ds-spacing-6)' }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-spacing-3)',
+              marginTop: 'var(--ds-spacing-6)',
+            }}
+          >
             <Button variant="secondary" onClick={() => setIsOpen(false)} style={{ flex: 1 }}>
               Avbryt
             </Button>
@@ -372,22 +513,33 @@ export const DemoLoginDialog: Story = {
  */
 export const MobileView: Story = {
   render: () => (
-    <div style={{
-      maxWidth: 'var(--ds-sizing-94)',
-      margin: '0 auto',
-      minHeight: '100vh',
-      backgroundColor: 'var(--ds-color-neutral-background-default)',
-    }}>
+    <div
+      style={{
+        maxWidth: 'var(--ds-sizing-94)',
+        margin: '0 auto',
+        minHeight: '100vh',
+        backgroundColor: 'var(--ds-color-neutral-background-default)',
+      }}
+    >
       {/* Mobile Header */}
-      <div style={{
-        padding: 'var(--ds-spacing-6)',
-        textAlign: 'center',
-        backgroundColor: 'var(--ds-color-accent-surface-default)',
-      }}>
-        <Heading level={1} data-size="md" style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}>
+      <div
+        style={{
+          padding: 'var(--ds-spacing-6)',
+          textAlign: 'center',
+          backgroundColor: 'var(--ds-color-accent-surface-default)',
+        }}
+      >
+        <Heading
+          level={1}
+          data-size="md"
+          style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+        >
           DIGILIST
         </Heading>
-        <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)', letterSpacing: '0.1em' }}>
+        <Paragraph
+          data-size="xs"
+          style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)', letterSpacing: '0.1em' }}
+        >
           ENKEL BOOKING
         </Paragraph>
       </div>
@@ -427,18 +579,21 @@ export const MobileView: Story = {
  */
 export const WithError: Story = {
   render: () => (
-    <div style={{
-      maxWidth: '400px',
-      margin: '0 auto',
-      padding: 'var(--ds-spacing-6)',
-    }}>
+    <div
+      style={{
+        maxWidth: '400px',
+        margin: '0 auto',
+        padding: 'var(--ds-spacing-6)',
+      }}
+    >
       <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
         Logg inn
       </Heading>
 
       <Alert data-color="danger" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         <Paragraph style={{ margin: 0 }}>
-          <strong>Innlogging feilet</strong><br />
+          <strong>Innlogging feilet</strong>
+          <br />
           BankID-sesjonen utløp. Vennligst prøv igjen.
         </Paragraph>
       </Alert>
@@ -460,26 +615,40 @@ export const WithError: Story = {
  */
 export const PublicWebLogin: Story = {
   render: () => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      padding: 'var(--ds-spacing-6)',
-      backgroundColor: 'var(--ds-color-neutral-background-subtle)',
-    }}>
-      <Card style={{
-        width: '100%',
-        maxWidth: '400px',
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
         padding: 'var(--ds-spacing-6)',
-        textAlign: 'center',
-      }}>
+        backgroundColor: 'var(--ds-color-neutral-background-subtle)',
+      }}
+    >
+      <Card
+        style={{
+          width: '100%',
+          maxWidth: '400px',
+          padding: 'var(--ds-spacing-6)',
+          textAlign: 'center',
+        }}
+      >
         <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          <Heading level={1} data-size="md" style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}>
+          <Heading
+            level={1}
+            data-size="md"
+            style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+          >
             DIGILIST
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: 'var(--ds-spacing-2) 0 0 0', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: 'var(--ds-spacing-2) 0 0 0',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Logg inn for å booke
           </Paragraph>
         </div>
@@ -495,8 +664,15 @@ export const PublicWebLogin: Story = {
           </Button>
         </div>
 
-        <Paragraph data-size="xs" style={{ margin: 'var(--ds-spacing-4) 0 0 0', color: 'var(--ds-color-neutral-text-subtle)' }}>
-          Ved å logge inn godtar du våre <a href="#">vilkår</a> og <a href="#">personvernerklæring</a>.
+        <Paragraph
+          data-size="xs"
+          style={{
+            margin: 'var(--ds-spacing-4) 0 0 0',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          Ved å logge inn godtar du våre <a href="#">vilkår</a> og{' '}
+          <a href="#">personvernerklæring</a>.
         </Paragraph>
       </Card>
     </div>

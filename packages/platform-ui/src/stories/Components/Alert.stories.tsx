@@ -4,10 +4,10 @@ import { Alert, Heading, Paragraph, Link } from '../../index';
 
 /**
  * Alert component from Digdir Designsystemet.
- * 
+ *
  * Provides users with information that is especially important for them to see and understand.
  * The component is designed to capture users' attention.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/alert/overview
  */
 const meta: Meta<typeof Alert> = {
@@ -72,7 +72,8 @@ export const Information: Story = {
         Have you remembered to book a passport appointment?
       </Heading>
       <Paragraph>
-        There are long queues for booking a passport these days, so it may be wise to book well in advance of your trip.
+        There are long queues for booking a passport these days, so it may be wise to book well in
+        advance of your trip.
       </Paragraph>
     </Alert>
   ),
@@ -104,7 +105,8 @@ export const Warning: Story = {
         We are experiencing technical issues
       </Heading>
       <Paragraph>
-        This means you may be interrupted while filling in the form. We are working to fix the issues.
+        This means you may be interrupted while filling in the form. We are working to fix the
+        issues.
       </Paragraph>
     </Alert>
   ),
@@ -120,7 +122,9 @@ export const Danger: Story = {
         An error has occurred
       </Heading>
       <Paragraph>
-        We are unable to retrieve the information you are looking for right now. Please try again later. If we still cannot show the information you need, please contact customer service on telephone 85 44 32 66.
+        We are unable to retrieve the information you are looking for right now. Please try again
+        later. If we still cannot show the information you need, please contact customer service on
+        telephone 85 44 32 66.
       </Paragraph>
     </Alert>
   ),
@@ -136,7 +140,8 @@ export const WithHeading: Story = {
         Have you remembered to book a passport appointment?
       </Heading>
       <Paragraph>
-        There are long queues for booking a passport these days, so it may be wise to book well in advance if you need a passport for the summer.
+        There are long queues for booking a passport these days, so it may be wise to book well in
+        advance if you need a passport for the summer.
       </Paragraph>
     </Alert>
   ),
@@ -178,7 +183,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Color Variants</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Color Variants
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
           <Alert data-color="info">
             <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -186,21 +193,21 @@ export const AllVariants: Story = {
             </Heading>
             <Paragraph>This is neutral and useful information for the user.</Paragraph>
           </Alert>
-          
+
           <Alert data-color="success">
             <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Success
             </Heading>
             <Paragraph>The task has been completed successfully.</Paragraph>
           </Alert>
-          
+
           <Alert data-color="warning">
             <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Warning
             </Heading>
             <Paragraph>Important information that requires attention.</Paragraph>
           </Alert>
-          
+
           <Alert data-color="danger">
             <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               Error
@@ -211,17 +218,20 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>With and Without Heading</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          With and Without Heading
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
           <Alert data-color="info">
             <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               With heading (longer message)
             </Heading>
             <Paragraph>
-              If the message is longer than a sentence, use a heading to highlight the most important thing.
+              If the message is longer than a sentence, use a heading to highlight the most
+              important thing.
             </Paragraph>
           </Alert>
-          
+
           <Alert data-color="warning">
             <Paragraph>Without heading - simple sentence for short messages.</Paragraph>
           </Alert>
@@ -229,7 +239,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>With Link</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          With Link
+        </h3>
         <Alert data-color="warning">
           <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
             Action required

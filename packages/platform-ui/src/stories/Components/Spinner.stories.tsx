@@ -4,9 +4,9 @@ import { Button, Spinner } from '../../index';
 
 /**
  * Spinner component from Digdir Designsystemet.
- * 
+ *
  * Spinner for indicating loading states and async operations.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/spinner/overview
  */
 const meta: Meta<typeof Spinner> = {
@@ -214,11 +214,11 @@ export const InButton: Story = {
 
 export const LoadingState: Story = {
   render: () => (
-    <div 
-      style={{ 
-        display: 'flex', 
+    <div
+      style={{
+        display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center', 
+        alignItems: 'center',
         justifyContent: 'center',
         gap: 'var(--ds-spacing-4)',
         padding: 'var(--ds-spacing-10)',
@@ -227,9 +227,7 @@ export const LoadingState: Story = {
       }}
     >
       <Spinner data-size="lg" aria-label="Loading data" />
-      <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-        Loading data...
-      </span>
+      <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>Loading data...</span>
     </div>
   ),
 };
@@ -241,7 +239,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Sizes</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Sizes
+        </h3>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
           <Spinner data-size="sm" aria-label="Small spinner" />
           <Spinner data-size="md" aria-label="Medium spinner" />
@@ -249,15 +249,21 @@ export const AllVariants: Story = {
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Colors</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Colors
+        </h3>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
           <Spinner data-color="neutral" aria-label="Neutral spinner" />
           <Spinner data-color="accent" aria-label="Accent spinner" />
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>In Button</h3>
-        <Button loading disabled type="button">Loading...</Button>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          In Button
+        </h3>
+        <Button loading disabled type="button">
+          Loading...
+        </Button>
       </div>
     </div>
   ),

@@ -171,12 +171,7 @@ export function PushNotificationPrompt({
           }}
         >
           {onEnable && (
-            <Button
-              type="button"
-              onClick={onEnable}
-              data-size="md"
-              style={{ width: '100%' }}
-            >
+            <Button type="button" onClick={onEnable} data-size="md" style={{ width: '100%' }}>
               Aktiver varsler
             </Button>
           )}

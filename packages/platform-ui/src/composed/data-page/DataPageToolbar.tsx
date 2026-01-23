@@ -1,6 +1,6 @@
 /**
  * DataPageToolbar Component
- * 
+ *
  * Combines search, filters, and view mode toggle
  * Consolidates common toolbar patterns
  */

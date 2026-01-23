@@ -27,7 +27,10 @@ export function NativeSelect({
   const id = providedId || generatedId;
 
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
+    >
       {label && (
         <label
           htmlFor={id}

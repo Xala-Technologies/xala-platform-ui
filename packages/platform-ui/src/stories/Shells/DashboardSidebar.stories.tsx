@@ -1,7 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
 import { DashboardSidebar, type SidebarSection } from '../../index';
-import { HomeIcon, CalendarIcon, SettingsIcon, UserIcon, BellIcon, InboxIcon, ChartIcon, BuildingIcon } from '../../index';
+import {
+  HomeIcon,
+  CalendarIcon,
+  SettingsIcon,
+  UserIcon,
+  BellIcon,
+  InboxIcon,
+  ChartIcon,
+  BuildingIcon,
+} from '../../index';
 
 /**
  * DashboardSidebar provides navigation for dashboard applications.
@@ -26,7 +35,13 @@ const meta: Meta<typeof DashboardSidebar> = {
       <MemoryRouter initialEntries={['/']}>
         <div style={{ height: '600px', display: 'flex' }}>
           <Story />
-          <div style={{ flex: 1, padding: 'var(--ds-spacing-4)', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+          <div
+            style={{
+              flex: 1,
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-background-default)',
+            }}
+          >
             <p>Main content area</p>
           </div>
         </div>
@@ -68,17 +83,19 @@ type Story = StoryObj<typeof DashboardSidebar>;
 
 // Sample logo
 const SampleLogo = () => (
-  <div style={{
-    width: '40px',
-    height: '40px',
-    borderRadius: 'var(--ds-border-radius-md)',
-    backgroundColor: 'var(--ds-color-accent-base-default)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    fontWeight: 'bold',
-  }}>
+  <div
+    style={{
+      width: '40px',
+      height: '40px',
+      borderRadius: 'var(--ds-border-radius-md)',
+      backgroundColor: 'var(--ds-color-accent-base-default)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      fontWeight: 'bold',
+    }}
+  >
     D
   </div>
 );
@@ -206,8 +223,18 @@ export const MinimalSections: Story = {
       {
         items: [
           { name: 'Dashboard', description: 'Overview', href: '/', icon: <HomeIcon size={24} /> },
-          { name: 'Calendar', description: 'ResourceRequests', href: '/calendar', icon: <CalendarIcon size={24} /> },
-          { name: 'Settings', description: 'Preferences', href: '/settings', icon: <SettingsIcon size={24} /> },
+          {
+            name: 'Calendar',
+            description: 'ResourceRequests',
+            href: '/calendar',
+            icon: <CalendarIcon size={24} />,
+          },
+          {
+            name: 'Settings',
+            description: 'Preferences',
+            href: '/settings',
+            icon: <SettingsIcon size={24} />,
+          },
         ],
       },
     ],
@@ -253,9 +280,27 @@ export const WithBadges: Story = {
       {
         title: 'Navigation',
         items: [
-          { name: 'Inbox', description: 'New messages', href: '/inbox', icon: <InboxIcon size={24} />, badge: 12 },
-          { name: 'Tasks', description: 'Pending tasks', href: '/tasks', icon: <CalendarIcon size={24} />, badge: 5 },
-          { name: 'Alerts', description: 'System alerts', href: '/alerts', icon: <BellIcon size={24} />, badge: 99 },
+          {
+            name: 'Inbox',
+            description: 'New messages',
+            href: '/inbox',
+            icon: <InboxIcon size={24} />,
+            badge: 12,
+          },
+          {
+            name: 'Tasks',
+            description: 'Pending tasks',
+            href: '/tasks',
+            icon: <CalendarIcon size={24} />,
+            badge: 5,
+          },
+          {
+            name: 'Alerts',
+            description: 'System alerts',
+            href: '/alerts',
+            icon: <BellIcon size={24} />,
+            badge: 99,
+          },
         ],
       },
     ],
@@ -275,22 +320,54 @@ export const BackofficeLayout: Story = {
       {
         title: 'Dashboard',
         items: [
-          { name: 'Oversikt', description: 'Hovedoversikt', href: '/', icon: <HomeIcon size={24} /> },
-          { name: 'Rapporter', description: 'Statistikk', href: '/reports', icon: <ChartIcon size={24} /> },
+          {
+            name: 'Oversikt',
+            description: 'Hovedoversikt',
+            href: '/',
+            icon: <HomeIcon size={24} />,
+          },
+          {
+            name: 'Rapporter',
+            description: 'Statistikk',
+            href: '/reports',
+            icon: <ChartIcon size={24} />,
+          },
         ],
       },
       {
         title: 'ResourceRequest',
         items: [
-          { name: 'Alle resourceRequester', description: 'Se alle resourceRequester', href: '/resourceRequests', icon: <CalendarIcon size={24} />, badge: 15 },
-          { name: 'Ventende', description: 'Godkjenning påkrevd', href: '/pending', icon: <InboxIcon size={24} />, badge: 3 },
+          {
+            name: 'Alle resourceRequester',
+            description: 'Se alle resourceRequester',
+            href: '/resourceRequests',
+            icon: <CalendarIcon size={24} />,
+            badge: 15,
+          },
+          {
+            name: 'Ventende',
+            description: 'Godkjenning påkrevd',
+            href: '/pending',
+            icon: <InboxIcon size={24} />,
+            badge: 3,
+          },
         ],
       },
       {
         title: 'Brukere',
         items: [
-          { name: 'Brukeradministrasjon', description: 'Administrer brukere', href: '/users', icon: <UserIcon size={24} /> },
-          { name: 'Organisasjoner', description: 'Administrer org', href: '/orgs', icon: <BuildingIcon size={24} /> },
+          {
+            name: 'Brukeradministrasjon',
+            description: 'Administrer brukere',
+            href: '/users',
+            icon: <UserIcon size={24} />,
+          },
+          {
+            name: 'Organisasjoner',
+            description: 'Administrer org',
+            href: '/orgs',
+            icon: <BuildingIcon size={24} />,
+          },
         ],
       },
     ],

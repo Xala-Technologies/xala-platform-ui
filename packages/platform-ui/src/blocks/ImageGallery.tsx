@@ -67,7 +67,7 @@ export function ImageGallery({
   if (!images.length) {
     return (
       <div
-        className={cn('image-gallery', className)}
+        className={cn('ds-image-gallery', className)}
         style={{
           height: galleryHeight,
           backgroundColor: 'var(--ds-color-neutral-surface-hover)',
@@ -91,7 +91,7 @@ export function ImageGallery({
 
   return (
     <div
-      className={cn('image-gallery', className)}
+      className={cn('ds-image-gallery', className)}
       style={{
         display: 'grid',
         gridTemplateColumns: images.length > 1 ? '1fr 240px' : '1fr',
@@ -101,7 +101,7 @@ export function ImageGallery({
     >
       {/* Main/Hero Image */}
       <div
-        className="image-gallery-hero"
+        className="ds-image-gallery-hero"
         style={{
           position: 'relative',
           height: '100%',
@@ -145,7 +145,7 @@ export function ImageGallery({
       {/* Vertical Thumbnails - only show if more than 1 image */}
       {images.length > 1 && (
         <div
-          className="image-gallery-thumbnails"
+          className="ds-image-gallery-thumbnails"
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -163,9 +163,10 @@ export function ImageGallery({
               style={{
                 flex: 1,
                 padding: 0,
-                border: index === currentIndex
-                  ? '3px solid var(--ds-color-accent-base-default)'
-                  : '3px solid transparent',
+                border:
+                  index === currentIndex
+                    ? '3px solid var(--ds-color-accent-base-default)'
+                    : '3px solid transparent',
                 borderRadius: 'var(--ds-border-radius-lg)',
                 overflow: 'hidden',
                 cursor: 'pointer',
@@ -205,22 +206,22 @@ export function ImageGallery({
       {/* Responsive styles */}
       <style>{`
         @media (max-width: 'var(--ds-sizing-192)') {
-          .image-gallery {
+          .ds-image-gallery {
             grid-template-columns: 1fr !important;
             height: auto !important;
           }
 
-          .image-gallery-hero {
+          .ds-image-gallery-hero {
             height: 'var(--ds-sizing-75)' !important;
           }
 
-          .image-gallery-thumbnails {
+          .ds-image-gallery-thumbnails {
             flex-direction: row !important;
             height: 'var(--ds-spacing-20)' !important;
             overflow-x: auto;
           }
 
-          .image-gallery-thumbnails button {
+          .ds-image-gallery-thumbnails button {
             flex: 0 0 auto !important;
             width: 'var(--ds-sizing-25)' !important;
             height: 'var(--ds-spacing-20)' !important;

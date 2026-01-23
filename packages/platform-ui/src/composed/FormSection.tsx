@@ -38,13 +38,7 @@ export interface FormSectionProps {
 /**
  * FormSection wraps form fields with a title and optional description
  */
-export function FormSection({
-  title,
-  children,
-  description,
-  className,
-  style,
-}: FormSectionProps) {
+export function FormSection({ title, children, description, className, style }: FormSectionProps) {
   return (
     <div className={className} style={style}>
       <Paragraph

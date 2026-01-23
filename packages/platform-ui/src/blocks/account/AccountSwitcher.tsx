@@ -91,7 +91,14 @@ const DEFAULT_LABELS: AccountSwitcherLabels = {
 
 function ChevronDownIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -264,7 +271,10 @@ export function AccountSwitcher<TOrganization extends BaseOrganization = BaseOrg
                 <UserIcon size={20} />
               </div>
               <div style={{ flex: 1, textAlign: 'left' }}>
-                <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+                >
                   {labels.personal}
                 </Paragraph>
               </div>
@@ -330,7 +340,8 @@ export function AccountSwitcher<TOrganization extends BaseOrganization = BaseOrg
                   }}
                   onMouseEnter={(e) => {
                     if (!(accountType === 'organization' && selectedOrganization?.id === org.id)) {
-                      e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
+                      e.currentTarget.style.backgroundColor =
+                        'var(--ds-color-neutral-surface-hover)';
                     }
                   }}
                   onMouseLeave={(e) => {

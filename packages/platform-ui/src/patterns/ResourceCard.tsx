@@ -26,12 +26,7 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
-import type {
-  ResourceBadge,
-  PriceDisplay,
-  MetadataItem,
-  StatusIndicator,
-} from './types';
+import type { ResourceBadge, PriceDisplay, MetadataItem, StatusIndicator } from './types';
 
 // ============================================================================
 // Types
@@ -196,14 +191,7 @@ const ShareIcon = () => (
 );
 
 const CloseIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
@@ -231,13 +219,11 @@ function getStatusColor(type: StatusIndicator['type']): string {
 }
 
 /** Get badge color CSS variable */
-function getBadgeColor(
-  variant: ResourceBadge['variant'] = 'neutral'
-): { bg: string; text: string } {
-  const colors: Record<
-    NonNullable<ResourceBadge['variant']>,
-    { bg: string; text: string }
-  > = {
+function getBadgeColor(variant: ResourceBadge['variant'] = 'neutral'): {
+  bg: string;
+  text: string;
+} {
+  const colors: Record<NonNullable<ResourceBadge['variant']>, { bg: string; text: string }> = {
     neutral: {
       bg: 'var(--ds-color-neutral-surface-hover)',
       text: 'var(--ds-color-neutral-text-default)',
@@ -279,13 +265,7 @@ interface ActionButtonProps {
   children: React.ReactNode;
 }
 
-function ActionButton({
-  onClick,
-  ariaLabel,
-  isActive,
-  activeColor,
-  children,
-}: ActionButtonProps) {
+function ActionButton({ onClick, ariaLabel, isActive, activeColor, children }: ActionButtonProps) {
   return (
     <button
       type="button"
@@ -305,8 +285,7 @@ function ActionButton({
           : 'var(--ds-color-neutral-text-subtle)',
         cursor: 'pointer',
         transition: 'all 0.2s ease',
-        boxShadow:
-          'var(--ds-shadow-sm, 0 2px 8px var(--ds-color-neutral-border-subtle))',
+        boxShadow: 'var(--ds-shadow-sm, 0 2px 8px var(--ds-color-neutral-border-subtle))',
       }}
     >
       {children}
@@ -350,9 +329,7 @@ function MetadataItemDisplay({ item }: { item: MetadataItem }) {
         color: 'var(--ds-color-neutral-text-subtle)',
       }}
     >
-      {item.icon && (
-        <span style={{ display: 'flex', flexShrink: 0 }}>{item.icon}</span>
-      )}
+      {item.icon && <span style={{ display: 'flex', flexShrink: 0 }}>{item.icon}</span>}
       <span>{item.value}</span>
     </div>
   );
@@ -378,9 +355,7 @@ function StatusDisplay({ status }: { status: StatusIndicator }) {
           backgroundColor: getStatusColor(status.type),
         }}
       />
-      <span style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-        {status.label}
-      </span>
+      <span style={{ color: 'var(--ds-color-neutral-text-default)' }}>{status.label}</span>
     </span>
   );
 }
@@ -904,8 +879,7 @@ export function ResourceCard({
               backgroundColor: 'var(--ds-color-neutral-background-default)',
               color: 'var(--ds-color-neutral-text-default)',
               cursor: 'pointer',
-              boxShadow:
-                'var(--ds-shadow-md, 0 4px 12px var(--ds-color-neutral-border-default))',
+              boxShadow: 'var(--ds-shadow-md, 0 4px 12px var(--ds-color-neutral-border-default))',
               transition: 'all 0.2s ease',
             }}
           >
@@ -924,11 +898,7 @@ export function ResourceCard({
         }}
       >
         {/* Title */}
-        <Heading
-          level={3}
-          data-size="xs"
-          style={{ marginBottom: 'var(--ds-spacing-1)' }}
-        >
+        <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-1)' }}>
           {title}
         </Heading>
 

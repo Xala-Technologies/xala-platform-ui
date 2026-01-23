@@ -275,7 +275,9 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
       [isOpen, focusedIndex, allItems]
     );
 
-    const handleItemClick = (item: UserMenuItem | { id: 'logout'; label: string; danger: true }) => {
+    const handleItemClick = (
+      item: UserMenuItem | { id: 'logout'; label: string; danger: true }
+    ) => {
       if ('onClick' in item && item.onClick) {
         item.onClick();
       } else if (item.id === 'logout') {
@@ -464,7 +466,9 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
                 <button
                   type="button"
                   role="menuitem"
-                  onClick={() => handleItemClick({ id: 'logout', label: logoutLabel, danger: true })}
+                  onClick={() =>
+                    handleItemClick({ id: 'logout', label: logoutLabel, danger: true })
+                  }
                   tabIndex={focusedIndex === items.length ? 0 : -1}
                   style={{
                     width: '100%',

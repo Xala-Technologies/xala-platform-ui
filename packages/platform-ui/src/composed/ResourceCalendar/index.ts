@@ -1,6 +1,6 @@
 /**
  * ResourceCalendar - Shared Calendar Component
- * 
+ *
  * XALA Architecture Compliance:
  * - UI renders only from projections
  * - No local rule logic

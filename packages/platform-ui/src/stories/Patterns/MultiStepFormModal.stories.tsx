@@ -357,10 +357,7 @@ export const CannotProceed: Story = {
         title: 'Enter Details',
         content: (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            <Paragraph
-              data-size="sm"
-              style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-            >
+            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
               The submit button is disabled because validation failed.
             </Paragraph>
             <div
@@ -370,7 +367,10 @@ export const CannotProceed: Story = {
                 borderRadius: 'var(--ds-border-radius-lg)',
               }}
             >
-              <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-danger-text-default)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, color: 'var(--ds-color-danger-text-default)' }}
+              >
                 Please fill in all required fields.
               </Paragraph>
             </div>
@@ -400,9 +400,7 @@ export const WithOptionalStep: Story = {
       {
         id: 'required',
         title: 'Required Info',
-        content: (
-          <Paragraph data-size="sm">Required information goes here.</Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Required information goes here.</Paragraph>,
       },
       {
         id: 'optional',
@@ -419,9 +417,7 @@ export const WithOptionalStep: Story = {
       {
         id: 'confirm',
         title: 'Confirm',
-        content: (
-          <Paragraph data-size="sm">Review and confirm your registration.</Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Review and confirm your registration.</Paragraph>,
       },
     ],
     currentStep: 1,

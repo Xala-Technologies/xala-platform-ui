@@ -36,9 +36,7 @@ export interface SkipLinksProps {
   className?: string;
 }
 
-const defaultLinks: SkipLink[] = [
-  { targetId: 'main-content', label: 'Hopp til hovedinnhold' },
-];
+const defaultLinks: SkipLink[] = [{ targetId: 'main-content', label: 'Hopp til hovedinnhold' }];
 
 /**
  * SkipLinks provides keyboard-accessible skip navigation

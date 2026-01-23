@@ -1,6 +1,6 @@
 /**
  * CodeBlock Component
- * 
+ *
  * Displays formatted code with syntax highlighting support
  */
 

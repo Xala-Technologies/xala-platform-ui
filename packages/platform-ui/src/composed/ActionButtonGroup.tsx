@@ -13,7 +13,15 @@ import React from 'react';
 // Types
 // =============================================================================
 
-export type ActionType = 'view' | 'edit' | 'delete' | 'duplicate' | 'archive' | 'restore' | 'download' | 'share';
+export type ActionType =
+  | 'view'
+  | 'edit'
+  | 'delete'
+  | 'duplicate'
+  | 'archive'
+  | 'restore'
+  | 'download'
+  | 'share';
 
 export interface Action {
   type: ActionType;
@@ -39,7 +47,16 @@ export interface ActionButtonGroupProps {
 
 function ViewIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
       <circle cx="12" cy="12" r="3" />
     </svg>
@@ -48,7 +65,16 @@ function ViewIcon() {
 
 function EditIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
       <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
     </svg>
@@ -57,7 +83,16 @@ function EditIcon() {
 
 function DeleteIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="3 6 5 6 21 6" />
       <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
       <line x1="10" y1="11" x2="10" y2="17" />
@@ -68,7 +103,16 @@ function DeleteIcon() {
 
 function DuplicateIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
       <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
     </svg>
@@ -77,7 +121,16 @@ function DuplicateIcon() {
 
 function ArchiveIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="21 8 21 21 3 21 3 8" />
       <rect x="1" y="3" width="22" height="5" />
       <line x1="10" y1="12" x2="14" y2="12" />
@@ -87,7 +140,16 @@ function ArchiveIcon() {
 
 function RestoreIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="1 4 1 10 7 10" />
       <path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
     </svg>
@@ -96,7 +158,16 @@ function RestoreIcon() {
 
 function DownloadIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
       <polyline points="7 10 12 15 17 10" />
       <line x1="12" y1="15" x2="12" y2="3" />
@@ -106,7 +177,16 @@ function DownloadIcon() {
 
 function ShareIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="18" cy="5" r="3" />
       <circle cx="6" cy="12" r="3" />
       <circle cx="18" cy="19" r="3" />
@@ -118,7 +198,15 @@ function ShareIcon() {
 
 function LoadingSpinner() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'spin 1s linear infinite' }}>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      style={{ animation: 'spin 1s linear infinite' }}
+    >
       <circle cx="12" cy="12" r="10" opacity="0.25" />
       <path d="M12 2a10 10 0 0110 10" />
       <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
@@ -202,9 +290,21 @@ const actionConfigs: Record<ActionType, ActionConfig> = {
 // =============================================================================
 
 const sizeStyles = {
-  sm: { padding: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-xs)', gap: 'var(--ds-spacing-1)' },
-  md: { padding: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)', gap: 'var(--ds-spacing-2)' },
-  lg: { padding: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-md)', gap: 'var(--ds-spacing-2)' },
+  sm: {
+    padding: 'var(--ds-spacing-1)',
+    fontSize: 'var(--ds-font-size-xs)',
+    gap: 'var(--ds-spacing-1)',
+  },
+  md: {
+    padding: 'var(--ds-spacing-2)',
+    fontSize: 'var(--ds-font-size-sm)',
+    gap: 'var(--ds-spacing-2)',
+  },
+  lg: {
+    padding: 'var(--ds-spacing-3)',
+    fontSize: 'var(--ds-font-size-md)',
+    gap: 'var(--ds-spacing-2)',
+  },
 };
 
 // =============================================================================
@@ -281,12 +381,18 @@ export function ActionButtonGroup({
         display: 'flex',
         alignItems: 'center',
         gap: 'var(--ds-spacing-1)',
-        justifyContent: alignment === 'left' ? 'flex-start' : alignment === 'center' ? 'center' : 'flex-end',
+        justifyContent:
+          alignment === 'left' ? 'flex-start' : alignment === 'center' ? 'center' : 'flex-end',
         ...style,
       }}
     >
       {visibleActions.map((action, index) => (
-        <ActionButton key={`${action.type}-${index}`} action={action} size={size} variant={variant} />
+        <ActionButton
+          key={`${action.type}-${index}`}
+          action={action}
+          size={size}
+          variant={variant}
+        />
       ))}
     </div>
   );
@@ -324,7 +430,12 @@ export function TableActions({
   const actions: Action[] = [
     { type: 'view', onClick: onView || (() => {}), hidden: !showView || !onView, disabled },
     { type: 'edit', onClick: onEdit || (() => {}), hidden: !showEdit || !onEdit, disabled },
-    { type: 'duplicate', onClick: onDuplicate || (() => {}), hidden: !showDuplicate || !onDuplicate, disabled },
+    {
+      type: 'duplicate',
+      onClick: onDuplicate || (() => {}),
+      hidden: !showDuplicate || !onDuplicate,
+      disabled,
+    },
     { type: 'delete', onClick: onDelete || (() => {}), hidden: !showDelete || !onDelete, disabled },
   ];
 

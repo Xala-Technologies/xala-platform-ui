@@ -188,9 +188,8 @@ export function ScopeSelector({
           })
         ).length;
       case 'category':
-        return availableObjects.filter((obj) =>
-          scope.categoryKeys?.includes(obj.category || '')
-        ).length;
+        return availableObjects.filter((obj) => scope.categoryKeys?.includes(obj.category || ''))
+          .length;
       default:
         return 0;
     }
@@ -344,11 +343,7 @@ export function ScopeSelector({
           >
             Reset
           </Button>
-          <Button
-            variant="primary"
-            onClick={handleSave}
-            disabled={!hasChanges || isSaving}
-          >
+          <Button variant="primary" onClick={handleSave} disabled={!hasChanges || isSaving}>
             {isSaving ? 'Saving...' : 'Save Changes'}
           </Button>
         </div>

@@ -18,7 +18,7 @@
  * // With custom separator
  * <MetadataRow
  *   items={items}
- *   separator={<span style={{ color: 'gray' }}>|</span>}
+ *   separator={<span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>|</span>}
  *   size="lg"
  * />
  *
@@ -192,7 +192,7 @@ export function MetadataRow({
         <React.Fragment key={item.id}>
           <div
             role="listitem"
-            className="platform-metadata-item"
+            className="ds-metadata-item"
             title={`${item.label}: ${item.value}`}
             style={{
               display: 'inline-flex',
@@ -331,7 +331,7 @@ export function MetadataRowInline({
         <React.Fragment key={item.id}>
           <span
             role="listitem"
-            className="platform-metadata-item-inline"
+            className="ds-metadata-item-inline"
             title={`${item.label}: ${item.value}`}
             style={{
               display: 'inline-flex',
@@ -354,9 +354,7 @@ export function MetadataRowInline({
 
             {/* Label (optional) */}
             {showLabels && (
-              <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                {item.label}:
-              </span>
+              <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{item.label}:</span>
             )}
 
             {/* Value */}
@@ -367,10 +365,7 @@ export function MetadataRowInline({
 
           {/* Separator */}
           {(index < visibleItems.length - 1 || hiddenCount > 0) && (
-            <span
-              aria-hidden="true"
-              style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-            >
+            <span aria-hidden="true" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
               {separator}
             </span>
           )}
@@ -379,10 +374,7 @@ export function MetadataRowInline({
 
       {/* Overflow indicator */}
       {hiddenCount > 0 && (
-        <span
-          role="listitem"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-        >
+        <span role="listitem" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
           {formattedOverflowText}
         </span>
       )}

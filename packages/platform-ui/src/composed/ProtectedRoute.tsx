@@ -188,9 +188,7 @@ const DEFAULT_LABELS: ProtectedRouteLabels = {
 /**
  * Extracts form data from location state if present
  */
-function extractFormDataFromState(
-  state: unknown
-): Record<string, unknown> | undefined {
+function extractFormDataFromState(state: unknown): Record<string, unknown> | undefined {
   if (!state || typeof state !== 'object') {
     return undefined;
   }
@@ -336,14 +334,7 @@ export function ProtectedRoute({
         hasStoredContext.current = true;
       }
     }
-  }, [
-    isLoading,
-    isAuthenticated,
-    location,
-    tenantId,
-    enableFlowContext,
-    flowContextHandlers,
-  ]);
+  }, [isLoading, isAuthenticated, location, tenantId, enableFlowContext, flowContextHandlers]);
 
   // Show loading state
   if (isLoading || isLoadingContext) {
@@ -368,8 +359,7 @@ export function ProtectedRoute({
 
   // Check if we're on an excluded path
   const isExcludedPath = excludedPaths.some((path) => location.pathname === path);
-  const isLoginPage =
-    location.pathname === redirectTo || location.pathname === '/login';
+  const isLoginPage = location.pathname === redirectTo || location.pathname === '/login';
   const isRoleSelectionPage = location.pathname === roleSelectionPath;
 
   // Redirect unauthenticated users
@@ -398,9 +388,7 @@ export function ProtectedRoute({
 
   // Dual-role users without selection must select a role first
   if (needsRoleSelection && !isRoleSelectionPage) {
-    return (
-      <Navigate to={roleSelectionPath} state={{ from: location }} replace />
-    );
+    return <Navigate to={roleSelectionPath} state={{ from: location }} replace />;
   }
 
   // Check access
@@ -424,11 +412,7 @@ export function ProtectedRoute({
           textAlign: 'center',
         }}
       >
-        <Heading
-          level={1}
-          data-size="lg"
-          style={{ color: 'var(--ds-color-danger-text-default)' }}
-        >
+        <Heading level={1} data-size="lg" style={{ color: 'var(--ds-color-danger-text-default)' }}>
           {labels.noAccess}
         </Heading>
         <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
@@ -439,11 +423,7 @@ export function ProtectedRoute({
   }
 
   // Context validation: redirect if wrong context
-  if (
-    requiredContext &&
-    currentContext &&
-    currentContext !== requiredContext
-  ) {
+  if (requiredContext && currentContext && currentContext !== requiredContext) {
     const home = typeof homeRoute === 'function' ? homeRoute() : homeRoute;
     return <Navigate to={home} replace />;
   }

@@ -52,7 +52,13 @@ export interface RatingDisplayProps {
 function StarIcon({ filled = false, half = false }: { filled?: boolean; half?: boolean }) {
   if (half) {
     return (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <linearGradient id="halfGrad">
             <stop offset="50%" stopColor="currentColor" />
@@ -71,7 +77,16 @@ function StarIcon({ filled = false, half = false }: { filled?: boolean; half?: b
     );
   }
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill={filled ? 'currentColor' : 'none'}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   );
@@ -214,10 +229,14 @@ export function Rating({
               backgroundColor: 'transparent',
               borderWidth: '0',
               cursor: readonly || disabled ? 'default' : 'pointer',
-              color: displayValue >= index + 0.5 ? activeColor : 'var(--ds-color-neutral-border-default)',
+              color:
+                displayValue >= index + 0.5
+                  ? activeColor
+                  : 'var(--ds-color-neutral-border-default)',
               opacity: disabled ? 0.5 : 1,
               transition: 'color 0.15s ease, transform 0.15s ease',
-              transform: hoverValue !== null && hoverValue >= index + 0.5 ? 'scale(1.1)' : 'scale(1)',
+              transform:
+                hoverValue !== null && hoverValue >= index + 0.5 ? 'scale(1.1)' : 'scale(1)',
             }}
           >
             <span style={{ width: styles.icon, height: styles.icon }}>{renderIcon(index)}</span>
@@ -287,7 +306,7 @@ export function RatingDisplay({
                 inset: 0,
                 overflow: 'hidden',
                 width: filled ? '100%' : `${fillPercent}%`,
-                color: 'var(--color-rating-star)',
+                color: 'var(--ds-color-warning-base-default)',
               }}
             >
               <StarIcon filled />

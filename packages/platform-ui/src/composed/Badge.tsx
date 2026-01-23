@@ -89,9 +89,21 @@ const variantStyles: Record<BadgeVariant, { bg: string; text: string; border: st
 };
 
 const sizeStyles: Record<BadgeSize, { padding: string; font: string; height: string }> = {
-  sm: { padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', font: 'var(--ds-font-size-xs)', height: 'var(--ds-sizing-5)' },
-  md: { padding: 'var(--ds-spacing-1) var(--ds-spacing-3)', font: 'var(--ds-font-size-sm)', height: 'var(--ds-sizing-6)' },
-  lg: { padding: 'var(--ds-spacing-2) var(--ds-spacing-4)', font: 'var(--ds-font-size-md)', height: 'var(--ds-sizing-8)' },
+  sm: {
+    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+    font: 'var(--ds-font-size-xs)',
+    height: 'var(--ds-sizing-5)',
+  },
+  md: {
+    padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
+    font: 'var(--ds-font-size-sm)',
+    height: 'var(--ds-sizing-6)',
+  },
+  lg: {
+    padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+    font: 'var(--ds-font-size-md)',
+    height: 'var(--ds-sizing-8)',
+  },
 };
 
 // =============================================================================
@@ -162,7 +174,14 @@ export function Badge({
 
 function XIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>

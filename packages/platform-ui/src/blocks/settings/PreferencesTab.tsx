@@ -27,13 +27,7 @@
  * }
  * ```
  */
-import {
-  Card,
-  Heading,
-  Paragraph,
-  Button,
-  Select,
-} from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Select } from '@digdir/designsystemet-react';
 import { Stack } from '../../primitives';
 import { FormField } from '../../composed';
 
@@ -114,7 +108,10 @@ export function PreferencesTab({
           </div>
 
           <FormField label={labels.preferredLanguage}>
-            <Select value={locale} onChange={(e) => onLocaleChange(e.target.value as 'nb' | 'nn' | 'en')}>
+            <Select
+              value={locale}
+              onChange={(e) => onLocaleChange(e.target.value as 'nb' | 'nn' | 'en')}
+            >
               <option value="nb">{labels.norwegianBokmal}</option>
               <option value="nn">{labels.norwegianNynorsk}</option>
               <option value="en">{labels.english}</option>
@@ -135,12 +132,17 @@ export function PreferencesTab({
             </Paragraph>
           </div>
 
-          <div style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-            borderRadius: 'var(--ds-border-radius-md)'
-          }}>
-            <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               {labels.themeComingSoon}
             </Paragraph>
           </div>
@@ -159,19 +161,31 @@ export function PreferencesTab({
             </Paragraph>
           </div>
 
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-            borderRadius: 'var(--ds-border-radius-md)'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
             <div>
-              <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+              >
                 {labels.logout}
               </Paragraph>
-              <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: 0,
+                  marginTop: 'var(--ds-spacing-1)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 {labels.logoutDescription}
               </Paragraph>
             </div>

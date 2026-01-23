@@ -48,7 +48,14 @@ export interface CollapsibleProps {
 
 function ChevronDownIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -114,7 +121,12 @@ function AccordionPanel({ item, isLast, variant }: AccordionPanelProps): React.R
   };
 
   return (
-    <div style={{ ...getBorderStyles(), backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+    <div
+      style={{
+        ...getBorderStyles(),
+        backgroundColor: 'var(--ds-color-neutral-background-default)',
+      }}
+    >
       <button
         type="button"
         onClick={handleToggle}
@@ -135,7 +147,9 @@ function AccordionPanel({ item, isLast, variant }: AccordionPanelProps): React.R
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
-          {item.icon && <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{item.icon}</span>}
+          {item.icon && (
+            <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{item.icon}</span>
+          )}
           <span
             style={{
               fontSize: 'var(--ds-font-size-md)',
@@ -232,7 +246,12 @@ export function Accordion({
     <AccordionContext.Provider value={{ expandedIds, toggle }}>
       <div className={className} style={{ ...getContainerStyles(), ...style }}>
         {items.map((item, index) => (
-          <AccordionPanel key={item.id} item={item} isLast={index === items.length - 1} variant={variant} />
+          <AccordionPanel
+            key={item.id}
+            item={item}
+            isLast={index === items.length - 1}
+            variant={variant}
+          />
         ))}
       </div>
     </AccordionContext.Provider>

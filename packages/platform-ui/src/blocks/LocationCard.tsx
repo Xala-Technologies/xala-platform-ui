@@ -92,9 +92,10 @@ export function LocationCard({
 
   // Generate Mapbox static image URL
   const mapStyle = isDark ? 'dark-v11' : 'streets-v12';
-  const mapUrl = hasCoordinates && mapboxToken
-    ? `https://api.mapbox.com/styles/v1/mapbox/${mapStyle}/static/pin-s+ef4444(${longitude},${latitude})/${longitude},${latitude},14/400x${mapHeight}@2x?access_token=${mapboxToken}`
-    : null;
+  const mapUrl =
+    hasCoordinates && mapboxToken
+      ? `https://api.mapbox.com/styles/v1/mapbox/${mapStyle}/static/pin-s+ef4444(${longitude},${latitude})/${longitude},${latitude},14/400x${mapHeight}@2x?access_token=${mapboxToken}`
+      : null;
 
   // Google Maps URL for larger map link
   const googleMapsUrl = hasCoordinates
@@ -120,10 +121,7 @@ export function LocationCard({
             padding: 'var(--ds-spacing-5) var(--ds-spacing-5) var(--ds-spacing-3)',
           }}
         >
-          <MapPinIcon
-            size={18}
-            style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-          />
+          <MapPinIcon size={18} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />
           <Heading
             level={3}
             data-size="xs"

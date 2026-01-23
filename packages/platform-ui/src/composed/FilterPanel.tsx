@@ -129,7 +129,16 @@ function getOperatorsForType(type: FilterFieldType) {
 
 function CloseIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -138,7 +147,16 @@ function CloseIcon() {
 
 function TrashIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="3 6 5 6 21 6" />
       <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
     </svg>
@@ -147,7 +165,16 @@ function TrashIcon() {
 
 function HashIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="4" y1="9" x2="20" y2="9" />
       <line x1="4" y1="15" x2="20" y2="15" />
       <line x1="10" y1="3" x2="8" y2="21" />
@@ -158,7 +185,16 @@ function HashIcon() {
 
 function TextIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="4 7 4 4 20 4 20 7" />
       <line x1="9" y1="20" x2="15" y2="20" />
       <line x1="12" y1="4" x2="12" y2="20" />
@@ -203,7 +239,12 @@ function LoadingIndicator({ text, duration }: { text?: string; duration?: string
           animation: 'pulse 1.5s ease-in-out infinite',
         }}
       />
-      <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-default)' }}>
+      <span
+        style={{
+          fontSize: 'var(--ds-font-size-sm)',
+          color: 'var(--ds-color-neutral-text-default)',
+        }}
+      >
         {text || 'Generating filter'}
       </span>
       {duration && (
@@ -296,14 +337,23 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
     >
       <div style={{ width: 'var(--ds-sizing-15)', flexShrink: 0 }}>
         {isFirst ? (
-          <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Where
           </span>
         ) : (
           <select
             value={condition.logic}
             onChange={(e) => onChange({ ...condition, logic: e.target.value as FilterLogic })}
-            style={{ ...selectStyle, width: 'var(--ds-sizing-15)', minWidth: 'var(--ds-sizing-15)' }}
+            style={{
+              ...selectStyle,
+              width: 'var(--ds-sizing-15)',
+              minWidth: 'var(--ds-sizing-15)',
+            }}
           >
             <option value="and">AND</option>
             <option value="or">OR</option>
@@ -311,9 +361,22 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
         )}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)', minWidth: 'var(--ds-sizing-30)' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--ds-spacing-1)',
+          minWidth: 'var(--ds-sizing-30)',
+        }}
+      >
         {field && (
-          <span style={{ color: 'var(--ds-color-neutral-text-subtle)', display: 'flex', alignItems: 'center' }}>
+          <span
+            style={{
+              color: 'var(--ds-color-neutral-text-subtle)',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
             {field.icon || getFieldIcon(field.type)}
           </span>
         )}
@@ -352,8 +415,8 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
         ))}
       </select>
 
-      {needsValue && (
-        field?.type === 'select' && field.options ? (
+      {needsValue &&
+        (field?.type === 'select' && field.options ? (
           <select
             value={condition.value}
             onChange={(e) => onChange({ ...condition, value: e.target.value })}
@@ -374,8 +437,7 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
             placeholder="Value..."
             style={inputStyle}
           />
-        )
-      )}
+        ))}
 
       <button
         type="button"
@@ -437,8 +499,12 @@ export function FilterPanel({
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node) && 
-          anchorRef?.current && !anchorRef.current.contains(e.target as Node)) {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        anchorRef?.current &&
+        !anchorRef.current.contains(e.target as Node)
+      ) {
         onClose();
       }
     };
@@ -523,7 +589,9 @@ export function FilterPanel({
           borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <span style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+        <span
+          style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)' }}
+        >
           {title}
         </span>
         <button
@@ -551,15 +619,41 @@ export function FilterPanel({
               gap: 'var(--ds-spacing-2)',
               paddingBottom: 'var(--ds-spacing-2)',
               borderBottomWidth: 'var(--ds-border-width-default)',
-          borderBottomStyle: 'solid',
-          borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
+              borderBottomStyle: 'solid',
+              borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}></span>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>Column</span>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>Operator</span>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>Values</span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            ></span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              Column
+            </span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              Operator
+            </span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              Values
+            </span>
             <span style={{ width: 'var(--ds-sizing-8)' }}></span>
           </div>
         )}
@@ -572,15 +666,41 @@ export function FilterPanel({
               gap: 'var(--ds-spacing-2)',
               paddingBottom: 'var(--ds-spacing-2)',
               borderBottomWidth: 'var(--ds-border-width-default)',
-          borderBottomStyle: 'solid',
-          borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
+              borderBottomStyle: 'solid',
+              borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}></span>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>Column</span>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>Operator</span>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>Values</span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            ></span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              Column
+            </span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              Operator
+            </span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              Values
+            </span>
             <span style={{ width: 'var(--ds-sizing-8)' }}></span>
           </div>
         )}
@@ -599,7 +719,14 @@ export function FilterPanel({
         </div>
 
         {conditions.length === 0 && (
-          <p style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)', textAlign: 'center', padding: 'var(--ds-spacing-4)' }}>
+          <p
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              textAlign: 'center',
+              padding: 'var(--ds-spacing-4)',
+            }}
+          >
             No filters added. Click below to add a filter.
           </p>
         )}

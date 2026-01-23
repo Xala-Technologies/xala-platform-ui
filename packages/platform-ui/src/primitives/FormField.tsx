@@ -29,27 +29,43 @@ export function FormField({
   className,
 }: FormFieldProps): React.ReactElement {
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}
+    >
       {label && (
         <Label style={{ fontWeight: 'var(--ds-font-weight-medium)' }}>
           {label}
-          {required && <span style={{ color: 'var(--ds-color-danger-text-default)', marginLeft: 'var(--ds-border-width-medium)' }}>*</span>}
+          {required && (
+            <span
+              style={{
+                color: 'var(--ds-color-danger-text-default)',
+                marginLeft: 'var(--ds-border-width-medium)',
+              }}
+            >
+              *
+            </span>
+          )}
         </Label>
       )}
       {description && (
-        <span style={{
-          fontSize: 'var(--ds-font-size-sm)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}>
+        <span
+          style={{
+            fontSize: 'var(--ds-font-size-sm)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           {description}
         </span>
       )}
       {children}
       {error && (
-        <span style={{
-          fontSize: 'var(--ds-font-size-sm)',
-          color: 'var(--ds-color-danger-text-default)',
-        }}>
+        <span
+          style={{
+            fontSize: 'var(--ds-font-size-sm)',
+            color: 'var(--ds-color-danger-text-default)',
+          }}
+        >
           {error}
         </span>
       )}

@@ -21,7 +21,11 @@
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useRef, useCallback } from 'react';
 import { Button, Paragraph } from '@digdir/designsystemet-react';
-import { HeaderSearch, type SearchResultItem, type SearchResultGroup } from '../composed/header-parts';
+import {
+  HeaderSearch,
+  type SearchResultItem,
+  type SearchResultGroup,
+} from '../composed/header-parts';
 import { HeaderThemeToggle } from '../composed/header-parts';
 import { NotificationBell } from '../blocks/NotificationBell';
 import { UserIcon, SettingsIcon, LogOutIcon } from '../primitives/icons';
@@ -177,7 +181,11 @@ function UserMenuDropdown({
 }: UserMenuDropdownProps) {
   const menuItems = [
     onProfileClick && { label: 'Profil', icon: <UserIcon size={18} />, onClick: onProfileClick },
-    onSettingsClick && { label: 'Innstillinger', icon: <SettingsIcon size={18} />, onClick: onSettingsClick },
+    onSettingsClick && {
+      label: 'Innstillinger',
+      icon: <SettingsIcon size={18} />,
+      onClick: onSettingsClick,
+    },
     onLogout && { label: 'Logg ut', icon: <LogOutIcon size={18} />, onClick: onLogout },
   ].filter(Boolean) as Array<{ label: string; icon: React.ReactNode; onClick: () => void }>;
 
@@ -204,10 +212,20 @@ function UserMenuDropdown({
           borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <div style={{ fontWeight: 'var(--ds-font-weight-semibold)', marginBottom: 'var(--ds-spacing-1)' }}>
+        <div
+          style={{
+            fontWeight: 'var(--ds-font-weight-semibold)',
+            marginBottom: 'var(--ds-spacing-1)',
+          }}
+        >
           {user.name}
         </div>
-        <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <div
+          style={{
+            fontSize: 'var(--ds-font-size-sm)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           {user.email}
         </div>
       </div>
@@ -322,12 +340,15 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
       }
     }, [isUserMenuOpen]);
 
-    const handleSearchChange = useCallback((value: string) => {
-      if (searchValue === undefined) {
-        setInternalSearchValue(value);
-      }
-      onSearchChange?.(value);
-    }, [searchValue, onSearchChange]);
+    const handleSearchChange = useCallback(
+      (value: string) => {
+        if (searchValue === undefined) {
+          setInternalSearchValue(value);
+        }
+        onSearchChange?.(value);
+      },
+      [searchValue, onSearchChange]
+    );
 
     return (
       <>
@@ -373,16 +394,24 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
             }}
           >
             {/* Left zone - Logo/AccountSwitcher */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', flexShrink: 0, zIndex: 1 }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                flexShrink: 0,
+                zIndex: 1,
+              }}
+            >
               {isMobile && logo}
               {!isMobile && leftSlot}
             </div>
 
             {/* Center zone - Search (absolute center) */}
             {!isMobile && onSearchChange && (
-              <div 
-                className="ds-header-search-container" 
-                style={{ 
+              <div
+                className="ds-header-search-container"
+                style={{
                   position: 'absolute',
                   left: '50%',
                   transform: 'translateX(-50%)',
@@ -449,15 +478,17 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                     }}
                   >
                     <UserAvatar user={user} />
-                    <span style={{ 
-                      fontWeight: 'var(--ds-font-weight-medium)',
-                      fontSize: 'var(--ds-font-size-sm)',
-                      display: isMobile ? 'none' : 'inline',
-                    }}>
+                    <span
+                      style={{
+                        fontWeight: 'var(--ds-font-weight-medium)',
+                        fontSize: 'var(--ds-font-size-sm)',
+                        display: isMobile ? 'none' : 'inline',
+                      }}
+                    >
                       {user.name}
                     </span>
                   </Button>
-                  
+
                   {isUserMenuOpen && (
                     <UserMenuDropdown
                       user={user}

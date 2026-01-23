@@ -27,7 +27,16 @@ export interface AdditionalServicesListProps {
 // Service icons based on name
 function CateringIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
       <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
       <path d="M6 1v3" />
@@ -39,7 +48,16 @@ function CateringIcon({ size = 20 }: { size?: number }) {
 
 function ParkingIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
     </svg>
@@ -48,7 +66,16 @@ function ParkingIcon({ size = 20 }: { size?: number }) {
 
 function TechSupportIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
       <path d="M12 16v-4" />
       <path d="M12 8h.01" />
@@ -58,7 +85,16 @@ function TechSupportIcon({ size = 20 }: { size?: number }) {
 
 function DefaultServiceIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 2L2 7l10 5 10-5-10-5z" />
       <path d="M2 17l10 5 10-5" />
       <path d="M2 12l10 5 10-5" />
@@ -147,7 +183,7 @@ export function AdditionalServicesList({
           return (
             <div
               key={service.id}
-              className="service-card"
+              className="ds-service-card"
               onClick={() => handleClick(service)}
               role={isClickable ? 'button' : undefined}
               tabIndex={isClickable ? 0 : undefined}
@@ -208,9 +244,7 @@ export function AdditionalServicesList({
                     ? 'var(--ds-color-accent-base-default)'
                     : 'var(--ds-color-neutral-surface-default)',
                   borderRadius: 'var(--ds-border-radius-md)',
-                  color: isSelected
-                    ? 'white'
-                    : 'var(--ds-color-accent-base-default)',
+                  color: isSelected ? 'white' : 'var(--ds-color-accent-base-default)',
                   flexShrink: 0,
                   transition: 'all 0.2s ease',
                 }}
@@ -302,7 +336,16 @@ export function AdditionalServicesList({
                 }}
               >
                 {isSelected && (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 )}

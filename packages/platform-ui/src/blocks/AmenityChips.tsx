@@ -100,7 +100,7 @@ export function AmenityChips({
   const labels = { ...DEFAULT_LABELS, ...customLabels };
 
   // Filter to available amenities if availability is specified
-  const availableAmenities = amenities.filter(a => a.available !== false);
+  const availableAmenities = amenities.filter((a) => a.available !== false);
 
   // Determine visible and hidden amenities
   const visibleAmenities = availableAmenities.slice(0, maxVisible);
@@ -126,7 +126,9 @@ export function AmenityChips({
       {visibleAmenities.map((amenity) => (
         <Chip.Button key={amenity.id} data-size={size}>
           {showIcons && amenity.icon && (
-            <span style={{ marginRight: 'var(--ds-spacing-1)', display: 'flex', alignItems: 'center' }}>
+            <span
+              style={{ marginRight: 'var(--ds-spacing-1)', display: 'flex', alignItems: 'center' }}
+            >
               {amenity.icon}
             </span>
           )}
@@ -134,11 +136,7 @@ export function AmenityChips({
         </Chip.Button>
       ))}
 
-      {hiddenCount > 0 && (
-        <Chip.Button data-size={size}>
-          {moreText}
-        </Chip.Button>
-      )}
+      {hiddenCount > 0 && <Chip.Button data-size={size}>{moreText}</Chip.Button>}
     </div>
   );
 }

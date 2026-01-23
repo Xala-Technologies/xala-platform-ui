@@ -1,6 +1,6 @@
 /**
  * EmptyState Component
- * 
+ *
  * Generic empty state component consolidating DrawerEmptyState, TabEmptyState, and inline patterns
  * Used when there's no data to display
  */
@@ -126,19 +126,23 @@ export function EmptyState({
           {icon}
         </div>
       )}
-      
+
       <Paragraph
         style={{
           fontSize: sizeStyle.titleSize,
           fontWeight: 'var(--ds-font-weight-semibold)',
           color: variantStyle.titleColor,
-          marginBottom: description ? 'var(--ds-spacing-2)' : action || secondaryAction ? 'var(--ds-spacing-4)' : '0',
+          marginBottom: description
+            ? 'var(--ds-spacing-2)'
+            : action || secondaryAction
+              ? 'var(--ds-spacing-4)'
+              : '0',
           marginTop: 0,
         }}
       >
         {title}
       </Paragraph>
-      
+
       {description && (
         <Paragraph
           style={{
@@ -151,7 +155,7 @@ export function EmptyState({
           {description}
         </Paragraph>
       )}
-      
+
       {(action || secondaryAction) && (
         <div
           style={{

@@ -51,11 +51,7 @@ export type {
 } from './ConfirmationView';
 
 export { SuccessView } from './SuccessView';
-export type {
-  SuccessViewProps,
-  SuccessDetail,
-  SuccessAction,
-} from './SuccessView';
+export type { SuccessViewProps, SuccessDetail, SuccessAction } from './SuccessView';
 
 // Form Wizard Modal
 export { FormWizardModal } from './FormWizardModal';

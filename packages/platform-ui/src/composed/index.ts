@@ -1,6 +1,6 @@
 /**
  * Composed Components
- * 
+ *
  * Higher-level components built from primitives
  */
 
@@ -25,7 +25,7 @@ export {
   HeaderIconButton,
   HeaderThemeToggle,
   HeaderLanguageSwitch,
-  HeaderLoginButton
+  HeaderLoginButton,
 } from './header-parts';
 export type {
   HeaderLogoProps,
@@ -36,7 +36,7 @@ export type {
   HeaderLanguageSwitchProps,
   HeaderLoginButtonProps,
   SearchResultItem,
-  SearchResultGroup
+  SearchResultGroup,
 } from './header-parts';
 
 // Navigation
@@ -60,7 +60,7 @@ export type {
   AmenitiesFilter,
   DateTimeFilter,
   FilterState,
-  FilterConfig
+  FilterConfig,
 } from '../types/filters';
 export { mockFilterData } from '../types/filters';
 
@@ -72,7 +72,7 @@ export type {
   DrawerSize,
   DrawerSectionProps,
   DrawerItemProps,
-  DrawerEmptyStateProps
+  DrawerEmptyStateProps,
 } from './Drawer';
 
 // Breadcrumb
@@ -83,20 +83,16 @@ export type { BreadcrumbProps } from './Breadcrumb';
 export { ResourceRequestStepper } from './ResourceRequestStepper';
 export type { ResourceRequestStepperProps } from './ResourceRequestStepper';
 export { WizardStepper } from './WizardStepper';
-export type { WizardStepperProps, WizardStep, WizardStepState, WizardStepperLabels } from './WizardStepper';
+export type {
+  WizardStepperProps,
+  WizardStep,
+  WizardStepState,
+  WizardStepperLabels,
+} from './WizardStepper';
 
 // Dialogs
-export {
-  ConfirmDialog,
-  AlertDialog,
-  DialogProvider,
-  useDialog
-} from './dialogs';
-export type {
-  ConfirmDialogProps,
-  AlertDialogProps,
-  DialogVariant
-} from './dialogs';
+export { ConfirmDialog, AlertDialog, DialogProvider, useDialog } from './dialogs';
+export type { ConfirmDialogProps, AlertDialogProps, DialogVariant } from './dialogs';
 
 // Mobile Navigation
 export { MobileNav, MobileNavToggle } from './mobile-nav';
@@ -104,14 +100,11 @@ export type {
   MobileNavProps,
   MobileNavToggleProps,
   MobileNavItem,
-  MobileNavSection
+  MobileNavSection,
 } from './mobile-nav';
 
 export { BottomNavigation } from './bottom-navigation';
-export type {
-  BottomNavigationProps,
-  BottomNavigationItem
-} from './bottom-navigation';
+export type { BottomNavigationProps, BottomNavigationItem } from './bottom-navigation';
 
 // Language Switcher
 export { LanguageSwitcher, ConnectedLanguageSwitcher } from './LanguageSwitcher';
@@ -120,7 +113,7 @@ export type {
   LanguageSwitcherVariant,
   LanguageSwitcherSize,
   LocaleLabels,
-  ConnectedLanguageSwitcherProps
+  ConnectedLanguageSwitcherProps,
 } from './LanguageSwitcher';
 
 // ResourceCalendar (XALA-compliant shared calendar)
@@ -137,28 +130,18 @@ export type {
 
 // Demo Login Dialog
 export { DemoLoginDialog } from './DemoLoginDialog';
-export type {
-  DemoLoginDialogProps,
-  DemoLoginFormData
-} from './DemoLoginDialog';
+export type { DemoLoginDialogProps, DemoLoginFormData } from './DemoLoginDialog';
 
 // Demo Role Switcher (one-click demo login by role)
 export { DemoRoleSwitcher } from './DemoRoleSwitcher';
-export type {
-  DemoRoleSwitcherProps,
-  DemoRoleKey,
-  DemoRoleOption
-} from './DemoRoleSwitcher';
+export type { DemoRoleSwitcherProps, DemoRoleKey, DemoRoleOption } from './DemoRoleSwitcher';
 
 // Global Search
 export { GlobalSearch } from './GlobalSearch';
 
 // Protected Route
 export { ProtectedRoute } from './ProtectedRoute';
-export type {
-  ProtectedRouteProps,
-  ProtectedRouteLoginState,
-} from './ProtectedRoute';
+export type { ProtectedRouteProps, ProtectedRouteLoginState } from './ProtectedRoute';
 
 // Data Page Components
 export {
@@ -190,19 +173,15 @@ export type {
 
 // DataTable Components
 export { DataTable } from './DataTable';
-export type {
-  DataTableProps,
-  ColumnDef,
-  SortDirection,
-} from './DataTable';
+export type { DataTableProps, ColumnDef, SortDirection } from './DataTable';
 
 // TableFilter Component
 export { TableFilter } from './TableFilter';
+export type { TableFilterProps, FilterValues } from './TableFilter';
 export type {
-  TableFilterProps,
-  FilterValues,
+  FilterConfig as TableFilterDef,
+  FilterOption as TableFilterOption,
 } from './TableFilter';
-export type { FilterConfig as TableFilterDef, FilterOption as TableFilterOption } from './TableFilter';
 
 // UserMenu Component
 export { UserMenu } from './UserMenu';
@@ -221,7 +200,11 @@ export {
 // DashboardHeader moved to shells/ (uses blocks-level components)
 
 export { DashboardPageHeader } from './DashboardPageHeader';
-export type { DashboardPageHeaderProps, PageHeaderMetaItem, PageHeaderTab } from './DashboardPageHeader';
+export type {
+  DashboardPageHeaderProps,
+  PageHeaderMetaItem,
+  PageHeaderTab,
+} from './DashboardPageHeader';
 
 // Toast Notifications
 export { ToastProvider, useToast } from './Toast';
@@ -289,15 +272,15 @@ export type {
 
 // Stat Card (dashboard statistics)
 export { StatCard, StatCardGrid } from './StatCard';
-export type {
-  StatCardProps,
-  StatCardGridProps,
-  StatTrend,
-  StatVariant,
-} from './StatCard';
+export type { StatCardProps, StatCardGridProps, StatTrend, StatVariant } from './StatCard';
 
 // Section Card (page sections)
-export { SectionCard, SectionCardHeader, SectionCardContent, SectionCardFooter } from './SectionCard';
+export {
+  SectionCard,
+  SectionCardHeader,
+  SectionCardContent,
+  SectionCardFooter,
+} from './SectionCard';
 export type {
   SectionCardProps,
   SectionCardHeaderProps,
@@ -321,11 +304,11 @@ export type {
 } from './AccessibilityStatement';
 
 // Page Shell Components (List, Detail, Form page layouts)
-export { 
-  PageHeader as ShellPageHeader, 
-  ListPageShell, 
-  DetailPageShell, 
-  FormPageShell 
+export {
+  PageHeader as ShellPageHeader,
+  ListPageShell,
+  DetailPageShell,
+  FormPageShell,
 } from './PageShell';
 export type {
   PageHeaderProps as ShellPageHeaderProps,
@@ -339,13 +322,7 @@ export { StatusBanner } from './StatusBanner';
 export type { StatusBannerProps, StatusBannerVariant } from './StatusBanner';
 
 // Detail Field Components (labeled data display)
-export {
-  DetailField,
-  DetailFieldGroup,
-  DetailCard,
-  MonoField,
-  LinkField,
-} from './DetailField';
+export { DetailField, DetailFieldGroup, DetailCard, MonoField, LinkField } from './DetailField';
 export type {
   DetailFieldProps,
   DetailFieldGroupProps,
@@ -380,11 +357,7 @@ export {
   createDeleteAction,
   createDuplicateAction,
 } from './TableRowActions';
-export type {
-  TableRowActionsProps,
-  RowAction,
-  ActionVariant,
-} from './TableRowActions';
+export type { TableRowActionsProps, RowAction, ActionVariant } from './TableRowActions';
 
 // Rich Text Editor
 export { RichTextEditor } from './RichTextEditor';
@@ -409,10 +382,10 @@ export type {
 } from './TemplateCanvas';
 
 // Confirm Dialog & Action Dialog (Rich version with async support)
-export { 
-  ConfirmDialog as RichConfirmDialog, 
-  ActionDialog, 
-  useConfirmDialog 
+export {
+  ConfirmDialog as RichConfirmDialog,
+  ActionDialog,
+  useConfirmDialog,
 } from './ConfirmDialog';
 export type {
   ConfirmDialogProps as RichConfirmDialogProps,
@@ -422,17 +395,8 @@ export type {
 } from './ConfirmDialog';
 
 // Stepper & Wizard (Multi-step form navigation)
-export { 
-  Stepper, 
-  Wizard as FormWizard, 
-  useWizard 
-} from './Stepper';
-export type {
-  StepperProps,
-  WizardProps as FormWizardProps,
-  Step,
-  StepStatus,
-} from './Stepper';
+export { Stepper, Wizard as FormWizard, useWizard } from './Stepper';
+export type { StepperProps, WizardProps as FormWizardProps, Step, StepStatus } from './Stepper';
 
 // Stats Grid & Mini Stats
 export { StatsGrid, StatCardEnhanced, MiniStat } from './StatsGrid';
@@ -455,11 +419,7 @@ export type {
 
 // Date Range Picker
 export { DateRangePicker } from './DateRangePicker';
-export type {
-  DateRangePickerProps,
-  DateRange,
-  DatePreset,
-} from './DateRangePicker';
+export type { DateRangePickerProps, DateRange, DatePreset } from './DateRangePicker';
 
 // Searchable Select / Combobox
 export { SearchableSelect } from './SearchableSelect';
@@ -469,11 +429,11 @@ export type {
 } from './SearchableSelect';
 
 // Rich Notification Toast (with queue management)
-export { 
-  ToastProvider as RichToastProvider, 
-  useToast as useRichToast, 
-  toast as richToast, 
-  setGlobalToastHandler 
+export {
+  ToastProvider as RichToastProvider,
+  useToast as useRichToast,
+  toast as richToast,
+  setGlobalToastHandler,
 } from './NotificationToast';
 export type {
   ToastProviderProps as RichToastProviderProps,
@@ -487,18 +447,11 @@ export type {
 // Breadcrumbs - Custom implementation with context
 // Note: Base Breadcrumbs component is exported from primitives
 export { useBreadcrumbs } from './Breadcrumbs';
-export type {
-  BreadcrumbsProps,
-  BreadcrumbItem,
-} from './Breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbItem } from './Breadcrumbs';
 
 // Command Palette (Cmd+K)
 export { CommandPalette, useCommandPalette } from './CommandPalette';
-export type {
-  CommandPaletteProps,
-  CommandItem,
-  CommandGroup,
-} from './CommandPalette';
+export type { CommandPaletteProps, CommandItem, CommandGroup } from './CommandPalette';
 
 // Form Layout Components
 export { FormSection, FormActions, FormRow, FormField, FormDivider } from './FormLayout';
@@ -511,10 +464,7 @@ export type {
 } from './FormLayout';
 
 // Avatar Group (Rich version with status indicators)
-export { 
-  AvatarItem as RichAvatarItem, 
-  AvatarGroup as RichAvatarGroup 
-} from './AvatarGroup';
+export { AvatarItem as RichAvatarItem, AvatarGroup as RichAvatarGroup } from './AvatarGroup';
 export type {
   AvatarItemProps as RichAvatarItemProps,
   AvatarGroupProps as RichAvatarGroupProps,
@@ -565,11 +515,7 @@ export type {
 
 // Accordion & Collapsible
 export { Accordion, Collapsible } from './Accordion';
-export type {
-  AccordionProps,
-  AccordionItem,
-  CollapsibleProps,
-} from './Accordion';
+export type { AccordionProps, AccordionItem, CollapsibleProps } from './Accordion';
 
 // KeyValue Display
 export { KeyValue, KeyValueList, DefinitionList } from './KeyValue';
@@ -582,44 +528,26 @@ export type {
 
 // Slider & RangeSlider
 export { Slider, RangeSlider } from './Slider';
-export type {
-  SliderProps,
-  RangeSliderProps,
-  SliderMark,
-} from './Slider';
+export type { SliderProps, RangeSliderProps, SliderMark } from './Slider';
 
 // Rating
 export { Rating, RatingDisplay } from './Rating';
-export type {
-  RatingProps,
-  RatingDisplayProps,
-} from './Rating';
+export type { RatingProps, RatingDisplayProps } from './Rating';
 
 // ColorPicker removed - themes are created via https://designsystemet.no/en/fundamentals/start-here/own-theme/
 // Note: ColorPicker component was removed
 
 // SortableList
 export { SortableList } from './SortableList';
-export type {
-  SortableListProps,
-  SortableItem,
-} from './SortableList';
+export type { SortableListProps, SortableItem } from './SortableList';
 
 // ActionMenu & ContextMenu
 export { ActionMenu, ContextMenu } from './ActionMenu';
-export type {
-  ActionMenuProps,
-  ContextMenuProps,
-  MenuItem,
-  MenuGroup,
-} from './ActionMenu';
+export type { ActionMenuProps, ContextMenuProps, MenuItem, MenuGroup } from './ActionMenu';
 
 // InfiniteScroll & VirtualList
 export { InfiniteScroll, VirtualList, useInfiniteScroll } from './InfiniteScroll';
-export type {
-  InfiniteScrollProps,
-  VirtualListProps,
-} from './InfiniteScroll';
+export type { InfiniteScrollProps, VirtualListProps } from './InfiniteScroll';
 
 // Spotlight & HighlightText
 export { HighlightText, Spotlight, SearchHighlight, TextTruncate } from './Spotlight';
@@ -632,22 +560,13 @@ export type {
 
 // NumberInput
 export { NumberInput } from './NumberInput';
-export type {
-  NumberInputProps,
-} from './NumberInput';
+export type { NumberInputProps } from './NumberInput';
 
 // CodeBlock & CopyButton
 export { CopyButton, CodeBlock, InlineCode } from './CodeBlock';
-export type {
-  CopyButtonProps,
-  CodeBlockProps,
-  InlineCodeProps,
-} from './CodeBlock';
+export type { CopyButtonProps, CodeBlockProps, InlineCodeProps } from './CodeBlock';
 
 // SimpleTabs & TabItem (convenience wrapper for Designsystemet Tabs)
 // Exports Tabs which supports both simple TabItem API and Designsystemet compound pattern
 export { SimpleTabs, TabItem, Tabs } from './SimpleTabs';
-export type {
-  SimpleTabsProps,
-  TabItemProps,
-} from './SimpleTabs';
+export type { SimpleTabsProps, TabItemProps } from './SimpleTabs';

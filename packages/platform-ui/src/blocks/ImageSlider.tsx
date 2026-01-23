@@ -71,12 +71,15 @@ export function ImageSlider({
   // Minimum swipe distance
   const minSwipeDistance = 50;
 
-  const goToSlide = React.useCallback((index: number) => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-    setTimeout(() => setIsTransitioning(false), 400);
-  }, [isTransitioning]);
+  const goToSlide = React.useCallback(
+    (index: number) => {
+      if (isTransitioning) return;
+      setIsTransitioning(true);
+      setCurrentIndex(index);
+      setTimeout(() => setIsTransitioning(false), 400);
+    },
+    [isTransitioning]
+  );
 
   const goToPrevious = React.useCallback(() => {
     const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
@@ -150,7 +153,7 @@ export function ImageSlider({
   if (!images.length) {
     return (
       <div
-        className={cn('image-slider', className)}
+        className={cn('ds-image-slider', className)}
         style={{
           height: typeof height === 'number' ? `${height}px` : height,
           backgroundColor: 'var(--ds-color-neutral-surface-hover)',
@@ -172,7 +175,7 @@ export function ImageSlider({
       {/* Main slider */}
       <div
         ref={sliderRef}
-        className="image-slider-main"
+        className="ds-image-slider-main"
         style={{
           position: 'relative',
           height: typeof height === 'number' ? `${height}px` : height,
@@ -187,7 +190,7 @@ export function ImageSlider({
       >
         {/* Slides container */}
         <div
-          className="image-slider-track"
+          className="ds-image-slider-track"
           style={{
             display: 'flex',
             height: '100%',
@@ -198,7 +201,7 @@ export function ImageSlider({
           {images.map((image, index) => (
             <div
               key={image.id}
-              className="image-slider-slide"
+              className="ds-image-slider-slide"
               style={{
                 minWidth: '100%',
                 height: '100%',
@@ -229,7 +232,8 @@ export function ImageSlider({
                 left: 0,
                 width: '120px',
                 height: '100%',
-                background: 'linear-gradient(to right, var(--ds-color-neutral-background-overlay), transparent)',
+                background:
+                  'linear-gradient(to right, var(--ds-color-neutral-background-overlay), transparent)',
                 pointerEvents: 'none',
               }}
             />
@@ -240,7 +244,8 @@ export function ImageSlider({
                 right: 0,
                 width: '120px',
                 height: '100%',
-                background: 'linear-gradient(to left, var(--ds-color-neutral-background-overlay), transparent)',
+                background:
+                  'linear-gradient(to left, var(--ds-color-neutral-background-overlay), transparent)',
                 pointerEvents: 'none',
               }}
             />
@@ -252,9 +257,12 @@ export function ImageSlider({
           <>
             <button
               type="button"
-              onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
               aria-label="Forrige bilde"
-              className="image-slider-nav-btn image-slider-nav-prev"
+              className="ds-image-slider-nav-btn ds-image-slider-nav-prev"
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -274,13 +282,19 @@ export function ImageSlider({
                 zIndex: 10,
               }}
             >
-              <ChevronLeftIcon size={24} style={{ color: 'var(--ds-color-neutral-text-default)' }} />
+              <ChevronLeftIcon
+                size={24}
+                style={{ color: 'var(--ds-color-neutral-text-default)' }}
+              />
             </button>
             <button
               type="button"
-              onClick={(e) => { e.stopPropagation(); goToNext(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
               aria-label="Neste bilde"
-              className="image-slider-nav-btn image-slider-nav-next"
+              className="ds-image-slider-nav-btn ds-image-slider-nav-next"
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -300,7 +314,10 @@ export function ImageSlider({
                 zIndex: 10,
               }}
             >
-              <ChevronRightIcon size={24} style={{ color: 'var(--ds-color-neutral-text-default)' }} />
+              <ChevronRightIcon
+                size={24}
+                style={{ color: 'var(--ds-color-neutral-text-default)' }}
+              />
             </button>
           </>
         )}
@@ -343,16 +360,20 @@ export function ImageSlider({
               <button
                 key={index}
                 type="button"
-                onClick={(e) => { e.stopPropagation(); goToSlide(index); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToSlide(index);
+                }}
                 aria-label={`Gå til bilde ${index + 1}`}
-                className={`image-slider-dot ${index === currentIndex ? 'active' : ''}`}
+                className={`ds-image-slider-dot ${index === currentIndex ? 'active' : ''}`}
                 style={{
                   width: index === currentIndex ? '24px' : 'var(--ds-spacing-2)',
                   height: 'var(--ds-spacing-2)',
                   borderRadius: 'var(--ds-border-radius-full)',
-                  backgroundColor: index === currentIndex
-                    ? 'var(--ds-color-neutral-text-on-inverted)'
-                    : 'var(--ds-color-neutral-border-subtle)',
+                  backgroundColor:
+                    index === currentIndex
+                      ? 'var(--ds-color-neutral-text-on-inverted)'
+                      : 'var(--ds-color-neutral-border-subtle)',
                   border: 'none',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
@@ -367,7 +388,7 @@ export function ImageSlider({
       {/* Thumbnail strip */}
       {showThumbnails && images.length > 1 && (
         <div
-          className="image-slider-thumbnails"
+          className="ds-image-slider-thumbnails"
           style={{
             display: 'flex',
             gap: 'var(--ds-spacing-2)',
@@ -390,9 +411,10 @@ export function ImageSlider({
                 height: '60px',
                 borderRadius: 'var(--ds-border-radius-md)',
                 overflow: 'hidden',
-                border: index === currentIndex
-                  ? '3px solid var(--ds-color-accent-base-default)'
-                  : '3px solid transparent',
+                border:
+                  index === currentIndex
+                    ? '3px solid var(--ds-color-accent-base-default)'
+                    : '3px solid transparent',
                 cursor: 'pointer',
                 opacity: index === currentIndex ? 1 : 0.6,
                 transition: 'all 0.2s ease',
@@ -431,14 +453,12 @@ export function ImageSlider({
 
   return (
     <>
-      <div className={cn('image-slider', className)}>
-        {sliderContent}
-      </div>
+      <div className={cn('ds-image-slider', className)}>{sliderContent}</div>
 
       {/* Fullscreen modal */}
       {isFullscreen && (
         <div
-          className="image-slider-fullscreen"
+          className="ds-image-slider-fullscreen"
           style={{
             position: 'fixed',
             top: 0,
@@ -460,7 +480,7 @@ export function ImageSlider({
             type="button"
             onClick={() => setIsFullscreen(false)}
             aria-label="Lukk fullskjerm"
-            className="image-slider-fullscreen-close"
+            className="ds-image-slider-fullscreen-close"
             style={{
               position: 'absolute',
               top: 'var(--ds-spacing-4)',
@@ -511,7 +531,7 @@ export function ImageSlider({
           to { opacity: 1; }
         }
 
-        .image-slider-thumbnails::-webkit-scrollbar {
+        .ds-image-slider-thumbnails::-webkit-scrollbar {
           display: none;
         }
       `}</style>

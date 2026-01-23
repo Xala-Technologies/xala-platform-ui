@@ -5,9 +5,9 @@ import { Textfield, Tag, Heading } from '../../index';
 
 /**
  * Textfield component from Digdir Designsystemet.
- * 
+ *
  * Textfield allows users to enter free text or numbers.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/textfield/overview
  */
 const meta: Meta<typeof Textfield> = {
@@ -216,9 +216,7 @@ type Story = StoryObj;
  * - Value updates correctly
  */
 export const Default: Story = {
-  render: () => (
-    <Textfield label="Name" placeholder="Enter your name" />
-  ),
+  render: () => <Textfield label="Name" placeholder="Enter your name" />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -241,8 +239,8 @@ export const Default: Story = {
  */
 export const WithDescription: Story = {
   render: () => (
-    <Textfield 
-      label="Email" 
+    <Textfield
+      label="Email"
       description="We will never share your email with anyone"
       placeholder="name@example.com"
       type="email"
@@ -255,8 +253,8 @@ export const WithDescription: Story = {
  */
 export const WithError: Story = {
   render: () => (
-    <Textfield 
-      label="Email" 
+    <Textfield
+      label="Email"
       error="Please enter a valid email address"
       defaultValue="invalid-email"
       type="email"
@@ -268,39 +266,21 @@ export const WithError: Story = {
  * Disabled input
  */
 export const Disabled: Story = {
-  render: () => (
-    <Textfield 
-      label="Username" 
-      defaultValue="john_doe"
-      disabled
-    />
-  ),
+  render: () => <Textfield label="Username" defaultValue="john_doe" disabled />,
 };
 
 /**
  * Read-only input
  */
 export const ReadOnly: Story = {
-  render: () => (
-    <Textfield 
-      label="Account ID" 
-      defaultValue="ACC-12345-XYZ"
-      readOnly
-    />
-  ),
+  render: () => <Textfield label="Account ID" defaultValue="ACC-12345-XYZ" readOnly />,
 };
 
 /**
  * Password input
  */
 export const Password: Story = {
-  render: () => (
-    <Textfield 
-      label="Password" 
-      type="password"
-      placeholder="Enter your password"
-    />
-  ),
+  render: () => <Textfield label="Password" type="password" placeholder="Enter your password" />,
 };
 
 /**
@@ -308,12 +288,7 @@ export const Password: Story = {
  */
 export const Multiline: Story = {
   render: () => (
-    <Textfield 
-      label="Comments" 
-      multiline 
-      rows={4}
-      placeholder="Enter your comments here..."
-    />
+    <Textfield label="Comments" multiline rows={4} placeholder="Enter your comments here..." />
   ),
 };
 
@@ -323,21 +298,9 @@ export const Multiline: Story = {
 export const WithPrefixSuffix: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Textfield 
-        prefix="GBP" 
-        suffix="per month" 
-        label="How much does it cost per month?" 
-      />
-      <Textfield 
-        prefix="$" 
-        label="Price" 
-        type="number"
-      />
-      <Textfield 
-        suffix="kg" 
-        label="Weight" 
-        type="number"
-      />
+      <Textfield prefix="GBP" suffix="per month" label="How much does it cost per month?" />
+      <Textfield prefix="$" label="Price" type="number" />
+      <Textfield suffix="kg" label="Weight" type="number" />
     </div>
   ),
 };
@@ -347,11 +310,7 @@ export const WithPrefixSuffix: Story = {
  */
 export const WithCounter: Story = {
   render: () => (
-    <Textfield 
-      counter={50} 
-      label="Short description" 
-      placeholder="Max 50 characters"
-    />
+    <Textfield counter={50} label="Short description" placeholder="Max 50 characters" />
   ),
 };
 
@@ -435,20 +394,19 @@ export const FormExample: Story = {
     };
 
     return (
-      <form style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', maxWidth: '400px' }}>
-        <Textfield 
-          label="First Name" 
-          placeholder="Enter first name" 
-          required
-        />
-        <Textfield 
-          label="Last Name" 
-          placeholder="Enter last name" 
-          required
-        />
-        <Textfield 
-          label="Email" 
-          type="email" 
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-4)',
+          maxWidth: '400px',
+        }}
+      >
+        <Textfield label="First Name" placeholder="Enter first name" required />
+        <Textfield label="Last Name" placeholder="Enter last name" required />
+        <Textfield
+          label="Email"
+          type="email"
           placeholder="name@example.com"
           value={email}
           onChange={(e) => {
@@ -458,9 +416,9 @@ export const FormExample: Story = {
           error={emailError}
           required
         />
-        <Textfield 
-          label="Phone" 
-          type="tel" 
+        <Textfield
+          label="Phone"
+          type="tel"
           placeholder="+47 XXX XX XXX"
           description="We'll only use this for order updates"
         />
@@ -476,16 +434,30 @@ export const BestPractices: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-success-text-default)' }}>Do: Always provide visible labels</Heading>
-        <Textfield 
-          label="Email address" 
-          type="email"
-          placeholder="name@example.com"
-        />
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-success-text-default)',
+          }}
+        >
+          Do: Always provide visible labels
+        </Heading>
+        <Textfield label="Email address" type="email" placeholder="name@example.com" />
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-success-text-default)' }}>Do: Use appropriate input types</Heading>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-success-text-default)',
+          }}
+        >
+          Do: Use appropriate input types
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Textfield label="Email" type="email" placeholder="name@example.com" />
           <Textfield label="Phone" type="tel" placeholder="+47 XXX XX XXX" />
@@ -493,9 +465,18 @@ export const BestPractices: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-success-text-default)' }}>Do: Provide clear error messages</Heading>
-        <Textfield 
-          label="Email" 
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-success-text-default)',
+          }}
+        >
+          Do: Provide clear error messages
+        </Heading>
+        <Textfield
+          label="Email"
           type="email"
           error="Please enter a valid email address (e.g., name@example.com)"
           defaultValue="invalid"
@@ -503,20 +484,37 @@ export const BestPractices: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-danger-text-default)' }}>Don't: Use placeholder as label</Heading>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-danger-text-default)',
+          }}
+        >
+          Don't: Use placeholder as label
+        </Heading>
         <div style={{ opacity: 0.6 }}>
-          <Textfield aria-label="Email address (bad example)" placeholder="Enter your email address" />
+          <Textfield
+            aria-label="Email address (bad example)"
+            placeholder="Enter your email address"
+          />
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-danger-text-default)' }}>Don't: Use generic error messages</Heading>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-danger-text-default)',
+          }}
+        >
+          Don't: Use generic error messages
+        </Heading>
         <div style={{ opacity: 0.6 }}>
-          <Textfield 
-            label="Email" 
-            error="Invalid input"
-            defaultValue="test"
-          />
+          <Textfield label="Email" error="Invalid input" defaultValue="test" />
         </div>
       </div>
     </div>
@@ -530,7 +528,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>States</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          States
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Textfield label="Default" placeholder="Enter text" />
           <Textfield label="With value" defaultValue="Some text" />
@@ -541,7 +541,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Sizes</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Sizes
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Textfield label="Small" data-size="sm" placeholder="Small" />
           <Textfield label="Medium" data-size="md" placeholder="Medium" />
@@ -550,7 +552,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Input Types</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Input Types
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Textfield label="Text" type="text" placeholder="General text" />
           <Textfield label="Email" type="email" placeholder="name@example.com" />
@@ -561,7 +565,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>With Affixes</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          With Affixes
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Textfield prefix="$" label="Price" type="number" />
           <Textfield suffix="kg" label="Weight" type="number" />
@@ -570,31 +576,32 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>With Description & Counter</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          With Description & Counter
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Textfield 
-            label="Username" 
+          <Textfield
+            label="Username"
             description="Choose a unique username"
             placeholder="johndoe"
           />
-          <Textfield 
-            label="Bio" 
-            counter={50}
-            maxLength={50}
-            placeholder="Short bio"
-          />
+          <Textfield label="Bio" counter={50} maxLength={50} placeholder="Short bio" />
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Required Fields</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Required Fields
+        </Heading>
         <Textfield
-          label={<>
-            Email address
-            <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-              Required
-            </Tag>
-          </>}
+          label={
+            <>
+              Email address
+              <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
+                Required
+              </Tag>
+            </>
+          }
           type="email"
           required
         />

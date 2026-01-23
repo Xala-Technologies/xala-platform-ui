@@ -33,7 +33,7 @@ type Story = StoryObj;
 
 /**
  * Example 1: Color Contexts
- * 
+ *
  * Different color contexts for different purposes
  */
 export const ColorContexts: Story = {
@@ -44,57 +44,93 @@ export const ColorContexts: Story = {
       </Heading>
 
       {/* Accent */}
-      <div data-color="accent" style={{ 
-        padding: 'var(--ds-spacing-6)',
-        backgroundColor: 'var(--ds-color-accent-surface-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-        border: '1px solid var(--ds-color-accent-border-default)',
-      }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-accent-text-default)',
-          marginBottom: 'var(--ds-spacing-3)',
-        }}>
+      <div
+        data-color="accent"
+        style={{
+          padding: 'var(--ds-spacing-6)',
+          backgroundColor: 'var(--ds-color-accent-surface-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+          border: '1px solid var(--ds-color-accent-border-default)',
+        }}
+      >
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-accent-text-default)',
+            marginBottom: 'var(--ds-spacing-3)',
+          }}
+        >
           Accent Context
         </Heading>
-        <Paragraph style={{ color: 'var(--ds-color-accent-text-default)', marginBottom: 'var(--ds-spacing-4)' }}>
+        <Paragraph
+          style={{
+            color: 'var(--ds-color-accent-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           Primary brand actions and interactive elements
         </Paragraph>
         <Button data-variant="primary">Primary Action</Button>
       </div>
 
       {/* Success */}
-      <div data-color="success" style={{ 
-        padding: 'var(--ds-spacing-6)',
-        backgroundColor: 'var(--ds-color-success-surface-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-        border: '1px solid var(--ds-color-success-border-default)',
-      }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-3)',
-        }}>
+      <div
+        data-color="success"
+        style={{
+          padding: 'var(--ds-spacing-6)',
+          backgroundColor: 'var(--ds-color-success-surface-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+          border: '1px solid var(--ds-color-success-border-default)',
+        }}
+      >
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-3)',
+          }}
+        >
           Success Context
         </Heading>
-        <Paragraph style={{ color: 'var(--ds-color-success-text-default)', marginBottom: 'var(--ds-spacing-4)' }}>
+        <Paragraph
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           Positive feedback and successful operations
         </Paragraph>
         <Button data-variant="primary">Confirm</Button>
       </div>
 
       {/* Danger */}
-      <div data-color="danger" style={{ 
-        padding: 'var(--ds-spacing-6)',
-        backgroundColor: 'var(--ds-color-danger-surface-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-        border: '1px solid var(--ds-color-danger-border-default)',
-      }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-3)',
-        }}>
+      <div
+        data-color="danger"
+        style={{
+          padding: 'var(--ds-spacing-6)',
+          backgroundColor: 'var(--ds-color-danger-surface-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+          border: '1px solid var(--ds-color-danger-border-default)',
+        }}
+      >
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-3)',
+          }}
+        >
           Danger Context
         </Heading>
-        <Paragraph style={{ color: 'var(--ds-color-danger-text-default)', marginBottom: 'var(--ds-spacing-4)' }}>
+        <Paragraph
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           Destructive actions and error states
         </Paragraph>
         <Button data-variant="primary">Delete</Button>
@@ -105,7 +141,7 @@ export const ColorContexts: Story = {
 
 /**
  * Example 2: Size Modes
- * 
+ *
  * Three size scales for different use cases
  */
 export const SizeModes: Story = {
@@ -165,59 +201,79 @@ export const SizeModes: Story = {
 
 /**
  * Example 3: Theme Tokens in Use
- * 
+ *
  * How theme tokens work together
  */
 export const ThemeTokensInUse: Story = {
   render: () => (
-    <Card style={{ 
-      padding: 'var(--ds-spacing-8)',
-      backgroundColor: 'var(--ds-color-neutral-surface-default)',
-      border: '1px solid var(--ds-color-neutral-border-default)',
-      borderRadius: 'var(--ds-border-radius-lg)',
-      boxShadow: 'var(--ds-shadow-md)',
-    }}>
-      <Heading level={3} data-size="lg" style={{ 
-        color: 'var(--ds-color-neutral-text-default)',
-        marginBottom: 'var(--ds-spacing-4)',
-      }}>
+    <Card
+      style={{
+        padding: 'var(--ds-spacing-8)',
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        border: '1px solid var(--ds-color-neutral-border-default)',
+        borderRadius: 'var(--ds-border-radius-lg)',
+        boxShadow: 'var(--ds-shadow-md)',
+      }}
+    >
+      <Heading
+        level={3}
+        data-size="lg"
+        style={{
+          color: 'var(--ds-color-neutral-text-default)',
+          marginBottom: 'var(--ds-spacing-4)',
+        }}
+      >
         Card Using Theme Tokens
       </Heading>
-      
-      <Paragraph style={{ 
-        color: 'var(--ds-color-neutral-text-subtle)',
-        marginBottom: 'var(--ds-spacing-6)',
-      }}>
+
+      <Paragraph
+        style={{
+          color: 'var(--ds-color-neutral-text-subtle)',
+          marginBottom: 'var(--ds-spacing-6)',
+        }}
+      >
         This card demonstrates multiple theme tokens working together:
       </Paragraph>
 
-      <div style={{ 
-        padding: 'var(--ds-spacing-4)',
-        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-        borderRadius: 'var(--ds-border-radius-md)',
-        marginBottom: 'var(--ds-spacing-6)',
-      }}>
-        <ul style={{ 
-          margin: 0,
-          paddingLeft: 'var(--ds-spacing-6)',
-          color: 'var(--ds-color-neutral-text-default)',
-        }}>
-          <li>Background: <code>--ds-color-neutral-surface-default</code></li>
-          <li>Border: <code>--ds-color-neutral-border-default</code></li>
-          <li>Border Radius: <code>--ds-border-radius-lg</code></li>
-          <li>Shadow: <code>--ds-shadow-md</code></li>
-          <li>Spacing: <code>--ds-spacing-*</code></li>
-          <li>Text Color: <code>--ds-color-neutral-text-default</code></li>
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          borderRadius: 'var(--ds-border-radius-md)',
+          marginBottom: 'var(--ds-spacing-6)',
+        }}
+      >
+        <ul
+          style={{
+            margin: 0,
+            paddingLeft: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-default)',
+          }}
+        >
+          <li>
+            Background: <code>--ds-color-neutral-surface-default</code>
+          </li>
+          <li>
+            Border: <code>--ds-color-neutral-border-default</code>
+          </li>
+          <li>
+            Border Radius: <code>--ds-border-radius-lg</code>
+          </li>
+          <li>
+            Shadow: <code>--ds-shadow-md</code>
+          </li>
+          <li>
+            Spacing: <code>--ds-spacing-*</code>
+          </li>
+          <li>
+            Text Color: <code>--ds-color-neutral-text-default</code>
+          </li>
         </ul>
       </div>
 
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
-        <Button data-variant="primary">
-          Primary
-        </Button>
-        <Button data-variant="secondary">
-          Secondary
-        </Button>
+        <Button data-variant="primary">Primary</Button>
+        <Button data-variant="secondary">Secondary</Button>
       </div>
     </Card>
   ),
@@ -225,7 +281,7 @@ export const ThemeTokensInUse: Story = {
 
 /**
  * Example 4: Creating Custom Themes
- * 
+ *
  * Step-by-step guide
  */
 export const CreatingCustomThemes: Story = {
@@ -268,22 +324,27 @@ export const CreatingCustomThemes: Story = {
             Icon: Check,
           },
         ].map(({ step, title, description, Icon }) => (
-          <Card key={step} style={{ 
-            padding: 'var(--ds-spacing-6)',
-            display: 'flex',
-            gap: 'var(--ds-spacing-4)',
-            alignItems: 'flex-start',
-          }}>
-            <div style={{ 
-              width: '48px',
-              height: '48px',
-              backgroundColor: 'var(--ds-color-accent-surface-default)',
-              borderRadius: 'var(--ds-border-radius-full)',
+          <Card
+            key={step}
+            style={{
+              padding: 'var(--ds-spacing-6)',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}>
+              gap: 'var(--ds-spacing-4)',
+              alignItems: 'flex-start',
+            }}
+          >
+            <div
+              style={{
+                width: '48px',
+                height: '48px',
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-full)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}
+            >
               <Icon size={24} style={{ color: 'var(--ds-color-accent-base-default)' }} />
             </div>
             <div style={{ flex: 1 }}>
@@ -303,7 +364,7 @@ export const CreatingCustomThemes: Story = {
 
 /**
  * Example 5: Theme Best Practices
- * 
+ *
  * Guidelines for theme customization
  */
 export const ThemeBestPractices: Story = {
@@ -316,17 +377,23 @@ export const ThemeBestPractices: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         {/* Do's */}
         <div>
-          <Heading level={3} data-size="sm" style={{ 
-            color: 'var(--ds-color-success-text-default)',
-            marginBottom: 'var(--ds-spacing-3)',
-          }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-success-text-default)',
+              marginBottom: 'var(--ds-spacing-3)',
+            }}
+          >
             ✅ Do
           </Heading>
-          <div style={{ 
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-success-surface-default)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-success-surface-default)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
             {[
               'Use semantic color tokens',
               'Test both light and dark modes',
@@ -335,11 +402,14 @@ export const ThemeBestPractices: Story = {
               'Use Theme Builder for consistency',
               'Document custom theme choices',
             ].map((item, i) => (
-              <div key={i} style={{ 
-                display: 'flex', 
-                gap: 'var(--ds-spacing-2)',
-                marginBottom: i < 5 ? 'var(--ds-spacing-2)' : 0,
-              }}>
+              <div
+                key={i}
+                style={{
+                  display: 'flex',
+                  gap: 'var(--ds-spacing-2)',
+                  marginBottom: i < 5 ? 'var(--ds-spacing-2)' : 0,
+                }}
+              >
                 <span>•</span>
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
                   {item}
@@ -351,17 +421,23 @@ export const ThemeBestPractices: Story = {
 
         {/* Don'ts */}
         <div>
-          <Heading level={3} data-size="sm" style={{ 
-            color: 'var(--ds-color-danger-text-default)',
-            marginBottom: 'var(--ds-spacing-3)',
-          }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-danger-text-default)',
+              marginBottom: 'var(--ds-spacing-3)',
+            }}
+          >
             ❌ Don't
           </Heading>
-          <div style={{ 
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-danger-surface-default)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-danger-surface-default)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
             {[
               'Hardcode color values',
               'Ignore accessibility guidelines',
@@ -370,11 +446,14 @@ export const ThemeBestPractices: Story = {
               'Forget to test dark mode',
               'Skip contrast validation',
             ].map((item, i) => (
-              <div key={i} style={{ 
-                display: 'flex', 
-                gap: 'var(--ds-spacing-2)',
-                marginBottom: i < 5 ? 'var(--ds-spacing-2)' : 0,
-              }}>
+              <div
+                key={i}
+                style={{
+                  display: 'flex',
+                  gap: 'var(--ds-spacing-2)',
+                  marginBottom: i < 5 ? 'var(--ds-spacing-2)' : 0,
+                }}
+              >
                 <span>•</span>
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
                   {item}

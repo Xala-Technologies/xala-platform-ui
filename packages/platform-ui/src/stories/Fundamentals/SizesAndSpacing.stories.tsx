@@ -37,29 +37,68 @@ export const SizeModes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       <div data-size="sm">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>Small (data-size="sm")</Heading>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Small (data-size="sm")
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Button data-variant="primary" data-size="sm">Button</Button>
+          <Button data-variant="primary" data-size="sm">
+            Button
+          </Button>
           <Textfield placeholder="Input field" data-size="sm" style={{ flex: 1 }} />
-          <span style={{ padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', backgroundColor: 'var(--ds-color-accent-surface-default)', borderRadius: 'var(--ds-border-radius-sm)', fontSize: 'var(--ds-font-size-sm)' }}>Tag</span>
+          <span
+            style={{
+              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+              backgroundColor: 'var(--ds-color-accent-surface-default)',
+              borderRadius: 'var(--ds-border-radius-sm)',
+              fontSize: 'var(--ds-font-size-sm)',
+            }}
+          >
+            Tag
+          </span>
         </div>
       </div>
-      
+
       <div data-size="md">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>Medium (data-size="md") - Default</Heading>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Medium (data-size="md") - Default
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Button data-variant="primary" data-size="md">Button</Button>
+          <Button data-variant="primary" data-size="md">
+            Button
+          </Button>
           <Textfield placeholder="Input field" data-size="md" style={{ flex: 1 }} />
-          <span style={{ padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', backgroundColor: 'var(--ds-color-accent-surface-default)', borderRadius: 'var(--ds-border-radius-sm)', fontSize: 'var(--ds-font-size-sm)' }}>Tag</span>
+          <span
+            style={{
+              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+              backgroundColor: 'var(--ds-color-accent-surface-default)',
+              borderRadius: 'var(--ds-border-radius-sm)',
+              fontSize: 'var(--ds-font-size-sm)',
+            }}
+          >
+            Tag
+          </span>
         </div>
       </div>
-      
+
       <div data-size="lg">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>Large (data-size="lg")</Heading>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Large (data-size="lg")
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Button data-variant="primary" data-size="lg">Button</Button>
+          <Button data-variant="primary" data-size="lg">
+            Button
+          </Button>
           <Textfield placeholder="Input field" data-size="lg" style={{ flex: 1 }} />
-          <span style={{ padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', backgroundColor: 'var(--ds-color-accent-surface-default)', borderRadius: 'var(--ds-border-radius-sm)', fontSize: 'var(--ds-font-size-sm)' }}>Tag</span>
+          <span
+            style={{
+              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+              backgroundColor: 'var(--ds-color-accent-surface-default)',
+              borderRadius: 'var(--ds-border-radius-sm)',
+              fontSize: 'var(--ds-font-size-sm)',
+            }}
+          >
+            Tag
+          </span>
         </div>
       </div>
     </div>
@@ -93,13 +132,33 @@ export const SpacingScale: Story = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr 120px', gap: 'var(--ds-spacing-2)', padding: 'var(--ds-spacing-2)', backgroundColor: 'var(--ds-color-neutral-surface-hover)', borderRadius: 'var(--ds-border-radius-md)', fontWeight: 'var(--ds-font-weight-semibold)', fontSize: 'var(--ds-font-size-sm)' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '180px 1fr 120px',
+            gap: 'var(--ds-spacing-2)',
+            padding: 'var(--ds-spacing-2)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            fontWeight: 'var(--ds-font-weight-semibold)',
+            fontSize: 'var(--ds-font-size-sm)',
+          }}
+        >
           <span>Token</span>
           <span>Visual</span>
           <span>Value</span>
         </div>
         {spacings.map(({ token, value }) => (
-          <div key={token} style={{ display: 'grid', gridTemplateColumns: '180px 1fr 120px', gap: 'var(--ds-spacing-2)', alignItems: 'center', padding: 'var(--ds-spacing-2)' }}>
+          <div
+            key={token}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '180px 1fr 120px',
+              gap: 'var(--ds-spacing-2)',
+              alignItems: 'center',
+              padding: 'var(--ds-spacing-2)',
+            }}
+          >
             <code style={{ fontSize: 'var(--ds-font-size-sm)' }}>--ds-spacing-{token}</code>
             <div style={{ height: 'var(--ds-spacing-6)', display: 'flex', alignItems: 'center' }}>
               <div
@@ -112,7 +171,14 @@ export const SpacingScale: Story = {
                 }}
               />
             </div>
-            <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>{value}</span>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {value}
+            </span>
           </div>
         ))}
       </div>
@@ -127,11 +193,26 @@ export const SpacingInPractice: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>Padding Examples</Heading>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Padding Examples
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
           {['2', '4', '6', '8'].map((size) => (
-            <div key={size} style={{ backgroundColor: 'var(--ds-color-accent-surface-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
-              <div style={{ padding: `var(--ds-spacing-${size})`, backgroundColor: 'var(--ds-color-neutral-background-default)', borderRadius: 'var(--ds-border-radius-md)', border: '1px dashed var(--ds-color-accent-border-default)' }}>
+            <div
+              key={size}
+              style={{
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
+              <div
+                style={{
+                  padding: `var(--ds-spacing-${size})`,
+                  backgroundColor: 'var(--ds-color-neutral-background-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  border: '1px dashed var(--ds-color-accent-border-default)',
+                }}
+              >
                 <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>padding: spacing-{size}</code>
               </div>
             </div>
@@ -140,14 +221,32 @@ export const SpacingInPractice: Story = {
       </div>
 
       <div>
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>Gap Examples (Flexbox/Grid)</Heading>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Gap Examples (Flexbox/Grid)
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
           {['2', '4', '6'].map((size) => (
             <div key={size}>
-              <code style={{ fontSize: 'var(--ds-font-size-xs)', marginBottom: 'var(--ds-spacing-1)', display: 'block' }}>gap: spacing-{size}</code>
+              <code
+                style={{
+                  fontSize: 'var(--ds-font-size-xs)',
+                  marginBottom: 'var(--ds-spacing-1)',
+                  display: 'block',
+                }}
+              >
+                gap: spacing-{size}
+              </code>
               <div style={{ display: 'flex', gap: `var(--ds-spacing-${size})` }}>
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} style={{ width: 'var(--ds-spacing-12)', height: 'var(--ds-spacing-12)', backgroundColor: 'var(--ds-color-accent-base-default)', borderRadius: 'var(--ds-border-radius-md)' }} />
+                  <div
+                    key={i}
+                    style={{
+                      width: 'var(--ds-spacing-12)',
+                      height: 'var(--ds-spacing-12)',
+                      backgroundColor: 'var(--ds-color-accent-base-default)',
+                      borderRadius: 'var(--ds-border-radius-md)',
+                    }}
+                  />
                 ))}
               </div>
             </div>
@@ -181,11 +280,26 @@ export const ComponentSizing: Story = {
 
     return (
       <div>
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>Size Tokens (--ds-size-*)</Heading>
-        <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          Size Tokens (--ds-size-*)
+        </Heading>
+        <Paragraph
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-4)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           Used for component heights, widths, and icon sizes.
         </Paragraph>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)', alignItems: 'flex-end' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'var(--ds-spacing-4)',
+            alignItems: 'flex-end',
+          }}
+        >
           {sizings.slice(4).map(({ token, value }) => (
             <div key={token} style={{ textAlign: 'center' }}>
               <div
@@ -198,7 +312,14 @@ export const ComponentSizing: Story = {
                 }}
               />
               <code style={{ fontSize: 'var(--ds-font-size-xs)', display: 'block' }}>{token}</code>
-              <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>{value}</span>
+              <span
+                style={{
+                  fontSize: 'var(--ds-font-size-xs)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
+                {value}
+              </span>
             </div>
           ))}
         </div>
@@ -213,35 +334,125 @@ export const ComponentSizing: Story = {
 export const SemanticUsage: Story = {
   render: () => (
     <div>
-      <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>When to Use Which Spacing</Heading>
-      
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--ds-font-size-sm)' }}>
+      <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+        When to Use Which Spacing
+      </Heading>
+
+      <table
+        style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--ds-font-size-sm)' }}
+      >
         <thead>
           <tr style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
-            <th style={{ padding: 'var(--ds-spacing-3)', textAlign: 'left', borderBottom: '1px solid var(--ds-color-neutral-border-default)' }}>Use Case</th>
-            <th style={{ padding: 'var(--ds-spacing-3)', textAlign: 'left', borderBottom: '1px solid var(--ds-color-neutral-border-default)' }}>Token</th>
+            <th
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                textAlign: 'left',
+                borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+              }}
+            >
+              Use Case
+            </th>
+            <th
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                textAlign: 'left',
+                borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+              }}
+            >
+              Token
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>Inline elements, icon gaps</td>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}><code>spacing-1, spacing-2</code></td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              Inline elements, icon gaps
+            </td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <code>spacing-1, spacing-2</code>
+            </td>
           </tr>
           <tr>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>Form field gaps, button groups</td>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}><code>spacing-3, spacing-4</code></td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              Form field gaps, button groups
+            </td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <code>spacing-3, spacing-4</code>
+            </td>
           </tr>
           <tr>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>Card padding, section gaps</td>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}><code>spacing-5, spacing-6</code></td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              Card padding, section gaps
+            </td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <code>spacing-5, spacing-6</code>
+            </td>
           </tr>
           <tr>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>Page sections, large containers</td>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}><code>spacing-8, spacing-10</code></td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              Page sections, large containers
+            </td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <code>spacing-8, spacing-10</code>
+            </td>
           </tr>
           <tr>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>Major page divisions</td>
-            <td style={{ padding: 'var(--ds-spacing-3)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}><code>spacing-12+</code></td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              Major page divisions
+            </td>
+            <td
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <code>spacing-12+</code>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -263,64 +474,86 @@ export const CardLayoutExample: Story = {
           overflow: 'hidden',
         }}
       >
-        <div style={{ 
-          height: 'var(--ds-spacing-20)', 
-          backgroundColor: 'var(--ds-color-accent-surface-default)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'var(--ds-color-accent-text-default)',
-        }}>
+        <div
+          style={{
+            height: 'var(--ds-spacing-20)',
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'var(--ds-color-accent-text-default)',
+          }}
+        >
           Image Area
         </div>
-        
+
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading level={3} data-size="md" style={{ 
-            marginBottom: 'var(--ds-spacing-2)',
-          }}>
+          <Heading
+            level={3}
+            data-size="md"
+            style={{
+              marginBottom: 'var(--ds-spacing-2)',
+            }}
+          >
             Card Title
           </Heading>
-          
-          <Paragraph data-size="sm" style={{ 
-            color: 'var(--ds-color-neutral-text-subtle)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}>
+
+          <Paragraph
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-neutral-text-subtle)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
             Description text with proper line spacing for readability.
           </Paragraph>
-          
-          <div style={{ 
-            display: 'flex', 
-            gap: 'var(--ds-spacing-2)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}>
-            <span style={{ 
-              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', 
-              backgroundColor: 'var(--ds-color-accent-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-2)',
-            }}>
+
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-spacing-2)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            <span
+              style={{
+                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-2)',
+              }}
+            >
               Tag 1
             </span>
-            <span style={{ 
-              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', 
-              backgroundColor: 'var(--ds-color-accent-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-2)',
-            }}>
+            <span
+              style={{
+                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-2)',
+              }}
+            >
               Tag 2
             </span>
           </div>
         </div>
-        
-        <div style={{ 
-          padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-          <span style={{ fontSize: 'var(--ds-font-size-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-2)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Meta info
           </span>
           <Button data-variant="primary" data-size="sm">
@@ -328,9 +561,13 @@ export const CardLayoutExample: Story = {
           </Button>
         </div>
       </div>
-      
-      <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-        <strong>Spacing used:</strong> spacing-1 (tags), spacing-2 (gaps), spacing-4 (sections), spacing-6 (card padding)
+
+      <Paragraph
+        data-size="xs"
+        style={{ marginTop: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}
+      >
+        <strong>Spacing used:</strong> spacing-1 (tags), spacing-2 (gaps), spacing-4 (sections),
+        spacing-6 (card padding)
       </Paragraph>
     </Card>
   ),

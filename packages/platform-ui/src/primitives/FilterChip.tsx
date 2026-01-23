@@ -96,7 +96,7 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
       if (disabled) return;
-      
+
       if (e.key === 'Enter' || e.key === 'Backspace' || e.key === 'Delete') {
         e.preventDefault();
         onRemove();
@@ -129,9 +129,10 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
     // Variant-based styles
     const variantStyles = {
       default: {
-        backgroundColor: isHovered && !disabled
-          ? 'var(--ds-color-neutral-surface-hover)'
-          : 'var(--ds-color-neutral-surface-default)',
+        backgroundColor:
+          isHovered && !disabled
+            ? 'var(--ds-color-neutral-surface-hover)'
+            : 'var(--ds-color-neutral-surface-default)',
         borderColor: isFocused
           ? 'var(--ds-color-accent-border-default)'
           : 'var(--ds-color-neutral-border-default)',
@@ -139,9 +140,10 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
         iconColor: 'var(--ds-color-neutral-text-subtle)',
       },
       accent: {
-        backgroundColor: isHovered && !disabled
-          ? 'var(--ds-color-accent-surface-hover)'
-          : 'var(--ds-color-accent-surface-default)',
+        backgroundColor:
+          isHovered && !disabled
+            ? 'var(--ds-color-accent-surface-hover)'
+            : 'var(--ds-color-accent-surface-default)',
         borderColor: isFocused
           ? 'var(--ds-color-accent-border-strong)'
           : 'var(--ds-color-accent-border-default)',

@@ -94,14 +94,16 @@ export interface ConsentManagerProps {
 
 export const DEFAULT_CONSENT_MANAGER_LABELS: ConsentManagerLabels = {
   title: 'Samtykker',
-  description: 'Administrer dine personvernpreferanser. Du kan nar som helst endre eller trekke tilbake dine samtykker.',
+  description:
+    'Administrer dine personvernpreferanser. Du kan nar som helst endre eller trekke tilbake dine samtykker.',
   loading: 'Laster samtykker...',
   saveButton: 'Lagre endringer',
   savingButton: 'Lagrer...',
   successMessage: 'Samtykker oppdatert',
   errorMessage: 'Det oppstod en feil ved lagring av samtykker. Vennligst prov igjen senere.',
   infoTitle: 'Om samtykker',
-  infoDescription: 'Du kan nar som helst endre eller trekke tilbake dine samtykker. Nodvendige samtykker kreves for at tjenesten skal fungere og kan ikke deaktiveres. Alle endringer i samtykker logges i henhold til GDPR-krav.',
+  infoDescription:
+    'Du kan nar som helst endre eller trekke tilbake dine samtykker. Nodvendige samtykker kreves for at tjenesten skal fungere og kan ikke deaktiveres. Alle endringer i samtykker logges i henhold til GDPR-krav.',
   requiredConsentLabel: 'Nodvendige samtykker',
   requiredConsentDescription: 'Nodvendig for at tjenesten skal fungere. Kan ikke deaktiveres.',
 };
@@ -174,18 +176,27 @@ export function ConsentManager({
     <Card style={{ padding: 'var(--ds-spacing-5)' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         {/* Header */}
-        <div style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          justifyContent: 'space-between',
-          alignItems: isMobile ? 'flex-start' : 'center',
-          gap: 'var(--ds-spacing-3)',
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            justifyContent: 'space-between',
+            alignItems: isMobile ? 'flex-start' : 'center',
+            gap: 'var(--ds-spacing-3)',
+          }}
+        >
           <div>
-            <Heading level={2} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+            <Heading
+              level={2}
+              data-size="sm"
+              style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+            >
               {labels.title}
             </Heading>
-            <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               {labels.description}
             </Paragraph>
           </div>
@@ -196,7 +207,10 @@ export function ConsentManager({
               data-size="md"
               onClick={onSave}
               disabled={isSaving}
-              style={{ minHeight: 'var(--ds-spacing-11)', alignSelf: isMobile ? 'stretch' : 'flex-start' }}
+              style={{
+                minHeight: 'var(--ds-spacing-11)',
+                alignSelf: isMobile ? 'stretch' : 'flex-start',
+              }}
             >
               {isSaving ? labels.savingButton : labels.saveButton}
             </Button>
@@ -214,19 +228,28 @@ export function ConsentManager({
         {!isLoading && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             {/* Necessary consent - always enabled */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: 'var(--ds-spacing-3)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: 'var(--ds-spacing-3)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              }}
+            >
               <div style={{ flex: 1 }}>
                 <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 500 }}>
                   {labels.requiredConsentLabel}
                 </Paragraph>
-                <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    margin: 0,
+                    marginTop: 'var(--ds-spacing-1)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
+                >
                   {labels.requiredConsentDescription}
                 </Paragraph>
               </div>
@@ -239,20 +262,30 @@ export function ConsentManager({
             </div>
 
             {/* Optional consents */}
-            {consentSettings.map(item => (
-              <div key={item.key} style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: 'var(--ds-spacing-3)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              }}>
+            {consentSettings.map((item) => (
+              <div
+                key={item.key}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: 'var(--ds-spacing-3)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                }}
+              >
                 <div style={{ flex: 1, paddingRight: 'var(--ds-spacing-3)' }}>
                   <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 500 }}>
                     {item.label}
                   </Paragraph>
-                  <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  <Paragraph
+                    data-size="xs"
+                    style={{
+                      margin: 0,
+                      marginTop: 'var(--ds-spacing-1)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
                     {item.description}
                   </Paragraph>
                 </div>
@@ -268,19 +301,24 @@ export function ConsentManager({
 
         {/* Last updated timestamp */}
         {!isLoading && getLastUpdatedText() && (
-          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="xs"
+            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             Sist oppdatert: {getLastUpdatedText()}
           </Paragraph>
         )}
 
         {/* Success message */}
         {isSuccess && !hasChanges && (
-          <div style={{
-            padding: 'var(--ds-spacing-3)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            backgroundColor: 'var(--ds-color-success-surface)',
-            border: '1px solid var(--ds-color-success-border)',
-          }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-3)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              backgroundColor: 'var(--ds-color-success-surface)',
+              border: '1px solid var(--ds-color-success-border)',
+            }}
+          >
             <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-success-text)' }}>
               {labels.successMessage}
             </Paragraph>
@@ -289,12 +327,14 @@ export function ConsentManager({
 
         {/* Error message */}
         {isError && (
-          <div style={{
-            padding: 'var(--ds-spacing-3)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            backgroundColor: 'var(--ds-color-danger-surface)',
-            border: '1px solid var(--ds-color-danger-border)',
-          }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-3)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              backgroundColor: 'var(--ds-color-danger-surface)',
+              border: '1px solid var(--ds-color-danger-border)',
+            }}
+          >
             <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-danger-text)' }}>
               {labels.errorMessage}
             </Paragraph>
@@ -302,12 +342,17 @@ export function ConsentManager({
         )}
 
         {/* Information */}
-        <div style={{
-          padding: 'var(--ds-spacing-3)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-        }}>
-          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          }}
+        >
+          <Paragraph
+            data-size="xs"
+            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             <strong>{labels.infoTitle}</strong> {labels.infoDescription}
           </Paragraph>
         </div>

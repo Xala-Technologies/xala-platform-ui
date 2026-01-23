@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 const DialogWithTrigger = (args: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>

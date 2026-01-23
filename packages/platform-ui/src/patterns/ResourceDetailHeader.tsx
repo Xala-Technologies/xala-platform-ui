@@ -132,7 +132,9 @@ export interface ResourceDetailHeaderProps {
 /**
  * Badge variant mapping to design system Tag colors
  */
-function getBadgeColor(variant?: ResourceBadge['variant']): 'neutral' | 'first' | 'second' | 'third' {
+function getBadgeColor(
+  variant?: ResourceBadge['variant']
+): 'neutral' | 'first' | 'second' | 'third' {
   switch (variant) {
     case 'accent':
     case 'info':
@@ -161,7 +163,7 @@ function Breadcrumbs({
 
   return (
     <nav
-      className="resource-detail-header__breadcrumbs"
+      className="ds-resource-detail-header__breadcrumbs"
       aria-label="Breadcrumb"
       style={{
         display: 'flex',
@@ -320,7 +322,7 @@ export function ResourceDetailHeader({
 
       {/* Main content wrapper */}
       <div
-        className="resource-detail-header__content"
+        className="ds-resource-detail-header__content"
         style={{
           display: 'flex',
           gap: 'var(--ds-spacing-6, 24px)',
@@ -330,7 +332,7 @@ export function ResourceDetailHeader({
         {/* Primary image */}
         {primaryImage && (
           <div
-            className="resource-detail-header__image"
+            className="ds-resource-detail-header__image"
             style={{
               flexShrink: 0,
               width: '200px',
@@ -354,7 +356,7 @@ export function ResourceDetailHeader({
 
         {/* Text content */}
         <div
-          className="resource-detail-header__text"
+          className="ds-resource-detail-header__text"
           style={{
             flex: 1,
             minWidth: '200px',
@@ -376,7 +378,7 @@ export function ResourceDetailHeader({
             {/* Badges */}
             {badges.length > 0 && (
               <div
-                className="resource-detail-header__badges"
+                className="ds-resource-detail-header__badges"
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -404,7 +406,7 @@ export function ResourceDetailHeader({
             {/* Favorite/Share buttons */}
             {(onFavoriteToggle || onShare) && (
               <div
-                className="resource-detail-header__quick-actions"
+                className="ds-resource-detail-header__quick-actions"
                 style={{
                   display: 'flex',
                   gap: 'var(--ds-spacing-2, 8px)',
@@ -449,7 +451,7 @@ export function ResourceDetailHeader({
           {/* Action buttons */}
           {actions.length > 0 && (
             <div
-              className="resource-detail-header__actions"
+              className="ds-resource-detail-header__actions"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -486,11 +488,11 @@ export function ResourceDetailHeader({
       {/* CSS for responsive behavior */}
       <style>{`
         @media (max-width: 'var(--ds-sizing-160)') {
-          .resource-detail-header__content {
+          .ds-resource-detail-header__content {
             flex-direction: column;
           }
 
-          .resource-detail-header__image {
+          .ds-resource-detail-header__image {
             width: 100% !important;
             height: 'var(--ds-sizing-50)' !important;
           }

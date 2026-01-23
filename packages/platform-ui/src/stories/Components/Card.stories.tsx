@@ -4,9 +4,9 @@ import { Card, Heading, Paragraph, Button, Link } from '../../index';
 
 /**
  * Card component from Digdir Designsystemet.
- * 
+ *
  * Card highlights information or tasks that are related.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/card/overview
  */
 const meta: Meta<typeof Card> = {
@@ -206,7 +206,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Card>
-      <Heading level={3} data-size="sm">Card Title</Heading>
+      <Heading level={3} data-size="sm">
+        Card Title
+      </Heading>
       <Paragraph>
         This is a basic card with some content. Cards are used to group related information.
       </Paragraph>
@@ -220,13 +222,19 @@ export const Default: Story = {
 export const WithActions: Story = {
   render: () => (
     <Card>
-      <Heading level={3} data-size="sm">ResourceRequest Request</Heading>
-      <Paragraph>
-        John Doe has requested to book Meeting Room A for December 15, 2024.
-      </Paragraph>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-4)' }}>
-        <Button variant="secondary" type="button">Decline</Button>
-        <Button variant="primary" type="button">Approve</Button>
+      <Heading level={3} data-size="sm">
+        ResourceRequest Request
+      </Heading>
+      <Paragraph>John Doe has requested to book Meeting Room A for December 15, 2024.</Paragraph>
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-4)' }}
+      >
+        <Button variant="secondary" type="button">
+          Decline
+        </Button>
+        <Button variant="primary" type="button">
+          Approve
+        </Button>
       </div>
     </Card>
   ),
@@ -237,14 +245,11 @@ export const WithActions: Story = {
  */
 export const AsClickable: Story = {
   render: () => (
-    <Card
-      style={{ cursor: 'pointer' }}
-      onClick={() => {}}
-    >
-      <Heading level={3} data-size="sm">Click to View Details</Heading>
-      <Paragraph>
-        This entire card is clickable. Use onClick for interactivity.
-      </Paragraph>
+    <Card style={{ cursor: 'pointer' }} onClick={() => {}}>
+      <Heading level={3} data-size="sm">
+        Click to View Details
+      </Heading>
+      <Paragraph>This entire card is clickable. Use onClick for interactivity.</Paragraph>
     </Card>
   ),
 };
@@ -255,20 +260,22 @@ export const AsClickable: Story = {
 export const WithImage: Story = {
   render: () => (
     <Card style={{ overflow: 'hidden' }}>
-      <div style={{ 
-        aspectRatio: '16/9', 
-        backgroundColor: 'var(--ds-color-neutral-surface-default)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+      <div
+        style={{
+          aspectRatio: '16/9',
+          backgroundColor: 'var(--ds-color-neutral-surface-default)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>Image Placeholder</span>
       </div>
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">Featured Resource</Heading>
-        <Paragraph>
-          A beautiful meeting space in the city center.
-        </Paragraph>
+        <Heading level={3} data-size="sm">
+          Featured Resource
+        </Heading>
+        <Paragraph>A beautiful meeting space in the city center.</Paragraph>
       </div>
     </Card>
   ),
@@ -305,20 +312,27 @@ export const WithSections: Story = {
   render: () => (
     <Card data-color="neutral" style={{ maxWidth: '380px' }}>
       <Card.Block>
-        <div style={{ 
-          aspectRatio: '16/9',
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>Video/Image Placeholder</span>
+        <div
+          style={{
+            aspectRatio: '16/9',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            Video/Image Placeholder
+          </span>
         </div>
       </Card.Block>
       <Card.Block>
-        <Heading level={3} data-size="md">About Designsystemet</Heading>
+        <Heading level={3} data-size="md">
+          About Designsystemet
+        </Heading>
         <Paragraph>
-          This card demonstrates how to divide content into sections using Card.Block. Each block gets automatic dividers.
+          This card demonstrates how to divide content into sections using Card.Block. Each block
+          gets automatic dividers.
         </Paragraph>
       </Card.Block>
     </Card>
@@ -338,7 +352,8 @@ export const LinkCard: Story = {
           </Link>
         </Heading>
         <Paragraph>
-          The Designsystemet provides components, guidelines, and tools for building accessible Norwegian public services.
+          The Designsystemet provides components, guidelines, and tools for building accessible
+          Norwegian public services.
         </Paragraph>
         <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
           Norwegian Digitalisation Agency
@@ -356,11 +371,14 @@ export const AsButton: Story = {
     <Card asChild data-color="neutral">
       <button type="button" onClick={() => {}}>
         <Card.Block>
-          <Heading level={3} data-size="md">Settings and privacy</Heading>
+          <Heading level={3} data-size="md">
+            Settings and privacy
+          </Heading>
         </Card.Block>
         <Card.Block>
           <Paragraph>
-            This opens a dialogue where you can update your privacy choices, adjust settings, and customize how the service handles your information.
+            This opens a dialogue where you can update your privacy choices, adjust settings, and
+            customize how the service handles your information.
           </Paragraph>
         </Card.Block>
       </button>
@@ -373,20 +391,24 @@ export const AsButton: Story = {
  */
 export const Horizontal: Story = {
   render: () => (
-    <Card 
-      data-color="neutral" 
-      style={{ 
-        display: 'grid', 
+    <Card
+      data-color="neutral"
+      style={{
+        display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: 0,
       }}
     >
       <Card.Block>
-        <Heading level={3} data-size="md">Wanderlust</Heading>
+        <Heading level={3} data-size="md">
+          Wanderlust
+        </Heading>
       </Card.Block>
       <Card.Block>
         <Paragraph>
-          Symptoms may include restlessness, heightened awareness, and a tendency to constantly look over your shoulder. The condition usually subsides after a good meal and a safe place to rest.
+          Symptoms may include restlessness, heightened awareness, and a tendency to constantly look
+          over your shoulder. The condition usually subsides after a good meal and a safe place to
+          rest.
         </Paragraph>
       </Card.Block>
     </Card>
@@ -398,15 +420,19 @@ export const Horizontal: Story = {
  */
 export const CardGrid: Story = {
   render: () => (
-    <div style={{ 
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 'var(--ds-spacing-4)',
-    }}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 'var(--ds-spacing-4)',
+      }}
+    >
       {[1, 2, 3, 4].map((i) => (
         <Card key={i} data-color="neutral">
           <Card.Block>
-            <Heading level={3} data-size="sm">Card {i}</Heading>
+            <Heading level={3} data-size="sm">
+              Card {i}
+            </Heading>
             <Paragraph>
               Content for card {i}. Each card can contain different information and actions.
             </Paragraph>
@@ -427,17 +453,23 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Default vs Tinted</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Default vs Tinted
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
           <Card data-variant="default" style={{ flex: 1 }}>
             <Card.Block>
-              <Heading level={4} data-size="sm">Default</Heading>
+              <Heading level={4} data-size="sm">
+                Default
+              </Heading>
               <Paragraph>White background</Paragraph>
             </Card.Block>
           </Card>
           <Card data-variant="tinted" data-color="accent" style={{ flex: 1 }}>
             <Card.Block>
-              <Heading level={4} data-size="sm">Tinted</Heading>
+              <Heading level={4} data-size="sm">
+                Tinted
+              </Heading>
               <Paragraph>Colored background</Paragraph>
             </Card.Block>
           </Card>
@@ -445,10 +477,14 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>With Sections</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          With Sections
+        </Heading>
         <Card data-color="neutral" style={{ maxWidth: '300px' }}>
           <Card.Block>
-            <Heading level={4} data-size="sm">Section 1</Heading>
+            <Heading level={4} data-size="sm">
+              Section 1
+            </Heading>
           </Card.Block>
           <Card.Block>
             <Paragraph>Section 2 with divider</Paragraph>
@@ -457,18 +493,24 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Interactive Cards</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Interactive Cards
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
           <Card style={{ cursor: 'pointer', flex: 1 }} onClick={() => {}}>
             <Card.Block>
-              <Heading level={4} data-size="sm">Clickable</Heading>
+              <Heading level={4} data-size="sm">
+                Clickable
+              </Heading>
               <Paragraph>With onClick</Paragraph>
             </Card.Block>
           </Card>
           <Card asChild style={{ flex: 1 }}>
             <button type="button">
               <Card.Block>
-                <Heading level={4} data-size="sm">As Button</Heading>
+                <Heading level={4} data-size="sm">
+                  As Button
+                </Heading>
                 <Paragraph>Semantic button</Paragraph>
               </Card.Block>
             </button>

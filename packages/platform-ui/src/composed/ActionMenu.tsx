@@ -57,7 +57,14 @@ export interface ContextMenuProps {
 
 function ChevronRightIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="9 18 15 12 9 6" />
     </svg>
   );
@@ -148,15 +155,17 @@ function MenuContent({ items, groups, onClose, style }: MenuContentProps): React
           color: item.danger
             ? 'var(--ds-color-danger-text-default)'
             : item.disabled
-            ? 'var(--ds-color-neutral-text-subtle)'
-            : 'var(--ds-color-neutral-text-default)',
+              ? 'var(--ds-color-neutral-text-subtle)'
+              : 'var(--ds-color-neutral-text-default)',
           borderWidth: '0',
           borderRadius: 'var(--ds-border-radius-sm)',
           cursor: item.disabled ? 'not-allowed' : 'pointer',
           opacity: item.disabled ? 0.5 : 1,
         }}
       >
-        {item.icon && <span style={{ display: 'flex', width: 'var(--ds-sizing-4)' }}>{item.icon}</span>}
+        {item.icon && (
+          <span style={{ display: 'flex', width: 'var(--ds-sizing-4)' }}>{item.icon}</span>
+        )}
         <span style={{ flex: 1 }}>{item.label}</span>
         {item.shortcut && (
           <span
@@ -194,44 +203,42 @@ function MenuContent({ items, groups, onClose, style }: MenuContentProps): React
         ...style,
       }}
     >
-      {groups ? (
-        groups.map((group, groupIndex) => (
-          <div key={group.id}>
-            {group.label && (
-              <div
-                style={{
-                  padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
-                  fontSize: 'var(--ds-font-size-xs)',
-                  fontWeight: 'var(--ds-font-weight-semibold)',
-                  color: 'var(--ds-color-neutral-text-subtle)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                {group.label}
-              </div>
-            )}
-            {group.items.map((item) => {
-              globalIndex++;
-              return renderItem(item, globalIndex);
-            })}
-            {groupIndex < groups.length - 1 && (
-              <div
-                style={{
-                  height: 'var(--ds-border-width-default)',
-                  backgroundColor: 'var(--ds-color-neutral-border-subtle)',
-                  margin: 'var(--ds-spacing-1) 0',
-                }}
-              />
-            )}
-          </div>
-        ))
-      ) : (
-        items?.map((item) => {
-          globalIndex++;
-          return renderItem(item, globalIndex);
-        })
-      )}
+      {groups
+        ? groups.map((group, groupIndex) => (
+            <div key={group.id}>
+              {group.label && (
+                <div
+                  style={{
+                    padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
+                    fontSize: 'var(--ds-font-size-xs)',
+                    fontWeight: 'var(--ds-font-weight-semibold)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {group.label}
+                </div>
+              )}
+              {group.items.map((item) => {
+                globalIndex++;
+                return renderItem(item, globalIndex);
+              })}
+              {groupIndex < groups.length - 1 && (
+                <div
+                  style={{
+                    height: 'var(--ds-border-width-default)',
+                    backgroundColor: 'var(--ds-color-neutral-border-subtle)',
+                    margin: 'var(--ds-spacing-1) 0',
+                  }}
+                />
+              )}
+            </div>
+          ))
+        : items?.map((item) => {
+            globalIndex++;
+            return renderItem(item, globalIndex);
+          })}
     </div>
   );
 }
@@ -266,18 +273,35 @@ export function ActionMenu({
   const getPositionStyles = (): React.CSSProperties => {
     const positions: Record<string, React.CSSProperties> = {
       'bottom-start': { top: '100%', left: 0, marginTop: 'var(--ds-spacing-1)' },
-      'bottom-center': { top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: 'var(--ds-spacing-1)' },
+      'bottom-center': {
+        top: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginTop: 'var(--ds-spacing-1)',
+      },
       'bottom-end': { top: '100%', right: 0, marginTop: 'var(--ds-spacing-1)' },
       'top-start': { bottom: '100%', left: 0, marginBottom: 'var(--ds-spacing-1)' },
-      'top-center': { bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: 'var(--ds-spacing-1)' },
+      'top-center': {
+        bottom: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginBottom: 'var(--ds-spacing-1)',
+      },
       'top-end': { bottom: '100%', right: 0, marginBottom: 'var(--ds-spacing-1)' },
     };
     return positions[`${side}-${align}`] ?? positions['bottom-start'] ?? { top: '100%', left: 0 };
   };
 
   return (
-    <div ref={containerRef} className={className} style={{ position: 'relative', display: 'inline-block', ...style }}>
-      <div onClick={() => !disabled && setIsOpen(!isOpen)} style={{ cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.5 : 1 }}>
+    <div
+      ref={containerRef}
+      className={className}
+      style={{ position: 'relative', display: 'inline-block', ...style }}
+    >
+      <div
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        style={{ cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.5 : 1 }}
+      >
         {trigger}
       </div>
       {isOpen && (

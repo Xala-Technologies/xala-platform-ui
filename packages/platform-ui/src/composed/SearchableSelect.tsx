@@ -51,7 +51,14 @@ export interface SearchableSelectProps {
 
 function ChevronDownIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -59,7 +66,14 @@ function ChevronDownIcon() {
 
 function SearchIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
@@ -68,7 +82,14 @@ function SearchIcon() {
 
 function XIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -77,7 +98,14 @@ function XIcon() {
 
 function CheckIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -85,7 +113,15 @@ function CheckIcon() {
 
 function SpinnerIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'spin 1s linear infinite' }}>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      style={{ animation: 'spin 1s linear infinite' }}
+    >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </svg>
   );
@@ -132,8 +168,7 @@ export function SearchableSelect({
     const query = search.toLowerCase();
     return options.filter(
       (opt) =>
-        opt.label.toLowerCase().includes(query) ||
-        opt.description?.toLowerCase().includes(query)
+        opt.label.toLowerCase().includes(query) || opt.description?.toLowerCase().includes(query)
     );
   }, [options, search]);
 
@@ -272,7 +307,14 @@ export function SearchableSelect({
             <button
               type="button"
               onClick={(e) => handleRemoveTag(e, v)}
-              style={{ display: 'flex', padding: 0, backgroundColor: 'transparent', borderWidth: '0', cursor: 'pointer', color: 'inherit' }}
+              style={{
+                display: 'flex',
+                padding: 0,
+                backgroundColor: 'transparent',
+                borderWidth: '0',
+                cursor: 'pointer',
+                color: 'inherit',
+              }}
             >
               <XIcon />
             </button>
@@ -284,12 +326,28 @@ export function SearchableSelect({
     return opt?.label || selectedValues[0];
   };
 
-  const showCreateOption = creatable && search && !filteredOptions.find((o) => o.label.toLowerCase() === search.toLowerCase());
+  const showCreateOption =
+    creatable &&
+    search &&
+    !filteredOptions.find((o) => o.label.toLowerCase() === search.toLowerCase());
 
   return (
-    <div ref={containerRef} className={className} style={{ position: 'relative', ...style }} onKeyDown={handleKeyDown}>
+    <div
+      ref={containerRef}
+      className={className}
+      style={{ position: 'relative', ...style }}
+      onKeyDown={handleKeyDown}
+    >
       {label && (
-        <label style={{ display: 'block', marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)', color: 'var(--ds-color-neutral-text-default)' }}>
+        <label
+          style={{
+            display: 'block',
+            marginBottom: 'var(--ds-spacing-2)',
+            fontSize: 'var(--ds-font-size-sm)',
+            fontWeight: 'var(--ds-font-weight-medium)',
+            color: 'var(--ds-color-neutral-text-default)',
+          }}
+        >
           {label}
         </label>
       )}
@@ -309,24 +367,55 @@ export function SearchableSelect({
           backgroundColor: 'var(--ds-color-neutral-background-default)',
           borderWidth: 'var(--ds-border-width-default)',
           borderStyle: 'solid',
-          borderColor: error ? 'var(--ds-color-danger-border-default)' : isOpen ? 'var(--ds-color-accent-border-default)' : 'var(--ds-color-neutral-border-default)',
+          borderColor: error
+            ? 'var(--ds-color-danger-border-default)'
+            : isOpen
+              ? 'var(--ds-color-accent-border-default)'
+              : 'var(--ds-color-neutral-border-default)',
           borderRadius: 'var(--ds-border-radius-md)',
           cursor: disabled ? 'not-allowed' : 'pointer',
           opacity: disabled ? 0.5 : 1,
           flexWrap: 'wrap',
         }}
       >
-        <div style={{ flex: 1, display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-1)', alignItems: 'center' }}>
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'var(--ds-spacing-1)',
+            alignItems: 'center',
+          }}
+        >
           {selectedValues.length > 0 ? (
             getDisplayValue()
           ) : (
-            <span style={{ color: 'var(--ds-color-neutral-text-subtle)', fontSize: 'var(--ds-font-size-sm)' }}>{placeholder}</span>
+            <span
+              style={{
+                color: 'var(--ds-color-neutral-text-subtle)',
+                fontSize: 'var(--ds-font-size-sm)',
+              }}
+            >
+              {placeholder}
+            </span>
           )}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
           {loading && <SpinnerIcon />}
           {clearable && selectedValues.length > 0 && !disabled && (
-            <button type="button" onClick={handleClear} style={{ display: 'flex', padding: 'var(--ds-spacing-1)', backgroundColor: 'transparent', borderWidth: '0', cursor: 'pointer', color: 'var(--ds-color-neutral-text-subtle)', borderRadius: 'var(--ds-border-radius-sm)' }}>
+            <button
+              type="button"
+              onClick={handleClear}
+              style={{
+                display: 'flex',
+                padding: 'var(--ds-spacing-1)',
+                backgroundColor: 'transparent',
+                borderWidth: '0',
+                cursor: 'pointer',
+                color: 'var(--ds-color-neutral-text-subtle)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+              }}
+            >
               <XIcon />
             </button>
           )}
@@ -335,7 +424,15 @@ export function SearchableSelect({
       </div>
 
       {(error || helperText) && (
-        <p style={{ marginTop: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-sm)', color: error ? 'var(--ds-color-danger-text-default)' : 'var(--ds-color-neutral-text-subtle)' }}>
+        <p
+          style={{
+            marginTop: 'var(--ds-spacing-1)',
+            fontSize: 'var(--ds-font-size-sm)',
+            color: error
+              ? 'var(--ds-color-danger-text-default)'
+              : 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           {error || helperText}
         </p>
       )}
@@ -358,8 +455,24 @@ export function SearchableSelect({
             overflow: 'hidden',
           }}
         >
-          <div style={{ padding: 'var(--ds-spacing-2)', borderBottomWidth: 'var(--ds-border-width-default)', borderBottomStyle: 'solid', borderBottomColor: 'var(--ds-color-neutral-border-subtle)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', padding: 'var(--ds-spacing-2)', backgroundColor: 'var(--ds-color-neutral-surface-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-2)',
+              borderBottomWidth: 'var(--ds-border-width-default)',
+              borderBottomStyle: 'solid',
+              borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-2)',
+                padding: 'var(--ds-spacing-2)',
+                backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
               <SearchIcon />
               <input
                 ref={inputRef}
@@ -367,18 +480,48 @@ export function SearchableSelect({
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={searchPlaceholder}
-                style={{ flex: 1, border: 'none', outline: 'none', backgroundColor: 'transparent', fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-default)' }}
+                style={{
+                  flex: 1,
+                  border: 'none',
+                  outline: 'none',
+                  backgroundColor: 'transparent',
+                  fontSize: 'var(--ds-font-size-sm)',
+                  color: 'var(--ds-color-neutral-text-default)',
+                }}
               />
             </div>
           </div>
 
-          <div ref={listRef} role="listbox" style={{ maxHeight: 'var(--ds-sizing-60)', overflowY: 'auto', padding: 'var(--ds-spacing-2)' }}>
+          <div
+            ref={listRef}
+            role="listbox"
+            style={{
+              maxHeight: 'var(--ds-sizing-60)',
+              overflowY: 'auto',
+              padding: 'var(--ds-spacing-2)',
+            }}
+          >
             {loading ? (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: 'var(--ds-spacing-4)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 <SpinnerIcon />
               </div>
             ) : filteredOptions.length === 0 && !showCreateOption ? (
-              <div style={{ padding: 'var(--ds-spacing-4)', textAlign: 'center', fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  textAlign: 'center',
+                  fontSize: 'var(--ds-font-size-sm)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 {emptyMessage}
               </div>
             ) : (
@@ -398,8 +541,12 @@ export function SearchableSelect({
                         gap: 'var(--ds-spacing-2)',
                         padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
                         fontSize: 'var(--ds-font-size-sm)',
-                        backgroundColor: isFocused ? 'var(--ds-color-neutral-surface-hover)' : 'transparent',
-                        color: opt.disabled ? 'var(--ds-color-neutral-text-subtle)' : 'var(--ds-color-neutral-text-default)',
+                        backgroundColor: isFocused
+                          ? 'var(--ds-color-neutral-surface-hover)'
+                          : 'transparent',
+                        color: opt.disabled
+                          ? 'var(--ds-color-neutral-text-subtle)'
+                          : 'var(--ds-color-neutral-text-default)',
                         borderRadius: 'var(--ds-border-radius-sm)',
                         cursor: opt.disabled ? 'not-allowed' : 'pointer',
                         opacity: opt.disabled ? 0.5 : 1,
@@ -408,7 +555,16 @@ export function SearchableSelect({
                       {opt.icon}
                       <div style={{ flex: 1 }}>
                         <div>{opt.label}</div>
-                        {opt.description && <div style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>{opt.description}</div>}
+                        {opt.description && (
+                          <div
+                            style={{
+                              fontSize: 'var(--ds-font-size-xs)',
+                              color: 'var(--ds-color-neutral-text-subtle)',
+                            }}
+                          >
+                            {opt.description}
+                          </div>
+                        )}
                       </div>
                       {isSelected && <CheckIcon />}
                     </div>
@@ -416,7 +572,15 @@ export function SearchableSelect({
                 })}
                 {Object.entries(groupedOptions.groups).map(([group, opts]) => (
                   <div key={group}>
-                    <div style={{ padding: 'var(--ds-spacing-2) var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-xs)', fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-neutral-text-subtle)', textTransform: 'uppercase' }}>
+                    <div
+                      style={{
+                        padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
+                        fontSize: 'var(--ds-font-size-xs)',
+                        fontWeight: 'var(--ds-font-weight-semibold)',
+                        color: 'var(--ds-color-neutral-text-subtle)',
+                        textTransform: 'uppercase',
+                      }}
+                    >
                       {group}
                     </div>
                     {opts.map((opt) => {
@@ -434,7 +598,9 @@ export function SearchableSelect({
                             padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
                             fontSize: 'var(--ds-font-size-sm)',
                             backgroundColor: 'transparent',
-                            color: opt.disabled ? 'var(--ds-color-neutral-text-subtle)' : 'var(--ds-color-neutral-text-default)',
+                            color: opt.disabled
+                              ? 'var(--ds-color-neutral-text-subtle)'
+                              : 'var(--ds-color-neutral-text-default)',
                             borderRadius: 'var(--ds-border-radius-sm)',
                             cursor: opt.disabled ? 'not-allowed' : 'pointer',
                           }}
@@ -449,7 +615,10 @@ export function SearchableSelect({
                 ))}
                 {showCreateOption && (
                   <div
-                    onClick={() => { onCreate?.(search); setSearch(''); }}
+                    onClick={() => {
+                      onCreate?.(search);
+                      setSearch('');
+                    }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -461,7 +630,7 @@ export function SearchableSelect({
                       cursor: 'pointer',
                     }}
                   >
-                    Create "{search}"
+                    Create &quot;{search}&quot;
                   </div>
                 )}
               </>

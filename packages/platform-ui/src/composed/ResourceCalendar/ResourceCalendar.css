@@ -28,7 +28,7 @@
    Header
    ============================================================================= */
 
-.calendar-header {
+.ds-calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@
   background: var(--ds-color-neutral-background-subtle);
 }
 
-.calendar-header h3 {
+.ds-calendar-header h3 {
   margin: 0;
   font-size: var(--ds-font-size-lg);
   font-weight: var(--ds-font-weight-semibold);
@@ -45,12 +45,12 @@
 }
 
 /* Mode Switcher */
-.mode-switcher {
+.ds-mode-switcher {
   display: flex;
   gap: var(--ds-spacing-2);
 }
 
-.mode-button {
+.ds-mode-button {
   padding: var(--ds-spacing-2) var(--ds-spacing-3);
   border: var(--ds-border-width-default) solid var(--calendar-border);
   border-radius: var(--ds-border-radius-sm);
@@ -61,11 +61,11 @@
   transition: all 0.15s ease;
 }
 
-.mode-button:hover {
+.ds-mode-button:hover {
   background: var(--ds-color-neutral-background-subtle);
 }
 
-.mode-button.active {
+.ds-mode-button.active {
   background: var(--ds-color-accent-background-default);
   border-color: var(--ds-color-accent-border-default);
   color: var(--ds-color-accent-text-default);
@@ -75,13 +75,13 @@
    Calendar Body
    ============================================================================= */
 
-.calendar-body {
+.ds-calendar-body {
   padding: var(--ds-spacing-4);
   max-height: var(--ds-sizing-500);
   overflow-y: auto;
 }
 
-.calendar-empty {
+.ds-calendar-empty {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,26 +94,26 @@
    Day Sections
    ============================================================================= */
 
-.calendar-day {
+.ds-calendar-day {
   margin-bottom: var(--ds-spacing-4);
 }
 
-.calendar-day:last-child {
+.ds-calendar-day:last-child {
   margin-bottom: 0;
 }
 
-.day-header {
+.ds-day-header {
   margin-bottom: var(--ds-spacing-3);
 }
 
-.day-date {
+.ds-day-date {
   font-size: var(--ds-font-size-sm);
   font-weight: var(--ds-font-weight-medium);
   color: var(--calendar-text);
   text-transform: capitalize;
 }
 
-.day-slots {
+.ds-day-slots {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: var(--ds-spacing-2);
@@ -123,7 +123,7 @@
    Slot States
    ============================================================================= */
 
-.calendar-slot {
+.ds-calendar-slot {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,24 +137,24 @@
   min-height: var(--ds-sizing-60);
 }
 
-.calendar-slot:disabled {
+.ds-calendar-slot:disabled {
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.slot-time {
+.ds-slot-time {
   font-size: var(--ds-font-size-sm);
   font-weight: var(--ds-font-weight-medium);
   color: var(--calendar-text);
 }
 
-.slot-price {
+.ds-slot-price {
   font-size: var(--ds-font-size-xs);
   color: var(--ds-color-success-text-default);
   margin-top: var(--ds-spacing-1);
 }
 
-.slot-reason {
+.ds-slot-reason {
   font-size: var(--ds-font-size-xs);
   color: var(--calendar-text-subtle);
   margin-top: var(--ds-spacing-1);
@@ -162,63 +162,63 @@
 }
 
 /* AVAILABLE - Green tint */
-.slot-available {
+.ds-slot-available {
   background: var(--ds-color-success-background-subtle);
   border-color: var(--ds-color-success-border-subtle);
 }
 
-.slot-available:hover:not(:disabled) {
+.ds-slot-available:hover:not(:disabled) {
   background: var(--ds-color-success-background-default);
   border-color: var(--ds-color-success-border-default);
 }
 
-.slot-available .slot-time {
+.ds-slot-available .ds-slot-time {
   color: var(--ds-color-success-text-default);
 }
 
 /* RESERVED - Yellow/warning tint */
-.slot-reserved {
+.ds-slot-reserved {
   background: var(--ds-color-warning-background-subtle);
   border-color: var(--ds-color-warning-border-subtle);
 }
 
-.slot-reserved .slot-time {
+.ds-slot-reserved .ds-slot-time {
   color: var(--ds-color-warning-text-default);
 }
 
 /* BOOKED - Blue/info tint */
-.slot-booked {
+.ds-slot-booked {
   background: var(--ds-color-info-background-subtle);
   border-color: var(--ds-color-info-border-subtle);
 }
 
-.slot-booked .slot-time {
+.ds-slot-booked .ds-slot-time {
   color: var(--ds-color-info-text-default);
 }
 
 /* BLOCKED - Red/danger tint */
-.slot-blocked {
+.ds-slot-blocked {
   background: var(--ds-color-danger-background-subtle);
   border-color: var(--ds-color-danger-border-subtle);
 }
 
-.slot-blocked .slot-time {
+.ds-slot-blocked .ds-slot-time {
   color: var(--ds-color-danger-text-default);
 }
 
 /* BLACKOUT - Dark/neutral */
-.slot-blackout {
+.ds-slot-blackout {
   background: var(--ds-color-neutral-background-subtle);
   border-color: var(--ds-color-neutral-border-default);
 }
 
-.slot-blackout .slot-time {
+.ds-slot-blackout .ds-slot-time {
   color: var(--calendar-text-subtle);
   text-decoration: line-through;
 }
 
 /* Selected state */
-.slot-selected {
+.ds-slot-selected {
   outline: var(--ds-border-width-medium) solid var(--ds-color-accent-border-strong);
   outline-offset: var(--ds-spacing-1);
 }
@@ -227,7 +227,7 @@
    Footer / Actions
    ============================================================================= */
 
-.calendar-footer {
+.ds-calendar-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -236,28 +236,28 @@
   background: var(--ds-color-neutral-background-subtle);
 }
 
-.selection-summary {
+.ds-selection-summary {
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-1);
 }
 
-.selection-time {
+.ds-selection-time {
   font-size: var(--ds-font-size-sm);
   font-weight: var(--ds-font-weight-medium);
   color: var(--calendar-text);
 }
 
-.calendar-actions {
+.ds-calendar-actions {
   display: flex;
   gap: var(--ds-spacing-2);
 }
 
 /* Action Buttons */
-.action-book,
-.action-request,
-.action-waitlist,
-.action-modify {
+.ds-action-book,
+.ds-action-request,
+.ds-action-waitlist,
+.ds-action-modify {
   padding: var(--ds-spacing-2) var(--ds-spacing-4);
   border-radius: var(--ds-border-radius-sm);
   font-size: var(--ds-font-size-sm);
@@ -266,50 +266,50 @@
   transition: all 0.15s ease;
 }
 
-.action-book {
+.ds-action-book {
   background: var(--ds-color-accent-background-default);
   border: var(--ds-border-width-default) solid var(--ds-color-accent-border-default);
   color: var(--ds-color-accent-contrast-default);
 }
 
-.action-book:hover:not(:disabled) {
+.ds-action-book:hover:not(:disabled) {
   background: var(--ds-color-accent-background-strong);
 }
 
-.action-request {
+.ds-action-request {
   background: var(--ds-color-info-background-default);
   border: var(--ds-border-width-default) solid var(--ds-color-info-border-default);
   color: var(--ds-color-info-contrast-default);
 }
 
-.action-request:hover:not(:disabled) {
+.ds-action-request:hover:not(:disabled) {
   background: var(--ds-color-info-background-strong);
 }
 
-.action-waitlist {
+.ds-action-waitlist {
   background: var(--ds-color-warning-background-default);
   border: var(--ds-border-width-default) solid var(--ds-color-warning-border-default);
   color: var(--ds-color-warning-contrast-default);
 }
 
-.action-waitlist:hover:not(:disabled) {
+.ds-action-waitlist:hover:not(:disabled) {
   background: var(--ds-color-warning-background-strong);
 }
 
-.action-modify {
+.ds-action-modify {
   background: var(--calendar-bg);
   border: var(--ds-border-width-default) solid var(--calendar-border);
   color: var(--calendar-text);
 }
 
-.action-modify:hover:not(:disabled) {
+.ds-action-modify:hover:not(:disabled) {
   background: var(--ds-color-neutral-background-subtle);
 }
 
-.action-book:disabled,
-.action-request:disabled,
-.action-waitlist:disabled,
-.action-modify:disabled {
+.ds-action-book:disabled,
+.ds-action-request:disabled,
+.ds-action-waitlist:disabled,
+.ds-action-modify:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -318,8 +318,8 @@
    Loading & Error States
    ============================================================================= */
 
-.calendar-loading,
-.calendar-error {
+.ds-calendar-loading,
+.ds-calendar-error {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -327,12 +327,12 @@
   padding: var(--ds-spacing-6);
 }
 
-.calendar-loading span {
+.ds-calendar-loading span {
   color: var(--calendar-text-subtle);
   font-size: var(--ds-font-size-md);
 }
 
-.calendar-error span {
+.ds-calendar-error span {
   color: var(--ds-color-danger-text-default);
   font-size: var(--ds-font-size-md);
 }
@@ -342,23 +342,23 @@
    ============================================================================= */
 
 /* TIME mode - default grid */
-.mode-time .day-slots {
+.ds-mode-time .ds-day-slots {
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 }
 
 /* ALL_DAY mode - single column */
-.mode-all_day .day-slots {
+.ds-mode-all_day .ds-day-slots {
   grid-template-columns: 1fr;
 }
 
-.mode-all_day .calendar-slot {
+.ds-mode-all_day .ds-calendar-slot {
   flex-direction: row;
   justify-content: space-between;
   padding: var(--ds-spacing-4);
 }
 
 /* RECURRING mode - weekly view */
-.mode-recurring .day-slots {
+.ds-mode-recurring .ds-day-slots {
   grid-template-columns: repeat(7, 1fr);
 }
 
@@ -367,43 +367,43 @@
    ============================================================================= */
 
 @media (max-width: var(--ds-sizing-192)) {
-  .calendar-header {
+  .ds-calendar-header {
     flex-direction: column;
     gap: var(--ds-spacing-3);
     align-items: flex-start;
   }
 
-  .mode-switcher {
+  .ds-mode-switcher {
     width: 100%;
     justify-content: stretch;
   }
 
-  .mode-button {
+  .ds-mode-button {
     flex: 1;
     text-align: center;
   }
 
-  .day-slots {
+  .ds-day-slots {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .calendar-footer {
+  .ds-calendar-footer {
     flex-direction: column;
     gap: var(--ds-spacing-3);
     align-items: stretch;
   }
 
-  .calendar-actions {
+  .ds-calendar-actions {
     justify-content: stretch;
   }
 
-  .calendar-actions button {
+  .ds-calendar-actions button {
     flex: 1;
   }
 }
 
 @media (max-width: var(--ds-sizing-480)) {
-  .day-slots {
+  .ds-day-slots {
     grid-template-columns: 1fr;
   }
 }

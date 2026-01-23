@@ -213,7 +213,7 @@ export function FeatureChips({
 
   return (
     <div
-      className={cn('platform-feature-chips', className)}
+      className={cn('ds-feature-chips', className)}
       style={{
         ...layoutStyles[layout],
         gap: currentSize.containerGap,
@@ -229,7 +229,7 @@ export function FeatureChips({
           <span
             key={feature.id}
             role="listitem"
-            className="platform-feature-chip"
+            className="ds-feature-chip"
             style={{
               display: 'inline-flex',
               alignItems: 'center',

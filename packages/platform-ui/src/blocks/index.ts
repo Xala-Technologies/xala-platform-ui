@@ -43,7 +43,6 @@ export type { FAQTabProps } from './FAQTab';
 export { ImageSlider } from './ImageSlider';
 export type { ImageSliderProps } from './ImageSlider';
 
-
 // Auth Gating Modal
 export { RequireAuthModal } from './RequireAuthModal';
 export type { RequireAuthModalProps } from './RequireAuthModal';
@@ -54,14 +53,14 @@ export {
   FeatureItem,
   IntegrationBadge,
   LoginFooterLink,
-  LoginLayout
+  LoginLayout,
 } from './LoginComponents';
 export type {
   LoginOptionProps,
   FeatureItemProps,
   IntegrationBadgeProps,
   LoginFooterLinkProps,
-  LoginLayoutProps
+  LoginLayoutProps,
 } from './LoginComponents';
 
 // Dashboard Components (StatCard exported as BlockStatCard to avoid conflict with composed/StatCard)
@@ -134,11 +133,7 @@ export type {
 
 // Chart Components
 export { BarChart, VerticalBarChart } from './BarChart';
-export type {
-  BarChartDataItem,
-  BarChartProps,
-  VerticalBarChartProps,
-} from './BarChart';
+export type { BarChartDataItem, BarChartProps, VerticalBarChartProps } from './BarChart';
 
 // Auth UI Components
 export {
@@ -176,7 +171,11 @@ export type {
 
 // Error Handling Components
 export { ErrorBoundary, withErrorBoundary } from './ErrorBoundary';
-export type { ErrorBoundaryProps, ErrorBoundaryLabels, WithErrorBoundaryOptions } from './ErrorBoundary';
+export type {
+  ErrorBoundaryProps,
+  ErrorBoundaryLabels,
+  WithErrorBoundaryOptions,
+} from './ErrorBoundary';
 
 export { GlobalErrorHandler, useGlobalError } from './GlobalErrorHandler';
 export type {
@@ -208,12 +207,7 @@ export type {
 } from './help';
 
 // Admin Components
-export {
-  ScopeSelector,
-  PermissionMatrix,
-  EffectivePermissionsView,
-  UserInviteForm,
-} from './admin';
+export { ScopeSelector, PermissionMatrix, EffectivePermissionsView, UserInviteForm } from './admin';
 export type {
   ScopeSelectorProps,
   ScopeType as AdminScopeType,
@@ -236,7 +230,11 @@ export type { SettingsTabLayoutProps, SettingsFieldProps, SettingsSectionProps }
 
 // Notifications Blocks
 export { NotificationItem, NotificationList } from './notifications';
-export type { NotificationItemProps, NotificationItemData, NotificationListProps } from './notifications';
+export type {
+  NotificationItemProps,
+  NotificationItemData,
+  NotificationListProps,
+} from './notifications';
 
 // Profile Blocks
 export { ProfileCard, QuickStat } from './profile';
@@ -257,20 +255,11 @@ export type {
 
 // Amenity Chips
 export { AmenityChips } from './AmenityChips';
-export type {
-  Amenity,
-  AmenityChipsProps,
-  AmenityChipsLabels,
-} from './AmenityChips';
+export type { Amenity, AmenityChipsProps, AmenityChipsLabels } from './AmenityChips';
 
 // Share Components
 export { ShareButton, ShareSheet } from './ShareButton';
-export type {
-  ShareButtonProps,
-  ShareSheetProps,
-  ShareData,
-  SharePlatform,
-} from './ShareButton';
+export type { ShareButtonProps, ShareSheetProps, ShareData, SharePlatform } from './ShareButton';
 
 // Period & Media Cards
 export { PeriodCard } from './PeriodCard';
@@ -292,4 +281,3 @@ export type {
 // NOTE: This package contains ONLY platform-neutral UI components.
 // Domain-specific components (reservations, allocations, periods) belong in domain repos.
 // =============================================================================
-

@@ -6,12 +6,7 @@
  * Permissions can be grouped by category and show risk indicators.
  */
 import React, { useMemo } from 'react';
-import {
-  Card,
-  Heading,
-  Paragraph,
-  Spinner,
-} from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
 import { Badge, type BadgeVariant } from '../../composed/Badge';
 import { Collapsible } from '../../composed/Accordion';
 
@@ -153,7 +148,9 @@ export function EffectivePermissionsView({
     <Card style={{ padding: 'var(--ds-spacing-4)' }}>
       <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         <Heading data-size="sm">Effective Permissions</Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-2)' }}>
+        <div
+          style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-2)' }}
+        >
           <Badge variant="default" size="sm">
             {totalCount} Total
           </Badge>
@@ -203,25 +200,22 @@ export function EffectivePermissionsView({
                         <Heading data-size="xs" style={{ marginBottom: 'var(--ds-spacing-1)' }}>
                           {permission.name}
                         </Heading>
-                        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                        <Paragraph
+                          data-size="sm"
+                          style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
+                        >
                           {permission.description}
                         </Paragraph>
                       </div>
                       <div style={{ display: 'flex', gap: 'var(--ds-spacing-1)' }}>
                         {showSource && (
-                          <Badge
-                            variant={sourceBadgeVariants[permission.source]}
-                            size="sm"
-                          >
+                          <Badge variant={sourceBadgeVariants[permission.source]} size="sm">
                             {sourceLabels[permission.source]}
                             {permission.sourceDetail && `: ${permission.sourceDetail}`}
                           </Badge>
                         )}
                         {showRiskIndicators && permission.risk && (
-                          <Badge
-                            variant={riskBadgeVariants[permission.risk]}
-                            size="sm"
-                          >
+                          <Badge variant={riskBadgeVariants[permission.risk]} size="sm">
                             {riskLabels[permission.risk]}
                           </Badge>
                         )}

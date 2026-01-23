@@ -185,8 +185,8 @@ function TableHeaderCell({
             column.align === 'right'
               ? 'flex-end'
               : column.align === 'center'
-              ? 'center'
-              : 'flex-start',
+                ? 'center'
+                : 'flex-start',
         }}
       >
         {column.header}
@@ -397,9 +397,7 @@ export function DataTable<T>({
                   role={onRowClick ? 'button' : undefined}
                   aria-label={onRowClick ? 'Klikk for å åpne' : undefined}
                   onClick={onRowClick ? () => onRowClick(row) : undefined}
-                  onKeyDown={
-                    onRowClick ? (e) => handleKeyDown(e, index, row) : undefined
-                  }
+                  onKeyDown={onRowClick ? (e) => handleKeyDown(e, index, row) : undefined}
                   onMouseEnter={() => setHoveredRow(rowKey)}
                   onMouseLeave={() => setHoveredRow(null)}
                   onFocus={() => setFocusedRow(index)}
@@ -411,8 +409,8 @@ export function DataTable<T>({
                     backgroundColor: isFocused
                       ? 'var(--ds-color-accent-surface-default)'
                       : isHovered
-                      ? 'var(--ds-color-neutral-surface-hover)'
-                      : 'var(--ds-color-neutral-surface-default)',
+                        ? 'var(--ds-color-neutral-surface-hover)'
+                        : 'var(--ds-color-neutral-surface-default)',
                     transition: 'background-color 0.15s ease',
                   }}
                 >

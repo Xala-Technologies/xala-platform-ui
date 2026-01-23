@@ -5,7 +5,13 @@
  * Each section expands to show detailed policy text.
  */
 import * as React from 'react';
-import { Details, DetailsSummary, DetailsContent, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Details,
+  DetailsSummary,
+  DetailsContent,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 import type { GuidelineSection } from '../types';
 
@@ -37,17 +43,11 @@ export interface GuidelinesTabProps {
  * />
  * ```
  */
-export function GuidelinesTab({
-  sections,
-  className,
-}: GuidelinesTabProps): React.ReactElement {
+export function GuidelinesTab({ sections, className }: GuidelinesTabProps): React.ReactElement {
   if (!sections.length) {
     return (
       <div className={cn('guidelines-tab', className)}>
-        <Paragraph
-          data-size="sm"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-        >
+        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
           Ingen retningslinjer tilgjengelig.
         </Paragraph>
       </div>
@@ -57,11 +57,7 @@ export function GuidelinesTab({
   return (
     <div className={cn('guidelines-tab', className)}>
       <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        <Heading
-          level={2}
-          data-size="sm"
-          style={{ margin: '0 0 var(--ds-spacing-2) 0' }}
-        >
+        <Heading level={2} data-size="sm" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
           Retningslinjer og vilkår
         </Heading>
         <Paragraph
@@ -71,8 +67,8 @@ export function GuidelinesTab({
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          Les gjennom retningslinjene før du booker. Ved å fullføre resourceRequesten
-          aksepterer du disse vilkårene.
+          Les gjennom retningslinjene før du booker. Ved å fullføre resourceRequesten aksepterer du
+          disse vilkårene.
         </Paragraph>
       </div>
 

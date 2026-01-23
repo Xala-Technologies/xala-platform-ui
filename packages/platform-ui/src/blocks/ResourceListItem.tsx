@@ -71,32 +71,68 @@ export interface ResourceListItemProps {
 }
 
 const MapPinIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-    <circle cx="12" cy="10" r="3"/>
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
 const UserIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-    <circle cx="12" cy="7" r="4"/>
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
   </svg>
 );
 
 const HeartIcon = ({ filled }: { filled?: boolean }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill={filled ? 'currentColor' : 'none'}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
   </svg>
 );
 
 const ShareIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="18" cy="5" r="3"/>
-    <circle cx="6" cy="12" r="3"/>
-    <circle cx="18" cy="19" r="3"/>
-    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="18" cy="5" r="3" />
+    <circle cx="6" cy="12" r="3" />
+    <circle cx="18" cy="19" r="3" />
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
   </svg>
 );
 
@@ -199,12 +235,14 @@ export function ResourceListItem({
       }}
     >
       {/* Image section */}
-      <div style={{
-        position: 'relative',
-        width: `${imageWidth}px`,
-        minWidth: `${imageWidth}px`,
-        backgroundColor: 'var(--ds-color-neutral-surface-hover)'
-      }}>
+      <div
+        style={{
+          position: 'relative',
+          width: `${imageWidth}px`,
+          minWidth: `${imageWidth}px`,
+          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+        }}
+      >
         <img
           src={image}
           alt={name}
@@ -213,28 +251,40 @@ export function ResourceListItem({
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
           }}
         />
 
         {/* Type badge on image */}
         {showTypeBadge && (
-          <div style={{ position: 'absolute', top: 'var(--ds-spacing-3)', left: 'var(--ds-spacing-3)' }}>
-            <Tag data-size="sm" data-color={categoryColors[category || 'OTHER'] || 'neutral'} style={{ paddingInline: 'var(--ds-spacing-2)' }}>
+          <div
+            style={{
+              position: 'absolute',
+              top: 'var(--ds-spacing-3)',
+              left: 'var(--ds-spacing-3)',
+            }}
+          >
+            <Tag
+              data-size="sm"
+              data-color={categoryColors[category || 'OTHER'] || 'neutral'}
+              style={{ paddingInline: 'var(--ds-spacing-2)' }}
+            >
               {type}
             </Tag>
           </div>
         )}
 
         {/* Action buttons container */}
-        <div style={{
-          position: 'absolute',
-          top: 'var(--ds-spacing-3)',
-          right: 'var(--ds-spacing-3)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--ds-spacing-2)'
-        }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: 'var(--ds-spacing-3)',
+            right: 'var(--ds-spacing-3)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-spacing-2)',
+          }}
+        >
           {showFavoriteButton && onFavorite && (
             <button
               type="button"
@@ -247,10 +297,12 @@ export function ResourceListItem({
                 border: 'none',
                 borderRadius: 'var(--ds-border-radius-full)',
                 backgroundColor: 'var(--ds-color-neutral-background-default)',
-                color: isFavorited ? 'var(--ds-color-danger-base-default)' : 'var(--ds-color-neutral-text-subtle)',
+                color: isFavorited
+                  ? 'var(--ds-color-danger-base-default)'
+                  : 'var(--ds-color-neutral-text-subtle)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                boxShadow: 'var(--ds-shadow-sm, 0 2px 8px var(--ds-color-neutral-border-subtle))'
+                boxShadow: 'var(--ds-shadow-sm, 0 2px 8px var(--ds-color-neutral-border-subtle))',
               }}
               onClick={handleFavorite}
               title="Legg til favoritter"
@@ -273,7 +325,7 @@ export function ResourceListItem({
                 color: 'var(--ds-color-neutral-text-subtle)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                boxShadow: 'var(--ds-shadow-sm, 0 2px 8px var(--ds-color-neutral-border-subtle))'
+                boxShadow: 'var(--ds-shadow-sm, 0 2px 8px var(--ds-color-neutral-border-subtle))',
               }}
               onClick={(e) => {
                 e.stopPropagation();
@@ -288,27 +340,45 @@ export function ResourceListItem({
       </div>
 
       {/* Content section */}
-      <div style={{
-        flex: 1,
-        padding: 'var(--ds-spacing-5) var(--ds-spacing-6)',
-        display: 'flex',
-        flexDirection: 'column',
-        minWidth: 0
-      }}>
+      <div
+        style={{
+          flex: 1,
+          padding: 'var(--ds-spacing-5) var(--ds-spacing-6)',
+          display: 'flex',
+          flexDirection: 'column',
+          minWidth: 0,
+        }}
+      >
         {/* Header with title and category */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-2)' }}>
-          <h3 style={{
-            margin: 0,
-            fontSize: 'var(--ds-font-size-md)',
-            fontWeight: 'var(--ds-font-weight-semibold)',
-            color: 'var(--ds-color-neutral-text-default)',
-            lineHeight: 'var(--ds-line-height-sm)',
-            fontFamily: 'var(--ds-font-family)'
-          } as React.CSSProperties}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            gap: 'var(--ds-spacing-3)',
+            marginBottom: 'var(--ds-spacing-2)',
+          }}
+        >
+          <h3
+            style={
+              {
+                margin: 0,
+                fontSize: 'var(--ds-font-size-md)',
+                fontWeight: 'var(--ds-font-weight-semibold)',
+                color: 'var(--ds-color-neutral-text-default)',
+                lineHeight: 'var(--ds-line-height-sm)',
+                fontFamily: 'var(--ds-font-family)',
+              } as React.CSSProperties
+            }
+          >
             {name}
           </h3>
           {showCategory && category && (
-            <Tag data-size="sm" data-color={categoryColors[category] || 'neutral'} style={{ paddingInline: 'var(--ds-spacing-2)', flexShrink: 0 }}>
+            <Tag
+              data-size="sm"
+              data-color={categoryColors[category] || 'neutral'}
+              style={{ paddingInline: 'var(--ds-spacing-2)', flexShrink: 0 }}
+            >
               {categoryLabels[category] || category}
             </Tag>
           )}
@@ -316,15 +386,19 @@ export function ResourceListItem({
 
         {/* Location */}
         {showLocation && (
-          <p style={{
-            margin: '0 0 var(--ds-spacing-2) 0',
-            fontSize: 'var(--ds-font-size-sm)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-spacing-1)',
-            fontFamily: 'var(--ds-font-family)'
-          } as React.CSSProperties}>
+          <p
+            style={
+              {
+                margin: '0 0 var(--ds-spacing-2) 0',
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-1)',
+                fontFamily: 'var(--ds-font-family)',
+              } as React.CSSProperties
+            }
+          >
             <MapPinIcon />
             {location}
           </p>
@@ -332,36 +406,51 @@ export function ResourceListItem({
 
         {/* Description */}
         {showDescription && (
-          <p style={{
-            margin: '0 0 var(--ds-spacing-3) 0',
-            fontSize: 'var(--ds-font-size-sm)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-            lineHeight: 'var(--ds-line-height-md)',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            fontFamily: 'var(--ds-font-family)'
-          } as React.CSSProperties}>
+          <p
+            style={
+              {
+                margin: '0 0 var(--ds-spacing-3) 0',
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+                lineHeight: 'var(--ds-line-height-md)',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                fontFamily: 'var(--ds-font-family)',
+              } as React.CSSProperties
+            }
+          >
             {description}
           </p>
         )}
 
         {/* Amenity tags */}
         {showAmenities && amenities.length > 0 && (
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 'var(--ds-spacing-2)',
-            marginBottom: 'var(--ds-spacing-3)'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 'var(--ds-spacing-2)',
+              marginBottom: 'var(--ds-spacing-3)',
+            }}
+          >
             {amenities.slice(0, maxAmenities).map((amenity) => (
-              <Tag key={amenity} data-size="sm" data-color="accent" style={{ paddingInline: 'var(--ds-spacing-2)' }}>
+              <Tag
+                key={amenity}
+                data-size="sm"
+                data-color="accent"
+                style={{ paddingInline: 'var(--ds-spacing-2)' }}
+              >
                 {amenity}
               </Tag>
             ))}
             {moreAmenities > 0 && (
-              <Tag data-size="sm" data-color="neutral" style={{ paddingInline: 'var(--ds-spacing-2)' }}>
+              <Tag
+                data-size="sm"
+                data-color="neutral"
+                style={{ paddingInline: 'var(--ds-spacing-2)' }}
+              >
                 +{moreAmenities} flere
               </Tag>
             )}
@@ -370,36 +459,48 @@ export function ResourceListItem({
 
         {/* Footer with capacity and price */}
         {(showCapacity || showPrice) && (
-          <div style={{
-            marginTop: 'auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}>
+          <div
+            style={{
+              marginTop: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
             {/* Capacity */}
             {showCapacity && capacity !== undefined ? (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-1)',
-                fontSize: 'var(--ds-font-size-sm)',
-                color: 'var(--ds-color-neutral-text-subtle)',
-                fontFamily: 'var(--ds-font-family)'
-              } as React.CSSProperties}>
+              <div
+                style={
+                  {
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-1)',
+                    fontSize: 'var(--ds-font-size-sm)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    fontFamily: 'var(--ds-font-family)',
+                  } as React.CSSProperties
+                }
+              >
                 <UserIcon />
                 {capacity} personer
               </div>
-            ) : <div />}
-            
+            ) : (
+              <div />
+            )}
+
             {/* Price */}
             {showPrice && price !== undefined && (
-              <span style={{
-                fontSize: 'var(--ds-font-size-sm)',
-                fontWeight: 'var(--ds-font-weight-semibold)',
-                color: 'var(--ds-color-accent-text-default)',
-                fontFamily: 'var(--ds-font-family)'
-              } as React.CSSProperties}>
+              <span
+                style={
+                  {
+                    fontSize: 'var(--ds-font-size-sm)',
+                    fontWeight: 'var(--ds-font-weight-semibold)',
+                    color: 'var(--ds-color-accent-text-default)',
+                    fontFamily: 'var(--ds-font-family)',
+                  } as React.CSSProperties
+                }
+              >
                 fra {price} {currency}/{priceUnit}
               </span>
             )}
@@ -409,13 +510,15 @@ export function ResourceListItem({
 
       {/* Map section */}
       {showMap && (
-        <div style={{
-          width: `${mapWidth}px`,
-          minWidth: `${mapWidth}px`,
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
+        <div
+          style={{
+            width: `${mapWidth}px`,
+            minWidth: `${mapWidth}px`,
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
           {mapboxToken && latitude && longitude ? (
             // Mapbox Static Image
             <img
@@ -426,25 +529,27 @@ export function ResourceListItem({
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover'
+                objectFit: 'cover',
               }}
             />
           ) : (
             // Fallback placeholder
-            <div style={{
-              width: '100%',
-              height: '100%',
-              background: `
+            <div
+              style={{
+                width: '100%',
+                height: '100%',
+                background: `
                 linear-gradient(135deg,
                   var(--ds-color-neutral-surface-hover) 0%,
                   var(--ds-color-neutral-surface-active) 100%
                 )
               `,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative'
-            }}>
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+              }}
+            >
               {/* Simplified map placeholder with streets */}
               <svg
                 width="100%"
@@ -452,23 +557,81 @@ export function ResourceListItem({
                 viewBox="0 0 200 160"
                 style={{ position: 'absolute', inset: 0, opacity: 0.4 }}
               >
-                <line x1="0" y1="40" x2="200" y2="40" stroke="var(--ds-color-neutral-border-default)" strokeWidth="2" />
-                <line x1="0" y1="80" x2="200" y2="80" stroke="var(--ds-color-neutral-border-default)" strokeWidth="3" />
-                <line x1="0" y1="120" x2="200" y2="120" stroke="var(--ds-color-neutral-border-default)" strokeWidth="2" />
-                <line x1="50" y1="0" x2="50" y2="160" stroke="var(--ds-color-neutral-border-default)" strokeWidth="2" />
-                <line x1="100" y1="0" x2="100" y2="160" stroke="var(--ds-color-neutral-border-default)" strokeWidth="3" />
-                <line x1="150" y1="0" x2="150" y2="160" stroke="var(--ds-color-neutral-border-default)" strokeWidth="2" />
+                <line
+                  x1="0"
+                  y1="40"
+                  x2="200"
+                  y2="40"
+                  stroke="var(--ds-color-neutral-border-default)"
+                  strokeWidth="2"
+                />
+                <line
+                  x1="0"
+                  y1="80"
+                  x2="200"
+                  y2="80"
+                  stroke="var(--ds-color-neutral-border-default)"
+                  strokeWidth="3"
+                />
+                <line
+                  x1="0"
+                  y1="120"
+                  x2="200"
+                  y2="120"
+                  stroke="var(--ds-color-neutral-border-default)"
+                  strokeWidth="2"
+                />
+                <line
+                  x1="50"
+                  y1="0"
+                  x2="50"
+                  y2="160"
+                  stroke="var(--ds-color-neutral-border-default)"
+                  strokeWidth="2"
+                />
+                <line
+                  x1="100"
+                  y1="0"
+                  x2="100"
+                  y2="160"
+                  stroke="var(--ds-color-neutral-border-default)"
+                  strokeWidth="3"
+                />
+                <line
+                  x1="150"
+                  y1="0"
+                  x2="150"
+                  y2="160"
+                  stroke="var(--ds-color-neutral-border-default)"
+                  strokeWidth="2"
+                />
               </svg>
-              <div style={{
-                position: 'relative',
-                zIndex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-              }}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--ds-color-accent-base-default)" stroke="var(--ds-color-neutral-background-default)" strokeWidth="1.5">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3" fill="var(--ds-color-neutral-background-default)" stroke="var(--ds-color-accent-base-default)" strokeWidth="2"/>
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="var(--ds-color-accent-base-default)"
+                  stroke="var(--ds-color-neutral-background-default)"
+                  strokeWidth="1.5"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle
+                    cx="12"
+                    cy="10"
+                    r="3"
+                    fill="var(--ds-color-neutral-background-default)"
+                    stroke="var(--ds-color-accent-base-default)"
+                    strokeWidth="2"
+                  />
                 </svg>
               </div>
             </div>

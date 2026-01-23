@@ -176,10 +176,14 @@ export const Default: Story = {
 export const WithSpacing: Story = {
   render: () => (
     <div>
-      <Heading level={3} data-size="sm">Section 1</Heading>
+      <Heading level={3} data-size="sm">
+        Section 1
+      </Heading>
       <Paragraph>First section content.</Paragraph>
       <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
-      <Heading level={3} data-size="sm">Section 2</Heading>
+      <Heading level={3} data-size="sm">
+        Section 2
+      </Heading>
       <Paragraph>Second section content.</Paragraph>
     </div>
   ),
@@ -204,17 +208,25 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Basic Usage</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Basic Usage
+        </h3>
         <Paragraph>Content above</Paragraph>
         <Divider />
         <Paragraph>Content below</Paragraph>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>With Spacing</h3>
-        <Heading level={4} data-size="sm">Section 1</Heading>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          With Spacing
+        </h3>
+        <Heading level={4} data-size="sm">
+          Section 1
+        </Heading>
         <Paragraph>First section</Paragraph>
         <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
-        <Heading level={4} data-size="sm">Section 2</Heading>
+        <Heading level={4} data-size="sm">
+          Section 2
+        </Heading>
         <Paragraph>Second section</Paragraph>
       </div>
     </div>

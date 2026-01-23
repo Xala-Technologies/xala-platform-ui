@@ -217,14 +217,18 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Two Levels</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Two Levels
+        </Heading>
         <Breadcrumbs>
           <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
           <span>Settings</span>
         </Breadcrumbs>
       </div>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Three Levels</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Three Levels
+        </Heading>
         <Breadcrumbs>
           <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
           <Breadcrumbs.Link href="/products">Products</Breadcrumbs.Link>
@@ -232,7 +236,9 @@ export const AllVariants: Story = {
         </Breadcrumbs>
       </div>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Four Levels</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Four Levels
+        </Heading>
         <Breadcrumbs>
           <Breadcrumbs.Link href="/">Dashboard</Breadcrumbs.Link>
           <Breadcrumbs.Link href="/bookings">Bookings</Breadcrumbs.Link>

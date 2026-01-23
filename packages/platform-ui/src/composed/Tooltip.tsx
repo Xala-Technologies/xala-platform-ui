@@ -39,13 +39,37 @@ const getPositionStyles = (position: TooltipPosition): React.CSSProperties => {
 
   switch (position) {
     case 'top':
-      return { ...base, bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: 'var(--ds-spacing-2)' };
+      return {
+        ...base,
+        bottom: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginBottom: 'var(--ds-spacing-2)',
+      };
     case 'bottom':
-      return { ...base, top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: 'var(--ds-spacing-2)' };
+      return {
+        ...base,
+        top: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginTop: 'var(--ds-spacing-2)',
+      };
     case 'left':
-      return { ...base, right: '100%', top: '50%', transform: 'translateY(-50%)', marginRight: 'var(--ds-spacing-2)' };
+      return {
+        ...base,
+        right: '100%',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        marginRight: 'var(--ds-spacing-2)',
+      };
     case 'right':
-      return { ...base, left: '100%', top: '50%', transform: 'translateY(-50%)', marginLeft: 'var(--ds-spacing-2)' };
+      return {
+        ...base,
+        left: '100%',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        marginLeft: 'var(--ds-spacing-2)',
+      };
   }
 };
 
@@ -143,7 +167,10 @@ export function Tooltip({
 
       if (position === 'top' && triggerRect.top - tooltipRect.height < 0) {
         newPosition = 'bottom';
-      } else if (position === 'bottom' && triggerRect.bottom + tooltipRect.height > viewportHeight) {
+      } else if (
+        position === 'bottom' &&
+        triggerRect.bottom + tooltipRect.height > viewportHeight
+      ) {
         newPosition = 'top';
       } else if (position === 'left' && triggerRect.left - tooltipRect.width < 0) {
         newPosition = 'right';

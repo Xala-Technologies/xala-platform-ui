@@ -1,7 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button, Card, Heading, Paragraph, Checkbox } from '../../index';
-import { CheckCircle, XCircle, Code, FileCode, TestTube, Layers, Shield, Zap, AlertTriangle, BookOpen } from 'lucide-react';
+import {
+  CheckCircle,
+  XCircle,
+  Code,
+  FileCode,
+  TestTube,
+  Layers,
+  Shield,
+  Zap,
+  AlertTriangle,
+  BookOpen,
+} from 'lucide-react';
 
 const meta: Meta = {
   title: 'Overview/Contributing',
@@ -43,7 +54,8 @@ export const DesignPrinciples: Story = {
           {
             Icon: Shield,
             title: 'Domain Agnostic',
-            description: 'Components must be domain-blind with no business logic or domain-specific terms.',
+            description:
+              'Components must be domain-blind with no business logic or domain-specific terms.',
             bad: '<BookingCard listing={listing} />',
             good: '<ResourceCard resource={resource} />',
             color: 'var(--ds-color-accent-base-default)',
@@ -59,49 +71,120 @@ export const DesignPrinciples: Story = {
           {
             Icon: CheckCircle,
             title: 'Accessibility First',
-            description: 'WCAG 2.1 AA compliant with keyboard navigation, screen readers, and proper ARIA.',
-            requirements: ['Keyboard navigation', 'Screen reader support', 'Focus management', 'ARIA attributes', 'Color contrast'],
+            description:
+              'WCAG 2.1 AA compliant with keyboard navigation, screen readers, and proper ARIA.',
+            requirements: [
+              'Keyboard navigation',
+              'Screen reader support',
+              'Focus management',
+              'ARIA attributes',
+              'Color contrast',
+            ],
             color: 'var(--ds-color-success-base-default)',
           },
         ].map(({ Icon, title, description, bad, good, requirements, color }) => (
-          <Card key={title} style={{ padding: 'var(--ds-spacing-6)', borderLeft: `4px solid ${color}`, flex: '1 1 300px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
+          <Card
+            key={title}
+            style={{
+              padding: 'var(--ds-spacing-6)',
+              borderLeft: `4px solid ${color}`,
+              flex: '1 1 300px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
               <Icon size={32} style={{ color }} />
               <Heading level={3} data-size="md">
                 {title}
               </Heading>
             </div>
 
-            <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              style={{
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {description}
             </Paragraph>
 
             {bad && good && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-                <div style={{ 
-                  padding: 'var(--ds-spacing-3)',
-                  backgroundColor: 'var(--ds-color-danger-surface-default)',
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)' }}>
+                <div
+                  style={{
+                    padding: 'var(--ds-spacing-3)',
+                    backgroundColor: 'var(--ds-color-danger-surface-default)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--ds-spacing-2)',
+                      marginBottom: 'var(--ds-spacing-2)',
+                    }}
+                  >
                     <XCircle size={16} style={{ color: 'var(--ds-color-danger-base-default)' }} />
-                    <strong style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-danger-text-default)' }}>Bad</strong>
+                    <strong
+                      style={{
+                        fontSize: 'var(--ds-font-size-sm)',
+                        color: 'var(--ds-color-danger-text-default)',
+                      }}
+                    >
+                      Bad
+                    </strong>
                   </div>
-                  <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-danger-text-default)' }}>
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-danger-text-default)',
+                    }}
+                  >
                     {bad}
                   </code>
                 </div>
 
-                <div style={{ 
-                  padding: 'var(--ds-spacing-3)',
-                  backgroundColor: 'var(--ds-color-success-surface-default)',
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)' }}>
-                    <CheckCircle size={16} style={{ color: 'var(--ds-color-success-base-default)' }} />
-                    <strong style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-success-text-default)' }}>Good</strong>
+                <div
+                  style={{
+                    padding: 'var(--ds-spacing-3)',
+                    backgroundColor: 'var(--ds-color-success-surface-default)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--ds-spacing-2)',
+                      marginBottom: 'var(--ds-spacing-2)',
+                    }}
+                  >
+                    <CheckCircle
+                      size={16}
+                      style={{ color: 'var(--ds-color-success-base-default)' }}
+                    />
+                    <strong
+                      style={{
+                        fontSize: 'var(--ds-font-size-sm)',
+                        color: 'var(--ds-color-success-text-default)',
+                      }}
+                    >
+                      Good
+                    </strong>
                   </div>
-                  <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-success-text-default)' }}>
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-success-text-default)',
+                    }}
+                  >
                     {good}
                   </code>
                 </div>
@@ -111,7 +194,15 @@ export const DesignPrinciples: Story = {
             {requirements && (
               <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
                 {requirements.map((req, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-1)' }}>
+                  <div
+                    key={i}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--ds-spacing-2)',
+                      marginBottom: 'var(--ds-spacing-1)',
+                    }}
+                  >
                     <CheckCircle size={14} style={{ color }} />
                     <span style={{ fontSize: 'var(--ds-font-size-sm)' }}>{req}</span>
                   </div>
@@ -136,7 +227,12 @@ export const ComponentArchitecture: Story = {
       </Heading>
 
       <Card style={{ padding: 'var(--ds-spacing-8)' }}>
-        <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <Paragraph
+          style={{
+            marginBottom: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           Components follow a strict hierarchy. Lower layers cannot import from higher layers.
         </Paragraph>
 
@@ -195,19 +291,28 @@ export const ComponentArchitecture: Story = {
                 opacity: 1 - (level - 1) * 0.1,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-3)' }}>
-                <div style={{
-                  width: '32px',
-                  height: '32px',
-                  backgroundColor: 'var(--ds-color-accent-base-default)',
-                  color: 'var(--ds-color-accent-contrast-default)',
-                  borderRadius: 'var(--ds-border-radius-full)',
+              <div
+                style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 'var(--ds-font-size-sm)',
-                  fontWeight: 600,
-                }}>
+                  gap: 'var(--ds-spacing-3)',
+                  marginBottom: 'var(--ds-spacing-3)',
+                }}
+              >
+                <div
+                  style={{
+                    width: '32px',
+                    height: '32px',
+                    backgroundColor: 'var(--ds-color-accent-base-default)',
+                    color: 'var(--ds-color-accent-contrast-default)',
+                    borderRadius: 'var(--ds-border-radius-full)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 'var(--ds-font-size-sm)',
+                    fontWeight: 600,
+                  }}
+                >
                   {level}
                 </div>
                 <Heading level={3} data-size="sm">
@@ -215,23 +320,46 @@ export const ComponentArchitecture: Story = {
                 </Heading>
               </div>
 
-              <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{
+                  marginBottom: 'var(--ds-spacing-3)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 {description}
               </Paragraph>
 
-              <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap', marginBottom: 'var(--ds-spacing-3)' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 'var(--ds-spacing-4)',
+                  flexWrap: 'wrap',
+                  marginBottom: 'var(--ds-spacing-3)',
+                }}
+              >
                 <div>
-                  <strong style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-accent-text-default)' }}>
+                  <strong
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-accent-text-default)',
+                    }}
+                  >
                     Can import:
                   </strong>
-                  <span style={{ fontSize: 'var(--ds-font-size-xs)', marginLeft: 'var(--ds-spacing-2)' }}>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      marginLeft: 'var(--ds-spacing-2)',
+                    }}
+                  >
                     {canImport}
                   </span>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-                {examples.map(example => (
+                {examples.map((example) => (
                   <span
                     key={example}
                     style={{
@@ -250,14 +378,17 @@ export const ComponentArchitecture: Story = {
           ))}
         </div>
 
-        <div style={{
-          marginTop: 'var(--ds-spacing-6)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-warning-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-6)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-warning-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
-            <strong>Critical Rule:</strong> Lower layers cannot import from higher layers. This prevents circular dependencies and maintains clear separation of concerns.
+            <strong>Critical Rule:</strong> Lower layers cannot import from higher layers. This
+            prevents circular dependencies and maintains clear separation of concerns.
           </Paragraph>
         </div>
       </Card>
@@ -393,7 +524,7 @@ describe('MyComponent', () => {
 
     const toggleStep = (index: number) => {
       if (completedSteps.includes(index)) {
-        setCompletedSteps(completedSteps.filter(i => i !== index));
+        setCompletedSteps(completedSteps.filter((i) => i !== index));
       } else {
         setCompletedSteps([...completedSteps, index]);
       }
@@ -424,25 +555,41 @@ describe('MyComponent', () => {
                       onClick={() => setCurrentStep(index)}
                       style={{
                         padding: 'var(--ds-spacing-3)',
-                        backgroundColor: isActive ? 'var(--ds-color-accent-surface-default)' : 'transparent',
+                        backgroundColor: isActive
+                          ? 'var(--ds-color-accent-surface-default)'
+                          : 'transparent',
                         borderRadius: 'var(--ds-border-radius-sm)',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         gap: 'var(--ds-spacing-2)',
-                        border: isActive ? '1px solid var(--ds-color-accent-border-default)' : '1px solid transparent',
+                        border: isActive
+                          ? '1px solid var(--ds-color-accent-border-default)'
+                          : '1px solid transparent',
                       }}
                     >
                       {isCompleted ? (
-                        <CheckCircle size={20} style={{ color: 'var(--ds-color-success-base-default)' }} />
+                        <CheckCircle
+                          size={20}
+                          style={{ color: 'var(--ds-color-success-base-default)' }}
+                        />
                       ) : (
-                        <Icon size={20} style={{ color: isActive ? 'var(--ds-color-accent-base-default)' : 'var(--ds-color-neutral-text-subtle)' }} />
+                        <Icon
+                          size={20}
+                          style={{
+                            color: isActive
+                              ? 'var(--ds-color-accent-base-default)'
+                              : 'var(--ds-color-neutral-text-subtle)',
+                          }}
+                        />
                       )}
-                      <span style={{ 
-                        fontSize: 'var(--ds-font-size-sm)',
-                        fontWeight: isActive ? 600 : 400,
-                        color: isActive ? 'var(--ds-color-accent-text-default)' : 'inherit',
-                      }}>
+                      <span
+                        style={{
+                          fontSize: 'var(--ds-font-size-sm)',
+                          fontWeight: isActive ? 600 : 400,
+                          color: isActive ? 'var(--ds-color-accent-text-default)' : 'inherit',
+                        }}
+                      >
                         {index + 1}. {step.title}
                       </span>
                     </div>
@@ -450,14 +597,19 @@ describe('MyComponent', () => {
                 })}
               </div>
 
-              <div style={{ 
-                marginTop: 'var(--ds-spacing-4)',
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-success-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-              }}>
+              <div
+                style={{
+                  marginTop: 'var(--ds-spacing-4)',
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-success-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-                  <strong>{completedSteps.length} of {steps.length}</strong> steps completed
+                  <strong>
+                    {completedSteps.length} of {steps.length}
+                  </strong>{' '}
+                  steps completed
                 </Paragraph>
               </div>
             </Card>
@@ -465,26 +617,44 @@ describe('MyComponent', () => {
 
           {/* Content area */}
           <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
-              {React.createElement(steps[currentStep].icon, { size: 32, style: { color: 'var(--ds-color-accent-base-default)' } })}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              {React.createElement(steps[currentStep].icon, {
+                size: 32,
+                style: { color: 'var(--ds-color-accent-base-default)' },
+              })}
               <Heading level={3} data-size="md">
                 Step {currentStep + 1}: {steps[currentStep].title}
               </Heading>
             </div>
 
-            <pre style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              overflow: 'auto',
-              fontSize: 'var(--ds-font-size-xs)',
-              lineHeight: '1.6',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}>
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                overflow: 'auto',
+                fontSize: 'var(--ds-font-size-xs)',
+                lineHeight: '1.6',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
               {steps[currentStep].code}
             </pre>
 
-            <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', justifyContent: 'space-between' }}>
+            <div
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-3)',
+                justifyContent: 'space-between',
+              }}
+            >
               <div>
                 <Checkbox
                   checked={completedSteps.includes(currentStep)}
@@ -568,7 +738,7 @@ export const QualityChecklist: Story = {
 
     const toggleItem = (id: string) => {
       if (checkedItems.includes(id)) {
-        setCheckedItems(checkedItems.filter(i => i !== id));
+        setCheckedItems(checkedItems.filter((i) => i !== id));
       } else {
         setCheckedItems([...checkedItems, id]);
       }
@@ -586,38 +756,56 @@ export const QualityChecklist: Story = {
 
         <Card style={{ padding: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-6)' }}>
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--ds-spacing-2)' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginBottom: 'var(--ds-spacing-2)',
+              }}
+            >
               <Paragraph data-size="sm" style={{ fontWeight: 600 }}>
                 Overall Progress
               </Paragraph>
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)', fontWeight: 600 }}>
+              <Paragraph
+                data-size="sm"
+                style={{ color: 'var(--ds-color-accent-text-default)', fontWeight: 600 }}
+              >
                 {completedItems} / {totalItems} ({progress}%)
               </Paragraph>
             </div>
-            <div style={{
-              height: '8px',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-full)',
-              overflow: 'hidden',
-            }}>
-              <div style={{
-                height: '100%',
-                width: `${progress}%`,
-                backgroundColor: progress === 100 ? 'var(--ds-color-success-base-default)' : 'var(--ds-color-accent-base-default)',
-                transition: 'width 0.3s ease',
-              }} />
+            <div
+              style={{
+                height: '8px',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-full)',
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  height: '100%',
+                  width: `${progress}%`,
+                  backgroundColor:
+                    progress === 100
+                      ? 'var(--ds-color-success-base-default)'
+                      : 'var(--ds-color-accent-base-default)',
+                  transition: 'width 0.3s ease',
+                }}
+              />
             </div>
           </div>
 
           {progress === 100 && (
-            <div style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-success-surface-default)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-2)',
-            }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-success-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-2)',
+              }}
+            >
               <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
               <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
                 <strong>Ready to submit!</strong> Your component meets all quality standards.
@@ -628,7 +816,7 @@ export const QualityChecklist: Story = {
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
           {checklistItems.map(({ category, items }) => {
-            const categoryCompleted = items.filter(item => checkedItems.includes(item.id)).length;
+            const categoryCompleted = items.filter((item) => checkedItems.includes(item.id)).length;
             const categoryProgress = Math.round((categoryCompleted / items.length) * 100);
 
             return (
@@ -637,13 +825,18 @@ export const QualityChecklist: Story = {
                   <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                     {category}
                   </Heading>
-                  <Paragraph data-size="xs" style={{ color: 'var(--ds-color-accent-text-default)' }}>
+                  <Paragraph
+                    data-size="xs"
+                    style={{ color: 'var(--ds-color-accent-text-default)' }}
+                  >
                     {categoryCompleted} / {items.length} completed
                   </Paragraph>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-                  {items.map(item => (
+                <div
+                  style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}
+                >
+                  {items.map((item) => (
                     <Checkbox
                       key={item.id}
                       checked={checkedItems.includes(item.id)}
@@ -731,9 +924,7 @@ export const TestingBestPractices: Story = {
             title: 'Accessibility Tests',
             icon: Shield,
             description: 'Ensure WCAG 2.1 AA compliance',
-            commands: [
-              { cmd: 'pnpm test:a11y', desc: 'Run accessibility tests' },
-            ],
+            commands: [{ cmd: 'pnpm test:a11y', desc: 'Run accessibility tests' }],
             example: `it('has no accessibility violations', async () => {
   const { container } = render(<Button>Click me</Button>);
   const results = await axe(container);
@@ -753,7 +944,14 @@ it('is keyboard accessible', async () => {
           },
         ].map(({ title, icon: Icon, description, commands, example }) => (
           <Card key={title} style={{ padding: 'var(--ds-spacing-6)', flex: '1 1 350px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
               <Icon size={28} style={{ color: 'var(--ds-color-accent-base-default)' }} />
               <div>
                 <Heading level={3} data-size="md">
@@ -771,15 +969,24 @@ it('is keyboard accessible', async () => {
               </Heading>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
                 {commands.map(({ cmd, desc }) => (
-                  <div key={cmd} style={{ 
-                    padding: 'var(--ds-spacing-3)',
-                    backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                    borderRadius: 'var(--ds-border-radius-sm)',
-                  }}>
+                  <div
+                    key={cmd}
+                    style={{
+                      padding: 'var(--ds-spacing-3)',
+                      backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                      borderRadius: 'var(--ds-border-radius-sm)',
+                    }}
+                  >
                     <code style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 600 }}>
                       {cmd}
                     </code>
-                    <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                    <Paragraph
+                      data-size="xs"
+                      style={{
+                        marginTop: 'var(--ds-spacing-1)',
+                        color: 'var(--ds-color-neutral-text-subtle)',
+                      }}
+                    >
                       {desc}
                     </Paragraph>
                   </div>
@@ -791,14 +998,16 @@ it('is keyboard accessible', async () => {
               <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
                 Example
               </Heading>
-              <pre style={{
-                padding: 'var(--ds-spacing-4)',
-                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                overflow: 'auto',
-                fontSize: 'var(--ds-font-size-xs)',
-                lineHeight: '1.6',
-              }}>
+              <pre
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  overflow: 'auto',
+                  fontSize: 'var(--ds-font-size-xs)',
+                  lineHeight: '1.6',
+                }}
+              >
                 {example}
               </pre>
             </div>
@@ -848,7 +1057,7 @@ export const CommonPitfalls: Story = {
           {
             title: 'Inline Styles Without Tokens',
             bad: '<div style={{ marginTop: 20, fontSize: 14 }}>',
-            good: '<div style={{ marginTop: \'var(--ds-spacing-5)\', fontSize: \'var(--ds-font-size-sm)\' }}>',
+            good: "<div style={{ marginTop: 'var(--ds-spacing-5)', fontSize: 'var(--ds-font-size-sm)' }}>",
             why: 'All styling must use design tokens for consistency',
           },
           {
@@ -858,43 +1067,105 @@ export const CommonPitfalls: Story = {
             why: 'Full type safety prevents runtime errors',
           },
         ].map(({ title, bad, good, why }) => (
-          <Card key={title} style={{ padding: 'var(--ds-spacing-5)', borderLeft: '4px solid var(--ds-color-warning-base-default)', flex: '1 1 350px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-3)' }}>
+          <Card
+            key={title}
+            style={{
+              padding: 'var(--ds-spacing-5)',
+              borderLeft: '4px solid var(--ds-color-warning-base-default)',
+              flex: '1 1 350px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-2)',
+                marginBottom: 'var(--ds-spacing-3)',
+              }}
+            >
               <AlertTriangle size={20} style={{ color: 'var(--ds-color-warning-base-default)' }} />
               <Heading level={3} data-size="sm">
                 {title}
               </Heading>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-3)' }}>
-              <div style={{
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-danger-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-3)',
+              }}
+            >
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-danger-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-2)',
+                    marginBottom: 'var(--ds-spacing-2)',
+                  }}
+                >
                   <XCircle size={16} style={{ color: 'var(--ds-color-danger-base-default)' }} />
-                  <strong style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-danger-text-default)' }}>
+                  <strong
+                    style={{
+                      fontSize: 'var(--ds-font-size-sm)',
+                      color: 'var(--ds-color-danger-text-default)',
+                    }}
+                  >
                     Bad
                   </strong>
                 </div>
-                <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-danger-text-default)' }}>
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-danger-text-default)',
+                  }}
+                >
                   {bad}
                 </code>
               </div>
 
-              <div style={{
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-success-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)' }}>
-                  <CheckCircle size={16} style={{ color: 'var(--ds-color-success-base-default)' }} />
-                  <strong style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-success-text-default)' }}>
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-success-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-2)',
+                    marginBottom: 'var(--ds-spacing-2)',
+                  }}
+                >
+                  <CheckCircle
+                    size={16}
+                    style={{ color: 'var(--ds-color-success-base-default)' }}
+                  />
+                  <strong
+                    style={{
+                      fontSize: 'var(--ds-font-size-sm)',
+                      color: 'var(--ds-color-success-text-default)',
+                    }}
+                  >
                     Good
                   </strong>
                 </div>
-                <code style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-success-text-default)' }}>
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-success-text-default)',
+                  }}
+                >
                   {good}
                 </code>
               </div>

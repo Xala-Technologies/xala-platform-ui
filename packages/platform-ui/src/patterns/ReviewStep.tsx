@@ -149,9 +149,7 @@ function ReviewItemDisplay({ item }: ReviewItemDisplayProps) {
           fontSize: 'var(--ds-font-size-sm)',
         }}
       >
-        {item.icon && (
-          <span style={{ display: 'inline-flex', flexShrink: 0 }}>{item.icon}</span>
-        )}
+        {item.icon && <span style={{ display: 'inline-flex', flexShrink: 0 }}>{item.icon}</span>}
         <span>{item.label}</span>
       </div>
       <Paragraph

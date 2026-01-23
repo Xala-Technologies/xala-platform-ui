@@ -38,7 +38,14 @@ export interface BreadcrumbsProps {
 
 function ChevronRightIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="9 18 15 12 9 6" />
     </svg>
   );
@@ -46,7 +53,14 @@ function ChevronRightIcon() {
 
 function HomeIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
       <polyline points="9 22 9 12 15 12 15 22" />
     </svg>
@@ -55,7 +69,14 @@ function HomeIcon() {
 
 function DotsIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="12" cy="12" r="1" />
       <circle cx="19" cy="12" r="1" />
       <circle cx="5" cy="12" r="1" />
@@ -121,7 +142,10 @@ export function Breadcrumbs({
 
           if (item === 'ellipsis') {
             return (
-              <li key="ellipsis" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+              <li
+                key="ellipsis"
+                style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}
+              >
                 <span style={{ color: 'var(--ds-color-neutral-text-subtle)', display: 'flex' }}>
                   <DotsIcon />
                 </span>
@@ -134,7 +158,10 @@ export function Breadcrumbs({
           const isCurrent = item.current || isLast;
 
           return (
-            <li key={index} style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+            <li
+              key={index}
+              style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}
+            >
               {isCurrent || !item.href ? (
                 <span
                   aria-current={isCurrent ? 'page' : undefined}
@@ -143,8 +170,12 @@ export function Breadcrumbs({
                     alignItems: 'center',
                     gap: 'var(--ds-spacing-1)',
                     fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: isCurrent ? 'var(--ds-font-weight-medium)' : 'var(--ds-font-weight-normal)',
-                    color: isCurrent ? 'var(--ds-color-neutral-text-default)' : 'var(--ds-color-neutral-text-subtle)',
+                    fontWeight: isCurrent
+                      ? 'var(--ds-font-weight-medium)'
+                      : 'var(--ds-font-weight-normal)',
+                    color: isCurrent
+                      ? 'var(--ds-color-neutral-text-default)'
+                      : 'var(--ds-color-neutral-text-subtle)',
                   }}
                 >
                   {isHome ? homeIcon || <HomeIcon /> : item.icon}
@@ -186,7 +217,10 @@ export interface UseBreadcrumbsOptions {
   pathLabels?: Record<string, string>;
 }
 
-export function useBreadcrumbs(pathname: string, options: UseBreadcrumbsOptions = {}): BreadcrumbItem[] {
+export function useBreadcrumbs(
+  pathname: string,
+  options: UseBreadcrumbsOptions = {}
+): BreadcrumbItem[] {
   const { homeLabel = 'Home', homeHref = '/', pathLabels = {} } = options;
   const segments = pathname.split('/').filter(Boolean);
 
@@ -196,7 +230,10 @@ export function useBreadcrumbs(pathname: string, options: UseBreadcrumbsOptions 
   segments.forEach((segment, index) => {
     currentPath += `/${segment}`;
     const isLast = index === segments.length - 1;
-    const label = pathLabels[segment] || pathLabels[currentPath] || segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+    const label =
+      pathLabels[segment] ||
+      pathLabels[currentPath] ||
+      segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
 
     items.push({
       label,

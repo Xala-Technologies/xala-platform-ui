@@ -88,7 +88,16 @@ const heightSizeMap: Record<DrawerSize, string> = {
 
 function CloseIcon(): React.ReactElement {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -97,7 +106,16 @@ function CloseIcon(): React.ReactElement {
 
 function ChevronDownIcon(): React.ReactElement {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -122,7 +140,9 @@ const getPositionStyles = (
     fontFamily: 'var(--ds-font-family, Inter, system-ui, sans-serif)',
   };
 
-  const shadow = isOpen ? 'var(--ds-shadow-lg, 0 25px 50px -12px var(--ds-color-neutral-border-default))' : 'none';
+  const shadow = isOpen
+    ? 'var(--ds-shadow-lg, 0 25px 50px -12px var(--ds-color-neutral-border-default))'
+    : 'none';
 
   switch (position) {
     case 'left':
@@ -260,8 +280,12 @@ export function Drawer({
 
   // Use appropriate size map based on drawer orientation
   const computedSize = customSize
-    ? typeof customSize === 'number' ? `${customSize}px` : customSize
-    : isVertical ? heightSizeMap[effectiveSize] : widthSizeMap[effectiveSize];
+    ? typeof customSize === 'number'
+      ? `${customSize}px`
+      : customSize
+    : isVertical
+      ? heightSizeMap[effectiveSize]
+      : widthSizeMap[effectiveSize];
 
   // Show handle automatically on mobile bottom drawer
   const effectiveShowHandle = showHandle || (isMobile && effectivePosition === 'bottom');
@@ -379,60 +403,73 @@ export function Drawer({
       >
         {/* Handle (for vertical drawers) */}
         {effectiveShowHandle && isVertical && (
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: 'var(--ds-spacing-3) 0 var(--ds-spacing-2)',
-            flexShrink: 0,
-          }}>
-            <div style={{
-              width: 'var(--ds-spacing-10)',
-              height: 'var(--ds-spacing-1)',
-              backgroundColor: 'var(--ds-color-neutral-border-default)',
-              borderRadius: 'var(--ds-border-radius-full, 9999px)',
-            }} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              padding: 'var(--ds-spacing-3) 0 var(--ds-spacing-2)',
+              flexShrink: 0,
+            }}
+          >
+            <div
+              style={{
+                width: 'var(--ds-spacing-10)',
+                height: 'var(--ds-spacing-1)',
+                backgroundColor: 'var(--ds-color-neutral-border-default)',
+                borderRadius: 'var(--ds-border-radius-full, 9999px)',
+              }}
+            />
           </div>
         )}
 
         {/* Header */}
         {title && (
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
-            borderBottom: 'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
-            flexShrink: 0,
-            gap: 'var(--ds-spacing-3)',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', flex: 1 }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+              borderBottom:
+                'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
+              flexShrink: 0,
+              gap: 'var(--ds-spacing-3)',
+            }}
+          >
+            <div
+              style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', flex: 1 }}
+            >
               {icon && (
                 <span style={{ color: 'var(--ds-color-accent-text-default)', display: 'flex' }}>
                   {icon}
                 </span>
               )}
-              <h2 style={{
-                margin: 0,
-                fontSize: 'var(--ds-font-size-md, 1.125rem)',
-                fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
-                color: 'var(--ds-color-neutral-text-default)',
-              }}>
+              <h2
+                style={{
+                  margin: 0,
+                  fontSize: 'var(--ds-font-size-md, 1.125rem)',
+                  fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
+                  color: 'var(--ds-color-neutral-text-default)',
+                }}
+              >
                 {title}
               </h2>
               {badge !== undefined && badge > 0 && (
-                <span style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  minWidth: 'var(--ds-spacing-5)',
-                  height: 'var(--ds-spacing-5)',
-                  padding: '0 var(--ds-spacing-2)',
-                  fontSize: 'var(--ds-font-size-xs)',
-                  fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
-                  backgroundColor: 'var(--ds-color-accent-base-default)',
-                  color: 'var(--ds-color-accent-contrast-default)',
-                  borderRadius: 'var(--ds-border-radius-full, 9999px)',
-                }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minWidth: 'var(--ds-spacing-5)',
+                    height: 'var(--ds-spacing-5)',
+                    padding: '0 var(--ds-spacing-2)',
+                    fontSize: 'var(--ds-font-size-xs)',
+                    fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
+                    backgroundColor: 'var(--ds-color-accent-base-default)',
+                    color: 'var(--ds-color-accent-contrast-default)',
+                    borderRadius: 'var(--ds-border-radius-full, 9999px)',
+                  }}
+                >
                   {badge > 99 ? '99+' : badge}
                 </span>
               )}
@@ -452,7 +489,8 @@ export function Drawer({
                 backgroundColor: 'transparent',
                 color: 'var(--ds-color-neutral-text-subtle)',
                 cursor: 'pointer',
-                transition: 'background-color var(--ds-transition-duration-fast) ease, color var(--ds-transition-duration-fast) ease',
+                transition:
+                  'background-color var(--ds-transition-duration-fast) ease, color var(--ds-transition-duration-fast) ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
@@ -469,18 +507,19 @@ export function Drawer({
         )}
 
         {/* Content */}
-        <div style={{ flex: 1, overflow: 'auto' }}>
-          {children}
-        </div>
+        <div style={{ flex: 1, overflow: 'auto' }}>{children}</div>
 
         {/* Footer */}
         {footer && (
-          <div style={{
-            flexShrink: 0,
-            padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
-            borderTop: 'var(--ds-border-width-default) solid var(--ds-color-neutral-border-default)',
-            backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          }}>
+          <div
+            style={{
+              flexShrink: 0,
+              padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+              borderTop:
+                'var(--ds-border-width-default) solid var(--ds-color-neutral-border-default)',
+              backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            }}
+          >
             {footer}
           </div>
         )}
@@ -551,45 +590,65 @@ export function DrawerSection({
             transition: 'background-color 0.15s ease',
             backgroundColor: 'transparent',
           }}
-          onMouseEnter={collapsible ? (e) => {
-            e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
-          } : undefined}
-          onMouseLeave={collapsible ? (e) => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-          } : undefined}
+          onMouseEnter={
+            collapsible
+              ? (e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
+                }
+              : undefined
+          }
+          onMouseLeave={
+            collapsible
+              ? (e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }
+              : undefined
+          }
         >
           <div>
-            <span style={{
-              fontSize: 'var(--ds-font-size-sm, 0.875rem)',
-              fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
-              color: 'var(--ds-color-neutral-text-default)',
-            }}>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-sm, 0.875rem)',
+                fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
+                color: 'var(--ds-color-neutral-text-default)',
+              }}
+            >
               {title}
             </span>
             {description && (
-              <p style={{
-                margin: 'var(--ds-spacing-1) 0 0 0',
-                fontSize: 'var(--ds-font-size-xs, 0.75rem)',
-                color: 'var(--ds-color-neutral-text-subtle)',
-              }}>
+              <p
+                style={{
+                  margin: 'var(--ds-spacing-1) 0 0 0',
+                  fontSize: 'var(--ds-font-size-xs, 0.75rem)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 {description}
               </p>
             )}
           </div>
           {collapsible && (
-            <span style={{
-              color: 'var(--ds-color-neutral-text-subtle)',
-              transition: 'transform 0.2s ease',
-              transform: isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
-              display: 'flex',
-            }}>
+            <span
+              style={{
+                color: 'var(--ds-color-neutral-text-subtle)',
+                transition: 'transform 0.2s ease',
+                transform: isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
+                display: 'flex',
+              }}
+            >
               <ChevronDownIcon />
             </span>
           )}
         </div>
       )}
       {(!collapsible || !isCollapsed) && (
-        <div style={{ padding: title ? '0 var(--ds-spacing-5) var(--ds-spacing-4)' : 'var(--ds-spacing-4) var(--ds-spacing-5)' }}>
+        <div
+          style={{
+            padding: title
+              ? '0 var(--ds-spacing-5) var(--ds-spacing-4)'
+              : 'var(--ds-spacing-4) var(--ds-spacing-5)',
+          }}
+        >
           {children}
         </div>
       )}
@@ -638,15 +697,24 @@ export function DrawerItem({
       : isHovered && isInteractive
         ? 'var(--ds-color-neutral-surface-hover)'
         : 'transparent',
-    borderLeft: selected ? 'var(--ds-border-width-lg) solid var(--ds-color-accent-base-default)' : 'var(--ds-border-width-lg) solid transparent',
-    transition: 'background-color var(--ds-transition-duration-fast) ease, border-color var(--ds-transition-duration-fast) ease',
+    borderLeft: selected
+      ? 'var(--ds-border-width-lg) solid var(--ds-color-accent-base-default)'
+      : 'var(--ds-border-width-lg) solid transparent',
+    transition:
+      'background-color var(--ds-transition-duration-fast) ease, border-color var(--ds-transition-duration-fast) ease',
   };
 
   const content = (
     <>
       {left && <span style={{ display: 'flex', flexShrink: 0 }}>{left}</span>}
       <span style={{ flex: 1, minWidth: 0 }}>{children}</span>
-      {right && <span style={{ display: 'flex', flexShrink: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>{right}</span>}
+      {right && (
+        <span
+          style={{ display: 'flex', flexShrink: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+        >
+          {right}
+        </span>
+      )}
     </>
   );
 
@@ -696,37 +764,45 @@ export function DrawerEmptyState({
   action,
 }: DrawerEmptyStateProps): React.ReactElement {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 'var(--ds-spacing-12) var(--ds-spacing-6)',
-      textAlign: 'center',
-    }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 'var(--ds-spacing-12) var(--ds-spacing-6)',
+        textAlign: 'center',
+      }}
+    >
       {icon && (
-        <div style={{
-          color: 'var(--ds-color-neutral-text-subtle)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <div
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           {icon}
         </div>
       )}
-      <span style={{
-        fontSize: 'var(--ds-font-size-md, 1rem)',
-        fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
-        color: 'var(--ds-color-neutral-text-default)',
-        marginBottom: 'var(--ds-spacing-1)',
-      }}>
+      <span
+        style={{
+          fontSize: 'var(--ds-font-size-md, 1rem)',
+          fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
+          color: 'var(--ds-color-neutral-text-default)',
+          marginBottom: 'var(--ds-spacing-1)',
+        }}
+      >
         {title}
       </span>
       {description && (
-        <p style={{
-          margin: '0 0 var(--ds-spacing-4) 0',
-          fontSize: 'var(--ds-font-size-sm, 0.875rem)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-          maxWidth: 'var(--ds-size-empty-state-max-width, 280px)',
-        }}>
+        <p
+          style={{
+            margin: '0 0 var(--ds-spacing-4) 0',
+            fontSize: 'var(--ds-font-size-sm, 0.875rem)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+            maxWidth: 'var(--ds-size-empty-state-max-width, 280px)',
+          }}
+        >
           {description}
         </p>
       )}

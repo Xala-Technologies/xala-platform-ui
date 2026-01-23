@@ -62,7 +62,9 @@ export interface AccountSelectionModalLabels {
   continue: string;
 }
 
-export interface AccountSelectionModalProps<TOrganization extends BaseOrganization = BaseOrganization> {
+export interface AccountSelectionModalProps<
+  TOrganization extends BaseOrganization = BaseOrganization,
+> {
   /** Whether the modal is open */
   open: boolean;
   /** Available organizations for selection */
@@ -185,7 +187,11 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
           textAlign: 'center',
         }}
       >
-        <Heading level={2} data-size="md" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading
+          level={2}
+          data-size="md"
+          style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+        >
           {step === 'account-type' ? labels.title : labels.selectOrganizationTitle}
         </Heading>
         <Paragraph style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
@@ -241,7 +247,10 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                 <Heading level={3} data-size="sm" style={{ margin: 0 }}>
                   {labels.personalAccount}
                 </Heading>
-                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                >
                   {labels.personalAccountDesc}
                 </Paragraph>
               </Card>
@@ -287,7 +296,10 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                 <Heading level={3} data-size="sm" style={{ margin: 0 }}>
                   {labels.organizationAccount}
                 </Heading>
-                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                >
                   {labels.organizationAccountDesc}
                 </Paragraph>
               </Card>
@@ -320,12 +332,14 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                       display: 'flex',
                       alignItems: 'center',
                       gap: 'var(--ds-spacing-3)',
-                      border: selectedOrgId === org.id
-                        ? '2px solid var(--ds-color-accent-border-default)'
-                        : '2px solid var(--ds-color-neutral-border-default)',
-                      backgroundColor: selectedOrgId === org.id
-                        ? 'var(--ds-color-accent-surface-default)'
-                        : undefined,
+                      border:
+                        selectedOrgId === org.id
+                          ? '2px solid var(--ds-color-accent-border-default)'
+                          : '2px solid var(--ds-color-neutral-border-default)',
+                      backgroundColor:
+                        selectedOrgId === org.id
+                          ? 'var(--ds-color-accent-surface-default)'
+                          : undefined,
                       transition: 'all 0.2s',
                     }}
                   >
@@ -349,7 +363,10 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                         {org.name}
                       </Heading>
                       {org.organizationNumber && (
-                        <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                        <Paragraph
+                          data-size="sm"
+                          style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                        >
                           {labels.orgNumber}: {org.organizationNumber}
                         </Paragraph>
                       )}

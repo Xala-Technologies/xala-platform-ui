@@ -135,7 +135,7 @@ const variantStyles = {
 
 function SectionSkeleton({ size }: { size: 'sm' | 'md' | 'lg' }) {
   const sizeStyle = sizeStyles[size];
-  
+
   return (
     <div style={{ padding: sizeStyle.padding }}>
       <div
@@ -243,11 +243,7 @@ export function SectionCardContent({
 }: SectionCardContentProps): React.ReactElement {
   const sizeStyle = sizeStyles[size];
 
-  return (
-    <div style={{ padding: noPadding ? 0 : sizeStyle.padding }}>
-      {children}
-    </div>
-  );
+  return <div style={{ padding: noPadding ? 0 : sizeStyle.padding }}>{children}</div>;
 }
 
 // =============================================================================
@@ -338,18 +334,35 @@ export function SectionCard({
                 padding: sizeStyle.headerPadding,
                 borderBottomWidth: isCollapsed ? '0' : 'var(--ds-border-width-default)',
                 borderBottomStyle: isCollapsed ? 'none' : 'solid',
-                borderBottomColor: isCollapsed ? 'transparent' : 'var(--ds-color-neutral-border-subtle)',
+                borderBottomColor: isCollapsed
+                  ? 'transparent'
+                  : 'var(--ds-color-neutral-border-subtle)',
                 cursor: collapsible ? 'pointer' : 'default',
               }}
               onClick={collapsible ? () => setIsCollapsed(!isCollapsed) : undefined}
               role={collapsible ? 'button' : undefined}
               tabIndex={collapsible ? 0 : undefined}
-              onKeyDown={collapsible ? (e) => e.key === 'Enter' && setIsCollapsed(!isCollapsed) : undefined}
+              onKeyDown={
+                collapsible ? (e) => e.key === 'Enter' && setIsCollapsed(!isCollapsed) : undefined
+              }
               aria-expanded={collapsible ? !isCollapsed : undefined}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)', flex: 1 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 'var(--ds-spacing-3)',
+                  flex: 1,
+                }}
+              >
                 {collapsible && (
-                  <div style={{ color: 'var(--ds-color-neutral-text-subtle)', flexShrink: 0, marginTop: 'var(--ds-border-width-medium)' }}>
+                  <div
+                    style={{
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                      flexShrink: 0,
+                      marginTop: 'var(--ds-border-width-medium)',
+                    }}
+                  >
                     <ChevronDownIcon isCollapsed={isCollapsed} />
                   </div>
                 )}
@@ -395,10 +408,7 @@ export function SectionCard({
                 </div>
               </div>
               {actions && (
-                <div
-                  style={{ flexShrink: 0 }}
-                  onClick={(e) => e.stopPropagation()}
-                >
+                <div style={{ flexShrink: 0 }} onClick={(e) => e.stopPropagation()}>
                   {actions}
                 </div>
               )}

@@ -86,7 +86,10 @@ function getInitials(name?: string): string {
 }
 
 function getColorFromName(name?: string): { bg: string; text: string } {
-  const defaultColor = avatarColors[0] ?? { bg: 'var(--ds-color-accent-surface-default)', text: 'var(--ds-color-accent-text-default)' };
+  const defaultColor = avatarColors[0] ?? {
+    bg: 'var(--ds-color-accent-surface-default)',
+    text: 'var(--ds-color-accent-text-default)',
+  };
   if (!name) return defaultColor;
   const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   return avatarColors[hash % avatarColors.length] ?? defaultColor;

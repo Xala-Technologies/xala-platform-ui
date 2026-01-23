@@ -4,9 +4,9 @@ import { Badge, Button, Heading } from '../../index';
 
 /**
  * Badge component from Digdir Designsystemet.
- * 
+ *
  * Badge displays NUMBERS and COUNTS only. For text labels, use Tag component.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/badge/overview
  * @see https://designsystemet.no/en/components/docs/tag/overview (for text labels)
  */
@@ -123,13 +123,22 @@ export const WithButton: Story = {
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
       <Button variant="secondary" type="button">
         Notifications
-        <Badge count={3} data-color="danger" data-size="sm" 
-          style={{ marginLeft: 'var(--ds-spacing-2)' }} />
+        <Badge
+          count={3}
+          data-color="danger"
+          data-size="sm"
+          style={{ marginLeft: 'var(--ds-spacing-2)' }}
+        />
       </Button>
       <Button variant="secondary" type="button">
         Messages
-        <Badge count={150} maxCount={99} data-color="info" data-size="sm" 
-          style={{ marginLeft: 'var(--ds-spacing-2)' }} />
+        <Badge
+          count={150}
+          maxCount={99}
+          data-color="info"
+          data-size="sm"
+          style={{ marginLeft: 'var(--ds-spacing-2)' }}
+        />
       </Button>
     </div>
   ),
@@ -165,7 +174,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Count Badges</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Count Badges
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
           <Badge count={5} data-color="neutral" />
           <Badge count={12} data-color="accent" />
@@ -176,7 +187,9 @@ export const AllVariants: Story = {
         </div>
       </div>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Sizes</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Sizes
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
           <Badge count={5} data-size="sm" />
           <Badge count={15} data-size="md" />
@@ -184,20 +197,35 @@ export const AllVariants: Story = {
         </div>
       </div>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>On Buttons</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          On Buttons
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
           <Button variant="secondary" type="button">
             Notifications
-            <Badge count={5} data-color="danger" data-size="sm" style={{ marginLeft: 'var(--ds-spacing-2)' }} />
+            <Badge
+              count={5}
+              data-color="danger"
+              data-size="sm"
+              style={{ marginLeft: 'var(--ds-spacing-2)' }}
+            />
           </Button>
           <Button variant="secondary" type="button">
             Messages
-            <Badge count={150} maxCount={99} data-color="info" data-size="sm" style={{ marginLeft: 'var(--ds-spacing-2)' }} />
+            <Badge
+              count={150}
+              maxCount={99}
+              data-color="info"
+              data-size="sm"
+              style={{ marginLeft: 'var(--ds-spacing-2)' }}
+            />
           </Button>
         </div>
       </div>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Status Dots</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Status Dots
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />

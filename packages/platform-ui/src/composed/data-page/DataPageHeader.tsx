@@ -1,6 +1,6 @@
 /**
  * DataPageHeader Component
- * 
+ *
  * Enhanced PageHeader with count badge support
  * Extends packages/ds/src/composed/page-header.tsx
  */
@@ -21,16 +21,28 @@ export interface DataPageHeaderProps extends Omit<PageHeaderProps, 'title'> {
 
 export const DataPageHeader = forwardRef<HTMLDivElement, DataPageHeaderProps>(
   ({ title, count, countLabel, ...props }, ref) => {
-    const displayTitle = count !== undefined && countLabel ? (
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-        <span>{title}</span>
-        {count > 0 && (
-          <span style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)', color: 'var(--ds-color-neutral-text-default)', padding: '0.125rem 0.5rem', borderRadius: 'var(--ds-border-radius-full)', fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)' }}>
-            {countLabel.replace('{{count}}', count.toString())}
-          </span>
-        )}
-      </div>
-    ) : title;
+    const displayTitle =
+      count !== undefined && countLabel ? (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+          <span>{title}</span>
+          {count > 0 && (
+            <span
+              style={{
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                color: 'var(--ds-color-neutral-text-default)',
+                padding: '0.125rem 0.5rem',
+                borderRadius: 'var(--ds-border-radius-full)',
+                fontSize: 'var(--ds-font-size-sm)',
+                fontWeight: 'var(--ds-font-weight-medium)',
+              }}
+            >
+              {countLabel.replace('{{count}}', count.toString())}
+            </span>
+          )}
+        </div>
+      ) : (
+        title
+      );
 
     return <PageHeader ref={ref} title={displayTitle} {...props} />;
   }

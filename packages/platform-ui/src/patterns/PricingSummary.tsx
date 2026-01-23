@@ -35,13 +35,7 @@ import type { PriceLineItem as BasePriceLineItem } from './types';
 /**
  * Extended line item type with additional 'original' variant for strikethrough prices
  */
-export type PriceLineItemType =
-  | 'base'
-  | 'discount'
-  | 'fee'
-  | 'tax'
-  | 'subtotal'
-  | 'original';
+export type PriceLineItemType = 'base' | 'discount' | 'fee' | 'tax' | 'subtotal' | 'original';
 
 /**
  * Extended PriceLineItem with required type field and optional quantity
@@ -216,11 +210,7 @@ interface SummaryRowProps {
   variant?: 'default' | 'subtle' | 'prominent';
 }
 
-function SummaryRow({
-  label,
-  amount,
-  variant = 'default',
-}: SummaryRowProps): React.ReactElement {
+function SummaryRow({ label, amount, variant = 'default' }: SummaryRowProps): React.ReactElement {
   const isProminent = variant === 'prominent';
   const isSubtle = variant === 'subtle';
 
@@ -337,7 +327,10 @@ export function PricingSummary({
         <div
           style={{
             padding: 'var(--ds-spacing-4)',
-            borderBottom: hasSummarySection || total ? '1px solid var(--ds-color-neutral-border-subtle)' : 'none',
+            borderBottom:
+              hasSummarySection || total
+                ? '1px solid var(--ds-color-neutral-border-subtle)'
+                : 'none',
           }}
         >
           <div
@@ -371,19 +364,9 @@ export function PricingSummary({
             }}
           >
             {subtotal && (
-              <SummaryRow
-                label={subtotal.label}
-                amount={subtotal.amount}
-                variant="default"
-              />
+              <SummaryRow label={subtotal.label} amount={subtotal.amount} variant="default" />
             )}
-            {tax && (
-              <SummaryRow
-                label={tax.label}
-                amount={tax.amount}
-                variant="subtle"
-              />
-            )}
+            {tax && <SummaryRow label={tax.label} amount={tax.amount} variant="subtle" />}
           </div>
         </div>
       )}
@@ -395,11 +378,7 @@ export function PricingSummary({
           backgroundColor: 'var(--ds-color-neutral-surface-hover)',
         }}
       >
-        <SummaryRow
-          label={total.label}
-          amount={total.amount}
-          variant="prominent"
-        />
+        <SummaryRow label={total.label} amount={total.amount} variant="prominent" />
       </div>
 
       {/* CTA Button */}

@@ -144,7 +144,11 @@ export function RequestStatusBadge<TStatus extends string = string>({
   fallbackConfig = { color: 'neutral', label: status },
 }: RequestStatusBadgeProps<TStatus>): React.ReactElement {
   const config = statusConfig[status] || fallbackConfig;
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================

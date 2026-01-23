@@ -75,16 +75,15 @@ interface NavItemProps {
 
 function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
   const location = useLocation();
-  const isActive = item.href === '/'
-    ? location.pathname === '/'
-    : location.pathname.startsWith(item.href);
+  const isActive =
+    item.href === '/' ? location.pathname === '/' : location.pathname.startsWith(item.href);
 
   return (
     <NavLink
       to={item.href}
       end={item.href === '/'}
       onClick={onClick}
-      className="sidebar-nav-item"
+      className="ds-sidebar-nav-item"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -94,9 +93,7 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
         borderRadius: 'var(--ds-border-radius-lg)',
         textDecoration: 'none',
         position: 'relative',
-        backgroundColor: isActive
-          ? 'var(--ds-color-neutral-surface-hover)'
-          : 'transparent',
+        backgroundColor: isActive ? 'var(--ds-color-neutral-surface-hover)' : 'transparent',
         borderLeft: isActive
           ? '3px solid var(--ds-color-accent-base-default)'
           : '3px solid transparent',
@@ -105,7 +102,7 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
     >
       {/* Icon with background - var(--ds-spacing-12) */}
       <div
-        className="sidebar-nav-icon"
+        className="ds-sidebar-nav-icon"
         style={{
           width: 'var(--ds-spacing-12)',
           height: 'var(--ds-spacing-12)',
@@ -132,7 +129,9 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
           data-size="sm"
           style={{
             margin: 0,
-            fontWeight: isActive ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-medium)',
+            fontWeight: isActive
+              ? 'var(--ds-font-weight-semibold)'
+              : 'var(--ds-font-weight-medium)',
             color: isActive
               ? 'var(--ds-color-accent-text-default)'
               : 'var(--ds-color-neutral-text-default)',
@@ -222,11 +221,7 @@ function SidebarContent({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
-          {logo && (
-            <div style={{ height: '40px', width: 'auto', flexShrink: 0 }}>
-              {logo}
-            </div>
-          )}
+          {logo && <div style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</div>}
           {title && (
             <div>
               <div
@@ -259,7 +254,9 @@ function SidebarContent({
       </div>
 
       {/* Navigation */}
-      <nav style={{ flex: 1, padding: 'var(--ds-spacing-4) var(--ds-spacing-3)', overflowY: 'auto' }}>
+      <nav
+        style={{ flex: 1, padding: 'var(--ds-spacing-4) var(--ds-spacing-3)', overflowY: 'auto' }}
+      >
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} style={{ marginBottom: 'var(--ds-spacing-6)' }}>
             {section.title && (
@@ -278,7 +275,16 @@ function SidebarContent({
                 {section.title}
               </Paragraph>
             )}
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+            <ul
+              style={{
+                listStyle: 'none',
+                margin: 0,
+                padding: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--ds-spacing-2)',
+              }}
+            >
               {section.items.map((item) => (
                 <li key={item.href}>
                   <SidebarNavItemComponent item={item} onClick={onItemClick} />
@@ -346,10 +352,10 @@ function SidebarContent({
 
       {/* CSS for hover states - exact match */}
       <style>{`
-        .sidebar-nav-item:hover {
+        .ds-sidebar-nav-item:hover {
           background-color: var(--ds-color-neutral-surface-hover) !important;
         }
-        .sidebar-nav-item:hover .sidebar-nav-icon {
+        .ds-sidebar-nav-item:hover .ds-sidebar-nav-icon {
           background-color: var(--ds-color-accent-surface-default) !important;
           color: var(--ds-color-accent-text-default) !important;
         }
@@ -391,10 +397,12 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
     }, []);
 
     // Filter sections
-    const filteredSections = sections.map((section) => ({
-      ...section,
-      items: filterItem ? section.items.filter(filterItem) : section.items,
-    })).filter((section) => section.items.length > 0);
+    const filteredSections = sections
+      .map((section) => ({
+        ...section,
+        items: filterItem ? section.items.filter(filterItem) : section.items,
+      }))
+      .filter((section) => section.items.length > 0);
 
     const handleItemClick = useCallback(() => {
       if (isMobile && onMobileClose) {

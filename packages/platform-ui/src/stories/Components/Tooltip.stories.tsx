@@ -243,30 +243,40 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: () => (
-    <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(3, 1fr)', 
-      gap: 'var(--ds-spacing-6)',
-      padding: 'var(--ds-spacing-10)',
-      placeItems: 'center',
-    }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 'var(--ds-spacing-6)',
+        padding: 'var(--ds-spacing-10)',
+        placeItems: 'center',
+      }}
+    >
       <div />
       <Tooltip content="Top tooltip" placement="top">
-        <Button variant="secondary" type="button">Top</Button>
+        <Button variant="secondary" type="button">
+          Top
+        </Button>
       </Tooltip>
       <div />
-      
+
       <Tooltip content="Left tooltip" placement="left">
-        <Button variant="secondary" type="button">Left</Button>
+        <Button variant="secondary" type="button">
+          Left
+        </Button>
       </Tooltip>
       <div />
       <Tooltip content="Right tooltip" placement="right">
-        <Button variant="secondary" type="button">Right</Button>
+        <Button variant="secondary" type="button">
+          Right
+        </Button>
       </Tooltip>
-      
+
       <div />
       <Tooltip content="Bottom tooltip" placement="bottom">
-        <Button variant="secondary" type="button">Bottom</Button>
+        <Button variant="secondary" type="button">
+          Bottom
+        </Button>
       </Tooltip>
       <div />
     </div>
@@ -276,11 +286,7 @@ export const Placements: Story = {
 export const OnIcon: Story = {
   render: () => (
     <Tooltip content="More information about this feature">
-      <Button
-        variant="tertiary"
-        data-size="sm"
-        aria-label="Information" type="button"
-      >
+      <Button variant="tertiary" data-size="sm" aria-label="Information" type="button">
         Info
       </Button>
     </Tooltip>

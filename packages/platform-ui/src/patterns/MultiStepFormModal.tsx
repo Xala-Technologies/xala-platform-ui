@@ -411,9 +411,7 @@ function StepIndicatorBar({
               currentStep={currentStep}
               optionalLabel={optionalLabel}
             />
-            {index < steps.length - 1 && (
-              <StepConnector isCompleted={index < currentStep} />
-            )}
+            {index < steps.length - 1 && <StepConnector isCompleted={index < currentStep} />}
           </React.Fragment>
         ))}
       </div>
@@ -589,9 +587,7 @@ export function MultiStepFormModal({
             flex: 1,
             padding: 'var(--ds-spacing-6)',
             overflowY: 'auto',
-            maxHeight: displaySidebar
-              ? 'calc(90vh - 280px)'
-              : 'calc(90vh - 220px)',
+            maxHeight: displaySidebar ? 'calc(90vh - 280px)' : 'calc(90vh - 220px)',
           }}
         >
           {/* Step title and description */}

@@ -388,7 +388,7 @@ function CalendarCellComponent({
       }}
     >
       <div
-        className="slot-calendar-cell"
+        className="ds-slot-calendar-cell"
         data-status={status}
         data-selected={isSelected}
         onClick={isClickable ? onClick : undefined}
@@ -687,7 +687,7 @@ export function SlotCalendar({
 
     return (
       <div
-        className="slot-calendar-grid"
+        className="ds-slot-calendar-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: `60px repeat(${columnCount}, 1fr)`,
@@ -848,7 +848,7 @@ export function SlotCalendar({
 
     return (
       <div
-        className="slot-calendar-month-grid"
+        className="ds-slot-calendar-month-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(7, 1fr)',
@@ -997,7 +997,7 @@ export function SlotCalendar({
   };
 
   return (
-    <div className={cn('slot-calendar', className)}>
+    <div className={cn('ds-slot-calendar', className)}>
       {/* View Mode Toggle */}
       <ViewModeToggle viewMode={viewMode} labels={labels} onViewModeChange={onViewModeChange} />
 

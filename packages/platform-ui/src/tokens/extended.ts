@@ -49,25 +49,25 @@ export const AVATAR_COLOR_PALETTE = [
  */
 export const sizes = {
   avatar: {
-    xs: 'var(--ds-sizing-6)',   // 24px
-    sm: 'var(--ds-sizing-8)',   // 32px
-    md: 'var(--ds-sizing-10)',  // 40px
-    lg: 'var(--ds-sizing-14)',  // 56px
-    xl: 'var(--ds-sizing-20)',  // 80px
+    xs: 'var(--ds-sizing-6)', // 24px
+    sm: 'var(--ds-sizing-8)', // 32px
+    md: 'var(--ds-sizing-10)', // 40px
+    lg: 'var(--ds-sizing-14)', // 56px
+    xl: 'var(--ds-sizing-20)', // 80px
   },
   icon: {
-    xs: 'var(--ds-sizing-3)',   // 12px
-    sm: 'var(--ds-sizing-4)',   // 16px
-    md: 'var(--ds-sizing-5)',   // 20px
-    lg: 'var(--ds-sizing-6)',   // 24px
-    xl: 'var(--ds-sizing-8)',   // 32px
+    xs: 'var(--ds-sizing-3)', // 12px
+    sm: 'var(--ds-sizing-4)', // 16px
+    md: 'var(--ds-sizing-5)', // 20px
+    lg: 'var(--ds-sizing-6)', // 24px
+    xl: 'var(--ds-sizing-8)', // 32px
   },
   statusIndicator: {
-    xs: 'var(--ds-sizing-2)',   // 8px
+    xs: 'var(--ds-sizing-2)', // 8px
     sm: 'var(--ds-sizing-2-5)', // 10px
-    md: 'var(--ds-sizing-3)',   // 12px
+    md: 'var(--ds-sizing-3)', // 12px
     lg: 'var(--ds-sizing-3-5)', // 14px
-    xl: 'var(--ds-sizing-4)',   // 16px
+    xl: 'var(--ds-sizing-4)', // 16px
   },
   touchTarget: {
     minimum: 'var(--ds-sizing-11)', // 44px - WCAG minimum

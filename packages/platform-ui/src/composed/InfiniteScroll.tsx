@@ -45,7 +45,15 @@ export interface VirtualListProps<T> {
 
 function SpinnerIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'spin 1s linear infinite' }}>
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      style={{ animation: 'spin 1s linear infinite' }}
+    >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </svg>
   );
@@ -139,7 +147,9 @@ export function InfiniteScroll({
         textAlign: 'center',
       }}
     >
-      <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-danger-text-default)' }}>
+      <span
+        style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-danger-text-default)' }}
+      >
         Failed to load more items
       </span>
       {onRetry && (
@@ -212,7 +222,10 @@ export function VirtualList<T>({
 
   const totalHeight = items.length * itemHeight;
   const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - overscan);
-  const endIndex = Math.min(items.length - 1, Math.ceil((scrollTop + containerHeight) / itemHeight) + overscan);
+  const endIndex = Math.min(
+    items.length - 1,
+    Math.ceil((scrollTop + containerHeight) / itemHeight) + overscan
+  );
 
   const visibleItems: Array<{ item: T; index: number }> = [];
   for (let i = startIndex; i <= endIndex; i++) {
@@ -256,7 +269,10 @@ export function VirtualList<T>({
 // useInfiniteScroll Hook
 // =============================================================================
 
-export function useInfiniteScroll(loadMore: () => Promise<void>, hasMore: boolean): { sentinelRef: React.RefObject<HTMLDivElement>; isLoading: boolean } {
+export function useInfiniteScroll(
+  loadMore: () => Promise<void>,
+  hasMore: boolean
+): { sentinelRef: React.RefObject<HTMLDivElement>; isLoading: boolean } {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(false);
 

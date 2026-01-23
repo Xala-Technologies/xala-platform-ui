@@ -4,9 +4,9 @@ import { Chip } from '@digdir/designsystemet-react';
 
 /**
  * Chip component from Digdir Designsystemet.
- * 
+ *
  * Chip are small, interactive components for filtering and selection.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/chip/overview
  */
 const meta: Meta<typeof Chip> = {
@@ -213,24 +213,24 @@ export const RadioChips: Story = {
     const [selected, setSelected] = useState('option1');
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Chip.Radio 
-          name="filter" 
+        <Chip.Radio
+          name="filter"
           value="option1"
           checked={selected === 'option1'}
           onChange={() => setSelected('option1')}
         >
           All
         </Chip.Radio>
-        <Chip.Radio 
-          name="filter" 
+        <Chip.Radio
+          name="filter"
           value="option2"
           checked={selected === 'option2'}
           onChange={() => setSelected('option2')}
         >
           Active
         </Chip.Radio>
-        <Chip.Radio 
-          name="filter" 
+        <Chip.Radio
+          name="filter"
           value="option3"
           checked={selected === 'option3'}
           onChange={() => setSelected('option3')}
@@ -246,27 +246,25 @@ export const CheckboxChips: Story = {
   render: function Render() {
     const [selected, setSelected] = useState<string[]>(['tag1']);
     const toggle = (tag: string) => {
-      setSelected(prev => 
-        prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
-      );
+      setSelected((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
     };
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Chip.Checkbox 
+        <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag1')}
           onChange={() => toggle('tag1')}
         >
           Indoor
         </Chip.Checkbox>
-        <Chip.Checkbox 
+        <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag2')}
           onChange={() => toggle('tag2')}
         >
           Outdoor
         </Chip.Checkbox>
-        <Chip.Checkbox 
+        <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag3')}
           onChange={() => toggle('tag3')}
@@ -283,10 +281,10 @@ export const RemovableChips: Story = {
     const [chips, setChips] = useState(['Oslo', 'Bergen', 'Trondheim']);
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        {chips.map(chip => (
-          <Chip.Removable 
+        {chips.map((chip) => (
+          <Chip.Removable
             key={chip}
-            onClick={() => setChips(prev => prev.filter(c => c !== chip))}
+            onClick={() => setChips((prev) => prev.filter((c) => c !== chip))}
           >
             {chip}
           </Chip.Removable>
@@ -331,34 +329,36 @@ export const AllVariants: Story = {
     const [removableChips, setRemovableChips] = useState(['Oslo', 'Bergen']);
 
     const toggleCheckbox = (value: string) => {
-      setCheckboxSelected(prev => 
-        prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]
+      setCheckboxSelected((prev) =>
+        prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
       );
     };
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
-          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Chip.Radio (Single Selection)</h3>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            Chip.Radio (Single Selection)
+          </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Chip.Radio 
-              name="status" 
+            <Chip.Radio
+              name="status"
               value="all"
               checked={radioSelected === 'all'}
               onChange={() => setRadioSelected('all')}
             >
               All
             </Chip.Radio>
-            <Chip.Radio 
-              name="status" 
+            <Chip.Radio
+              name="status"
               value="active"
               checked={radioSelected === 'active'}
               onChange={() => setRadioSelected('active')}
             >
               Active
             </Chip.Radio>
-            <Chip.Radio 
-              name="status" 
+            <Chip.Radio
+              name="status"
               value="completed"
               checked={radioSelected === 'completed'}
               onChange={() => setRadioSelected('completed')}
@@ -369,23 +369,25 @@ export const AllVariants: Story = {
         </div>
 
         <div>
-          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Chip.Checkbox (Multiple Selection)</h3>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            Chip.Checkbox (Multiple Selection)
+          </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Chip.Checkbox 
+            <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('indoor')}
               onChange={() => toggleCheckbox('indoor')}
             >
               Indoor
             </Chip.Checkbox>
-            <Chip.Checkbox 
+            <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('outdoor')}
               onChange={() => toggleCheckbox('outdoor')}
             >
               Outdoor
             </Chip.Checkbox>
-            <Chip.Checkbox 
+            <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('accessible')}
               onChange={() => toggleCheckbox('accessible')}
@@ -396,25 +398,31 @@ export const AllVariants: Story = {
         </div>
 
         <div>
-          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Chip.Removable (Active Filters)</h3>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            Chip.Removable (Active Filters)
+          </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            {removableChips.map(chip => (
-              <Chip.Removable 
+            {removableChips.map((chip) => (
+              <Chip.Removable
                 key={chip}
                 aria-label={`Remove ${chip}`}
-                onClick={() => setRemovableChips(prev => prev.filter(c => c !== chip))}
+                onClick={() => setRemovableChips((prev) => prev.filter((c) => c !== chip))}
               >
                 {chip}
               </Chip.Removable>
             ))}
             {removableChips.length === 0 && (
-              <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>No active filters</span>
+              <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                No active filters
+              </span>
             )}
           </div>
         </div>
 
         <div>
-          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Chip.Button (Actions)</h3>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            Chip.Button (Actions)
+          </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Chip.Button onClick={() => {}}>Clear all</Chip.Button>
             <Chip.Button onClick={() => {}}>Apply</Chip.Button>

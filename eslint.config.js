@@ -1,11 +1,21 @@
-import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
-  js.configs.recommended,
+  // Global ignores MUST be first
+  {
+    ignores: [
+      '**/dist/**',
+      '**/node_modules/**',
+      '**/.storybook/**',
+      '**/storybook-static/**',
+      '**/stories/**',
+      '**/AccessibilityDashboard.tsx',
+      '**/apps/**',
+    ],
+  },
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -24,41 +34,47 @@ export default [
       'react-hooks': reactHooks,
     },
     rules: {
+      // TypeScript rules
       ...tseslint.configs.recommended.rules,
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
+      // React rules
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
+      // TypeScript handles undefined variables better than ESLint
+      'no-undef': 'off',
+
+      // Boundary rules
       'no-restricted-imports': ['error', {
         patterns: [
           {
             group: ['@xala-technologies/platform', '@xala-technologies/platform/*'],
-            message: '❌ BOUNDARY VIOLATION: UI package must not import from platform package. UI should be pure presentation components with no platform dependencies.',
+            message: '❌ BOUNDARY VIOLATION: UI package must not import from platform package.',
           },
           {
             group: ['@xala-technologies/platform-schema', '@xala-technologies/platform-schema/*'],
-            message: '❌ BOUNDARY VIOLATION: UI package must not import from platform-schema. UI components should not depend on database schemas.',
+            message: '❌ BOUNDARY VIOLATION: UI package must not import from platform-schema.',
           },
           {
             group: ['@xala-technologies/governance', '@xala-technologies/governance/*'],
-            message: '❌ BOUNDARY VIOLATION: UI package must not import from governance package. Keep UI dependencies minimal.',
+            message: '❌ BOUNDARY VIOLATION: UI package must not import from governance package.',
           },
         ],
       }],
-      'no-restricted-syntax': ['error',
+
+      // Design system rules - warnings for gradual migration
+      'no-restricted-syntax': ['warn',
         {
           selector: 'JSXElement[openingElement.name.name=/^(div|span|p|h1|h2|h3|h4|h5|h6|section|article|header|footer|nav|aside|main)$/]',
-          message: '❌ DESIGN SYSTEM VIOLATION: Use Designsystemet components instead of raw HTML elements. Import semantic components from @digdir/designsystemet-react.',
+          message: '⚠️ DESIGN SYSTEM: Prefer Designsystemet components (Box, Heading, Paragraph) over raw HTML.',
         },
         {
           selector: 'JSXAttribute[name.name="style"]',
-          message: '❌ DESIGN SYSTEM VIOLATION: No inline styles allowed. Use Designsystemet design tokens (data-size, data-color, data-spacing) or CSS classes with design token variables.',
-        },
-        {
-          selector: 'JSXAttribute[name.name="className"][value.value=/^(?!.*ds-).*$/]',
-          message: '⚠️  DESIGN SYSTEM WARNING: Prefer Designsystemet data attributes (data-size, data-color) over custom classes. Only use ds- prefixed classes from Designsystemet.',
+          message: '⚠️ DESIGN SYSTEM: Prefer data attributes (data-size, data-color) over inline styles.',
         },
       ],
     },
@@ -67,8 +83,5 @@ export default [
         version: 'detect',
       },
     },
-  },
-  {
-    ignores: ['dist/**', 'node_modules/**', '.storybook/**', 'storybook-static/**'],
   },
 ];

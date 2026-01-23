@@ -5,7 +5,13 @@
  * Uses Accordion component for question/answer format.
  */
 import * as React from 'react';
-import { Details, DetailsSummary, DetailsContent, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Details,
+  DetailsSummary,
+  DetailsContent,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 import type { FAQItem } from '../types';
 
@@ -37,17 +43,11 @@ export interface FAQTabProps {
  * />
  * ```
  */
-export function FAQTab({
-  items,
-  className,
-}: FAQTabProps): React.ReactElement {
+export function FAQTab({ items, className }: FAQTabProps): React.ReactElement {
   if (!items.length) {
     return (
       <div className={cn('faq-tab', className)}>
-        <Paragraph
-          data-size="sm"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-        >
+        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
           Ingen ofte stilte spørsmål tilgjengelig.
         </Paragraph>
       </div>
@@ -57,11 +57,7 @@ export function FAQTab({
   return (
     <div className={cn('faq-tab', className)}>
       <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        <Heading
-          level={2}
-          data-size="sm"
-          style={{ margin: '0 0 var(--ds-spacing-2) 0' }}
-        >
+        <Heading level={2} data-size="sm" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
           Ofte stilte spørsmål
         </Heading>
         <Paragraph

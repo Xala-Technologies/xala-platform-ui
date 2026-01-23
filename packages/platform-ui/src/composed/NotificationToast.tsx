@@ -9,14 +9,27 @@
 
 'use client';
 
-import React, { useState, useCallback, useEffect, createContext, useContext, type ReactNode } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  createContext,
+  useContext,
+  type ReactNode,
+} from 'react';
 
 // =============================================================================
 // Types
 // =============================================================================
 
 export type ToastType = 'success' | 'error' | 'warning' | 'info';
-export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
+export type ToastPosition =
+  | 'top-right'
+  | 'top-left'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'top-center'
+  | 'bottom-center';
 
 export interface Toast {
   id: string;
@@ -28,7 +41,7 @@ export interface Toast {
   action?: { label: string; onClick: () => void };
 }
 
-export interface ToastOptions extends Omit<Toast, 'id'> {}
+export type ToastOptions = Omit<Toast, 'id'>;
 
 export interface ToastContextValue {
   toasts: Toast[];
@@ -55,7 +68,14 @@ export interface ToastItemProps {
 
 function CheckCircleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
       <polyline points="22 4 12 14.01 9 11.01" />
     </svg>
@@ -64,7 +84,14 @@ function CheckCircleIcon() {
 
 function XCircleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="15" y1="9" x2="9" y2="15" />
       <line x1="9" y1="9" x2="15" y2="15" />
@@ -74,7 +101,14 @@ function XCircleIcon() {
 
 function AlertTriangleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
       <line x1="12" y1="9" x2="12" y2="13" />
       <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -84,7 +118,14 @@ function AlertTriangleIcon() {
 
 function InfoIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="16" x2="12" y2="12" />
       <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -94,7 +135,14 @@ function InfoIcon() {
 
 function XIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -105,7 +153,10 @@ function XIcon() {
 // Styles
 // =============================================================================
 
-const typeStyles: Record<ToastType, { bg: string; border: string; icon: string; iconComponent: ReactNode }> = {
+const typeStyles: Record<
+  ToastType,
+  { bg: string; border: string; icon: string; iconComponent: ReactNode }
+> = {
   success: {
     bg: 'var(--ds-color-success-surface-subtle)',
     border: 'var(--ds-color-success-border-default)',
@@ -336,9 +387,11 @@ export function setGlobalToastHandler(handler: (options: ToastOptions) => string
 }
 
 export const toast = {
-  success: (title: string, message?: string) => globalAddToast?.({ type: 'success', title, message }),
+  success: (title: string, message?: string) =>
+    globalAddToast?.({ type: 'success', title, message }),
   error: (title: string, message?: string) => globalAddToast?.({ type: 'error', title, message }),
-  warning: (title: string, message?: string) => globalAddToast?.({ type: 'warning', title, message }),
+  warning: (title: string, message?: string) =>
+    globalAddToast?.({ type: 'warning', title, message }),
   info: (title: string, message?: string) => globalAddToast?.({ type: 'info', title, message }),
   custom: (options: ToastOptions) => globalAddToast?.(options),
 };

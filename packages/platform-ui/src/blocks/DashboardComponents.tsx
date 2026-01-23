@@ -156,7 +156,7 @@ export function ActivityItem({
   className,
 }: ActivityItemProps): React.ReactElement {
   const badgeColor = statusBadgeColors[status];
-  
+
   return (
     <div
       className={cn('activity-item', className)}
@@ -180,7 +180,14 @@ export function ActivityItem({
         }}
       />
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 'var(--ds-spacing-2)' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: 'var(--ds-spacing-2)',
+          }}
+        >
           <Paragraph
             data-size="sm"
             style={{ fontWeight: 'var(--ds-font-weight-medium)', margin: 0 }}
@@ -193,13 +200,21 @@ export function ActivityItem({
         </div>
         <Paragraph
           data-size="xs"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0, marginTop: 'var(--ds-spacing-1)' }}
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            margin: 0,
+            marginTop: 'var(--ds-spacing-1)',
+          }}
         >
           {description}
         </Paragraph>
         <Paragraph
           data-size="xs"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0, marginTop: 'var(--ds-spacing-2)' }}
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            margin: 0,
+            marginTop: 'var(--ds-spacing-2)',
+          }}
         >
           {time}
         </Paragraph>

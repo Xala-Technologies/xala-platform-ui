@@ -4,9 +4,9 @@ import { Radio, Fieldset, ValidationMessage, Heading } from '../../index';
 
 /**
  * Radio component from Digdir Designsystemet.
- * 
+ *
  * Radio allows users to select one option from a list.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/radio/overview
  */
 const meta: Meta<typeof Radio> = {
@@ -202,21 +202,21 @@ export const WithDescription: Story = {
   render: () => (
     <Fieldset>
       <Fieldset.Legend>Select plan</Fieldset.Legend>
-      <Radio 
+      <Radio
         label="Basic"
-        name="plan" 
+        name="plan"
         value="basic"
         description="Up to 5 resourceRequests per month"
       />
-      <Radio 
+      <Radio
         label="Pro"
-        name="plan" 
+        name="plan"
         value="pro"
         description="Unlimited resourceRequests, priority support"
       />
-      <Radio 
+      <Radio
         label="Enterprise"
-        name="plan" 
+        name="plan"
         value="enterprise"
         description="Custom features, dedicated support"
       />
@@ -269,33 +269,41 @@ export const InteractiveGroup: Story = {
       <Fieldset>
         <Fieldset.Legend>How would you like us to contact you?</Fieldset.Legend>
         <Fieldset.Description>
-          Choose the method that works best for you. We use this only to send important updates about your case.
+          Choose the method that works best for you. We use this only to send important updates
+          about your case.
         </Fieldset.Description>
-        <Radio 
-          label="Email" 
+        <Radio
+          label="Email"
           description="We will use the email address you provided earlier (name@example.com)"
           value="email"
           name="contact"
           checked={selected === 'email'}
           onChange={(e) => setSelected(e.target.value)}
         />
-        <Radio 
-          label="SMS" 
+        <Radio
+          label="SMS"
           description="We will use the phone number you provided earlier (99 99 99 99)"
           value="sms"
           name="contact"
           checked={selected === 'sms'}
           onChange={(e) => setSelected(e.target.value)}
         />
-        <Radio 
-          label="Letter" 
+        <Radio
+          label="Letter"
           description="Delivery may take 3-5 working days, depending on the postal service."
           value="letter"
           name="contact"
           checked={selected === 'letter'}
           onChange={(e) => setSelected(e.target.value)}
         />
-        <div style={{ marginTop: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-3)', backgroundColor: 'var(--ds-color-neutral-surface-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <strong>Selected:</strong> {selected}
         </div>
       </Fieldset>
@@ -323,7 +331,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Vertical Layout</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Vertical Layout
+        </Heading>
         <Fieldset>
           <Fieldset.Legend>Select time slot</Fieldset.Legend>
           <Radio label="Morning" name="time1" value="morning" />
@@ -333,7 +343,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Horizontal Layout</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Horizontal Layout
+        </Heading>
         <Fieldset>
           <Fieldset.Legend>Payment method</Fieldset.Legend>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
@@ -345,16 +357,25 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>With Descriptions</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          With Descriptions
+        </Heading>
         <Fieldset>
           <Fieldset.Legend>Select plan</Fieldset.Legend>
-          <Radio label="Basic" description="Up to 5 bookings per month" name="plan1" value="basic" />
+          <Radio
+            label="Basic"
+            description="Up to 5 bookings per month"
+            name="plan1"
+            value="basic"
+          />
           <Radio label="Pro" description="Unlimited bookings" name="plan1" value="pro" />
         </Fieldset>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>States</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          States
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Radio label="Default" name="states" value="default" />
           <Radio label="Selected" name="states" value="selected" defaultChecked />
@@ -363,7 +384,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Sizes</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Sizes
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Radio label="Small" name="sizes" value="sm" data-size="sm" />
           <Radio label="Medium" name="sizes" value="md" data-size="md" />

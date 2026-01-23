@@ -367,9 +367,10 @@ export function PeriodCard({
           alignItems: 'center',
           gap: 'var(--ds-spacing-4)',
           padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
-          backgroundColor: isHovered && isClickable
-            ? 'var(--ds-color-neutral-surface-hover)'
-            : 'var(--ds-color-neutral-background-default)',
+          backgroundColor:
+            isHovered && isClickable
+              ? 'var(--ds-color-neutral-surface-hover)'
+              : 'var(--ds-color-neutral-background-default)',
           borderRadius: 'var(--ds-border-radius-lg)',
           border: '1px solid var(--ds-color-neutral-border-subtle)',
           cursor: isClickable ? 'pointer' : 'default',
@@ -449,9 +450,7 @@ export function PeriodCard({
         overflow: 'hidden',
         cursor: isClickable ? 'pointer' : 'default',
         transition: 'all 0.2s ease',
-        boxShadow: isHovered && isClickable
-          ? 'var(--ds-shadow-md)'
-          : 'var(--ds-shadow-sm)',
+        boxShadow: isHovered && isClickable ? 'var(--ds-shadow-md)' : 'var(--ds-shadow-sm)',
         transform: isHovered && isClickable ? 'translateY(-2px)' : 'none',
       }}
     >

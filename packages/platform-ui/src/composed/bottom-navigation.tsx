@@ -84,20 +84,23 @@ export interface BottomNavigationProps extends React.HTMLAttributes<HTMLElement>
 }
 
 export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
-  ({
-    items,
-    fixed = true,
-    variant = 'surface',
-    showLabels = true,
-    height = '64px',
-    safeArea = true,
-    className,
-    style,
-    ...props
-  }, ref) => {
+  (
+    {
+      items,
+      fixed = true,
+      variant = 'surface',
+      showLabels = true,
+      height = '64px',
+      safeArea = true,
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
     const backgrounds = {
       surface: 'var(--ds-color-neutral-surface-default)',
-      background: 'var(--ds-color-neutral-background-default)'
+      background: 'var(--ds-color-neutral-background-default)',
     };
 
     const navStyle: React.CSSProperties = {
@@ -111,11 +114,18 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
       boxShadow: 'var(--ds-shadow-md)',
       paddingBottom: safeArea ? 'env(safe-area-inset-bottom)' : undefined,
       transition: 'transform 0.3s ease',
-      ...style
+      ...style,
     };
 
     return (
-      <nav ref={ref} className={className} style={navStyle} {...props} role="navigation" aria-label="Bottom navigation">
+      <nav
+        ref={ref}
+        className={className}
+        style={navStyle}
+        {...props}
+        role="navigation"
+        aria-label="Bottom navigation"
+      >
         <div
           style={{
             display: 'flex',
@@ -124,7 +134,7 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
             height,
             maxWidth: '100%',
             margin: '0 auto',
-            padding: '0 var(--ds-spacing-2)'
+            padding: '0 var(--ds-spacing-2)',
           }}
         >
           {items.map((item) => {
@@ -155,7 +165,7 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
                   borderRadius: 'var(--ds-border-radius-md)',
                   gap: 'var(--ds-spacing-1)',
                   // Tap highlight for mobile
-                  WebkitTapHighlightColor: 'var(--ds-color-accent-surface-hover)'
+                  WebkitTapHighlightColor: 'var(--ds-color-accent-surface-hover)',
                 }}
                 aria-label={item.label}
                 aria-current={isActive ? 'page' : undefined}
@@ -169,7 +179,7 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
                     color: isActive
                       ? 'var(--ds-color-accent-base-default)'
                       : 'var(--ds-color-neutral-text-subtle)',
-                    transition: 'color 0.2s ease'
+                    transition: 'color 0.2s ease',
                   }}
                 >
                   {item.icon}
@@ -192,7 +202,7 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: '0 4px',
-                        lineHeight: 1
+                        lineHeight: 1,
                       }}
                       aria-label={`${item.badge} notifications`}
                     >
@@ -207,8 +217,8 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
                     style={{
                       fontSize: 'var(--ds-font-size-xs)',
                       fontWeight: isActive
-                        ? 'var(--ds-font-weight-semibold)' as unknown as number
-                        : 'var(--ds-font-weight-medium)' as unknown as number,
+                        ? ('var(--ds-font-weight-semibold)' as unknown as number)
+                        : ('var(--ds-font-weight-medium)' as unknown as number),
                       color: isActive
                         ? 'var(--ds-color-accent-base-default)'
                         : 'var(--ds-color-neutral-text-subtle)',
@@ -217,7 +227,7 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       whiteSpace: 'nowrap',
-                      transition: 'color 0.2s ease'
+                      transition: 'color 0.2s ease',
                     }}
                   >
                     {item.label}
@@ -235,7 +245,7 @@ export const BottomNavigation = forwardRef<HTMLElement, BottomNavigationProps>(
                       width: 'var(--ds-spacing-8)',
                       height: 'var(--ds-border-width-medium)',
                       backgroundColor: 'var(--ds-color-accent-base-default)',
-                      borderRadius: 'var(--ds-border-radius-full)'
+                      borderRadius: 'var(--ds-border-radius-full)',
                     }}
                     aria-hidden="true"
                   />

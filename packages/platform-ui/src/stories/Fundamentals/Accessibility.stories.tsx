@@ -39,7 +39,7 @@ type Story = StoryObj;
 
 /**
  * Example 1: Keyboard Navigation
- * 
+ *
  * All interactive elements must be keyboard accessible
  */
 export const KeyboardNavigation: Story = {
@@ -48,10 +48,15 @@ export const KeyboardNavigation: Story = {
       <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         Keyboard Navigation Demo
       </Heading>
-      <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+      <Paragraph
+        style={{
+          marginBottom: 'var(--ds-spacing-6)',
+          color: 'var(--ds-color-neutral-text-subtle)',
+        }}
+      >
         Try navigating with Tab, Shift+Tab, Enter, and Space keys
       </Paragraph>
-      
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Button data-variant="primary" tabIndex={0}>
           First Button (Tab to focus)
@@ -59,17 +64,11 @@ export const KeyboardNavigation: Story = {
         <Button data-variant="secondary" tabIndex={0}>
           Second Button
         </Button>
-        <Textfield
-          label="Text Input"
-          placeholder="Type here"
-          tabIndex={0}
-        />
-        <Checkbox tabIndex={0}>
-          Checkbox (Space to toggle)
-        </Checkbox>
-        <a 
-          href="#" 
-          style={{ 
+        <Textfield label="Text Input" placeholder="Type here" tabIndex={0} />
+        <Checkbox tabIndex={0}>Checkbox (Space to toggle)</Checkbox>
+        <a
+          href="#"
+          style={{
             color: 'var(--ds-color-accent-text-default)',
             textDecoration: 'underline',
           }}
@@ -79,12 +78,14 @@ export const KeyboardNavigation: Story = {
         </a>
       </div>
 
-      <div style={{ 
-        marginTop: 'var(--ds-spacing-6)',
-        padding: 'var(--ds-spacing-4)',
-        backgroundColor: 'var(--ds-color-info-surface-default)',
-        borderRadius: 'var(--ds-border-radius-md)',
-      }}>
+      <div
+        style={{
+          marginTop: 'var(--ds-spacing-6)',
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-info-surface-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
         <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
           <strong>✅ Good:</strong> All elements have tabIndex and respond to keyboard
         </Paragraph>
@@ -95,7 +96,7 @@ export const KeyboardNavigation: Story = {
 
 /**
  * Example 2: ARIA Labels
- * 
+ *
  * Proper labeling for screen readers
  */
 export const ARIALabels: Story = {
@@ -103,10 +104,14 @@ export const ARIALabels: Story = {
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       {/* Bad Example */}
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ Missing ARIA
         </Heading>
         <button type="button" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -119,14 +124,18 @@ export const ARIALabels: Story = {
 
       {/* Good Example */}
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ Proper ARIA
         </Heading>
-        <button 
-          type="button" 
+        <button
+          type="button"
           aria-label="Mark as complete"
           style={{ marginBottom: 'var(--ds-spacing-2)' }}
         >
@@ -142,7 +151,7 @@ export const ARIALabels: Story = {
 
 /**
  * Example 3: Color Contrast
- * 
+ *
  * Minimum contrast ratio of 4.5:1 for normal text
  */
 export const ColorContrast: Story = {
@@ -150,36 +159,48 @@ export const ColorContrast: Story = {
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       {/* Bad Example */}
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ Poor Contrast
         </Heading>
-        <div style={{ 
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: '#E0E0E0',
-          color: '#C0C0C0',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: '#E0E0E0',
+            color: '#C0C0C0',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           This text is hard to read (contrast ratio &lt; 3:1)
         </div>
       </Card>
 
       {/* Good Example */}
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ Good Contrast
         </Heading>
-        <div style={{ 
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          color: 'var(--ds-color-neutral-text-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            color: 'var(--ds-color-neutral-text-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           This text is easy to read (contrast ratio &gt; 4.5:1)
         </div>
       </Card>
@@ -189,7 +210,7 @@ export const ColorContrast: Story = {
 
 /**
  * Example 4: Focus Indicators
- * 
+ *
  * Visible focus states for keyboard navigation
  */
 export const FocusIndicators: Story = {
@@ -198,12 +219,17 @@ export const FocusIndicators: Story = {
       <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         Focus Indicators
       </Heading>
-      <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+      <Paragraph
+        style={{
+          marginBottom: 'var(--ds-spacing-6)',
+          color: 'var(--ds-color-neutral-text-subtle)',
+        }}
+      >
         Tab through these elements to see focus indicators
       </Paragraph>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Button 
+        <Button
           data-variant="primary"
           style={{
             outline: '2px solid transparent',
@@ -219,16 +245,15 @@ export const FocusIndicators: Story = {
           Button with focus ring
         </Button>
 
-        <Textfield
-          label="Input Field"
-          placeholder="Focus to see outline"
-        />
+        <Textfield label="Input Field" placeholder="Focus to see outline" />
 
-        <div style={{ 
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-info-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-info-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
             <strong>✅ Good:</strong> Clear visual indicator when element has focus
           </Paragraph>
@@ -240,7 +265,7 @@ export const FocusIndicators: Story = {
 
 /**
  * Example 5: Form Accessibility
- * 
+ *
  * Complete accessible form pattern
  */
 export const FormAccessibility: Story = {
@@ -266,11 +291,14 @@ export const FormAccessibility: Story = {
               aria-describedby={errors.name ? 'name-error' : undefined}
             />
             {errors.name && (
-              <Paragraph 
-                id="name-error" 
-                data-size="sm" 
+              <Paragraph
+                id="name-error"
+                data-size="sm"
                 role="alert"
-                style={{ color: 'var(--ds-color-danger-text-default)', marginTop: 'var(--ds-spacing-1)' }}
+                style={{
+                  color: 'var(--ds-color-danger-text-default)',
+                  marginTop: 'var(--ds-spacing-1)',
+                }}
               >
                 {errors.name}
               </Paragraph>
@@ -288,10 +316,13 @@ export const FormAccessibility: Story = {
               aria-invalid={!!errors.email}
               aria-describedby="email-help"
             />
-            <Paragraph 
-              id="email-help" 
-              data-size="sm" 
-              style={{ color: 'var(--ds-color-neutral-text-subtle)', marginTop: 'var(--ds-spacing-1)' }}
+            <Paragraph
+              id="email-help"
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-neutral-text-subtle)',
+                marginTop: 'var(--ds-spacing-1)',
+              }}
             >
               We'll never share your email
             </Paragraph>
@@ -312,12 +343,14 @@ export const FormAccessibility: Story = {
           </Button>
         </form>
 
-        <div style={{ 
-          marginTop: 'var(--ds-spacing-6)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-success-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}>
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-6)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-success-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
             <strong>✅ Accessible features:</strong>
             <br />• Proper labels with htmlFor
@@ -334,7 +367,7 @@ export const FormAccessibility: Story = {
 
 /**
  * Example 6: Screen Reader Text
- * 
+ *
  * Visually hidden text for screen readers
  */
 export const ScreenReaderText: Story = {
@@ -345,7 +378,7 @@ export const ScreenReaderText: Story = {
       </Heading>
 
       <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        <button 
+        <button
           type="button"
           style={{
             padding: 'var(--ds-spacing-3)',
@@ -356,28 +389,32 @@ export const ScreenReaderText: Story = {
             cursor: 'pointer',
           }}
         >
-          <span style={{
-            position: 'absolute',
-            width: '1px',
-            height: '1px',
-            padding: 0,
-            margin: '-1px',
-            overflow: 'hidden',
-            clip: 'rect(0, 0, 0, 0)',
-            whiteSpace: 'nowrap',
-            border: 0,
-          }}>
+          <span
+            style={{
+              position: 'absolute',
+              width: '1px',
+              height: '1px',
+              padding: 0,
+              margin: '-1px',
+              overflow: 'hidden',
+              clip: 'rect(0, 0, 0, 0)',
+              whiteSpace: 'nowrap',
+              border: 0,
+            }}
+          >
             Close dialog
           </span>
           ✕
         </button>
       </div>
 
-      <div style={{ 
-        padding: 'var(--ds-spacing-4)',
-        backgroundColor: 'var(--ds-color-info-surface-default)',
-        borderRadius: 'var(--ds-border-radius-md)',
-      }}>
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-info-surface-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
         <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
           <strong>Pattern:</strong> The "✕" is visible, but screen readers announce "Close dialog"
         </Paragraph>
@@ -439,13 +476,22 @@ export const Checklist: Story = {
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
               {category}
             </Heading>
-            <div style={{ 
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-surface-default)',
-              borderRadius: 'var(--ds-border-radius-md)',
-            }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
               {items.map((item, index) => (
-                <div key={index} style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginBottom: index < items.length - 1 ? 'var(--ds-spacing-2)' : 0 }}>
+                <div
+                  key={index}
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--ds-spacing-2)',
+                    marginBottom: index < items.length - 1 ? 'var(--ds-spacing-2)' : 0,
+                  }}
+                >
                   <span style={{ color: 'var(--ds-color-success-text-default)' }}>✓</span>
                   <Paragraph data-size="sm">{item}</Paragraph>
                 </div>

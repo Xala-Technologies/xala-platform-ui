@@ -109,9 +109,7 @@ export function Breadcrumb({
                     color: isLast
                       ? 'var(--ds-color-neutral-text-default)'
                       : 'var(--ds-color-neutral-text-subtle)',
-                    fontWeight: isLast
-                      ? 'var(--ds-font-weight-medium)'
-                      : 'inherit',
+                    fontWeight: isLast ? 'var(--ds-font-weight-medium)' : 'inherit',
                   }}
                 >
                   {item.label}

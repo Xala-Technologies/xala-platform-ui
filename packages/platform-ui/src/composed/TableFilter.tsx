@@ -71,7 +71,7 @@ interface FilterInputProps {
 }
 
 function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputProps) {
-  const [localValue, setLocalValue] = useState(value as string || '');
+  const [localValue, setLocalValue] = useState((value as string) || '');
 
   // Debounce search input
   useEffect(() => {
@@ -87,7 +87,7 @@ function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputP
   // Sync localValue with external value
   useEffect(() => {
     if (config.type === 'search') {
-      setLocalValue(value as string || '');
+      setLocalValue((value as string) || '');
     }
   }, [value, config.type]);
 

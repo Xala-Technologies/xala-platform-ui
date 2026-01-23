@@ -40,20 +40,26 @@ export const DesignTokens: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ Hardcoded Values
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`<div style={{
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`<div style={{
   padding: '24px',
   color: '#333',
   fontSize: '16px'
@@ -64,20 +70,26 @@ export const DesignTokens: Story = {
       </Card>
 
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ Design Tokens
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`<div style={{
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`<div style={{
   padding: 'var(--ds-spacing-6)',
   color: 'var(--ds-color-neutral-text-default)',
   fontSize: 'var(--ds-font-size-md)'
@@ -97,20 +109,26 @@ export const ComponentComposition: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ Custom Implementation
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`<div className="custom-button">
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`<div className="custom-button">
   Click me
 </div>
 
@@ -123,20 +141,26 @@ export const ComponentComposition: Story = {
       </Card>
 
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ Platform Components
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`import { Button } from '../../index';
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`import { Button } from '../../index';
 
 <Button data-variant="primary">
   Click me
@@ -154,20 +178,26 @@ export const Internationalization: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ Hardcoded Text
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`<Button>
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`<Button>
   Save Changes
 </Button>
 
@@ -176,20 +206,26 @@ export const Internationalization: Story = {
       </Card>
 
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ Translated Text
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`const { t } = useTranslation();
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`const { t } = useTranslation();
 
 <Button>
   {t('common.saveChanges')}
@@ -209,20 +245,26 @@ export const SDKFirst: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ Direct API Calls
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`const response = await fetch(
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`const response = await fetch(
   '/api/users',
   {
     method: 'GET',
@@ -233,20 +275,26 @@ export const SDKFirst: Story = {
       </Card>
 
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ SDK Methods
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`import { sdk } from '@xala-technologies/platform/sdk';
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`import { sdk } from '@xala-technologies/platform/sdk';
 
 const users = await sdk.users.list();`}
         </pre>
@@ -262,39 +310,51 @@ export const ErrorHandling: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ❌ No Error Handling
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`const data = await sdk.users.list();
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`const data = await sdk.users.list();
 setUsers(data);`}
         </pre>
       </Card>
 
       <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={4} data-size="sm" style={{ 
-          color: 'var(--ds-color-success-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-success-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           ✅ Proper Error Handling
         </Heading>
-        <pre style={{ 
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          fontSize: 'var(--ds-font-size-xs)',
-          overflow: 'auto',
-        }}>
-{`try {
+        <pre
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-sm)',
+            fontSize: 'var(--ds-font-size-xs)',
+            overflow: 'auto',
+          }}
+        >
+          {`try {
   const data = await sdk.users.list();
   setUsers(data);
 } catch (error) {
@@ -321,7 +381,11 @@ export const Summary: Story = {
         {[
           {
             title: 'Design Tokens',
-            dos: ['Use var(--ds-*) for all values', 'Consistent spacing/colors', 'Theme-aware styling'],
+            dos: [
+              'Use var(--ds-*) for all values',
+              'Consistent spacing/colors',
+              'Theme-aware styling',
+            ],
             donts: ['Hardcoded pixels', 'Hex colors', 'Magic numbers'],
           },
           {
@@ -340,33 +404,58 @@ export const Summary: Story = {
             donts: ['Hardcoded strings', 'English-only', 'Locale assumptions'],
           },
         ].map(({ title, dos, donts }) => (
-          <div key={title} style={{ 
-            padding: 'var(--ds-spacing-6)',
-            backgroundColor: 'var(--ds-color-neutral-surface-default)',
-            borderRadius: 'var(--ds-border-radius-lg)',
-            border: '1px solid var(--ds-color-neutral-border-default)',
-          }}>
+          <div
+            key={title}
+            style={{
+              padding: 'var(--ds-spacing-6)',
+              backgroundColor: 'var(--ds-color-neutral-surface-default)',
+              borderRadius: 'var(--ds-border-radius-lg)',
+              border: '1px solid var(--ds-color-neutral-border-default)',
+            }}
+          >
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
               {title}
             </Heading>
-            
+
             <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              <Paragraph data-size="sm" style={{ fontWeight: 600, marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-success-text-default)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{
+                  fontWeight: 600,
+                  marginBottom: 'var(--ds-spacing-2)',
+                  color: 'var(--ds-color-success-text-default)',
+                }}
+              >
                 ✅ Do:
               </Paragraph>
               {dos.map((item, i) => (
-                <Paragraph key={i} data-size="sm" style={{ marginLeft: 'var(--ds-spacing-4)', marginBottom: 'var(--ds-spacing-1)' }}>
+                <Paragraph
+                  key={i}
+                  data-size="sm"
+                  style={{ marginLeft: 'var(--ds-spacing-4)', marginBottom: 'var(--ds-spacing-1)' }}
+                >
                   • {item}
                 </Paragraph>
               ))}
             </div>
 
             <div>
-              <Paragraph data-size="sm" style={{ fontWeight: 600, marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-danger-text-default)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{
+                  fontWeight: 600,
+                  marginBottom: 'var(--ds-spacing-2)',
+                  color: 'var(--ds-color-danger-text-default)',
+                }}
+              >
                 ❌ Don't:
               </Paragraph>
               {donts.map((item, i) => (
-                <Paragraph key={i} data-size="sm" style={{ marginLeft: 'var(--ds-spacing-4)', marginBottom: 'var(--ds-spacing-1)' }}>
+                <Paragraph
+                  key={i}
+                  data-size="sm"
+                  style={{ marginLeft: 'var(--ds-spacing-4)', marginBottom: 'var(--ds-spacing-1)' }}
+                >
                   • {item}
                 </Paragraph>
               ))}

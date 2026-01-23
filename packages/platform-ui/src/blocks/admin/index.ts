@@ -15,11 +15,7 @@ export type {
 
 // Permission Matrix
 export { PermissionMatrix } from './PermissionMatrix';
-export type {
-  PermissionMatrixProps,
-  Permission,
-  Role,
-} from './PermissionMatrix';
+export type { PermissionMatrixProps, Permission, Role } from './PermissionMatrix';
 
 // Effective Permissions View
 export { EffectivePermissionsView } from './EffectivePermissionsView';
@@ -31,7 +27,4 @@ export type {
 
 // User Invite Form
 export { UserInviteForm } from './UserInviteForm';
-export type {
-  UserInviteFormProps,
-  InviteUserFormData,
-} from './UserInviteForm';
+export type { UserInviteFormProps, InviteUserFormData } from './UserInviteForm';

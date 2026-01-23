@@ -1,8 +1,10 @@
+/* global window, localStorage, MediaQueryListEvent */
 /**
  * Theme Provider
  * Manages light/dark theme with system preference detection
  */
 
+import * as React from 'react';
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
 export type ColorScheme = 'light' | 'dark' | 'auto';
@@ -32,7 +34,7 @@ export interface ThemeProviderProps {
 
 /**
  * ThemeProvider - Provides theme context with system preference detection
- * 
+ *
  * @example
  * ```tsx
  * <ThemeProvider>
@@ -42,7 +44,10 @@ export interface ThemeProviderProps {
  * </ThemeProvider>
  * ```
  */
-export function ThemeProvider({ children, storageKey = 'theme-preference' }: ThemeProviderProps): React.ReactElement {
+export function ThemeProvider({
+  children,
+  storageKey = 'theme-preference',
+}: ThemeProviderProps): React.ReactElement {
   const [colorScheme, setColorSchemeState] = useState<ColorScheme>(() => {
     // Check localStorage first - only use stored if explicitly set
     if (typeof window !== 'undefined') {
@@ -99,13 +104,15 @@ export function ThemeProvider({ children, storageKey = 'theme-preference' }: The
   };
 
   return (
-    <ThemeContext.Provider value={{ 
-      colorScheme, 
-      toggleTheme, 
-      setColorScheme,
-      isDark,
-      resetToAuto,
-    }}>
+    <ThemeContext.Provider
+      value={{
+        colorScheme,
+        toggleTheme,
+        setColorScheme,
+        isDark,
+        resetToAuto,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

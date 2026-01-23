@@ -87,9 +87,7 @@ export function ResourceToolbar({
           >
             <FilterIcon size={18} aria-hidden />
             Filtre
-            {activeFilterCount > 0 && (
-              <Badge count={activeFilterCount} data-color="accent" />
-            )}
+            {activeFilterCount > 0 && <Badge count={activeFilterCount} data-color="accent" />}
           </Button>
         )}
         <span
@@ -131,4 +129,3 @@ export function ResourceToolbar({
 }
 
 export default ResourceToolbar;
-

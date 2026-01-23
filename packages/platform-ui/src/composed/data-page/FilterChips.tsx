@@ -1,6 +1,6 @@
 /**
  * FilterChips Component
- * 
+ *
  * Displays active filter chips with remove buttons
  * Based on pattern from apps/minside/src/features/resource-objects/components/list/ResourcesFilterBar.tsx
  */

@@ -43,7 +43,10 @@ export interface LocaleLabels {
   en: string;
 }
 
-export interface LanguageSwitcherProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface LanguageSwitcherProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'onChange'
+> {
   /**
    * Current locale (controlled mode).
    * If not provided, will try to use @xala/i18n context.
@@ -166,9 +169,10 @@ const ToggleVariant = forwardRef<
         justifyContent: 'center',
         border: 'none',
         borderRadius: 'var(--ds-border-radius-md)',
-        backgroundColor: isHovered && !disabled
-          ? 'var(--ds-color-neutral-surface-hover)'
-          : 'var(--ds-color-neutral-surface-default)',
+        backgroundColor:
+          isHovered && !disabled
+            ? 'var(--ds-color-neutral-surface-hover)'
+            : 'var(--ds-color-neutral-surface-default)',
         color: disabled
           ? 'var(--ds-color-neutral-text-subtle)'
           : 'var(--ds-color-neutral-text-default)',
@@ -230,15 +234,16 @@ const SegmentedVariant = forwardRef<
             justifyContent: 'center',
             border: 'none',
             borderRadius: 0,
-            backgroundColor: locale === loc
-              ? 'var(--ds-color-accent-surface-default)'
-              : 'transparent',
-            color: locale === loc
-              ? 'var(--ds-color-accent-text-default)'
-              : 'var(--ds-color-neutral-text-default)',
-            fontWeight: locale === loc
-              ? ('var(--ds-font-weight-semibold)' as unknown as number)
-              : ('var(--ds-font-weight-regular)' as unknown as number),
+            backgroundColor:
+              locale === loc ? 'var(--ds-color-accent-surface-default)' : 'transparent',
+            color:
+              locale === loc
+                ? 'var(--ds-color-accent-text-default)'
+                : 'var(--ds-color-neutral-text-default)',
+            fontWeight:
+              locale === loc
+                ? ('var(--ds-font-weight-semibold)' as unknown as number)
+                : ('var(--ds-font-weight-regular)' as unknown as number),
             cursor: disabled ? 'not-allowed' : 'pointer',
             transition: 'all 0.15s ease',
             minWidth: 'var(--ds-spacing-10)',
@@ -271,10 +276,13 @@ const DropdownVariant = forwardRef<
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleSelect = useCallback((loc: SupportedLocale) => {
-    onSelect(loc);
-    setIsOpen(false);
-  }, [onSelect]);
+  const handleSelect = useCallback(
+    (loc: SupportedLocale) => {
+      onSelect(loc);
+      setIsOpen(false);
+    },
+    [onSelect]
+  );
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -304,9 +312,10 @@ const DropdownVariant = forwardRef<
           gap: 'var(--ds-spacing-2)',
           border: 'none',
           borderRadius: 'var(--ds-border-radius-md)',
-          backgroundColor: isHovered && !disabled
-            ? 'var(--ds-color-neutral-surface-hover)'
-            : 'var(--ds-color-neutral-surface-default)',
+          backgroundColor:
+            isHovered && !disabled
+              ? 'var(--ds-color-neutral-surface-hover)'
+              : 'var(--ds-color-neutral-surface-default)',
           color: disabled
             ? 'var(--ds-color-neutral-text-subtle)'
             : 'var(--ds-color-neutral-text-default)',
@@ -371,15 +380,16 @@ const DropdownVariant = forwardRef<
                 justifyContent: 'flex-start',
                 width: '100%',
                 border: 'none',
-                backgroundColor: locale === loc
-                  ? 'var(--ds-color-accent-surface-default)'
-                  : 'transparent',
-                color: locale === loc
-                  ? 'var(--ds-color-accent-text-default)'
-                  : 'var(--ds-color-neutral-text-default)',
-                fontWeight: locale === loc
-                  ? ('var(--ds-font-weight-semibold)' as unknown as number)
-                  : ('var(--ds-font-weight-regular)' as unknown as number),
+                backgroundColor:
+                  locale === loc ? 'var(--ds-color-accent-surface-default)' : 'transparent',
+                color:
+                  locale === loc
+                    ? 'var(--ds-color-accent-text-default)'
+                    : 'var(--ds-color-neutral-text-default)',
+                fontWeight:
+                  locale === loc
+                    ? ('var(--ds-font-weight-semibold)' as unknown as number)
+                    : ('var(--ds-font-weight-regular)' as unknown as number),
                 cursor: 'pointer',
                 transition: 'background-color 0.15s ease',
                 ...SIZE_STYLES[size],
@@ -520,8 +530,10 @@ LanguageSwitcher.displayName = 'LanguageSwitcher';
  * }
  * ```
  */
-export interface ConnectedLanguageSwitcherProps
-  extends Omit<LanguageSwitcherProps, 'locale' | 'onLocaleChange'> {
+export interface ConnectedLanguageSwitcherProps extends Omit<
+  LanguageSwitcherProps,
+  'locale' | 'onLocaleChange'
+> {
   /**
    * Hook to get current locale.
    * Expected signature: () => { locale: SupportedLocale; setLocale: (locale: SupportedLocale) => void }
@@ -540,14 +552,7 @@ export const ConnectedLanguageSwitcher = forwardRef<HTMLDivElement, ConnectedLan
   ({ useLocale: useLocaleHook, ...props }, ref) => {
     const { locale, setLocale } = useLocaleHook();
 
-    return (
-      <LanguageSwitcher
-        ref={ref}
-        locale={locale}
-        onLocaleChange={setLocale}
-        {...props}
-      />
-    );
+    return <LanguageSwitcher ref={ref} locale={locale} onLocaleChange={setLocale} {...props} />;
   }
 );
 

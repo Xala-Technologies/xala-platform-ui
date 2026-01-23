@@ -29,11 +29,7 @@ import {
   Alert,
   Label,
 } from '@digdir/designsystemet-react';
-import {
-  MailIcon,
-  ShieldIcon,
-  CheckIcon,
-} from '../../primitives/icons';
+import { MailIcon, ShieldIcon, CheckIcon } from '../../primitives/icons';
 
 export interface InviteUserFormData {
   email: string;
@@ -207,7 +203,14 @@ export function UserInviteForm({
               Invite User
             </Heading>
           </div>
-          <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: 0,
+              marginTop: 'var(--ds-spacing-2)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             Send an invitation to join your organization
           </Paragraph>
         </div>
@@ -230,7 +233,14 @@ export function UserInviteForm({
             style={{ width: '100%' }}
           />
           {touched.email && errors.email && (
-            <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-danger-text-default)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginTop: 'var(--ds-spacing-1)',
+                color: 'var(--ds-color-danger-text-default)',
+              }}
+            >
               {errors.email}
             </Paragraph>
           )}
@@ -238,9 +248,7 @@ export function UserInviteForm({
 
         {/* Role Field */}
         <div>
-          <Label htmlFor="role">
-            Role *
-          </Label>
+          <Label htmlFor="role">Role *</Label>
           <Select
             id="role"
             value={formData.role}
@@ -257,7 +265,14 @@ export function UserInviteForm({
             ))}
           </Select>
           {touched.role && errors.role && (
-            <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-danger-text-default)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginTop: 'var(--ds-spacing-1)',
+                color: 'var(--ds-color-danger-text-default)',
+              }}
+            >
               {errors.role}
             </Paragraph>
           )}
@@ -276,9 +291,7 @@ export function UserInviteForm({
         {/* Organization Field */}
         {showOrganization && availableOrganizations.length > 0 && (
           <div>
-            <Label htmlFor="organization">
-              Organization (Optional)
-            </Label>
+            <Label htmlFor="organization">Organization (Optional)</Label>
             <Select
               id="organization"
               value={formData.organizationId || ''}
@@ -293,7 +306,14 @@ export function UserInviteForm({
                 </option>
               ))}
             </Select>
-            <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginTop: 'var(--ds-spacing-1)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Assign the user to an organization
             </Paragraph>
           </div>
@@ -302,14 +322,14 @@ export function UserInviteForm({
         {/* Custom Message */}
         {showMessageField && (
           <div>
-            <Label htmlFor="message">
-              Custom Message (Optional)
-            </Label>
+            <Label htmlFor="message">Custom Message (Optional)</Label>
             <Textarea
               id="message"
               placeholder="Add a personalized message to the invitation email..."
               value={formData.message}
-              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleChange('message', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                handleChange('message', e.target.value)
+              }
               disabled={loading}
               rows={4}
               style={{ width: '100%' }}
@@ -332,7 +352,9 @@ export function UserInviteForm({
             <Checkbox
               id="sendEmail"
               checked={formData.sendEmail}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('sendEmail', e.target.checked)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange('sendEmail', e.target.checked)
+              }
               disabled={loading}
               value="sendEmail"
               aria-labelledby="sendEmail-label"
@@ -341,7 +363,10 @@ export function UserInviteForm({
               <div style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
                 Send invitation email
               </div>
-              <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+              >
                 User will receive an email with a link to set up their account
               </Paragraph>
             </label>
@@ -351,7 +376,9 @@ export function UserInviteForm({
               <Checkbox
                 id="assignScope"
                 checked={formData.assignScope}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('assignScope', e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleChange('assignScope', e.target.checked)
+                }
                 disabled={loading}
                 value="assignScope"
                 aria-labelledby="assignScope-label"
@@ -360,7 +387,10 @@ export function UserInviteForm({
                 <div style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
                   Configure scope after invitation
                 </div>
-                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                >
                   Proceed to scope assignment after creating the user
                 </Paragraph>
               </label>
@@ -379,21 +409,14 @@ export function UserInviteForm({
           }}
         >
           {onCancel && (
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={onCancel}
-              disabled={loading}
-            >
+            <Button type="button" variant="secondary" onClick={onCancel} disabled={loading}>
               Cancel
             </Button>
           )}
-          <Button
-            type="submit"
-            variant="primary"
-            disabled={loading}
-          >
-            {loading ? 'Sending Invitation...' : (
+          <Button type="submit" variant="primary" disabled={loading}>
+            {loading ? (
+              'Sending Invitation...'
+            ) : (
               <>
                 <CheckIcon /> Send Invitation
               </>

@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 const DrawerWithTrigger = (args: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <div style={{ padding: '2rem' }}>
       <Button onClick={() => setIsOpen(true)}>Open Drawer</Button>

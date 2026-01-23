@@ -32,11 +32,7 @@ export interface LoadingFallbackProps {
 /**
  * LoadingFallback displays a centered spinner with optional message
  */
-export function LoadingFallback({
-  message = 'Laster...',
-  className,
-  style,
-}: LoadingFallbackProps) {
+export function LoadingFallback({ message = 'Laster...', className, style }: LoadingFallbackProps) {
   return (
     <div
       className={className}

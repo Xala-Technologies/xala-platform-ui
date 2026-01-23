@@ -1,7 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '../../index';
-import { WheelchairIcon, PaletteIcon, InboxIcon, GlobeIcon, Buildings2Icon, PencilIcon, BookIcon, LightningIcon, PersonGroupIcon, ShieldLockIcon, CodeIcon, SparklesIcon, CheckmarkCircleIcon, ArrowRightIcon, PlayIcon } from '@navikt/aksel-icons';
+import {
+  WheelchairIcon,
+  PaletteIcon,
+  InboxIcon,
+  GlobeIcon,
+  Buildings2Icon,
+  PencilIcon,
+  BookIcon,
+  LightningIcon,
+  PersonGroupIcon,
+  ShieldLockIcon,
+  CodeIcon,
+  SparklesIcon,
+  CheckmarkCircleIcon,
+  ArrowRightIcon,
+  PlayIcon,
+} from '@navikt/aksel-icons';
 
 const meta: Meta = {
   title: 'Overview/Introduction',
@@ -51,46 +67,78 @@ export const PlatformOverview: Story = {
       <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
         Welcome to Xala Platform
       </Heading>
-      <Paragraph data-size="lg" style={{ marginBottom: 'var(--ds-spacing-8)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+      <Paragraph
+        data-size="lg"
+        style={{
+          marginBottom: 'var(--ds-spacing-8)',
+          color: 'var(--ds-color-neutral-text-subtle)',
+        }}
+      >
         A comprehensive design system for building accessible, consistent applications
       </Paragraph>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-8)' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--ds-spacing-6)',
+          marginBottom: 'var(--ds-spacing-8)',
+        }}
+      >
         {[
           {
             Icon: WheelchairIcon,
             title: 'Accessibility First',
-            description: 'WCAG 2.1 AA compliant components with keyboard navigation, screen reader support, and proper ARIA attributes.',
+            description:
+              'WCAG 2.1 AA compliant components with keyboard navigation, screen reader support, and proper ARIA attributes.',
           },
           {
             Icon: PaletteIcon,
             title: 'Design Tokens',
-            description: 'Consistent styling with design tokens for colors, spacing, typography, and more. Never hardcode values again.',
+            description:
+              'Consistent styling with design tokens for colors, spacing, typography, and more. Never hardcode values again.',
           },
           {
             Icon: InboxIcon,
             title: '50+ Components',
-            description: 'Production-ready components from buttons to data tables, all built with best practices and accessibility in mind.',
+            description:
+              'Production-ready components from buttons to data tables, all built with best practices and accessibility in mind.',
           },
           {
             Icon: GlobeIcon,
             title: 'Internationalization',
-            description: 'Full i18n support with translations for Norwegian, English, French, and Arabic. RTL support included.',
+            description:
+              'Full i18n support with translations for Norwegian, English, French, and Arabic. RTL support included.',
           },
           {
             Icon: Buildings2Icon,
             title: 'Multi-tenancy',
-            description: 'Built for SaaS platforms with tenant isolation, RBAC, and feature flags out of the box.',
+            description:
+              'Built for SaaS platforms with tenant isolation, RBAC, and feature flags out of the box.',
           },
           {
             Icon: PencilIcon,
             title: 'Theme Support',
-            description: 'Customizable themes with light/dark mode support. Create your own visual identity while maintaining consistency.',
+            description:
+              'Customizable themes with light/dark mode support. Create your own visual identity while maintaining consistency.',
           },
         ].map(({ Icon, title, description }) => (
           <Card key={title} style={{ padding: 'var(--ds-spacing-6)' }}>
-            <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)', display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-              <Icon fontSize="2rem" style={{ color: 'var(--ds-color-accent-base-default)' }} aria-hidden />
+            <Heading
+              level={3}
+              data-size="sm"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-2)',
+              }}
+            >
+              <Icon
+                fontSize="2rem"
+                style={{ color: 'var(--ds-color-accent-base-default)' }}
+                aria-hidden
+              />
               {title}
             </Heading>
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
@@ -117,12 +165,14 @@ export const ArchitecturePrinciples: Story = {
         {[
           {
             title: 'Design Tokens First',
-            description: 'All styling uses design tokens. No hardcoded colors, spacing, or typography values.',
+            description:
+              'All styling uses design tokens. No hardcoded colors, spacing, or typography values.',
             example: "var(--ds-spacing-4) instead of '16px'",
           },
           {
             title: 'Component Composition',
-            description: 'Build complex UIs by composing simple, reusable components from the platform.',
+            description:
+              'Build complex UIs by composing simple, reusable components from the platform.',
             example: 'Use <Button> instead of custom button implementations',
           },
           {
@@ -145,16 +195,23 @@ export const ArchitecturePrinciples: Story = {
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               {title}
             </Heading>
-            <Paragraph style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {description}
             </Paragraph>
-            <div style={{ 
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontFamily: 'monospace',
-              fontSize: 'var(--ds-font-size-xs)',
-            }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontFamily: 'monospace',
+                fontSize: 'var(--ds-font-size-xs)',
+              }}
+            >
               {example}
             </div>
           </div>
@@ -201,12 +258,26 @@ export const ComponentCategories: Story = {
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               {category}
             </Heading>
-            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)', marginBottom: 'var(--ds-spacing-3)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-accent-text-default)',
+                marginBottom: 'var(--ds-spacing-3)',
+              }}
+            >
               {count} components
             </Paragraph>
-            <div style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <div
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {examples.map((example, i) => (
-                <div key={example} style={{ marginBottom: i < examples.length - 1 ? 'var(--ds-spacing-1)' : 0 }}>
+                <div
+                  key={example}
+                  style={{ marginBottom: i < examples.length - 1 ? 'var(--ds-spacing-1)' : 0 }}
+                >
                   • {example}
                 </div>
               ))}
@@ -230,23 +301,45 @@ export const InteractiveLiveDemo: Story = {
     return (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-6)' }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
-            <PlayIcon fontSize="1.5rem" style={{ color: 'var(--ds-color-accent-base-default)' }} aria-hidden />
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-3)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            <PlayIcon
+              fontSize="1.5rem"
+              style={{ color: 'var(--ds-color-accent-base-default)' }}
+              aria-hidden
+            />
             <Heading level={2} data-size="lg">
               Try It Live
             </Heading>
           </div>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-            Interact with real platform components. All styling uses design tokens, all components are accessible.
+          <Paragraph
+            style={{
+              marginBottom: 'var(--ds-spacing-6)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            Interact with real platform components. All styling uses design tokens, all components
+            are accessible.
           </Paragraph>
 
-          <Card style={{ padding: 'var(--ds-spacing-6)', backgroundColor: 'var(--ds-color-neutral-surface-default)' }}>
+          <Card
+            style={{
+              padding: 'var(--ds-spacing-6)',
+              backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            }}
+          >
             <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
               Welcome Form
             </Heading>
-            
+
             <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              <Textfield 
+              <Textfield
                 label="Your Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -256,7 +349,7 @@ export const InteractiveLiveDemo: Story = {
             </div>
 
             <div style={{ marginBottom: 'var(--ds-spacing-5)' }}>
-              <Checkbox 
+              <Checkbox
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
                 aria-label="Agree to terms"
@@ -265,8 +358,8 @@ export const InteractiveLiveDemo: Story = {
               </Checkbox>
             </div>
 
-            <Button 
-              data-variant="primary" 
+            <Button
+              data-variant="primary"
               data-size="md"
               disabled={!name || !agreed}
               onClick={() => setSubmitted(true)}
@@ -276,16 +369,22 @@ export const InteractiveLiveDemo: Story = {
             </Button>
 
             {submitted && name && (
-              <div style={{ 
-                marginTop: 'var(--ds-spacing-4)',
-                padding: 'var(--ds-spacing-4)',
-                backgroundColor: 'var(--ds-color-success-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-2)',
-              }}>
-                <CheckmarkCircleIcon fontSize="1.25rem" style={{ color: 'var(--ds-color-success-base-default)' }} aria-hidden />
+              <div
+                style={{
+                  marginTop: 'var(--ds-spacing-4)',
+                  padding: 'var(--ds-spacing-4)',
+                  backgroundColor: 'var(--ds-color-success-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-2)',
+                }}
+              >
+                <CheckmarkCircleIcon
+                  fontSize="1.25rem"
+                  style={{ color: 'var(--ds-color-success-base-default)' }}
+                  aria-hidden
+                />
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
                   Welcome, {name}! You're ready to build with Xala Platform.
                 </Paragraph>
@@ -295,25 +394,43 @@ export const InteractiveLiveDemo: Story = {
         </div>
 
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
-            <CodeIcon fontSize="1.5rem" style={{ color: 'var(--ds-color-accent-base-default)' }} aria-hidden />
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-3)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            <CodeIcon
+              fontSize="1.5rem"
+              style={{ color: 'var(--ds-color-accent-base-default)' }}
+              aria-hidden
+            />
             <Heading level={2} data-size="lg">
               The Code
             </Heading>
           </div>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            style={{
+              marginBottom: 'var(--ds-spacing-6)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             This is what you just interacted with. Notice the design tokens and platform components.
           </Paragraph>
 
-          <pre style={{ 
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            overflow: 'auto',
-            fontSize: 'var(--ds-font-size-xs)',
-            lineHeight: '1.6',
-          }}>
-{`import { Button, Card, Textfield, Checkbox } from '../../index';
+          <pre
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              overflow: 'auto',
+              fontSize: 'var(--ds-font-size-xs)',
+              lineHeight: '1.6',
+            }}
+          >
+            {`import { Button, Card, Textfield, Checkbox } from '../../index';
 import { useState } from 'react';
 
 export function WelcomeForm() {
@@ -346,12 +463,14 @@ export function WelcomeForm() {
 }`}
           </pre>
 
-          <div style={{ 
-            marginTop: 'var(--ds-spacing-4)',
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-accent-surface-default)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}>
+          <div
+            style={{
+              marginTop: 'var(--ds-spacing-4)',
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-accent-surface-default)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
               <strong>Key Features:</strong>
               <br />• Design tokens for all spacing
@@ -372,17 +491,25 @@ export function WelcomeForm() {
 export const ComponentShowcase: Story = {
   render: () => {
     const [activeTab, setActiveTab] = useState(0);
-    
+
     const showcases = [
       {
         title: 'Buttons',
         description: 'Multiple variants and sizes',
         demo: (
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-            <Button data-variant="primary" data-size="sm">Primary</Button>
-            <Button data-variant="secondary" data-size="sm">Secondary</Button>
-            <Button data-variant="tertiary" data-size="sm">Tertiary</Button>
-            <Button data-variant="danger" data-size="sm">Danger</Button>
+            <Button data-variant="primary" data-size="sm">
+              Primary
+            </Button>
+            <Button data-variant="secondary" data-size="sm">
+              Secondary
+            </Button>
+            <Button data-variant="tertiary" data-size="sm">
+              Tertiary
+            </Button>
+            <Button data-variant="danger" data-size="sm">
+              Danger
+            </Button>
           </div>
         ),
       },
@@ -405,9 +532,15 @@ export const ComponentShowcase: Story = {
         description: 'Semantic heading levels',
         demo: (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-            <Heading level={1} data-size="xl">Heading XL</Heading>
-            <Heading level={2} data-size="lg">Heading LG</Heading>
-            <Heading level={3} data-size="md">Heading MD</Heading>
+            <Heading level={1} data-size="xl">
+              Heading XL
+            </Heading>
+            <Heading level={2} data-size="lg">
+              Heading LG
+            </Heading>
+            <Heading level={3} data-size="md">
+              Heading MD
+            </Heading>
             <Paragraph data-size="md">Body text with proper line height and spacing.</Paragraph>
           </div>
         ),
@@ -416,14 +549,31 @@ export const ComponentShowcase: Story = {
 
     return (
       <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-6)' }}>
-          <SparklesIcon fontSize="1.75rem" style={{ color: 'var(--ds-color-accent-base-default)' }} aria-hidden />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--ds-spacing-3)',
+            marginBottom: 'var(--ds-spacing-6)',
+          }}
+        >
+          <SparklesIcon
+            fontSize="1.75rem"
+            style={{ color: 'var(--ds-color-accent-base-default)' }}
+            aria-hidden
+          />
           <Heading level={2} data-size="lg">
             Component Showcase
           </Heading>
         </div>
 
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-6)' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-3)',
+            marginBottom: 'var(--ds-spacing-6)',
+          }}
+        >
           {showcases.map((showcase, index) => (
             <Button
               key={showcase.title}
@@ -440,7 +590,12 @@ export const ComponentShowcase: Story = {
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
             {showcases[activeTab].title}
           </Heading>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-5)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            style={{
+              marginBottom: 'var(--ds-spacing-5)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             {showcases[activeTab].description}
           </Paragraph>
           {showcases[activeTab].demo}
@@ -489,13 +644,16 @@ export const ResourcesAndLinks: Story = {
             external: true,
           },
         ].map(({ title, description, link, external }) => (
-          <Card key={title} style={{ 
-            padding: 'var(--ds-spacing-5)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: 'var(--ds-spacing-4)',
-          }}>
+          <Card
+            key={title}
+            style={{
+              padding: 'var(--ds-spacing-5)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-4)',
+            }}
+          >
             <div style={{ flex: 1 }}>
               <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-1)' }}>
                 {title}
@@ -504,10 +662,10 @@ export const ResourcesAndLinks: Story = {
                 {description}
               </Paragraph>
             </div>
-            <Button 
-              data-variant="tertiary" 
+            <Button
+              data-variant="tertiary"
               data-size="sm"
-              onClick={() => window.location.href = link}
+              onClick={() => (window.location.href = link)}
             >
               {external ? 'Visit →' : 'View →'}
             </Button>

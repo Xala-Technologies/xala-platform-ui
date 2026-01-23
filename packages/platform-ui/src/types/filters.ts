@@ -149,7 +149,14 @@ export interface FilterConfig {
   /** Available options (for select/multiselect) */
   options?: FilterOption[];
   /** Current value(s) */
-  value?: string | string[] | number | number[] | PriceRangeFilter | CapacityRangeFilter | RatingFilter;
+  value?:
+    | string
+    | string[]
+    | number
+    | number[]
+    | PriceRangeFilter
+    | CapacityRangeFilter
+    | RatingFilter;
   /** Change handler */
   onChange: (value: unknown) => void;
   /** Whether this filter is active */

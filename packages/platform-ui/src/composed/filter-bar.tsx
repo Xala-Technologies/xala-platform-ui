@@ -26,39 +26,39 @@ export interface FilterBarProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Label for the filter */
     label?: string;
   };
-  
+
   /**
    * Secondary filter configurations
    * These appear below the primary filter
    */
   filters?: FilterConfig[];
-  
+
   /**
    * Results count
    */
   resultsCount?: number;
-  
+
   /**
    * Results label (e.g., "lokaler", "ressurser")
    */
   resultsLabel?: string;
-  
+
   /**
    * View mode
    */
   viewMode?: 'grid' | 'list' | 'map';
-  
+
   /**
    * On view mode change
    */
   onViewModeChange?: (mode: 'grid' | 'list' | 'map') => void;
-  
+
   /**
    * Spacing between filters
    * @default var(--ds-spacing-4)
    */
   spacing?: number | string;
-  
+
   /**
    * Show primary filter as prominent button group
    * @default true
@@ -67,19 +67,22 @@ export interface FilterBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
-  ({
-    primaryFilter,
-    filters = [],
-    resultsCount,
-    resultsLabel = 'lokaler',
-    viewMode = 'grid',
-    onViewModeChange,
-    spacing = 'var(--ds-spacing-4)',
-    showPrimaryAsButtons = true,
-    className,
-    style,
-    ...props
-  }, ref) => {
+  (
+    {
+      primaryFilter,
+      filters = [],
+      resultsCount,
+      resultsLabel = 'lokaler',
+      viewMode = 'grid',
+      onViewModeChange,
+      spacing = 'var(--ds-spacing-4)',
+      showPrimaryAsButtons = true,
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
     const spacingValue = typeof spacing === 'number' ? `${spacing}px` : spacing;
 
     return (
@@ -88,8 +91,9 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
         className={className}
         style={{
           padding: 'var(--ds-spacing-6) 0',
-          borderBottom: 'var(--ds-border-width-default, 1px) solid var(--ds-color-neutral-border-default)',
-          ...style
+          borderBottom:
+            'var(--ds-border-width-default, 1px) solid var(--ds-color-neutral-border-default)',
+          ...style,
         }}
         {...props}
       >
@@ -98,12 +102,14 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
           {primaryFilter && (
             <div>
               {primaryFilter.label && (
-                <div style={{
-                  fontSize: 'var(--ds-font-size-sm)',
-                  fontWeight: 'var(--ds-font-weight-medium)',
-                  color: 'var(--ds-color-neutral-text-subtle)',
-                  marginBottom: 'var(--ds-spacing-2)'
-                }}>
+                <div
+                  style={{
+                    fontSize: 'var(--ds-font-size-sm)',
+                    fontWeight: 'var(--ds-font-weight-medium)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    marginBottom: 'var(--ds-spacing-2)',
+                  }}
+                >
                   {primaryFilter.label}
                 </div>
               )}
@@ -151,12 +157,14 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
             >
               {filters.map((filter) => (
                 <div key={filter.id}>
-                  <div style={{
-                    fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: 'var(--ds-font-weight-medium)',
-                    color: 'var(--ds-color-neutral-text-subtle)',
-                    marginBottom: 'var(--ds-spacing-1)'
-                  }}>
+                  <div
+                    style={{
+                      fontSize: 'var(--ds-font-size-sm)',
+                      fontWeight: 'var(--ds-font-weight-medium)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                      marginBottom: 'var(--ds-spacing-1)',
+                    }}
+                  >
                     {filter.label}
                   </div>
                   {filter.type === 'select' && filter.options && (
@@ -178,7 +186,10 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                       multiple
                       value={Array.isArray(filter.value) ? filter.value.map(String) : []}
                       onChange={(e) => {
-                        const selected = Array.from(e.target.selectedOptions, (option) => option.value);
+                        const selected = Array.from(
+                          e.target.selectedOptions,
+                          (option) => option.value
+                        );
                         filter.onChange(selected);
                       }}
                       style={{
@@ -200,11 +211,13 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                     </select>
                   )}
                   {filter.helpText && (
-                    <div style={{
-                      fontSize: 'var(--ds-font-size-xs)',
-                      color: 'var(--ds-color-neutral-text-subtle)',
-                      marginTop: 'var(--ds-spacing-1)'
-                    }}>
+                    <div
+                      style={{
+                        fontSize: 'var(--ds-font-size-xs)',
+                        color: 'var(--ds-color-neutral-text-subtle)',
+                        marginTop: 'var(--ds-spacing-1)',
+                      }}
+                    >
                       {filter.helpText}
                     </div>
                   )}
@@ -214,35 +227,46 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
           )}
 
           {/* Results count and view toggle */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: 'var(--ds-spacing-4)',
-            paddingTop: filters.length > 0 || primaryFilter ? 'var(--ds-spacing-4)' : 0,
-            borderTop: filters.length > 0 || primaryFilter ? 'var(--ds-border-width-default, 1px) solid var(--ds-color-neutral-border-subtle)' : 'none',
-            marginTop: filters.length > 0 || primaryFilter ? 'var(--ds-spacing-4)' : 0
-          }}>
-            <div style={{
+          <div
+            style={{
               display: 'flex',
+              justifyContent: 'space-between',
               alignItems: 'center',
-              gap: 'var(--ds-spacing-3)',
-              flexWrap: 'wrap'
-            }}>
+              flexWrap: 'wrap',
+              gap: 'var(--ds-spacing-4)',
+              paddingTop: filters.length > 0 || primaryFilter ? 'var(--ds-spacing-4)' : 0,
+              borderTop:
+                filters.length > 0 || primaryFilter
+                  ? 'var(--ds-border-width-default, 1px) solid var(--ds-color-neutral-border-subtle)'
+                  : 'none',
+              marginTop: filters.length > 0 || primaryFilter ? 'var(--ds-spacing-4)' : 0,
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                flexWrap: 'wrap',
+              }}
+            >
               {resultsCount !== undefined && (
                 <>
-                  <span style={{
-                    fontSize: 'var(--ds-font-size-xl)',
-                    fontWeight: 'var(--ds-font-weight-semibold)',
-                    color: 'var(--ds-color-neutral-text-default)'
-                  }}>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-xl)',
+                      fontWeight: 'var(--ds-font-weight-semibold)',
+                      color: 'var(--ds-color-neutral-text-default)',
+                    }}
+                  >
                     {resultsCount}
                   </span>
-                  <span style={{
-                    fontSize: 'var(--ds-font-size-md)',
-                    color: 'var(--ds-color-neutral-text-subtle)'
-                  }}>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-md)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
                     {resultsLabel}
                   </span>
                 </>
@@ -256,7 +280,11 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                   type="button"
                   variant={viewMode === 'grid' ? 'primary' : 'tertiary'}
                   onClick={() => onViewModeChange('grid')}
-                  style={{ height: 'var(--ds-spacing-10)', width: 'var(--ds-spacing-10)', padding: 0 }}
+                  style={{
+                    height: 'var(--ds-spacing-10)',
+                    width: 'var(--ds-spacing-10)',
+                    padding: 0,
+                  }}
                   title="Rutenett visning"
                   aria-label="Rutenett visning"
                 >
@@ -266,7 +294,11 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                   type="button"
                   variant={viewMode === 'list' ? 'primary' : 'tertiary'}
                   onClick={() => onViewModeChange('list')}
-                  style={{ height: 'var(--ds-spacing-10)', width: 'var(--ds-spacing-10)', padding: 0 }}
+                  style={{
+                    height: 'var(--ds-spacing-10)',
+                    width: 'var(--ds-spacing-10)',
+                    padding: 0,
+                  }}
                   title="Liste visning"
                   aria-label="Liste visning"
                 >
@@ -276,7 +308,11 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                   type="button"
                   variant={viewMode === 'map' ? 'primary' : 'tertiary'}
                   onClick={() => onViewModeChange('map')}
-                  style={{ height: 'var(--ds-spacing-10)', width: 'var(--ds-spacing-10)', padding: 0 }}
+                  style={{
+                    height: 'var(--ds-spacing-10)',
+                    width: 'var(--ds-spacing-10)',
+                    padding: 0,
+                  }}
                   title="Kart visning"
                   aria-label="Kart visning"
                 >

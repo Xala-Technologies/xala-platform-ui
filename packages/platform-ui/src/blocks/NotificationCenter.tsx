@@ -6,13 +6,7 @@
  */
 
 import * as React from 'react';
-import {
-  Dialog,
-  Heading,
-  Paragraph,
-  Button,
-  Spinner,
-} from '@digdir/designsystemet-react';
+import { Dialog, Heading, Paragraph, Button, Spinner } from '@digdir/designsystemet-react';
 import { NotificationItem, type NotificationItemData } from './NotificationItem';
 
 // =============================================================================
@@ -54,7 +48,14 @@ export interface NotificationCenterProps {
 
 function CloseIcon({ size = 24 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -63,7 +64,14 @@ function CloseIcon({ size = 24 }: { size?: number }) {
 
 function CheckAllIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M9 11l3 3L22 4" />
       <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
     </svg>
@@ -72,7 +80,14 @@ function CheckAllIcon({ size = 20 }: { size?: number }) {
 
 function InboxIcon({ size = 48 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
       <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
     </svg>
@@ -126,7 +141,9 @@ function FilterTabs({ activeFilter, onFilterChange, counts }: FilterTabsProps) {
               color: isActive
                 ? 'var(--ds-color-accent-text-default)'
                 : 'var(--ds-color-neutral-text-subtle)',
-              borderBottom: isActive ? '2px solid var(--ds-color-accent-base-default)' : '2px solid transparent',
+              borderBottom: isActive
+                ? '2px solid var(--ds-color-accent-base-default)'
+                : '2px solid transparent',
               marginBottom: '-1px',
               transition: 'all 0.2s',
               display: 'flex',

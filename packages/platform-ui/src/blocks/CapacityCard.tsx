@@ -51,9 +51,7 @@ export function CapacityCard({
           ? 'var(--ds-color-neutral-surface-default)'
           : 'var(--ds-color-neutral-background-default)',
         borderRadius: 'var(--ds-border-radius-lg)',
-        border: isDark
-          ? 'none'
-          : '1px solid var(--ds-color-neutral-border-subtle)',
+        border: isDark ? 'none' : '1px solid var(--ds-color-neutral-border-subtle)',
       }}
     >
       {/* Icon */}

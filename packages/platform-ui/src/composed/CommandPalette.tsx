@@ -52,7 +52,14 @@ export interface CommandPaletteProps {
 
 function SearchIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
@@ -61,7 +68,14 @@ function SearchIcon() {
 
 function CommandIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
     </svg>
   );
@@ -152,7 +166,9 @@ export function CommandPalette({
     }
 
     sortedGroups.forEach((group) => {
-      const items = filteredCommands.filter((cmd) => cmd.group === group.id && (!recentIds.includes(cmd.id) || query));
+      const items = filteredCommands.filter(
+        (cmd) => cmd.group === group.id && (!recentIds.includes(cmd.id) || query)
+      );
       if (items.length > 0) {
         result.push({ group, items });
       }
@@ -278,9 +294,18 @@ export function CommandPalette({
           </kbd>
         </div>
 
-        <div ref={listRef} style={{ maxHeight: '400px', overflowY: 'auto', padding: 'var(--ds-spacing-2)' }}>
+        <div
+          ref={listRef}
+          style={{ maxHeight: '400px', overflowY: 'auto', padding: 'var(--ds-spacing-2)' }}
+        >
           {flatCommands.length === 0 ? (
-            <div style={{ padding: 'var(--ds-spacing-8)', textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-8)',
+                textAlign: 'center',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {emptyMessage}
             </div>
           ) : (
@@ -317,19 +342,35 @@ export function CommandPalette({
                         gap: 'var(--ds-spacing-3)',
                         padding: 'var(--ds-spacing-3)',
                         borderRadius: 'var(--ds-border-radius-md)',
-                        backgroundColor: isSelected ? 'var(--ds-color-accent-surface-subtle)' : 'transparent',
+                        backgroundColor: isSelected
+                          ? 'var(--ds-color-accent-surface-subtle)'
+                          : 'transparent',
                         cursor: 'pointer',
                       }}
                     >
                       {cmd.icon && (
-                        <div style={{ color: 'var(--ds-color-neutral-text-subtle)', flexShrink: 0 }}>{cmd.icon}</div>
+                        <div
+                          style={{ color: 'var(--ds-color-neutral-text-subtle)', flexShrink: 0 }}
+                        >
+                          {cmd.icon}
+                        </div>
                       )}
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-default)' }}>
+                        <div
+                          style={{
+                            fontSize: 'var(--ds-font-size-sm)',
+                            color: 'var(--ds-color-neutral-text-default)',
+                          }}
+                        >
                           {cmd.label}
                         </div>
                         {cmd.description && (
-                          <div style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                          <div
+                            style={{
+                              fontSize: 'var(--ds-font-size-xs)',
+                              color: 'var(--ds-color-neutral-text-subtle)',
+                            }}
+                          >
                             {cmd.description}
                           </div>
                         )}
@@ -386,7 +427,12 @@ export function useCommandPalette() {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  return { isOpen, open: () => setIsOpen(true), close: () => setIsOpen(false), toggle: () => setIsOpen((p) => !p) };
+  return {
+    isOpen,
+    open: () => setIsOpen(true),
+    close: () => setIsOpen(false),
+    toggle: () => setIsOpen((p) => !p),
+  };
 }
 
 export default { CommandPalette, useCommandPalette };

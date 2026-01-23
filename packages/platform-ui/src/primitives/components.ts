@@ -1,13 +1,13 @@
 /**
  * @digdir/designsystemet-react Component Re-exports
- * 
+ *
  * This is the SINGLE SOURCE OF TRUTH for all @digdir base components.
  * Import from here instead of directly from @digdir/designsystemet-react.
- * 
+ *
  * @example
  * // Inside platform/ui modules:
  * import { Button, Paragraph } from '../primitives/components';
- * 
+ *
  * // From apps:
  * import { Button, Paragraph } from '@xala-technologies/platform/ui';
  */
@@ -15,11 +15,7 @@
 // =============================================================================
 // Typography
 // =============================================================================
-export {
-  Paragraph,
-  Heading,
-  Label,
-} from '@digdir/designsystemet-react';
+export { Paragraph, Heading, Label } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Form Components

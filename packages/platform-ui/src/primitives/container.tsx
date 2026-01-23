@@ -1,6 +1,6 @@
 /**
  * Container Primitive
- * 
+ *
  * Low-level container component for consistent layouts
  */
 
@@ -13,24 +13,24 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default '1440px'
    */
   maxWidth?: string;
-  
+
   /**
    * Whether to use fluid layout (no max-width)
    * @default false
    */
   fluid?: boolean;
-  
+
   /**
    * Padding
    * @default 'var(--ds-spacing-8)'
    */
   padding?: string | number;
-  
+
   /**
    * Horizontal padding only
    */
   px?: string | number;
-  
+
   /**
    * Vertical padding only
    */
@@ -38,17 +38,20 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Container = forwardRef<HTMLDivElement, ContainerProps>(
-  ({
-    children,
-    maxWidth = '1440px',
-    fluid = false,
-    padding = 'var(--ds-spacing-8)',
-    px,
-    py,
-    className,
-    style,
-    ...props
-  }, ref) => {
+  (
+    {
+      children,
+      maxWidth = '1440px',
+      fluid = false,
+      padding = 'var(--ds-spacing-8)',
+      px,
+      py,
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
     const containerStyle: React.CSSProperties = {
       containerType: 'inline-size',
       containerName: 'ds-container',
@@ -59,16 +62,11 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
       paddingRight: px ? (typeof px === 'number' ? `${px}px` : px) : undefined,
       paddingTop: py ? (typeof py === 'number' ? `${py}px` : py) : undefined,
       paddingBottom: py ? (typeof py === 'number' ? `${py}px` : py) : undefined,
-      ...style
+      ...style,
     } as React.CSSProperties;
 
     return (
-      <div
-        ref={ref}
-        className={cn('ds-container', className)}
-        style={containerStyle}
-        {...props}
-      >
+      <div ref={ref} className={cn('ds-container', className)} style={containerStyle} {...props}>
         {children}
       </div>
     );

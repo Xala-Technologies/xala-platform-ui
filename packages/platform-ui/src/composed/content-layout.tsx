@@ -1,6 +1,6 @@
 /**
  * Content Layout Component
- * 
+ *
  * High-level layout component for page content
  */
 
@@ -13,25 +13,25 @@ export interface ContentLayoutProps extends React.HTMLAttributes<HTMLDivElement>
    * @default '1440px'
    */
   maxWidth?: string;
-  
+
   /**
    * Padding of the container
    * @default '32px'
    */
   padding?: string | number;
-  
+
   /**
    * Whether to use fluid layout
    * @default false
    */
   fluid?: boolean;
-  
+
   /**
    * Header offset to account for fixed headers
    * @default 'none'
    */
   headerOffset?: 'none' | 'sm' | 'md' | 'lg';
-  
+
   /**
    * Grid configuration for content
    */
@@ -48,38 +48,40 @@ export interface ContentLayoutProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 export const ContentLayout = forwardRef<HTMLDivElement, ContentLayoutProps>(
-  ({
-    children,
-    maxWidth = '1440px',
-    padding = '32px',
-    fluid = false,
-    headerOffset = 'none',
-    grid,
-    className,
-    style,
-    ...props
-  }, ref) => {
+  (
+    {
+      children,
+      maxWidth = '1440px',
+      padding = '32px',
+      fluid = false,
+      headerOffset = 'none',
+      grid,
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
     const headerOffsets = {
       none: '0',
       sm: 'var(--ds-spacing-12)',
       md: 'var(--ds-spacing-16)',
-      lg: '80px'
+      lg: '80px',
     };
 
     const containerStyle: React.CSSProperties = {
       containerName: 'ds-content',
       paddingTop: headerOffsets[headerOffset],
-      ...style
+      ...style,
     };
 
     const content = grid ? (
-      <Grid
-        columns={grid.columns || '1fr'}
-        gap={grid.gap || 0}
-      >
+      <Grid columns={grid.columns || '1fr'} gap={grid.gap || 0}>
         {children}
       </Grid>
-    ) : children;
+    ) : (
+      children
+    );
 
     return (
       <Container

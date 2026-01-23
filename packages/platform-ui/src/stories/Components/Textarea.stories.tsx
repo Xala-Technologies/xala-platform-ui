@@ -61,10 +61,7 @@ export const WithCharacterCount: Story = {
     <Field>
       <Label>Bio</Label>
       <Field.Description>Tell us about yourself</Field.Description>
-      <Textarea 
-        placeholder="Write a short bio..."
-        maxLength={200}
-      />
+      <Textarea placeholder="Write a short bio..." maxLength={200} />
       <Field.Counter limit={200} />
     </Field>
   ),
@@ -74,10 +71,7 @@ export const WithError: Story = {
   render: () => (
     <Field>
       <Label>Message</Label>
-      <Textarea 
-        placeholder="Enter your message..."
-        aria-invalid="true"
-      />
+      <Textarea placeholder="Enter your message..." aria-invalid="true" />
       <ValidationMessage>Message is required</ValidationMessage>
     </Field>
   ),
@@ -87,10 +81,7 @@ export const Disabled: Story = {
   render: () => (
     <Field>
       <Label>Locked content</Label>
-      <Textarea 
-        defaultValue="This content cannot be edited"
-        disabled
-      />
+      <Textarea defaultValue="This content cannot be edited" disabled />
     </Field>
   ),
 };
@@ -99,7 +90,7 @@ export const ReadOnly: Story = {
   render: () => (
     <Field>
       <Label>Terms and conditions</Label>
-      <Textarea 
+      <Textarea
         defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         readOnly
       />
@@ -130,7 +121,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>States</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          States
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
           <Field>
             <Label>Default</Label>

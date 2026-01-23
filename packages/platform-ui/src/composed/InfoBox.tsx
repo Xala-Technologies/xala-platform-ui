@@ -67,13 +67,7 @@ const variantStyles: Record<InfoBoxVariant, { bg: string; border: string; text: 
 /**
  * InfoBox displays content in a colored box
  */
-export function InfoBox({
-  variant = 'info',
-  children,
-  title,
-  className,
-  style,
-}: InfoBoxProps) {
+export function InfoBox({ variant = 'info', children, title, className, style }: InfoBoxProps) {
   const styles = variantStyles[variant];
 
   return (

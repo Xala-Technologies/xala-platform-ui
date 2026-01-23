@@ -239,17 +239,19 @@ export function LoginPage({
   const labels = { ...DEFAULT_LABELS, ...customLabels };
 
   // Use config values as defaults
-  const branding = brandConfig || config.branding || {
-    name: 'PLATFORM',
-    tagline: 'SIMPLE MANAGEMENT',
-  };
+  const branding = brandConfig ||
+    config.branding || {
+      name: 'PLATFORM',
+      tagline: 'SIMPLE MANAGEMENT',
+    };
 
-  const panel = panelConfig || config.panel || {
-    title: config.app,
-    subtitle: 'ResourceRequest og administrasjon',
-    features: [],
-    integrations: [],
-  };
+  const panel = panelConfig ||
+    config.panel || {
+      title: config.app,
+      subtitle: 'ResourceRequest og administrasjon',
+      features: [],
+      integrations: [],
+    };
 
   const links = footerLinks || config.footerLinks || [];
 
@@ -261,7 +263,7 @@ export function LoginPage({
   }, [isAuthenticated, isLoading, onNavigate, config.redirectAfterLogin]);
 
   // Get enabled providers, optionally filtering out demo
-  const enabledProviders = config.providers.filter(p => {
+  const enabledProviders = config.providers.filter((p) => {
     if (!p.enabled) return false;
     if (p.id === 'demo' && !showDemoLogin) return false;
     return true;
@@ -287,7 +289,7 @@ export function LoginPage({
         panelTitle={panel.title}
         panelSubtitle={panel.subtitle}
         panelDescription={panel.description}
-        features={panel.features.map(f => ({
+        features={panel.features.map((f) => ({
           icon: f.icon as React.ReactNode,
           title: f.title,
           description: f.description,
@@ -295,7 +297,7 @@ export function LoginPage({
         integrations={panel.integrations}
         footerLinks={links}
       >
-        {enabledProviders.map(provider => {
+        {enabledProviders.map((provider) => {
           const IconComponent = provider.icon || PROVIDER_ICONS[provider.id];
           return (
             <LoginOption

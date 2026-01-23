@@ -139,8 +139,7 @@ export function GlobalSearch({
 
   // Determine no results text
   const noResultsDisplayText =
-    noResultsText ||
-    (value.trim().length > 0 ? labels.noResultsWithQuery : labels.noResultsEmpty);
+    noResultsText || (value.trim().length > 0 ? labels.noResultsWithQuery : labels.noResultsEmpty);
 
   return (
     <HeaderSearch

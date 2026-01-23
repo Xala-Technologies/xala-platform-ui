@@ -1,13 +1,13 @@
 /**
  * AppLayout Component
- * 
+ *
  * Flexible application layout component that provides a common structure
  * for sidebar + header + content layouts across all apps.
- * 
+ *
  * Apps should provide their own Sidebar and Header components as props,
  * allowing for app-specific navigation and branding while standardizing
  * the layout structure.
- * 
+ *
  * Supports mobile-first responsive design with optional bottom navigation
  * for mobile devices.
  */
@@ -20,38 +20,38 @@ import { DashboardContent } from './DashboardContent';
 export interface AppLayoutProps {
   /** Sidebar component (required) */
   sidebar: ReactNode;
-  
+
   /** Header component (required) */
   header: ReactNode;
-  
+
   /** Max width for content area (default: var(--ds-sizing-1400)) */
   maxContentWidth?: string;
-  
+
   /** Content padding (default: var(--ds-spacing-8)) */
   contentPadding?: string;
-  
+
   /** Custom class name */
   className?: string;
-  
+
   /** Custom styles */
   style?: React.CSSProperties;
-  
+
   /** Additional content to render above main content (e.g., alerts, banners) */
   topContent?: ReactNode;
-  
+
   /** Mobile breakpoint in pixels (default: 768) */
   mobileBreakpoint?: number;
-  
+
   /** Bottom navigation items for mobile (optional) */
   bottomNavItems?: BottomNavigationItem[];
-  
+
   /** Whether to show sidebar on mobile (default: false) */
   showSidebarOnMobile?: boolean;
 }
 
 /**
  * AppLayout component with flexible sidebar + header + content structure
- * 
+ *
  * @example
  * ```tsx
  * <AppLayout

@@ -168,14 +168,8 @@ export function FavoriteButton({
           opacity: disabled || isLoading ? 0.5 : 1,
         }}
       >
-        {isFavorited ? (
-          <HeartFilledIcon size={12} />
-        ) : (
-          <HeartIcon size={12} />
-        )}
-        {showCount && favoriteCount !== undefined && (
-          <span>{favoriteCount}</span>
-        )}
+        {isFavorited ? <HeartFilledIcon size={12} /> : <HeartIcon size={12} />}
+        {showCount && favoriteCount !== undefined && <span>{favoriteCount}</span>}
       </button>
     );
   }

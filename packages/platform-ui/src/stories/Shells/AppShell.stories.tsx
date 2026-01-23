@@ -51,15 +51,21 @@ type Story = StoryObj<typeof AppShell>;
 
 // Sample header component
 const SampleHeader = () => (
-  <div style={{
-    height: 'var(--ds-spacing-16)',
-    backgroundColor: 'var(--ds-color-accent-surface-default)',
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 var(--ds-spacing-6)',
-    borderBottom: '1px solid var(--ds-color-accent-border-subtle)',
-  }}>
-    <Heading level={1} data-size="sm" style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}>
+  <div
+    style={{
+      height: 'var(--ds-spacing-16)',
+      backgroundColor: 'var(--ds-color-accent-surface-default)',
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 var(--ds-spacing-6)',
+      borderBottom: '1px solid var(--ds-color-accent-border-subtle)',
+    }}
+  >
+    <Heading
+      level={1}
+      data-size="sm"
+      style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}
+    >
       My Application
     </Heading>
   </div>
@@ -67,12 +73,14 @@ const SampleHeader = () => (
 
 // Sample footer component
 const SampleFooter = () => (
-  <div style={{
-    padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
-    backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-    borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
-    textAlign: 'center',
-  }}>
+  <div
+    style={{
+      padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
+      backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+      borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+      textAlign: 'center',
+    }}
+  >
     <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
       © 2026 My Application. All rights reserved.
     </Paragraph>
@@ -82,19 +90,34 @@ const SampleFooter = () => (
 // Sample content
 const SampleContent = () => (
   <div style={{ padding: 'var(--ds-spacing-6)' }}>
-    <Heading level={2} data-size="lg">Welcome to the Dashboard</Heading>
+    <Heading level={2} data-size="lg">
+      Welcome to the Dashboard
+    </Heading>
     <Paragraph>This is the main content area of your application.</Paragraph>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)', marginTop: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 'var(--ds-spacing-4)',
+        marginTop: 'var(--ds-spacing-4)',
+      }}
+    >
       <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">Card 1</Heading>
+        <Heading level={3} data-size="sm">
+          Card 1
+        </Heading>
         <Paragraph data-size="sm">Some content here</Paragraph>
       </Card>
       <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">Card 2</Heading>
+        <Heading level={3} data-size="sm">
+          Card 2
+        </Heading>
         <Paragraph data-size="sm">Some content here</Paragraph>
       </Card>
       <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">Card 3</Heading>
+        <Heading level={3} data-size="sm">
+          Card 3
+        </Heading>
         <Paragraph data-size="sm">Some content here</Paragraph>
       </Card>
     </div>
@@ -189,27 +212,37 @@ export const MinimalContent: Story = {
 export const LoginLayout: Story = {
   args: {
     header: (
-      <div style={{
-        height: 'var(--ds-spacing-16)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-      }}>
-        <Heading level={1} data-size="md" style={{ margin: 0 }}>My App</Heading>
+      <div
+        style={{
+          height: 'var(--ds-spacing-16)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
+        <Heading level={1} data-size="md" style={{ margin: 0 }}>
+          My App
+        </Heading>
       </div>
     ),
     children: (
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        padding: 'var(--ds-spacing-6)',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flex: 1,
+          padding: 'var(--ds-spacing-6)',
+        }}
+      >
         <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '400px', width: '100%' }}>
-          <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-4)' }}>Login</Heading>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>Enter your credentials to continue</Paragraph>
+          <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+            Login
+          </Heading>
+          <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+            Enter your credentials to continue
+          </Paragraph>
           <Button style={{ width: '100%' }}>Sign In</Button>
         </Card>
       </div>

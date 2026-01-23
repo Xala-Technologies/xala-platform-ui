@@ -202,13 +202,11 @@ function getStatusColor(type: StatusIndicator['type']): string {
 }
 
 /** Get badge color CSS variable */
-function getBadgeColor(
-  variant: ResourceBadge['variant'] = 'neutral'
-): { bg: string; text: string } {
-  const colors: Record<
-    NonNullable<ResourceBadge['variant']>,
-    { bg: string; text: string }
-  > = {
+function getBadgeColor(variant: ResourceBadge['variant'] = 'neutral'): {
+  bg: string;
+  text: string;
+} {
+  const colors: Record<NonNullable<ResourceBadge['variant']>, { bg: string; text: string }> = {
     neutral: {
       bg: 'var(--ds-color-neutral-surface-hover)',
       text: 'var(--ds-color-neutral-text-default)',
@@ -265,9 +263,7 @@ function Badge({ badge }: BadgeProps) {
       }}
     >
       {badge.icon && (
-        <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-          {badge.icon}
-        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center' }}>{badge.icon}</span>
       )}
       {badge.text}
     </span>
@@ -439,9 +435,7 @@ export function MediaResourceCard({
           overflow: 'hidden',
           cursor: isClickable ? 'pointer' : 'default',
           transition: 'all 0.2s ease',
-          boxShadow: isHovered && isClickable
-            ? 'var(--ds-shadow-md)'
-            : 'var(--ds-shadow-sm)',
+          boxShadow: isHovered && isClickable ? 'var(--ds-shadow-md)' : 'var(--ds-shadow-sm)',
         }}
       >
         {/* Image */}
@@ -644,9 +638,7 @@ export function MediaResourceCard({
           overflow: 'hidden',
           cursor: isClickable ? 'pointer' : 'default',
           transition: 'all 0.2s ease',
-          boxShadow: isHovered && isClickable
-            ? 'var(--ds-shadow-xl)'
-            : 'var(--ds-shadow-md)',
+          boxShadow: isHovered && isClickable ? 'var(--ds-shadow-xl)' : 'var(--ds-shadow-md)',
           transform: isHovered && isClickable ? 'scale(1.02)' : 'none',
         }}
       >
@@ -817,9 +809,7 @@ export function MediaResourceCard({
         overflow: 'hidden',
         cursor: isClickable ? 'pointer' : 'default',
         transition: 'all 0.2s ease',
-        boxShadow: isHovered && isClickable
-          ? 'var(--ds-shadow-md)'
-          : 'var(--ds-shadow-sm)',
+        boxShadow: isHovered && isClickable ? 'var(--ds-shadow-md)' : 'var(--ds-shadow-sm)',
         transform: isHovered && isClickable ? 'translateY(-4px)' : 'none',
       }}
     >
@@ -853,8 +843,7 @@ export function MediaResourceCard({
               left: 0,
               right: 0,
               height: '50%',
-              background:
-                'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)',
               pointerEvents: 'none',
             }}
           />

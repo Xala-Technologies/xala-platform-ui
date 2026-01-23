@@ -4,9 +4,9 @@ import { Select, Label, Field, ValidationMessage } from '../../index';
 
 /**
  * Select component from Digdir Designsystemet.
- * 
+ *
  * Select allows users to choose an option from a list.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/select/overview
  */
 const meta: Meta<typeof Select> = {
@@ -330,7 +330,14 @@ export const FormExample: Story = {
     const [city, setCity] = useState('');
 
     return (
-      <form style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', maxWidth: '400px' }}>
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-4)',
+          maxWidth: '400px',
+        }}
+      >
         <Field>
           <Label>Country</Label>
           <Field.Description>Select your country of residence</Field.Description>
@@ -375,7 +382,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>States</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          States
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Field>
             <Label>Default</Label>
@@ -409,7 +418,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Sizes</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Sizes
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Field>
             <Label>Small</Label>

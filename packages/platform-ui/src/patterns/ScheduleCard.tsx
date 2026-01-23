@@ -66,9 +66,7 @@ function ScheduleRow({ entry, isLast }: ScheduleRowProps): React.ReactElement {
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingBottom: isLast ? 0 : 'var(--ds-spacing-3)',
-        borderBottom: isLast
-          ? 'none'
-          : '1px solid var(--ds-color-neutral-border-subtle)',
+        borderBottom: isLast ? 'none' : '1px solid var(--ds-color-neutral-border-subtle)',
       }}
     >
       {/* Day label */}
@@ -79,9 +77,7 @@ function ScheduleRow({ entry, isLast }: ScheduleRowProps): React.ReactElement {
           color: isToday
             ? 'var(--ds-color-accent-text-default)'
             : 'var(--ds-color-neutral-text-default)',
-          fontWeight: isToday
-            ? ('var(--ds-font-weight-medium)' as unknown as number)
-            : 'inherit',
+          fontWeight: isToday ? ('var(--ds-font-weight-medium)' as unknown as number) : 'inherit',
         }}
       >
         {day}
@@ -195,11 +191,7 @@ export function ScheduleCard({
         }}
       >
         {entries.map((entry, index) => (
-          <ScheduleRow
-            key={entry.day}
-            entry={entry}
-            isLast={index === entries.length - 1}
-          />
+          <ScheduleRow key={entry.day} entry={entry} isLast={index === entries.length - 1} />
         ))}
       </div>
     </div>

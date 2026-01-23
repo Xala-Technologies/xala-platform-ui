@@ -4,9 +4,9 @@ import { Avatar } from '../../index';
 
 /**
  * Avatar component from Digdir Designsystemet.
- * 
+ *
  * Avatar for displaying user profile images or initials.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/avatar/overview
  */
 const meta: Meta<typeof Avatar> = {
@@ -175,9 +175,7 @@ export const Default: Story = {
 };
 
 export const WithInitials: Story = {
-  render: () => (
-    <Avatar aria-label="John Doe">JD</Avatar>
-  ),
+  render: () => <Avatar aria-label="John Doe">JD</Avatar>,
 };
 
 export const Initials: Story = {
@@ -193,9 +191,15 @@ export const Initials: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-      <Avatar data-size="sm" aria-label="Small avatar">SM</Avatar>
-      <Avatar data-size="md" aria-label="Medium avatar">MD</Avatar>
-      <Avatar data-size="lg" aria-label="Large avatar">LG</Avatar>
+      <Avatar data-size="sm" aria-label="Small avatar">
+        SM
+      </Avatar>
+      <Avatar data-size="md" aria-label="Medium avatar">
+        MD
+      </Avatar>
+      <Avatar data-size="lg" aria-label="Large avatar">
+        LG
+      </Avatar>
     </div>
   ),
 };
@@ -203,8 +207,12 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Avatar data-color="neutral" aria-label="Neutral avatar">N</Avatar>
-      <Avatar data-color="accent" aria-label="Accent avatar">A</Avatar>
+      <Avatar data-color="neutral" aria-label="Neutral avatar">
+        N
+      </Avatar>
+      <Avatar data-color="accent" aria-label="Accent avatar">
+        A
+      </Avatar>
     </div>
   ),
 };
@@ -212,8 +220,12 @@ export const Colors: Story = {
 export const Variant: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Avatar variant="circle" aria-label="Circle avatar">C</Avatar>
-      <Avatar variant="square" aria-label="Square avatar">S</Avatar>
+      <Avatar variant="circle" aria-label="Circle avatar">
+        C
+      </Avatar>
+      <Avatar variant="square" aria-label="Square avatar">
+        S
+      </Avatar>
     </div>
   ),
 };
@@ -222,9 +234,15 @@ export const AvatarGroup: Story = {
   render: () => (
     <div style={{ display: 'flex' }}>
       <Avatar aria-label="User 1">A</Avatar>
-      <Avatar aria-label="User 2" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>B</Avatar>
-      <Avatar aria-label="User 3" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>C</Avatar>
-      <Avatar aria-label="3 more users" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>+3</Avatar>
+      <Avatar aria-label="User 2" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+        B
+      </Avatar>
+      <Avatar aria-label="User 3" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+        C
+      </Avatar>
+      <Avatar aria-label="3 more users" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+        +3
+      </Avatar>
     </div>
   ),
 };
@@ -236,34 +254,62 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Sizes</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Sizes
+        </h3>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Avatar data-size="sm" aria-label="Small">SM</Avatar>
-          <Avatar data-size="md" aria-label="Medium">MD</Avatar>
-          <Avatar data-size="lg" aria-label="Large">LG</Avatar>
+          <Avatar data-size="sm" aria-label="Small">
+            SM
+          </Avatar>
+          <Avatar data-size="md" aria-label="Medium">
+            MD
+          </Avatar>
+          <Avatar data-size="lg" aria-label="Large">
+            LG
+          </Avatar>
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Shapes</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Shapes
+        </h3>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-          <Avatar variant="circle" aria-label="Circle">C</Avatar>
-          <Avatar variant="square" aria-label="Square">S</Avatar>
+          <Avatar variant="circle" aria-label="Circle">
+            C
+          </Avatar>
+          <Avatar variant="square" aria-label="Square">
+            S
+          </Avatar>
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Colors</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Colors
+        </h3>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-          <Avatar data-color="neutral" aria-label="Neutral">N</Avatar>
-          <Avatar data-color="accent" aria-label="Accent">A</Avatar>
+          <Avatar data-color="neutral" aria-label="Neutral">
+            N
+          </Avatar>
+          <Avatar data-color="accent" aria-label="Accent">
+            A
+          </Avatar>
         </div>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Group</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Group
+        </h3>
         <div style={{ display: 'flex' }}>
           <Avatar aria-label="Alice">AB</Avatar>
-          <Avatar aria-label="Bob" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>BC</Avatar>
-          <Avatar aria-label="Charlie" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>CD</Avatar>
-          <Avatar aria-label="2 more" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>+2</Avatar>
+          <Avatar aria-label="Bob" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+            BC
+          </Avatar>
+          <Avatar aria-label="Charlie" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+            CD
+          </Avatar>
+          <Avatar aria-label="2 more" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+            +2
+          </Avatar>
         </div>
       </div>
     </div>

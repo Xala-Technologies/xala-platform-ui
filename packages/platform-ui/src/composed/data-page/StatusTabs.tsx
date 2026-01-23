@@ -1,6 +1,6 @@
 /**
  * StatusTabs Component
- * 
+ *
  * Horizontal status tabs with counts, used for filtering data by status
  * Based on pattern from apps/backoffice/src/routes/resourceRequests.tsx
  */
@@ -94,7 +94,9 @@ export function StatusTabs({
               borderRadius: 'var(--ds-border-radius-md) var(--ds-border-radius-md) 0 0',
               backgroundColor: isActive ? 'var(--ds-color-neutral-surface-default)' : 'transparent',
               color: isActive ? textColor : 'var(--ds-color-neutral-text-subtle)',
-              fontWeight: isActive ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-regular)',
+              fontWeight: isActive
+                ? 'var(--ds-font-weight-semibold)'
+                : 'var(--ds-font-weight-regular)',
               fontSize: 'var(--ds-font-size-sm)',
               cursor: 'pointer',
               transition: 'all 0.15s ease',
@@ -115,7 +117,9 @@ export function StatusTabs({
                   justifyContent: 'center',
                   fontSize: 'var(--ds-font-size-xs)',
                   fontWeight: 'var(--ds-font-weight-semibold)',
-                  backgroundColor: isActive ? surfaceColor : 'var(--ds-color-neutral-surface-hover)',
+                  backgroundColor: isActive
+                    ? surfaceColor
+                    : 'var(--ds-color-neutral-surface-hover)',
                   color: isActive ? textColor : 'var(--ds-color-neutral-text-subtle)',
                   borderRadius: 'var(--ds-border-radius-full)',
                   padding: '0 var(--ds-spacing-1)',

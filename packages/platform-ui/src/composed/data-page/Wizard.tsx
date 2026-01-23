@@ -1,6 +1,6 @@
 /**
  * Wizard Components
- * 
+ *
  * Generalized wizard components for multi-step forms
  * Based on patterns from apps/minside/src/features/resource-objects/components/wizard/
  */
@@ -152,7 +152,14 @@ export function WizardStepper({
               </Heading>
             )}
             {showStepCounter && (
-              <span style={{ backgroundColor: 'var(--ds-color-neutral-surface-subtle)', padding: '0.25rem 0.5rem', borderRadius: 'var(--ds-border-radius-sm)', fontSize: 'var(--ds-font-size-xs)' }}>
+              <span
+                style={{
+                  backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-xs)',
+                }}
+              >
                 {`Steg ${currentStep + 1} av ${steps.length}`}
               </span>
             )}
@@ -251,9 +258,12 @@ export function WizardStepper({
                         state === 'active'
                           ? 'var(--ds-color-brand-text-default)'
                           : state === 'error'
-                          ? 'var(--ds-color-danger-text-default)'
-                          : 'var(--ds-color-neutral-text-subtle)',
-                      fontWeight: state === 'active' ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-regular)',
+                            ? 'var(--ds-color-danger-text-default)'
+                            : 'var(--ds-color-neutral-text-subtle)',
+                      fontWeight:
+                        state === 'active'
+                          ? 'var(--ds-font-weight-semibold)'
+                          : 'var(--ds-font-weight-regular)',
                     }}
                   >
                     {step.label}
@@ -382,7 +392,10 @@ export function Wizard({
   }
 
   return (
-    <div className={cn('wizard', className)} style={{ display: 'flex', flexDirection: 'column', height: '100%', ...style }}>
+    <div
+      className={cn('wizard', className)}
+      style={{ display: 'flex', flexDirection: 'column', height: '100%', ...style }}
+    >
       {/* Stepper */}
       <WizardStepper
         steps={steps}

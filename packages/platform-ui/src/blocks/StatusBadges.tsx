@@ -125,9 +125,16 @@ export interface PaymentStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function PaymentStatusBadge({ status, size = 'sm' }: PaymentStatusBadgeProps): React.ReactElement {
+export function PaymentStatusBadge({
+  status,
+  size = 'sm',
+}: PaymentStatusBadgeProps): React.ReactElement {
   const config = paymentStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -148,9 +155,16 @@ export interface ResourceStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function ResourceStatusBadge({ status, size = 'sm' }: ResourceStatusBadgeProps): React.ReactElement {
+export function ResourceStatusBadge({
+  status,
+  size = 'sm',
+}: ResourceStatusBadgeProps): React.ReactElement {
   const config = resourceStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -171,9 +185,16 @@ export interface RequestStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function RequestStatusBadge({ status, size = 'sm' }: RequestStatusBadgeProps): React.ReactElement {
+export function RequestStatusBadge({
+  status,
+  size = 'sm',
+}: RequestStatusBadgeProps): React.ReactElement {
   const config = requestStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -193,9 +214,19 @@ export interface OrganizationStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function OrganizationStatusBadge({ status, size = 'sm' }: OrganizationStatusBadgeProps): React.ReactElement {
-  const config = organizationStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+export function OrganizationStatusBadge({
+  status,
+  size = 'sm',
+}: OrganizationStatusBadgeProps): React.ReactElement {
+  const config = organizationStatusConfig[status] || {
+    color: 'neutral' as BadgeColor,
+    label: status,
+  };
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -217,7 +248,11 @@ export interface UserStatusBadgeProps {
 
 export function UserStatusBadge({ status, size = 'sm' }: UserStatusBadgeProps): React.ReactElement {
   const config = userStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -230,9 +265,17 @@ export interface GenericStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function GenericStatusBadge({ status, config, size = 'sm' }: GenericStatusBadgeProps): React.ReactElement {
+export function GenericStatusBadge({
+  status,
+  config,
+  size = 'sm',
+}: GenericStatusBadgeProps): React.ReactElement {
   const statusConfig = config?.[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={statusConfig.color} size={size}>{statusConfig.label}</StatusTag>;
+  return (
+    <StatusTag color={statusConfig.color} size={size}>
+      {statusConfig.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -258,7 +301,11 @@ export interface InventoryBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function InventoryBadge({ total, available, size = 'sm' }: InventoryBadgeProps): React.ReactElement {
+export function InventoryBadge({
+  total,
+  available,
+  size = 'sm',
+}: InventoryBadgeProps): React.ReactElement {
   const color: BadgeColor = available === 0 ? 'danger' : available <= 2 ? 'warning' : 'success';
   const label = available === 0 ? 'Utsolgt' : `${available} igjen`;
 
@@ -276,7 +323,11 @@ export interface CapacityBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function CapacityBadge({ total, used, size = 'sm' }: CapacityBadgeProps): React.ReactElement {
+export function CapacityBadge({
+  total,
+  used,
+  size = 'sm',
+}: CapacityBadgeProps): React.ReactElement {
   const available = total - used;
   const color: BadgeColor = available === 0 ? 'danger' : available <= 5 ? 'warning' : 'success';
   const label = available === 0 ? 'Fullt' : `${available} plasser igjen`;
@@ -294,7 +345,10 @@ export interface BlackoutIndicatorProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function BlackoutIndicator({ title = 'Utilgjengelig', size = 'sm' }: BlackoutIndicatorProps): React.ReactElement {
+export function BlackoutIndicator({
+  title = 'Utilgjengelig',
+  size = 'sm',
+}: BlackoutIndicatorProps): React.ReactElement {
   return (
     <StatusTag color="neutral" size={size}>
       🚫 {title}
@@ -307,7 +361,9 @@ export interface RequiresApprovalBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function RequiresApprovalBadge({ size = 'sm' }: RequiresApprovalBadgeProps): React.ReactElement {
+export function RequiresApprovalBadge({
+  size = 'sm',
+}: RequiresApprovalBadgeProps): React.ReactElement {
   return (
     <StatusTag color="warning" size={size}>
       ⏳ Krever godkjenning
@@ -333,9 +389,19 @@ export interface GdprRequestStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function GdprRequestStatusBadge({ status, size = 'sm' }: GdprRequestStatusBadgeProps): React.ReactElement {
-  const config = gdprRequestStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+export function GdprRequestStatusBadge({
+  status,
+  size = 'sm',
+}: GdprRequestStatusBadgeProps): React.ReactElement {
+  const config = gdprRequestStatusConfig[status] || {
+    color: 'neutral' as BadgeColor,
+    label: status,
+  };
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -356,9 +422,16 @@ export interface BlockStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function BlockStatusBadge({ status, size = 'sm' }: BlockStatusBadgeProps): React.ReactElement {
+export function BlockStatusBadge({
+  status,
+  size = 'sm',
+}: BlockStatusBadgeProps): React.ReactElement {
   const config = blockStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -381,9 +454,16 @@ export interface InvoiceStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function InvoiceStatusBadge({ status, size = 'sm' }: InvoiceStatusBadgeProps): React.ReactElement {
+export function InvoiceStatusBadge({
+  status,
+  size = 'sm',
+}: InvoiceStatusBadgeProps): React.ReactElement {
   const config = invoiceStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }
 
 // =============================================================================
@@ -404,7 +484,17 @@ export interface IntegrationStatusBadgeProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function IntegrationStatusBadge({ status, size = 'sm' }: IntegrationStatusBadgeProps): React.ReactElement {
-  const config = integrationStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
-  return <StatusTag color={config.color} size={size}>{config.label}</StatusTag>;
+export function IntegrationStatusBadge({
+  status,
+  size = 'sm',
+}: IntegrationStatusBadgeProps): React.ReactElement {
+  const config = integrationStatusConfig[status] || {
+    color: 'neutral' as BadgeColor,
+    label: status,
+  };
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
 }

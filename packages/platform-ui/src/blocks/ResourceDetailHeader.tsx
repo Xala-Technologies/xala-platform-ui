@@ -155,10 +155,7 @@ export function ResourceDetailHeader({
         }}
       >
         {/* Category badge */}
-        <Tag
-          data-size="sm"
-          data-color={getTypeColor()}
-        >
+        <Tag data-size="sm" data-color={getTypeColor()}>
           {category}
         </Tag>
 
@@ -191,7 +188,9 @@ export function ResourceDetailHeader({
           ) : onShare ? (
             <button
               type="button"
-              onClick={() => { onShare(); }}
+              onClick={() => {
+                onShare();
+              }}
               aria-label="Del"
               style={{
                 display: 'flex',
@@ -214,21 +213,12 @@ export function ResourceDetailHeader({
       </div>
 
       {/* Title */}
-      <Heading
-        level={1}
-        data-size="xl"
-        style={{ margin: 0 }}
-      >
+      <Heading level={1} data-size="xl" style={{ margin: 0 }}>
         {title}
       </Heading>
 
       {/* Key Facts Row */}
-      {effectiveKeyFacts.length > 0 && (
-        <KeyFactsRow
-          facts={effectiveKeyFacts}
-          variant="default"
-        />
-      )}
+      {effectiveKeyFacts.length > 0 && <KeyFactsRow facts={effectiveKeyFacts} variant="default" />}
 
       {/* Location */}
       <Paragraph

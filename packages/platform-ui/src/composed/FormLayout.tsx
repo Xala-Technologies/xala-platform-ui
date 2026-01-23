@@ -64,7 +64,14 @@ export interface FormDividerProps {
 
 function ChevronDownIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -259,7 +266,14 @@ export function FormField({
       >
         {label}
         {required && (
-          <span style={{ color: 'var(--ds-color-danger-text-default)', marginLeft: 'var(--ds-spacing-1)' }}>*</span>
+          <span
+            style={{
+              color: 'var(--ds-color-danger-text-default)',
+              marginLeft: 'var(--ds-spacing-1)',
+            }}
+          >
+            *
+          </span>
         )}
       </label>
       {children}
@@ -268,7 +282,9 @@ export function FormField({
           style={{
             margin: 'var(--ds-spacing-1) 0 0 0',
             fontSize: 'var(--ds-font-size-sm)',
-            color: error ? 'var(--ds-color-danger-text-default)' : 'var(--ds-color-neutral-text-subtle)',
+            color: error
+              ? 'var(--ds-color-danger-text-default)'
+              : 'var(--ds-color-neutral-text-subtle)',
           }}
         >
           {error || helperText}

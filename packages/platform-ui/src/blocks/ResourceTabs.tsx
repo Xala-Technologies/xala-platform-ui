@@ -80,16 +80,10 @@ export function ResourceTabs({
 
   return (
     <div className={cn('resource-object-tabs', className)}>
-      <Tabs
-        value={effectiveActiveTab}
-        onChange={onTabChange || (() => {})}
-      >
+      <Tabs value={effectiveActiveTab} onChange={onTabChange || (() => {})}>
         <Tabs.List style={getTabListStyle()}>
           {visibleTabs.map((tab) => (
-            <Tabs.Tab
-              key={tab.id}
-              value={tab.id}
-            >
+            <Tabs.Tab key={tab.id} value={tab.id}>
               {tab.icon && (
                 <span
                   style={{
@@ -146,10 +140,7 @@ export interface TabContentProps {
   className?: string;
 }
 
-export function TabContent({
-  children,
-  className,
-}: TabContentProps): React.ReactElement {
+export function TabContent({ children, className }: TabContentProps): React.ReactElement {
   return (
     <div
       className={cn('tab-content', className)}
@@ -243,9 +234,7 @@ export function TabEmptyState({
           {description}
         </p>
       )}
-      {action && (
-        <div style={{ marginTop: 'var(--ds-spacing-4)' }}>{action}</div>
-      )}
+      {action && <div style={{ marginTop: 'var(--ds-spacing-4)' }}>{action}</div>}
     </div>
   );
 }

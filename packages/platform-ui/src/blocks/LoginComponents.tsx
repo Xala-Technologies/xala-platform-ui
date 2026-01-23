@@ -111,12 +111,14 @@ export function FeatureItem({
   className,
 }: FeatureItemProps): React.ReactElement {
   // For 'light' variant (on colored background), use white text for WCAG compliance
-  const textColor = variant === 'light'
-    ? 'var(--ds-color-neutral-contrast-default)'
-    : 'var(--ds-color-neutral-text-default)';
-  const iconBg = variant === 'light'
-    ? 'var(--ds-color-neutral-surface-subtle)'
-    : 'var(--ds-color-neutral-surface-hover)';
+  const textColor =
+    variant === 'light'
+      ? 'var(--ds-color-neutral-contrast-default)'
+      : 'var(--ds-color-neutral-text-default)';
+  const iconBg =
+    variant === 'light'
+      ? 'var(--ds-color-neutral-surface-subtle)'
+      : 'var(--ds-color-neutral-surface-hover)';
 
   return (
     <div
@@ -188,12 +190,14 @@ export function IntegrationBadge({
   variant = 'light',
   className,
 }: IntegrationBadgeProps): React.ReactElement {
-  const textColor = variant === 'light'
-    ? 'var(--ds-color-neutral-contrast-default)'
-    : 'var(--ds-color-neutral-text-default)';
-  const bgColor = variant === 'light'
-    ? 'var(--ds-color-neutral-surface-subtle)'
-    : 'var(--ds-color-neutral-surface-hover)';
+  const textColor =
+    variant === 'light'
+      ? 'var(--ds-color-neutral-contrast-default)'
+      : 'var(--ds-color-neutral-text-default)';
+  const bgColor =
+    variant === 'light'
+      ? 'var(--ds-color-neutral-surface-subtle)'
+      : 'var(--ds-color-neutral-surface-hover)';
 
   return (
     <span
@@ -331,15 +335,15 @@ export function LoginLayout({
           flex-direction: row;
           min-height: 100vh;
         }
-        .login-form-panel,
-        .login-info-panel {
+        .ds-login-form-panel,
+        .ds-login-info-panel {
           width: 50%;
         }
         @media (max-width: 'var(--ds-sizing-256)') {
-          .login-info-panel {
+          .ds-login-info-panel {
             display: none !important;
           }
-          .login-form-panel {
+          .ds-login-form-panel {
             width: 100% !important;
           }
         }
@@ -352,305 +356,317 @@ export function LoginLayout({
           flexDirection: 'row',
         }}
       >
-      {/* Left side - Login form */}
-      <div
-        style={{
-          width: '50%',
-          display: 'flex',
-          flexDirection: 'column',
-          backgroundColor: 'var(--ds-color-neutral-background-default)',
-        }}
-        className="login-form-panel"
-      >
-        {/* Main content */}
+        {/* Left side - Login form */}
         <div
           style={{
-            flex: 1,
+            width: '50%',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            padding: 'clamp(var(--ds-spacing-6), 5vw, var(--ds-spacing-12))',
-            maxWidth: 'var(--ds-sizing-480)',
-            margin: '0 auto',
-            width: '100%',
+            backgroundColor: 'var(--ds-color-neutral-background-default)',
           }}
+          className="ds-login-form-panel"
         >
-          {/* Logo/Brand */}
-          <div style={{ marginBottom: 'var(--ds-spacing-10)' }}>
-            {logoHref ? (
-              <a
-                href={logoHref}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--ds-spacing-4)',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  flexWrap: 'wrap',
-                }}
-              >
-                {logo || (
-                  <img
-                    src="/logo.svg"
-                    alt={brandName}
-                    style={{
-                      height: 'clamp(80px, 12vw, 120px)',
-                      width: 'auto',
-                    }}
-                  />
-                )}
-                <div style={{ minWidth: '0', flex: '1 1 auto' }}>
-                  <div
-                    style={{
-                      fontSize: 'clamp(var(--ds-font-size-2xl), 5vw, var(--ds-font-size-3xl))',
-                      fontWeight: 'var(--ds-font-weight-bold)',
-                      color: 'var(--ds-color-accent-base-default)',
-                      lineHeight: 'var(--ds-line-height-sm)',
-                      letterSpacing: 'var(--ds-letter-spacing-9)',
-                      wordBreak: 'break-word',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {brandName}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 'clamp(var(--ds-font-size-sm), 2.5vw, var(--ds-font-size-lg))',
-                      color: 'var(--ds-color-neutral-text-default)',
-                      letterSpacing: 'var(--ds-letter-spacing-9)',
-                      marginTop: 'var(--ds-spacing-2)',
-                      fontWeight: 'var(--ds-font-weight-medium)',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {brandTagline}
-                  </div>
-                </div>
-              </a>
-            ) : (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
-                {logo || (
-                  <img
-                    src="/logo.svg"
-                    alt={brandName}
-                    style={{
-                      height: 'clamp(80px, 12vw, 120px)',
-                      width: 'auto',
-                    }}
-                  />
-                )}
-                <div style={{ minWidth: '0', flex: '1 1 auto' }}>
-                  <div
-                    style={{
-                      fontSize: 'clamp(var(--ds-font-size-2xl), 5vw, var(--ds-font-size-3xl))',
-                      fontWeight: 'var(--ds-font-weight-bold)',
-                      color: 'var(--ds-color-accent-base-default)',
-                      lineHeight: 'var(--ds-line-height-sm)',
-                      letterSpacing: 'var(--ds-letter-spacing-9)',
-                      wordBreak: 'break-word',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {brandName}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 'clamp(var(--ds-font-size-sm), 2.5vw, var(--ds-font-size-lg))',
-                      color: 'var(--ds-color-neutral-text-default)',
-                      letterSpacing: 'var(--ds-letter-spacing-9)',
-                      marginTop: 'var(--ds-spacing-2)',
-                      fontWeight: 'var(--ds-font-weight-medium)',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {brandTagline}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          
-          {/* Login section */}
-          <div>
-            <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              {title}
-            </Heading>
-            <Paragraph
-              data-size="md"
-              style={{ color: 'var(--ds-color-neutral-text-default)', marginBottom: 'var(--ds-spacing-8)' }}
-            >
-              {subtitle}
-            </Paragraph>
-
-            {/* Login options */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-              {children}
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        {(footerLinks.length > 0 || copyright) && (
+          {/* Main content */}
           <div
             style={{
-              padding: 'var(--ds-spacing-8) clamp(var(--ds-spacing-6), 5vw, var(--ds-spacing-12))',
-              borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
-              backgroundColor: 'var(--ds-color-neutral-background-subtle)',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              padding: 'clamp(var(--ds-spacing-6), 5vw, var(--ds-spacing-12))',
+              maxWidth: 'var(--ds-sizing-480)',
+              margin: '0 auto',
+              width: '100%',
             }}
           >
-            {footerLinks.length > 0 && (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 'var(--ds-spacing-2)',
-                  flexWrap: 'wrap',
-                  marginBottom: 'var(--ds-spacing-4)',
-                }}
-              >
-                {footerLinks.map((link, index) => (
-                  <React.Fragment key={link.href}>
-                    {index > 0 && (
-                      <span 
-                        style={{ 
-                          color: 'var(--ds-color-neutral-text-subtle)',
-                          padding: '0 var(--ds-spacing-2)',
-                        }}
-                      >
-                        •
-                      </span>
-                    )}
-                    <LoginFooterLink href={link.href}>{link.label}</LoginFooterLink>
-                  </React.Fragment>
-                ))}
-              </div>
-            )}
-            {copyright && (
-              <Paragraph 
-                data-size="xs" 
-                style={{ 
-                  color: 'var(--ds-color-neutral-text-subtle)', 
-                  margin: 0,
-                  textAlign: 'center',
-                  fontWeight: 'var(--ds-font-weight-regular)',
-                }}
-              >
-                {copyright}
-              </Paragraph>
-            )}
-          </div>
-        )}
-      </div>
+            {/* Logo/Brand */}
+            <div style={{ marginBottom: 'var(--ds-spacing-10)' }}>
+              {logoHref ? (
+                <a
+                  href={logoHref}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-4)',
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  {logo || (
+                    <img
+                      src="/logo.svg"
+                      alt={brandName}
+                      style={{
+                        height: 'clamp(80px, 12vw, 120px)',
+                        width: 'auto',
+                      }}
+                    />
+                  )}
+                  <div style={{ minWidth: '0', flex: '1 1 auto' }}>
+                    <div
+                      style={{
+                        fontSize: 'clamp(var(--ds-font-size-2xl), 5vw, var(--ds-font-size-3xl))',
+                        fontWeight: 'var(--ds-font-weight-bold)',
+                        color: 'var(--ds-color-accent-base-default)',
+                        lineHeight: 'var(--ds-line-height-sm)',
+                        letterSpacing: 'var(--ds-letter-spacing-9)',
+                        wordBreak: 'break-word',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {brandName}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 'clamp(var(--ds-font-size-sm), 2.5vw, var(--ds-font-size-lg))',
+                        color: 'var(--ds-color-neutral-text-default)',
+                        letterSpacing: 'var(--ds-letter-spacing-9)',
+                        marginTop: 'var(--ds-spacing-2)',
+                        fontWeight: 'var(--ds-font-weight-medium)',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {brandTagline}
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-4)',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  {logo || (
+                    <img
+                      src="/logo.svg"
+                      alt={brandName}
+                      style={{
+                        height: 'clamp(80px, 12vw, 120px)',
+                        width: 'auto',
+                      }}
+                    />
+                  )}
+                  <div style={{ minWidth: '0', flex: '1 1 auto' }}>
+                    <div
+                      style={{
+                        fontSize: 'clamp(var(--ds-font-size-2xl), 5vw, var(--ds-font-size-3xl))',
+                        fontWeight: 'var(--ds-font-weight-bold)',
+                        color: 'var(--ds-color-accent-base-default)',
+                        lineHeight: 'var(--ds-line-height-sm)',
+                        letterSpacing: 'var(--ds-letter-spacing-9)',
+                        wordBreak: 'break-word',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {brandName}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 'clamp(var(--ds-font-size-sm), 2.5vw, var(--ds-font-size-lg))',
+                        color: 'var(--ds-color-neutral-text-default)',
+                        letterSpacing: 'var(--ds-letter-spacing-9)',
+                        marginTop: 'var(--ds-spacing-2)',
+                        fontWeight: 'var(--ds-font-weight-medium)',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {brandTagline}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
-      {/* Right side - Product info */}
-      <div
-        style={{
-          width: '50%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: 'clamp(var(--ds-spacing-6), 5vw, var(--ds-spacing-8))',
-          background: 'linear-gradient(135deg, var(--ds-color-accent-base-default) 0%, var(--ds-color-accent-base-hover) 100%)',
-        }}
-        className="login-info-panel"
-      >
-        <div style={{ maxWidth: 'var(--ds-sizing-480)', margin: '0 auto', width: '100%' }}>
-          {/* Header */}
-          <div style={{ marginBottom: 'var(--ds-spacing-10)' }}>
-            {panelTitle && (
-              <Paragraph
-                data-size="xs"
-                style={{
-                  color: 'var(--ds-color-neutral-contrast-default)',
-                  textTransform: 'uppercase',
-                  letterSpacing: 'var(--ds-letter-spacing-9)',
-                  fontWeight: 'var(--ds-font-weight-medium)',
-                  marginBottom: 'var(--ds-spacing-3)',
-                  wordBreak: 'break-word',
-                  lineHeight: 'var(--ds-line-height-sm)',
-                }}
-              >
-                {panelTitle}
-              </Paragraph>
-            )}
-            <Heading
-              level={2}
-              data-size="2xl"
-              style={{
-                color: 'var(--ds-color-neutral-contrast-default)',
-                marginBottom: 'var(--ds-spacing-4)',
-                wordBreak: 'break-word',
-              }}
-            >
-              {panelSubtitle}
-            </Heading>
-            {panelDescription && (
+            {/* Login section */}
+            <div>
+              <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                {title}
+              </Heading>
               <Paragraph
                 data-size="md"
                 style={{
-                  color: 'var(--ds-color-neutral-contrast-default)',
-                  wordBreak: 'break-word',
-                  lineHeight: 'var(--ds-line-height-md)',
+                  color: 'var(--ds-color-neutral-text-default)',
+                  marginBottom: 'var(--ds-spacing-8)',
                 }}
               >
-                {panelDescription}
+                {subtitle}
               </Paragraph>
-            )}
+
+              {/* Login options */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+                {children}
+              </div>
+            </div>
           </div>
 
-          {/* Features */}
-          {features.length > 0 && (
+          {/* Footer */}
+          {(footerLinks.length > 0 || copyright) && (
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--ds-spacing-6)',
-                marginBottom: 'var(--ds-spacing-10)',
+                padding:
+                  'var(--ds-spacing-8) clamp(var(--ds-spacing-6), 5vw, var(--ds-spacing-12))',
+                borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+                backgroundColor: 'var(--ds-color-neutral-background-subtle)',
               }}
             >
-              {features.map((feature) => (
-                <FeatureItem
-                  key={feature.title}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                  variant="light"
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Integrations */}
-          {integrations.length > 0 && (
-            <div>
-              <Paragraph
-                data-size="xs"
-                style={{
-                  color: 'var(--ds-color-neutral-contrast-default)',
-                  marginBottom: 'var(--ds-spacing-3)',
-                  textTransform: 'uppercase',
-                  letterSpacing: 'var(--ds-letter-spacing-9)',
-                  lineHeight: 'var(--ds-line-height-sm)',
-                }}
-              >
-                Integrasjoner & Sertifiseringer
-              </Paragraph>
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: 'var(--ds-spacing-2)',
-                }}
-              >
-                {integrations.map((integration) => (
-                  <IntegrationBadge key={integration} label={integration} variant="light" />
-                ))}
-              </div>
+              {footerLinks.length > 0 && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 'var(--ds-spacing-2)',
+                    flexWrap: 'wrap',
+                    marginBottom: 'var(--ds-spacing-4)',
+                  }}
+                >
+                  {footerLinks.map((link, index) => (
+                    <React.Fragment key={link.href}>
+                      {index > 0 && (
+                        <span
+                          style={{
+                            color: 'var(--ds-color-neutral-text-subtle)',
+                            padding: '0 var(--ds-spacing-2)',
+                          }}
+                        >
+                          •
+                        </span>
+                      )}
+                      <LoginFooterLink href={link.href}>{link.label}</LoginFooterLink>
+                    </React.Fragment>
+                  ))}
+                </div>
+              )}
+              {copyright && (
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    margin: 0,
+                    textAlign: 'center',
+                    fontWeight: 'var(--ds-font-weight-regular)',
+                  }}
+                >
+                  {copyright}
+                </Paragraph>
+              )}
             </div>
           )}
         </div>
-      </div>
+
+        {/* Right side - Product info */}
+        <div
+          style={{
+            width: '50%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: 'clamp(var(--ds-spacing-6), 5vw, var(--ds-spacing-8))',
+            background:
+              'linear-gradient(135deg, var(--ds-color-accent-base-default) 0%, var(--ds-color-accent-base-hover) 100%)',
+          }}
+          className="ds-login-info-panel"
+        >
+          <div style={{ maxWidth: 'var(--ds-sizing-480)', margin: '0 auto', width: '100%' }}>
+            {/* Header */}
+            <div style={{ marginBottom: 'var(--ds-spacing-10)' }}>
+              {panelTitle && (
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    color: 'var(--ds-color-neutral-contrast-default)',
+                    textTransform: 'uppercase',
+                    letterSpacing: 'var(--ds-letter-spacing-9)',
+                    fontWeight: 'var(--ds-font-weight-medium)',
+                    marginBottom: 'var(--ds-spacing-3)',
+                    wordBreak: 'break-word',
+                    lineHeight: 'var(--ds-line-height-sm)',
+                  }}
+                >
+                  {panelTitle}
+                </Paragraph>
+              )}
+              <Heading
+                level={2}
+                data-size="2xl"
+                style={{
+                  color: 'var(--ds-color-neutral-contrast-default)',
+                  marginBottom: 'var(--ds-spacing-4)',
+                  wordBreak: 'break-word',
+                }}
+              >
+                {panelSubtitle}
+              </Heading>
+              {panelDescription && (
+                <Paragraph
+                  data-size="md"
+                  style={{
+                    color: 'var(--ds-color-neutral-contrast-default)',
+                    wordBreak: 'break-word',
+                    lineHeight: 'var(--ds-line-height-md)',
+                  }}
+                >
+                  {panelDescription}
+                </Paragraph>
+              )}
+            </div>
+
+            {/* Features */}
+            {features.length > 0 && (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--ds-spacing-6)',
+                  marginBottom: 'var(--ds-spacing-10)',
+                }}
+              >
+                {features.map((feature) => (
+                  <FeatureItem
+                    key={feature.title}
+                    icon={feature.icon}
+                    title={feature.title}
+                    description={feature.description}
+                    variant="light"
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Integrations */}
+            {integrations.length > 0 && (
+              <div>
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    color: 'var(--ds-color-neutral-contrast-default)',
+                    marginBottom: 'var(--ds-spacing-3)',
+                    textTransform: 'uppercase',
+                    letterSpacing: 'var(--ds-letter-spacing-9)',
+                    lineHeight: 'var(--ds-line-height-sm)',
+                  }}
+                >
+                  Integrasjoner & Sertifiseringer
+                </Paragraph>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: 'var(--ds-spacing-2)',
+                  }}
+                >
+                  {integrations.map((integration) => (
+                    <IntegrationBadge key={integration} label={integration} variant="light" />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

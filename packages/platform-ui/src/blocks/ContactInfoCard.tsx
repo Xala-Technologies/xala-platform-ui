@@ -110,10 +110,7 @@ export function ContactInfoCard({
             }}
           >
             <div style={iconContainerStyle}>
-              <MailIcon
-                size={18}
-                style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-              />
+              <MailIcon size={18} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
               <Paragraph
@@ -147,10 +144,7 @@ export function ContactInfoCard({
             }}
           >
             <div style={iconContainerStyle}>
-              <PhoneIcon
-                size={18}
-                style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-              />
+              <PhoneIcon size={18} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
               <Paragraph

@@ -38,7 +38,14 @@ export interface SortableListProps {
 
 function GripIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="9" cy="5" r="1" fill="currentColor" />
       <circle cx="9" cy="12" r="1" fill="currentColor" />
       <circle cx="9" cy="19" r="1" fill="currentColor" />
@@ -117,10 +124,14 @@ export function SortableList({
         alignItems: 'center',
         gap: 'var(--ds-spacing-3)',
         padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
-        backgroundColor: isDragging ? 'var(--ds-color-accent-surface-subtle)' : 'var(--ds-color-neutral-background-default)',
+        backgroundColor: isDragging
+          ? 'var(--ds-color-accent-surface-subtle)'
+          : 'var(--ds-color-neutral-background-default)',
         borderWidth: 'var(--ds-border-width-default)',
         borderStyle: 'solid',
-        borderColor: isDragging ? 'var(--ds-color-accent-border-default)' : 'var(--ds-color-neutral-border-subtle)',
+        borderColor: isDragging
+          ? 'var(--ds-color-accent-border-default)'
+          : 'var(--ds-color-neutral-border-subtle)',
         borderRadius: 'var(--ds-border-radius-md)',
         opacity: isDragging ? 0.8 : 1,
         cursor: item.disabled || disabled ? 'not-allowed' : handle ? 'default' : 'grab',
@@ -173,8 +184,8 @@ export function SortableList({
                     ? 'translateX(8px)'
                     : 'translateX(-8px)'
                   : draggedIndex !== null && draggedIndex < index
-                  ? 'translateY(8px)'
-                  : 'translateY(-8px)'
+                    ? 'translateY(8px)'
+                    : 'translateY(-8px)'
                 : 'none',
             }}
           >
@@ -202,7 +213,9 @@ export function SortableList({
                 }}
               />
             )}
-            {renderItem ? renderItem(item, index, isDragging) : defaultRenderItem(item, index, isDragging)}
+            {renderItem
+              ? renderItem(item, index, isDragging)
+              : defaultRenderItem(item, index, isDragging)}
           </div>
         );
       })}

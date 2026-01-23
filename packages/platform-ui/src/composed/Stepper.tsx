@@ -57,7 +57,16 @@ export interface WizardProps {
 
 function CheckIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -65,7 +74,16 @@ function CheckIcon() {
 
 function AlertIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="8" x2="12" y2="12" />
       <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -147,11 +165,17 @@ function StepIndicator({
     const completed = status === 'completed';
     return {
       flex: 1,
-      backgroundColor: completed ? 'var(--ds-color-success-base-default)' : 'var(--ds-color-neutral-border-default)',
+      backgroundColor: completed
+        ? 'var(--ds-color-success-base-default)'
+        : 'var(--ds-color-neutral-border-default)',
       transition: 'background-color 0.2s ease',
       ...(orientation === 'horizontal'
         ? { height: 'var(--ds-border-width-lg)', margin: '0 var(--ds-spacing-2)' }
-        : { width: 'var(--ds-border-width-lg)', minHeight: 'var(--ds-spacing-6)', margin: 'var(--ds-spacing-2) 0' }),
+        : {
+            width: 'var(--ds-border-width-lg)',
+            minHeight: 'var(--ds-spacing-6)',
+            margin: 'var(--ds-spacing-2) 0',
+          }),
     };
   };
 
@@ -190,13 +214,24 @@ function StepIndicator({
             style={{
               margin: 0,
               fontSize: styles.font,
-              fontWeight: status === 'current' ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-medium)',
-              color: status === 'current' ? 'var(--ds-color-neutral-text-default)' : 'var(--ds-color-neutral-text-subtle)',
+              fontWeight:
+                status === 'current'
+                  ? 'var(--ds-font-weight-semibold)'
+                  : 'var(--ds-font-weight-medium)',
+              color:
+                status === 'current'
+                  ? 'var(--ds-color-neutral-text-default)'
+                  : 'var(--ds-color-neutral-text-subtle)',
             }}
           >
             {step.title}
             {step.optional && (
-              <span style={{ fontWeight: 'var(--ds-font-weight-normal)', marginLeft: 'var(--ds-spacing-1)' }}>
+              <span
+                style={{
+                  fontWeight: 'var(--ds-font-weight-normal)',
+                  marginLeft: 'var(--ds-spacing-1)',
+                }}
+              >
                 (optional)
               </span>
             )}
@@ -303,11 +338,14 @@ export function Wizard({
     }
   }, [isFirstStep]);
 
-  const handleStepClick = useCallback((index: number) => {
-    if (index < currentStep) {
-      setCurrentStep(index);
-    }
-  }, [currentStep]);
+  const handleStepClick = useCallback(
+    (index: number) => {
+      if (index < currentStep) {
+        setCurrentStep(index);
+      }
+    },
+    [currentStep]
+  );
 
   return (
     <div
@@ -328,9 +366,7 @@ export function Wizard({
         />
       )}
 
-      <div style={{ flex: 1 }}>
-        {children[currentStep]}
-      </div>
+      <div style={{ flex: 1 }}>{children[currentStep]}</div>
 
       <div
         style={{
@@ -431,11 +467,14 @@ export function useWizard(totalSteps: number) {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
 
-  const goToStep = useCallback((step: number) => {
-    if (step >= 0 && step < totalSteps) {
-      setCurrentStep(step);
-    }
-  }, [totalSteps]);
+  const goToStep = useCallback(
+    (step: number) => {
+      if (step >= 0 && step < totalSteps) {
+        setCurrentStep(step);
+      }
+    },
+    [totalSteps]
+  );
 
   const nextStep = useCallback(() => {
     setCompletedSteps((prev) => new Set([...prev, currentStep]));

@@ -91,14 +91,17 @@ export interface DataExportCardProps {
 
 export const DEFAULT_DATA_EXPORT_LABELS: DataExportCardLabels = {
   title: 'Eksporter mine data',
-  description: 'Last ned en kopi av alle dataene vi har lagret om deg i JSON-format. Dette inkluderer profil, resourceRequester, meldinger og aktivitet.',
+  description:
+    'Last ned en kopi av alle dataene vi har lagret om deg i JSON-format. Dette inkluderer profil, resourceRequester, meldinger og aktivitet.',
   loading: 'Laster...',
   requestButton: 'Eksporter mine data',
   requestingButton: 'Oppretter foresporsel...',
   downloadButton: 'Last ned mine data',
-  errorMessage: 'Det oppstod en feil ved opprettelse av foresporselen. Vennligst prov igjen senere.',
+  errorMessage:
+    'Det oppstod en feil ved opprettelse av foresporselen. Vennligst prov igjen senere.',
   infoTitle: 'Viktig:',
-  infoDescription: 'Dataeksporten vil vaere tilgjengelig for nedlasting i 30 dager fra den er klar. Av sikkerhetshensyn ma du vaere innlogget for a laste ned dataene.',
+  infoDescription:
+    'Dataeksporten vil vaere tilgjengelig for nedlasting i 30 dager fra den er klar. Av sikkerhetshensyn ma du vaere innlogget for a laste ned dataene.',
   statusMessages: {
     pending: 'Din foresporsel er mottatt og venter pa behandling.',
     processing: 'Vi forbereder dataene dine. Dette kan ta noen minutter.',
@@ -106,7 +109,8 @@ export const DEFAULT_DATA_EXPORT_LABELS: DataExportCardLabels = {
     rejected: 'Foresporselen din ble avvist. Kontakt support for mer informasjon.',
   },
   requestedLabel: 'Forespurt:',
-  expiryWarning: (days: number) => `Denne nedlastingen utloper om ${days} dag${days !== 1 ? 'er' : ''}.`,
+  expiryWarning: (days: number) =>
+    `Denne nedlastingen utloper om ${days} dag${days !== 1 ? 'er' : ''}.`,
   expiredMessage: 'Denne nedlastingen har utlopt.',
   rejectionLabel: 'Arsak:',
 };
@@ -141,17 +145,19 @@ function ExportRequestStatus({
   });
   const statusText = labels.statusMessages[status] || '';
 
-  const bgColor = status === 'completed'
-    ? 'var(--ds-color-success-surface)'
-    : status === 'rejected'
-      ? 'var(--ds-color-danger-surface)'
-      : 'var(--ds-color-info-surface)';
+  const bgColor =
+    status === 'completed'
+      ? 'var(--ds-color-success-surface)'
+      : status === 'rejected'
+        ? 'var(--ds-color-danger-surface)'
+        : 'var(--ds-color-info-surface)';
 
-  const borderColor = status === 'completed'
-    ? 'var(--ds-color-success-border)'
-    : status === 'rejected'
-      ? 'var(--ds-color-danger-border)'
-      : 'var(--ds-color-info-border)';
+  const borderColor =
+    status === 'completed'
+      ? 'var(--ds-color-success-border)'
+      : status === 'rejected'
+        ? 'var(--ds-color-danger-border)'
+        : 'var(--ds-color-info-border)';
 
   const getExpiryMessage = () => {
     if (!expiresAt) return null;
@@ -168,28 +174,59 @@ function ExportRequestStatus({
   };
 
   return (
-    <div style={{
-      padding: 'var(--ds-spacing-4)',
-      borderRadius: 'var(--ds-border-radius-md)',
-      backgroundColor: bgColor,
-      border: '1px solid',
-      borderColor: borderColor,
-    }}>
+    <div
+      style={{
+        padding: 'var(--ds-spacing-4)',
+        borderRadius: 'var(--ds-border-radius-md)',
+        backgroundColor: bgColor,
+        border: '1px solid',
+        borderColor: borderColor,
+      }}
+    >
       {/* Status message */}
-      <p data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', fontWeight: 500, fontSize: 'var(--ds-font-size-sm)' }}>
+      <p
+        data-size="sm"
+        style={{
+          margin: 0,
+          marginBottom: 'var(--ds-spacing-3)',
+          fontWeight: 500,
+          fontSize: 'var(--ds-font-size-sm)',
+        }}
+      >
         {statusText}
       </p>
 
       {/* Request date */}
-      <p data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', fontSize: 'var(--ds-font-size-xs)' }}>
+      <p
+        data-size="xs"
+        style={{
+          margin: 0,
+          color: 'var(--ds-color-neutral-text-subtle)',
+          fontSize: 'var(--ds-font-size-xs)',
+        }}
+      >
         {`${labels.requestedLabel} ${requestedDate}`}
       </p>
 
       {/* Download button for completed requests */}
       {status === 'completed' && (
-        <div style={{ marginTop: 'var(--ds-spacing-3)', display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-3)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-spacing-2)',
+          }}
+        >
           {getExpiryMessage() && (
-            <p data-size="xs" style={{ margin: 0, color: 'var(--ds-color-warning-text)', fontSize: 'var(--ds-font-size-xs)' }}>
+            <p
+              data-size="xs"
+              style={{
+                margin: 0,
+                color: 'var(--ds-color-warning-text)',
+                fontSize: 'var(--ds-font-size-xs)',
+              }}
+            >
               {getExpiryMessage()}
             </p>
           )}
@@ -207,7 +244,15 @@ function ExportRequestStatus({
 
       {/* Rejection reason */}
       {status === 'rejected' && rejectionReason && (
-        <p data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-danger-text)', fontSize: 'var(--ds-font-size-xs)' }}>
+        <p
+          data-size="xs"
+          style={{
+            margin: 0,
+            marginTop: 'var(--ds-spacing-2)',
+            color: 'var(--ds-color-danger-text)',
+            fontSize: 'var(--ds-font-size-xs)',
+          }}
+        >
           {`${labels.rejectionLabel} ${rejectionReason}`}
         </p>
       )}
@@ -233,10 +278,17 @@ export function DataExportCard({
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         {/* Header */}
         <div>
-          <Heading level={2} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={2}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+          >
             {labels.title}
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             {labels.description}
           </Paragraph>
         </div>
@@ -279,12 +331,17 @@ export function DataExportCard({
         )}
 
         {/* Information */}
-        <div style={{
-          padding: 'var(--ds-spacing-3)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-        }}>
-          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          }}
+        >
+          <Paragraph
+            data-size="xs"
+            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             <strong>{labels.infoTitle}</strong> {labels.infoDescription}
           </Paragraph>
         </div>

@@ -40,34 +40,37 @@ export interface AvatarGroupProps {
 // Size Styles - Using Design Tokens
 // =============================================================================
 
-const sizeStyles: Record<AvatarSize, { dimension: string; fontSize: string; statusSize: string; overlap: string }> = {
-  xs: { 
-    dimension: 'var(--ds-sizing-6)', 
-    fontSize: 'var(--ds-font-size-xs)', 
+const sizeStyles: Record<
+  AvatarSize,
+  { dimension: string; fontSize: string; statusSize: string; overlap: string }
+> = {
+  xs: {
+    dimension: 'var(--ds-sizing-6)',
+    fontSize: 'var(--ds-font-size-xs)',
     statusSize: 'var(--ds-sizing-2)',
     overlap: 'var(--ds-spacing-2)',
   },
-  sm: { 
-    dimension: 'var(--ds-sizing-8)', 
-    fontSize: 'var(--ds-font-size-sm)', 
+  sm: {
+    dimension: 'var(--ds-sizing-8)',
+    fontSize: 'var(--ds-font-size-sm)',
     statusSize: 'var(--ds-sizing-2-5)',
     overlap: 'var(--ds-spacing-2)',
   },
-  md: { 
-    dimension: 'var(--ds-sizing-10)', 
-    fontSize: 'var(--ds-font-size-md)', 
+  md: {
+    dimension: 'var(--ds-sizing-10)',
+    fontSize: 'var(--ds-font-size-md)',
     statusSize: 'var(--ds-sizing-3)',
     overlap: 'var(--ds-spacing-2)',
   },
-  lg: { 
-    dimension: 'var(--ds-sizing-14)', 
-    fontSize: 'var(--ds-font-size-lg)', 
+  lg: {
+    dimension: 'var(--ds-sizing-14)',
+    fontSize: 'var(--ds-font-size-lg)',
     statusSize: 'var(--ds-sizing-3-5)',
     overlap: 'var(--ds-spacing-3)',
   },
-  xl: { 
-    dimension: 'var(--ds-sizing-20)', 
-    fontSize: 'var(--ds-font-size-xl)', 
+  xl: {
+    dimension: 'var(--ds-sizing-20)',
+    fontSize: 'var(--ds-font-size-xl)',
     statusSize: 'var(--ds-sizing-4)',
     overlap: 'var(--ds-spacing-3)',
   },
@@ -96,7 +99,7 @@ const DEFAULT_COLOR = 'var(--ds-color-accent-base-default)';
 
 function getColorFromName(name: string): string {
   if (!name) return DEFAULT_COLOR;
-  
+
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
@@ -158,7 +161,7 @@ export function Avatar({
       ) : (
         <span>{initials}</span>
       )}
-      
+
       {showStatus && (
         <span
           style={{
@@ -168,8 +171,8 @@ export function Avatar({
             width: sizeStyle.statusSize,
             height: sizeStyle.statusSize,
             borderRadius: 'var(--ds-border-radius-full)',
-            backgroundColor: isOnline 
-              ? 'var(--ds-color-success-base-default)' 
+            backgroundColor: isOnline
+              ? 'var(--ds-color-success-base-default)'
               : 'var(--ds-color-neutral-surface-hover)',
             border: '2px solid var(--ds-color-neutral-background-default)',
           }}
@@ -214,13 +217,12 @@ export function AvatarGroup({
             zIndex: visibleChildren.length - index,
           }}
         >
-          {React.isValidElement(child) 
+          {React.isValidElement(child)
             ? React.cloneElement(child as React.ReactElement<AvatarProps>, { size })
-            : child
-          }
+            : child}
         </div>
       ))}
-      
+
       {remainingCount > 0 && (
         <div
           style={{
@@ -275,7 +277,8 @@ export function UserInfo({
   style,
 }: UserInfoProps): React.ReactElement {
   const sizeStyle = sizeStyles[size];
-  const textSize = size === 'xs' || size === 'sm' ? 'var(--ds-font-size-xs)' : 'var(--ds-font-size-sm)';
+  const textSize =
+    size === 'xs' || size === 'sm' ? 'var(--ds-font-size-xs)' : 'var(--ds-font-size-sm)';
 
   return (
     <div
@@ -292,13 +295,7 @@ export function UserInfo({
         ...style,
       }}
     >
-      <Avatar
-        src={src}
-        name={name}
-        size={size}
-        showStatus={showStatus}
-        isOnline={isOnline}
-      />
+      <Avatar src={src} name={name} size={size} showStatus={showStatus} isOnline={isOnline} />
       <div style={{ minWidth: 0 }}>
         <p
           style={{

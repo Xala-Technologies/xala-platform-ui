@@ -50,7 +50,16 @@ export interface StatCardEnhancedProps {
 
 function TrendUpIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
       <polyline points="17 6 23 6 23 12" />
     </svg>
@@ -59,7 +68,16 @@ function TrendUpIcon() {
 
 function TrendDownIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
       <polyline points="17 18 23 18 23 12" />
     </svg>
@@ -68,7 +86,16 @@ function TrendDownIcon() {
 
 function TrendNeutralIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   );
@@ -105,7 +132,10 @@ const colorStyles = {
 // StatCardEnhanced Component
 // =============================================================================
 
-export function StatCardEnhanced({ stat, loading = false }: StatCardEnhancedProps): React.ReactElement {
+export function StatCardEnhanced({
+  stat,
+  loading = false,
+}: StatCardEnhancedProps): React.ReactElement {
   const colors = colorStyles[stat.color || 'default'];
   const isClickable = !!stat.onClick || !!stat.href;
 
@@ -125,7 +155,14 @@ export function StatCardEnhanced({ stat, loading = false }: StatCardEnhancedProp
         transition: 'box-shadow 0.15s ease, border-color 0.15s ease',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 'var(--ds-spacing-3)' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          marginBottom: 'var(--ds-spacing-3)',
+        }}
+      >
         <span
           style={{
             fontSize: 'var(--ds-font-size-sm)',
@@ -194,8 +231,8 @@ export function StatCardEnhanced({ stat, loading = false }: StatCardEnhancedProp
                   stat.trend === 'up'
                     ? 'var(--ds-color-success-text-default)'
                     : stat.trend === 'down'
-                    ? 'var(--ds-color-danger-text-default)'
-                    : 'var(--ds-color-neutral-text-subtle)',
+                      ? 'var(--ds-color-danger-text-default)'
+                      : 'var(--ds-color-neutral-text-subtle)',
               }}
             >
               {stat.trend === 'up' && <TrendUpIcon />}
@@ -212,8 +249,8 @@ export function StatCardEnhanced({ stat, loading = false }: StatCardEnhancedProp
                   stat.trend === 'up'
                     ? 'var(--ds-color-success-text-default)'
                     : stat.trend === 'down'
-                    ? 'var(--ds-color-danger-text-default)'
-                    : 'var(--ds-color-neutral-text-subtle)',
+                      ? 'var(--ds-color-danger-text-default)'
+                      : 'var(--ds-color-neutral-text-subtle)',
               }}
             >
               {stat.change > 0 ? '+' : ''}
@@ -308,11 +345,7 @@ export function MiniStat({ label, value, icon, trend, change }: MiniStatProps): 
         borderRadius: 'var(--ds-border-radius-md)',
       }}
     >
-      {icon && (
-        <div style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          {icon}
-        </div>
-      )}
+      {icon && <div style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{icon}</div>}
       <div style={{ flex: 1 }}>
         <div
           style={{
@@ -342,13 +375,18 @@ export function MiniStat({ label, value, icon, trend, change }: MiniStatProps): 
               trend === 'up'
                 ? 'var(--ds-color-success-text-default)'
                 : trend === 'down'
-                ? 'var(--ds-color-danger-text-default)'
-                : 'var(--ds-color-neutral-text-subtle)',
+                  ? 'var(--ds-color-danger-text-default)'
+                  : 'var(--ds-color-neutral-text-subtle)',
           }}
         >
           {trend === 'up' && <TrendUpIcon />}
           {trend === 'down' && <TrendDownIcon />}
-          <span style={{ fontSize: 'var(--ds-font-size-xs)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-xs)',
+              fontWeight: 'var(--ds-font-weight-medium)',
+            }}
+          >
             {change > 0 ? '+' : ''}
             {change}%
           </span>

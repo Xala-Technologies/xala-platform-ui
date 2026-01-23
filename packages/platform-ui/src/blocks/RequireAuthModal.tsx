@@ -126,99 +126,94 @@ export function RequireAuthModal({
           </button>
         </div>
 
-          {/* Icon */}
+        {/* Icon */}
         <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 'var(--ds-spacing-16)',
-                height: 'var(--ds-spacing-16)',
-                backgroundColor: 'var(--ds-color-accent-surface-default)',
-                borderRadius: 'var(--ds-border-radius-full)',
-                color: 'var(--ds-color-accent-base-default)',
-              }}
-            >
-              <UserIcon size={32} />
-            </div>
-          </div>
-
-          {/* Title */}
-          <Heading
-            level={2}
-            data-size="sm"
-            style={{
-              margin: 0,
-              marginBottom: 'var(--ds-spacing-2)',
-              textAlign: 'center',
-            }}
-          >
-            {content.title}
-          </Heading>
-
-          {/* Description */}
-          <Paragraph
-            data-size="sm"
-            style={{
-              margin: 0,
-              marginBottom: 'var(--ds-spacing-6)',
-              textAlign: 'center',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            {content.description}
-          </Paragraph>
-
-          {/* Actions */}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--ds-spacing-2)',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 'var(--ds-spacing-16)',
+              height: 'var(--ds-spacing-16)',
+              backgroundColor: 'var(--ds-color-accent-surface-default)',
+              borderRadius: 'var(--ds-border-radius-full)',
+              color: 'var(--ds-color-accent-base-default)',
             }}
           >
-            {onLogin && (
-              <Button
-                type="button"
-                onClick={onLogin}
-                data-size="md"
-                style={{ width: '100%' }}
-              >
-                Logg inn
-              </Button>
-            )}
-            {onRegister && (
-              <Button
-                type="button"
-                onClick={onRegister}
-                variant="secondary"
-                data-size="md"
-                style={{ width: '100%' }}
-              >
-                Opprett konto
-              </Button>
-            )}
+            <UserIcon size={32} />
           </div>
+        </div>
 
-          {/* Help text */}
-          <Paragraph
-            data-size="xs"
-            style={{
-              margin: 0,
-              marginTop: 'var(--ds-spacing-4)',
-              textAlign: 'center',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            Ved å logge inn godtar du våre vilkår og personvernerklæring.
-          </Paragraph>
+        {/* Title */}
+        <Heading
+          level={2}
+          data-size="sm"
+          style={{
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-2)',
+            textAlign: 'center',
+          }}
+        >
+          {content.title}
+        </Heading>
+
+        {/* Description */}
+        <Paragraph
+          data-size="sm"
+          style={{
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-6)',
+            textAlign: 'center',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          {content.description}
+        </Paragraph>
+
+        {/* Actions */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-spacing-2)',
+          }}
+        >
+          {onLogin && (
+            <Button type="button" onClick={onLogin} data-size="md" style={{ width: '100%' }}>
+              Logg inn
+            </Button>
+          )}
+          {onRegister && (
+            <Button
+              type="button"
+              onClick={onRegister}
+              variant="secondary"
+              data-size="md"
+              style={{ width: '100%' }}
+            >
+              Opprett konto
+            </Button>
+          )}
+        </div>
+
+        {/* Help text */}
+        <Paragraph
+          data-size="xs"
+          style={{
+            margin: 0,
+            marginTop: 'var(--ds-spacing-4)',
+            textAlign: 'center',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          Ved å logge inn godtar du våre vilkår og personvernerklæring.
+        </Paragraph>
       </Dialog.Block>
     </Dialog>
   );

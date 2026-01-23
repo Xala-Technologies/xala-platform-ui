@@ -68,12 +68,7 @@ export function FormActions({
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? submittingText : submitText}
       </Button>
-      <Button
-        type="button"
-        variant="secondary"
-        onClick={onCancel}
-        disabled={isSubmitting}
-      >
+      <Button type="button" variant="secondary" onClick={onCancel} disabled={isSubmitting}>
         {cancelText}
       </Button>
     </div>

@@ -82,7 +82,8 @@ const SkeletonCard = ({ height = 380 }: { height?: number }) => (
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(90deg, transparent, var(--ds-color-neutral-surface-subtle), transparent)',
+          background:
+            'linear-gradient(90deg, transparent, var(--ds-color-neutral-surface-subtle), transparent)',
           animation: 'ds-shimmer 1.5s infinite',
         }}
       />
@@ -202,7 +203,8 @@ const SkeletonListItem = ({ height = 200 }: { height?: number }) => (
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(90deg, transparent, var(--ds-color-neutral-surface-subtle), transparent)',
+          background:
+            'linear-gradient(90deg, transparent, var(--ds-color-neutral-surface-subtle), transparent)',
           animation: 'ds-shimmer 1.5s infinite',
         }}
       />

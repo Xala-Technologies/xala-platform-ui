@@ -98,7 +98,8 @@ export interface DeleteAccountCardProps {
 
 export const DEFAULT_DELETE_ACCOUNT_LABELS: DeleteAccountCardLabels = {
   title: 'Slett konto',
-  description: 'Be om permanent sletting av kontoen din og alle tilhorende data. Dette er en irreversibel handling.',
+  description:
+    'Be om permanent sletting av kontoen din og alle tilhorende data. Dette er en irreversibel handling.',
   loading: 'Laster...',
   warningTitle: 'Advarsel',
   warningItems: [
@@ -109,7 +110,8 @@ export const DEFAULT_DELETE_ACCOUNT_LABELS: DeleteAccountCardLabels = {
   ],
   deleteButton: 'Slett min konto',
   confirmTitle: 'Er du sikker?',
-  confirmDescription: 'Denne handlingen kan ikke angres. En administrator vil behandle foresporselen din innen 30 dager i henhold til GDPR-forskriftene.',
+  confirmDescription:
+    'Denne handlingen kan ikke angres. En administrator vil behandle foresporselen din innen 30 dager i henhold til GDPR-forskriftene.',
   confirmButton: 'Ja, slett kontoen min',
   confirmingButton: 'Sender foresporsel...',
   cancelButton: 'Avbryt',
@@ -117,7 +119,8 @@ export const DEFAULT_DELETE_ACCOUNT_LABELS: DeleteAccountCardLabels = {
   cancellingButton: 'Kansellerer...',
   errorMessage: 'Det oppstod en feil. Vennligst prov igjen senere.',
   infoTitle: 'GDPR-rettigheter',
-  infoDescription: 'I henhold til GDPR har du rett til a bli glemt. Foresporselen din vil bli behandlet innen 30 dager. Du kan angre foresporselen for den er behandlet.',
+  infoDescription:
+    'I henhold til GDPR har du rett til a bli glemt. Foresporselen din vil bli behandlet innen 30 dager. Du kan angre foresporselen for den er behandlet.',
   statusMessages: {
     pending: 'Din foresporsel om sletting av konto er mottatt og venter pa behandling.',
     processing: 'Vi behandler foresporselen din. Dette kan ta noen dager.',
@@ -161,39 +164,66 @@ function DeletionRequestStatus({
   });
   const statusText = labels.statusMessages[status] || '';
 
-  const bgColor = status === 'completed'
-    ? 'var(--ds-color-danger-surface)'
-    : status === 'rejected'
-      ? 'var(--ds-color-warning-surface)'
-      : 'var(--ds-color-info-surface)';
+  const bgColor =
+    status === 'completed'
+      ? 'var(--ds-color-danger-surface)'
+      : status === 'rejected'
+        ? 'var(--ds-color-warning-surface)'
+        : 'var(--ds-color-info-surface)';
 
-  const borderColor = status === 'completed'
-    ? 'var(--ds-color-danger-border)'
-    : status === 'rejected'
-      ? 'var(--ds-color-warning-border)'
-      : 'var(--ds-color-info-border)';
+  const borderColor =
+    status === 'completed'
+      ? 'var(--ds-color-danger-border)'
+      : status === 'rejected'
+        ? 'var(--ds-color-warning-border)'
+        : 'var(--ds-color-info-border)';
 
   return (
-    <div style={{
-      padding: 'var(--ds-spacing-4)',
-      borderRadius: 'var(--ds-border-radius-md)',
-      backgroundColor: bgColor,
-      border: '1px solid',
-      borderColor: borderColor,
-    }}>
+    <div
+      style={{
+        padding: 'var(--ds-spacing-4)',
+        borderRadius: 'var(--ds-border-radius-md)',
+        backgroundColor: bgColor,
+        border: '1px solid',
+        borderColor: borderColor,
+      }}
+    >
       {/* Status message */}
-      <p data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', fontWeight: 500, fontSize: 'var(--ds-font-size-sm)' }}>
+      <p
+        data-size="sm"
+        style={{
+          margin: 0,
+          marginBottom: 'var(--ds-spacing-3)',
+          fontWeight: 500,
+          fontSize: 'var(--ds-font-size-sm)',
+        }}
+      >
         {statusText}
       </p>
 
       {/* Request date */}
-      <p data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', fontSize: 'var(--ds-font-size-xs)' }}>
+      <p
+        data-size="xs"
+        style={{
+          margin: 0,
+          color: 'var(--ds-color-neutral-text-subtle)',
+          fontSize: 'var(--ds-font-size-xs)',
+        }}
+      >
         {`${labels.requestedLabel} ${requestedDate}`}
       </p>
 
       {/* Rejection reason */}
       {status === 'rejected' && rejectionReason && (
-        <p data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-danger-text)', fontSize: 'var(--ds-font-size-xs)' }}>
+        <p
+          data-size="xs"
+          style={{
+            margin: 0,
+            marginTop: 'var(--ds-spacing-2)',
+            color: 'var(--ds-color-danger-text)',
+            fontSize: 'var(--ds-font-size-xs)',
+          }}
+        >
           {`${labels.rejectionLabel} ${rejectionReason}`}
         </p>
       )}
@@ -241,17 +271,27 @@ export function DeleteAccountCard({
     setShowConfirmation(false);
   };
 
-  const canCancelRequest = !!(deletionRequest && (deletionRequest.status === 'pending' || deletionRequest.status === 'processing'));
+  const canCancelRequest = !!(
+    deletionRequest &&
+    (deletionRequest.status === 'pending' || deletionRequest.status === 'processing')
+  );
 
   return (
     <Card style={{ padding: 'var(--ds-spacing-5)' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         {/* Header */}
         <div>
-          <Heading level={2} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={2}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+          >
             {labels.title}
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             {labels.description}
           </Paragraph>
         </div>
@@ -267,21 +307,41 @@ export function DeleteAccountCard({
         {!isLoading && !deletionRequest && !showConfirmation && (
           <>
             {/* Warning message */}
-            <div style={{
-              padding: 'var(--ds-spacing-4)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              backgroundColor: 'var(--ds-color-danger-surface)',
-              border: '1px solid var(--ds-color-danger-border)',
-            }}>
-              <Paragraph data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', fontWeight: 600, color: 'var(--ds-color-danger-text)' }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                backgroundColor: 'var(--ds-color-danger-surface)',
+                border: '1px solid var(--ds-color-danger-border)',
+              }}
+            >
+              <Paragraph
+                data-size="sm"
+                style={{
+                  margin: 0,
+                  marginBottom: 'var(--ds-spacing-3)',
+                  fontWeight: 600,
+                  color: 'var(--ds-color-danger-text)',
+                }}
+              >
                 {labels.warningTitle}
               </Paragraph>
               <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-danger-text)' }}>
                 Sletting av kontoen din vil fore til:
               </Paragraph>
-              <ul style={{ margin: 'var(--ds-spacing-2) 0 0 0', paddingLeft: 'var(--ds-spacing-4)', color: 'var(--ds-color-danger-text)' }}>
+              <ul
+                style={{
+                  margin: 'var(--ds-spacing-2) 0 0 0',
+                  paddingLeft: 'var(--ds-spacing-4)',
+                  color: 'var(--ds-color-danger-text)',
+                }}
+              >
                 {labels.warningItems.map((item, index) => (
-                  <li key={index}><Paragraph data-size="sm" style={{ margin: 0 }}>{item}</Paragraph></li>
+                  <li key={index}>
+                    <Paragraph data-size="sm" style={{ margin: 0 }}>
+                      {item}
+                    </Paragraph>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -306,16 +366,33 @@ export function DeleteAccountCard({
 
         {/* Confirmation dialog */}
         {!isLoading && !deletionRequest && showConfirmation && (
-          <div style={{
-            padding: 'var(--ds-spacing-4)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            backgroundColor: 'var(--ds-color-danger-surface)',
-            border: '2px solid var(--ds-color-danger-border)',
-          }}>
-            <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-danger-text)' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              backgroundColor: 'var(--ds-color-danger-surface)',
+              border: '2px solid var(--ds-color-danger-border)',
+            }}
+          >
+            <Heading
+              level={3}
+              data-size="xs"
+              style={{
+                margin: 0,
+                marginBottom: 'var(--ds-spacing-3)',
+                color: 'var(--ds-color-danger-text)',
+              }}
+            >
               {labels.confirmTitle}
             </Heading>
-            <Paragraph data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)', color: 'var(--ds-color-danger-text)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-danger-text)',
+              }}
+            >
               {labels.confirmDescription}
             </Paragraph>
             <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
@@ -366,12 +443,17 @@ export function DeleteAccountCard({
         )}
 
         {/* Information */}
-        <div style={{
-          padding: 'var(--ds-spacing-3)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-        }}>
-          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+          }}
+        >
+          <Paragraph
+            data-size="xs"
+            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             <strong>{labels.infoTitle}</strong> {labels.infoDescription}
           </Paragraph>
         </div>

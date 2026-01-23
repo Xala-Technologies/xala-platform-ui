@@ -5,9 +5,9 @@ import { ExternalLinkIcon, ArrowRightIcon, DownloadIcon } from '@navikt/aksel-ic
 
 /**
  * Link component from Digdir Designsystemet.
- * 
+ *
  * Link is clickable text or graphics that take the user to other pages or documents.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/link/overview
  */
 const meta: Meta<typeof Link> = {
@@ -236,12 +236,16 @@ export const Neutral: Story = {
  */
 export const Inverted: Story = {
   render: () => (
-    <div style={{ 
-      backgroundColor: 'var(--ds-color-accent-base-default)', 
-      padding: 'var(--ds-spacing-4)',
-      borderRadius: 'var(--ds-border-radius-md)',
-    }}>
-      <Link href="#" data-color="inverted">Inverted link on dark background</Link>
+    <div
+      style={{
+        backgroundColor: 'var(--ds-color-accent-base-default)',
+        padding: 'var(--ds-spacing-4)',
+        borderRadius: 'var(--ds-border-radius-md)',
+      }}
+    >
+      <Link href="#" data-color="inverted">
+        Inverted link on dark background
+      </Link>
     </div>
   ),
 };
@@ -253,18 +257,32 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Colors</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Colors
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Link href="#">Default (accent)</Link>
-          <Link href="#" data-color="neutral">Neutral</Link>
-          <div style={{ backgroundColor: 'var(--ds-color-accent-base-default)', padding: 'var(--ds-spacing-3)', borderRadius: 'var(--ds-border-radius-md)' }}>
-            <Link href="#" data-color="inverted">Inverted</Link>
+          <Link href="#" data-color="neutral">
+            Neutral
+          </Link>
+          <div
+            style={{
+              backgroundColor: 'var(--ds-color-accent-base-default)',
+              padding: 'var(--ds-spacing-3)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            <Link href="#" data-color="inverted">
+              Inverted
+            </Link>
           </div>
         </div>
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>With Icons</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          With Icons
+        </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Link href="#">
             <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
@@ -278,14 +296,20 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>In Text</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          In Text
+        </h3>
         <Paragraph>
-          This is a paragraph with an <Link href="#">inline link</Link> that demonstrates how links appear within body text. You can have <Link href="#">multiple links</Link> in the same paragraph.
+          This is a paragraph with an <Link href="#">inline link</Link> that demonstrates how links
+          appear within body text. You can have <Link href="#">multiple links</Link> in the same
+          paragraph.
         </Paragraph>
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>External Links</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          External Links
+        </h3>
         <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
           Visit Designsystemet
         </Link>

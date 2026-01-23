@@ -106,7 +106,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Unordered List</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Unordered List
+        </h3>
         <List.Unordered>
           <List.Item>First item</List.Item>
           <List.Item>Second item</List.Item>
@@ -114,7 +116,9 @@ export const AllVariants: Story = {
         </List.Unordered>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Ordered List</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Ordered List
+        </h3>
         <List.Ordered>
           <List.Item>Step one</List.Item>
           <List.Item>Step two</List.Item>
@@ -122,7 +126,9 @@ export const AllVariants: Story = {
         </List.Ordered>
       </div>
       <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>Nested List</h3>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+          Nested List
+        </h3>
         <List.Unordered>
           <List.Item>
             Parent item

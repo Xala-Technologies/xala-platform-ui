@@ -211,19 +211,37 @@ export function Slider({
     [disabled, value, step, min, max, isControlled, onChange, onChangeEnd]
   );
 
-  const tooltipVisible = showTooltip === 'always' || (showTooltip && (isDragging || showTooltipState));
+  const tooltipVisible =
+    showTooltip === 'always' || (showTooltip && (isDragging || showTooltipState));
 
   return (
     <div className={className} style={{ width: '100%', ...style }}>
       {(label || showValue) && (
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--ds-spacing-2)' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: 'var(--ds-spacing-2)',
+          }}
+        >
           {label && (
-            <span style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)', color: 'var(--ds-color-neutral-text-default)' }}>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                fontWeight: 'var(--ds-font-weight-medium)',
+                color: 'var(--ds-color-neutral-text-default)',
+              }}
+            >
               {label}
             </span>
           )}
           {showValue && (
-            <span style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <span
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {formatValue(value)}
             </span>
           )}
@@ -279,7 +297,8 @@ export function Slider({
                 style={{
                   width: 'var(--ds-sizing-1)',
                   height: 'var(--ds-sizing-2)',
-                  backgroundColor: mark.value <= value ? trackColor : 'var(--ds-color-neutral-border-default)',
+                  backgroundColor:
+                    mark.value <= value ? trackColor : 'var(--ds-color-neutral-border-default)',
                   borderRadius: 'var(--ds-border-radius-full)',
                 }}
               />
@@ -457,7 +476,8 @@ export function RangeSlider({
     const thumbValue = value[thumbIndex];
     const percent = getPercentage(thumbValue, min, max);
     const isActive = activeThumb === thumbIndex;
-    const tooltipVisible = showTooltip === 'always' || (showTooltip && (isActive || showTooltipStates[thumbIndex]));
+    const tooltipVisible =
+      showTooltip === 'always' || (showTooltip && (isActive || showTooltipStates[thumbIndex]));
 
     return (
       <div
@@ -469,8 +489,20 @@ export function RangeSlider({
         aria-valuenow={thumbValue}
         aria-disabled={disabled}
         onMouseDown={(e) => handleMouseDown(e, thumbIndex)}
-        onMouseEnter={() => setShowTooltipStates((prev) => { const n = [...prev] as [boolean, boolean]; n[thumbIndex] = true; return n; })}
-        onMouseLeave={() => setShowTooltipStates((prev) => { const n = [...prev] as [boolean, boolean]; n[thumbIndex] = false; return n; })}
+        onMouseEnter={() =>
+          setShowTooltipStates((prev) => {
+            const n = [...prev] as [boolean, boolean];
+            n[thumbIndex] = true;
+            return n;
+          })
+        }
+        onMouseLeave={() =>
+          setShowTooltipStates((prev) => {
+            const n = [...prev] as [boolean, boolean];
+            n[thumbIndex] = false;
+            return n;
+          })
+        }
         style={{
           position: 'absolute',
           left: `${percent}%`,
@@ -516,10 +548,22 @@ export function RangeSlider({
     <div className={className} style={{ width: '100%', ...style }}>
       {label && (
         <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          <span style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 'var(--ds-font-weight-medium)', color: 'var(--ds-color-neutral-text-default)' }}>
+          <span
+            style={{
+              fontSize: 'var(--ds-font-size-sm)',
+              fontWeight: 'var(--ds-font-weight-medium)',
+              color: 'var(--ds-color-neutral-text-default)',
+            }}
+          >
             {label}
           </span>
-          <span style={{ marginLeft: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <span
+            style={{
+              marginLeft: 'var(--ds-spacing-2)',
+              fontSize: 'var(--ds-font-size-sm)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             {formatValue(lowValue)} – {formatValue(highValue)}
           </span>
         </div>
@@ -576,12 +620,21 @@ export function RangeSlider({
                 style={{
                   width: 'var(--ds-sizing-1)',
                   height: 'var(--ds-sizing-2)',
-                  backgroundColor: isInRange ? 'var(--ds-color-accent-base-default)' : 'var(--ds-color-neutral-border-default)',
+                  backgroundColor: isInRange
+                    ? 'var(--ds-color-accent-base-default)'
+                    : 'var(--ds-color-neutral-border-default)',
                   borderRadius: 'var(--ds-border-radius-full)',
                 }}
               />
               {mark.label && (
-                <span style={{ marginTop: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)', whiteSpace: 'nowrap' }}>
+                <span
+                  style={{
+                    marginTop: 'var(--ds-spacing-2)',
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
                   {mark.label}
                 </span>
               )}

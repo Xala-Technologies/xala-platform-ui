@@ -302,12 +302,7 @@ export function ConfirmationView({
         }}
       >
         {onCancel && cancelLabel && (
-          <Button
-            type="button"
-            variant="tertiary"
-            onClick={onCancel}
-            disabled={isConfirming}
-          >
+          <Button type="button" variant="tertiary" onClick={onCancel} disabled={isConfirming}>
             {cancelLabel}
           </Button>
         )}

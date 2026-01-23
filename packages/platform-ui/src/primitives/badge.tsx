@@ -1,6 +1,6 @@
 /**
  * Badge Component
- * 
+ *
  * Small status or label component
  */
 
@@ -13,7 +13,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @default 'neutral'
    */
   variant?: 'neutral' | 'info' | 'success' | 'warning' | 'danger';
-  
+
   /**
    * Badge size
    * @default 'md'
@@ -35,9 +35,21 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 
       // Size mapping using design tokens
       const sizes = {
-        sm: { fontSize: 'var(--ds-font-size-xs)', padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', height: 'var(--ds-spacing-5)' },
-        md: { fontSize: 'var(--ds-font-size-sm)', padding: 'var(--ds-spacing-1) var(--ds-spacing-3)', height: 'var(--ds-spacing-6)' },
-        lg: { fontSize: 'var(--ds-font-size-md)', padding: 'var(--ds-spacing-2) var(--ds-spacing-4)', height: 'var(--ds-spacing-8)' },
+        sm: {
+          fontSize: 'var(--ds-font-size-xs)',
+          padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+          height: 'var(--ds-spacing-5)',
+        },
+        md: {
+          fontSize: 'var(--ds-font-size-sm)',
+          padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
+          height: 'var(--ds-spacing-6)',
+        },
+        lg: {
+          fontSize: 'var(--ds-font-size-md)',
+          padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+          height: 'var(--ds-spacing-8)',
+        },
       };
 
       // Variant mapping using correct token names

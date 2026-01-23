@@ -32,7 +32,16 @@ export interface ResourceRequestStepperProps {
 
 function CalendarStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
       <line x1="16" y1="2" x2="16" y2="6" />
       <line x1="8" y1="2" x2="8" y2="6" />
@@ -43,7 +52,16 @@ function CalendarStepIcon({ size = 20 }: { size?: number }): React.ReactElement 
 
 function DetailsStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
       <line x1="16" y1="13" x2="8" y2="13" />
@@ -55,7 +73,16 @@ function DetailsStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function ConfirmStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
       <polyline points="22 4 12 14.01 9 11.01" />
     </svg>
@@ -64,7 +91,16 @@ function ConfirmStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function SendStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="22" y1="2" x2="11" y2="13" />
       <polygon points="22 2 15 22 11 13 2 9 22 2" />
     </svg>
@@ -73,7 +109,16 @@ function SendStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function DoneStepIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
       <polyline points="22 4 12 14.01 9 11.01" />
     </svg>
@@ -156,27 +201,27 @@ const stepperStyles = {
       state === 'active'
         ? 'var(--ds-color-accent-base-default)'
         : state === 'completed'
-        ? 'var(--ds-color-success-surface-default)'
-        : 'var(--ds-color-neutral-surface-hover)',
+          ? 'var(--ds-color-success-surface-default)'
+          : 'var(--ds-color-neutral-surface-hover)',
     color:
       state === 'active'
         ? 'var(--ds-color-neutral-text-on-inverted)'
         : state === 'completed'
-        ? 'var(--ds-color-success-base-default)'
-        : 'var(--ds-color-neutral-text-subtle)',
+          ? 'var(--ds-color-success-base-default)'
+          : 'var(--ds-color-neutral-text-subtle)',
     border:
       state === 'active'
         ? '2px solid var(--ds-color-accent-base-default)'
         : state === 'completed'
-        ? '2px solid var(--ds-color-success-border-default)'
-        : '2px solid var(--ds-color-neutral-border-default)',
+          ? '2px solid var(--ds-color-success-border-default)'
+          : '2px solid var(--ds-color-neutral-border-default)',
     transition: 'all 0.3s ease',
     boxShadow:
       state === 'active'
         ? 'var(--ds-shadow-md)'
         : state === 'completed'
-        ? 'var(--ds-shadow-sm)'
-        : 'none',
+          ? 'var(--ds-shadow-sm)'
+          : 'none',
     fontWeight: 600,
     fontSize: 'var(--ds-font-size-sm)',
   }),
@@ -186,14 +231,14 @@ const stepperStyles = {
       state === 'active'
         ? 'var(--ds-color-accent-text-default)'
         : state === 'completed'
-        ? 'var(--ds-color-success-text-default)'
-        : 'var(--ds-color-neutral-text-subtle)',
+          ? 'var(--ds-color-success-text-default)'
+          : 'var(--ds-color-neutral-text-subtle)',
     fontWeight:
       state === 'active'
         ? 'var(--ds-font-weight-semibold)'
         : state === 'completed'
-        ? 'var(--ds-font-weight-medium)'
-        : 'var(--ds-font-weight-regular)',
+          ? 'var(--ds-font-weight-medium)'
+          : 'var(--ds-font-weight-regular)',
     textAlign: 'center' as const,
     maxWidth: '90px',
     lineHeight: 1.4,
@@ -283,7 +328,7 @@ export function ResourceRequestStepper({
           return (
             <div
               key={step.id}
-              className="resourceRequest-stepper-step"
+              className="ds-resource-request-stepper-step"
               style={stepperStyles.stepWrapper(isLast)}
             >
               {/* Step circle and label */}
@@ -305,7 +350,7 @@ export function ResourceRequestStepper({
               >
                 {/* Circle with icon or number */}
                 <div
-                  className="resourceRequest-stepper-circle"
+                  className="ds-resource-request-stepper-circle"
                   data-state={state}
                   style={stepperStyles.circle(state)}
                 >
@@ -319,10 +364,7 @@ export function ResourceRequestStepper({
                 </div>
 
                 {/* Label */}
-                <Paragraph
-                  data-size="xs"
-                  style={stepperStyles.label(state)}
-                >
+                <Paragraph data-size="xs" style={stepperStyles.label(state)}>
                   {step.label}
                 </Paragraph>
               </div>
@@ -330,7 +372,7 @@ export function ResourceRequestStepper({
               {/* Connecting line */}
               {!isLast && (
                 <div
-                  className="resourceRequest-stepper-line"
+                  className="ds-resource-request-stepper-line"
                   style={stepperStyles.line(state)}
                 />
               )}

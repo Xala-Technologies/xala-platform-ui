@@ -98,7 +98,7 @@ export function DemoLoginDialog({
       }
     }
 
-    setFieldErrors(prev => ({ ...prev, [field]: error }));
+    setFieldErrors((prev) => ({ ...prev, [field]: error }));
   };
 
   /**
@@ -152,10 +152,10 @@ export function DemoLoginDialog({
    * Handle field change
    */
   const handleFieldChange = (field: keyof DemoLoginFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear field error when user starts typing
     if (fieldErrors[field]) {
-      setFieldErrors(prev => ({ ...prev, [field]: '' }));
+      setFieldErrors((prev) => ({ ...prev, [field]: '' }));
     }
   };
 
@@ -181,18 +181,10 @@ export function DemoLoginDialog({
   }, [open]);
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      title={title}
-    >
+    <Dialog open={open} onClose={handleClose} title={title}>
       <form onSubmit={handleSubmit}>
         <Stack direction="vertical" spacing={24}>
-          {loginError && (
-            <Alert color="danger">
-              {loginError}
-            </Alert>
-          )}
+          {loginError && <Alert color="danger">{loginError}</Alert>}
 
           <Fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
             <Stack direction="vertical" spacing={20}>
@@ -246,15 +238,10 @@ export function DemoLoginDialog({
               marginTop: 'var(--ds-spacing-2)',
               paddingTop: 'var(--ds-spacing-4)',
               borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={handleClose}
-              disabled={isLoading}
-            >
+            <Button type="button" variant="secondary" onClick={handleClose} disabled={isLoading}>
               {cancelText}
             </Button>
             <Button

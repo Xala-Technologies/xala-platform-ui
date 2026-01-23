@@ -38,7 +38,7 @@ type Story = StoryObj;
 
 /**
  * Example 1: Button - Basic Usage
- * 
+ *
  * Demonstrates: Primary action button
  * Use Case: Form submission, primary actions
  * Difficulty: Beginner
@@ -82,7 +82,7 @@ export const ButtonBasic: Story = {
 
 /**
  * Example 2: Button - With Icons
- * 
+ *
  * Demonstrates: Icon + text button pattern
  * Use Case: Actions with visual indicators
  * Difficulty: Beginner
@@ -108,7 +108,7 @@ export const ButtonWithIcons: Story = {
 
 /**
  * Example 3: Button - Loading States
- * 
+ *
  * Demonstrates: Async action feedback
  * Use Case: API calls, form submissions
  * Difficulty: Intermediate
@@ -123,11 +123,7 @@ export const ButtonLoadingState: Story = {
     };
 
     return (
-      <Button 
-        data-variant="primary" 
-        onClick={handleClick}
-        disabled={loading}
-      >
+      <Button data-variant="primary" onClick={handleClick} disabled={loading}>
         {loading ? 'Loading...' : 'Submit Form'}
       </Button>
     );
@@ -164,7 +160,7 @@ return (
 
 /**
  * Example 4: Form - Complete Pattern
- * 
+ *
  * Demonstrates: Form with validation
  * Use Case: User input collection
  * Difficulty: Intermediate
@@ -224,7 +220,13 @@ export const FormComplete: Story = {
               I accept the terms and conditions
             </Checkbox>
             {errors.terms && (
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)', marginTop: 'var(--ds-spacing-1)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{
+                  color: 'var(--ds-color-danger-text-default)',
+                  marginTop: 'var(--ds-spacing-1)',
+                }}
+              >
                 {errors.terms}
               </Paragraph>
             )}
@@ -261,7 +263,7 @@ export const FormComplete: Story = {
 
 /**
  * Example 5: Card - Content Layout
- * 
+ *
  * Demonstrates: Structured card content
  * Use Case: Content display, dashboards
  * Difficulty: Beginner
@@ -274,7 +276,13 @@ export const CardContentLayout: Story = {
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
             Card Title {i}
           </Heading>
-          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)', marginBottom: 'var(--ds-spacing-4)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-neutral-text-subtle)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
             This is a description of the card content. It provides context and information.
           </Paragraph>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
@@ -322,7 +330,7 @@ export const CardContentLayout: Story = {
 
 /**
  * Example 6: List - Interactive Items
- * 
+ *
  * Demonstrates: Selectable list pattern
  * Use Case: Item selection, navigation
  * Difficulty: Intermediate
@@ -334,7 +342,11 @@ export const ListInteractive: Story = {
 
     return (
       <Card style={{ maxWidth: '300px', padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', paddingLeft: 'var(--ds-spacing-3)' }}>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{ marginBottom: 'var(--ds-spacing-3)', paddingLeft: 'var(--ds-spacing-3)' }}
+        >
           Navigation
         </Heading>
         <div role="list">
@@ -347,12 +359,12 @@ export const ListInteractive: Story = {
                 padding: 'var(--ds-spacing-3)',
                 textAlign: 'left',
                 border: 'none',
-                backgroundColor: selected === index 
-                  ? 'var(--ds-color-accent-surface-default)' 
-                  : 'transparent',
-                color: selected === index 
-                  ? 'var(--ds-color-accent-text-default)' 
-                  : 'var(--ds-color-neutral-text-default)',
+                backgroundColor:
+                  selected === index ? 'var(--ds-color-accent-surface-default)' : 'transparent',
+                color:
+                  selected === index
+                    ? 'var(--ds-color-accent-text-default)'
+                    : 'var(--ds-color-neutral-text-default)',
                 borderRadius: 'var(--ds-border-radius-md)',
                 cursor: 'pointer',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -372,56 +384,76 @@ export const ListInteractive: Story = {
 
 /**
  * Example 7: Empty State
- * 
+ *
  * Demonstrates: No content feedback
  * Use Case: Empty lists, no results
  * Difficulty: Beginner
  */
 export const EmptyState: Story = {
   render: () => (
-    <Card style={{ 
-      padding: 'var(--ds-spacing-12)', 
-      textAlign: 'center',
-    }}>
-      <Inbox size={48} style={{ marginBottom: 'var(--ds-spacing-4)', margin: '0 auto', color: 'var(--ds-color-neutral-text-subtle)' }} />
+    <Card
+      style={{
+        padding: 'var(--ds-spacing-12)',
+        textAlign: 'center',
+      }}
+    >
+      <Inbox
+        size={48}
+        style={{
+          marginBottom: 'var(--ds-spacing-4)',
+          margin: '0 auto',
+          color: 'var(--ds-color-neutral-text-subtle)',
+        }}
+      />
       <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
         No items yet
       </Heading>
-      <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)', marginBottom: 'var(--ds-spacing-6)' }}>
+      <Paragraph
+        style={{
+          color: 'var(--ds-color-neutral-text-subtle)',
+          marginBottom: 'var(--ds-spacing-6)',
+        }}
+      >
         Get started by creating your first item
       </Paragraph>
-      <Button data-variant="primary">
-        Create Item
-      </Button>
+      <Button data-variant="primary">Create Item</Button>
     </Card>
   ),
 };
 
 /**
  * Example 8: Error State
- * 
+ *
  * Demonstrates: Error feedback
  * Use Case: Failed operations, validation
  * Difficulty: Beginner
  */
 export const ErrorState: Story = {
   render: () => (
-    <Card style={{ 
-      padding: 'var(--ds-spacing-6)',
-      maxWidth: '400px',
-      borderLeft: '4px solid var(--ds-color-danger-border-default)',
-      backgroundColor: 'var(--ds-color-danger-surface-default)',
-    }}>
-      <Heading level={3} data-size="sm" style={{ 
-        color: 'var(--ds-color-danger-text-default)',
-        marginBottom: 'var(--ds-spacing-2)',
-      }}>
+    <Card
+      style={{
+        padding: 'var(--ds-spacing-6)',
+        maxWidth: '400px',
+        borderLeft: '4px solid var(--ds-color-danger-border-default)',
+        backgroundColor: 'var(--ds-color-danger-surface-default)',
+      }}
+    >
+      <Heading
+        level={3}
+        data-size="sm"
+        style={{
+          color: 'var(--ds-color-danger-text-default)',
+          marginBottom: 'var(--ds-spacing-2)',
+        }}
+      >
         Error
       </Heading>
-      <Paragraph style={{ 
-        color: 'var(--ds-color-danger-text-default)',
-        marginBottom: 'var(--ds-spacing-4)',
-      }}>
+      <Paragraph
+        style={{
+          color: 'var(--ds-color-danger-text-default)',
+          marginBottom: 'var(--ds-spacing-4)',
+        }}
+      >
         Failed to load data. Please try again.
       </Paragraph>
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
@@ -438,25 +470,31 @@ export const ErrorState: Story = {
 
 /**
  * Example 9: Success State
- * 
+ *
  * Demonstrates: Success feedback
  * Use Case: Confirmations, completions
  * Difficulty: Beginner
  */
 export const SuccessState: Story = {
   render: () => (
-    <Card style={{ 
-      padding: 'var(--ds-spacing-6)',
-      borderLeft: '4px solid var(--ds-color-success-border-default)',
-      backgroundColor: 'var(--ds-color-success-surface-default)',
-    }}>
+    <Card
+      style={{
+        padding: 'var(--ds-spacing-6)',
+        borderLeft: '4px solid var(--ds-color-success-border-default)',
+        backgroundColor: 'var(--ds-color-success-surface-default)',
+      }}
+    >
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
         <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
         <div>
-          <Heading level={3} data-size="sm" style={{ 
-            color: 'var(--ds-color-success-text-default)',
-            marginBottom: 'var(--ds-spacing-1)',
-          }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-success-text-default)',
+              marginBottom: 'var(--ds-spacing-1)',
+            }}
+          >
             Success
           </Heading>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
@@ -470,25 +508,28 @@ export const SuccessState: Story = {
 
 /**
  * Example 10: Loading State
- * 
+ *
  * Demonstrates: Loading feedback
  * Use Case: Async operations, data fetching
  * Difficulty: Beginner
  */
 export const LoadingState: Story = {
   render: () => (
-    <Card style={{ 
-      padding: 'var(--ds-spacing-12)', 
-      textAlign: 'center',
-    }}>
-      <Loader2 size={40} style={{ 
-        margin: '0 auto var(--ds-spacing-4)',
-        animation: 'spin 1s linear infinite',
-        color: 'var(--ds-color-accent-base-default)',
-      }} />
-      <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-        Loading...
-      </Paragraph>
+    <Card
+      style={{
+        padding: 'var(--ds-spacing-12)',
+        textAlign: 'center',
+      }}
+    >
+      <Loader2
+        size={40}
+        style={{
+          margin: '0 auto var(--ds-spacing-4)',
+          animation: 'spin 1s linear infinite',
+          color: 'var(--ds-color-accent-base-default)',
+        }}
+      />
+      <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>Loading...</Paragraph>
       <style>{`
         @keyframes spin {
           0% { transform: rotate(0deg); }

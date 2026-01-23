@@ -159,9 +159,7 @@ function getStepState(
  * Replace placeholders in progress text
  */
 function formatProgressText(template: string, current: number, total: number): string {
-  return template
-    .replace('{current}', String(current))
-    .replace('{total}', String(total));
+  return template.replace('{current}', String(current)).replace('{total}', String(total));
 }
 
 // =============================================================================
@@ -226,11 +224,13 @@ export function WizardStepper({
     >
       {/* Header with title and progress */}
       {(title || showProgress) && (
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: title ? 'space-between' : 'flex-end'
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: title ? 'space-between' : 'flex-end',
+          }}
+        >
           {title && (
             <span
               style={{
@@ -280,24 +280,33 @@ export function WizardStepper({
 
           // Step pill background
           const backgroundColor =
-            state === 'active' ? 'var(--ds-color-accent-surface-default)' :
-            state === 'completed' ? 'var(--ds-color-success-surface-default)' :
-            state === 'error' ? 'var(--ds-color-danger-surface-default)' :
-            'transparent';
+            state === 'active'
+              ? 'var(--ds-color-accent-surface-default)'
+              : state === 'completed'
+                ? 'var(--ds-color-success-surface-default)'
+                : state === 'error'
+                  ? 'var(--ds-color-danger-surface-default)'
+                  : 'transparent';
 
           // Circle background
           const circleBackground =
-            state === 'completed' ? 'var(--ds-color-success-base-default)' :
-            state === 'active' ? 'var(--ds-color-accent-base-default)' :
-            state === 'error' ? 'var(--ds-color-danger-base-default)' :
-            'var(--ds-color-neutral-border-default)';
+            state === 'completed'
+              ? 'var(--ds-color-success-base-default)'
+              : state === 'active'
+                ? 'var(--ds-color-accent-base-default)'
+                : state === 'error'
+                  ? 'var(--ds-color-danger-base-default)'
+                  : 'var(--ds-color-neutral-border-default)';
 
           // Text color
           const textColor =
-            state === 'active' ? 'var(--ds-color-accent-text-default)' :
-            state === 'completed' ? 'var(--ds-color-success-text-default)' :
-            state === 'error' ? 'var(--ds-color-danger-text-default)' :
-            'var(--ds-color-neutral-text-subtle)';
+            state === 'active'
+              ? 'var(--ds-color-accent-text-default)'
+              : state === 'completed'
+                ? 'var(--ds-color-success-text-default)'
+                : state === 'error'
+                  ? 'var(--ds-color-danger-text-default)'
+                  : 'var(--ds-color-neutral-text-subtle)';
 
           return (
             <React.Fragment key={step.id}>
@@ -330,9 +339,10 @@ export function WizardStepper({
                     height: config.circleSize,
                     borderRadius: 'var(--ds-border-radius-full)',
                     backgroundColor: circleBackground,
-                    color: state === 'completed' || state === 'active' || state === 'error'
-                      ? 'white'
-                      : 'var(--ds-color-neutral-text-subtle)',
+                    color:
+                      state === 'completed' || state === 'active' || state === 'error'
+                        ? 'white'
+                        : 'var(--ds-color-neutral-text-subtle)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -374,9 +384,10 @@ export function WizardStepper({
                     flex: '0 0 auto',
                     width: 'var(--ds-spacing-4)',
                     height: 'var(--ds-border-width-medium)',
-                    backgroundColor: state === 'completed'
-                      ? 'var(--ds-color-success-border-default)'
-                      : 'var(--ds-color-neutral-border-subtle)',
+                    backgroundColor:
+                      state === 'completed'
+                        ? 'var(--ds-color-success-border-default)'
+                        : 'var(--ds-color-neutral-border-subtle)',
                   }}
                 />
               )}

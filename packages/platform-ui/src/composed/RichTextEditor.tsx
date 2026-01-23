@@ -8,7 +8,7 @@
  * All styling uses design tokens.
  *
  * SSR-safe: Uses 'use client' directive.
- * 
+ *
  * @module @xala-technologies/platform/ui/composed/RichTextEditor
  */
 
@@ -20,10 +20,10 @@ import React, { useRef, useState, useCallback, useEffect, type ReactNode } from 
 // Types
 // =============================================================================
 
-export type TextFormat = 
-  | 'bold' 
-  | 'italic' 
-  | 'underline' 
+export type TextFormat =
+  | 'bold'
+  | 'italic'
+  | 'underline'
   | 'strikethrough'
   | 'heading1'
   | 'heading2'
@@ -83,7 +83,16 @@ const DEFAULT_TOOLBAR: TextFormat[] = [
 
 function BoldIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" />
       <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" />
     </svg>
@@ -92,7 +101,16 @@ function BoldIcon() {
 
 function ItalicIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="19" y1="4" x2="10" y2="4" />
       <line x1="14" y1="20" x2="5" y2="20" />
       <line x1="15" y1="4" x2="9" y2="20" />
@@ -102,7 +120,16 @@ function ItalicIcon() {
 
 function UnderlineIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3" />
       <line x1="4" y1="21" x2="20" y2="21" />
     </svg>
@@ -111,7 +138,16 @@ function UnderlineIcon() {
 
 function StrikethroughIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M17.3 4.9c-2.3-.6-4.4-1-6.2-.9-2.7 0-5.3.7-5.3 3.6 0 1.5 1.8 3.3 3.6 3.9h.2m8.2 3.7c.3.4.4.8.4 1.3 0 2.9-2.7 3.6-6.2 3.6-2.3 0-4.4-.3-6.2-.9" />
       <line x1="4" y1="12" x2="20" y2="12" />
     </svg>
@@ -120,7 +156,16 @@ function StrikethroughIcon() {
 
 function Heading1Icon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M4 12h8M4 18V6M12 18V6M17 12l3-2v8" />
     </svg>
   );
@@ -128,7 +173,16 @@ function Heading1Icon() {
 
 function Heading2Icon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M4 12h8M4 18V6M12 18V6M21 18h-4c0-4 4-3 4-6 0-1.5-2-2.5-4-1" />
     </svg>
   );
@@ -136,7 +190,16 @@ function Heading2Icon() {
 
 function Heading3Icon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M4 12h8M4 18V6M12 18V6M17.5 10.5c1.7-1 3.5 0 3.5 1.5a2 2 0 0 1-2 2m-1.5 2.5c1.5 1 3.5 0 3.5-1.5a2 2 0 0 0-2-2" />
     </svg>
   );
@@ -144,7 +207,16 @@ function Heading3Icon() {
 
 function ParagraphIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M13 4v16M17 4v16M19 4H9.5a4.5 4.5 0 0 0 0 9H13" />
     </svg>
   );
@@ -152,7 +224,16 @@ function ParagraphIcon() {
 
 function BulletListIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="8" y1="6" x2="21" y2="6" />
       <line x1="8" y1="12" x2="21" y2="12" />
       <line x1="8" y1="18" x2="21" y2="18" />
@@ -165,7 +246,16 @@ function BulletListIcon() {
 
 function NumberedListIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="10" y1="6" x2="21" y2="6" />
       <line x1="10" y1="12" x2="21" y2="12" />
       <line x1="10" y1="18" x2="21" y2="18" />
@@ -176,7 +266,16 @@ function NumberedListIcon() {
 
 function BlockquoteIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21" />
       <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3" />
     </svg>
@@ -185,7 +284,16 @@ function BlockquoteIcon() {
 
 function CodeIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
     </svg>
@@ -194,7 +302,16 @@ function CodeIcon() {
 
 function LinkIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
     </svg>
@@ -203,7 +320,16 @@ function LinkIcon() {
 
 function ImageIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
       <circle cx="8.5" cy="8.5" r="1.5" />
       <polyline points="21 15 16 10 5 21" />
@@ -213,7 +339,16 @@ function ImageIcon() {
 
 function HorizontalRuleIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   );
@@ -221,7 +356,16 @@ function HorizontalRuleIcon() {
 
 function UndoIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 7v6h6" />
       <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
     </svg>
@@ -230,7 +374,16 @@ function UndoIcon() {
 
 function RedoIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 7v6h-6" />
       <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
     </svg>
@@ -310,14 +463,14 @@ export function RichTextEditor({
 
   const updateActiveFormats = useCallback(() => {
     const formats = new Set<string>();
-    
+
     if (document.queryCommandState('bold')) formats.add('bold');
     if (document.queryCommandState('italic')) formats.add('italic');
     if (document.queryCommandState('underline')) formats.add('underline');
     if (document.queryCommandState('strikeThrough')) formats.add('strikethrough');
     if (document.queryCommandState('insertUnorderedList')) formats.add('bulletList');
     if (document.queryCommandState('insertOrderedList')) formats.add('numberedList');
-    
+
     setActiveFormats(formats);
   }, []);
 
@@ -342,82 +495,85 @@ export function RichTextEditor({
     updateActiveFormats();
   }, [updateActiveFormats]);
 
-  const executeCommand = useCallback((format: TextFormat) => {
-    if (disabled || readOnly) return;
+  const executeCommand = useCallback(
+    (format: TextFormat) => {
+      if (disabled || readOnly) return;
 
-    editorRef.current?.focus();
+      editorRef.current?.focus();
 
-    switch (format) {
-      case 'bold':
-        document.execCommand('bold', false);
-        break;
-      case 'italic':
-        document.execCommand('italic', false);
-        break;
-      case 'underline':
-        document.execCommand('underline', false);
-        break;
-      case 'strikethrough':
-        document.execCommand('strikeThrough', false);
-        break;
-      case 'heading1':
-        document.execCommand('formatBlock', false, 'h1');
-        break;
-      case 'heading2':
-        document.execCommand('formatBlock', false, 'h2');
-        break;
-      case 'heading3':
-        document.execCommand('formatBlock', false, 'h3');
-        break;
-      case 'paragraph':
-        document.execCommand('formatBlock', false, 'p');
-        break;
-      case 'bulletList':
-        document.execCommand('insertUnorderedList', false);
-        break;
-      case 'numberedList':
-        document.execCommand('insertOrderedList', false);
-        break;
-      case 'blockquote':
-        document.execCommand('formatBlock', false, 'blockquote');
-        break;
-      case 'code':
-        document.execCommand('formatBlock', false, 'pre');
-        break;
-      case 'link': {
-        const url = prompt('Enter URL:');
-        if (url) {
-          document.execCommand('createLink', false, url);
+      switch (format) {
+        case 'bold':
+          document.execCommand('bold', false);
+          break;
+        case 'italic':
+          document.execCommand('italic', false);
+          break;
+        case 'underline':
+          document.execCommand('underline', false);
+          break;
+        case 'strikethrough':
+          document.execCommand('strikeThrough', false);
+          break;
+        case 'heading1':
+          document.execCommand('formatBlock', false, 'h1');
+          break;
+        case 'heading2':
+          document.execCommand('formatBlock', false, 'h2');
+          break;
+        case 'heading3':
+          document.execCommand('formatBlock', false, 'h3');
+          break;
+        case 'paragraph':
+          document.execCommand('formatBlock', false, 'p');
+          break;
+        case 'bulletList':
+          document.execCommand('insertUnorderedList', false);
+          break;
+        case 'numberedList':
+          document.execCommand('insertOrderedList', false);
+          break;
+        case 'blockquote':
+          document.execCommand('formatBlock', false, 'blockquote');
+          break;
+        case 'code':
+          document.execCommand('formatBlock', false, 'pre');
+          break;
+        case 'link': {
+          const url = prompt('Enter URL:');
+          if (url) {
+            document.execCommand('createLink', false, url);
+          }
+          break;
         }
-        break;
-      }
-      case 'image': {
-        const imgUrl = prompt('Enter image URL:');
-        if (imgUrl) {
-          document.execCommand('insertImage', false, imgUrl);
+        case 'image': {
+          const imgUrl = prompt('Enter image URL:');
+          if (imgUrl) {
+            document.execCommand('insertImage', false, imgUrl);
+          }
+          break;
         }
-        break;
+        case 'horizontalRule':
+          document.execCommand('insertHorizontalRule', false);
+          break;
+        case 'undo':
+          document.execCommand('undo', false);
+          break;
+        case 'redo':
+          document.execCommand('redo', false);
+          break;
       }
-      case 'horizontalRule':
-        document.execCommand('insertHorizontalRule', false);
-        break;
-      case 'undo':
-        document.execCommand('undo', false);
-        break;
-      case 'redo':
-        document.execCommand('redo', false);
-        break;
-    }
 
-    handleInput();
-    updateActiveFormats();
-  }, [disabled, readOnly, handleInput, updateActiveFormats]);
+      handleInput();
+      updateActiveFormats();
+    },
+    [disabled, readOnly, handleInput, updateActiveFormats]
+  );
 
   const borderColor = error
     ? 'var(--ds-color-danger-border-default)'
     : isFocused
-    ? 'var(--ds-color-accent-border-default)'
-    : 'var(--ds-color-neutral-border-default)';
+      ? 'var(--ds-color-accent-border-default)'
+      : 'var(--ds-color-neutral-border-default)';
 
   return (
     <div className={className} style={style}>
@@ -433,7 +589,14 @@ export function RichTextEditor({
         >
           {label}
           {required && (
-            <span style={{ color: 'var(--ds-color-danger-text-default)', marginLeft: 'var(--ds-spacing-1)' }}>*</span>
+            <span
+              style={{
+                color: 'var(--ds-color-danger-text-default)',
+                marginLeft: 'var(--ds-spacing-1)',
+              }}
+            >
+              *
+            </span>
           )}
         </label>
       )}
@@ -466,7 +629,7 @@ export function RichTextEditor({
           >
             {toolbar.map((format, index) => {
               const isActive = activeFormats.has(format);
-              const isSeparator = 
+              const isSeparator =
                 (format === 'paragraph' && index > 0) ||
                 (format === 'bulletList' && index > 0) ||
                 (format === 'link' && index > 0) ||

@@ -44,7 +44,14 @@ export interface NumberInputProps {
 
 function MinusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   );
@@ -52,7 +59,14 @@ function MinusIcon() {
 
 function PlusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <line x1="12" y1="5" x2="12" y2="19" />
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
@@ -64,9 +78,21 @@ function PlusIcon() {
 // =============================================================================
 
 const sizeStyles = {
-  sm: { height: 'var(--ds-sizing-8)', padding: 'var(--ds-spacing-1) var(--ds-spacing-2)', font: 'var(--ds-font-size-sm)' },
-  md: { height: 'var(--ds-sizing-10)', padding: 'var(--ds-spacing-2) var(--ds-spacing-3)', font: 'var(--ds-font-size-md)' },
-  lg: { height: 'var(--ds-sizing-12)', padding: 'var(--ds-spacing-3) var(--ds-spacing-4)', font: 'var(--ds-font-size-lg)' },
+  sm: {
+    height: 'var(--ds-sizing-8)',
+    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+    font: 'var(--ds-font-size-sm)',
+  },
+  md: {
+    height: 'var(--ds-sizing-10)',
+    padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
+    font: 'var(--ds-font-size-md)',
+  },
+  lg: {
+    height: 'var(--ds-sizing-12)',
+    padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
+    font: 'var(--ds-font-size-lg)',
+  },
 };
 
 // =============================================================================
@@ -239,10 +265,12 @@ export function NumberInput({
           borderColor: error
             ? 'var(--ds-color-danger-border-default)'
             : isFocused
-            ? 'var(--ds-color-accent-border-default)'
-            : 'var(--ds-color-neutral-border-default)',
+              ? 'var(--ds-color-accent-border-default)'
+              : 'var(--ds-color-neutral-border-default)',
           borderRadius: 'var(--ds-border-radius-md)',
-          backgroundColor: disabled ? 'var(--ds-color-neutral-surface-subtle)' : 'var(--ds-color-neutral-background-default)',
+          backgroundColor: disabled
+            ? 'var(--ds-color-neutral-surface-subtle)'
+            : 'var(--ds-color-neutral-background-default)',
           overflow: 'hidden',
         }}
       >
@@ -354,7 +382,9 @@ export function NumberInput({
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
-            color: error ? 'var(--ds-color-danger-text-default)' : 'var(--ds-color-neutral-text-subtle)',
+            color: error
+              ? 'var(--ds-color-danger-text-default)'
+              : 'var(--ds-color-neutral-text-subtle)',
           }}
         >
           {error || helperText}

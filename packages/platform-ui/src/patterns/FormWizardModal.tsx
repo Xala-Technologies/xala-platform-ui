@@ -158,12 +158,7 @@ interface StepIndicatorDotProps {
   totalSteps: number;
 }
 
-function StepIndicatorDot({
-  step,
-  index,
-  isActive,
-  isCompleted,
-}: StepIndicatorDotProps) {
+function StepIndicatorDot({ step, index, isActive, isCompleted }: StepIndicatorDotProps) {
   return (
     <div
       style={{
@@ -190,12 +185,11 @@ function StepIndicatorDot({
             : isActive
               ? 'var(--ds-color-accent-base-default)'
               : 'var(--ds-color-neutral-surface-hover)',
-          color: isCompleted || isActive
-            ? 'var(--ds-color-neutral-background-default)'
-            : 'var(--ds-color-neutral-text-subtle)',
-          border: step.isDisabled
-            ? '2px dashed var(--ds-color-neutral-border-default)'
-            : 'none',
+          color:
+            isCompleted || isActive
+              ? 'var(--ds-color-neutral-background-default)'
+              : 'var(--ds-color-neutral-text-subtle)',
+          border: step.isDisabled ? '2px dashed var(--ds-color-neutral-border-default)' : 'none',
         }}
         aria-current={isActive ? 'step' : undefined}
       >
@@ -299,9 +293,7 @@ function StepIndicator({
               isCompleted={step.isCompleted ?? index < currentStepIndex}
               totalSteps={steps.length}
             />
-            {index < steps.length - 1 && (
-              <StepConnector isCompleted={index < currentStepIndex} />
-            )}
+            {index < steps.length - 1 && <StepConnector isCompleted={index < currentStepIndex} />}
           </React.Fragment>
         ))}
       </div>

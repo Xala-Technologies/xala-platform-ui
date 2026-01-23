@@ -4,9 +4,9 @@ import { Checkbox, Fieldset, ValidationMessage, Heading } from '../../index';
 
 /**
  * Checkbox component from Digdir Designsystemet.
- * 
+ *
  * Checkbox allows users to select one or more options.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/checkbox/overview
  */
 const meta: Meta<typeof Checkbox> = {
@@ -177,14 +177,12 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Checkbox label="I accept the terms and conditions" value="accept" />
-  ),
+  render: () => <Checkbox label="I accept the terms and conditions" value="accept" />,
 };
 
 export const WithDescription: Story = {
   render: () => (
-    <Checkbox 
+    <Checkbox
       label="Subscribe to newsletter"
       value="newsletter"
       description="You can unsubscribe at any time"
@@ -217,11 +215,7 @@ export const WithError: Story = {
   render: () => (
     <Fieldset>
       <Fieldset.Legend>Accept terms</Fieldset.Legend>
-      <Checkbox 
-        label="I accept the terms"
-        value="terms"
-        aria-invalid="true"
-      />
+      <Checkbox label="I accept the terms" value="terms" aria-invalid="true" />
       <ValidationMessage>You must accept the terms to continue</ValidationMessage>
     </Fieldset>
   ),
@@ -261,25 +255,32 @@ export const InteractiveGroup: Story = {
       <Fieldset>
         <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
         <Fieldset.Description>Select all options that are relevant to you.</Fieldset.Description>
-        <Checkbox 
-          label="Email" 
+        <Checkbox
+          label="Email"
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}
         />
-        <Checkbox 
-          label="Phone" 
+        <Checkbox
+          label="Phone"
           value="phone"
           checked={selected.includes('phone')}
           onChange={(e) => handleChange('phone', e.target.checked)}
         />
-        <Checkbox 
-          label="SMS" 
+        <Checkbox
+          label="SMS"
           value="sms"
           checked={selected.includes('sms')}
           onChange={(e) => handleChange('sms', e.target.checked)}
         />
-        <div style={{ marginTop: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-3)', backgroundColor: 'var(--ds-color-neutral-surface-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <strong>Selected:</strong> {selected.length > 0 ? selected.join(', ') : 'None'}
         </div>
       </Fieldset>
@@ -315,22 +316,22 @@ export const WithValidation: Story = {
       <Fieldset>
         <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
         <Fieldset.Description>Select all options that are relevant to you.</Fieldset.Description>
-        <Checkbox 
-          label="Email" 
+        <Checkbox
+          label="Email"
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}
           aria-invalid={!!error}
         />
-        <Checkbox 
-          label="Phone" 
+        <Checkbox
+          label="Phone"
           value="phone"
           checked={selected.includes('phone')}
           onChange={(e) => handleChange('phone', e.target.checked)}
           aria-invalid={!!error}
         />
-        <Checkbox 
-          label="SMS" 
+        <Checkbox
+          label="SMS"
           value="sms"
           checked={selected.includes('sms')}
           onChange={(e) => handleChange('sms', e.target.checked)}
@@ -377,7 +378,9 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>States</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          States
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Checkbox label="Default" value="default" />
           <Checkbox label="Checked" value="checked" defaultChecked />
@@ -388,7 +391,9 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Sizes</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Sizes
+        </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
           <Checkbox label="Small" value="sm" data-size="sm" />
           <Checkbox label="Medium" value="md" data-size="md" />
@@ -397,8 +402,10 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>With Description</Heading>
-        <Checkbox 
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          With Description
+        </Heading>
+        <Checkbox
           label="Subscribe to newsletter"
           value="newsletter"
           description="You can unsubscribe at any time"

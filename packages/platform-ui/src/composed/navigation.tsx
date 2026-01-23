@@ -1,6 +1,6 @@
 /**
  * Navigation Component
- * 
+ *
  * Horizontal navigation following Designsystemet patterns
  */
 
@@ -12,7 +12,7 @@ export interface NavigationProps extends React.HTMLAttributes<HTMLDivElement> {
    * Navigation links
    */
   children: React.ReactNode;
-  
+
   /**
    * Spacing between items
    * @default 32
@@ -30,7 +30,7 @@ export const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
           display: 'flex',
           alignItems: 'center',
           gap: `${spacing}px`,
-          ...style
+          ...style,
         }}
         {...props}
       >
@@ -61,14 +61,16 @@ export const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>
             ? 'var(--ds-color-neutral-text-default)'
             : 'var(--ds-color-neutral-text-default)',
           textDecoration: 'none',
-          fontWeight: active ? 'var(--ds-font-weight-semibold)' as unknown as number : 'var(--ds-font-weight-regular)' as unknown as number,
+          fontWeight: active
+            ? ('var(--ds-font-weight-semibold)' as unknown as number)
+            : ('var(--ds-font-weight-regular)' as unknown as number),
           padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
           borderRadius: 'var(--ds-border-radius-sm)',
           transition: 'all 0.2s',
           ...(active && {
-            backgroundColor: 'var(--ds-color-accent-surface-default)'
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
           }),
-          ...style
+          ...style,
         }}
         {...props}
       >

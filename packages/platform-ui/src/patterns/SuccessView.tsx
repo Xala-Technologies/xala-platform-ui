@@ -120,7 +120,7 @@ const animationStyles = `
     }
   }
 
-  .success-view__icon {
+  .ds-success-view__icon {
     animation: success-view-bounce 0.6s ease-out 0.2s both;
   }
 
@@ -168,7 +168,7 @@ export function SuccessView({
 
       {/* Success Icon */}
       <div
-        className="success-view__icon"
+        className="ds-success-view__icon"
         style={{
           display: 'inline-flex',
           alignItems: 'center',

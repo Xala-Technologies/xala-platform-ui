@@ -167,7 +167,14 @@ export function AccessibilityStatement({
       {/* Conformance Status */}
       <SectionHeading>Samsvarsstatus</SectionHeading>
       <section>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--ds-spacing-3)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           <ConformanceBadge level={conformanceLevel} />
           <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
             WCAG 2.1 Nivå {wcagLevel}
@@ -176,21 +183,21 @@ export function AccessibilityStatement({
         <p style={{ margin: 0, lineHeight: 1.6 }}>
           {conformanceLevel === 'full' && (
             <>
-              Dette nettstedet er i fullstendig samsvar med Web Content Accessibility Guidelines (WCAG) 2.1,
-              nivå {wcagLevel}. Det finnes ingen kjente tilgjengelighetsproblemer.
+              Dette nettstedet er i fullstendig samsvar med Web Content Accessibility Guidelines
+              (WCAG) 2.1, nivå {wcagLevel}. Det finnes ingen kjente tilgjengelighetsproblemer.
             </>
           )}
           {conformanceLevel === 'partial' && (
             <>
-              Dette nettstedet er i delvis samsvar med Web Content Accessibility Guidelines (WCAG) 2.1,
-              nivå {wcagLevel}. Noen innhold eller funksjonalitet er ikke fullt tilgjengelig.
+              Dette nettstedet er i delvis samsvar med Web Content Accessibility Guidelines (WCAG)
+              2.1, nivå {wcagLevel}. Noen innhold eller funksjonalitet er ikke fullt tilgjengelig.
               Se listen over kjente problemer nedenfor.
             </>
           )}
           {conformanceLevel === 'non-conformant' && (
             <>
-              Dette nettstedet er for øyeblikket ikke i samsvar med Web Content Accessibility Guidelines (WCAG) 2.1.
-              Vi arbeider aktivt med å løse tilgjengelighetsproblemene.
+              Dette nettstedet er for øyeblikket ikke i samsvar med Web Content Accessibility
+              Guidelines (WCAG) 2.1. Vi arbeider aktivt med å løse tilgjengelighetsproblemene.
             </>
           )}
         </p>
@@ -222,16 +229,28 @@ export function AccessibilityStatement({
                   <strong>{issue.description}</strong>
                   {issue.wcagCriterion && (
                     <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                      {' '}(WCAG {issue.wcagCriterion})
+                      {' '}
+                      (WCAG {issue.wcagCriterion})
                     </span>
                   )}
                   {issue.workaround && (
-                    <p style={{ margin: 'var(--ds-spacing-2) 0 0 0', fontSize: 'var(--ds-font-size-sm)' }}>
+                    <p
+                      style={{
+                        margin: 'var(--ds-spacing-2) 0 0 0',
+                        fontSize: 'var(--ds-font-size-sm)',
+                      }}
+                    >
                       <strong>Alternativ løsning:</strong> {issue.workaround}
                     </p>
                   )}
                   {issue.expectedFix && (
-                    <p style={{ margin: 'var(--ds-spacing-1) 0 0 0', fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                    <p
+                      style={{
+                        margin: 'var(--ds-spacing-1) 0 0 0',
+                        fontSize: 'var(--ds-font-size-sm)',
+                        color: 'var(--ds-color-neutral-text-subtle)',
+                      }}
+                    >
                       Forventet utbedring: {issue.expectedFix}
                     </p>
                   )}
@@ -305,8 +324,8 @@ export function AccessibilityStatement({
       <SectionHeading>Kontakt oss</SectionHeading>
       <section>
         <p style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
-          Hvis du opplever tilgjengelighetsproblemer på dette nettstedet, eller har forslag til forbedringer,
-          vennligst kontakt oss:
+          Hvis du opplever tilgjengelighetsproblemer på dette nettstedet, eller har forslag til
+          forbedringer, vennligst kontakt oss:
         </p>
         <address
           style={{
@@ -319,14 +338,20 @@ export function AccessibilityStatement({
         >
           <p style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
             <strong>E-post:</strong>{' '}
-            <a href={`mailto:${contact.email}`} style={{ color: 'var(--ds-color-accent-text-default)' }}>
+            <a
+              href={`mailto:${contact.email}`}
+              style={{ color: 'var(--ds-color-accent-text-default)' }}
+            >
               {contact.email}
             </a>
           </p>
           {contact.phone && (
             <p style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
               <strong>Telefon:</strong>{' '}
-              <a href={`tel:${contact.phone.replace(/\s/g, '')}`} style={{ color: 'var(--ds-color-accent-text-default)' }}>
+              <a
+                href={`tel:${contact.phone.replace(/\s/g, '')}`}
+                style={{ color: 'var(--ds-color-accent-text-default)' }}
+              >
                 {contact.phone}
               </a>
             </p>
@@ -343,9 +368,9 @@ export function AccessibilityStatement({
       <SectionHeading>Tilsyn og klage</SectionHeading>
       <section>
         <p style={{ margin: '0 0 var(--ds-spacing-3) 0', lineHeight: 1.6 }}>
-          Digitaliseringsdirektoratet (Digdir) har ansvaret for tilsyn med universell utforming av IKT i Norge.
-          Hvis du mener at nettstedet ikke oppfyller kravene til universell utforming, og vi ikke har løst
-          problemet etter at du har kontaktet oss, kan du sende en klage til:
+          Digitaliseringsdirektoratet (Digdir) har ansvaret for tilsyn med universell utforming av
+          IKT i Norge. Hvis du mener at nettstedet ikke oppfyller kravene til universell utforming,
+          og vi ikke har løst problemet etter at du har kontaktet oss, kan du sende en klage til:
         </p>
         <address
           style={{
@@ -356,7 +381,12 @@ export function AccessibilityStatement({
             border: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
-          <p style={{ margin: '0 0 var(--ds-spacing-2) 0', fontWeight: 'var(--ds-font-weight-semibold)' }}>
+          <p
+            style={{
+              margin: '0 0 var(--ds-spacing-2) 0',
+              fontWeight: 'var(--ds-font-weight-semibold)',
+            }}
+          >
             Digitaliseringsdirektoratet
           </p>
           <p style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
@@ -371,7 +401,10 @@ export function AccessibilityStatement({
           </p>
           <p style={{ margin: 0 }}>
             E-post:{' '}
-            <a href="mailto:postmottak@digdir.no" style={{ color: 'var(--ds-color-accent-text-default)' }}>
+            <a
+              href="mailto:postmottak@digdir.no"
+              style={{ color: 'var(--ds-color-accent-text-default)' }}
+            >
               postmottak@digdir.no
             </a>
           </p>

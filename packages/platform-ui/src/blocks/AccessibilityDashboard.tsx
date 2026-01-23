@@ -381,7 +381,14 @@ interface MetricCardProps {
   details?: Array<{ label: string; value: number }>;
 }
 
-function MetricCard({ title, value, subtitle, icon, status, details }: MetricCardProps): React.ReactElement {
+function MetricCard({
+  title,
+  value,
+  subtitle,
+  icon,
+  status,
+  details,
+}: MetricCardProps): React.ReactElement {
   const getStatusColor = (): string => {
     if (!status) return 'var(--ds-color-neutral-border-subtle)';
     switch (status) {

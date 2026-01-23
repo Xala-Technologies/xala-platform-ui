@@ -1,13 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn, expect, userEvent, within } from '@storybook/test';
 import { Button, Heading } from '../../index';
-import { PlusIcon, FloppydiskIcon, TrashIcon, PencilIcon, ArrowRightIcon } from '@navikt/aksel-icons';
+import {
+  PlusIcon,
+  FloppydiskIcon,
+  TrashIcon,
+  PencilIcon,
+  ArrowRightIcon,
+} from '@navikt/aksel-icons';
 
 /**
  * Button component from Digdir Designsystemet.
- * 
+ *
  * Buttons allow users to perform actions and make choices with a single tap or click.
- * 
+ *
  * @see https://designsystemet.no/en/components/docs/button/overview
  */
 const meta: Meta<typeof Button> = {
@@ -233,10 +239,23 @@ export const Default: Story = {
  */
 export const EmphasisLevels: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button variant="primary" type="button">Primary</Button>
-      <Button variant="secondary" type="button">Secondary</Button>
-      <Button variant="tertiary" type="button">Tertiary</Button>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-3)',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button variant="primary" type="button">
+        Primary
+      </Button>
+      <Button variant="secondary" type="button">
+        Secondary
+      </Button>
+      <Button variant="tertiary" type="button">
+        Tertiary
+      </Button>
     </div>
   ),
 };
@@ -248,12 +267,24 @@ export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-        <Button variant="primary" data-color="accent" type="button">Accent</Button>
-        <Button variant="primary" data-color="brand1" type="button">Brand 1</Button>
-        <Button variant="primary" data-color="brand2" type="button">Brand 2</Button>
-        <Button variant="primary" data-color="brand3" type="button">Brand 3</Button>
-        <Button variant="primary" data-color="neutral" type="button">Neutral</Button>
-        <Button variant="primary" data-color="danger" type="button">Danger</Button>
+        <Button variant="primary" data-color="accent" type="button">
+          Accent
+        </Button>
+        <Button variant="primary" data-color="brand1" type="button">
+          Brand 1
+        </Button>
+        <Button variant="primary" data-color="brand2" type="button">
+          Brand 2
+        </Button>
+        <Button variant="primary" data-color="brand3" type="button">
+          Brand 3
+        </Button>
+        <Button variant="primary" data-color="neutral" type="button">
+          Neutral
+        </Button>
+        <Button variant="primary" data-color="danger" type="button">
+          Danger
+        </Button>
       </div>
     </div>
   ),
@@ -264,10 +295,23 @@ export const Colors: Story = {
  */
 export const CombinedColors: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button variant="primary" data-color="neutral" type="button">Publish</Button>
-      <Button variant="secondary" data-color="neutral" type="button">Save draft</Button>
-      <Button variant="tertiary" data-color="danger" type="button">Delete</Button>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-3)',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button variant="primary" data-color="neutral" type="button">
+        Publish
+      </Button>
+      <Button variant="secondary" data-color="neutral" type="button">
+        Save draft
+      </Button>
+      <Button variant="tertiary" data-color="danger" type="button">
+        Delete
+      </Button>
     </div>
   ),
 };
@@ -329,10 +373,23 @@ export const Disabled: Story = {
  */
 export const Loading: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button variant="primary" loading type="button">Loading...</Button>
-      <Button variant="secondary" loading type="button">Loading...</Button>
-      <Button variant="tertiary" loading type="button">Loading...</Button>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-3)',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button variant="primary" loading type="button">
+        Loading...
+      </Button>
+      <Button variant="secondary" loading type="button">
+        Loading...
+      </Button>
+      <Button variant="tertiary" loading type="button">
+        Loading...
+      </Button>
     </div>
   ),
 };
@@ -355,17 +412,30 @@ export const AsLink: Story = {
  */
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button data-size="sm" type="button">Small</Button>
-      <Button data-size="md" type="button">Medium</Button>
-      <Button data-size="lg" type="button">Large</Button>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-3)',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button data-size="sm" type="button">
+        Small
+      </Button>
+      <Button data-size="md" type="button">
+        Medium
+      </Button>
+      <Button data-size="lg" type="button">
+        Large
+      </Button>
     </div>
   ),
 };
 
 /**
  * Icon-only buttons - Use only for well-known icons. Must have accessible label via aria-label or title.
- * 
+ *
  * Best practices:
  * - Only use for universally recognized icons (Close, Delete, Edit, etc.)
  * - Always provide aria-label describing the action
@@ -374,7 +444,14 @@ export const Sizes: Story = {
  */
 export const IconOnly: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center', flexWrap: 'wrap' }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-3)',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
       <Button icon aria-label="Add item" type="button">
         <PlusIcon aria-hidden fontSize="1.25rem" />
       </Button>
@@ -395,44 +472,117 @@ export const BestPractices: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-success-text-default)' }}>Do: One primary button per page</Heading>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-success-text-default)',
+          }}
+        >
+          Do: One primary button per page
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" type="button">Save changes</Button>
-          <Button variant="secondary" type="button">Cancel</Button>
+          <Button variant="primary" type="button">
+            Save changes
+          </Button>
+          <Button variant="secondary" type="button">
+            Cancel
+          </Button>
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-success-text-default)' }}>Do: Same color in group, except danger</Heading>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-success-text-default)',
+          }}
+        >
+          Do: Same color in group, except danger
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" data-color="neutral" type="button">Publish</Button>
-          <Button variant="secondary" data-color="neutral" type="button">Save draft</Button>
-          <Button variant="tertiary" data-color="danger" type="button">Delete</Button>
+          <Button variant="primary" data-color="neutral" type="button">
+            Publish
+          </Button>
+          <Button variant="secondary" data-color="neutral" type="button">
+            Save draft
+          </Button>
+          <Button variant="tertiary" data-color="danger" type="button">
+            Delete
+          </Button>
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-success-text-default)' }}>Do: Clear, action-oriented labels</Heading>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-success-text-default)',
+          }}
+        >
+          Do: Clear, action-oriented labels
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" type="button">Save changes</Button>
-          <Button variant="secondary" type="button">Discard changes</Button>
+          <Button variant="primary" type="button">
+            Save changes
+          </Button>
+          <Button variant="secondary" type="button">
+            Discard changes
+          </Button>
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-danger-text-default)' }}>Don't: Multiple primary buttons</Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}>
-          <Button variant="primary" type="button">Save</Button>
-          <Button variant="primary" type="button">Submit</Button>
-          <Button variant="primary" type="button">Publish</Button>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-danger-text-default)',
+          }}
+        >
+          Don't: Multiple primary buttons
+        </Heading>
+        <div
+          style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
+        >
+          <Button variant="primary" type="button">
+            Save
+          </Button>
+          <Button variant="primary" type="button">
+            Submit
+          </Button>
+          <Button variant="primary" type="button">
+            Publish
+          </Button>
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-danger-text-default)' }}>Don't: Unclear labels</Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}>
-          <Button variant="primary" type="button">OK</Button>
-          <Button variant="secondary" type="button">Cancel</Button>
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-danger-text-default)',
+          }}
+        >
+          Don't: Unclear labels
+        </Heading>
+        <div
+          style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
+        >
+          <Button variant="primary" type="button">
+            OK
+          </Button>
+          <Button variant="secondary" type="button">
+            Cancel
+          </Button>
         </div>
       </div>
     </div>
@@ -446,37 +596,76 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Emphasis Levels</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Emphasis Levels
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" type="button">Primary</Button>
-          <Button variant="secondary" type="button">Secondary</Button>
-          <Button variant="tertiary" type="button">Tertiary</Button>
+          <Button variant="primary" type="button">
+            Primary
+          </Button>
+          <Button variant="secondary" type="button">
+            Secondary
+          </Button>
+          <Button variant="tertiary" type="button">
+            Tertiary
+          </Button>
         </div>
       </div>
-      
+
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>All Colors</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          All Colors
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button data-color="accent" type="button">Accent</Button>
-          <Button data-color="brand1" type="button">Brand 1</Button>
-          <Button data-color="brand2" type="button">Brand 2</Button>
-          <Button data-color="brand3" type="button">Brand 3</Button>
-          <Button data-color="neutral" type="button">Neutral</Button>
-          <Button data-color="danger" type="button">Danger</Button>
+          <Button data-color="accent" type="button">
+            Accent
+          </Button>
+          <Button data-color="brand1" type="button">
+            Brand 1
+          </Button>
+          <Button data-color="brand2" type="button">
+            Brand 2
+          </Button>
+          <Button data-color="brand3" type="button">
+            Brand 3
+          </Button>
+          <Button data-color="neutral" type="button">
+            Neutral
+          </Button>
+          <Button data-color="danger" type="button">
+            Danger
+          </Button>
         </div>
       </div>
-      
+
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Sizes</Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center', flexWrap: 'wrap' }}>
-          <Button data-size="sm" type="button">Small</Button>
-          <Button data-size="md" type="button">Medium</Button>
-          <Button data-size="lg" type="button">Large</Button>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Sizes
+        </Heading>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-3)',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Button data-size="sm" type="button">
+            Small
+          </Button>
+          <Button data-size="md" type="button">
+            Medium
+          </Button>
+          <Button data-size="lg" type="button">
+            Large
+          </Button>
         </div>
       </div>
-      
+
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>With Icons</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          With Icons
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
           <Button type="button">
             <PlusIcon aria-hidden fontSize="1.25rem" />
@@ -495,22 +684,36 @@ export const AllVariants: Story = {
           </Button>
         </div>
       </div>
-      
+
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>States</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          States
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
           <Button type="button">Default</Button>
-          <Button loading type="button">Loading</Button>
-          <Button disabled type="button">Disabled</Button>
+          <Button loading type="button">
+            Loading
+          </Button>
+          <Button disabled type="button">
+            Disabled
+          </Button>
         </div>
       </div>
 
       <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>Combined Example</Heading>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          Combined Example
+        </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" data-color="neutral" type="button">Publish</Button>
-          <Button variant="secondary" data-color="neutral" type="button">Save draft</Button>
-          <Button variant="tertiary" data-color="danger" type="button">Delete</Button>
+          <Button variant="primary" data-color="neutral" type="button">
+            Publish
+          </Button>
+          <Button variant="secondary" data-color="neutral" type="button">
+            Save draft
+          </Button>
+          <Button variant="tertiary" data-color="danger" type="button">
+            Delete
+          </Button>
         </div>
       </div>
     </div>

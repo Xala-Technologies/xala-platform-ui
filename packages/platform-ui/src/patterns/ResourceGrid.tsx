@@ -70,7 +70,7 @@ function LoadingSkeleton({ count = 6 }: { count: number }): React.ReactElement {
       {Array.from({ length: count }).map((_, index) => (
         <div
           key={`skeleton-${index}`}
-          className="resource-grid__skeleton"
+          className="ds-resource-grid__skeleton"
           style={{
             backgroundColor: 'var(--ds-color-neutral-background-subtle)',
             borderRadius: 'var(--ds-border-radius-md, 8px)',
@@ -90,7 +90,7 @@ function LoadingSkeleton({ count = 6 }: { count: number }): React.ReactElement {
 function DefaultEmptyState(): React.ReactElement {
   return (
     <div
-      className="resource-grid__empty"
+      className="ds-resource-grid__empty"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -114,7 +114,7 @@ function DefaultEmptyState(): React.ReactElement {
 function LoadingIndicator(): React.ReactElement {
   return (
     <div
-      className="resource-grid__loading-overlay"
+      className="ds-resource-grid__loading-overlay"
       style={{
         position: 'absolute',
         inset: 0,
@@ -213,14 +213,16 @@ export function ResourceGrid<T>({
       data-loading={loading}
       data-empty={isEmpty}
       data-max-columns={columns.default}
-      style={{
-        ...cssVars,
-        display: 'grid',
-        gap: gapValue,
-        gridTemplateColumns,
-        width: '100%',
-        position: 'relative',
-      } as React.CSSProperties}
+      style={
+        {
+          ...cssVars,
+          display: 'grid',
+          gap: gapValue,
+          gridTemplateColumns,
+          width: '100%',
+          position: 'relative',
+        } as React.CSSProperties
+      }
       role="list"
       aria-busy={loading}
     >
@@ -234,11 +236,7 @@ export function ResourceGrid<T>({
       {!showSkeletons &&
         !isEmpty &&
         items.map((item, index) => (
-          <div
-            key={getKey(item, index)}
-            className="resource-grid__item"
-            role="listitem"
-          >
+          <div key={getKey(item, index)} className="ds-resource-grid__item" role="listitem">
             {renderItem(item, index)}
           </div>
         ))}

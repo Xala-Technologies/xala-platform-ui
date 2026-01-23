@@ -226,8 +226,12 @@ export const Sizes: Story = {
           <Tabs.Tab value="tab1">Small</Tabs.Tab>
           <Tabs.Tab value="tab2">Tabs</Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value="tab1"><Paragraph>Small tabs content</Paragraph></Tabs.Panel>
-        <Tabs.Panel value="tab2"><Paragraph>Tab 2 content</Paragraph></Tabs.Panel>
+        <Tabs.Panel value="tab1">
+          <Paragraph>Small tabs content</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="tab2">
+          <Paragraph>Tab 2 content</Paragraph>
+        </Tabs.Panel>
       </Tabs>
 
       <Tabs defaultValue="tab1" data-size="md">
@@ -235,8 +239,12 @@ export const Sizes: Story = {
           <Tabs.Tab value="tab1">Medium</Tabs.Tab>
           <Tabs.Tab value="tab2">Tabs</Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value="tab1"><Paragraph>Medium tabs content</Paragraph></Tabs.Panel>
-        <Tabs.Panel value="tab2"><Paragraph>Tab 2 content</Paragraph></Tabs.Panel>
+        <Tabs.Panel value="tab1">
+          <Paragraph>Medium tabs content</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="tab2">
+          <Paragraph>Tab 2 content</Paragraph>
+        </Tabs.Panel>
       </Tabs>
 
       <Tabs defaultValue="tab1" data-size="lg">
@@ -244,8 +252,12 @@ export const Sizes: Story = {
           <Tabs.Tab value="tab1">Large</Tabs.Tab>
           <Tabs.Tab value="tab2">Tabs</Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value="tab1"><Paragraph>Large tabs content</Paragraph></Tabs.Panel>
-        <Tabs.Panel value="tab2"><Paragraph>Tab 2 content</Paragraph></Tabs.Panel>
+        <Tabs.Panel value="tab1">
+          <Paragraph>Large tabs content</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="tab2">
+          <Paragraph>Tab 2 content</Paragraph>
+        </Tabs.Panel>
       </Tabs>
     </div>
   ),

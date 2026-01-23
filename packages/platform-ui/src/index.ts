@@ -1,15 +1,15 @@
 /**
  * @xala-technologies/platform/ui
- * 
+ *
  * Unified Design System for the Xala Platform.
  * Built on @digdir/designsystemet-react with custom extensions.
- * 
+ *
  * ## Import Examples
- * 
+ *
  * ```tsx
  * // All components from single import
  * import { Button, Card, AppShell } from '@xala-technologies/platform/ui';
- * 
+ *
  * // Or use subpath imports for smaller bundles
  * import { Button, Card } from '@xala-technologies/platform/ui/primitives';
  * import { PageHeader } from '@xala-technologies/platform/ui/composed';
@@ -47,7 +47,7 @@ export * from './shells';
 
 // =============================================================================
 // Pages - Full page layouts
-// =============================================================================  
+// =============================================================================
 export * from './pages';
 
 // =============================================================================

@@ -88,7 +88,16 @@ export function BulkActionsBar({
     <>
       <div className={cn('bulk-actions-bar', className)} style={{ ...containerStyle, ...style }}>
         {/* Selected Count Badge */}
-        <span style={{ backgroundColor: 'var(--ds-color-info-surface-default)', color: 'var(--ds-color-info-text-default)', padding: '0.25rem 0.75rem', borderRadius: 'var(--ds-border-radius-full)', fontSize: 'var(--ds-font-size-md)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+        <span
+          style={{
+            backgroundColor: 'var(--ds-color-info-surface-default)',
+            color: 'var(--ds-color-info-text-default)',
+            padding: '0.25rem 0.75rem',
+            borderRadius: 'var(--ds-border-radius-full)',
+            fontSize: 'var(--ds-font-size-md)',
+            fontWeight: 'var(--ds-font-weight-medium)',
+          }}
+        >
           {selectedLabel.replace('{{count}}', selectedCount.toString())}
         </span>
 
@@ -112,7 +121,9 @@ export function BulkActionsBar({
               onClick={action.onClick}
               disabled={action.disabled}
             >
-              {action.icon && <span style={{ marginRight: 'var(--ds-spacing-1)' }}>{action.icon}</span>}
+              {action.icon && (
+                <span style={{ marginRight: 'var(--ds-spacing-1)' }}>{action.icon}</span>
+              )}
               {action.label}
             </Button>
           ))}

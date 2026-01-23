@@ -63,24 +63,27 @@ export interface AppHeaderProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const AppHeader = forwardRef<HTMLElement, AppHeaderProps>(
-  ({
-    logo,
-    search,
-    actions,
-    sticky = true,
-    height = 'var(--ds-size-header-height, var(--ds-spacing-18))',
-    showSkipLink = true,
-    skipLinkTarget = '#main',
-    skipLinkText = 'Hopp til hovedinnhold',
-    variant = 'surface',
-    className,
-    style,
-    ...props
-  }, ref) => {
+  (
+    {
+      logo,
+      search,
+      actions,
+      sticky = true,
+      height = 'var(--ds-size-header-height, var(--ds-spacing-18))',
+      showSkipLink = true,
+      skipLinkTarget = '#main',
+      skipLinkText = 'Hopp til hovedinnhold',
+      variant = 'surface',
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
     const backgrounds = {
       surface: 'var(--ds-color-neutral-surface-default)',
       background: 'var(--ds-color-neutral-background-default)',
-      transparent: 'transparent'
+      transparent: 'transparent',
     };
 
     const headerStyle: React.CSSProperties = {
@@ -91,7 +94,7 @@ export const AppHeader = forwardRef<HTMLElement, AppHeaderProps>(
       borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
       boxShadow: sticky ? 'var(--ds-shadow-header)' : undefined,
       transition: 'box-shadow 0.2s ease',
-      ...style
+      ...style,
     };
 
     const skipLinkStyle: React.CSSProperties = {
@@ -127,49 +130,63 @@ export const AppHeader = forwardRef<HTMLElement, AppHeaderProps>(
         <header ref={ref} className={className} style={headerStyle} {...props}>
           <style>{`
             @media (max-width: 'var(--ds-sizing-150)') {
-              .header-row {
+              .ds-header-row {
                 gap: var(--ds-spacing-3) !important;
               }
-              .header-actions {
+              .ds-header-actions {
                 gap: var(--ds-spacing-2) !important;
               }
-              .header-search-wrapper { display: none !important; }
+              .ds-header-search-wrapper { display: none !important; }
             }
           `}</style>
-          <Container maxWidth="1440px" padding="0 var(--ds-size-container-padding, var(--ds-spacing-6))">
+          <Container
+            maxWidth="1440px"
+            padding="0 var(--ds-size-container-padding, var(--ds-spacing-6))"
+          >
             {/* Single row: Logo | Search | Actions */}
-            <div className="header-row" style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              height,
-              gap: 'var(--ds-spacing-6)'
-            }}>
+            <div
+              className="ds-header-row"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                height,
+                gap: 'var(--ds-spacing-6)',
+              }}
+            >
               {/* Left: Logo */}
-              <div style={{
-                flex: '0 0 auto'
-              }}>
+              <div
+                style={{
+                  flex: '0 0 auto',
+                }}
+              >
                 {logo}
               </div>
 
               {/* Center: Search */}
               {search && (
-                <div className="header-search-wrapper" style={{
-                  flex: '1 1 auto',
-                  maxWidth: 'var(--platform-size-search-max-width, 520px)',
-                  minWidth: 'var(--platform-size-search-min-width, 80px)'
-                }}>
+                <div
+                  className="ds-header-search-wrapper"
+                  style={{
+                    flex: '1 1 auto',
+                    maxWidth: 'var(--ds-sizing-130)',
+                    minWidth: 'var(--ds-sizing-20)',
+                  }}
+                >
                   {search}
                 </div>
               )}
 
               {/* Right: Actions */}
-              <div className="header-actions" style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-3)',
-                flex: '0 0 auto'
-              }}>
+              <div
+                className="ds-header-actions"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-3)',
+                  flex: '0 0 auto',
+                }}
+              >
                 {actions}
               </div>
             </div>

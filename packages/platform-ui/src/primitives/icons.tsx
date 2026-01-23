@@ -1,6 +1,6 @@
 /**
  * Specific Icons
- * 
+ *
  * Common icons used in the header
  */
 
@@ -591,57 +591,69 @@ interface AuthIconProps {
 
 // ID-porten Icon (Norwegian national identity provider)
 export const IdPortenIcon = ({ size = 40, className }: AuthIconProps): React.ReactElement => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 40 40" 
-    fill="none" 
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 40 40"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
     aria-label="ID-porten"
   >
-    <rect width="40" height="40" rx="8" fill="var(--ds-color-neutral-text-default)"/>
-    <path d="M20 8L12 14V26L20 32L28 26V14L20 8Z" stroke="white" strokeWidth="2" fill="none"/>
-    <rect x="18" y="14" width="4" height="8" fill="white"/>
-    <rect x="18" y="24" width="4" height="3" fill="white"/>
+    <rect width="40" height="40" rx="8" fill="var(--ds-color-neutral-text-default)" />
+    <path d="M20 8L12 14V26L20 32L28 26V14L20 8Z" stroke="white" strokeWidth="2" fill="none" />
+    <rect x="18" y="14" width="4" height="8" fill="white" />
+    <rect x="18" y="24" width="4" height="3" fill="white" />
   </svg>
 );
 
 // Microsoft Icon
 export const MicrosoftIcon = ({ size = 40, className }: AuthIconProps): React.ReactElement => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 40 40" 
-    fill="none" 
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 40 40"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
     aria-label="Microsoft"
   >
-    <rect width="40" height="40" rx="8" fill="var(--ds-color-neutral-background-subtle)"/>
-    <rect x="10" y="10" width="9" height="9" fill="var(--brand-microsoft-red)"/>
-    <rect x="21" y="10" width="9" height="9" fill="var(--brand-microsoft-green)"/>
-    <rect x="10" y="21" width="9" height="9" fill="var(--brand-microsoft-blue)"/>
-    <rect x="21" y="21" width="9" height="9" fill="var(--brand-microsoft-yellow)"/>
+    <rect width="40" height="40" rx="8" fill="var(--ds-color-neutral-background-subtle)" />
+    <rect x="10" y="10" width="9" height="9" fill="var(--brand-microsoft-red)" />
+    <rect x="21" y="10" width="9" height="9" fill="var(--brand-microsoft-green)" />
+    <rect x="10" y="21" width="9" height="9" fill="var(--brand-microsoft-blue)" />
+    <rect x="21" y="21" width="9" height="9" fill="var(--brand-microsoft-yellow)" />
   </svg>
 );
 
 // Google Icon
 export const GoogleIcon = ({ size = 40, className }: AuthIconProps): React.ReactElement => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 40 40" 
-    fill="none" 
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 40 40"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
     aria-label="Google"
   >
-    <rect width="40" height="40" rx="8" fill="var(--ds-color-neutral-background-default)"/>
-    <path d="M29.6 20.227c0-.709-.064-1.39-.182-2.045H20v3.868h5.382a4.6 4.6 0 01-1.996 3.018v2.51h3.232c1.891-1.742 2.982-4.305 2.982-7.35z" fill="var(--brand-google-blue)"/>
-    <path d="M20 30c2.7 0 4.964-.895 6.618-2.423l-3.232-2.509c-.895.6-2.04.955-3.386.955-2.605 0-4.81-1.76-5.595-4.123h-3.341v2.59A10 10 0 0020 30z" fill="var(--brand-google-green)"/>
-    <path d="M14.405 21.9c-.2-.6-.314-1.24-.314-1.9s.114-1.3.314-1.9v-2.59h-3.34A10 10 0 0010 20c0 1.614.386 3.14 1.064 4.49l3.34-2.59z" fill="var(--brand-google-yellow)"/>
-    <path d="M20 13.977c1.468 0 2.786.505 3.823 1.496l2.868-2.868C24.959 10.99 22.695 10 20 10a10 10 0 00-8.936 5.51l3.34 2.59c.787-2.364 2.991-4.123 5.596-4.123z" fill="var(--brand-google-red)"/>
+    <rect width="40" height="40" rx="8" fill="var(--ds-color-neutral-background-default)" />
+    <path
+      d="M29.6 20.227c0-.709-.064-1.39-.182-2.045H20v3.868h5.382a4.6 4.6 0 01-1.996 3.018v2.51h3.232c1.891-1.742 2.982-4.305 2.982-7.35z"
+      fill="var(--brand-google-blue)"
+    />
+    <path
+      d="M20 30c2.7 0 4.964-.895 6.618-2.423l-3.232-2.509c-.895.6-2.04.955-3.386.955-2.605 0-4.81-1.76-5.595-4.123h-3.341v2.59A10 10 0 0020 30z"
+      fill="var(--brand-google-green)"
+    />
+    <path
+      d="M14.405 21.9c-.2-.6-.314-1.24-.314-1.9s.114-1.3.314-1.9v-2.59h-3.34A10 10 0 0010 20c0 1.614.386 3.14 1.064 4.49l3.34-2.59z"
+      fill="var(--brand-google-yellow)"
+    />
+    <path
+      d="M20 13.977c1.468 0 2.786.505 3.823 1.496l2.868-2.868C24.959 10.99 22.695 10 20 10a10 10 0 00-8.936 5.51l3.34 2.59c.787-2.364 2.991-4.123 5.596-4.123z"
+      fill="var(--brand-google-red)"
+    />
   </svg>
 );
 
@@ -656,11 +668,11 @@ export const BankIdIcon = ({ size = 40, className }: AuthIconProps): React.React
     className={className}
     aria-label="BankID"
   >
-    <rect width="40" height="40" rx="8" fill="var(--ds-color-accent-base-hover)"/>
-    <path d="M12 14h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4v-8z" fill="white"/>
-    <rect x="12" y="24" width="4" height="4" fill="white"/>
-    <rect x="20" y="14" width="4" height="14" fill="white"/>
-    <path d="M28 14h-4v14h4c2.2 0 4-3.1 4-7s-1.8-7-4-7z" fill="white"/>
+    <rect width="40" height="40" rx="8" fill="var(--ds-color-accent-base-hover)" />
+    <path d="M12 14h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4v-8z" fill="white" />
+    <rect x="12" y="24" width="4" height="4" fill="white" />
+    <rect x="20" y="14" width="4" height="14" fill="white" />
+    <path d="M28 14h-4v14h4c2.2 0 4-3.1 4-7s-1.8-7-4-7z" fill="white" />
   </svg>
 );
 
@@ -855,4 +867,3 @@ export const StorageIcon = (props: React.ComponentProps<typeof Icon>) => (
     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
   </Icon>
 );
-
