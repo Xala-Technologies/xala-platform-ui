@@ -153,3 +153,7 @@ export type {
   StatusColorMap,
 } from './ActivityTimeline';
 // Note: ActivityStatus is not exported to avoid conflict with blocks/activity
+
+// Key Facts
+export { KeyFacts } from './KeyFacts';
+export type { KeyFactsProps, KeyFactsLabels, KeyFactItem, KeyFactType } from './KeyFacts';
