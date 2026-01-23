@@ -41,7 +41,7 @@ export const THEMES: Record<ThemeId, string | string[]> = {
   altinn: OFFICIAL_THEMES.altinn,
   uutilsynet: OFFICIAL_THEMES.uutilsynet,
   portal: OFFICIAL_THEMES.portal,
-  custom: ['/themes/xala.css', '/themes/xala-extensions.css', '/themes/brand-colors.css'],
+  custom: ['/themes/xala.css', '/themes/xala-extensions.css'],
 };
 
 /**
