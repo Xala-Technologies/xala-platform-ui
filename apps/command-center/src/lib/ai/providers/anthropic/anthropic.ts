@@ -36,7 +36,8 @@ export class AnthropicProvider implements AIProviderClient {
     }
 
     isInitialized(): boolean {
-        return !!(this.client && this.apiKey && this.model);
+        // Only require client and apiKey - model can be fetched lazily
+        return !!(this.client && this.apiKey);
     }
 
     getApiKeyPreview(): string | null {
@@ -49,8 +50,24 @@ export class AnthropicProvider implements AIProviderClient {
         this.model = null;
     }
 
+    /**
+     * Ensure model is set - fetch from API if needed
+     */
+    private async ensureModel(): Promise<void> {
+        if (this.model) return;
+        const models = await this.listModels();
+        if (models.length === 0) {
+            // Fallback to default model if API call fails
+            this.model = 'claude-sonnet-4-20250514';
+        } else {
+            this.model = models[0].id;
+        }
+        console.log(`[Anthropic] Using model: ${this.model}`);
+    }
+
     async *createStreamedMessage(options: StreamMessageOptions): AsyncGenerator<StreamEvent, void, unknown> {
-        if (!this.client || !this.model) throw new Error('Not initialized');
+        if (!this.client) throw new Error('Not initialized');
+        await this.ensureModel();
 
         const messages = options.messages
             .filter((m: any) => m.role !== 'system')
@@ -73,7 +90,8 @@ export class AnthropicProvider implements AIProviderClient {
     }
 
     async createMessage(options: StreamMessageOptions): Promise<string> {
-        if (!this.client || !this.model) throw new Error('Not initialized');
+        if (!this.client) throw new Error('Not initialized');
+        await this.ensureModel();
 
         const messages = options.messages
             .filter((m: any) => m.role !== 'system')

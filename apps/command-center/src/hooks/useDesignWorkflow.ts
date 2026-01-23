@@ -21,6 +21,7 @@ import {
     generateIncrementalPrompts,
 } from '@xala-technologies/design-workflow';
 import { getCurrentProvider } from '../lib/ai';
+import type { ClarificationQuestion, ClarificationAnswer, ClarificationAIResponse } from '../types/clarification';
 
 // ============================================
 // Types
@@ -30,6 +31,7 @@ export type DesignPhase = 'product-planning' | 'section-design' | 'export';
 export type ProductPlanningStep = 'vision' | 'roadmap' | 'data-model' | 'design-tokens' | 'shell';
 export type SectionDesignStep = 'shape' | 'sample-data' | 'design-screen' | 'screenshot';
 export type ExportStep = 'export';
+export type ClarificationMode = 'none' | 'asking' | 'answered';
 
 export interface DesignWorkflowState {
     phase: DesignPhase;
@@ -41,6 +43,11 @@ export interface DesignWorkflowState {
     exportConfig?: ExportConfig;
     isLoading: boolean;
     error: string | null;
+    // Clarification state
+    clarificationMode: ClarificationMode;
+    clarificationQuestions: ClarificationQuestion[];
+    clarificationAnswers: ClarificationAnswer[];
+    clarificationIntro?: string;
 }
 
 export interface DesignWorkflowActions {
@@ -54,6 +61,12 @@ export interface DesignWorkflowActions {
 
     // Phase 3: Export
     exportProduct: (config: { mode: 'oneshot' | 'incremental' }) => Promise<string>;
+
+    // Clarification Flow
+    askClarifications: (step: string, input: string) => Promise<ClarificationAIResponse>;
+    setClarificationAnswer: (questionId: string, value: string | string[] | number) => void;
+    submitClarifications: () => Promise<void>;
+    skipClarifications: () => void;
 
     // Navigation
     setPhase: (phase: DesignPhase) => void;
@@ -70,6 +83,10 @@ const initialState: DesignWorkflowState = {
     sections: [],
     isLoading: false,
     error: null,
+    // Clarification state
+    clarificationMode: 'none',
+    clarificationQuestions: [],
+    clarificationAnswers: [],
 };
 
 // ============================================
@@ -282,12 +299,100 @@ The output MUST be valid JSON matching this structure:
 
     const reset = useCallback(() => setState(initialState), []);
 
+    // Clarification Flow Actions
+    const askClarifications = useCallback(async (step: string, input: string): Promise<ClarificationAIResponse> => {
+        setState(s => ({ ...s, isLoading: true, error: null }));
+
+        try {
+            const provider = getCurrentProvider();
+            if (!provider) throw new Error('AI provider not initialized');
+
+            const systemPrompt = `You are a product specification assistant. Generate clarification questions to refine the user's input.
+Return a JSON object with this structure:
+{
+  "intro": "Brief acknowledgment of user's input",
+  "questions": [
+    { "id": "q1", "type": "radio", "question": "Question text?", "options": [{"id": "opt1", "label": "Option 1"}, ...] },
+    { "id": "q2", "type": "checkbox", "question": "Select all that apply:", "options": [...] },
+    { "id": "q3", "type": "text", "question": "Please describe..." },
+    { "id": "q4", "type": "scale", "question": "Rate 1-10..." }
+  ]
+}
+Question types: radio (single choice), checkbox (multi-select), select (dropdown), text (free text), scale (1-10).
+Generate 3-5 focused questions that help clarify scope, target users, priorities, and constraints.`;
+
+            const userPrompt = `Step: ${step}
+User input: ${input}
+
+Generate clarification questions to refine this into a proper specification.`;
+
+            const response = await provider.createMessage({
+                messages: [{ role: 'user', content: userPrompt }],
+                system: systemPrompt,
+            });
+
+            // Parse JSON from response
+            const jsonMatch = response.match(/\{[\s\S]*\}/);
+            if (!jsonMatch) throw new Error('Invalid AI response format');
+
+            const parsed: ClarificationAIResponse = JSON.parse(jsonMatch[0]);
+
+            setState(s => ({
+                ...s,
+                isLoading: false,
+                clarificationMode: 'asking',
+                clarificationQuestions: parsed.questions || [],
+                clarificationAnswers: [],
+                clarificationIntro: parsed.intro,
+            }));
+
+            return parsed;
+        } catch (err) {
+            const error = err instanceof Error ? err.message : 'Failed to generate questions';
+            setState(s => ({ ...s, isLoading: false, error }));
+            throw err;
+        }
+    }, []);
+
+    const setClarificationAnswer = useCallback((questionId: string, value: string | string[] | number) => {
+        setState(s => {
+            const existing = s.clarificationAnswers.findIndex(a => a.questionId === questionId);
+            const newAnswers = [...s.clarificationAnswers];
+
+            if (existing >= 0) {
+                newAnswers[existing] = { questionId, value };
+            } else {
+                newAnswers.push({ questionId, value });
+            }
+
+            return { ...s, clarificationAnswers: newAnswers };
+        });
+    }, []);
+
+    const submitClarifications = useCallback(async () => {
+        setState(s => ({ ...s, clarificationMode: 'answered' }));
+    }, []);
+
+    const skipClarifications = useCallback(() => {
+        setState(s => ({
+            ...s,
+            clarificationMode: 'none',
+            clarificationQuestions: [],
+            clarificationAnswers: [],
+            clarificationIntro: undefined,
+        }));
+    }, []);
+
     return [state, {
         generateVision,
         generateRoadmap,
         generateDataModel,
         generateSection,
         exportProduct,
+        askClarifications,
+        setClarificationAnswer,
+        submitClarifications,
+        skipClarifications,
         setPhase,
         reset,
     }];
