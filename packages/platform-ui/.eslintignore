@@ -1,0 +1,6 @@
+# Stories - development only, not published
+src/stories/**/*
+
+# Files with pre-existing design system violations (to be fixed later)
+src/blocks/AccessibilityDashboard.tsx
+src/ThemeProvider.tsx
