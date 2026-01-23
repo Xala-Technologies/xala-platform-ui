@@ -24,9 +24,11 @@ export function getStatusColor(type: StatusIndicator['type']): string {
 /**
  * Get period status colors
  */
-export function getPeriodStatusColors(
-  type: PeriodStatus
-): { bg: string; text: string; border: string } {
+export function getPeriodStatusColors(type: PeriodStatus): {
+  bg: string;
+  text: string;
+  border: string;
+} {
   const colors: Record<PeriodStatus, { bg: string; text: string; border: string }> = {
     upcoming: {
       bg: 'var(--ds-color-info-surface-default)',

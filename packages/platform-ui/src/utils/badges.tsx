@@ -10,13 +10,11 @@ import type { ResourceBadge } from '../patterns/types';
 /**
  * Get badge color CSS variables based on variant
  */
-export function getBadgeColor(
-  variant: ResourceBadge['variant'] = 'neutral'
-): { bg: string; text: string } {
-  const colors: Record<
-    NonNullable<ResourceBadge['variant']>,
-    { bg: string; text: string }
-  > = {
+export function getBadgeColor(variant: ResourceBadge['variant'] = 'neutral'): {
+  bg: string;
+  text: string;
+} {
+  const colors: Record<NonNullable<ResourceBadge['variant']>, { bg: string; text: string }> = {
     neutral: {
       bg: 'var(--ds-color-neutral-surface-hover)',
       text: 'var(--ds-color-neutral-text-default)',

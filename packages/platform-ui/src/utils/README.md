@@ -36,12 +36,15 @@ style={{
 ## Utilities
 
 ### Icons (`icons.tsx`)
+
 Reusable icon components using inline SVG. All icons are accessible and follow Designsystemet principles.
 
 ### Badges (`badges.tsx`)
+
 Badge rendering utilities that use design tokens for all colors, spacing, and typography.
 
 ### Status (`status.tsx`)
+
 Status indicator utilities with color mappings using design tokens.
 
 ## Verification
@@ -53,6 +56,7 @@ pnpm verify:design-tokens
 ```
 
 The guardrails check ensures:
+
 - ✅ All colors use `var(--ds-color-*)`
 - ✅ All spacing uses `var(--ds-spacing-*)`
 - ✅ All typography uses `var(--ds-font-size-*)`
