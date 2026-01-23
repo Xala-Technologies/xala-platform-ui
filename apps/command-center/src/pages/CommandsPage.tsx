@@ -13,12 +13,11 @@ import {
     SectionCardHeader,
     SectionCardContent,
     CardGrid,
-    ResourceCard,
     Button,
     Stack,
     Heading,
     Paragraph,
-    Badge,
+    Tag,
     Drawer,
     Field,
     Label,
@@ -31,7 +30,7 @@ import { commandRegistry } from '../registry/command-registry';
 import { commandExecutor } from '../services/command-executor';
 import { CommandTerminal } from '../components/commands/CommandTerminal';
 import { TESTIDS } from '../constants/testids';
-import type { Command, CommandResult, GeneratedArtifact } from '../registry/types';
+import type { Command, CommandResult } from '../registry/types';
 
 export function CommandsPage() {
     const [selectedCommand, setSelectedCommand] = useState<Command | null>(null);
@@ -142,46 +141,50 @@ export function CommandsPage() {
                     <SectionCardContent>
                         <CardGrid>
                             {categoryCommands.map((command) => (
-                                <ResourceCard
+                                <div
                                     key={command.id}
-                                    title={command.name || command.id}
-                                    description={command.description}
                                     onClick={() => handleCommandClick(command)}
                                     data-testid={`${TESTIDS.commands.card}-${command.id}`}
-                                    actions={
-                                        <Stack direction="horizontal" spacing="var(--ds-spacing-2)">
-                                            {command.riskLevel && (
-                                                <Badge
-                                                    color={
-                                                        command.riskLevel === 'high'
-                                                            ? 'danger'
-                                                            : command.riskLevel === 'medium'
-                                                              ? 'warning'
-                                                              : 'neutral'
-                                                    }
-                                                    size="sm"
-                                                >
-                                                    {command.riskLevel}
-                                                </Badge>
-                                            )}
-                                            {command.isLongRunning && (
-                                                <Badge color="info" size="sm">
-                                                    Long-running
-                                                </Badge>
-                                            )}
-                                            <Button
-                                                variant="primary"
-                                                data-size="sm"
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleCommandClick(command);
-                                                }}
-                                            >
-                                                Execute
-                                            </Button>
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    <div style={{ padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+                                        <Stack spacing="var(--ds-spacing-3)">
+                                            <Heading level={3} data-size="sm">{command.name || command.id}</Heading>
+                                            <Paragraph data-size="sm">{command.description}</Paragraph>
                                         </Stack>
-                                    }
-                                />
+                                    </div>
+                                    <Stack direction="horizontal" spacing="var(--ds-spacing-2)" style={{ marginTop: 'var(--ds-spacing-2)' }}>
+                                        {command.riskLevel && (
+                                            <Tag
+                                                data-color={
+                                                    command.riskLevel === 'high'
+                                                        ? 'danger'
+                                                        : command.riskLevel === 'medium'
+                                                          ? 'warning'
+                                                          : 'neutral'
+                                                }
+                                                data-size="sm"
+                                            >
+                                                {command.riskLevel}
+                                            </Tag>
+                                        )}
+                                        {command.isLongRunning && (
+                                            <Tag data-color="info" data-size="sm">
+                                                Long-running
+                                            </Tag>
+                                        )}
+                                        <Button
+                                            data-color="accent"
+                                            data-size="sm"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleCommandClick(command);
+                                            }}
+                                        >
+                                            Execute
+                                        </Button>
+                                    </Stack>
+                                </div>
                             ))}
                         </CardGrid>
                     </SectionCardContent>
@@ -191,10 +194,10 @@ export function CommandsPage() {
             {/* Command Execution Modal */}
             {selectedCommand && (
                 <Drawer
-                    open={showExecutionModal}
+                    isOpen={showExecutionModal}
                     onClose={handleClose}
                     title={selectedCommand.name || selectedCommand.id}
-                    size="large"
+                    size="lg"
                     data-testid={TESTIDS.commands.modal}
                 >
                     <Stack spacing="var(--ds-spacing-6)">
@@ -253,23 +256,25 @@ export function CommandsPage() {
 
                                     {/* Environment Warning */}
                                     {selectedEnvironment === 'prod' && (
-                                        <Alert variant="error">
-                                            <Alert.Title>Production Environment</Alert.Title>
-                                            <Alert.Description>
-                                                <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                                    You are about to execute this command in <strong>production</strong>.
-                                                    This action will be logged and requires explicit confirmation.
-                                                </Paragraph>
-                                            </Alert.Description>
+                                        <Alert data-color="danger">
+                                            <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                                                Production Environment
+                                            </Heading>
+                                            <Paragraph data-size="sm" style={{ margin: 0 }}>
+                                                You are about to execute this command in production.
+                                                This action will be logged and requires explicit confirmation.
+                                            </Paragraph>
                                         </Alert>
                                     )}
 
                                     {selectedCommand.riskLevel === 'high' && (
-                                        <Alert variant="warning">
-                                            <Alert.Title>High Risk Command</Alert.Title>
-                                            <Alert.Description>
+                                        <Alert data-color="warning">
+                                            <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                                                High Risk Command
+                                            </Heading>
+                                            <Paragraph data-size="sm" style={{ margin: 0 }}>
                                                 This command requires confirmation before execution.
-                                            </Alert.Description>
+                                            </Paragraph>
                                         </Alert>
                                     )}
                                 </Stack>
@@ -291,6 +296,7 @@ export function CommandsPage() {
                                                     </Label>
                                                     {prop.type === 'string' && (
                                                         <Textfield
+                                                            label={prop.description || key}
                                                             value={formData[key] || ''}
                                                             onChange={(e) => handleInputChange(key, e.target.value)}
                                                             placeholder={prop.description}
@@ -339,31 +345,29 @@ export function CommandsPage() {
 
                         {/* Confirmation Prompt */}
                         {showConfirmation && (
-                            <Alert variant={selectedEnvironment === 'prod' ? 'error' : 'warning'}>
-                                <Alert.Title>
+                            <Alert data-color={selectedEnvironment === 'prod' ? 'danger' : 'warning'}>
+                                <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                                     {selectedEnvironment === 'prod' 
                                         ? 'Production Confirmation Required'
                                         : 'Confirmation Required'}
-                                </Alert.Title>
-                                <Alert.Description>
-                                    <Stack spacing="var(--ds-spacing-2)">
-                                        {selectedEnvironment === 'prod' && (
-                                            <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
-                                                ⚠️ You are about to execute this command in PRODUCTION.
-                                            </Paragraph>
-                                        )}
-                                        {selectedCommand.confirmationPrompt && (
-                                            <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                                {selectedCommand.confirmationPrompt}
-                                            </Paragraph>
-                                        )}
-                                        {selectedEnvironment === 'prod' && (
-                                            <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                                This action will be logged and cannot be undone easily.
-                                            </Paragraph>
-                                        )}
-                                    </Stack>
-                                </Alert.Description>
+                                </Heading>
+                                <Stack spacing="var(--ds-spacing-2)">
+                                    {selectedEnvironment === 'prod' && (
+                                        <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+                                            ⚠️ You are about to execute this command in PRODUCTION.
+                                        </Paragraph>
+                                    )}
+                                    {selectedCommand.confirmationPrompt && (
+                                        <Paragraph data-size="sm" style={{ margin: 0 }}>
+                                            {selectedCommand.confirmationPrompt}
+                                        </Paragraph>
+                                    )}
+                                    {selectedEnvironment === 'prod' && (
+                                        <Paragraph data-size="sm" style={{ margin: 0 }}>
+                                            This action will be logged and cannot be undone easily.
+                                        </Paragraph>
+                                    )}
+                                </Stack>
                             </Alert>
                         )}
 

@@ -16,7 +16,7 @@ import {
     Paragraph,
     Button,
     DataTable,
-    Badge,
+    Tag,
     PageContainer,
     Drawer,
     Stack,
@@ -31,7 +31,7 @@ import { revisionManager } from '../services/revision-manager';
 import { promotionScaffolder } from '../services/promotion-scaffolder';
 import { ApprovalFlow } from '../components/approval/ApprovalFlow';
 import { TESTIDS } from '../constants/testids';
-import type { Approval, Revision } from '../registry/types';
+import type { Approval } from '../registry/types';
 
 export function ApprovalStatus() {
     const [selectedApproval, setSelectedApproval] = useState<Approval | null>(null);
@@ -53,6 +53,7 @@ export function ApprovalStatus() {
     // Table columns
     const columns = [
         {
+            id: 'revisionId',
             key: 'revisionId',
             header: 'Revision',
             render: (approval: Approval) => (
@@ -62,6 +63,7 @@ export function ApprovalStatus() {
             ),
         },
         {
+            id: 'workflow',
             key: 'workflow',
             header: 'Workflow',
             render: (approval: Approval) => {
@@ -74,24 +76,26 @@ export function ApprovalStatus() {
             },
         },
         {
+            id: 'status',
             key: 'status',
             header: 'Status',
             render: (approval: Approval) => (
-                <Badge
-                    color={
+                <Tag
+                    data-color={
                         approval.status === 'approved'
                             ? 'success'
                             : approval.status === 'rejected'
                               ? 'danger'
                               : 'warning'
                     }
-                    size="sm"
+                    data-size="sm"
                 >
                     {approval.status}
-                </Badge>
+                </Tag>
             ),
         },
         {
+            id: 'gates',
             key: 'gates',
             header: 'Gates',
             render: (approval: Approval) => {
@@ -105,6 +109,7 @@ export function ApprovalStatus() {
             },
         },
         {
+            id: 'checklist',
             key: 'checklist',
             header: 'Checklist',
             render: (approval: Approval) => {
@@ -118,6 +123,7 @@ export function ApprovalStatus() {
             },
         },
         {
+            id: 'requestedAt',
             key: 'requestedAt',
             header: 'Requested',
             render: (approval: Approval) => (
@@ -127,6 +133,7 @@ export function ApprovalStatus() {
             ),
         },
         {
+            id: 'actions',
             key: 'actions',
             header: 'Actions',
             render: (approval: Approval) => {
@@ -136,7 +143,7 @@ export function ApprovalStatus() {
                 return (
                     <Stack direction="horizontal" spacing="var(--ds-spacing-2)">
                         <Button
-                            variant="secondary"
+                            data-color="neutral"
                             data-size="sm"
                             onClick={() => {
                                 setSelectedApproval(approval);
@@ -149,7 +156,7 @@ export function ApprovalStatus() {
                         {approval.status === 'pending' && (
                             <>
                                 <Button
-                                    variant="primary"
+                                    data-color="accent"
                                     data-size="sm"
                                     onClick={() => handleApprove(approval)}
                                     data-testid={`${TESTIDS.approvals.approveBtn}-${approval.id}`}
@@ -157,7 +164,7 @@ export function ApprovalStatus() {
                                     Approve
                                 </Button>
                                 <Button
-                                    variant="secondary"
+                                    data-color="neutral"
                                     data-size="sm"
                                     onClick={() => {
                                         setSelectedApproval(approval);
@@ -171,7 +178,7 @@ export function ApprovalStatus() {
                         )}
                         {canPromote && (
                             <Button
-                                variant="primary"
+                                data-color="accent"
                                 data-size="sm"
                                 onClick={() => handlePromote(approval.revisionId)}
                                 disabled={promotingRevisionId === approval.revisionId}
@@ -287,6 +294,7 @@ export function ApprovalStatus() {
                         <DataTable
                             columns={columns}
                             data={approvals}
+                            getRowKey={(approval) => approval.id}
                             data-testid={TESTIDS.approvals.table}
                         />
                     )}
@@ -322,14 +330,14 @@ export function ApprovalStatus() {
             {/* Reject Dialog */}
             {showRejectDialog && selectedApproval && (
                 <Drawer
-                    open={showRejectDialog}
+                    isOpen={showRejectDialog}
                     onClose={() => {
                         setShowRejectDialog(false);
                         setSelectedApproval(null);
                         setRejectionReason('');
                     }}
                     title="Reject Approval"
-                    size="medium"
+                    size="md"
                 >
                     <Stack spacing="var(--ds-spacing-4)">
                         <Paragraph data-size="sm">
@@ -346,7 +354,7 @@ export function ApprovalStatus() {
                         </Field>
                         <Stack direction="horizontal" spacing="var(--ds-spacing-2)" justify="end">
                             <Button
-                                variant="secondary"
+                                data-color="neutral"
                                 onClick={() => {
                                     setShowRejectDialog(false);
                                     setRejectionReason('');
@@ -355,7 +363,7 @@ export function ApprovalStatus() {
                                 Cancel
                             </Button>
                             <Button
-                                variant="primary"
+                                data-color="accent"
                                 onClick={handleReject}
                                 disabled={!rejectionReason.trim()}
                                 data-testid={TESTIDS.approvals.rejectBtn}
@@ -370,37 +378,35 @@ export function ApprovalStatus() {
             {/* Promotion Result */}
             {promotionResult && (
                 <Alert
-                    variant={promotionResult.success ? 'success' : 'error'}
+                    data-color={promotionResult.success ? 'success' : 'danger'}
                     style={{ marginTop: 'var(--ds-spacing-4)' }}
                 >
-                    <Alert.Title>
+                    <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                         {promotionResult.success ? 'Promotion Successful' : 'Promotion Failed'}
-                    </Alert.Title>
-                    <Alert.Description>
-                        {promotionResult.success ? (
-                            <Stack spacing="var(--ds-spacing-2)">
-                                {promotionResult.componentPath && (
-                                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                        Component: {promotionResult.componentPath}
-                                    </Paragraph>
-                                )}
-                                {promotionResult.storybookPath && (
-                                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                        Storybook: {promotionResult.storybookPath}
-                                    </Paragraph>
-                                )}
-                                {promotionResult.docsPath && (
-                                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                        Documentation: {promotionResult.docsPath}
-                                    </Paragraph>
-                                )}
-                            </Stack>
-                        ) : (
-                            <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                {promotionResult.errors?.join(', ')}
-                            </Paragraph>
-                        )}
-                    </Alert.Description>
+                    </Heading>
+                    {promotionResult.success ? (
+                        <Stack spacing="var(--ds-spacing-2)">
+                            {promotionResult.componentPath && (
+                                <Paragraph data-size="sm" style={{ margin: 0 }}>
+                                    Component: {promotionResult.componentPath}
+                                </Paragraph>
+                            )}
+                            {promotionResult.storybookPath && (
+                                <Paragraph data-size="sm" style={{ margin: 0 }}>
+                                    Storybook: {promotionResult.storybookPath}
+                                </Paragraph>
+                            )}
+                            {promotionResult.docsPath && (
+                                <Paragraph data-size="sm" style={{ margin: 0 }}>
+                                    Documentation: {promotionResult.docsPath}
+                                </Paragraph>
+                            )}
+                        </Stack>
+                    ) : (
+                        <Paragraph data-size="sm" style={{ margin: 0 }}>
+                            {promotionResult.errors?.join(', ')}
+                        </Paragraph>
+                    )}
                 </Alert>
             )}
         </PageContainer>

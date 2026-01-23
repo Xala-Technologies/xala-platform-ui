@@ -16,9 +16,8 @@ import {
     Drawer,
     Button,
     Stack,
-    Heading,
     Paragraph,
-    Badge,
+    Tag,
     Select,
     Field,
     Label,
@@ -48,6 +47,7 @@ export function RevisionsPage() {
     // Table columns
     const columns = [
         {
+            id: 'workflowId',
             key: 'workflowId',
             header: 'Workflow',
             render: (revision: Revision) => (
@@ -57,6 +57,7 @@ export function RevisionsPage() {
             ),
         },
         {
+            id: 'createdAt',
             key: 'createdAt',
             header: 'Created',
             render: (revision: Revision) => (
@@ -66,6 +67,7 @@ export function RevisionsPage() {
             ),
         },
         {
+            id: 'author',
             key: 'author',
             header: 'Author',
             render: (revision: Revision) => (
@@ -75,11 +77,12 @@ export function RevisionsPage() {
             ),
         },
         {
+            id: 'status',
             key: 'status',
             header: 'Status',
             render: (revision: Revision) => (
-                <Badge
-                    color={
+                <Tag
+                    data-color={
                         revision.status === 'approved'
                             ? 'success'
                             : revision.status === 'rejected'
@@ -88,13 +91,14 @@ export function RevisionsPage() {
                                 ? 'warning'
                                 : 'neutral'
                     }
-                    size="sm"
+                    data-size="sm"
                 >
                     {revision.status.replace('_', ' ')}
-                </Badge>
+                </Tag>
             ),
         },
         {
+            id: 'artifacts',
             key: 'artifacts',
             header: 'Artifacts',
             render: (revision: Revision) => (
@@ -104,6 +108,7 @@ export function RevisionsPage() {
             ),
         },
         {
+            id: 'actions',
             key: 'actions',
             header: 'Actions',
             render: (revision: Revision) => {
@@ -241,6 +246,7 @@ export function RevisionsPage() {
                         <DataTable
                             columns={columns}
                             data={filteredRevisions}
+                            getRowKey={(revision) => revision.id}
                             data-testid={TESTIDS.revisions.table}
                         />
                     )}
@@ -250,13 +256,13 @@ export function RevisionsPage() {
             {/* Revision Detail Drawer */}
             {selectedRevision && (
                 <Drawer
-                    open={!!selectedRevision}
+                    isOpen={!!selectedRevision}
                     onClose={() => {
                         setSelectedRevision(null);
                         setCompareRevisionId(null);
                     }}
                     title={`Revision: ${selectedRevision.id.slice(0, 8)}`}
-                    size="large"
+                    size="lg"
                 >
                     <Stack spacing="var(--ds-spacing-6)">
                         {/* Revision Info */}
@@ -289,8 +295,8 @@ export function RevisionsPage() {
                                             >
                                                 Status
                                             </Paragraph>
-                                            <Badge
-                                                color={
+                                            <Tag
+                                                data-color={
                                                     selectedRevision.status === 'approved'
                                                         ? 'success'
                                                         : selectedRevision.status === 'rejected'
@@ -299,10 +305,10 @@ export function RevisionsPage() {
                                                             ? 'warning'
                                                             : 'neutral'
                                                 }
-                                                size="sm"
+                                                data-size="sm"
                                             >
                                                 {selectedRevision.status.replace('_', ' ')}
-                                            </Badge>
+                                            </Tag>
                                         </div>
                                         <div>
                                             <Paragraph
@@ -339,7 +345,7 @@ export function RevisionsPage() {
                                             <ArtifactDiffViewer
                                                 key={artifact.id}
                                                 artifact={artifact}
-                                                previousArtifact={previousArtifact}
+                                                previousArtifact={previousArtifact || undefined}
                                                 changes={
                                                     comparisonData
                                                         ? [

@@ -93,7 +93,7 @@ export class PromotionScaffolder {
      * Scaffold component file
      */
     private async scaffoldComponent(
-        revision: Revision,
+        _revision: Revision,
         composeData: any,
         layer: string,
         componentName: string
@@ -103,7 +103,7 @@ export class PromotionScaffolder {
         const componentPath = `packages/platform-ui/src/${layer}/${componentName}.tsx`;
 
         // Mock: In real implementation, would generate component code from composeData
-        const componentCode = this.generateComponentCode(componentName, composeData);
+        this.generateComponentCode(componentName, composeData);
 
         // Would write: await writeFile(componentPath, componentCode);
         console.log(`[MOCK] Would scaffold component at ${componentPath}`);
@@ -115,7 +115,7 @@ export class PromotionScaffolder {
      * Scaffold Storybook story
      */
     private async scaffoldStorybookStory(
-        revision: Revision,
+        _revision: Revision,
         composeData: any,
         layer: string,
         componentName: string
@@ -123,7 +123,7 @@ export class PromotionScaffolder {
         const storyPath = `packages/platform-ui/src/stories/${this.getStoryCategory(layer)}/${componentName}.stories.tsx`;
 
         // Mock: In real implementation, would generate story code
-        const storyCode = this.generateStorybookStoryCode(componentName, layer, composeData);
+        this.generateStorybookStoryCode(componentName, layer, composeData);
 
         // Would write: await writeFile(storyPath, storyCode);
         console.log(`[MOCK] Would scaffold story at ${storyPath}`);
@@ -135,7 +135,7 @@ export class PromotionScaffolder {
      * Scaffold documentation
      */
     private async scaffoldDocumentation(
-        revision: Revision,
+        _revision: Revision,
         sectionArtifact: GeneratedArtifact | undefined,
         componentName: string
     ): Promise<string | undefined> {
@@ -186,7 +186,7 @@ export default ${componentName};
     /**
      * Generate Storybook story code
      */
-    private generateStorybookStoryCode(componentName: string, layer: string, composeData: any): string {
+    private generateStorybookStoryCode(componentName: string, layer: string, _composeData: any): string {
         return `import type { Meta, StoryObj } from '@storybook/react';
 import { ${componentName} } from '../../${layer}/${componentName}';
 

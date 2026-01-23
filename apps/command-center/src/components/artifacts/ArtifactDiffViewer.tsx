@@ -30,7 +30,9 @@ export function ArtifactDiffViewer({
     changes,
     'data-testid': testId,
 }: ArtifactDiffViewerProps) {
-    const hasChanges = changes && changes.length > 0;
+    // Use changes from props, or fall back to artifact.diff.changes
+    const actualChanges = changes || artifact.diff?.changes || [];
+    const hasChanges = actualChanges.length > 0;
     const hasPrevious = !!previousArtifact;
 
     if (!hasPrevious && !hasChanges) {
@@ -129,7 +131,7 @@ export function ArtifactDiffViewer({
                                 </Heading>
                                 {hasChanges && (
                                     <Tag data-color="info" data-size="sm">
-                                        {changes.length} change{changes.length !== 1 ? 's' : ''}
+                                        {actualChanges.length} change{actualChanges.length !== 1 ? 's' : ''}
                                     </Tag>
                                 )}
                             </Stack>
@@ -159,7 +161,7 @@ export function ArtifactDiffViewer({
                             Changes Summary
                         </Heading>
                         <Stack spacing="var(--ds-spacing-1)">
-                            {changes.map((change, index) => (
+                            {actualChanges.map((change, index) => (
                                 <Stack
                                     key={index}
                                     direction="horizontal"

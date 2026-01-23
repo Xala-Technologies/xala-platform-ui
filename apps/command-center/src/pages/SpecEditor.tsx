@@ -205,10 +205,10 @@ export function SpecEditor() {
       {/* Preview Drawer */}
       {showPreview && (
         <Drawer
-          open={showPreview}
+          isOpen={showPreview}
           onClose={() => setShowPreview(false)}
           title={`Preview: ${componentNameSafe}`}
-          size="large"
+          size="lg"
         >
           <CompositionPreview
             componentName={componentNameSafe}

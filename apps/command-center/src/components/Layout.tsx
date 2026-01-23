@@ -4,7 +4,7 @@
  * Uses platform-ui shell components - apps should never define their own layout components.
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   AppLayout,
   DashboardSidebar,
@@ -19,6 +19,8 @@ import {
 } from '@xala-technologies/platform-ui';
 import type { SidebarSection } from '@xala-technologies/platform-ui';
 import { TESTIDS } from '../constants/testids';
+import { ApiKeyModal } from './settings/ApiKeyModal';
+import { anthropicClient } from '../lib/anthropic/client';
 
 const sidebarSections: SidebarSection[] = [
   {
@@ -67,6 +69,14 @@ const sidebarSections: SidebarSection[] = [
 export function Layout() {
   const [searchValue, setSearchValue] = useState('');
   const [isDark, setIsDark] = useState(false);
+  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
+
+  // Check API key on mount
+  useEffect(() => {
+    if (!anthropicClient.isInitialized()) {
+      setShowApiKeyModal(true);
+    }
+  }, []);
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
@@ -82,46 +92,57 @@ export function Layout() {
   };
 
   return (
-    <AppLayout
-      data-testid={TESTIDS.common.content}
-      sidebar={
-        <DashboardSidebar
-          title="Xala"
-          subtitle="Command Center"
-          sections={sidebarSections}
-          width={320}
-          data-testid={TESTIDS.common.sidebar}
-        />
-      }
-      header={
-        <DashboardHeader
-          data-testid={TESTIDS.common.header}
-          leftSlot={
-            <Heading level={1} data-size="sm">Design Governance</Heading>
-          }
-          searchPlaceholder="Search workflows, specs..."
-          searchValue={searchValue}
-          onSearchChange={handleSearch}
-          showThemeToggle
-          isDark={isDark}
-          onThemeToggle={handleThemeToggle}
-          showNotifications
-          notificationCount={3}
-          onNotificationClick={handleNotificationClick}
-          user={{
-            name: 'Admin User',
-            email: 'admin@xala.no',
-          }}
-          onLogout={() => console.log('Logout')}
-          onSettingsClick={() => console.log('Settings')}
-          onProfileClick={() => console.log('Profile')}
-          actions={
-            <Button variant="primary" data-size="sm">
-              New Spec
-            </Button>
-          }
-        />
-      }
-    />
+    <>
+      <AppLayout
+        data-testid={TESTIDS.common.content}
+        sidebar={
+          <DashboardSidebar
+            title="Xala"
+            subtitle="Command Center"
+            sections={sidebarSections}
+            width={320}
+            data-testid={TESTIDS.common.sidebar}
+          />
+        }
+        header={
+          <DashboardHeader
+            data-testid={TESTIDS.common.header}
+            leftSlot={
+              <Heading level={1} data-size="sm">Design Governance</Heading>
+            }
+            searchPlaceholder="Search workflows, specs..."
+            searchValue={searchValue}
+            onSearchChange={handleSearch}
+            showThemeToggle
+            isDark={isDark}
+            onThemeToggle={handleThemeToggle}
+            showNotifications
+            notificationCount={3}
+            onNotificationClick={handleNotificationClick}
+            user={{
+              name: 'Admin User',
+              email: 'admin@xala.no',
+            }}
+            onLogout={() => console.log('Logout')}
+            onSettingsClick={() => {
+              setShowApiKeyModal(true);
+            }}
+            onProfileClick={() => console.log('Profile')}
+            actions={
+              <Button variant="primary" data-size="sm">
+                New Spec
+              </Button>
+            }
+          />
+        }
+      />
+      <ApiKeyModal
+        isOpen={showApiKeyModal}
+        onClose={() => setShowApiKeyModal(false)}
+        onKeySet={() => {
+          setShowApiKeyModal(false);
+        }}
+      />
+    </>
   );
 }

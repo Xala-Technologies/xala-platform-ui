@@ -44,8 +44,9 @@ describe('ArtifactValidationPanel', () => {
     it('renders valid status correctly', () => {
         render(<ArtifactValidationPanel validationResult={mockValidResult} />);
         
+        // When valid with no errors/warnings, shows success card
         expect(screen.getByText('Valid')).toBeInTheDocument();
-        expect(screen.getByText('Validation Results')).toBeInTheDocument();
+        expect(screen.getByText(/Artifact validation passed/)).toBeInTheDocument();
     });
 
     it('renders invalid status correctly', () => {
@@ -59,6 +60,7 @@ describe('ArtifactValidationPanel', () => {
         
         expect(screen.getByText(/Validation Errors/)).toBeInTheDocument();
         expect(screen.getByText('Component name is required')).toBeInTheDocument();
+        // Path is now in a separate Paragraph, so search for it
         expect(screen.getByText(/\$.components\[0\]\.name/)).toBeInTheDocument();
     });
 
@@ -85,8 +87,9 @@ describe('ArtifactValidationPanel', () => {
     it('shows success message when validation passes', () => {
         render(<ArtifactValidationPanel validationResult={mockValidResult} />);
         
-        expect(screen.getByText(/Validation Passed/)).toBeInTheDocument();
-        expect(screen.getByText(/All validation checks passed successfully/)).toBeInTheDocument();
+        // When valid and no errors/warnings, component shows a success card
+        expect(screen.getByText('Valid')).toBeInTheDocument();
+        expect(screen.getByText(/Artifact validation passed/)).toBeInTheDocument();
     });
 
     it('uses correct testid when provided', () => {

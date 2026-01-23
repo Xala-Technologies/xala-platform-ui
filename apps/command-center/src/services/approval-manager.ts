@@ -6,7 +6,6 @@
 
 import { Approval, ApprovalChecklistItem, ApprovalGate, Revision } from '../registry/types';
 import { revisionManager } from './revision-manager';
-import { artifactValidator } from './artifact-validator';
 
 export class ApprovalManager {
     private approvals: Map<string, Approval>;

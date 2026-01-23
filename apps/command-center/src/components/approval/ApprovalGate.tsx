@@ -67,7 +67,7 @@ export function ApprovalGate({ gate, 'data-testid': testId }: ApprovalGateProps)
 
                 {gate.details && (
                     <Alert
-                        variant={gate.status === 'fail' ? 'error' : gate.status === 'pass' ? 'success' : 'info'}
+                        data-color={gate.status === 'fail' ? 'danger' : gate.status === 'pass' ? 'success' : 'info'}
                     >
                         <Paragraph data-size="sm" style={{ margin: 0 }}>
                             {gate.details}

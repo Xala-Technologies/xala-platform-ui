@@ -11,6 +11,8 @@ export const TESTIDS = {
         header: 'cc-common-header',
         content: 'cc-common-content',
         footer: 'cc-common-footer',
+        apiKeyInput: 'cc-common-api-key-input',
+        apiKeySave: 'cc-common-api-key-save',
     },
     dashboard: {
         root: 'cc-dashboard-root',
@@ -33,6 +35,7 @@ export const TESTIDS = {
         prevBtn: 'cc-session-prev-btn',
         runBtn: 'cc-session-run-command-btn',
         exitBtn: 'cc-session-exit-btn',
+        formField: 'cc-session-form-field',
     },
     specEditor: {
         root: 'cc-spec-editor-root',

@@ -56,16 +56,7 @@ const COMPOSE_SCHEMA = {
     },
 };
 
-const TESTIDS_SCHEMA = {
-    type: 'object',
-    description: 'Test ID mapping object',
-    additionalProperties: {
-        oneOf: [
-            { type: 'string' },
-            { type: 'object' },
-        ],
-    },
-};
+// TESTIDS_SCHEMA reserved for future use - will validate TESTIDS_*.json files
 
 export class SchemaValidator {
     /**
@@ -258,12 +249,12 @@ export class SchemaValidator {
      */
     private validateJSON(
         data: any,
-        errors: ValidationError[],
-        warnings: ValidationWarning[]
+        _errors: ValidationError[],
+        _warnings: ValidationWarning[]
     ): void {
         // Basic validation - JSON is already parsed
         if (data === null || data === undefined) {
-            warnings.push({
+            _warnings.push({
                 path: '/',
                 message: 'JSON data is null or undefined',
                 code: 'NULL_DATA',

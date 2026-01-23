@@ -11,7 +11,7 @@ import {
     Stack,
     Heading,
     Paragraph,
-    Badge,
+    Tag,
     Button,
     Alert,
     CodeBlock,
@@ -67,9 +67,9 @@ export function CompositionPreview({
         >
             <Stack spacing="var(--ds-spacing-4)">
                 <Stack direction="horizontal" align="center" spacing="var(--ds-spacing-2)">
-                    <Badge data-color="warning" data-size="sm">
+                    <Tag data-color="warning" data-size="sm">
                         Component Not Found
-                    </Badge>
+                    </Tag>
                     <Heading level={3} data-size="md" style={{ margin: 0 }}>
                         {componentName}
                     </Heading>
@@ -138,9 +138,9 @@ export function CompositionPreview({
                                 >
                                     Layer:
                                 </Paragraph>
-                                <Badge data-color="neutral" data-size="sm">
+                                <Tag data-color="neutral" data-size="sm">
                                     {composeData.layer}
-                                </Badge>
+                                </Tag>
                             </div>
                         )}
                     </Stack>

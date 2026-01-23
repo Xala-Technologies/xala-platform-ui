@@ -5,6 +5,7 @@
  * Data loaded from WorkflowRegistry.
  */
 
+import { useState } from 'react';
 import {
   DashboardPageHeader,
   SectionCard,
@@ -18,6 +19,9 @@ import {
 import { workflowRegistry } from '../registry/workflow-registry';
 import { useWorkflowSession } from '../context/WorkflowSessionContext';
 import { useNavigate } from 'react-router-dom';
+import { AgentWorkflowSession } from '../components/workflow/AgentWorkflowSession';
+import { getAgentWorkflowSteps, isAgentWorkflow } from '../registry/agent-workflow-registry';
+import { anthropicClient } from '../lib/anthropic/client';
 
 const WORKFLOW_STEPS = [
   { step: 1, name: 'Vision' },
@@ -31,8 +35,24 @@ export function WorkflowCatalog() {
   const navigate = useNavigate();
   const { startSession } = useWorkflowSession();
   const workflows = workflowRegistry.getAllWorkflows();
+  const [selectedWorkflowId, setSelectedWorkflowId] = useState<string | null>(null);
+  const [showAgentSession, setShowAgentSession] = useState(false);
 
   const handleStartWorkflow = (id: string, command: string | undefined) => {
+    // Check if this is an agent workflow
+    if (isAgentWorkflow(id)) {
+      // Check if API key is set
+      if (!anthropicClient.isInitialized()) {
+        // API key modal will be shown by Layout component
+        return;
+      }
+      // Start agent workflow
+      setSelectedWorkflowId(id);
+      setShowAgentSession(true);
+      return;
+    }
+
+    // Legacy CLI-based workflow
     if (command) {
       // Copy command logic preserved for CLI-based workflows
       navigator.clipboard.writeText(command);
@@ -41,6 +61,13 @@ export function WorkflowCatalog() {
     // Start session
     startSession(id);
     navigate('/session');
+  };
+
+  const handleAgentSessionComplete = (session: any) => {
+    console.log('Agent workflow completed:', session);
+    setShowAgentSession(false);
+    setSelectedWorkflowId(null);
+    // Could navigate to revisions or show success message
   };
 
   return (
@@ -74,6 +101,20 @@ export function WorkflowCatalog() {
           />
         ))}
       </CardGrid>
+
+      {/* Agent Workflow Session Modal */}
+      {selectedWorkflowId && (
+        <AgentWorkflowSession
+          workflowId={selectedWorkflowId}
+          workflowSteps={getAgentWorkflowSteps(selectedWorkflowId)}
+          isOpen={showAgentSession}
+          onClose={() => {
+            setShowAgentSession(false);
+            setSelectedWorkflowId(null);
+          }}
+          onComplete={handleAgentSessionComplete}
+        />
+      )}
     </PageContainer>
   );
 }

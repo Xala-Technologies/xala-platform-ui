@@ -34,7 +34,7 @@ export function ApprovalChecklist({
     const allRequiredChecked = requiredItems.length > 0 && checkedRequiredItems.length === requiredItems.length;
 
     return (
-        <Stack spacing="var(--ds-spacing-4)" data-testid={testId || TESTIDS.approval.checklist}>
+        <Stack spacing="var(--ds-spacing-4)" data-testid={testId || TESTIDS.approvals.checklist}>
             <Stack direction="horizontal" align="center" spacing="var(--ds-spacing-2)">
                 <Heading level={3} data-size="md" style={{ margin: 0 }}>
                     Approval Checklist

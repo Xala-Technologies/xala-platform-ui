@@ -89,7 +89,7 @@ describe('ArtifactDiffViewer', () => {
         expect(screen.getByText('removed')).toBeInTheDocument();
     });
 
-    it('shows no changes message when diff is empty', () => {
+    it('shows no changes when diff is empty', () => {
         const artifactWithoutChanges: GeneratedArtifact = {
             ...mockArtifact,
             diff: {
@@ -100,7 +100,9 @@ describe('ArtifactDiffViewer', () => {
         
         render(<ArtifactDiffViewer artifact={artifactWithoutChanges} />);
         
-        expect(screen.getByText(/No changes/)).toBeInTheDocument();
+        // When there are no changes and no previous artifact, shows "No Previous Version"
+        expect(screen.getByText(/No Previous Version/)).toBeInTheDocument();
+        expect(screen.getByText(/This is the first version/)).toBeInTheDocument();
     });
 
     it('renders artifact content in code block', () => {
