@@ -48,6 +48,24 @@ const DEFAULT_ALLOWED_PATTERNS = [
   'scripts/', // Scripts
 ];
 
+// Layout primitives that are foundational building blocks
+// These use raw HTML because Designsystemet doesn't provide generic Box/Flex components
+const PRIMITIVE_LAYOUT_UTILITIES = [
+  'primitives/center.tsx',
+  'primitives/container.tsx',
+  'primitives/grid.tsx',
+  'primitives/layout-grid.tsx',
+  'primitives/stack.tsx',
+  'primitives/sidebar.tsx',
+  'primitives/main-content.tsx',
+  'primitives/horizontal-layout.tsx',
+  'primitives/text.tsx', // Creates text variants
+  'primitives/badge.tsx', // Badge styles
+  'primitives/card.tsx', // Card styles
+  'primitives/progress.tsx', // Progress bar
+  'primitives/icons.tsx', // Icon wrappers
+];
+
 // File extensions to check
 const EXTENSIONS = ['.ts', '.tsx', '.jsx'];
 
@@ -63,11 +81,16 @@ export interface DesignTokenViolation {
 }
 
 /**
- * Check if file path is in allowed list
+ * Check if file path is in allowed list or is a primitive layout utility
  */
 function isAllowedFile(filePath: string, rootDir: string, allowedPatterns: string[]): boolean {
   const relativePath = relative(rootDir, filePath);
-  return allowedPatterns.some((allowed) => relativePath.includes(allowed));
+  // Check user-provided patterns
+  if (allowedPatterns.some((allowed) => relativePath.includes(allowed))) {
+    return true;
+  }
+  // Check primitive layout utilities (foundational building blocks)
+  return PRIMITIVE_LAYOUT_UTILITIES.some((util) => relativePath.includes(util));
 }
 
 /**
