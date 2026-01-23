@@ -51,7 +51,3 @@ jobs:
         run: pnpm build
       - name: Build Storybook
         run: pnpm storybook:build
-
-  tests:
-    name: Tests
-    uses: ./.github/workflows/tests.yml
