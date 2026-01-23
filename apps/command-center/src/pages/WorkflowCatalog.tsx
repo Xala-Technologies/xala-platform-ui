@@ -21,7 +21,7 @@ import { useWorkflowSession } from '../context/WorkflowSessionContext';
 import { useNavigate } from 'react-router-dom';
 import { AgentWorkflowSession } from '../components/workflow/AgentWorkflowSession';
 import { getAgentWorkflowSteps, isAgentWorkflow } from '../registry/agent-workflow-registry';
-import { anthropicClient } from '../lib/anthropic/client';
+import { providerRegistry } from '../lib/ai';
 
 const WORKFLOW_STEPS = [
   { step: 1, name: 'Vision' },
@@ -42,7 +42,7 @@ export function WorkflowCatalog() {
     // Check if this is an agent workflow
     if (isAgentWorkflow(id)) {
       // Check if API key is set
-      if (!anthropicClient.isInitialized()) {
+      if (!providerRegistry.isInitialized()) {
         // API key modal will be shown by Layout component
         return;
       }

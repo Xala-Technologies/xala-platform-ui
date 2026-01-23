@@ -10,7 +10,7 @@ import type {
     GeneratedArtifact,
     ValidationResult,
 } from '../lib/anthropic/types';
-import { anthropicClient } from '../lib/anthropic/client';
+import { providerRegistry, getCurrentProvider } from '../lib/ai';
 import { getPlatformUIInventory, formatInventoryForAgent } from '../lib/anthropic/inventory';
 import { artifactValidator } from './artifact-validator';
 
@@ -105,8 +105,9 @@ export class WorkflowEngine {
         step: WorkflowStepDefinition,
         accumulatedAnswers: Record<string, any>
     ): Promise<string> {
-        if (!anthropicClient.isInitialized()) {
-            throw new Error('Anthropic client not initialized');
+        const provider = getCurrentProvider();
+        if (!provider || !providerRegistry.isInitialized()) {
+            throw new Error('AI provider not initialized. Please configure your API key in settings.');
         }
 
         const session = this.getSession(sessionId);
@@ -121,7 +122,7 @@ export class WorkflowEngine {
         const messages = session.messages
             .filter(m => m.role !== 'system')
             .map(m => ({
-                role: m.role as 'user' | 'assistant',
+                role: m.role as 'user' | 'assistant' | 'system',
                 content: m.content,
             }));
 
@@ -133,12 +134,15 @@ export class WorkflowEngine {
 
         // Stream response
         let fullResponse = '';
-        for await (const event of anthropicClient.createStreamedMessage({
+        for await (const event of provider.createStreamedMessage({
             messages,
             system: this.getSystemPrompt(step),
         })) {
             if (event.type === 'content_block_delta' && event.data.delta?.text) {
                 fullResponse += event.data.delta.text;
+            }
+            if (event.type === 'error') {
+                throw new Error(`AI provider error: ${event.data.error?.message || 'Unknown error'}`);
             }
         }
 

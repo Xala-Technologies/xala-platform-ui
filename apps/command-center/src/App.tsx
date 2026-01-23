@@ -7,12 +7,14 @@ import { WorkflowSessionPage } from './pages/WorkflowSessionPage';
 import { ApprovalStatus } from './pages/ApprovalStatus';
 import { RevisionsPage } from './pages/RevisionsPage';
 import { CommandsPage } from './pages/CommandsPage';
+import { OAuthCallback } from './pages/OAuthCallback';
 import { WorkflowSessionProvider } from './context/WorkflowSessionContext';
 
 function App() {
   return (
     <WorkflowSessionProvider>
       <Routes>
+        <Route path="/oauth/callback" element={<OAuthCallback />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="workflows" element={<WorkflowCatalog />} />

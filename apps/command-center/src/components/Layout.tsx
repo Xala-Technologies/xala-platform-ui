@@ -20,7 +20,7 @@ import {
 import type { SidebarSection } from '@xala-technologies/platform-ui';
 import { TESTIDS } from '../constants/testids';
 import { ApiKeyModal } from './settings/ApiKeyModal';
-import { anthropicClient } from '../lib/anthropic/client';
+import { providerRegistry } from '../lib/ai';
 
 const sidebarSections: SidebarSection[] = [
   {
@@ -73,7 +73,7 @@ export function Layout() {
 
   // Check API key on mount
   useEffect(() => {
-    if (!anthropicClient.isInitialized()) {
+    if (!providerRegistry.isInitialized()) {
       setShowApiKeyModal(true);
     }
   }, []);

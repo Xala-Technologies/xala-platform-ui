@@ -20,7 +20,7 @@ import {
 } from '@xala-technologies/platform-ui';
 import type { FormStep } from '@xala-technologies/platform-ui/patterns';
 import { workflowEngine } from '../../services/workflow-engine';
-import { anthropicClient } from '../../lib/anthropic/client';
+import { providerRegistry } from '../../lib/ai';
 import type {
     WorkflowSession,
     WorkflowStepDefinition,
@@ -94,13 +94,18 @@ export function AgentWorkflowSession({
         setAiResponse('');
 
         try {
+            const currentProvider = providerRegistry.getCurrentProvider();
+            if (!currentProvider) {
+                throw new Error('AI provider not initialized. Please configure your API key in settings.');
+            }
+
             // Stream AI response
             let fullResponse = '';
-            for await (const event of anthropicClient.createStreamedMessage({
+            for await (const event of currentProvider.createStreamedMessage({
                 messages: session.messages
                     .filter(m => m.role !== 'system')
                     .map(m => ({
-                        role: m.role as 'user' | 'assistant',
+                        role: m.role as 'user' | 'assistant' | 'system',
                         content: m.content,
                     })),
                 system: buildSystemPrompt(step),
@@ -108,6 +113,9 @@ export function AgentWorkflowSession({
                 if (event.type === 'content_block_delta' && event.data.delta?.text) {
                     fullResponse += event.data.delta.text;
                     setAiResponse(fullResponse);
+                }
+                if (event.type === 'error') {
+                    throw new Error(`AI provider error: ${event.data.error?.message || 'Unknown error'}`);
                 }
             }
 
