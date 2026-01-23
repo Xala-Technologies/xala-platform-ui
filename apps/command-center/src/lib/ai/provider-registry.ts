@@ -5,7 +5,7 @@
  */
 
 import type { AIProvider, AIProviderClient, ProviderConfig } from './types';
-import { AnthropicProvider } from './providers/anthropic';
+import { AnthropicProvider } from './providers/anthropic/anthropic';
 import { OpenAIProvider } from './providers/openai';
 import { GoogleGeminiProvider } from './providers/google-gemini';
 import { DeepSeekProvider } from './providers/deepseek';
@@ -59,7 +59,7 @@ class ProviderRegistry {
     /**
      * Set current provider and initialize it
      */
-    setCurrentProvider(provider: AIProvider, config: ProviderConfig): void {
+    async setCurrentProvider(provider: AIProvider, config: ProviderConfig): Promise<void> {
         const client = this.providers.get(provider);
         if (!client) {
             throw new Error(`Provider ${provider} not found`);
@@ -71,8 +71,15 @@ class ProviderRegistry {
             previousClient?.clear();
         }
 
-        // Initialize new provider
-        client.initialize(config);
+        // Initialize new provider (may be async for Anthropic)
+        if ('initialize' in client && typeof (client as any).initialize === 'function') {
+            const initResult = (client as any).initialize(config);
+            if (initResult instanceof Promise) {
+                await initResult;
+            }
+        } else {
+            (client as any).initialize(config);
+        }
         this.currentProvider = provider;
     }
 
@@ -132,8 +139,8 @@ export function getCurrentProvider(): AIProviderClient | null {
     return providerRegistry.getCurrentProvider();
 }
 
-export function setProvider(provider: AIProvider, config: ProviderConfig): void {
-    providerRegistry.setCurrentProvider(provider, config);
+export async function setProvider(provider: AIProvider, config: ProviderConfig): Promise<void> {
+    await providerRegistry.setCurrentProvider(provider, config);
 }
 
 export function isProviderInitialized(): boolean {

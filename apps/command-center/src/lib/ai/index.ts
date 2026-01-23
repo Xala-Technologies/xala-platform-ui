@@ -6,7 +6,7 @@
 
 export * from './types';
 export * from './provider-registry';
-export * from './providers/anthropic';
+export * from './providers/anthropic/anthropic';
 export * from './providers/openai';
 export * from './providers/google-gemini';
 export * from './providers/deepseek';
@@ -15,7 +15,7 @@ export * from './providers/ollama';
 export * from './providers/lmstudio';
 
 // Re-export for backward compatibility
-export { AnthropicProvider } from './providers/anthropic';
+export { AnthropicProvider } from './providers/anthropic/anthropic';
 export { OpenAIProvider } from './providers/openai';
 export { GoogleGeminiProvider } from './providers/google-gemini';
 export { DeepSeekProvider } from './providers/deepseek';

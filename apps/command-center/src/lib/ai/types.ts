@@ -75,8 +75,9 @@ export interface AIProviderClient {
 
     /**
      * Initialize the provider client
+     * May be async for providers that need to fetch model lists
      */
-    initialize(config: ProviderConfig): void;
+    initialize(config: ProviderConfig): void | Promise<void>;
 
     /**
      * Check if client is initialized

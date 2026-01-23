@@ -19,6 +19,8 @@ import {
     Select,
     Modal,
     Tabs,
+    Radio,
+    Fieldset,
 } from '@xala-technologies/platform-ui';
 import { providerRegistry, type AIProvider, type ProviderConfig } from '../../lib/ai';
 import { anthropicOAuth } from '../../lib/anthropic/oauth';
@@ -62,11 +64,23 @@ export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
                 try {
                     const models = await providerClient.listModels();
                     setAvailableModels(models.map(m => ({ id: m.id, name: m.name })));
+                    
+                    // For Anthropic, prefer sonnet models (supports both old and new naming)
+                    // Old: claude-3-5-sonnet-*, claude-3-sonnet-*
+                    // New: claude-sonnet-4-5-*
                     if (models.length > 0 && !model) {
-                        setModel(models[0].id);
+                        const sonnetModel = models.find(m => {
+                            const id = m.id.toLowerCase();
+                            return id.includes('sonnet');
+                        });
+                        setModel(sonnetModel?.id || models[0].id);
                     }
                 } catch (err) {
                     console.error('Failed to load models:', err);
+                    // Set error but don't block UI
+                    if (provider === 'anthropic') {
+                        setError('Could not fetch available models. Using default model.');
+                    }
                 }
             }
         };
@@ -141,7 +155,7 @@ export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
                 maxTokens,
             };
 
-            providerRegistry.setCurrentProvider(provider, config);
+            await providerRegistry.setCurrentProvider(provider, config);
 
             // Test connection with a simple request
             const currentProvider = providerRegistry.getCurrentProvider();
@@ -358,39 +372,60 @@ export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
                             </Field>
 
                             <Field>
-                                <Label htmlFor="model">Model</Label>
                                 {provider === 'lmstudio' ? (
-                                    <Textfield
-                                        id="model"
-                                        label=""
-                                        value={model}
-                                        onChange={(e) => setModel(e.target.value)}
-                                        placeholder="Enter exact model name from LM Studio (e.g., llama-3.1-8b-instruct-q4_K_M)"
-                                        disabled={isValidating}
-                                        style={{ fontFamily: 'monospace' }}
-                                    />
+                                    <>
+                                        <Label htmlFor="model">Model</Label>
+                                        <Textfield
+                                            id="model"
+                                            label=""
+                                            value={model}
+                                            onChange={(e) => setModel(e.target.value)}
+                                            placeholder="Enter exact model name from LM Studio (e.g., llama-3.1-8b-instruct-q4_K_M)"
+                                            disabled={isValidating}
+                                            style={{ fontFamily: 'monospace' }}
+                                        />
+                                        <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                                            Enter the exact model name as shown in LM Studio's model selector. Check the "Chat" tab to find it.
+                                        </Paragraph>
+                                    </>
+                                ) : availableModels.length > 0 && availableModels.length <= 7 ? (
+                                    // Use Radio buttons for small lists (2-7 models) - better UX
+                                    <Fieldset>
+                                        <Fieldset.Legend>Select Model</Fieldset.Legend>
+                                        {availableModels.map((m) => (
+                                            <Radio
+                                                key={m.id}
+                                                label={m.name}
+                                                value={m.id}
+                                                name="model-selection"
+                                                checked={model === m.id}
+                                                onChange={(e) => setModel(e.target.value)}
+                                                disabled={isValidating}
+                                                data-testid={`model-radio-${m.id}`}
+                                            />
+                                        ))}
+                                    </Fieldset>
                                 ) : (
-                                    <Select
-                                        id="model"
-                                        value={model}
-                                        onChange={(e) => setModel(e.target.value)}
-                                        disabled={isValidating || availableModels.length === 0}
-                                    >
-                                        {availableModels.length === 0 ? (
-                                            <Select.Option value="">Loading models...</Select.Option>
-                                        ) : (
-                                            availableModels.map((m) => (
-                                                <Select.Option key={m.id} value={m.id}>
-                                                    {m.name}
-                                                </Select.Option>
-                                            ))
-                                        )}
-                                    </Select>
-                                )}
-                                {provider === 'lmstudio' && (
-                                    <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-                                        Enter the exact model name as shown in LM Studio's model selector. Check the "Chat" tab to find it.
-                                    </Paragraph>
+                                    // Use Select dropdown for large lists or when models haven't loaded
+                                    <>
+                                        <Label htmlFor="model">Model</Label>
+                                        <Select
+                                            id="model"
+                                            value={model}
+                                            onChange={(e) => setModel(e.target.value)}
+                                            disabled={isValidating || availableModels.length === 0}
+                                        >
+                                            {availableModels.length === 0 ? (
+                                                <Select.Option value="">Loading models...</Select.Option>
+                                            ) : (
+                                                availableModels.map((m) => (
+                                                    <Select.Option key={m.id} value={m.id}>
+                                                        {m.name}
+                                                    </Select.Option>
+                                                ))
+                                            )}
+                                        </Select>
+                                    </>
                                 )}
                             </Field>
 
@@ -452,7 +487,8 @@ export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
                                     onChange={(e) => setModel(e.target.value)}
                                     disabled={isValidating}
                                 >
-                                    <Select.Option value="claude-3-5-sonnet-20240620">Claude 3.5 Sonnet</Select.Option>
+                                    <Select.Option value="claude-3-5-sonnet-20240620">Claude 3.5 Sonnet (20240620)</Select.Option>
+                                    <Select.Option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet (20241022)</Select.Option>
                                     <Select.Option value="claude-3-opus-20240229">Claude 3 Opus</Select.Option>
                                     <Select.Option value="claude-3-sonnet-20240229">Claude 3 Sonnet</Select.Option>
                                     <Select.Option value="claude-3-haiku-20240307">Claude 3 Haiku</Select.Option>

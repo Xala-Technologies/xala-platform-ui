@@ -122,16 +122,19 @@ importers:
     dependencies:
       '@anthropic-ai/sdk':
         specifier: ^0.71.2
-        version: 0.71.2
+        version: 0.71.2(zod@3.25.76)
       '@google/generative-ai':
         specifier: ^0.21.0
         version: 0.21.0
+      '@xala-technologies/design-workflow':
+        specifier: workspace:*
+        version: link:../../packages/design-workflow
       '@xala-technologies/platform-ui':
         specifier: workspace:*
         version: link:../../packages/platform-ui
       openai:
         specifier: ^4.52.0
-        version: 4.104.0
+        version: 4.104.0(zod@3.25.76)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -141,6 +144,9 @@ importers:
       react-router-dom:
         specifier: ^6.22.0
         version: 6.30.3(react-dom@18.3.1)(react@18.3.1)
+      zod:
+        specifier: ^3.23.0
+        version: 3.25.76
     devDependencies:
       '@types/react':
         specifier: ^18.3.5
@@ -305,7 +311,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.31
     dev: true
 
-  /@anthropic-ai/sdk@0.71.2:
+  /@anthropic-ai/sdk@0.71.2(zod@3.25.76):
     resolution: {integrity: sha512-TGNDEUuEstk/DKu0/TflXAEt+p+p/WhTlFzEnoosvbaDU2LTjm42igSdlL0VijrKpWejtOKxX0b8A7uc+XiSAQ==}
     hasBin: true
     peerDependencies:
@@ -315,6 +321,7 @@ packages:
         optional: true
     dependencies:
       json-schema-to-ts: 3.1.1
+      zod: 3.25.76
     dev: false
 
   /@asamuzakjp/css-color@3.2.0:
@@ -7072,7 +7079,7 @@ packages:
       is-wsl: 2.2.0
     dev: true
 
-  /openai@4.104.0:
+  /openai@4.104.0(zod@3.25.76):
     resolution: {integrity: sha512-p99EFNsA/yX6UhVO93f5kJsDRLAg+CTA2RBqdHK4RtK8u5IJw32Hyb2dTGKbnnFmnuoBv5r7Z2CURI9sGZpSuA==}
     hasBin: true
     peerDependencies:
@@ -7091,6 +7098,7 @@ packages:
       form-data-encoder: 1.7.2
       formdata-node: 4.4.1
       node-fetch: 2.7.0
+      zod: 3.25.76
     transitivePeerDependencies:
       - encoding
     dev: false
