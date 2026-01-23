@@ -30,6 +30,8 @@ import {
   Label,
 } from '@digdir/designsystemet-react';
 import { MailIcon, ShieldIcon, CheckIcon } from '../../primitives/icons';
+import { Stack, HorizontalLayout } from '../../primitives';
+import { typography } from '../../tokens/extended';
 
 export interface InviteUserFormData {
   email: string;
@@ -196,13 +198,13 @@ export function UserInviteForm({
     >
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         {/* Header */}
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+        <Stack>
+          <HorizontalLayout align="center" gap="var(--ds-spacing-3)">
             <MailIcon style={{ color: 'var(--ds-color-accent-base-default)' }} />
             <Heading data-size="sm" style={{ margin: 0 }}>
               Invite User
             </Heading>
-          </div>
+          </HorizontalLayout>
           <Paragraph
             data-size="sm"
             style={{
@@ -213,10 +215,10 @@ export function UserInviteForm({
           >
             Send an invitation to join your organization
           </Paragraph>
-        </div>
+        </Stack>
 
         {/* Email Field */}
-        <div>
+        <Stack>
           <Label id="email-label" htmlFor="email">
             Email Address *
           </Label>
@@ -244,10 +246,10 @@ export function UserInviteForm({
               {errors.email}
             </Paragraph>
           )}
-        </div>
+        </Stack>
 
         {/* Role Field */}
-        <div>
+        <Stack>
           <Label htmlFor="role">Role *</Label>
           <Select
             id="role"
@@ -278,19 +280,19 @@ export function UserInviteForm({
           )}
           {selectedRole && (
             <Alert data-color="info" data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+              <HorizontalLayout align="center" gap="var(--ds-spacing-2)">
                 <ShieldIcon />
-                <div>
+                <Stack>
                   <strong>{selectedRole.name}:</strong> {selectedRole.description}
-                </div>
-              </div>
+                </Stack>
+              </HorizontalLayout>
             </Alert>
           )}
-        </div>
+        </Stack>
 
         {/* Organization Field */}
         {showOrganization && availableOrganizations.length > 0 && (
-          <div>
+          <Stack>
             <Label htmlFor="organization">Organization (Optional)</Label>
             <Select
               id="organization"
@@ -316,12 +318,12 @@ export function UserInviteForm({
             >
               Assign the user to an organization
             </Paragraph>
-          </div>
+          </Stack>
         )}
 
         {/* Custom Message */}
         {showMessageField && (
-          <div>
+          <Stack>
             <Label htmlFor="message">Custom Message (Optional)</Label>
             <Textarea
               id="message"
@@ -334,21 +336,19 @@ export function UserInviteForm({
               rows={4}
               style={{ width: '100%' }}
             />
-          </div>
+          </Stack>
         )}
 
         {/* Options */}
-        <div
+        <Stack
+          gap="var(--ds-spacing-3)"
           style={{
             padding: 'var(--ds-spacing-4)',
             backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
             borderRadius: 'var(--ds-border-radius-md)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--ds-spacing-3)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}>
+          <HorizontalLayout align="flex-start" gap="var(--ds-spacing-3)">
             <Checkbox
               id="sendEmail"
               checked={formData.sendEmail}
@@ -359,20 +359,20 @@ export function UserInviteForm({
               value="sendEmail"
               aria-labelledby="sendEmail-label"
             />
-            <label id="sendEmail-label" htmlFor="sendEmail" style={{ cursor: 'pointer' }}>
-              <div style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
+            <Label id="sendEmail-label" htmlFor="sendEmail" style={{ cursor: 'pointer' }}>
+              <Stack style={{ fontWeight: typography.fontWeight.semibold }}>
                 Send invitation email
-              </div>
+              </Stack>
               <Paragraph
                 data-size="sm"
                 style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
               >
                 User will receive an email with a link to set up their account
               </Paragraph>
-            </label>
-          </div>
+            </Label>
+          </HorizontalLayout>
           {showScopeOption && (
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}>
+            <HorizontalLayout align="flex-start" gap="var(--ds-spacing-3)">
               <Checkbox
                 id="assignScope"
                 checked={formData.assignScope}
@@ -383,27 +383,26 @@ export function UserInviteForm({
                 value="assignScope"
                 aria-labelledby="assignScope-label"
               />
-              <label id="assignScope-label" htmlFor="assignScope" style={{ cursor: 'pointer' }}>
-                <div style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
+              <Label id="assignScope-label" htmlFor="assignScope" style={{ cursor: 'pointer' }}>
+                <Stack style={{ fontWeight: typography.fontWeight.semibold }}>
                   Configure scope after invitation
-                </div>
+                </Stack>
                 <Paragraph
                   data-size="sm"
                   style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
                 >
                   Proceed to scope assignment after creating the user
                 </Paragraph>
-              </label>
-            </div>
+              </Label>
+            </HorizontalLayout>
           )}
-        </div>
+        </Stack>
 
         {/* Actions */}
-        <div
+        <HorizontalLayout
+          justify="flex-end"
+          gap="var(--ds-spacing-3)"
           style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: 'var(--ds-spacing-3)',
             paddingTop: 'var(--ds-spacing-4)',
             borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
@@ -422,7 +421,7 @@ export function UserInviteForm({
               </>
             )}
           </Button>
-        </div>
+        </HorizontalLayout>
       </Card>
     </form>
   );

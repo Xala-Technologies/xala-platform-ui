@@ -244,7 +244,11 @@ function checkInlineStyles(
       // Allow if using design token variables
       if (/var\(--ds-/.test(line)) {
         // This line uses design tokens - OK
-      } else if (/\b(sizes|animation|zIndex|shadows|typography|transitions|components|borders|opacity|gradients|spacing|accessibility|privacy)\b/.test(line)) {
+      } else if (
+        /\b(sizes|animation|zIndex|shadows|typography|transitions|components|borders|opacity|gradients|spacing|accessibility|privacy)\b/.test(
+          line
+        )
+      ) {
         // Using extended token constants from tokens/extended.ts - OK
       } else {
         // Check for raw values that should use tokens

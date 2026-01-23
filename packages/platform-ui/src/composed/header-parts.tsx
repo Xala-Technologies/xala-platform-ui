@@ -99,7 +99,8 @@ export const HeaderLogo = forwardRef<HTMLDivElement, HeaderLogoProps>(
               }}
             >
               {title && (
-                <span
+                <Stack
+                  as="span"
                   style={{
                     fontWeight: 'var(--ds-font-weight-bold)' as unknown as number,
                     fontSize: 'var(--ds-font-size-xl)',
@@ -109,10 +110,11 @@ export const HeaderLogo = forwardRef<HTMLDivElement, HeaderLogoProps>(
                   }}
                 >
                   {title}
-                </span>
+                </Stack>
               )}
               {subtitle && (
-                <span
+                <Stack
+                  as="span"
                   style={{
                     fontWeight: 'var(--ds-font-weight-medium)' as unknown as number,
                     fontSize: 'var(--ds-font-size-sm)',
@@ -125,11 +127,11 @@ export const HeaderLogo = forwardRef<HTMLDivElement, HeaderLogoProps>(
                   }}
                 >
                   {subtitle}
-                </span>
+                </Stack>
               )}
-            </div>
+            </Stack>
           )}
-        </div>
+        </HorizontalLayout>
       </>
     );
 

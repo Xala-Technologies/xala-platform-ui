@@ -8,7 +8,9 @@
 import React from 'react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon } from '../../primitives/icons';
+import { Stack, HorizontalLayout } from '../../primitives';
 import { cn } from '../../utils';
+import { typography, borders } from '../../tokens/extended';
 
 export interface WizardStep {
   /** Unique step identifier */
@@ -125,7 +127,7 @@ export function WizardStepper({
   style,
 }: WizardStepperProps): React.ReactElement {
   return (
-    <div
+    <Stack
       className={cn('wizard-stepper', className)}
       style={{
         backgroundColor: 'var(--ds-color-neutral-surface-default)',
@@ -135,16 +137,13 @@ export function WizardStepper({
         ...style,
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <Stack style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         {(title || showStepCounter) && (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
+          <HorizontalLayout
+            justify="space-between"
+            align="center"
+            style={{ marginBottom: 'var(--ds-spacing-4)' }}
           >
             {title && (
               <Heading level={3} data-size="xs" style={{ margin: 0 }}>
@@ -152,44 +151,38 @@ export function WizardStepper({
               </Heading>
             )}
             {showStepCounter && (
-              <span
+              <Stack
+                as="span"
                 style={{
                   backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-                  padding: '0.25rem 0.5rem',
+                  padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
                   borderRadius: 'var(--ds-border-radius-sm)',
                   fontSize: 'var(--ds-font-size-xs)',
                 }}
               >
                 {`Steg ${currentStep + 1} av ${steps.length}`}
-              </span>
+              </Stack>
             )}
-          </div>
+          </HorizontalLayout>
         )}
 
         {/* Steps */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-spacing-2)',
-            position: 'relative',
-          }}
-        >
+        <HorizontalLayout align="center" gap="var(--ds-spacing-2)" style={{ position: 'relative' }}>
           {steps.map((step, index) => {
             const state = getStepState(index, currentStep, step.id, errors);
             const isLast = index === steps.length - 1;
             const isClickable = onStepClick && index < currentStep;
 
             const circleStyle: React.CSSProperties = {
-              width: '40px',
-              height: '40px',
+              width: 'var(--ds-sizing-10)',
+              height: 'var(--ds-sizing-10)',
               borderRadius: 'var(--ds-border-radius-full)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontWeight: 'var(--ds-font-weight-semibold)',
+              fontWeight: typography.fontWeight.semibold,
               fontSize: 'var(--ds-font-size-sm)',
-              border: '2px solid',
+              border: `${borders.width.medium} solid`,
               transition: 'all 0.2s ease',
             };
 
@@ -213,16 +206,14 @@ export function WizardStepper({
 
             return (
               <React.Fragment key={step.id}>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 'var(--ds-spacing-1)',
-                    minWidth: '80px',
-                  }}
+                <Stack
+                  align="center"
+                  gap="var(--ds-spacing-1)"
+                  style={{ minWidth: 'var(--ds-sizing-20)' }}
                 >
-                  <div
+                  <Stack
+                    align="center"
+                    justify="center"
                     onClick={isClickable ? () => onStepClick(index) : undefined}
                     role={isClickable ? 'button' : undefined}
                     tabIndex={isClickable ? 0 : undefined}
@@ -246,9 +237,9 @@ export function WizardStepper({
                     ) : step.icon ? (
                       step.icon
                     ) : (
-                      <span>{index + 1}</span>
+                      <Stack as="span">{index + 1}</Stack>
                     )}
-                  </div>
+                  </Stack>
                   <Paragraph
                     data-size="xs"
                     style={{
@@ -262,15 +253,15 @@ export function WizardStepper({
                             : 'var(--ds-color-neutral-text-subtle)',
                       fontWeight:
                         state === 'active'
-                          ? 'var(--ds-font-weight-semibold)'
-                          : 'var(--ds-font-weight-regular)',
+                          ? typography.fontWeight.semibold
+                          : typography.fontWeight.regular,
                     }}
                   >
                     {step.label}
                   </Paragraph>
-                </div>
+                </Stack>
                 {!isLast && (
-                  <div
+                  <Stack
                     style={{
                       flex: 1,
                       height: 'var(--ds-border-width-medium)',
@@ -279,16 +270,16 @@ export function WizardStepper({
                           ? 'var(--ds-color-success-border-default)'
                           : 'var(--ds-color-neutral-border-subtle)',
                       margin: '0 var(--ds-spacing-2)',
-                      minWidth: '40px',
+                      minWidth: 'var(--ds-sizing-10)',
                     }}
                   />
                 )}
               </React.Fragment>
             );
           })}
-        </div>
-      </div>
-    </div>
+        </HorizontalLayout>
+      </Stack>
+    </Stack>
   );
 }
 
@@ -311,19 +302,18 @@ export function WizardNavigation({
   style,
 }: WizardNavigationProps): React.ReactElement {
   return (
-    <div
+    <HorizontalLayout
       className={cn('wizard-navigation', className)}
+      justify="space-between"
+      align="center"
       style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         padding: 'var(--ds-spacing-6) var(--ds-spacing-8)',
         borderTop: '1px solid var(--ds-color-neutral-border-default)',
         backgroundColor: 'var(--ds-color-neutral-surface-default)',
         ...style,
       }}
     >
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+      <HorizontalLayout gap="var(--ds-spacing-3)">
         <Button variant="tertiary" onClick={onCancel} disabled={disabled}>
           {cancelLabel}
         </Button>
@@ -332,9 +322,9 @@ export function WizardNavigation({
             {saveDraftLabel}
           </Button>
         )}
-      </div>
+      </HorizontalLayout>
 
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+      <HorizontalLayout gap="var(--ds-spacing-3)">
         {canGoPrev && (
           <Button variant="secondary" onClick={onPrev} disabled={disabled}>
             <ChevronLeftIcon />
@@ -353,8 +343,8 @@ export function WizardNavigation({
             <ChevronRightIcon />
           </Button>
         )}
-      </div>
-    </div>
+      </HorizontalLayout>
+    </HorizontalLayout>
   );
 }
 
@@ -376,26 +366,19 @@ export function Wizard({
 
   if (isLoading) {
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 'var(--ds-spacing-10)',
-          gap: 'var(--ds-spacing-4)',
-        }}
+      <Stack
+        align="center"
+        justify="center"
+        gap="var(--ds-spacing-4)"
+        style={{ padding: 'var(--ds-spacing-10)' }}
       >
         <Paragraph>{loadingMessage || 'Laster...'}</Paragraph>
-      </div>
+      </Stack>
     );
   }
 
   return (
-    <div
-      className={cn('wizard', className)}
-      style={{ display: 'flex', flexDirection: 'column', height: '100%', ...style }}
-    >
+    <Stack className={cn('wizard', className)} style={{ height: '100%', ...style }}>
       {/* Stepper */}
       <WizardStepper
         steps={steps}
@@ -405,17 +388,17 @@ export function Wizard({
       />
 
       {/* Step Content */}
-      <div
+      <Stack
         style={{
           flex: 1,
           overflowY: 'auto',
           padding: 'var(--ds-spacing-8)',
         }}
       >
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <Stack style={{ maxWidth: '800px', margin: '0 auto' }}>
           {currentStepData && renderStep(currentStepData, currentStep)}
-        </div>
-      </div>
-    </div>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }

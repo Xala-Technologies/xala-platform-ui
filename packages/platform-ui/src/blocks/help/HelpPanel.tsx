@@ -17,7 +17,15 @@
  * ```
  */
 import React, { useState } from 'react';
-import { Card, Heading, Paragraph, Button, Alert, Link } from '@digdir/designsystemet-react';
+import {
+  Card,
+  Heading,
+  Paragraph,
+  Button,
+  Alert,
+  Link,
+  Textfield,
+} from '@digdir/designsystemet-react';
 import {
   InfoIcon,
   BookOpenIcon,
@@ -25,6 +33,8 @@ import {
   ChevronLeftIcon,
   CloseIcon,
 } from '../../primitives/icons';
+import { Stack, HorizontalLayout } from '../../primitives';
+import { typography } from '../../tokens/extended';
 
 export type HelpLevel = 1 | 2 | 3;
 
@@ -105,7 +115,7 @@ function TooltipHelp({
   onClose?: () => void;
 }) {
   return (
-    <div
+    <Stack
       style={{
         position: 'relative',
         display: 'inline-block',
@@ -119,8 +129,8 @@ function TooltipHelp({
           border: '1px solid var(--ds-color-neutral-border-default)',
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}>
+        <Stack gap="var(--ds-spacing-3)">
+          <HorizontalLayout align="flex-start" gap="var(--ds-spacing-3)">
             <InfoIcon
               style={{
                 color: 'var(--ds-color-accent-base-default)',
@@ -150,15 +160,15 @@ function TooltipHelp({
                 <CloseIcon />
               </Button>
             )}
-          </div>
+          </HorizontalLayout>
           {content.learnMoreUrl && (
             <Link href={content.learnMoreUrl} data-size="sm">
               Learn more →
             </Link>
           )}
-        </div>
+        </Stack>
       </Card>
-    </div>
+    </Stack>
   );
 }
 
@@ -197,23 +207,20 @@ function GuideHelp({
         backgroundColor: 'var(--ds-color-neutral-surface-default)',
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <Stack gap="var(--ds-spacing-4)">
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-          <div style={{ flex: 1 }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-3)',
-                marginBottom: 'var(--ds-spacing-2)',
-              }}
+        <HorizontalLayout align="flex-start" justify="space-between">
+          <Stack style={{ flex: 1 }}>
+            <HorizontalLayout
+              align="center"
+              gap="var(--ds-spacing-3)"
+              style={{ marginBottom: 'var(--ds-spacing-2)' }}
             >
               <BookOpenIcon style={{ color: 'var(--ds-color-accent-base-default)' }} />
               <Heading data-size="sm" style={{ margin: 0 }}>
                 {title}
               </Heading>
-            </div>
+            </HorizontalLayout>
             <Paragraph
               data-size="sm"
               style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
@@ -221,35 +228,37 @@ function GuideHelp({
               {description}
             </Paragraph>
             {estimatedTime && (
-              <span
+              <Stack
+                as="span"
                 style={{
                   backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-                  padding: '0.25rem 0.5rem',
+                  padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
                   borderRadius: 'var(--ds-border-radius-sm)',
                   fontSize: 'var(--ds-font-size-xs)',
                   marginTop: 'var(--ds-spacing-2)',
                   display: 'inline-block',
+                  width: 'fit-content',
                 }}
               >
                 {estimatedTime}
-              </span>
+              </Stack>
             )}
-          </div>
+          </Stack>
           {closeable && onClose && (
             <Button type="button" variant="tertiary" data-size="sm" onClick={onClose}>
               <CloseIcon />
             </Button>
           )}
-        </div>
+        </HorizontalLayout>
 
         {/* Progress indicators */}
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <HorizontalLayout gap="var(--ds-spacing-2)">
           {steps.map((_, index) => (
-            <div
+            <Stack
               key={index}
               style={{
                 flex: 1,
-                height: '4px',
+                height: 'var(--ds-spacing-1)',
                 borderRadius: 'var(--ds-border-width-medium)',
                 backgroundColor:
                   index <= currentStep
@@ -259,21 +268,23 @@ function GuideHelp({
               }}
             />
           ))}
-        </div>
+        </HorizontalLayout>
 
         {/* Step content */}
         {step && (
-          <div>
-            <span
+          <Stack>
+            <Stack
+              as="span"
               style={{
                 backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-                padding: '0.25rem 0.5rem',
+                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
                 borderRadius: 'var(--ds-border-radius-sm)',
                 fontSize: 'var(--ds-font-size-xs)',
+                width: 'fit-content',
               }}
             >
               Step {currentStep + 1} of {steps.length}
-            </span>
+            </Stack>
             <Heading
               data-size="xs"
               style={{ marginTop: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-3)' }}
@@ -295,7 +306,7 @@ function GuideHelp({
             )}
 
             {step.code && (
-              <div
+              <Stack
                 style={{
                   padding: 'var(--ds-spacing-4)',
                   backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
@@ -306,16 +317,15 @@ function GuideHelp({
                 }}
               >
                 <code>{step.code}</code>
-              </div>
+              </Stack>
             )}
-          </div>
+          </Stack>
         )}
 
         {/* Navigation */}
-        <div
+        <HorizontalLayout
+          justify="space-between"
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
             paddingTop: 'var(--ds-spacing-4)',
             borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
@@ -338,8 +348,8 @@ function GuideHelp({
           >
             {currentStep === steps.length - 1 ? 'Done' : 'Next'} <ChevronRightIcon />
           </Button>
-        </div>
-      </div>
+        </HorizontalLayout>
+      </Stack>
     </Card>
   );
 }
@@ -406,10 +416,10 @@ function FAQHelp({
         backgroundColor: 'var(--ds-color-neutral-surface-default)',
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <Stack gap="var(--ds-spacing-4)">
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-          <div>
+        <HorizontalLayout align="flex-start" justify="space-between">
+          <Stack>
             <Heading data-size="sm" style={{ margin: 0 }}>
               Frequently Asked Questions
             </Heading>
@@ -423,45 +433,39 @@ function FAQHelp({
             >
               Find answers to common questions
             </Paragraph>
-          </div>
+          </Stack>
           {closeable && onClose && (
             <Button type="button" variant="tertiary" data-size="sm" onClick={onClose}>
               <CloseIcon />
             </Button>
           )}
-        </div>
+        </HorizontalLayout>
 
-        {/* Search - simplified input */}
-        <input
-          type="text"
+        {/* Search */}
+        <Textfield
+          aria-label="Search help articles"
           placeholder="Search help articles..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          style={{
-            width: '100%',
-            padding: 'var(--ds-spacing-3)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            border: '1px solid var(--ds-color-neutral-border-default)',
-            fontSize: 'var(--ds-font-size-md)',
-          }}
+          style={{ width: '100%' }}
         />
 
         {/* FAQ Items */}
         {Object.entries(categorizedFAQs).map(([cat, faqs]) => (
-          <div key={cat}>
+          <Stack key={cat}>
             <Heading
               data-size="xs"
               style={{ marginBottom: 'var(--ds-spacing-3)', textTransform: 'capitalize' }}
             >
               {cat} ({faqs.length})
             </Heading>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+            <Stack gap="var(--ds-spacing-2)">
               {faqs.map((faq, _index) => {
                 const globalIndex = content.indexOf(faq);
                 const isExpanded = expandedItems.has(globalIndex);
 
                 return (
-                  <div
+                  <Stack
                     key={globalIndex}
                     style={{
                       border: '1px solid var(--ds-color-neutral-border-subtle)',
@@ -483,10 +487,10 @@ function FAQHelp({
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        fontWeight: 'var(--ds-font-weight-semibold)',
+                        fontWeight: typography.fontWeight.semibold,
                       }}
                     >
-                      <span>{faq.question}</span>
+                      <Stack as="span">{faq.question}</Stack>
                       <ChevronRightIcon
                         style={{
                           transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
@@ -495,7 +499,7 @@ function FAQHelp({
                       />
                     </Button>
                     {isExpanded && (
-                      <div
+                      <Stack
                         style={{
                           padding: 'var(--ds-spacing-4)',
                           borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
@@ -503,35 +507,33 @@ function FAQHelp({
                       >
                         <Paragraph>{faq.answer}</Paragraph>
                         {faq.tags && faq.tags.length > 0 && (
-                          <div
-                            style={{
-                              display: 'flex',
-                              gap: 'var(--ds-spacing-2)',
-                              marginTop: 'var(--ds-spacing-3)',
-                            }}
+                          <HorizontalLayout
+                            gap="var(--ds-spacing-2)"
+                            style={{ marginTop: 'var(--ds-spacing-3)' }}
                           >
                             {faq.tags.map((tag) => (
-                              <span
+                              <Stack
                                 key={tag}
+                                as="span"
                                 style={{
                                   backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-                                  padding: '0.25rem 0.5rem',
+                                  padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
                                   borderRadius: 'var(--ds-border-radius-sm)',
                                   fontSize: 'var(--ds-font-size-xs)',
                                 }}
                               >
                                 {tag}
-                              </span>
+                              </Stack>
                             ))}
-                          </div>
+                          </HorizontalLayout>
                         )}
-                      </div>
+                      </Stack>
                     )}
-                  </div>
+                  </Stack>
                 );
               })}
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         ))}
 
         {filteredFAQs.length === 0 && (
@@ -539,7 +541,7 @@ function FAQHelp({
             No help articles found. Try a different search term or category.
           </Alert>
         )}
-      </div>
+      </Stack>
     </Card>
   );
 }

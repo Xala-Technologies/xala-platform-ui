@@ -252,7 +252,8 @@ export function ConversationListItem({
               height: 'var(--ds-spacing-2-5)',
               borderRadius: 'var(--ds-border-radius-full)',
               backgroundColor: 'var(--ds-color-success-base-default)',
-              border: 'var(--ds-border-width-default) solid var(--ds-color-neutral-background-default)',
+              border:
+                'var(--ds-border-width-default) solid var(--ds-color-neutral-background-default)',
             }}
           />
         )}
@@ -433,14 +434,17 @@ export function ConversationList({
                   activeFilter === tab.id
                     ? 'var(--ds-color-accent-base-default)'
                     : 'var(--ds-color-neutral-surface-default)',
-                color: activeFilter === tab.id
-                  ? 'var(--ds-color-accent-contrast-default)'
-                  : 'var(--ds-color-neutral-text-default)',
+                color:
+                  activeFilter === tab.id
+                    ? 'var(--ds-color-accent-contrast-default)'
+                    : 'var(--ds-color-neutral-text-default)',
               }}
             >
               {tab.label}
               {tab.count !== undefined && tab.count > 0 && (
-                <span style={{ marginLeft: 'var(--ds-spacing-1)', opacity: 0.8 }}>({tab.count})</span>
+                <span style={{ marginLeft: 'var(--ds-spacing-1)', opacity: 0.8 }}>
+                  ({tab.count})
+                </span>
               )}
             </Button>
           ))}

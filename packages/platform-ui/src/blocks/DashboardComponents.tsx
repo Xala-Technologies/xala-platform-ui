@@ -55,10 +55,7 @@ export function StatCard({
       }}
     >
       <Stack gap="var(--ds-spacing-3)">
-        <HorizontalLayout
-          justify="space-between"
-          align="flex-start"
-        >
+        <HorizontalLayout justify="space-between" align="flex-start">
           <Paragraph
             data-size="sm"
             style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0 }}
@@ -182,15 +179,8 @@ export function ActivityItem({
         }}
       />
       <Stack style={{ flex: 1, minWidth: 0 }}>
-        <HorizontalLayout
-          justify="space-between"
-          align="flex-start"
-          gap="var(--ds-spacing-2)"
-        >
-          <Paragraph
-            data-size="sm"
-            style={{ fontWeight: typography.fontWeight.medium, margin: 0 }}
-          >
+        <HorizontalLayout justify="space-between" align="flex-start" gap="var(--ds-spacing-2)">
+          <Paragraph data-size="sm" style={{ fontWeight: typography.fontWeight.medium, margin: 0 }}>
             {title}
           </Paragraph>
           <StatusTag color={badgeColor} size="sm">
@@ -247,9 +237,7 @@ export function ActivityFeed({
           {title}
         </Heading>
       )}
-      <Stack gap="var(--ds-spacing-3)">
-        {children}
-      </Stack>
+      <Stack gap="var(--ds-spacing-3)">{children}</Stack>
     </Stack>
   );
 }

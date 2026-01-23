@@ -123,8 +123,10 @@ export const shadows = {
   focus: 'var(--ds-shadow-focus)',
   // Enhanced shadows for rich UI
   card: 'var(--ds-extended-shadow-card, 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1))',
-  cardHover: 'var(--ds-extended-shadow-card-hover, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1))',
-  dropdown: 'var(--ds-extended-shadow-dropdown, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1))',
+  cardHover:
+    'var(--ds-extended-shadow-card-hover, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1))',
+  dropdown:
+    'var(--ds-extended-shadow-dropdown, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1))',
   modal: 'var(--ds-extended-shadow-modal, 0 25px 50px -12px rgb(0 0 0 / 0.25))',
 } as const;
 
@@ -256,10 +258,13 @@ export const gradients = {
   imageOverlay: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%)',
   imageOverlayLight: 'linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 30%)',
   // Accent gradients
-  accent: 'var(--ds-extended-gradient-accent, linear-gradient(135deg, var(--ds-color-accent-base-default), var(--ds-color-accent-base-hover)))',
-  success: 'var(--ds-extended-gradient-success, linear-gradient(135deg, var(--ds-color-success-base-default), var(--ds-color-success-base-hover)))',
+  accent:
+    'var(--ds-extended-gradient-accent, linear-gradient(135deg, var(--ds-color-accent-base-default), var(--ds-color-accent-base-hover)))',
+  success:
+    'var(--ds-extended-gradient-success, linear-gradient(135deg, var(--ds-color-success-base-default), var(--ds-color-success-base-hover)))',
   // Background gradients
-  subtle: 'linear-gradient(180deg, var(--ds-color-neutral-background-default) 0%, var(--ds-color-neutral-background-subtle) 100%)',
+  subtle:
+    'linear-gradient(180deg, var(--ds-color-neutral-background-default) 0%, var(--ds-color-neutral-background-subtle) 100%)',
 } as const;
 
 // =============================================================================
