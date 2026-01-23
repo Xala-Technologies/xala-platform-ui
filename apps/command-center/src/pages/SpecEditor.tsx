@@ -22,6 +22,9 @@ import {
   List,
   CodeBlock,
   PageContainer,
+  FormGrid,
+  ButtonGroup,
+  Stack,
 } from '@xala-technologies/platform-ui';
 import { getLayerOptions } from '../constants';
 
@@ -89,22 +92,10 @@ export function SpecEditor() {
         </Tabs.List>
 
         <Tabs.Panel value="overview">
-          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <SectionCard>
             <SectionCardContent>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 'var(--ds-spacing-4)',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: 'var(--ds-spacing-4)',
-                  }}
-                >
+              <Stack spacing="var(--ds-spacing-4)">
+                <FormGrid columns={2}>
                   <Textfield
                     label="Component Name"
                     value={formData.name}
@@ -124,7 +115,7 @@ export function SpecEditor() {
                       ))}
                     </Select>
                   </Field>
-                </div>
+                </FormGrid>
                 <Textfield
                   label="Description"
                   value={formData.description}
@@ -137,35 +128,33 @@ export function SpecEditor() {
                   onChange={(e) => handleInputChange('purpose', e.target.value)}
                   placeholder="Why does this component exist?"
                 />
-              </div>
+              </Stack>
             </SectionCardContent>
           </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="props">
-          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <SectionCard>
             <SectionCardHeader title="Props Definition" />
             <SectionCardContent>
-              <CodeBlock code={propsCode} language="typescript" />
-              <Button
-                variant="secondary"
-                data-size="sm"
-                style={{ marginTop: 'var(--ds-spacing-4)' }}
-              >
-                + Add Prop
-              </Button>
+              <Stack spacing="var(--ds-spacing-4)">
+                <CodeBlock code={propsCode} language="typescript" />
+                <Button variant="secondary" data-size="sm">
+                  + Add Prop
+                </Button>
+              </Stack>
             </SectionCardContent>
           </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="composition">
-          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <SectionCard>
             <SectionCardHeader
               title="Component Composition"
               description="Define which Designsystemet and internal components make up this component."
             />
             <SectionCardContent>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-2)' }}>
+              <ButtonGroup>
                 {['Card', 'Heading', 'Paragraph', 'Button'].map((comp) => (
                   <Button key={comp} variant="secondary" data-size="sm">
                     {comp}
@@ -174,21 +163,19 @@ export function SpecEditor() {
                 <Button variant="tertiary" data-size="sm">
                   + Add
                 </Button>
-              </div>
+              </ButtonGroup>
             </SectionCardContent>
           </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="accessibility">
-          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <SectionCard>
             <SectionCardHeader title="Accessibility Requirements" />
             <SectionCardContent>
               <List.Unordered>
                 {ACCESSIBILITY_REQUIREMENTS.map((req, i) => (
                   <List.Item key={i}>
-                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      {req}
-                    </Paragraph>
+                    <Paragraph data-size="sm">{req}</Paragraph>
                   </List.Item>
                 ))}
               </List.Unordered>
@@ -197,7 +184,7 @@ export function SpecEditor() {
         </Tabs.Panel>
 
         <Tabs.Panel value="testids">
-          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <SectionCard>
             <SectionCardHeader title="Test ID Registry" />
             <SectionCardContent>
               <CodeBlock code={testIdsCode} language="json" />

@@ -16,6 +16,7 @@ import {
   Table,
   StatusTag,
   PageContainer,
+  ButtonGroup,
 } from '@xala-technologies/platform-ui';
 import {
   MOCK_APPROVALS,
@@ -60,9 +61,7 @@ export function ApprovalStatus() {
               {MOCK_APPROVALS.map((approval) => (
                 <Table.Row key={approval.component}>
                   <Table.Cell>
-                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      {approval.component}
-                    </Paragraph>
+                    <Paragraph data-size="sm">{approval.component}</Paragraph>
                   </Table.Cell>
                   <Table.Cell>
                     <StatusTag
@@ -73,22 +72,16 @@ export function ApprovalStatus() {
                     </StatusTag>
                   </Table.Cell>
                   <Table.Cell>
-                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      {approval.phase.replace('_', ' ')}
-                    </Paragraph>
+                    <Paragraph data-size="sm">{approval.phase.replace('_', ' ')}</Paragraph>
                   </Table.Cell>
                   <Table.Cell>
-                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      {approval.owner}
-                    </Paragraph>
+                    <Paragraph data-size="sm">{approval.owner}</Paragraph>
                   </Table.Cell>
                   <Table.Cell>
-                    <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      {approval.lastUpdate}
-                    </Paragraph>
+                    <Paragraph data-size="sm">{approval.lastUpdate}</Paragraph>
                   </Table.Cell>
                   <Table.Cell>
-                    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+                    <ButtonGroup>
                       <Button variant="tertiary" data-size="sm">
                         View
                       </Button>
@@ -97,7 +90,7 @@ export function ApprovalStatus() {
                           Approve
                         </Button>
                       )}
-                    </div>
+                    </ButtonGroup>
                   </Table.Cell>
                 </Table.Row>
               ))}

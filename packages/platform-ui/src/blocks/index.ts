@@ -277,6 +277,33 @@ export type {
   MediaResourceCardCapacity,
 } from './MediaResourceCard';
 
+// Workflow Components (for design governance apps)
+export {
+  WorkflowStep,
+  WorkflowPipeline,
+  WorkflowCard,
+  CardGrid,
+  ButtonGroup,
+  FormGrid,
+} from './WorkflowComponents';
+
+// Explorer Components (for sidebar navigation)
+export { ExplorerItem } from './ExplorerItem';
+export type { ExplorerItemProps } from './ExplorerItem';
+
+// Preview Components (for playground/storybook)
+export { PreviewArea } from './PreviewArea';
+export type { PreviewAreaProps } from './PreviewArea';
+export type {
+  WorkflowStepProps,
+  WorkflowPipelineProps,
+  WorkflowCardProps,
+  WorkflowStatus,
+  CardGridProps,
+  ButtonGroupProps,
+  FormGridProps,
+} from './WorkflowComponents';
+
 // =============================================================================
 // NOTE: This package contains ONLY platform-neutral UI components.
 // Domain-specific components (reservations, allocations, periods) belong in domain repos.

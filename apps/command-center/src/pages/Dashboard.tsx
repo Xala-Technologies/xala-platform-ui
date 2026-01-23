@@ -15,6 +15,7 @@ import {
   SectionCardContent,
   Timeline,
   PageContainer,
+  CardGrid,
 } from '@xala-technologies/platform-ui';
 import { useNavigate } from 'react-router-dom';
 import { DASHBOARD_STATS, QUICK_ACTIONS, RECENT_ACTIVITY } from '../data';
@@ -49,13 +50,7 @@ export function Dashboard() {
           description="Common tasks and workflows"
         />
         <SectionCardContent>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(var(--ds-sizing-70), 1fr))',
-              gap: 'var(--ds-spacing-4)',
-            }}
-          >
+          <CardGrid minCardWidth="var(--ds-sizing-70)">
             {QUICK_ACTIONS.map((action) => (
               <QuickActionCard
                 key={action.title}
@@ -65,7 +60,7 @@ export function Dashboard() {
                 onClick={() => handleAction(action.action)}
               />
             ))}
-          </div>
+          </CardGrid>
         </SectionCardContent>
       </SectionCard>
 

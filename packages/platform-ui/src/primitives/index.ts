@@ -134,5 +134,22 @@ export type { LogoProps } from './Logo';
 export { NativeSelect } from './NativeSelect';
 export type { NativeSelectProps } from './NativeSelect';
 
+export { SimpleSidebar, SidebarHeaderArea, SidebarPanel, SidebarScrollArea } from './sidebar';
+export type {
+  SimpleSidebarProps,
+  SidebarHeaderAreaProps,
+  SidebarPanelProps,
+  SidebarScrollAreaProps,
+} from './sidebar';
+
+export { Center } from './center';
+export type { CenterProps } from './center';
+
+export { MainContent } from './main-content';
+export type { MainContentProps } from './main-content';
+
+export { HorizontalLayout } from './horizontal-layout';
+export type { HorizontalLayoutProps } from './horizontal-layout';
+
 export { SelectOption } from './SelectOption';
 export type { SelectOptionProps } from './SelectOption';

@@ -301,7 +301,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
       onSettingsClick,
       onProfileClick,
       actions,
-      height = 72,
+      height = 80,
       className,
       'data-testid': testId = 'dashboard-header',
       ...props
