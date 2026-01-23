@@ -1,6 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import {
-  Box,
   Heading,
   Paragraph,
 } from '@digdir/designsystemet-react';
@@ -14,36 +13,34 @@ const navItems = [
 
 export function Layout() {
   return (
-    <Box data-color="neutral">
+    <div>
       {/* Header */}
-      <Box
-        data-color="brand1"
+      <div
         style={{
           padding: 'var(--ds-spacing-4)',
           borderBottom: '1px solid var(--ds-color-border-default)',
         }}
       >
-        <Heading level={1} data-size="medium">
+        <Heading level={1} data-size="md">
           Xala Command Center
         </Heading>
-        <Paragraph data-size="small">
+        <Paragraph data-size="sm">
           Design Governance Workflow Management
         </Paragraph>
-      </Box>
+      </div>
 
-      <Box style={{ display: 'flex', minHeight: 'calc(100vh - 100px)' }}>
+      <div style={{ display: 'flex', minHeight: 'calc(100vh - 100px)' }}>
         {/* Sidebar Navigation */}
-        <Box
-          as="nav"
+        <nav
           style={{
             width: '240px',
             borderRight: '1px solid var(--ds-color-border-default)',
             padding: 'var(--ds-spacing-4)',
           }}
         >
-          <Box as="ul" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {navItems.map((item) => (
-              <Box as="li" key={item.to} style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+              <li key={item.to} style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                 <NavLink
                   to={item.to}
                   style={({ isActive }) => ({
@@ -62,17 +59,16 @@ export function Layout() {
                     fontWeight: isActive ? '600' : '400',
                   })}
                 >
-                  <Box as="span">{item.icon}</Box>
-                  <Box as="span">{item.label}</Box>
+                  <span>{item.icon}</span>
+                  <span>{item.label}</span>
                 </NavLink>
-              </Box>
+              </li>
             ))}
-          </Box>
-        </Box>
+          </ul>
+        </nav>
 
         {/* Main Content */}
-        <Box
-          as="main"
+        <main
           style={{
             flex: 1,
             padding: 'var(--ds-spacing-6)',
@@ -80,8 +76,8 @@ export function Layout() {
           }}
         >
           <Outlet />
-        </Box>
-      </Box>
-    </Box>
+        </main>
+      </div>
+    </div>
   );
 }

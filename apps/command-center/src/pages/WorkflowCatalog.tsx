@@ -1,10 +1,8 @@
 import {
-  Box,
   Card,
   Heading,
   Paragraph,
   Button,
-  Chip,
 } from '@digdir/designsystemet-react';
 
 const workflows = [
@@ -51,45 +49,39 @@ const workflows = [
 ];
 
 const workflowSteps = [
-  { step: 1, name: 'Vision', workflow: 'product-vision' },
-  { step: 2, name: 'Roadmap', workflow: 'product-roadmap' },
-  { step: 3, name: 'Data Model', workflow: 'data-model' },
-  { step: 4, name: 'Section Specs', workflow: 'section-spec' },
-  { step: 5, name: 'Export', workflow: 'export' },
+  { step: 1, name: 'Vision' },
+  { step: 2, name: 'Roadmap' },
+  { step: 3, name: 'Data Model' },
+  { step: 4, name: 'Section Specs' },
+  { step: 5, name: 'Export' },
 ];
 
 export function WorkflowCatalog() {
   const copyCommand = (command: string) => {
     navigator.clipboard.writeText(command);
-    // In a real app, show a toast notification
   };
 
   return (
-    <Box>
-      <Heading level={2} data-size="large" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-        Workflow Catalog
-      </Heading>
-      <Paragraph data-size="medium" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        AI-guided workflows for design specification and implementation
-      </Paragraph>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          Workflow Catalog
+        </Heading>
+        <Paragraph data-size="md">
+          AI-guided workflows for design specification and implementation
+        </Paragraph>
+      </div>
 
       {/* Workflow Pipeline */}
-      <Card data-color="neutral" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        <Box style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Heading level={3} data-size="small" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+      <Card>
+        <div style={{ padding: 'var(--ds-spacing-4)' }}>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             Recommended Flow
           </Heading>
-          <Box
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-2)',
-              flexWrap: 'wrap',
-            }}
-          >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             {workflowSteps.map((step, index) => (
-              <Box key={step.step} style={{ display: 'flex', alignItems: 'center' }}>
-                <Box
+              <div key={step.step} style={{ display: 'flex', alignItems: 'center' }}>
+                <div
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -99,8 +91,7 @@ export function WorkflowCatalog() {
                     borderRadius: 'var(--ds-border-radius-md)',
                   }}
                 >
-                  <Box
-                    as="span"
+                  <span
                     style={{
                       width: '24px',
                       height: '24px',
@@ -115,22 +106,20 @@ export function WorkflowCatalog() {
                     }}
                   >
                     {step.step}
-                  </Box>
-                  <Paragraph data-size="small">{step.name}</Paragraph>
-                </Box>
+                  </span>
+                  <Paragraph data-size="sm">{step.name}</Paragraph>
+                </div>
                 {index < workflowSteps.length - 1 && (
-                  <Box as="span" style={{ margin: '0 var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-                    →
-                  </Box>
+                  <span style={{ margin: '0 var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>→</span>
                 )}
-              </Box>
+              </div>
             ))}
-          </Box>
-        </Box>
+          </div>
+        </div>
       </Card>
 
       {/* Workflow Cards */}
-      <Box
+      <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -138,22 +127,31 @@ export function WorkflowCatalog() {
         }}
       >
         {workflows.map((workflow) => (
-          <Card key={workflow.id} data-color="neutral">
-            <Box style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--ds-spacing-3)' }}>
-                <Heading level={3} data-size="small">
+          <Card key={workflow.id}>
+            <div style={{ padding: 'var(--ds-spacing-4)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--ds-spacing-3)' }}>
+                <Heading level={3} data-size="sm">
                   {workflow.name}
                 </Heading>
-                <Chip data-size="small" data-color="success">
+                <span
+                  style={{
+                    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                    backgroundColor: 'var(--ds-color-success-surface-default)',
+                    color: 'var(--ds-color-success-text-default)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                    fontSize: '0.75rem',
+                    fontWeight: '500',
+                  }}
+                >
                   {workflow.status}
-                </Chip>
-              </Box>
+                </span>
+              </div>
 
-              <Paragraph data-size="small" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+              <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
                 {workflow.description}
               </Paragraph>
 
-              <Box
+              <div
                 style={{
                   backgroundColor: 'var(--ds-color-neutral-surface-default)',
                   padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
@@ -164,63 +162,26 @@ export function WorkflowCatalog() {
                 }}
               >
                 {workflow.command}
-              </Box>
+              </div>
 
               {workflow.prerequisites.length > 0 && (
-                <Box style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                  <Paragraph data-size="xsmall" data-color="subtle">
-                    Prerequisites: {workflow.prerequisites.join(', ')}
-                  </Paragraph>
-                </Box>
+                <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  Prerequisites: {workflow.prerequisites.join(', ')}
+                </Paragraph>
               )}
 
-              <Box style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-                <Button
-                  variant="primary"
-                  data-size="small"
-                  onClick={() => copyCommand(workflow.command)}
-                >
+              <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+                <Button variant="primary" data-size="sm" onClick={() => copyCommand(workflow.command)}>
                   Copy Command
                 </Button>
-                <Button variant="secondary" data-size="small">
+                <Button variant="secondary" data-size="sm">
                   View Docs
                 </Button>
-              </Box>
-            </Box>
+              </div>
+            </div>
           </Card>
         ))}
-      </Box>
-
-      {/* Usage Instructions */}
-      <Card data-color="neutral" style={{ marginTop: 'var(--ds-spacing-6)' }}>
-        <Box style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Heading level={3} data-size="small" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            How to Use
-          </Heading>
-          <Box as="ol" style={{ margin: 0, paddingLeft: 'var(--ds-spacing-5)' }}>
-            <Box as="li" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              <Paragraph data-size="small">
-                Open Claude Code in your terminal
-              </Paragraph>
-            </Box>
-            <Box as="li" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              <Paragraph data-size="small">
-                Type the slash command (e.g., <code>/product-vision</code>)
-              </Paragraph>
-            </Box>
-            <Box as="li" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              <Paragraph data-size="small">
-                Follow the guided Q&A to generate your specification
-              </Paragraph>
-            </Box>
-            <Box as="li">
-              <Paragraph data-size="small">
-                Review the generated YAML/JSON artifacts in the product/ directory
-              </Paragraph>
-            </Box>
-          </Box>
-        </Box>
-      </Card>
-    </Box>
+      </div>
+    </div>
   );
 }
