@@ -7,10 +7,11 @@
 
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives/stack';
 import { cn } from '../utils';
 
-export interface ExplorerItemProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ExplorerItemProps {
   /** Item title */
   title: string;
 
@@ -25,14 +26,19 @@ export interface ExplorerItemProps extends React.HTMLAttributes<HTMLButtonElemen
 
   /** Click handler */
   onClick?: () => void;
+
+  /** Additional class name */
+  className?: string;
 }
 
 export const ExplorerItem = forwardRef<HTMLButtonElement, ExplorerItemProps>(
-  ({ title, description, selected = false, icon, onClick, className, ...props }, ref) => {
+  ({ title, description, selected = false, icon, onClick, className }, ref) => {
     return (
-      <button
+      <Button
         ref={ref}
         type="button"
+        variant="tertiary"
+        data-color={selected ? 'accent' : 'neutral'}
         className={cn('ds-explorer-item', selected && 'ds-explorer-item--selected', className)}
         onClick={onClick}
         style={{
@@ -51,21 +57,24 @@ export const ExplorerItem = forwardRef<HTMLButtonElement, ExplorerItemProps>(
             ? '1px solid var(--ds-color-accent-border-default)'
             : '1px solid transparent',
           textAlign: 'left',
-          transition: 'background-color 150ms ease, border-color 150ms ease',
+          justifyContent: 'flex-start',
+          minHeight: 'auto',
+          height: 'auto',
         }}
-        {...props}
       >
         {icon && (
-          <span
+          <Stack
+            direction="horizontal"
+            align="center"
             style={{
               color: 'var(--ds-color-neutral-text-subtle)',
               flexShrink: 0,
             }}
           >
             {icon}
-          </span>
+          </Stack>
         )}
-        <span style={{ flex: 1, minWidth: 0 }}>
+        <Stack spacing="0" style={{ flex: 1, minWidth: 0 }}>
           <Paragraph
             data-size="sm"
             style={{
@@ -86,8 +95,8 @@ export const ExplorerItem = forwardRef<HTMLButtonElement, ExplorerItemProps>(
               {description}
             </Paragraph>
           )}
-        </span>
-      </button>
+        </Stack>
+      </Button>
     );
   }
 );
