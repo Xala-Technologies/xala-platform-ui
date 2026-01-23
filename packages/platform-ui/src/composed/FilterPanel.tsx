@@ -16,7 +16,7 @@
 
 import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -596,10 +596,11 @@ export function FilterPanel({
         >
           {title}
         </span>
-        <button
+        <Button
           type="button"
           onClick={onClose}
           aria-label="Close"
+          data-color="neutral"
           style={{
             padding: 'var(--ds-spacing-1)',
             background: 'transparent',
@@ -609,7 +610,7 @@ export function FilterPanel({
           }}
         >
           <CloseIcon />
-        </button>
+        </Button>
       </div>
 
       <div style={{ padding: 'var(--ds-spacing-3) var(--ds-spacing-4)' }}>
@@ -721,7 +722,8 @@ export function FilterPanel({
         </div>
 
         {conditions.length === 0 && (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               fontSize: 'var(--ds-font-size-sm)',
               color: 'var(--ds-color-neutral-text-subtle)',
@@ -730,7 +732,7 @@ export function FilterPanel({
             }}
           >
             No filters added. Click below to add a filter.
-          </p>
+          </Paragraph>
         )}
       </div>
 
@@ -745,9 +747,10 @@ export function FilterPanel({
           borderTopColor: 'var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <button
+        <Button
           type="button"
           onClick={handleAddCondition}
+          data-color="accent"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -761,12 +764,13 @@ export function FilterPanel({
           }}
         >
           + Add filter
-        </button>
+        </Button>
 
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-          <button
+          <Button
             type="button"
             onClick={handleCancel}
+            data-color="danger"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -780,12 +784,13 @@ export function FilterPanel({
             }}
           >
             ⊗ {cancelButtonText}
-          </button>
+          </Button>
 
           {showApplyButton && onApply && (
-            <button
+            <Button
               type="button"
               onClick={onApply}
+              data-color="accent"
               style={{
                 padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -798,7 +803,7 @@ export function FilterPanel({
               }}
             >
               {applyButtonText}
-            </button>
+            </Button>
           )}
         </div>
       </div>

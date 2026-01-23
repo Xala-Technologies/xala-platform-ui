@@ -14,6 +14,7 @@
 
 import * as React from 'react';
 import { useState, useCallback, useEffect, useMemo } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -201,7 +202,7 @@ function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputP
           const isSelected = selectedValues.includes(opt.value);
 
           return (
-            <button
+            <Button
               key={opt.value}
               type="button"
               onClick={() => {
@@ -211,6 +212,7 @@ function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputP
                 onChange(newValues.length > 0 ? newValues : undefined);
               }}
               aria-pressed={isSelected}
+              data-color={isSelected ? 'accent' : 'neutral'}
               style={{
                 padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -243,7 +245,7 @@ function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputP
                   ({opt.count})
                 </span>
               )}
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -339,9 +341,10 @@ export function TableFilter({
 
         {/* Clear all button */}
         {showClearAll && activeFilterCount > 0 && (
-          <button
+          <Button
             type="button"
             onClick={handleClearAll}
+            data-color="neutral"
             style={{
               padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
               fontSize: 'var(--ds-font-size-sm)',
@@ -367,7 +370,7 @@ export function TableFilter({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
             Fjern alle ({activeFilterCount})
-          </button>
+          </Button>
         )}
       </div>
 

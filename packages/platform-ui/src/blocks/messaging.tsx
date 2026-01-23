@@ -133,9 +133,10 @@ export function NotificationBell({ count = 0, onClick, maxCount = 99 }: Notifica
   const displayCount = count > maxCount ? `${maxCount}+` : count;
 
   return (
-    <button
+    <Button
       type="button"
       onClick={onClick}
+      data-color="neutral"
       style={{
         position: 'relative',
         display: 'flex',
@@ -175,7 +176,7 @@ export function NotificationBell({ count = 0, onClick, maxCount = 99 }: Notifica
           {displayCount}
         </span>
       )}
-    </button>
+    </Button>
   );
 }
 
@@ -202,9 +203,10 @@ export function ConversationListItem({
   const hasUnread = (conversation.unreadCount ?? 0) > 0;
 
   return (
-    <button
+    <Button
       type="button"
       onClick={onClick}
+      data-color={isSelected ? 'accent' : 'neutral'}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -409,10 +411,11 @@ export function ConversationList({
           }}
         >
           {filterTabs.map((tab) => (
-            <button
+            <Button
               key={tab.id}
               type="button"
               onClick={() => onFilterChange?.(tab.id)}
+              data-color={activeFilter === tab.id ? 'accent' : 'neutral'}
               style={{
                 padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
                 borderRadius: 'var(--ds-border-radius-full)',
@@ -432,7 +435,7 @@ export function ConversationList({
               {tab.count !== undefined && tab.count > 0 && (
                 <span style={{ marginLeft: '4px', opacity: 0.8 }}>({tab.count})</span>
               )}
-            </button>
+            </Button>
           ))}
         </div>
       )}

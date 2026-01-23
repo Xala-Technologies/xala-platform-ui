@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -132,7 +133,7 @@ function MenuContent({ items, groups, onClose, style }: MenuContentProps): React
     const isFocused = focusedIndex === globalIndex;
 
     return (
-      <button
+      <Button
         key={item.id}
         type="button"
         onClick={() => {
@@ -143,6 +144,7 @@ function MenuContent({ items, groups, onClose, style }: MenuContentProps): React
         }}
         onMouseEnter={() => setFocusedIndex(globalIndex)}
         disabled={item.disabled}
+        data-color={item.danger ? 'danger' : 'neutral'}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -178,7 +180,7 @@ function MenuContent({ items, groups, onClose, style }: MenuContentProps): React
             {item.shortcut}
           </span>
         )}
-      </button>
+      </Button>
     );
   };
 

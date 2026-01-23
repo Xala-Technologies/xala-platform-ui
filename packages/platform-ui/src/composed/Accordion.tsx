@@ -293,11 +293,12 @@ export function Collapsible({
         ...style,
       }}
     >
-      <button
+      <Button
         type="button"
         onClick={toggle}
         disabled={disabled}
         aria-expanded={isOpen}
+        data-color="neutral"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -332,7 +333,7 @@ export function Collapsible({
         >
           <ChevronDownIcon />
         </span>
-      </button>
+      </Button>
       {isOpen && (
         <div
           style={{

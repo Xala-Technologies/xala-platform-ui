@@ -6,7 +6,7 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Fieldset, Heading } from '@digdir/designsystemet-react';
+import { Fieldset, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 export interface AppShellProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -91,7 +91,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
                     {title}
                   </Heading>
                 )}
-                {subtitle && <p style={{ opacity: 0.8, marginTop: 0 }}>{subtitle}</p>}
+                {subtitle && <Paragraph data-size="small" style={{ opacity: 0.8, marginTop: 0 }}>{subtitle}</Paragraph>}
               </>
             )}
           </header>

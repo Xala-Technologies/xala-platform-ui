@@ -12,6 +12,7 @@
 'use client';
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -328,11 +329,12 @@ export function PDFPreview({
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
             {showPageNav && totalPages > 1 && (
               <>
-                <button
+                <Button
                   type="button"
                   onClick={handlePrevPage}
                   disabled={currentPage === 1}
                   aria-label="Previous page"
+                  data-color="neutral"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -347,7 +349,7 @@ export function PDFPreview({
                   }}
                 >
                   <ChevronLeftIcon />
-                </button>
+                </Button>
                 <span
                   style={{
                     fontSize: 'var(--ds-font-size-sm)',
@@ -356,11 +358,12 @@ export function PDFPreview({
                 >
                   {currentPage} / {totalPages}
                 </span>
-                <button
+                <Button
                   type="button"
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}
                   aria-label="Next page"
+                  data-color="neutral"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -375,7 +378,7 @@ export function PDFPreview({
                   }}
                 >
                   <ChevronRightIcon />
-                </button>
+                </Button>
                 <div
                   style={{
                     width: 'var(--ds-border-width-default)',
@@ -389,11 +392,12 @@ export function PDFPreview({
 
             {showZoom && (
               <>
-                <button
+                <Button
                   type="button"
                   onClick={handleZoomOut}
                   disabled={zoom <= 50}
                   aria-label="Zoom out"
+                  data-color="neutral"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -408,7 +412,7 @@ export function PDFPreview({
                   }}
                 >
                   <ZoomOutIcon />
-                </button>
+                </Button>
                 <span
                   style={{
                     fontSize: 'var(--ds-font-size-sm)',
@@ -419,11 +423,12 @@ export function PDFPreview({
                 >
                   {zoom}%
                 </span>
-                <button
+                <Button
                   type="button"
                   onClick={handleZoomIn}
                   disabled={zoom >= 200}
                   aria-label="Zoom in"
+                  data-color="neutral"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -438,7 +443,7 @@ export function PDFPreview({
                   }}
                 >
                   <ZoomInIcon />
-                </button>
+                </Button>
                 <div
                   style={{
                     width: 'var(--ds-border-width-default)',
@@ -450,10 +455,11 @@ export function PDFPreview({
               </>
             )}
 
-            <button
+            <Button
               type="button"
               onClick={handleFullscreen}
               aria-label={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+              data-color="neutral"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -467,13 +473,14 @@ export function PDFPreview({
               }}
             >
               <MaximizeIcon />
-            </button>
+            </Button>
 
             {showPrint && (
-              <button
+              <Button
                 type="button"
                 onClick={handlePrint}
                 aria-label="Print"
+                data-color="neutral"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -487,14 +494,15 @@ export function PDFPreview({
                 }}
               >
                 <PrinterIcon />
-              </button>
+              </Button>
             )}
 
             {showDownload && (
-              <button
+              <Button
                 type="button"
                 onClick={handleDownload}
                 aria-label="Download"
+                data-color="neutral"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -508,7 +516,7 @@ export function PDFPreview({
                 }}
               >
                 <DownloadIcon />
-              </button>
+              </Button>
             )}
           </div>
         </div>
@@ -568,7 +576,8 @@ export function PDFPreview({
             <div style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
               <FileTextIcon />
             </div>
-            <p
+            <Paragraph
+              data-size="medium"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-md)',
@@ -577,8 +586,9 @@ export function PDFPreview({
               }}
             >
               Failed to load document
-            </p>
-            <p
+            </Paragraph>
+            <Paragraph
+              data-size="small"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-sm)',
@@ -586,10 +596,11 @@ export function PDFPreview({
               }}
             >
               The document could not be displayed
-            </p>
-            <button
+            </Paragraph>
+            <Button
               type="button"
               onClick={handleDownload}
+              data-color="accent"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -607,7 +618,7 @@ export function PDFPreview({
             >
               <DownloadIcon />
               Download instead
-            </button>
+            </Button>
           </div>
         )}
 

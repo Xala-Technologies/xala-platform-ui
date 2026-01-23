@@ -256,11 +256,12 @@ function IconButton({
   active?: boolean;
 }): React.ReactElement {
   return (
-    <button
+    <Button
       type="button"
       onClick={onClick}
       aria-label={label}
       aria-pressed={active}
+      data-color={active ? 'accent' : 'neutral'}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -280,7 +281,7 @@ function IconButton({
       }}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 

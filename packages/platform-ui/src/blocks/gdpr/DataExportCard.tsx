@@ -27,7 +27,7 @@
  */
 
 import React from 'react';
-import { Card } from '@digdir/designsystemet-react';
+import { Card, Paragraph } from '@digdir/designsystemet-react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
@@ -219,8 +219,8 @@ function ExportRequestStatus({
           }}
         >
           {getExpiryMessage() && (
-            <p
-              data-size="xs"
+            <Paragraph
+              data-size="small"
               style={{
                 margin: 0,
                 color: 'var(--ds-color-warning-text)',
@@ -228,7 +228,7 @@ function ExportRequestStatus({
               }}
             >
               {getExpiryMessage()}
-            </p>
+            </Paragraph>
           )}
           <Button
             type="button"
@@ -244,8 +244,8 @@ function ExportRequestStatus({
 
       {/* Rejection reason */}
       {status === 'rejected' && rejectionReason && (
-        <p
-          data-size="xs"
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             marginTop: 'var(--ds-spacing-2)',
@@ -254,7 +254,7 @@ function ExportRequestStatus({
           }}
         >
           {`${labels.rejectionLabel} ${rejectionReason}`}
-        </p>
+        </Paragraph>
       )}
     </div>
   );

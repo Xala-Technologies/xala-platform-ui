@@ -14,6 +14,7 @@
  */
 
 import React, { type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -158,10 +159,11 @@ function FilterChip({ filter, onRemove }: FilterChipProps) {
           {displayValue}
         </span>
       )}
-      <button
+      <Button
         type="button"
         onClick={onRemove}
         aria-label={`Remove ${filter.field} filter`}
+        data-color="neutral"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -176,7 +178,7 @@ function FilterChip({ filter, onRemove }: FilterChipProps) {
         }}
       >
         <CloseIcon />
-      </button>
+      </Button>
     </div>
   );
 }
@@ -245,9 +247,10 @@ export function FilterChipsBar({
       )}
 
       {onAddFilter && (
-        <button
+        <Button
           type="button"
           onClick={onAddFilter}
+          data-color="neutral"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -266,13 +269,14 @@ export function FilterChipsBar({
         >
           <PlusIcon />
           {addFilterLabel}
-        </button>
+        </Button>
       )}
 
       {showClearAll && filters.length > 0 && onClearAll && (
-        <button
+        <Button
           type="button"
           onClick={onClearAll}
+          data-color="neutral"
           style={{
             padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
             backgroundColor: 'transparent',
@@ -284,7 +288,7 @@ export function FilterChipsBar({
           }}
         >
           {clearAllLabel}
-        </button>
+        </Button>
       )}
     </div>
   );

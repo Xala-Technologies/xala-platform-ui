@@ -861,10 +861,11 @@ export function ResourceCard({
 
         {/* Close button (for detailed/modal view) */}
         {onClose && (
-          <button
+          <Button
             type="button"
             onClick={handleClose}
             aria-label={closeAriaLabel}
+            data-color="neutral"
             style={{
               position: 'absolute',
               top: 'var(--ds-spacing-3)',
@@ -885,7 +886,7 @@ export function ResourceCard({
             }}
           >
             <CloseIcon />
-          </button>
+          </Button>
         )}
       </div>
 

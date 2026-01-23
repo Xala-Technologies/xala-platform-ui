@@ -13,6 +13,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -176,12 +177,13 @@ export function TableRowActions({
       }}
       onKeyDown={handleKeyDown}
     >
-      <button
+      <Button
         type="button"
         aria-label={triggerLabel}
         aria-haspopup="menu"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
+        data-color="neutral"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -197,7 +199,7 @@ export function TableRowActions({
         }}
       >
         <MoreVerticalIcon />
-      </button>
+      </Button>
 
       {isOpen && (
         <div
@@ -225,12 +227,13 @@ export function TableRowActions({
             const isFocused = index === focusedIndex;
 
             return (
-              <button
+              <Button
                 key={action.id}
                 type="button"
                 role="menuitem"
                 disabled={action.disabled}
                 onClick={() => handleActionClick(action)}
+                data-color={action.variant === 'danger' ? 'danger' : action.variant === 'success' ? 'success' : action.variant === 'warning' ? 'warning' : 'neutral'}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -254,7 +257,7 @@ export function TableRowActions({
                   <span style={{ display: 'flex', alignItems: 'center' }}>{action.icon}</span>
                 )}
                 {action.label}
-              </button>
+              </Button>
             );
           })}
         </div>

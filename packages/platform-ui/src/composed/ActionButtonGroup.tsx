@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -356,7 +357,7 @@ function ActionButton({ action, size, variant }: ActionButtonProps): React.React
     >
       {action.loading ? <LoadingSpinner /> : showIcon && config.icon}
       {showText && <span>{config.label}</span>}
-    </button>
+    </Button>
   );
 }
 

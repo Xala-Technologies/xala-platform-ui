@@ -10,6 +10,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -215,7 +216,8 @@ function TimelineEntry({ item, isLast, showConnector }: TimelineEntryProps): Rea
               </span>
             </div>
             {item.description && (
-              <p
+              <Paragraph
+                data-size="small"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-sm)',
@@ -223,7 +225,7 @@ function TimelineEntry({ item, isLast, showConnector }: TimelineEntryProps): Rea
                 }}
               >
                 {item.description}
-              </p>
+              </Paragraph>
             )}
             {item.metadata && Object.keys(item.metadata).length > 0 && (
               <div

@@ -279,7 +279,9 @@ export function DetailCard({
               {icon}
             </span>
           )}
-          <h3
+          <Heading
+            level={3}
+            data-size="medium"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-md)',
@@ -288,7 +290,7 @@ export function DetailCard({
             }}
           >
             {title}
-          </h3>
+          </Heading>
         </div>
 
         {actions && <div>{actions}</div>}

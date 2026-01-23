@@ -9,7 +9,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // TYPES
@@ -477,10 +477,11 @@ export function Drawer({
                 </span>
               )}
             </div>
-            <button
+            <Button
               type="button"
               onClick={onClose}
               aria-label="Lukk"
+              data-color="neutral"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -505,7 +506,7 @@ export function Drawer({
               }}
             >
               <CloseIcon />
-            </button>
+            </Button>
           </div>
         )}
 
@@ -619,7 +620,8 @@ export function DrawerSection({
               {title}
             </span>
             {description && (
-              <p
+              <Paragraph
+                data-size="small"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-xs, 0.75rem)',
@@ -627,7 +629,7 @@ export function DrawerSection({
                 }}
               >
                 {description}
-              </p>
+              </Paragraph>
             )}
           </div>
           {collapsible && (
@@ -723,12 +725,13 @@ export function DrawerItem({
 
   if (isInteractive) {
     return (
-      <button
+      <Button
         type="button"
         onClick={onClick}
         disabled={disabled}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        data-color={selected ? 'accent' : 'neutral'}
         style={{
           ...style,
           width: '100%',
@@ -739,7 +742,7 @@ export function DrawerItem({
         }}
       >
         {content}
-      </button>
+      </Button>
     );
   }
 
@@ -798,7 +801,8 @@ export function DrawerEmptyState({
         {title}
       </span>
       {description && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: '0 0 var(--ds-spacing-4) 0',
             fontSize: 'var(--ds-font-size-sm, 0.875rem)',
@@ -807,7 +811,7 @@ export function DrawerEmptyState({
           }}
         >
           {description}
-        </p>
+        </Paragraph>
       )}
       {action}
     </div>

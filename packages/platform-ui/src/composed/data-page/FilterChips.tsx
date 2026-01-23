@@ -69,11 +69,12 @@ export function FilterChips({
         </Paragraph>
       )}
       {chips.map((chip) => (
-        <button
+        <Button
           key={chip.key}
           type="button"
           onClick={chip.onRemove}
           aria-label={`Fjern filter: ${chip.label}`}
+          data-color="accent"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -97,7 +98,7 @@ export function FilterChips({
         >
           {chip.label}
           <CloseIcon style={{ width: 14, height: 14 }} />
-        </button>
+        </Button>
       ))}
       <Button
         type="button"

@@ -46,6 +46,7 @@
  */
 
 import React from 'react';
+import { Button } from '@digdir/designsystemet-react';
 import { CheckIcon } from '../primitives/icons';
 
 // =============================================================================
@@ -310,12 +311,13 @@ export function WizardStepper({
 
           return (
             <React.Fragment key={step.id}>
-              <button
+              <Button
                 onClick={isClickable ? () => onStepClick(index) : undefined}
                 disabled={!isClickable}
                 type="button"
                 aria-current={state === 'active' ? 'step' : undefined}
                 aria-label={`${step.label}${step.optional ? ` (${labels.optional})` : ''}`}
+                data-color={state === 'active' ? 'accent' : state === 'completed' ? 'success' : state === 'error' ? 'danger' : 'neutral'}
                 style={{
                   flex: 1,
                   display: 'flex',
@@ -375,7 +377,7 @@ export function WizardStepper({
                 >
                   {step.label}
                 </span>
-              </button>
+              </Button>
 
               {/* Connecting line for 'connected' variant */}
               {variant === 'connected' && !isLast && (

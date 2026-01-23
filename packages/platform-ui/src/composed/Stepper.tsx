@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, type ReactNode } from 'react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -210,7 +211,8 @@ function StepIndicator({
           )}
         </div>
         <div style={{ textAlign: orientation === 'horizontal' ? 'center' : 'left' }}>
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               margin: 0,
               fontSize: styles.font,
@@ -235,9 +237,10 @@ function StepIndicator({
                 (optional)
               </span>
             )}
-          </p>
+          </Paragraph>
           {step.description && (
-            <p
+            <Paragraph
+              data-size="small"
               style={{
                 margin: 'var(--ds-spacing-1) 0 0 0',
                 fontSize: 'var(--ds-font-size-xs)',
@@ -245,7 +248,7 @@ function StepIndicator({
               }}
             >
               {step.description}
-            </p>
+            </Paragraph>
           )}
         </div>
       </div>
@@ -381,9 +384,10 @@ export function Wizard({
       >
         <div>
           {onCancel && (
-            <button
+            <Button
               type="button"
               onClick={onCancel}
+              data-color="neutral"
               style={{
                 padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -394,15 +398,16 @@ export function Wizard({
               }}
             >
               {cancelLabel}
-            </button>
+            </Button>
           )}
         </div>
 
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
           {!isFirstStep && (
-            <button
+            <Button
               type="button"
               onClick={handlePrev}
+              data-color="neutral"
               style={{
                 padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -417,13 +422,14 @@ export function Wizard({
               }}
             >
               {prevLabel}
-            </button>
+            </Button>
           )}
 
           {allowSkip && !isLastStep && steps[currentStep]?.optional && (
-            <button
+            <Button
               type="button"
               onClick={handleNext}
+              data-color="neutral"
               style={{
                 padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -434,12 +440,13 @@ export function Wizard({
               }}
             >
               Skip
-            </button>
+            </Button>
           )}
 
-          <button
+          <Button
             type="button"
             onClick={handleNext}
+            data-color="accent"
             style={{
               padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
               fontSize: 'var(--ds-font-size-sm)',
@@ -452,7 +459,7 @@ export function Wizard({
             }}
           >
             {isLastStep ? completeLabel : nextLabel}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

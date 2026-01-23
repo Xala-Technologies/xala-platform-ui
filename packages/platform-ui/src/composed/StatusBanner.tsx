@@ -13,6 +13,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -208,7 +209,8 @@ export function StatusBanner({
       </div>
 
       <div style={{ flex: 1, minWidth: 0 }}>
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontWeight: 'var(--ds-font-weight-semibold)',
@@ -216,9 +218,10 @@ export function StatusBanner({
           }}
         >
           {title}
-        </p>
+        </Paragraph>
         {description && (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               margin: 'var(--ds-spacing-1) 0 0 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -226,7 +229,7 @@ export function StatusBanner({
             }}
           >
             {description}
-          </p>
+          </Paragraph>
         )}
       </div>
 

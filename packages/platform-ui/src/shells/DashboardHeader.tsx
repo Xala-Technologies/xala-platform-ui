@@ -233,13 +233,14 @@ function UserMenuDropdown({
       {/* Menu items */}
       <div style={{ padding: 'var(--ds-spacing-2)' }}>
         {menuItems.map((item, index) => (
-          <button
+          <Button
             key={index}
             type="button"
             onClick={() => {
               item.onClick();
               onClose();
             }}
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -259,7 +260,7 @@ function UserMenuDropdown({
           >
             <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{item.icon}</span>
             {item.label}
-          </button>
+          </Button>
         ))}
       </div>
 

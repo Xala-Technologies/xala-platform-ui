@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { Paragraph } from '@digdir/designsystemet-react';
 import { AVATAR_COLOR_PALETTE } from '../tokens/extended';
 
 // =============================================================================
@@ -297,7 +298,8 @@ export function UserInfo({
     >
       <Avatar src={src} name={name} size={size} showStatus={showStatus} isOnline={isOnline} />
       <div style={{ minWidth: 0 }}>
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontSize: sizeStyle.fontSize,
@@ -309,9 +311,10 @@ export function UserInfo({
           }}
         >
           {name}
-        </p>
+        </Paragraph>
         {subtitle && (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               margin: 0,
               fontSize: textSize,
@@ -322,7 +325,7 @@ export function UserInfo({
             }}
           >
             {subtitle}
-          </p>
+          </Paragraph>
         )}
       </div>
     </div>

@@ -218,7 +218,7 @@ export function ImageSlider({
                   objectFit: 'cover',
                 }}
               />
-            </div>
+            </Button>
           ))}
         </div>
 
@@ -403,11 +403,12 @@ export function ImageSlider({
           }}
         >
           {images.map((image, index) => (
-            <button
+            <Button
               key={image.id}
               type="button"
               onClick={() => goToSlide(index)}
               aria-label={`Velg bilde ${index + 1}`}
+              data-color="neutral"
               style={{
                 flexShrink: 0,
                 width: '80px',

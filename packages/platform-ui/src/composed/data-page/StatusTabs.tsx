@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { Badge } from '@digdir/designsystemet-react';
+import { Badge, Button } from '@digdir/designsystemet-react';
 import { cn } from '../../utils';
 
 export interface StatusTabItem {
@@ -78,13 +78,14 @@ export function StatusTabs({
         const surfaceColor = surfaceColorMap[color];
 
         return (
-          <button
+          <Button
             key={tab.id}
             type="button"
             onClick={() => onChange(tab.id)}
             aria-selected={isActive}
             role="tab"
             className={cn('status-tab', isActive && 'status-tab--active')}
+            data-color={isActive ? (tab.status === 'danger' ? 'danger' : tab.status === 'warning' ? 'warning' : tab.status === 'success' ? 'success' : 'accent') : 'neutral'}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -128,7 +129,7 @@ export function StatusTabs({
                 {count}
               </span>
             )}
-          </button>
+          </Button>
         );
       })}
     </div>

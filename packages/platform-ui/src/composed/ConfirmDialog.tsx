@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useEffect, useRef, useCallback, type ReactNode } from 'react';
+import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -238,8 +239,10 @@ export function ConfirmDialog({
               </div>
             )}
             <div style={{ flex: 1 }}>
-              <h2
+              <Heading
+                level={2}
                 id="dialog-title"
+                data-size="medium"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-lg)',
@@ -248,10 +251,11 @@ export function ConfirmDialog({
                 }}
               >
                 {title}
-              </h2>
+              </Heading>
               {description && (
-                <p
+                <Paragraph
                   id="dialog-description"
+                  data-size="small"
                   style={{
                     margin: 'var(--ds-spacing-2) 0 0 0',
                     fontSize: 'var(--ds-font-size-sm)',
@@ -260,7 +264,7 @@ export function ConfirmDialog({
                   }}
                 >
                   {description}
-                </p>
+                </Paragraph>
               )}
               {children && <div style={{ marginTop: 'var(--ds-spacing-4)' }}>{children}</div>}
             </div>
@@ -279,10 +283,11 @@ export function ConfirmDialog({
             borderTopColor: 'var(--ds-color-neutral-border-subtle)',
           }}
         >
-          <button
+          <Button
             type="button"
             onClick={onClose}
             disabled={isLoading}
+            data-color="neutral"
             style={{
               padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
               fontSize: 'var(--ds-font-size-sm)',
@@ -298,12 +303,13 @@ export function ConfirmDialog({
             }}
           >
             {cancelLabel}
-          </button>
-          <button
+          </Button>
+          <Button
             ref={confirmButtonRef}
             type="button"
             onClick={handleConfirm}
             disabled={isLoading}
+            data-color={variant === 'danger' ? 'danger' : variant === 'warning' ? 'warning' : 'accent'}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -321,7 +327,7 @@ export function ConfirmDialog({
           >
             {isLoading && <SpinnerIcon />}
             {confirmLabel}
-          </button>
+          </Button>
         </div>
       </div>
       <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
@@ -417,8 +423,10 @@ export function ActionDialog({
           }}
         >
           <div>
-            <h2
+            <Heading
+              level={2}
               id="action-dialog-title"
+              data-size="medium"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-lg)',
@@ -427,9 +435,10 @@ export function ActionDialog({
               }}
             >
               {title}
-            </h2>
+            </Heading>
             {description && (
-              <p
+              <Paragraph
+                data-size="small"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-sm)',
@@ -437,13 +446,14 @@ export function ActionDialog({
                 }}
               >
                 {description}
-              </p>
+              </Paragraph>
             )}
           </div>
-          <button
+          <Button
             type="button"
             onClick={onClose}
             aria-label="Close"
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -457,7 +467,7 @@ export function ActionDialog({
             }}
           >
             <XIcon />
-          </button>
+          </Button>
         </div>
 
         <div

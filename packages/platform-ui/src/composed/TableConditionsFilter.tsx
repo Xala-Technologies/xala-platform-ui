@@ -11,6 +11,7 @@
  */
 
 import React, { useState, useCallback, useMemo, type ReactNode } from 'react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -439,10 +440,11 @@ function ConditionRow({
 
       {renderValueInput()}
 
-      <button
+      <Button
         type="button"
         onClick={onRemove}
         title="Remove condition"
+        data-color="neutral"
         style={{
           flexShrink: 0,
           padding: 'var(--ds-spacing-2)',
@@ -454,7 +456,7 @@ function ConditionRow({
         }}
       >
         <TrashIcon />
-      </button>
+      </Button>
     </div>
   );
 }
@@ -532,7 +534,9 @@ export function TableConditionsFilter({
         }}
       >
         <div>
-          <h3
+          <Heading
+            level={3}
+            data-size="medium"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-md)',
@@ -541,9 +545,10 @@ export function TableConditionsFilter({
             }}
           >
             {title}
-          </h3>
+          </Heading>
           {subtitle && (
-            <p
+            <Paragraph
+              data-size="small"
               style={{
                 margin: 0,
                 marginTop: 'var(--ds-spacing-1)',
@@ -552,14 +557,15 @@ export function TableConditionsFilter({
               }}
             >
               {subtitle}
-            </p>
+            </Paragraph>
           )}
         </div>
         {onClose && (
-          <button
+          <Button
             type="button"
             onClick={onClose}
             aria-label="Close"
+            data-color="neutral"
             style={{
               padding: 'var(--ds-spacing-1)',
               background: 'transparent',
@@ -569,13 +575,14 @@ export function TableConditionsFilter({
             }}
           >
             <CloseIcon />
-          </button>
+          </Button>
         )}
       </div>
 
       <div style={{ padding: 'var(--ds-spacing-4) var(--ds-spacing-5)' }}>
         {conditions.length === 0 ? (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               textAlign: 'center',
               color: 'var(--ds-color-neutral-text-subtle)',
@@ -584,7 +591,7 @@ export function TableConditionsFilter({
             }}
           >
             No conditions added yet. Click &quot;{addConditionText}&quot; to start filtering.
-          </p>
+          </Paragraph>
         ) : (
           <div>
             {conditions.map((condition, index) => (
@@ -611,10 +618,11 @@ export function TableConditionsFilter({
           borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <button
+        <Button
           type="button"
           onClick={handleAddCondition}
           disabled={conditions.length >= maxConditions}
+          data-color="accent"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -631,11 +639,12 @@ export function TableConditionsFilter({
         >
           <PlusIcon />
           {addConditionText}
-        </button>
+        </Button>
 
-        <button
+        <Button
           type="button"
           onClick={onApply}
+          data-color="accent"
           style={{
             padding: 'var(--ds-spacing-2) var(--ds-spacing-5)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -648,7 +657,7 @@ export function TableConditionsFilter({
           }}
         >
           {applyButtonText}
-        </button>
+        </Button>
       </div>
     </div>
   );

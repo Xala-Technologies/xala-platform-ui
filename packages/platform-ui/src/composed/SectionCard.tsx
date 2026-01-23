@@ -385,7 +385,9 @@ export function SectionCard({
                 )}
                 <div style={{ flex: 1 }}>
                   {title && (
-                    <h3
+                    <Heading
+                      level={3}
+                      data-size="medium"
                       style={{
                         margin: 0,
                         fontSize: sizeStyle.titleSize,
@@ -395,10 +397,11 @@ export function SectionCard({
                       }}
                     >
                       {title}
-                    </h3>
+                    </Heading>
                   )}
                   {description && (
-                    <p
+                    <Paragraph
+                      data-size="small"
                       style={{
                         margin: 0,
                         marginTop: 'var(--ds-spacing-1)',
@@ -407,7 +410,7 @@ export function SectionCard({
                       }}
                     >
                       {description}
-                    </p>
+                    </Paragraph>
                   )}
                 </div>
               </div>

@@ -169,9 +169,9 @@ function Tab({ label, count, active, onClick, href, variant }: TabProps) {
   }
 
   return (
-    <button type="button" style={styles} onClick={onClick}>
+    <Button type="button" data-color="neutral" style={styles} onClick={onClick}>
       {content}
-    </button>
+    </Button>
   );
 }
 

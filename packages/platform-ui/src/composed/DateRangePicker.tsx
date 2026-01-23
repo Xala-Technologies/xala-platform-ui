@@ -10,7 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -323,11 +323,12 @@ function Calendar({
           const isToday = isSameDay(date, new Date());
 
           return (
-            <button
+            <Button
               key={date.toISOString()}
               type="button"
               onClick={() => !isDisabled && onDateClick(date)}
               disabled={isDisabled}
+              data-color={isStart || isEnd ? 'accent' : 'neutral'}
               style={{
                 padding: 'var(--ds-spacing-2)',
                 fontSize: 'var(--ds-font-size-sm)',
@@ -359,7 +360,7 @@ function Calendar({
               }}
             >
               {date.getDate()}
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -453,10 +454,11 @@ export function DateRangePicker({
         </label>
       )}
 
-      <button
+      <Button
         type="button"
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled}
+        data-color="neutral"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -483,10 +485,11 @@ export function DateRangePicker({
       >
         <CalendarIcon />
         <span style={{ flex: 1 }}>{displayValue || placeholder}</span>
-      </button>
+      </Button>
 
       {error && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -494,7 +497,7 @@ export function DateRangePicker({
           }}
         >
           {error}
-        </p>
+        </Paragraph>
       )}
 
       {isOpen && (
@@ -525,10 +528,11 @@ export function DateRangePicker({
               }}
             >
               {presets.map((preset) => (
-                <button
+                <Button
                   key={preset.id}
                   type="button"
                   onClick={() => handlePresetClick(preset)}
+                  data-color="neutral"
                   style={{
                     display: 'block',
                     width: '100%',
@@ -544,7 +548,7 @@ export function DateRangePicker({
                   }}
                 >
                   {preset.label}
-                </button>
+                </Button>
               ))}
             </div>
           )}

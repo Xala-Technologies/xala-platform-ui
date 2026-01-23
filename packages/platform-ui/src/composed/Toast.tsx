@@ -21,6 +21,7 @@ import React, {
   type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -298,9 +299,10 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
           </div>
         )}
         {toast.action && (
-          <button
+          <Button
             type="button"
             onClick={toast.action.onClick}
+            data-color="neutral"
             style={{
               marginTop: 'var(--ds-spacing-2)',
               padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
@@ -314,14 +316,15 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
             }}
           >
             {toast.action.label}
-          </button>
+          </Button>
         )}
       </div>
       {toast.dismissible !== false && (
-        <button
+        <Button
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss notification"
+          data-color="neutral"
           style={{
             flexShrink: 0,
             padding: 'var(--ds-spacing-1)',
@@ -333,7 +336,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
           }}
         >
           <CloseIcon />
-        </button>
+        </Button>
       )}
     </div>
   );

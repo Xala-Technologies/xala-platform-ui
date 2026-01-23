@@ -10,6 +10,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -224,10 +225,11 @@ export function Tag({
       {icon}
       {children}
       {removable && (
-        <button
+        <Button
           type="button"
           onClick={onRemove}
           aria-label="Remove"
+          data-color="neutral"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -242,7 +244,7 @@ export function Tag({
           }}
         >
           <XIcon />
-        </button>
+        </Button>
       )}
     </span>
   );

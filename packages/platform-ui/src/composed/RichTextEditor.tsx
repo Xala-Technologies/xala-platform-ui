@@ -15,6 +15,7 @@
 'use client';
 
 import React, { useRef, useState, useCallback, useEffect, type ReactNode } from 'react';
+import { Button, Paragraph, Label } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -578,7 +579,7 @@ export function RichTextEditor({
   return (
     <div className={className} style={style}>
       {label && (
-        <label
+        <Label
           style={{
             display: 'block',
             marginBottom: 'var(--ds-spacing-2)',
@@ -598,7 +599,7 @@ export function RichTextEditor({
               *
             </span>
           )}
-        </label>
+        </Label>
       )}
 
       <div
@@ -647,13 +648,14 @@ export function RichTextEditor({
                       }}
                     />
                   )}
-                  <button
+                  <Button
                     type="button"
                     onClick={() => executeCommand(format)}
                     disabled={disabled}
                     title={FORMAT_LABELS[format]}
                     aria-label={FORMAT_LABELS[format]}
                     aria-pressed={isActive}
+                    data-color="neutral"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -673,7 +675,7 @@ export function RichTextEditor({
                     }}
                   >
                     {FORMAT_ICONS[format]}
-                  </button>
+                  </Button>
                 </React.Fragment>
               );
             })}
@@ -703,7 +705,8 @@ export function RichTextEditor({
       </div>
 
       {(error || helperText) && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -713,7 +716,7 @@ export function RichTextEditor({
           }}
         >
           {error || helperText}
-        </p>
+        </Paragraph>
       )}
 
       <style>{`

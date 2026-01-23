@@ -12,7 +12,7 @@
 'use client';
 
 import React, { useRef, useState, useCallback, type DragEvent, type ChangeEvent } from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -473,7 +473,8 @@ export function FileUploader({
         )}
 
         {maxSize && (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               margin: 'var(--ds-spacing-2) 0 0 0',
               fontSize: 'var(--ds-font-size-xs)',
@@ -481,12 +482,13 @@ export function FileUploader({
             }}
           >
             Max file size: {formatFileSize(maxSize)}
-          </p>
+          </Paragraph>
         )}
       </div>
 
       {(error || helperText) && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -496,7 +498,7 @@ export function FileUploader({
           }}
         >
           {error || helperText}
-        </p>
+        </Paragraph>
       )}
 
       {showPreview && value.length > 0 && (
@@ -557,7 +559,8 @@ export function FileUploader({
               )}
 
               <div style={{ flex: 1, minWidth: 0 }}>
-                <p
+                <Paragraph
+                  data-size="small"
                   style={{
                     margin: 0,
                     fontSize: 'var(--ds-font-size-sm)',
@@ -569,7 +572,7 @@ export function FileUploader({
                   }}
                 >
                   {file.name}
-                </p>
+                </Paragraph>
                 <div
                   style={{
                     display: 'flex',
@@ -615,13 +618,14 @@ export function FileUploader({
                 </div>
               </div>
 
-              <button
+              <Button
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleRemove(file.id);
                 }}
                 aria-label={`Remove ${file.name}`}
+                data-color="neutral"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -636,7 +640,7 @@ export function FileUploader({
                 }}
               >
                 <TrashIcon />
-              </button>
+              </Button>
             </div>
           ))}
         </div>

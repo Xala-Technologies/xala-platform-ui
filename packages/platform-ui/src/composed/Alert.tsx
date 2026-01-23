@@ -8,6 +8,7 @@
  */
 
 import React, { useState, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -241,9 +242,10 @@ export function Alert({
           {children}
         </div>
         {action && (
-          <button
+          <Button
             type="button"
             onClick={action.onClick}
+            data-color="neutral"
             style={{
               marginTop: 'var(--ds-spacing-3)',
               padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
@@ -257,14 +259,15 @@ export function Alert({
             }}
           >
             {action.label}
-          </button>
+          </Button>
         )}
       </div>
       {dismissible && (
-        <button
+        <Button
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss alert"
+          data-color="neutral"
           style={{
             flexShrink: 0,
             padding: 'var(--ds-spacing-1)',
@@ -276,7 +279,7 @@ export function Alert({
           }}
         >
           <CloseIcon />
-        </button>
+        </Button>
       )}
     </div>
   );

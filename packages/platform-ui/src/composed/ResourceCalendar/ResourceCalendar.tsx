@@ -12,6 +12,7 @@
  */
 
 import * as React from 'react';
+import { Button, Heading } from '@digdir/designsystemet-react';
 import './ResourceCalendar.css';
 import type { ResourceCalendarProps, CalendarSlot, CalendarSelection, SlotStatus } from './types';
 
@@ -96,13 +97,14 @@ function CalendarSlotItem({
   const isClickable = slot.status === 'AVAILABLE' || slot.availableActions.length > 0;
 
   return (
-    <button
+    <Button
       type="button"
       className={`calendar-slot ${statusClass} ${isSelected ? 'slot-selected' : ''}`}
       onClick={isClickable ? onClick : undefined}
       disabled={!isClickable}
       aria-label={`${formatTime(slot.startTime, locale)} - ${formatTime(slot.endTime, locale)}: ${t(`slot.status.${slot.status.toLowerCase()}`)}`}
       aria-pressed={isSelected}
+      data-color="neutral"
     >
       <span className="ds-slot-time">
         {formatTime(slot.startTime, locale)} - {formatTime(slot.endTime, locale)}
@@ -113,7 +115,7 @@ function CalendarSlotItem({
         </span>
       )}
       {slot.policyReasonKey && <span className="ds-slot-reason">{t(slot.policyReasonKey)}</span>}
-    </button>
+    </Button>
   );
 }
 
@@ -142,44 +144,48 @@ function ActionButtons({
   return (
     <div className="ds-calendar-actions">
       {availableActions.includes('BOOK') && onBook && (
-        <button
+        <Button
           type="button"
           className="ds-action-book"
           onClick={() => onBook(selection)}
           disabled={disabled}
+          data-color="accent"
         >
           {t('calendar.action.book')}
-        </button>
+        </Button>
       )}
       {availableActions.includes('REQUEST') && onBook && (
-        <button
+        <Button
           type="button"
           className="ds-action-request"
           onClick={() => onBook(selection)}
           disabled={disabled}
+          data-color="accent"
         >
           {t('calendar.action.request')}
-        </button>
+        </Button>
       )}
       {availableActions.includes('WAITLIST') && onWaitlist && (
-        <button
+        <Button
           type="button"
           className="ds-action-waitlist"
           onClick={() => onWaitlist(selection)}
           disabled={disabled}
+          data-color="neutral"
         >
           {t('calendar.action.waitlist')}
-        </button>
+        </Button>
       )}
       {availableActions.includes('MODIFY') && onModify && (
-        <button
+        <Button
           type="button"
           className="ds-action-modify"
           onClick={() => onModify(selection)}
           disabled={disabled}
+          data-color="neutral"
         >
           {t('calendar.action.modify')}
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -251,7 +257,7 @@ export function ResourceCalendar({
     return (
       <div className={`resource-object-calendar loading ${className}`}>
         <div className="ds-calendar-header">
-          <h3>{resourceName}</h3>
+          <Heading level={3} data-size="medium">{resourceName}</Heading>
         </div>
         <div className="ds-calendar-loading">
           <span>{t('calendar.loading')}</span>
@@ -265,7 +271,7 @@ export function ResourceCalendar({
     return (
       <div className={`resource-object-calendar error ${className}`}>
         <div className="ds-calendar-header">
-          <h3>{resourceName}</h3>
+          <Heading level={3} data-size="medium">{resourceName}</Heading>
         </div>
         <div className="ds-calendar-error">
           <span>{error}</span>
@@ -280,11 +286,11 @@ export function ResourceCalendar({
       data-resource-object-id={resourceId}
     >
       <div className="ds-calendar-header">
-        <h3>{resourceName}</h3>
+        <Heading level={3} data-size="medium">{resourceName}</Heading>
         {config.availableModes.length > 1 && (
           <div className="ds-mode-switcher">
             {config.availableModes.map((mode) => (
-              <button
+              <Button
                 key={mode}
                 type="button"
                 className={`mode-button ${mode === config.mode ? 'active' : ''}`}
@@ -295,9 +301,10 @@ export function ResourceCalendar({
                     mode,
                   })
                 }
+                data-color={mode === config.mode ? 'accent' : 'neutral'}
               >
                 {t(`calendar.mode.${mode.toLowerCase()}`)}
-              </button>
+              </Button>
             ))}
           </div>
         )}

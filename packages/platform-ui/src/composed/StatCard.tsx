@@ -8,6 +8,7 @@
  */
 
 import React, { type ReactNode } from 'react';
+import { Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -234,7 +235,8 @@ export function StatCard({
       ) : (
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
           <div style={{ flex: 1 }}>
-            <p
+            <Paragraph
+              data-size="small"
               style={{
                 margin: 0,
                 fontSize: sizeStyle.labelSize,
@@ -244,8 +246,9 @@ export function StatCard({
               }}
             >
               {label}
-            </p>
-            <p
+            </Paragraph>
+            <Paragraph
+              data-size="medium"
               style={{
                 margin: 0,
                 fontSize: sizeStyle.valueSize,
@@ -255,7 +258,7 @@ export function StatCard({
               }}
             >
               {value}
-            </p>
+            </Paragraph>
             {trend && (
               <div
                 style={{

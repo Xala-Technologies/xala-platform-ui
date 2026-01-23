@@ -10,7 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -405,9 +405,10 @@ export function SearchableSelect({
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
           {loading && <SpinnerIcon />}
           {clearable && selectedValues.length > 0 && !disabled && (
-            <button
+            <Button
               type="button"
               onClick={handleClear}
+              data-color="neutral"
               style={{
                 display: 'flex',
                 padding: 'var(--ds-spacing-1)',
@@ -419,14 +420,15 @@ export function SearchableSelect({
               }}
             >
               <XIcon />
-            </button>
+            </Button>
           )}
           <ChevronDownIcon />
         </div>
       </div>
 
       {(error || helperText) && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -436,7 +438,7 @@ export function SearchableSelect({
           }}
         >
           {error || helperText}
-        </p>
+        </Paragraph>
       )}
 
       {isOpen && (

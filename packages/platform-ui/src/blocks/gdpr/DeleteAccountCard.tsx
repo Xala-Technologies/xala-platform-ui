@@ -215,8 +215,8 @@ function DeletionRequestStatus({
 
       {/* Rejection reason */}
       {status === 'rejected' && rejectionReason && (
-        <p
-          data-size="xs"
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             marginTop: 'var(--ds-spacing-2)',
@@ -225,7 +225,7 @@ function DeletionRequestStatus({
           }}
         >
           {`${labels.rejectionLabel} ${rejectionReason}`}
-        </p>
+        </Paragraph>
       )}
 
       {/* Cancel button for pending/processing requests */}

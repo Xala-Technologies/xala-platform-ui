@@ -5,7 +5,7 @@
  * Supports images, ratings, pricing, amenities, and action buttons.
  */
 import * as React from 'react';
-import { Tag, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Tag, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
 /** Card variant for different display contexts */
@@ -276,10 +276,11 @@ export function ResourceCard({
       >
         {/* Close button - positioned over the image with high contrast */}
         {onClose && (
-          <button
+          <Button
             type="button"
             onClick={handleClose}
             aria-label="Lukk"
+            data-color="neutral"
             style={{
               position: 'absolute',
               top: 'var(--ds-spacing-3)',
@@ -308,7 +309,7 @@ export function ResourceCard({
             }}
           >
             <CloseIcon />
-          </button>
+          </Button>
         )}
 
         <div style={{ cursor: onClick ? 'pointer' : 'default' }} onClick={handleClick}>
@@ -569,8 +570,9 @@ export function ResourceCard({
             }}
           >
             {showFavoriteButton && onFavorite && (
-              <button
+              <Button
                 type="button"
+                data-color={isFavorited ? 'danger' : 'neutral'}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -591,11 +593,12 @@ export function ResourceCard({
                 title="Legg til favoritter"
               >
                 <HeartIcon filled={isFavorited} />
-              </button>
+              </Button>
             )}
             {showShareButton && onShare && (
-              <button
+              <Button
                 type="button"
+                data-color="neutral"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -614,7 +617,7 @@ export function ResourceCard({
                 title="Del"
               >
                 <ShareIcon />
-              </button>
+              </Button>
             )}
           </div>
         )}

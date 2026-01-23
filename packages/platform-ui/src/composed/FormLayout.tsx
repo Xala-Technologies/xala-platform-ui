@@ -282,7 +282,8 @@ export function FormField({
       </label>
       {children}
       {(error || helperText) && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 'var(--ds-spacing-1) 0 0 0',
             fontSize: 'var(--ds-font-size-sm)',
@@ -292,7 +293,7 @@ export function FormField({
           }}
         >
           {error || helperText}
-        </p>
+        </Paragraph>
       )}
     </div>
   );

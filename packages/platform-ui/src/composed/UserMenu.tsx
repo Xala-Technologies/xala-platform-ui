@@ -415,13 +415,14 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
             {/* Menu Items */}
             <div style={{ padding: 'var(--ds-spacing-2) 0' }}>
               {items.map((item, index) => (
-                <button
+                <Button
                   key={item.id}
                   type="button"
                   role="menuitem"
                   disabled={item.disabled}
                   onClick={() => handleItemClick(item)}
                   tabIndex={focusedIndex === index ? 0 : -1}
+                  data-color={item.danger ? 'danger' : 'neutral'}
                   style={{
                     width: '100%',
                     padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
@@ -447,7 +448,7 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
                 >
                   {item.icon && <span style={{ display: 'flex' }}>{item.icon}</span>}
                   <span>{item.label}</span>
-                </button>
+                </Button>
               ))}
 
               {/* Divider before logout */}
@@ -463,13 +464,14 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
 
               {/* Logout */}
               {showLogout && (
-                <button
+                <Button
                   type="button"
                   role="menuitem"
                   onClick={() =>
                     handleItemClick({ id: 'logout', label: logoutLabel, danger: true })
                   }
                   tabIndex={focusedIndex === items.length ? 0 : -1}
+                  data-color="danger"
                   style={{
                     width: '100%',
                     padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
@@ -492,7 +494,7 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
                 >
                   <LogOutIcon size={20} />
                   <span>{logoutLabel}</span>
-                </button>
+                </Button>
               )}
             </div>
           </div>

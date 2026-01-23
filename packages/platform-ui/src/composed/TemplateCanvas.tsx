@@ -12,6 +12,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, type ReactNode, type DragEvent } from 'react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -422,7 +423,9 @@ function BlockRenderer({
     switch (block.type) {
       case 'header':
         return (
-          <h1
+          <Heading
+            level={1}
+            data-size="large"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-heading-lg)',
@@ -431,11 +434,12 @@ function BlockRenderer({
             }}
           >
             {block.content.text as string}
-          </h1>
+          </Heading>
         );
       case 'text':
         return (
-          <p
+          <Paragraph
+            data-size="medium"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-md)',
@@ -444,7 +448,7 @@ function BlockRenderer({
             }}
           >
             {block.content.text as string}
-          </p>
+          </Paragraph>
         );
       case 'image':
         return block.content.src ? (
@@ -474,8 +478,9 @@ function BlockRenderer({
         );
       case 'button':
         return (
-          <button
+          <Button
             type="button"
+            data-color="accent"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -491,7 +496,7 @@ function BlockRenderer({
             }}
           >
             {block.content.text as string}
-          </button>
+          </Button>
         );
       case 'divider':
         return (
@@ -621,13 +626,14 @@ function BlockRenderer({
             gap: 'var(--ds-spacing-1)',
           }}
         >
-          <button
+          <Button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               onDuplicate();
             }}
             aria-label="Duplicate block"
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -643,14 +649,15 @@ function BlockRenderer({
             }}
           >
             <CopyIcon />
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               onDelete();
             }}
             aria-label="Delete block"
+            data-color="danger"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -666,7 +673,7 @@ function BlockRenderer({
             }}
           >
             <TrashIcon />
-          </button>
+          </Button>
         </div>
       )}
 
@@ -794,9 +801,11 @@ export function TemplateCanvas({
         ...style,
       }}
     >
-      {!previewMode && (
+          {!previewMode && (
         <div style={{ width: 'var(--ds-sizing-50)', flexShrink: 0 }}>
-          <h4
+          <Heading
+            level={4}
+            data-size="small"
             style={{
               margin: '0 0 var(--ds-spacing-3) 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -805,12 +814,14 @@ export function TemplateCanvas({
             }}
           >
             Blocks
-          </h4>
+          </Heading>
           <BlockPalette availableBlocks={availableBlocks} onDragStart={handleDragStart} />
 
           {placeholders && placeholders.length > 0 && (
             <>
-              <h4
+              <Heading
+                level={4}
+                data-size="small"
                 style={{
                   margin: 'var(--ds-spacing-5) 0 var(--ds-spacing-3) 0',
                   fontSize: 'var(--ds-font-size-sm)',
@@ -819,7 +830,7 @@ export function TemplateCanvas({
                 }}
               >
                 Placeholders
-              </h4>
+              </Heading>
               <div
                 style={{
                   display: 'flex',
@@ -845,7 +856,8 @@ export function TemplateCanvas({
                       {`{{${ph.name}}}`}
                     </code>
                     {ph.description && (
-                      <p
+                      <Paragraph
+                        data-size="small"
                         style={{
                           margin: 'var(--ds-spacing-1) 0 0 0',
                           fontSize: 'var(--ds-font-size-xs)',
@@ -853,7 +865,7 @@ export function TemplateCanvas({
                         }}
                       >
                         {ph.description}
-                      </p>
+                      </Paragraph>
                     )}
                   </div>
                 ))}
@@ -901,7 +913,8 @@ export function TemplateCanvas({
               transition: 'border-color 0.15s ease, background-color 0.15s ease',
             }}
           >
-            <p
+            <Paragraph
+              data-size="medium"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-md)',
@@ -910,7 +923,7 @@ export function TemplateCanvas({
               }}
             >
               Drag blocks here to start building your template
-            </p>
+            </Paragraph>
           </div>
         )}
 

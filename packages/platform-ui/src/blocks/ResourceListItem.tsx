@@ -5,7 +5,7 @@
  * Used in list view mode. Supports images, location map, amenities, and capacity.
  */
 import * as React from 'react';
-import { Tag } from '@digdir/designsystemet-react';
+import { Tag, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
 export interface ResourceListItemProps {
@@ -286,8 +286,9 @@ export function ResourceListItem({
           }}
         >
           {showFavoriteButton && onFavorite && (
-            <button
+            <Button
               type="button"
+              data-color={isFavorited ? 'danger' : 'neutral'}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -308,11 +309,12 @@ export function ResourceListItem({
               title="Legg til favoritter"
             >
               <HeartIcon filled={isFavorited} />
-            </button>
+            </Button>
           )}
           {showShareButton && onShare && (
-            <button
+            <Button
               type="button"
+              data-color="neutral"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -334,7 +336,7 @@ export function ResourceListItem({
               title="Del"
             >
               <ShareIcon />
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -359,7 +361,9 @@ export function ResourceListItem({
             marginBottom: 'var(--ds-spacing-2)',
           }}
         >
-          <h3
+          <Heading
+            level={3}
+            data-size="medium"
             style={
               {
                 margin: 0,
@@ -372,7 +376,7 @@ export function ResourceListItem({
             }
           >
             {name}
-          </h3>
+          </Heading>
           {showCategory && category && (
             <Tag
               data-size="sm"
@@ -386,7 +390,8 @@ export function ResourceListItem({
 
         {/* Location */}
         {showLocation && (
-          <p
+          <Paragraph
+            data-size="small"
             style={
               {
                 margin: '0 0 var(--ds-spacing-2) 0',
@@ -401,12 +406,13 @@ export function ResourceListItem({
           >
             <MapPinIcon />
             {location}
-          </p>
+          </Paragraph>
         )}
 
         {/* Description */}
         {showDescription && (
-          <p
+          <Paragraph
+            data-size="small"
             style={
               {
                 margin: '0 0 var(--ds-spacing-3) 0',
@@ -422,7 +428,7 @@ export function ResourceListItem({
             }
           >
             {description}
-          </p>
+          </Paragraph>
         )}
 
         {/* Amenity tags */}

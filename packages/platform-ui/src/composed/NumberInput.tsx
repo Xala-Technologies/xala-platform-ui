@@ -10,7 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -381,7 +381,8 @@ export function NumberInput({
       </div>
 
       {(error || helperText) && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -391,7 +392,7 @@ export function NumberInput({
           }}
         >
           {error || helperText}
-        </p>
+        </Paragraph>
       )}
     </div>
   );

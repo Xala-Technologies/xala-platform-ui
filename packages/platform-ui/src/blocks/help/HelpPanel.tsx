@@ -466,9 +466,10 @@ function FAQHelp({
                       overflow: 'hidden',
                     }}
                   >
-                    <button
+                    <Button
                       type="button"
                       onClick={() => toggleItem(globalIndex)}
+                      data-color="neutral"
                       style={{
                         width: '100%',
                         padding: 'var(--ds-spacing-4)',
@@ -489,7 +490,7 @@ function FAQHelp({
                           transition: 'transform 0.2s',
                         }}
                       />
-                    </button>
+                    </Button>
                     {isExpanded && (
                       <div
                         style={{
