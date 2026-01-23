@@ -111,3 +111,21 @@ export type {
   ToggleMatrixColumn,
   ToggleMatrixValues,
 } from './ToggleMatrix';
+
+// Selection Actions Bar
+export { SelectionActionsBar } from './SelectionActionsBar';
+export type {
+  SelectionActionsBarProps,
+  SelectionActionsBarLabels,
+  SelectionAction,
+} from './SelectionActionsBar';
+
+// Cart Sidebar
+export { CartSidebar } from './CartSidebar';
+export type {
+  CartSidebarProps,
+  CartSidebarLabels,
+  CartItem,
+  CartSummary,
+  PriceBreakdownLine,
+} from './CartSidebar';
