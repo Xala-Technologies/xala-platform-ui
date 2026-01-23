@@ -160,8 +160,58 @@ function checkRawHTML(
   return violations;
 }
 
+// CSS properties that don't need design tokens (layout, positioning, etc.)
+const ALLOWED_CSS_PROPERTIES = [
+  'display',
+  'position',
+  'flex',
+  'flexDirection',
+  'flexWrap',
+  'justifyContent',
+  'alignItems',
+  'alignContent',
+  'alignSelf',
+  'gridTemplateColumns',
+  'gridTemplateRows',
+  'gridColumn',
+  'gridRow',
+  'overflow',
+  'overflowX',
+  'overflowY',
+  'visibility',
+  'opacity',
+  'transform',
+  'transition',
+  'cursor',
+  'pointerEvents',
+  'userSelect',
+  'textAlign',
+  'verticalAlign',
+  'whiteSpace',
+  'wordBreak',
+  'textOverflow',
+  'listStyle',
+  'listStyleType',
+  'boxSizing',
+  'objectFit',
+  'objectPosition',
+  'resize',
+  'appearance',
+  'outline',
+  'textDecoration',
+  'fontStyle',
+];
+
+// Patterns that indicate raw values that SHOULD use design tokens
+const RAW_VALUE_PATTERNS = [
+  /:\s*['"]?\d+px['"]?[,;\s}]/, // Raw pixel values: 10px, '10px'
+  /:\s*['"]?#[0-9a-fA-F]{3,8}['"]?[,;\s}]/, // Hex colors: #fff, #ffffff
+  /:\s*['"]?rgb[a]?\([^)]+\)['"]?[,;\s}]/, // RGB/RGBA colors
+  /:\s*['"]?hsl[a]?\([^)]+\)['"]?[,;\s}]/, // HSL/HSLA colors
+];
+
 /**
- * Check for inline styles
+ * Check for inline styles with raw values that should use design tokens
  */
 function checkInlineStyles(
   filePath: string,
@@ -176,20 +226,53 @@ function checkInlineStyles(
   const violations: DesignTokenViolation[] = [];
   const lines = content.split('\n');
 
+  // Track if we're inside a style object
+  let inStyleBlock = false;
+  let braceDepth = 0;
+  let styleStartLine = 0;
+
   lines.forEach((line, index) => {
-    // Match style={{ ... }} or style="..."
-    if (/style\s*=\s*{/.test(line) || /style\s*=\s*"/.test(line)) {
+    // Detect start of style block
+    if (/style\s*=\s*\{\{/.test(line)) {
+      inStyleBlock = true;
+      braceDepth = (line.match(/\{/g) || []).length - (line.match(/\}/g) || []).length;
+      styleStartLine = index + 1;
+    }
+
+    // Check lines inside style blocks for raw values
+    if (inStyleBlock) {
       // Allow if using design token variables
       if (/var\(--ds-/.test(line)) {
-        return; // This is allowed
+        // This line uses design tokens - OK
+      } else if (/\b(sizes|animation|zIndex|shadows)\.\w+/.test(line)) {
+        // Using extended token constants - OK
+      } else {
+        // Check for raw values that should use tokens
+        for (const pattern of RAW_VALUE_PATTERNS) {
+          if (pattern.test(line)) {
+            // Skip if it's a fallback value in var()
+            if (/var\([^)]+,/.test(line)) {
+              continue; // Fallback values in var() are OK
+            }
+
+            violations.push({
+              file: relative(rootDir, filePath),
+              line: index + 1,
+              type: 'inline-style',
+              content: line.trim(),
+            });
+            break;
+          }
+        }
       }
 
-      violations.push({
-        file: relative(rootDir, filePath),
-        line: index + 1,
-        type: 'inline-style',
-        content: line.trim(),
-      });
+      // Track brace depth
+      braceDepth += (line.match(/\{/g) || []).length;
+      braceDepth -= (line.match(/\}/g) || []).length;
+
+      if (braceDepth <= 0) {
+        inStyleBlock = false;
+      }
     }
   });
 
