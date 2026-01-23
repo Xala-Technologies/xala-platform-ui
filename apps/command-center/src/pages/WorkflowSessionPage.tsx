@@ -17,7 +17,10 @@ import {
     Field,
     Label,
     Stack,
-    Button
+    Button,
+    Heading,
+    Paragraph,
+    Container
 } from '@xala-technologies/platform-ui';
 import { useWorkflowSession } from '../context/WorkflowSessionContext';
 import { CommandTerminal } from '../components/commands/CommandTerminal';
@@ -31,6 +34,7 @@ export function WorkflowSessionPage() {
         nextStep,
         prevStep,
         submitStep,
+        addArtifacts,
         cancelSession
     } = useWorkflowSession();
 
@@ -47,8 +51,8 @@ export function WorkflowSessionPage() {
                 <DashboardPageHeader title="No Active Session" />
                 <SectionCard>
                     <SectionCardContent>
-                        <Stack>
-                            <p>Please select a workflow from the catalog.</p>
+                        <Stack spacing="var(--ds-spacing-4)">
+                            <Paragraph>Please select a workflow from the catalog.</Paragraph>
                             <Button onClick={cancelSession}>Go to Catalog</Button>
                         </Stack>
                     </SectionCardContent>
@@ -86,12 +90,16 @@ export function WorkflowSessionPage() {
         }
 
         try {
-            await commandExecutor.execute(
+            const result = await commandExecutor.execute(
                 command,
                 formData,
                 (log) => setCommandLogs(prev => [...prev, log])
             );
             setCommandStatus('completed');
+
+            if (result.artifacts && result.artifacts.length > 0) {
+                addArtifacts(result.artifacts);
+            }
         } catch (err) {
             setCommandLogs(prev => [...prev, `Error: ${err}`]);
             setCommandStatus('failed');
@@ -129,23 +137,23 @@ export function WorkflowSessionPage() {
                 currentStep={activeStepIndex}
             />
 
-            <div style={{ marginTop: 'var(--ds-spacing-6)' }}>
+            <Container style={{ marginTop: 'var(--ds-spacing-6)' }} fluid maxWidth="100%" padding={0}>
                 <SectionCard>
                     <SectionCardContent>
                         <Stack spacing="var(--ds-spacing-6)">
-                            <div>
-                                <h3 style={{ margin: 0, fontSize: 'var(--ds-font-size-lg)', fontWeight: 600 }}>{currentStep.title}</h3>
+                            <Stack spacing="var(--ds-spacing-1)">
+                                <Heading level={3} data-size="md">{currentStep.title}</Heading>
                                 {currentStep.description && (
-                                    <p style={{ margin: 'var(--ds-spacing-1) 0 0', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                                    <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
                                         {currentStep.description}
-                                    </p>
+                                    </Paragraph>
                                 )}
-                            </div>
+                            </Stack>
 
                             {/* Dynamic Form Generation */}
                             <Stack spacing="var(--ds-spacing-4)">
                                 {currentStep.questions?.map(question => (
-                                    <div key={question.id}>
+                                    <Stack key={question.id}>
                                         {question.type === 'text' && (
                                             <Textfield
                                                 label={question.text}
@@ -159,7 +167,7 @@ export function WorkflowSessionPage() {
                                             <Field>
                                                 <Label>
                                                     {question.text}
-                                                    {question.required && <span style={{ color: 'var(--ds-color-danger-text-default)', marginLeft: 4 }}>*</span>}
+                                                    {question.required && ' *'}
                                                 </Label>
                                                 <Select
                                                     value={formData[question.id] || ''}
@@ -174,14 +182,14 @@ export function WorkflowSessionPage() {
                                                 </Select>
                                             </Field>
                                         )}
-                                    </div>
+                                    </Stack>
                                 ))}
                             </Stack>
 
                             {/* Command Execution Area */}
                             {isCommandStep && (
                                 <Stack spacing="var(--ds-spacing-4)">
-                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                    <Stack direction="horizontal" align="center" justify="between">
                                         <Label>Command Execution</Label>
                                         <Button
                                             variant="primary"
@@ -191,7 +199,7 @@ export function WorkflowSessionPage() {
                                         >
                                             {commandStatus === 'completed' ? 'Re-run Command' : 'Run Command'}
                                         </Button>
-                                    </div>
+                                    </Stack>
                                     <CommandTerminal
                                         logs={commandLogs}
                                         status={commandStatus}
@@ -206,7 +214,7 @@ export function WorkflowSessionPage() {
                                 </Stack>
                             )}
 
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'var(--ds-spacing-4)' }}>
+                            <Stack direction="horizontal" justify="between" style={{ marginTop: 'var(--ds-spacing-4)' }}>
                                 <Button
                                     variant="secondary"
                                     onClick={prevStep}
@@ -221,12 +229,12 @@ export function WorkflowSessionPage() {
                                 >
                                     {activeStepIndex === activeWorkflow.steps.length - 1 ? 'Finish' : 'Next Step'}
                                 </Button>
-                            </div>
+                            </Stack>
 
                         </Stack>
                     </SectionCardContent>
                 </SectionCard>
-            </div>
+            </Container>
         </PageContainer>
     );
 }

@@ -6,7 +6,7 @@
  */
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { WorkflowSession, Workflow } from '../registry/types';
+import { WorkflowSession, Workflow, GeneratedArtifact } from '../registry/types';
 import { workflowRegistry } from '../registry/workflow-registry';
 
 interface WorkflowSessionContextType {
@@ -15,6 +15,7 @@ interface WorkflowSessionContextType {
     activeStepIndex: number;
     startSession: (workflowId: string) => void;
     submitStep: (stepId: string, data: Record<string, any>) => void;
+    addArtifacts: (artifacts: GeneratedArtifact[]) => void;
     nextStep: () => void;
     prevStep: () => void;
     cancelSession: () => void;
@@ -92,6 +93,16 @@ export function WorkflowSessionProvider({ children }: { children: ReactNode }) {
         });
     };
 
+    const addArtifacts = (artifacts: GeneratedArtifact[]) => {
+        setSession(prev => {
+            if (!prev) return null;
+            return {
+                ...prev,
+                artifacts: [...(prev.artifacts || []), ...artifacts]
+            };
+        });
+    };
+
     const nextStep = () => {
         if (!session || !activeWorkflow) return;
 
@@ -125,6 +136,7 @@ export function WorkflowSessionProvider({ children }: { children: ReactNode }) {
             activeStepIndex: session?.currentStepIndex ?? -1,
             startSession,
             submitStep,
+            addArtifacts,
             nextStep,
             prevStep,
             cancelSession,
