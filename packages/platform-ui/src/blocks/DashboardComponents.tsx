@@ -10,7 +10,7 @@ import { TrendUpIcon, TrendDownIcon } from '../primitives/icons';
 import { Stack, HorizontalLayout } from '../primitives';
 import { cn } from '../utils';
 import { StatusTag, type BadgeColor } from './StatusBadges';
-import { typography, spacing, transitions } from '../tokens/extended';
+import { typography, spacing } from '../tokens/extended';
 
 // =============================================================================
 // StatCard - KPI/Metric Display Card

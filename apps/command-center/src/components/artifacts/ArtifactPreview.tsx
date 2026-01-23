@@ -51,7 +51,7 @@ export function ArtifactPreview({ artifacts }: ArtifactPreviewProps) {
                             {artifacts.map(artifact => (
                                 <ExplorerItem
                                     key={artifact.id}
-                                    title={artifact.path.split('/').pop() || 'Untitled'}
+                                    title={artifact.name || artifact.path.split('/').pop() || 'Untitled'}
                                     description={artifact.path}
                                     selected={activeArtifactId === artifact.id}
                                     onClick={() => setActiveArtifactId(artifact.id)}

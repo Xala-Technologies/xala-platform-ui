@@ -5,6 +5,7 @@ import { WorkflowCatalog } from './pages/WorkflowCatalog';
 import { SpecEditor } from './pages/SpecEditor';
 import { WorkflowSessionPage } from './pages/WorkflowSessionPage';
 import { ApprovalStatus } from './pages/ApprovalStatus';
+import { RevisionsPage } from './pages/RevisionsPage';
 import { WorkflowSessionProvider } from './context/WorkflowSessionContext';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="session" element={<WorkflowSessionPage />} />
           <Route path="specs/:componentName?" element={<SpecEditor />} />
           <Route path="approvals" element={<ApprovalStatus />} />
+          <Route path="revisions" element={<RevisionsPage />} />
         </Route>
       </Routes>
     </WorkflowSessionProvider>

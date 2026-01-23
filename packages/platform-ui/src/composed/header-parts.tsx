@@ -7,7 +7,8 @@
 import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 import { SunIcon, MoonIcon, UserIcon, SearchIcon, Stack, HorizontalLayout } from '../primitives';
-import { typography, transitions, accessibility } from '../tokens/extended';
+// Extended tokens available: typography, transitions, accessibility
+// Import as needed when adding styled features
 
 // Logo Component
 export interface HeaderLogoProps extends React.HTMLAttributes<HTMLDivElement> {

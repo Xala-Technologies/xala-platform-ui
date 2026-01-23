@@ -380,8 +380,9 @@ export const privacy = {
     borderColor: 'var(--ds-color-neutral-border-default)',
     padding: 'var(--ds-spacing-6)',
     zIndex: zIndex.modal,
+    backdropFilter: 'blur(8px)',
   },
-  // Data sensitivity indicators
+  // Data sensitivity indicators (color-coded for quick recognition)
   sensitivity: {
     public: 'var(--ds-color-success-surface-default)',
     internal: 'var(--ds-color-info-surface-default)',
@@ -393,6 +394,271 @@ export const privacy = {
     export: 'var(--ds-color-info-base-default)',
     delete: 'var(--ds-color-danger-base-default)',
     anonymize: 'var(--ds-color-warning-base-default)',
+    consent: 'var(--ds-color-success-base-default)',
+  },
+  // Consent states
+  consent: {
+    granted: 'var(--ds-color-success-surface-default)',
+    denied: 'var(--ds-color-danger-surface-default)',
+    pending: 'var(--ds-color-warning-surface-default)',
+    expired: 'var(--ds-color-neutral-surface-default)',
+  },
+  // Data retention indicators
+  retention: {
+    active: 'var(--ds-color-success-base-default)',
+    nearExpiry: 'var(--ds-color-warning-base-default)',
+    expired: 'var(--ds-color-danger-base-default)',
+  },
+} as const;
+
+// =============================================================================
+// Professional UI Enhancement Tokens
+// =============================================================================
+
+/**
+ * Tokens for creating polished, professional interfaces.
+ * These add visual depth and refinement while maintaining accessibility.
+ */
+export const professional = {
+  // Glass morphism effects (with fallbacks)
+  glass: {
+    background: 'var(--ds-extended-glass-bg, rgba(255, 255, 255, 0.7))',
+    backgroundDark: 'var(--ds-extended-glass-bg-dark, rgba(0, 0, 0, 0.5))',
+    blur: 'blur(12px)',
+    border: '1px solid var(--ds-extended-glass-border, rgba(255, 255, 255, 0.2))',
+  },
+  // Subtle texture overlays
+  texture: {
+    noise:
+      "var(--ds-extended-texture-noise, url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\"))",
+    grid: 'var(--ds-extended-texture-grid, repeating-linear-gradient(0deg, transparent, transparent 49px, var(--ds-color-neutral-border-subtle) 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, var(--ds-color-neutral-border-subtle) 50px))',
+    dots: 'var(--ds-extended-texture-dots, radial-gradient(circle, var(--ds-color-neutral-border-subtle) 1px, transparent 1px))',
+  },
+  // Elevated surfaces (cards, modals, popovers)
+  elevation: {
+    flat: {
+      shadow: 'none',
+      border: '1px solid var(--ds-color-neutral-border-default)',
+    },
+    raised: {
+      shadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+      border: '1px solid var(--ds-color-neutral-border-subtle)',
+    },
+    floating: {
+      shadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      border: '1px solid var(--ds-color-neutral-border-subtle)',
+    },
+    overlay: {
+      shadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+      border: 'none',
+    },
+    prominent: {
+      shadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+      border: 'none',
+    },
+  },
+  // Interactive states for rich feedback
+  interactive: {
+    hover: {
+      scale: 'scale(1.02)',
+      translateY: 'translateY(-2px)',
+      brightness: 'brightness(1.05)',
+    },
+    active: {
+      scale: 'scale(0.98)',
+      translateY: 'translateY(0)',
+      brightness: 'brightness(0.95)',
+    },
+    disabled: {
+      opacity: '0.5',
+      cursor: 'not-allowed',
+      filter: 'grayscale(0.3)',
+    },
+  },
+  // Skeleton loading states
+  skeleton: {
+    background: 'var(--ds-color-neutral-surface-default)',
+    shimmer:
+      'linear-gradient(90deg, transparent 0%, var(--ds-color-neutral-surface-subtle) 50%, transparent 100%)',
+    animationDuration: '1.5s',
+  },
+  // Dividers and separators
+  divider: {
+    color: 'var(--ds-color-neutral-border-default)',
+    colorSubtle: 'var(--ds-color-neutral-border-subtle)',
+    thickness: '1px',
+    spacing: 'var(--ds-spacing-4)',
+  },
+} as const;
+
+// =============================================================================
+// Data Visualization Tokens
+// =============================================================================
+
+/**
+ * Color palette for charts, graphs, and data visualization.
+ * Designed for accessibility with sufficient contrast between adjacent colors.
+ */
+export const dataViz = {
+  // Sequential color scale (single hue, varying intensity)
+  sequential: {
+    1: 'var(--ds-extended-dataviz-seq-1, #e0f2fe)',
+    2: 'var(--ds-extended-dataviz-seq-2, #bae6fd)',
+    3: 'var(--ds-extended-dataviz-seq-3, #7dd3fc)',
+    4: 'var(--ds-extended-dataviz-seq-4, #38bdf8)',
+    5: 'var(--ds-extended-dataviz-seq-5, #0ea5e9)',
+    6: 'var(--ds-extended-dataviz-seq-6, #0284c7)',
+    7: 'var(--ds-extended-dataviz-seq-7, #0369a1)',
+  },
+  // Categorical colors (distinct hues for categories)
+  categorical: {
+    1: 'var(--ds-extended-dataviz-cat-1, #3b82f6)', // Blue
+    2: 'var(--ds-extended-dataviz-cat-2, #10b981)', // Emerald
+    3: 'var(--ds-extended-dataviz-cat-3, #f59e0b)', // Amber
+    4: 'var(--ds-extended-dataviz-cat-4, #ef4444)', // Red
+    5: 'var(--ds-extended-dataviz-cat-5, #8b5cf6)', // Violet
+    6: 'var(--ds-extended-dataviz-cat-6, #ec4899)', // Pink
+    7: 'var(--ds-extended-dataviz-cat-7, #06b6d4)', // Cyan
+    8: 'var(--ds-extended-dataviz-cat-8, #84cc16)', // Lime
+  },
+  // Diverging scale (for values above/below a midpoint)
+  diverging: {
+    negative3: 'var(--ds-extended-dataviz-div-n3, #dc2626)',
+    negative2: 'var(--ds-extended-dataviz-div-n2, #f87171)',
+    negative1: 'var(--ds-extended-dataviz-div-n1, #fca5a5)',
+    neutral: 'var(--ds-extended-dataviz-div-0, #f5f5f5)',
+    positive1: 'var(--ds-extended-dataviz-div-p1, #86efac)',
+    positive2: 'var(--ds-extended-dataviz-div-p2, #22c55e)',
+    positive3: 'var(--ds-extended-dataviz-div-p3, #16a34a)',
+  },
+  // Semantic colors for data states
+  semantic: {
+    positive: 'var(--ds-color-success-base-default)',
+    negative: 'var(--ds-color-danger-base-default)',
+    neutral: 'var(--ds-color-neutral-base-default)',
+    highlight: 'var(--ds-color-accent-base-default)',
+  },
+} as const;
+
+// =============================================================================
+// Motion & Animation Tokens (WCAG compliant)
+// =============================================================================
+
+/**
+ * Animation tokens with prefers-reduced-motion support.
+ * All animations respect user accessibility preferences.
+ */
+export const motion = {
+  // Entrance animations
+  enter: {
+    fadeIn: 'fadeIn 0.2s ease-out',
+    slideUp: 'slideUp 0.25s ease-out',
+    slideDown: 'slideDown 0.25s ease-out',
+    slideLeft: 'slideLeft 0.25s ease-out',
+    slideRight: 'slideRight 0.25s ease-out',
+    scaleIn: 'scaleIn 0.2s ease-out',
+    // Reduced motion alternatives
+    reducedFadeIn: 'fadeIn 0.01ms ease-out',
+  },
+  // Exit animations
+  exit: {
+    fadeOut: 'fadeOut 0.15s ease-in',
+    slideUp: 'slideUpOut 0.2s ease-in',
+    slideDown: 'slideDownOut 0.2s ease-in',
+    scaleOut: 'scaleOut 0.15s ease-in',
+  },
+  // Continuous animations
+  continuous: {
+    pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+    spin: 'spin 1s linear infinite',
+    bounce: 'bounce 1s ease-in-out infinite',
+    shimmer: 'shimmer 1.5s ease-in-out infinite',
+  },
+  // Timing functions for natural feel
+  easing: {
+    spring: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+    smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    snap: 'cubic-bezier(0, 0, 0.2, 1)',
+    anticipate: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+  },
+  // Duration scale
+  duration: {
+    instant: '0ms',
+    faster: '100ms',
+    fast: '150ms',
+    normal: '200ms',
+    slow: '300ms',
+    slower: '400ms',
+    slowest: '500ms',
+  },
+} as const;
+
+// =============================================================================
+// Responsive Breakpoints
+// =============================================================================
+
+/**
+ * Breakpoint tokens for responsive design.
+ * Follow mobile-first approach.
+ */
+export const breakpoints = {
+  xs: '320px',
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+  // Named breakpoints for common devices
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1280px',
+  wide: '1536px',
+} as const;
+
+// =============================================================================
+// Layout Tokens
+// =============================================================================
+
+/**
+ * Layout tokens for consistent page structure.
+ */
+export const layout = {
+  // Container max-widths
+  container: {
+    xs: '320px',
+    sm: '540px',
+    md: '720px',
+    lg: '960px',
+    xl: '1140px',
+    '2xl': '1320px',
+    full: '100%',
+  },
+  // Sidebar widths
+  sidebar: {
+    collapsed: '64px',
+    compact: '200px',
+    default: '256px',
+    wide: '320px',
+  },
+  // Header heights
+  header: {
+    compact: '48px',
+    default: '64px',
+    tall: '80px',
+  },
+  // Content areas
+  content: {
+    maxWidth: '1200px',
+    readableWidth: '65ch', // Optimal for reading (WCAG)
+    narrowWidth: '45ch',
+  },
+  // Grid gutters
+  gutter: {
+    xs: 'var(--ds-spacing-2)',
+    sm: 'var(--ds-spacing-4)',
+    md: 'var(--ds-spacing-6)',
+    lg: 'var(--ds-spacing-8)',
   },
 } as const;
 
@@ -401,6 +667,7 @@ export const privacy = {
 // =============================================================================
 
 export const extendedTokens = {
+  // Core tokens
   avatarColors,
   AVATAR_COLOR_PALETTE,
   sizes,
@@ -414,8 +681,16 @@ export const extendedTokens = {
   transitions,
   gradients,
   components,
+  // Compliance tokens (WCAG / Universell Utforming)
   accessibility,
+  // Compliance tokens (GDPR / Personvern)
   privacy,
+  // Professional UI enrichment
+  professional,
+  dataViz,
+  motion,
+  breakpoints,
+  layout,
 } as const;
 
 export default extendedTokens;

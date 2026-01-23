@@ -5,7 +5,8 @@
 
 import { useState, useRef, useEffect, type ReactNode, type KeyboardEvent } from 'react';
 import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
-import { typography, transitions, components, shadows } from '../tokens/extended';
+// Extended tokens available: typography, transitions, components, shadows
+// Import as needed when adding styled features
 
 // =============================================================================
 // Types

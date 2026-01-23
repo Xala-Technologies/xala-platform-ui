@@ -25,8 +25,15 @@ import {
 import { useWorkflowSession } from '../context/WorkflowSessionContext';
 import { CommandTerminal } from '../components/commands/CommandTerminal';
 import { ArtifactPreview } from '../components/artifacts/ArtifactPreview';
+import { ArtifactValidationPanel } from '../components/artifacts/ArtifactValidationPanel';
+import { revisionManager } from '../services/revision-manager';
+import { artifactValidator } from '../services/artifact-validator';
+import { useNavigate } from 'react-router-dom';
+
+import { TESTIDS } from '../constants/testids';
 
 export function WorkflowSessionPage() {
+    const navigate = useNavigate();
     const {
         session,
         activeWorkflow,
@@ -45,15 +52,19 @@ export function WorkflowSessionPage() {
     const [commandLogs, setCommandLogs] = useState<string[]>([]);
     const [commandStatus, setCommandStatus] = useState<'idle' | 'running' | 'completed' | 'failed'>('idle');
 
+    // Validation state
+    const [validationResults, setValidationResults] = useState<Map<string, any>>(new Map());
+    const [isValidating, setIsValidating] = useState(false);
+
     if (!session || !activeWorkflow) {
         return (
-            <PageContainer>
+            <PageContainer data-testid={TESTIDS.session.root}>
                 <DashboardPageHeader title="No Active Session" />
                 <SectionCard>
                     <SectionCardContent>
                         <Stack spacing="var(--ds-spacing-4)">
                             <Paragraph>Please select a workflow from the catalog.</Paragraph>
-                            <Button onClick={cancelSession}>Go to Catalog</Button>
+                            <Button onClick={cancelSession} data-testid={TESTIDS.session.exitBtn}>Go to Catalog</Button>
                         </Stack>
                     </SectionCardContent>
                 </SectionCard>
@@ -74,11 +85,9 @@ export function WorkflowSessionPage() {
     const handleRunCommand = async () => {
         if (!currentStep.commandId) return;
 
-        // Reset logs
         setCommandLogs([]);
         setCommandStatus('running');
 
-        // Lazy load registry and executor
         const { commandRegistry } = await import('../registry/command-registry');
         const { commandExecutor } = await import('../services/command-executor');
 
@@ -106,35 +115,68 @@ export function WorkflowSessionPage() {
         }
     };
 
-    const handleNext = () => {
-        // If it's a command step, ensure it ran successfully
+    const handleNext = async () => {
         if (isCommandStep && commandStatus !== 'completed') {
             return;
         }
 
-        // Save current step data
         submitStep(currentStep.id, { ...formData, commandLogs, commandStatus });
-        // Move to next
+        
+        // If this is the last step, validate artifacts and create revision
+        if (activeStepIndex === activeWorkflow.steps.length - 1) {
+            await handleComplete();
+            return;
+        }
+
         nextStep();
-        // Reset form for next step (or load if existing)
         setFormData({});
         setCommandLogs([]);
         setCommandStatus('idle');
     };
 
+    const handleComplete = async () => {
+        if (!session) return;
+
+        setIsValidating(true);
+
+        // Validate all artifacts
+        const validationResultsMap = new Map();
+        for (const artifact of session.artifacts) {
+            const result = await artifactValidator.validateArtifact(artifact);
+            validationResultsMap.set(artifact.id, result);
+        }
+        setValidationResults(validationResultsMap);
+
+        // Create revision
+        const revision = revisionManager.createRevision(
+            session,
+            {
+                name: 'Admin User', // In real app, get from auth context
+                email: 'admin@xala.no',
+            },
+            Array.from(validationResultsMap.values())
+        );
+
+        setIsValidating(false);
+
+        // Navigate to revisions page
+        navigate(`/revisions?highlight=${revision.id}`);
+    };
+
     return (
-        <PageContainer>
+        <PageContainer data-testid={TESTIDS.session.root}>
             <DashboardPageHeader
                 title={activeWorkflow.name}
                 subtitle={activeWorkflow.description}
                 primaryAction={
-                    <Button variant="secondary" onClick={cancelSession}>Exit Session</Button>
+                    <Button variant="secondary" onClick={cancelSession} data-testid={TESTIDS.session.exitBtn}>Exit Session</Button>
                 }
             />
 
             <WizardStepper
                 steps={activeWorkflow.steps.map(s => ({ id: s.id, label: s.title, optional: s.isOptional }))}
                 currentStep={activeStepIndex}
+                data-testid={TESTIDS.session.stepper}
             />
 
             <Container style={{ marginTop: 'var(--ds-spacing-6)' }} fluid maxWidth="100%" padding={0}>
@@ -150,7 +192,6 @@ export function WorkflowSessionPage() {
                                 )}
                             </Stack>
 
-                            {/* Dynamic Form Generation */}
                             <Stack spacing="var(--ds-spacing-4)">
                                 {currentStep.questions?.map(question => (
                                     <Stack key={question.id}>
@@ -160,6 +201,7 @@ export function WorkflowSessionPage() {
                                                 value={formData[question.id] || ''}
                                                 onChange={(e) => handleInputChange(question.id, e.target.value)}
                                                 required={question.required}
+                                                data-testid={`cc-session-input-${question.id}`}
                                             />
                                         )}
 
@@ -172,6 +214,7 @@ export function WorkflowSessionPage() {
                                                 <Select
                                                     value={formData[question.id] || ''}
                                                     onChange={(e) => handleInputChange(question.id, e.target.value)}
+                                                    data-testid={`cc-session-select-${question.id}`}
                                                 >
                                                     <Select.Option value="">Select...</Select.Option>
                                                     {question.options?.map(opt => (
@@ -186,7 +229,6 @@ export function WorkflowSessionPage() {
                                 ))}
                             </Stack>
 
-                            {/* Command Execution Area */}
                             {isCommandStep && (
                                 <Stack spacing="var(--ds-spacing-4)">
                                     <Stack direction="horizontal" align="center" justify="between">
@@ -196,6 +238,7 @@ export function WorkflowSessionPage() {
                                             data-size="sm"
                                             onClick={handleRunCommand}
                                             disabled={commandStatus === 'running' || commandStatus === 'completed'}
+                                            data-testid={TESTIDS.session.runBtn}
                                         >
                                             {commandStatus === 'completed' ? 'Re-run Command' : 'Run Command'}
                                         </Button>
@@ -203,14 +246,34 @@ export function WorkflowSessionPage() {
                                     <CommandTerminal
                                         logs={commandLogs}
                                         status={commandStatus}
+                                        data-testid={TESTIDS.session.terminal}
                                     />
                                 </Stack>
                             )}
 
-                            {/* Artifact Preview Area (Post-Command) */}
                             {commandStatus === 'completed' && session.artifacts?.length > 0 && (
                                 <Stack spacing="var(--ds-spacing-4)">
-                                    <ArtifactPreview artifacts={session.artifacts} />
+                                    <ArtifactPreview
+                                        artifacts={session.artifacts}
+                                        data-testid={TESTIDS.session.artifactPreview}
+                                    />
+                                    
+                                    {/* Validation Results */}
+                                    {validationResults.size > 0 && (
+                                        <Stack spacing="var(--ds-spacing-4)">
+                                            <Heading level={4} data-size="sm">Validation Results</Heading>
+                                            {session.artifacts.map(artifact => {
+                                                const result = validationResults.get(artifact.id);
+                                                return result ? (
+                                                    <ArtifactValidationPanel
+                                                        key={artifact.id}
+                                                        validationResult={result}
+                                                        data-testid={`${TESTIDS.artifacts.validationPanel}-${artifact.id}`}
+                                                    />
+                                                ) : null;
+                                            })}
+                                        </Stack>
+                                    )}
                                 </Stack>
                             )}
 
@@ -219,15 +282,21 @@ export function WorkflowSessionPage() {
                                     variant="secondary"
                                     onClick={prevStep}
                                     disabled={activeStepIndex === 0}
+                                    data-testid={TESTIDS.session.prevBtn}
                                 >
                                     Back
                                 </Button>
                                 <Button
                                     variant="primary"
                                     onClick={handleNext}
-                                    disabled={isCommandStep && commandStatus !== 'completed'}
+                                    disabled={(isCommandStep && commandStatus !== 'completed') || isValidating}
+                                    data-testid={TESTIDS.session.nextBtn}
                                 >
-                                    {activeStepIndex === activeWorkflow.steps.length - 1 ? 'Finish' : 'Next Step'}
+                                    {isValidating
+                                        ? 'Validating...'
+                                        : activeStepIndex === activeWorkflow.steps.length - 1
+                                          ? 'Finish & Create Revision'
+                                          : 'Next Step'}
                                 </Button>
                             </Stack>
 

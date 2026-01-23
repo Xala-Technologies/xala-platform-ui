@@ -48,6 +48,7 @@ export class CommandExecutor {
                 id: crypto.randomUUID(),
                 type: 'file',
                 path: `/generated/${command.id}/output.json`,
+                name: 'output.json',
                 content: JSON.stringify({ status: 'success', timestamp: new Date() }, null, 2)
             }
         ];

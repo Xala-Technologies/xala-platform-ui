@@ -97,10 +97,17 @@ export interface ArtifactDefinition {
 
 export interface GeneratedArtifact {
     id: string;
-    type: 'file' | 'code' | 'json' | 'image';
+    type: 'file' | 'code' | 'json' | 'image' | 'markdown';
     path: string;
+    name?: string; // Optional, defaults to path basename
     content?: string;
     previewUrl?: string;
+    schema?: string; // Schema name for validation
+    validationResult?: ValidationResult;
+    diff?: {
+        previousRevisionId?: string;
+        changes: ArtifactChange[];
+    };
 }
 
 export interface ValidationRule {
@@ -108,4 +115,109 @@ export interface ValidationRule {
     rule: 'required' | 'regex' | 'custom';
     params?: any;
     message: string;
+}
+
+// =============================================================================
+// Revision Management
+// =============================================================================
+
+export interface Revision {
+    id: string;
+    workflowId: string;
+    sessionId: string;
+    createdAt: string;
+    author: {
+        name: string;
+        email: string;
+    };
+    inputs: Record<string, any>;
+    outputs: GeneratedArtifact[];
+    validationResults: ValidationResult[];
+    status: 'draft' | 'pending_approval' | 'approved' | 'rejected';
+    approvalId?: string;
+    parentRevisionId?: string; // For branching
+}
+
+export interface ValidationResult {
+    artifactId: string;
+    artifactPath: string;
+    schema: string; // Schema name/ID
+    valid: boolean;
+    errors: ValidationError[];
+    warnings: ValidationWarning[];
+}
+
+export interface ValidationError {
+    path: string; // JSON path
+    message: string;
+    code: string; // Error code
+    suggestedFix?: string;
+}
+
+export interface ValidationWarning {
+    path: string;
+    message: string;
+    code: string;
+}
+
+export interface ArtifactChange {
+    type: 'added' | 'removed' | 'modified';
+    path: string;
+    oldValue?: any;
+    newValue?: any;
+    lineNumbers?: { start: number; end: number };
+}
+
+// =============================================================================
+// Approval Management
+// =============================================================================
+
+export interface Approval {
+    id: string;
+    revisionId: string;
+    requestedAt: string;
+    requestedBy: {
+        name: string;
+        email: string;
+    };
+    status: 'pending' | 'approved' | 'rejected';
+    approvedAt?: string;
+    approvedBy?: {
+        name: string;
+        email: string;
+    };
+    rejectionReason?: string;
+    checklist: ApprovalChecklistItem[];
+    gates: ApprovalGate[];
+}
+
+export interface ApprovalChecklistItem {
+    id: string;
+    label: string;
+    checked: boolean;
+    required: boolean;
+    checkedBy?: string;
+    checkedAt?: string;
+}
+
+export interface ApprovalGate {
+    id: string;
+    name: string;
+    description: string;
+    status: 'pass' | 'fail' | 'pending';
+    required: boolean;
+    details?: string;
+}
+
+// =============================================================================
+// Promotion
+// =============================================================================
+
+export interface PromotionResult {
+    success: boolean;
+    componentPath?: string;
+    storybookPath?: string;
+    docsPath?: string;
+    errors?: string[];
+    warnings?: string[];
 }

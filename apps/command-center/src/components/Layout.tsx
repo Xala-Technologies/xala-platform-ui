@@ -13,10 +13,12 @@ import {
   RefreshIcon,
   FileTextIcon,
   CheckCircleIcon,
+  ClockIcon,
   Button,
   Heading,
 } from '@xala-technologies/platform-ui';
 import type { SidebarSection } from '@xala-technologies/platform-ui';
+import { TESTIDS } from '../constants/testids';
 
 const sidebarSections: SidebarSection[] = [
   {
@@ -46,6 +48,12 @@ const sidebarSections: SidebarSection[] = [
         href: '/approvals',
         icon: <CheckCircleIcon size={20} />,
       },
+      {
+        name: 'Revisions',
+        description: 'View and compare revisions',
+        href: '/revisions',
+        icon: <ClockIcon size={20} />,
+      },
     ],
   },
 ];
@@ -56,13 +64,11 @@ export function Layout() {
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
-    // In a real app, this would filter/search content
     console.log('Search:', value);
   };
 
   const handleThemeToggle = () => {
     setIsDark(!isDark);
-    // In a real app, this would update the theme
   };
 
   const handleNotificationClick = () => {
@@ -71,16 +77,19 @@ export function Layout() {
 
   return (
     <AppLayout
+      data-testid={TESTIDS.common.content}
       sidebar={
         <DashboardSidebar
           title="Xala"
           subtitle="Command Center"
           sections={sidebarSections}
           width={320}
+          data-testid={TESTIDS.common.sidebar}
         />
       }
       header={
         <DashboardHeader
+          data-testid={TESTIDS.common.header}
           leftSlot={
             <Heading level={1} data-size="sm">Design Governance</Heading>
           }
