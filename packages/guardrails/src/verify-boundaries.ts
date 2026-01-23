@@ -111,7 +111,18 @@ function checkLayerViolations(
 }
 
 /**
- * Check for forbidden import patterns
+ * Strip comments from content to avoid false positives
+ */
+function stripComments(content: string): string {
+  // Remove single-line comments
+  let result = content.replace(/\/\/.*$/gm, '');
+  // Remove multi-line comments (including JSDoc)
+  result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+  return result;
+}
+
+/**
+ * Check for forbidden import patterns (only in actual import statements)
  */
 function checkForbiddenImports(
   filePath: string,
@@ -121,13 +132,22 @@ function checkForbiddenImports(
   const violations: BoundaryViolation[] = [];
   const relativePath = relative(rootDir, filePath);
 
-  for (const forbidden of FORBIDDEN_IMPORTS) {
-    if (forbidden.pattern.test(content)) {
-      violations.push({
-        file: relativePath,
-        type: 'forbidden-import',
-        message: forbidden.message,
-      });
+  // Strip comments first to avoid false positives from example code in JSDoc
+  const cleanContent = stripComments(content);
+
+  // Extract actual import statements
+  const imports = extractImports(cleanContent);
+
+  for (const importPath of imports) {
+    for (const forbidden of FORBIDDEN_IMPORTS) {
+      if (forbidden.pattern.test(importPath)) {
+        violations.push({
+          file: relativePath,
+          type: 'forbidden-import',
+          message: forbidden.message,
+          import: importPath,
+        });
+      }
     }
   }
 
