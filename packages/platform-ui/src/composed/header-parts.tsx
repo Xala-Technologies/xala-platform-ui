@@ -6,7 +6,8 @@
 
 import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@digdir/designsystemet-react';
-import { SunIcon, MoonIcon, UserIcon, SearchIcon } from '../primitives';
+import { SunIcon, MoonIcon, UserIcon, SearchIcon, Stack, HorizontalLayout } from '../primitives';
+import { typography, transitions, accessibility } from '../tokens/extended';
 
 // Logo Component
 export interface HeaderLogoProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -65,16 +66,15 @@ export const HeaderLogo = forwardRef<HTMLDivElement, HeaderLogoProps>(
       <>
         {hideTextOnMobile && (
           <style>{`
-            @media (max-width: 'var(--ds-sizing-150)') {
+            @media (max-width: 600px) {
               .header-logo-text { display: none !important; }
             }
           `}</style>
         )}
-        <div
+        <HorizontalLayout
+          align="center"
+          gap="var(--ds-spacing-4)"
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-spacing-4)',
             color: 'var(--ds-color-neutral-text-default)',
             textDecoration: 'none',
           }}
@@ -90,13 +90,11 @@ export const HeaderLogo = forwardRef<HTMLDivElement, HeaderLogoProps>(
             />
           )}
           {(title || subtitle) && (
-            <div
+            <Stack
               className={textClassName}
+              gap="0"
               style={{
-                display: 'flex',
-                flexDirection: 'column',
                 justifyContent: 'center',
-                gap: '0',
                 marginTop: 'var(--ds-spacing-1)',
               }}
             >
