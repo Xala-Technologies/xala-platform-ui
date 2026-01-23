@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Card,
+  Heading,
+  Paragraph,
+  Textfield,
+  Checkbox,
+} from '@digdir/designsystemet-react';
 import {
   WheelchairIcon,
   PaletteIcon,

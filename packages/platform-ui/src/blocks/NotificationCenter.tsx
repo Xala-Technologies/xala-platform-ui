@@ -127,10 +127,11 @@ function FilterTabs({ activeFilter, onFilterChange, counts }: FilterTabsProps) {
       {filters.map((filter) => {
         const isActive = activeFilter === filter.value;
         return (
-          <button
+          <Button
             key={filter.value}
             type="button"
             onClick={() => onFilterChange(filter.value)}
+            data-color={isActive ? 'accent' : 'neutral'}
             style={{
               padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
               border: 'none',
@@ -174,7 +175,7 @@ function FilterTabs({ activeFilter, onFilterChange, counts }: FilterTabsProps) {
                 {filter.count}
               </span>
             )}
-          </button>
+          </Button>
         );
       })}
     </div>
@@ -355,10 +356,11 @@ export function NotificationCenter({
               Merk alle som lest
             </Button>
           )}
-          <button
+          <Button
             type="button"
             onClick={onClose}
             aria-label="Lukk varselssenter"
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -380,7 +382,7 @@ export function NotificationCenter({
             }}
           >
             <CloseIcon size={20} />
-          </button>
+          </Button>
         </div>
       </div>
 

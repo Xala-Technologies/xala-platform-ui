@@ -92,13 +92,14 @@ export function FavoriteButton({
   // Icon-only variant
   if (variant === 'icon') {
     return (
-      <button
+      <Button
         type="button"
         onClick={handleClick}
         aria-label={label}
         aria-pressed={isFavorited}
         disabled={disabled || isLoading}
         className={cn('favorite-button', className)}
+        data-color={isFavorited ? 'danger' : 'neutral'}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -134,20 +135,22 @@ export function FavoriteButton({
         ) : (
           <HeartIcon size={currentSize.icon} />
         )}
-      </button>
+      </Button>
     );
   }
 
   // Compact variant (small with optional count)
   if (variant === 'compact') {
     return (
-      <button
+      <Button
         type="button"
         onClick={handleClick}
         aria-label={label}
         aria-pressed={isFavorited}
         disabled={disabled || isLoading}
         className={cn('favorite-button-compact', className)}
+        data-color={isFavorited ? 'danger' : 'neutral'}
+        data-size="small"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -170,7 +173,7 @@ export function FavoriteButton({
       >
         {isFavorited ? <HeartFilledIcon size={12} /> : <HeartIcon size={12} />}
         {showCount && favoriteCount !== undefined && <span>{favoriteCount}</span>}
-      </button>
+      </Button>
     );
   }
 

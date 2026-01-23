@@ -16,6 +16,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -271,7 +272,9 @@ export function EmptyState({
         {displayIcon}
       </div>
 
-      <h3
+      <Heading
+        level={3}
+        data-size={variant === 'compact' ? 'medium' : 'large'}
         style={{
           margin: '0 0 var(--ds-spacing-2) 0',
           fontSize: variant === 'compact' ? 'var(--ds-font-size-md)' : 'var(--ds-font-size-lg)',
@@ -280,10 +283,11 @@ export function EmptyState({
         }}
       >
         {title}
-      </h3>
+      </Heading>
 
       {description && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -292,7 +296,7 @@ export function EmptyState({
           }}
         >
           {description}
-        </p>
+        </Paragraph>
       )}
 
       {action && <div style={{ marginTop: 'var(--ds-spacing-4)' }}>{action}</div>}
@@ -333,7 +337,9 @@ export function NotFoundState({
         <FileQuestionIcon />
       </div>
 
-      <h3
+      <Heading
+        level={3}
+        data-size="medium"
         style={{
           margin: '0 0 var(--ds-spacing-2) 0',
           fontSize: 'var(--ds-font-size-lg)',
@@ -342,9 +348,10 @@ export function NotFoundState({
         }}
       >
         {title}
-      </h3>
+      </Heading>
 
-      <p
+      <Paragraph
+        data-size="small"
         style={{
           margin: 0,
           fontSize: 'var(--ds-font-size-sm)',
@@ -353,7 +360,7 @@ export function NotFoundState({
         }}
       >
         {description}
-      </p>
+      </Paragraph>
 
       {backLink && (
         <a
@@ -424,7 +431,9 @@ export function ErrorState({
         <AlertCircleIcon />
       </div>
 
-      <h3
+      <Heading
+        level={3}
+        data-size="medium"
         style={{
           margin: '0 0 var(--ds-spacing-2) 0',
           fontSize: 'var(--ds-font-size-lg)',
@@ -433,9 +442,10 @@ export function ErrorState({
         }}
       >
         {title}
-      </h3>
+      </Heading>
 
-      <p
+      <Paragraph
+        data-size="small"
         style={{
           margin: 0,
           fontSize: 'var(--ds-font-size-sm)',
@@ -444,12 +454,13 @@ export function ErrorState({
         }}
       >
         {description}
-      </p>
+      </Paragraph>
 
       {onRetry && (
-        <button
+        <Button
           type="button"
           onClick={onRetry}
+          data-color="accent"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -468,7 +479,7 @@ export function ErrorState({
         >
           <RefreshIcon />
           {retryLabel}
-        </button>
+        </Button>
       )}
     </div>
   );

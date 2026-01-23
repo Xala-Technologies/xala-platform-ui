@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useMemo, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -228,9 +229,10 @@ export function TextTruncate({
       <span className={className} style={style}>
         {text}
         {expanded && expandable && (
-          <button
+          <Button
             type="button"
             onClick={() => setExpanded(false)}
+            data-color="accent"
             style={{
               marginLeft: 'var(--ds-spacing-1)',
               padding: 0,
@@ -243,7 +245,7 @@ export function TextTruncate({
             }}
           >
             Show less
-          </button>
+          </Button>
         )}
       </span>
     );
@@ -253,9 +255,10 @@ export function TextTruncate({
     <span className={className} style={style}>
       {text.slice(0, maxLength)}...
       {expandable && (
-        <button
+        <Button
           type="button"
           onClick={() => setExpanded(true)}
+          data-color="accent"
           style={{
             marginLeft: 'var(--ds-spacing-1)',
             padding: 0,
@@ -268,7 +271,7 @@ export function TextTruncate({
           }}
         >
           Show more
-        </button>
+        </Button>
       )}
     </span>
   );

@@ -16,6 +16,7 @@
 
 import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -439,10 +440,11 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
           />
         ))}
 
-      <button
+      <Button
         type="button"
         onClick={onRemove}
         title="Remove filter"
+        data-color="neutral"
         style={{
           flexShrink: 0,
           padding: 'var(--ds-spacing-2)',
@@ -454,7 +456,7 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
         }}
       >
         <TrashIcon />
-      </button>
+      </Button>
     </div>
   );
 }

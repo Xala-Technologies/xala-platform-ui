@@ -17,6 +17,8 @@ Complete documentation for `@xala-technologies/platform-ui`
 ### Architecture
 - [Package Architecture](./architecture/ARCHITECTURE.md)
 - [Component Structure](./architecture/COMPONENTS.md)
+- [Migration Guide](./architecture/MIGRATION.md)
+- [Path Updates](./architecture/PATH_UPDATES.md)
 
 ## Documentation Structure
 
@@ -25,14 +27,19 @@ docs/
 ├── README.md                    # This file
 ├── governance/                  # Rules and standards
 │   ├── AGENTS.md               # AI agent guidelines
-│   └── GOVERNANCE.md           # Governance rules
+│   ├── GOVERNANCE.md           # Governance rules
+│   ├── VERIFICATION.md         # Verification scripts
+│   └── COMPLIANCE.md           # Design system compliance
 ├── guides/                      # How-to guides
 │   ├── DESIGN_TOKENS.md        # Design token usage
 │   ├── STORYBOOK.md            # Storybook documentation
-│   └── TESTING.md              # Testing guidelines
+│   ├── TESTING.md              # Testing guidelines
+│   └── ENHANCEMENTS.md         # Enhancements & testing implementation
 └── architecture/                # Technical architecture
     ├── ARCHITECTURE.md         # Package architecture
-    └── COMPONENTS.md           # Component structure
+    ├── COMPONENTS.md           # Component structure
+    ├── MIGRATION.md            # Migration guide
+    └── PATH_UPDATES.md         # Path updates documentation
 ```
 
 ## Key Principles

@@ -18,6 +18,7 @@
  */
 
 import React, { forwardRef, useState, useCallback } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
 /**
@@ -155,7 +156,7 @@ const ToggleVariant = forwardRef<
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <button
+    <Button
       ref={ref}
       type="button"
       onClick={onSwitch}
@@ -163,6 +164,7 @@ const ToggleVariant = forwardRef<
       onMouseLeave={() => setIsHovered(false)}
       disabled={disabled}
       aria-label={ariaLabel || `Språk: ${labels[locale]}. Klikk for å bytte.`}
+      data-color="neutral"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -186,7 +188,7 @@ const ToggleVariant = forwardRef<
       }}
     >
       {labels[locale]}
-    </button>
+    </Button>
   );
 });
 
@@ -221,13 +223,14 @@ const SegmentedVariant = forwardRef<
       }}
     >
       {SUPPORTED_LOCALES.map((loc) => (
-        <button
+        <Button
           key={loc}
           type="button"
           role="radio"
           aria-checked={locale === loc}
           onClick={() => !disabled && onSelect(loc)}
           disabled={disabled}
+          data-color={locale === loc ? 'accent' : 'neutral'}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -251,7 +254,7 @@ const SegmentedVariant = forwardRef<
           }}
         >
           {labels[loc]}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -296,7 +299,7 @@ const DropdownVariant = forwardRef<
       style={{ position: 'relative', display: 'inline-block' }}
       onKeyDown={handleKeyDown}
     >
-      <button
+      <Button
         type="button"
         onClick={() => !disabled && setIsOpen(!isOpen)}
         onMouseEnter={() => setIsHovered(true)}
@@ -305,6 +308,7 @@ const DropdownVariant = forwardRef<
         aria-label={ariaLabel || `Språk: ${labels[locale]}. Klikk for å velge.`}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
+        data-color="neutral"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -347,7 +351,7 @@ const DropdownVariant = forwardRef<
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </Button>
 
       {isOpen && (
         <div
@@ -367,13 +371,14 @@ const DropdownVariant = forwardRef<
           }}
         >
           {SUPPORTED_LOCALES.map((loc) => (
-            <button
+            <Button
               key={loc}
               id={`locale-${loc}`}
               type="button"
               role="option"
               aria-selected={locale === loc}
               onClick={() => handleSelect(loc)}
+              data-color={locale === loc ? 'accent' : 'neutral'}
               style={{
                 display: 'flex',
                 alignItems: 'center',

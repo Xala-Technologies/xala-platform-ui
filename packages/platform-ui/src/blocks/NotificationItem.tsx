@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
 import { StatusTag } from './StatusBadges';
 
 // =============================================================================
@@ -429,10 +429,11 @@ export function NotificationItem({
           }}
         >
           {isUnread && onMarkAsRead && (
-            <button
+            <Button
               type="button"
               onClick={handleMarkAsRead}
               title="Marker som lest"
+              data-color="neutral"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -457,13 +458,14 @@ export function NotificationItem({
               aria-label="Marker som lest"
             >
               <CheckIcon />
-            </button>
+            </Button>
           )}
           {onDelete && (
-            <button
+            <Button
               type="button"
               onClick={handleDelete}
               title="Slett varsel"
+              data-color="danger"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -488,7 +490,7 @@ export function NotificationItem({
               aria-label="Slett varsel"
             >
               <TrashIcon />
-            </button>
+            </Button>
           )}
         </div>
       )}

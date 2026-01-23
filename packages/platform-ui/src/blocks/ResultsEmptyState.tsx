@@ -16,6 +16,7 @@
  */
 
 import * as React from 'react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
 export interface ResultsEmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -177,7 +178,9 @@ export function ResultsEmptyState({
 
       {/* Title */}
       {displayTitle && (
-        <h3
+        <Heading
+          level={3}
+          data-size="medium"
           style={{
             fontSize: 'var(--ds-font-size-xl)',
             fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
@@ -187,12 +190,13 @@ export function ResultsEmptyState({
           }}
         >
           {displayTitle}
-        </h3>
+        </Heading>
       )}
 
       {/* Description */}
       {displayDescription && (
-        <p
+        <Paragraph
+          data-size="medium"
           style={{
             fontSize: 'var(--ds-font-size-md)',
             color: 'var(--ds-color-neutral-text-subtle)',
@@ -202,7 +206,7 @@ export function ResultsEmptyState({
           }}
         >
           {displayDescription}
-        </p>
+        </Paragraph>
       )}
 
       {/* Action */}

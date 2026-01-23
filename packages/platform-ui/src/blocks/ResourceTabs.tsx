@@ -5,7 +5,7 @@
  * Supports dynamic tabs based on resource type and available content.
  */
 import * as React from 'react';
-import { Tabs } from '@digdir/designsystemet-react';
+import { Tabs, Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
 // =============================================================================
@@ -211,7 +211,8 @@ export function TabEmptyState({
           {icon}
         </span>
       )}
-      <p
+      <Paragraph
+        data-size="medium"
         style={{
           margin: 0,
           marginBottom: description ? 'var(--ds-spacing-1)' : 0,
@@ -221,9 +222,10 @@ export function TabEmptyState({
         }}
       >
         {title}
-      </p>
+      </Paragraph>
       {description && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -232,7 +234,7 @@ export function TabEmptyState({
           }}
         >
           {description}
-        </p>
+        </Paragraph>
       )}
       {action && <div style={{ marginTop: 'var(--ds-spacing-4)' }}>{action}</div>}
     </div>

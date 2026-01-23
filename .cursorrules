@@ -1,0 +1,460 @@
+# Cursor Rules for Xala Platform UI
+
+## Repository Purpose
+
+This is `@xala-technologies/platform-ui` - a **UI-only** component library built on Norwegian Designsystemet (`@digdir/designsystemet-react`).
+
+**Purpose**: Pure presentation components with zero business logic, API calls, or domain knowledge.
+
+## Repository Structure
+
+```
+xala-platform-ui/
+├── packages/
+│   └── platform-ui/          # Main package
+│       ├── src/               # ALL SOURCE CODE HERE
+│       │   ├── primitives/    # Level 0: Atomic components
+│       │   ├── composed/      # Level 1: Multi-component compositions
+│       │   ├── blocks/        # Level 2: Feature blocks
+│       │   ├── patterns/      # Level 3: Reusable UI patterns
+│       │   ├── shells/        # Level 4: Layout components
+│       │   ├── pages/         # Level 5: Page-level components
+│       │   ├── utils/         # Shared utilities (icons, badges, status)
+│       │   ├── themes/        # Theme configurations
+│       │   ├── tokens/        # Design token extensions
+│       │   └── types/         # TypeScript type definitions
+│       ├── scripts/           # Verification scripts
+│       └── package.json
+├── tests/                     # Test files at root
+│   ├── unit/                 # Unit tests (Vitest)
+│   ├── integration/          # Integration tests
+│   └── e2e/                  # E2E tests (Playwright)
+├── docs/                      # Documentation
+│   ├── architecture/         # Architecture docs
+│   ├── governance/           # Rules and standards
+│   └── guides/               # How-to guides
+├── .storybook/               # Storybook configuration
+└── vitest.config.ts          # Test configuration
+```
+
+## Critical Rules
+
+### RULE 1: UI Components Only
+This package contains **ONLY**:
+- ✅ React components
+- ✅ Themes and design tokens
+- ✅ TypeScript UI types
+- ✅ Storybook stories
+- ✅ Shared utilities (icons, badges, status)
+
+**NEVER** contains:
+- ❌ API calls or SDK usage
+- ❌ Authentication logic
+- ❌ Business rules or domain logic
+- ❌ Database queries
+- ❌ i18n translations
+
+### RULE 2: Package Boundaries
+
+**Forbidden Imports** (CI will fail):
+```typescript
+// ❌ NEVER import from these:
+import { useAuth } from '@xala-technologies/platform/auth';
+import { UserSchema } from '@xala-technologies/platform-schema';
+import { rules } from '@xala-technologies/governance';
+```
+
+**Allowed Imports**:
+```typescript
+// ✅ Only UI libraries and React:
+import { Button } from '@digdir/designsystemet-react';
+import { HomeIcon } from 'lucide-react';
+import React from 'react';
+```
+
+### RULE 3: Layer Hierarchy
+
+Lower layers **CANNOT** import from higher layers:
+
+```
+Level 0: primitives/  → Can only import external packages
+Level 1: composed/    → Can import primitives
+Level 2: blocks/      → Can import primitives, composed
+Level 3: patterns/     → Can import primitives, composed, blocks
+Level 4: shells/      → Can import primitives, composed, blocks, patterns
+Level 5: pages/       → Can import all layers
+```
+
+**Violation Example**:
+```typescript
+// ❌ WRONG - primitives importing from composed
+// packages/platform-ui/src/primitives/Button.tsx
+import { Modal } from '../composed/Modal'; // ❌ VIOLATION
+```
+
+### RULE 4: Designsystemet Compliance
+
+**Required Pattern**:
+```typescript
+import { Card, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+
+<Card data-color="neutral" data-size="medium">
+  <Heading level={2} data-size="medium">{title}</Heading>
+  <Paragraph>{content}</Paragraph>
+  <Button data-color="accent" onClick={handleClick}>
+    Action
+  </Button>
+</Card>
+
+// Design tokens allowed when extending:
+style={{ padding: 'var(--ds-spacing-4)' }}
+```
+
+**Prohibited**:
+```typescript
+// ❌ Raw HTML elements
+<div>, <span>, <p>, <h1-h6>, <section>, <button>, <input>
+
+// ❌ Inline styles without design tokens
+style={{ padding: '20px', color: '#0062BA' }}
+
+// ❌ Custom CSS classes
+className="my-custom-class"  // Only ds-* classes allowed
+```
+
+**Allowed Layout Properties** (no design token equivalents):
+- `display`, `alignItems`, `flexDirection`, `whiteSpace`, `alignSelf`, etc.
+
+**Allowed Dynamic Sizing**:
+- `${size}px` for custom icon sizes when design tokens don't support specific sizes
+
+## File Locations
+
+### Source Code
+- **ALL source code**: `packages/platform-ui/src/`
+- **Utilities**: `packages/platform-ui/src/utils/`
+- **Components**: `packages/platform-ui/src/{primitives|composed|blocks|patterns|shells|pages}/`
+
+### Tests
+- **Unit tests**: `tests/unit/`
+- **Integration tests**: `tests/integration/`
+- **E2E tests**: `tests/e2e/`
+- **Test configs**: Root level (`vitest.config.ts`, `playwright.config.ts`)
+
+### Documentation
+- **All docs**: `docs/` folder (NOT root)
+- **Architecture**: `docs/architecture/`
+- **Governance**: `docs/governance/`
+- **Guides**: `docs/guides/`
+
+### Import Paths
+```typescript
+// ✅ Correct - Use packages/platform-ui/src/
+import { MediaResourceCard } from '../../../packages/platform-ui/src/blocks/MediaResourceCard';
+import { Badge } from '../../../packages/platform-ui/src/utils/badges';
+
+// ❌ Wrong - Don't use root src/
+import { Component } from '../../../src/...';
+```
+
+## Component Template
+
+```typescript
+/**
+ * ComponentName
+ *
+ * Brief description of what this component does.
+ * All text content is pre-localized - pass labels via props for i18n support.
+ *
+ * @example
+ * ```tsx
+ * <ComponentName
+ *   prop1="value"
+ *   onClick={handleClick}
+ * />
+ * ```
+ */
+import * as React from 'react';
+import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import type { SomeType } from '../types';
+
+// ============================================================================
+// Types
+// ============================================================================
+
+export interface ComponentNameProps {
+  /** Description of prop */
+  prop1: string;
+  /** Optional handler */
+  onClick?: () => void;
+}
+
+// ============================================================================
+// Main Component
+// ============================================================================
+
+export function ComponentName({ prop1, onClick }: ComponentNameProps): React.ReactElement {
+  return (
+    <Card data-color="neutral" data-size="medium">
+      <Heading level={3} data-size="sm">{prop1}</Heading>
+      <Paragraph data-size="sm">Content</Paragraph>
+    </Card>
+  );
+}
+
+export default ComponentName;
+```
+
+## Testing Requirements
+
+### Unit Tests (Vitest)
+- Location: `tests/unit/`
+- Required for: All new components
+- Coverage target: 70%+
+
+### Integration Tests
+- Location: `tests/integration/`
+- Required for: Complex component interactions
+
+### E2E Tests (Playwright)
+- Location: `tests/e2e/`
+- Required for: Critical user flows
+- Includes: Accessibility testing
+
+### Storybook Stories
+- Location: `packages/platform-ui/src/stories/`
+- **REQUIRED** for all components
+- Must include: Multiple variants, usage examples
+
+## Quality Gates
+
+Before committing, run:
+```bash
+pnpm quality              # typecheck + lint + format:check
+pnpm verify:boundaries    # layer hierarchy + forbidden imports
+pnpm verify:design-tokens # raw HTML, inline styles, custom classes
+```
+
+All must pass before merging.
+
+## Validation Checklist
+
+Before accepting code:
+- [ ] Is it a UI component? → ✅ ACCEPT
+- [ ] Makes API calls? → ❌ REJECT
+- [ ] Has business logic? → ❌ REJECT
+- [ ] Imports from platform packages? → ❌ REJECT
+- [ ] Uses raw HTML elements? → ❌ REJECT
+- [ ] Uses inline styles (no tokens)? → ❌ REJECT
+- [ ] Violates layer hierarchy? → ❌ REJECT
+- [ ] Has Storybook story? → ✅ REQUIRED
+- [ ] Files in correct location? (`packages/platform-ui/src/`) → ✅ CHECK
+
+## Code Style
+
+### TypeScript
+- Strict mode enabled
+- Explicit return types for components
+- No `any` types
+- JSDoc comments for public APIs
+
+### React
+- Functional components only
+- Props interfaces exported
+- Default exports for components
+- Display names for debugging
+
+### File Organization
+- One component per file
+- Co-located types
+- Index files for exports
+- Max 200-300 lines per file (refactor if larger)
+
+## Shared Utilities
+
+Located in `packages/platform-ui/src/utils/`:
+- `icons.tsx` - Icon components (HeartIcon, MapPinIcon, etc.)
+- `badges.tsx` - Badge utilities (Badge, BadgeList, getBadgeColor)
+- `status.tsx` - Status utilities (StatusDot, getStatusColor, getPeriodStatusColors)
+
+**Usage**:
+```typescript
+import { HeartIcon, Badge, StatusDot } from '@xala-technologies/platform-ui/utils';
+// Or:
+import { HeartIcon } from '../../../packages/platform-ui/src/utils/icons';
+```
+
+## Design Token Usage
+
+### Colors
+```typescript
+// ✅ Use design tokens
+backgroundColor: 'var(--ds-color-neutral-surface-hover)'
+color: 'var(--ds-color-accent-text-default)'
+
+// ❌ Never hard-code
+backgroundColor: '#0062BA'  // ❌
+```
+
+### Spacing
+```typescript
+// ✅ Use design tokens
+padding: 'var(--ds-spacing-1) var(--ds-spacing-2)'
+gap: 'var(--ds-spacing-4)'
+
+// ❌ Never hard-code
+padding: '16px'  // ❌
+```
+
+### Typography
+```typescript
+// ✅ Use design tokens
+fontSize: 'var(--ds-font-size-xs)'
+
+// ❌ Never hard-code
+fontSize: '14px'  // ❌
+```
+
+### Border Radius
+```typescript
+// ✅ Use design tokens
+borderRadius: 'var(--ds-border-radius-md)'
+
+// ❌ Never hard-code
+borderRadius: '8px'  // ❌
+```
+
+## Common Patterns
+
+### Card Component
+```typescript
+import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+<Card data-color="neutral" data-size="medium">
+  <Card.Header>
+    <Heading level={3} data-size="sm">Title</Heading>
+  </Card.Header>
+  <Card.Content>
+    <Paragraph data-size="sm">Content</Paragraph>
+  </Card.Content>
+</Card>
+```
+
+### Button Component
+```typescript
+import { Button } from '@digdir/designsystemet-react';
+
+<Button 
+  data-color="accent" 
+  data-size="medium"
+  onClick={handleClick}
+>
+  Click me
+</Button>
+```
+
+### Form Components
+```typescript
+import { Textfield, Label, Select } from '@digdir/designsystemet-react';
+
+<Label htmlFor="name">Name</Label>
+<Textfield 
+  id="name"
+  data-size="medium"
+  placeholder="Enter name"
+/>
+```
+
+## Accessibility Requirements
+
+- WCAG 2.1 AA compliant
+- Keyboard navigation support
+- Screen reader support (ARIA labels)
+- Focus management
+- Color contrast compliance
+
+## Documentation
+
+- **Component docs**: Storybook stories (required)
+- **Architecture**: `docs/architecture/`
+- **Guides**: `docs/guides/`
+- **Governance**: `docs/governance/`
+- **NO markdown files in root** - use `docs/` folder
+
+## CI/CD
+
+GitHub Actions runs on every push/PR:
+1. Type check
+2. Lint
+3. Format check
+4. Boundary verification
+5. Design token verification
+6. Build
+7. Storybook build
+
+All must pass to merge.
+
+## Before Making Changes
+
+1. **Analyze codebase** - Check if similar functionality exists
+2. **Verify location** - Ensure files go in `packages/platform-ui/src/`
+3. **Check imports** - Use correct paths (`packages/platform-ui/src/`)
+4. **Run guardrails** - `pnpm verify:all` before committing
+5. **Create tests** - Unit tests required for new components
+6. **Create stories** - Storybook stories required
+
+## SOLID Principles
+
+- Single Responsibility: One component, one purpose
+- Open/Closed: Extend via props, not modification
+- Liskov Substitution: Components are interchangeable
+- Interface Segregation: Small, focused prop interfaces
+- Dependency Inversion: Depend on abstractions (props), not concretions
+
+## Code Quality
+
+- Refactor if file exceeds 200-300 lines
+- Avoid code duplication - use shared utilities
+- Keep components pure (no side effects)
+- Prefer composition over inheritance
+- Write self-documenting code
+
+## Environment Considerations
+
+- Code must work in dev, test, and prod
+- No mocking data for dev/prod (only for tests)
+- No stubbing or fake data patterns in production code
+- Environment-specific logic should be handled by platform package
+
+## Key Commands
+
+```bash
+# Quality checks
+pnpm quality              # All quality gates
+pnpm verify:boundaries    # Architecture boundaries
+pnpm verify:design-tokens # Design token compliance
+
+# Testing
+pnpm test:unit           # Unit tests
+pnpm test:integration    # Integration tests
+pnpm test:e2e            # E2E tests
+pnpm test:all           # All tests
+
+# Development
+pnpm build              # Build package
+pnpm storybook          # Run Storybook
+pnpm typecheck          # Type check only
+pnpm lint               # Lint only
+```
+
+## References
+
+- **Designsystemet**: https://designsystemet.no/
+- **Architecture**: `docs/architecture/ARCHITECTURE.md`
+- **Governance**: `docs/governance/GOVERNANCE.md`
+- **Design Tokens**: `docs/guides/DESIGN_TOKENS.md`
+- **Testing**: `docs/guides/TESTING.md`
+
+---
+
+**Remember**: This is a UI-only package. If you're adding business logic, API calls, or domain knowledge, you're in the wrong place. Use the platform package instead.

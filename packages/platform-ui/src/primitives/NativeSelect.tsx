@@ -4,6 +4,7 @@
  */
 
 import React, { useId } from 'react';
+import { Paragraph, Label } from '@digdir/designsystemet-react';
 
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   /** Label for the select */
@@ -32,7 +33,7 @@ export function NativeSelect({
       style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
     >
       {label && (
-        <label
+        <Label
           htmlFor={id}
           style={{
             fontSize: 'var(--ds-font-size-sm)',
@@ -42,11 +43,12 @@ export function NativeSelect({
         >
           {label}
           {props.required && <span style={{ color: 'var(--ds-color-danger-text)' }}> *</span>}
-        </label>
+        </Label>
       )}
 
       {description && !error && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -54,7 +56,7 @@ export function NativeSelect({
           }}
         >
           {description}
-        </p>
+        </Paragraph>
       )}
 
       <select
@@ -78,7 +80,8 @@ export function NativeSelect({
       </select>
 
       {error && (
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -86,7 +89,7 @@ export function NativeSelect({
           }}
         >
           {error}
-        </p>
+        </Paragraph>
       )}
     </div>
   );

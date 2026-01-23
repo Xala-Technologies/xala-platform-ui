@@ -6,6 +6,7 @@
  */
 
 import * as React from 'react';
+import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 
 // Accessibility Report type (from SDK)
 export interface AccessibilityReport {
@@ -91,7 +92,9 @@ export function AccessibilityDashboard({
         }}
       >
         <div>
-          <h2
+          <Heading
+            level={2}
+            data-size="xlarge"
             style={{
               fontSize: 'var(--ds-font-size-2xl)',
               fontWeight: 'var(--ds-font-weight-bold)' as unknown as number,
@@ -100,8 +103,9 @@ export function AccessibilityDashboard({
             }}
           >
             Tilgjengelighetsoversikt
-          </h2>
-          <p
+          </Heading>
+          <Paragraph
+            data-size="small"
             style={{
               fontSize: 'var(--ds-font-size-sm)',
               color: 'var(--ds-color-neutral-text-subtle)',
@@ -110,14 +114,16 @@ export function AccessibilityDashboard({
           >
             {new Date(report.period.start).toLocaleDateString('nb-NO')} -{' '}
             {new Date(report.period.end).toLocaleDateString('nb-NO')}
-          </p>
+          </Paragraph>
         </div>
 
         {onRefresh && (
-          <button
+          <Button
             type="button"
             onClick={onRefresh}
             disabled={isLoading}
+            data-color="accent"
+            data-size="small"
             style={{
               padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
               backgroundColor: 'var(--ds-color-accent-base-default)',
@@ -132,7 +138,7 @@ export function AccessibilityDashboard({
             aria-label="Oppdater tilgjengelighetsdata"
           >
             {isLoading ? 'Oppdaterer...' : 'Oppdater'}
-          </button>
+          </Button>
         )}
       </div>
 
@@ -317,7 +323,9 @@ export function AccessibilityDashboard({
             border: '1px solid var(--ds-color-info-border-default)',
           }}
         >
-          <h3
+          <Heading
+            level={3}
+            data-size="medium"
             style={{
               fontSize: 'var(--ds-font-size-lg)',
               fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
@@ -326,7 +334,7 @@ export function AccessibilityDashboard({
             }}
           >
             💡 Anbefalinger
-          </h3>
+          </Heading>
           <ul
             style={{
               margin: 0,
@@ -358,7 +366,7 @@ export function AccessibilityDashboard({
         }
 
         @media (prefers-contrast: high) {
-          button:focus-visible {
+          [data-component="button"]:focus-visible {
             outline: var(--ds-border-width-thick) solid var(--ds-color-focus-outer);
             outline-offset: var(--ds-spacing-1);
           }
@@ -428,7 +436,9 @@ function MetricCard({
         >
           {icon}
         </span>
-        <h4
+        <Heading
+          level={4}
+          data-size="small"
           style={{
             fontSize: 'var(--ds-font-size-md)',
             fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
@@ -437,7 +447,7 @@ function MetricCard({
           }}
         >
           {title}
-        </h4>
+        </Heading>
       </div>
 
       <div style={{ marginBottom: 'var(--ds-spacing-3)' }}>

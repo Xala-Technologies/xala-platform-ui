@@ -10,6 +10,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -118,7 +119,9 @@ export function FormSection({
         >
           <div>
             {title && (
-              <h3
+              <Heading
+                level={3}
+                data-size="medium"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-lg)',
@@ -127,10 +130,11 @@ export function FormSection({
                 }}
               >
                 {title}
-              </h3>
+              </Heading>
             )}
             {description && (
-              <p
+              <Paragraph
+                data-size="small"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-sm)',
@@ -138,7 +142,7 @@ export function FormSection({
                 }}
               >
                 {description}
-              </p>
+              </Paragraph>
             )}
           </div>
           {collapsible && (

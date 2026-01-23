@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -153,9 +154,10 @@ export function InfiniteScroll({
         Failed to load more items
       </span>
       {onRetry && (
-        <button
+        <Button
           type="button"
           onClick={onRetry}
+          data-color="accent"
           style={{
             padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -170,7 +172,7 @@ export function InfiniteScroll({
           }}
         >
           Try again
-        </button>
+        </Button>
       )}
     </div>
   );

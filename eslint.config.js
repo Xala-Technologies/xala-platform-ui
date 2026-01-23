@@ -66,15 +66,13 @@ export default [
         ],
       }],
 
-      // Design system rules - warnings for gradual migration
+      // Design system rules - only flag semantic elements that should be replaced
+      // Note: Inline styles with design tokens (var(--ds-*)) are allowed per design system rules
+      // Note: Layout divs/span with design tokens are allowed
       'no-restricted-syntax': ['warn',
         {
-          selector: 'JSXElement[openingElement.name.name=/^(div|span|p|h1|h2|h3|h4|h5|h6|section|article|header|footer|nav|aside|main)$/]',
-          message: '⚠️ DESIGN SYSTEM: Prefer Designsystemet components (Box, Heading, Paragraph) over raw HTML.',
-        },
-        {
-          selector: 'JSXAttribute[name.name="style"]',
-          message: '⚠️ DESIGN SYSTEM: Prefer data attributes (data-size, data-color) over inline styles.',
+          selector: 'JSXElement[openingElement.name.name=/^(p|h1|h2|h3|h4|h5|h6|button)$/]',
+          message: '⚠️ DESIGN SYSTEM: Prefer Designsystemet components (Heading, Paragraph, Button) over raw HTML.',
         },
       ],
     },

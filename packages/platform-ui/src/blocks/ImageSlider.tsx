@@ -5,7 +5,7 @@
  * Supports keyboard navigation, touch swipe, and fullscreen mode.
  */
 import * as React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '../primitives/icons';
 import type { GalleryImage } from '../types';
@@ -255,7 +255,7 @@ export function ImageSlider({
         {/* Navigation arrows */}
         {showArrows && images.length > 1 && (
           <>
-            <button
+            <Button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
@@ -263,6 +263,7 @@ export function ImageSlider({
               }}
               aria-label="Forrige bilde"
               className="ds-image-slider-nav-btn ds-image-slider-nav-prev"
+              data-color="neutral"
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -286,8 +287,8 @@ export function ImageSlider({
                 size={24}
                 style={{ color: 'var(--ds-color-neutral-text-default)' }}
               />
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
@@ -295,6 +296,7 @@ export function ImageSlider({
               }}
               aria-label="Neste bilde"
               className="ds-image-slider-nav-btn ds-image-slider-nav-next"
+              data-color="neutral"
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -318,7 +320,7 @@ export function ImageSlider({
                 size={24}
                 style={{ color: 'var(--ds-color-neutral-text-default)' }}
               />
-            </button>
+            </Button>
           </>
         )}
 
@@ -357,7 +359,7 @@ export function ImageSlider({
             }}
           >
             {images.map((_, index) => (
-              <button
+              <Button
                 key={index}
                 type="button"
                 onClick={(e) => {
@@ -366,6 +368,7 @@ export function ImageSlider({
                 }}
                 aria-label={`Gå til bilde ${index + 1}`}
                 className={`ds-image-slider-dot ${index === currentIndex ? 'active' : ''}`}
+                data-color="neutral"
                 style={{
                   width: index === currentIndex ? '24px' : 'var(--ds-spacing-2)',
                   height: 'var(--ds-spacing-2)',

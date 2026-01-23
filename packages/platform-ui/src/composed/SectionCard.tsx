@@ -8,6 +8,7 @@
  */
 
 import React, { type ReactNode } from 'react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -202,7 +203,9 @@ export function SectionCardHeader({
           </div>
         )}
         <div>
-          <h3
+          <Heading
+            level={3}
+            data-size="medium"
             style={{
               margin: 0,
               fontSize: sizeStyle.titleSize,
@@ -212,9 +215,10 @@ export function SectionCardHeader({
             }}
           >
             {title}
-          </h3>
+          </Heading>
           {description && (
-            <p
+            <Paragraph
+              data-size="small"
               style={{
                 margin: 0,
                 marginTop: 'var(--ds-spacing-1)',
@@ -223,7 +227,7 @@ export function SectionCardHeader({
               }}
             >
               {description}
-            </p>
+            </Paragraph>
           )}
         </div>
       </div>

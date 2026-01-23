@@ -5,7 +5,7 @@
  * Example: Hjem > Fasiliteter > Møterom 101
  */
 import * as React from 'react';
-import { Link } from '@digdir/designsystemet-react';
+import { Link, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 import type { BreadcrumbItem } from '../types';
 
@@ -86,9 +86,10 @@ export function Breadcrumb({
                     {item.label}
                   </Link>
                 ) : (
-                  <button
+                  <Button
                     type="button"
                     onClick={item.onClick}
+                    data-color="accent"
                     style={{
                       background: 'none',
                       border: 'none',
@@ -100,7 +101,7 @@ export function Breadcrumb({
                     }}
                   >
                     {item.label}
-                  </button>
+                  </Button>
                 )
               ) : (
                 <span

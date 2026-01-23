@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -304,9 +305,10 @@ export function SearchableSelect({
             }}
           >
             {opt?.label || v}
-            <button
+            <Button
               type="button"
               onClick={(e) => handleRemoveTag(e, v)}
+              data-color="neutral"
               style={{
                 display: 'flex',
                 padding: 0,
@@ -317,7 +319,7 @@ export function SearchableSelect({
               }}
             >
               <XIcon />
-            </button>
+            </Button>
           </span>
         );
       });

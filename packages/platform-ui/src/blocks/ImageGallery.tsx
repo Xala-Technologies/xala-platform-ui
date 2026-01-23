@@ -6,7 +6,7 @@
  * Supports image navigation and counter display.
  */
 import * as React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 import type { GalleryImage } from '../types';
 
@@ -154,12 +154,13 @@ export function ImageGallery({
           }}
         >
           {displayedThumbnails.map((image, index) => (
-            <button
+            <Button
               key={image.id}
               type="button"
               onClick={() => handleThumbnailClick(index)}
               aria-label={`Vis bilde ${index + 1}`}
               aria-current={index === currentIndex ? 'true' : undefined}
+              data-color={index === currentIndex ? 'accent' : 'neutral'}
               style={{
                 flex: 1,
                 padding: 0,
@@ -198,7 +199,7 @@ export function ImageGallery({
                   objectFit: 'cover',
                 }}
               />
-            </button>
+            </Button>
           ))}
         </div>
       )}

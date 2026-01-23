@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, createContext, useContext, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -127,12 +128,13 @@ function AccordionPanel({ item, isLast, variant }: AccordionPanelProps): React.R
         backgroundColor: 'var(--ds-color-neutral-background-default)',
       }}
     >
-      <button
+      <Button
         type="button"
         onClick={handleToggle}
         disabled={item.disabled}
         aria-expanded={isExpanded}
         aria-controls={`accordion-content-${item.id}`}
+        data-color="neutral"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -169,7 +171,7 @@ function AccordionPanel({ item, isLast, variant }: AccordionPanelProps): React.R
         >
           <ChevronDownIcon />
         </span>
-      </button>
+      </Button>
       <div
         id={`accordion-content-${item.id}`}
         role="region"

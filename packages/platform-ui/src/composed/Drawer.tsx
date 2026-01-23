@@ -9,6 +9,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { Heading } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // TYPES
@@ -444,7 +445,9 @@ export function Drawer({
                   {icon}
                 </span>
               )}
-              <h2
+              <Heading
+                level={2}
+                data-size="medium"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-md, 1.125rem)',
@@ -453,7 +456,7 @@ export function Drawer({
                 }}
               >
                 {title}
-              </h2>
+              </Heading>
               {badge !== undefined && badge > 0 && (
                 <span
                   style={{

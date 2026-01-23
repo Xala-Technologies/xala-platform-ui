@@ -5,7 +5,7 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
@@ -74,7 +74,11 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
           <Heading level={level} style={{ marginBottom: subtitle ? 'var(--ds-spacing-2)' : 0 }}>
             {title}
           </Heading>
-          {subtitle && <p style={{ opacity: 0.8, marginTop: 0, marginBottom: 0 }}>{subtitle}</p>}
+          {subtitle && (
+            <Paragraph data-size="small" style={{ opacity: 0.8, marginTop: 0, marginBottom: 0 }}>
+              {subtitle}
+            </Paragraph>
+          )}
           {children}
         </div>
 

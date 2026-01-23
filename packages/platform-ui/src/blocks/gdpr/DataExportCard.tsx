@@ -184,8 +184,8 @@ function ExportRequestStatus({
       }}
     >
       {/* Status message */}
-      <p
-        data-size="sm"
+      <Paragraph
+        data-size="small"
         style={{
           margin: 0,
           marginBottom: 'var(--ds-spacing-3)',
@@ -194,11 +194,11 @@ function ExportRequestStatus({
         }}
       >
         {statusText}
-      </p>
+      </Paragraph>
 
       {/* Request date */}
-      <p
-        data-size="xs"
+      <Paragraph
+        data-size="small"
         style={{
           margin: 0,
           color: 'var(--ds-color-neutral-text-subtle)',
@@ -206,7 +206,7 @@ function ExportRequestStatus({
         }}
       >
         {`${labels.requestedLabel} ${requestedDate}`}
-      </p>
+      </Paragraph>
 
       {/* Download button for completed requests */}
       {status === 'completed' && (

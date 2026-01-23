@@ -1,0 +1,2 @@
+import{j as u}from"./jsx-runtime-BYYWji4R.js";import{c as e}from"./index-CHmPfjQK.js";import{r as x}from"./index-ClcD9ViR.js";const j=x.forwardRef(function({type:f="text",className:a,onChange:t,onClick:p,...s},m){return u.jsx("input",{className:e("ds-input",a),ref:m,type:f,onChange:r=>s.readOnly||(t==null?void 0:t(r)),onClick:r=>{s.readOnly&&r.preventDefault(),p==null||p(r)},...s})});export{j as I};
+//# sourceMappingURL=input-CMu9MsIQ.js.map

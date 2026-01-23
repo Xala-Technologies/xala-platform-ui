@@ -10,6 +10,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -144,10 +145,11 @@ export function KeyValue({
       >
         {value}
         {copyable && typeof value === 'string' && (
-          <button
+          <Button
             type="button"
             onClick={handleCopy}
             aria-label="Copy to clipboard"
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -163,7 +165,7 @@ export function KeyValue({
             }}
           >
             {copied ? <CheckIcon /> : <CopyIcon />}
-          </button>
+          </Button>
         )}
       </dd>
     </div>

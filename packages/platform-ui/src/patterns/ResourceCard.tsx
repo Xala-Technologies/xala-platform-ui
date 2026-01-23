@@ -25,7 +25,7 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import type { ResourceBadge, PriceDisplay, MetadataItem, StatusIndicator } from './types';
 
 // ============================================================================
@@ -267,10 +267,11 @@ interface ActionButtonProps {
 
 function ActionButton({ onClick, ariaLabel, isActive, activeColor, children }: ActionButtonProps) {
   return (
-    <button
+    <Button
       type="button"
       onClick={onClick}
       aria-label={ariaLabel}
+      data-color={isActive ? 'danger' : 'neutral'}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -289,7 +290,7 @@ function ActionButton({ onClick, ariaLabel, isActive, activeColor, children }: A
       }}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 

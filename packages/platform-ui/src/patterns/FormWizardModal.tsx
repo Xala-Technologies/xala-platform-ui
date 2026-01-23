@@ -407,10 +407,11 @@ export function FormWizardModal({
             </Paragraph>
           )}
         </div>
-        <button
+        <Button
           type="button"
           onClick={onClose}
           aria-label="Close"
+          data-color="neutral"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -426,7 +427,7 @@ export function FormWizardModal({
           }}
         >
           <CloseIcon size={20} />
-        </button>
+        </Button>
       </div>
 
       {/* Step Indicator */}

@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -252,9 +253,10 @@ function Calendar({
           marginBottom: 'var(--ds-spacing-3)',
         }}
       >
-        <button
+        <Button
           type="button"
           onClick={handlePrev}
+          data-color="neutral"
           style={{
             padding: 'var(--ds-spacing-1)',
             backgroundColor: 'transparent',
@@ -265,7 +267,7 @@ function Calendar({
           }}
         >
           <ChevronLeftIcon />
-        </button>
+        </Button>
         <span
           style={{
             fontWeight: 'var(--ds-font-weight-semibold)',
@@ -274,9 +276,10 @@ function Calendar({
         >
           {MONTHS[month]} {year}
         </span>
-        <button
+        <Button
           type="button"
           onClick={handleNext}
+          data-color="neutral"
           style={{
             padding: 'var(--ds-spacing-1)',
             backgroundColor: 'transparent',
@@ -287,7 +290,7 @@ function Calendar({
           }}
         >
           <ChevronRightIcon />
-        </button>
+        </Button>
       </div>
 
       <div

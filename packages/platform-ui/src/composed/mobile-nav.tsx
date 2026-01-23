@@ -8,6 +8,7 @@
  */
 
 import React, { forwardRef, useCallback, useState } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 import { Drawer, DrawerProps } from './Drawer';
 
 // =============================================================================
@@ -142,19 +143,20 @@ export const MobileNavToggle = forwardRef<HTMLButtonElement, MobileNavToggleProp
     };
 
     return (
-      <button
+      <Button
         ref={ref}
         type="button"
         aria-label={isOpen ? 'Lukk navigasjonsmeny' : ariaLabel}
         aria-expanded={isOpen}
         className={className}
+        data-color="neutral"
         style={buttonStyle}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         {...props}
       >
         {icon ?? <MenuIcon />}
-      </button>
+      </Button>
     );
   }
 );

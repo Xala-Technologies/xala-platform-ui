@@ -36,7 +36,7 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import type { ResourceBadge, PriceDisplay, StatusIndicator } from '../patterns/types';
 
 // ============================================================================
@@ -279,11 +279,12 @@ interface FavoriteButtonProps {
 
 function FavoriteButton({ isFavorited, onClick, ariaLabel }: FavoriteButtonProps) {
   return (
-    <button
+    <Button
       type="button"
       onClick={onClick}
       aria-label={ariaLabel || (isFavorited ? 'Remove from favorites' : 'Add to favorites')}
       aria-pressed={isFavorited}
+      data-color={isFavorited ? 'danger' : 'neutral'}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -302,7 +303,7 @@ function FavoriteButton({ isFavorited, onClick, ariaLabel }: FavoriteButtonProps
       }}
     >
       <HeartIcon filled={isFavorited} />
-    </button>
+    </Button>
   );
 }
 

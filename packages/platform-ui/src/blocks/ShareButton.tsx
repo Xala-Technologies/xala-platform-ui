@@ -274,10 +274,11 @@ export function ShareSheet({
           <Heading level={2} data-size="sm" style={{ margin: 0 }}>
             Del
           </Heading>
-          <button
+          <Button
             type="button"
             onClick={onClose}
             aria-label="Lukk"
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -292,7 +293,7 @@ export function ShareSheet({
             }}
           >
             <CloseIcon size={20} />
-          </button>
+          </Button>
         </div>
 
         <Paragraph
@@ -316,12 +317,13 @@ export function ShareSheet({
           {visiblePlatforms.map((platform) => {
             const config = platformConfig[platform];
             return (
-              <button
+              <Button
                 key={platform}
                 type="button"
                 onClick={() =>
                   platform === 'copy' ? handleCopyLink() : handlePlatformShare(platform)
                 }
+                data-color="neutral"
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -344,7 +346,7 @@ export function ShareSheet({
                 >
                   {config.label}
                 </span>
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -413,12 +415,13 @@ export function ShareButton({
   if (variant === 'icon') {
     return (
       <>
-        <button
+        <Button
           type="button"
           onClick={handleClick}
           aria-label="Del"
           disabled={disabled}
           className={cn('share-button', className)}
+          data-color="neutral"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -435,7 +438,7 @@ export function ShareButton({
           }}
         >
           <ShareIcon size={currentSize.icon} />
-        </button>
+        </Button>
 
         <ShareSheet
           isOpen={showSheet}

@@ -199,9 +199,10 @@ function Breadcrumbs({
               }}
             >
               {isClickable ? (
-                <button
+                <Button
                   type="button"
                   onClick={() => onItemClick?.(item)}
+                  data-color="accent"
                   style={{
                     background: 'none',
                     border: 'none',
@@ -214,7 +215,7 @@ function Breadcrumbs({
                   aria-current={isLast ? 'page' : undefined}
                 >
                   {item.label}
-                </button>
+                </Button>
               ) : (
                 <span
                   aria-current={isLast ? 'page' : undefined}

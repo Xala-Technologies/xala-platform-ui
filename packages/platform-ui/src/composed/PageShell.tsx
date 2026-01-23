@@ -13,6 +13,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Heading } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -149,7 +150,9 @@ export function PageHeader({
         }}
       >
         <div>
-          <h2
+          <Heading
+            level={2}
+            data-size="medium"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-heading-md)',
@@ -158,7 +161,7 @@ export function PageHeader({
             }}
           >
             {title}
-          </h2>
+          </Heading>
           {(subtitle || badges) && (
             <div
               style={{

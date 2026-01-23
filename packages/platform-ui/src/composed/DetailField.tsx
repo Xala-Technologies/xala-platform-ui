@@ -13,6 +13,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
+import { Button, Heading } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -148,10 +149,11 @@ export function DetailField({
         </div>
 
         {copyable && onCopy && (
-          <button
+          <Button
             type="button"
             onClick={onCopy}
             aria-label={isCopied ? 'Copied' : 'Copy to clipboard'}
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -169,7 +171,7 @@ export function DetailField({
             }}
           >
             {isCopied ? <CheckIcon /> : <CopyIcon />}
-          </button>
+          </Button>
         )}
       </div>
     </div>
@@ -196,7 +198,9 @@ export function DetailFieldGroup({
   return (
     <div className={className} style={style}>
       {title && (
-        <h4
+        <Heading
+          level={4}
+          data-size="medium"
           style={{
             margin: '0 0 var(--ds-spacing-4) 0',
             fontSize: 'var(--ds-font-size-md)',
@@ -205,7 +209,7 @@ export function DetailFieldGroup({
           }}
         >
           {title}
-        </h4>
+        </Heading>
       )}
 
       <div

@@ -9,6 +9,7 @@
 
 import React, { useEffect, useRef, useCallback, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { Heading, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -171,7 +172,9 @@ export function Modal({
             }}
           >
             {title && (
-              <h2
+              <Heading
+                level={2}
+                data-size="medium"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-lg)',
@@ -180,13 +183,14 @@ export function Modal({
                 }}
               >
                 {title}
-              </h2>
+              </Heading>
             )}
             {showCloseButton && (
-              <button
+              <Button
                 type="button"
                 onClick={onClose}
                 aria-label="Close modal"
+                data-color="neutral"
                 style={{
                   marginLeft: 'auto',
                   padding: 'var(--ds-spacing-2)',
@@ -201,7 +205,7 @@ export function Modal({
                 }}
               >
                 <CloseIcon />
-              </button>
+              </Button>
             )}
           </div>
         )}

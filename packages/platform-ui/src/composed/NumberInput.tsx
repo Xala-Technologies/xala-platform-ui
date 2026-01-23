@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -275,13 +276,14 @@ export function NumberInput({
         }}
       >
         {!hideControls && (
-          <button
+          <Button
             type="button"
             tabIndex={-1}
             disabled={disabled || !canDecrement}
             onMouseDown={() => startContinuousChange('decrement')}
             onMouseUp={stopContinuousChange}
             onMouseLeave={stopContinuousChange}
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -298,7 +300,7 @@ export function NumberInput({
             }}
           >
             <MinusIcon />
-          </button>
+          </Button>
         )}
 
         <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
@@ -350,13 +352,14 @@ export function NumberInput({
         </div>
 
         {!hideControls && (
-          <button
+          <Button
             type="button"
             tabIndex={-1}
             disabled={disabled || !canIncrement}
             onMouseDown={() => startContinuousChange('increment')}
             onMouseUp={stopContinuousChange}
             onMouseLeave={stopContinuousChange}
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -373,7 +376,7 @@ export function NumberInput({
             }}
           >
             <PlusIcon />
-          </button>
+          </Button>
         )}
       </div>
 

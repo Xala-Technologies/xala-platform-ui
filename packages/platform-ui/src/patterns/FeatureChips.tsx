@@ -43,6 +43,7 @@
 
 import * as React from 'react';
 import { useState, useMemo } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 import type { PatternFeatureItem } from './types';
 
 // =============================================================================
@@ -286,9 +287,10 @@ export function FeatureChips({
 
       {/* Show more/less toggle */}
       {maxVisible && hiddenCount > 0 && !isExpanded && (
-        <button
+        <Button
           type="button"
           onClick={() => setIsExpanded(true)}
+          data-color="accent"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -306,13 +308,14 @@ export function FeatureChips({
           aria-expanded={false}
         >
           {showMoreText}
-        </button>
+        </Button>
       )}
 
       {maxVisible && isExpanded && displayFeatures.length > maxVisible && (
-        <button
+        <Button
           type="button"
           onClick={() => setIsExpanded(false)}
+          data-color="neutral"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -330,7 +333,7 @@ export function FeatureChips({
           aria-expanded={true}
         >
           {labels.showLess}
-        </button>
+        </Button>
       )}
     </div>
   );

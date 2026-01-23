@@ -8,7 +8,7 @@
  * with keyFacts array for type-specific information display.
  */
 import * as React from 'react';
-import { Tag, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Tag, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 import { MapPinIcon, ShareIcon } from '../primitives/icons';
 import { KeyFactsRow, type KeyFact } from './KeyFactsRow';
@@ -186,12 +186,13 @@ export function ResourceDetailHeader({
               {...(onShare ? { onShare: (platform?: SharePlatform) => onShare(platform) } : {})}
             />
           ) : onShare ? (
-            <button
+            <Button
               type="button"
               onClick={() => {
                 onShare();
               }}
               aria-label="Del"
+              data-color="neutral"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -207,7 +208,7 @@ export function ResourceDetailHeader({
               }}
             >
               <ShareIcon size={16} />
-            </button>
+            </Button>
           ) : null}
         </div>
       </div>

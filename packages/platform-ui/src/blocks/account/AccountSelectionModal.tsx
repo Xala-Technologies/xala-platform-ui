@@ -210,9 +210,10 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
             }}
           >
             {/* Personal Account Option */}
-            <button
+            <Button
               type="button"
               onClick={handlePersonalSelect}
+              data-color="neutral"
               style={{
                 all: 'unset',
                 cursor: 'pointer',
@@ -254,13 +255,14 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                   {labels.personalAccountDesc}
                 </Paragraph>
               </Card>
-            </button>
+            </Button>
 
             {/* Organization Account Option */}
-            <button
+            <Button
               type="button"
               onClick={handleOrganizationClick}
               disabled={isLoadingOrganizations}
+              data-color="neutral"
               style={{
                 all: 'unset',
                 cursor: isLoadingOrganizations ? 'wait' : 'pointer',
@@ -303,7 +305,7 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                   {labels.organizationAccountDesc}
                 </Paragraph>
               </Card>
-            </button>
+            </Button>
           </div>
         )}
 
@@ -317,10 +319,11 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
               </Card>
             ) : (
               organizations.map((org) => (
-                <button
+                <Button
                   key={org.id}
                   type="button"
                   onClick={() => setSelectedOrgId(org.id)}
+                  data-color="neutral"
                   style={{
                     all: 'unset',
                     cursor: 'pointer',

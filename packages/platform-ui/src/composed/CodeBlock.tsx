@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -113,11 +114,12 @@ export function CopyButton({
   const sizeStyle = sizes[size];
 
   return (
-    <button
+    <Button
       type="button"
       onClick={handleCopy}
       className={className}
       aria-label={copied ? 'Copied!' : 'Copy to clipboard'}
+      data-color="neutral"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -140,7 +142,7 @@ export function CopyButton({
       <span style={{ width: sizeStyle.icon, height: sizeStyle.icon }}>
         {copied ? <CheckIcon /> : <CopyIcon />}
       </span>
-    </button>
+    </Button>
   );
 }
 

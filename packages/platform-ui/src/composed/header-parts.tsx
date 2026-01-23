@@ -960,10 +960,11 @@ export const HeaderSearch = forwardRef<HTMLDivElement, HeaderSearchProps>(
 
             {/* Clear Button - only show when there's text */}
             {value && (
-              <button
+              <Button
                 type="button"
                 onClick={handleClear}
                 aria-label="Tøm søk"
+                data-color="neutral"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -992,7 +993,7 @@ export const HeaderSearch = forwardRef<HTMLDivElement, HeaderSearchProps>(
                 }}
               >
                 <CloseIcon size={14} />
-              </button>
+              </Button>
             )}
           </div>
         </form>
@@ -1239,10 +1240,11 @@ export const HeaderIconButton = forwardRef<HTMLButtonElement, HeaderIconButtonPr
     const badgeText = badge && badge > maxBadge ? `${maxBadge}+` : badge?.toString();
 
     return (
-      <button
+      <Button
         ref={ref}
         type="button"
         className={className}
+        data-color="neutral"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => {
           setIsHovered(false);
@@ -1310,7 +1312,7 @@ export const HeaderIconButton = forwardRef<HTMLButtonElement, HeaderIconButtonPr
             {badgeText}
           </span>
         )}
-      </button>
+      </Button>
     );
   }
 );
@@ -1346,9 +1348,10 @@ export const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
   const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <button
+    <Button
       type="button"
       onClick={onToggle}
+      data-color="neutral"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
@@ -1390,7 +1393,7 @@ export const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
       >
         {isDark ? <SunIcon size={22} aria-hidden /> : <MoonIcon size={22} aria-hidden />}
       </span>
-    </button>
+    </Button>
   );
 };
 
@@ -1443,9 +1446,10 @@ export const HeaderLanguageSwitch: React.FC<HeaderLanguageSwitchProps> = ({
   if (!currentLang) return null;
 
   return (
-    <button
+    <Button
       type="button"
       onClick={handleToggle}
+      data-color="neutral"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       aria-label={`Språk: ${currentLang.label}. Klikk for å bytte.`}
@@ -1469,7 +1473,7 @@ export const HeaderLanguageSwitch: React.FC<HeaderLanguageSwitchProps> = ({
       }}
     >
       {currentLang.label}
-    </button>
+    </Button>
   );
 };
 

@@ -15,7 +15,7 @@ import '@fontsource/inter/700.css';
 
 // Theme CSS loaded via previewHead in main.ts (vendor/designsystemet.css)
 
-import { DesignsystemetProvider } from '../src/provider';
+import { DesignsystemetProvider } from '../packages/platform-ui/src/provider';
 
 // Suppress React 18 act() warnings and WebSocket HMR noise
 const originalError = console.error;

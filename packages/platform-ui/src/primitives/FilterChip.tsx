@@ -16,6 +16,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
 
 export interface FilterChipProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'children'> {
@@ -156,7 +157,7 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
     const currentVariant = variantStyles[variant];
 
     return (
-      <button
+      <Button
         ref={ref}
         type="button"
         onClick={handleClick}
@@ -171,6 +172,7 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
         data-testid={testId}
         data-variant={variant}
         data-size={size}
+        data-color={variant === 'accent' ? 'accent' : 'neutral'}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -206,7 +208,7 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
         >
           <CloseIcon size={currentSize.iconSize} />
         </span>
-      </button>
+      </Button>
     );
   }
 );

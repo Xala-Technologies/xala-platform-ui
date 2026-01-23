@@ -17,6 +17,7 @@ import React, {
   useContext,
   type ReactNode,
 } from 'react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -252,7 +253,8 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
     >
       <div style={{ color: styles.icon, flexShrink: 0 }}>{styles.iconComponent}</div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <p
+        <Paragraph
+          data-size="small"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -261,9 +263,10 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
           }}
         >
           {toast.title}
-        </p>
+        </Paragraph>
         {toast.message && (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               margin: 'var(--ds-spacing-1) 0 0 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -271,7 +274,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
             }}
           >
             {toast.message}
-          </p>
+          </Paragraph>
         )}
         {toast.action && (
           <button
@@ -298,6 +301,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss"
+          data-color="neutral"
           style={{
             display: 'flex',
             padding: 'var(--ds-spacing-1)',
@@ -310,7 +314,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
           }}
         >
           <XIcon />
-        </button>
+        </Button>
       )}
     </div>
   );

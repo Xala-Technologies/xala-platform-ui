@@ -5,7 +5,7 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Fieldset, Heading } from '@digdir/designsystemet-react';
+import { Fieldset, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Stack } from '../primitives';
 
 export interface ContentSectionProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -75,7 +75,11 @@ export const ContentSection = forwardRef<HTMLDivElement, ContentSectionProps>(
     const header = (
       <Stack spacing={8} style={{ marginBottom: subtitle ? 16 : 24 }}>
         {title && <Heading level={level}>{title}</Heading>}
-        {subtitle && <p style={{ opacity: 0.8, margin: 0 }}>{subtitle}</p>}
+        {subtitle && (
+          <Paragraph data-size="small" style={{ opacity: 0.8, margin: 0 }}>
+            {subtitle}
+          </Paragraph>
+        )}
       </Stack>
     );
 

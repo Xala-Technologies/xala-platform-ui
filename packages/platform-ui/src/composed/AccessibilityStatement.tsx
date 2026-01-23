@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -52,7 +53,9 @@ export interface AccessibilityStatementProps {
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2
+    <Heading
+      level={2}
+      data-size="medium"
       style={{
         fontSize: 'var(--ds-font-size-lg)',
         fontWeight: 'var(--ds-font-weight-semibold)',
@@ -62,7 +65,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-    </h2>
+    </Heading>
   );
 }
 
@@ -133,8 +136,10 @@ export function AccessibilityStatement({
       }}
       aria-labelledby="accessibility-statement-title"
     >
-      <h1
+      <Heading
+        level={1}
         id="accessibility-statement-title"
+        data-size="large"
         style={{
           fontSize: 'var(--ds-font-size-2xl)',
           fontWeight: 'var(--ds-font-weight-bold)',
@@ -143,9 +148,10 @@ export function AccessibilityStatement({
         }}
       >
         Tilgjengelighetserklæring
-      </h1>
+      </Heading>
 
-      <p
+      <Paragraph
+        data-size="medium"
         style={{
           fontSize: 'var(--ds-font-size-md)',
           color: 'var(--ds-color-neutral-text-subtle)',
@@ -153,11 +159,11 @@ export function AccessibilityStatement({
         }}
       >
         Sist oppdatert: {lastUpdated}
-      </p>
+      </Paragraph>
 
       {/* Introduction */}
       <section>
-        <p style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
+        <Paragraph data-size="medium" style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
           {organizationName} er forpliktet til å gjøre {websiteName} tilgjengelig for alle brukere,
           inkludert personer med nedsatt funksjonsevne. Vi jobber kontinuerlig med å forbedre
           brukeropplevelsen og sikre at nettstedet følger gjeldende tilgjengelighetskrav.

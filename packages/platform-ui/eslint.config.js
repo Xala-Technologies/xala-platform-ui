@@ -64,15 +64,15 @@ export default [
         ],
       }],
 
-      // Design system rules (warnings for gradual migration)
+      // Design system rules - flag semantic elements that should be replaced
+      // Flexibility: Composed components can extend design tokens and use div/span for layout
+      // Consistency: Always use Designsystemet components for semantic elements (Heading, Paragraph, Button)
+      // Note: Inline styles with design tokens (var(--ds-*)) are allowed
+      // Note: Layout divs/span with design tokens are allowed for composed components
       'no-restricted-syntax': ['warn',
         {
-          selector: 'JSXElement[openingElement.name.name=/^(div|span|p|h1|h2|h3|h4|h5|h6|section|article|header|footer|nav|aside|main)$/]',
-          message: '⚠️ Prefer Designsystemet components (Box, Heading, Paragraph) over raw HTML.',
-        },
-        {
-          selector: 'JSXAttribute[name.name="style"]',
-          message: '⚠️ Prefer data attributes (data-size, data-color) over inline styles.',
+          selector: 'JSXElement[openingElement.name.name=/^(p|h1|h2|h3|h4|h5|h6|button)$/]',
+          message: '⚠️ DESIGN SYSTEM: Prefer Designsystemet components (Heading, Paragraph, Button) over raw HTML. Composed components can extend design tokens but should use semantic components.',
         },
       ],
     },

@@ -12,6 +12,7 @@
 'use client';
 
 import React, { useRef, useState, useCallback, type DragEvent, type ChangeEvent } from 'react';
+import { Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -444,7 +445,8 @@ export function FileUploader({
           <UploadCloudIcon />
         </div>
 
-        <p
+        <Paragraph
+          data-size="medium"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-md)',
@@ -454,10 +456,11 @@ export function FileUploader({
           }}
         >
           {placeholder.title}
-        </p>
+        </Paragraph>
 
         {placeholder.description && (
-          <p
+          <Paragraph
+            data-size="small"
             style={{
               margin: 'var(--ds-spacing-1) 0 0 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -466,7 +469,7 @@ export function FileUploader({
             }}
           >
             {placeholder.description}
-          </p>
+          </Paragraph>
         )}
 
         {maxSize && (

@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, type ReactNode } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -207,7 +208,7 @@ export function Rating({
         onMouseLeave={handleMouseLeave}
       >
         {Array.from({ length: max }).map((_, index) => (
-          <button
+          <Button
             key={index}
             type="button"
             onClick={(e) => {
@@ -219,6 +220,7 @@ export function Rating({
             onMouseMove={(e) => handleMouseMove(e, index)}
             disabled={disabled}
             aria-label={`Rate ${index + 1} out of ${max}`}
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -240,7 +242,7 @@ export function Rating({
             }}
           >
             <span style={{ width: styles.icon, height: styles.icon }}>{renderIcon(index)}</span>
-          </button>
+          </Button>
         ))}
         {showValue && (
           <span

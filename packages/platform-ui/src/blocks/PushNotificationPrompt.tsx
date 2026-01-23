@@ -91,10 +91,11 @@ export function PushNotificationPrompt({
             marginBottom: 'var(--ds-spacing-2)',
           }}
         >
-          <button
+          <Button
             type="button"
             onClick={onClose}
             aria-label="Lukk"
+            data-color="neutral"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -109,7 +110,7 @@ export function PushNotificationPrompt({
             }}
           >
             <CloseIcon size={20} />
-          </button>
+          </Button>
         </div>
 
         {/* Icon */}
