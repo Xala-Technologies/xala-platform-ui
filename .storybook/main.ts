@@ -13,9 +13,7 @@ const config: StorybookConfig = {
     },
   },
   stories: [
-    // Support both legacy root location and new monorepo location
-    '../src/stories/**/*.mdx',
-    '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    // Monorepo: only use packages/platform-ui stories
     '../packages/platform-ui/src/stories/**/*.mdx',
     '../packages/platform-ui/src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
