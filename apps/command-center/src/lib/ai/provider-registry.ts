@@ -30,6 +30,66 @@ class ProviderRegistry {
         this.register('openrouter', new OpenRouterProvider());
         this.register('ollama', new OllamaProvider());
         this.register('lmstudio', new LMStudioProvider());
+
+        // Auto-initialize from environment variables
+        this.initFromEnv();
+    }
+
+    /**
+     * Auto-initialize provider from VITE_* environment variables
+     * Uses synchronous initialization to ensure provider is ready before modal check
+     */
+    private initFromEnv(): void {
+        // Check for Anthropic key first (preferred)
+        const anthropicKey = import.meta.env.VITE_ANTHROPIC_API_KEY;
+        if (anthropicKey) {
+            this.initProviderSync('anthropic', anthropicKey);
+            return;
+        }
+
+        // Check for OpenAI key
+        const openaiKey = import.meta.env.VITE_OPENAI_API_KEY;
+        if (openaiKey) {
+            this.initProviderSync('openai', openaiKey);
+            return;
+        }
+
+        // Check for Google Gemini key
+        const geminiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+        if (geminiKey) {
+            this.initProviderSync('google-gemini', geminiKey);
+            return;
+        }
+
+        // Check for DeepSeek key
+        const deepseekKey = import.meta.env.VITE_DEEPSEEK_API_KEY;
+        if (deepseekKey) {
+            this.initProviderSync('deepseek', deepseekKey);
+            return;
+        }
+
+        // Check for OpenRouter key
+        const openrouterKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+        if (openrouterKey) {
+            this.initProviderSync('openrouter', openrouterKey);
+            return;
+        }
+    }
+
+    /**
+     * Synchronously initialize a provider (for env-based config)
+     */
+    private initProviderSync(provider: AIProvider, apiKey: string): void {
+        const client = this.providers.get(provider);
+        if (!client) return;
+
+        const config: ProviderConfig = { provider, apiKey };
+
+        // Initialize synchronously (ignore any async promise)
+        if ('initialize' in client && typeof (client as any).initialize === 'function') {
+            (client as any).initialize(config);
+        }
+        this.currentProvider = provider;
     }
 
     /**

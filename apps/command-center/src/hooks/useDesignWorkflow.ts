@@ -53,7 +53,7 @@ export interface DesignWorkflowActions {
     generateSection: (sectionName: string, input: string) => Promise<SectionSpec>;
 
     // Phase 3: Export
-    exportProduct: (config: ExportConfig) => Promise<string>;
+    exportProduct: (config: { mode: 'oneshot' | 'incremental' }) => Promise<string>;
 
     // Navigation
     setPhase: (phase: DesignPhase) => void;
@@ -231,8 +231,15 @@ The output MUST be valid JSON matching this structure:
     }, [callAI, state.vision, state.dataModel]);
 
     // Phase 3: Export
-    const exportProduct = useCallback(async (config: ExportConfig): Promise<string> => {
-        const validatedConfig = exportConfigSchema.parse(config);
+    const exportProduct = useCallback(async (config: { mode: 'oneshot' | 'incremental' }): Promise<string> => {
+        // Build full config with defaults
+        const fullConfig = {
+            mode: config.mode,
+            includeStorybook: true,
+            includeTests: true,
+            outputDir: './export',
+        };
+        const validatedConfig = exportConfigSchema.parse(fullConfig);
         setState(s => ({ ...s, exportConfig: validatedConfig, phase: 'export' }));
 
         // Build ProductPlan from current state
