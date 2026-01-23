@@ -7,8 +7,10 @@
 import * as React from 'react';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { TrendUpIcon, TrendDownIcon } from '../primitives/icons';
+import { Stack, HorizontalLayout } from '../primitives';
 import { cn } from '../utils';
 import { StatusTag, type BadgeColor } from './StatusBadges';
+import { typography, spacing, transitions } from '../tokens/extended';
 
 // =============================================================================
 // StatCard - KPI/Metric Display Card
@@ -47,66 +49,67 @@ export function StatCard({
     <Card
       className={cn('stat-card', className)}
       style={{
-        padding: 'var(--ds-spacing-5)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-3)',
+        padding: spacing.card.padding,
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <Paragraph
-          data-size="sm"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0 }}
+      <Stack gap="var(--ds-spacing-3)">
+        <HorizontalLayout
+          justify="space-between"
+          align="flex-start"
         >
-          {title}
-        </Paragraph>
-        {icon && (
-          <div
-            style={{
-              color: color || 'var(--ds-color-neutral-text-subtle)',
-              opacity: 0.5,
-            }}
+          <Paragraph
+            data-size="sm"
+            style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0 }}
           >
-            {icon}
-          </div>
-        )}
-      </div>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-3)' }}>
-        <Heading
-          level={3}
-          data-size="2xl"
-          style={{ color: color || 'var(--ds-color-neutral-text-default)', margin: 0 }}
-        >
-          {value}
-        </Heading>
-        {trend && (
-          <span
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-1)',
-              fontSize: 'var(--ds-font-size-sm)',
-              fontWeight: 'var(--ds-font-weight-medium)',
-              color: trend.isPositive
-                ? 'var(--ds-color-success-text-default)'
-                : 'var(--ds-color-danger-text-default)',
-            }}
+            {title}
+          </Paragraph>
+          {icon && (
+            <Stack
+              style={{
+                color: color || 'var(--ds-color-neutral-text-subtle)',
+                opacity: 0.5,
+              }}
+            >
+              {icon}
+            </Stack>
+          )}
+        </HorizontalLayout>
+        <HorizontalLayout align="baseline" gap="var(--ds-spacing-3)">
+          <Heading
+            level={3}
+            data-size="2xl"
+            style={{ color: color || 'var(--ds-color-neutral-text-default)', margin: 0 }}
           >
-            {trend.isPositive ? <TrendUpIcon size={16} /> : <TrendDownIcon size={16} />}
-            {trend.value}%
-          </span>
+            {value}
+          </Heading>
+          {trend && (
+            <HorizontalLayout
+              align="center"
+              gap="var(--ds-spacing-1)"
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                fontWeight: typography.fontWeight.medium,
+                color: trend.isPositive
+                  ? 'var(--ds-color-success-text-default)'
+                  : 'var(--ds-color-danger-text-default)',
+              }}
+            >
+              {trend.isPositive ? <TrendUpIcon size={16} /> : <TrendDownIcon size={16} />}
+              {trend.value}%
+            </HorizontalLayout>
+          )}
+        </HorizontalLayout>
+        {description && (
+          <Paragraph
+            data-size="xs"
+            style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0 }}
+          >
+            {description}
+          </Paragraph>
         )}
-      </div>
-      {description && (
-        <Paragraph
-          data-size="xs"
-          style={{ color: 'var(--ds-color-neutral-text-subtle)', margin: 0 }}
-        >
-          {description}
-        </Paragraph>
-      )}
+      </Stack>
     </Card>
   );
 }
@@ -158,46 +161,42 @@ export function ActivityItem({
   const badgeColor = statusBadgeColors[status];
 
   return (
-    <div
+    <HorizontalLayout
       className={cn('activity-item', className)}
+      align="flex-start"
+      gap="var(--ds-spacing-4)"
       style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: 'var(--ds-spacing-4)',
         padding: 'var(--ds-spacing-4)',
         borderRadius: 'var(--ds-border-radius-md)',
         backgroundColor: 'var(--ds-color-neutral-surface-hover)',
       }}
     >
-      <div
+      <Stack
         style={{
           width: 'var(--ds-spacing-2)',
           height: 'var(--ds-spacing-2)',
           borderRadius: 'var(--ds-border-radius-full)',
           backgroundColor: statusColors[status],
-          marginTop: '6px',
+          marginTop: 'var(--ds-spacing-1-5)',
           flexShrink: 0,
         }}
       />
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: 'var(--ds-spacing-2)',
-          }}
+      <Stack style={{ flex: 1, minWidth: 0 }}>
+        <HorizontalLayout
+          justify="space-between"
+          align="flex-start"
+          gap="var(--ds-spacing-2)"
         >
           <Paragraph
             data-size="sm"
-            style={{ fontWeight: 'var(--ds-font-weight-medium)', margin: 0 }}
+            style={{ fontWeight: typography.fontWeight.medium, margin: 0 }}
           >
             {title}
           </Paragraph>
           <StatusTag color={badgeColor} size="sm">
             {statusLabels[status]}
           </StatusTag>
-        </div>
+        </HorizontalLayout>
         <Paragraph
           data-size="xs"
           style={{
@@ -218,8 +217,8 @@ export function ActivityItem({
         >
           {time}
         </Paragraph>
-      </div>
-    </div>
+      </Stack>
+    </HorizontalLayout>
   );
 }
 
@@ -242,16 +241,16 @@ export function ActivityFeed({
   className,
 }: ActivityFeedProps): React.ReactElement {
   return (
-    <div className={cn('activity-feed', className)}>
+    <Stack className={cn('activity-feed', className)}>
       {title && (
         <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
           {title}
         </Heading>
       )}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+      <Stack gap="var(--ds-spacing-3)">
         {children}
-      </div>
-    </div>
+      </Stack>
+    </Stack>
   );
 }
 
