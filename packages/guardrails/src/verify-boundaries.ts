@@ -22,8 +22,7 @@ const LAYER_HIERARCHY: Record<string, number> = {
 const FORBIDDEN_IMPORTS = [
   {
     pattern: /@xala-technologies\/platform[^-]/,
-    message:
-      'UI package cannot import from platform package. UI must be independent.',
+    message: 'UI package cannot import from platform package. UI must be independent.',
   },
   {
     pattern: /@xala-technologies\/platform-schema/,
@@ -32,8 +31,7 @@ const FORBIDDEN_IMPORTS = [
   },
   {
     pattern: /@xala-technologies\/governance/,
-    message:
-      'UI package cannot import from governance package. Keep UI dependencies minimal.',
+    message: 'UI package cannot import from governance package. Keep UI dependencies minimal.',
   },
   {
     pattern: /from ['"].*\/src\//,
@@ -69,8 +67,7 @@ function getLayerLevel(filePath: string): LayerInfo | null {
  * Extract imports from file content
  */
 function extractImports(content: string): string[] {
-  const importRegex =
-    /import\s+(?:{[^}]*}|\*\s+as\s+\w+|\w+)\s+from\s+['"]([^'"]+)['"]/g;
+  const importRegex = /import\s+(?:{[^}]*}|\*\s+as\s+\w+|\w+)\s+from\s+['"]([^'"]+)['"]/g;
   const imports: string[] = [];
   let match;
 
@@ -150,11 +147,7 @@ function scanDirectory(dir: string, files: string[] = []): string[] {
     const stat = statSync(fullPath);
 
     if (stat.isDirectory()) {
-      if (
-        ['node_modules', 'dist', '.git', '.storybook', 'stories'].includes(
-          entry
-        )
-      ) {
+      if (['node_modules', 'dist', '.git', '.storybook', 'stories'].includes(entry)) {
         continue;
       }
       scanDirectory(fullPath, files);
@@ -183,9 +176,7 @@ export interface VerifyBoundariesResult {
 /**
  * Verify package boundaries and layer separation
  */
-export function verifyBoundaries(
-  options: VerifyBoundariesOptions
-): VerifyBoundariesResult {
+export function verifyBoundaries(options: VerifyBoundariesOptions): VerifyBoundariesResult {
   const { srcDir, rootDir = srcDir, silent = false } = options;
 
   if (!silent) {
@@ -223,9 +214,7 @@ export function verifyBoundaries(
       });
 
       Object.entries(byType).forEach(([type, violations]) => {
-        console.log(
-          `\n📋 ${type.toUpperCase().replace('-', ' ')} (${violations.length}):`
-        );
+        console.log(`\n📋 ${type.toUpperCase().replace('-', ' ')} (${violations.length}):`);
         violations.forEach((v) => {
           console.log(`   ${v.file}`);
           console.log(`   → ${v.message}`);

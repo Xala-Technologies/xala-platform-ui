@@ -83,11 +83,7 @@ function scanDirectory(dir: string, files: string[] = []): string[] {
     const stat = statSync(fullPath);
 
     if (stat.isDirectory()) {
-      if (
-        ['node_modules', 'dist', '.git', '.storybook', 'stories'].includes(
-          entry
-        )
-      ) {
+      if (['node_modules', 'dist', '.git', '.storybook', 'stories'].includes(entry)) {
         continue;
       }
       scanDirectory(fullPath, files);
@@ -230,9 +226,7 @@ export interface VerifyDesignTokensResult {
 /**
  * Verify design token usage
  */
-export function verifyDesignTokens(
-  options: VerifyDesignTokensOptions
-): VerifyDesignTokensResult {
+export function verifyDesignTokens(options: VerifyDesignTokensOptions): VerifyDesignTokensResult {
   const {
     srcDir,
     rootDir = srcDir,
@@ -259,11 +253,7 @@ export function verifyDesignTokens(
     const styleViolations = checkInlineStyles(file, content, rootDir, allowedPatterns);
     const classViolations = checkCustomClasses(file, content, rootDir, allowedPatterns);
 
-    allViolations = allViolations.concat(
-      htmlViolations,
-      styleViolations,
-      classViolations
-    );
+    allViolations = allViolations.concat(htmlViolations, styleViolations, classViolations);
   }
 
   if (!silent) {
@@ -299,9 +289,7 @@ export function verifyDesignTokens(
         console.log('   Use data attributes or design token variables\n');
         byType['inline-style'].forEach((v) => {
           console.log(`   ${v.file}:${v.line}`);
-          console.log(
-            `   → ${v.content.substring(0, 100)}${v.content.length > 100 ? '...' : ''}`
-          );
+          console.log(`   → ${v.content.substring(0, 100)}${v.content.length > 100 ? '...' : ''}`);
           console.log('');
         });
       }

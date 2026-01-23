@@ -171,9 +171,7 @@ export function validateSpec(specDir: string): SpecValidationResult {
 /**
  * Validate all specs in a directory
  */
-export function validateAllSpecs(
-  specsDir: string
-): Map<string, SpecValidationResult> {
+export function validateAllSpecs(specsDir: string): Map<string, SpecValidationResult> {
   const results = new Map<string, SpecValidationResult>();
 
   if (!existsSync(specsDir)) {
