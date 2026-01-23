@@ -159,7 +159,9 @@ export const WithFooter: Story = {
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           footer={
-            <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}>
+            <div
+              style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}
+            >
               <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
                 Cancel
               </Button>

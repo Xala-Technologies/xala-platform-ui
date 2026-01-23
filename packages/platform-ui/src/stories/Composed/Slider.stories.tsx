@@ -298,7 +298,14 @@ export const RangeSliderWithMarks: Story = {
 // All sizes showcase
 export const AllSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)', width: '400px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-6)',
+        width: '400px',
+      }}
+    >
       <Slider label="Small" defaultValue={50} size="sm" onChange={fn()} />
       <Slider label="Medium" defaultValue={50} size="md" onChange={fn()} />
       <Slider label="Large" defaultValue={50} size="lg" onChange={fn()} />

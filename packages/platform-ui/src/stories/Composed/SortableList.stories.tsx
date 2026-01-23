@@ -72,12 +72,7 @@ export const Default: Story = {
 
     return (
       <div style={{ width: '400px' }}>
-        <SortableList
-          items={items}
-          onReorder={setItems}
-          handle={true}
-          direction="vertical"
-        />
+        <SortableList items={items} onReorder={setItems} handle={true} direction="vertical" />
       </div>
     );
   },
@@ -94,12 +89,7 @@ export const WithoutHandle: Story = {
 
     return (
       <div style={{ width: '400px' }}>
-        <SortableList
-          items={items}
-          onReorder={setItems}
-          handle={false}
-          direction="vertical"
-        />
+        <SortableList items={items} onReorder={setItems} handle={false} direction="vertical" />
       </div>
     );
   },
@@ -153,12 +143,7 @@ export const Horizontal: Story = {
 
     return (
       <div style={{ width: '500px' }}>
-        <SortableList
-          items={items}
-          onReorder={setItems}
-          handle={true}
-          direction="horizontal"
-        />
+        <SortableList items={items} onReorder={setItems} handle={true} direction="horizontal" />
       </div>
     );
   },
@@ -176,12 +161,7 @@ export const WithDisabledItems: Story = {
 
     return (
       <div style={{ width: '400px' }}>
-        <SortableList
-          items={items}
-          onReorder={setItems}
-          handle={true}
-          direction="vertical"
-        />
+        <SortableList items={items} onReorder={setItems} handle={true} direction="vertical" />
       </div>
     );
   },
@@ -222,12 +202,7 @@ export const ManyItems: Story = {
 
     return (
       <div style={{ width: '400px', maxHeight: '400px', overflow: 'auto' }}>
-        <SortableList
-          items={items}
-          onReorder={setItems}
-          handle={true}
-          direction="vertical"
-        />
+        <SortableList items={items} onReorder={setItems} handle={true} direction="vertical" />
       </div>
     );
   },

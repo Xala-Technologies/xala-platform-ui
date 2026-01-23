@@ -78,7 +78,10 @@ export const CustomTitle: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>Note: GlobalErrorHandler catches window-level errors. To see it in action, trigger a window error.</p>
+            <p>
+              Note: GlobalErrorHandler catches window-level errors. To see it in action, trigger a
+              window error.
+            </p>
           </div>
         </GlobalErrorHandler>
       </div>

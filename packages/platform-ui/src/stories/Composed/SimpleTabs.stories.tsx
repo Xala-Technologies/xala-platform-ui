@@ -60,13 +60,14 @@ export const SimpleAPI: Story = {
       <SimpleTabs defaultValue="tab1">
         <TabItem label="Overview" value="tab1">
           <Paragraph data-size="sm">
-            This is the overview tab content. It demonstrates the simple API using TabItem components.
+            This is the overview tab content. It demonstrates the simple API using TabItem
+            components.
           </Paragraph>
         </TabItem>
         <TabItem label="Details" value="tab2">
           <Paragraph data-size="sm">
-            This is the details tab content. You can add any content here, including forms, tables, or other
-            components.
+            This is the details tab content. You can add any content here, including forms, tables,
+            or other components.
           </Paragraph>
         </TabItem>
         <TabItem label="Settings" value="tab3">

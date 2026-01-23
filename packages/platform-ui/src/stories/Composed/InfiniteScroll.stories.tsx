@@ -66,10 +66,22 @@ export const Default: Story = {
     };
 
     return (
-      <div style={{ width: '400px', height: '400px', overflow: 'auto', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+      <div
+        style={{
+          width: '400px',
+          height: '400px',
+          overflow: 'auto',
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
         <InfiniteScroll loadMore={loadMore} hasMore={hasMore} isLoading={isLoading}>
           {items.map((item) => (
-            <Card key={item} data-color="neutral" data-size="medium" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Card
+              key={item}
+              data-color="neutral"
+              data-size="medium"
+              style={{ marginBottom: 'var(--ds-spacing-2)' }}
+            >
               <Paragraph data-size="sm">Item {item}</Paragraph>
             </Card>
           ))}
@@ -93,18 +105,36 @@ export const CustomLoader: Story = {
     };
 
     return (
-      <div style={{ width: '400px', height: '400px', overflow: 'auto', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+      <div
+        style={{
+          width: '400px',
+          height: '400px',
+          overflow: 'auto',
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
         <InfiniteScroll
           loadMore={loadMore}
           hasMore={hasMore}
           loader={
-            <div style={{ padding: 'var(--ds-spacing-4)', textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                textAlign: 'center',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Loading more items...
             </div>
           }
         >
           {items.map((item) => (
-            <Card key={item} data-color="neutral" data-size="medium" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Card
+              key={item}
+              data-color="neutral"
+              data-size="medium"
+              style={{ marginBottom: 'var(--ds-spacing-2)' }}
+            >
               <Paragraph data-size="sm">Item {item}</Paragraph>
             </Card>
           ))}
@@ -120,18 +150,36 @@ export const WithEndMessage: Story = {
     const [items] = useState(Array.from({ length: 5 }, (_, i) => i + 1));
 
     return (
-      <div style={{ width: '400px', height: '400px', overflow: 'auto', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+      <div
+        style={{
+          width: '400px',
+          height: '400px',
+          overflow: 'auto',
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
         <InfiniteScroll
           loadMore={fn()}
           hasMore={false}
           endMessage={
-            <div style={{ padding: 'var(--ds-spacing-4)', textAlign: 'center', color: 'var(--ds-color-success-text-default)' }}>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                textAlign: 'center',
+                color: 'var(--ds-color-success-text-default)',
+              }}
+            >
               ✓ All items loaded
             </div>
           }
         >
           {items.map((item) => (
-            <Card key={item} data-color="neutral" data-size="medium" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Card
+              key={item}
+              data-color="neutral"
+              data-size="medium"
+              style={{ marginBottom: 'var(--ds-spacing-2)' }}
+            >
               <Paragraph data-size="sm">Item {item}</Paragraph>
             </Card>
           ))}
@@ -148,7 +196,14 @@ export const WithError: Story = {
     const [error, setError] = useState(true);
 
     return (
-      <div style={{ width: '400px', height: '400px', overflow: 'auto', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+      <div
+        style={{
+          width: '400px',
+          height: '400px',
+          overflow: 'auto',
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
         <InfiniteScroll
           loadMore={fn()}
           hasMore={true}
@@ -156,7 +211,12 @@ export const WithError: Story = {
           onRetry={() => setError(false)}
         >
           {items.map((item) => (
-            <Card key={item} data-color="neutral" data-size="medium" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            <Card
+              key={item}
+              data-color="neutral"
+              data-size="medium"
+              style={{ marginBottom: 'var(--ds-spacing-2)' }}
+            >
               <Paragraph data-size="sm">Item {item}</Paragraph>
             </Card>
           ))}
@@ -172,7 +232,13 @@ export const VirtualListExample: Story = {
     const items = Array.from({ length: 1000 }, (_, i) => ({ id: i + 1, name: `Item ${i + 1}` }));
 
     return (
-      <div style={{ width: '400px', height: '400px', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+      <div
+        style={{
+          width: '400px',
+          height: '400px',
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
         <VirtualList
           items={items}
           itemHeight={60}

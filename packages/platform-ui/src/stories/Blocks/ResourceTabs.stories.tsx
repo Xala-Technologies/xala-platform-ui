@@ -99,31 +99,19 @@ export const WithIcons: Story = {
         id: 'overview',
         label: 'Overview',
         icon: <Info size={16} />,
-        content: (
-          <Paragraph data-size="sm">
-            Overview content with icon in the tab label.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Overview content with icon in the tab label.</Paragraph>,
       },
       {
         id: 'details',
         label: 'Details',
         icon: <FileText size={16} />,
-        content: (
-          <Paragraph data-size="sm">
-            Details content with icon.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Details content with icon.</Paragraph>,
       },
       {
         id: 'settings',
         label: 'Settings',
         icon: <Settings size={16} />,
-        content: (
-          <Paragraph data-size="sm">
-            Settings content with icon.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Settings content with icon.</Paragraph>,
       },
     ],
     activeTab: 'overview',
@@ -138,31 +126,19 @@ export const WithBadges: Story = {
         id: 'overview',
         label: 'Overview',
         badge: 3,
-        content: (
-          <Paragraph data-size="sm">
-            Overview tab with badge count.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Overview tab with badge count.</Paragraph>,
       },
       {
         id: 'details',
         label: 'Details',
         badge: 12,
-        content: (
-          <Paragraph data-size="sm">
-            Details tab with badge count.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Details tab with badge count.</Paragraph>,
       },
       {
         id: 'calendar',
         label: 'Calendar',
         badge: 'New',
-        content: (
-          <Paragraph data-size="sm">
-            Calendar tab with text badge.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Calendar tab with text badge.</Paragraph>,
       },
     ],
     activeTab: 'overview',
@@ -178,33 +154,21 @@ export const WithIconsAndBadges: Story = {
         label: 'Overview',
         icon: <Info size={16} />,
         badge: 3,
-        content: (
-          <Paragraph data-size="sm">
-            Overview with both icon and badge.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Overview with both icon and badge.</Paragraph>,
       },
       {
         id: 'details',
         label: 'Details',
         icon: <FileText size={16} />,
         badge: 12,
-        content: (
-          <Paragraph data-size="sm">
-            Details with icon and badge.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Details with icon and badge.</Paragraph>,
       },
       {
         id: 'calendar',
         label: 'Calendar',
         icon: <Calendar size={16} />,
         badge: 'New',
-        content: (
-          <Paragraph data-size="sm">
-            Calendar with icon and text badge.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Calendar with icon and text badge.</Paragraph>,
       },
     ],
     activeTab: 'overview',
@@ -218,20 +182,12 @@ export const SecondaryVariant: Story = {
       {
         id: 'overview',
         label: 'Overview',
-        content: (
-          <Paragraph data-size="sm">
-            Secondary variant tabs with background.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Secondary variant tabs with background.</Paragraph>,
       },
       {
         id: 'details',
         label: 'Details',
-        content: (
-          <Paragraph data-size="sm">
-            Details content.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Details content.</Paragraph>,
       },
     ],
     activeTab: 'overview',
@@ -247,19 +203,13 @@ export const SubtleVariant: Story = {
         id: 'overview',
         label: 'Overview',
         content: (
-          <Paragraph data-size="sm">
-            Subtle variant tabs with transparent background.
-          </Paragraph>
+          <Paragraph data-size="sm">Subtle variant tabs with transparent background.</Paragraph>
         ),
       },
       {
         id: 'details',
         label: 'Details',
-        content: (
-          <Paragraph data-size="sm">
-            Details content.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Details content.</Paragraph>,
       },
     ],
     activeTab: 'overview',
@@ -275,31 +225,19 @@ export const WithHiddenTabs: Story = {
         id: 'overview',
         label: 'Overview',
         visible: true,
-        content: (
-          <Paragraph data-size="sm">
-            Visible overview tab.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Visible overview tab.</Paragraph>,
       },
       {
         id: 'details',
         label: 'Details',
         visible: true,
-        content: (
-          <Paragraph data-size="sm">
-            Visible details tab.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">Visible details tab.</Paragraph>,
       },
       {
         id: 'hidden',
         label: 'Hidden',
         visible: false,
-        content: (
-          <Paragraph data-size="sm">
-            This tab is hidden and should not appear.
-          </Paragraph>
-        ),
+        content: <Paragraph data-size="sm">This tab is hidden and should not appear.</Paragraph>,
       },
     ],
     activeTab: 'overview',
@@ -332,9 +270,7 @@ export const RichContent: Story = {
             <Heading level={3} data-size="sm">
               Details Section
             </Heading>
-            <Paragraph data-size="sm">
-              Detailed information goes here.
-            </Paragraph>
+            <Paragraph data-size="sm">Detailed information goes here.</Paragraph>
           </div>
         ),
       },

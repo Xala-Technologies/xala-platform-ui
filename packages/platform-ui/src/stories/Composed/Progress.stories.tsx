@@ -218,8 +218,16 @@ export const Ring: Story = {
 export const Steps: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <ProgressSteps steps={['Step 1', 'Step 2', 'Step 3', 'Step 4']} currentStep={1} variant="default" />
-      <ProgressSteps steps={['Create', 'Review', 'Approve', 'Publish']} currentStep={2} variant="success" />
+      <ProgressSteps
+        steps={['Step 1', 'Step 2', 'Step 3', 'Step 4']}
+        currentStep={1}
+        variant="default"
+      />
+      <ProgressSteps
+        steps={['Create', 'Review', 'Approve', 'Publish']}
+        currentStep={2}
+        variant="success"
+      />
       <ProgressSteps steps={['Start', 'Process', 'Complete']} currentStep={0} variant="info" />
     </div>
   ),
@@ -228,7 +236,14 @@ export const Steps: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', width: '400px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        width: '400px',
+      }}
+    >
       <ProgressBar value={100} variant="success" showLabel />
       <ProgressBar value={75} variant="default" showLabel />
       <ProgressBar value={50} variant="warning" showLabel />

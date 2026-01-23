@@ -175,7 +175,14 @@ export const MonoFieldExample: Story = {
 // LinkField
 export const LinkFieldExample: Story = {
   render: () => (
-    <div style={{ width: '400px', display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        width: '400px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+      }}
+    >
       <LinkField
         label="Email"
         value="john.doe@example.com"
@@ -207,7 +214,14 @@ export const LinkFieldExample: Story = {
 // Complete example
 export const CompleteExample: Story = {
   render: () => (
-    <div style={{ width: '600px', display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        width: '600px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+      }}
+    >
       <DetailCard title="Account Information" icon={<User size={20} />}>
         <DetailFieldGroup columns={2}>
           <DetailField label="Account ID" value="acc_1234567890" />

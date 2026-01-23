@@ -43,7 +43,10 @@ export const HighlightSingleTerm: Story = {
   render: () => (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
-        <HighlightText text="This is a sample text with highlighted words" highlight="highlighted" />
+        <HighlightText
+          text="This is a sample text with highlighted words"
+          highlight="highlighted"
+        />
       </Paragraph>
     </div>
   ),
@@ -142,7 +145,10 @@ export const SpotlightCustomPadding: Story = {
 export const SearchHighlightBasic: Story = {
   render: () => (
     <div style={{ width: '400px' }}>
-      <SearchHighlight text="This is a long text that contains the search query somewhere in the middle" query="search query" />
+      <SearchHighlight
+        text="This is a long text that contains the search query somewhere in the middle"
+        query="search query"
+      />
     </div>
   ),
 };
@@ -176,7 +182,14 @@ export const SearchHighlightMaxLength: Story = {
 // Combined example
 export const CombinedExample: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', width: '500px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        width: '500px',
+      }}
+    >
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Paragraph data-size="sm">
           <HighlightText

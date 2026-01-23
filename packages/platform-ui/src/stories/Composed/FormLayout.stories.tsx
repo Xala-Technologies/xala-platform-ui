@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { FormSection, FormActions, FormRow, FormField, FormDivider } from '../../composed/FormLayout';
+import {
+  FormSection,
+  FormActions,
+  FormRow,
+  FormField,
+  FormDivider,
+} from '../../composed/FormLayout';
 import { Button, Textfield, Textarea, Select } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof FormSection> = {
@@ -213,7 +219,14 @@ export const FormActionsBetween: Story = {
 // Form actions - sticky
 export const FormActionsSticky: Story = {
   render: () => (
-    <div style={{ width: '600px', height: '400px', overflow: 'auto', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+    <div
+      style={{
+        width: '600px',
+        height: '400px',
+        overflow: 'auto',
+        border: '1px solid var(--ds-color-neutral-border-subtle)',
+      }}
+    >
       <FormSection title="Long Form">
         {Array.from({ length: 10 }, (_, i) => (
           <FormField key={i} label={`Field ${i + 1}`}>

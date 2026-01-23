@@ -180,7 +180,13 @@ export const CompleteExample: Story = {
       { id: 'settings', label: 'Innstillinger', icon: <Settings size={16} />, href: '/settings' },
       { id: 'billing', label: 'Fakturering', icon: <CreditCard size={16} />, href: '/billing' },
       { id: 'divider', label: '', disabled: true },
-      { id: 'delete', label: 'Slett konto', icon: <LogOut size={16} />, danger: true, onClick: fn() },
+      {
+        id: 'delete',
+        label: 'Slett konto',
+        icon: <LogOut size={16} />,
+        danger: true,
+        onClick: fn(),
+      },
     ],
   },
 };

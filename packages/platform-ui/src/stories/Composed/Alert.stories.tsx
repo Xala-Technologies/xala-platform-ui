@@ -63,7 +63,8 @@ export const Info: Story = {
   args: {
     variant: 'info',
     title: 'Information',
-    children: 'This is an informational message. Use this for general information that users should be aware of.',
+    children:
+      'This is an informational message. Use this for general information that users should be aware of.',
     dismissible: false,
   },
 };
@@ -140,7 +141,14 @@ export const WithCustomIcon: Story = {
     children: 'This alert uses a custom icon instead of the default variant icon.',
     dismissible: false,
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
         <path d="M2 17l10 5 10-5" />
         <path d="M2 12l10 5 10-5" />
@@ -154,7 +162,8 @@ export const LongContent: Story = {
   args: {
     variant: 'info',
     title: 'Detailed Information',
-    children: 'This alert contains a longer message to demonstrate how the component handles extended content. The text will wrap naturally within the alert container, maintaining proper spacing and readability. This is useful for providing detailed explanations or instructions to users.',
+    children:
+      'This alert contains a longer message to demonstrate how the component handles extended content. The text will wrap naturally within the alert container, maintaining proper spacing and readability. This is useful for providing detailed explanations or instructions to users.',
     dismissible: true,
     onDismiss: fn(),
   },
@@ -163,7 +172,14 @@ export const LongContent: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', width: '600px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        width: '600px',
+      }}
+    >
       <Alert variant="info" title="Info">
         This is an informational alert.
       </Alert>

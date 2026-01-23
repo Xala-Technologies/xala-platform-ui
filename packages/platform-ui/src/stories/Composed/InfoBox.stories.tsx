@@ -47,7 +47,8 @@ export const Info: Story = {
   args: {
     variant: 'info',
     title: 'Information',
-    children: 'This is an informational message. Use this for general information that users should be aware of.',
+    children:
+      'This is an informational message. Use this for general information that users should be aware of.',
   },
 };
 
@@ -108,7 +109,14 @@ export const LongContent: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', width: '600px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        width: '600px',
+      }}
+    >
       <InfoBox variant="info" title="Info">
         This is an informational message.
       </InfoBox>

@@ -49,7 +49,8 @@ export const Default: Story = {
       {
         id: '1',
         question: 'Hvordan booker jeg en ressurs?',
-        answer: 'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
+        answer:
+          'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
       },
       {
         id: '2',
@@ -59,7 +60,8 @@ export const Default: Story = {
       {
         id: '3',
         question: 'Kan jeg endre en eksisterende booking?',
-        answer: 'Ja, du kan endre eller avbestille bookinger gjennom "Mine bookinger" i profilen din.',
+        answer:
+          'Ja, du kan endre eller avbestille bookinger gjennom "Mine bookinger" i profilen din.',
       },
     ],
   },
@@ -72,7 +74,8 @@ export const SingleItem: Story = {
       {
         id: '1',
         question: 'Hvordan booker jeg en ressurs?',
-        answer: 'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
+        answer:
+          'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
       },
     ],
   },
@@ -85,7 +88,8 @@ export const ManyItems: Story = {
       {
         id: '1',
         question: 'Hvordan booker jeg en ressurs?',
-        answer: 'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
+        answer:
+          'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
       },
       {
         id: '2',
@@ -95,7 +99,8 @@ export const ManyItems: Story = {
       {
         id: '3',
         question: 'Kan jeg endre en eksisterende booking?',
-        answer: 'Ja, du kan endre eller avbestille bookinger gjennom "Mine bookinger" i profilen din.',
+        answer:
+          'Ja, du kan endre eller avbestille bookinger gjennom "Mine bookinger" i profilen din.',
       },
       {
         id: '4',
@@ -105,7 +110,8 @@ export const ManyItems: Story = {
       {
         id: '5',
         question: 'Kan jeg booke på vegne av andre?',
-        answer: 'Ja, hvis du har nødvendige tillatelser kan du booke ressurser på vegne av andre brukere.',
+        answer:
+          'Ja, hvis du har nødvendige tillatelser kan du booke ressurser på vegne av andre brukere.',
       },
     ],
   },

@@ -187,15 +187,33 @@ export const AvatarSkeleton: Story = {
 // Combined example
 export const CombinedExample: Story = {
   render: () => (
-    <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)', width: '400px' }}>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}>
+    <Card
+      data-color="neutral"
+      data-size="medium"
+      style={{ padding: 'var(--ds-spacing-4)', width: '400px' }}
+    >
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}
+      >
         <SkeletonAvatar size="md" animation="pulse" />
         <div style={{ flex: 1 }}>
-          <Skeleton variant="text" width="60%" height="16px" animation="pulse" style={{ marginBottom: 'var(--ds-spacing-2)' }} />
+          <Skeleton
+            variant="text"
+            width="60%"
+            height="16px"
+            animation="pulse"
+            style={{ marginBottom: 'var(--ds-spacing-2)' }}
+          />
           <Skeleton variant="text" width="40%" height="14px" animation="pulse" />
         </div>
       </div>
-      <Skeleton variant="rectangular" width="100%" height="200px" animation="pulse" style={{ marginBottom: 'var(--ds-spacing-4)', borderRadius: 'var(--ds-border-radius-md)' }} />
+      <Skeleton
+        variant="rectangular"
+        width="100%"
+        height="200px"
+        animation="pulse"
+        style={{ marginBottom: 'var(--ds-spacing-4)', borderRadius: 'var(--ds-border-radius-md)' }}
+      />
       <SkeletonText lines={2} animation="pulse" />
     </Card>
   ),

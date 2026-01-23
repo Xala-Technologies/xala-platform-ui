@@ -162,7 +162,14 @@ export const WithShortcuts: Story = {
       items={[
         { id: '1', label: 'Edit', icon: <Edit size={16} />, shortcut: '⌘E', onClick: fn() },
         { id: '2', label: 'Duplicate', icon: <Copy size={16} />, shortcut: '⌘D', onClick: fn() },
-        { id: '3', label: 'Delete', icon: <Trash2 size={16} />, shortcut: '⌘⌫', onClick: fn(), danger: true },
+        {
+          id: '3',
+          label: 'Delete',
+          icon: <Trash2 size={16} />,
+          shortcut: '⌘⌫',
+          onClick: fn(),
+          danger: true,
+        },
       ]}
     />
   ),
@@ -234,9 +241,7 @@ export const Disabled: Story = {
 // Context menu example
 export const ContextMenuExample: Story = {
   render: () => (
-    <ContextMenu
-      items={sampleItems}
-    >
+    <ContextMenu items={sampleItems}>
       <div
         style={{
           padding: 'var(--ds-spacing-8)',

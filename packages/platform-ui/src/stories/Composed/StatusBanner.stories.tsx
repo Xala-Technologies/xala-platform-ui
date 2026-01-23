@@ -52,7 +52,8 @@ export const Info: Story = {
   args: {
     variant: 'info',
     title: 'Information',
-    description: 'This is an informational banner. Use this for general information that users should be aware of.',
+    description:
+      'This is an informational banner. Use this for general information that users should be aware of.',
   },
 };
 
@@ -137,11 +138,30 @@ export const LongContent: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)', width: '600px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        width: '600px',
+      }}
+    >
       <StatusBanner variant="info" title="Info" description="This is an informational banner." />
-      <StatusBanner variant="success" title="Success" description="Operation completed successfully." />
-      <StatusBanner variant="warning" title="Warning" description="Please review before proceeding." />
-      <StatusBanner variant="danger" title="Error" description="An error occurred. Please try again." />
+      <StatusBanner
+        variant="success"
+        title="Success"
+        description="Operation completed successfully."
+      />
+      <StatusBanner
+        variant="warning"
+        title="Warning"
+        description="Please review before proceeding."
+      />
+      <StatusBanner
+        variant="danger"
+        title="Error"
+        description="An error occurred. Please try again."
+      />
       <StatusBanner variant="neutral" title="Notice" description="This is a neutral banner." />
     </div>
   ),

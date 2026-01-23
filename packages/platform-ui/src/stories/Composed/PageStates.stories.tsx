@@ -193,10 +193,20 @@ export const ErrorNoRetry: Story = {
 export const AllStates: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      <div style={{ border: '1px solid var(--ds-color-neutral-border-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+      <div
+        style={{
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
         <LoadingState label="Loading content..." size="md" />
       </div>
-      <div style={{ border: '1px solid var(--ds-color-neutral-border-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+      <div
+        style={{
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
         <EmptyState
           title="No items"
           description="Create your first item to get started."
@@ -207,14 +217,24 @@ export const AllStates: Story = {
           }
         />
       </div>
-      <div style={{ border: '1px solid var(--ds-color-neutral-border-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+      <div
+        style={{
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
         <NotFoundState
           title="Not found"
           description="The requested resource could not be found."
           backLink={{ label: 'Go back', href: '/' }}
         />
       </div>
-      <div style={{ border: '1px solid var(--ds-color-neutral-border-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+      <div
+        style={{
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
         <ErrorState
           title="Error"
           description="Something went wrong. Please try again."

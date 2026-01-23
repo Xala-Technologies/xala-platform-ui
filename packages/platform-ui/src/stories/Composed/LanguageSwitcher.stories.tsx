@@ -123,21 +123,27 @@ export const FullNames: Story = {
 export const Small: Story = {
   render: () => {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
-    return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="sm" />;
+    return (
+      <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="sm" />
+    );
   },
 };
 
 export const Medium: Story = {
   render: () => {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
-    return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="md" />;
+    return (
+      <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="md" />
+    );
   },
 };
 
 export const Large: Story = {
   render: () => {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
-    return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="lg" />;
+    return (
+      <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="lg" />
+    );
   },
 };
 

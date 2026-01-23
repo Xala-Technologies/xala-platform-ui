@@ -123,7 +123,12 @@ export const WithMaxVisible: Story = {
 export const WithTooltips: Story = {
   args: {
     facts: [
-      { type: 'capacity', label: 'Kapasitet', value: '25 personer', tooltip: 'Maksimalt antall personer' },
+      {
+        type: 'capacity',
+        label: 'Kapasitet',
+        value: '25 personer',
+        tooltip: 'Maksimalt antall personer',
+      },
       { type: 'area', label: 'Areal', value: '120 m²', tooltip: 'Total areal i kvadratmeter' },
       { type: 'duration', label: 'Varighet', value: '2 timer', tooltip: 'Standard varighet' },
     ],

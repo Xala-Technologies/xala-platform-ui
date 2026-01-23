@@ -52,7 +52,8 @@ export const NoResults: Story = {
   args: {
     variant: 'no-results',
     title: 'Ingen resultater',
-    description: 'Vi fant ingen resultater som matcher søket ditt. Prøv å endre filtrene eller søkeordene.',
+    description:
+      'Vi fant ingen resultater som matcher søket ditt. Prøv å endre filtrene eller søkeordene.',
   },
 };
 
@@ -100,7 +101,14 @@ export const CustomIcon: Story = {
     title: 'Ingen resultater',
     description: 'Vi fant ingen resultater som matcher søket ditt.',
     icon: (
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg
+        width="64"
+        height="64"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
         <circle cx="12" cy="12" r="10" />
         <line x1="12" y1="8" x2="12" y2="12" />
         <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -135,7 +143,14 @@ export const LongDescription: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)', width: '600px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-8)',
+        width: '600px',
+      }}
+    >
       <ResultsEmptyState
         variant="no-results"
         title="Ingen resultater"

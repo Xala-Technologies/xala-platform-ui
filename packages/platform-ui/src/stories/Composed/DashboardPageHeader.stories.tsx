@@ -68,7 +68,9 @@ export const WithBreadcrumbs: Story = {
     title: 'Resource Details',
     subtitle: 'View and manage resource information',
     breadcrumb: (
-      <nav style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+      <nav
+        style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}
+      >
         <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           Home
         </a>
@@ -152,7 +154,9 @@ export const Complete: Story = {
     subtitle: 'Manage and organize your resources',
     badge: <Badge variant="info">Beta</Badge>,
     breadcrumb: (
-      <nav style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+      <nav
+        style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}
+      >
         <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           Home
         </a>

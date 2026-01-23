@@ -46,11 +46,7 @@ export const NorwegianBokmal: Story = {
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('nb');
     return (
       <div style={{ width: '700px' }}>
-        <PreferencesTab
-          locale={locale}
-          onLocaleChange={setLocale}
-          onLogout={fn()}
-        />
+        <PreferencesTab locale={locale} onLocaleChange={setLocale} onLogout={fn()} />
       </div>
     );
   },
@@ -62,11 +58,7 @@ export const NorwegianNynorsk: Story = {
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('nn');
     return (
       <div style={{ width: '700px' }}>
-        <PreferencesTab
-          locale={locale}
-          onLocaleChange={setLocale}
-          onLogout={fn()}
-        />
+        <PreferencesTab locale={locale} onLocaleChange={setLocale} onLogout={fn()} />
       </div>
     );
   },
@@ -78,11 +70,7 @@ export const English: Story = {
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('en');
     return (
       <div style={{ width: '700px' }}>
-        <PreferencesTab
-          locale={locale}
-          onLocaleChange={setLocale}
-          onLogout={fn()}
-        />
+        <PreferencesTab locale={locale} onLocaleChange={setLocale} onLogout={fn()} />
       </div>
     );
   },

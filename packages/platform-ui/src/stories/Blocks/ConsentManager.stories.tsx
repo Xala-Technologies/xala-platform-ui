@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { ConsentManager, DEFAULT_CONSENT_MANAGER_LABELS, DEFAULT_CONSENT_SETTINGS } from '../../blocks/gdpr/ConsentManager';
+import {
+  ConsentManager,
+  DEFAULT_CONSENT_MANAGER_LABELS,
+  DEFAULT_CONSENT_SETTINGS,
+} from '../../blocks/gdpr/ConsentManager';
 import type { ConsentSetting } from '../../blocks/gdpr/ConsentManager';
 
 const meta: Meta<typeof ConsentManager> = {

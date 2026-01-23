@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { DeleteAccountCard, DEFAULT_DELETE_ACCOUNT_LABELS } from '../../blocks/gdpr/DeleteAccountCard';
+import {
+  DeleteAccountCard,
+  DEFAULT_DELETE_ACCOUNT_LABELS,
+} from '../../blocks/gdpr/DeleteAccountCard';
 import type { GdprDeletionRequest } from '../../blocks/gdpr/DeleteAccountCard';
 
 const meta: Meta<typeof DeleteAccountCard> = {

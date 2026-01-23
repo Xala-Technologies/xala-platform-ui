@@ -55,9 +55,30 @@ interface SampleRow {
 }
 
 const sampleData: SampleRow[] = [
-  { id: '1', name: 'John Doe', email: 'john@example.com', status: 'active', role: 'Admin', createdAt: '2024-01-15' },
-  { id: '2', name: 'Jane Smith', email: 'jane@example.com', status: 'active', role: 'User', createdAt: '2024-01-14' },
-  { id: '3', name: 'Bob Johnson', email: 'bob@example.com', status: 'inactive', role: 'User', createdAt: '2024-01-13' },
+  {
+    id: '1',
+    name: 'John Doe',
+    email: 'john@example.com',
+    status: 'active',
+    role: 'Admin',
+    createdAt: '2024-01-15',
+  },
+  {
+    id: '2',
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    status: 'active',
+    role: 'User',
+    createdAt: '2024-01-14',
+  },
+  {
+    id: '3',
+    name: 'Bob Johnson',
+    email: 'bob@example.com',
+    status: 'inactive',
+    role: 'User',
+    createdAt: '2024-01-13',
+  },
 ];
 
 const columns = [

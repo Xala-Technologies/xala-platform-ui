@@ -115,7 +115,14 @@ export const AllStatuses: Story = {
 // StatusTag component - all colors
 export const StatusTagColors: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)', padding: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-2)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
       <StatusTag color="success">Success</StatusTag>
       <StatusTag color="warning">Warning</StatusTag>
       <StatusTag color="danger">Danger</StatusTag>
@@ -128,10 +135,23 @@ export const StatusTagColors: Story = {
 // StatusTag component - all sizes
 export const StatusTagSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center', padding: 'var(--ds-spacing-4)' }}>
-      <StatusTag color="success" size="sm">Small</StatusTag>
-      <StatusTag color="success" size="md">Medium</StatusTag>
-      <StatusTag color="success" size="lg">Large</StatusTag>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-4)',
+        alignItems: 'center',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
+      <StatusTag color="success" size="sm">
+        Small
+      </StatusTag>
+      <StatusTag color="success" size="md">
+        Medium
+      </StatusTag>
+      <StatusTag color="success" size="lg">
+        Large
+      </StatusTag>
     </div>
   ),
 };

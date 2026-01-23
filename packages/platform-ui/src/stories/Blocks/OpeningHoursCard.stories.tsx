@@ -38,7 +38,7 @@ Card displaying opening hours in a table format. Supports highlighting the curre
   argTypes: {
     highlightToday: {
       control: 'boolean',
-      description: 'Highlight today\'s row',
+      description: "Highlight today's row",
     },
   },
   tags: ['autodocs'],

@@ -2,11 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
 import { HelpPanel } from '../../blocks/help/HelpPanel';
-import type {
-  TooltipContent,
-  GuideContent,
-  FAQItem,
-} from '../../blocks/help/HelpPanel';
+import type { TooltipContent, GuideContent, FAQItem } from '../../blocks/help/HelpPanel';
 
 const meta: Meta<typeof HelpPanel> = {
   title: 'Blocks/HelpPanel',
@@ -115,7 +111,8 @@ export const Level2Guide: Story = {
 const faqContent: FAQItem[] = [
   {
     question: 'How do I cancel a booking?',
-    answer: 'You can cancel a booking by going to your bookings page and clicking the cancel button.',
+    answer:
+      'You can cancel a booking by going to your bookings page and clicking the cancel button.',
     category: 'resourceRequests',
     tags: ['booking', 'cancellation'],
   },

@@ -68,7 +68,9 @@ export const Default: Story = {
 // Single filter
 export const SingleFilter: Story = {
   args: {
-    filters: [{ id: '1', field: 'Status', operator: 'equals', value: 'active', displayValue: 'Active' }],
+    filters: [
+      { id: '1', field: 'Status', operator: 'equals', value: 'active', displayValue: 'Active' },
+    ],
     onRemove: fn(),
     showClearAll: true,
   },
@@ -80,8 +82,20 @@ export const ManyFilters: Story = {
     filters: [
       { id: '1', field: 'Status', operator: 'equals', value: 'active', displayValue: 'Active' },
       { id: '2', field: 'Type', operator: 'contains', value: 'document', displayValue: 'Document' },
-      { id: '3', field: 'Date', operator: 'greater_than', value: '2024-01-01', displayValue: 'After 2024-01-01' },
-      { id: '4', field: 'Category', operator: 'equals', value: 'important', displayValue: 'Important' },
+      {
+        id: '3',
+        field: 'Date',
+        operator: 'greater_than',
+        value: '2024-01-01',
+        displayValue: 'After 2024-01-01',
+      },
+      {
+        id: '4',
+        field: 'Category',
+        operator: 'equals',
+        value: 'important',
+        displayValue: 'Important',
+      },
       { id: '5', field: 'Owner', operator: 'equals', value: 'john', displayValue: 'John Doe' },
     ],
     onRemove: fn(),
@@ -135,8 +149,20 @@ export const WithMaxVisible: Story = {
     filters: [
       { id: '1', field: 'Status', operator: 'equals', value: 'active', displayValue: 'Active' },
       { id: '2', field: 'Type', operator: 'contains', value: 'document', displayValue: 'Document' },
-      { id: '3', field: 'Date', operator: 'greater_than', value: '2024-01-01', displayValue: 'After 2024-01-01' },
-      { id: '4', field: 'Category', operator: 'equals', value: 'important', displayValue: 'Important' },
+      {
+        id: '3',
+        field: 'Date',
+        operator: 'greater_than',
+        value: '2024-01-01',
+        displayValue: 'After 2024-01-01',
+      },
+      {
+        id: '4',
+        field: 'Category',
+        operator: 'equals',
+        value: 'important',
+        displayValue: 'Important',
+      },
       { id: '5', field: 'Owner', operator: 'equals', value: 'john', displayValue: 'John Doe' },
     ],
     onRemove: fn(),

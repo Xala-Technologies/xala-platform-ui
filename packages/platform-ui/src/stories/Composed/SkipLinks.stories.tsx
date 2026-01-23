@@ -43,7 +43,14 @@ export const Default: Story = {
         <p>
           Press Tab to see the skip link. The link is hidden by default and appears when focused.
         </p>
-        <main id="main-content" style={{ marginTop: 'var(--ds-spacing-8)', padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <main
+          id="main-content"
+          style={{
+            marginTop: 'var(--ds-spacing-8)',
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Main Content</h2>
           <p>This is the main content area that the skip link targets.</p>
         </main>
@@ -63,14 +70,31 @@ export const CustomLinks: Story = {
         ]}
       />
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <nav id="navigation" style={{ marginBottom: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <nav
+          id="navigation"
+          style={{
+            marginBottom: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Navigation</h2>
           <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
+            <li>
+              <a href="#">Link 1</a>
+            </li>
+            <li>
+              <a href="#">Link 2</a>
+            </li>
           </ul>
         </nav>
-        <main id="main-content" style={{ padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <main
+          id="main-content"
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Main Content</h2>
           <p>This is the main content area.</p>
         </main>
@@ -83,16 +107,17 @@ export const CustomLinks: Story = {
 export const EnglishLabels: Story = {
   render: () => (
     <div>
-      <SkipLinks
-        links={[
-          { targetId: 'main-content', label: 'Skip to main content' },
-        ]}
-      />
+      <SkipLinks links={[{ targetId: 'main-content', label: 'Skip to main content' }]} />
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <p>
-          Press Tab to see the skip link. The link uses English labels.
-        </p>
-        <main id="main-content" style={{ marginTop: 'var(--ds-spacing-8)', padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <p>Press Tab to see the skip link. The link uses English labels.</p>
+        <main
+          id="main-content"
+          style={{
+            marginTop: 'var(--ds-spacing-8)',
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Main Content</h2>
           <p>This is the main content area.</p>
         </main>
@@ -113,13 +138,33 @@ export const MultipleLinks: Story = {
         ]}
       />
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <nav id="navigation" style={{ marginBottom: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <nav
+          id="navigation"
+          style={{
+            marginBottom: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Navigation</h2>
         </nav>
-        <main id="main-content" style={{ marginBottom: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <main
+          id="main-content"
+          style={{
+            marginBottom: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Main Content</h2>
         </main>
-        <footer id="footer" style={{ padding: 'var(--ds-spacing-4)', border: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <footer
+          id="footer"
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <h2>Footer</h2>
         </footer>
       </div>

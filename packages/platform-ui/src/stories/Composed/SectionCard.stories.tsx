@@ -78,8 +78,8 @@ export const Default: Story = {
     description: 'This is a section description',
     children: (
       <Paragraph data-size="sm">
-        This is the content area of the section card. You can add any content here, including forms, tables, or
-        other components.
+        This is the content area of the section card. You can add any content here, including forms,
+        tables, or other components.
       </Paragraph>
     ),
     variant: 'default',
@@ -264,8 +264,8 @@ export const WithSubComponents: Story = {
         />
         <SectionCardContent>
           <Paragraph data-size="sm">
-            This section uses the sub-components (SectionCardHeader, SectionCardContent, SectionCardFooter) for
-            better structure and styling.
+            This section uses the sub-components (SectionCardHeader, SectionCardContent,
+            SectionCardFooter) for better structure and styling.
           </Paragraph>
         </SectionCardContent>
         <SectionCardFooter alignment="right">

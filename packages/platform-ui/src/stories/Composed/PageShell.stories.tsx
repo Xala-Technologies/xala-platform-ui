@@ -51,16 +51,30 @@ export const ListPage: Story = {
         </Button>
       }
       filters={
-        <div style={{ padding: 'var(--ds-spacing-2)', backgroundColor: 'var(--ds-color-neutral-surface-subtle)', borderRadius: 'var(--ds-border-radius-md)' }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-2)',
+            backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
           <Paragraph data-size="sm">Filter controls go here</Paragraph>
         </div>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Card data-color="neutral" data-size="medium" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Card
+          data-color="neutral"
+          data-size="medium"
+          style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        >
           <Paragraph data-size="sm">Resource 1</Paragraph>
         </Card>
-        <Card data-color="neutral" data-size="medium" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Card
+          data-color="neutral"
+          data-size="medium"
+          style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        >
           <Paragraph data-size="sm">Resource 2</Paragraph>
         </Card>
         <Card data-color="neutral" data-size="medium">
@@ -94,15 +108,34 @@ export const DetailPage: Story = {
       }
       badges={<Badge variant="info">Featured</Badge>}
       statusBanner={
-        <div style={{ padding: 'var(--ds-spacing-3)', backgroundColor: 'var(--ds-color-success-surface-subtle)', borderRadius: 'var(--ds-border-radius-md)', marginBottom: 'var(--ds-spacing-4)' }}>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-success-surface-subtle)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
           <Paragraph data-size="sm">Status: Active</Paragraph>
         </div>
       }
       tabs={
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-4)' }}>
-          <Button data-color="accent" data-size="sm">Overview</Button>
-          <Button data-color="neutral" data-size="sm">Details</Button>
-          <Button data-color="neutral" data-size="sm">History</Button>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-2)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
+          <Button data-color="accent" data-size="sm">
+            Overview
+          </Button>
+          <Button data-color="neutral" data-size="sm">
+            Details
+          </Button>
+          <Button data-color="neutral" data-size="sm">
+            History
+          </Button>
         </div>
       }
     >
@@ -127,7 +160,15 @@ export const FormPage: Story = {
         onClick: fn(),
       }}
       footer={
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end', padding: 'var(--ds-spacing-4)', borderTop: '1px solid var(--ds-color-neutral-border-subtle)' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-2)',
+            justifyContent: 'flex-end',
+            padding: 'var(--ds-spacing-4)',
+            borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+          }}
+        >
           <Button onClick={fn()} data-color="neutral" data-size="medium">
             Cancel
           </Button>
@@ -191,7 +232,14 @@ export const FormPageNoBackLink: Story = {
     <FormPageShell
       title="Edit Resource"
       footer={
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end', padding: 'var(--ds-spacing-4)' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-2)',
+            justifyContent: 'flex-end',
+            padding: 'var(--ds-spacing-4)',
+          }}
+        >
           <Button onClick={fn()} data-color="accent" data-size="medium">
             Save Changes
           </Button>

@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SettingsTabLayout, SettingsField, SettingsSection } from '../../blocks/settings/SettingsLayout';
+import {
+  SettingsTabLayout,
+  SettingsField,
+  SettingsSection,
+} from '../../blocks/settings/SettingsLayout';
 import { Textfield, Button, Paragraph } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof SettingsTabLayout> = {
@@ -89,7 +93,10 @@ export const WithSections: Story = {
           <SettingsField label="Password" description="Change your password">
             <Button>Change Password</Button>
           </SettingsField>
-          <SettingsField label="Two-Factor Authentication" description="Enable 2FA for extra security">
+          <SettingsField
+            label="Two-Factor Authentication"
+            description="Enable 2FA for extra security"
+          >
             <Button>Enable 2FA</Button>
           </SettingsField>
         </SettingsSection>

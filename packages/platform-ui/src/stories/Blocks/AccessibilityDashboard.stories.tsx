@@ -55,10 +55,10 @@ const excellentReport: AccessibilityReport = {
     keyboardNavigation: {
       total: 1250,
       byAction: {
-        'tab': 450,
-        'enter': 320,
+        tab: 450,
+        enter: 320,
         'arrow-keys': 280,
-        'escape': 200,
+        escape: 200,
       },
       byPage: {
         '/dashboard': 400,
@@ -71,17 +71,17 @@ const excellentReport: AccessibilityReport = {
       total: 890,
       byTarget: {
         'main-content': 450,
-        'navigation': 280,
-        'footer': 160,
+        navigation: 280,
+        footer: 160,
       },
     },
     screenReaderUsers: {
       total: 45,
       percentage: 3.2,
       byType: {
-        'NVDA': 20,
-        'JAWS': 15,
-        'VoiceOver': 10,
+        NVDA: 20,
+        JAWS: 15,
+        VoiceOver: 10,
       },
     },
     focusIssues: {

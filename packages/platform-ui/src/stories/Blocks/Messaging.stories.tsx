@@ -158,7 +158,13 @@ export const ConversationListDefault: Story = {
   render: () => {
     const [selectedId, setSelectedId] = useState<string | null>(null);
     return (
-      <div style={{ width: '350px', height: '500px', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+      <div
+        style={{
+          width: '350px',
+          height: '500px',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
         <ConversationList
           conversations={sampleConversations}
           selectedId={selectedId}
@@ -174,7 +180,13 @@ export const ConversationListWithFilters: Story = {
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [activeFilter, setActiveFilter] = useState('all');
     return (
-      <div style={{ width: '350px', height: '500px', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+      <div
+        style={{
+          width: '350px',
+          height: '500px',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
         <ConversationList
           conversations={sampleConversations}
           selectedId={selectedId}
@@ -194,7 +206,13 @@ export const ConversationListWithFilters: Story = {
 
 export const ConversationListEmpty: Story = {
   render: () => (
-    <div style={{ width: '350px', height: '500px', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+    <div
+      style={{
+        width: '350px',
+        height: '500px',
+        border: '1px solid var(--ds-color-neutral-border-default)',
+      }}
+    >
       <ConversationList conversations={[]} emptyMessage="No conversations yet" />
     </div>
   ),
@@ -203,7 +221,14 @@ export const ConversationListEmpty: Story = {
 // MessageBubble stories
 export const MessageBubbleDefault: Story = {
   render: () => (
-    <div style={{ width: '400px', display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+    <div
+      style={{
+        width: '400px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-2)',
+      }}
+    >
       <MessageBubble message={sampleMessages[0]} isFromCurrentUser={false} showReadReceipt={true} />
       <MessageBubble message={sampleMessages[1]} isFromCurrentUser={true} showReadReceipt={true} />
       <MessageBubble message={sampleMessages[3]} isFromCurrentUser={true} showReadReceipt={true} />
@@ -216,7 +241,13 @@ export const ChatThreadDefault: Story = {
   render: () => {
     const [messages, setMessages] = useState(sampleMessages);
     return (
-      <div style={{ width: '500px', height: '600px', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+      <div
+        style={{
+          width: '500px',
+          height: '600px',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
         <ChatThread
           messages={messages}
           currentUserId="current-user"
@@ -243,7 +274,13 @@ export const ChatThreadEmpty: Story = {
   render: () => {
     const [messages, setMessages] = useState<MessageItem[]>([]);
     return (
-      <div style={{ width: '500px', height: '600px', border: '1px solid var(--ds-color-neutral-border-default)' }}>
+      <div
+        style={{
+          width: '500px',
+          height: '600px',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
         <ChatThread
           messages={messages}
           currentUserId="current-user"

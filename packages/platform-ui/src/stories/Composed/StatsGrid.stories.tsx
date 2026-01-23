@@ -206,14 +206,15 @@ export const EnhancedCard: Story = {
 // MiniStat component
 export const MiniStatExample: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)', width: '300px' }}>
-      <MiniStat
-        label="Users"
-        value={1250}
-        icon={<Users size={16} />}
-        trend="up"
-        change={12}
-      />
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-2)',
+        width: '300px',
+      }}
+    >
+      <MiniStat label="Users" value={1250} icon={<Users size={16} />} trend="up" change={12} />
       <MiniStat
         label="Revenue"
         value="$45,230"

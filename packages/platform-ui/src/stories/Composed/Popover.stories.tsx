@@ -203,7 +203,11 @@ export const RichContent: Story = {
   render: () => (
     <Popover
       content={
-        <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)', maxWidth: '300px' }}>
+        <Card
+          data-color="neutral"
+          data-size="medium"
+          style={{ padding: 'var(--ds-spacing-4)', maxWidth: '300px' }}
+        >
           <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
             <strong>Rich Content Popover</strong>
           </Paragraph>
@@ -238,7 +242,11 @@ export const Controlled: Story = {
         </Button>
         <Popover
           content={
-            <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
+            <Card
+              data-color="neutral"
+              data-size="medium"
+              style={{ padding: 'var(--ds-spacing-4)' }}
+            >
               <Paragraph data-size="sm">Controlled popover</Paragraph>
             </Card>
           }

@@ -42,7 +42,14 @@ success('Success!', 'Operation completed');
   argTypes: {
     position: {
       control: 'select',
-      options: ['top-right', 'top-left', 'top-center', 'bottom-right', 'bottom-left', 'bottom-center'],
+      options: [
+        'top-right',
+        'top-left',
+        'top-center',
+        'bottom-right',
+        'bottom-left',
+        'bottom-center',
+      ],
       description: 'Toast position',
     },
     maxToasts: {
@@ -66,16 +73,32 @@ const ToastDemo = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-      <Button onClick={() => toast({ title: 'Info Toast', variant: 'info' })} data-color="info" data-size="medium">
+      <Button
+        onClick={() => toast({ title: 'Info Toast', variant: 'info' })}
+        data-color="info"
+        data-size="medium"
+      >
         Show Info
       </Button>
-      <Button onClick={() => success('Success!', 'Operation completed successfully')} data-color="success" data-size="medium">
+      <Button
+        onClick={() => success('Success!', 'Operation completed successfully')}
+        data-color="success"
+        data-size="medium"
+      >
         Show Success
       </Button>
-      <Button onClick={() => warning('Warning!', 'Please review this action')} data-color="warning" data-size="medium">
+      <Button
+        onClick={() => warning('Warning!', 'Please review this action')}
+        data-color="warning"
+        data-size="medium"
+      >
         Show Warning
       </Button>
-      <Button onClick={() => error('Error!', 'Something went wrong')} data-color="danger" data-size="medium">
+      <Button
+        onClick={() => error('Error!', 'Something went wrong')}
+        data-color="danger"
+        data-size="medium"
+      >
         Show Error
       </Button>
       <Button
