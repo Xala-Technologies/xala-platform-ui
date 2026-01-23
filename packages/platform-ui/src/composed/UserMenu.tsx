@@ -234,6 +234,22 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
       return () => document.removeEventListener('keydown', handleEscape);
     }, [isOpen]);
 
+    // Handle item click
+    const handleItemClick = useCallback(
+      (item: UserMenuItem | { id: 'logout'; label: string; danger: true }) => {
+        if ('onClick' in item && item.onClick) {
+          item.onClick();
+        } else if (item.id === 'logout') {
+          onLogout();
+        } else if ('href' in item && item.href) {
+          window.location.href = item.href;
+        }
+        setIsOpen(false);
+        setFocusedIndex(-1);
+      },
+      [onLogout]
+    );
+
     // Handle keyboard navigation
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent) => {
@@ -272,22 +288,8 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
             break;
         }
       },
-      [isOpen, focusedIndex, allItems]
+      [isOpen, focusedIndex, allItems, handleItemClick]
     );
-
-    const handleItemClick = (
-      item: UserMenuItem | { id: 'logout'; label: string; danger: true }
-    ) => {
-      if ('onClick' in item && item.onClick) {
-        item.onClick();
-      } else if (item.id === 'logout') {
-        onLogout();
-      } else if ('href' in item && item.href) {
-        window.location.href = item.href;
-      }
-      setIsOpen(false);
-      setFocusedIndex(-1);
-    };
 
     const toggleMenu = () => {
       setIsOpen((prev) => !prev);

@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { Badge } from '@digdir/designsystemet-react';
 import { Button } from '@digdir/designsystemet-react';
 import { cn } from '../../utils';
 

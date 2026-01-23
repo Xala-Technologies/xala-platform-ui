@@ -20,7 +20,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useRef, useCallback } from 'react';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button } from '@digdir/designsystemet-react';
 import {
   HeaderSearch,
   type SearchResultItem,
@@ -290,7 +290,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
       onSearchChange,
       onSearchResultSelect,
       noSearchResultsText = 'Ingen resultater funnet',
-      showMobileSearch = false,
+      showMobileSearch: _showMobileSearch = false,
       showThemeToggle = true,
       isDark = false,
       onThemeToggle,

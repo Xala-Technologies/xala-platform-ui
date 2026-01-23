@@ -10,7 +10,7 @@
  * @module @xala-technologies/platform/ui/composed/TableConditionsFilter
  */
 
-import React, { useState, useCallback, useMemo, type ReactNode } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================

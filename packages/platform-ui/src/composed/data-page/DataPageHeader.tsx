@@ -6,8 +6,6 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Heading } from '@digdir/designsystemet-react';
-import { Badge } from '@digdir/designsystemet-react';
 import { PageHeader, PageHeaderProps } from '../page-header';
 
 export interface DataPageHeaderProps extends Omit<PageHeaderProps, 'title'> {

@@ -24,6 +24,7 @@ const OFFICIAL_THEMES = {
 };
 
 // Custom tenant theme: CLI-generated base + app extensions
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CUSTOM_THEME = [
   '/themes/custom.css', // CLI-generated base
   '/themes/custom-extensions.css', // App-specific tokens

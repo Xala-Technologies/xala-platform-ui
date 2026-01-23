@@ -235,7 +235,7 @@ export function ProtectedRoute({
   excludedPaths = [],
   labels: customLabels,
 }: ProtectedRouteProps) {
-  const labels = { ...DEFAULT_LABELS, ...customLabels };
+  const labels = useMemo(() => ({ ...DEFAULT_LABELS, ...customLabels }), [customLabels]);
   const { isLoading, isAuthenticated, checkRole: authCheckRole } = authState;
   const location = useLocation();
   const hasShownToast = useRef(false);
@@ -244,7 +244,10 @@ export function ProtectedRoute({
   const hasStoredContext = useRef(false);
 
   // Use custom checkRole or default from auth hook
-  const checkRoleFn = customCheckRole || authCheckRole || (() => false);
+  const checkRoleFn = useMemo(
+    () => customCheckRole || authCheckRole || (() => false),
+    [customCheckRole, authCheckRole]
+  );
 
   // Check role access
   const hasRequiredRole = useMemo(() => {

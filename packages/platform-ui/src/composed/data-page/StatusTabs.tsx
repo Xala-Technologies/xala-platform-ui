@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { Badge, Button } from '@digdir/designsystemet-react';
+import { Button } from '@digdir/designsystemet-react';
 import { cn } from '../../utils';
 
 export interface StatusTabItem {

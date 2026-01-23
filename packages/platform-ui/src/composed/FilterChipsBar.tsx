@@ -13,7 +13,7 @@
  * @module @xala-technologies/platform/ui/composed/FilterChipsBar
  */
 
-import React, { type ReactNode } from 'react';
+import React from 'react';
 import { Button } from '@digdir/designsystemet-react';
 
 // =============================================================================

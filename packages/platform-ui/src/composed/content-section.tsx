@@ -91,7 +91,12 @@ export const ContentSection = forwardRef<HTMLDivElement, ContentSectionProps>(
 
     if (fieldset) {
       return (
-        <Fieldset ref={ref as any} className={className} style={sectionStyle} {...(props as any)}>
+        <Fieldset
+          ref={ref as React.Ref<HTMLFieldSetElement>}
+          className={className}
+          style={sectionStyle}
+          {...(props as React.ComponentPropsWithoutRef<typeof Fieldset>)}
+        >
           {header}
           {content}
         </Fieldset>

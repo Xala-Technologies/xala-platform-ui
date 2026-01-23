@@ -166,7 +166,7 @@ export const ListToolbar = forwardRef<HTMLDivElement, ListToolbarProps>(
       if (search && search.value !== localSearchValue) {
         setLocalSearchValue(search.value);
       }
-    }, [search?.value]);
+    }, [search?.value, localSearchValue, search]);
 
     const handleFilterClick = useCallback(
       (filterId: string, optionId: string) => {

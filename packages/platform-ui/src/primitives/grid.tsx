@@ -55,7 +55,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
       gap = 0,
       gapX,
       gapY,
-      responsive,
+      responsive: _responsive,
       className,
       style,
       ...props
