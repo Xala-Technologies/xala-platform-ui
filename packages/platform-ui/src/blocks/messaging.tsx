@@ -5,6 +5,7 @@
 
 import { useState, useRef, useEffect, type ReactNode, type KeyboardEvent } from 'react';
 import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { typography, transitions, components, shadows } from '../tokens/extended';
 
 // =============================================================================
 // Types
@@ -142,8 +143,8 @@ export function NotificationBell({ count = 0, onClick, maxCount = 99 }: Notifica
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '40px',
-        height: '40px',
+        width: 'var(--ds-sizing-10)',
+        height: 'var(--ds-sizing-10)',
         borderRadius: 'var(--ds-border-radius-md)',
         border: 'none',
         background: 'transparent',
@@ -158,16 +159,16 @@ export function NotificationBell({ count = 0, onClick, maxCount = 99 }: Notifica
         <span
           style={{
             position: 'absolute',
-            top: '4px',
-            right: '4px',
+            top: 'var(--ds-spacing-1)',
+            right: 'var(--ds-spacing-1)',
             minWidth: 'var(--ds-spacing-4)',
             height: 'var(--ds-spacing-4)',
-            padding: '0 5px',
+            padding: '0 var(--ds-spacing-1)',
             borderRadius: 'var(--ds-border-radius-full)',
             backgroundColor: 'var(--ds-color-danger-base-default)',
-            color: 'white',
+            color: 'var(--ds-color-danger-contrast-default)',
             fontSize: 'var(--ds-font-size-2)',
-            fontWeight: 600,
+            fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -235,7 +236,7 @@ export function ConversationListItem({
             alignItems: 'center',
             justifyContent: 'center',
             color: 'var(--ds-color-accent-base-default)',
-            fontWeight: 600,
+            fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
             fontSize: 'var(--ds-font-size-md)',
           }}
         >
@@ -247,11 +248,11 @@ export function ConversationListItem({
               position: 'absolute',
               bottom: 'var(--ds-border-width-medium)',
               right: 'var(--ds-border-width-medium)',
-              width: '10px',
-              height: '10px',
+              width: 'var(--ds-spacing-2-5)',
+              height: 'var(--ds-spacing-2-5)',
               borderRadius: 'var(--ds-border-radius-full)',
               backgroundColor: 'var(--ds-color-success-base-default)',
-              border: '2px solid var(--ds-color-neutral-background-default)',
+              border: 'var(--ds-border-width-default) solid var(--ds-color-neutral-background-default)',
             }}
           />
         )}
@@ -262,7 +263,9 @@ export function ConversationListItem({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span
             style={{
-              fontWeight: hasUnread ? 600 : 500,
+              fontWeight: hasUnread
+                ? ('var(--ds-font-weight-semibold)' as unknown as number)
+                : ('var(--ds-font-weight-medium)' as unknown as number),
               color: 'var(--ds-color-neutral-text-default)',
               fontSize: 'var(--ds-font-size-sm)',
             }}
@@ -284,7 +287,9 @@ export function ConversationListItem({
             color: hasUnread
               ? 'var(--ds-color-neutral-text-default)'
               : 'var(--ds-color-neutral-text-subtle)',
-            fontWeight: hasUnread ? 500 : 400,
+            fontWeight: hasUnread
+              ? ('var(--ds-font-weight-medium)' as unknown as number)
+              : ('var(--ds-font-weight-regular)' as unknown as number),
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -299,17 +304,17 @@ export function ConversationListItem({
       {hasUnread && (
         <span
           style={{
-            minWidth: '20px',
-            height: '20px',
+            minWidth: 'var(--ds-spacing-5)',
+            height: 'var(--ds-spacing-5)',
             borderRadius: 'var(--ds-border-radius-full)',
             backgroundColor: 'var(--ds-color-accent-base-default)',
-            color: 'white',
+            color: 'var(--ds-color-accent-contrast-default)',
             fontSize: 'var(--ds-font-size-2)',
-            fontWeight: 600,
+            fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '0 6px',
+            padding: '0 var(--ds-spacing-1-5)',
           }}
         >
           {conversation.unreadCount}
@@ -421,19 +426,21 @@ export function ConversationList({
                 borderRadius: 'var(--ds-border-radius-full)',
                 border: 'none',
                 fontSize: 'var(--ds-font-size-xs)',
-                fontWeight: 500,
+                fontWeight: 'var(--ds-font-weight-medium)' as unknown as number,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
                 backgroundColor:
                   activeFilter === tab.id
                     ? 'var(--ds-color-accent-base-default)'
                     : 'var(--ds-color-neutral-surface-default)',
-                color: activeFilter === tab.id ? 'white' : 'var(--ds-color-neutral-text-default)',
+                color: activeFilter === tab.id
+                  ? 'var(--ds-color-accent-contrast-default)'
+                  : 'var(--ds-color-neutral-text-default)',
               }}
             >
               {tab.label}
               {tab.count !== undefined && tab.count > 0 && (
-                <span style={{ marginLeft: '4px', opacity: 0.8 }}>({tab.count})</span>
+                <span style={{ marginLeft: 'var(--ds-spacing-1)', opacity: 0.8 }}>({tab.count})</span>
               )}
             </Button>
           ))}
@@ -504,7 +511,9 @@ export function MessageBubble({ message, isFromCurrentUser, showReadReceipt }: M
           backgroundColor: fromMe
             ? 'var(--ds-color-accent-base-default)'
             : 'var(--ds-color-neutral-surface-default)',
-          color: fromMe ? 'white' : 'var(--ds-color-neutral-text-default)',
+          color: fromMe
+            ? 'var(--ds-color-accent-contrast-default)'
+            : 'var(--ds-color-neutral-text-default)',
         }}
       >
         <Paragraph data-size="sm" style={{ margin: 0, whiteSpace: 'pre-wrap' }}>
@@ -515,7 +524,7 @@ export function MessageBubble({ message, isFromCurrentUser, showReadReceipt }: M
             display: 'flex',
             justifyContent: 'flex-end',
             alignItems: 'center',
-            gap: '4px',
+            gap: 'var(--ds-spacing-1)',
             marginTop: 'var(--ds-spacing-1)',
           }}
         >
