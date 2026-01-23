@@ -1,7 +1,7 @@
 {
   "name": "@xala-technologies/guardrails",
   "version": "0.1.0",
-  "description": "Verification and validation tools for Xala Platform UI",
+  "description": "Verification, validation, and governance tools for Xala Platform UI",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -14,6 +14,18 @@
     "./schemas": {
       "types": "./dist/schemas/index.d.ts",
       "import": "./dist/schemas/index.js"
+    },
+    "./eslint": {
+      "types": "./dist/eslint/index.d.ts",
+      "import": "./dist/eslint/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
+    },
+    "./compliance": {
+      "types": "./dist/compliance/index.d.ts",
+      "import": "./dist/compliance/index.js"
     }
   },
   "bin": {
@@ -21,7 +33,8 @@
   },
   "files": [
     "dist",
-    "bin"
+    "bin",
+    "templates"
   ],
   "scripts": {
     "build": "tsup",

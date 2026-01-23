@@ -1,0 +1,106 @@
+# Platform UI Compliance CI Workflow
+# ===================================
+# MANDATORY: Apps using @xala-technologies/platform-ui MUST include this workflow
+#
+# Copy this file to: .github/workflows/platform-ui-compliance.yml
+#
+# This workflow ensures your app complies with Platform UI governance rules:
+# 1. No raw HTML elements in source code
+# 2. No inline styles without design tokens
+# 3. No direct @digdir imports
+# 4. ESLint rules are enforced
+# 5. Compliance tests pass
+
+name: Platform UI Compliance
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compliance:
+    name: Platform UI Compliance Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Step 1: Run ESLint with Platform UI rules
+      - name: ESLint Check
+        run: pnpm lint
+        continue-on-error: false
+
+      # Step 2: Run Platform UI compliance verification
+      - name: Platform UI Compliance Check
+        run: pnpm guardrails check-compliance
+        continue-on-error: false
+
+      # Step 3: Run violation detection tests
+      - name: Compliance Tests
+        run: pnpm test:compliance
+        continue-on-error: false
+
+      # Step 4: Verify design tokens usage
+      - name: Design Token Verification
+        run: pnpm guardrails verify:tokens --src=./src
+        continue-on-error: false
+
+      # Optional: Post compliance report as PR comment
+      - name: Post Compliance Report
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## ❌ Platform UI Compliance Failed
+
+              This PR does not meet Platform UI governance requirements.
+
+              ### Required Actions:
+              1. Remove raw HTML elements (use platform-ui components)
+              2. Use design tokens for all styles
+              3. Import from @xala-technologies/platform-ui, not @digdir
+
+              Run \`pnpm guardrails check-compliance\` locally for detailed report.`
+            })
+
+  # Block merge if compliance fails
+  compliance-gate:
+    name: Compliance Gate
+    runs-on: ubuntu-latest
+    needs: [compliance]
+    if: always()
+
+    steps:
+      - name: Check compliance status
+        run: |
+          if [ "${{ needs.compliance.result }}" != "success" ]; then
+            echo "❌ Platform UI compliance check failed"
+            echo "This PR cannot be merged until compliance issues are fixed."
+            exit 1
+          fi
+          echo "✅ Platform UI compliance check passed"
