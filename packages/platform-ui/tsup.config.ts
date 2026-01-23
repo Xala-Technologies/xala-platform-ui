@@ -30,6 +30,13 @@ export default defineConfig({
     'react-router-dom',
     '@digdir/designsystemet-react',
     '@digdir/designsystemet-css',
+    '@digdir/designsystemet-css/theme',
+    '@digdir/designsystemet-css/theme.css',
+    '@fontsource/inter',
+    '@fontsource/inter/400.css',
+    '@fontsource/inter/500.css',
+    '@fontsource/inter/600.css',
+    '@fontsource/inter/700.css',
     'zod',
   ],
   esbuildOptions(options) {

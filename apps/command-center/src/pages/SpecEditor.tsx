@@ -1,8 +1,17 @@
+/**
+ * Spec Editor Page
+ *
+ * Uses platform-ui composed components for proper page structure.
+ * Layer definitions extracted to src/constants/layers.ts (OCP).
+ */
+
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
-  Card,
-  Heading,
+  DashboardPageHeader,
+  SectionCard,
+  SectionCardHeader,
+  SectionCardContent,
   Paragraph,
   Button,
   Textfield,
@@ -10,15 +19,18 @@ import {
   Tabs,
   Field,
   Label,
-} from '@digdir/designsystemet-react';
+  List,
+  CodeBlock,
+  PageContainer,
+} from '@xala-technologies/platform-ui';
+import { getLayerOptions } from '../constants';
 
-const layers = [
-  { value: 'primitives', label: 'Primitives (Level 0)' },
-  { value: 'composed', label: 'Composed (Level 1)' },
-  { value: 'blocks', label: 'Blocks (Level 2)' },
-  { value: 'patterns', label: 'Patterns (Level 3)' },
-  { value: 'shells', label: 'Shells (Level 4)' },
-  { value: 'pages', label: 'Pages (Level 5)' },
+/** WCAG accessibility requirements for component specs */
+const ACCESSIBILITY_REQUIREMENTS = [
+  '1.1.1 Non-text Content - All images have alt text',
+  '1.3.1 Info and Relationships - Semantic HTML structure',
+  '1.4.3 Contrast - Minimum 4.5:1 text contrast',
+  '2.1.1 Keyboard - All interactive elements keyboard accessible',
 ];
 
 export function SpecEditor() {
@@ -34,22 +46,38 @@ export function SpecEditor() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const componentNameSafe = formData.name || 'Component';
+  const componentNameLower = componentNameSafe.toLowerCase();
+
+  const propsCode = `export interface ${componentNameSafe}Props {
+  children?: React.ReactNode;
+  variant?: 'default' | 'compact' | 'expanded';
+  size?: 'small' | 'medium' | 'large';
+}`;
+
+  const testIdsCode = `{
+  "root": "${componentNameLower}-root",
+  "title": "${componentNameLower}-title"
+}`;
+
+  const layers = getLayerOptions();
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <Heading level={2} data-size="lg">
-            {componentName ? `Edit: ${componentName}` : 'New Component Spec'}
-          </Heading>
-          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            Define component specifications using design workflow templates
-          </Paragraph>
-        </div>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-          <Button variant="secondary" data-size="sm">Preview</Button>
-          <Button variant="primary" data-size="sm">Save Spec</Button>
-        </div>
-      </div>
+    <PageContainer>
+      <DashboardPageHeader
+        title={componentName ? `Edit: ${componentName}` : 'New Component Spec'}
+        subtitle="Define component specifications using design workflow templates"
+        secondaryAction={
+          <Button variant="secondary" data-size="sm">
+            Preview
+          </Button>
+        }
+        primaryAction={
+          <Button variant="primary" data-size="sm">
+            Save Spec
+          </Button>
+        }
+      />
 
       <Tabs defaultValue="overview">
         <Tabs.List>
@@ -61,137 +89,122 @@ export function SpecEditor() {
         </Tabs.List>
 
         <Tabs.Panel value="overview">
-          <Card style={{ marginTop: 'var(--ds-spacing-4)' }}>
-            <div style={{ padding: 'var(--ds-spacing-4)', display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--ds-spacing-4)' }}>
+          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+            <SectionCardContent>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--ds-spacing-4)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: 'var(--ds-spacing-4)',
+                  }}
+                >
+                  <Textfield
+                    label="Component Name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    placeholder="e.g., ResourceCard"
+                  />
+                  <Field>
+                    <Label>Layer</Label>
+                    <Select
+                      value={formData.layer}
+                      onChange={(e) => handleInputChange('layer', e.target.value)}
+                    >
+                      {layers.map((layer) => (
+                        <Select.Option key={layer.value} value={layer.value}>
+                          {layer.label}
+                        </Select.Option>
+                      ))}
+                    </Select>
+                  </Field>
+                </div>
                 <Textfield
-                  label="Component Name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  placeholder="e.g., ResourceCard"
+                  label="Description"
+                  value={formData.description}
+                  onChange={(e) => handleInputChange('description', e.target.value)}
+                  placeholder="Brief description of the component"
                 />
-                <Field>
-                  <Label>Layer</Label>
-                  <Select
-                    value={formData.layer}
-                    onChange={(e) => handleInputChange('layer', e.target.value)}
-                  >
-                    {layers.map((layer) => (
-                      <Select.Option key={layer.value} value={layer.value}>
-                        {layer.label}
-                      </Select.Option>
-                    ))}
-                  </Select>
-                </Field>
+                <Textfield
+                  label="Purpose"
+                  value={formData.purpose}
+                  onChange={(e) => handleInputChange('purpose', e.target.value)}
+                  placeholder="Why does this component exist?"
+                />
               </div>
-              <Textfield
-                label="Description"
-                value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
-                placeholder="Brief description of the component"
-              />
-              <Textfield
-                label="Purpose"
-                value={formData.purpose}
-                onChange={(e) => handleInputChange('purpose', e.target.value)}
-                placeholder="Why does this component exist?"
-              />
-            </div>
-          </Card>
+            </SectionCardContent>
+          </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="props">
-          <Card style={{ marginTop: 'var(--ds-spacing-4)' }}>
-            <div style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Props Definition
-              </Heading>
-              <pre
-                style={{
-                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                  padding: 'var(--ds-spacing-3)',
-                  borderRadius: 'var(--ds-border-radius-md)',
-                  fontSize: '0.875rem',
-                  overflow: 'auto',
-                }}
+          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+            <SectionCardHeader title="Props Definition" />
+            <SectionCardContent>
+              <CodeBlock code={propsCode} language="typescript" />
+              <Button
+                variant="secondary"
+                data-size="sm"
+                style={{ marginTop: 'var(--ds-spacing-4)' }}
               >
-{`export interface ${formData.name || 'Component'}Props {
-  children?: React.ReactNode;
-  variant?: 'default' | 'compact' | 'expanded';
-  size?: 'small' | 'medium' | 'large';
-}`}
-              </pre>
-              <Button variant="secondary" data-size="sm" style={{ marginTop: 'var(--ds-spacing-4)' }}>
                 + Add Prop
               </Button>
-            </div>
-          </Card>
+            </SectionCardContent>
+          </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="composition">
-          <Card style={{ marginTop: 'var(--ds-spacing-4)' }}>
-            <div style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Component Composition
-              </Heading>
-              <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Define which Designsystemet and internal components make up this component.
-              </Paragraph>
+          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+            <SectionCardHeader
+              title="Component Composition"
+              description="Define which Designsystemet and internal components make up this component."
+            />
+            <SectionCardContent>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-2)' }}>
                 {['Card', 'Heading', 'Paragraph', 'Button'].map((comp) => (
-                  <Button key={comp} variant="secondary" data-size="sm">{comp}</Button>
+                  <Button key={comp} variant="secondary" data-size="sm">
+                    {comp}
+                  </Button>
                 ))}
-                <Button variant="tertiary" data-size="sm">+ Add</Button>
+                <Button variant="tertiary" data-size="sm">
+                  + Add
+                </Button>
               </div>
-            </div>
-          </Card>
+            </SectionCardContent>
+          </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="accessibility">
-          <Card style={{ marginTop: 'var(--ds-spacing-4)' }}>
-            <div style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Accessibility Requirements
-              </Heading>
-              <ul style={{ margin: 0, paddingLeft: 'var(--ds-spacing-5)' }}>
-                {[
-                  '1.1.1 Non-text Content - All images have alt text',
-                  '1.3.1 Info and Relationships - Semantic HTML structure',
-                  '1.4.3 Contrast - Minimum 4.5:1 text contrast',
-                  '2.1.1 Keyboard - All interactive elements keyboard accessible',
-                ].map((req, i) => (
-                  <li key={i} style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                    <Paragraph data-size="sm">{req}</Paragraph>
-                  </li>
+          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+            <SectionCardHeader title="Accessibility Requirements" />
+            <SectionCardContent>
+              <List.Unordered>
+                {ACCESSIBILITY_REQUIREMENTS.map((req, i) => (
+                  <List.Item key={i}>
+                    <Paragraph data-size="sm" style={{ margin: 0 }}>
+                      {req}
+                    </Paragraph>
+                  </List.Item>
                 ))}
-              </ul>
-            </div>
-          </Card>
+              </List.Unordered>
+            </SectionCardContent>
+          </SectionCard>
         </Tabs.Panel>
 
         <Tabs.Panel value="testids">
-          <Card style={{ marginTop: 'var(--ds-spacing-4)' }}>
-            <div style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Test ID Registry
-              </Heading>
-              <pre
-                style={{
-                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                  padding: 'var(--ds-spacing-3)',
-                  borderRadius: 'var(--ds-border-radius-md)',
-                  fontSize: '0.875rem',
-                }}
-              >
-{`{
-  "root": "${(formData.name || 'component').toLowerCase()}-root",
-  "title": "${(formData.name || 'component').toLowerCase()}-title"
-}`}
-              </pre>
-            </div>
-          </Card>
+          <SectionCard style={{ marginTop: 'var(--ds-spacing-4)' }}>
+            <SectionCardHeader title="Test ID Registry" />
+            <SectionCardContent>
+              <CodeBlock code={testIdsCode} language="json" />
+            </SectionCardContent>
+          </SectionCard>
         </Tabs.Panel>
       </Tabs>
-    </div>
+    </PageContainer>
   );
 }

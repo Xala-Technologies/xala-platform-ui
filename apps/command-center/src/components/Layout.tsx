@@ -1,83 +1,112 @@
-import { Outlet, NavLink } from 'react-router-dom';
-import {
-  Heading,
-  Paragraph,
-} from '@digdir/designsystemet-react';
+/**
+ * Command Center Layout
+ *
+ * Uses platform-ui shell components - apps should never define their own layout components.
+ */
 
-const navItems = [
-  { to: '/', label: 'Dashboard', icon: '📊' },
-  { to: '/workflows', label: 'Workflows', icon: '🔄' },
-  { to: '/specs', label: 'Spec Editor', icon: '📝' },
-  { to: '/approvals', label: 'Approvals', icon: '✅' },
+import { useState } from 'react';
+import {
+  AppLayout,
+  DashboardSidebar,
+  DashboardHeader,
+  ChartIcon,
+  RefreshIcon,
+  FileTextIcon,
+  CheckCircleIcon,
+  Button,
+  Heading,
+} from '@xala-technologies/platform-ui';
+import type { SidebarSection } from '@xala-technologies/platform-ui';
+
+const sidebarSections: SidebarSection[] = [
+  {
+    title: 'Navigation',
+    items: [
+      {
+        name: 'Dashboard',
+        description: 'Overview and metrics',
+        href: '/',
+        icon: <ChartIcon size={20} />,
+      },
+      {
+        name: 'Workflows',
+        description: 'Design workflow catalog',
+        href: '/workflows',
+        icon: <RefreshIcon size={20} />,
+      },
+      {
+        name: 'Spec Editor',
+        description: 'Edit component specs',
+        href: '/specs',
+        icon: <FileTextIcon size={20} />,
+      },
+      {
+        name: 'Approvals',
+        description: 'Approval status tracking',
+        href: '/approvals',
+        icon: <CheckCircleIcon size={20} />,
+      },
+    ],
+  },
 ];
 
 export function Layout() {
+  const [searchValue, setSearchValue] = useState('');
+  const [isDark, setIsDark] = useState(false);
+
+  const handleSearch = (value: string) => {
+    setSearchValue(value);
+    // In a real app, this would filter/search content
+    console.log('Search:', value);
+  };
+
+  const handleThemeToggle = () => {
+    setIsDark(!isDark);
+    // In a real app, this would update the theme
+  };
+
+  const handleNotificationClick = () => {
+    console.log('Notifications clicked');
+  };
+
   return (
-    <div>
-      {/* Header */}
-      <div
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          borderBottom: '1px solid var(--ds-color-border-default)',
-        }}
-      >
-        <Heading level={1} data-size="md">
-          Xala Command Center
-        </Heading>
-        <Paragraph data-size="sm">
-          Design Governance Workflow Management
-        </Paragraph>
-      </div>
-
-      <div style={{ display: 'flex', minHeight: 'calc(100vh - 100px)' }}>
-        {/* Sidebar Navigation */}
-        <nav
-          style={{
-            width: '240px',
-            borderRight: '1px solid var(--ds-color-border-default)',
-            padding: 'var(--ds-spacing-4)',
+    <AppLayout
+      sidebar={
+        <DashboardSidebar
+          title="Xala"
+          subtitle="Command Center"
+          sections={sidebarSections}
+          width={320}
+        />
+      }
+      header={
+        <DashboardHeader
+          leftSlot={
+            <Heading level={1} data-size="sm">Design Governance</Heading>
+          }
+          searchPlaceholder="Search workflows, specs..."
+          searchValue={searchValue}
+          onSearchChange={handleSearch}
+          showThemeToggle
+          isDark={isDark}
+          onThemeToggle={handleThemeToggle}
+          showNotifications
+          notificationCount={3}
+          onNotificationClick={handleNotificationClick}
+          user={{
+            name: 'Admin User',
+            email: 'admin@xala.no',
           }}
-        >
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {navItems.map((item) => (
-              <li key={item.to} style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                <NavLink
-                  to={item.to}
-                  style={({ isActive }) => ({
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--ds-spacing-2)',
-                    padding: 'var(--ds-spacing-3)',
-                    borderRadius: 'var(--ds-border-radius-md)',
-                    textDecoration: 'none',
-                    color: isActive
-                      ? 'var(--ds-color-accent-text-default)'
-                      : 'var(--ds-color-neutral-text-default)',
-                    backgroundColor: isActive
-                      ? 'var(--ds-color-accent-surface-default)'
-                      : 'transparent',
-                    fontWeight: isActive ? '600' : '400',
-                  })}
-                >
-                  <span>{item.icon}</span>
-                  <span>{item.label}</span>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Main Content */}
-        <main
-          style={{
-            flex: 1,
-            padding: 'var(--ds-spacing-6)',
-            overflow: 'auto',
-          }}
-        >
-          <Outlet />
-        </main>
-      </div>
-    </div>
+          onLogout={() => console.log('Logout')}
+          onSettingsClick={() => console.log('Settings')}
+          onProfileClick={() => console.log('Profile')}
+          actions={
+            <Button variant="primary" data-size="sm">
+              New Spec
+            </Button>
+          }
+        />
+      }
+    />
   );
 }

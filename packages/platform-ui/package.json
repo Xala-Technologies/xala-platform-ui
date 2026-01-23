@@ -143,13 +143,14 @@
     "access": "public"
   },
   "dependencies": {
+    "@digdir/designsystemet-css": "^1.11.0",
     "@digdir/designsystemet-react": "^1.9.0",
+    "@fontsource/inter": "^5.2.8",
     "@navikt/aksel-icons": "^8.0.1",
     "lucide-react": "^0.562.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@digdir/designsystemet-css": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^9.0.0",

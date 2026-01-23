@@ -570,3 +570,7 @@ export type { CopyButtonProps, CodeBlockProps, InlineCodeProps } from './CodeBlo
 // Exports Tabs which supports both simple TabItem API and Designsystemet compound pattern
 export { SimpleTabs, TabItem, Tabs } from './SimpleTabs';
 export type { SimpleTabsProps, TabItemProps } from './SimpleTabs';
+
+// PageContainer (consistent page wrapper)
+export { PageContainer } from './PageContainer';
+export type { PageContainerProps } from './PageContainer';

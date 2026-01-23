@@ -11,8 +11,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@digdir/designsystemet-css": "^1.0.0",
-    "@digdir/designsystemet-react": "^1.9.0",
     "@xala-technologies/platform-ui": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

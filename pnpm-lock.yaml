@@ -120,12 +120,6 @@ importers:
 
   apps/command-center:
     dependencies:
-      '@digdir/designsystemet-css':
-        specifier: ^1.0.0
-        version: 1.11.0
-      '@digdir/designsystemet-react':
-        specifier: ^1.9.0
-        version: 1.11.0(@types/react@18.3.27)(react-dom@18.3.1)(react@18.3.1)
       '@xala-technologies/platform-ui':
         specifier: workspace:*
         version: link:../../packages/platform-ui
@@ -157,12 +151,6 @@ importers:
 
   apps/playground:
     dependencies:
-      '@digdir/designsystemet-css':
-        specifier: ^1.0.0
-        version: 1.11.0
-      '@digdir/designsystemet-react':
-        specifier: ^1.9.0
-        version: 1.11.0(@types/react@18.3.27)(react-dom@18.3.1)(react@18.3.1)
       '@xala-technologies/platform-ui':
         specifier: workspace:*
         version: link:../../packages/platform-ui
@@ -241,9 +229,15 @@ importers:
 
   packages/platform-ui:
     dependencies:
+      '@digdir/designsystemet-css':
+        specifier: ^1.11.0
+        version: 1.11.0
       '@digdir/designsystemet-react':
         specifier: ^1.9.0
         version: 1.11.0(@types/react@18.3.27)(react-dom@18.3.1)(react@18.3.1)
+      '@fontsource/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@navikt/aksel-icons':
         specifier: ^8.0.1
         version: 8.1.0
@@ -263,9 +257,6 @@ importers:
         specifier: ^3.22.4
         version: 3.25.76
     devDependencies:
-      '@digdir/designsystemet-css':
-        specifier: ^1.0.0
-        version: 1.11.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.0.0
         version: 8.53.1(@typescript-eslint/parser@8.53.1)(eslint@9.39.2)(typescript@5.9.3)
@@ -1559,7 +1550,6 @@ packages:
 
   /@fontsource/inter@5.2.8:
     resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
-    dev: true
 
   /@hapi/address@5.1.1:
     resolution: {integrity: sha512-A+po2d/dVoY7cYajycYI43ZbYMXukuopIsqCjh5QzsBCipDtdofHntljDlpccMjIfTy6UOkg+5KPriwYch2bXA==}

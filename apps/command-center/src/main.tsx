@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import '@digdir/designsystemet-css';
+// All styles from platform-ui (fonts, CSS, tokens)
+import '@xala-technologies/platform-ui/styles';
 import { DesignsystemetProvider } from '@xala-technologies/platform-ui';
 import App from './App';
 
