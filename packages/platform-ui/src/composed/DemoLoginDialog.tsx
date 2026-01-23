@@ -142,9 +142,7 @@ export function DemoLoginDialog({
     try {
       await onSubmit(formData);
     } catch (error: unknown) {
-      setLoginError(
-        error instanceof Error ? error.message : 'An error occurred during login'
-      );
+      setLoginError(error instanceof Error ? error.message : 'An error occurred during login');
     } finally {
       setIsLoading(false);
     }

@@ -200,11 +200,12 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
     const allItems = useMemo(
       (): (UserMenuItem | { id: 'logout'; label: string; danger: true })[] => [
         ...items,
-        ...(showLogout ? [{ id: 'logout' as const, label: logoutLabel, danger: true as const }] : []),
+        ...(showLogout
+          ? [{ id: 'logout' as const, label: logoutLabel, danger: true as const }]
+          : []),
       ],
       [items, showLogout, logoutLabel]
     );
-    ];
 
     // Close menu when clicking outside
     useEffect(() => {

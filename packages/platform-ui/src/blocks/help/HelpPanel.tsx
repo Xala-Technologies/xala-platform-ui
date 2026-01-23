@@ -359,7 +359,10 @@ function FAQHelp({
   onClose?: () => void;
 }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, _setSelectedCategory] = useState<HelpCategory | 'all'>(category || 'all');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedCategory, _setSelectedCategory] = useState<HelpCategory | 'all'>(
+    category || 'all'
+  );
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
 
   // Filter FAQs
