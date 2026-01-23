@@ -212,7 +212,7 @@ function StepIndicator({
         </div>
         <div style={{ textAlign: orientation === 'horizontal' ? 'center' : 'left' }}>
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: 0,
               fontSize: styles.font,
@@ -240,7 +240,7 @@ function StepIndicator({
           </Paragraph>
           {step.description && (
             <Paragraph
-              data-size="small"
+              data-size="sm"
               style={{
                 margin: 'var(--ds-spacing-1) 0 0 0',
                 fontSize: 'var(--ds-font-size-xs)',

@@ -446,7 +446,7 @@ export function FileUploader({
         </div>
 
         <Paragraph
-          data-size="medium"
+          data-size="md"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-md)',
@@ -460,7 +460,7 @@ export function FileUploader({
 
         {placeholder.description && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: 'var(--ds-spacing-1) 0 0 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -474,7 +474,7 @@ export function FileUploader({
 
         {maxSize && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: 'var(--ds-spacing-2) 0 0 0',
               fontSize: 'var(--ds-font-size-xs)',
@@ -488,7 +488,7 @@ export function FileUploader({
 
       {(error || helperText) && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',
@@ -560,7 +560,7 @@ export function FileUploader({
 
               <div style={{ flex: 1, minWidth: 0 }}>
                 <Paragraph
-                  data-size="small"
+                  data-size="sm"
                   style={{
                     margin: 0,
                     fontSize: 'var(--ds-font-size-sm)',

@@ -91,7 +91,11 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
                     {title}
                   </Heading>
                 )}
-                {subtitle && <Paragraph data-size="small" style={{ opacity: 0.8, marginTop: 0 }}>{subtitle}</Paragraph>}
+                {subtitle && (
+                  <Paragraph data-size="sm" style={{ opacity: 0.8, marginTop: 0 }}>
+                    {subtitle}
+                  </Paragraph>
+                )}
               </>
             )}
           </header>

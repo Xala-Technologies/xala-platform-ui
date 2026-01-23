@@ -27,8 +27,7 @@
  */
 
 import React from 'react';
-import { Card, Paragraph } from '@digdir/designsystemet-react';
-import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -185,7 +184,7 @@ function ExportRequestStatus({
     >
       {/* Status message */}
       <Paragraph
-        data-size="small"
+        data-size="sm"
         style={{
           margin: 0,
           marginBottom: 'var(--ds-spacing-3)',
@@ -198,7 +197,7 @@ function ExportRequestStatus({
 
       {/* Request date */}
       <Paragraph
-        data-size="small"
+        data-size="sm"
         style={{
           margin: 0,
           color: 'var(--ds-color-neutral-text-subtle)',
@@ -220,7 +219,7 @@ function ExportRequestStatus({
         >
           {getExpiryMessage() && (
             <Paragraph
-              data-size="small"
+              data-size="sm"
               style={{
                 margin: 0,
                 color: 'var(--ds-color-warning-text)',
@@ -245,7 +244,7 @@ function ExportRequestStatus({
       {/* Rejection reason */}
       {status === 'rejected' && rejectionReason && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             marginTop: 'var(--ds-spacing-2)',

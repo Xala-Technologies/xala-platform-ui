@@ -317,7 +317,15 @@ export function WizardStepper({
                 type="button"
                 aria-current={state === 'active' ? 'step' : undefined}
                 aria-label={`${step.label}${step.optional ? ` (${labels.optional})` : ''}`}
-                data-color={state === 'active' ? 'accent' : state === 'completed' ? 'success' : state === 'error' ? 'danger' : 'neutral'}
+                data-color={
+                  state === 'active'
+                    ? 'accent'
+                    : state === 'completed'
+                      ? 'success'
+                      : state === 'error'
+                        ? 'danger'
+                        : 'neutral'
+                }
                 style={{
                   flex: 1,
                   display: 'flex',

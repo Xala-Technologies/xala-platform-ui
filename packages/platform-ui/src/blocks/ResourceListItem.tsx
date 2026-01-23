@@ -363,7 +363,7 @@ export function ResourceListItem({
         >
           <Heading
             level={3}
-            data-size="medium"
+            data-size="md"
             style={
               {
                 margin: 0,
@@ -391,7 +391,7 @@ export function ResourceListItem({
         {/* Location */}
         {showLocation && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={
               {
                 margin: '0 0 var(--ds-spacing-2) 0',
@@ -412,7 +412,7 @@ export function ResourceListItem({
         {/* Description */}
         {showDescription && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={
               {
                 margin: '0 0 var(--ds-spacing-3) 0',

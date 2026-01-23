@@ -180,7 +180,7 @@ export function ResultsEmptyState({
       {displayTitle && (
         <Heading
           level={3}
-          data-size="medium"
+          data-size="md"
           style={{
             fontSize: 'var(--ds-font-size-xl)',
             fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
@@ -196,7 +196,7 @@ export function ResultsEmptyState({
       {/* Description */}
       {displayDescription && (
         <Paragraph
-          data-size="medium"
+          data-size="md"
           style={{
             fontSize: 'var(--ds-font-size-md)',
             color: 'var(--ds-color-neutral-text-subtle)',

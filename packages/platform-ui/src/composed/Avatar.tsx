@@ -299,7 +299,7 @@ export function UserInfo({
       <Avatar src={src} name={name} size={size} showStatus={showStatus} isOnline={isOnline} />
       <div style={{ minWidth: 0 }}>
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontSize: sizeStyle.fontSize,
@@ -314,7 +314,7 @@ export function UserInfo({
         </Paragraph>
         {subtitle && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: 0,
               fontSize: textSize,

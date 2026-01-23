@@ -205,7 +205,7 @@ export function SectionCardHeader({
         <div>
           <Heading
             level={3}
-            data-size="medium"
+            data-size="md"
             style={{
               margin: 0,
               fontSize: sizeStyle.titleSize,
@@ -218,7 +218,7 @@ export function SectionCardHeader({
           </Heading>
           {description && (
             <Paragraph
-              data-size="small"
+              data-size="sm"
               style={{
                 margin: 0,
                 marginTop: 'var(--ds-spacing-1)',
@@ -387,7 +387,7 @@ export function SectionCard({
                   {title && (
                     <Heading
                       level={3}
-                      data-size="medium"
+                      data-size="md"
                       style={{
                         margin: 0,
                         fontSize: sizeStyle.titleSize,
@@ -401,7 +401,7 @@ export function SectionCard({
                   )}
                   {description && (
                     <Paragraph
-                      data-size="small"
+                      data-size="sm"
                       style={{
                         margin: 0,
                         marginTop: 'var(--ds-spacing-1)',

@@ -254,7 +254,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
       <div style={{ color: styles.icon, flexShrink: 0 }}>{styles.iconComponent}</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -266,7 +266,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
         </Paragraph>
         {toast.message && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: 'var(--ds-spacing-1) 0 0 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -277,9 +277,10 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
           </Paragraph>
         )}
         {toast.action && (
-          <button
+          <Button
             type="button"
             onClick={toast.action.onClick}
+            data-color="neutral"
             style={{
               marginTop: 'var(--ds-spacing-2)',
               padding: 0,
@@ -293,11 +294,11 @@ function ToastItem({ toast, onDismiss }: ToastItemProps): React.ReactElement {
             }}
           >
             {toast.action.label}
-          </button>
+          </Button>
         )}
       </div>
       {toast.dismissible !== false && (
-        <button
+        <Button
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss"

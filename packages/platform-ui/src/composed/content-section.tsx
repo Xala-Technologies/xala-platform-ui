@@ -76,7 +76,7 @@ export const ContentSection = forwardRef<HTMLDivElement, ContentSectionProps>(
       <Stack spacing={8} style={{ marginBottom: subtitle ? 16 : 24 }}>
         {title && <Heading level={level}>{title}</Heading>}
         {subtitle && (
-          <Paragraph data-size="small" style={{ opacity: 0.8, margin: 0 }}>
+          <Paragraph data-size="sm" style={{ opacity: 0.8, margin: 0 }}>
             {subtitle}
           </Paragraph>
         )}

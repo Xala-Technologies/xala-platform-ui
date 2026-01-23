@@ -447,7 +447,7 @@ export function Drawer({
               )}
               <Heading
                 level={2}
-                data-size="medium"
+                data-size="md"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-md, 1.125rem)',
@@ -621,7 +621,7 @@ export function DrawerSection({
             </span>
             {description && (
               <Paragraph
-                data-size="small"
+                data-size="sm"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-xs, 0.75rem)',
@@ -802,7 +802,7 @@ export function DrawerEmptyState({
       </span>
       {description && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: '0 0 var(--ds-spacing-4) 0',
             fontSize: 'var(--ds-font-size-sm, 0.875rem)',

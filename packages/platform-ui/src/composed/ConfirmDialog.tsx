@@ -242,7 +242,7 @@ export function ConfirmDialog({
               <Heading
                 level={2}
                 id="dialog-title"
-                data-size="medium"
+                data-size="md"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-lg)',
@@ -255,7 +255,7 @@ export function ConfirmDialog({
               {description && (
                 <Paragraph
                   id="dialog-description"
-                  data-size="small"
+                  data-size="sm"
                   style={{
                     margin: 'var(--ds-spacing-2) 0 0 0',
                     fontSize: 'var(--ds-font-size-sm)',
@@ -309,7 +309,9 @@ export function ConfirmDialog({
             type="button"
             onClick={handleConfirm}
             disabled={isLoading}
-            data-color={variant === 'danger' ? 'danger' : variant === 'warning' ? 'warning' : 'accent'}
+            data-color={
+              variant === 'danger' ? 'danger' : variant === 'warning' ? 'warning' : 'accent'
+            }
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -426,7 +428,7 @@ export function ActionDialog({
             <Heading
               level={2}
               id="action-dialog-title"
-              data-size="medium"
+              data-size="md"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-lg)',
@@ -438,7 +440,7 @@ export function ActionDialog({
             </Heading>
             {description && (
               <Paragraph
-                data-size="small"
+                data-size="sm"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-sm)',

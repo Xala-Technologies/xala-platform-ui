@@ -218,7 +218,7 @@ export function ImageSlider({
                   objectFit: 'cover',
                 }}
               />
-            </Button>
+            </div>
           ))}
         </div>
 
@@ -448,7 +448,7 @@ export function ImageSlider({
                   objectFit: 'cover',
                 }}
               />
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -480,11 +480,12 @@ export function ImageSlider({
           onClick={() => setIsFullscreen(false)}
         >
           {/* Close button */}
-          <button
+          <Button
             type="button"
             onClick={() => setIsFullscreen(false)}
             aria-label="Lukk fullskjerm"
             className="ds-image-slider-fullscreen-close"
+            data-color="neutral"
             style={{
               position: 'absolute',
               top: 'var(--ds-spacing-4)',
@@ -504,7 +505,7 @@ export function ImageSlider({
             }}
           >
             <CloseIcon size={24} />
-          </button>
+          </Button>
 
           {/* Fullscreen image */}
           <div

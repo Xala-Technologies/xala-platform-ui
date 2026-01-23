@@ -190,7 +190,7 @@ function DeletionRequestStatus({
     >
       {/* Status message */}
       <Paragraph
-        data-size="small"
+        data-size="sm"
         style={{
           margin: 0,
           marginBottom: 'var(--ds-spacing-3)',
@@ -203,7 +203,7 @@ function DeletionRequestStatus({
 
       {/* Request date */}
       <Paragraph
-        data-size="small"
+        data-size="sm"
         style={{
           margin: 0,
           color: 'var(--ds-color-neutral-text-subtle)',
@@ -216,7 +216,7 @@ function DeletionRequestStatus({
       {/* Rejection reason */}
       {status === 'rejected' && rejectionReason && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             marginTop: 'var(--ds-spacing-2)',

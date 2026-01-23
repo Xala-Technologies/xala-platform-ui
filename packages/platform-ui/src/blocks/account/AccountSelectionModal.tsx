@@ -392,7 +392,7 @@ export function AccountSelectionModal<TOrganization extends BaseOrganization = B
                       </div>
                     )}
                   </Card>
-                </button>
+                </Button>
               ))
             )}
           </div>

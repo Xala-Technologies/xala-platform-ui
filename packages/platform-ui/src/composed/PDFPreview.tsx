@@ -577,7 +577,7 @@ export function PDFPreview({
               <FileTextIcon />
             </div>
             <Paragraph
-              data-size="medium"
+              data-size="md"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-md)',
@@ -588,7 +588,7 @@ export function PDFPreview({
               Failed to load document
             </Paragraph>
             <Paragraph
-              data-size="small"
+              data-size="sm"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-sm)',

@@ -401,7 +401,7 @@ const DropdownVariant = forwardRef<
               }}
             >
               {labels[loc]}
-            </button>
+            </Button>
           ))}
         </div>
       )}

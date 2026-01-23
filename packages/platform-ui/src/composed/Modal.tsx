@@ -174,7 +174,7 @@ export function Modal({
             {title && (
               <Heading
                 level={2}
-                data-size="medium"
+                data-size="md"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-lg)',

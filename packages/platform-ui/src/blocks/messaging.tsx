@@ -315,7 +315,7 @@ export function ConversationListItem({
           {conversation.unreadCount}
         </span>
       )}
-    </button>
+    </Button>
   );
 }
 

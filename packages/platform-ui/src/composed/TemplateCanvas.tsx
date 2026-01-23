@@ -425,7 +425,7 @@ function BlockRenderer({
         return (
           <Heading
             level={1}
-            data-size="large"
+            data-size="lg"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-heading-lg)',
@@ -439,7 +439,7 @@ function BlockRenderer({
       case 'text':
         return (
           <Paragraph
-            data-size="medium"
+            data-size="md"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-md)',
@@ -801,11 +801,11 @@ export function TemplateCanvas({
         ...style,
       }}
     >
-          {!previewMode && (
+      {!previewMode && (
         <div style={{ width: 'var(--ds-sizing-50)', flexShrink: 0 }}>
           <Heading
             level={4}
-            data-size="small"
+            data-size="sm"
             style={{
               margin: '0 0 var(--ds-spacing-3) 0',
               fontSize: 'var(--ds-font-size-sm)',
@@ -821,7 +821,7 @@ export function TemplateCanvas({
             <>
               <Heading
                 level={4}
-                data-size="small"
+                data-size="sm"
                 style={{
                   margin: 'var(--ds-spacing-5) 0 var(--ds-spacing-3) 0',
                   fontSize: 'var(--ds-font-size-sm)',
@@ -857,7 +857,7 @@ export function TemplateCanvas({
                     </code>
                     {ph.description && (
                       <Paragraph
-                        data-size="small"
+                        data-size="sm"
                         style={{
                           margin: 'var(--ds-spacing-1) 0 0 0',
                           fontSize: 'var(--ds-font-size-xs)',
@@ -914,7 +914,7 @@ export function TemplateCanvas({
             }}
           >
             <Paragraph
-              data-size="medium"
+              data-size="md"
               style={{
                 margin: 0,
                 fontSize: 'var(--ds-font-size-md)',

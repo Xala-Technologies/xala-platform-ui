@@ -75,7 +75,7 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
             {title}
           </Heading>
           {subtitle && (
-            <Paragraph data-size="small" style={{ opacity: 0.8, marginTop: 0, marginBottom: 0 }}>
+            <Paragraph data-size="sm" style={{ opacity: 0.8, marginTop: 0, marginBottom: 0 }}>
               {subtitle}
             </Paragraph>
           )}

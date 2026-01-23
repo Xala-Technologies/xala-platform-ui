@@ -329,12 +329,13 @@ function ActionButton({ action, size, variant }: ActionButtonProps): React.React
   const showText = variant === 'text' || variant === 'icon-text';
 
   return (
-    <button
+    <Button
       type="button"
       onClick={action.onClick}
       disabled={action.disabled || action.loading}
       title={action.tooltip || config.label}
       aria-label={config.label}
+      data-color="neutral"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{

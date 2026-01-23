@@ -200,7 +200,7 @@ export function DetailFieldGroup({
       {title && (
         <Heading
           level={4}
-          data-size="medium"
+          data-size="md"
           style={{
             margin: '0 0 var(--ds-spacing-4) 0',
             fontSize: 'var(--ds-font-size-md)',
@@ -281,7 +281,7 @@ export function DetailCard({
           )}
           <Heading
             level={3}
-            data-size="medium"
+            data-size="md"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-md)',

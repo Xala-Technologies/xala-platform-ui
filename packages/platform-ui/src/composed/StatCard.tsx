@@ -236,7 +236,7 @@ export function StatCard({
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
           <div style={{ flex: 1 }}>
             <Paragraph
-              data-size="small"
+              data-size="sm"
               style={{
                 margin: 0,
                 fontSize: sizeStyle.labelSize,
@@ -248,7 +248,7 @@ export function StatCard({
               {label}
             </Paragraph>
             <Paragraph
-              data-size="medium"
+              data-size="md"
               style={{
                 margin: 0,
                 fontSize: sizeStyle.valueSize,

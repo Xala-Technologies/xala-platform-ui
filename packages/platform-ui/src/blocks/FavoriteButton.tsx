@@ -150,7 +150,7 @@ export function FavoriteButton({
         disabled={disabled || isLoading}
         className={cn('favorite-button-compact', className)}
         data-color={isFavorited ? 'danger' : 'neutral'}
-        data-size="small"
+        data-size="sm"
         style={{
           display: 'inline-flex',
           alignItems: 'center',

@@ -217,7 +217,7 @@ function TimelineEntry({ item, isLast, showConnector }: TimelineEntryProps): Rea
             </div>
             {item.description && (
               <Paragraph
-                data-size="small"
+                data-size="sm"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-sm)',

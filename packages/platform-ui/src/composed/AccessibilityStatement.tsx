@@ -55,7 +55,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <Heading
       level={2}
-      data-size="medium"
+      data-size="md"
       style={{
         fontSize: 'var(--ds-font-size-lg)',
         fontWeight: 'var(--ds-font-weight-semibold)',
@@ -139,7 +139,7 @@ export function AccessibilityStatement({
       <Heading
         level={1}
         id="accessibility-statement-title"
-        data-size="large"
+        data-size="lg"
         style={{
           fontSize: 'var(--ds-font-size-2xl)',
           fontWeight: 'var(--ds-font-weight-bold)',
@@ -151,7 +151,7 @@ export function AccessibilityStatement({
       </Heading>
 
       <Paragraph
-        data-size="medium"
+        data-size="md"
         style={{
           fontSize: 'var(--ds-font-size-md)',
           color: 'var(--ds-color-neutral-text-subtle)',
@@ -163,7 +163,7 @@ export function AccessibilityStatement({
 
       {/* Introduction */}
       <section>
-        <Paragraph data-size="medium" style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
+        <Paragraph data-size="md" style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
           {organizationName} er forpliktet til å gjøre {websiteName} tilgjengelig for alle brukere,
           inkludert personer med nedsatt funksjonsevne. Vi jobber kontinuerlig med å forbedre
           brukeropplevelsen og sikre at nettstedet følger gjeldende tilgjengelighetskrav.
@@ -186,7 +186,7 @@ export function AccessibilityStatement({
             WCAG 2.1 Nivå {wcagLevel}
           </span>
         </div>
-        <Paragraph data-size="medium" style={{ margin: 0, lineHeight: 1.6 }}>
+        <Paragraph data-size="md" style={{ margin: 0, lineHeight: 1.6 }}>
           {conformanceLevel === 'full' && (
             <>
               Dette nettstedet er i fullstendig samsvar med Web Content Accessibility Guidelines
@@ -214,7 +214,10 @@ export function AccessibilityStatement({
         <>
           <SectionHeading>Kjente tilgjengelighetsproblemer</SectionHeading>
           <section>
-            <Paragraph data-size="medium" style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
+            <Paragraph
+              data-size="md"
+              style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}
+            >
               Følgende tilgjengelighetsproblemer er identifisert:
             </Paragraph>
             <ul
@@ -241,7 +244,7 @@ export function AccessibilityStatement({
                   )}
                   {issue.workaround && (
                     <Paragraph
-                      data-size="small"
+                      data-size="sm"
                       style={{
                         margin: 'var(--ds-spacing-2) 0 0 0',
                         fontSize: 'var(--ds-font-size-sm)',
@@ -252,7 +255,7 @@ export function AccessibilityStatement({
                   )}
                   {issue.expectedFix && (
                     <Paragraph
-                      data-size="small"
+                      data-size="sm"
                       style={{
                         margin: 'var(--ds-spacing-1) 0 0 0',
                         fontSize: 'var(--ds-font-size-sm)',
@@ -275,12 +278,15 @@ export function AccessibilityStatement({
           <SectionHeading>Testing</SectionHeading>
           <section>
             {lastTested && (
-              <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-2) 0', lineHeight: 1.6 }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: '0 0 var(--ds-spacing-2) 0', lineHeight: 1.6 }}
+              >
                 <strong>Sist testet:</strong> {lastTested}
               </Paragraph>
             )}
             {testingMethod && (
-              <Paragraph data-size="small" style={{ margin: '0', lineHeight: 1.6 }}>
+              <Paragraph data-size="sm" style={{ margin: '0', lineHeight: 1.6 }}>
                 <strong>Testmetode:</strong> {testingMethod}
               </Paragraph>
             )}
@@ -291,7 +297,7 @@ export function AccessibilityStatement({
       {/* Technical Standards */}
       <SectionHeading>Tekniske standarder</SectionHeading>
       <section>
-        <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-3) 0', lineHeight: 1.6 }}>
+        <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-3) 0', lineHeight: 1.6 }}>
           Tilgjengeligheten på {websiteName} er basert på følgende standarder:
         </Paragraph>
         <ul style={{ margin: 0, padding: '0 0 0 var(--ds-spacing-5)', listStyleType: 'disc' }}>
@@ -331,7 +337,7 @@ export function AccessibilityStatement({
       {/* Contact Information */}
       <SectionHeading>Kontakt oss</SectionHeading>
       <section>
-        <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
+        <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-4) 0', lineHeight: 1.6 }}>
           Hvis du opplever tilgjengelighetsproblemer på dette nettstedet, eller har forslag til
           forbedringer, vennligst kontakt oss:
         </Paragraph>
@@ -344,7 +350,7 @@ export function AccessibilityStatement({
             border: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
-          <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
+          <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
             <strong>E-post:</strong>{' '}
             <a
               href={`mailto:${contact.email}`}
@@ -354,7 +360,7 @@ export function AccessibilityStatement({
             </a>
           </Paragraph>
           {contact.phone && (
-            <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
+            <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
               <strong>Telefon:</strong>{' '}
               <a
                 href={`tel:${contact.phone.replace(/\s/g, '')}`}
@@ -365,7 +371,7 @@ export function AccessibilityStatement({
             </Paragraph>
           )}
           {contact.address && (
-            <Paragraph data-size="small" style={{ margin: 0 }}>
+            <Paragraph data-size="sm" style={{ margin: 0 }}>
               <strong>Adresse:</strong> {contact.address}
             </Paragraph>
           )}
@@ -375,7 +381,7 @@ export function AccessibilityStatement({
       {/* Enforcement */}
       <SectionHeading>Tilsyn og klage</SectionHeading>
       <section>
-        <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-3) 0', lineHeight: 1.6 }}>
+        <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-3) 0', lineHeight: 1.6 }}>
           Digitaliseringsdirektoratet (Digdir) har ansvaret for tilsyn med universell utforming av
           IKT i Norge. Hvis du mener at nettstedet ikke oppfyller kravene til universell utforming,
           og vi ikke har løst problemet etter at du har kontaktet oss, kan du sende en klage til:
@@ -390,7 +396,7 @@ export function AccessibilityStatement({
           }}
         >
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: '0 0 var(--ds-spacing-2) 0',
               fontWeight: 'var(--ds-font-weight-semibold)',
@@ -398,7 +404,7 @@ export function AccessibilityStatement({
           >
             Digitaliseringsdirektoratet
           </Paragraph>
-          <Paragraph data-size="small" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
+          <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
             <a
               href="https://www.digdir.no/digitalisering-og-samordning/universell-utforming/1652"
               target="_blank"
@@ -408,7 +414,7 @@ export function AccessibilityStatement({
               digdir.no/universell-utforming
             </a>
           </Paragraph>
-          <Paragraph data-size="small" style={{ margin: 0 }}>
+          <Paragraph data-size="sm" style={{ margin: 0 }}>
             E-post:{' '}
             <a
               href="mailto:postmottak@digdir.no"
@@ -425,7 +431,9 @@ export function AccessibilityStatement({
         <>
           <SectionHeading>Tilleggsinformasjon</SectionHeading>
           <section>
-            <Paragraph data-size="small" style={{ margin: 0, lineHeight: 1.6 }}>{additionalInfo}</Paragraph>
+            <Paragraph data-size="sm" style={{ margin: 0, lineHeight: 1.6 }}>
+              {additionalInfo}
+            </Paragraph>
           </section>
         </>
       )}

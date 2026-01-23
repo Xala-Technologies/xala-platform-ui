@@ -210,7 +210,7 @@ export function StatusBanner({
 
       <div style={{ flex: 1, minWidth: 0 }}>
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontWeight: 'var(--ds-font-weight-semibold)',
@@ -221,7 +221,7 @@ export function StatusBanner({
         </Paragraph>
         {description && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               margin: 'var(--ds-spacing-1) 0 0 0',
               fontSize: 'var(--ds-font-size-sm)',

@@ -233,7 +233,15 @@ export function TableRowActions({
                 role="menuitem"
                 disabled={action.disabled}
                 onClick={() => handleActionClick(action)}
-                data-color={action.variant === 'danger' ? 'danger' : action.variant === 'success' ? 'success' : action.variant === 'warning' ? 'warning' : 'neutral'}
+                data-color={
+                  action.variant === 'danger'
+                    ? 'danger'
+                    : action.variant === 'success'
+                      ? 'success'
+                      : action.variant === 'warning'
+                        ? 'warning'
+                        : 'neutral'
+                }
                 style={{
                   display: 'flex',
                   alignItems: 'center',

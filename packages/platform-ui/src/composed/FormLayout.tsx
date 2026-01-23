@@ -121,7 +121,7 @@ export function FormSection({
             {title && (
               <Heading
                 level={3}
-                data-size="medium"
+                data-size="md"
                 style={{
                   margin: 0,
                   fontSize: 'var(--ds-font-size-lg)',
@@ -134,7 +134,7 @@ export function FormSection({
             )}
             {description && (
               <Paragraph
-                data-size="small"
+                data-size="sm"
                 style={{
                   margin: 'var(--ds-spacing-1) 0 0 0',
                   fontSize: 'var(--ds-font-size-sm)',
@@ -283,7 +283,7 @@ export function FormField({
       {children}
       {(error || helperText) && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 'var(--ds-spacing-1) 0 0 0',
             fontSize: 'var(--ds-font-size-sm)',

@@ -723,7 +723,7 @@ export function FilterPanel({
 
         {conditions.length === 0 && (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               fontSize: 'var(--ds-font-size-sm)',
               color: 'var(--ds-color-neutral-text-subtle)',

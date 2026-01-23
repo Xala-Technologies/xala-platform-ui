@@ -85,7 +85,17 @@ export function StatusTabs({
             aria-selected={isActive}
             role="tab"
             className={cn('status-tab', isActive && 'status-tab--active')}
-            data-color={isActive ? (tab.status === 'danger' ? 'danger' : tab.status === 'warning' ? 'warning' : tab.status === 'success' ? 'success' : 'accent') : 'neutral'}
+            data-color={
+              isActive
+                ? tab.color === 'danger'
+                  ? 'danger'
+                  : tab.color === 'warning'
+                    ? 'warning'
+                    : tab.color === 'success'
+                      ? 'success'
+                      : 'accent'
+                : 'neutral'
+            }
             style={{
               display: 'flex',
               alignItems: 'center',

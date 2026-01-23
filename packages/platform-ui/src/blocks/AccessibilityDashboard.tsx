@@ -94,7 +94,7 @@ export function AccessibilityDashboard({
         <div>
           <Heading
             level={2}
-            data-size="xlarge"
+            data-size="xl"
             style={{
               fontSize: 'var(--ds-font-size-2xl)',
               fontWeight: 'var(--ds-font-weight-bold)' as unknown as number,
@@ -105,7 +105,7 @@ export function AccessibilityDashboard({
             Tilgjengelighetsoversikt
           </Heading>
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               fontSize: 'var(--ds-font-size-sm)',
               color: 'var(--ds-color-neutral-text-subtle)',
@@ -123,7 +123,7 @@ export function AccessibilityDashboard({
             onClick={onRefresh}
             disabled={isLoading}
             data-color="accent"
-            data-size="small"
+            data-size="sm"
             style={{
               padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
               backgroundColor: 'var(--ds-color-accent-base-default)',
@@ -325,7 +325,7 @@ export function AccessibilityDashboard({
         >
           <Heading
             level={3}
-            data-size="medium"
+            data-size="md"
             style={{
               fontSize: 'var(--ds-font-size-lg)',
               fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
@@ -438,7 +438,7 @@ function MetricCard({
         </span>
         <Heading
           level={4}
-          data-size="small"
+          data-size="sm"
           style={{
             fontSize: 'var(--ds-font-size-md)',
             fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,

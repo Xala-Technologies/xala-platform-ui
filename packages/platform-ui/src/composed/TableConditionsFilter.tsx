@@ -536,7 +536,7 @@ export function TableConditionsFilter({
         <div>
           <Heading
             level={3}
-            data-size="medium"
+            data-size="md"
             style={{
               margin: 0,
               fontSize: 'var(--ds-font-size-md)',
@@ -548,7 +548,7 @@ export function TableConditionsFilter({
           </Heading>
           {subtitle && (
             <Paragraph
-              data-size="small"
+              data-size="sm"
               style={{
                 margin: 0,
                 marginTop: 'var(--ds-spacing-1)',
@@ -582,7 +582,7 @@ export function TableConditionsFilter({
       <div style={{ padding: 'var(--ds-spacing-4) var(--ds-spacing-5)' }}>
         {conditions.length === 0 ? (
           <Paragraph
-            data-size="small"
+            data-size="sm"
             style={{
               textAlign: 'center',
               color: 'var(--ds-color-neutral-text-subtle)',

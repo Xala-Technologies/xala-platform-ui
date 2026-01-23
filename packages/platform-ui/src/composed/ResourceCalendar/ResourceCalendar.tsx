@@ -257,7 +257,9 @@ export function ResourceCalendar({
     return (
       <div className={`resource-object-calendar loading ${className}`}>
         <div className="ds-calendar-header">
-          <Heading level={3} data-size="medium">{resourceName}</Heading>
+          <Heading level={3} data-size="md">
+            {resourceName}
+          </Heading>
         </div>
         <div className="ds-calendar-loading">
           <span>{t('calendar.loading')}</span>
@@ -271,7 +273,9 @@ export function ResourceCalendar({
     return (
       <div className={`resource-object-calendar error ${className}`}>
         <div className="ds-calendar-header">
-          <Heading level={3} data-size="medium">{resourceName}</Heading>
+          <Heading level={3} data-size="md">
+            {resourceName}
+          </Heading>
         </div>
         <div className="ds-calendar-error">
           <span>{error}</span>
@@ -286,7 +290,9 @@ export function ResourceCalendar({
       data-resource-object-id={resourceId}
     >
       <div className="ds-calendar-header">
-        <Heading level={3} data-size="medium">{resourceName}</Heading>
+        <Heading level={3} data-size="md">
+          {resourceName}
+        </Heading>
         {config.availableModes.length > 1 && (
           <div className="ds-mode-switcher">
             {config.availableModes.map((mode) => (

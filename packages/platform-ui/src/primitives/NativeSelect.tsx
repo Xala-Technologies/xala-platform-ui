@@ -48,7 +48,7 @@ export function NativeSelect({
 
       {description && !error && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -81,7 +81,7 @@ export function NativeSelect({
 
       {error && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',

@@ -382,7 +382,7 @@ export function NumberInput({
 
       {(error || helperText) && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             marginTop: 'var(--ds-spacing-1)',
             fontSize: 'var(--ds-font-size-sm)',

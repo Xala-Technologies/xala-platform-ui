@@ -274,7 +274,7 @@ export function EmptyState({
 
       <Heading
         level={3}
-        data-size={variant === 'compact' ? 'medium' : 'large'}
+        data-size={variant === 'compact' ? 'md' : 'lg'}
         style={{
           margin: '0 0 var(--ds-spacing-2) 0',
           fontSize: variant === 'compact' ? 'var(--ds-font-size-md)' : 'var(--ds-font-size-lg)',
@@ -287,7 +287,7 @@ export function EmptyState({
 
       {description && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
@@ -339,7 +339,7 @@ export function NotFoundState({
 
       <Heading
         level={3}
-        data-size="medium"
+        data-size="md"
         style={{
           margin: '0 0 var(--ds-spacing-2) 0',
           fontSize: 'var(--ds-font-size-lg)',
@@ -351,7 +351,7 @@ export function NotFoundState({
       </Heading>
 
       <Paragraph
-        data-size="small"
+        data-size="sm"
         style={{
           margin: 0,
           fontSize: 'var(--ds-font-size-sm)',
@@ -433,7 +433,7 @@ export function ErrorState({
 
       <Heading
         level={3}
-        data-size="medium"
+        data-size="md"
         style={{
           margin: '0 0 var(--ds-spacing-2) 0',
           fontSize: 'var(--ds-font-size-lg)',
@@ -445,7 +445,7 @@ export function ErrorState({
       </Heading>
 
       <Paragraph
-        data-size="small"
+        data-size="sm"
         style={{
           margin: 0,
           fontSize: 'var(--ds-font-size-sm)',

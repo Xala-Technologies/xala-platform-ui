@@ -212,7 +212,7 @@ export function TabEmptyState({
         </span>
       )}
       <Paragraph
-        data-size="medium"
+        data-size="md"
         style={{
           margin: 0,
           marginBottom: description ? 'var(--ds-spacing-1)' : 0,
@@ -225,7 +225,7 @@ export function TabEmptyState({
       </Paragraph>
       {description && (
         <Paragraph
-          data-size="small"
+          data-size="sm"
           style={{
             margin: 0,
             fontSize: 'var(--ds-font-size-sm)',
