@@ -92,7 +92,7 @@ const scopeDescriptions: Record<ScopeType, string> = {
  * ```
  */
 export function ScopeSelector({
-  userId,
+  userId: _userId,
   currentScope = { scopeType: 'none' },
   availableObjects = [],
   availableOrganizations = [],
@@ -181,7 +181,7 @@ export function ScopeSelector({
       case 'specific':
         return scope.resourceIds?.length || 0;
       case 'organization':
-        return availableObjects.filter((obj) =>
+        return availableObjects.filter((_obj) =>
           scope.organizationIds?.some((orgId) => {
             const org = availableOrganizations.find((o) => o.id === orgId);
             return org !== undefined;

@@ -204,6 +204,7 @@ export function ResourceListItem({
   };
 
   // Generate static map URL (using OpenStreetMap placeholder for demo)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const _getMapUrl = () => {
     if (latitude && longitude) {
       // Using a static map tile service

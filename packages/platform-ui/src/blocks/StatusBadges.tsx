@@ -302,7 +302,7 @@ export interface InventoryBadgeProps {
 }
 
 export function InventoryBadge({
-  total,
+  total: _total,
   available,
   size = 'sm',
 }: InventoryBadgeProps): React.ReactElement {

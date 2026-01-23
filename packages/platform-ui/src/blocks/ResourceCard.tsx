@@ -190,6 +190,7 @@ const categoryLabels: Record<string, string> = {
 };
 
 // Category colors for badges
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const categoryColors: Record<string, string> = {
   SPACE: 'accent',
   RESOURCE: 'info',
@@ -235,7 +236,7 @@ export function ResourceCard({
   showGradientOverlay = true,
   showFavoriteButton = true,
   showShareButton = true,
-  showCategory = true,
+  showCategory: _showCategory = true,
   maxAmenities = 3,
 }: ResourceCardProps): React.ReactElement {
   const [isHovered, setIsHovered] = React.useState(false);

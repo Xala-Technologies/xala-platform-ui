@@ -91,7 +91,7 @@ const riskLabels: Record<string, string> = {
  * ```
  */
 export function EffectivePermissionsView({
-  userId,
+  userId: _userId,
   permissions,
   showSource = true,
   groupByCategory = true,
