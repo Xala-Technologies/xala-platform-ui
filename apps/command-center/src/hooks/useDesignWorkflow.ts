@@ -48,6 +48,11 @@ export interface DesignWorkflowState {
     clarificationQuestions: ClarificationQuestion[];
     clarificationAnswers: ClarificationAnswer[];
     clarificationIntro?: string;
+    // Generation progress for "generate all" flow
+    generationProgress?: {
+        current: 'vision' | 'roadmap' | 'data-model' | 'sections' | 'complete';
+        completed: string[];
+    };
 }
 
 export interface DesignWorkflowActions {
@@ -67,6 +72,9 @@ export interface DesignWorkflowActions {
     setClarificationAnswer: (questionId: string, value: string | string[] | number) => void;
     submitClarifications: () => Promise<void>;
     skipClarifications: () => void;
+
+    // Generate All from Vision (pre-fills wizard)
+    generateAllFromVision: (input: string, onProgress?: (step: string) => void) => Promise<void>;
 
     // Navigation
     setPhase: (phase: DesignPhase) => void;
@@ -383,6 +391,69 @@ Generate clarification questions to refine this into a proper specification.`;
         }));
     }, []);
 
+    // Generate All from Vision - pre-fills all wizard steps
+    const generateAllFromVision = useCallback(async (
+        input: string,
+        onProgress?: (step: string) => void
+    ): Promise<void> => {
+        setState(s => ({
+            ...s,
+            isLoading: true,
+            error: null,
+            generationProgress: { current: 'vision', completed: [] },
+        }));
+
+        try {
+            // Step 1: Generate Vision
+            onProgress?.('Generating Product Vision...');
+            setState(s => ({
+                ...s,
+                generationProgress: { current: 'vision', completed: [] },
+            }));
+            const vision = await generateVision(input);
+
+            // Step 2: Generate Roadmap
+            onProgress?.('Creating Roadmap...');
+            setState(s => ({
+                ...s,
+                generationProgress: { current: 'roadmap', completed: ['vision'] },
+            }));
+            const roadmapInput = `Based on the product vision for "${vision.name}", create a comprehensive roadmap.
+Key features: ${vision.keyFeatures.map((f: { name: string }) => f.name).join(', ')}
+Target users: ${vision.targetUsers.map((u: { name: string }) => u.name).join(', ')}`;
+            await generateRoadmap(roadmapInput);
+
+            // Step 3: Generate Data Model
+            onProgress?.('Designing Data Model...');
+            setState(s => ({
+                ...s,
+                generationProgress: { current: 'data-model', completed: ['vision', 'roadmap'] },
+            }));
+            const dataModelInput = `Design a comprehensive data model for "${vision.name}".
+Problem: ${vision.problemStatement}
+Features: ${vision.keyFeatures.map((f: { name: string; description: string }) => `${f.name}: ${f.description}`).join('\n')}`;
+            await generateDataModel(dataModelInput);
+
+            // Complete
+            onProgress?.('Complete!');
+            setState(s => ({
+                ...s,
+                isLoading: false,
+                generationProgress: { current: 'complete', completed: ['vision', 'roadmap', 'data-model'] },
+                currentStep: 'vision', // Go to vision step so user can review
+            }));
+        } catch (err) {
+            const message = err instanceof Error ? err.message : 'Failed to generate';
+            setState(s => ({
+                ...s,
+                isLoading: false,
+                error: message,
+                generationProgress: undefined,
+            }));
+            throw err;
+        }
+    }, [generateVision, generateRoadmap, generateDataModel]);
+
     return [state, {
         generateVision,
         generateRoadmap,
@@ -393,7 +464,9 @@ Generate clarification questions to refine this into a proper specification.`;
         setClarificationAnswer,
         submitClarifications,
         skipClarifications,
+        generateAllFromVision,
         setPhase,
         reset,
     }];
 }
+
