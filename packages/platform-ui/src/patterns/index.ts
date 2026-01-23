@@ -129,3 +129,27 @@ export type {
   CartSummary,
   PriceBreakdownLine,
 } from './CartSidebar';
+
+// Add-Ons Selector
+export { AddOnsSelector } from './AddOnsSelector';
+export type {
+  AddOnsSelectorProps,
+  AddOnsSelectorLabels,
+  AddOnItem,
+  SelectedAddOn,
+  AddOnPricingUnit,
+} from './AddOnsSelector';
+
+// Stepper Header
+export { StepperHeader } from './StepperHeader';
+export type { StepperHeaderProps, StepperHeaderLabels, StepperStep } from './StepperHeader';
+
+// Activity Timeline
+export { ActivityTimeline } from './ActivityTimeline';
+export type {
+  ActivityTimelineProps,
+  ActivityTimelineLabels,
+  ActivityTimelineItem,
+  StatusColorMap,
+} from './ActivityTimeline';
+// Note: ActivityStatus is not exported to avoid conflict with blocks/activity
