@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Checkbox } from '../../index';
+import { Button, Card, Heading, Paragraph, Checkbox } from '../index';
 import {
   CheckCircle,
   XCircle,

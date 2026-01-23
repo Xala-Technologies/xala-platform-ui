@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConfirmDialog } from '../composed';
+import { ConfirmDialog } from '../../composed';
 import { Button } from '../../primitives';
 import { useState } from 'react';
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Textfield } from '../../index';
+import { Button, Card, Heading, Paragraph, Textfield } from '../index';
 import {
   BookOpen,
   Palette,
@@ -213,7 +213,7 @@ function App() {
             fontSize: 'var(--ds-font-size-sm)',
           }}
         >
-          {`import { Button, Card, Heading } from '../../index';
+          {`import { Button, Card, Heading } from '../index';
 
 export function MyComponent() {
   return (
@@ -259,7 +259,7 @@ export const FirstComponent: Story = {
   Card, 
   Heading, 
   Paragraph 
-} from '../../index';
+} from '../index';
 import { useTranslation } from '@xala-technologies/platform/i18n';
 
 export function WelcomeCard() {
@@ -549,7 +549,7 @@ export const RealWorldPatterns: Story = {
           {
             title: 'Form with Validation',
             description: 'Handle user input with proper validation and error states',
-            code: `import { Textfield, Button } from '../../index';
+            code: `import { Textfield, Button } from '../index';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from '@xala-technologies/platform/i18n';
 
@@ -590,7 +590,7 @@ export function ContactForm() {
           {
             title: 'Loading States',
             description: 'Provide feedback during async operations',
-            code: `import { Button, Spinner } from '../../index';
+            code: `import { Button, Spinner } from '../index';
 import { useState } from 'react';
 
 export function SaveButton() {
@@ -630,7 +630,7 @@ export function SaveButton() {
           {
             title: 'Conditional Rendering',
             description: 'Show different UI based on data state',
-            code: `import { DataTable, EmptyState, ErrorState } from '../../index';
+            code: `import { DataTable, EmptyState, ErrorState } from '../index';
 import { useQuery } from '@tanstack/react-query';
 
 export function UserList() {
@@ -667,7 +667,7 @@ export function UserList() {
           {
             title: 'Responsive Layout',
             description: 'Build layouts that adapt to screen size',
-            code: `import { Card, Heading } from '../../index';
+            code: `import { Card, Heading } from '../index';
 
 export function DashboardGrid() {
   return (

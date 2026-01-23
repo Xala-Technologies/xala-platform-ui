@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Drawer, DrawerSection, DrawerItem } from '../composed';
+import { Drawer, DrawerSection, DrawerItem } from '../../composed';
 import { Button } from '../../primitives';
 import { useState } from 'react';
 

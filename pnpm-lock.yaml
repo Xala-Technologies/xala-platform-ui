@@ -48,6 +48,9 @@ importers:
       '@storybook/manager-api':
         specifier: ^8.6.15
         version: 8.6.15(storybook@8.6.15)
+      '@storybook/react':
+        specifier: ^8.6.15
+        version: 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)
       '@storybook/react-vite':
         specifier: ^8.6.15
         version: 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)(vite@5.4.21)

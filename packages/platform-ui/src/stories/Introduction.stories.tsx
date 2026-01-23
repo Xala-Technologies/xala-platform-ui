@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '../../index';
+import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '@digdir/designsystemet-react';
 import {
   WheelchairIcon,
   PaletteIcon,
@@ -430,7 +430,7 @@ export const InteractiveLiveDemo: Story = {
               lineHeight: '1.6',
             }}
           >
-            {`import { Button, Card, Textfield, Checkbox } from '../../index';
+            {`import { Button, Card, Textfield, Checkbox } from '../index';
 import { useState } from 'react';
 
 export function WelcomeForm() {
