@@ -1,0 +1,215 @@
+name: Design Review Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled, unlabeled]
+    paths:
+      - 'packages/platform-ui/src/primitives/**'
+      - 'packages/platform-ui/src/composed/**'
+      - 'packages/platform-ui/src/blocks/**'
+      - 'packages/platform-ui/src/patterns/**'
+      - 'packages/platform-ui/src/shells/**'
+      - 'packages/platform-ui/src/pages/**'
+      - 'src/primitives/**'
+      - 'src/composed/**'
+      - 'src/blocks/**'
+      - 'src/patterns/**'
+      - 'src/shells/**'
+      - 'src/pages/**'
+      - 'specs/**'
+
+jobs:
+  check-design-approval:
+    name: Design Approval Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for design approval label
+        id: check-label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels.map(l => l.name);
+
+            const designLabels = {
+              draft: 'design:draft',
+              inReview: 'design:in-review',
+              approved: 'design:approved',
+              implemented: 'design:implemented'
+            };
+
+            const hasApproved = labels.includes(designLabels.approved);
+            const hasImplemented = labels.includes(designLabels.implemented);
+            const hasDraft = labels.includes(designLabels.draft);
+            const hasInReview = labels.includes(designLabels.inReview);
+
+            // Check if this PR touches component files
+            const files = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+
+            const componentPaths = [
+              'primitives/', 'composed/', 'blocks/',
+              'patterns/', 'shells/', 'pages/'
+            ];
+
+            const touchesComponents = files.data.some(f =>
+              componentPaths.some(p => f.filename.includes(p))
+            );
+
+            console.log('Labels found:', labels);
+            console.log('Touches components:', touchesComponents);
+            console.log('Has approved label:', hasApproved);
+            console.log('Has implemented label:', hasImplemented);
+
+            // If PR touches components, require design approval
+            if (touchesComponents && !hasApproved && !hasImplemented) {
+              core.setFailed(
+                `This PR modifies component files and requires the "${designLabels.approved}" label.\n\n` +
+                `Current design status:\n` +
+                `- Draft: ${hasDraft ? 'Yes' : 'No'}\n` +
+                `- In Review: ${hasInReview ? 'Yes' : 'No'}\n` +
+                `- Approved: ${hasApproved ? 'Yes' : 'No'}\n\n` +
+                `Please ensure design specs are reviewed and approved before merging.`
+              );
+            } else {
+              console.log('Design approval check passed');
+            }
+
+  check-spec-artifacts:
+    name: Check Design Spec Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for new components without specs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const files = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+
+            const componentDirs = ['primitives', 'composed', 'blocks', 'patterns', 'shells', 'pages'];
+            const newComponents = new Set();
+
+            // Find new component files
+            for (const file of files.data) {
+              if (file.status !== 'added') continue;
+
+              for (const dir of componentDirs) {
+                // Match patterns like src/blocks/NewComponent.tsx or packages/platform-ui/src/blocks/NewComponent.tsx
+                const regex = new RegExp(`(?:packages/platform-ui/)?src/${dir}/([A-Z][a-zA-Z0-9]+)\\.tsx$`);
+                const match = file.filename.match(regex);
+
+                if (match && !file.filename.includes('.stories.')) {
+                  newComponents.add(match[1]);
+                }
+              }
+            }
+
+            if (newComponents.size === 0) {
+              console.log('No new components detected');
+              return;
+            }
+
+            console.log('New components detected:', Array.from(newComponents));
+
+            // Check for spec artifacts
+            const missingSpecs = [];
+            const requiredFiles = ['SPEC.md', 'COMPOSE.json', 'TESTIDS.json', 'APPROVAL.json'];
+
+            for (const component of newComponents) {
+              const specDir = `specs/${component}`;
+              const missing = [];
+
+              for (const file of requiredFiles) {
+                const specPath = `${specDir}/${file}`;
+                if (!fs.existsSync(specPath)) {
+                  missing.push(file);
+                }
+              }
+
+              if (missing.length > 0) {
+                missingSpecs.push({ component, missing });
+              }
+            }
+
+            if (missingSpecs.length > 0) {
+              let message = '## Missing Design Spec Artifacts\n\n';
+              message += 'The following new components are missing required spec artifacts:\n\n';
+
+              for (const { component, missing } of missingSpecs) {
+                message += `### ${component}\n`;
+                message += `Missing files in \`specs/${component}/\`:\n`;
+                for (const file of missing) {
+                  message += `- [ ] ${file}\n`;
+                }
+                message += '\n';
+              }
+
+              message += 'Please create the required spec artifacts using the templates in `specs/_templates/`.\n';
+              message += 'This is a warning - specs are recommended but not blocking for now.';
+
+              // Post comment instead of failing
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: message
+              });
+
+              console.log('Warning: Missing spec artifacts for new components');
+            }
+
+  validate-specs:
+    name: Validate Spec Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate changed specs
+        run: |
+          # Get list of changed spec files
+          CHANGED_SPECS=$(git diff --name-only origin/main...HEAD -- 'specs/**/*.json' || true)
+
+          if [ -z "$CHANGED_SPECS" ]; then
+            echo "No spec JSON files changed"
+            exit 0
+          fi
+
+          echo "Validating changed specs: $CHANGED_SPECS"
+
+          # Validate JSON syntax
+          for spec in $CHANGED_SPECS; do
+            if [ -f "$spec" ]; then
+              echo "Validating JSON syntax: $spec"
+              node -e "JSON.parse(require('fs').readFileSync('$spec', 'utf8'))" || {
+                echo "Invalid JSON in $spec"
+                exit 1
+              }
+            fi
+          done
+
+          echo "All spec files validated successfully"

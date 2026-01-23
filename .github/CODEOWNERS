@@ -1,0 +1,32 @@
+# Default owners for everything in the repo
+* @xala-technologies/platform-ui-maintainers
+
+# Design specifications require design team approval
+/specs/ @xala-technologies/design-team
+
+# GitHub configuration requires senior maintainer approval
+/.github/ @xala-technologies/platform-seniors
+
+# Package configuration and build setup
+/packages/*/package.json @xala-technologies/platform-seniors
+/packages/*/tsup.config.ts @xala-technologies/platform-seniors
+/packages/*/tsconfig.json @xala-technologies/platform-seniors
+
+# Root configuration files
+/pnpm-workspace.yaml @xala-technologies/platform-seniors
+/package.json @xala-technologies/platform-seniors
+
+# Component layers - specific ownership
+/packages/platform-ui/src/primitives/ @xala-technologies/design-team @xala-technologies/platform-ui-maintainers
+/packages/platform-ui/src/composed/ @xala-technologies/platform-ui-maintainers
+/packages/platform-ui/src/blocks/ @xala-technologies/platform-ui-maintainers
+/packages/platform-ui/src/patterns/ @xala-technologies/design-team @xala-technologies/platform-ui-maintainers
+/packages/platform-ui/src/shells/ @xala-technologies/platform-seniors
+/packages/platform-ui/src/pages/ @xala-technologies/platform-seniors
+
+# Storybook stories
+/packages/platform-ui/src/stories/ @xala-technologies/platform-ui-maintainers
+
+# Documentation
+/docs/ @xala-technologies/platform-ui-maintainers
+*.md @xala-technologies/platform-ui-maintainers

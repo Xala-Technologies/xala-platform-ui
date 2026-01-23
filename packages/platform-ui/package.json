@@ -1,0 +1,158 @@
+{
+  "name": "@xala-technologies/platform-ui",
+  "version": "1.0.1",
+  "description": "Design system components built on Norwegian Designsystemet for React applications",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js",
+      "require": "./dist/primitives/index.cjs"
+    },
+    "./composed": {
+      "types": "./dist/composed/index.d.ts",
+      "import": "./dist/composed/index.js",
+      "require": "./dist/composed/index.cjs"
+    },
+    "./shells": {
+      "types": "./dist/shells/index.d.ts",
+      "import": "./dist/shells/index.js",
+      "require": "./dist/shells/index.cjs"
+    },
+    "./blocks": {
+      "types": "./dist/blocks/index.d.ts",
+      "import": "./dist/blocks/index.js",
+      "require": "./dist/blocks/index.cjs"
+    },
+    "./themes": {
+      "types": "./dist/themes/index.d.ts",
+      "import": "./dist/themes/index.js",
+      "require": "./dist/themes/index.cjs"
+    },
+    "./patterns": {
+      "types": "./dist/patterns/index.d.ts",
+      "import": "./dist/patterns/index.js",
+      "require": "./dist/patterns/index.cjs"
+    },
+    "./pages": {
+      "types": "./dist/pages/index.d.ts",
+      "import": "./dist/pages/index.js",
+      "require": "./dist/pages/index.cjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js",
+      "require": "./dist/tokens/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
+    },
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "import": "./dist/styles.js",
+      "require": "./dist/styles.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "primitives": ["./dist/primitives/index.d.ts"],
+      "composed": ["./dist/composed/index.d.ts"],
+      "shells": ["./dist/shells/index.d.ts"],
+      "blocks": ["./dist/blocks/index.d.ts"],
+      "themes": ["./dist/themes/index.d.ts"],
+      "patterns": ["./dist/patterns/index.d.ts"],
+      "pages": ["./dist/pages/index.d.ts"],
+      "tokens": ["./dist/tokens/index.d.ts"],
+      "types": ["./dist/types/index.d.ts"],
+      "styles": ["./dist/styles.d.ts"]
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,json,md}\"",
+    "verify:boundaries": "node scripts/verify-boundaries.js",
+    "verify:design-tokens": "node scripts/verify-design-tokens.js",
+    "verify:all": "pnpm verify:boundaries && pnpm verify:design-tokens",
+    "quality": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm verify:all",
+    "prepublishOnly": "pnpm quality && pnpm build"
+  },
+  "keywords": [
+    "xala",
+    "xalatechnologies",
+    "ui",
+    "react",
+    "typescript",
+    "designsystemet",
+    "design-system",
+    "components"
+  ],
+  "author": "Xala Technologies",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xala-Technologies/xala-platform-ui.git",
+    "directory": "packages/platform-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/Xala-Technologies/xala-platform-ui/issues"
+  },
+  "homepage": "https://github.com/Xala-Technologies/xala-platform-ui#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-react": "^1.9.0",
+    "@navikt/aksel-icons": "^8.0.1",
+    "lucide-react": "^0.562.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@digdir/designsystemet-css": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "prettier": "^3.2.5",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "react-router-dom": ">=6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    },
+    "react-router-dom": {
+      "optional": true
+    }
+  }
+}

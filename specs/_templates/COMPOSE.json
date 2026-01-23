@@ -1,0 +1,186 @@
+{
+  "$schema": "../compose.schema.json",
+  "componentName": "{{ComponentName}}",
+  "version": "0.1.0",
+  "layer": "{{layer}}",
+  "level": 0,
+  "description": "Brief description of the component",
+  "status": "draft",
+  "designsystemetComponents": [
+    {
+      "name": "Card",
+      "importPath": "@digdir/designsystemet-react",
+      "purpose": "Main container wrapper"
+    },
+    {
+      "name": "Heading",
+      "importPath": "@digdir/designsystemet-react",
+      "purpose": "Component title"
+    },
+    {
+      "name": "Paragraph",
+      "importPath": "@digdir/designsystemet-react",
+      "purpose": "Descriptive text"
+    },
+    {
+      "name": "Button",
+      "importPath": "@digdir/designsystemet-react",
+      "purpose": "Interactive actions"
+    }
+  ],
+  "internalComponents": [],
+  "composition": {
+    "root": {
+      "component": "Card",
+      "dataAttributes": {
+        "data-color": "neutral",
+        "data-size": "medium"
+      },
+      "children": [
+        {
+          "component": "Heading",
+          "props": {
+            "level": 2
+          },
+          "dataAttributes": {
+            "data-size": "medium"
+          },
+          "slot": "title"
+        },
+        {
+          "component": "Paragraph",
+          "dataAttributes": {
+            "data-size": "medium"
+          },
+          "slot": "description"
+        },
+        {
+          "component": "Box",
+          "role": "actions",
+          "children": [
+            {
+              "component": "Button",
+              "props": {
+                "variant": "primary"
+              },
+              "dataAttributes": {
+                "data-size": "medium"
+              },
+              "slot": "primaryAction"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "props": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Component title text"
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "Optional description text"
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["default", "compact", "expanded"],
+      "default": "default",
+      "description": "Visual variant"
+    },
+    "size": {
+      "type": "string",
+      "enum": ["small", "medium", "large"],
+      "default": "medium",
+      "description": "Component size"
+    },
+    "color": {
+      "type": "string",
+      "enum": ["neutral", "accent", "brand1", "brand2", "brand3"],
+      "default": "neutral",
+      "description": "Color theme"
+    },
+    "loading": {
+      "type": "boolean",
+      "default": false,
+      "description": "Loading state"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disabled state"
+    },
+    "onAction": {
+      "type": "function",
+      "signature": "(event: React.MouseEvent) => void",
+      "description": "Callback fired on primary action"
+    }
+  },
+  "slots": {
+    "title": {
+      "description": "Title content (string or ReactNode)",
+      "required": true
+    },
+    "description": {
+      "description": "Description content",
+      "required": false
+    },
+    "primaryAction": {
+      "description": "Primary action button",
+      "required": false
+    },
+    "secondaryActions": {
+      "description": "Additional action buttons",
+      "required": false
+    }
+  },
+  "states": {
+    "default": {
+      "description": "Normal appearance",
+      "dataAttributes": {}
+    },
+    "loading": {
+      "description": "Loading indicator shown",
+      "dataAttributes": {
+        "aria-busy": "true"
+      }
+    },
+    "error": {
+      "description": "Error styling applied",
+      "dataAttributes": {
+        "data-color": "danger"
+      }
+    },
+    "empty": {
+      "description": "Empty state message shown",
+      "dataAttributes": {}
+    },
+    "disabled": {
+      "description": "Interactions disabled",
+      "dataAttributes": {
+        "aria-disabled": "true"
+      }
+    }
+  },
+  "accessibility": {
+    "role": null,
+    "ariaLabel": "{{title}}",
+    "ariaDescribedBy": "description-id",
+    "keyboardNavigation": {
+      "Tab": "Move focus to interactive elements",
+      "Enter": "Activate focused button",
+      "Space": "Activate focused button"
+    },
+    "focusManagement": "Focus moves to first interactive element"
+  },
+  "styling": {
+    "customProperties": [],
+    "dataAttributeVariants": {
+      "data-variant": ["default", "compact", "expanded"],
+      "data-size": ["small", "medium", "large"],
+      "data-color": ["neutral", "accent", "brand1", "brand2", "brand3"]
+    }
+  }
+}

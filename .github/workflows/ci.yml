@@ -12,37 +12,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
-      
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Type check
         run: pnpm typecheck
-      
+
       - name: Lint
         run: pnpm lint
-      
+
       - name: Format check
         run: pnpm format:check
-      
+
       - name: Verify boundaries
         run: pnpm verify:boundaries
-      
+
       - name: Verify design tokens
         run: pnpm verify:design-tokens
-      
+
       - name: Build
         run: pnpm build
 
@@ -51,21 +51,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
-      
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Build Storybook
         run: pnpm storybook:build

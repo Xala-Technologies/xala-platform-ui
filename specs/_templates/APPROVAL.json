@@ -1,0 +1,73 @@
+{
+  "$schema": "../approval.schema.json",
+  "componentName": "{{ComponentName}}",
+  "version": "0.1.0",
+  "status": "draft",
+  "createdAt": "{{isoDate}}",
+  "updatedAt": "{{isoDate}}",
+  "workflow": {
+    "currentPhase": "specification",
+    "phases": [
+      {
+        "name": "specification",
+        "status": "in_progress",
+        "requiredApprovals": ["design"],
+        "approvals": [],
+        "artifacts": ["SPEC.md", "COMPOSE.json", "TESTIDS.json"]
+      },
+      {
+        "name": "design_review",
+        "status": "pending",
+        "requiredApprovals": ["design", "accessibility"],
+        "approvals": [],
+        "artifacts": []
+      },
+      {
+        "name": "implementation",
+        "status": "pending",
+        "requiredApprovals": ["technical"],
+        "approvals": [],
+        "artifacts": ["component.tsx", "index.ts"]
+      },
+      {
+        "name": "qa_review",
+        "status": "pending",
+        "requiredApprovals": ["qa", "accessibility"],
+        "approvals": [],
+        "artifacts": ["*.stories.tsx", "*.test.tsx"]
+      },
+      {
+        "name": "final_approval",
+        "status": "pending",
+        "requiredApprovals": ["design", "technical", "accessibility"],
+        "approvals": [],
+        "artifacts": []
+      }
+    ]
+  },
+  "approvals": [],
+  "comments": [],
+  "blockers": [],
+  "labels": {
+    "github": "design:draft",
+    "priority": "medium",
+    "layer": "{{layer}}",
+    "complexity": "medium"
+  },
+  "metadata": {
+    "specAuthor": "",
+    "designOwner": "",
+    "technicalOwner": "",
+    "targetVersion": "1.x.x",
+    "relatedIssues": [],
+    "relatedPRs": []
+  },
+  "history": [
+    {
+      "timestamp": "{{isoDate}}",
+      "action": "created",
+      "actor": "",
+      "details": "Initial specification created"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "../testids.schema.json",
+  "componentName": "{{ComponentName}}",
+  "version": "0.1.0",
+  "prefix": "{{componentName}}",
+  "description": "Test IDs for {{ComponentName}} component and its children",
+  "testIds": {
+    "root": {
+      "id": "{{componentName}}-root",
+      "description": "Root container element",
+      "element": "Card",
+      "required": true
+    },
+    "title": {
+      "id": "{{componentName}}-title",
+      "description": "Title heading element",
+      "element": "Heading",
+      "required": true
+    },
+    "description": {
+      "id": "{{componentName}}-description",
+      "description": "Description paragraph",
+      "element": "Paragraph",
+      "required": false
+    },
+    "actionsContainer": {
+      "id": "{{componentName}}-actions",
+      "description": "Actions container",
+      "element": "Box",
+      "required": false
+    },
+    "primaryAction": {
+      "id": "{{componentName}}-primary-action",
+      "description": "Primary action button",
+      "element": "Button",
+      "required": false
+    },
+    "secondaryAction": {
+      "id": "{{componentName}}-secondary-action",
+      "description": "Secondary action button",
+      "element": "Button",
+      "required": false
+    },
+    "loadingIndicator": {
+      "id": "{{componentName}}-loading",
+      "description": "Loading state indicator",
+      "element": "Spinner",
+      "required": false,
+      "visibleWhen": "loading === true"
+    },
+    "errorMessage": {
+      "id": "{{componentName}}-error",
+      "description": "Error message display",
+      "element": "Alert",
+      "required": false,
+      "visibleWhen": "error !== undefined"
+    },
+    "emptyState": {
+      "id": "{{componentName}}-empty",
+      "description": "Empty state message",
+      "element": "Paragraph",
+      "required": false,
+      "visibleWhen": "isEmpty === true"
+    }
+  },
+  "dynamicTestIds": {
+    "listItem": {
+      "pattern": "{{componentName}}-item-{index}",
+      "description": "Individual list items (indexed)",
+      "element": "various",
+      "example": "{{componentName}}-item-0, {{componentName}}-item-1"
+    },
+    "namedItem": {
+      "pattern": "{{componentName}}-{name}",
+      "description": "Named child elements",
+      "element": "various",
+      "example": "{{componentName}}-header, {{componentName}}-footer"
+    }
+  },
+  "conventions": {
+    "prefix": "Component name in kebab-case",
+    "separator": "-",
+    "indexing": "Zero-based for lists",
+    "naming": "Descriptive, lowercase, hyphen-separated"
+  },
+  "usage": {
+    "playwright": "page.getByTestId('{{componentName}}-root')",
+    "testingLibrary": "screen.getByTestId('{{componentName}}-root')",
+    "cypress": "cy.get('[data-testid=\"{{componentName}}-root\"]')"
+  }
+}

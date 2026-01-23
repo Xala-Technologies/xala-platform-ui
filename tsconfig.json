@@ -10,25 +10,24 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "noEmit": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": true,
-    "composite": false,
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@xala-technologies/platform-ui": ["./src/index.ts"],
-      "@xala-technologies/platform-ui/*": ["./src/*"]
+      "@xala-technologies/platform-ui": ["./packages/platform-ui/src/index.ts"],
+      "@xala-technologies/platform-ui/*": ["./packages/platform-ui/src/*"],
+      "@xala-technologies/guardrails": ["./packages/guardrails/src/index.ts"],
+      "@xala-technologies/guardrails/*": ["./packages/guardrails/src/*"],
+      "@xala-technologies/design-workflow": ["./packages/design-workflow/src/index.ts"],
+      "@xala-technologies/design-workflow/*": ["./packages/design-workflow/src/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "src/**/*.test.tsx", "src/**/*.test.ts", "src/__tests__"]
+  "references": [
+    { "path": "./packages/platform-ui" },
+    { "path": "./packages/guardrails" },
+    { "path": "./packages/design-workflow" }
+  ],
+  "include": [],
+  "exclude": ["node_modules", "dist", "**/dist"]
 }
