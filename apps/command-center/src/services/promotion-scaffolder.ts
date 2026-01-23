@@ -167,7 +167,7 @@ export class PromotionScaffolder {
  * ${composeData.description || 'Component description'}
  */
 import * as React from 'react';
-import { ... } from '@digdir/designsystemet-react';
+import { ... } from '@xala-technologies/platform-ui';
 
 export interface ${componentName}Props {
 ${propsInterface}

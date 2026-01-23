@@ -6,7 +6,6 @@
 
 import { useState, useEffect } from 'react';
 import {
-    Heading,
     Paragraph,
     Button,
     Stack,
@@ -16,9 +15,8 @@ import {
     Alert,
     Tag,
     Select,
+    Modal,
 } from '@xala-technologies/platform-ui';
-import { Dialog } from '@digdir/designsystemet-react';
-import { useRef } from 'react';
 import { anthropicClient } from '../../lib/anthropic/client';
 import { TESTIDS } from '../../constants/testids';
 
@@ -37,21 +35,11 @@ export interface ApiKeyModalProps {
 // =============================================================================
 
 export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
-    const dialogRef = useRef<HTMLDialogElement>(null);
     const [apiKey, setApiKey] = useState('');
     const [model, setModel] = useState('claude-3-5-sonnet-20241022');
     const [maxTokens, setMaxTokens] = useState(4096);
     const [error, setError] = useState<string | null>(null);
     const [isValidating, setIsValidating] = useState(false);
-
-    // Handle dialog open/close
-    useEffect(() => {
-        if (isOpen) {
-            dialogRef.current?.showModal();
-        } else {
-            dialogRef.current?.close();
-        }
-    }, [isOpen]);
 
     // Check if key is already set
     useEffect(() => {
@@ -117,12 +105,41 @@ export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
     };
 
     return (
-        <Dialog ref={dialogRef}>
+        <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            title="Anthropic API Configuration"
+            size="md"
+            footer={
+                <Stack direction="horizontal" spacing="var(--ds-spacing-2)" justify="end">
+                    <Button
+                        data-color="neutral"
+                        onClick={onClose}
+                        disabled={isValidating}
+                    >
+                        Cancel
+                    </Button>
+                    {anthropicClient.isInitialized() && (
+                        <Button
+                            data-color="warning"
+                            onClick={handleClear}
+                            disabled={isValidating}
+                        >
+                            Clear Key
+                        </Button>
+                    )}
+                    <Button
+                        data-color="accent"
+                        onClick={handleSave}
+                        disabled={isValidating || !apiKey.trim()}
+                        data-testid={TESTIDS.common.apiKeySave}
+                    >
+                        {isValidating ? 'Validating...' : 'Save'}
+                    </Button>
+                </Stack>
+            }
+        >
             <Stack spacing="var(--ds-spacing-4)">
-                <Heading level={2} data-size="sm">
-                    Anthropic API Configuration
-                </Heading>
-
                 <Paragraph data-size="sm">
                     Enter your Anthropic API key. The key will be stored in memory only and never persisted to disk or localStorage.
                 </Paragraph>
@@ -190,34 +207,7 @@ export function ApiKeyModal({ isOpen, onClose, onKeySet }: ApiKeyModalProps) {
                         </Paragraph>
                     </Alert>
                 )}
-
-                <Stack direction="horizontal" spacing="var(--ds-spacing-2)" justify="end">
-                    <Button
-                        data-color="neutral"
-                        onClick={onClose}
-                        disabled={isValidating}
-                    >
-                        Cancel
-                    </Button>
-                    {anthropicClient.isInitialized() && (
-                        <Button
-                            data-color="warning"
-                            onClick={handleClear}
-                            disabled={isValidating}
-                        >
-                            Clear Key
-                        </Button>
-                    )}
-                    <Button
-                        data-color="accent"
-                        onClick={handleSave}
-                        disabled={isValidating || !apiKey.trim()}
-                        data-testid={TESTIDS.common.apiKeySave}
-                    >
-                        {isValidating ? 'Validating...' : 'Save'}
-                    </Button>
-                </Stack>
             </Stack>
-        </Dialog>
+        </Modal>
     );
 }

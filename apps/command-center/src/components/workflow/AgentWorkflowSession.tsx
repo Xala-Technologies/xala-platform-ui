@@ -16,8 +16,8 @@ import {
     Tag,
     Field,
     Label,
+    Textarea,
 } from '@xala-technologies/platform-ui';
-import { Textarea } from '@digdir/designsystemet-react';
 import type { FormStep } from '@xala-technologies/platform-ui/patterns';
 import { workflowEngine } from '../../services/workflow-engine';
 import { anthropicClient } from '../../lib/anthropic/client';

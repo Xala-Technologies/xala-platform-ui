@@ -7,7 +7,6 @@
  * Security: API key stored in memory only, never persisted.
  */
 
-// @ts-expect-error - SDK will be installed manually
 import Anthropic from '@anthropic-ai/sdk';
 
 // =============================================================================
@@ -120,7 +119,13 @@ export class AnthropicBrowserClient {
             system: options.system || this.defaultSystemPrompt(),
             messages: options.messages,
             ...(options.tools && options.tools.length > 0
-                ? { tools: options.tools }
+                ? { 
+                    tools: options.tools.map(tool => ({
+                        name: tool.name,
+                        description: tool.description,
+                        input_schema: tool.inputSchema, // Convert camelCase to snake_case
+                    })) as any // Type assertion for Anthropic SDK compatibility
+                }
                 : {}),
         });
 
@@ -150,15 +155,21 @@ export class AnthropicBrowserClient {
             system: options.system || this.defaultSystemPrompt(),
             messages: options.messages,
             ...(options.tools && options.tools.length > 0
-                ? { tools: options.tools }
+                ? { 
+                    tools: options.tools.map(tool => ({
+                        name: tool.name,
+                        description: tool.description,
+                        input_schema: tool.inputSchema, // Convert camelCase to snake_case
+                    })) as any // Type assertion for Anthropic SDK compatibility
+                }
                 : {}),
         });
 
         // Extract text content from response
         const textBlocks = response.content.filter(
             (block: any): block is { type: 'text'; text: string } => block.type === 'text'
-        );
-        return textBlocks.map((block: { text: string }) => block.text).join('\n');
+        ) as Array<{ type: 'text'; text: string }>;
+        return textBlocks.map((block) => block.text).join('\n');
     }
 
     /**

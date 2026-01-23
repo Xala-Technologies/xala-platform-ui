@@ -129,7 +129,7 @@ export function Layout() {
             }}
             onProfileClick={() => console.log('Profile')}
             actions={
-              <Button variant="primary" data-size="sm">
+              <Button data-color="accent" data-size="sm">
                 New Spec
               </Button>
             }
