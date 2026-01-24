@@ -299,6 +299,8 @@ export interface LoginLayoutProps {
   }>;
   /** Integration/certification badges */
   integrations?: string[];
+  /** Label for integrations section */
+  integrationsLabel?: string;
   /** Footer links */
   footerLinks?: Array<{
     href: string;
@@ -323,12 +325,14 @@ export function LoginLayout({
   panelDescription,
   features = [],
   integrations = [],
+  integrationsLabel = 'Integrasjoner & Sertifiseringer',
   footerLinks = [],
   copyright = `© ${new Date().getFullYear()} Platform. All rights reserved.`,
   className,
 }: LoginLayoutProps): React.ReactElement {
   return (
     <>
+      {/* Responsive styles - Note: Media queries cannot use CSS variables, using 1024px as tablet breakpoint */}
       <style>{`
         .login-layout {
           display: flex;
@@ -339,7 +343,7 @@ export function LoginLayout({
         .ds-login-info-panel {
           width: 50%;
         }
-        @media (max-width: 'var(--ds-sizing-256)') {
+        @media (max-width: 1024px) {
           .ds-login-info-panel {
             display: none !important;
           }
@@ -650,7 +654,7 @@ export function LoginLayout({
                     lineHeight: 'var(--ds-line-height-sm)',
                   }}
                 >
-                  Integrasjoner & Sertifiseringer
+                  {integrationsLabel}
                 </Paragraph>
                 <div
                   style={{

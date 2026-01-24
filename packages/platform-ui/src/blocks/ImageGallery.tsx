@@ -204,28 +204,28 @@ export function ImageGallery({
         </div>
       )}
 
-      {/* Responsive styles */}
+      {/* Responsive styles - Note: Media queries cannot use CSS variables, using 768px as mobile breakpoint */}
       <style>{`
-        @media (max-width: 'var(--ds-sizing-192)') {
+        @media (max-width: 768px) {
           .ds-image-gallery {
             grid-template-columns: 1fr !important;
             height: auto !important;
           }
 
           .ds-image-gallery-hero {
-            height: 'var(--ds-sizing-75)' !important;
+            height: var(--ds-sizing-75) !important;
           }
 
           .ds-image-gallery-thumbnails {
             flex-direction: row !important;
-            height: 'var(--ds-spacing-20)' !important;
+            height: var(--ds-spacing-20) !important;
             overflow-x: auto;
           }
 
           .ds-image-gallery-thumbnails button {
             flex: 0 0 auto !important;
-            width: 'var(--ds-sizing-25)' !important;
-            height: 'var(--ds-spacing-20)' !important;
+            width: var(--ds-sizing-25) !important;
+            height: var(--ds-spacing-20) !important;
           }
         }
       `}</style>
