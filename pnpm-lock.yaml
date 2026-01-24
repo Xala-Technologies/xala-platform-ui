@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@xala-technologies/platform-ui':
+        specifier: workspace:2.1.0
+        version: link:packages/platform-ui
       react:
         specifier: '>=18.0.0'
         version: 18.3.1
@@ -42,6 +45,9 @@ importers:
       '@storybook/addon-links':
         specifier: ^8.6.15
         version: 8.6.15(react@18.3.1)(storybook@8.6.15)
+      '@storybook/addon-viewport':
+        specifier: 8.6.15
+        version: 8.6.15(storybook@8.6.15)
       '@storybook/blocks':
         specifier: ^8.6.15
         version: 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)
@@ -50,10 +56,13 @@ importers:
         version: 8.6.15(storybook@8.6.15)
       '@storybook/react':
         specifier: ^8.6.15
-        version: 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)
+        version: 8.6.15(@storybook/test@8.6.15)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)
       '@storybook/react-vite':
         specifier: ^8.6.15
-        version: 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)(vite@5.4.21)
+        version: 8.6.15(@storybook/test@8.6.15)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)(vite@5.4.21)
+      '@storybook/test':
+        specifier: ^8.6.15
+        version: 8.6.15(storybook@8.6.15)
       '@storybook/test-runner':
         specifier: ^0.24.2
         version: 0.24.2(storybook@8.6.15)
@@ -2630,7 +2639,7 @@ packages:
       storybook: 8.6.15(prettier@3.8.1)
     dev: true
 
-  /@storybook/react-vite@8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)(vite@5.4.21):
+  /@storybook/react-vite@8.6.15(@storybook/test@8.6.15)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)(vite@5.4.21):
     resolution: {integrity: sha512-9st+2NCemzzBwmindpDrRLEqYJmwwd2RnXMoj+Wt4Y1r4MGoRe1l837ciT2tmstaqekY2mVUSYd6879NzeeMYw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -2646,7 +2655,8 @@ packages:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.5.0(typescript@5.9.3)(vite@5.4.21)
       '@rollup/pluginutils': 5.3.0
       '@storybook/builder-vite': 8.6.15(storybook@8.6.15)(vite@5.4.21)
-      '@storybook/react': 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)
+      '@storybook/react': 8.6.15(@storybook/test@8.6.15)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3)
+      '@storybook/test': 8.6.15(storybook@8.6.15)
       find-up: 5.0.0
       magic-string: 0.30.21
       react: 18.3.1
@@ -2662,7 +2672,7 @@ packages:
       - typescript
     dev: true
 
-  /@storybook/react@8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3):
+  /@storybook/react@8.6.15(@storybook/test@8.6.15)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)(typescript@5.9.3):
     resolution: {integrity: sha512-hdnhlJg+YkpPMOw2hvK7+mhdxAbguA+TFTIAzVV9CeUYoHDIZAsgeKVhRmgZGN20NGjRN5ZcwkplAMJnF9v+6w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -2682,6 +2692,7 @@ packages:
       '@storybook/manager-api': 8.6.15(storybook@8.6.15)
       '@storybook/preview-api': 8.6.15(storybook@8.6.15)
       '@storybook/react-dom-shim': 8.6.15(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.15)
+      '@storybook/test': 8.6.15(storybook@8.6.15)
       '@storybook/theming': 8.6.15(storybook@8.6.15)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-// All styles from platform-ui (fonts, CSS, tokens)
+// All styles from platform-ui (fonts, CSS, tokens, base styles)
 import '@xala-technologies/platform-ui/styles';
 import { DesignsystemetProvider } from '@xala-technologies/platform-ui';
 import App from './App';

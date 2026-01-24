@@ -48,7 +48,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Info variant
-export const Info: Story = {
+export const InfoBanner: Story = {
   args: {
     variant: 'info',
     title: 'Information',

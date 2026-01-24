@@ -29,6 +29,12 @@ import '@fontsource/inter/700.css';
 // =============================================================================
 import '@digdir/designsystemet-css';
 
+// =============================================================================
+// Designsystemet Theme - Token definitions (neutral, danger, info, etc.)
+// This provides all the CSS variables that components need
+// =============================================================================
+import '@digdir/designsystemet-css/theme';
+
 /**
  * Theme Loading Strategy:
  *
@@ -69,4 +75,4 @@ if (typeof document !== 'undefined') {
   document.head.appendChild(style);
 }
 
-export {}; // keep this as a module
+export { }; // keep this as a module

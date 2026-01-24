@@ -1,4 +1,37 @@
 import { defineConfig } from 'tsup';
+import * as fs from 'fs';
+import * as path from 'path';
+import type { Plugin } from 'esbuild';
+
+/**
+ * Plugin to handle ?raw CSS imports.
+ * Strips the ?raw suffix and loads the file as raw text.
+ * This makes imports compatible with both Vite (Storybook) and tsup.
+ */
+const rawCssPlugin: Plugin = {
+  name: 'raw-css',
+  setup(build) {
+    // Handle imports ending with ?raw
+    build.onResolve({ filter: /\.css\?raw$/ }, (args) => {
+      // Strip ?raw and resolve the actual file path
+      const filePath = args.path.replace(/\?raw$/, '');
+      const resolved = path.resolve(args.resolveDir, filePath);
+      return {
+        path: resolved,
+        namespace: 'raw-css',
+      };
+    });
+
+    // Load the CSS content as text
+    build.onLoad({ filter: /.*/, namespace: 'raw-css' }, async (args) => {
+      const contents = await fs.promises.readFile(args.path, 'utf8');
+      return {
+        contents: `export default ${JSON.stringify(contents)};`,
+        loader: 'js',
+      };
+    });
+  },
+};
 
 export default defineConfig({
   entry: {
@@ -39,10 +72,11 @@ export default defineConfig({
     '@fontsource/inter/700.css',
     'zod',
   ],
+  esbuildPlugins: [rawCssPlugin],
   esbuildOptions(options) {
     options.jsx = 'automatic';
   },
-  // Handle CSS imports as raw text for inline injection
+  // Handle regular CSS imports as raw text for inline injection
   loader: {
     '.css': 'text',
   },

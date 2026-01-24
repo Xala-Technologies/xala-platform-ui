@@ -101,7 +101,7 @@ export const Danger: Story = {
   },
 };
 
-export const Info: Story = {
+export const InfoVariant: Story = {
   args: {
     children: 'Info',
     variant: 'info',
