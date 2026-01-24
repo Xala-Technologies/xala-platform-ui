@@ -1,34 +1,72 @@
 import { defineConfig } from 'tsup';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 import type { Plugin } from 'esbuild';
 
+// Create require function for ESM context
+const require = createRequire(import.meta.url);
+
 /**
- * Plugin to handle ?raw CSS imports.
- * Strips the ?raw suffix and loads the file as raw text.
- * This makes imports compatible with both Vite (Storybook) and tsup.
+ * Plugin to bundle CSS from node_modules as inline strings.
+ * This allows platform-ui to ship with all CSS bundled, so consuming apps
+ * don't need to install @digdir/designsystemet-css or @fontsource/inter.
+ *
+ * Uses a virtual module approach: intercepts specific CSS imports and
+ * replaces them with JavaScript modules that export the CSS content as strings.
  */
-const rawCssPlugin: Plugin = {
-  name: 'raw-css',
+const bundleCssPlugin: Plugin = {
+  name: 'bundle-css',
   setup(build) {
-    // Handle imports ending with ?raw
-    build.onResolve({ filter: /\.css\?raw$/ }, (args) => {
-      // Strip ?raw and resolve the actual file path
-      const filePath = args.path.replace(/\?raw$/, '');
-      const resolved = path.resolve(args.resolveDir, filePath);
-      return {
-        path: resolved,
-        namespace: 'raw-css',
-      };
+    // Map of virtual module names to their resolved CSS file paths
+    // Note: Using package exports (not direct file paths) for proper resolution
+    const cssModules: Record<string, string> = {
+      'virtual:inter-400': '@fontsource/inter/400.css',
+      'virtual:inter-500': '@fontsource/inter/500.css',
+      'virtual:inter-600': '@fontsource/inter/600.css',
+      'virtual:inter-700': '@fontsource/inter/700.css',
+      // designsystemet-css uses package exports: "." → dist/src/index.css
+      'virtual:designsystemet-css': '@digdir/designsystemet-css',
+      // designsystemet-css uses package exports: "./theme" → dist/theme/designsystemet.css
+      'virtual:designsystemet-theme': '@digdir/designsystemet-css/theme',
+    };
+
+    // Resolve virtual module imports
+    build.onResolve({ filter: /^virtual:/ }, (args) => {
+      const cssPath = cssModules[args.path];
+      if (cssPath) {
+        try {
+          // Resolve the actual CSS file path using require.resolve
+          const resolvedPath = require.resolve(cssPath);
+          return {
+            path: resolvedPath,
+            namespace: 'bundled-css',
+            pluginData: { originalPath: args.path },
+          };
+        } catch (e) {
+          console.error(`Failed to resolve CSS module ${args.path}:`, e);
+          return undefined;
+        }
+      }
+      return undefined;
     });
 
-    // Load the CSS content as text
-    build.onLoad({ filter: /.*/, namespace: 'raw-css' }, async (args) => {
-      const contents = await fs.promises.readFile(args.path, 'utf8');
-      return {
-        contents: `export default ${JSON.stringify(contents)};`,
-        loader: 'js',
-      };
+    // Load CSS files as JS modules exporting the CSS string
+    build.onLoad({ filter: /.*/, namespace: 'bundled-css' }, async (args) => {
+      try {
+        const contents = await fs.promises.readFile(args.path, 'utf8');
+        return {
+          contents: `export default ${JSON.stringify(contents)};`,
+          loader: 'js',
+        };
+      } catch (e) {
+        console.error(`Failed to read CSS file ${args.path}:`, e);
+        return {
+          contents: 'export default "";',
+          loader: 'js',
+        };
+      }
     });
   },
 };
@@ -58,21 +96,19 @@ export default defineConfig({
   treeshake: true,
   minify: false,
   external: [
+    // React and router are peer dependencies - apps provide these
     'react',
     'react-dom',
     'react-router-dom',
+    // React components from designsystemet - external (needs React context)
     '@digdir/designsystemet-react',
-    '@digdir/designsystemet-css',
-    '@digdir/designsystemet-css/theme',
-    '@digdir/designsystemet-css/theme.css',
-    '@fontsource/inter',
-    '@fontsource/inter/400.css',
-    '@fontsource/inter/500.css',
-    '@fontsource/inter/600.css',
-    '@fontsource/inter/700.css',
+    // Zod for validation - external (commonly used, tree-shakeable)
     'zod',
+    // NOTE: CSS and fonts are NOT external - they are BUNDLED into platform-ui
+    // so consuming apps only need to import '@xala-technologies/platform-ui/styles'
+    // without installing @digdir/designsystemet-css or @fontsource/inter
   ],
-  esbuildPlugins: [rawCssPlugin],
+  esbuildPlugins: [bundleCssPlugin],
   esbuildOptions(options) {
     options.jsx = 'automatic';
   },
