@@ -70,7 +70,9 @@ const DefaultDemo = () => {
 
 // Basic breadcrumbs
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for home icon story
@@ -91,7 +93,9 @@ const WithHomeIconDemo = () => {
 
 // With home icon
 export const WithHomeIcon: Story = {
-  render: () => <WithHomeIconDemo />,
+  render: function Render() {
+    return <WithHomeIconDemo />;
+  },
 };
 
 // Wrapper for icons story
@@ -111,7 +115,9 @@ const WithIconsDemo = () => {
 
 // With icons
 export const WithIcons: Story = {
-  render: () => <WithIconsDemo />,
+  render: function Render() {
+    return <WithIconsDemo />;
+  },
 };
 
 // Wrapper for long trail story
@@ -133,7 +139,9 @@ const LongTrailDemo = () => {
 
 // Long breadcrumb trail
 export const LongTrail: Story = {
-  render: () => <LongTrailDemo />,
+  render: function Render() {
+    return <LongTrailDemo />;
+  },
 };
 
 // Wrapper for max items story
@@ -157,7 +165,9 @@ const WithMaxItemsDemo = () => {
 
 // With max items
 export const WithMaxItems: Story = {
-  render: () => <WithMaxItemsDemo />,
+  render: function Render() {
+    return <WithMaxItemsDemo />;
+  },
 };
 
 // Wrapper for custom separator story
@@ -178,7 +188,9 @@ const CustomSeparatorDemo = () => {
 
 // Custom separator
 export const CustomSeparator: Story = {
-  render: () => <CustomSeparatorDemo />,
+  render: function Render() {
+    return <CustomSeparatorDemo />;
+  },
 };
 
 // Wrapper for single item story
@@ -191,7 +203,9 @@ const SingleItemDemo = () => {
 
 // Single item
 export const SingleItem: Story = {
-  render: () => <SingleItemDemo />,
+  render: function Render() {
+    return <SingleItemDemo />;
+  },
 };
 
 // Wrapper for two items story
@@ -210,5 +224,7 @@ const TwoItemsDemo = () => {
 
 // Two items
 export const TwoItems: Story = {
-  render: () => <TwoItemsDemo />,
+  render: function Render() {
+    return <TwoItemsDemo />;
+  },
 };

@@ -205,35 +205,49 @@ const ManyItemsDemo = () => {
 
 // Basic sortable list
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Without handle
 export const WithoutHandle: Story = {
-  render: () => <WithoutHandleDemo />,
+  render: function Render() {
+    return <WithoutHandleDemo />;
+  },
 };
 
 // With custom rendering
 export const CustomRendering: Story = {
-  render: () => <CustomRenderingDemo />,
+  render: function Render() {
+    return <CustomRenderingDemo />;
+  },
 };
 
 // Horizontal direction
 export const Horizontal: Story = {
-  render: () => <HorizontalDemo />,
+  render: function Render() {
+    return <HorizontalDemo />;
+  },
 };
 
 // With disabled items
 export const WithDisabledItems: Story = {
-  render: () => <WithDisabledItemsDemo />,
+  render: function Render() {
+    return <WithDisabledItemsDemo />;
+  },
 };
 
 // Disabled list
 export const Disabled: Story = {
-  render: () => <DisabledDemo />,
+  render: function Render() {
+    return <DisabledDemo />;
+  },
 };
 
 // Many items
 export const ManyItems: Story = {
-  render: () => <ManyItemsDemo />,
+  render: function Render() {
+    return <ManyItemsDemo />;
+  },
 };

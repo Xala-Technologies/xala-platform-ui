@@ -172,11 +172,15 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <Avatar aria-label="User avatar">JD</Avatar>,
+  render: function Render() {
+    return <Avatar aria-label="User avatar">JD</Avatar>;
+  },
 };
 
 export const WithInitials: Story = {
-  render: () => <Avatar aria-label="John Doe">JD</Avatar>,
+  render: function Render() {
+    return <Avatar aria-label="John Doe">JD</Avatar>;
+  },
 };
 
 export const Initials: Story = {

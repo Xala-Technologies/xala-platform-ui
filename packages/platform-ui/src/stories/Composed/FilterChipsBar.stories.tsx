@@ -337,45 +337,63 @@ const EmptyDemo = () => {
 
 // Basic filter chips
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Single filter
 export const SingleFilter: Story = {
-  render: () => <SingleFilterDemo />,
+  render: function Render() {
+    return <SingleFilterDemo />;
+  },
 };
 
 // Many filters
 export const ManyFilters: Story = {
-  render: () => <ManyFiltersDemo />,
+  render: function Render() {
+    return <ManyFiltersDemo />;
+  },
 };
 
 // With add filter button
 export const WithAddFilter: Story = {
-  render: () => <WithAddFilterDemo />,
+  render: function Render() {
+    return <WithAddFilterDemo />;
+  },
 };
 
 // Without clear all
 export const WithoutClearAll: Story = {
-  render: () => <WithoutClearAllDemo />,
+  render: function Render() {
+    return <WithoutClearAllDemo />;
+  },
 };
 
 // Custom labels
 export const CustomLabels: Story = {
-  render: () => <CustomLabelsDemo />,
+  render: function Render() {
+    return <CustomLabelsDemo />;
+  },
 };
 
 // Max visible with overflow
 export const WithMaxVisible: Story = {
-  render: () => <WithMaxVisibleDemo />,
+  render: function Render() {
+    return <WithMaxVisibleDemo />;
+  },
 };
 
 // Different operators
 export const DifferentOperators: Story = {
-  render: () => <DifferentOperatorsDemo />,
+  render: function Render() {
+    return <DifferentOperatorsDemo />;
+  },
 };
 
 // Empty state
 export const Empty: Story = {
-  render: () => <EmptyDemo />,
+  render: function Render() {
+    return <EmptyDemo />;
+  },
 };

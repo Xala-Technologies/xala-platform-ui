@@ -80,7 +80,9 @@ const DefaultDemo = () => {
 
 // Basic stat card
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for with icon story
@@ -100,7 +102,9 @@ const WithIconDemo = () => {
 
 // With icon
 export const WithIcon: Story = {
-  render: () => <WithIconDemo />,
+  render: function Render() {
+    return <WithIconDemo />;
+  },
 };
 
 // Wrapper for trend up story
@@ -125,7 +129,9 @@ const TrendUpDemo = () => {
 
 // With trend up
 export const TrendUp: Story = {
-  render: () => <TrendUpDemo />,
+  render: function Render() {
+    return <TrendUpDemo />;
+  },
 };
 
 // Wrapper for trend down story
@@ -150,7 +156,9 @@ const TrendDownDemo = () => {
 
 // With trend down
 export const TrendDown: Story = {
-  render: () => <TrendDownDemo />,
+  render: function Render() {
+    return <TrendDownDemo />;
+  },
 };
 
 // Wrapper for trend neutral story
@@ -175,7 +183,9 @@ const TrendNeutralDemo = () => {
 
 // With trend neutral
 export const TrendNeutral: Story = {
-  render: () => <TrendNeutralDemo />,
+  render: function Render() {
+    return <TrendNeutralDemo />;
+  },
 };
 
 // Wrapper for small size story
@@ -195,7 +205,9 @@ const SmallDemo = () => {
 
 // Size variants
 export const Small: Story = {
-  render: () => <SmallDemo />,
+  render: function Render() {
+    return <SmallDemo />;
+  },
 };
 
 // Wrapper for large size story
@@ -214,7 +226,9 @@ const LargeDemo = () => {
 };
 
 export const Large: Story = {
-  render: () => <LargeDemo />,
+  render: function Render() {
+    return <LargeDemo />;
+  },
 };
 
 // Wrapper for success variant
@@ -234,7 +248,9 @@ const SuccessDemo = () => {
 
 // Variants
 export const Success: Story = {
-  render: () => <SuccessDemo />,
+  render: function Render() {
+    return <SuccessDemo />;
+  },
 };
 
 // Wrapper for warning variant
@@ -253,7 +269,9 @@ const WarningDemo = () => {
 };
 
 export const Warning: Story = {
-  render: () => <WarningDemo />,
+  render: function Render() {
+    return <WarningDemo />;
+  },
 };
 
 // Wrapper for danger variant
@@ -272,7 +290,9 @@ const DangerDemo = () => {
 };
 
 export const Danger: Story = {
-  render: () => <DangerDemo />,
+  render: function Render() {
+    return <DangerDemo />;
+  },
 };
 
 // Wrapper for info variant
@@ -291,7 +311,9 @@ const InfoDemo = () => {
 };
 
 export const Info: Story = {
-  render: () => <InfoDemo />,
+  render: function Render() {
+    return <InfoDemo />;
+  },
 };
 
 // Wrapper for loading state
@@ -310,7 +332,9 @@ const LoadingDemo = () => {
 
 // Loading state
 export const Loading: Story = {
-  render: () => <LoadingDemo />,
+  render: function Render() {
+    return <LoadingDemo />;
+  },
 };
 
 // Wrapper for clickable story
@@ -331,7 +355,9 @@ const ClickableDemo = () => {
 
 // Clickable
 export const Clickable: Story = {
-  render: () => <ClickableDemo />,
+  render: function Render() {
+    return <ClickableDemo />;
+  },
 };
 
 // Wrapper for grid story
@@ -373,5 +399,7 @@ const GridDemo = () => {
 
 // StatCardGrid
 export const Grid: Story = {
-  render: () => <GridDemo />,
+  render: function Render() {
+    return <GridDemo />;
+  },
 };

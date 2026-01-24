@@ -190,50 +190,70 @@ const AllVariantsDemo = () => {
 
 // Info variant
 export const InfoBanner: Story = {
-  render: () => <InfoBannerDemo />,
+  render: function Render() {
+    return <InfoBannerDemo />;
+  },
 };
 
 // Success variant
 export const Success: Story = {
-  render: () => <SuccessBannerDemo />,
+  render: function Render() {
+    return <SuccessBannerDemo />;
+  },
 };
 
 // Warning variant
 export const Warning: Story = {
-  render: () => <WarningBannerDemo />,
+  render: function Render() {
+    return <WarningBannerDemo />;
+  },
 };
 
 // Danger variant
 export const Danger: Story = {
-  render: () => <DangerBannerDemo />,
+  render: function Render() {
+    return <DangerBannerDemo />;
+  },
 };
 
 // Neutral variant
 export const Neutral: Story = {
-  render: () => <NeutralBannerDemo />,
+  render: function Render() {
+    return <NeutralBannerDemo />;
+  },
 };
 
 // Without description
 export const WithoutDescription: Story = {
-  render: () => <WithoutDescriptionDemo />,
+  render: function Render() {
+    return <WithoutDescriptionDemo />;
+  },
 };
 
 // With custom icon
 export const CustomIcon: Story = {
-  render: () => <CustomIconDemo />,
+  render: function Render() {
+    return <CustomIconDemo />;
+  },
 };
 
 // With action button
 export const WithAction: Story = {
-  render: () => <WithActionDemo />,
+  render: function Render() {
+    return <WithActionDemo />;
+  },
 };
 
 // Long content
 export const LongContent: Story = {
-  render: () => <LongContentDemo />,
+  render: function Render() {
+    return <LongContentDemo />;
+  },
 };
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => <AllVariantsDemo />,
+  render: function Render() {
+    return <AllVariantsDemo />;
+  },
 };

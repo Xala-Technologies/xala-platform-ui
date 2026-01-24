@@ -176,20 +176,28 @@ const MultipleLinksDemo = () => {
 
 // Default skip links
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Custom links
 export const CustomLinks: Story = {
-  render: () => <CustomLinksDemo />,
+  render: function Render() {
+    return <CustomLinksDemo />;
+  },
 };
 
 // English labels
 export const EnglishLabels: Story = {
-  render: () => <EnglishLabelsDemo />,
+  render: function Render() {
+    return <EnglishLabelsDemo />;
+  },
 };
 
 // Multiple skip links
 export const MultipleLinks: Story = {
-  render: () => <MultipleLinksDemo />,
+  render: function Render() {
+    return <MultipleLinksDemo />;
+  },
 };

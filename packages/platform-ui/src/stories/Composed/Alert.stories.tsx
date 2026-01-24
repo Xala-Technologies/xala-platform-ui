@@ -71,7 +71,9 @@ const InfoDemo = () => {
 
 // Info variant
 export const Info: Story = {
-  render: () => <InfoDemo />,
+  render: function Render() {
+    return <InfoDemo />;
+  },
 };
 
 // Wrapper for success story
@@ -86,7 +88,9 @@ const SuccessDemo = () => {
 
 // Success variant
 export const Success: Story = {
-  render: () => <SuccessDemo />,
+  render: function Render() {
+    return <SuccessDemo />;
+  },
 };
 
 // Wrapper for warning story
@@ -101,7 +105,9 @@ const WarningDemo = () => {
 
 // Warning variant
 export const Warning: Story = {
-  render: () => <WarningDemo />,
+  render: function Render() {
+    return <WarningDemo />;
+  },
 };
 
 // Wrapper for error story
@@ -116,7 +122,9 @@ const ErrorDemo = () => {
 
 // Error variant
 export const Error: Story = {
-  render: () => <ErrorDemo />,
+  render: function Render() {
+    return <ErrorDemo />;
+  },
 };
 
 // Wrapper for without title story
@@ -131,7 +139,9 @@ const WithoutTitleDemo = () => {
 
 // Without title
 export const WithoutTitle: Story = {
-  render: () => <WithoutTitleDemo />,
+  render: function Render() {
+    return <WithoutTitleDemo />;
+  },
 };
 
 // Wrapper for dismissible story
@@ -151,7 +161,9 @@ const DismissibleDemo = () => {
 
 // Dismissible
 export const Dismissible: Story = {
-  render: () => <DismissibleDemo />,
+  render: function Render() {
+    return <DismissibleDemo />;
+  },
 };
 
 // Wrapper for action story
@@ -174,7 +186,9 @@ const WithActionDemo = () => {
 
 // With action button
 export const WithAction: Story = {
-  render: () => <WithActionDemo />,
+  render: function Render() {
+    return <WithActionDemo />;
+  },
 };
 
 // Wrapper for custom icon story
@@ -207,7 +221,9 @@ const WithCustomIconDemo = () => {
 
 // With custom icon
 export const WithCustomIcon: Story = {
-  render: () => <WithCustomIconDemo />,
+  render: function Render() {
+    return <WithCustomIconDemo />;
+  },
 };
 
 // Wrapper for long content story
@@ -227,7 +243,9 @@ const LongContentDemo = () => {
 
 // Long content
 export const LongContent: Story = {
-  render: () => <LongContentDemo />,
+  render: function Render() {
+    return <LongContentDemo />;
+  },
 };
 
 // Wrapper for all variants story
@@ -260,5 +278,7 @@ const AllVariantsDemo = () => {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => <AllVariantsDemo />,
+  render: function Render() {
+    return <AllVariantsDemo />;
+  },
 };

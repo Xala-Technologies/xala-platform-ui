@@ -101,7 +101,9 @@ const DefaultDemo = () => {
 
 // Basic action menu
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for groups story
@@ -166,7 +168,9 @@ const WithGroupsDemo = () => {
 
 // With menu groups
 export const WithGroups: Story = {
-  render: () => <WithGroupsDemo />,
+  render: function Render() {
+    return <WithGroupsDemo />;
+  },
 };
 
 // Wrapper for disabled items story
@@ -202,7 +206,9 @@ const WithDisabledDemo = () => {
 
 // With disabled items
 export const WithDisabled: Story = {
-  render: () => <WithDisabledDemo />,
+  render: function Render() {
+    return <WithDisabledDemo />;
+  },
 };
 
 // Wrapper for shortcuts story
@@ -245,7 +251,9 @@ const WithShortcutsDemo = () => {
 
 // With shortcuts
 export const WithShortcuts: Story = {
-  render: () => <WithShortcutsDemo />,
+  render: function Render() {
+    return <WithShortcutsDemo />;
+  },
 };
 
 // Wrapper for bottom start story
@@ -268,7 +276,9 @@ const BottomStartDemo = () => {
 
 // Different alignments
 export const BottomStart: Story = {
-  render: () => <BottomStartDemo />,
+  render: function Render() {
+    return <BottomStartDemo />;
+  },
 };
 
 // Wrapper for bottom end story
@@ -290,7 +300,9 @@ const BottomEndDemo = () => {
 };
 
 export const BottomEnd: Story = {
-  render: () => <BottomEndDemo />,
+  render: function Render() {
+    return <BottomEndDemo />;
+  },
 };
 
 // Wrapper for top start story
@@ -314,7 +326,9 @@ const TopStartDemo = () => {
 };
 
 export const TopStart: Story = {
-  render: () => <TopStartDemo />,
+  render: function Render() {
+    return <TopStartDemo />;
+  },
 };
 
 // Wrapper for disabled story
@@ -336,7 +350,9 @@ const DisabledDemo = () => {
 
 // Disabled menu
 export const Disabled: Story = {
-  render: () => <DisabledDemo />,
+  render: function Render() {
+    return <DisabledDemo />;
+  },
 };
 
 // Wrapper for context menu story
@@ -362,5 +378,7 @@ const ContextMenuExampleDemo = () => {
 
 // Context menu example
 export const ContextMenuExample: Story = {
-  render: () => <ContextMenuExampleDemo />,
+  render: function Render() {
+    return <ContextMenuExampleDemo />;
+  },
 };

@@ -261,25 +261,35 @@ const VirtualListDemo = () => {
 
 // Basic infinite scroll
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // With custom loader
 export const CustomLoader: Story = {
-  render: () => <CustomLoaderDemo />,
+  render: function Render() {
+    return <CustomLoaderDemo />;
+  },
 };
 
 // With end message
 export const WithEndMessage: Story = {
-  render: () => <WithEndMessageDemo />,
+  render: function Render() {
+    return <WithEndMessageDemo />;
+  },
 };
 
 // With error state
 export const WithError: Story = {
-  render: () => <WithErrorDemo />,
+  render: function Render() {
+    return <WithErrorDemo />;
+  },
 };
 
 // VirtualList
 export const VirtualListExample: Story = {
-  render: () => <VirtualListDemo />,
+  render: function Render() {
+    return <VirtualListDemo />;
+  },
 };

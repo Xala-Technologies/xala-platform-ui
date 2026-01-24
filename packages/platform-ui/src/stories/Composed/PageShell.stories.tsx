@@ -89,7 +89,9 @@ const ListPageDemo = () => {
 
 // List page shell
 export const ListPage: Story = {
-  render: () => <ListPageDemo />,
+  render: function Render() {
+    return <ListPageDemo />;
+  },
 };
 
 // Wrapper for detail page story
@@ -160,7 +162,9 @@ const DetailPageDemo = () => {
 
 // Detail page shell
 export const DetailPage: Story = {
-  render: () => <DetailPageDemo />,
+  render: function Render() {
+    return <DetailPageDemo />;
+  },
 };
 
 // Wrapper for form page story
@@ -205,7 +209,9 @@ const FormPageDemo = () => {
 
 // Form page shell
 export const FormPage: Story = {
-  render: () => <FormPageDemo />,
+  render: function Render() {
+    return <FormPageDemo />;
+  },
 };
 
 // Wrapper for list page no filters story
@@ -231,7 +237,9 @@ const ListPageNoFiltersDemo = () => {
 
 // List page without filters
 export const ListPageNoFilters: Story = {
-  render: () => <ListPageNoFiltersDemo />,
+  render: function Render() {
+    return <ListPageNoFiltersDemo />;
+  },
 };
 
 // Wrapper for detail page minimal story
@@ -256,7 +264,9 @@ const DetailPageMinimalDemo = () => {
 
 // Detail page minimal
 export const DetailPageMinimal: Story = {
-  render: () => <DetailPageMinimalDemo />,
+  render: function Render() {
+    return <DetailPageMinimalDemo />;
+  },
 };
 
 // Wrapper for form page no back link story
@@ -291,5 +301,7 @@ const FormPageNoBackLinkDemo = () => {
 
 // Form page without back link
 export const FormPageNoBackLink: Story = {
-  render: () => <FormPageNoBackLinkDemo />,
+  render: function Render() {
+    return <FormPageNoBackLinkDemo />;
+  },
 };

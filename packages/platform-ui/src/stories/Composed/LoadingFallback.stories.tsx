@@ -52,7 +52,9 @@ const DefaultLoadingFallback = () => {
 };
 
 export const Default: Story = {
-  render: () => <DefaultLoadingFallback />,
+  render: function Render() {
+    return <DefaultLoadingFallback />;
+  },
 };
 
 // Custom message
@@ -62,7 +64,9 @@ const CustomMessageLoadingFallback = () => {
 };
 
 export const CustomMessage: Story = {
-  render: () => <CustomMessageLoadingFallback />,
+  render: function Render() {
+    return <CustomMessageLoadingFallback />;
+  },
 };
 
 // English message

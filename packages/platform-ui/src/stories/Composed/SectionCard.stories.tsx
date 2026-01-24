@@ -305,53 +305,75 @@ const WithSubComponentsDemo = () => {
 
 // Basic section card
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // With icon
 export const WithIcon: Story = {
-  render: () => <WithIconDemo />,
+  render: function Render() {
+    return <WithIconDemo />;
+  },
 };
 
 // With actions
 export const WithActions: Story = {
-  render: () => <WithActionsDemo />,
+  render: function Render() {
+    return <WithActionsDemo />;
+  },
 };
 
 // With footer
 export const WithFooter: Story = {
-  render: () => <WithFooterDemo />,
+  render: function Render() {
+    return <WithFooterDemo />;
+  },
 };
 
 // Collapsible
 export const Collapsible: Story = {
-  render: () => <CollapsibleDemo />,
+  render: function Render() {
+    return <CollapsibleDemo />;
+  },
 };
 
 // Variants
 export const Outlined: Story = {
-  render: () => <OutlinedDemo />,
+  render: function Render() {
+    return <OutlinedDemo />;
+  },
 };
 
 export const Elevated: Story = {
-  render: () => <ElevatedDemo />,
+  render: function Render() {
+    return <ElevatedDemo />;
+  },
 };
 
 // Size variants
 export const Small: Story = {
-  render: () => <SmallDemo />,
+  render: function Render() {
+    return <SmallDemo />;
+  },
 };
 
 export const Large: Story = {
-  render: () => <LargeDemo />,
+  render: function Render() {
+    return <LargeDemo />;
+  },
 };
 
 // Loading state
 export const Loading: Story = {
-  render: () => <LoadingDemo />,
+  render: function Render() {
+    return <LoadingDemo />;
+  },
 };
 
 // Using sub-components
 export const WithSubComponents: Story = {
-  render: () => <WithSubComponentsDemo />,
+  render: function Render() {
+    return <WithSubComponentsDemo />;
+  },
 };

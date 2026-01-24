@@ -68,7 +68,9 @@ const FullConformanceDemo = () => {
 
 // Full conformance
 export const FullConformance: Story = {
-  render: () => <FullConformanceDemo />,
+  render: function Render() {
+    return <FullConformanceDemo />;
+  },
 };
 
 // Wrapper for partial conformance story
@@ -108,7 +110,9 @@ const PartialConformanceDemo = () => {
 
 // Partial conformance with issues
 export const PartialConformance: Story = {
-  render: () => <PartialConformanceDemo />,
+  render: function Render() {
+    return <PartialConformanceDemo />;
+  },
 };
 
 // Wrapper for non-conformant story
@@ -138,7 +142,9 @@ const NonConformantDemo = () => {
 
 // Non-conformant
 export const NonConformant: Story = {
-  render: () => <NonConformantDemo />,
+  render: function Render() {
+    return <NonConformantDemo />;
+  },
 };
 
 // Wrapper for with additional info story
@@ -166,7 +172,9 @@ const WithAdditionalInfoDemo = () => {
 
 // With additional info
 export const WithAdditionalInfo: Story = {
-  render: () => <WithAdditionalInfoDemo />,
+  render: function Render() {
+    return <WithAdditionalInfoDemo />;
+  },
 };
 
 // Wrapper for WCAG AAA story
@@ -191,7 +199,9 @@ const WCAGAAADemo = () => {
 
 // WCAG AAA level
 export const WCAGAAA: Story = {
-  render: () => <WCAGAAADemo />,
+  render: function Render() {
+    return <WCAGAAADemo />;
+  },
 };
 
 // Wrapper for minimal story
@@ -214,5 +224,7 @@ const MinimalDemo = () => {
 
 // Minimal
 export const Minimal: Story = {
-  render: () => <MinimalDemo />,
+  render: function Render() {
+    return <MinimalDemo />;
+  },
 };

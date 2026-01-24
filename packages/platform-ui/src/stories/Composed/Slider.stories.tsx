@@ -375,86 +375,122 @@ export const Default: Story = {
 
 // With label
 export const WithLabel: Story = {
-  render: () => <WithLabelDemo />,
+  render: function Render() {
+    return <WithLabelDemo />;
+  },
 };
 
 // With value display
 export const WithValue: Story = {
-  render: () => <WithValueDemo />,
+  render: function Render() {
+    return <WithValueDemo />;
+  },
 };
 
 // With tooltip
 export const WithTooltip: Story = {
-  render: () => <WithTooltipDemo />,
+  render: function Render() {
+    return <WithTooltipDemo />;
+  },
 };
 
 // Tooltip always visible
 export const TooltipAlways: Story = {
-  render: () => <TooltipAlwaysDemo />,
+  render: function Render() {
+    return <TooltipAlwaysDemo />;
+  },
 };
 
 // With marks
 export const WithMarks: Story = {
-  render: () => <WithMarksDemo />,
+  render: function Render() {
+    return <WithMarksDemo />;
+  },
 };
 
 // With custom format
 export const CustomFormat: Story = {
-  render: () => <CustomFormatDemo />,
+  render: function Render() {
+    return <CustomFormatDemo />;
+  },
 };
 
 // Size variants
 export const Small: Story = {
-  render: () => <SmallDemo />,
+  render: function Render() {
+    return <SmallDemo />;
+  },
 };
 
 export const Medium: Story = {
-  render: () => <MediumDemo />,
+  render: function Render() {
+    return <MediumDemo />;
+  },
 };
 
 export const Large: Story = {
-  render: () => <LargeDemo />,
+  render: function Render() {
+    return <LargeDemo />;
+  },
 };
 
 // Color variants
 export const Success: Story = {
-  render: () => <SuccessDemo />,
+  render: function Render() {
+    return <SuccessDemo />;
+  },
 };
 
 export const Warning: Story = {
-  render: () => <WarningDemo />,
+  render: function Render() {
+    return <WarningDemo />;
+  },
 };
 
 export const Danger: Story = {
-  render: () => <DangerDemo />,
+  render: function Render() {
+    return <DangerDemo />;
+  },
 };
 
 // Disabled
 export const Disabled: Story = {
-  render: () => <DisabledDemo />,
+  render: function Render() {
+    return <DisabledDemo />;
+  },
 };
 
 // With step
 export const WithStep: Story = {
-  render: () => <WithStepDemo />,
+  render: function Render() {
+    return <WithStepDemo />;
+  },
 };
 
 // Range slider
 export const RangeSliderExample: Story = {
-  render: () => <RangeSliderDemo />,
+  render: function Render() {
+    return <RangeSliderDemo />;
+  },
 };
 
 // Range slider with label
 export const RangeSliderWithLabel: Story = {
-  render: () => <RangeSliderWithLabelDemo />,
+  render: function Render() {
+    return <RangeSliderWithLabelDemo />;
+  },
 };
 
 // Range slider with marks
 export const RangeSliderWithMarks: Story = {
-  render: () => <RangeSliderWithMarksDemo />,
+  render: function Render() {
+    return <RangeSliderWithMarksDemo />;
+  },
 };
 
 // All sizes showcase
 export const AllSizes: Story = {
-  render: () => <AllSizesDemo />,
+  render: function Render() {
+    return <AllSizesDemo />;
+  },
 };

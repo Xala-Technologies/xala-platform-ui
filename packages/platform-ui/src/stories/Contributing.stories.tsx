@@ -44,7 +44,7 @@ type Story = StoryObj;
  * Design Principles Overview
  */
 export const DesignPrinciples: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const principles = [
@@ -227,7 +227,7 @@ export const DesignPrinciples: Story = {
  * Component Layer Architecture
  */
 export const ComponentArchitecture: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const layers = [
@@ -413,7 +413,7 @@ export const ComponentArchitecture: Story = {
  * Interactive Component Creation Wizard
  */
 export const ComponentCreationWizard: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -710,7 +710,7 @@ describe('MyComponent', () => {
  * Quality Checklist
  */
 export const QualityChecklist: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
@@ -876,7 +876,7 @@ export const QualityChecklist: Story = {
  * Testing Best Practices
  */
 export const TestingBestPractices: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const testingTypes = [
@@ -1049,7 +1049,7 @@ it('is keyboard accessible', async () => {
  * Common Pitfalls
  */
 export const CommonPitfalls: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const pitfalls = [

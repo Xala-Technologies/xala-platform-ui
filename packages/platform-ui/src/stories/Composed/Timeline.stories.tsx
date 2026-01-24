@@ -88,7 +88,9 @@ const DefaultDemo = () => {
 
 // Basic timeline
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for icons story
@@ -129,7 +131,9 @@ const WithIconsDemo = () => {
 
 // With icons
 export const WithIcons: Story = {
-  render: () => <WithIconsDemo />,
+  render: function Render() {
+    return <WithIconsDemo />;
+  },
 };
 
 // Wrapper for actors story
@@ -178,7 +182,9 @@ const WithActorsDemo = () => {
 
 // With actors
 export const WithActors: Story = {
-  render: () => <WithActorsDemo />,
+  render: function Render() {
+    return <WithActorsDemo />;
+  },
 };
 
 // Wrapper for all types story
@@ -225,7 +231,9 @@ const AllTypesDemo = () => {
 
 // All types
 export const AllTypes: Story = {
-  render: () => <AllTypesDemo />,
+  render: function Render() {
+    return <AllTypesDemo />;
+  },
 };
 
 // Wrapper for without connector story
@@ -260,7 +268,9 @@ const WithoutConnectorDemo = () => {
 
 // Without connector
 export const WithoutConnector: Story = {
-  render: () => <WithoutConnectorDemo />,
+  render: function Render() {
+    return <WithoutConnectorDemo />;
+  },
 };
 
 // Wrapper for metadata story
@@ -298,7 +308,9 @@ const WithMetadataDemo = () => {
 
 // With metadata
 export const WithMetadata: Story = {
-  render: () => <WithMetadataDemo />,
+  render: function Render() {
+    return <WithMetadataDemo />;
+  },
 };
 
 // Wrapper for empty story
@@ -311,7 +323,9 @@ const EmptyDemo = () => {
 
 // Empty state
 export const Empty: Story = {
-  render: () => <EmptyDemo />,
+  render: function Render() {
+    return <EmptyDemo />;
+  },
 };
 
 // Loading state

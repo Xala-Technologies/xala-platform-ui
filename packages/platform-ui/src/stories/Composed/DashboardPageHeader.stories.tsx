@@ -59,7 +59,9 @@ const DefaultDemo = () => {
 
 // Basic header
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for with badge story
@@ -76,7 +78,9 @@ const WithBadgeDemo = () => {
 
 // With badge
 export const WithBadge: Story = {
-  render: () => <WithBadgeDemo />,
+  render: function Render() {
+    return <WithBadgeDemo />;
+  },
 };
 
 // Wrapper for with breadcrumbs story
@@ -110,7 +114,9 @@ const WithBreadcrumbsDemo = () => {
 
 // With breadcrumbs
 export const WithBreadcrumbs: Story = {
-  render: () => <WithBreadcrumbsDemo />,
+  render: function Render() {
+    return <WithBreadcrumbsDemo />;
+  },
 };
 
 // Wrapper for with metadata story
@@ -131,7 +137,9 @@ const WithMetadataDemo = () => {
 
 // With metadata
 export const WithMetadata: Story = {
-  render: () => <WithMetadataDemo />,
+  render: function Render() {
+    return <WithMetadataDemo />;
+  },
 };
 
 // Wrapper for with actions story
@@ -157,7 +165,9 @@ const WithActionsDemo = () => {
 
 // With actions
 export const WithActions: Story = {
-  render: () => <WithActionsDemo />,
+  render: function Render() {
+    return <WithActionsDemo />;
+  },
 };
 
 // Wrapper for with tabs story
@@ -180,7 +190,9 @@ const WithTabsDemo = () => {
 
 // With tabs
 export const WithTabs: Story = {
-  render: () => <WithTabsDemo />,
+  render: function Render() {
+    return <WithTabsDemo />;
+  },
 };
 
 // Wrapper for with tabs pill story
@@ -204,7 +216,9 @@ const WithTabsPillDemo = () => {
 
 // With tabs (pill variant)
 export const WithTabsPill: Story = {
-  render: () => <WithTabsPillDemo />,
+  render: function Render() {
+    return <WithTabsPillDemo />;
+  },
 };
 
 // Wrapper for complete story
@@ -257,7 +271,9 @@ const CompleteDemo = () => {
 
 // Complete example
 export const Complete: Story = {
-  render: () => <CompleteDemo />,
+  render: function Render() {
+    return <CompleteDemo />;
+  },
 };
 
 // Wrapper for minimal story
@@ -268,5 +284,7 @@ const MinimalDemo = () => {
 
 // Minimal
 export const Minimal: Story = {
-  render: () => <MinimalDemo />,
+  render: function Render() {
+    return <MinimalDemo />;
+  },
 };

@@ -265,42 +265,60 @@ const ControlledDemo = () => {
 
 // Click trigger
 export const ClickTrigger: Story = {
-  render: () => <ClickTriggerDemo />,
+  render: function Render() {
+    return <ClickTriggerDemo />;
+  },
 };
 
 // Hover trigger
 export const HoverTrigger: Story = {
-  render: () => <HoverTriggerDemo />,
+  render: function Render() {
+    return <HoverTriggerDemo />;
+  },
 };
 
 // Focus trigger
 export const FocusTrigger: Story = {
-  render: () => <FocusTriggerDemo />,
+  render: function Render() {
+    return <FocusTriggerDemo />;
+  },
 };
 
 // Position variants
 export const TopPosition: Story = {
-  render: () => <TopPositionDemo />,
+  render: function Render() {
+    return <TopPositionDemo />;
+  },
 };
 
 export const BottomPosition: Story = {
-  render: () => <BottomPositionDemo />,
+  render: function Render() {
+    return <BottomPositionDemo />;
+  },
 };
 
 export const LeftPosition: Story = {
-  render: () => <LeftPositionDemo />,
+  render: function Render() {
+    return <LeftPositionDemo />;
+  },
 };
 
 export const RightPosition: Story = {
-  render: () => <RightPositionDemo />,
+  render: function Render() {
+    return <RightPositionDemo />;
+  },
 };
 
 // Rich content
 export const RichContent: Story = {
-  render: () => <RichContentDemo />,
+  render: function Render() {
+    return <RichContentDemo />;
+  },
 };
 
 // Controlled mode
 export const Controlled: Story = {
-  render: () => <ControlledDemo />,
+  render: function Render() {
+    return <ControlledDemo />;
+  },
 };

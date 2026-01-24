@@ -93,7 +93,9 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
-  render: () => <Badge count={5} />,
+  render: function Render() {
+    return <Badge count={5} />;
+  },
 };
 
 export const Colors: Story = {

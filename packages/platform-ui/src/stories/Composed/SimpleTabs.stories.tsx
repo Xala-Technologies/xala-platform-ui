@@ -179,33 +179,47 @@ const RichContentDemo = () => {
 
 // Simple API with TabItem
 export const SimpleAPI: Story = {
-  render: () => <SimpleAPIDemo />,
+  render: function Render() {
+    return <SimpleAPIDemo />;
+  },
 };
 
 // Without explicit values
 export const AutoValues: Story = {
-  render: () => <AutoValuesDemo />,
+  render: function Render() {
+    return <AutoValuesDemo />;
+  },
 };
 
 // Size variants
 export const Small: Story = {
-  render: () => <SmallDemo />,
+  render: function Render() {
+    return <SmallDemo />;
+  },
 };
 
 export const Medium: Story = {
-  render: () => <MediumDemo />,
+  render: function Render() {
+    return <MediumDemo />;
+  },
 };
 
 export const Large: Story = {
-  render: () => <LargeDemo />,
+  render: function Render() {
+    return <LargeDemo />;
+  },
 };
 
 // Controlled mode
 export const Controlled: Story = {
-  render: () => <ControlledDemo />,
+  render: function Render() {
+    return <ControlledDemo />;
+  },
 };
 
 // With rich content
 export const RichContent: Story = {
-  render: () => <RichContentDemo />,
+  render: function Render() {
+    return <RichContentDemo />;
+  },
 };

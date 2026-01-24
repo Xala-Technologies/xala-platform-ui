@@ -214,60 +214,84 @@ const CombinedExampleDemo = () => {
 
 // HighlightText - single term
 export const HighlightSingleTerm: Story = {
-  render: () => <HighlightSingleTermDemo />,
+  render: function Render() {
+    return <HighlightSingleTermDemo />;
+  },
 };
 
 // HighlightText - multiple terms
 export const HighlightMultipleTerms: Story = {
-  render: () => <HighlightMultipleTermsDemo />,
+  render: function Render() {
+    return <HighlightMultipleTermsDemo />;
+  },
 };
 
 // HighlightText - case sensitive
 export const HighlightCaseSensitive: Story = {
-  render: () => <HighlightCaseSensitiveDemo />,
+  render: function Render() {
+    return <HighlightCaseSensitiveDemo />;
+  },
 };
 
 // HighlightText - custom style
 export const HighlightCustomStyle: Story = {
-  render: () => <HighlightCustomStyleDemo />,
+  render: function Render() {
+    return <HighlightCustomStyleDemo />;
+  },
 };
 
 // Spotlight - active
 export const SpotlightActive: Story = {
-  render: () => <SpotlightActiveDemo />,
+  render: function Render() {
+    return <SpotlightActiveDemo />;
+  },
 };
 
 // Spotlight - inactive
 export const SpotlightInactive: Story = {
-  render: () => <SpotlightInactiveDemo />,
+  render: function Render() {
+    return <SpotlightInactiveDemo />;
+  },
 };
 
 // Spotlight - with button
 export const SpotlightWithButton: Story = {
-  render: () => <SpotlightWithButtonDemo />,
+  render: function Render() {
+    return <SpotlightWithButtonDemo />;
+  },
 };
 
 // Spotlight - custom padding
 export const SpotlightCustomPadding: Story = {
-  render: () => <SpotlightCustomPaddingDemo />,
+  render: function Render() {
+    return <SpotlightCustomPaddingDemo />;
+  },
 };
 
 // SearchHighlight - basic
 export const SearchHighlightBasic: Story = {
-  render: () => <SearchHighlightBasicDemo />,
+  render: function Render() {
+    return <SearchHighlightBasicDemo />;
+  },
 };
 
 // SearchHighlight - with context
 export const SearchHighlightWithContext: Story = {
-  render: () => <SearchHighlightWithContextDemo />,
+  render: function Render() {
+    return <SearchHighlightWithContextDemo />;
+  },
 };
 
 // SearchHighlight - max length
 export const SearchHighlightMaxLength: Story = {
-  render: () => <SearchHighlightMaxLengthDemo />,
+  render: function Render() {
+    return <SearchHighlightMaxLengthDemo />;
+  },
 };
 
 // Combined example
 export const CombinedExample: Story = {
-  render: () => <CombinedExampleDemo />,
+  render: function Render() {
+    return <CombinedExampleDemo />;
+  },
 };

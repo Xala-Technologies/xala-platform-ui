@@ -207,7 +207,9 @@ const InteractiveStepper = () => {
 };
 
 export const Interactive: Story = {
-  render: () => <InteractiveStepper />,
+  render: function Render() {
+    return <InteractiveStepper />;
+  },
 };
 
 // Wizard component
@@ -254,5 +256,7 @@ const WizardExample = () => {
 
 export const WizardExampleStory: Story = {
   name: 'WizardExample',
-  render: () => <WizardExample />,
+  render: function Render() {
+    return <WizardExample />;
+  },
 };

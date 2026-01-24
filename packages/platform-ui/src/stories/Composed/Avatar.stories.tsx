@@ -175,7 +175,9 @@ const UserInfoExample = () => {
 
 export const UserInfoExampleStory: Story = {
   name: 'UserInfoExample',
-  render: () => <UserInfoExample />,
+  render: function Render() {
+    return <UserInfoExample />;
+  },
 };
 
 // UserInfo clickable
@@ -192,5 +194,7 @@ const UserInfoClickableExample = () => {
 };
 
 export const UserInfoClickable: Story = {
-  render: () => <UserInfoClickableExample />,
+  render: function Render() {
+    return <UserInfoClickableExample />;
+  },
 };

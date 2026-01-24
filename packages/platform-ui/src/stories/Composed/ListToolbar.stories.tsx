@@ -67,7 +67,9 @@ const WithSearchDemo = () => {
 
 // Basic toolbar with search
 export const WithSearch: Story = {
-  render: () => <WithSearchDemo />,
+  render: function Render() {
+    return <WithSearchDemo />;
+  },
 };
 
 // Wrapper for filters story
@@ -107,7 +109,9 @@ const WithFiltersDemo = () => {
 
 // With filters
 export const WithFilters: Story = {
-  render: () => <WithFiltersDemo />,
+  render: function Render() {
+    return <WithFiltersDemo />;
+  },
 };
 
 // Wrapper for sort story
@@ -138,7 +142,9 @@ const WithSortDemo = () => {
 
 // With sort
 export const WithSort: Story = {
-  render: () => <WithSortDemo />,
+  render: function Render() {
+    return <WithSortDemo />;
+  },
 };
 
 // Wrapper for primary action story
@@ -166,7 +172,9 @@ const WithPrimaryActionDemo = () => {
 
 // With primary action
 export const WithPrimaryAction: Story = {
-  render: () => <WithPrimaryActionDemo />,
+  render: function Render() {
+    return <WithPrimaryActionDemo />;
+  },
 };
 
 // Wrapper for complete story
@@ -232,7 +240,9 @@ const CompleteDemo = () => {
 
 // Complete toolbar
 export const Complete: Story = {
-  render: () => <CompleteDemo />,
+  render: function Render() {
+    return <CompleteDemo />;
+  },
 };
 
 // Wrapper for compact story
@@ -256,7 +266,9 @@ const CompactDemo = () => {
 
 // Compact variant
 export const Compact: Story = {
-  render: () => <CompactDemo />,
+  render: function Render() {
+    return <CompactDemo />;
+  },
 };
 
 // Wrapper for without counts story
@@ -297,7 +309,9 @@ const WithoutFilterCountsDemo = () => {
 
 // Without filter counts
 export const WithoutFilterCounts: Story = {
-  render: () => <WithoutFilterCountsDemo />,
+  render: function Render() {
+    return <WithoutFilterCountsDemo />;
+  },
 };
 
 // Wrapper for custom results label story
@@ -321,7 +335,9 @@ const CustomResultsLabelDemo = () => {
 
 // Custom results label
 export const CustomResultsLabel: Story = {
-  render: () => <CustomResultsLabelDemo />,
+  render: function Render() {
+    return <CustomResultsLabelDemo />;
+  },
 };
 
 // Wrapper for no results story
@@ -344,5 +360,7 @@ const NoResultsDemo = () => {
 
 // No results
 export const NoResults: Story = {
-  render: () => <NoResultsDemo />,
+  render: function Render() {
+    return <NoResultsDemo />;
+  },
 };

@@ -142,7 +142,9 @@ const DefaultDemo = () => {
 
 // Basic table
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for sorting story
@@ -174,7 +176,9 @@ const WithSortingDemo = () => {
 
 // With sorting
 export const WithSorting: Story = {
-  render: () => <WithSortingDemo />,
+  render: function Render() {
+    return <WithSortingDemo />;
+  },
 };
 
 // Wrapper for row click story
@@ -196,7 +200,9 @@ const WithRowClickDemo = () => {
 
 // With row click
 export const WithRowClick: Story = {
-  render: () => <WithRowClickDemo />,
+  render: function Render() {
+    return <WithRowClickDemo />;
+  },
 };
 
 // Wrapper for loading story
@@ -218,7 +224,9 @@ const LoadingDemo = () => {
 
 // Loading state
 export const Loading: Story = {
-  render: () => <LoadingDemo />,
+  render: function Render() {
+    return <LoadingDemo />;
+  },
 };
 
 // Wrapper for empty story
@@ -240,7 +248,9 @@ const EmptyDemo = () => {
 
 // Empty state
 export const Empty: Story = {
-  render: () => <EmptyDemo />,
+  render: function Render() {
+    return <EmptyDemo />;
+  },
 };
 
 // Wrapper for sticky header story
@@ -262,7 +272,9 @@ const StickyHeaderDemo = () => {
 
 // Sticky header
 export const StickyHeader: Story = {
-  render: () => <StickyHeaderDemo />,
+  render: function Render() {
+    return <StickyHeaderDemo />;
+  },
 };
 
 // Wrapper for custom height story
@@ -284,5 +296,7 @@ const CustomHeightDemo = () => {
 
 // Custom height
 export const CustomHeight: Story = {
-  render: () => <CustomHeightDemo />,
+  render: function Render() {
+    return <CustomHeightDemo />;
+  },
 };

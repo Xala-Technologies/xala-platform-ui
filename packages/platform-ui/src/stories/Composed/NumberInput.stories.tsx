@@ -99,7 +99,9 @@ const WithLabelDemo = () => {
 
 // With label
 export const WithLabel: Story = {
-  render: () => <WithLabelDemo />,
+  render: function Render() {
+    return <WithLabelDemo />;
+  },
 };
 
 // Wrapper for min max story
@@ -120,7 +122,9 @@ const WithMinMaxDemo = () => {
 
 // With min and max
 export const WithMinMax: Story = {
-  render: () => <WithMinMaxDemo />,
+  render: function Render() {
+    return <WithMinMaxDemo />;
+  },
 };
 
 // Wrapper for step story
@@ -141,7 +145,9 @@ const WithStepDemo = () => {
 
 // With step
 export const WithStep: Story = {
-  render: () => <WithStepDemo />,
+  render: function Render() {
+    return <WithStepDemo />;
+  },
 };
 
 // Wrapper for decimal story
@@ -164,7 +170,9 @@ const DecimalPrecisionDemo = () => {
 
 // Decimal precision
 export const DecimalPrecision: Story = {
-  render: () => <DecimalPrecisionDemo />,
+  render: function Render() {
+    return <DecimalPrecisionDemo />;
+  },
 };
 
 // Wrapper for prefix story
@@ -186,7 +194,9 @@ const WithPrefixDemo = () => {
 
 // With prefix
 export const WithPrefix: Story = {
-  render: () => <WithPrefixDemo />,
+  render: function Render() {
+    return <WithPrefixDemo />;
+  },
 };
 
 // Wrapper for suffix story
@@ -208,7 +218,9 @@ const WithSuffixDemo = () => {
 
 // With suffix
 export const WithSuffix: Story = {
-  render: () => <WithSuffixDemo />,
+  render: function Render() {
+    return <WithSuffixDemo />;
+  },
 };
 
 // Wrapper for prefix and suffix story
@@ -231,7 +243,9 @@ const WithPrefixAndSuffixDemo = () => {
 
 // With prefix and suffix
 export const WithPrefixAndSuffix: Story = {
-  render: () => <WithPrefixAndSuffixDemo />,
+  render: function Render() {
+    return <WithPrefixAndSuffixDemo />;
+  },
 };
 
 // Size variants
@@ -288,7 +302,9 @@ const WithErrorDemo = () => {
 
 // With error
 export const WithError: Story = {
-  render: () => <WithErrorDemo />,
+  render: function Render() {
+    return <WithErrorDemo />;
+  },
 };
 
 // Wrapper for helper text story
@@ -310,7 +326,9 @@ const WithHelperTextDemo = () => {
 
 // With helper text
 export const WithHelperText: Story = {
-  render: () => <WithHelperTextDemo />,
+  render: function Render() {
+    return <WithHelperTextDemo />;
+  },
 };
 
 // Disabled
@@ -369,5 +387,7 @@ const AllSizesDemo = () => {
 
 // All sizes showcase
 export const AllSizes: Story = {
-  render: () => <AllSizesDemo />,
+  render: function Render() {
+    return <AllSizesDemo />;
+  },
 };

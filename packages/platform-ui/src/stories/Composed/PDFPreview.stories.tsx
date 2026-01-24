@@ -91,7 +91,9 @@ const DefaultDemo = () => {
 
 // Basic PDF preview
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for with title story
@@ -112,7 +114,9 @@ const WithTitleDemo = () => {
 
 // With title
 export const WithTitle: Story = {
-  render: () => <WithTitleDemo />,
+  render: function Render() {
+    return <WithTitleDemo />;
+  },
 };
 
 // Wrapper for minimal toolbar story
@@ -133,7 +137,9 @@ const MinimalToolbarDemo = () => {
 
 // Minimal toolbar
 export const MinimalToolbar: Story = {
-  render: () => <MinimalToolbarDemo />,
+  render: function Render() {
+    return <MinimalToolbarDemo />;
+  },
 };
 
 // Wrapper for download only story
@@ -154,7 +160,9 @@ const DownloadOnlyDemo = () => {
 
 // Download only
 export const DownloadOnly: Story = {
-  render: () => <DownloadOnlyDemo />,
+  render: function Render() {
+    return <DownloadOnlyDemo />;
+  },
 };
 
 // Wrapper for print only story
@@ -175,7 +183,9 @@ const PrintOnlyDemo = () => {
 
 // Print only
 export const PrintOnly: Story = {
-  render: () => <PrintOnlyDemo />,
+  render: function Render() {
+    return <PrintOnlyDemo />;
+  },
 };
 
 // Wrapper for custom size story
@@ -198,7 +208,9 @@ const CustomSizeDemo = () => {
 
 // Custom size
 export const CustomSize: Story = {
-  render: () => <CustomSizeDemo />,
+  render: function Render() {
+    return <CustomSizeDemo />;
+  },
 };
 
 // Wrapper for without toolbar story
@@ -217,7 +229,9 @@ const WithoutToolbarDemo = () => {
 
 // Without toolbar
 export const WithoutToolbar: Story = {
-  render: () => <WithoutToolbarDemo />,
+  render: function Render() {
+    return <WithoutToolbarDemo />;
+  },
 };
 
 // Wrapper for full featured story
@@ -241,5 +255,7 @@ const FullFeaturedDemo = () => {
 
 // Full featured
 export const FullFeatured: Story = {
-  render: () => <FullFeaturedDemo />,
+  render: function Render() {
+    return <FullFeaturedDemo />;
+  },
 };

@@ -63,7 +63,9 @@ const DefaultDemo = () => {
 
 // Basic detail field
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for with icon story
@@ -81,7 +83,9 @@ const WithIconDemo = () => {
 
 // With icon
 export const WithIcon: Story = {
-  render: () => <WithIconDemo />,
+  render: function Render() {
+    return <WithIconDemo />;
+  },
 };
 
 // Wrapper for copyable story
@@ -100,7 +104,9 @@ const CopyableDemo = () => {
 
 // Copyable
 export const Copyable: Story = {
-  render: () => <CopyableDemo />,
+  render: function Render() {
+    return <CopyableDemo />;
+  },
 };
 
 // Wrapper for with react node story
@@ -117,7 +123,9 @@ const WithReactNodeDemo = () => {
 
 // With React node value
 export const WithReactNode: Story = {
-  render: () => <WithReactNodeDemo />,
+  render: function Render() {
+    return <WithReactNodeDemo />;
+  },
 };
 
 // Wrapper for group single column story
@@ -148,7 +156,9 @@ const GroupSingleColumnDemo = () => {
 
 // DetailFieldGroup - single column
 export const GroupSingleColumn: Story = {
-  render: () => <GroupSingleColumnDemo />,
+  render: function Render() {
+    return <GroupSingleColumnDemo />;
+  },
 };
 
 // Wrapper for group two columns story
@@ -171,7 +181,9 @@ const GroupTwoColumnsDemo = () => {
 
 // DetailFieldGroup - two columns
 export const GroupTwoColumns: Story = {
-  render: () => <GroupTwoColumnsDemo />,
+  render: function Render() {
+    return <GroupTwoColumnsDemo />;
+  },
 };
 
 // Wrapper for group three columns story
@@ -190,7 +202,9 @@ const GroupThreeColumnsDemo = () => {
 
 // DetailFieldGroup - three columns
 export const GroupThreeColumns: Story = {
-  render: () => <GroupThreeColumnsDemo />,
+  render: function Render() {
+    return <GroupThreeColumnsDemo />;
+  },
 };
 
 // Wrapper for card story
@@ -219,7 +233,9 @@ const CardDemo = () => {
 
 // DetailCard
 export const Card: Story = {
-  render: () => <CardDemo />,
+  render: function Render() {
+    return <CardDemo />;
+  },
 };
 
 // Wrapper for mono field story
@@ -240,7 +256,9 @@ const MonoFieldExampleDemo = () => {
 
 // MonoField
 export const MonoFieldExample: Story = {
-  render: () => <MonoFieldExampleDemo />,
+  render: function Render() {
+    return <MonoFieldExampleDemo />;
+  },
 };
 
 // Wrapper for link field story
@@ -285,7 +303,9 @@ const LinkFieldExampleDemo = () => {
 
 // LinkField
 export const LinkFieldExample: Story = {
-  render: () => <LinkFieldExampleDemo />,
+  render: function Render() {
+    return <LinkFieldExampleDemo />;
+  },
 };
 
 // Wrapper for complete example story
@@ -329,5 +349,7 @@ const CompleteExampleDemo = () => {
 
 // Complete example
 export const CompleteExample: Story = {
-  render: () => <CompleteExampleDemo />,
+  render: function Render() {
+    return <CompleteExampleDemo />;
+  },
 };

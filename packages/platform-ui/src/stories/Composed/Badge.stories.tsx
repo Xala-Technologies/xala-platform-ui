@@ -258,23 +258,33 @@ export const Outline: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => <AllVariantsDemo />,
+  render: function Render() {
+    return <AllVariantsDemo />;
+  },
 };
 
 // Tag component
 export const TagDefault: Story = {
-  render: () => <TagDefaultDemo />,
+  render: function Render() {
+    return <TagDefaultDemo />;
+  },
 };
 
 export const TagRemovable: Story = {
-  render: () => <TagRemovableDemo />,
+  render: function Render() {
+    return <TagRemovableDemo />;
+  },
 };
 
 export const TagWithIcon: Story = {
-  render: () => <TagWithIconDemo />,
+  render: function Render() {
+    return <TagWithIconDemo />;
+  },
 };
 
 // Notification badge
 export const NotificationBadgeExample: Story = {
-  render: () => <NotificationBadgeDemo />,
+  render: function Render() {
+    return <NotificationBadgeDemo />;
+  },
 };

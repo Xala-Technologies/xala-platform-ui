@@ -273,15 +273,21 @@ export const Striped: Story = {
 
 // ProgressRing
 export const Ring: Story = {
-  render: () => <RingDemo />,
+  render: function Render() {
+    return <RingDemo />;
+  },
 };
 
 // ProgressSteps
 export const Steps: Story = {
-  render: () => <StepsDemo />,
+  render: function Render() {
+    return <StepsDemo />;
+  },
 };
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => <AllVariantsDemo />,
+  render: function Render() {
+    return <AllVariantsDemo />;
+  },
 };

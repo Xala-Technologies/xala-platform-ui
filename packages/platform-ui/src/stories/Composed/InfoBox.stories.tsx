@@ -151,40 +151,56 @@ const AllVariantsDemo = () => {
 
 // Info variant
 export const Info: Story = {
-  render: () => <InfoDemo />,
+  render: function Render() {
+    return <InfoDemo />;
+  },
 };
 
 // Success variant
 export const Success: Story = {
-  render: () => <SuccessDemo />,
+  render: function Render() {
+    return <SuccessDemo />;
+  },
 };
 
 // Warning variant
 export const Warning: Story = {
-  render: () => <WarningDemo />,
+  render: function Render() {
+    return <WarningDemo />;
+  },
 };
 
 // Danger variant
 export const Danger: Story = {
-  render: () => <DangerDemo />,
+  render: function Render() {
+    return <DangerDemo />;
+  },
 };
 
 // Neutral variant
 export const Neutral: Story = {
-  render: () => <NeutralDemo />,
+  render: function Render() {
+    return <NeutralDemo />;
+  },
 };
 
 // Without title
 export const WithoutTitle: Story = {
-  render: () => <WithoutTitleDemo />,
+  render: function Render() {
+    return <WithoutTitleDemo />;
+  },
 };
 
 // Long content
 export const LongContent: Story = {
-  render: () => <LongContentDemo />,
+  render: function Render() {
+    return <LongContentDemo />;
+  },
 };
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => <AllVariantsDemo />,
+  render: function Render() {
+    return <AllVariantsDemo />;
+  },
 };

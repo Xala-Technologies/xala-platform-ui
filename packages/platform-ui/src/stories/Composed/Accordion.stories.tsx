@@ -182,7 +182,9 @@ const CollapsibleExample = () => {
 
 export const CollapsibleExampleStory: Story = {
   name: 'CollapsibleExample',
-  render: () => <CollapsibleExample />,
+  render: function Render() {
+    return <CollapsibleExample />;
+  },
 };
 
 // Collapsible with icon
@@ -200,5 +202,7 @@ const CollapsibleWithIconExample = () => {
 };
 
 export const CollapsibleWithIcon: Story = {
-  render: () => <CollapsibleWithIconExample />,
+  render: function Render() {
+    return <CollapsibleWithIconExample />;
+  },
 };

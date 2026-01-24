@@ -70,7 +70,9 @@ const DefaultDemo = () => {
 
 // Basic key-value
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for horizontal story
@@ -89,7 +91,9 @@ const HorizontalDemo = () => {
 
 // Horizontal layout
 export const Horizontal: Story = {
-  render: () => <HorizontalDemo />,
+  render: function Render() {
+    return <HorizontalDemo />;
+  },
 };
 
 // Wrapper for copyable story
@@ -108,7 +112,9 @@ const CopyableDemo = () => {
 
 // With copyable value
 export const Copyable: Story = {
-  render: () => <CopyableDemo />,
+  render: function Render() {
+    return <CopyableDemo />;
+  },
 };
 
 // Wrapper for monospace story
@@ -127,7 +133,9 @@ const MonospaceDemo = () => {
 
 // Monospace font
 export const Monospace: Story = {
-  render: () => <MonospaceDemo />,
+  render: function Render() {
+    return <MonospaceDemo />;
+  },
 };
 
 // Wrapper for react node story
@@ -146,7 +154,9 @@ const WithReactNodeDemo = () => {
 
 // With React node value
 export const WithReactNode: Story = {
-  render: () => <WithReactNodeDemo />,
+  render: function Render() {
+    return <WithReactNodeDemo />;
+  },
 };
 
 // Wrapper for single column list
@@ -174,7 +184,9 @@ const ListSingleColumnDemo = () => {
 
 // KeyValueList - single column
 export const ListSingleColumn: Story = {
-  render: () => <ListSingleColumnDemo />,
+  render: function Render() {
+    return <ListSingleColumnDemo />;
+  },
 };
 
 // Wrapper for two columns list
@@ -202,7 +214,9 @@ const ListTwoColumnsDemo = () => {
 
 // KeyValueList - two columns
 export const ListTwoColumns: Story = {
-  render: () => <ListTwoColumnsDemo />,
+  render: function Render() {
+    return <ListTwoColumnsDemo />;
+  },
 };
 
 // Wrapper for striped list
@@ -230,7 +244,9 @@ const ListStripedDemo = () => {
 
 // KeyValueList - striped variant
 export const ListStriped: Story = {
-  render: () => <ListStripedDemo />,
+  render: function Render() {
+    return <ListStripedDemo />;
+  },
 };
 
 // Wrapper for bordered list
@@ -258,7 +274,9 @@ const ListBorderedDemo = () => {
 
 // KeyValueList - bordered variant
 export const ListBordered: Story = {
-  render: () => <ListBorderedDemo />,
+  render: function Render() {
+    return <ListBorderedDemo />;
+  },
 };
 
 // Wrapper for copyable list
@@ -296,7 +314,9 @@ const ListWithCopyableDemo = () => {
 
 // KeyValueList with copyable items
 export const ListWithCopyable: Story = {
-  render: () => <ListWithCopyableDemo />,
+  render: function Render() {
+    return <ListWithCopyableDemo />;
+  },
 };
 
 // Wrapper for links list
@@ -332,7 +352,9 @@ const ListWithLinksDemo = () => {
 
 // KeyValueList with links
 export const ListWithLinks: Story = {
-  render: () => <ListWithLinksDemo />,
+  render: function Render() {
+    return <ListWithLinksDemo />;
+  },
 };
 
 // Wrapper for definition list
@@ -357,5 +379,7 @@ const DefinitionListExampleDemo = () => {
 
 // DefinitionList
 export const DefinitionListExample: Story = {
-  render: () => <DefinitionListExampleDemo />,
+  render: function Render() {
+    return <DefinitionListExampleDemo />;
+  },
 };

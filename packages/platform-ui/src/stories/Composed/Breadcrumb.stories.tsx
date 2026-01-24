@@ -58,7 +58,9 @@ const DefaultDemo = () => {
 
 // Basic breadcrumb
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for onClick story
@@ -77,7 +79,9 @@ const WithOnClickDemo = () => {
 
 // With onClick handlers
 export const WithOnClick: Story = {
-  render: () => <WithOnClickDemo />,
+  render: function Render() {
+    return <WithOnClickDemo />;
+  },
 };
 
 // Wrapper for custom separator story
@@ -97,7 +101,9 @@ const CustomSeparatorDemo = () => {
 
 // Custom separator
 export const CustomSeparator: Story = {
-  render: () => <CustomSeparatorDemo />,
+  render: function Render() {
+    return <CustomSeparatorDemo />;
+  },
 };
 
 // Wrapper for long trail story
@@ -118,7 +124,9 @@ const LongTrailDemo = () => {
 
 // Long breadcrumb trail
 export const LongTrail: Story = {
-  render: () => <LongTrailDemo />,
+  render: function Render() {
+    return <LongTrailDemo />;
+  },
 };
 
 // Wrapper for single item story
@@ -129,7 +137,9 @@ const SingleItemDemo = () => {
 
 // Single item
 export const SingleItem: Story = {
-  render: () => <SingleItemDemo />,
+  render: function Render() {
+    return <SingleItemDemo />;
+  },
 };
 
 // Wrapper for two items story
@@ -147,5 +157,7 @@ const TwoItemsDemo = () => {
 
 // Two items
 export const TwoItems: Story = {
-  render: () => <TwoItemsDemo />,
+  render: function Render() {
+    return <TwoItemsDemo />;
+  },
 };

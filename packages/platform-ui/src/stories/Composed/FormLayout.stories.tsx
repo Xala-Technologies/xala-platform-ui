@@ -70,7 +70,9 @@ const BasicSectionExample = () => {
 };
 
 export const BasicSection: Story = {
-  render: () => <BasicSectionExample />,
+  render: function Render() {
+    return <BasicSectionExample />;
+  },
 };
 
 // Collapsible section
@@ -96,7 +98,9 @@ const CollapsibleSectionExample = () => {
 };
 
 export const CollapsibleSection: Story = {
-  render: () => <CollapsibleSectionExample />,
+  render: function Render() {
+    return <CollapsibleSectionExample />;
+  },
 };
 
 // Form row with multiple columns
@@ -127,7 +131,9 @@ const FormRowTwoColumnsExample = () => {
 };
 
 export const FormRowTwoColumns: Story = {
-  render: () => <FormRowTwoColumnsExample />,
+  render: function Render() {
+    return <FormRowTwoColumnsExample />;
+  },
 };
 
 // Form row with three columns
@@ -153,7 +159,9 @@ const FormRowThreeColumnsExample = () => {
 };
 
 export const FormRowThreeColumns: Story = {
-  render: () => <FormRowThreeColumnsExample />,
+  render: function Render() {
+    return <FormRowThreeColumnsExample />;
+  },
 };
 
 // Form field with error
@@ -182,7 +190,9 @@ const FormFieldWithErrorExample = () => {
 };
 
 export const FormFieldWithError: Story = {
-  render: () => <FormFieldWithErrorExample />,
+  render: function Render() {
+    return <FormFieldWithErrorExample />;
+  },
 };
 
 // Form actions - right aligned
@@ -208,7 +218,9 @@ const FormActionsRightExample = () => {
 };
 
 export const FormActionsRight: Story = {
-  render: () => <FormActionsRightExample />,
+  render: function Render() {
+    return <FormActionsRightExample />;
+  },
 };
 
 // Form actions - left aligned
@@ -234,7 +246,9 @@ const FormActionsLeftExample = () => {
 };
 
 export const FormActionsLeft: Story = {
-  render: () => <FormActionsLeftExample />,
+  render: function Render() {
+    return <FormActionsLeftExample />;
+  },
 };
 
 // Form actions - between
@@ -265,7 +279,9 @@ const FormActionsBetweenExample = () => {
 };
 
 export const FormActionsBetween: Story = {
-  render: () => <FormActionsBetweenExample />,
+  render: function Render() {
+    return <FormActionsBetweenExample />;
+  },
 };
 
 // Form actions - sticky
@@ -300,7 +316,9 @@ const FormActionsStickyExample = () => {
 };
 
 export const FormActionsSticky: Story = {
-  render: () => <FormActionsStickyExample />,
+  render: function Render() {
+    return <FormActionsStickyExample />;
+  },
 };
 
 // Form divider
@@ -323,7 +341,9 @@ const FormDividerExample = () => {
 
 export const FormDividerExampleStory: Story = {
   name: 'FormDividerExample',
-  render: () => <FormDividerExample />,
+  render: function Render() {
+    return <FormDividerExample />;
+  },
 };
 
 // Complete form example
@@ -386,5 +406,7 @@ const CompleteFormExample = () => {
 };
 
 export const CompleteForm: Story = {
-  render: () => <CompleteFormExample />,
+  render: function Render() {
+    return <CompleteFormExample />;
+  },
 };

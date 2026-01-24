@@ -75,7 +75,9 @@ const DefaultDemo = () => {
 
 // Default page container
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // Wrapper for small gap story
@@ -98,7 +100,9 @@ const SmallGapDemo = () => {
 
 // Small gap
 export const SmallGap: Story = {
-  render: () => <SmallGapDemo />,
+  render: function Render() {
+    return <SmallGapDemo />;
+  },
 };
 
 // Wrapper for large gap story
@@ -121,7 +125,9 @@ const LargeGapDemo = () => {
 
 // Large gap
 export const LargeGap: Story = {
-  render: () => <LargeGapDemo />,
+  render: function Render() {
+    return <LargeGapDemo />;
+  },
 };
 
 // Wrapper for max width small story
@@ -141,7 +147,9 @@ const MaxWidthSmallDemo = () => {
 
 // Max width variants
 export const MaxWidthSmall: Story = {
-  render: () => <MaxWidthSmallDemo />,
+  render: function Render() {
+    return <MaxWidthSmallDemo />;
+  },
 };
 
 // Wrapper for max width medium story
@@ -160,7 +168,9 @@ const MaxWidthMediumDemo = () => {
 };
 
 export const MaxWidthMedium: Story = {
-  render: () => <MaxWidthMediumDemo />,
+  render: function Render() {
+    return <MaxWidthMediumDemo />;
+  },
 };
 
 // Wrapper for max width large story
@@ -179,7 +189,9 @@ const MaxWidthLargeDemo = () => {
 };
 
 export const MaxWidthLarge: Story = {
-  render: () => <MaxWidthLargeDemo />,
+  render: function Render() {
+    return <MaxWidthLargeDemo />;
+  },
 };
 
 // Wrapper for max width full story
@@ -198,7 +210,9 @@ const MaxWidthFullDemo = () => {
 };
 
 export const MaxWidthFull: Story = {
-  render: () => <MaxWidthFullDemo />,
+  render: function Render() {
+    return <MaxWidthFullDemo />;
+  },
 };
 
 // Wrapper for no padding story
@@ -218,7 +232,9 @@ const NoPaddingDemo = () => {
 
 // No padding
 export const NoPadding: Story = {
-  render: () => <NoPaddingDemo />,
+  render: function Render() {
+    return <NoPaddingDemo />;
+  },
 };
 
 // Wrapper for multiple children story
@@ -253,5 +269,7 @@ const MultipleChildrenDemo = () => {
 
 // With multiple children
 export const MultipleChildren: Story = {
-  render: () => <MultipleChildrenDemo />,
+  render: function Render() {
+    return <MultipleChildrenDemo />;
+  },
 };

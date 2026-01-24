@@ -261,12 +261,16 @@ export const AllSizes: Story = {
 
 export const InlineVariant: Story = {
   name: 'Inline Variant',
-  render: () => <MetadataRowInline items={basicMetadata} size="md" separator="•" />,
+  render: function Render() {
+    return <MetadataRowInline items={basicMetadata} size="md" separator="•" />;
+  },
 };
 
 export const InlineSmall: Story = {
   name: 'Inline Small',
-  render: () => <MetadataRowInline items={resourceMetadata} size="sm" separator="•" />,
+  render: function Render() {
+    return <MetadataRowInline items={resourceMetadata} size="sm" separator="•" />;
+  },
 };
 
 export const InlineWithLabels: Story = {

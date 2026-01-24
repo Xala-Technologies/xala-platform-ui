@@ -219,40 +219,56 @@ const MiniStatDemo = () => {
 
 // Default grid
 export const Default: Story = {
-  render: () => <StatsGridDemo columns={4} loading={false} />,
+  render: function Render() {
+    return <StatsGridDemo columns={4} loading={false} />;
+  },
 };
 
 // Two columns
 export const TwoColumns: Story = {
-  render: () => <TwoColumnsDemo />,
+  render: function Render() {
+    return <TwoColumnsDemo />;
+  },
 };
 
 // Three columns
 export const ThreeColumns: Story = {
-  render: () => <ThreeColumnsDemo />,
+  render: function Render() {
+    return <ThreeColumnsDemo />;
+  },
 };
 
 // With click handlers
 export const Clickable: Story = {
-  render: () => <StatsGridDemo columns={4} loading={false} clickable />,
+  render: function Render() {
+    return <StatsGridDemo columns={4} loading={false} clickable />;
+  },
 };
 
 // Loading state
 export const Loading: Story = {
-  render: () => <StatsGridDemo columns={4} loading={true} />,
+  render: function Render() {
+    return <StatsGridDemo columns={4} loading={true} />;
+  },
 };
 
 // All trends
 export const AllTrends: Story = {
-  render: () => <AllTrendsDemo />,
+  render: function Render() {
+    return <AllTrendsDemo />;
+  },
 };
 
 // StatCardEnhanced standalone
 export const EnhancedCard: Story = {
-  render: () => <EnhancedCardDemo />,
+  render: function Render() {
+    return <EnhancedCardDemo />;
+  },
 };
 
 // MiniStat component
 export const MiniStatExample: Story = {
-  render: () => <MiniStatDemo />,
+  render: function Render() {
+    return <MiniStatDemo />;
+  },
 };

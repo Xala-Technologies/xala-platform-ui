@@ -60,7 +60,7 @@ type Story = StoryObj;
  * Installation Steps
  */
 export const InstallationSteps: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const steps = [
@@ -151,7 +151,7 @@ export const InstallationSteps: Story = {
  * Basic Setup
  */
 export const BasicSetup: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -246,7 +246,7 @@ export function MyComponent() {
  * First Component
  */
 export const FirstComponent: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -363,7 +363,7 @@ export function WelcomeCard() {
  * Common Patterns
  */
 export const CommonPatterns: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const patterns = [
@@ -438,7 +438,7 @@ export const CommonPatterns: Story = {
  * Design Tokens in Action
  */
 export const DesignTokensInAction: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [selectedToken, setSelectedToken] = useState<'spacing' | 'color' | 'typography'>(
       'spacing'
@@ -600,7 +600,7 @@ export const DesignTokensInAction: Story = {
  * Real-World Patterns
  */
 export const RealWorldPatterns: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const patterns = [
@@ -794,7 +794,7 @@ export function DashboardGrid() {
  * Interactive Quick Start
  */
 export const InteractiveQuickStart: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [name, setName] = useState('');
     const [step, setStep] = useState(1);
@@ -1035,7 +1035,7 @@ export const InteractiveQuickStart: Story = {
  * Next Steps
  */
 export const NextSteps: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const nextSteps = [

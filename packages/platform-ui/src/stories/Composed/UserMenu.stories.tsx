@@ -252,45 +252,63 @@ const CompleteExampleDemo = () => {
 
 // Basic user menu
 export const Default: Story = {
-  render: () => <DefaultDemo />,
+  render: function Render() {
+    return <DefaultDemo />;
+  },
 };
 
 // With avatar
 export const WithAvatar: Story = {
-  render: () => <WithAvatarDemo />,
+  render: function Render() {
+    return <WithAvatarDemo />;
+  },
 };
 
 // With icons
 export const WithIcons: Story = {
-  render: () => <WithIconsDemo />,
+  render: function Render() {
+    return <WithIconsDemo />;
+  },
 };
 
 // With danger item
 export const WithDangerItem: Story = {
-  render: () => <WithDangerItemDemo />,
+  render: function Render() {
+    return <WithDangerItemDemo />;
+  },
 };
 
 // With disabled items
 export const WithDisabledItems: Story = {
-  render: () => <WithDisabledItemsDemo />,
+  render: function Render() {
+    return <WithDisabledItemsDemo />;
+  },
 };
 
 // Without email
 export const WithoutEmail: Story = {
-  render: () => <WithoutEmailDemo />,
+  render: function Render() {
+    return <WithoutEmailDemo />;
+  },
 };
 
 // Many items
 export const ManyItems: Story = {
-  render: () => <ManyItemsDemo />,
+  render: function Render() {
+    return <ManyItemsDemo />;
+  },
 };
 
 // With onClick handlers
 export const WithOnClick: Story = {
-  render: () => <WithOnClickDemo />,
+  render: function Render() {
+    return <WithOnClickDemo />;
+  },
 };
 
 // Complete example
 export const CompleteExample: Story = {
-  render: () => <CompleteExampleDemo />,
+  render: function Render() {
+    return <CompleteExampleDemo />;
+  },
 };

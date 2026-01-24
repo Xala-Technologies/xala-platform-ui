@@ -214,7 +214,9 @@ const WithLabelDemo = () => {
 
 // With label
 export const WithLabel: Story = {
-  render: () => <WithLabelDemo />,
+  render: function Render() {
+    return <WithLabelDemo />;
+  },
 };
 
 // Disabled

@@ -56,7 +56,9 @@ const LoadingSmallExample = () => {
 };
 
 export const LoadingSmall: Story = {
-  render: () => <LoadingSmallExample />,
+  render: function Render() {
+    return <LoadingSmallExample />;
+  },
 };
 
 // LoadingState - Medium
@@ -66,7 +68,9 @@ const LoadingMediumExample = () => {
 };
 
 export const LoadingMedium: Story = {
-  render: () => <LoadingMediumExample />,
+  render: function Render() {
+    return <LoadingMediumExample />;
+  },
 };
 
 // LoadingState - Large
@@ -76,7 +80,9 @@ const LoadingLargeExample = () => {
 };
 
 export const LoadingLarge: Story = {
-  render: () => <LoadingLargeExample />,
+  render: function Render() {
+    return <LoadingLargeExample />;
+  },
 };
 
 // LoadingState - Custom label
@@ -86,7 +92,9 @@ const LoadingCustomLabelExample = () => {
 };
 
 export const LoadingCustomLabel: Story = {
-  render: () => <LoadingCustomLabelExample />,
+  render: function Render() {
+    return <LoadingCustomLabelExample />;
+  },
 };
 
 // EmptyState - Default
@@ -106,7 +114,9 @@ const EmptyDefaultExample = () => {
 };
 
 export const EmptyDefault: Story = {
-  render: () => <EmptyDefaultExample />,
+  render: function Render() {
+    return <EmptyDefaultExample />;
+  },
 };
 
 // EmptyState - Compact
@@ -122,7 +132,9 @@ const EmptyCompactExample = () => {
 };
 
 export const EmptyCompact: Story = {
-  render: () => <EmptyCompactExample />,
+  render: function Render() {
+    return <EmptyCompactExample />;
+  },
 };
 
 // EmptyState - With custom icon
@@ -144,7 +156,9 @@ const EmptyWithIconExample = () => {
 };
 
 export const EmptyWithIcon: Story = {
-  render: () => <EmptyWithIconExample />,
+  render: function Render() {
+    return <EmptyWithIconExample />;
+  },
 };
 
 // EmptyState - Without action
@@ -159,7 +173,9 @@ const EmptyNoActionExample = () => {
 };
 
 export const EmptyNoAction: Story = {
-  render: () => <EmptyNoActionExample />,
+  render: function Render() {
+    return <EmptyNoActionExample />;
+  },
 };
 
 // NotFoundState - Default
@@ -179,7 +195,9 @@ const NotFoundDefaultExample = () => {
 };
 
 export const NotFoundDefault: Story = {
-  render: () => <NotFoundDefaultExample />,
+  render: function Render() {
+    return <NotFoundDefaultExample />;
+  },
 };
 
 // NotFoundState - Without back link
@@ -194,7 +212,9 @@ const NotFoundNoBackLinkExample = () => {
 };
 
 export const NotFoundNoBackLink: Story = {
-  render: () => <NotFoundNoBackLinkExample />,
+  render: function Render() {
+    return <NotFoundNoBackLinkExample />;
+  },
 };
 
 // NotFoundState - Custom title and description
@@ -213,7 +233,9 @@ const NotFoundCustomExample = () => {
 };
 
 export const NotFoundCustom: Story = {
-  render: () => <NotFoundCustomExample />,
+  render: function Render() {
+    return <NotFoundCustomExample />;
+  },
 };
 
 // ErrorState - Default
@@ -230,7 +252,9 @@ const ErrorDefaultExample = () => {
 };
 
 export const ErrorDefault: Story = {
-  render: () => <ErrorDefaultExample />,
+  render: function Render() {
+    return <ErrorDefaultExample />;
+  },
 };
 
 // ErrorState - Custom title
@@ -247,7 +271,9 @@ const ErrorCustomExample = () => {
 };
 
 export const ErrorCustom: Story = {
-  render: () => <ErrorCustomExample />,
+  render: function Render() {
+    return <ErrorCustomExample />;
+  },
 };
 
 // ErrorState - Without retry
@@ -262,7 +288,9 @@ const ErrorNoRetryExample = () => {
 };
 
 export const ErrorNoRetry: Story = {
-  render: () => <ErrorNoRetryExample />,
+  render: function Render() {
+    return <ErrorNoRetryExample />;
+  },
 };
 
 // All states showcase
@@ -323,5 +351,7 @@ const AllStatesExample = () => {
 };
 
 export const AllStates: Story = {
-  render: () => <AllStatesExample />,
+  render: function Render() {
+    return <AllStatesExample />;
+  },
 };
