@@ -180,13 +180,15 @@ export const WithInitials: Story = {
 };
 
 export const Initials: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Avatar aria-label="John Doe">JD</Avatar>
-      <Avatar aria-label="Alice Brown">AB</Avatar>
-      <Avatar aria-label="Charlie Wilson">CW</Avatar>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <Avatar aria-label="John Doe">JD</Avatar>
+        <Avatar aria-label="Alice Brown">AB</Avatar>
+        <Avatar aria-label="Charlie Wilson">CW</Avatar>
+      </div>
+    );
+  },
 };
 
 export const Sizes: Story = {
@@ -209,46 +211,52 @@ export const Sizes: Story = {
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Avatar data-color="neutral" aria-label="Neutral avatar">
-        N
-      </Avatar>
-      <Avatar data-color="accent" aria-label="Accent avatar">
-        A
-      </Avatar>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <Avatar data-color="neutral" aria-label="Neutral avatar">
+          N
+        </Avatar>
+        <Avatar data-color="accent" aria-label="Accent avatar">
+          A
+        </Avatar>
+      </div>
+    );
+  },
 };
 
 export const Variant: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <Avatar variant="circle" aria-label="Circle avatar">
-        C
-      </Avatar>
-      <Avatar variant="square" aria-label="Square avatar">
-        S
-      </Avatar>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <Avatar variant="circle" aria-label="Circle avatar">
+          C
+        </Avatar>
+        <Avatar variant="square" aria-label="Square avatar">
+          S
+        </Avatar>
+      </div>
+    );
+  },
 };
 
 export const AvatarGroup: Story = {
-  render: () => (
-    <div style={{ display: 'flex' }}>
-      <Avatar aria-label="User 1">A</Avatar>
-      <Avatar aria-label="User 2" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
-        B
-      </Avatar>
-      <Avatar aria-label="User 3" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
-        C
-      </Avatar>
-      <Avatar aria-label="3 more users" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
-        +3
-      </Avatar>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex' }}>
+        <Avatar aria-label="User 1">A</Avatar>
+        <Avatar aria-label="User 2" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+          B
+        </Avatar>
+        <Avatar aria-label="User 3" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+          C
+        </Avatar>
+        <Avatar aria-label="3 more users" style={{ marginLeft: 'calc(-1 * var(--ds-spacing-2))' }}>
+          +3
+        </Avatar>
+      </div>
+    );
+  },
 };
 
 /**

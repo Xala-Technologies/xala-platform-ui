@@ -232,11 +232,13 @@ export const Disabled: Story = {
 
 // RatingDisplay component
 export const DisplayOnly: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <RatingDisplay value={4.5} max={5} size="md" showValue />
-      <RatingDisplay value={3.2} max={5} size="md" showValue showCount={128} />
-      <RatingDisplay value={5} max={5} size="lg" showValue showCount={1024} />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <RatingDisplay value={4.5} max={5} size="md" showValue />
+        <RatingDisplay value={3.2} max={5} size="md" showValue showCount={128} />
+        <RatingDisplay value={5} max={5} size="lg" showValue showCount={1024} />
+      </div>
+    );
+  },
 };

@@ -471,7 +471,7 @@ export const Interactive: Story = {
       </div>
     ),
   ],
-  render: () => {
+  render: function Render() {
     const [items, setItems] = React.useState<CartItem[]>([
       {
         id: '1',

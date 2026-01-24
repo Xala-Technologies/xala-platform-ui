@@ -73,7 +73,7 @@ type Story = StoryObj;
  * Color tokens organized by semantic meaning
  */
 export const ColorTokens: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
@@ -346,7 +346,7 @@ export const ColorTokens: Story = {
  * Spacing tokens for consistent rhythm
  */
 export const SpacingTokens: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div>
@@ -423,7 +423,7 @@ export const SpacingTokens: Story = {
  * Typography tokens for text styling
  */
 export const TypographyTokens: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const sampleText = t('storybook.tokens.sampleText');
     return (
@@ -545,7 +545,7 @@ export const TypographyTokens: Story = {
  * Border and shadow tokens
  */
 export const BorderAndShadowTokens: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
@@ -654,7 +654,7 @@ export const BorderAndShadowTokens: Story = {
  * Interactive token explorer - Test different token combinations
  */
 export const InteractiveExplorer: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [selectedColor, setSelectedColor] = useState('accent');
     const [selectedSpacing, setSelectedSpacing] = useState('4');
@@ -860,7 +860,7 @@ color: var(--ds-color-${selectedColor}-text-default);`}
  * Complete token usage example
  */
 export const TokenUsageExample: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ maxWidth: '600px' }}>

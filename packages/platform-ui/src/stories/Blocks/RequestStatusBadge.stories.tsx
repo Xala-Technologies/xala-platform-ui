@@ -103,19 +103,21 @@ export const Rejected: Story = {
 
 // All statuses
 export const AllStatuses: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-4)' }}>
-      <RequestStatusBadge status="pending" statusConfig={gdprStatusConfig} />
-      <RequestStatusBadge status="processing" statusConfig={gdprStatusConfig} />
-      <RequestStatusBadge status="completed" statusConfig={gdprStatusConfig} />
-      <RequestStatusBadge status="rejected" statusConfig={gdprStatusConfig} />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', padding: 'var(--ds-spacing-4)' }}>
+        <RequestStatusBadge status="pending" statusConfig={gdprStatusConfig} />
+        <RequestStatusBadge status="processing" statusConfig={gdprStatusConfig} />
+        <RequestStatusBadge status="completed" statusConfig={gdprStatusConfig} />
+        <RequestStatusBadge status="rejected" statusConfig={gdprStatusConfig} />
+      </div>
+    );
+  },
 };
 
 // StatusTag component - all colors
 export const StatusTagColors: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -138,7 +140,7 @@ export const StatusTagColors: Story = {
 
 // StatusTag component - all sizes
 export const StatusTagSizes: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -165,7 +167,7 @@ export const StatusTagSizes: Story = {
 
 // Custom status config
 export const CustomConfig: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>

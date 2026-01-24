@@ -68,104 +68,120 @@ const SampleCard = ({ index }: { index: number }) => {
 
 // Three columns (default)
 export const ThreeColumns: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={24} minCardWidth={280} maxColumns={3}>
-        {Array.from({ length: 6 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={24} minCardWidth={280} maxColumns={3}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // Two columns
 export const TwoColumns: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={24} minCardWidth={280} maxColumns={2}>
-        {Array.from({ length: 4 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={24} minCardWidth={280} maxColumns={2}>
+          {Array.from({ length: 4 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // Single column
 export const SingleColumn: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={24} minCardWidth={280} maxColumns={1}>
-        {Array.from({ length: 3 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={24} minCardWidth={280} maxColumns={1}>
+          {Array.from({ length: 3 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // Custom gap
 export const CustomGap: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={32} minCardWidth={280} maxColumns={3}>
-        {Array.from({ length: 6 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={32} minCardWidth={280} maxColumns={3}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // Many items
 export const ManyItems: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={24} minCardWidth={280} maxColumns={3}>
-        {Array.from({ length: 12 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={24} minCardWidth={280} maxColumns={3}>
+          {Array.from({ length: 12 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // Small gap
 export const SmallGap: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={12} minCardWidth={280} maxColumns={3}>
-        {Array.from({ length: 6 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={12} minCardWidth={280} maxColumns={3}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // Custom min card width
 export const CustomMinCardWidth: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap={24} minCardWidth={320} maxColumns={3}>
-        {Array.from({ length: 6 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap={24} minCardWidth={320} maxColumns={3}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };
 
 // With design token gap
 export const WithDesignTokenGap: Story = {
-  render: () => (
-    <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
-      <ResourceGrid gap="var(--ds-spacing-6)" minCardWidth={280} maxColumns={3}>
-        {Array.from({ length: 6 }, (_, i) => (
-          <SampleCard key={i} index={i} />
-        ))}
-      </ResourceGrid>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)', width: '100%' }}>
+        <ResourceGrid gap="var(--ds-spacing-6)" minCardWidth={280} maxColumns={3}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <SampleCard key={i} index={i} />
+          ))}
+        </ResourceGrid>
+      </div>
+    );
+  },
 };

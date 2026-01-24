@@ -32,7 +32,7 @@ type Story = StoryObj;
  * Font families used in the design system
  */
 export const FontFamilies: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -118,7 +118,7 @@ export const FontFamilies: Story = {
  * Font weights
  */
 export const FontWeights: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
@@ -168,7 +168,7 @@ export const FontWeights: Story = {
  * Heading sizes from 2xl to 2xs
  */
 export const Headings: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -202,7 +202,7 @@ export const Headings: Story = {
  * Body text variants
  */
 export const BodyText: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -244,7 +244,7 @@ export const BodyText: Story = {
  * Paragraph variants (short vs long)
  */
 export const ParagraphVariants: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -276,7 +276,7 @@ export const ParagraphVariants: Story = {
  * Labels and form typography
  */
 export const FormTypography: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -322,7 +322,7 @@ export const FormTypography: Story = {
  * Responsive sizes via data-size attribute
  */
 export const ResponsiveSizes: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -374,7 +374,7 @@ export const ResponsiveSizes: Story = {
  * Typography with semantic colors
  */
 export const SemanticColors: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
@@ -405,7 +405,7 @@ export const SemanticColors: Story = {
  * Complete typography example
  */
 export const ArticleExample: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <article style={{ maxWidth: 'var(--ds-size-175)' }}>

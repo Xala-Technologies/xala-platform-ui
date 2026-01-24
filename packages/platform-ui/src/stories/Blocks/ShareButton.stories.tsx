@@ -141,7 +141,7 @@ export const CustomPlatforms: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const shareData = {
       url: 'https://example.com/resource',

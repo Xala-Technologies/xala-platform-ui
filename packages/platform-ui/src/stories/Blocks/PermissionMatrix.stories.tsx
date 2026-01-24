@@ -177,7 +177,7 @@ export const WithoutCategoryGrouping: Story = {
 
 // Many roles and permissions
 export const ManyRolesAndPermissions: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const roles = [
       ...sampleRoles,

@@ -96,7 +96,7 @@ export const ReminderContext: Story = {
 
 // Custom title and description
 export const CustomContent: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     return (
@@ -116,7 +116,7 @@ export const CustomContent: Story = {
 
 // Closed state
 export const Closed: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '500px', height: '400px', position: 'relative' }}>

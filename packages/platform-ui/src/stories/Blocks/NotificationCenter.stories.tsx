@@ -167,7 +167,7 @@ export const Empty: Story = {
 
 // Many notifications
 export const ManyNotifications: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const notifications = Array.from({ length: 20 }, (_, i) => ({
       id: `notif-${i}`,

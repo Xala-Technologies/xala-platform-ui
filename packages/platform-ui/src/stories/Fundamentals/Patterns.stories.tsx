@@ -38,7 +38,7 @@ type Story = StoryObj;
  * Mark optional fields, not required ones
  */
 export const RequiredOptionalFields: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -109,7 +109,7 @@ export const RequiredOptionalFields: Story = {
  * Show errors after user interaction, not on load
  */
 export const UserTriggeredValidation: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [email, setEmail] = useState('');
     const [touched, setTouched] = useState(false);
@@ -164,7 +164,7 @@ export const UserTriggeredValidation: Story = {
  * Clear progress indication and navigation
  */
 export const MultiStepWizard: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [step, setStep] = useState(1);
     const totalSteps = 3;
@@ -268,7 +268,7 @@ export const MultiStepWizard: Story = {
  * Helpful guidance when no content exists
  */
 export const EmptyStatePattern: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
@@ -354,7 +354,7 @@ export const EmptyStatePattern: Story = {
  * Consistent feedback for different scenarios
  */
 export const NotificationTypes: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -464,7 +464,7 @@ export const NotificationTypes: Story = {
  * Clear feedback during async operations
  */
 export const LoadingStates: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
@@ -528,7 +528,7 @@ export const LoadingStates: Story = {
  * Patterns Summary
  */
 export const Summary: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const patternCategories = [

@@ -47,7 +47,7 @@ type Story = StoryObj<typeof meta>;
 
 // Basic layout
 export const Default: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '700px' }}>
@@ -75,7 +75,7 @@ export const Default: Story = {
 
 // Without description
 export const WithoutDescription: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '700px' }}>
@@ -94,7 +94,7 @@ export const WithoutDescription: Story = {
 
 // With sections
 export const WithSections: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '700px' }}>
@@ -138,7 +138,7 @@ export const WithSections: Story = {
 
 // Multiple sections
 export const MultipleSections: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '700px' }}>
@@ -187,7 +187,7 @@ export const MultipleSections: Story = {
 
 // Field without description
 export const FieldWithoutDescription: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '700px' }}>

@@ -414,13 +414,15 @@ export const Loading: Story = {
  * Button styled as link - Links can be styled as buttons using asChild prop.
  */
 export const AsLink: Story = {
-  render: () => (
-    <Button asChild>
-      <a href="https://www.designsystemet.no" target="_blank" rel="noreferrer">
-        Go to designsystemet.no
-      </a>
-    </Button>
-  ),
+  render: function Render() {
+    return (
+      <Button asChild>
+        <a href="https://www.designsystemet.no" target="_blank" rel="noreferrer">
+          Go to designsystemet.no
+        </a>
+      </Button>
+    );
+  },
 };
 
 /**

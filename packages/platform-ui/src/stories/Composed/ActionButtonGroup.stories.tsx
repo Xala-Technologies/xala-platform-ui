@@ -229,15 +229,17 @@ export const WithHidden: Story = {
 
 // TableActions convenience component
 export const TableActionsExample: Story = {
-  render: () => (
-    <TableActions
-      onView={fn()}
-      onEdit={fn()}
-      onDelete={fn()}
-      showView={true}
-      showEdit={true}
-      showDelete={true}
-      size="sm"
-    />
-  ),
+  render: function Render() {
+    return (
+      <TableActions
+        onView={fn()}
+        onEdit={fn()}
+        onDelete={fn()}
+        showView={true}
+        showEdit={true}
+        showDelete={true}
+        size="sm"
+      />
+    );
+  },
 };

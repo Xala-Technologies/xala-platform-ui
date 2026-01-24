@@ -205,7 +205,7 @@ export const CustomBackground: Story = {
  * Minimal content (footer stays at bottom)
  */
 export const MinimalContent: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <AppShell header={<SampleHeader />} footer={<SampleFooter />}>
@@ -221,7 +221,7 @@ export const MinimalContent: Story = {
  * Login page layout (centered content)
  */
 export const LoginLayout: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <AppShell

@@ -121,7 +121,7 @@ function LoginOptionDemo({ icon, title, description, onClick, disabled }: LoginO
  * Default login page layout
  */
 export const Default: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -372,7 +372,7 @@ export const Default: Story = {
  * Demo login dialog for testing
  */
 export const DemoLoginDialog: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [name, setName] = useState('');
@@ -526,7 +526,7 @@ export const DemoLoginDialog: Story = {
  * Mobile responsive login
  */
 export const MobileView: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -599,7 +599,7 @@ export const MobileView: Story = {
  * Login page with error state
  */
 export const WithError: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -638,7 +638,7 @@ export const WithError: Story = {
  * Minimal login for public web
  */
 export const PublicWebLogin: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div

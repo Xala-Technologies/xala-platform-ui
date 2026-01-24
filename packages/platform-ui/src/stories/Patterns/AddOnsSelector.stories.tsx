@@ -365,7 +365,7 @@ export const RequiredAndApproval: Story = {
 
 export const Interactive: Story = {
   name: 'Interactive Example',
-  render: () => {
+  render: function Render() {
     const [selectedAddOns, setSelectedAddOns] = React.useState<SelectedAddOn[]>([]);
 
     const addOns: AddOnItem[] = [

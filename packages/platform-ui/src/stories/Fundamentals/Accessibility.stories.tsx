@@ -44,7 +44,7 @@ type Story = StoryObj;
  * All interactive elements must be keyboard accessible
  */
 export const KeyboardNavigation: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -109,7 +109,7 @@ export const KeyboardNavigation: Story = {
  * Proper labeling for screen readers
  */
 export const ARIALabels: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -168,7 +168,7 @@ export const ARIALabels: Story = {
  * Minimum contrast ratio of 4.5:1 for normal text
  */
 export const ColorContrast: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -231,7 +231,7 @@ export const ColorContrast: Story = {
  * Visible focus states for keyboard navigation
  */
 export const FocusIndicators: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -294,7 +294,7 @@ export const FocusIndicators: Story = {
  * Complete accessible form pattern
  */
 export const FormAccessibility: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [formData, setFormData] = useState({ name: '', email: '', subscribe: false });
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -397,7 +397,7 @@ export const FormAccessibility: Story = {
  * Visually hidden text for screen readers
  */
 export const ScreenReaderText: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -458,7 +458,7 @@ export const ScreenReaderText: Story = {
  * Accessibility Checklist
  */
 export const Checklist: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const checklistData = [

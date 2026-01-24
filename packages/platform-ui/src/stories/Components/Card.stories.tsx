@@ -298,24 +298,26 @@ export const WithImage: Story = {
  * Color variants - Available in all theme colors
  */
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      {['accent', 'brand1', 'brand2', 'brand3', 'neutral'].map((color) => (
-        <div key={color} style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
-          <Card data-color={color as any} data-variant="default" style={{ flex: 1 }}>
-            <Card.Block>
-              <Paragraph>default: {color}</Paragraph>
-            </Card.Block>
-          </Card>
-          <Card data-color={color as any} data-variant="tinted" style={{ flex: 1 }}>
-            <Card.Block>
-              <Paragraph>tinted: {color}</Paragraph>
-            </Card.Block>
-          </Card>
-        </div>
-      ))}
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        {['accent', 'brand1', 'brand2', 'brand3', 'neutral'].map((color) => (
+          <div key={color} style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
+            <Card data-color={color as any} data-variant="default" style={{ flex: 1 }}>
+              <Card.Block>
+                <Paragraph>default: {color}</Paragraph>
+              </Card.Block>
+            </Card>
+            <Card data-color={color as any} data-variant="tinted" style={{ flex: 1 }}>
+              <Card.Block>
+                <Paragraph>tinted: {color}</Paragraph>
+              </Card.Block>
+            </Card>
+          </div>
+        ))}
+      </div>
+    );
+  },
 };
 
 /**

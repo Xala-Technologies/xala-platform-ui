@@ -484,7 +484,7 @@ export const VenueReviews: Story = {
 
 export const Interactive: Story = {
   name: 'Interactive Example',
-  render: () => {
+  render: function Render() {
     const [sortValue, setSortValue] = React.useState('newest');
     const [reviews, setReviews] = React.useState(sampleReviews.slice(0, 3));
     const [loading, setLoading] = React.useState(false);

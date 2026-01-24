@@ -1,0 +1,193 @@
+import{j as e}from"./jsx-runtime-BYYWji4R.js";import{u as i}from"./index-bjNF47ar.js";import{P as t}from"./tooltip-BO1LcXkK.js";import"./alert-BzTWXKSs.js";import"./button-B6PgazAq.js";import"./index-D1XdeRjR.js";import"./checkbox-CeN5g5X_.js";import"./index-Df4a1FH3.js";import"./radio-ER07BMpk.js";import{H as A}from"./heading-mzc2R_Ff.js";import"./input-CMu9MsIQ.js";import"./label-9E-twYNb.js";import"./link-DlTbUgI1.js";import"./paragraph-DDCpJsVw.js";import"./index-iTq-tUBJ.js";import"./tag-DS5F5fAT.js";import"./textarea-DMvw4dlU.js";import"./textfield-BCKd4uLT.js";import"./index-ClcD9ViR.js";import"./roving-focus-item-DcdCcS0a.js";import"./chunk-DMXJFGWX-CI_CoAy0.js";import"./index-CHmPfjQK.js";import"./use-merge-refs-cKtnuP4l.js";import"./index-BUAr5TKG.js";import"./_commonjsHelpers-Cpj98o6Y.js";const Y={title:"Components/Pagination",component:t,parameters:{docs:{description:{component:`
+Pagination allows users to navigate through large amounts of content that is split across multiple pages. It provides controls to move between pages efficiently.
+
+## Variants
+
+- **Standard** - Full pagination with page numbers
+- **Compact** - Minimal pagination for tight spaces
+- **With ellipsis** - Shows ellipsis for many pages
+- **With info** - Shows current/total information
+
+## Sizes
+
+Available in three sizes: **sm**, **md** (default), **lg**.
+
+## When to Use
+
+- Large data sets split across pages
+- Search results with many items
+- Tables with many rows
+- List views with 20+ items
+- Gallery or grid layouts
+- Article or blog post listings
+
+## Best Practices
+
+### Do
+- Show total pages or items when possible
+- Provide first/last page navigation
+- Indicate current page clearly
+- Use appropriate size for context
+- Include previous/next navigation
+- Show page numbers when practical
+
+### Don't
+- Don't hide pagination without indication
+- Don't use for small data sets (< 10 items)
+- Don't make current page clickable
+- Don't show too many page numbers at once
+- Don't use pagination without clear context
+- Don't forget to maintain state on page change
+
+## Usage Patterns
+
+### Basic Pagination
+\`\`\`tsx
+<Pagination
+  currentPage={1}
+  totalPages={10}
+  onPageChange={handlePageChange}
+  aria-label="Pagination navigation"
+/>
+\`\`\`
+
+### Size Variants
+\`\`\`tsx
+<Pagination data-size="sm" currentPage={1} totalPages={10} />
+<Pagination data-size="md" currentPage={1} totalPages={10} />
+<Pagination data-size="lg" currentPage={1} totalPages={10} />
+\`\`\`
+
+### With Information
+\`\`\`tsx
+<Pagination
+  currentPage={3}
+  totalPages={50}
+  totalItems={500}
+  itemsPerPage={10}
+  onPageChange={handlePageChange}
+/>
+\`\`\`
+
+### Compact Pagination
+\`\`\`tsx
+<Pagination
+  variant="compact"
+  currentPage={1}
+  totalPages={10}
+  showPageNumbers={false}
+/>
+\`\`\`
+
+## Anti-Patterns
+
+### Anti-pattern: Pagination for Small Sets
+Using pagination for fewer than 10 items is unnecessary.
+
+### Anti-pattern: No Current Page Indication
+Not clearly showing which page is active confuses users.
+
+### Anti-pattern: Too Many Page Numbers
+Showing all 100 page numbers at once is overwhelming.
+
+### Anti-pattern: No Previous/Next
+Missing previous/next buttons requires extra clicks.
+
+## Accessibility
+
+### Screen Readers
+- ARIA labels describe navigation purpose
+- Current page is properly announced
+- Page numbers are read as links
+- Total pages/items information is provided
+- Navigation state is communicated
+
+### Keyboard Navigation
+- Tab key navigates through pagination controls
+- Enter key activates page navigation
+- Arrow keys may navigate page numbers
+- Focus stays within pagination component
+- Logical tab order maintained
+
+### WCAG 2.1 AA Compliance
+- **Keyboard accessible**: All controls reachable via keyboard
+- **Focus management**: Clear focus indicators
+- **ARIA labels**: Descriptive labels for navigation
+- **Current state**: Current page clearly indicated
+- **Predictable**: Navigation behaves as expected
+
+### ARIA Implementation
+\`\`\`tsx
+<nav aria-label="Pagination navigation" role="navigation">
+  <button aria-label="Previous page" disabled>Previous</button>
+  <ul>
+    <li><a href="?page=1" aria-label="Page 1" aria-current="page">1</a></li>
+    <li><a href="?page=2" aria-label="Page 2">2</a></li>
+  </ul>
+  <button aria-label="Next page">Next</button>
+</nav>
+\`\`\`
+
+### Best Practice for Current Page
+Use aria-current="page" for the current page:
+\`\`\`tsx
+<a href="?page=3" aria-current="page" aria-label="Current page, page 3">
+  3
+</a>
+\`\`\`
+
+### Pagination with Information
+Provide context about total items:
+\`\`\`tsx
+<div aria-live="polite">
+  Showing 21-30 of 500 items
+</div>
+\`\`\`
+        `}}},tags:["autodocs"],argTypes:{"data-size":{control:"select",options:["sm","md","lg"],description:"Size variant"}}},n={render:function(){const a=i();return e.jsx(t,{"aria-label":a("storybook.demo.paginationNavigation")})}},r={render:function(){const a=i();return e.jsx(t,{"data-size":"sm","aria-label":a("storybook.demo.smallPagination")})}},s={render:function(){const a=i();return e.jsx(t,{"data-size":"md","aria-label":a("storybook.demo.mediumPagination")})}},l={render:function(){const a=i();return e.jsx(t,{"data-size":"lg","aria-label":a("storybook.demo.largePagination")})}},g={render:function(){const a=i();return e.jsx("div",{style:{display:"flex",flexDirection:"column",gap:"var(--ds-spacing-6)"},children:e.jsxs("div",{children:[e.jsx(A,{level:3,"data-size":"sm",style:{marginBottom:"var(--ds-spacing-3)"},children:a("storybook.story.sizes")}),e.jsxs("div",{style:{display:"flex",flexDirection:"column",gap:"var(--ds-spacing-4)"},children:[e.jsx(t,{"data-size":"sm","aria-label":a("storybook.demo.smallPagination")}),e.jsx(t,{"data-size":"md","aria-label":a("storybook.demo.mediumPagination")}),e.jsx(t,{"data-size":"lg","aria-label":a("storybook.demo.largePagination")})]})]})})}};var c,m,d;n.parameters={...n.parameters,docs:{...(c=n.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  render: function Render() {
+    const t = useT();
+    return <Pagination aria-label={t('storybook.demo.paginationNavigation')} />;
+  }
+}`,...(d=(m=n.parameters)==null?void 0:m.docs)==null?void 0:d.source}}};var p,u,b;r.parameters={...r.parameters,docs:{...(p=r.parameters)==null?void 0:p.docs,source:{originalSource:`{
+  render: function Render() {
+    const t = useT();
+    return <Pagination data-size="sm" aria-label={t('storybook.demo.smallPagination')} />;
+  }
+}`,...(b=(u=r.parameters)==null?void 0:u.docs)==null?void 0:b.source}}};var P,v,f;s.parameters={...s.parameters,docs:{...(P=s.parameters)==null?void 0:P.docs,source:{originalSource:`{
+  render: function Render() {
+    const t = useT();
+    return <Pagination data-size="md" aria-label={t('storybook.demo.mediumPagination')} />;
+  }
+}`,...(f=(v=s.parameters)==null?void 0:v.docs)==null?void 0:f.source}}};var h,y,x;l.parameters={...l.parameters,docs:{...(h=l.parameters)==null?void 0:h.docs,source:{originalSource:`{
+  render: function Render() {
+    const t = useT();
+    return <Pagination data-size="lg" aria-label={t('storybook.demo.largePagination')} />;
+  }
+}`,...(x=(y=l.parameters)==null?void 0:y.docs)==null?void 0:x.source}}};var w,z,k;g.parameters={...g.parameters,docs:{...(w=g.parameters)==null?void 0:w.docs,source:{originalSource:`{
+  render: function Render() {
+    const t = useT();
+    return <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--ds-spacing-6)'
+    }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{
+          marginBottom: 'var(--ds-spacing-3)'
+        }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-4)'
+        }}>
+            <Pagination data-size="sm" aria-label={t('storybook.demo.smallPagination')} />
+            <Pagination data-size="md" aria-label={t('storybook.demo.mediumPagination')} />
+            <Pagination data-size="lg" aria-label={t('storybook.demo.largePagination')} />
+          </div>
+        </div>
+      </div>;
+  }
+}`,...(k=(z=g.parameters)==null?void 0:z.docs)==null?void 0:k.source}}};const Z=["Default","Small","Medium","Large","AllVariants"];export{g as AllVariants,n as Default,l as Large,s as Medium,r as Small,Z as __namedExportsOrder,Y as default};
+//# sourceMappingURL=Pagination.stories-BxPmrX1A.js.map

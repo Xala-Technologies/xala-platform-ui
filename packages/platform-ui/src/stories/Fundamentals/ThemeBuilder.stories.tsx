@@ -38,7 +38,7 @@ type Story = StoryObj;
  * Different color contexts for different purposes
  */
 export const ColorContexts: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -149,7 +149,7 @@ export const ColorContexts: Story = {
  * Three size scales for different use cases
  */
 export const SizeModes: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
@@ -212,7 +212,7 @@ export const SizeModes: Story = {
  * How theme tokens work together
  */
 export const ThemeTokensInUse: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Card
@@ -295,7 +295,7 @@ export const ThemeTokensInUse: Story = {
  * Step-by-step guide
  */
 export const CreatingCustomThemes: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const steps = [
       {
@@ -383,7 +383,7 @@ export const CreatingCustomThemes: Story = {
  * Guidelines for theme customization
  */
 export const ThemeBestPractices: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const doItems = [
       'storybook.theme.doSemanticTokens',

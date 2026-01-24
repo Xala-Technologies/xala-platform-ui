@@ -81,7 +81,7 @@ type Story = StoryObj;
  * Switch the locale in the toolbar to see the translations change.
  */
 export const LocaleDisplay: Story = {
-  render: () => {
+  render: function Render() {
     const { locale } = useLocale();
     const t = useT();
 
@@ -147,7 +147,7 @@ export const LocaleDisplay: Story = {
  * Demonstrates common action buttons with translated labels.
  */
 export const TranslatedButtons: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     return (
@@ -179,7 +179,7 @@ export const TranslatedButtons: Story = {
  * Shows status badges with translated status labels.
  */
 export const StatusTranslations: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const statuses = ['active', 'pending', 'completed', 'cancelled'] as const;
@@ -216,7 +216,7 @@ export const StatusTranslations: Story = {
  * Shows navigation items with translated labels.
  */
 export const NavigationLabels: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const navItems = ['home', 'dashboard', 'settings', 'profile'] as const;
@@ -249,7 +249,7 @@ export const NavigationLabels: Story = {
  * Shows validation messages with translated text.
  */
 export const ValidationMessages: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const validations = ['required', 'email', 'minLength', 'maxLength'] as const;
@@ -276,7 +276,7 @@ export const ValidationMessages: Story = {
  * a container component translates and passes strings to children.
  */
 export const PropsBasedPattern: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     // This simulates a "container" that translates
@@ -342,7 +342,7 @@ export const PropsBasedPattern: Story = {
  * Shows error messages with translated text.
  */
 export const ErrorMessages: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const errors = ['notFound', 'forbidden', 'serverError', 'networkError'] as const;
@@ -371,7 +371,7 @@ export const ErrorMessages: Story = {
  * Complete example showing multiple translation types together.
  */
 export const CompleteExample: Story = {
-  render: () => {
+  render: function Render() {
     const { locale } = useLocale();
     const t = useT();
 

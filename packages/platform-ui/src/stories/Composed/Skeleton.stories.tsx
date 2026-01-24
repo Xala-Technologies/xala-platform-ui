@@ -125,97 +125,120 @@ export const NoAnimation: Story = {
 
 // SkeletonText component
 export const TextSkeleton: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <SkeletonText lines={3} animation="pulse" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ width: '400px' }}>
+        <SkeletonText lines={3} animation="pulse" />
+      </div>
+    );
+  },
 };
 
 export const TextSkeletonCustom: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <SkeletonText lines={4} lastLineWidth="40%" animation="wave" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ width: '400px' }}>
+        <SkeletonText lines={4} lastLineWidth="40%" animation="wave" />
+      </div>
+    );
+  },
 };
 
 // SkeletonCard component
 export const CardSkeleton: Story = {
-  render: () => (
-    <div style={{ width: '300px' }}>
-      <SkeletonCard hasImage imageHeight="200px" lines={3} animation="pulse" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ width: '300px' }}>
+        <SkeletonCard hasImage imageHeight="200px" lines={3} animation="pulse" />
+      </div>
+    );
+  },
 };
 
 export const CardSkeletonNoImage: Story = {
-  render: () => (
-    <div style={{ width: '300px' }}>
-      <SkeletonCard hasImage={false} lines={3} animation="pulse" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ width: '300px' }}>
+        <SkeletonCard hasImage={false} lines={3} animation="pulse" />
+      </div>
+    );
+  },
 };
 
 // SkeletonTable component
 export const TableSkeleton: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SkeletonTable rows={5} columns={4} hasHeader animation="pulse" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ width: '600px' }}>
+        <SkeletonTable rows={5} columns={4} hasHeader animation="pulse" />
+      </div>
+    );
+  },
 };
 
 export const TableSkeletonNoHeader: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SkeletonTable rows={3} columns={3} hasHeader={false} animation="wave" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ width: '600px' }}>
+        <SkeletonTable rows={3} columns={3} hasHeader={false} animation="wave" />
+      </div>
+    );
+  },
 };
 
 // SkeletonAvatar component
 export const AvatarSkeleton: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <SkeletonAvatar size="sm" animation="pulse" />
-      <SkeletonAvatar size="md" animation="pulse" />
-      <SkeletonAvatar size="lg" animation="pulse" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <SkeletonAvatar size="sm" animation="pulse" />
+        <SkeletonAvatar size="md" animation="pulse" />
+        <SkeletonAvatar size="lg" animation="pulse" />
+      </div>
+    );
+  },
 };
 
 // Combined example
 export const CombinedExample: Story = {
-  render: () => (
-    <Card
-      data-color="neutral"
-      data-size="medium"
-      style={{ padding: 'var(--ds-spacing-4)', width: '400px' }}
-    >
-      <div
-        style={{ display: 'flex', gap: 'var(--ds-spacing-3)', marginBottom: 'var(--ds-spacing-4)' }}
+  render: function Render() {
+    return (
+      <Card
+        data-color="neutral"
+        data-size="medium"
+        style={{ padding: 'var(--ds-spacing-4)', width: '400px' }}
       >
-        <SkeletonAvatar size="md" animation="pulse" />
-        <div style={{ flex: 1 }}>
-          <Skeleton
-            variant="text"
-            width="60%"
-            height="16px"
-            animation="pulse"
-            style={{ marginBottom: 'var(--ds-spacing-2)' }}
-          />
-          <Skeleton variant="text" width="40%" height="14px" animation="pulse" />
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-3)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
+          <SkeletonAvatar size="md" animation="pulse" />
+          <div style={{ flex: 1 }}>
+            <Skeleton
+              variant="text"
+              width="60%"
+              height="16px"
+              animation="pulse"
+              style={{ marginBottom: 'var(--ds-spacing-2)' }}
+            />
+            <Skeleton variant="text" width="40%" height="14px" animation="pulse" />
+          </div>
         </div>
-      </div>
-      <Skeleton
-        variant="rectangular"
-        width="100%"
-        height="200px"
-        animation="pulse"
-        style={{ marginBottom: 'var(--ds-spacing-4)', borderRadius: 'var(--ds-border-radius-md)' }}
-      />
-      <SkeletonText lines={2} animation="pulse" />
-    </Card>
-  ),
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          height="200px"
+          animation="pulse"
+          style={{
+            marginBottom: 'var(--ds-spacing-4)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        />
+        <SkeletonText lines={2} animation="pulse" />
+      </Card>
+    );
+  },
 };

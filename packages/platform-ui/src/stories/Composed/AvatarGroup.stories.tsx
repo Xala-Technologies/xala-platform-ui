@@ -175,12 +175,14 @@ export const ManyAvatars: Story = {
 
 // Single avatar item
 export const SingleAvatarItem: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <AvatarItem name="John Doe" src="https://i.pravatar.cc/150?img=1" size="md" />
-      <AvatarItem name="Jane Smith" size="md" status="online" />
-      <AvatarItem name="Bob Johnson" size="md" status="away" />
-      <AvatarItem name="Alice Brown" size="md" status="busy" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <AvatarItem name="John Doe" src="https://i.pravatar.cc/150?img=1" size="md" />
+        <AvatarItem name="Jane Smith" size="md" status="online" />
+        <AvatarItem name="Bob Johnson" size="md" status="away" />
+        <AvatarItem name="Alice Brown" size="md" status="busy" />
+      </div>
+    );
+  },
 };

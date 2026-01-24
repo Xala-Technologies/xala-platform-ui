@@ -48,7 +48,7 @@ const Box = ({ children, color = 'accent' }: { children: React.ReactNode; color?
  */
 export const ContainerDefault: Story = {
   name: 'Container',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Container style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
@@ -63,7 +63,7 @@ export const ContainerDefault: Story = {
  */
 export const ContainerFluid: Story = {
   name: 'Container Fluid',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Container fluid style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
@@ -78,7 +78,7 @@ export const ContainerFluid: Story = {
  */
 export const GridBasic: Story = {
   name: 'Grid',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Grid columns="repeat(3, 1fr)" gap="var(--ds-spacing-4)">
@@ -98,7 +98,7 @@ export const GridBasic: Story = {
  */
 export const GridMixed: Story = {
   name: 'Grid Mixed Columns',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Grid columns="1fr 2fr 1fr" gap="var(--ds-spacing-4)">
@@ -115,7 +115,7 @@ export const GridMixed: Story = {
  */
 export const GridAutoFit: Story = {
   name: 'Grid Auto-fit',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Grid columns="repeat(auto-fit, minmax(var(--ds-spacing-48), 1fr))" gap="var(--ds-spacing-4)">
@@ -133,7 +133,7 @@ export const GridAutoFit: Story = {
  */
 export const StackVertical: Story = {
   name: 'Stack Vertical',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)">
@@ -150,7 +150,7 @@ export const StackVertical: Story = {
  */
 export const StackHorizontal: Story = {
   name: 'Stack Horizontal',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Stack direction="horizontal" spacing="var(--ds-spacing-4)">
@@ -167,7 +167,7 @@ export const StackHorizontal: Story = {
  */
 export const StackAligned: Story = {
   name: 'Stack Aligned',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Stack
@@ -194,7 +194,7 @@ export const StackAligned: Story = {
  */
 export const CombinedLayout: Story = {
   name: 'Combined Example',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Container>

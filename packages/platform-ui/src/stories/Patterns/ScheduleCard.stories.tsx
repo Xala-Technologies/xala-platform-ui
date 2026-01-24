@@ -261,24 +261,26 @@ export const CompactList: Story = {
 
 export const MultipleSchedules: Story = {
   name: 'Multiple Schedules Comparison',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <ScheduleCard
-        title="Main Office"
-        entries={[
-          { day: 'Mon - Fri', hours: '08:00 - 17:00' },
-          { day: 'Weekend', hours: 'Closed', isClosed: true },
-        ]}
-      />
-      <ScheduleCard
-        title="Support Line"
-        entries={[
-          { day: 'Mon - Fri', hours: '09:00 - 20:00' },
-          { day: 'Sat - Sun', hours: '10:00 - 16:00' },
-        ]}
-      />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <ScheduleCard
+          title="Main Office"
+          entries={[
+            { day: 'Mon - Fri', hours: '08:00 - 17:00' },
+            { day: 'Weekend', hours: 'Closed', isClosed: true },
+          ]}
+        />
+        <ScheduleCard
+          title="Support Line"
+          entries={[
+            { day: 'Mon - Fri', hours: '09:00 - 20:00' },
+            { day: 'Sat - Sun', hours: '10:00 - 16:00' },
+          ]}
+        />
+      </div>
+    );
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '2rem', maxWidth: '400px' }}>

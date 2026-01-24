@@ -37,7 +37,7 @@ const centerMeta: Meta<typeof Center> = {
 export default centerMeta;
 
 export const CenterBoth: StoryObj<typeof Center> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ height: '400px', border: '1px dashed var(--ds-color-neutral-border-default)' }}>
@@ -55,7 +55,7 @@ export const CenterBoth: StoryObj<typeof Center> = {
 };
 
 export const CenterHorizontal: StoryObj<typeof Center> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ height: '200px', border: '1px dashed var(--ds-color-neutral-border-default)' }}>
@@ -72,7 +72,7 @@ export const CenterHorizontal: StoryObj<typeof Center> = {
 // =============================================================================
 
 export const SidebarExample: StoryObj<typeof SimpleSidebar> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ height: '500px', display: 'flex' }}>
@@ -122,7 +122,7 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
   parameters: {
     layout: 'fullscreen',
   },
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <HorizontalLayout>
@@ -178,7 +178,7 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
 // =============================================================================
 
 export const MainContentPadding: StoryObj<typeof MainContent> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div
@@ -202,7 +202,7 @@ export const MainContentPadding: StoryObj<typeof MainContent> = {
 };
 
 export const MainContentSmallPadding: StoryObj<typeof MainContent> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div

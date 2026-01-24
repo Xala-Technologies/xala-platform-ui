@@ -69,7 +69,7 @@ type Story = StoryObj;
  * This story demonstrates our dual-library strategy and when to use each.
  */
 export const IconLibraryPriority: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div>
@@ -256,7 +256,7 @@ export const IconLibraryPriority: Story = {
  * Demonstrates proper icon sizing using design tokens and rem units.
  */
 export const IconSizingGuide: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Card style={{ padding: 'var(--ds-spacing-8)' }}>
@@ -326,7 +326,7 @@ export const IconSizingGuide: Story = {
  * Shows proper accessibility implementation for icons.
  */
 export const AccessibilityGuidelines: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div>
@@ -552,7 +552,7 @@ export const AccessibilityGuidelines: Story = {
  * Browse and search available icons from both libraries.
  */
 export const InteractiveIconBrowser: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [selectedLibrary, setSelectedLibrary] = useState<'aksel' | 'lucide'>('aksel');
     const [searchTerm, setSearchTerm] = useState('');
@@ -769,7 +769,7 @@ export const InteractiveIconBrowser: Story = {
  * Common icon usage patterns with real examples.
  */
 export const UsagePatterns: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div>
@@ -970,7 +970,7 @@ export const UsagePatterns: Story = {
  * Visual guide showing correct and incorrect icon usage.
  */
 export const DosAndDonts: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div>

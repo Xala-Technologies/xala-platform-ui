@@ -348,41 +348,43 @@ export const ManyItems: Story = {
 
 export const GapComparison: Story = {
   name: 'Gap Size Comparison',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-      <div>
-        <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-          Small Gap
-        </Paragraph>
-        <ResourceGrid
-          items={sampleResources.slice(0, 3)}
-          renderItem={(item) => <SimpleResourceCard resource={item} />}
-          columns={{ default: 3 }}
-          gap="sm"
-        />
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+        <div>
+          <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
+            Small Gap
+          </Paragraph>
+          <ResourceGrid
+            items={sampleResources.slice(0, 3)}
+            renderItem={(item) => <SimpleResourceCard resource={item} />}
+            columns={{ default: 3 }}
+            gap="sm"
+          />
+        </div>
+        <div>
+          <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
+            Medium Gap
+          </Paragraph>
+          <ResourceGrid
+            items={sampleResources.slice(0, 3)}
+            renderItem={(item) => <SimpleResourceCard resource={item} />}
+            columns={{ default: 3 }}
+            gap="md"
+          />
+        </div>
+        <div>
+          <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
+            Large Gap
+          </Paragraph>
+          <ResourceGrid
+            items={sampleResources.slice(0, 3)}
+            renderItem={(item) => <SimpleResourceCard resource={item} />}
+            columns={{ default: 3 }}
+            gap="lg"
+          />
+        </div>
       </div>
-      <div>
-        <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-          Medium Gap
-        </Paragraph>
-        <ResourceGrid
-          items={sampleResources.slice(0, 3)}
-          renderItem={(item) => <SimpleResourceCard resource={item} />}
-          columns={{ default: 3 }}
-          gap="md"
-        />
-      </div>
-      <div>
-        <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-          Large Gap
-        </Paragraph>
-        <ResourceGrid
-          items={sampleResources.slice(0, 3)}
-          renderItem={(item) => <SimpleResourceCard resource={item} />}
-          columns={{ default: 3 }}
-          gap="lg"
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

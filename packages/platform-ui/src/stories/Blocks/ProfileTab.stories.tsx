@@ -71,7 +71,7 @@ const sampleProfileData: ProfileData = {
 
 // Basic profile tab
 export const Default: Story = {
-  render: () => {
+  render: function Render() {
     const [profileData, setProfileData] = useState<ProfileData>(sampleProfileData);
     return (
       <div style={{ width: '700px' }}>
@@ -92,7 +92,7 @@ export const Default: Story = {
 
 // With avatar preview
 export const WithAvatarPreview: Story = {
-  render: () => {
+  render: function Render() {
     const [profileData, setProfileData] = useState<ProfileData>(sampleProfileData);
     return (
       <div style={{ width: '700px' }}>
@@ -113,7 +113,7 @@ export const WithAvatarPreview: Story = {
 
 // Saving state
 export const Saving: Story = {
-  render: () => {
+  render: function Render() {
     const [profileData] = useState<ProfileData>(sampleProfileData);
     return (
       <div style={{ width: '700px' }}>
@@ -134,7 +134,7 @@ export const Saving: Story = {
 
 // Uploading avatar
 export const UploadingAvatar: Story = {
-  render: () => {
+  render: function Render() {
     const [profileData] = useState<ProfileData>(sampleProfileData);
     return (
       <div style={{ width: '700px' }}>
@@ -155,7 +155,7 @@ export const UploadingAvatar: Story = {
 
 // Custom labels
 export const CustomLabels: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [profileData, setProfileData] = useState<ProfileData>(sampleProfileData);
     return (

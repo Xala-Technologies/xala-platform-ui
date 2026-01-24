@@ -228,7 +228,7 @@ export const EmptyState: Story = {
 
 export const AllSizes: Story = {
   name: 'Size Comparison',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -271,27 +271,29 @@ export const InlineSmall: Story = {
 
 export const InlineWithLabels: Story = {
   name: 'Inline With Labels',
-  render: () => (
-    <MetadataRowInline items={basicMetadata} size="md" separator="·" showLabels={true} />
-  ),
+  render: function Render() {
+    return <MetadataRowInline items={basicMetadata} size="md" separator="·" showLabels={true} />;
+  },
 };
 
 export const InlineWithOverflow: Story = {
   name: 'Inline With Overflow',
-  render: () => (
-    <MetadataRowInline
-      items={productMetadata}
-      size="sm"
-      separator="•"
-      maxVisible={4}
-      overflowText="+{count}"
-    />
-  ),
+  render: function Render() {
+    return (
+      <MetadataRowInline
+        items={productMetadata}
+        size="sm"
+        separator="•"
+        maxVisible={4}
+        overflowText="+{count}"
+      />
+    );
+  },
 };
 
 export const VariantComparison: Story = {
   name: 'Variant Comparison (Chip vs Inline)',
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -314,47 +316,49 @@ export const VariantComparison: Story = {
 
 export const InContextUsage: Story = {
   name: 'In Context: Card Footer',
-  render: () => (
-    <div
-      style={{
-        border: '1px solid var(--ds-color-neutral-border-default)',
-        borderRadius: 'var(--ds-border-radius-md)',
-        overflow: 'hidden',
-      }}
-    >
+  render: function Render() {
+    return (
       <div
         style={{
-          padding: 'var(--ds-spacing-4)',
-          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+          borderRadius: 'var(--ds-border-radius-md)',
+          overflow: 'hidden',
         }}
       >
-        <h3 style={{ margin: 0, marginBottom: 'var(--ds-spacing-1)' }}>Conference Room Alpha</h3>
-        <p
+        <div
           style={{
-            margin: 0,
-            color: 'var(--ds-color-neutral-text-subtle)',
-            fontSize: 'var(--ds-font-size-sm)',
+            padding: 'var(--ds-spacing-4)',
+            borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
-          Large meeting room with modern amenities
-        </p>
+          <h3 style={{ margin: 0, marginBottom: 'var(--ds-spacing-1)' }}>Conference Room Alpha</h3>
+          <p
+            style={{
+              margin: 0,
+              color: 'var(--ds-color-neutral-text-subtle)',
+              fontSize: 'var(--ds-font-size-sm)',
+            }}
+          >
+            Large meeting room with modern amenities
+          </p>
+        </div>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+          }}
+        >
+          <MetadataRowInline
+            items={[
+              { id: '1', label: 'Capacity', value: '25' },
+              { id: '2', label: 'Floor', value: '3rd' },
+              { id: '3', label: 'Area', value: '85 m²' },
+            ]}
+            size="sm"
+            separator="•"
+          />
+        </div>
       </div>
-      <div
-        style={{
-          padding: 'var(--ds-spacing-3)',
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-        }}
-      >
-        <MetadataRowInline
-          items={[
-            { id: '1', label: 'Capacity', value: '25' },
-            { id: '2', label: 'Floor', value: '3rd' },
-            { id: '3', label: 'Area', value: '85 m²' },
-          ]}
-          size="sm"
-          separator="•"
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

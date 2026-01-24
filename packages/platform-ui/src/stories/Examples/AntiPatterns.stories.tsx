@@ -38,7 +38,7 @@ type Story = StoryObj;
  * Anti-Pattern 1: Hardcoded Colors
  */
 export const HardcodedColors: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -128,7 +128,7 @@ export const HardcodedColors: Story = {
  * Anti-Pattern 2: Hardcoded Spacing
  */
 export const HardcodedSpacing: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -224,7 +224,7 @@ export const HardcodedSpacing: Story = {
  * Anti-Pattern 3: Missing Accessibility
  */
 export const MissingAccessibility: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -342,7 +342,7 @@ export const MissingAccessibility: Story = {
  * Anti-Pattern 4: Hardcoded Text (No i18n)
  */
 export const HardcodedText: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -434,7 +434,7 @@ const { t } = useTranslation();
  * Anti-Pattern 5: Custom Components Instead of Platform
  */
 export const CustomComponents: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -541,7 +541,7 @@ import { Button } from '../../index';
  * Anti-Pattern Summary
  */
 export const Summary: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div

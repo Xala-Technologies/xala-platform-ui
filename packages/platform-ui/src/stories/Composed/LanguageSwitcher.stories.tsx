@@ -67,7 +67,7 @@ type Story = StoryObj<typeof meta>;
 
 // Toggle variant (default)
 export const Toggle: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" />;
   },
@@ -75,7 +75,7 @@ export const Toggle: Story = {
 
 // Dropdown variant
 export const Dropdown: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="dropdown" />;
   },
@@ -83,7 +83,7 @@ export const Dropdown: Story = {
 
 // Segmented variant
 export const Segmented: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="segmented" />;
   },
@@ -91,7 +91,7 @@ export const Segmented: Story = {
 
 // With custom labels
 export const CustomLabels: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return (
       <LanguageSwitcher
@@ -106,7 +106,7 @@ export const CustomLabels: Story = {
 
 // With full names
 export const FullNames: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return (
       <LanguageSwitcher
@@ -122,7 +122,7 @@ export const FullNames: Story = {
 
 // Size variants
 export const Small: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return (
       <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="sm" />
@@ -131,7 +131,7 @@ export const Small: Story = {
 };
 
 export const Medium: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return (
       <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="md" />
@@ -140,7 +140,7 @@ export const Medium: Story = {
 };
 
 export const Large: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('nb');
     return (
       <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" size="lg" />
@@ -150,7 +150,7 @@ export const Large: Story = {
 
 // Disabled
 export const Disabled: Story = {
-  render: () => {
+  render: function Render() {
     const [locale] = useState<'nb' | 'en'>('nb');
     return <LanguageSwitcher locale={locale} onLocaleChange={fn()} variant="toggle" disabled />;
   },
@@ -158,7 +158,7 @@ export const Disabled: Story = {
 
 // English selected
 export const EnglishSelected: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'en'>('en');
     return <LanguageSwitcher locale={locale} onLocaleChange={setLocale} variant="toggle" />;
   },
@@ -166,7 +166,7 @@ export const EnglishSelected: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => {
+  render: function Render() {
     const [locale1, setLocale1] = useState<'nb' | 'en'>('nb');
     const [locale2, setLocale2] = useState<'nb' | 'en'>('nb');
     const [locale3, setLocale3] = useState<'nb' | 'en'>('nb');

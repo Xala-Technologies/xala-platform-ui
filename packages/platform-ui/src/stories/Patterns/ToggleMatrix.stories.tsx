@@ -419,7 +419,7 @@ export const FeatureFlags: Story = {
 
 export const Interactive: Story = {
   name: 'Interactive Example',
-  render: () => {
+  render: function Render() {
     const [values, setValues] = React.useState<ToggleMatrixValues>(defaultValues);
 
     const handleChange = (rowId: string, colId: string, value: boolean) => {

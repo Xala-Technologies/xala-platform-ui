@@ -45,7 +45,7 @@ type Story = StoryObj;
  * Difficulty: Beginner
  */
 export const ButtonBasic: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
@@ -92,7 +92,7 @@ export const ButtonBasic: Story = {
  * Difficulty: Beginner
  */
 export const ButtonWithIcons: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
@@ -121,7 +121,7 @@ export const ButtonWithIcons: Story = {
  * Difficulty: Intermediate
  */
 export const ButtonLoadingState: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [loading, setLoading] = useState(false);
 
@@ -174,7 +174,7 @@ return (
  * Difficulty: Intermediate
  */
 export const FormComplete: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [formData, setFormData] = useState({ name: '', email: '', terms: false });
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -278,7 +278,7 @@ export const FormComplete: Story = {
  * Difficulty: Beginner
  */
 export const CardContentLayout: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
@@ -348,7 +348,7 @@ export const CardContentLayout: Story = {
  * Difficulty: Intermediate
  */
 export const ListInteractive: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [selected, setSelected] = useState<number | null>(null);
     const items = [
@@ -408,7 +408,7 @@ export const ListInteractive: Story = {
  * Difficulty: Beginner
  */
 export const EmptyState: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Card
@@ -450,7 +450,7 @@ export const EmptyState: Story = {
  * Difficulty: Beginner
  */
 export const ErrorState: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Card
@@ -500,7 +500,7 @@ export const ErrorState: Story = {
  * Difficulty: Beginner
  */
 export const SuccessState: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Card
@@ -541,7 +541,7 @@ export const SuccessState: Story = {
  * Difficulty: Beginner
  */
 export const LoadingState: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <Card

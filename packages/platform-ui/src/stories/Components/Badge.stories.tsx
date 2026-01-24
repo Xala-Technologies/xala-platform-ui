@@ -97,26 +97,30 @@ export const Default: Story = {
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <Badge count={5} data-color="neutral" />
-      <Badge count={12} data-color="accent" />
-      <Badge count={3} data-color="success" />
-      <Badge count={7} data-color="warning" />
-      <Badge count={99} data-color="danger" />
-      <Badge count={42} data-color="info" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Badge count={5} data-color="neutral" />
+        <Badge count={12} data-color="accent" />
+        <Badge count={3} data-color="success" />
+        <Badge count={7} data-color="warning" />
+        <Badge count={99} data-color="danger" />
+        <Badge count={42} data-color="info" />
+      </div>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <Badge count={5} data-size="sm" />
-      <Badge count={15} data-size="md" />
-      <Badge count={99} data-size="lg" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Badge count={5} data-size="sm" />
+        <Badge count={15} data-size="md" />
+        <Badge count={99} data-size="lg" />
+      </div>
+    );
+  },
 };
 
 export const WithButton: Story = {

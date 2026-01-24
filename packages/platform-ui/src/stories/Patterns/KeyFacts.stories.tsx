@@ -240,77 +240,81 @@ export const NorwegianLabels: Story = {
 
 export const ResourceCard: Story = {
   name: 'Domain Example: Resource Card',
-  render: () => (
-    <div
-      style={{
-        padding: 'var(--ds-spacing-4)',
-        backgroundColor: 'var(--ds-color-neutral-background-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-        border: '1px solid var(--ds-color-neutral-border-subtle)',
-      }}
-    >
-      <h3
+  render: function Render() {
+    return (
+      <div
         style={{
-          margin: 0,
-          marginBottom: 'var(--ds-spacing-2)',
-          fontSize: 'var(--ds-font-size-lg)',
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+          border: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        Conference Room Alpha
-      </h3>
-      <p
-        style={{
-          margin: 0,
-          marginBottom: 'var(--ds-spacing-3)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-          fontSize: 'var(--ds-font-size-sm)',
-        }}
-      >
-        Modern meeting space with AV equipment
-      </p>
-      <KeyFacts
-        facts={[
-          { type: 'capacity', value: '20 people' },
-          { type: 'area', value: '45 m²' },
-          { type: 'price', value: '750 kr/hr' },
-        ]}
-        variant="compact"
-        size="sm"
-      />
-    </div>
-  ),
+        <h3
+          style={{
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-2)',
+            fontSize: 'var(--ds-font-size-lg)',
+          }}
+        >
+          Conference Room Alpha
+        </h3>
+        <p
+          style={{
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+            fontSize: 'var(--ds-font-size-sm)',
+          }}
+        >
+          Modern meeting space with AV equipment
+        </p>
+        <KeyFacts
+          facts={[
+            { type: 'capacity', value: '20 people' },
+            { type: 'area', value: '45 m²' },
+            { type: 'price', value: '750 kr/hr' },
+          ]}
+          variant="compact"
+          size="sm"
+        />
+      </div>
+    );
+  },
 };
 
 export const BookingSummary: Story = {
   name: 'Domain Example: Booking Summary',
-  render: () => (
-    <div
-      style={{
-        padding: 'var(--ds-spacing-5)',
-        backgroundColor: 'var(--ds-color-accent-surface-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-        border: '1px solid var(--ds-color-accent-border-subtle)',
-      }}
-    >
-      <h4
+  render: function Render() {
+    return (
+      <div
         style={{
-          margin: 0,
-          marginBottom: 'var(--ds-spacing-3)',
-          color: 'var(--ds-color-accent-text-default)',
+          padding: 'var(--ds-spacing-5)',
+          backgroundColor: 'var(--ds-color-accent-surface-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+          border: '1px solid var(--ds-color-accent-border-subtle)',
         }}
       >
-        Booking Confirmed
-      </h4>
-      <KeyFacts
-        facts={[
-          { type: 'date', label: 'Date', value: 'Mon 15 Jan 2024' },
-          { type: 'time', label: 'Time', value: '09:00 - 12:00' },
-          { type: 'location', label: 'Room', value: 'Meeting Room B' },
-          { type: 'capacity', label: 'Guests', value: '8 people' },
-        ]}
-        showLabels={true}
-        variant="prominent"
-      />
-    </div>
-  ),
+        <h4
+          style={{
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-accent-text-default)',
+          }}
+        >
+          Booking Confirmed
+        </h4>
+        <KeyFacts
+          facts={[
+            { type: 'date', label: 'Date', value: 'Mon 15 Jan 2024' },
+            { type: 'time', label: 'Time', value: '09:00 - 12:00' },
+            { type: 'location', label: 'Room', value: 'Meeting Room B' },
+            { type: 'capacity', label: 'Guests', value: '8 people' },
+          ]}
+          showLabels={true}
+          variant="prominent"
+        />
+      </div>
+    );
+  },
 };

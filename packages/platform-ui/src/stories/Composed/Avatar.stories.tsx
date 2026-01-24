@@ -148,15 +148,17 @@ export const ExtraLarge: Story = {
 
 // All sizes showcase
 export const AllSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}>
-      <Avatar name="XS" size="xs" />
-      <Avatar name="SM" size="sm" />
-      <Avatar name="MD" size="md" />
-      <Avatar name="LG" size="lg" />
-      <Avatar name="XL" size="xl" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}>
+        <Avatar name="XS" size="xs" />
+        <Avatar name="SM" size="sm" />
+        <Avatar name="MD" size="md" />
+        <Avatar name="LG" size="lg" />
+        <Avatar name="XL" size="xl" />
+      </div>
+    );
+  },
 };
 
 // UserInfo component

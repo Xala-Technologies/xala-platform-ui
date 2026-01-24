@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 // Norwegian Bokmal
 export const NorwegianBokmal: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('nb');
     return (
       <div style={{ width: '700px' }}>
@@ -55,7 +55,7 @@ export const NorwegianBokmal: Story = {
 
 // Norwegian Nynorsk
 export const NorwegianNynorsk: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('nn');
     return (
       <div style={{ width: '700px' }}>
@@ -67,7 +67,7 @@ export const NorwegianNynorsk: Story = {
 
 // English
 export const English: Story = {
-  render: () => {
+  render: function Render() {
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('en');
     return (
       <div style={{ width: '700px' }}>
@@ -79,7 +79,7 @@ export const English: Story = {
 
 // Custom labels
 export const CustomLabels: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('nb');
     return (

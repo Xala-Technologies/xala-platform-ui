@@ -189,7 +189,7 @@ const useSampleUser = () => {
  * Default sidebar with all sections
  */
 export const Default: Story = {
-  render: () => {
+  render: function Render() {
     const sections = useDefaultSections();
     const user = useSampleUser();
     return (
@@ -208,7 +208,7 @@ export const Default: Story = {
  * Sidebar without user info
  */
 export const WithoutUser: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const sections = useDefaultSections();
     return (
@@ -226,7 +226,7 @@ export const WithoutUser: Story = {
  * Sidebar without subtitle
  */
 export const WithoutSubtitle: Story = {
-  render: () => {
+  render: function Render() {
     const sections = useDefaultSections();
     const user = useSampleUser();
     return (
@@ -239,7 +239,7 @@ export const WithoutSubtitle: Story = {
  * Minimal sidebar (no sections titles)
  */
 export const MinimalSections: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const user = useSampleUser();
     return (
@@ -280,7 +280,7 @@ export const MinimalSections: Story = {
  * Narrower width
  */
 export const NarrowWidth: Story = {
-  render: () => {
+  render: function Render() {
     const sections = useDefaultSections();
     const user = useSampleUser();
     return (
@@ -299,7 +299,7 @@ export const NarrowWidth: Story = {
  * Wider width
  */
 export const WideWidth: Story = {
-  render: () => {
+  render: function Render() {
     const sections = useDefaultSections();
     const user = useSampleUser();
     return (
@@ -318,7 +318,7 @@ export const WideWidth: Story = {
  * With many badges
  */
 export const WithBadges: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     const user = useSampleUser();
     return (
@@ -364,7 +364,7 @@ export const WithBadges: Story = {
  * Backoffice admin layout
  */
 export const BackofficeLayout: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <DashboardSidebar

@@ -33,7 +33,7 @@ export default meta;
 type Story = StoryObj<typeof PreviewArea>;
 
 export const Default: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <PreviewArea>
@@ -47,7 +47,7 @@ export const Default: Story = {
 };
 
 export const SubtleBackground: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <PreviewArea background="subtle">
@@ -58,7 +58,7 @@ export const SubtleBackground: Story = {
 };
 
 export const TransparentBackground: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <PreviewArea background="transparent">
@@ -69,7 +69,7 @@ export const TransparentBackground: Story = {
 };
 
 export const CheckerboardBackground: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <PreviewArea background="checkerboard">
@@ -80,7 +80,7 @@ export const CheckerboardBackground: Story = {
 };
 
 export const NotCentered: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <PreviewArea centered={false}>
@@ -101,7 +101,7 @@ export const NotCentered: Story = {
 };
 
 export const CustomHeight: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <PreviewArea minHeight="500px">

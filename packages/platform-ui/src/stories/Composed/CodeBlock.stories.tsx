@@ -168,25 +168,29 @@ export const WithoutCopyButton: Story = {
 
 // CopyButton standalone
 export const CopyButtonStandalone: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-      <CopyButton text="const x = 1;" onCopy={fn()} size="sm" />
-      <CopyButton text="const x = 1;" onCopy={fn()} size="md" />
-      <CopyButton text="const x = 1;" onCopy={fn()} size="lg" />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <CopyButton text="const x = 1;" onCopy={fn()} size="sm" />
+        <CopyButton text="const x = 1;" onCopy={fn()} size="md" />
+        <CopyButton text="const x = 1;" onCopy={fn()} size="lg" />
+      </div>
+    );
+  },
 };
 
 // Inline code
 export const InlineCodeExample: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-      <p>
-        Use <InlineCode>const x = 1;</InlineCode> to declare a constant.
-      </p>
-      <p>
-        Copy this code: <InlineCode copyable>npm install</InlineCode>
-      </p>
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+        <p>
+          Use <InlineCode>const x = 1;</InlineCode> to declare a constant.
+        </p>
+        <p>
+          Copy this code: <InlineCode copyable>npm install</InlineCode>
+        </p>
+      </div>
+    );
+  },
 };

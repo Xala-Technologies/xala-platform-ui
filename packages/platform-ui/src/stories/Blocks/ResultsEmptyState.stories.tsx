@@ -50,7 +50,7 @@ type Story = StoryObj<typeof meta>;
 
 // No results variant
 export const NoResults: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResultsEmptyState
@@ -64,7 +64,7 @@ export const NoResults: Story = {
 
 // No results with action
 export const NoResultsWithAction: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResultsEmptyState
@@ -83,7 +83,7 @@ export const NoResultsWithAction: Story = {
 
 // No data variant
 export const NoData: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResultsEmptyState
@@ -97,7 +97,7 @@ export const NoData: Story = {
 
 // Error variant
 export const Error: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResultsEmptyState
@@ -116,7 +116,7 @@ export const Error: Story = {
 
 // Custom icon
 export const CustomIcon: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResultsEmptyState
@@ -144,7 +144,7 @@ export const CustomIcon: Story = {
 
 // Minimal
 export const Minimal: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return <ResultsEmptyState variant="no-results" title={t('platform.errors.notFound')} />;
   },
@@ -152,7 +152,7 @@ export const Minimal: Story = {
 
 // Long description
 export const LongDescription: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResultsEmptyState
@@ -171,7 +171,7 @@ export const LongDescription: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div

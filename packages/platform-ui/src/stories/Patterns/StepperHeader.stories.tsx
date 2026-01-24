@@ -315,7 +315,7 @@ export const OnboardingFlow: Story = {
 
 export const Interactive: Story = {
   name: 'Interactive Example',
-  render: () => {
+  render: function Render() {
     const t = useT();
     const [currentStep, setCurrentStep] = React.useState(0);
 

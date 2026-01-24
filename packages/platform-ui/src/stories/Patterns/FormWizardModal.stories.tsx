@@ -8,7 +8,7 @@ import * as React from 'react';
 import { useT } from '@xala-technologies/i18n';
 import { FormWizardModal, type FormWizardModalProps } from '../../patterns/FormWizardModal';
 import type { PatternWizardStep } from '../../patterns/types';
-import { Paragraph, Textfield, Label, NativeSelect, Checkbox } from '@digdir/designsystemet-react';
+import { Paragraph, Textfield, Label, Select, Checkbox } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof FormWizardModal> = {
   title: 'Patterns/FormWizardModal',
@@ -89,12 +89,12 @@ function DetailsStep() {
       </div>
       <div>
         <Label htmlFor="category">Category</Label>
-        <NativeSelect id="category">
+        <Select id="category">
           <option value="">Select category</option>
           <option value="meeting">Meeting</option>
           <option value="workshop">Workshop</option>
           <option value="event">Event</option>
-        </NativeSelect>
+        </Select>
       </div>
     </div>
   );
@@ -353,12 +353,12 @@ export const BookingWizard: Story = {
         <Textfield label="Number of Attendees" type="number" defaultValue="8" />
         <div>
           <Label htmlFor="equipment">Additional Equipment</Label>
-          <NativeSelect id="equipment">
+          <Select id="equipment">
             <option value="">None</option>
             <option value="projector">Projector</option>
             <option value="whiteboard">Whiteboard</option>
             <option value="video">Video Conferencing</option>
-          </NativeSelect>
+          </Select>
         </div>
       </div>
     ),
@@ -403,46 +403,48 @@ export const WithCompletedSteps: Story = {
 
 export const StepIndicatorVariants: Story = {
   name: 'Step Progress States',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-      <div>
-        <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
-          Step 1 of 4 (Beginning)
-        </Paragraph>
-        <FormWizardModal
-          isOpen={true}
-          steps={fourSteps}
-          currentStepIndex={0}
-          title="Progress: Beginning"
-          children={<Paragraph>First step content</Paragraph>}
-        />
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+        <div>
+          <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
+            Step 1 of 4 (Beginning)
+          </Paragraph>
+          <FormWizardModal
+            isOpen={true}
+            steps={fourSteps}
+            currentStepIndex={0}
+            title="Progress: Beginning"
+            children={<Paragraph>First step content</Paragraph>}
+          />
+        </div>
+        <div>
+          <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
+            Step 2 of 4 (In Progress)
+          </Paragraph>
+          <FormWizardModal
+            isOpen={true}
+            steps={fourSteps.map((s, i) => ({ ...s, isCompleted: i < 1 }))}
+            currentStepIndex={1}
+            title="Progress: In Progress"
+            children={<Paragraph>Second step content</Paragraph>}
+          />
+        </div>
+        <div>
+          <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
+            Step 4 of 4 (Final)
+          </Paragraph>
+          <FormWizardModal
+            isOpen={true}
+            steps={fourSteps.map((s, i) => ({ ...s, isCompleted: i < 3 }))}
+            currentStepIndex={3}
+            title="Progress: Final Step"
+            children={<Paragraph>Final step content</Paragraph>}
+          />
+        </div>
       </div>
-      <div>
-        <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
-          Step 2 of 4 (In Progress)
-        </Paragraph>
-        <FormWizardModal
-          isOpen={true}
-          steps={fourSteps.map((s, i) => ({ ...s, isCompleted: i < 1 }))}
-          currentStepIndex={1}
-          title="Progress: In Progress"
-          children={<Paragraph>Second step content</Paragraph>}
-        />
-      </div>
-      <div>
-        <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
-          Step 4 of 4 (Final)
-        </Paragraph>
-        <FormWizardModal
-          isOpen={true}
-          steps={fourSteps.map((s, i) => ({ ...s, isCompleted: i < 3 }))}
-          currentStepIndex={3}
-          title="Progress: Final Step"
-          children={<Paragraph>Final step content</Paragraph>}
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '2rem' }}>

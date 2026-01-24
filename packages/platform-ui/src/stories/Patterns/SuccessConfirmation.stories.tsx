@@ -154,71 +154,77 @@ export const MinimalSuccess: SuccessStory = {
 
 export const ConfirmationDefault: StoryObj<typeof ConfirmationView> = {
   name: 'Confirmation View',
-  render: () => (
-    <ConfirmationView
-      title="Confirm Your Booking"
-      message="Please review your booking details before confirming."
-      details={[
-        { label: 'Resource', value: 'Meeting Room 3B' },
-        { label: 'Date', value: 'January 20, 2026' },
-        { label: 'Time', value: '10:00 - 11:00' },
-        { label: 'Price', value: '500 kr' },
-      ]}
-      confirmAction={{
-        label: 'Confirm Booking',
-        onClick: () => console.log('Confirmed'),
-      }}
-      cancelAction={{
-        label: 'Go Back',
-        onClick: () => console.log('Cancelled'),
-      }}
-    />
-  ),
+  render: function Render() {
+    return (
+      <ConfirmationView
+        title="Confirm Your Booking"
+        message="Please review your booking details before confirming."
+        details={[
+          { label: 'Resource', value: 'Meeting Room 3B' },
+          { label: 'Date', value: 'January 20, 2026' },
+          { label: 'Time', value: '10:00 - 11:00' },
+          { label: 'Price', value: '500 kr' },
+        ]}
+        confirmAction={{
+          label: 'Confirm Booking',
+          onClick: () => console.log('Confirmed'),
+        }}
+        cancelAction={{
+          label: 'Go Back',
+          onClick: () => console.log('Cancelled'),
+        }}
+      />
+    );
+  },
 };
 
 export const DeleteConfirmation: StoryObj<typeof ConfirmationView> = {
   name: 'Delete Confirmation',
-  render: () => (
-    <ConfirmationView
-      variant="danger"
-      title="Delete Booking?"
-      message="Are you sure you want to delete this booking? This action cannot be undone."
-      details={[
-        { label: 'Booking ID', value: '#BK-2026-12345' },
-        { label: 'Resource', value: 'Conference Room Alpha' },
-      ]}
-      confirmAction={{
-        label: 'Delete Booking',
-        onClick: () => console.log('Deleted'),
-        variant: 'danger',
-      }}
-      cancelAction={{
-        label: 'Keep Booking',
-        onClick: () => console.log('Cancelled'),
-      }}
-    />
-  ),
+  render: function Render() {
+    return (
+      <ConfirmationView
+        variant="danger"
+        title="Delete Booking?"
+        message="Are you sure you want to delete this booking? This action cannot be undone."
+        details={[
+          { label: 'Booking ID', value: '#BK-2026-12345' },
+          { label: 'Resource', value: 'Conference Room Alpha' },
+        ]}
+        confirmAction={{
+          label: 'Delete Booking',
+          onClick: () => console.log('Deleted'),
+          variant: 'danger',
+        }}
+        cancelAction={{
+          label: 'Keep Booking',
+          onClick: () => console.log('Cancelled'),
+        }}
+      />
+    );
+  },
 };
 
 export const CancelConfirmation: StoryObj<typeof ConfirmationView> = {
   name: 'Cancellation Confirmation',
-  render: () => (
-    <ConfirmationView
-      variant="warning"
-      title="Cancel Your Booking?"
-      message="You will receive a full refund if you cancel now. Cancellations made within 24 hours of the booking are non-refundable."
-      details={[
-        { label: 'Booking ID', value: '#BK-2026-12345' },
-        { label: 'Refund Amount', value: '1,500 kr' },
-      ]}
-      confirmAction={{
-        label: 'Yes, Cancel Booking',
-        onClick: () => console.log('Cancelled booking'),
-      }}
-      cancelAction={{
-        label: 'Keep Booking',
-        onClick: () => console.log('Kept'),
-      }}
-    />
-  ),
+  render: function Render() {
+    return (
+      <ConfirmationView
+        variant="warning"
+        title="Cancel Your Booking?"
+        message="You will receive a full refund if you cancel now. Cancellations made within 24 hours of the booking are non-refundable."
+        details={[
+          { label: 'Booking ID', value: '#BK-2026-12345' },
+          { label: 'Refund Amount', value: '1,500 kr' },
+        ]}
+        confirmAction={{
+          label: 'Yes, Cancel Booking',
+          onClick: () => console.log('Cancelled booking'),
+        }}
+        cancelAction={{
+          label: 'Keep Booking',
+          onClick: () => console.log('Kept'),
+        }}
+      />
+    );
+  },
 };

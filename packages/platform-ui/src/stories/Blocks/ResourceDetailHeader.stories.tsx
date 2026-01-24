@@ -78,7 +78,7 @@ export const Favorited: Story = {
 
 // With key facts
 export const WithKeyFacts: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResourceDetailHeader
@@ -103,7 +103,7 @@ export const WithKeyFacts: Story = {
 
 // With share data
 export const WithShare: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResourceDetailHeader
@@ -158,7 +158,7 @@ export const LoadingFavorite: Story = {
 
 // Different resource type
 export const ResourceType: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResourceDetailHeader
@@ -182,7 +182,7 @@ export const ResourceType: Story = {
 
 // Event type
 export const EventType: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResourceDetailHeader
@@ -206,7 +206,7 @@ export const EventType: Story = {
 
 // Complete example
 export const Complete: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ResourceDetailHeader

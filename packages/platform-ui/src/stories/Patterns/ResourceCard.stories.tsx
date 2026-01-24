@@ -277,29 +277,31 @@ export const WithFavorited: Story = {
 
 export const WithStatus: Story = {
   name: 'Status Variants',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        status={{ type: 'available', label: 'Available Now' }}
-      />
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        id="2"
-        status={{ type: 'limited', label: 'Limited Slots' }}
-      />
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        id="3"
-        status={{ type: 'unavailable', label: 'Fully Booked' }}
-      />
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        id="4"
-        status={{ type: 'pending', label: 'Pending Approval' }}
-      />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          status={{ type: 'available', label: 'Available Now' }}
+        />
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          id="2"
+          status={{ type: 'limited', label: 'Limited Slots' }}
+        />
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          id="3"
+          status={{ type: 'unavailable', label: 'Fully Booked' }}
+        />
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          id="4"
+          status={{ type: 'pending', label: 'Pending Approval' }}
+        />
+      </div>
+    );
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '2rem', maxWidth: '350px' }}>
@@ -345,24 +347,26 @@ export const MinimalCard: Story = {
 
 export const WithPriceVariants: Story = {
   name: 'Price Display Variants',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        price={{ amount: '500 kr', unit: 'hour' }}
-      />
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        id="2"
-        price={{ amount: '2,000 kr', unit: 'day', prefix: 'From' }}
-      />
-      <ResourceCard
-        {...(baseProps as ResourceCardProps)}
-        id="3"
-        price={{ amount: '1,200 kr', strikethrough: '1,500 kr', unit: 'hour' }}
-      />
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          price={{ amount: '500 kr', unit: 'hour' }}
+        />
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          id="2"
+          price={{ amount: '2,000 kr', unit: 'day', prefix: 'From' }}
+        />
+        <ResourceCard
+          {...(baseProps as ResourceCardProps)}
+          id="3"
+          price={{ amount: '1,200 kr', strikethrough: '1,500 kr', unit: 'hour' }}
+        />
+      </div>
+    );
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '2rem', maxWidth: '350px' }}>
@@ -409,63 +413,65 @@ export const WithManyBadges: Story = {
 
 export const GridLayout: Story = {
   name: 'Grid Layout (Multiple Cards)',
-  render: () => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: '1.5rem',
-        padding: '1rem',
-      }}
-    >
-      {[
-        {
-          id: '1',
-          title: 'Conference Room A',
-          subtitle: 'Floor 2',
-          price: { amount: '800 kr', unit: 'hour' },
-          status: { type: 'available' as const, label: 'Available' },
-        },
-        {
-          id: '2',
-          title: 'Meeting Pod B',
-          subtitle: 'Floor 1',
-          price: { amount: '400 kr', unit: 'hour' },
-          status: { type: 'limited' as const, label: '2 slots left' },
-        },
-        {
-          id: '3',
-          title: 'Workshop Hall',
-          subtitle: 'Ground Floor',
-          price: { amount: '2,500 kr', unit: 'day' },
-          status: { type: 'unavailable' as const, label: 'Booked' },
-        },
-        {
-          id: '4',
-          title: 'Creative Studio',
-          subtitle: 'Floor 3',
-          price: { amount: '1,200 kr', unit: 'hour' },
-          status: { type: 'available' as const, label: 'Available' },
-        },
-      ].map((item) => (
-        <ResourceCard
-          key={item.id}
-          {...item}
-          image={{
-            src: `https://images.unsplash.com/photo-149736621654${item.id}-37526070297c?w=400&h=300&fit=crop`,
-            alt: item.title,
-          }}
-          badges={[{ id: '1', text: item.subtitle, variant: 'accent' }]}
-          metadata={[
-            { id: '1', value: 'Oslo', icon: <LocationIcon /> },
-            { id: '2', value: '8 pers', icon: <UsersIcon /> },
-          ]}
-          onClick={(id) => console.log('Clicked:', id)}
-          onFavorite={(id) => console.log('Favorite:', id)}
-        />
-      ))}
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '1.5rem',
+          padding: '1rem',
+        }}
+      >
+        {[
+          {
+            id: '1',
+            title: 'Conference Room A',
+            subtitle: 'Floor 2',
+            price: { amount: '800 kr', unit: 'hour' },
+            status: { type: 'available' as const, label: 'Available' },
+          },
+          {
+            id: '2',
+            title: 'Meeting Pod B',
+            subtitle: 'Floor 1',
+            price: { amount: '400 kr', unit: 'hour' },
+            status: { type: 'limited' as const, label: '2 slots left' },
+          },
+          {
+            id: '3',
+            title: 'Workshop Hall',
+            subtitle: 'Ground Floor',
+            price: { amount: '2,500 kr', unit: 'day' },
+            status: { type: 'unavailable' as const, label: 'Booked' },
+          },
+          {
+            id: '4',
+            title: 'Creative Studio',
+            subtitle: 'Floor 3',
+            price: { amount: '1,200 kr', unit: 'hour' },
+            status: { type: 'available' as const, label: 'Available' },
+          },
+        ].map((item) => (
+          <ResourceCard
+            key={item.id}
+            {...item}
+            image={{
+              src: `https://images.unsplash.com/photo-149736621654${item.id}-37526070297c?w=400&h=300&fit=crop`,
+              alt: item.title,
+            }}
+            badges={[{ id: '1', text: item.subtitle, variant: 'accent' }]}
+            metadata={[
+              { id: '1', value: 'Oslo', icon: <LocationIcon /> },
+              { id: '2', value: '8 pers', icon: <UsersIcon /> },
+            ]}
+            onClick={(id) => console.log('Clicked:', id)}
+            onFavorite={(id) => console.log('Favorite:', id)}
+          />
+        ))}
+      </div>
+    );
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '1rem', maxWidth: '1200px' }}>
@@ -488,47 +494,49 @@ export const GridLayout: Story = {
 
 export const ListLayout: Story = {
   name: 'List Layout (Multiple Cards)',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      {[
-        {
-          id: '1',
-          title: 'Conference Room A',
-          subtitle: 'Premium Meeting Space',
-          description: 'Large conference room with panoramic views and modern AV setup.',
-        },
-        {
-          id: '2',
-          title: 'Meeting Pod B',
-          subtitle: 'Quick Meetings',
-          description: 'Compact space for 4 people, ideal for quick syncs and calls.',
-        },
-        {
-          id: '3',
-          title: 'Workshop Hall',
-          subtitle: 'Events & Training',
-          description: 'Flexible space for workshops, training sessions, and team events.',
-        },
-      ].map((item) => (
-        <ResourceCard
-          key={item.id}
-          {...item}
-          variant="list"
-          image={{
-            src: `https://images.unsplash.com/photo-149736621654${item.id}-37526070297c?w=400&h=300&fit=crop`,
-            alt: item.title,
-          }}
-          badges={sampleBadges.slice(0, 2)}
-          metadata={sampleMetadata.slice(0, 2)}
-          price={{ amount: '1,000 kr', unit: 'hour' }}
-          status={{ type: 'available', label: 'Available' }}
-          onClick={(id) => console.log('Clicked:', id)}
-          onFavorite={(id) => console.log('Favorite:', id)}
-          onShare={(id) => console.log('Share:', id)}
-        />
-      ))}
-    </div>
-  ),
+  render: function Render() {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {[
+          {
+            id: '1',
+            title: 'Conference Room A',
+            subtitle: 'Premium Meeting Space',
+            description: 'Large conference room with panoramic views and modern AV setup.',
+          },
+          {
+            id: '2',
+            title: 'Meeting Pod B',
+            subtitle: 'Quick Meetings',
+            description: 'Compact space for 4 people, ideal for quick syncs and calls.',
+          },
+          {
+            id: '3',
+            title: 'Workshop Hall',
+            subtitle: 'Events & Training',
+            description: 'Flexible space for workshops, training sessions, and team events.',
+          },
+        ].map((item) => (
+          <ResourceCard
+            key={item.id}
+            {...item}
+            variant="list"
+            image={{
+              src: `https://images.unsplash.com/photo-149736621654${item.id}-37526070297c?w=400&h=300&fit=crop`,
+              alt: item.title,
+            }}
+            badges={sampleBadges.slice(0, 2)}
+            metadata={sampleMetadata.slice(0, 2)}
+            price={{ amount: '1,000 kr', unit: 'hour' }}
+            status={{ type: 'available', label: 'Available' }}
+            onClick={(id) => console.log('Clicked:', id)}
+            onFavorite={(id) => console.log('Favorite:', id)}
+            onShare={(id) => console.log('Share:', id)}
+          />
+        ))}
+      </div>
+    );
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '1rem', maxWidth: '800px' }}>

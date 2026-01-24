@@ -66,18 +66,20 @@ const pipelineMeta: Meta<typeof WorkflowPipeline> = {
 };
 
 export const Pipeline: StoryObj<typeof WorkflowPipeline> = {
-  render: () => (
-    <WorkflowPipeline
-      steps={[
-        { step: 1, name: 'Vision' },
-        { step: 2, name: 'Roadmap' },
-        { step: 3, name: 'Data Model' },
-        { step: 4, name: 'Section Specs' },
-        { step: 5, name: 'Export' },
-      ]}
-      activeStep={3}
-    />
-  ),
+  render: function Render() {
+    return (
+      <WorkflowPipeline
+        steps={[
+          { step: 1, name: 'Vision' },
+          { step: 2, name: 'Roadmap' },
+          { step: 3, name: 'Data Model' },
+          { step: 4, name: 'Section Specs' },
+          { step: 5, name: 'Export' },
+        ]}
+        activeStep={3}
+      />
+    );
+  },
 };
 
 // =============================================================================
@@ -94,7 +96,7 @@ const cardMeta: Meta<typeof WorkflowCard> = {
 };
 
 export const AvailableWorkflow: StoryObj<typeof WorkflowCard> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <WorkflowCard
@@ -110,7 +112,7 @@ export const AvailableWorkflow: StoryObj<typeof WorkflowCard> = {
 };
 
 export const ComingSoonWorkflow: StoryObj<typeof WorkflowCard> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <WorkflowCard
@@ -125,7 +127,7 @@ export const ComingSoonWorkflow: StoryObj<typeof WorkflowCard> = {
 };
 
 export const DeprecatedWorkflow: StoryObj<typeof WorkflowCard> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <WorkflowCard
@@ -152,7 +154,7 @@ const cardGridMeta: Meta<typeof CardGrid> = {
 };
 
 export const WorkflowCardGrid: StoryObj<typeof CardGrid> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <CardGrid>
@@ -193,7 +195,7 @@ const buttonGroupMeta: Meta<typeof ButtonGroup> = {
 };
 
 export const DefaultButtonGroup: StoryObj<typeof ButtonGroup> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ButtonGroup>
@@ -209,7 +211,7 @@ export const DefaultButtonGroup: StoryObj<typeof ButtonGroup> = {
 };
 
 export const CenteredButtonGroup: StoryObj<typeof ButtonGroup> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ButtonGroup align="center">
@@ -225,7 +227,7 @@ export const CenteredButtonGroup: StoryObj<typeof ButtonGroup> = {
 };
 
 export const EndAlignedButtonGroup: StoryObj<typeof ButtonGroup> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <ButtonGroup align="end">
@@ -257,7 +259,7 @@ const formGridMeta: Meta<typeof FormGrid> = {
 };
 
 export const TwoColumnForm: StoryObj<typeof FormGrid> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <FormGrid columns={2}>
@@ -274,7 +276,7 @@ export const TwoColumnForm: StoryObj<typeof FormGrid> = {
 };
 
 export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <FormGrid columns={3}>
@@ -300,7 +302,7 @@ export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
 };
 
 export const SingleColumnForm: StoryObj<typeof FormGrid> = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <FormGrid columns={1}>

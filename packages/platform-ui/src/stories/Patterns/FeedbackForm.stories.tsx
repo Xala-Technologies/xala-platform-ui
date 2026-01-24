@@ -340,7 +340,7 @@ export const FullFeatures: Story = {
 
 export const Interactive: Story = {
   name: 'Interactive Example',
-  render: () => {
+  render: function Render() {
     const [submitted, setSubmitted] = React.useState<FeedbackFormData | null>(null);
     const [loading, setLoading] = React.useState(false);
 

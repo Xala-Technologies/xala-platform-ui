@@ -38,7 +38,7 @@ type Story = StoryObj;
  * Best Practice 1: Design Tokens
  */
 export const DesignTokens: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -110,7 +110,7 @@ export const DesignTokens: Story = {
  * Best Practice 2: Component Composition
  */
 export const ComponentComposition: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -182,7 +182,7 @@ export const ComponentComposition: Story = {
  * Best Practice 3: i18n
  */
 export const Internationalization: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -252,7 +252,7 @@ export const Internationalization: Story = {
  * Best Practice 4: SDK-First
  */
 export const SDKFirst: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -320,7 +320,7 @@ const users = await sdk.users.list();`}
  * Best Practice 5: Error Handling
  */
 export const ErrorHandling: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -387,7 +387,7 @@ setUsers(data);`}
  * Best Practices Summary
  */
 export const Summary: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
 
     const practices = [

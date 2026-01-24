@@ -155,7 +155,7 @@ export const Loading: Story = {
 
 // With default values
 export const WithDefaultValues: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '600px' }}>
@@ -183,7 +183,7 @@ export const WithDefaultValues: Story = {
 
 // Many roles and organizations
 export const ManyOptions: Story = {
-  render: () => {
+  render: function Render() {
     const t = useT();
     return (
       <div style={{ width: '600px' }}>
