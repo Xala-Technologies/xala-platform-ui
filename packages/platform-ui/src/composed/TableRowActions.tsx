@@ -234,13 +234,13 @@ export function TableRowActions({
                 disabled={action.disabled}
                 onClick={() => handleActionClick(action)}
                 data-color={
-                  action.variant === 'danger'
+                  (action.variant === 'danger'
                     ? 'danger'
                     : action.variant === 'success'
                       ? 'success'
                       : action.variant === 'warning'
                         ? 'warning'
-                        : 'neutral'
+                        : 'neutral') as 'neutral'
                 }
                 style={{
                   display: 'flex',

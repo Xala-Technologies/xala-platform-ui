@@ -87,13 +87,9 @@ export function StatusTabs({
             className={cn('status-tab', isActive && 'status-tab--active')}
             data-color={
               isActive
-                ? tab.color === 'danger'
+                ? tab.color === 'danger' || tab.color === 'warning'
                   ? 'danger'
-                  : tab.color === 'warning'
-                    ? 'warning'
-                    : tab.color === 'success'
-                      ? 'success'
-                      : 'accent'
+                  : 'accent'
                 : 'neutral'
             }
             style={{

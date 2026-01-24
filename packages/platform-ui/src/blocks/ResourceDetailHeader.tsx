@@ -155,7 +155,7 @@ export function ResourceDetailHeader({
         }}
       >
         {/* Category badge */}
-        <Tag data-size="sm" data-color={getTypeColor()}>
+        <Tag data-size="sm" data-color={getTypeColor() as 'neutral'}>
           {category}
         </Tag>
 

@@ -267,7 +267,7 @@ export function ResourceListItem({
           >
             <Tag
               data-size="sm"
-              data-color={categoryColors[category || 'OTHER'] || 'neutral'}
+              data-color={(categoryColors[category || 'OTHER'] || 'neutral') as 'neutral'}
               style={{ paddingInline: 'var(--ds-spacing-2)' }}
             >
               {type}
@@ -381,7 +381,7 @@ export function ResourceListItem({
           {showCategory && category && (
             <Tag
               data-size="sm"
-              data-color={categoryColors[category] || 'neutral'}
+              data-color={(categoryColors[category] || 'neutral') as 'neutral'}
               style={{ paddingInline: 'var(--ds-spacing-2)', flexShrink: 0 }}
             >
               {categoryLabels[category] || category}

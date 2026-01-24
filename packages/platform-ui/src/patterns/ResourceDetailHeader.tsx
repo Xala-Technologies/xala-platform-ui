@@ -388,7 +388,7 @@ export function ResourceDetailHeader({
                 }}
               >
                 {badges.map((badge) => (
-                  <Tag key={badge.id} data-size="sm" data-color={getBadgeColor(badge.variant)}>
+                  <Tag key={badge.id} data-size="sm" data-color={getBadgeColor(badge.variant) as 'neutral'}>
                     {badge.icon && (
                       <span
                         style={{

@@ -310,7 +310,7 @@ export function ConfirmDialog({
             onClick={handleConfirm}
             disabled={isLoading}
             data-color={
-              variant === 'danger' ? 'danger' : variant === 'warning' ? 'warning' : 'accent'
+              variant === 'danger' ? 'danger' : variant === 'warning' ? 'danger' : 'accent'
             }
             style={{
               display: 'inline-flex',

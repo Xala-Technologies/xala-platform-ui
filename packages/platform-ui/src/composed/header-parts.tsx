@@ -1538,7 +1538,8 @@ export const HeaderLoginButton: React.FC<HeaderLoginButtonProps> = ({
   color = 'accent',
 }) => {
   // Build data-color props conditionally to avoid TypeScript issues
-  const colorProps = color !== 'neutral' ? { 'data-color': color } : {};
+  // Cast to satisfy TypeScript while allowing extended color values from our extensions
+  const colorProps = color !== 'neutral' ? { 'data-color': color as 'accent' } : {};
 
   // Logged in state - show user info with Button
   // Uses standard Digdir Button - no custom styles needed
