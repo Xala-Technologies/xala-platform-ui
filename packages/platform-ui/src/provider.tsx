@@ -1,18 +1,17 @@
 /**
  * React provider for managing Designsystemet theme and styling.
  *
- * This provider handles runtime theme switching by managing <link>
- * elements in the document head. It supports themes with multiple CSS
- * files (base + extensions) and sets data attributes for color scheme,
- * size, and typography preferences.
+ * This provider handles runtime theme switching by injecting theme CSS
+ * inline via <style> elements. Themes are bundled into the package,
+ * so no external CSS files are needed in the app's public folder.
  *
  * @example
  * ```tsx
- * import { DesignsystemetProvider } from '@xala-technologies/platform/ui';
+ * import { DesignsystemetProvider } from '@xala-technologies/platform-ui';
  *
  * function App() {
  *   return (
- *     <DesignsystemetProvider theme="digdir" colorScheme="auto" size="auto">
+ *     <DesignsystemetProvider theme="custom" colorScheme="auto" size="auto">
  *       <YourApp />
  *     </DesignsystemetProvider>
  *   );
@@ -20,7 +19,7 @@
  * ```
  */
 import React from 'react';
-import { DEFAULT_THEME, getThemeUrls, type ThemeId } from './themes';
+import { DEFAULT_THEME, getThemeCSS, hasCustomCSS, type ThemeId } from './themes';
 
 /**
  * Available color scheme options for the design system.
@@ -59,45 +58,47 @@ export type DesignsystemetProviderProps = {
   rootAs?: keyof JSX.IntrinsicElements;
 };
 
-const THEME_LINK_DATA_ATTR = 'data-xala-theme-link';
+const THEME_STYLE_ID = 'xala-platform-theme';
 
 /**
- * Ensures theme CSS link elements exist in the document head.
+ * Injects theme CSS inline via a <style> element.
  *
- * This function creates or updates <link> elements for the theme CSS.
- * It supports multiple CSS files per theme (base + extensions).
- * Old links are removed when switching themes to prevent conflicts.
+ * This approach bundles theme CSS into the package, eliminating
+ * the need for external CSS files in the app's public folder.
+ * Theme changes are applied instantly without network requests.
  *
- * @param hrefs - Array of URLs for theme CSS files
+ * @param themeId - Theme identifier to inject
  */
-function ensureThemeLinks(hrefs: string[]): void {
-  const head = document.head;
+function injectThemeCSS(themeId: ThemeId): void {
+  if (typeof document === 'undefined') return;
 
-  // Remove existing theme links
-  head.querySelectorAll(`link[${THEME_LINK_DATA_ATTR}]`).forEach((el) => {
-    el.remove();
-  });
+  // Remove existing theme style
+  const existingStyle = document.getElementById(THEME_STYLE_ID);
+  if (existingStyle) {
+    existingStyle.remove();
+  }
 
-  // Add new theme links in order (base first, then extensions)
-  // Filter out undefined/null URLs to prevent 404 errors
-  hrefs
-    .filter((href) => href && href !== 'undefined')
-    .forEach((href, index) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      link.setAttribute(THEME_LINK_DATA_ATTR, String(index));
-      head.appendChild(link);
-    });
+  // Only inject if theme has custom CSS
+  if (!hasCustomCSS(themeId)) {
+    return;
+  }
+
+  // Create and inject new theme style
+  const css = getThemeCSS(themeId);
+  if (css) {
+    const style = document.createElement('style');
+    style.id = THEME_STYLE_ID;
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
 }
 
 /**
  * React provider component for Designsystemet theming.
  *
- * Manages theme loading through dynamic <link> elements and applies
+ * Manages theme loading through inline <style> injection and applies
  * data attributes for styling variations. Theme changes are applied
- * instantly without page reload. Supports themes with multiple CSS
- * files (e.g., CLI-generated base + app extensions).
+ * instantly without page reload or network requests.
  *
  * @param props - Provider configuration props
  * @returns JSX element with theme context
@@ -111,10 +112,10 @@ export function DesignsystemetProvider({
   rootAs: Root = 'div',
 }: DesignsystemetProviderProps) {
   React.useEffect(() => {
-    const urls = getThemeUrls(theme);
-    ensureThemeLinks(urls);
+    // Inject theme CSS inline
+    injectThemeCSS(theme);
 
-    // Also set attributes on html element for CSS targeting
+    // Set attributes on html element for CSS targeting
     document.documentElement.setAttribute('data-color-scheme', colorScheme);
     document.documentElement.setAttribute('data-size', size);
     document.documentElement.setAttribute('data-typography', typography);

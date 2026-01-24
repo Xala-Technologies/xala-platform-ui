@@ -1,56 +1,62 @@
 /**
  * Theme registry for runtime tenant branding switching.
  *
- * This module provides theme URLs that allow applications to swap themes
- * by loading CSS files. Themes can be a single file or an array of files
- * (base + extensions). This approach respects Designsystemet's requirement
- * that theme CSS should only be loaded once per application.
+ * This module provides theme CSS that can be injected inline by the provider.
+ * Themes are bundled into the package - no external files needed.
  *
  * @example
  * ```typescript
- * import { THEMES, DEFAULT_THEME, getThemeUrls } from '@xala-technologies/platform/ui/themes';
+ * import { THEME_CSS, DEFAULT_THEME, type ThemeId } from '@xala-technologies/platform-ui/themes';
  *
- * // Get theme URLs (always returns array)
- * const urls = getThemeUrls(DEFAULT_THEME);
+ * // Get theme CSS for inline injection
+ * const css = THEME_CSS[DEFAULT_THEME];
  * ```
  */
 
-// Official Digdir themes - using public folder path
-const OFFICIAL_THEMES = {
-  digdir: '/themes/digdir.css',
-  altinn: '/themes/altinn.css',
-  uutilsynet: '/themes/uutilsynet.css',
-  portal: '/themes/portal.css',
-};
+// Import theme CSS as raw strings (handled by tsup loader)
+import xalaTheme from './xala.css?raw';
+import xalaExtensions from './xala-extensions.css?raw';
 
-// Custom tenant theme: CLI-generated base + app extensions
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CUSTOM_THEME = [
-  '/themes/custom.css', // CLI-generated base
-  '/themes/custom-extensions.css', // App-specific tokens
-];
-
-export type ThemeId = 'digdir' | 'altinn' | 'uutilsynet' | 'portal' | 'custom';
+export type ThemeId = 'digdir' | 'altinn' | 'brreg' | 'custom';
 
 /**
- * Theme CSS files. Can be single file (string) or multiple files (array).
- * Multiple files are loaded in order: base theme first, then extensions.
+ * Bundled theme CSS content for inline injection.
+ * Each theme is an array of CSS strings that get concatenated.
+ * Empty array means use designsystemet defaults (no override).
  */
-export const THEMES: Record<ThemeId, string | string[]> = {
-  digdir: OFFICIAL_THEMES.digdir,
-  altinn: OFFICIAL_THEMES.altinn,
-  uutilsynet: OFFICIAL_THEMES.uutilsynet,
-  portal: OFFICIAL_THEMES.portal,
-  custom: ['/themes/xala.css', '/themes/xala-extensions.css'],
+export const THEME_CSS: Record<ThemeId, string[]> = {
+  // Official themes - use designsystemet defaults
+  digdir: [],
+  altinn: [],
+  brreg: [],
+  // Custom Xala theme - bundled CSS
+  custom: [xalaTheme, xalaExtensions],
 };
 
 /**
- * Get theme URLs as an array (for consistent handling).
+ * Get theme CSS as concatenated string.
  */
-export function getThemeUrls(themeId: ThemeId): string[] {
-  const theme = THEMES[themeId];
-  return Array.isArray(theme) ? theme : [theme];
+export function getThemeCSS(themeId: ThemeId): string {
+  const css = THEME_CSS[themeId] || [];
+  return css.join('\n');
+}
+
+/**
+ * Check if theme has custom CSS (vs using defaults).
+ */
+export function hasCustomCSS(themeId: ThemeId): boolean {
+  const css = THEME_CSS[themeId];
+  return Array.isArray(css) && css.length > 0;
 }
 
 // Custom is the default theme for tenant applications
 export const DEFAULT_THEME: ThemeId = 'custom';
+
+// Legacy exports for backwards compatibility (deprecated)
+/** @deprecated Use THEME_CSS instead */
+export const THEMES = THEME_CSS;
+/** @deprecated Use getThemeCSS instead */
+export function getThemeUrls(themeId: ThemeId): string[] {
+  // Return empty array - URLs are no longer used
+  return [];
+}

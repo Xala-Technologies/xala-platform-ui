@@ -42,4 +42,8 @@ export default defineConfig({
   esbuildOptions(options) {
     options.jsx = 'automatic';
   },
+  // Handle CSS imports as raw text for inline injection
+  loader: {
+    '.css': 'text',
+  },
 });

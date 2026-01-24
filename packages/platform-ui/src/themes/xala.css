@@ -1,0 +1,244 @@
+/**
+ * Xala Platform Theme
+ *
+ * Custom theme for Xala Technologies platform apps.
+ * Built on Norwegian Designsystemet foundation.
+ *
+ * Brand Colors:
+ * - Primary: Teal (#0891B2)
+ * - Brand1: Emerald (#059669)
+ * - Brand2: Indigo (#6366F1)
+ */
+
+@layer ds.theme.color-scheme.light {
+  :root,
+  [data-color-scheme="light"] {
+    /* Accent (Primary Brand - Teal) */
+    --ds-color-accent-background-default: #fff;
+    --ds-color-accent-background-tinted: #ecfeff;
+    --ds-color-accent-surface-default: #fff;
+    --ds-color-accent-surface-tinted: #cffafe;
+    --ds-color-accent-surface-hover: #a5f3fc;
+    --ds-color-accent-surface-active: #67e8f9;
+    --ds-color-accent-border-subtle: #22d3ee;
+    --ds-color-accent-border-default: #0891b2;
+    --ds-color-accent-border-strong: #0e7490;
+    --ds-color-accent-text-subtle: #0e7490;
+    --ds-color-accent-text-default: #164e63;
+    --ds-color-accent-base-default: #0891b2;
+    --ds-color-accent-base-hover: #0e7490;
+    --ds-color-accent-base-active: #155e75;
+    --ds-color-accent-base-contrast-subtle: #cffafe;
+    --ds-color-accent-base-contrast-default: #fff;
+
+    /* Brand1 (Emerald - Success/Growth) */
+    --ds-color-brand1-background-default: #fff;
+    --ds-color-brand1-background-tinted: #ecfdf5;
+    --ds-color-brand1-surface-default: #fff;
+    --ds-color-brand1-surface-tinted: #d1fae5;
+    --ds-color-brand1-surface-hover: #a7f3d0;
+    --ds-color-brand1-surface-active: #6ee7b7;
+    --ds-color-brand1-border-subtle: #34d399;
+    --ds-color-brand1-border-default: #059669;
+    --ds-color-brand1-border-strong: #047857;
+    --ds-color-brand1-text-subtle: #047857;
+    --ds-color-brand1-text-default: #064e3b;
+    --ds-color-brand1-base-default: #059669;
+    --ds-color-brand1-base-hover: #047857;
+    --ds-color-brand1-base-active: #065f46;
+    --ds-color-brand1-base-contrast-subtle: #d1fae5;
+    --ds-color-brand1-base-contrast-default: #fff;
+
+    /* Brand2 (Indigo - Premium/Features) */
+    --ds-color-brand2-background-default: #fff;
+    --ds-color-brand2-background-tinted: #eef2ff;
+    --ds-color-brand2-surface-default: #fff;
+    --ds-color-brand2-surface-tinted: #e0e7ff;
+    --ds-color-brand2-surface-hover: #c7d2fe;
+    --ds-color-brand2-surface-active: #a5b4fc;
+    --ds-color-brand2-border-subtle: #818cf8;
+    --ds-color-brand2-border-default: #6366f1;
+    --ds-color-brand2-border-strong: #4f46e5;
+    --ds-color-brand2-text-subtle: #4f46e5;
+    --ds-color-brand2-text-default: #3730a3;
+    --ds-color-brand2-base-default: #6366f1;
+    --ds-color-brand2-base-hover: #4f46e5;
+    --ds-color-brand2-base-active: #4338ca;
+    --ds-color-brand2-base-contrast-subtle: #e0e7ff;
+    --ds-color-brand2-base-contrast-default: #fff;
+  }
+
+  @media (prefers-color-scheme: light) {
+    [data-color-scheme="auto"] {
+      /* Accent (Primary Brand - Teal) */
+      --ds-color-accent-background-default: #fff;
+      --ds-color-accent-background-tinted: #ecfeff;
+      --ds-color-accent-surface-default: #fff;
+      --ds-color-accent-surface-tinted: #cffafe;
+      --ds-color-accent-surface-hover: #a5f3fc;
+      --ds-color-accent-surface-active: #67e8f9;
+      --ds-color-accent-border-subtle: #22d3ee;
+      --ds-color-accent-border-default: #0891b2;
+      --ds-color-accent-border-strong: #0e7490;
+      --ds-color-accent-text-subtle: #0e7490;
+      --ds-color-accent-text-default: #164e63;
+      --ds-color-accent-base-default: #0891b2;
+      --ds-color-accent-base-hover: #0e7490;
+      --ds-color-accent-base-active: #155e75;
+      --ds-color-accent-base-contrast-subtle: #cffafe;
+      --ds-color-accent-base-contrast-default: #fff;
+
+      /* Brand1 (Emerald) */
+      --ds-color-brand1-background-default: #fff;
+      --ds-color-brand1-background-tinted: #ecfdf5;
+      --ds-color-brand1-surface-default: #fff;
+      --ds-color-brand1-surface-tinted: #d1fae5;
+      --ds-color-brand1-surface-hover: #a7f3d0;
+      --ds-color-brand1-surface-active: #6ee7b7;
+      --ds-color-brand1-border-subtle: #34d399;
+      --ds-color-brand1-border-default: #059669;
+      --ds-color-brand1-border-strong: #047857;
+      --ds-color-brand1-text-subtle: #047857;
+      --ds-color-brand1-text-default: #064e3b;
+      --ds-color-brand1-base-default: #059669;
+      --ds-color-brand1-base-hover: #047857;
+      --ds-color-brand1-base-active: #065f46;
+      --ds-color-brand1-base-contrast-subtle: #d1fae5;
+      --ds-color-brand1-base-contrast-default: #fff;
+
+      /* Brand2 (Indigo) */
+      --ds-color-brand2-background-default: #fff;
+      --ds-color-brand2-background-tinted: #eef2ff;
+      --ds-color-brand2-surface-default: #fff;
+      --ds-color-brand2-surface-tinted: #e0e7ff;
+      --ds-color-brand2-surface-hover: #c7d2fe;
+      --ds-color-brand2-surface-active: #a5b4fc;
+      --ds-color-brand2-border-subtle: #818cf8;
+      --ds-color-brand2-border-default: #6366f1;
+      --ds-color-brand2-border-strong: #4f46e5;
+      --ds-color-brand2-text-subtle: #4f46e5;
+      --ds-color-brand2-text-default: #3730a3;
+      --ds-color-brand2-base-default: #6366f1;
+      --ds-color-brand2-base-hover: #4f46e5;
+      --ds-color-brand2-base-active: #4338ca;
+      --ds-color-brand2-base-contrast-subtle: #e0e7ff;
+      --ds-color-brand2-base-contrast-default: #fff;
+    }
+  }
+}
+
+@layer ds.theme.color-scheme.dark {
+  [data-color-scheme="dark"] {
+    /* Accent (Primary Brand - Teal Dark) */
+    --ds-color-accent-background-default: #042f2e;
+    --ds-color-accent-background-tinted: #083344;
+    --ds-color-accent-surface-default: #0e4a4e;
+    --ds-color-accent-surface-tinted: #115e59;
+    --ds-color-accent-surface-hover: #134e4a;
+    --ds-color-accent-surface-active: #155e75;
+    --ds-color-accent-border-subtle: #0e7490;
+    --ds-color-accent-border-default: #06b6d4;
+    --ds-color-accent-border-strong: #22d3ee;
+    --ds-color-accent-text-subtle: #22d3ee;
+    --ds-color-accent-text-default: #cffafe;
+    --ds-color-accent-base-default: #06b6d4;
+    --ds-color-accent-base-hover: #22d3ee;
+    --ds-color-accent-base-active: #67e8f9;
+    --ds-color-accent-base-contrast-subtle: #164e63;
+    --ds-color-accent-base-contrast-default: #000;
+
+    /* Brand1 (Emerald Dark) */
+    --ds-color-brand1-background-default: #022c22;
+    --ds-color-brand1-background-tinted: #064e3b;
+    --ds-color-brand1-surface-default: #065f46;
+    --ds-color-brand1-surface-tinted: #047857;
+    --ds-color-brand1-surface-hover: #059669;
+    --ds-color-brand1-surface-active: #10b981;
+    --ds-color-brand1-border-subtle: #059669;
+    --ds-color-brand1-border-default: #34d399;
+    --ds-color-brand1-border-strong: #6ee7b7;
+    --ds-color-brand1-text-subtle: #6ee7b7;
+    --ds-color-brand1-text-default: #d1fae5;
+    --ds-color-brand1-base-default: #10b981;
+    --ds-color-brand1-base-hover: #34d399;
+    --ds-color-brand1-base-active: #6ee7b7;
+    --ds-color-brand1-base-contrast-subtle: #064e3b;
+    --ds-color-brand1-base-contrast-default: #000;
+
+    /* Brand2 (Indigo Dark) */
+    --ds-color-brand2-background-default: #1e1b4b;
+    --ds-color-brand2-background-tinted: #312e81;
+    --ds-color-brand2-surface-default: #3730a3;
+    --ds-color-brand2-surface-tinted: #4338ca;
+    --ds-color-brand2-surface-hover: #4f46e5;
+    --ds-color-brand2-surface-active: #6366f1;
+    --ds-color-brand2-border-subtle: #4f46e5;
+    --ds-color-brand2-border-default: #818cf8;
+    --ds-color-brand2-border-strong: #a5b4fc;
+    --ds-color-brand2-text-subtle: #a5b4fc;
+    --ds-color-brand2-text-default: #e0e7ff;
+    --ds-color-brand2-base-default: #818cf8;
+    --ds-color-brand2-base-hover: #a5b4fc;
+    --ds-color-brand2-base-active: #c7d2fe;
+    --ds-color-brand2-base-contrast-subtle: #3730a3;
+    --ds-color-brand2-base-contrast-default: #000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+      /* Accent (Primary Brand - Teal Dark) */
+      --ds-color-accent-background-default: #042f2e;
+      --ds-color-accent-background-tinted: #083344;
+      --ds-color-accent-surface-default: #0e4a4e;
+      --ds-color-accent-surface-tinted: #115e59;
+      --ds-color-accent-surface-hover: #134e4a;
+      --ds-color-accent-surface-active: #155e75;
+      --ds-color-accent-border-subtle: #0e7490;
+      --ds-color-accent-border-default: #06b6d4;
+      --ds-color-accent-border-strong: #22d3ee;
+      --ds-color-accent-text-subtle: #22d3ee;
+      --ds-color-accent-text-default: #cffafe;
+      --ds-color-accent-base-default: #06b6d4;
+      --ds-color-accent-base-hover: #22d3ee;
+      --ds-color-accent-base-active: #67e8f9;
+      --ds-color-accent-base-contrast-subtle: #164e63;
+      --ds-color-accent-base-contrast-default: #000;
+
+      /* Brand1 (Emerald Dark) */
+      --ds-color-brand1-background-default: #022c22;
+      --ds-color-brand1-background-tinted: #064e3b;
+      --ds-color-brand1-surface-default: #065f46;
+      --ds-color-brand1-surface-tinted: #047857;
+      --ds-color-brand1-surface-hover: #059669;
+      --ds-color-brand1-surface-active: #10b981;
+      --ds-color-brand1-border-subtle: #059669;
+      --ds-color-brand1-border-default: #34d399;
+      --ds-color-brand1-border-strong: #6ee7b7;
+      --ds-color-brand1-text-subtle: #6ee7b7;
+      --ds-color-brand1-text-default: #d1fae5;
+      --ds-color-brand1-base-default: #10b981;
+      --ds-color-brand1-base-hover: #34d399;
+      --ds-color-brand1-base-active: #6ee7b7;
+      --ds-color-brand1-base-contrast-subtle: #064e3b;
+      --ds-color-brand1-base-contrast-default: #000;
+
+      /* Brand2 (Indigo Dark) */
+      --ds-color-brand2-background-default: #1e1b4b;
+      --ds-color-brand2-background-tinted: #312e81;
+      --ds-color-brand2-surface-default: #3730a3;
+      --ds-color-brand2-surface-tinted: #4338ca;
+      --ds-color-brand2-surface-hover: #4f46e5;
+      --ds-color-brand2-surface-active: #6366f1;
+      --ds-color-brand2-border-subtle: #4f46e5;
+      --ds-color-brand2-border-default: #818cf8;
+      --ds-color-brand2-border-strong: #a5b4fc;
+      --ds-color-brand2-text-subtle: #a5b4fc;
+      --ds-color-brand2-text-default: #e0e7ff;
+      --ds-color-brand2-base-default: #818cf8;
+      --ds-color-brand2-base-hover: #a5b4fc;
+      --ds-color-brand2-base-active: #c7d2fe;
+      --ds-color-brand2-base-contrast-subtle: #3730a3;
+      --ds-color-brand2-base-contrast-default: #000;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+/**
+ * Xala Platform Extensions
+ *
+ * App-specific customizations and additional tokens.
+ * This file is loaded after xala.css for overrides.
+ */
+
+/* Additional spacing tokens */
+:root {
+  --xala-sidebar-width: 280px;
+  --xala-header-height: 64px;
+  --xala-bottom-nav-height: 64px;
+}
+
+/* Focus ring customization */
+:root,
+[data-color-scheme] {
+  --ds-color-focus-outer: var(--ds-color-accent-border-strong);
+}
+
+/* Link styling */
+:root,
+[data-color-scheme="light"] {
+  --ds-link-color-visited: #7c3aed;
+}
+
+[data-color-scheme="dark"] {
+  --ds-link-color-visited: #a78bfa;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-color-scheme="auto"] {
+    --ds-link-color-visited: #7c3aed;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme="auto"] {
+    --ds-link-color-visited: #a78bfa;
+  }
+}
