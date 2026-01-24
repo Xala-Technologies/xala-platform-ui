@@ -14,7 +14,7 @@
  */
 
 // Import theme CSS as raw strings
-// Note: ?raw suffix is needed for Vite (Storybook) compatibility  
+// Note: ?raw suffix is needed for Vite (Storybook) compatibility
 // tsup handles this via esbuild plugin that strips ?raw and loads as text
 import xalaTheme from './xala.css?raw';
 import xalaExtensions from './xala-extensions.css?raw';

@@ -75,4 +75,4 @@ if (typeof document !== 'undefined') {
   document.head.appendChild(style);
 }
 
-export { }; // keep this as a module
+export {}; // keep this as a module
