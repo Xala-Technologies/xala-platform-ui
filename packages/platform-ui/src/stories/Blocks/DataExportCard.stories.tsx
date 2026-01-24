@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { DataExportCard, DEFAULT_DATA_EXPORT_LABELS } from '../../blocks/gdpr/DataExportCard';
 import type { GdprExportRequest } from '../../blocks/gdpr/DataExportCard';
 
@@ -55,11 +56,14 @@ export const NoRequest: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Pending request
@@ -78,11 +82,14 @@ export const Pending: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Processing request
@@ -101,11 +108,14 @@ export const Processing: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Completed request
@@ -127,11 +137,14 @@ export const Completed: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Rejected request
@@ -153,11 +166,14 @@ export const Rejected: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Loading state
@@ -171,11 +187,14 @@ export const Loading: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Requesting state
@@ -189,11 +208,14 @@ export const Requesting: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Error state
@@ -207,11 +229,14 @@ export const Error: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Expiring soon
@@ -233,9 +258,12 @@ export const ExpiringSoon: Story = {
     onDownload: fn(),
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DataExportCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DataExportCard {...args} />
+      </div>
+    );
+  },
 };

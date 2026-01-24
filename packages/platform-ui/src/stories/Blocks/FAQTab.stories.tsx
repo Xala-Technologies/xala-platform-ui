@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { FAQTab } from '../../blocks/FAQTab';
 import { Paragraph } from '@digdir/designsystemet-react';
 
@@ -50,12 +51,12 @@ export const Default: Story = {
         id: '1',
         question: 'Hvordan booker jeg en ressurs?',
         answer:
-          'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
+          'Du kan booke en ressurs ved a velge tidspunkter i kalenderen og fylle ut skjemaet.',
       },
       {
         id: '2',
         question: 'Hva er avbestillingsregler?',
-        answer: 'Avbestilling må skje senest 24 timer før booket tidspunkt for å unngå gebyr.',
+        answer: 'Avbestilling ma skje senest 24 timer for booket tidspunkt for a unnga gebyr.',
       },
       {
         id: '3',
@@ -75,7 +76,7 @@ export const SingleItem: Story = {
         id: '1',
         question: 'Hvordan booker jeg en ressurs?',
         answer:
-          'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
+          'Du kan booke en ressurs ved a velge tidspunkter i kalenderen og fylle ut skjemaet.',
       },
     ],
   },
@@ -89,12 +90,12 @@ export const ManyItems: Story = {
         id: '1',
         question: 'Hvordan booker jeg en ressurs?',
         answer:
-          'Du kan booke en ressurs ved å velge tidspunkter i kalenderen og fylle ut skjemaet.',
+          'Du kan booke en ressurs ved a velge tidspunkter i kalenderen og fylle ut skjemaet.',
       },
       {
         id: '2',
         question: 'Hva er avbestillingsregler?',
-        answer: 'Avbestilling må skje senest 24 timer før booket tidspunkt for å unngå gebyr.',
+        answer: 'Avbestilling ma skje senest 24 timer for booket tidspunkt for a unnga gebyr.',
       },
       {
         id: '3',
@@ -104,14 +105,14 @@ export const ManyItems: Story = {
       },
       {
         id: '4',
-        question: 'Hva skjer hvis jeg ikke møter opp?',
-        answer: 'Hvis du ikke møter opp uten å avbestille, kan det påløpe gebyrer.',
+        question: 'Hva skjer hvis jeg ikke moter opp?',
+        answer: 'Hvis du ikke moter opp uten a avbestille, kan det palope gebyrer.',
       },
       {
         id: '5',
-        question: 'Kan jeg booke på vegne av andre?',
+        question: 'Kan jeg booke pa vegne av andre?',
         answer:
-          'Ja, hvis du har nødvendige tillatelser kan du booke ressurser på vegne av andre brukere.',
+          'Ja, hvis du har nodvendige tillatelser kan du booke ressurser pa vegne av andre brukere.',
       },
     ],
   },
@@ -127,7 +128,7 @@ export const WithReactNodeAnswer: Story = {
         answer: (
           <div>
             <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              Du kan booke en ressurs på flere måter:
+              Du kan booke en ressurs pa flere mater:
             </Paragraph>
             <ul style={{ paddingLeft: 'var(--ds-spacing-4)', margin: 0 }}>
               <li>
@@ -146,7 +147,7 @@ export const WithReactNodeAnswer: Story = {
       {
         id: '2',
         question: 'Hva er avbestillingsregler?',
-        answer: 'Avbestilling må skje senest 24 timer før booket tidspunkt.',
+        answer: 'Avbestilling ma skje senest 24 timer for booket tidspunkt.',
       },
     ],
   },

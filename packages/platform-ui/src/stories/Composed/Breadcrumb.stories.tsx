@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Breadcrumb } from '../../composed/Breadcrumb';
 
 const meta: Meta<typeof Breadcrumb> = {
@@ -41,63 +42,110 @@ Navigation breadcrumb component for showing page hierarchy. Supports links and c
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumb
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.facilities'), href: '/facilities' },
+        { label: 'Meeting Room 101' },
+      ]}
+    />
+  );
+};
+
 // Basic breadcrumb
 export const Default: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Facilities', href: '/facilities' },
-      { label: 'Meeting Room 101' },
-    ],
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for onClick story
+const WithOnClickDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumb
+      items={[
+        { label: t('platform.nav.home'), onClick: fn() },
+        { label: t('storybook.demo.facilities'), onClick: fn() },
+        { label: 'Meeting Room 101' },
+      ]}
+    />
+  );
 };
 
 // With onClick handlers
 export const WithOnClick: Story = {
-  args: {
-    items: [
-      { label: 'Home', onClick: fn() },
-      { label: 'Facilities', onClick: fn() },
-      { label: 'Meeting Room 101' },
-    ],
-  },
+  render: () => <WithOnClickDemo />,
+};
+
+// Wrapper for custom separator story
+const CustomSeparatorDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumb
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.facilities'), href: '/facilities' },
+        { label: 'Meeting Room 101' },
+      ]}
+      separator="/"
+    />
+  );
 };
 
 // Custom separator
 export const CustomSeparator: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Facilities', href: '/facilities' },
-      { label: 'Meeting Room 101' },
-    ],
-    separator: '/',
-  },
+  render: () => <CustomSeparatorDemo />,
+};
+
+// Wrapper for long trail story
+const LongTrailDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumb
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.administration'), href: '/admin' },
+        { label: t('platform.nav.settings'), href: '/admin/settings' },
+        { label: t('storybook.demo.userManagement'), href: '/admin/settings/users' },
+        { label: t('storybook.demo.editUser') },
+      ]}
+    />
+  );
 };
 
 // Long breadcrumb trail
 export const LongTrail: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Administration', href: '/admin' },
-      { label: 'Settings', href: '/admin/settings' },
-      { label: 'User Management', href: '/admin/settings/users' },
-      { label: 'Edit User' },
-    ],
-  },
+  render: () => <LongTrailDemo />,
+};
+
+// Wrapper for single item story
+const SingleItemDemo = () => {
+  const t = useT();
+  return <Breadcrumb items={[{ label: t('platform.nav.home') }]} />;
 };
 
 // Single item
 export const SingleItem: Story = {
-  args: {
-    items: [{ label: 'Home' }],
-  },
+  render: () => <SingleItemDemo />,
+};
+
+// Wrapper for two items story
+const TwoItemsDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumb
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.currentPage') },
+      ]}
+    />
+  );
 };
 
 // Two items
 export const TwoItems: Story = {
-  args: {
-    items: [{ label: 'Home', href: '/' }, { label: 'Current Page' }],
-  },
+  render: () => <TwoItemsDemo />,
 };

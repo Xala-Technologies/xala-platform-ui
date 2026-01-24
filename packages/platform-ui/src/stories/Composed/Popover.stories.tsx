@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Popover } from '../../composed/Popover';
 import { Button, Paragraph, Card } from '@digdir/designsystemet-react';
 import { useState } from 'react';
@@ -64,143 +65,147 @@ Rich content popover with smart positioning. Supports click, hover, and focus tr
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Click trigger
-export const ClickTrigger: Story = {
-  render: () => (
+// Wrapper components for stories that need translations
+const ClickTriggerDemo = () => {
+  const t = useT();
+  return (
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">This is a popover triggered by click.</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.popoverTriggeredByClick')}</Paragraph>
         </Card>
       }
       trigger="click"
       position="bottom-start"
     >
       <Button data-color="accent" data-size="medium">
-        Click me
+        {t('storybook.demo.clickMe')}
       </Button>
     </Popover>
-  ),
+  );
 };
 
-// Hover trigger
-export const HoverTrigger: Story = {
-  render: () => (
+const HoverTriggerDemo = () => {
+  const t = useT();
+  return (
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">This popover appears on hover.</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.popoverAppearsOnHover')}</Paragraph>
         </Card>
       }
       trigger="hover"
       position="bottom"
     >
       <Button data-color="accent" data-size="medium">
-        Hover me
+        {t('storybook.demo.hoverMe')}
       </Button>
     </Popover>
-  ),
+  );
 };
 
-// Focus trigger
-export const FocusTrigger: Story = {
-  render: () => (
+const FocusTriggerDemo = () => {
+  const t = useT();
+  return (
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">This popover appears on focus.</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.popoverAppearsOnFocus')}</Paragraph>
         </Card>
       }
       trigger="focus"
       position="top"
     >
       <Button data-color="accent" data-size="medium">
-        Focus me
+        {t('storybook.demo.focusMe')}
       </Button>
     </Popover>
-  ),
+  );
 };
 
-// Position variants
-export const TopPosition: Story = {
-  render: () => (
+const TopPositionDemo = () => {
+  const t = useT();
+  return (
     <div style={{ marginTop: '100px' }}>
       <Popover
         content={
           <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-            <Paragraph data-size="sm">Top position</Paragraph>
+            <Paragraph data-size="sm">{t('storybook.demo.topPosition')}</Paragraph>
           </Card>
         }
         trigger="click"
         position="top"
       >
         <Button data-color="accent" data-size="medium">
-          Top
+          {t('storybook.demo.top')}
         </Button>
       </Popover>
     </div>
-  ),
+  );
 };
 
-export const BottomPosition: Story = {
-  render: () => (
+const BottomPositionDemo = () => {
+  const t = useT();
+  return (
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">Bottom position</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.bottomPosition')}</Paragraph>
         </Card>
       }
       trigger="click"
       position="bottom"
     >
       <Button data-color="accent" data-size="medium">
-        Bottom
+        {t('storybook.demo.bottom')}
       </Button>
     </Popover>
-  ),
+  );
 };
 
-export const LeftPosition: Story = {
-  render: () => (
+const LeftPositionDemo = () => {
+  const t = useT();
+  return (
     <div style={{ marginLeft: '200px' }}>
       <Popover
         content={
           <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-            <Paragraph data-size="sm">Left position</Paragraph>
+            <Paragraph data-size="sm">{t('storybook.demo.leftPosition')}</Paragraph>
           </Card>
         }
         trigger="click"
         position="left"
       >
         <Button data-color="accent" data-size="medium">
-          Left
+          {t('storybook.demo.left')}
         </Button>
       </Popover>
     </div>
-  ),
+  );
 };
 
-export const RightPosition: Story = {
-  render: () => (
+const RightPositionDemo = () => {
+  const t = useT();
+  return (
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">Right position</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.rightPosition')}</Paragraph>
         </Card>
       }
       trigger="click"
       position="right"
     >
       <Button data-color="accent" data-size="medium">
-        Right
+        {t('storybook.demo.right')}
       </Button>
     </Popover>
-  ),
+  );
 };
 
-// Rich content
-export const RichContent: Story = {
-  render: () => (
+const RichContentDemo = () => {
+  const t = useT();
+  return (
     <Popover
       content={
         <Card
@@ -209,14 +214,12 @@ export const RichContent: Story = {
           style={{ padding: 'var(--ds-spacing-4)', maxWidth: '300px' }}
         >
           <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            <strong>Rich Content Popover</strong>
+            <strong>{t('storybook.demo.richContentPopover')}</strong>
           </Paragraph>
-          <Paragraph data-size="sm">
-            This popover can contain any content, including headings, lists, buttons, and more.
-          </Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.richContentDescription')}</Paragraph>
           <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
             <Button data-color="accent" data-size="sm">
-              Action Button
+              {t('storybook.demo.actionButton')}
             </Button>
           </div>
         </Card>
@@ -225,43 +228,79 @@ export const RichContent: Story = {
       position="bottom-start"
     >
       <Button data-color="accent" data-size="medium">
-        Rich Content
+        {t('storybook.demo.richContent')}
       </Button>
     </Popover>
-  ),
+  );
+};
+
+const ControlledDemo = () => {
+  const t = useT();
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)} data-color="accent" data-size="medium">
+        {open ? t('storybook.demo.close') : t('storybook.demo.open')} {t('storybook.demo.popover')}
+      </Button>
+      <Popover
+        content={
+          <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
+            <Paragraph data-size="sm">{t('storybook.demo.controlledPopover')}</Paragraph>
+          </Card>
+        }
+        trigger="click"
+        position="bottom-start"
+        open={open}
+        onOpenChange={setOpen}
+      >
+        <div style={{ display: 'inline-block', marginLeft: 'var(--ds-spacing-4)' }}>
+          <Button data-color="neutral" data-size="medium">
+            {t('storybook.demo.trigger')}
+          </Button>
+        </div>
+      </Popover>
+    </>
+  );
+};
+
+// Click trigger
+export const ClickTrigger: Story = {
+  render: () => <ClickTriggerDemo />,
+};
+
+// Hover trigger
+export const HoverTrigger: Story = {
+  render: () => <HoverTriggerDemo />,
+};
+
+// Focus trigger
+export const FocusTrigger: Story = {
+  render: () => <FocusTriggerDemo />,
+};
+
+// Position variants
+export const TopPosition: Story = {
+  render: () => <TopPositionDemo />,
+};
+
+export const BottomPosition: Story = {
+  render: () => <BottomPositionDemo />,
+};
+
+export const LeftPosition: Story = {
+  render: () => <LeftPositionDemo />,
+};
+
+export const RightPosition: Story = {
+  render: () => <RightPositionDemo />,
+};
+
+// Rich content
+export const RichContent: Story = {
+  render: () => <RichContentDemo />,
 };
 
 // Controlled mode
 export const Controlled: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-    return (
-      <>
-        <Button onClick={() => setOpen(!open)} data-color="accent" data-size="medium">
-          {open ? 'Close' : 'Open'} Popover
-        </Button>
-        <Popover
-          content={
-            <Card
-              data-color="neutral"
-              data-size="medium"
-              style={{ padding: 'var(--ds-spacing-4)' }}
-            >
-              <Paragraph data-size="sm">Controlled popover</Paragraph>
-            </Card>
-          }
-          trigger="click"
-          position="bottom-start"
-          open={open}
-          onOpenChange={setOpen}
-        >
-          <div style={{ display: 'inline-block', marginLeft: 'var(--ds-spacing-4)' }}>
-            <Button data-color="neutral" data-size="medium">
-              Trigger
-            </Button>
-          </div>
-        </Popover>
-      </>
-    );
-  },
+  render: () => <ControlledDemo />,
 };

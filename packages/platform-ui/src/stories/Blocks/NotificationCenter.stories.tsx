@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { NotificationCenter } from '../../blocks/NotificationCenter';
 import type { NotificationItemData } from '../../blocks/NotificationItem';
 
@@ -166,9 +167,9 @@ export const Empty: Story = {
 
 // Many notifications
 export const ManyNotifications: Story = {
-  args: {
-    open: true,
-    notifications: Array.from({ length: 20 }, (_, i) => ({
+  render: () => {
+    const t = useT();
+    const notifications = Array.from({ length: 20 }, (_, i) => ({
       id: `notif-${i}`,
       type: [
         'resourceRequest_confirmed',
@@ -176,17 +177,27 @@ export const ManyNotifications: Story = {
         'resourceRequest_reminder_1h',
         'resourceRequest_cancelled',
       ][i % 4] as NotificationItemData['type'],
-      title: `Notification ${i + 1}`,
-      message: `This is notification number ${i + 1}`,
+      title: `${t('platform.common.notifications')} ${i + 1}`,
+      message: `${t('storybook.demo.sampleText')} ${i + 1}`,
       priority: ['low', 'normal', 'high', 'urgent'][i % 4] as NotificationItemData['priority'],
       createdAt: new Date(Date.now() - 1000 * 60 * i).toISOString(),
       readAt: i % 3 === 0 ? new Date(Date.now() - 1000 * 60 * (i - 1)).toISOString() : null,
-    })),
-    filter: 'all',
+    }));
+
+    return (
+      <div style={{ width: '500px', height: '600px', position: 'relative' }}>
+        <NotificationCenter
+          open={true}
+          notifications={notifications}
+          filter="all"
+          onClose={fn()}
+          onFilterChange={fn()}
+          onNotificationClick={fn()}
+          onMarkAsRead={fn()}
+          onDelete={fn()}
+          onMarkAllAsRead={fn()}
+        />
+      </div>
+    );
   },
-  render: (args) => (
-    <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-      <NotificationCenter {...args} />
-    </div>
-  ),
 };

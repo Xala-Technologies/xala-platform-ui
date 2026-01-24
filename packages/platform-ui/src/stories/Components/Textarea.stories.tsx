@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Textarea, Label, Field, ValidationMessage } from '../../index';
 
 const meta: Meta<typeof Textarea> = {
@@ -38,111 +39,132 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Field>
-      <Label>Description</Label>
-      <Textarea placeholder="Enter a description..." />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.description')}</Label>
+        <Textarea placeholder={t('storybook.demo.enterDescription')} />
+      </Field>
+    );
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Field>
-      <Label>Additional notes</Label>
-      <Field.Description>Include any special requirements or requests</Field.Description>
-      <Textarea placeholder="Enter notes..." />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.additionalNotes')}</Label>
+        <Field.Description>{t('storybook.demo.includeSpecialRequirements')}</Field.Description>
+        <Textarea placeholder={t('storybook.demo.enterNotes')} />
+      </Field>
+    );
+  },
 };
 
 export const WithCharacterCount: Story = {
-  render: () => (
-    <Field>
-      <Label>Bio</Label>
-      <Field.Description>Tell us about yourself</Field.Description>
-      <Textarea placeholder="Write a short bio..." maxLength={200} />
-      <Field.Counter limit={200} />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.bio')}</Label>
+        <Field.Description>{t('storybook.demo.tellUsAboutYourself')}</Field.Description>
+        <Textarea placeholder={t('storybook.demo.writeShortBio')} maxLength={200} />
+        <Field.Counter limit={200} />
+      </Field>
+    );
+  },
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Field>
-      <Label>Message</Label>
-      <Textarea placeholder="Enter your message..." aria-invalid="true" />
-      <ValidationMessage>Message is required</ValidationMessage>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.message')}</Label>
+        <Textarea placeholder={t('storybook.demo.enterYourMessage')} aria-invalid="true" />
+        <ValidationMessage>{t('storybook.demo.messageIsRequired')}</ValidationMessage>
+      </Field>
+    );
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Field>
-      <Label>Locked content</Label>
-      <Textarea defaultValue="This content cannot be edited" disabled />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.lockedContent')}</Label>
+        <Textarea defaultValue={t('storybook.demo.cannotBeEdited')} disabled />
+      </Field>
+    );
+  },
 };
 
 export const ReadOnly: Story = {
-  render: () => (
-    <Field>
-      <Label>Terms and conditions</Label>
-      <Textarea
-        defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        readOnly
-      />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.termsAndConditions')}</Label>
+        <Textarea defaultValue={t('storybook.demo.loremIpsum')} readOnly />
+      </Field>
+    );
+  },
 };
 
 export const Rows: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Field>
-        <Label>Small (3 rows)</Label>
-        <Textarea rows={3} placeholder="3 rows..." />
-      </Field>
-      <Field>
-        <Label>Medium (5 rows)</Label>
-        <Textarea rows={5} placeholder="5 rows..." />
-      </Field>
-      <Field>
-        <Label>Large (8 rows)</Label>
-        <Textarea rows={8} placeholder="8 rows..." />
-      </Field>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Field>
+          <Label>{t('storybook.demo.small3Rows')}</Label>
+          <Textarea rows={3} placeholder={t('storybook.demo.threeRows')} />
+        </Field>
+        <Field>
+          <Label>{t('storybook.demo.medium5Rows')}</Label>
+          <Textarea rows={5} placeholder={t('storybook.demo.fiveRows')} />
+        </Field>
+        <Field>
+          <Label>{t('storybook.demo.large8Rows')}</Label>
+          <Textarea rows={8} placeholder={t('storybook.demo.eightRows')} />
+        </Field>
+      </div>
+    );
+  },
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          States
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-          <Field>
-            <Label>Default</Label>
-            <Textarea placeholder="Enter text..." />
-          </Field>
-          <Field>
-            <Label>With value</Label>
-            <Textarea defaultValue="Some existing content" />
-          </Field>
-          <Field>
-            <Label>Disabled</Label>
-            <Textarea disabled defaultValue="Cannot edit" />
-          </Field>
-          <Field>
-            <Label>Read-only</Label>
-            <Textarea readOnly defaultValue="Read-only content" />
-          </Field>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.states')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+            <Field>
+              <Label>{t('storybook.story.default')}</Label>
+              <Textarea placeholder={t('storybook.demo.enterText')} />
+            </Field>
+            <Field>
+              <Label>{t('storybook.demo.withValue')}</Label>
+              <Textarea defaultValue={t('storybook.demo.someExistingContent')} />
+            </Field>
+            <Field>
+              <Label>{t('storybook.story.disabled')}</Label>
+              <Textarea disabled defaultValue={t('storybook.demo.cannotEdit')} />
+            </Field>
+            <Field>
+              <Label>{t('storybook.story.readOnly')}</Label>
+              <Textarea readOnly defaultValue={t('storybook.demo.readOnlyContent')} />
+            </Field>
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

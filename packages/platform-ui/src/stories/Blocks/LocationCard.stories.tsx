@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { LocationCard } from '../../blocks/LocationCard';
 
 const meta: Meta<typeof LocationCard> = {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph } from '../../index';
-import { Palette, Settings, Wrench, Download, Check } from 'lucide-react';
+import { Palette, Settings, Download, Check } from 'lucide-react';
 
 const meta: Meta = {
   title: 'Fundamentals/Theme Builder',
@@ -37,106 +38,109 @@ type Story = StoryObj;
  * Different color contexts for different purposes
  */
 export const ColorContexts: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Color Contexts
-      </Heading>
-
-      {/* Accent */}
-      <div
-        data-color="accent"
-        style={{
-          padding: 'var(--ds-spacing-6)',
-          backgroundColor: 'var(--ds-color-accent-surface-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          border: '1px solid var(--ds-color-accent-border-default)',
-        }}
-      >
-        <Heading
-          level={4}
-          data-size="sm"
-          style={{
-            color: 'var(--ds-color-accent-text-default)',
-            marginBottom: 'var(--ds-spacing-3)',
-          }}
-        >
-          Accent Context
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.theme.colorContexts')}
         </Heading>
-        <Paragraph
-          style={{
-            color: 'var(--ds-color-accent-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          Primary brand actions and interactive elements
-        </Paragraph>
-        <Button data-variant="primary">Primary Action</Button>
-      </div>
 
-      {/* Success */}
-      <div
-        data-color="success"
-        style={{
-          padding: 'var(--ds-spacing-6)',
-          backgroundColor: 'var(--ds-color-success-surface-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          border: '1px solid var(--ds-color-success-border-default)',
-        }}
-      >
-        <Heading
-          level={4}
-          data-size="sm"
+        {/* Accent */}
+        <div
+          data-color="accent"
           style={{
-            color: 'var(--ds-color-success-text-default)',
-            marginBottom: 'var(--ds-spacing-3)',
+            padding: 'var(--ds-spacing-6)',
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            border: '1px solid var(--ds-color-accent-border-default)',
           }}
         >
-          Success Context
-        </Heading>
-        <Paragraph
-          style={{
-            color: 'var(--ds-color-success-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          Positive feedback and successful operations
-        </Paragraph>
-        <Button data-variant="primary">Confirm</Button>
-      </div>
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-accent-text-default)',
+              marginBottom: 'var(--ds-spacing-3)',
+            }}
+          >
+            {t('storybook.theme.accentContext')}
+          </Heading>
+          <Paragraph
+            style={{
+              color: 'var(--ds-color-accent-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.theme.accentDescription')}
+          </Paragraph>
+          <Button data-variant="primary">{t('storybook.examples.primaryAction')}</Button>
+        </div>
 
-      {/* Danger */}
-      <div
-        data-color="danger"
-        style={{
-          padding: 'var(--ds-spacing-6)',
-          backgroundColor: 'var(--ds-color-danger-surface-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          border: '1px solid var(--ds-color-danger-border-default)',
-        }}
-      >
-        <Heading
-          level={4}
-          data-size="sm"
+        {/* Success */}
+        <div
+          data-color="success"
           style={{
-            color: 'var(--ds-color-danger-text-default)',
-            marginBottom: 'var(--ds-spacing-3)',
+            padding: 'var(--ds-spacing-6)',
+            backgroundColor: 'var(--ds-color-success-surface-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            border: '1px solid var(--ds-color-success-border-default)',
           }}
         >
-          Danger Context
-        </Heading>
-        <Paragraph
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-success-text-default)',
+              marginBottom: 'var(--ds-spacing-3)',
+            }}
+          >
+            {t('storybook.theme.successContext')}
+          </Heading>
+          <Paragraph
+            style={{
+              color: 'var(--ds-color-success-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.theme.successDescription')}
+          </Paragraph>
+          <Button data-variant="primary">{t('storybook.theme.confirm')}</Button>
+        </div>
+
+        {/* Danger */}
+        <div
+          data-color="danger"
           style={{
-            color: 'var(--ds-color-danger-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-6)',
+            backgroundColor: 'var(--ds-color-danger-surface-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            border: '1px solid var(--ds-color-danger-border-default)',
           }}
         >
-          Destructive actions and error states
-        </Paragraph>
-        <Button data-variant="primary">Delete</Button>
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-danger-text-default)',
+              marginBottom: 'var(--ds-spacing-3)',
+            }}
+          >
+            {t('storybook.theme.dangerContext')}
+          </Heading>
+          <Paragraph
+            style={{
+              color: 'var(--ds-color-danger-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.theme.dangerDescription')}
+          </Paragraph>
+          <Button data-variant="primary">{t('platform.common.delete')}</Button>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -145,58 +149,61 @@ export const ColorContexts: Story = {
  * Three size scales for different use cases
  */
 export const SizeModes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Size Modes
-      </Heading>
-
-      {/* Small */}
-      <div data-size="sm">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Small (sm) - Compact
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.theme.sizeModes')}
         </Heading>
-        <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            Compact UI for dense information display
-          </Paragraph>
-          <Button data-variant="primary" data-size="sm">
-            Small Button
-          </Button>
-        </Card>
-      </div>
 
-      {/* Medium */}
-      <div data-size="md">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Medium (md) - Default
-        </Heading>
-        <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            Default size for general purpose use
-          </Paragraph>
-          <Button data-variant="primary" data-size="md">
-            Medium Button
-          </Button>
-        </Card>
-      </div>
+        {/* Small */}
+        <div data-size="sm">
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.sizes.small')} (sm) - {t('storybook.theme.compact')}
+          </Heading>
+          <Card style={{ padding: 'var(--ds-spacing-4)' }}>
+            <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+              {t('storybook.theme.compactUIDescription')}
+            </Paragraph>
+            <Button data-variant="primary" data-size="sm">
+              {t('storybook.theme.smallButton')}
+            </Button>
+          </Card>
+        </div>
 
-      {/* Large */}
-      <div data-size="lg">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Large (lg) - Accessible
-        </Heading>
-        <Card style={{ padding: 'var(--ds-spacing-8)' }}>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-            Large size for accessibility and touch interfaces
-          </Paragraph>
-          <Button data-variant="primary" data-size="lg">
-            Large Button
-          </Button>
-        </Card>
+        {/* Medium */}
+        <div data-size="md">
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.sizes.medium')} (md) - {t('storybook.sizes.default')}
+          </Heading>
+          <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+              {t('storybook.theme.defaultSizeDescription')}
+            </Paragraph>
+            <Button data-variant="primary" data-size="md">
+              {t('storybook.theme.mediumButton')}
+            </Button>
+          </Card>
+        </div>
+
+        {/* Large */}
+        <div data-size="lg">
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.sizes.large')} (lg) - {t('storybook.theme.accessible')}
+          </Heading>
+          <Card style={{ padding: 'var(--ds-spacing-8)' }}>
+            <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+              {t('storybook.theme.largeSizeDescription')}
+            </Paragraph>
+            <Button data-variant="primary" data-size="lg">
+              {t('storybook.theme.largeButton')}
+            </Button>
+          </Card>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -205,78 +212,81 @@ export const SizeModes: Story = {
  * How theme tokens work together
  */
 export const ThemeTokensInUse: Story = {
-  render: () => (
-    <Card
-      style={{
-        padding: 'var(--ds-spacing-8)',
-        backgroundColor: 'var(--ds-color-neutral-surface-default)',
-        border: '1px solid var(--ds-color-neutral-border-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-        boxShadow: 'var(--ds-shadow-md)',
-      }}
-    >
-      <Heading
-        level={3}
-        data-size="lg"
+  render: () => {
+    const t = useT();
+    return (
+      <Card
         style={{
-          color: 'var(--ds-color-neutral-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
+          padding: 'var(--ds-spacing-8)',
+          backgroundColor: 'var(--ds-color-neutral-surface-default)',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+          boxShadow: 'var(--ds-shadow-md)',
         }}
       >
-        Card Using Theme Tokens
-      </Heading>
-
-      <Paragraph
-        style={{
-          color: 'var(--ds-color-neutral-text-subtle)',
-          marginBottom: 'var(--ds-spacing-6)',
-        }}
-      >
-        This card demonstrates multiple theme tokens working together:
-      </Paragraph>
-
-      <div
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          marginBottom: 'var(--ds-spacing-6)',
-        }}
-      >
-        <ul
+        <Heading
+          level={3}
+          data-size="lg"
           style={{
-            margin: 0,
-            paddingLeft: 'var(--ds-spacing-6)',
             color: 'var(--ds-color-neutral-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
           }}
         >
-          <li>
-            Background: <code>--ds-color-neutral-surface-default</code>
-          </li>
-          <li>
-            Border: <code>--ds-color-neutral-border-default</code>
-          </li>
-          <li>
-            Border Radius: <code>--ds-border-radius-lg</code>
-          </li>
-          <li>
-            Shadow: <code>--ds-shadow-md</code>
-          </li>
-          <li>
-            Spacing: <code>--ds-spacing-*</code>
-          </li>
-          <li>
-            Text Color: <code>--ds-color-neutral-text-default</code>
-          </li>
-        </ul>
-      </div>
+          {t('storybook.theme.cardUsingTokens')}
+        </Heading>
 
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
-        <Button data-variant="primary">Primary</Button>
-        <Button data-variant="secondary">Secondary</Button>
-      </div>
-    </Card>
-  ),
+        <Paragraph
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginBottom: 'var(--ds-spacing-6)',
+          }}
+        >
+          {t('storybook.theme.tokensDemonstration')}
+        </Paragraph>
+
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            marginBottom: 'var(--ds-spacing-6)',
+          }}
+        >
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: 'var(--ds-spacing-6)',
+              color: 'var(--ds-color-neutral-text-default)',
+            }}
+          >
+            <li>
+              {t('storybook.theme.background')}: <code>--ds-color-neutral-surface-default</code>
+            </li>
+            <li>
+              {t('storybook.theme.border')}: <code>--ds-color-neutral-border-default</code>
+            </li>
+            <li>
+              {t('storybook.theme.borderRadius')}: <code>--ds-border-radius-lg</code>
+            </li>
+            <li>
+              {t('storybook.theme.shadow')}: <code>--ds-shadow-md</code>
+            </li>
+            <li>
+              {t('storybook.theme.spacing')}: <code>--ds-spacing-*</code>
+            </li>
+            <li>
+              {t('storybook.theme.textColor')}: <code>--ds-color-neutral-text-default</code>
+            </li>
+          </ul>
+        </div>
+
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+          <Button data-variant="primary">{t('storybook.theme.primary')}</Button>
+          <Button data-variant="secondary">{t('storybook.theme.secondary')}</Button>
+        </div>
+      </Card>
+    );
+  },
 };
 
 /**
@@ -285,81 +295,86 @@ export const ThemeTokensInUse: Story = {
  * Step-by-step guide
  */
 export const CreatingCustomThemes: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Creating Custom Themes
-      </Heading>
+  render: () => {
+    const t = useT();
+    const steps = [
+      {
+        step: 1,
+        titleKey: 'storybook.theme.visitBuilder',
+        descriptionKey: 'storybook.theme.visitBuilderDesc',
+        Icon: Palette,
+      },
+      {
+        step: 2,
+        titleKey: 'storybook.theme.configureColors',
+        descriptionKey: 'storybook.theme.configureColorsDesc',
+        Icon: Palette,
+      },
+      {
+        step: 3,
+        titleKey: 'storybook.theme.setPreferences',
+        descriptionKey: 'storybook.theme.setPreferencesDesc',
+        Icon: Settings,
+      },
+      {
+        step: 4,
+        titleKey: 'storybook.theme.exportTheme',
+        descriptionKey: 'storybook.theme.exportThemeDesc',
+        Icon: Download,
+      },
+      {
+        step: 5,
+        titleKey: 'storybook.theme.importInApp',
+        descriptionKey: 'storybook.theme.importInAppDesc',
+        Icon: Check,
+      },
+    ];
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            step: 1,
-            title: 'Visit Theme Builder',
-            description: 'Go to https://theme.designsystemet.no/',
-            Icon: Palette,
-          },
-          {
-            step: 2,
-            title: 'Configure Colors',
-            description: 'Choose your primary, accent, and semantic colors',
-            Icon: Palette,
-          },
-          {
-            step: 3,
-            title: 'Set Preferences',
-            description: 'Configure border radius, spacing, and typography',
-            Icon: Settings,
-          },
-          {
-            step: 4,
-            title: 'Export Theme',
-            description: 'Download CSS or JSON configuration',
-            Icon: Download,
-          },
-          {
-            step: 5,
-            title: 'Import in App',
-            description: 'Add theme CSS to your application',
-            Icon: Check,
-          },
-        ].map(({ step, title, description, Icon }) => (
-          <Card
-            key={step}
-            style={{
-              padding: 'var(--ds-spacing-6)',
-              display: 'flex',
-              gap: 'var(--ds-spacing-4)',
-              alignItems: 'flex-start',
-            }}
-          >
-            <div
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.theme.creatingCustomThemes')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          {steps.map(({ step, titleKey, descriptionKey, Icon }) => (
+            <Card
+              key={step}
               style={{
-                width: '48px',
-                height: '48px',
-                backgroundColor: 'var(--ds-color-accent-surface-default)',
-                borderRadius: 'var(--ds-border-radius-full)',
+                padding: 'var(--ds-spacing-6)',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
+                gap: 'var(--ds-spacing-4)',
+                alignItems: 'flex-start',
               }}
             >
-              <Icon size={24} style={{ color: 'var(--ds-color-accent-base-default)' }} />
-            </div>
-            <div style={{ flex: 1 }}>
-              <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                Step {step}: {title}
-              </Heading>
-              <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                {description}
-              </Paragraph>
-            </div>
-          </Card>
-        ))}
+              <div
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: 'var(--ds-color-accent-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-full)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <Icon size={24} style={{ color: 'var(--ds-color-accent-base-default)' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                  {t('storybook.theme.step')} {step}: {t(titleKey)}
+                </Heading>
+                <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  {t(descriptionKey)}
+                </Paragraph>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -368,101 +383,114 @@ export const CreatingCustomThemes: Story = {
  * Guidelines for theme customization
  */
 export const ThemeBestPractices: Story = {
-  render: () => (
-    <Card style={{ padding: 'var(--ds-spacing-8)' }}>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Theme Best Practices
-      </Heading>
+  render: () => {
+    const t = useT();
+    const doItems = [
+      'storybook.theme.doSemanticTokens',
+      'storybook.theme.doTestModes',
+      'storybook.theme.doVerifyContrast',
+      'storybook.theme.doRespectPreferences',
+      'storybook.theme.doUseBuilder',
+      'storybook.theme.doDocumentChoices',
+    ];
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        {/* Do's */}
-        <div>
-          <Heading
-            level={3}
-            data-size="sm"
-            style={{
-              color: 'var(--ds-color-success-text-default)',
-              marginBottom: 'var(--ds-spacing-3)',
-            }}
-          >
-            ✅ Do
-          </Heading>
-          <div
-            style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-success-surface-default)',
-              borderRadius: 'var(--ds-border-radius-md)',
-            }}
-          >
-            {[
-              'Use semantic color tokens',
-              'Test both light and dark modes',
-              'Verify color contrast ratios',
-              'Respect user preferences (prefers-color-scheme)',
-              'Use Theme Builder for consistency',
-              'Document custom theme choices',
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  gap: 'var(--ds-spacing-2)',
-                  marginBottom: i < 5 ? 'var(--ds-spacing-2)' : 0,
-                }}
-              >
-                <span>•</span>
-                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-                  {item}
-                </Paragraph>
-              </div>
-            ))}
+    const dontItems = [
+      'storybook.theme.dontHardcode',
+      'storybook.theme.dontIgnoreA11y',
+      'storybook.theme.dontTooManyColors',
+      'storybook.theme.dontOverrideCore',
+      'storybook.theme.dontForgetDarkMode',
+      'storybook.theme.dontSkipContrast',
+    ];
+
+    return (
+      <Card style={{ padding: 'var(--ds-spacing-8)' }}>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.theme.bestPractices')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          {/* Do's */}
+          <div>
+            <Heading
+              level={3}
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-success-text-default)',
+                marginBottom: 'var(--ds-spacing-3)',
+              }}
+            >
+              {t('storybook.bestPractices.do')}
+            </Heading>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-success-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
+              {doItems.map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--ds-spacing-2)',
+                    marginBottom: i < doItems.length - 1 ? 'var(--ds-spacing-2)' : 0,
+                  }}
+                >
+                  <span>•</span>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ color: 'var(--ds-color-success-text-default)' }}
+                  >
+                    {t(item)}
+                  </Paragraph>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Don'ts */}
+          <div>
+            <Heading
+              level={3}
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-danger-text-default)',
+                marginBottom: 'var(--ds-spacing-3)',
+              }}
+            >
+              {t('storybook.bestPractices.dont')}
+            </Heading>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-danger-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
+              {dontItems.map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--ds-spacing-2)',
+                    marginBottom: i < dontItems.length - 1 ? 'var(--ds-spacing-2)' : 0,
+                  }}
+                >
+                  <span>•</span>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ color: 'var(--ds-color-danger-text-default)' }}
+                  >
+                    {t(item)}
+                  </Paragraph>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Don'ts */}
-        <div>
-          <Heading
-            level={3}
-            data-size="sm"
-            style={{
-              color: 'var(--ds-color-danger-text-default)',
-              marginBottom: 'var(--ds-spacing-3)',
-            }}
-          >
-            ❌ Don't
-          </Heading>
-          <div
-            style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-danger-surface-default)',
-              borderRadius: 'var(--ds-border-radius-md)',
-            }}
-          >
-            {[
-              'Hardcode color values',
-              'Ignore accessibility guidelines',
-              'Use too many brand colors',
-              'Override core component structure',
-              'Forget to test dark mode',
-              'Skip contrast validation',
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  gap: 'var(--ds-spacing-2)',
-                  marginBottom: i < 5 ? 'var(--ds-spacing-2)' : 0,
-                }}
-              >
-                <span>•</span>
-                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                  {item}
-                </Paragraph>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </Card>
-  ),
+      </Card>
+    );
+  },
 };

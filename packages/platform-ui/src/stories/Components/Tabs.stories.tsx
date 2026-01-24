@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Tabs, Paragraph } from '../../index';
 
 const meta: Meta = {
@@ -177,88 +179,97 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Tabs defaultValue="overview">
-      <Tabs.List>
-        <Tabs.Tab value="overview">Overview</Tabs.Tab>
-        <Tabs.Tab value="details">Details</Tabs.Tab>
-        <Tabs.Tab value="settings">Settings</Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel value="overview">
-        <Paragraph>Overview content goes here.</Paragraph>
-      </Tabs.Panel>
-      <Tabs.Panel value="details">
-        <Paragraph>Details content goes here.</Paragraph>
-      </Tabs.Panel>
-      <Tabs.Panel value="settings">
-        <Paragraph>Settings content goes here.</Paragraph>
-      </Tabs.Panel>
-    </Tabs>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Tabs defaultValue="overview">
+        <Tabs.List>
+          <Tabs.Tab value="overview">{t('storybook.demo.overview')}</Tabs.Tab>
+          <Tabs.Tab value="details">{t('storybook.demo.details')}</Tabs.Tab>
+          <Tabs.Tab value="settings">{t('storybook.demo.settings')}</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview">
+          <Paragraph>{t('storybook.demo.overviewContentGoesHere')}</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="details">
+          <Paragraph>{t('storybook.demo.detailsContentGoesHere')}</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="settings">
+          <Paragraph>{t('storybook.demo.settingsContentGoesHere')}</Paragraph>
+        </Tabs.Panel>
+      </Tabs>
+    );
+  },
 };
 
 export const WithIcons: Story = {
-  render: () => (
-    <Tabs defaultValue="resourceRequests">
-      <Tabs.List>
-        <Tabs.Tab value="resourceRequests">ResourceRequests</Tabs.Tab>
-        <Tabs.Tab value="listings">Listings</Tabs.Tab>
-        <Tabs.Tab value="users">Users</Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel value="resourceRequests">
-        <Paragraph>Manage your resourceRequests here.</Paragraph>
-      </Tabs.Panel>
-      <Tabs.Panel value="listings">
-        <Paragraph>View and edit your listings.</Paragraph>
-      </Tabs.Panel>
-      <Tabs.Panel value="users">
-        <Paragraph>User management section.</Paragraph>
-      </Tabs.Panel>
-    </Tabs>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Tabs defaultValue="bookings">
+        <Tabs.List>
+          <Tabs.Tab value="bookings">{t('storybook.demo.bookings')}</Tabs.Tab>
+          <Tabs.Tab value="listings">{t('storybook.demo.listings')}</Tabs.Tab>
+          <Tabs.Tab value="users">{t('storybook.demo.users')}</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="bookings">
+          <Paragraph>{t('storybook.demo.manageBookingsHere')}</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="listings">
+          <Paragraph>{t('storybook.demo.viewAndEditListings')}</Paragraph>
+        </Tabs.Panel>
+        <Tabs.Panel value="users">
+          <Paragraph>{t('storybook.demo.userManagementSection')}</Paragraph>
+        </Tabs.Panel>
+      </Tabs>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <Tabs defaultValue="tab1" data-size="sm">
-        <Tabs.List>
-          <Tabs.Tab value="tab1">Small</Tabs.Tab>
-          <Tabs.Tab value="tab2">Tabs</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="tab1">
-          <Paragraph>Small tabs content</Paragraph>
-        </Tabs.Panel>
-        <Tabs.Panel value="tab2">
-          <Paragraph>Tab 2 content</Paragraph>
-        </Tabs.Panel>
-      </Tabs>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <Tabs defaultValue="tab1" data-size="sm">
+          <Tabs.List>
+            <Tabs.Tab value="tab1">{t('storybook.demo.small')}</Tabs.Tab>
+            <Tabs.Tab value="tab2">{t('storybook.demo.tabs')}</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="tab1">
+            <Paragraph>{t('storybook.demo.smallTabsContent')}</Paragraph>
+          </Tabs.Panel>
+          <Tabs.Panel value="tab2">
+            <Paragraph>{t('storybook.demo.tab2Content')}</Paragraph>
+          </Tabs.Panel>
+        </Tabs>
 
-      <Tabs defaultValue="tab1" data-size="md">
-        <Tabs.List>
-          <Tabs.Tab value="tab1">Medium</Tabs.Tab>
-          <Tabs.Tab value="tab2">Tabs</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="tab1">
-          <Paragraph>Medium tabs content</Paragraph>
-        </Tabs.Panel>
-        <Tabs.Panel value="tab2">
-          <Paragraph>Tab 2 content</Paragraph>
-        </Tabs.Panel>
-      </Tabs>
+        <Tabs defaultValue="tab1" data-size="md">
+          <Tabs.List>
+            <Tabs.Tab value="tab1">{t('storybook.demo.medium')}</Tabs.Tab>
+            <Tabs.Tab value="tab2">{t('storybook.demo.tabs')}</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="tab1">
+            <Paragraph>{t('storybook.demo.mediumTabsContent')}</Paragraph>
+          </Tabs.Panel>
+          <Tabs.Panel value="tab2">
+            <Paragraph>{t('storybook.demo.tab2Content')}</Paragraph>
+          </Tabs.Panel>
+        </Tabs>
 
-      <Tabs defaultValue="tab1" data-size="lg">
-        <Tabs.List>
-          <Tabs.Tab value="tab1">Large</Tabs.Tab>
-          <Tabs.Tab value="tab2">Tabs</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="tab1">
-          <Paragraph>Large tabs content</Paragraph>
-        </Tabs.Panel>
-        <Tabs.Panel value="tab2">
-          <Paragraph>Tab 2 content</Paragraph>
-        </Tabs.Panel>
-      </Tabs>
-    </div>
-  ),
+        <Tabs defaultValue="tab1" data-size="lg">
+          <Tabs.List>
+            <Tabs.Tab value="tab1">{t('storybook.demo.large')}</Tabs.Tab>
+            <Tabs.Tab value="tab2">{t('storybook.demo.tabs')}</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="tab1">
+            <Paragraph>{t('storybook.demo.largeTabsContent')}</Paragraph>
+          </Tabs.Panel>
+          <Tabs.Panel value="tab2">
+            <Paragraph>{t('storybook.demo.tab2Content')}</Paragraph>
+          </Tabs.Panel>
+        </Tabs>
+      </div>
+    );
+  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Spotlight, HighlightText, SearchHighlight } from '../../composed/Spotlight';
 import { Card, Paragraph, Button } from '@digdir/designsystemet-react';
 
@@ -38,54 +39,58 @@ Text highlighting and spotlight effects for search results and focus states.
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// HighlightText - single term
-export const HighlightSingleTerm: Story = {
-  render: () => (
+// Wrapper components for stories that need translations
+const HighlightSingleTermDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text="This is a sample text with highlighted words"
-          highlight="highlighted"
+          text={t('storybook.demo.sampleTextWithHighlightedWords')}
+          highlight={t('storybook.demo.highlighted')}
         />
       </Paragraph>
     </div>
-  ),
+  );
 };
 
-// HighlightText - multiple terms
-export const HighlightMultipleTerms: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <Paragraph data-size="sm">
-        <HighlightText text="Search for keywords in this text" highlight={['search', 'keywords']} />
-      </Paragraph>
-    </div>
-  ),
-};
-
-// HighlightText - case sensitive
-export const HighlightCaseSensitive: Story = {
-  render: () => (
+const HighlightMultipleTermsDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text="Case Sensitive Search for Search"
-          highlight="Search"
+          text={t('storybook.demo.searchForKeywordsInText')}
+          highlight={[t('storybook.demo.search'), t('storybook.demo.keywords')]}
+        />
+      </Paragraph>
+    </div>
+  );
+};
+
+const HighlightCaseSensitiveDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Paragraph data-size="sm">
+        <HighlightText
+          text={t('storybook.demo.caseSensitiveSearchText')}
+          highlight={t('storybook.demo.search')}
           caseSensitive={true}
         />
       </Paragraph>
     </div>
-  ),
+  );
 };
 
-// HighlightText - custom style
-export const HighlightCustomStyle: Story = {
-  render: () => (
+const HighlightCustomStyleDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text="Custom styled highlight"
-          highlight="highlight"
+          text={t('storybook.demo.customStyledHighlight')}
+          highlight={t('storybook.demo.highlight')}
           highlightStyle={{
             backgroundColor: 'var(--ds-color-success-surface-subtle)',
             color: 'var(--ds-color-success-text-default)',
@@ -94,94 +99,94 @@ export const HighlightCustomStyle: Story = {
         />
       </Paragraph>
     </div>
-  ),
+  );
 };
 
-// Spotlight - active
-export const SpotlightActive: Story = {
-  render: () => (
+const SpotlightActiveDemo = () => {
+  const t = useT();
+  return (
     <Spotlight active={true}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Paragraph data-size="sm">This card has a spotlight effect</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.cardWithSpotlightEffect')}</Paragraph>
       </Card>
     </Spotlight>
-  ),
+  );
 };
 
-// Spotlight - inactive
-export const SpotlightInactive: Story = {
-  render: () => (
+const SpotlightInactiveDemo = () => {
+  const t = useT();
+  return (
     <Spotlight active={false}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Paragraph data-size="sm">This card has no spotlight effect</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.cardWithoutSpotlightEffect')}</Paragraph>
       </Card>
     </Spotlight>
-  ),
+  );
 };
 
-// Spotlight - with button
-export const SpotlightWithButton: Story = {
-  render: () => (
+const SpotlightWithButtonDemo = () => {
+  const t = useT();
+  return (
     <Spotlight active={true}>
       <Button data-color="accent" data-size="medium">
-        Focused Button
+        {t('storybook.demo.focusedButton')}
       </Button>
     </Spotlight>
-  ),
+  );
 };
 
-// Spotlight - custom padding
-export const SpotlightCustomPadding: Story = {
-  render: () => (
+const SpotlightCustomPaddingDemo = () => {
+  const t = useT();
+  return (
     <Spotlight active={true} padding={16}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Paragraph data-size="sm">Custom padding spotlight</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.customPaddingSpotlight')}</Paragraph>
       </Card>
     </Spotlight>
-  ),
+  );
 };
 
-// SearchHighlight - basic
-export const SearchHighlightBasic: Story = {
-  render: () => (
+const SearchHighlightBasicDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
-        text="This is a long text that contains the search query somewhere in the middle"
-        query="search query"
+        text={t('storybook.demo.longTextWithSearchQuery')}
+        query={t('storybook.demo.searchQuery')}
       />
     </div>
-  ),
+  );
 };
 
-// SearchHighlight - with context
-export const SearchHighlightWithContext: Story = {
-  render: () => (
+const SearchHighlightWithContextDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
-        text="This is a very long text that contains multiple instances of the search term. The search term appears here and also later in the text. We want to show context around each match."
-        query="search term"
+        text={t('storybook.demo.veryLongTextWithMultipleInstances')}
+        query={t('storybook.demo.searchTerm')}
         contextLength={20}
       />
     </div>
-  ),
+  );
 };
 
-// SearchHighlight - max length
-export const SearchHighlightMaxLength: Story = {
-  render: () => (
+const SearchHighlightMaxLengthDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
-        text="This is a very long text that contains the search query somewhere in the middle and continues for a long time"
-        query="search query"
+        text={t('storybook.demo.longTextWithSearchQueryContinued')}
+        query={t('storybook.demo.searchQuery')}
         maxLength={50}
       />
     </div>
-  ),
+  );
 };
 
-// Combined example
-export const CombinedExample: Story = {
-  render: () => (
+const CombinedExampleDemo = () => {
+  const t = useT();
+  return (
     <div
       style={{
         display: 'flex',
@@ -193,16 +198,76 @@ export const CombinedExample: Story = {
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Paragraph data-size="sm">
           <HighlightText
-            text="Search results with highlighted terms"
-            highlight={['search', 'highlighted']}
+            text={t('storybook.demo.searchResultsWithHighlightedTerms')}
+            highlight={[t('storybook.demo.search'), t('storybook.demo.highlighted')]}
           />
         </Paragraph>
       </Card>
       <Spotlight active={true}>
         <Card data-color="accent" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">This result is highlighted with spotlight</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.resultHighlightedWithSpotlight')}</Paragraph>
         </Card>
       </Spotlight>
     </div>
-  ),
+  );
+};
+
+// HighlightText - single term
+export const HighlightSingleTerm: Story = {
+  render: () => <HighlightSingleTermDemo />,
+};
+
+// HighlightText - multiple terms
+export const HighlightMultipleTerms: Story = {
+  render: () => <HighlightMultipleTermsDemo />,
+};
+
+// HighlightText - case sensitive
+export const HighlightCaseSensitive: Story = {
+  render: () => <HighlightCaseSensitiveDemo />,
+};
+
+// HighlightText - custom style
+export const HighlightCustomStyle: Story = {
+  render: () => <HighlightCustomStyleDemo />,
+};
+
+// Spotlight - active
+export const SpotlightActive: Story = {
+  render: () => <SpotlightActiveDemo />,
+};
+
+// Spotlight - inactive
+export const SpotlightInactive: Story = {
+  render: () => <SpotlightInactiveDemo />,
+};
+
+// Spotlight - with button
+export const SpotlightWithButton: Story = {
+  render: () => <SpotlightWithButtonDemo />,
+};
+
+// Spotlight - custom padding
+export const SpotlightCustomPadding: Story = {
+  render: () => <SpotlightCustomPaddingDemo />,
+};
+
+// SearchHighlight - basic
+export const SearchHighlightBasic: Story = {
+  render: () => <SearchHighlightBasicDemo />,
+};
+
+// SearchHighlight - with context
+export const SearchHighlightWithContext: Story = {
+  render: () => <SearchHighlightWithContextDemo />,
+};
+
+// SearchHighlight - max length
+export const SearchHighlightMaxLength: Story = {
+  render: () => <SearchHighlightMaxLengthDemo />,
+};
+
+// Combined example
+export const CombinedExample: Story = {
+  render: () => <CombinedExampleDemo />,
 };

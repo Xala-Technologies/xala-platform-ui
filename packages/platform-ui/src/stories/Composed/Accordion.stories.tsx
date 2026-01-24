@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Accordion, Collapsible } from '../../composed/Accordion';
 import { Paragraph } from '@digdir/designsystemet-react';
 import { Info, Settings, User } from 'lucide-react';
@@ -54,46 +55,40 @@ Expandable content sections for organizing information. Supports single or multi
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Sample accordion items
-const sampleItems = [
-  {
-    id: '1',
-    title: 'Getting Started',
-    content: (
-      <Paragraph data-size="sm">
-        This section contains information about getting started with the platform. Learn the basics
-        and explore key features.
-      </Paragraph>
-    ),
-    icon: <Info size={20} />,
-  },
-  {
-    id: '2',
-    title: 'User Settings',
-    content: (
-      <Paragraph data-size="sm">
-        Manage your account settings, preferences, and personal information. Customize your
-        experience to suit your needs.
-      </Paragraph>
-    ),
-    icon: <Settings size={20} />,
-  },
-  {
-    id: '3',
-    title: 'Profile Information',
-    content: (
-      <Paragraph data-size="sm">
-        Update your profile information, including your name, email, and other personal details.
-      </Paragraph>
-    ),
-    icon: <User size={20} />,
-  },
-];
+// Sample accordion items component
+const AccordionWithItems = (args: any) => {
+  const t = useT();
+
+  const sampleItems = [
+    {
+      id: '1',
+      title: t('storybook.demo.gettingStarted'),
+      content: (
+        <Paragraph data-size="sm">{t('storybook.demo.gettingStartedDescription')}</Paragraph>
+      ),
+      icon: <Info size={20} />,
+    },
+    {
+      id: '2',
+      title: t('platform.nav.settings'),
+      content: <Paragraph data-size="sm">{t('storybook.demo.settingsDescription')}</Paragraph>,
+      icon: <Settings size={20} />,
+    },
+    {
+      id: '3',
+      title: t('platform.nav.profile'),
+      content: <Paragraph data-size="sm">{t('storybook.demo.profileDescription')}</Paragraph>,
+      icon: <User size={20} />,
+    },
+  ];
+
+  return <Accordion {...args} items={args.items || sampleItems} />;
+};
 
 // Default accordion (single expansion)
 export const Default: Story = {
+  render: (args) => <AccordionWithItems {...args} />,
   args: {
-    items: sampleItems,
     allowMultiple: false,
     variant: 'default',
   },
@@ -101,8 +96,8 @@ export const Default: Story = {
 
 // Multiple expansion
 export const AllowMultiple: Story = {
+  render: (args) => <AccordionWithItems {...args} />,
   args: {
-    items: sampleItems,
     allowMultiple: true,
     variant: 'default',
   },
@@ -110,8 +105,8 @@ export const AllowMultiple: Story = {
 
 // Bordered variant
 export const Bordered: Story = {
+  render: (args) => <AccordionWithItems {...args} />,
   args: {
-    items: sampleItems,
     allowMultiple: false,
     variant: 'bordered',
   },
@@ -119,8 +114,8 @@ export const Bordered: Story = {
 
 // Separated variant
 export const Separated: Story = {
+  render: (args) => <AccordionWithItems {...args} />,
   args: {
-    items: sampleItems,
     allowMultiple: true,
     variant: 'separated',
   },
@@ -128,8 +123,8 @@ export const Separated: Story = {
 
 // With default expanded
 export const DefaultExpanded: Story = {
+  render: (args) => <AccordionWithItems {...args} />,
   args: {
-    items: sampleItems,
     allowMultiple: false,
     variant: 'default',
     defaultExpanded: ['1'],
@@ -137,39 +132,73 @@ export const DefaultExpanded: Story = {
 };
 
 // With disabled item
+const AccordionWithDisabled = (args: any) => {
+  const t = useT();
+
+  const items = [
+    {
+      id: '1',
+      title: t('storybook.demo.gettingStarted'),
+      content: (
+        <Paragraph data-size="sm">{t('storybook.demo.gettingStartedDescription')}</Paragraph>
+      ),
+      icon: <Info size={20} />,
+    },
+    {
+      id: '2',
+      title: t('platform.nav.settings'),
+      content: <Paragraph data-size="sm">{t('storybook.demo.settingsDescription')}</Paragraph>,
+      icon: <Settings size={20} />,
+    },
+    {
+      id: '3',
+      title: t('platform.nav.profile'),
+      content: <Paragraph data-size="sm">{t('storybook.demo.profileDescription')}</Paragraph>,
+      icon: <User size={20} />,
+      disabled: true,
+    },
+  ];
+
+  return <Accordion {...args} items={items} />;
+};
+
 export const WithDisabled: Story = {
+  render: (args) => <AccordionWithDisabled {...args} />,
   args: {
-    items: [
-      ...sampleItems.slice(0, 2),
-      {
-        ...sampleItems[2],
-        disabled: true,
-      },
-    ],
     allowMultiple: false,
     variant: 'default',
   },
 };
 
 // Collapsible component
-export const CollapsibleExample: Story = {
-  render: () => (
-    <Collapsible title="Click to expand" defaultOpen={false}>
-      <Paragraph data-size="sm">
-        This is a single collapsible section. It can be used independently without the accordion
-        component.
-      </Paragraph>
+const CollapsibleExample = () => {
+  const t = useT();
+  return (
+    <Collapsible title={t('storybook.demo.clickToExpand')} defaultOpen={false}>
+      <Paragraph data-size="sm">{t('storybook.demo.collapsibleDescription')}</Paragraph>
     </Collapsible>
-  ),
+  );
+};
+
+export const CollapsibleExampleStory: Story = {
+  name: 'CollapsibleExample',
+  render: () => <CollapsibleExample />,
 };
 
 // Collapsible with icon
-export const CollapsibleWithIcon: Story = {
-  render: () => (
-    <Collapsible title="Settings" icon={<Settings size={20} />} defaultOpen={false}>
-      <Paragraph data-size="sm">
-        Collapsible sections can include icons for better visual hierarchy and recognition.
-      </Paragraph>
+const CollapsibleWithIconExample = () => {
+  const t = useT();
+  return (
+    <Collapsible
+      title={t('platform.nav.settings')}
+      icon={<Settings size={20} />}
+      defaultOpen={false}
+    >
+      <Paragraph data-size="sm">{t('storybook.demo.collapsibleIconDescription')}</Paragraph>
     </Collapsible>
-  ),
+  );
+};
+
+export const CollapsibleWithIcon: Story = {
+  render: () => <CollapsibleWithIconExample />,
 };

@@ -5,6 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import {
   StepperHeader,
   type StepperHeaderProps,
@@ -315,6 +316,7 @@ export const OnboardingFlow: Story = {
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: () => {
+    const t = useT();
     const [currentStep, setCurrentStep] = React.useState(0);
 
     const steps: StepperStep[] = [
@@ -340,7 +342,7 @@ export const Interactive: Story = {
           }}
         >
           <p style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            Current step: <strong>{steps[currentStep].label}</strong>
+            {t('storybook.patterns.currentStep')}: <strong>{steps[currentStep].label}</strong>
           </p>
 
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'center' }}>
@@ -350,14 +352,14 @@ export const Interactive: Story = {
               disabled={currentStep === 0}
               type="button"
             >
-              Previous
+              {t('platform.common.previous')}
             </Button>
             <Button
               onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
               disabled={currentStep === steps.length - 1}
               type="button"
             >
-              Next
+              {t('platform.common.next')}
             </Button>
           </div>
 
@@ -368,7 +370,7 @@ export const Interactive: Story = {
               type="button"
               data-size="sm"
             >
-              Reset
+              {t('platform.common.reset')}
             </Button>
           </div>
         </div>

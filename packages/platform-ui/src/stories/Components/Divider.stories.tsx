@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Divider, Paragraph, Heading } from '../../index';
 
 const meta: Meta<typeof Divider> = {
@@ -164,71 +165,83 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <div>
-      <Paragraph>Content above the divider</Paragraph>
-      <Divider />
-      <Paragraph>Content below the divider</Paragraph>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div>
+        <Paragraph>{t('storybook.demo.contentAboveDivider')}</Paragraph>
+        <Divider />
+        <Paragraph>{t('storybook.demo.contentBelowDivider')}</Paragraph>
+      </div>
+    );
+  },
 };
 
 export const WithSpacing: Story = {
-  render: () => (
-    <div>
-      <Heading level={3} data-size="sm">
-        Section 1
-      </Heading>
-      <Paragraph>First section content.</Paragraph>
-      <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
-      <Heading level={3} data-size="sm">
-        Section 2
-      </Heading>
-      <Paragraph>Second section content.</Paragraph>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div>
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.section')} 1
+        </Heading>
+        <Paragraph>{t('storybook.demo.firstSectionContent')}</Paragraph>
+        <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.section')} 2
+        </Heading>
+        <Paragraph>{t('storybook.demo.secondSectionContent')}</Paragraph>
+      </div>
+    );
+  },
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div>
-        <Paragraph>Default divider</Paragraph>
-        <Divider />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div>
+          <Paragraph>{t('storybook.demo.defaultDivider')}</Paragraph>
+          <Divider />
+        </div>
+        <div>
+          <Paragraph>{t('storybook.demo.subtleDivider')}</Paragraph>
+          <Divider data-color="subtle" />
+        </div>
       </div>
-      <div>
-        <Paragraph>Subtle divider</Paragraph>
-        <Divider data-color="subtle" />
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Basic Usage
-        </h3>
-        <Paragraph>Content above</Paragraph>
-        <Divider />
-        <Paragraph>Content below</Paragraph>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.basicUsage')}
+          </h3>
+          <Paragraph>{t('storybook.demo.contentAbove')}</Paragraph>
+          <Divider />
+          <Paragraph>{t('storybook.demo.contentBelow')}</Paragraph>
+        </div>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.withSpacing')}
+          </h3>
+          <Heading level={4} data-size="sm">
+            {t('storybook.demo.section')} 1
+          </Heading>
+          <Paragraph>{t('storybook.demo.firstSection')}</Paragraph>
+          <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
+          <Heading level={4} data-size="sm">
+            {t('storybook.demo.section')} 2
+          </Heading>
+          <Paragraph>{t('storybook.demo.secondSection')}</Paragraph>
+        </div>
       </div>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          With Spacing
-        </h3>
-        <Heading level={4} data-size="sm">
-          Section 1
-        </Heading>
-        <Paragraph>First section</Paragraph>
-        <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
-        <Heading level={4} data-size="sm">
-          Section 2
-        </Heading>
-        <Paragraph>Second section</Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

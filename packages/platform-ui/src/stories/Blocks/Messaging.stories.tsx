@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import {
   NotificationBell,
   ConversationListItem,
@@ -120,42 +121,49 @@ const sampleMessages: MessageItem[] = [
 
 // NotificationBell stories
 export const NotificationBellDefault: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <NotificationBell count={0} onClick={fn()} />
-      <NotificationBell count={5} onClick={fn()} />
-      <NotificationBell count={99} onClick={fn()} />
-      <NotificationBell count={150} onClick={fn()} maxCount={99} />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <NotificationBell count={0} onClick={fn()} />
+        <NotificationBell count={5} onClick={fn()} />
+        <NotificationBell count={99} onClick={fn()} />
+        <NotificationBell count={150} onClick={fn()} maxCount={99} />
+      </div>
+    );
+  },
 };
 
 // ConversationListItem stories
 export const ConversationListItemDefault: Story = {
-  render: () => (
-    <div style={{ width: '300px' }}>
-      <ConversationListItem
-        conversation={sampleConversations[0]}
-        isSelected={false}
-        onClick={fn()}
-      />
-      <ConversationListItem
-        conversation={sampleConversations[1]}
-        isSelected={true}
-        onClick={fn()}
-      />
-      <ConversationListItem
-        conversation={sampleConversations[2]}
-        isSelected={false}
-        onClick={fn()}
-      />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ width: '300px' }}>
+        <ConversationListItem
+          conversation={sampleConversations[0]}
+          isSelected={false}
+          onClick={fn()}
+        />
+        <ConversationListItem
+          conversation={sampleConversations[1]}
+          isSelected={true}
+          onClick={fn()}
+        />
+        <ConversationListItem
+          conversation={sampleConversations[2]}
+          isSelected={false}
+          onClick={fn()}
+        />
+      </div>
+    );
+  },
 };
 
 // ConversationList stories
 export const ConversationListDefault: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     return (
       <div
@@ -176,7 +184,8 @@ export const ConversationListDefault: Story = {
 };
 
 export const ConversationListWithFilters: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [activeFilter, setActiveFilter] = useState('all');
     return (
@@ -193,8 +202,8 @@ export const ConversationListWithFilters: Story = {
           onSelect={(id) => setSelectedId(id)}
           filterTabs={[
             { id: 'all', label: 'All', count: 3 },
-            { id: 'active', label: 'Active', count: 1 },
-            { id: 'pending', label: 'Pending', count: 1 },
+            { id: 'active', label: t('platform.status.active'), count: 1 },
+            { id: 'pending', label: t('platform.status.pending'), count: 1 },
           ]}
           activeFilter={activeFilter}
           onFilterChange={setActiveFilter}
@@ -205,40 +214,59 @@ export const ConversationListWithFilters: Story = {
 };
 
 export const ConversationListEmpty: Story = {
-  render: () => (
-    <div
-      style={{
-        width: '350px',
-        height: '500px',
-        border: '1px solid var(--ds-color-neutral-border-default)',
-      }}
-    >
-      <ConversationList conversations={[]} emptyMessage="No conversations yet" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          width: '350px',
+          height: '500px',
+          border: '1px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
+        <ConversationList conversations={[]} emptyMessage={t('storybook.demo.sampleText')} />
+      </div>
+    );
+  },
 };
 
 // MessageBubble stories
 export const MessageBubbleDefault: Story = {
-  render: () => (
-    <div
-      style={{
-        width: '400px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-2)',
-      }}
-    >
-      <MessageBubble message={sampleMessages[0]} isFromCurrentUser={false} showReadReceipt={true} />
-      <MessageBubble message={sampleMessages[1]} isFromCurrentUser={true} showReadReceipt={true} />
-      <MessageBubble message={sampleMessages[3]} isFromCurrentUser={true} showReadReceipt={true} />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          width: '400px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-2)',
+        }}
+      >
+        <MessageBubble
+          message={sampleMessages[0]}
+          isFromCurrentUser={false}
+          showReadReceipt={true}
+        />
+        <MessageBubble
+          message={sampleMessages[1]}
+          isFromCurrentUser={true}
+          showReadReceipt={true}
+        />
+        <MessageBubble
+          message={sampleMessages[3]}
+          isFromCurrentUser={true}
+          showReadReceipt={true}
+        />
+      </div>
+    );
+  },
 };
 
 // ChatThread stories
 export const ChatThreadDefault: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [messages, setMessages] = useState(sampleMessages);
     return (
       <div
@@ -263,7 +291,7 @@ export const ChatThreadDefault: Story = {
             };
             setMessages([...messages, newMessage]);
           }}
-          placeholder="Type a message..."
+          placeholder={t('storybook.demo.sampleText')}
         />
       </div>
     );
@@ -271,7 +299,8 @@ export const ChatThreadDefault: Story = {
 };
 
 export const ChatThreadEmpty: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [messages, setMessages] = useState<MessageItem[]>([]);
     return (
       <div
@@ -296,7 +325,7 @@ export const ChatThreadEmpty: Story = {
             };
             setMessages([newMessage]);
           }}
-          placeholder="Start a conversation..."
+          placeholder={t('storybook.demo.sampleText')}
         />
       </div>
     );

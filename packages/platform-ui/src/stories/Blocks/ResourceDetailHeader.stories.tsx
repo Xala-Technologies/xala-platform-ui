@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ResourceDetailHeader } from '../../blocks/ResourceDetailHeader';
 
 const meta: Meta<typeof ResourceDetailHeader> = {
@@ -27,7 +28,7 @@ Header section for resource detail page showing category, title, key facts, loca
 \`\`\`tsx
 <ResourceDetailHeader
   category="Rom"
-  title="Møterom 101"
+  title="Moterom 101"
   location="Storgata 1, 0155 Oslo"
   capacity={25}
   onFavorite={handleFavorite}
@@ -52,7 +53,7 @@ export const Default: Story = {
   args: {
     category: 'Rom',
     resourceType: 'SPACE',
-    title: 'Møterom 101',
+    title: 'Moterom 101',
     location: 'Storgata 1, 0155 Oslo',
     capacity: 25,
     isFavorited: false,
@@ -66,7 +67,7 @@ export const Favorited: Story = {
   args: {
     category: 'Rom',
     resourceType: 'SPACE',
-    title: 'Møterom 101',
+    title: 'Moterom 101',
     location: 'Storgata 1, 0155 Oslo',
     capacity: 25,
     isFavorited: true,
@@ -77,38 +78,52 @@ export const Favorited: Story = {
 
 // With key facts
 export const WithKeyFacts: Story = {
-  args: {
-    category: 'Rom',
-    resourceType: 'SPACE',
-    title: 'Møterom 101',
-    location: 'Storgata 1, 0155 Oslo',
-    keyFacts: [
-      { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
-      { type: 'duration', label: 'Varighet', value: '2 timer' },
-    ],
-    isFavorited: false,
-    isAuthenticated: true,
-    isFavoriteLoading: false,
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceDetailHeader
+        category="Rom"
+        resourceType="SPACE"
+        title="Moterom 101"
+        location="Storgata 1, 0155 Oslo"
+        keyFacts={[
+          { type: 'capacity', label: t('platform.common.details'), value: '25 personer' },
+          { type: 'area', label: t('platform.common.details'), value: '120 m2' },
+          { type: 'duration', label: t('platform.common.details'), value: '2 timer' },
+        ]}
+        isFavorited={false}
+        isAuthenticated={true}
+        isFavoriteLoading={false}
+        onFavorite={fn()}
+        onShare={fn()}
+      />
+    );
   },
 };
 
 // With share data
 export const WithShare: Story = {
-  args: {
-    category: 'Rom',
-    resourceType: 'SPACE',
-    title: 'Møterom 101',
-    location: 'Storgata 1, 0155 Oslo',
-    capacity: 25,
-    isFavorited: false,
-    isAuthenticated: true,
-    isFavoriteLoading: false,
-    shareData: {
-      url: 'https://example.com/resource/1',
-      title: 'Møterom 101',
-      description: 'A spacious meeting room',
-    },
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceDetailHeader
+        category="Rom"
+        resourceType="SPACE"
+        title="Moterom 101"
+        location="Storgata 1, 0155 Oslo"
+        capacity={25}
+        isFavorited={false}
+        isAuthenticated={true}
+        isFavoriteLoading={false}
+        shareData={{
+          url: 'https://example.com/resource/1',
+          title: 'Moterom 101',
+          description: t('storybook.demo.cardDescription'),
+        }}
+        onFavorite={fn()}
+        onShare={fn()}
+      />
+    );
   },
 };
 
@@ -117,7 +132,7 @@ export const Unauthenticated: Story = {
   args: {
     category: 'Rom',
     resourceType: 'SPACE',
-    title: 'Møterom 101',
+    title: 'Moterom 101',
     location: 'Storgata 1, 0155 Oslo',
     capacity: 25,
     isFavorited: false,
@@ -132,7 +147,7 @@ export const LoadingFavorite: Story = {
   args: {
     category: 'Rom',
     resourceType: 'SPACE',
-    title: 'Møterom 101',
+    title: 'Moterom 101',
     location: 'Storgata 1, 0155 Oslo',
     capacity: 25,
     isFavorited: false,
@@ -143,63 +158,84 @@ export const LoadingFavorite: Story = {
 
 // Different resource type
 export const ResourceType: Story = {
-  args: {
-    category: 'Ressurs',
-    resourceType: 'RESOURCE',
-    title: 'Projector Equipment',
-    location: 'Storgata 1, 0155 Oslo',
-    keyFacts: [
-      { type: 'quantity', label: 'Antall', value: '5 enheter' },
-      { type: 'duration', label: 'Utlånstid', value: '7 dager' },
-    ],
-    isFavorited: false,
-    isAuthenticated: true,
-    isFavoriteLoading: false,
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceDetailHeader
+        category="Ressurs"
+        resourceType="RESOURCE"
+        title="Projector Equipment"
+        location="Storgata 1, 0155 Oslo"
+        keyFacts={[
+          { type: 'quantity', label: t('platform.common.details'), value: '5 enheter' },
+          { type: 'duration', label: t('platform.common.details'), value: '7 dager' },
+        ]}
+        isFavorited={false}
+        isAuthenticated={true}
+        isFavoriteLoading={false}
+        onFavorite={fn()}
+        onShare={fn()}
+      />
+    );
   },
 };
 
 // Event type
 export const EventType: Story = {
-  args: {
-    category: 'Arrangement',
-    resourceType: 'EVENT',
-    title: 'Workshop Event',
-    location: 'Storgata 1, 0155 Oslo',
-    keyFacts: [
-      { type: 'capacity', label: 'Kapasitet', value: '50 personer' },
-      { type: 'resourceRequestMode', label: 'Modus', value: 'Booking' },
-    ],
-    isFavorited: true,
-    isAuthenticated: true,
-    isFavoriteLoading: false,
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceDetailHeader
+        category="Arrangement"
+        resourceType="EVENT"
+        title="Workshop Event"
+        location="Storgata 1, 0155 Oslo"
+        keyFacts={[
+          { type: 'capacity', label: t('platform.common.details'), value: '50 personer' },
+          { type: 'resourceRequestMode', label: t('platform.common.details'), value: 'Booking' },
+        ]}
+        isFavorited={true}
+        isAuthenticated={true}
+        isFavoriteLoading={false}
+        onFavorite={fn()}
+        onShare={fn()}
+      />
+    );
   },
 };
 
 // Complete example
 export const Complete: Story = {
-  args: {
-    category: 'Rom',
-    resourceType: 'SPACE',
-    title: 'Møterom 101',
-    location: 'Storgata 1, 0155 Oslo',
-    keyFacts: [
-      { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
-      { type: 'duration', label: 'Varighet', value: '2 timer' },
-      { type: 'accessibility', label: 'Tilgjengelighet', value: 'Rullestol' },
-    ],
-    isFavorited: true,
-    isAuthenticated: true,
-    isFavoriteLoading: false,
-    shareData: {
-      url: 'https://example.com/resource/1',
-      title: 'Møterom 101',
-      description: 'A spacious meeting room perfect for team meetings',
-    },
-    shareUtmParams: {
-      source: 'storybook',
-      medium: 'web',
-      campaign: 'test',
-    },
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceDetailHeader
+        category="Rom"
+        resourceType="SPACE"
+        title="Moterom 101"
+        location="Storgata 1, 0155 Oslo"
+        keyFacts={[
+          { type: 'capacity', label: t('platform.common.details'), value: '25 personer' },
+          { type: 'area', label: t('platform.common.details'), value: '120 m2' },
+          { type: 'duration', label: t('platform.common.details'), value: '2 timer' },
+          { type: 'accessibility', label: t('platform.common.details'), value: 'Rullestol' },
+        ]}
+        isFavorited={true}
+        isAuthenticated={true}
+        isFavoriteLoading={false}
+        shareData={{
+          url: 'https://example.com/resource/1',
+          title: 'Moterom 101',
+          description: t('storybook.demo.cardDescription'),
+        }}
+        shareUtmParams={{
+          source: 'storybook',
+          medium: 'web',
+          campaign: 'test',
+        }}
+        onFavorite={fn()}
+        onShare={fn()}
+      />
+    );
   },
 };

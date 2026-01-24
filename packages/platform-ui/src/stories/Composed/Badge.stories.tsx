@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Badge, Tag, NotificationBadge } from '../../composed/Badge';
 import { Button } from '@digdir/designsystemet-react';
 import { CheckCircle, AlertCircle, Info } from 'lucide-react';
@@ -66,6 +67,81 @@ Status badges, notification counts, and tags for displaying labels and counts.
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+// Wrapper components for stories that need translations
+const AllVariantsDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-2)' }}>
+      <Badge variant="default">{t('storybook.demo.default')}</Badge>
+      <Badge variant="success">{t('storybook.story.success')}</Badge>
+      <Badge variant="warning">{t('storybook.demo.warning')}</Badge>
+      <Badge variant="danger">{t('storybook.demo.danger')}</Badge>
+      <Badge variant="info">{t('storybook.demo.info')}</Badge>
+      <Badge variant="accent">{t('storybook.demo.accent')}</Badge>
+    </div>
+  );
+};
+
+const TagDefaultDemo = () => {
+  const t = useT();
+  return (
+    <Tag variant="default" size="md">
+      {t('storybook.demo.tag')}
+    </Tag>
+  );
+};
+
+const TagRemovableDemo = () => {
+  const t = useT();
+  return (
+    <Tag variant="info" size="md" removable onRemove={fn()}>
+      {t('storybook.demo.removableTag')}
+    </Tag>
+  );
+};
+
+const TagWithIconDemo = () => {
+  const t = useT();
+  return (
+    <Tag variant="success" size="md" icon={<CheckCircle size={14} />}>
+      {t('storybook.demo.tagWithIcon')}
+    </Tag>
+  );
+};
+
+const NotificationBadgeDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <NotificationBadge count={5}>
+        <Button data-color="neutral" data-size="medium">
+          {t('storybook.demo.notifications')}
+        </Button>
+      </NotificationBadge>
+      <NotificationBadge count={99}>
+        <Button data-color="neutral" data-size="medium">
+          {t('storybook.demo.messages')}
+        </Button>
+      </NotificationBadge>
+      <NotificationBadge count={150} max={99}>
+        <Button data-color="neutral" data-size="medium">
+          {t('storybook.demo.overflow')}
+        </Button>
+      </NotificationBadge>
+      <NotificationBadge count={0} showZero>
+        <Button data-color="neutral" data-size="medium">
+          {t('storybook.demo.zeroCount')}
+        </Button>
+      </NotificationBadge>
+      <NotificationBadge count={3} dot>
+        <Button data-color="neutral" data-size="medium">
+          {t('storybook.demo.dotBadge')}
+        </Button>
+      </NotificationBadge>
+    </div>
+  );
+};
 
 // Default badge
 export const Default: Story = {
@@ -182,72 +258,23 @@ export const Outline: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-2)' }}>
-      <Badge variant="default">Default</Badge>
-      <Badge variant="success">Success</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="danger">Danger</Badge>
-      <Badge variant="info">Info</Badge>
-      <Badge variant="accent">Accent</Badge>
-    </div>
-  ),
+  render: () => <AllVariantsDemo />,
 };
 
 // Tag component
 export const TagDefault: Story = {
-  render: () => (
-    <Tag variant="default" size="md">
-      Tag
-    </Tag>
-  ),
+  render: () => <TagDefaultDemo />,
 };
 
 export const TagRemovable: Story = {
-  render: () => (
-    <Tag variant="info" size="md" removable onRemove={fn()}>
-      Removable Tag
-    </Tag>
-  ),
+  render: () => <TagRemovableDemo />,
 };
 
 export const TagWithIcon: Story = {
-  render: () => (
-    <Tag variant="success" size="md" icon={<CheckCircle size={14} />}>
-      Tag with Icon
-    </Tag>
-  ),
+  render: () => <TagWithIconDemo />,
 };
 
 // Notification badge
 export const NotificationBadgeExample: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <NotificationBadge count={5}>
-        <Button data-color="neutral" data-size="medium">
-          Notifications
-        </Button>
-      </NotificationBadge>
-      <NotificationBadge count={99}>
-        <Button data-color="neutral" data-size="medium">
-          Messages
-        </Button>
-      </NotificationBadge>
-      <NotificationBadge count={150} max={99}>
-        <Button data-color="neutral" data-size="medium">
-          Overflow
-        </Button>
-      </NotificationBadge>
-      <NotificationBadge count={0} showZero>
-        <Button data-color="neutral" data-size="medium">
-          Zero Count
-        </Button>
-      </NotificationBadge>
-      <NotificationBadge count={3} dot>
-        <Button data-color="neutral" data-size="medium">
-          Dot Badge
-        </Button>
-      </NotificationBadge>
-    </div>
-  ),
+  render: () => <NotificationBadgeDemo />,
 };

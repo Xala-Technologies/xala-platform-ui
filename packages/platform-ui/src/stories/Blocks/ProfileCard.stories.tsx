@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ProfileCard, QuickStat } from '../../blocks/profile/ProfileCard';
 
 const meta: Meta<typeof ProfileCard> = {
@@ -161,50 +162,56 @@ export const WithoutPhone: Story = {
 
 // Quick stats
 export const QuickStats: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 'var(--ds-spacing-4)',
-        }}
-      >
-        <QuickStat label="Bookings" value={24} />
-        <QuickStat label="Favorites" value={8} />
-        <QuickStat label="Reviews" value={12} />
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 'var(--ds-spacing-4)',
+          }}
+        >
+          <QuickStat label={t('storybook.demo.cardTitle')} value={24} />
+          <QuickStat label={t('storybook.demo.cardTitle')} value={8} />
+          <QuickStat label={t('storybook.demo.cardTitle')} value={12} />
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 // Profile card with quick stats
 export const WithQuickStats: Story = {
-  args: {
-    profile: {
-      id: '1',
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      phone: '+47 123 45 678',
-      role: 'Administrator',
-      memberSince: '2023-01-15',
-    },
-  },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ProfileCard {...args} />
-      <div
-        style={{
-          marginTop: 'var(--ds-spacing-4)',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 'var(--ds-spacing-4)',
-        }}
-      >
-        <QuickStat label="Bookings" value={24} />
-        <QuickStat label="Favorites" value={8} />
-        <QuickStat label="Reviews" value={12} />
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ProfileCard
+          profile={{
+            id: '1',
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+            phone: '+47 123 45 678',
+            role: 'Administrator',
+            memberSince: '2023-01-15',
+          }}
+          onEdit={fn()}
+        />
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-4)',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 'var(--ds-spacing-4)',
+          }}
+        >
+          <QuickStat label={t('storybook.demo.cardTitle')} value={24} />
+          <QuickStat label={t('storybook.demo.cardTitle')} value={8} />
+          <QuickStat label={t('storybook.demo.cardTitle')} value={12} />
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

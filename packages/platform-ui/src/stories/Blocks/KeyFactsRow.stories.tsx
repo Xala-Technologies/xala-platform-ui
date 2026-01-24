@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { KeyFactsRow } from '../../blocks/KeyFactsRow';
 
 const meta: Meta<typeof KeyFactsRow> = {
@@ -26,7 +27,7 @@ Displays key resource facts as a horizontal row of badges/chips. Adapts based on
 <KeyFactsRow
   facts={[
     { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-    { type: 'area', label: 'Areal', value: '120 m²' },
+    { type: 'area', label: 'Areal', value: '120 m2' },
   ]}
   variant="default"
 />
@@ -57,7 +58,7 @@ export const Default: Story = {
   args: {
     facts: [
       { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
+      { type: 'area', label: 'Areal', value: '120 m2' },
       { type: 'duration', label: 'Varighet', value: '2 timer' },
     ],
     variant: 'default',
@@ -69,7 +70,7 @@ export const AllTypes: Story = {
   args: {
     facts: [
       { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
+      { type: 'area', label: 'Areal', value: '120 m2' },
       { type: 'duration', label: 'Varighet', value: '2 timer' },
       { type: 'quantity', label: 'Antall', value: '10 enheter' },
       { type: 'resourceRequestMode', label: 'Modus', value: 'Booking' },
@@ -85,7 +86,7 @@ export const Compact: Story = {
   args: {
     facts: [
       { type: 'capacity', label: 'Kapasitet', value: '25' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
+      { type: 'area', label: 'Areal', value: '120 m2' },
       { type: 'duration', label: 'Varighet', value: '2t' },
     ],
     variant: 'compact',
@@ -97,7 +98,7 @@ export const Prominent: Story = {
   args: {
     facts: [
       { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
+      { type: 'area', label: 'Areal', value: '120 m2' },
       { type: 'duration', label: 'Varighet', value: '2 timer' },
     ],
     variant: 'prominent',
@@ -109,7 +110,7 @@ export const WithMaxVisible: Story = {
   args: {
     facts: [
       { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
+      { type: 'area', label: 'Areal', value: '120 m2' },
       { type: 'duration', label: 'Varighet', value: '2 timer' },
       { type: 'quantity', label: 'Antall', value: '10 enheter' },
       { type: 'accessibility', label: 'Tilgjengelighet', value: 'Rullestol' },
@@ -129,7 +130,7 @@ export const WithTooltips: Story = {
         value: '25 personer',
         tooltip: 'Maksimalt antall personer',
       },
-      { type: 'area', label: 'Areal', value: '120 m²', tooltip: 'Total areal i kvadratmeter' },
+      { type: 'area', label: 'Areal', value: '120 m2', tooltip: 'Total areal i kvadratmeter' },
       { type: 'duration', label: 'Varighet', value: '2 timer', tooltip: 'Standard varighet' },
     ],
     variant: 'default',
@@ -149,7 +150,7 @@ export const ManyFacts: Story = {
   args: {
     facts: [
       { type: 'capacity', label: 'Kapasitet', value: '25 personer' },
-      { type: 'area', label: 'Areal', value: '120 m²' },
+      { type: 'area', label: 'Areal', value: '120 m2' },
       { type: 'duration', label: 'Varighet', value: '2 timer' },
       { type: 'quantity', label: 'Antall', value: '10 enheter' },
       { type: 'resourceRequestMode', label: 'Modus', value: 'Booking' },

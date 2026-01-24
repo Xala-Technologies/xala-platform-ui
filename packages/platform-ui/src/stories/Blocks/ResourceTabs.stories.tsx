@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ResourceTabs } from '../../blocks/ResourceTabs';
 import { Paragraph, Heading } from '@digdir/designsystemet-react';
 import { Info, Settings, FileText, Calendar } from 'lucide-react';
@@ -57,224 +58,256 @@ type Story = StoryObj<typeof meta>;
 
 // Basic tabs
 export const Default: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        content: (
-          <Paragraph data-size="sm">
-            This is the overview tab content. It contains general information about the resource.
-          </Paragraph>
-        ),
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        content: (
-          <Paragraph data-size="sm">
-            This is the details tab content. It contains detailed information about the resource.
-          </Paragraph>
-        ),
-      },
-      {
-        id: 'settings',
-        label: 'Settings',
-        content: (
-          <Paragraph data-size="sm">
-            This is the settings tab content. It contains configuration options for the resource.
-          </Paragraph>
-        ),
-      },
-    ],
-    activeTab: 'overview',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'settings',
+            label: t('platform.nav.settings'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // With icons
 export const WithIcons: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        icon: <Info size={16} />,
-        content: <Paragraph data-size="sm">Overview content with icon in the tab label.</Paragraph>,
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        icon: <FileText size={16} />,
-        content: <Paragraph data-size="sm">Details content with icon.</Paragraph>,
-      },
-      {
-        id: 'settings',
-        label: 'Settings',
-        icon: <Settings size={16} />,
-        content: <Paragraph data-size="sm">Settings content with icon.</Paragraph>,
-      },
-    ],
-    activeTab: 'overview',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            icon: <Info size={16} />,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            icon: <FileText size={16} />,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'settings',
+            label: t('platform.nav.settings'),
+            icon: <Settings size={16} />,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // With badges
 export const WithBadges: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        badge: 3,
-        content: <Paragraph data-size="sm">Overview tab with badge count.</Paragraph>,
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        badge: 12,
-        content: <Paragraph data-size="sm">Details tab with badge count.</Paragraph>,
-      },
-      {
-        id: 'calendar',
-        label: 'Calendar',
-        badge: 'New',
-        content: <Paragraph data-size="sm">Calendar tab with text badge.</Paragraph>,
-      },
-    ],
-    activeTab: 'overview',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            badge: 3,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            badge: 12,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'calendar',
+            label: t('platform.nav.dashboard'),
+            badge: 'New',
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // With icons and badges
 export const WithIconsAndBadges: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        icon: <Info size={16} />,
-        badge: 3,
-        content: <Paragraph data-size="sm">Overview with both icon and badge.</Paragraph>,
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        icon: <FileText size={16} />,
-        badge: 12,
-        content: <Paragraph data-size="sm">Details with icon and badge.</Paragraph>,
-      },
-      {
-        id: 'calendar',
-        label: 'Calendar',
-        icon: <Calendar size={16} />,
-        badge: 'New',
-        content: <Paragraph data-size="sm">Calendar with icon and text badge.</Paragraph>,
-      },
-    ],
-    activeTab: 'overview',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            icon: <Info size={16} />,
+            badge: 3,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            icon: <FileText size={16} />,
+            badge: 12,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'calendar',
+            label: t('platform.nav.dashboard'),
+            icon: <Calendar size={16} />,
+            badge: 'New',
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // Secondary variant
 export const SecondaryVariant: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        content: <Paragraph data-size="sm">Secondary variant tabs with background.</Paragraph>,
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        content: <Paragraph data-size="sm">Details content.</Paragraph>,
-      },
-    ],
-    activeTab: 'overview',
-    variant: 'secondary',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        variant="secondary"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // Subtle variant
 export const SubtleVariant: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        content: (
-          <Paragraph data-size="sm">Subtle variant tabs with transparent background.</Paragraph>
-        ),
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        content: <Paragraph data-size="sm">Details content.</Paragraph>,
-      },
-    ],
-    activeTab: 'overview',
-    variant: 'subtle',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        variant="subtle"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // With hidden tabs
 export const WithHiddenTabs: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        visible: true,
-        content: <Paragraph data-size="sm">Visible overview tab.</Paragraph>,
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        visible: true,
-        content: <Paragraph data-size="sm">Visible details tab.</Paragraph>,
-      },
-      {
-        id: 'hidden',
-        label: 'Hidden',
-        visible: false,
-        content: <Paragraph data-size="sm">This tab is hidden and should not appear.</Paragraph>,
-      },
-    ],
-    activeTab: 'overview',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            visible: true,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            visible: true,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+          {
+            id: 'hidden',
+            label: 'Hidden',
+            visible: false,
+            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+          },
+        ]}
+        activeTab="overview"
+        onTabChange={fn()}
+      />
+    );
   },
 };
 
 // Rich content
 export const RichContent: Story = {
-  args: {
-    tabs: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        content: (
-          <div>
-            <Heading level={3} data-size="sm">
-              Overview Section
-            </Heading>
-            <Paragraph data-size="sm">
-              This tab contains rich content including headings, paragraphs, and other components.
-            </Paragraph>
-          </div>
-        ),
-      },
-      {
-        id: 'details',
-        label: 'Details',
-        content: (
-          <div>
-            <Heading level={3} data-size="sm">
-              Details Section
-            </Heading>
-            <Paragraph data-size="sm">Detailed information goes here.</Paragraph>
-          </div>
-        ),
-      },
-    ],
-    activeTab: 'overview',
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceTabs
+        tabs={[
+          {
+            id: 'overview',
+            label: t('platform.common.view'),
+            content: (
+              <div>
+                <Heading level={3} data-size="sm">
+                  {t('storybook.demo.cardTitle')}
+                </Heading>
+                <Paragraph data-size="sm">{t('storybook.demo.cardDescription')}</Paragraph>
+              </div>
+            ),
+          },
+          {
+            id: 'details',
+            label: t('platform.common.details'),
+            content: (
+              <div>
+                <Heading level={3} data-size="sm">
+                  {t('storybook.demo.cardTitle')}
+                </Heading>
+                <Paragraph data-size="sm">{t('storybook.demo.cardDescription')}</Paragraph>
+              </div>
+            ),
+          },
+        ]}
+        activeTab="overview"
+        onTabChange={fn()}
+      />
+    );
   },
 };

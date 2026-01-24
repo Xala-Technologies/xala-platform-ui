@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { KeyValue, KeyValueList, DefinitionList } from '../../composed/KeyValue';
 import { Badge } from '../../composed/Badge';
 
@@ -53,185 +54,308 @@ Structured key-value data display. Supports horizontal and vertical layouts, cop
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <KeyValue
+      label={t('platform.common.name')}
+      value="John Doe"
+      direction="vertical"
+      copyable={false}
+      mono={false}
+    />
+  );
+};
+
 // Basic key-value
 export const Default: Story = {
-  args: {
-    label: 'Name',
-    value: 'John Doe',
-    direction: 'vertical',
-    copyable: false,
-    mono: false,
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for horizontal story
+const HorizontalDemo = () => {
+  const t = useT();
+  return (
+    <KeyValue
+      label={t('platform.auth.email')}
+      value="john.doe@example.com"
+      direction="horizontal"
+      copyable={false}
+      mono={false}
+    />
+  );
 };
 
 // Horizontal layout
 export const Horizontal: Story = {
-  args: {
-    label: 'Email',
-    value: 'john.doe@example.com',
-    direction: 'horizontal',
-    copyable: false,
-    mono: false,
-  },
+  render: () => <HorizontalDemo />,
+};
+
+// Wrapper for copyable story
+const CopyableDemo = () => {
+  const t = useT();
+  return (
+    <KeyValue
+      label={t('storybook.demo.apiKey')}
+      value="sk_live_1234567890abcdef"
+      direction="vertical"
+      copyable={true}
+      mono={true}
+    />
+  );
 };
 
 // With copyable value
 export const Copyable: Story = {
-  args: {
-    label: 'API Key',
-    value: 'sk_live_1234567890abcdef',
-    direction: 'vertical',
-    copyable: true,
-    mono: true,
-  },
+  render: () => <CopyableDemo />,
+};
+
+// Wrapper for monospace story
+const MonospaceDemo = () => {
+  const t = useT();
+  return (
+    <KeyValue
+      label={t('storybook.demo.transactionId')}
+      value="txn_1234567890abcdef"
+      direction="vertical"
+      copyable={false}
+      mono={true}
+    />
+  );
 };
 
 // Monospace font
 export const Monospace: Story = {
-  args: {
-    label: 'Transaction ID',
-    value: 'txn_1234567890abcdef',
-    direction: 'vertical',
-    copyable: false,
-    mono: true,
-  },
+  render: () => <MonospaceDemo />,
+};
+
+// Wrapper for react node story
+const WithReactNodeDemo = () => {
+  const t = useT();
+  return (
+    <KeyValue
+      label={t('platform.status.label')}
+      value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+      direction="vertical"
+      copyable={false}
+      mono={false}
+    />
+  );
 };
 
 // With React node value
 export const WithReactNode: Story = {
-  args: {
-    label: 'Status',
-    value: <Badge variant="success">Active</Badge>,
-    direction: 'vertical',
-    copyable: false,
-    mono: false,
-  },
+  render: () => <WithReactNodeDemo />,
 };
 
-// KeyValueList - single column
-export const ListSingleColumn: Story = {
-  render: () => (
+// Wrapper for single column list
+const ListSingleColumnDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <KeyValueList
         items={[
-          { key: 'Name', value: 'John Doe' },
-          { key: 'Email', value: 'john.doe@example.com' },
-          { key: 'Phone', value: '+47 12 34 56 78' },
-          { key: 'Status', value: <Badge variant="success">Active</Badge> },
+          { key: t('platform.common.name'), value: 'John Doe' },
+          { key: t('platform.auth.email'), value: 'john.doe@example.com' },
+          { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
+          {
+            key: t('platform.status.label'),
+            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+          },
         ]}
         columns={1}
         direction="vertical"
         variant="default"
       />
     </div>
-  ),
+  );
 };
 
-// KeyValueList - two columns
-export const ListTwoColumns: Story = {
-  render: () => (
+// KeyValueList - single column
+export const ListSingleColumn: Story = {
+  render: () => <ListSingleColumnDemo />,
+};
+
+// Wrapper for two columns list
+const ListTwoColumnsDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
       <KeyValueList
         items={[
-          { key: 'Name', value: 'John Doe' },
-          { key: 'Email', value: 'john.doe@example.com' },
-          { key: 'Phone', value: '+47 12 34 56 78' },
-          { key: 'Status', value: <Badge variant="success">Active</Badge> },
+          { key: t('platform.common.name'), value: 'John Doe' },
+          { key: t('platform.auth.email'), value: 'john.doe@example.com' },
+          { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
+          {
+            key: t('platform.status.label'),
+            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+          },
         ]}
         columns={2}
         direction="vertical"
         variant="default"
       />
     </div>
-  ),
+  );
 };
 
-// KeyValueList - striped variant
-export const ListStriped: Story = {
-  render: () => (
+// KeyValueList - two columns
+export const ListTwoColumns: Story = {
+  render: () => <ListTwoColumnsDemo />,
+};
+
+// Wrapper for striped list
+const ListStripedDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <KeyValueList
         items={[
-          { key: 'Name', value: 'John Doe' },
-          { key: 'Email', value: 'john.doe@example.com' },
-          { key: 'Phone', value: '+47 12 34 56 78' },
-          { key: 'Status', value: <Badge variant="success">Active</Badge> },
+          { key: t('platform.common.name'), value: 'John Doe' },
+          { key: t('platform.auth.email'), value: 'john.doe@example.com' },
+          { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
+          {
+            key: t('platform.status.label'),
+            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+          },
         ]}
         columns={1}
         direction="vertical"
         variant="striped"
       />
     </div>
-  ),
+  );
 };
 
-// KeyValueList - bordered variant
-export const ListBordered: Story = {
-  render: () => (
+// KeyValueList - striped variant
+export const ListStriped: Story = {
+  render: () => <ListStripedDemo />,
+};
+
+// Wrapper for bordered list
+const ListBorderedDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <KeyValueList
         items={[
-          { key: 'Name', value: 'John Doe' },
-          { key: 'Email', value: 'john.doe@example.com' },
-          { key: 'Phone', value: '+47 12 34 56 78' },
-          { key: 'Status', value: <Badge variant="success">Active</Badge> },
+          { key: t('platform.common.name'), value: 'John Doe' },
+          { key: t('platform.auth.email'), value: 'john.doe@example.com' },
+          { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
+          {
+            key: t('platform.status.label'),
+            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+          },
         ]}
         columns={1}
         direction="vertical"
         variant="bordered"
       />
     </div>
-  ),
+  );
+};
+
+// KeyValueList - bordered variant
+export const ListBordered: Story = {
+  render: () => <ListBorderedDemo />,
+};
+
+// Wrapper for copyable list
+const ListWithCopyableDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <KeyValueList
+        items={[
+          {
+            key: t('storybook.demo.apiKey'),
+            value: 'sk_live_1234567890abcdef',
+            copyable: true,
+            mono: true,
+          },
+          {
+            key: t('storybook.demo.secret'),
+            value: 'secret_abcdef1234567890',
+            copyable: true,
+            mono: true,
+          },
+          {
+            key: t('storybook.demo.webhookUrl'),
+            value: 'https://api.example.com/webhook',
+            copyable: true,
+          },
+        ]}
+        columns={1}
+        direction="vertical"
+        variant="default"
+      />
+    </div>
+  );
 };
 
 // KeyValueList with copyable items
 export const ListWithCopyable: Story = {
-  render: () => (
+  render: () => <ListWithCopyableDemo />,
+};
+
+// Wrapper for links list
+const ListWithLinksDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <KeyValueList
         items={[
-          { key: 'API Key', value: 'sk_live_1234567890abcdef', copyable: true, mono: true },
-          { key: 'Secret', value: 'secret_abcdef1234567890', copyable: true, mono: true },
-          { key: 'Webhook URL', value: 'https://api.example.com/webhook', copyable: true },
+          {
+            key: t('storybook.demo.website'),
+            value: 'https://example.com',
+            href: 'https://example.com',
+          },
+          {
+            key: t('storybook.demo.documentation'),
+            value: t('storybook.demo.viewDocs'),
+            href: 'https://docs.example.com',
+          },
+          {
+            key: t('storybook.demo.support'),
+            value: t('storybook.demo.contactSupport'),
+            href: 'mailto:support@example.com',
+          },
         ]}
         columns={1}
         direction="vertical"
         variant="default"
       />
     </div>
-  ),
+  );
 };
 
 // KeyValueList with links
 export const ListWithLinks: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <KeyValueList
+  render: () => <ListWithLinksDemo />,
+};
+
+// Wrapper for definition list
+const DefinitionListExampleDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '500px' }}>
+      <DefinitionList
         items={[
-          { key: 'Website', value: 'https://example.com', href: 'https://example.com' },
-          { key: 'Documentation', value: 'View docs', href: 'https://docs.example.com' },
-          { key: 'Support', value: 'Contact support', href: 'mailto:support@example.com' },
+          { term: t('platform.common.name'), definition: 'John Doe' },
+          { term: t('platform.auth.email'), definition: 'john.doe@example.com' },
+          { term: t('storybook.demo.role'), definition: t('storybook.demo.administrator') },
+          {
+            term: t('platform.status.label'),
+            definition: <Badge variant="success">{t('platform.status.active')}</Badge>,
+          },
         ]}
-        columns={1}
-        direction="vertical"
-        variant="default"
       />
     </div>
-  ),
+  );
 };
 
 // DefinitionList
 export const DefinitionListExample: Story = {
-  render: () => (
-    <div style={{ width: '500px' }}>
-      <DefinitionList
-        items={[
-          { term: 'Name', definition: 'John Doe' },
-          { term: 'Email', definition: 'john.doe@example.com' },
-          { term: 'Role', definition: 'Administrator' },
-          { term: 'Status', definition: <Badge variant="success">Active</Badge> },
-        ]}
-      />
-    </div>
-  ),
+  render: () => <DefinitionListExampleDemo />,
 };

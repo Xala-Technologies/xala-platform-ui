@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { PageContainer } from '../../composed/PageContainer';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 
@@ -54,149 +55,203 @@ Consistent page wrapper with proper spacing from design tokens. Eliminates repea
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Default page container
-export const Default: Story = {
-  render: () => (
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
     <PageContainer gap={6} maxWidth="lg" padding={4}>
       <Heading level={1} data-size="lg">
-        Page Title
+        {t('storybook.demo.pageTitle')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Page content goes here.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.pageContentHere')}</Paragraph>
       </Card>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">More content.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.moreContent')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
+};
+
+// Default page container
+export const Default: Story = {
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for small gap story
+const SmallGapDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={2} maxWidth="md" padding={2}>
+      <Heading level={2} data-size="md">
+        {t('storybook.demo.compactLayout')}
+      </Heading>
+      <Card data-color="neutral" data-size="medium">
+        <Paragraph data-size="sm">{t('storybook.demo.item')} 1</Paragraph>
+      </Card>
+      <Card data-color="neutral" data-size="medium">
+        <Paragraph data-size="sm">{t('storybook.demo.item')} 2</Paragraph>
+      </Card>
+    </PageContainer>
+  );
 };
 
 // Small gap
 export const SmallGap: Story = {
-  render: () => (
-    <PageContainer gap={2} maxWidth="md" padding={2}>
-      <Heading level={2} data-size="md">
-        Compact Layout
+  render: () => <SmallGapDemo />,
+};
+
+// Wrapper for large gap story
+const LargeGapDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={8} maxWidth="xl" padding={6}>
+      <Heading level={1} data-size="lg">
+        {t('storybook.demo.spaciousLayout')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Item 1</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.contentWithLargeSpacing')}</Paragraph>
       </Card>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Item 2</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.moreContent')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 // Large gap
 export const LargeGap: Story = {
-  render: () => (
-    <PageContainer gap={8} maxWidth="xl" padding={6}>
-      <Heading level={1} data-size="lg">
-        Spacious Layout
+  render: () => <LargeGapDemo />,
+};
+
+// Wrapper for max width small story
+const MaxWidthSmallDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={4} maxWidth="sm" padding={3}>
+      <Heading level={2} data-size="md">
+        {t('storybook.demo.smallMaxWidth')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Content with large spacing.</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">More content.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.contentConstrainedSmall')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 // Max width variants
 export const MaxWidthSmall: Story = {
-  render: () => (
-    <PageContainer gap={4} maxWidth="sm" padding={3}>
+  render: () => <MaxWidthSmallDemo />,
+};
+
+// Wrapper for max width medium story
+const MaxWidthMediumDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={4} maxWidth="md" padding={3}>
       <Heading level={2} data-size="md">
-        Small Max Width
+        {t('storybook.demo.mediumMaxWidth')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Content constrained to small width.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.contentConstrainedMedium')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 export const MaxWidthMedium: Story = {
-  render: () => (
-    <PageContainer gap={4} maxWidth="md" padding={3}>
+  render: () => <MaxWidthMediumDemo />,
+};
+
+// Wrapper for max width large story
+const MaxWidthLargeDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={4} maxWidth="lg" padding={3}>
       <Heading level={2} data-size="md">
-        Medium Max Width
+        {t('storybook.demo.largeMaxWidth')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Content constrained to medium width.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.contentConstrainedLarge')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 export const MaxWidthLarge: Story = {
-  render: () => (
-    <PageContainer gap={4} maxWidth="lg" padding={3}>
+  render: () => <MaxWidthLargeDemo />,
+};
+
+// Wrapper for max width full story
+const MaxWidthFullDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={4} maxWidth="full" padding={3}>
       <Heading level={2} data-size="md">
-        Large Max Width
+        {t('storybook.demo.fullWidth')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Content constrained to large width.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.contentFullWidth')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 export const MaxWidthFull: Story = {
-  render: () => (
-    <PageContainer gap={4} maxWidth="full" padding={3}>
+  render: () => <MaxWidthFullDemo />,
+};
+
+// Wrapper for no padding story
+const NoPaddingDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={4} maxWidth="lg" padding={0}>
       <Heading level={2} data-size="md">
-        Full Width
+        {t('storybook.demo.noPadding')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Content uses full available width.</Paragraph>
+        <Paragraph data-size="sm">{t('storybook.demo.contentNoPadding')}</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 // No padding
 export const NoPadding: Story = {
-  render: () => (
-    <PageContainer gap={4} maxWidth="lg" padding={0}>
-      <Heading level={2} data-size="md">
-        No Padding
+  render: () => <NoPaddingDemo />,
+};
+
+// Wrapper for multiple children story
+const MultipleChildrenDemo = () => {
+  const t = useT();
+  return (
+    <PageContainer gap={4} maxWidth="lg" padding={4}>
+      <Heading level={1} data-size="lg">
+        {t('storybook.demo.pageTitle')}
       </Heading>
       <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">Content with no padding around container.</Paragraph>
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.section')} 1
+        </Heading>
+        <Paragraph data-size="sm">{t('storybook.demo.contentForSection')} 1.</Paragraph>
+      </Card>
+      <Card data-color="neutral" data-size="medium">
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.section')} 2
+        </Heading>
+        <Paragraph data-size="sm">{t('storybook.demo.contentForSection')} 2.</Paragraph>
+      </Card>
+      <Card data-color="neutral" data-size="medium">
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.section')} 3
+        </Heading>
+        <Paragraph data-size="sm">{t('storybook.demo.contentForSection')} 3.</Paragraph>
       </Card>
     </PageContainer>
-  ),
+  );
 };
 
 // With multiple children
 export const MultipleChildren: Story = {
-  render: () => (
-    <PageContainer gap={4} maxWidth="lg" padding={4}>
-      <Heading level={1} data-size="lg">
-        Page Title
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Heading level={3} data-size="sm">
-          Section 1
-        </Heading>
-        <Paragraph data-size="sm">Content for section 1.</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Heading level={3} data-size="sm">
-          Section 2
-        </Heading>
-        <Paragraph data-size="sm">Content for section 2.</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Heading level={3} data-size="sm">
-          Section 3
-        </Heading>
-        <Paragraph data-size="sm">Content for section 3.</Paragraph>
-      </Card>
-    </PageContainer>
-  ),
+  render: () => <MultipleChildrenDemo />,
 };

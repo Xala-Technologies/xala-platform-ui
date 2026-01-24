@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Rating, RatingDisplay } from '../../composed/Rating';
 import { Heart } from 'lucide-react';
 
@@ -194,17 +195,26 @@ export const CustomIcon: Story = {
   },
 };
 
+// Wrapper for label story
+const WithLabelDemo = () => {
+  const t = useT();
+  return (
+    <Rating
+      defaultValue={0}
+      max={5}
+      size="md"
+      color="gold"
+      readonly={false}
+      showValue={false}
+      label={t('storybook.demo.rateThisProduct')}
+      onChange={fn()}
+    />
+  );
+};
+
 // With label
 export const WithLabel: Story = {
-  args: {
-    defaultValue: 0,
-    max: 5,
-    size: 'md',
-    color: 'gold',
-    readonly: false,
-    showValue: false,
-    label: 'Rate this product',
-  },
+  render: () => <WithLabelDemo />,
 };
 
 // Disabled

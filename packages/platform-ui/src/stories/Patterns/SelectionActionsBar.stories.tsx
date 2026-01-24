@@ -5,6 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import {
   SelectionActionsBar,
   type SelectionActionsBarProps,
@@ -375,6 +376,7 @@ export const LoadingAction: Story = {
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: () => {
+    const t = useT();
     const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
 
     const items = [
@@ -397,7 +399,7 @@ export const Interactive: Story = {
     return (
       <div style={{ paddingBottom: '100px' }}>
         <Paragraph data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          Select items below to see the action bar appear:
+          {t('storybook.patterns.selectItems')}
         </Paragraph>
 
         <div

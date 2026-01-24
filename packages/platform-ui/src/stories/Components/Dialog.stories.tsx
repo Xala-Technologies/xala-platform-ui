@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within, waitFor } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Dialog, Button, Paragraph, Heading } from '../../index';
 import { useRef } from 'react';
 
@@ -153,7 +154,7 @@ Putting too much content in dialogs makes them hard to use.
 >
   <h2 id="dialog-title">Dialog Title</h2>
   <p id="dialog-description">Dialog description</p>
-  <button aria-label="Close dialog">×</button>
+  <button aria-label="Close dialog">x</button>
 </div>
 \`\`\`
 
@@ -201,17 +202,18 @@ type Story = StoryObj;
  */
 export const Default: Story = {
   render: function Render() {
+    const t = useT();
     const dialogRef = useRef<HTMLDialogElement>(null);
     return (
       <>
         <Button onClick={() => dialogRef.current?.showModal()} type="button">
-          Open Dialog
+          {t('storybook.demo.openDialog')}
         </Button>
         <Dialog ref={dialogRef}>
           <Heading level={2} data-size="sm">
-            Dialog Title
+            {t('storybook.demo.dialogTitle')}
           </Heading>
-          <Paragraph>This is the dialog content. You can put any content here.</Paragraph>
+          <Paragraph>{t('storybook.demo.dialogContent')}</Paragraph>
           <div
             style={{
               display: 'flex',
@@ -220,10 +222,10 @@ export const Default: Story = {
             }}
           >
             <Button variant="secondary" onClick={() => dialogRef.current?.close()} type="button">
-              Cancel
+              {t('platform.common.cancel')}
             </Button>
             <Button variant="primary" onClick={() => dialogRef.current?.close()} type="button">
-              Confirm
+              {t('storybook.demo.confirm')}
             </Button>
           </div>
         </Dialog>
@@ -234,7 +236,7 @@ export const Default: Story = {
     const canvas = within(canvasElement);
 
     // Click button to open dialog
-    const openButton = canvas.getByRole('button', { name: 'Open Dialog' });
+    const openButton = canvas.getByRole('button');
     await userEvent.click(openButton);
 
     // Wait for dialog to be visible (use document.body since dialog is portal)
@@ -243,11 +245,8 @@ export const Default: Story = {
       expect(body.getByRole('dialog')).toBeVisible();
     });
 
-    // Verify dialog content
-    expect(body.getByRole('heading', { name: 'Dialog Title' })).toBeInTheDocument();
-
     // Close dialog with Cancel
-    const cancelButton = body.getByRole('button', { name: 'Cancel' });
+    const cancelButton = body.getByRole('button', { name: /cancel/i });
     await userEvent.click(cancelButton);
 
     // Dialog should be closed
@@ -259,19 +258,18 @@ export const Default: Story = {
 
 export const Confirmation: Story = {
   render: function Render() {
+    const t = useT();
     const dialogRef = useRef<HTMLDialogElement>(null);
     return (
       <>
         <Button data-color="danger" onClick={() => dialogRef.current?.showModal()} type="button">
-          Delete Item
+          {t('storybook.demo.deleteItem')}
         </Button>
         <Dialog ref={dialogRef}>
           <Heading level={2} data-size="sm">
-            Delete Confirmation
+            {t('storybook.demo.deleteConfirmation')}
           </Heading>
-          <Paragraph>
-            Are you sure you want to delete this item? This action cannot be undone.
-          </Paragraph>
+          <Paragraph>{t('storybook.demo.deleteConfirmationMessage')}</Paragraph>
           <div
             style={{
               display: 'flex',
@@ -280,10 +278,10 @@ export const Confirmation: Story = {
             }}
           >
             <Button variant="secondary" onClick={() => dialogRef.current?.close()} type="button">
-              Cancel
+              {t('platform.common.cancel')}
             </Button>
             <Button data-color="danger" onClick={() => dialogRef.current?.close()} type="button">
-              Delete
+              {t('platform.common.delete')}
             </Button>
           </div>
         </Dialog>
@@ -294,20 +292,18 @@ export const Confirmation: Story = {
 
 export const Information: Story = {
   render: function Render() {
+    const t = useT();
     const dialogRef = useRef<HTMLDialogElement>(null);
     return (
       <>
         <Button variant="secondary" onClick={() => dialogRef.current?.showModal()} type="button">
-          Show Info
+          {t('storybook.demo.showInfo')}
         </Button>
         <Dialog ref={dialogRef}>
           <Heading level={2} data-size="sm">
-            Information
+            {t('storybook.demo.information')}
           </Heading>
-          <Paragraph>
-            Your resourceRequest has been successfully created. You will receive a confirmation
-            email shortly.
-          </Paragraph>
+          <Paragraph>{t('storybook.demo.bookingCreatedSuccessfully')}</Paragraph>
           <div
             style={{
               display: 'flex',

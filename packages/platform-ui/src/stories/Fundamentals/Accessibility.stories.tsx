@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Textfield, Checkbox, Heading, Paragraph, Card } from '../../index';
 import { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Fundamentals/Accessibility',
@@ -43,55 +44,63 @@ type Story = StoryObj;
  * All interactive elements must be keyboard accessible
  */
 export const KeyboardNavigation: Story = {
-  render: () => (
-    <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
-      <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Keyboard Navigation Demo
-      </Heading>
-      <Paragraph
-        style={{
-          marginBottom: 'var(--ds-spacing-6)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}
-      >
-        Try navigating with Tab, Shift+Tab, Enter, and Space keys
-      </Paragraph>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Button data-variant="primary" tabIndex={0}>
-          First Button (Tab to focus)
-        </Button>
-        <Button data-variant="secondary" tabIndex={0}>
-          Second Button
-        </Button>
-        <Textfield label="Text Input" placeholder="Type here" tabIndex={0} />
-        <Checkbox tabIndex={0}>Checkbox (Space to toggle)</Checkbox>
-        <a
-          href="#"
+    return (
+      <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
+        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.a11y.keyboardNavigation')}
+        </Heading>
+        <Paragraph
           style={{
-            color: 'var(--ds-color-accent-text-default)',
-            textDecoration: 'underline',
+            marginBottom: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-subtle)',
           }}
-          tabIndex={0}
         >
-          Link (Enter to activate)
-        </a>
-      </div>
-
-      <div
-        style={{
-          marginTop: 'var(--ds-spacing-6)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-info-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-          <strong>✅ Good:</strong> All elements have tabIndex and respond to keyboard
+          {t('storybook.a11y.keyboardNavigationDescription')}
         </Paragraph>
-      </div>
-    </Card>
-  ),
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+          <Button data-variant="primary" tabIndex={0}>
+            {t('storybook.a11y.firstButton')}
+          </Button>
+          <Button data-variant="secondary" tabIndex={0}>
+            {t('storybook.a11y.secondButton')}
+          </Button>
+          <Textfield
+            label={t('storybook.a11y.textInput')}
+            placeholder={t('storybook.a11y.typeHere')}
+            tabIndex={0}
+          />
+          <Checkbox tabIndex={0}>{t('storybook.a11y.checkboxSpaceToggle')}</Checkbox>
+          <a
+            href="#"
+            style={{
+              color: 'var(--ds-color-accent-text-default)',
+              textDecoration: 'underline',
+            }}
+            tabIndex={0}
+          >
+            {t('storybook.a11y.linkEnterActivate')}
+          </a>
+        </div>
+
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-6)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-info-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
+            <strong>{t('storybook.a11y.good')}:</strong> {t('storybook.a11y.allElementsTabIndex')}
+          </Paragraph>
+        </div>
+      </Card>
+    );
+  },
 };
 
 /**
@@ -100,53 +109,57 @@ export const KeyboardNavigation: Story = {
  * Proper labeling for screen readers
  */
 export const ARIALabels: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
-      {/* Bad Example */}
-      <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading
-          level={4}
-          data-size="sm"
-          style={{
-            color: 'var(--ds-color-danger-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          ❌ Missing ARIA
-        </Heading>
-        <button type="button" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          ✓
-        </button>
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          Icon-only button with no label - screen readers can't understand it
-        </Paragraph>
-      </Card>
+  render: () => {
+    const t = useT();
 
-      {/* Good Example */}
-      <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading
-          level={4}
-          data-size="sm"
-          style={{
-            color: 'var(--ds-color-success-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          ✅ Proper ARIA
-        </Heading>
-        <button
-          type="button"
-          aria-label="Mark as complete"
-          style={{ marginBottom: 'var(--ds-spacing-2)' }}
-        >
-          ✓
-        </button>
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          Icon button with aria-label - screen readers announce "Mark as complete"
-        </Paragraph>
-      </Card>
-    </div>
-  ),
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
+        {/* Bad Example */}
+        <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-danger-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.a11y.missingAria')}
+          </Heading>
+          <button type="button" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            ✓
+          </button>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            {t('storybook.a11y.iconOnlyNoLabel')}
+          </Paragraph>
+        </Card>
+
+        {/* Good Example */}
+        <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-success-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.a11y.properAria')}
+          </Heading>
+          <button
+            type="button"
+            aria-label={t('storybook.a11y.markAsComplete')}
+            style={{ marginBottom: 'var(--ds-spacing-2)' }}
+          >
+            ✓
+          </button>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            {t('storybook.a11y.iconWithAriaLabel')}
+          </Paragraph>
+        </Card>
+      </div>
+    );
+  },
 };
 
 /**
@@ -155,57 +168,61 @@ export const ARIALabels: Story = {
  * Minimum contrast ratio of 4.5:1 for normal text
  */
 export const ColorContrast: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
-      {/* Bad Example */}
-      <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading
-          level={4}
-          data-size="sm"
-          style={{
-            color: 'var(--ds-color-danger-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          ❌ Poor Contrast
-        </Heading>
-        <div
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: '#E0E0E0',
-            color: '#C0C0C0',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}
-        >
-          This text is hard to read (contrast ratio &lt; 3:1)
-        </div>
-      </Card>
+  render: () => {
+    const t = useT();
 
-      {/* Good Example */}
-      <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
-        <Heading
-          level={4}
-          data-size="sm"
-          style={{
-            color: 'var(--ds-color-success-text-default)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          ✅ Good Contrast
-        </Heading>
-        <div
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-default)',
-            color: 'var(--ds-color-neutral-text-default)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}
-        >
-          This text is easy to read (contrast ratio &gt; 4.5:1)
-        </div>
-      </Card>
-    </div>
-  ),
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
+        {/* Bad Example */}
+        <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-danger-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.a11y.poorContrast')}
+          </Heading>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: '#E0E0E0',
+              color: '#C0C0C0',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            {t('storybook.a11y.hardToRead')}
+          </div>
+        </Card>
+
+        {/* Good Example */}
+        <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
+          <Heading
+            level={4}
+            data-size="sm"
+            style={{
+              color: 'var(--ds-color-success-text-default)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.a11y.goodContrast')}
+          </Heading>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-default)',
+              color: 'var(--ds-color-neutral-text-default)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            {t('storybook.a11y.easyToRead')}
+          </div>
+        </Card>
+      </div>
+    );
+  },
 };
 
 /**
@@ -214,53 +231,61 @@ export const ColorContrast: Story = {
  * Visible focus states for keyboard navigation
  */
 export const FocusIndicators: Story = {
-  render: () => (
-    <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
-      <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Focus Indicators
-      </Heading>
-      <Paragraph
-        style={{
-          marginBottom: 'var(--ds-spacing-6)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}
-      >
-        Tab through these elements to see focus indicators
-      </Paragraph>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Button
-          data-variant="primary"
+    return (
+      <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
+        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.a11y.focusIndicators')}
+        </Heading>
+        <Paragraph
           style={{
-            outline: '2px solid transparent',
-            outlineOffset: '2px',
-          }}
-          onFocus={(e) => {
-            e.currentTarget.style.outline = '2px solid var(--ds-color-accent-border-strong)';
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.outline = '2px solid transparent';
+            marginBottom: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          Button with focus ring
-        </Button>
+          {t('storybook.a11y.tabThroughElements')}
+        </Paragraph>
 
-        <Textfield label="Input Field" placeholder="Focus to see outline" />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+          <Button
+            data-variant="primary"
+            style={{
+              outline: '2px solid transparent',
+              outlineOffset: '2px',
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.outline = '2px solid var(--ds-color-accent-border-strong)';
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.outline = '2px solid transparent';
+            }}
+          >
+            {t('storybook.a11y.buttonWithFocusRing')}
+          </Button>
 
-        <div
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-info-surface-default)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}
-        >
-          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-            <strong>✅ Good:</strong> Clear visual indicator when element has focus
-          </Paragraph>
+          <Textfield
+            label={t('storybook.a11y.inputField')}
+            placeholder={t('storybook.a11y.focusToSeeOutline')}
+          />
+
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-info-surface-default)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
+              <strong>{t('storybook.a11y.good')}:</strong>{' '}
+              {t('storybook.a11y.clearVisualIndicator')}
+            </Paragraph>
+          </div>
         </div>
-      </div>
-    </Card>
-  ),
+      </Card>
+    );
+  },
 };
 
 /**
@@ -270,19 +295,20 @@ export const FocusIndicators: Story = {
  */
 export const FormAccessibility: Story = {
   render: () => {
+    const t = useT();
     const [formData, setFormData] = useState({ name: '', email: '', subscribe: false });
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '500px' }}>
-        <form aria-label="Contact form">
+        <form aria-label={t('storybook.a11y.contactForm')}>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-            Accessible Form
+            {t('storybook.a11y.accessibleForm')}
           </Heading>
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label="Name"
+              label={t('storybook.a11y.name')}
               id="name-input"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -307,7 +333,7 @@ export const FormAccessibility: Story = {
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label="Email"
+              label={t('platform.auth.email')}
               type="email"
               id="email-input"
               value={formData.email}
@@ -324,7 +350,7 @@ export const FormAccessibility: Story = {
                 marginTop: 'var(--ds-spacing-1)',
               }}
             >
-              We'll never share your email
+              {t('storybook.a11y.emailNeverShare')}
             </Paragraph>
           </div>
 
@@ -332,14 +358,14 @@ export const FormAccessibility: Story = {
             <Checkbox
               checked={formData.subscribe}
               onChange={(e) => setFormData({ ...formData, subscribe: e.target.checked })}
-              aria-label="Subscribe to newsletter"
+              aria-label={t('storybook.a11y.subscribeNewsletter')}
             >
-              Subscribe to newsletter
+              {t('storybook.a11y.subscribeNewsletter')}
             </Checkbox>
           </div>
 
           <Button data-variant="primary" type="submit">
-            Submit
+            {t('platform.common.submit')}
           </Button>
         </form>
 
@@ -352,12 +378,12 @@ export const FormAccessibility: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-            <strong>✅ Accessible features:</strong>
-            <br />• Proper labels with htmlFor
-            <br />• aria-required for required fields
-            <br />• aria-invalid for validation
-            <br />• aria-describedby for help text
-            <br />• role="alert" for errors
+            <strong>{t('storybook.a11y.accessibleFeatures')}:</strong>
+            <br />• {t('storybook.a11y.properLabelsHtmlFor')}
+            <br />• {t('storybook.a11y.ariaRequiredFields')}
+            <br />• {t('storybook.a11y.ariaInvalidValidation')}
+            <br />• {t('storybook.a11y.ariaDescribedbyHelp')}
+            <br />• {t('storybook.a11y.roleAlertErrors')}
           </Paragraph>
         </div>
       </Card>
@@ -371,135 +397,146 @@ export const FormAccessibility: Story = {
  * Visually hidden text for screen readers
  */
 export const ScreenReaderText: Story = {
-  render: () => (
-    <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
-      <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Screen Reader Only Text
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        <button
-          type="button"
-          style={{
-            padding: 'var(--ds-spacing-3)',
-            backgroundColor: 'var(--ds-color-accent-base-default)',
-            color: 'var(--ds-color-accent-contrast-default)',
-            border: 'none',
-            borderRadius: 'var(--ds-border-radius-md)',
-            cursor: 'pointer',
-          }}
-        >
-          <span
+    return (
+      <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
+        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.a11y.screenReaderOnlyText')}
+        </Heading>
+
+        <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          <button
+            type="button"
             style={{
-              position: 'absolute',
-              width: '1px',
-              height: '1px',
-              padding: 0,
-              margin: '-1px',
-              overflow: 'hidden',
-              clip: 'rect(0, 0, 0, 0)',
-              whiteSpace: 'nowrap',
-              border: 0,
+              padding: 'var(--ds-spacing-3)',
+              backgroundColor: 'var(--ds-color-accent-base-default)',
+              color: 'var(--ds-color-accent-contrast-default)',
+              border: 'none',
+              borderRadius: 'var(--ds-border-radius-md)',
+              cursor: 'pointer',
             }}
           >
-            Close dialog
-          </span>
-          ✕
-        </button>
-      </div>
+            <span
+              style={{
+                position: 'absolute',
+                width: '1px',
+                height: '1px',
+                padding: 0,
+                margin: '-1px',
+                overflow: 'hidden',
+                clip: 'rect(0, 0, 0, 0)',
+                whiteSpace: 'nowrap',
+                border: 0,
+              }}
+            >
+              {t('storybook.a11y.closeDialog')}
+            </span>
+            ✕
+          </button>
+        </div>
 
-      <div
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-info-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-          <strong>Pattern:</strong> The "✕" is visible, but screen readers announce "Close dialog"
-        </Paragraph>
-      </div>
-    </Card>
-  ),
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-info-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
+            <strong>{t('storybook.a11y.pattern')}:</strong>{' '}
+            {t('storybook.a11y.screenReaderPattern')}
+          </Paragraph>
+        </div>
+      </Card>
+    );
+  },
 };
 
 /**
  * Accessibility Checklist
  */
 export const Checklist: Story = {
-  render: () => (
-    <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Accessibility Checklist
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            category: 'Keyboard',
-            items: [
-              'All interactive elements are keyboard accessible',
-              'Tab order is logical',
-              'Focus indicators are visible',
-              'No keyboard traps',
-            ],
-          },
-          {
-            category: 'Screen Readers',
-            items: [
-              'All images have alt text',
-              'Form inputs have labels',
-              'ARIA labels for icon buttons',
-              'Landmarks for page regions',
-            ],
-          },
-          {
-            category: 'Visual',
-            items: [
-              'Color contrast meets 4.5:1 ratio',
-              'Text is resizable to 200%',
-              'No information by color alone',
-              'Focus indicators are clear',
-            ],
-          },
-          {
-            category: 'Content',
-            items: [
-              'Headings are hierarchical',
-              'Links are descriptive',
-              'Error messages are clear',
-              'Instructions are provided',
-            ],
-          },
-        ].map(({ category, items }) => (
-          <div key={category}>
-            <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-              {category}
-            </Heading>
-            <div
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-              }}
-            >
-              {items.map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: 'flex',
-                    gap: 'var(--ds-spacing-2)',
-                    marginBottom: index < items.length - 1 ? 'var(--ds-spacing-2)' : 0,
-                  }}
-                >
-                  <span style={{ color: 'var(--ds-color-success-text-default)' }}>✓</span>
-                  <Paragraph data-size="sm">{item}</Paragraph>
-                </div>
-              ))}
+    const checklistData = [
+      {
+        category: t('storybook.a11y.keyboard'),
+        items: [
+          t('storybook.a11y.checklistKeyboardAccessible'),
+          t('storybook.a11y.checklistTabOrder'),
+          t('storybook.a11y.checklistFocusVisible'),
+          t('storybook.a11y.checklistNoKeyboardTraps'),
+        ],
+      },
+      {
+        category: t('storybook.a11y.screenReaders'),
+        items: [
+          t('storybook.a11y.checklistAltText'),
+          t('storybook.a11y.checklistFormLabels'),
+          t('storybook.a11y.checklistAriaLabels'),
+          t('storybook.a11y.checklistLandmarks'),
+        ],
+      },
+      {
+        category: t('storybook.a11y.visual'),
+        items: [
+          t('storybook.a11y.checklistContrastRatio'),
+          t('storybook.a11y.checklistTextResizable'),
+          t('storybook.a11y.checklistNoColorAlone'),
+          t('storybook.a11y.checklistFocusClear'),
+        ],
+      },
+      {
+        category: t('storybook.a11y.content'),
+        items: [
+          t('storybook.a11y.checklistHeadingsHierarchy'),
+          t('storybook.a11y.checklistLinksDescriptive'),
+          t('storybook.a11y.checklistErrorsClear'),
+          t('storybook.a11y.checklistInstructionsProvided'),
+        ],
+      },
+    ];
+
+    return (
+      <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.a11y.accessibilityChecklist')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          {checklistData.map(({ category, items }) => (
+            <div key={category}>
+              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+                {category}
+              </Heading>
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                }}
+              >
+                {items.map((item, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      gap: 'var(--ds-spacing-2)',
+                      marginBottom: index < items.length - 1 ? 'var(--ds-spacing-2)' : 0,
+                    }}
+                  >
+                    <span style={{ color: 'var(--ds-color-success-text-default)' }}>✓</span>
+                    <Paragraph data-size="sm">{item}</Paragraph>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </Card>
-  ),
+          ))}
+        </div>
+      </Card>
+    );
+  },
 };

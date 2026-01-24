@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../../composed/Modal';
 import { Button, Paragraph, Heading } from '@digdir/designsystemet-react';
@@ -67,19 +68,15 @@ type Story = StoryObj<typeof meta>;
 
 // Modal wrapper component for stories
 const ModalWrapper = (args: any) => {
+  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-        Open Modal
+        {t('storybook.demo.openModal')}
       </Button>
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        {args.children || (
-          <Paragraph data-size="sm">
-            This is the modal content. You can add any content here, including forms, images, or
-            other components.
-          </Paragraph>
-        )}
+        {args.children || <Paragraph data-size="sm">{t('storybook.demo.modalContent')}</Paragraph>}
       </Modal>
     </>
   );
@@ -146,39 +143,37 @@ export const FullWidth: Story = {
 };
 
 // With footer
+const ModalWithFooter = (args: any) => {
+  const t = useT();
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
+        {t('storybook.demo.openModalWithFooter')}
+      </Button>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        footer={
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}>
+            <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
+              {t('platform.common.cancel')}
+            </Button>
+            <Button onClick={() => setIsOpen(false)} data-color="accent" data-size="medium">
+              {t('platform.common.confirm')}
+            </Button>
+          </div>
+        }
+      >
+        <Paragraph data-size="sm">{t('storybook.demo.modalFooterDescription')}</Paragraph>
+      </Modal>
+    </>
+  );
+};
+
 export const WithFooter: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false);
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-          Open Modal with Footer
-        </Button>
-        <Modal
-          {...args}
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          footer={
-            <div
-              style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}
-            >
-              <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
-                Cancel
-              </Button>
-              <Button onClick={() => setIsOpen(false)} data-color="accent" data-size="medium">
-                Confirm
-              </Button>
-            </div>
-          }
-        >
-          <Paragraph data-size="sm">
-            This modal has a footer with action buttons. The footer is separated from the content
-            and styled appropriately.
-          </Paragraph>
-        </Modal>
-      </>
-    );
-  },
+  render: (args) => <ModalWithFooter {...args} />,
   args: {
     title: 'Modal with Footer',
     size: 'md',
@@ -212,27 +207,29 @@ export const WithoutTitle: Story = {
 };
 
 // Long content
+const ModalWithLongContent = (args: any) => {
+  const t = useT();
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
+        {t('storybook.demo.openModalWithLongContent')}
+      </Button>
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        {Array(20)
+          .fill(0)
+          .map((_, i) => (
+            <Paragraph key={i} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+              {t('storybook.demo.paragraphContent', { number: i + 1 })}
+            </Paragraph>
+          ))}
+      </Modal>
+    </>
+  );
+};
+
 export const LongContent: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false);
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-          Open Modal with Long Content
-        </Button>
-        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          {Array(20)
-            .fill(0)
-            .map((_, i) => (
-              <Paragraph key={i} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                This is paragraph {i + 1} of a long content. The modal should handle scrolling
-                properly when content exceeds the viewport height.
-              </Paragraph>
-            ))}
-        </Modal>
-      </>
-    );
-  },
+  render: (args) => <ModalWithLongContent {...args} />,
   args: {
     title: 'Modal with Long Content',
     size: 'md',
@@ -243,38 +240,38 @@ export const LongContent: Story = {
 };
 
 // Using sub-components
+const ModalWithSubComponents = (args: any) => {
+  const t = useT();
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
+        {t('storybook.demo.openModalWithSubcomponents')}
+      </Button>
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalHeader>
+          <Heading level={3} data-size="sm">
+            {t('storybook.demo.sectionHeader')}
+          </Heading>
+        </ModalHeader>
+        <ModalBody>
+          <Paragraph data-size="sm">{t('storybook.demo.subcomponentsDescription')}</Paragraph>
+        </ModalBody>
+        <ModalFooter align="right">
+          <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
+            {t('platform.common.cancel')}
+          </Button>
+          <Button onClick={() => setIsOpen(false)} data-color="accent" data-size="medium">
+            {t('platform.common.save')}
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+};
+
 export const WithSubComponents: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false);
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-          Open Modal with Sub-components
-        </Button>
-        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <ModalHeader>
-            <Heading level={3} data-size="sm">
-              Section Header
-            </Heading>
-          </ModalHeader>
-          <ModalBody>
-            <Paragraph data-size="sm">
-              This modal uses the ModalHeader, ModalBody, and ModalFooter sub-components for better
-              structure and styling.
-            </Paragraph>
-          </ModalBody>
-          <ModalFooter align="right">
-            <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
-              Cancel
-            </Button>
-            <Button onClick={() => setIsOpen(false)} data-color="accent" data-size="medium">
-              Save
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </>
-    );
-  },
+  render: (args) => <ModalWithSubComponents {...args} />,
   args: {
     title: 'Modal with Sub-components',
     size: 'md',

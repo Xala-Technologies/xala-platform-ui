@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { PDFPreview } from '../../composed/PDFPreview';
 
 const meta: Meta<typeof PDFPreview> = {
@@ -71,110 +72,174 @@ A PDF document preview component for invoices, reports, etc. Supports pagination
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.documentPreview')}
+      showToolbar={true}
+      showDownload={true}
+      showPrint={true}
+      showZoom={true}
+      showPageNav={true}
+      initialZoom={100}
+    />
+  );
+};
+
 // Basic PDF preview
 export const Default: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Document Preview',
-    showToolbar: true,
-    showDownload: true,
-    showPrint: true,
-    showZoom: true,
-    showPageNav: true,
-    initialZoom: 100,
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for with title story
+const WithTitleDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={`${t('storybook.demo.invoice')} #12345`}
+      showToolbar={true}
+      showDownload={true}
+      showPrint={true}
+      showZoom={true}
+      showPageNav={true}
+    />
+  );
 };
 
 // With title
 export const WithTitle: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Invoice #12345',
-    showToolbar: true,
-    showDownload: true,
-    showPrint: true,
-    showZoom: true,
-    showPageNav: true,
-  },
+  render: () => <WithTitleDemo />,
+};
+
+// Wrapper for minimal toolbar story
+const MinimalToolbarDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.document')}
+      showToolbar={true}
+      showDownload={false}
+      showPrint={false}
+      showZoom={false}
+      showPageNav={true}
+    />
+  );
 };
 
 // Minimal toolbar
 export const MinimalToolbar: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Document',
-    showToolbar: true,
-    showDownload: false,
-    showPrint: false,
-    showZoom: false,
-    showPageNav: true,
-  },
+  render: () => <MinimalToolbarDemo />,
+};
+
+// Wrapper for download only story
+const DownloadOnlyDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.downloadableDocument')}
+      showToolbar={true}
+      showDownload={true}
+      showPrint={false}
+      showZoom={false}
+      showPageNav={false}
+    />
+  );
 };
 
 // Download only
 export const DownloadOnly: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Downloadable Document',
-    showToolbar: true,
-    showDownload: true,
-    showPrint: false,
-    showZoom: false,
-    showPageNav: false,
-  },
+  render: () => <DownloadOnlyDemo />,
+};
+
+// Wrapper for print only story
+const PrintOnlyDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.printableDocument')}
+      showToolbar={true}
+      showDownload={false}
+      showPrint={true}
+      showZoom={false}
+      showPageNav={false}
+    />
+  );
 };
 
 // Print only
 export const PrintOnly: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Printable Document',
-    showToolbar: true,
-    showDownload: false,
-    showPrint: true,
-    showZoom: false,
-    showPageNav: false,
-  },
+  render: () => <PrintOnlyDemo />,
+};
+
+// Wrapper for custom size story
+const CustomSizeDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.customSize')}
+      width="800px"
+      height="600px"
+      showToolbar={true}
+      showDownload={true}
+      showPrint={true}
+      showZoom={true}
+      showPageNav={true}
+    />
+  );
 };
 
 // Custom size
 export const CustomSize: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Custom Size',
-    width: '800px',
-    height: '600px',
-    showToolbar: true,
-    showDownload: true,
-    showPrint: true,
-    showZoom: true,
-    showPageNav: true,
-  },
+  render: () => <CustomSizeDemo />,
+};
+
+// Wrapper for without toolbar story
+const WithoutToolbarDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.noToolbar')}
+      showToolbar={false}
+      width="600px"
+      height="800px"
+    />
+  );
 };
 
 // Without toolbar
 export const WithoutToolbar: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'No Toolbar',
-    showToolbar: false,
-    width: '600px',
-    height: '800px',
-  },
+  render: () => <WithoutToolbarDemo />,
+};
+
+// Wrapper for full featured story
+const FullFeaturedDemo = () => {
+  const t = useT();
+  return (
+    <PDFPreview
+      src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      title={t('storybook.demo.fullFeaturedPreview')}
+      showToolbar={true}
+      showDownload={true}
+      showPrint={true}
+      showZoom={true}
+      showPageNav={true}
+      initialZoom={100}
+      width="100%"
+      height="800px"
+    />
+  );
 };
 
 // Full featured
 export const FullFeatured: Story = {
-  args: {
-    src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    title: 'Full Featured Preview',
-    showToolbar: true,
-    showDownload: true,
-    showPrint: true,
-    showZoom: true,
-    showPageNav: true,
-    initialZoom: 100,
-    width: '100%',
-    height: '800px',
-  },
+  render: () => <FullFeaturedDemo />,
 };

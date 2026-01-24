@@ -4,6 +4,7 @@
  * Pattern components for success and confirmation states.
  */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { SuccessView } from '../../patterns/SuccessView';
 import { ConfirmationView } from '../../patterns/ConfirmationView';
 

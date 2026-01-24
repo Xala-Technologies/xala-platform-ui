@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Radio, Fieldset, ValidationMessage, Heading } from '../../index';
 
 /**
@@ -75,15 +76,15 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 \`\`\`tsx
 <Fieldset>
   <Fieldset.Legend>Select plan</Fieldset.Legend>
-  <Radio 
+  <Radio
     label="Basic"
-    name="plan" 
+    name="plan"
     value="basic"
     description="Up to 5 bookings per month"
   />
-  <Radio 
+  <Radio
     label="Pro"
-    name="plan" 
+    name="plan"
     value="pro"
     description="Unlimited bookings, priority support"
   />
@@ -188,109 +189,137 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Select time slot</Fieldset.Legend>
-      <Radio label="Morning (08:00 - 12:00)" name="time" value="morning" />
-      <Radio label="Afternoon (12:00 - 16:00)" name="time" value="afternoon" />
-      <Radio label="Evening (16:00 - 20:00)" name="time" value="evening" />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.selectTimeSlot')}</Fieldset.Legend>
+        <Radio label={t('storybook.demo.morning')} name="time" value="morning" />
+        <Radio label={t('storybook.demo.afternoon')} name="time" value="afternoon" />
+        <Radio label={t('storybook.demo.evening')} name="time" value="evening" />
+      </Fieldset>
+    );
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Select plan</Fieldset.Legend>
-      <Radio
-        label="Basic"
-        name="plan"
-        value="basic"
-        description="Up to 5 resourceRequests per month"
-      />
-      <Radio
-        label="Pro"
-        name="plan"
-        value="pro"
-        description="Unlimited resourceRequests, priority support"
-      />
-      <Radio
-        label="Enterprise"
-        name="plan"
-        value="enterprise"
-        description="Custom features, dedicated support"
-      />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.selectPlan')}</Fieldset.Legend>
+        <Radio
+          label={t('storybook.demo.basic')}
+          name="plan"
+          value="basic"
+          description={t('storybook.demo.basicPlanDescription')}
+        />
+        <Radio
+          label={t('storybook.demo.pro')}
+          name="plan"
+          value="pro"
+          description={t('storybook.demo.proPlanDescription')}
+        />
+        <Radio
+          label={t('storybook.demo.enterprise')}
+          name="plan"
+          value="enterprise"
+          description={t('storybook.demo.enterprisePlanDescription')}
+        />
+      </Fieldset>
+    );
+  },
 };
 
 export const Horizontal: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Payment method</Fieldset.Legend>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
-        <Radio label="Card" name="payment" value="card" />
-        <Radio label="Invoice" name="payment" value="invoice" />
-        <Radio label="Vipps" name="payment" value="vipps" />
-      </div>
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.paymentMethod')}</Fieldset.Legend>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
+          <Radio label={t('storybook.demo.card')} name="payment" value="card" />
+          <Radio label={t('storybook.demo.invoice')} name="payment" value="invoice" />
+          <Radio label={t('storybook.demo.vipps')} name="payment" value="vipps" />
+        </div>
+      </Fieldset>
+    );
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Status</Fieldset.Legend>
-      <Radio label="Active" name="status" value="active" defaultChecked />
-      <Radio label="Inactive (unavailable)" name="status" value="inactive" disabled />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.status')}</Fieldset.Legend>
+        <Radio label={t('platform.status.active')} name="status" value="active" defaultChecked />
+        <Radio
+          label={t('storybook.demo.inactiveUnavailable')}
+          name="status"
+          value="inactive"
+          disabled
+        />
+      </Fieldset>
+    );
+  },
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Select a category</Fieldset.Legend>
-      <Radio label="Lokaler" name="category" value="lokaler" aria-invalid="true" />
-      <Radio label="Utstyr" name="category" value="utstyr" aria-invalid="true" />
-      <ValidationMessage>You must select a category</ValidationMessage>
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.selectCategory')}</Fieldset.Legend>
+        <Radio
+          label={t('storybook.demo.venues')}
+          name="category"
+          value="lokaler"
+          aria-invalid="true"
+        />
+        <Radio
+          label={t('storybook.demo.equipment')}
+          name="category"
+          value="utstyr"
+          aria-invalid="true"
+        />
+        <ValidationMessage>{t('storybook.demo.mustSelectCategory')}</ValidationMessage>
+      </Fieldset>
+    );
+  },
 };
 
 /**
  * Interactive radio group with state
  */
 export const InteractiveGroup: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [selected, setSelected] = useState('email');
 
     return (
       <Fieldset>
-        <Fieldset.Legend>How would you like us to contact you?</Fieldset.Legend>
-        <Fieldset.Description>
-          Choose the method that works best for you. We use this only to send important updates
-          about your case.
-        </Fieldset.Description>
+        <Fieldset.Legend>{t('storybook.demo.howToContactYou')}</Fieldset.Legend>
+        <Fieldset.Description>{t('storybook.demo.contactMethodDescription')}</Fieldset.Description>
         <Radio
-          label="Email"
-          description="We will use the email address you provided earlier (name@example.com)"
+          label={t('storybook.demo.email')}
+          description={t('storybook.demo.emailContactDescription')}
           value="email"
           name="contact"
           checked={selected === 'email'}
           onChange={(e) => setSelected(e.target.value)}
         />
         <Radio
-          label="SMS"
-          description="We will use the phone number you provided earlier (99 99 99 99)"
+          label={t('storybook.demo.sms')}
+          description={t('storybook.demo.smsContactDescription')}
           value="sms"
           name="contact"
           checked={selected === 'sms'}
           onChange={(e) => setSelected(e.target.value)}
         />
         <Radio
-          label="Letter"
-          description="Delivery may take 3-5 working days, depending on the postal service."
+          label={t('storybook.demo.letter')}
+          description={t('storybook.demo.letterContactDescription')}
           value="letter"
           name="contact"
           checked={selected === 'letter'}
@@ -304,7 +333,7 @@ export const InteractiveGroup: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>Selected:</strong> {selected}
+          <strong>{t('storybook.demo.selected')}:</strong> {selected}
         </div>
       </Fieldset>
     );
@@ -315,84 +344,100 @@ export const InteractiveGroup: Story = {
  * Size variants
  */
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Radio label="Small radio" name="size-demo" value="sm" data-size="sm" />
-      <Radio label="Medium radio" name="size-demo" value="md" data-size="md" />
-      <Radio label="Large radio" name="size-demo" value="lg" data-size="lg" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Radio label={t('storybook.demo.smallRadio')} name="size-demo" value="sm" data-size="sm" />
+        <Radio label={t('storybook.demo.mediumRadio')} name="size-demo" value="md" data-size="md" />
+        <Radio label={t('storybook.demo.largeRadio')} name="size-demo" value="lg" data-size="lg" />
+      </div>
+    );
+  },
 };
 
 /**
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Vertical Layout
-        </Heading>
-        <Fieldset>
-          <Fieldset.Legend>Select time slot</Fieldset.Legend>
-          <Radio label="Morning" name="time1" value="morning" />
-          <Radio label="Afternoon" name="time1" value="afternoon" />
-          <Radio label="Evening" name="time1" value="evening" />
-        </Fieldset>
-      </div>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.verticalLayout')}
+          </Heading>
+          <Fieldset>
+            <Fieldset.Legend>{t('storybook.demo.selectTimeSlot')}</Fieldset.Legend>
+            <Radio label={t('storybook.demo.morning')} name="time1" value="morning" />
+            <Radio label={t('storybook.demo.afternoon')} name="time1" value="afternoon" />
+            <Radio label={t('storybook.demo.evening')} name="time1" value="evening" />
+          </Fieldset>
+        </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Horizontal Layout
-        </Heading>
-        <Fieldset>
-          <Fieldset.Legend>Payment method</Fieldset.Legend>
-          <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
-            <Radio label="Card" name="payment1" value="card" />
-            <Radio label="Invoice" name="payment1" value="invoice" />
-            <Radio label="Vipps" name="payment1" value="vipps" />
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.horizontalLayout')}
+          </Heading>
+          <Fieldset>
+            <Fieldset.Legend>{t('storybook.demo.paymentMethod')}</Fieldset.Legend>
+            <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
+              <Radio label={t('storybook.demo.card')} name="payment1" value="card" />
+              <Radio label={t('storybook.demo.invoice')} name="payment1" value="invoice" />
+              <Radio label={t('storybook.demo.vipps')} name="payment1" value="vipps" />
+            </div>
+          </Fieldset>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.withDescriptions')}
+          </Heading>
+          <Fieldset>
+            <Fieldset.Legend>{t('storybook.demo.selectPlan')}</Fieldset.Legend>
+            <Radio
+              label={t('storybook.demo.basic')}
+              description={t('storybook.demo.upTo5BookingsPerMonth')}
+              name="plan1"
+              value="basic"
+            />
+            <Radio
+              label={t('storybook.demo.pro')}
+              description={t('storybook.demo.unlimitedBookings')}
+              name="plan1"
+              value="pro"
+            />
+          </Fieldset>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.states')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Radio label={t('storybook.story.default')} name="states" value="default" />
+            <Radio
+              label={t('storybook.demo.selected')}
+              name="states"
+              value="selected"
+              defaultChecked
+            />
+            <Radio label={t('storybook.story.disabled')} name="states" value="disabled" disabled />
           </div>
-        </Fieldset>
-      </div>
+        </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          With Descriptions
-        </Heading>
-        <Fieldset>
-          <Fieldset.Legend>Select plan</Fieldset.Legend>
-          <Radio
-            label="Basic"
-            description="Up to 5 bookings per month"
-            name="plan1"
-            value="basic"
-          />
-          <Radio label="Pro" description="Unlimited bookings" name="plan1" value="pro" />
-        </Fieldset>
-      </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          States
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Radio label="Default" name="states" value="default" />
-          <Radio label="Selected" name="states" value="selected" defaultChecked />
-          <Radio label="Disabled" name="states" value="disabled" disabled />
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Radio label={t('storybook.demo.small')} name="sizes" value="sm" data-size="sm" />
+            <Radio label={t('storybook.demo.medium')} name="sizes" value="md" data-size="md" />
+            <Radio label={t('storybook.demo.large')} name="sizes" value="lg" data-size="lg" />
+          </div>
         </div>
       </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Radio label="Small" name="sizes" value="sm" data-size="sm" />
-          <Radio label="Medium" name="sizes" value="md" data-size="md" />
-          <Radio label="Large" name="sizes" value="lg" data-size="lg" />
-        </div>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

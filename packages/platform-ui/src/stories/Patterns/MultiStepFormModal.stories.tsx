@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Paragraph, Checkbox } from '@digdir/designsystemet-react';
 import { MultiStepFormModal } from '../../patterns/MultiStepFormModal';
 import { ReviewStep } from '../../patterns/ReviewStep';

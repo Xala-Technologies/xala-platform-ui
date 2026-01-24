@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Heading, Paragraph, Label, Link } from '../../index';
 
 const meta: Meta = {
@@ -17,7 +18,7 @@ Typography components for text styling.
 - **Link**: Inline links
 
 ## Best Practices
-- Use semantic heading levels (h1 → h2 → h3)
+- Use semantic heading levels (h1 -> h2 -> h3)
 - Don't skip heading levels
 - Use data-size to adjust visual size
 - Keep paragraphs concise
@@ -39,167 +40,182 @@ export default meta;
 type Story = StoryObj;
 
 export const Headings: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Heading level={1}>Heading Level 1</Heading>
-      <Heading level={2}>Heading Level 2</Heading>
-      <Heading level={3}>Heading Level 3</Heading>
-      <Heading level={4}>Heading Level 4</Heading>
-      <Heading level={5}>Heading Level 5</Heading>
-      <Heading level={6}>Heading Level 6</Heading>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Heading level={1}>{t('storybook.demo.headingLevel')} 1</Heading>
+        <Heading level={2}>{t('storybook.demo.headingLevel')} 2</Heading>
+        <Heading level={3}>{t('storybook.demo.headingLevel')} 3</Heading>
+        <Heading level={4}>{t('storybook.demo.headingLevel')} 4</Heading>
+        <Heading level={5}>{t('storybook.demo.headingLevel')} 5</Heading>
+        <Heading level={6}>{t('storybook.demo.headingLevel')} 6</Heading>
+      </div>
+    );
+  },
 };
 
 export const HeadingSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Heading level={2} data-size="2xs">
-        2XS Heading
-      </Heading>
-      <Heading level={2} data-size="xs">
-        XS Heading
-      </Heading>
-      <Heading level={2} data-size="sm">
-        SM Heading
-      </Heading>
-      <Heading level={2} data-size="md">
-        MD Heading
-      </Heading>
-      <Heading level={2} data-size="lg">
-        LG Heading
-      </Heading>
-      <Heading level={2} data-size="xl">
-        XL Heading
-      </Heading>
-      <Heading level={2} data-size="2xl">
-        2XL Heading
-      </Heading>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Heading level={2} data-size="2xs">
+          2XS {t('storybook.demo.heading')}
+        </Heading>
+        <Heading level={2} data-size="xs">
+          XS {t('storybook.demo.heading')}
+        </Heading>
+        <Heading level={2} data-size="sm">
+          SM {t('storybook.demo.heading')}
+        </Heading>
+        <Heading level={2} data-size="md">
+          MD {t('storybook.demo.heading')}
+        </Heading>
+        <Heading level={2} data-size="lg">
+          LG {t('storybook.demo.heading')}
+        </Heading>
+        <Heading level={2} data-size="xl">
+          XL {t('storybook.demo.heading')}
+        </Heading>
+        <Heading level={2} data-size="2xl">
+          2XL {t('storybook.demo.heading')}
+        </Heading>
+      </div>
+    );
+  },
 };
 
 export const Paragraphs: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Paragraph data-size="sm">
-        Small paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Paragraph>
-      <Paragraph data-size="md">
-        Medium paragraph (default). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </Paragraph>
-      <Paragraph data-size="lg">
-        Large paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Paragraph>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Paragraph data-size="sm">
+          {t('storybook.demo.smallParagraph')}. {t('storybook.demo.loremIpsum')}
+        </Paragraph>
+        <Paragraph data-size="md">
+          {t('storybook.demo.mediumParagraphDefault')}. {t('storybook.demo.loremIpsum')}
+        </Paragraph>
+        <Paragraph data-size="lg">
+          {t('storybook.demo.largeParagraph')}. {t('storybook.demo.loremIpsum')}
+        </Paragraph>
+      </div>
+    );
+  },
 };
 
 export const LeadParagraph: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Heading level={1}>Article Title</Heading>
-      <Paragraph data-size="lg">
-        This is a lead paragraph that summarizes the article. It's styled larger than regular
-        paragraphs to stand out as a lead-in text.
-      </Paragraph>
-      <Paragraph>
-        This is a regular paragraph that follows the lead. It contains the main body text of the
-        article.
-      </Paragraph>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Heading level={1}>{t('storybook.demo.articleTitle')}</Heading>
+        <Paragraph data-size="lg">{t('storybook.demo.leadParagraphText')}</Paragraph>
+        <Paragraph>{t('storybook.demo.regularParagraphText')}</Paragraph>
+      </div>
+    );
+  },
 };
 
 export const Labels: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Label data-size="sm">Small Label</Label>
-      <Label data-size="md">Medium Label</Label>
-      <Label data-size="lg">Large Label</Label>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Label data-size="sm">{t('storybook.demo.smallLabel')}</Label>
+        <Label data-size="md">{t('storybook.demo.mediumLabel')}</Label>
+        <Label data-size="lg">{t('storybook.demo.largeLabel')}</Label>
+      </div>
+    );
+  },
 };
 
 export const InlineLink: Story = {
-  render: () => (
-    <Paragraph>
-      Read more about our <Link href="#">resourceRequest policies</Link> and
-      <Link href="#">terms of service</Link> before making a reservation.
-    </Paragraph>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Paragraph>
+        {t('storybook.demo.readMoreAbout')}{' '}
+        <Link href="#">{t('storybook.demo.bookingPolicies')}</Link> {t('storybook.demo.and')}{' '}
+        <Link href="#">{t('storybook.demo.termsOfService')}</Link>{' '}
+        {t('storybook.demo.beforeMakingReservation')}
+      </Paragraph>
+    );
+  },
 };
 
 export const CombinedExample: Story = {
-  render: () => (
-    <article>
-      <Heading level={1} data-size="xl">
-        Welcome to the Platform
-      </Heading>
-      <Paragraph data-size="lg">
-        The modern platform for booking municipal facilities and services. Easily find and reserve
-        spaces for your activities.
-      </Paragraph>
-      <Heading level={2} data-size="md">
-        How it works
-      </Heading>
-      <Paragraph>
-        Browse available <Link href="#">listings</Link>, select your preferred date and time, and
-        complete your booking in minutes. It's that simple.
-      </Paragraph>
-      <Heading level={2} data-size="md">
-        Get started
-      </Heading>
-      <Paragraph>
-        Create an account to start booking today. Need help? Check out our <Link href="#">FAQ</Link>{' '}
-        or <Link href="#">contact us</Link>.
-      </Paragraph>
-    </article>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <article>
+        <Heading level={1} data-size="xl">
+          {t('storybook.demo.welcomeToThePlatform')}
+        </Heading>
+        <Paragraph data-size="lg">{t('storybook.demo.platformDescription')}</Paragraph>
+        <Heading level={2} data-size="md">
+          {t('storybook.demo.howItWorks')}
+        </Heading>
+        <Paragraph>
+          {t('storybook.demo.browseAvailable')} <Link href="#">{t('storybook.demo.listings')}</Link>
+          , {t('storybook.demo.selectPreferredDateAndTime')}.
+        </Paragraph>
+        <Heading level={2} data-size="md">
+          {t('storybook.demo.getStarted')}
+        </Heading>
+        <Paragraph>
+          {t('storybook.demo.createAccountToStart')}. {t('storybook.demo.needHelp')}{' '}
+          <Link href="#">{t('storybook.demo.faq')}</Link> {t('storybook.demo.or')}{' '}
+          <Link href="#">{t('storybook.demo.contactUs')}</Link>.
+        </Paragraph>
+      </article>
+    );
+  },
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Heading Levels
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-          <Heading level={1} data-size="lg">
-            H1 Heading
-          </Heading>
-          <Heading level={2} data-size="md">
-            H2 Heading
-          </Heading>
-          <Heading level={3} data-size="sm">
-            H3 Heading
-          </Heading>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.headingLevels')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+            <Heading level={1} data-size="lg">
+              H1 {t('storybook.demo.heading')}
+            </Heading>
+            <Heading level={2} data-size="md">
+              H2 {t('storybook.demo.heading')}
+            </Heading>
+            <Heading level={3} data-size="sm">
+              H3 {t('storybook.demo.heading')}
+            </Heading>
+          </div>
+        </div>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.paragraphSizes')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Paragraph data-size="sm">{t('storybook.demo.smallParagraphText')}</Paragraph>
+            <Paragraph data-size="md">{t('storybook.demo.mediumParagraphTextDefault')}</Paragraph>
+            <Paragraph data-size="lg">{t('storybook.demo.largeParagraphTextLead')}</Paragraph>
+          </div>
+        </div>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.labels')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+            <Label data-size="sm">{t('storybook.demo.smallLabel')}</Label>
+            <Label data-size="md">{t('storybook.demo.mediumLabel')}</Label>
+            <Label data-size="lg">{t('storybook.demo.largeLabel')}</Label>
+          </div>
         </div>
       </div>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Paragraph Sizes
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Paragraph data-size="sm">Small paragraph text</Paragraph>
-          <Paragraph data-size="md">Medium paragraph text (default)</Paragraph>
-          <Paragraph data-size="lg">Large paragraph text (lead)</Paragraph>
-        </div>
-      </div>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Labels
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-          <Label data-size="sm">Small label</Label>
-          <Label data-size="md">Medium label</Label>
-          <Label data-size="lg">Large label</Label>
-        </div>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

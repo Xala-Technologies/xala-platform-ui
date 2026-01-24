@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Switch, Fieldset, Heading } from '../../index';
 
 /**
@@ -68,7 +69,7 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### With Description
 \`\`\`tsx
-<Switch 
+<Switch
   label="Dark mode"
   description="Switch between light and dark theme"
 />
@@ -76,9 +77,9 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### Checked by Default
 \`\`\`tsx
-<Switch 
-  label="Email notifications" 
-  defaultChecked 
+<Switch
+  label="Email notifications"
+  defaultChecked
 />
 \`\`\`
 
@@ -96,7 +97,7 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 \`\`\`tsx
 const [enabled, setEnabled] = useState(false);
 
-<Switch 
+<Switch
   label="Feature enabled"
   checked={enabled}
   onChange={(e) => setEnabled(e.target.checked)}
@@ -144,7 +145,7 @@ Don't use switches for destructive actions like "Delete account" without confirm
 ### Required Switches
 For required settings:
 \`\`\`tsx
-<Switch 
+<Switch
   label="Accept terms and conditions"
   required
   aria-required="true"
@@ -187,55 +188,85 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <Switch label="Enable notifications" />,
+  render: function Render() {
+    const t = useT();
+    return <Switch label={t('storybook.demo.enableNotifications')} />;
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => <Switch label="Dark mode" description="Switch between light and dark theme" />,
+  render: function Render() {
+    const t = useT();
+    return (
+      <Switch
+        label={t('storybook.demo.darkMode')}
+        description={t('storybook.demo.darkModeDescription')}
+      />
+    );
+  },
 };
 
 export const Checked: Story = {
-  render: () => <Switch label="Email notifications" defaultChecked />,
+  render: function Render() {
+    const t = useT();
+    return <Switch label={t('storybook.demo.emailNotifications')} defaultChecked />;
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Switch label="Disabled off" disabled />
-      <Switch label="Disabled on" disabled defaultChecked />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Switch label={t('storybook.demo.disabledOff')} disabled />
+        <Switch label={t('storybook.demo.disabledOn')} disabled defaultChecked />
+      </div>
+    );
+  },
 };
 
 export const ReadOnly: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Switch label="Read-only off" readOnly />
-      <Switch label="Read-only on" readOnly defaultChecked />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Switch label={t('storybook.demo.readOnlyOff')} readOnly />
+        <Switch label={t('storybook.demo.readOnlyOn')} readOnly defaultChecked />
+      </div>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Switch label="Small switch" data-size="sm" />
-      <Switch label="Medium switch" data-size="md" />
-      <Switch label="Large switch" data-size="lg" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Switch label={t('storybook.demo.smallSwitch')} data-size="sm" />
+        <Switch label={t('storybook.demo.mediumSwitch')} data-size="md" />
+        <Switch label={t('storybook.demo.largeSwitch')} data-size="lg" />
+      </div>
+    );
+  },
 };
 
 export const SwitchGroup: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Turn lights on/off</Fieldset.Legend>
-      <Switch label="Living room" defaultChecked />
-      <Switch label="Kitchen" />
-      <Switch label="Bathroom" />
-      <Switch label="Bedroom" description="Unable to connect to the light bulbs" readOnly />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.turnLightsOnOff')}</Fieldset.Legend>
+        <Switch label={t('storybook.demo.livingRoom')} defaultChecked />
+        <Switch label={t('storybook.demo.kitchen')} />
+        <Switch label={t('storybook.demo.bathroom')} />
+        <Switch
+          label={t('storybook.demo.bedroom')}
+          description={t('storybook.demo.unableToConnectToLightBulbs')}
+          readOnly
+        />
+      </Fieldset>
+    );
+  },
 };
 
 /**
@@ -243,6 +274,7 @@ export const SwitchGroup: Story = {
  */
 export const Interactive: Story = {
   render: function Render() {
+    const t = useT();
     const [notifications, setNotifications] = useState({
       email: true,
       sms: false,
@@ -252,19 +284,19 @@ export const Interactive: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Fieldset>
-          <Fieldset.Legend>Notification preferences</Fieldset.Legend>
+          <Fieldset.Legend>{t('storybook.demo.notificationPreferences')}</Fieldset.Legend>
           <Switch
-            label="Email notifications"
+            label={t('storybook.demo.emailNotifications')}
             checked={notifications.email}
             onChange={(e) => setNotifications({ ...notifications, email: e.target.checked })}
           />
           <Switch
-            label="SMS notifications"
+            label={t('storybook.demo.smsNotifications')}
             checked={notifications.sms}
             onChange={(e) => setNotifications({ ...notifications, sms: e.target.checked })}
           />
           <Switch
-            label="Push notifications"
+            label={t('storybook.demo.pushNotifications')}
             checked={notifications.push}
             onChange={(e) => setNotifications({ ...notifications, push: e.target.checked })}
           />
@@ -276,11 +308,11 @@ export const Interactive: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>Active notifications:</strong>{' '}
+          <strong>{t('storybook.demo.activeNotifications')}:</strong>{' '}
           {Object.entries(notifications)
             .filter(([, v]) => v)
             .map(([k]) => k)
-            .join(', ') || 'None'}
+            .join(', ') || t('storybook.demo.none')}
         </div>
       </div>
     );
@@ -291,45 +323,51 @@ export const Interactive: Story = {
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          States
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Switch label="Default (off)" />
-          <Switch label="Checked (on)" defaultChecked />
-          <Switch label="With description" description="Additional context for this setting" />
-          <Switch label="Disabled off" disabled />
-          <Switch label="Disabled on" disabled defaultChecked />
-          <Switch label="Read-only off" readOnly />
-          <Switch label="Read-only on" readOnly defaultChecked />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.states')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Switch label={t('storybook.demo.defaultOff')} />
+            <Switch label={t('storybook.demo.checkedOn')} defaultChecked />
+            <Switch
+              label={t('storybook.demo.withDescription')}
+              description={t('storybook.demo.additionalContextForSetting')}
+            />
+            <Switch label={t('storybook.demo.disabledOff')} disabled />
+            <Switch label={t('storybook.demo.disabledOn')} disabled defaultChecked />
+            <Switch label={t('storybook.demo.readOnlyOff')} readOnly />
+            <Switch label={t('storybook.demo.readOnlyOn')} readOnly defaultChecked />
+          </div>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Switch label={t('storybook.demo.small')} data-size="sm" />
+            <Switch label={t('storybook.demo.medium')} data-size="md" />
+            <Switch label={t('storybook.demo.large')} data-size="lg" />
+          </div>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.grouped')}
+          </Heading>
+          <Fieldset>
+            <Fieldset.Legend>{t('storybook.demo.settings')}</Fieldset.Legend>
+            <Switch label={t('storybook.demo.option') + ' 1'} defaultChecked />
+            <Switch label={t('storybook.demo.option') + ' 2'} />
+            <Switch label={t('storybook.demo.option') + ' 3'} defaultChecked />
+          </Fieldset>
         </div>
       </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Switch label="Small" data-size="sm" />
-          <Switch label="Medium" data-size="md" />
-          <Switch label="Large" data-size="lg" />
-        </div>
-      </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Grouped
-        </Heading>
-        <Fieldset>
-          <Fieldset.Legend>Settings</Fieldset.Legend>
-          <Switch label="Option 1" defaultChecked />
-          <Switch label="Option 2" />
-          <Switch label="Option 3" defaultChecked />
-        </Fieldset>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

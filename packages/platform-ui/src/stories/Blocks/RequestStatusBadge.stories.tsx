@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { RequestStatusBadge, StatusTag } from '../../blocks/gdpr/RequestStatusBadge';
 import type { StatusBadgeConfig } from '../../blocks/gdpr/RequestStatusBadge';
 
@@ -114,61 +115,69 @@ export const AllStatuses: Story = {
 
 // StatusTag component - all colors
 export const StatusTagColors: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-2)',
-        padding: 'var(--ds-spacing-4)',
-      }}
-    >
-      <StatusTag color="success">Success</StatusTag>
-      <StatusTag color="warning">Warning</StatusTag>
-      <StatusTag color="danger">Danger</StatusTag>
-      <StatusTag color="info">Info</StatusTag>
-      <StatusTag color="neutral">Neutral</StatusTag>
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-2)',
+          padding: 'var(--ds-spacing-4)',
+        }}
+      >
+        <StatusTag color="success">{t('platform.status.completed')}</StatusTag>
+        <StatusTag color="warning">{t('platform.status.pending')}</StatusTag>
+        <StatusTag color="danger">{t('platform.status.rejected')}</StatusTag>
+        <StatusTag color="info">{t('platform.status.active')}</StatusTag>
+        <StatusTag color="neutral">{t('platform.status.cancelled')}</StatusTag>
+      </div>
+    );
+  },
 };
 
 // StatusTag component - all sizes
 export const StatusTagSizes: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--ds-spacing-4)',
-        alignItems: 'center',
-        padding: 'var(--ds-spacing-4)',
-      }}
-    >
-      <StatusTag color="success" size="sm">
-        Small
-      </StatusTag>
-      <StatusTag color="success" size="md">
-        Medium
-      </StatusTag>
-      <StatusTag color="success" size="lg">
-        Large
-      </StatusTag>
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-4)',
+          alignItems: 'center',
+          padding: 'var(--ds-spacing-4)',
+        }}
+      >
+        <StatusTag color="success" size="sm">
+          {t('platform.status.active')}
+        </StatusTag>
+        <StatusTag color="success" size="md">
+          {t('platform.status.active')}
+        </StatusTag>
+        <StatusTag color="success" size="lg">
+          {t('platform.status.active')}
+        </StatusTag>
+      </div>
+    );
+  },
 };
 
 // Custom status config
 export const CustomConfig: Story = {
-  args: {
-    status: 'active',
-    statusConfig: {
-      active: { color: 'success', label: 'Active' },
-      inactive: { color: 'neutral', label: 'Inactive' },
-      suspended: { color: 'danger', label: 'Suspended' },
-    },
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)' }}>
+        <RequestStatusBadge
+          status="active"
+          statusConfig={{
+            active: { color: 'success', label: t('platform.status.active') },
+            inactive: { color: 'neutral', label: t('platform.status.cancelled') },
+            suspended: { color: 'danger', label: t('platform.status.rejected') },
+          }}
+        />
+      </div>
+    );
   },
-  render: (args) => (
-    <div style={{ padding: 'var(--ds-spacing-4)' }}>
-      <RequestStatusBadge {...args} />
-    </div>
-  ),
 };

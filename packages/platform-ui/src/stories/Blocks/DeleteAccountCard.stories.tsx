@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import {
   DeleteAccountCard,
   DEFAULT_DELETE_ACCOUNT_LABELS,
@@ -61,11 +62,14 @@ export const NoRequest: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Pending request
@@ -84,11 +88,14 @@ export const Pending: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Processing request
@@ -107,11 +114,14 @@ export const Processing: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Completed request
@@ -130,11 +140,14 @@ export const Completed: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Rejected request
@@ -156,11 +169,14 @@ export const Rejected: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Loading state
@@ -175,11 +191,14 @@ export const Loading: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Deleting state
@@ -194,11 +213,14 @@ export const Deleting: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Cancelling state
@@ -217,11 +239,14 @@ export const Cancelling: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };
 
 // Error state
@@ -236,9 +261,12 @@ export const Error: Story = {
     onCancelRequest: fn(),
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <DeleteAccountCard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <DeleteAccountCard {...args} />
+      </div>
+    );
+  },
 };

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { StatCard, StatCardGrid } from '../../composed/StatCard';
 import { Users, DollarSign, TrendingUp, Activity } from 'lucide-react';
 
@@ -63,204 +64,314 @@ Consistent stat/metric cards for dashboards. Displays a value with label, option
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.totalUsers')}
+      value={1250}
+      variant="default"
+      size="md"
+      loading={false}
+    />
+  );
+};
+
 // Basic stat card
 export const Default: Story = {
-  args: {
-    label: 'Total Users',
-    value: 1250,
-    variant: 'default',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for with icon story
+const WithIconDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.totalUsers')}
+      value={1250}
+      icon={<Users size={24} />}
+      variant="default"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 // With icon
 export const WithIcon: Story = {
-  args: {
-    label: 'Total Users',
-    value: 1250,
-    icon: <Users size={24} />,
-    variant: 'default',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <WithIconDemo />,
+};
+
+// Wrapper for trend up story
+const TrendUpDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.revenue')}
+      value="$45,230"
+      trend={{
+        direction: 'up',
+        value: '12.5%',
+        label: t('storybook.demo.vsLastMonth'),
+      }}
+      icon={<TrendingUp size={24} />}
+      variant="success"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 // With trend up
 export const TrendUp: Story = {
-  args: {
-    label: 'Revenue',
-    value: '$45,230',
-    trend: {
-      direction: 'up',
-      value: '12.5%',
-      label: 'vs last month',
-    },
-    icon: <TrendingUp size={24} />,
-    variant: 'success',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <TrendUpDemo />,
+};
+
+// Wrapper for trend down story
+const TrendDownDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.activeUsers')}
+      value={892}
+      trend={{
+        direction: 'down',
+        value: '3.2%',
+        label: t('storybook.demo.vsLastWeek'),
+      }}
+      icon={<Activity size={24} />}
+      variant="danger"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 // With trend down
 export const TrendDown: Story = {
-  args: {
-    label: 'Active Users',
-    value: 892,
-    trend: {
-      direction: 'down',
-      value: '3.2%',
-      label: 'vs last week',
-    },
-    icon: <Activity size={24} />,
-    variant: 'danger',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <TrendDownDemo />,
+};
+
+// Wrapper for trend neutral story
+const TrendNeutralDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.orders')}
+      value={1240}
+      trend={{
+        direction: 'neutral',
+        value: '0%',
+        label: t('storybook.demo.noChange'),
+      }}
+      icon={<DollarSign size={24} />}
+      variant="default"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 // With trend neutral
 export const TrendNeutral: Story = {
-  args: {
-    label: 'Orders',
-    value: 1240,
-    trend: {
-      direction: 'neutral',
-      value: '0%',
-      label: 'no change',
-    },
-    icon: <DollarSign size={24} />,
-    variant: 'default',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <TrendNeutralDemo />,
+};
+
+// Wrapper for small size story
+const SmallDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.smallCard')}
+      value={100}
+      icon={<Users size={20} />}
+      variant="default"
+      size="sm"
+      loading={false}
+    />
+  );
 };
 
 // Size variants
 export const Small: Story = {
-  args: {
-    label: 'Small Card',
-    value: 100,
-    icon: <Users size={20} />,
-    variant: 'default',
-    size: 'sm',
-    loading: false,
-  },
+  render: () => <SmallDemo />,
+};
+
+// Wrapper for large size story
+const LargeDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.largeCard')}
+      value={5000}
+      icon={<Users size={32} />}
+      variant="default"
+      size="lg"
+      loading={false}
+    />
+  );
 };
 
 export const Large: Story = {
-  args: {
-    label: 'Large Card',
-    value: 5000,
-    icon: <Users size={32} />,
-    variant: 'default',
-    size: 'lg',
-    loading: false,
-  },
+  render: () => <LargeDemo />,
+};
+
+// Wrapper for success variant
+const SuccessDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.story.success')}
+      value={100}
+      icon={<Users size={24} />}
+      variant="success"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 // Variants
 export const Success: Story = {
-  args: {
-    label: 'Success',
-    value: 100,
-    icon: <Users size={24} />,
-    variant: 'success',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <SuccessDemo />,
+};
+
+// Wrapper for warning variant
+const WarningDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.warning')}
+      value={50}
+      icon={<Activity size={24} />}
+      variant="warning"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 export const Warning: Story = {
-  args: {
-    label: 'Warning',
-    value: 50,
-    icon: <Activity size={24} />,
-    variant: 'warning',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <WarningDemo />,
+};
+
+// Wrapper for danger variant
+const DangerDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.danger')}
+      value={25}
+      icon={<TrendingUp size={24} />}
+      variant="danger"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 export const Danger: Story = {
-  args: {
-    label: 'Danger',
-    value: 25,
-    icon: <TrendingUp size={24} />,
-    variant: 'danger',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <DangerDemo />,
+};
+
+// Wrapper for info variant
+const InfoDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.info')}
+      value={75}
+      icon={<DollarSign size={24} />}
+      variant="info"
+      size="md"
+      loading={false}
+    />
+  );
 };
 
 export const Info: Story = {
-  args: {
-    label: 'Info',
-    value: 75,
-    icon: <DollarSign size={24} />,
-    variant: 'info',
-    size: 'md',
-    loading: false,
-  },
+  render: () => <InfoDemo />,
+};
+
+// Wrapper for loading state
+const LoadingDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.story.loading')}
+      value={0}
+      variant="default"
+      size="md"
+      loading={true}
+    />
+  );
 };
 
 // Loading state
 export const Loading: Story = {
-  args: {
-    label: 'Loading',
-    value: 0,
-    variant: 'default',
-    size: 'md',
-    loading: true,
-  },
+  render: () => <LoadingDemo />,
+};
+
+// Wrapper for clickable story
+const ClickableDemo = () => {
+  const t = useT();
+  return (
+    <StatCard
+      label={t('storybook.demo.clickableCard')}
+      value={500}
+      icon={<Users size={24} />}
+      variant="default"
+      size="md"
+      loading={false}
+      onClick={fn()}
+    />
+  );
 };
 
 // Clickable
 export const Clickable: Story = {
-  args: {
-    label: 'Clickable Card',
-    value: 500,
-    icon: <Users size={24} />,
-    variant: 'default',
-    size: 'md',
-    loading: false,
-    onClick: fn(),
-  },
+  render: () => <ClickableDemo />,
 };
 
-// StatCardGrid
-export const Grid: Story = {
-  render: () => (
+// Wrapper for grid story
+const GridDemo = () => {
+  const t = useT();
+  return (
     <StatCardGrid columns={4} gap="md">
       <StatCard
-        label="Users"
+        label={t('storybook.demo.users')}
         value={1250}
         icon={<Users size={24} />}
         trend={{ direction: 'up', value: '12%' }}
         variant="success"
       />
       <StatCard
-        label="Revenue"
+        label={t('storybook.demo.revenue')}
         value="$45,230"
         icon={<DollarSign size={24} />}
         trend={{ direction: 'up', value: '8%' }}
         variant="success"
       />
       <StatCard
-        label="Orders"
+        label={t('storybook.demo.orders')}
         value={892}
         icon={<Activity size={24} />}
         trend={{ direction: 'down', value: '3%' }}
         variant="danger"
       />
       <StatCard
-        label="Growth"
+        label={t('storybook.demo.growth')}
         value="24%"
         icon={<TrendingUp size={24} />}
         trend={{ direction: 'up', value: '5%' }}
         variant="info"
       />
     </StatCardGrid>
-  ),
+  );
+};
+
+// StatCardGrid
+export const Grid: Story = {
+  render: () => <GridDemo />,
 };

@@ -5,6 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { FormWizardModal, type FormWizardModalProps } from '../../patterns/FormWizardModal';
 import type { PatternWizardStep } from '../../patterns/types';
 import { Paragraph, Textfield, Label, NativeSelect, Checkbox } from '@digdir/designsystemet-react';

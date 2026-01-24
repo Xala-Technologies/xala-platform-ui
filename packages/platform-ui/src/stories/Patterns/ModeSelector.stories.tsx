@@ -5,6 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { ModeSelector, type ModeSelectorProps, type ModeOption } from '../../patterns/ModeSelector';
 import { Paragraph } from '@digdir/designsystemet-react';
 
@@ -304,13 +305,14 @@ export const ViewToggle: Story = {
 export const VariantComparison: Story = {
   name: 'Variant Comparison',
   render: () => {
+    const t = useT();
     const [value, setValue] = React.useState('single');
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
         <div>
           <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-            Tabs Variant
+            {t('storybook.patterns.variantTabs')}
           </Paragraph>
           <ModeSelector
             options={optionsWithIcons}
@@ -321,7 +323,7 @@ export const VariantComparison: Story = {
         </div>
         <div>
           <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-            Buttons Variant
+            {t('storybook.patterns.variantButtons')}
           </Paragraph>
           <ModeSelector
             options={optionsWithIcons}
@@ -332,7 +334,7 @@ export const VariantComparison: Story = {
         </div>
         <div>
           <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-            Cards Variant
+            {t('storybook.patterns.variantCards')}
           </Paragraph>
           <ModeSelector
             options={optionsWithDescriptions}
@@ -349,33 +351,37 @@ export const VariantComparison: Story = {
 
 export const SizeComparison: Story = {
   name: 'Size Comparison',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div>
-        <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-          Small
-        </Paragraph>
-        <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="sm" />
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div>
+          <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.sizeSmall')}
+          </Paragraph>
+          <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="sm" />
+        </div>
+        <div>
+          <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.sizeMedium')}
+          </Paragraph>
+          <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="md" />
+        </div>
+        <div>
+          <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.sizeLarge')}
+          </Paragraph>
+          <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="lg" />
+        </div>
       </div>
-      <div>
-        <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-          Medium
-        </Paragraph>
-        <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="md" />
-      </div>
-      <div>
-        <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-          Large
-        </Paragraph>
-        <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="lg" />
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: () => {
+    const t = useT();
     const [mode, setMode] = React.useState('single');
 
     return (
@@ -395,7 +401,7 @@ export const Interactive: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ margin: 0 }}>
-            Selected mode: <strong>{mode}</strong>
+            {t('storybook.patterns.selectedMode')}: <strong>{mode}</strong>
           </Paragraph>
         </div>
       </div>

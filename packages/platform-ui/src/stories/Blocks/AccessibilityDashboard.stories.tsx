@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { AccessibilityDashboard } from '../../blocks/AccessibilityDashboard';
 import type { AccessibilityReport } from '../../blocks/AccessibilityDashboard';
 
@@ -163,11 +164,14 @@ export const ExcellentCompliance: Story = {
     report: excellentReport,
     isLoading: false,
   },
-  render: (args) => (
-    <div style={{ width: '900px' }}>
-      <AccessibilityDashboard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '900px' }}>
+        <AccessibilityDashboard {...args} />
+      </div>
+    );
+  },
 };
 
 // Good compliance
@@ -176,11 +180,14 @@ export const GoodCompliance: Story = {
     report: goodReport,
     isLoading: false,
   },
-  render: (args) => (
-    <div style={{ width: '900px' }}>
-      <AccessibilityDashboard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '900px' }}>
+        <AccessibilityDashboard {...args} />
+      </div>
+    );
+  },
 };
 
 // Needs improvement
@@ -189,11 +196,14 @@ export const NeedsImprovement: Story = {
     report: needsImprovementReport,
     isLoading: false,
   },
-  render: (args) => (
-    <div style={{ width: '900px' }}>
-      <AccessibilityDashboard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '900px' }}>
+        <AccessibilityDashboard {...args} />
+      </div>
+    );
+  },
 };
 
 // Loading state
@@ -202,11 +212,14 @@ export const Loading: Story = {
     report: excellentReport,
     isLoading: true,
   },
-  render: (args) => (
-    <div style={{ width: '900px' }}>
-      <AccessibilityDashboard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '900px' }}>
+        <AccessibilityDashboard {...args} />
+      </div>
+    );
+  },
 };
 
 // Without refresh button
@@ -216,9 +229,12 @@ export const WithoutRefresh: Story = {
     isLoading: false,
     onRefresh: undefined,
   },
-  render: (args) => (
-    <div style={{ width: '900px' }}>
-      <AccessibilityDashboard {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '900px' }}>
+        <AccessibilityDashboard {...args} />
+      </div>
+    );
+  },
 };

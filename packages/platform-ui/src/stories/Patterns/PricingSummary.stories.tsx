@@ -4,6 +4,7 @@
  * Component for displaying pricing breakdowns in booking/checkout flows.
  */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { PricingSummary, type PricingSummaryProps } from '../../patterns/PricingSummary';
 
 const meta: Meta<typeof PricingSummary> = {

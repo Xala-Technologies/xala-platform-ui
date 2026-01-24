@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Fieldset, Checkbox, Radio, ValidationMessage } from '../../index';
 
 const meta: Meta = {
@@ -187,21 +188,21 @@ Use clear, descriptive legends:
 <Fieldset>
   <Fieldset.Legend>Preferred contact method</Fieldset.Legend>
   <Fieldset.Description>How should we reach you?</Fieldset.Description>
-  <Radio 
-    label="Email" 
-    name="contact" 
+  <Radio
+    label="Email"
+    name="contact"
     value="email"
     aria-describedby="contact-desc"
   />
-  <Radio 
-    label="Phone" 
-    name="contact" 
+  <Radio
+    label="Phone"
+    name="contact"
     value="phone"
     aria-describedby="contact-desc"
   />
-  <Radio 
-    label="SMS" 
-    name="contact" 
+  <Radio
+    label="SMS"
+    name="contact"
     value="sms"
     aria-describedby="contact-desc"
   />
@@ -218,67 +219,82 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Select your interests</Fieldset.Legend>
-      <Checkbox label="Sports" value="sports" />
-      <Checkbox label="Music" value="music" />
-      <Checkbox label="Technology" value="tech" />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.selectYourInterests')}</Fieldset.Legend>
+        <Checkbox label={t('storybook.demo.sports')} value="sports" />
+        <Checkbox label={t('storybook.demo.music')} value="music" />
+        <Checkbox label={t('storybook.demo.technology')} value="tech" />
+      </Fieldset>
+    );
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Contact preferences</Fieldset.Legend>
-      <Fieldset.Description>Choose how you want to be contacted.</Fieldset.Description>
-      <Checkbox label="Email" value="email" />
-      <Checkbox label="SMS" value="sms" />
-      <Checkbox label="Phone" value="phone" />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.contactPreferences')}</Fieldset.Legend>
+        <Fieldset.Description>{t('storybook.demo.chooseHowToBeContacted')}</Fieldset.Description>
+        <Checkbox label={t('storybook.demo.email')} value="email" />
+        <Checkbox label={t('storybook.demo.sms')} value="sms" />
+        <Checkbox label={t('storybook.demo.phone')} value="phone" />
+      </Fieldset>
+    );
+  },
 };
 
 export const RadioGroup: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Select time slot</Fieldset.Legend>
-      <Radio label="Morning (08:00 - 12:00)" name="time" value="morning" />
-      <Radio label="Afternoon (12:00 - 16:00)" name="time" value="afternoon" />
-      <Radio label="Evening (16:00 - 20:00)" name="time" value="evening" />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.selectTimeSlot')}</Fieldset.Legend>
+        <Radio label={t('storybook.demo.morning')} name="time" value="morning" />
+        <Radio label={t('storybook.demo.afternoon')} name="time" value="afternoon" />
+        <Radio label={t('storybook.demo.evening')} name="time" value="evening" />
+      </Fieldset>
+    );
+  },
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Accept terms</Fieldset.Legend>
-      <Checkbox label="I accept the terms and conditions" value="terms" aria-invalid="true" />
-      <ValidationMessage>You must accept the terms to continue</ValidationMessage>
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.acceptTerms')}</Fieldset.Legend>
+        <Checkbox label={t('storybook.demo.iAcceptTheTerms')} value="terms" aria-invalid="true" />
+        <ValidationMessage>{t('storybook.demo.mustAcceptTermsToContinue')}</ValidationMessage>
+      </Fieldset>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <Fieldset data-size="sm">
-        <Fieldset.Legend>Small fieldset</Fieldset.Legend>
-        <Checkbox label="Option 1" value="1" />
-        <Checkbox label="Option 2" value="2" />
-      </Fieldset>
-      <Fieldset data-size="md">
-        <Fieldset.Legend>Medium fieldset</Fieldset.Legend>
-        <Checkbox label="Option 1" value="1" />
-        <Checkbox label="Option 2" value="2" />
-      </Fieldset>
-      <Fieldset data-size="lg">
-        <Fieldset.Legend>Large fieldset</Fieldset.Legend>
-        <Checkbox label="Option 1" value="1" />
-        <Checkbox label="Option 2" value="2" />
-      </Fieldset>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <Fieldset data-size="sm">
+          <Fieldset.Legend>{t('storybook.demo.smallFieldset')}</Fieldset.Legend>
+          <Checkbox label={t('storybook.demo.option')} value="1" />
+          <Checkbox label={t('storybook.demo.option')} value="2" />
+        </Fieldset>
+        <Fieldset data-size="md">
+          <Fieldset.Legend>{t('storybook.demo.mediumFieldset')}</Fieldset.Legend>
+          <Checkbox label={t('storybook.demo.option')} value="1" />
+          <Checkbox label={t('storybook.demo.option')} value="2" />
+        </Fieldset>
+        <Fieldset data-size="lg">
+          <Fieldset.Legend>{t('storybook.demo.largeFieldset')}</Fieldset.Legend>
+          <Checkbox label={t('storybook.demo.option')} value="1" />
+          <Checkbox label={t('storybook.demo.option')} value="2" />
+        </Fieldset>
+      </div>
+    );
+  },
 };

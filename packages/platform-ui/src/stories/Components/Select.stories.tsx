@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Select, Label, Field, ValidationMessage } from '../../index';
 
 /**
@@ -200,132 +201,158 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Field>
-      <Label>Select a country</Label>
-      <Select>
-        <Select.Option value="">Choose...</Select.Option>
-        <Select.Option value="no">Norway</Select.Option>
-        <Select.Option value="se">Sweden</Select.Option>
-        <Select.Option value="dk">Denmark</Select.Option>
-      </Select>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.selectCountry')}</Label>
+        <Select>
+          <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+          <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
+          <Select.Option value="se">{t('storybook.demo.sweden')}</Select.Option>
+          <Select.Option value="dk">{t('storybook.demo.denmark')}</Select.Option>
+        </Select>
+      </Field>
+    );
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Field>
-      <Label>Preferred language</Label>
-      <Field.Description>This will be used for all communications</Field.Description>
-      <Select>
-        <Select.Option value="">Choose...</Select.Option>
-        <Select.Option value="nb">Norwegian (Bokmal)</Select.Option>
-        <Select.Option value="nn">Norwegian (Nynorsk)</Select.Option>
-        <Select.Option value="en">English</Select.Option>
-      </Select>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.preferredLanguage')}</Label>
+        <Field.Description>{t('storybook.demo.languageDescription')}</Field.Description>
+        <Select>
+          <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+          <Select.Option value="nb">{t('storybook.demo.norwegianBokmal')}</Select.Option>
+          <Select.Option value="nn">{t('storybook.demo.norwegianNynorsk')}</Select.Option>
+          <Select.Option value="en">{t('storybook.demo.english')}</Select.Option>
+        </Select>
+      </Field>
+    );
+  },
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Field>
-      <Label>Category</Label>
-      <Select aria-invalid="true">
-        <Select.Option value="">Choose...</Select.Option>
-        <Select.Option value="lokaler">Lokaler og baner</Select.Option>
-        <Select.Option value="utstyr">Utstyr og inventar</Select.Option>
-      </Select>
-      <ValidationMessage>Please select a category</ValidationMessage>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.category')}</Label>
+        <Select aria-invalid="true">
+          <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+          <Select.Option value="lokaler">{t('storybook.demo.venuesAndCourts')}</Select.Option>
+          <Select.Option value="utstyr">{t('storybook.demo.equipmentAndInventory')}</Select.Option>
+        </Select>
+        <ValidationMessage>{t('storybook.demo.pleaseSelectCategory')}</ValidationMessage>
+      </Field>
+    );
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Field>
-      <Label>Status</Label>
-      <Select disabled>
-        <Select.Option value="active">Active</Select.Option>
-      </Select>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.status')}</Label>
+        <Select disabled>
+          <Select.Option value="active">{t('platform.status.active')}</Select.Option>
+        </Select>
+      </Field>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Field>
-        <Label>Small</Label>
-        <Select data-size="sm">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2">Option 2</Select.Option>
-        </Select>
-      </Field>
-      <Field>
-        <Label>Medium</Label>
-        <Select data-size="md">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2">Option 2</Select.Option>
-        </Select>
-      </Field>
-      <Field>
-        <Label>Large</Label>
-        <Select data-size="lg">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2">Option 2</Select.Option>
-        </Select>
-      </Field>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Field>
+          <Label>{t('storybook.demo.small')}</Label>
+          <Select data-size="sm">
+            <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+            <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+          </Select>
+        </Field>
+        <Field>
+          <Label>{t('storybook.demo.medium')}</Label>
+          <Select data-size="md">
+            <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+            <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+          </Select>
+        </Field>
+        <Field>
+          <Label>{t('storybook.demo.large')}</Label>
+          <Select data-size="lg">
+            <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+            <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+          </Select>
+        </Field>
+      </div>
+    );
+  },
 };
 
 /**
  * Read-only select - Show preselected value without editing
  */
 export const ReadOnly: Story = {
-  render: () => (
-    <Field>
-      <Label>Country</Label>
-      <Select readOnly value="no">
-        <Select.Option value="no">Norway</Select.Option>
-      </Select>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.country')}</Label>
+        <Select readOnly value="no">
+          <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
+        </Select>
+      </Field>
+    );
+  },
 };
 
 /**
  * Option groups - Organize options into categories
  */
 export const OptionGroups: Story = {
-  render: () => (
-    <Field>
-      <Label>Select a park</Label>
-      <Select>
-        <Select.Optgroup label="Grünerløkka">
-          <Select.Option value="sofienbergparken">Sofienberg Park</Select.Option>
-          <Select.Option value="birkelunden">Birkelunden</Select.Option>
-          <Select.Option value="olafryesplass">Olaf Ryes Plass</Select.Option>
-        </Select.Optgroup>
-        <Select.Optgroup label="City centre">
-          <Select.Option value="slottsparken">The Palace Park</Select.Option>
-          <Select.Option value="studenterlunden">Studenterlunden</Select.Option>
-        </Select.Optgroup>
-        <Select.Optgroup label="Old Oslo">
-          <Select.Option value="botsparken">Botsparken</Select.Option>
-          <Select.Option value="klosterenga">Klosterenga Park</Select.Option>
-        </Select.Optgroup>
-      </Select>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.selectPark')}</Label>
+        <Select>
+          <Select.Optgroup label={t('storybook.demo.grunerlokka')}>
+            <Select.Option value="sofienbergparken">
+              {t('storybook.demo.sofienbergPark')}
+            </Select.Option>
+            <Select.Option value="birkelunden">{t('storybook.demo.birkelunden')}</Select.Option>
+            <Select.Option value="olafryesplass">{t('storybook.demo.olafRyesPlass')}</Select.Option>
+          </Select.Optgroup>
+          <Select.Optgroup label={t('storybook.demo.cityCentre')}>
+            <Select.Option value="slottsparken">{t('storybook.demo.palacePark')}</Select.Option>
+            <Select.Option value="studenterlunden">
+              {t('storybook.demo.studenterlunden')}
+            </Select.Option>
+          </Select.Optgroup>
+          <Select.Optgroup label={t('storybook.demo.oldOslo')}>
+            <Select.Option value="botsparken">{t('storybook.demo.botsparken')}</Select.Option>
+            <Select.Option value="klosterenga">{t('storybook.demo.klosterengaPark')}</Select.Option>
+          </Select.Optgroup>
+        </Select>
+      </Field>
+    );
+  },
 };
 
 /**
  * Multiple selects in a form
  */
 export const FormExample: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
 
@@ -339,36 +366,38 @@ export const FormExample: Story = {
         }}
       >
         <Field>
-          <Label>Country</Label>
-          <Field.Description>Select your country of residence</Field.Description>
+          <Label>{t('storybook.demo.country')}</Label>
+          <Field.Description>{t('storybook.demo.selectCountryOfResidence')}</Field.Description>
           <Select value={country} onChange={(e) => setCountry(e.target.value)}>
-            <Select.Option value="">Choose...</Select.Option>
-            <Select.Option value="no">Norway</Select.Option>
-            <Select.Option value="se">Sweden</Select.Option>
-            <Select.Option value="dk">Denmark</Select.Option>
-            <Select.Option value="fi">Finland</Select.Option>
+            <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+            <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
+            <Select.Option value="se">{t('storybook.demo.sweden')}</Select.Option>
+            <Select.Option value="dk">{t('storybook.demo.denmark')}</Select.Option>
+            <Select.Option value="fi">{t('storybook.demo.finland')}</Select.Option>
           </Select>
         </Field>
 
         <Field>
-          <Label>City</Label>
+          <Label>{t('storybook.demo.city')}</Label>
           <Select value={city} onChange={(e) => setCity(e.target.value)} disabled={!country}>
-            <Select.Option value="">Choose...</Select.Option>
+            <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
             {country === 'no' && (
               <>
-                <Select.Option value="oslo">Oslo</Select.Option>
-                <Select.Option value="bergen">Bergen</Select.Option>
-                <Select.Option value="trondheim">Trondheim</Select.Option>
+                <Select.Option value="oslo">{t('storybook.demo.oslo')}</Select.Option>
+                <Select.Option value="bergen">{t('storybook.demo.bergen')}</Select.Option>
+                <Select.Option value="trondheim">{t('storybook.demo.trondheim')}</Select.Option>
               </>
             )}
             {country === 'se' && (
               <>
-                <Select.Option value="stockholm">Stockholm</Select.Option>
-                <Select.Option value="gothenburg">Gothenburg</Select.Option>
+                <Select.Option value="stockholm">{t('storybook.demo.stockholm')}</Select.Option>
+                <Select.Option value="gothenburg">{t('storybook.demo.gothenburg')}</Select.Option>
               </>
             )}
           </Select>
-          {!country && <Field.Description>Select a country first</Field.Description>}
+          {!country && (
+            <Field.Description>{t('storybook.demo.selectCountryFirst')}</Field.Description>
+          )}
         </Field>
       </form>
     );
@@ -379,69 +408,72 @@ export const FormExample: Story = {
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          States
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Field>
-            <Label>Default</Label>
-            <Select>
-              <Select.Option value="">Choose...</Select.Option>
-              <Select.Option value="1">Option 1</Select.Option>
-              <Select.Option value="2">Option 2</Select.Option>
-            </Select>
-          </Field>
-          <Field>
-            <Label>With error</Label>
-            <Select aria-invalid="true">
-              <Select.Option value="">Choose...</Select.Option>
-              <Select.Option value="1">Option 1</Select.Option>
-            </Select>
-            <ValidationMessage>Please select an option</ValidationMessage>
-          </Field>
-          <Field>
-            <Label>Disabled</Label>
-            <Select disabled>
-              <Select.Option value="1">Option 1</Select.Option>
-            </Select>
-          </Field>
-          <Field>
-            <Label>Read-only</Label>
-            <Select readOnly value="1">
-              <Select.Option value="1">Selected Option</Select.Option>
-            </Select>
-          </Field>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.states')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Field>
+              <Label>{t('storybook.story.default')}</Label>
+              <Select>
+                <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+                <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+              </Select>
+            </Field>
+            <Field>
+              <Label>{t('storybook.story.withError')}</Label>
+              <Select aria-invalid="true">
+                <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+              </Select>
+              <ValidationMessage>{t('storybook.demo.pleaseSelectOption')}</ValidationMessage>
+            </Field>
+            <Field>
+              <Label>{t('storybook.story.disabled')}</Label>
+              <Select disabled>
+                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+              </Select>
+            </Field>
+            <Field>
+              <Label>{t('storybook.story.readOnly')}</Label>
+              <Select readOnly value="1">
+                <Select.Option value="1">{t('storybook.demo.selectedOption')}</Select.Option>
+              </Select>
+            </Field>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Sizes
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Field>
-            <Label>Small</Label>
-            <Select data-size="sm">
-              <Select.Option value="1">Option 1</Select.Option>
-            </Select>
-          </Field>
-          <Field>
-            <Label>Medium</Label>
-            <Select data-size="md">
-              <Select.Option value="1">Option 1</Select.Option>
-            </Select>
-          </Field>
-          <Field>
-            <Label>Large</Label>
-            <Select data-size="lg">
-              <Select.Option value="1">Option 1</Select.Option>
-            </Select>
-          </Field>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.sizes')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Field>
+              <Label>{t('storybook.demo.small')}</Label>
+              <Select data-size="sm">
+                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+              </Select>
+            </Field>
+            <Field>
+              <Label>{t('storybook.demo.medium')}</Label>
+              <Select data-size="md">
+                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+              </Select>
+            </Field>
+            <Field>
+              <Label>{t('storybook.demo.large')}</Label>
+              <Select data-size="lg">
+                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+              </Select>
+            </Field>
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

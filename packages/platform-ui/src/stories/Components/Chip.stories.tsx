@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Chip } from '@digdir/designsystemet-react';
 
 /**
@@ -151,7 +152,7 @@ Mixing radio and checkbox chips in the same group.
 ### Radio Chips Implementation
 \`\`\`tsx
 <div role="radiogroup" aria-label="Category filter">
-  <Chip.Radio 
+  <Chip.Radio
     name="category"
     value="all"
     checked={selected === 'all'}
@@ -210,6 +211,7 @@ type Story = StoryObj;
 
 export const RadioChips: Story = {
   render: function Render() {
+    const t = useT();
     const [selected, setSelected] = useState('option1');
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
@@ -219,7 +221,7 @@ export const RadioChips: Story = {
           checked={selected === 'option1'}
           onChange={() => setSelected('option1')}
         >
-          All
+          {t('storybook.demo.all')}
         </Chip.Radio>
         <Chip.Radio
           name="filter"
@@ -227,7 +229,7 @@ export const RadioChips: Story = {
           checked={selected === 'option2'}
           onChange={() => setSelected('option2')}
         >
-          Active
+          {t('platform.status.active')}
         </Chip.Radio>
         <Chip.Radio
           name="filter"
@@ -235,7 +237,7 @@ export const RadioChips: Story = {
           checked={selected === 'option3'}
           onChange={() => setSelected('option3')}
         >
-          Completed
+          {t('platform.status.completed')}
         </Chip.Radio>
       </div>
     );
@@ -244,6 +246,7 @@ export const RadioChips: Story = {
 
 export const CheckboxChips: Story = {
   render: function Render() {
+    const t = useT();
     const [selected, setSelected] = useState<string[]>(['tag1']);
     const toggle = (tag: string) => {
       setSelected((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
@@ -255,21 +258,21 @@ export const CheckboxChips: Story = {
           checked={selected.includes('tag1')}
           onChange={() => toggle('tag1')}
         >
-          Indoor
+          {t('storybook.demo.indoor')}
         </Chip.Checkbox>
         <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag2')}
           onChange={() => toggle('tag2')}
         >
-          Outdoor
+          {t('storybook.demo.outdoor')}
         </Chip.Checkbox>
         <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag3')}
           onChange={() => toggle('tag3')}
         >
-          Accessible
+          {t('storybook.demo.accessible')}
         </Chip.Checkbox>
       </div>
     );
@@ -295,28 +298,34 @@ export const RemovableChips: Story = {
 };
 
 export const ButtonChips: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-      <Chip.Button onClick={() => {}}>Clear all filters</Chip.Button>
-      <Chip.Button onClick={() => {}}>Apply</Chip.Button>
-      <Chip.Button onClick={() => {}}>Reset</Chip.Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+        <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
+        <Chip.Button onClick={() => {}}>{t('storybook.demo.apply')}</Chip.Button>
+        <Chip.Button onClick={() => {}}>{t('storybook.demo.reset')}</Chip.Button>
+      </div>
+    );
+  },
 };
 
 /**
  * Size variants
  */
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Chip.Checkbox data-size="sm">Small</Chip.Checkbox>
-        <Chip.Checkbox data-size="md">Medium</Chip.Checkbox>
-        <Chip.Checkbox data-size="lg">Large</Chip.Checkbox>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+          <Chip.Checkbox data-size="sm">{t('storybook.story.small')}</Chip.Checkbox>
+          <Chip.Checkbox data-size="md">{t('storybook.story.medium')}</Chip.Checkbox>
+          <Chip.Checkbox data-size="lg">{t('storybook.story.large')}</Chip.Checkbox>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -324,6 +333,7 @@ export const Sizes: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
+    const t = useT();
     const [radioSelected, setRadioSelected] = useState('all');
     const [checkboxSelected, setCheckboxSelected] = useState<string[]>(['indoor']);
     const [removableChips, setRemovableChips] = useState(['Oslo', 'Bergen']);
@@ -338,7 +348,7 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            Chip.Radio (Single Selection)
+            {t('storybook.story.radioChips')}
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Chip.Radio
@@ -347,7 +357,7 @@ export const AllVariants: Story = {
               checked={radioSelected === 'all'}
               onChange={() => setRadioSelected('all')}
             >
-              All
+              {t('storybook.demo.all')}
             </Chip.Radio>
             <Chip.Radio
               name="status"
@@ -355,7 +365,7 @@ export const AllVariants: Story = {
               checked={radioSelected === 'active'}
               onChange={() => setRadioSelected('active')}
             >
-              Active
+              {t('platform.status.active')}
             </Chip.Radio>
             <Chip.Radio
               name="status"
@@ -363,14 +373,14 @@ export const AllVariants: Story = {
               checked={radioSelected === 'completed'}
               onChange={() => setRadioSelected('completed')}
             >
-              Completed
+              {t('platform.status.completed')}
             </Chip.Radio>
           </div>
         </div>
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            Chip.Checkbox (Multiple Selection)
+            {t('storybook.story.checkboxChips')}
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Chip.Checkbox
@@ -378,34 +388,34 @@ export const AllVariants: Story = {
               checked={checkboxSelected.includes('indoor')}
               onChange={() => toggleCheckbox('indoor')}
             >
-              Indoor
+              {t('storybook.demo.indoor')}
             </Chip.Checkbox>
             <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('outdoor')}
               onChange={() => toggleCheckbox('outdoor')}
             >
-              Outdoor
+              {t('storybook.demo.outdoor')}
             </Chip.Checkbox>
             <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('accessible')}
               onChange={() => toggleCheckbox('accessible')}
             >
-              Accessible
+              {t('storybook.demo.accessible')}
             </Chip.Checkbox>
           </div>
         </div>
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            Chip.Removable (Active Filters)
+            {t('storybook.story.removableChips')}
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             {removableChips.map((chip) => (
               <Chip.Removable
                 key={chip}
-                aria-label={`Remove ${chip}`}
+                aria-label={`${t('platform.common.remove')} ${chip}`}
                 onClick={() => setRemovableChips((prev) => prev.filter((c) => c !== chip))}
               >
                 {chip}
@@ -413,7 +423,7 @@ export const AllVariants: Story = {
             ))}
             {removableChips.length === 0 && (
               <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                No active filters
+                {t('storybook.demo.noActiveFilters')}
               </span>
             )}
           </div>
@@ -421,11 +431,11 @@ export const AllVariants: Story = {
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            Chip.Button (Actions)
+            {t('storybook.story.buttonChips')}
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Chip.Button onClick={() => {}}>Clear all</Chip.Button>
-            <Chip.Button onClick={() => {}}>Apply</Chip.Button>
+            <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
+            <Chip.Button onClick={() => {}}>{t('storybook.demo.apply')}</Chip.Button>
           </div>
         </div>
       </div>

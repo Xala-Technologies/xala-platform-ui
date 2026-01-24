@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { FavoriteButton } from '../../blocks/FavoriteButton';
 
 const meta: Meta<typeof FavoriteButton> = {
@@ -239,34 +240,37 @@ export const Disabled: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <FavoriteButton variant="icon" size="md" isFavorited={false} onToggle={fn()} />
-        <FavoriteButton variant="icon" size="md" isFavorited={true} onToggle={fn()} />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+          <FavoriteButton variant="icon" size="md" isFavorited={false} onToggle={fn()} />
+          <FavoriteButton variant="icon" size="md" isFavorited={true} onToggle={fn()} />
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+          <FavoriteButton variant="compact" size="sm" isFavorited={false} onToggle={fn()} />
+          <FavoriteButton
+            variant="compact"
+            size="sm"
+            isFavorited={true}
+            favoriteCount={42}
+            showCount
+            onToggle={fn()}
+          />
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+          <FavoriteButton variant="button" size="md" isFavorited={false} onToggle={fn()} />
+          <FavoriteButton
+            variant="button"
+            size="md"
+            isFavorited={true}
+            favoriteCount={128}
+            showCount
+            onToggle={fn()}
+          />
+        </div>
       </div>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <FavoriteButton variant="compact" size="sm" isFavorited={false} onToggle={fn()} />
-        <FavoriteButton
-          variant="compact"
-          size="sm"
-          isFavorited={true}
-          favoriteCount={42}
-          showCount
-          onToggle={fn()}
-        />
-      </div>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <FavoriteButton variant="button" size="md" isFavorited={false} onToggle={fn()} />
-        <FavoriteButton
-          variant="button"
-          size="md"
-          isFavorited={true}
-          favoriteCount={128}
-          showCount
-          onToggle={fn()}
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

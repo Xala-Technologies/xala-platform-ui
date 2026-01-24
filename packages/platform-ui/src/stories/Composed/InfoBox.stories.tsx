@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { InfoBox } from '../../composed/InfoBox';
 
 const meta: Meta<typeof InfoBox> = {
@@ -42,73 +43,85 @@ Reusable colored info/status boxes. Supports different color variants matching t
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Info variant
-export const Info: Story = {
-  args: {
-    variant: 'info',
-    title: 'Information',
-    children:
-      'This is an informational message. Use this for general information that users should be aware of.',
-  },
+// Wrapper components for stories that need translations
+const InfoDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="info" title={t('storybook.demo.information')}>
+        {t('storybook.demo.informationalMessage')}
+      </InfoBox>
+    </div>
+  );
 };
 
-// Success variant
-export const Success: Story = {
-  args: {
-    variant: 'success',
-    title: 'Success',
-    children: 'Your changes have been saved successfully.',
-  },
+const SuccessDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="success" title={t('storybook.story.success')}>
+        {t('storybook.demo.changesSavedSuccessfully')}
+      </InfoBox>
+    </div>
+  );
 };
 
-// Warning variant
-export const Warning: Story = {
-  args: {
-    variant: 'warning',
-    title: 'Warning',
-    children: 'Please review your changes before proceeding. Some fields may need attention.',
-  },
+const WarningDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="warning" title={t('storybook.demo.warning')}>
+        {t('storybook.demo.reviewChangesBeforeProceeding')}
+      </InfoBox>
+    </div>
+  );
 };
 
-// Danger variant
-export const Danger: Story = {
-  args: {
-    variant: 'danger',
-    title: 'Error',
-    children: 'An error occurred while processing your request. Please try again.',
-  },
+const DangerDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="danger" title={t('storybook.story.error')}>
+        {t('storybook.demo.errorProcessingRequest')}
+      </InfoBox>
+    </div>
+  );
 };
 
-// Neutral variant
-export const Neutral: Story = {
-  args: {
-    variant: 'neutral',
-    title: 'Note',
-    children: 'This is a neutral information box without any specific status indication.',
-  },
+const NeutralDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="neutral" title={t('storybook.demo.note')}>
+        {t('storybook.demo.neutralInfoBoxDescription')}
+      </InfoBox>
+    </div>
+  );
 };
 
-// Without title
-export const WithoutTitle: Story = {
-  args: {
-    variant: 'info',
-    children: 'This info box does not have a title. The message is displayed directly.',
-  },
+const WithoutTitleDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="info">{t('storybook.demo.infoBoxWithoutTitle')}</InfoBox>
+    </div>
+  );
 };
 
-// Long content
-export const LongContent: Story = {
-  args: {
-    variant: 'info',
-    title: 'Detailed Information',
-    children:
-      'This info box contains a longer message to demonstrate how the component handles extended content. The text will wrap naturally within the container, maintaining proper spacing and readability. This is useful for providing detailed explanations or instructions to users.',
-  },
+const LongContentDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <InfoBox variant="info" title={t('storybook.demo.detailedInformation')}>
+        {t('storybook.demo.longInfoBoxContent')}
+      </InfoBox>
+    </div>
+  );
 };
 
-// All variants showcase
-export const AllVariants: Story = {
-  render: () => (
+const AllVariantsDemo = () => {
+  const t = useT();
+  return (
     <div
       style={{
         display: 'flex',
@@ -117,21 +130,61 @@ export const AllVariants: Story = {
         width: '600px',
       }}
     >
-      <InfoBox variant="info" title="Info">
-        This is an informational message.
+      <InfoBox variant="info" title={t('storybook.demo.info')}>
+        {t('storybook.demo.informationalMessage')}
       </InfoBox>
-      <InfoBox variant="success" title="Success">
-        Operation completed successfully.
+      <InfoBox variant="success" title={t('storybook.story.success')}>
+        {t('storybook.demo.operationSuccessful')}
       </InfoBox>
-      <InfoBox variant="warning" title="Warning">
-        Please review before proceeding.
+      <InfoBox variant="warning" title={t('storybook.demo.warning')}>
+        {t('storybook.demo.pleaseReview')}
       </InfoBox>
-      <InfoBox variant="danger" title="Error">
-        An error occurred. Please try again.
+      <InfoBox variant="danger" title={t('storybook.story.error')}>
+        {t('platform.errors.serverError')}
       </InfoBox>
-      <InfoBox variant="neutral" title="Note">
-        This is a neutral information box.
+      <InfoBox variant="neutral" title={t('storybook.demo.note')}>
+        {t('storybook.demo.neutralInfoBox')}
       </InfoBox>
     </div>
-  ),
+  );
+};
+
+// Info variant
+export const Info: Story = {
+  render: () => <InfoDemo />,
+};
+
+// Success variant
+export const Success: Story = {
+  render: () => <SuccessDemo />,
+};
+
+// Warning variant
+export const Warning: Story = {
+  render: () => <WarningDemo />,
+};
+
+// Danger variant
+export const Danger: Story = {
+  render: () => <DangerDemo />,
+};
+
+// Neutral variant
+export const Neutral: Story = {
+  render: () => <NeutralDemo />,
+};
+
+// Without title
+export const WithoutTitle: Story = {
+  render: () => <WithoutTitleDemo />,
+};
+
+// Long content
+export const LongContent: Story = {
+  render: () => <LongContentDemo />,
+};
+
+// All variants showcase
+export const AllVariants: Story = {
+  render: () => <AllVariantsDemo />,
 };

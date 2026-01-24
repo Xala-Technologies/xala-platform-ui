@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { AmenityChips } from '../../blocks/AmenityChips';
 import { Wifi, Car, Coffee, Utensils, Dumbbell, Music } from 'lucide-react';
 
@@ -62,7 +63,7 @@ type Story = StoryObj<typeof meta>;
 const sampleAmenities = [
   { id: '1', name: 'WiFi', icon: <Wifi size={16} />, available: true },
   { id: '2', name: 'Parking', icon: <Car size={16} />, available: true },
-  { id: '3', name: 'Café', icon: <Coffee size={16} />, available: true },
+  { id: '3', name: 'Cafe', icon: <Coffee size={16} />, available: true },
   { id: '4', name: 'Restaurant', icon: <Utensils size={16} />, available: true },
   { id: '5', name: 'Gym', icon: <Dumbbell size={16} />, available: true },
   { id: '6', name: 'Music Room', icon: <Music size={16} />, available: true },

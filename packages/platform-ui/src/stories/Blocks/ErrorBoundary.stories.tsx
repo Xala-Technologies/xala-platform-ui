@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { ErrorBoundary } from '../../blocks/ErrorBoundary';
 
 const meta: Meta<typeof ErrorBoundary> = {
@@ -64,13 +65,16 @@ export const Default: Story = {
   args: {
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Custom error title
@@ -79,13 +83,16 @@ export const CustomTitle: Story = {
     errorTitle: 'Oops! Something broke',
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Custom error description
@@ -94,13 +101,16 @@ export const CustomDescription: Story = {
     errorDescription: 'A specific error occurred. Please try again or contact support.',
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Without retry button
@@ -108,13 +118,16 @@ export const WithoutRetryButton: Story = {
   args: {
     showRetryButton: false,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Custom retry button text
@@ -123,13 +136,16 @@ export const CustomRetryText: Story = {
     retryButtonText: 'Try Again',
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Custom labels
@@ -142,13 +158,16 @@ export const CustomLabels: Story = {
     },
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Custom fallback
@@ -168,26 +187,32 @@ export const CustomFallback: Story = {
       </div>
     ),
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <ThrowError shouldThrow={true} />
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <ThrowError shouldThrow={true} />
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };
 
 // Working component (no error)
 export const NoError: Story = {
   args: {},
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <ErrorBoundary {...args}>
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <h3>No Error</h3>
-          <p>This component renders normally when there's no error.</p>
-        </div>
-      </ErrorBoundary>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <ErrorBoundary {...args}>
+          <div style={{ padding: 'var(--ds-spacing-4)' }}>
+            <h3>{t('storybook.demo.cardTitle')}</h3>
+            <p>{t('storybook.demo.cardDescription')}</p>
+          </div>
+        </ErrorBoundary>
+      </div>
+    );
+  },
 };

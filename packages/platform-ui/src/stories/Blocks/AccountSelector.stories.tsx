@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { AccountSelector } from '../../blocks/account/AccountSelector';
 import type { BaseOrganization } from '../../blocks/account/AccountSelector';
 
@@ -62,7 +63,8 @@ export const Default: Story = {
     showRememberChoice: true,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -84,7 +86,8 @@ export const Loading: Story = {
     showRememberChoice: true,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -106,7 +109,8 @@ export const NoOrganizations: Story = {
     showRememberChoice: true,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -127,11 +131,14 @@ export const WithoutRememberChoice: Story = {
     isLoadingOrganizations: false,
     showRememberChoice: false,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AccountSelector {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AccountSelector {...args} />
+      </div>
+    );
+  },
 };
 
 // Many organizations
@@ -146,7 +153,8 @@ export const ManyOrganizations: Story = {
     showRememberChoice: true,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -175,7 +183,8 @@ export const CustomLabels: Story = {
       rememberChoice: 'Remember my choice',
     },
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>

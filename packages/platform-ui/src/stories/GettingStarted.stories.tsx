@@ -15,6 +15,7 @@ import {
   Terminal,
   Shield,
 } from 'lucide-react';
+import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Overview/Getting Started',
@@ -59,110 +60,121 @@ type Story = StoryObj;
  * Installation Steps
  */
 export const InstallationSteps: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Installation
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            step: 1,
-            title: 'Install Package',
-            command: 'pnpm add @xala-technologies/platform',
-            description: 'Add the platform package to your project',
-          },
-          {
-            step: 2,
-            title: 'Install Peer Dependencies',
-            command: 'pnpm add react react-dom',
-            description: 'Ensure React is installed (if not already)',
-          },
-          {
-            step: 3,
-            title: 'Import Styles',
-            command: "import '@xala-technologies/platform/styles';",
-            description: 'Import the base styles in your app entry point',
-          },
-        ].map(({ step, title, command, description }) => (
-          <Card key={step} style={{ padding: 'var(--ds-spacing-6)' }}>
-            <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'flex-start' }}>
+    const steps = [
+      {
+        step: 1,
+        titleKey: 'storybook.gettingStarted.installPackage',
+        command: 'pnpm add @xala-technologies/platform',
+        descriptionKey: 'storybook.gettingStarted.installPackageDesc',
+      },
+      {
+        step: 2,
+        titleKey: 'storybook.gettingStarted.installPeerDeps',
+        command: 'pnpm add react react-dom',
+        descriptionKey: 'storybook.gettingStarted.installPeerDepsDesc',
+      },
+      {
+        step: 3,
+        titleKey: 'storybook.gettingStarted.importStyles',
+        command: "import '@xala-technologies/platform/styles';",
+        descriptionKey: 'storybook.gettingStarted.importStylesDesc',
+      },
+    ];
+
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.gettingStarted.installation')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          {steps.map(({ step, titleKey, command, descriptionKey }) => (
+            <Card key={step} style={{ padding: 'var(--ds-spacing-6)' }}>
               <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  backgroundColor: 'var(--ds-color-accent-base-default)',
-                  color: 'var(--ds-color-accent-contrast-default)',
-                  borderRadius: 'var(--ds-border-radius-full)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 'var(--ds-font-size-4)',
-                  fontWeight: 600,
-                  flexShrink: 0,
-                }}
+                style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'flex-start' }}
               >
-                {step}
-              </div>
-              <div style={{ flex: 1 }}>
-                <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                  {title}
-                </Heading>
-                <Paragraph
-                  data-size="sm"
+                <div
                   style={{
-                    marginBottom: 'var(--ds-spacing-3)',
-                    color: 'var(--ds-color-neutral-text-subtle)',
+                    width: '40px',
+                    height: '40px',
+                    backgroundColor: 'var(--ds-color-accent-base-default)',
+                    color: 'var(--ds-color-accent-contrast-default)',
+                    borderRadius: 'var(--ds-border-radius-full)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 'var(--ds-font-size-4)',
+                    fontWeight: 600,
+                    flexShrink: 0,
                   }}
                 >
-                  {description}
-                </Paragraph>
-                <pre
-                  style={{
-                    padding: 'var(--ds-spacing-3)',
-                    backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                    borderRadius: 'var(--ds-border-radius-sm)',
-                    fontSize: 'var(--ds-font-size-xs)',
-                    overflow: 'auto',
-                  }}
-                >
-                  {command}
-                </pre>
+                  {step}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                    {t(titleKey)}
+                  </Heading>
+                  <Paragraph
+                    data-size="sm"
+                    style={{
+                      marginBottom: 'var(--ds-spacing-3)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
+                    {t(descriptionKey)}
+                  </Paragraph>
+                  <pre
+                    style={{
+                      padding: 'var(--ds-spacing-3)',
+                      backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                      borderRadius: 'var(--ds-border-radius-sm)',
+                      fontSize: 'var(--ds-font-size-xs)',
+                      overflow: 'auto',
+                    }}
+                  >
+                    {command}
+                  </pre>
+                </div>
               </div>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Basic Setup
  */
 export const BasicSetup: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Basic Setup
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          1. Configure Theme Provider
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.gettingStarted.setup')}
         </Heading>
-        <pre
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            overflow: 'auto',
-            fontSize: 'var(--ds-font-size-sm)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          {`import { ThemeProvider } from '@xala-technologies/platform/theme';
+
+        <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            1. {t('storybook.gettingStarted.configureTheme')}
+          </Heading>
+          <pre
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              overflow: 'auto',
+              fontSize: 'var(--ds-font-size-sm)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {`import { ThemeProvider } from '@xala-technologies/platform/theme';
 
 function App() {
   return (
@@ -171,24 +183,24 @@ function App() {
     </ThemeProvider>
   );
 }`}
-        </pre>
-      </div>
+          </pre>
+        </div>
 
-      <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          2. Setup i18n
-        </Heading>
-        <pre
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            overflow: 'auto',
-            fontSize: 'var(--ds-font-size-sm)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          {`import { I18nProvider } from '@xala-technologies/platform/i18n';
+        <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            2. {t('storybook.gettingStarted.setupI18n')}
+          </Heading>
+          <pre
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              overflow: 'auto',
+              fontSize: 'var(--ds-font-size-sm)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {`import { I18nProvider } from '@xala-technologies/platform/i18n';
 
 function App() {
   return (
@@ -197,23 +209,23 @@ function App() {
     </I18nProvider>
   );
 }`}
-        </pre>
-      </div>
+          </pre>
+        </div>
 
-      <div>
-        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          3. Import Components
-        </Heading>
-        <pre
-          style={{
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            borderRadius: 'var(--ds-border-radius-md)',
-            overflow: 'auto',
-            fontSize: 'var(--ds-font-size-sm)',
-          }}
-        >
-          {`import { Button, Card, Heading } from '../index';
+        <div>
+          <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            3. {t('storybook.gettingStarted.importComponents')}
+          </Heading>
+          <pre
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderRadius: 'var(--ds-border-radius-md)',
+              overflow: 'auto',
+              fontSize: 'var(--ds-font-size-sm)',
+            }}
+          >
+            {`import { Button, Card, Heading } from '../index';
 
 export function MyComponent() {
   return (
@@ -223,42 +235,48 @@ export function MyComponent() {
     </Card>
   );
 }`}
-        </pre>
+          </pre>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * First Component
  */
 export const FirstComponent: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Your First Component
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-6)' }}>
-        {/* Code */}
-        <div>
-          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            Code
-          </Heading>
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              overflow: 'auto',
-              fontSize: 'var(--ds-font-size-xs)',
-            }}
-          >
-            {`import { 
-  Button, 
-  Card, 
-  Heading, 
-  Paragraph 
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.gettingStarted.yourFirstComponent')}
+        </Heading>
+
+        <div
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-6)' }}
+        >
+          {/* Code */}
+          <div>
+            <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+              {t('storybook.gettingStarted.code')}
+            </Heading>
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                overflow: 'auto',
+                fontSize: 'var(--ds-font-size-xs)',
+              }}
+            >
+              {`import {
+  Button,
+  Card,
+  Heading,
+  Paragraph
 } from '../index';
 import { useTranslation } from '@xala-technologies/platform/i18n';
 
@@ -266,147 +284,154 @@ export function WelcomeCard() {
   const { t } = useTranslation();
 
   return (
-    <Card style={{ 
-      padding: 'var(--ds-spacing-6)' 
+    <Card style={{
+      padding: 'var(--ds-spacing-6)'
     }}>
-      <Heading 
-        level={2} 
+      <Heading
+        level={2}
         data-size="md"
-        style={{ 
-          marginBottom: 'var(--ds-spacing-3)' 
+        style={{
+          marginBottom: 'var(--ds-spacing-3)'
         }}
       >
         {t('welcome.title')}
       </Heading>
-      
-      <Paragraph 
-        style={{ 
+
+      <Paragraph
+        style={{
           marginBottom: 'var(--ds-spacing-4)',
           color: 'var(--ds-color-neutral-text-subtle)'
         }}
       >
         {t('welcome.description')}
       </Paragraph>
-      
+
       <Button data-variant="primary">
         {t('common.getStarted')}
       </Button>
     </Card>
   );
 }`}
-          </pre>
-        </div>
+            </pre>
+          </div>
 
-        {/* Preview */}
-        <div>
-          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            Preview
-          </Heading>
-          <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-            <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-              Welcome to Xala Platform
+          {/* Preview */}
+          <div>
+            <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+              {t('storybook.gettingStarted.preview')}
             </Heading>
-            <Paragraph
-              style={{
-                marginBottom: 'var(--ds-spacing-4)',
-                color: 'var(--ds-color-neutral-text-subtle)',
-              }}
-            >
-              Start building accessible, consistent applications with our design system
-            </Paragraph>
-            <Button data-variant="primary">Get Started</Button>
-          </Card>
+            <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+              <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+                {t('storybook.overview.welcome')}
+              </Heading>
+              <Paragraph
+                style={{
+                  marginBottom: 'var(--ds-spacing-4)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
+                {t('storybook.overview.subtitle')}
+              </Paragraph>
+              <Button data-variant="primary">{t('storybook.form.getStarted')}</Button>
+            </Card>
+          </div>
+        </div>
+
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-6)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-success-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
+            <strong>{t('storybook.gettingStarted.bestPractices')}:</strong>
+            <br />• {t('storybook.gettingStarted.platformComponents')}
+            <br />• {t('storybook.gettingStarted.designTokens')}
+            <br />• {t('storybook.gettingStarted.i18nText')}
+            <br />• {t('storybook.gettingStarted.semanticHtml')}
+            <br />• {t('storybook.gettingStarted.accessibleProps')}
+          </Paragraph>
         </div>
       </div>
-
-      <div
-        style={{
-          marginTop: 'var(--ds-spacing-6)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-success-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-          <strong>Best Practices Used:</strong>
-          <br />• Platform components (Button, Card, Heading)
-          <br />• Design tokens (--ds-spacing-*, --ds-color-*)
-          <br />• i18n for all text (t() function)
-          <br />• Semantic HTML (proper heading levels)
-          <br />• Accessible props (data-variant, data-size)
-        </Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Common Patterns
  */
 export const CommonPatterns: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Common Patterns
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            title: 'Form with Validation',
-            code: `<Textfield
+    const patterns = [
+      {
+        titleKey: 'storybook.gettingStarted.formValidation',
+        code: `<Textfield
   label="Email"
   type="email"
   error={errors.email}
   required
 />`,
-          },
-          {
-            title: 'Loading Button',
-            code: `<Button 
+      },
+      {
+        titleKey: 'storybook.gettingStarted.loadingButton',
+        code: `<Button
   data-variant="primary"
   disabled={loading}
 >
   {loading ? 'Saving...' : 'Save'}
 </Button>`,
-          },
-          {
-            title: 'Conditional Rendering',
-            code: `{data ? (
+      },
+      {
+        titleKey: 'storybook.gettingStarted.conditionalRendering',
+        code: `{data ? (
   <DataTable data={data} />
 ) : (
   <EmptyState title="No data" />
 )}`,
-          },
-          {
-            title: 'Error Handling',
-            code: `try {
+      },
+      {
+        titleKey: 'storybook.gettingStarted.errorHandling',
+        code: `try {
   await sdk.users.create(data);
 } catch (error) {
   showError(t('errors.saveFailed'));
 }`,
-          },
-        ].map(({ title, code }) => (
-          <Card key={title} style={{ padding: 'var(--ds-spacing-5)' }}>
-            <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-              {title}
-            </Heading>
-            <pre
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-                fontSize: 'var(--ds-font-size-xs)',
-                overflow: 'auto',
-              }}
-            >
-              {code}
-            </pre>
-          </Card>
-        ))}
+      },
+    ];
+
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.gettingStarted.commonPatterns')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
+          {patterns.map(({ titleKey, code }) => (
+            <Card key={titleKey} style={{ padding: 'var(--ds-spacing-5)' }}>
+              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+                {t(titleKey)}
+              </Heading>
+              <pre
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-xs)',
+                  overflow: 'auto',
+                }}
+              >
+                {code}
+              </pre>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -414,38 +439,75 @@ export const CommonPatterns: Story = {
  */
 export const DesignTokensInAction: Story = {
   render: () => {
+    const t = useT();
     const [selectedToken, setSelectedToken] = useState<'spacing' | 'color' | 'typography'>(
       'spacing'
     );
 
     const tokenExamples = {
       spacing: [
-        { token: '--ds-spacing-1', value: '4px', usage: 'Minimal gap between elements' },
-        { token: '--ds-spacing-2', value: '8px', usage: 'Small spacing' },
-        { token: '--ds-spacing-4', value: '16px', usage: 'Default spacing' },
-        { token: '--ds-spacing-6', value: '24px', usage: 'Section spacing' },
-        { token: '--ds-spacing-8', value: '32px', usage: 'Large spacing' },
+        { token: '--ds-spacing-1', value: '4px', usageKey: 'storybook.tokens.minimalGap' },
+        { token: '--ds-spacing-2', value: '8px', usageKey: 'storybook.tokens.smallSpacing' },
+        { token: '--ds-spacing-4', value: '16px', usageKey: 'storybook.tokens.defaultSpacing' },
+        { token: '--ds-spacing-6', value: '24px', usageKey: 'storybook.tokens.sectionSpacing' },
+        { token: '--ds-spacing-8', value: '32px', usageKey: 'storybook.tokens.largeSpacing' },
       ],
       color: [
-        { token: '--ds-color-accent-base-default', value: '#0066CC', usage: 'Primary actions' },
-        { token: '--ds-color-success-base-default', value: '#06A77D', usage: 'Success states' },
-        { token: '--ds-color-danger-base-default', value: '#E02E49', usage: 'Error states' },
-        { token: '--ds-color-warning-base-default', value: '#FF9100', usage: 'Warning states' },
-        { token: '--ds-color-neutral-text-subtle', value: '#68707D', usage: 'Secondary text' },
+        {
+          token: '--ds-color-accent-base-default',
+          value: '#0066CC',
+          usageKey: 'storybook.tokens.primaryActions',
+        },
+        {
+          token: '--ds-color-success-base-default',
+          value: '#06A77D',
+          usageKey: 'storybook.tokens.successStates',
+        },
+        {
+          token: '--ds-color-danger-base-default',
+          value: '#E02E49',
+          usageKey: 'storybook.tokens.errorStates',
+        },
+        {
+          token: '--ds-color-warning-base-default',
+          value: '#FF9100',
+          usageKey: 'storybook.tokens.warningStates',
+        },
+        {
+          token: '--ds-color-neutral-text-subtle',
+          value: '#68707D',
+          usageKey: 'storybook.tokens.secondaryText',
+        },
       ],
       typography: [
-        { token: '--ds-font-size-xs', value: '0.75rem', usage: 'Small text, captions' },
-        { token: '--ds-font-size-sm', value: '0.875rem', usage: 'Body text (small)' },
-        { token: '--ds-font-size-md', value: '1rem', usage: 'Body text (default)' },
-        { token: '--ds-font-size-lg', value: '1.125rem', usage: 'Emphasized text' },
-        { token: '--ds-font-size-xl', value: '1.5rem', usage: 'Headings' },
+        {
+          token: '--ds-font-size-xs',
+          value: '0.75rem',
+          usageKey: 'storybook.tokens.smallTextCaptions',
+        },
+        {
+          token: '--ds-font-size-sm',
+          value: '0.875rem',
+          usageKey: 'storybook.tokens.bodyTextSmall',
+        },
+        {
+          token: '--ds-font-size-md',
+          value: '1rem',
+          usageKey: 'storybook.tokens.bodyTextDefault',
+        },
+        {
+          token: '--ds-font-size-lg',
+          value: '1.125rem',
+          usageKey: 'storybook.tokens.emphasizedText',
+        },
+        { token: '--ds-font-size-xl', value: '1.5rem', usageKey: 'storybook.tokens.headings' },
       ],
     };
 
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          Design Tokens in Action
+          {t('storybook.gettingStarted.designTokensInAction')}
         </Heading>
 
         <div
@@ -462,14 +524,14 @@ export const DesignTokensInAction: Story = {
               data-size="sm"
               onClick={() => setSelectedToken(type)}
             >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
+              {t(`storybook.tokens.${type}`)}
             </Button>
           ))}
         </div>
 
         <Card style={{ padding: 'var(--ds-spacing-6)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            {tokenExamples[selectedToken].map(({ token, value, usage }) => (
+            {tokenExamples[selectedToken].map(({ token, value, usageKey }) => (
               <div
                 key={token}
                 style={{
@@ -509,7 +571,7 @@ export const DesignTokensInAction: Story = {
                   {selectedToken === 'typography' && 'Aa'}
                 </div>
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                  {usage}
+                  {t(usageKey)}
                 </Paragraph>
               </div>
             ))}
@@ -525,8 +587,8 @@ export const DesignTokensInAction: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-            <strong>Pro Tip:</strong> Always use design tokens instead of hardcoded values. This
-            ensures consistency and enables theming.
+            <strong>{t('storybook.gettingStarted.proTip')}:</strong>{' '}
+            {t('storybook.gettingStarted.proTipText')}
           </Paragraph>
         </div>
       </div>
@@ -538,18 +600,14 @@ export const DesignTokensInAction: Story = {
  * Real-World Patterns
  */
 export const RealWorldPatterns: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Real-World Patterns
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            title: 'Form with Validation',
-            description: 'Handle user input with proper validation and error states',
-            code: `import { Textfield, Button } from '../index';
+    const patterns = [
+      {
+        titleKey: 'storybook.gettingStarted.formValidation',
+        descriptionKey: 'storybook.gettingStarted.formValidationDesc',
+        code: `import { Textfield, Button } from '../index';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from '@xala-technologies/platform/i18n';
 
@@ -572,12 +630,12 @@ export function ContactForm() {
         label={t('form.email')}
         type="email"
         error={errors.email?.message}
-        {...register('email', { 
-          required: t('validation.required') 
+        {...register('email', {
+          required: t('validation.required')
         })}
       />
-      
-      <Button 
+
+      <Button
         data-variant="primary"
         type="submit"
       >
@@ -586,11 +644,11 @@ export function ContactForm() {
     </form>
   );
 }`,
-          },
-          {
-            title: 'Loading States',
-            description: 'Provide feedback during async operations',
-            code: `import { Button, Spinner } from '../index';
+      },
+      {
+        titleKey: 'storybook.gettingStarted.loadingStates',
+        descriptionKey: 'storybook.gettingStarted.loadingStatesDesc',
+        code: `import { Button, Spinner } from '../index';
 import { useState } from 'react';
 
 export function SaveButton() {
@@ -626,11 +684,11 @@ export function SaveButton() {
     </Button>
   );
 }`,
-          },
-          {
-            title: 'Conditional Rendering',
-            description: 'Show different UI based on data state',
-            code: `import { DataTable, EmptyState, ErrorState } from '../index';
+      },
+      {
+        titleKey: 'storybook.gettingStarted.conditionalRendering',
+        descriptionKey: 'storybook.gettingStarted.conditionalRenderingDesc',
+        code: `import { DataTable, EmptyState, ErrorState } from '../index';
 import { useQuery } from '@tanstack/react-query';
 
 export function UserList() {
@@ -645,7 +703,7 @@ export function UserList() {
 
   if (error) {
     return (
-      <ErrorState 
+      <ErrorState
         title={t('errors.loadFailed')}
         onRetry={() => queryClient.invalidateQueries(['users'])}
       />
@@ -654,7 +712,7 @@ export function UserList() {
 
   if (!data || data.length === 0) {
     return (
-      <EmptyState 
+      <EmptyState
         title={t('users.empty')}
         action={<Button>{t('users.create')}</Button>}
       />
@@ -663,11 +721,11 @@ export function UserList() {
 
   return <DataTable data={data} columns={columns} />;
 }`,
-          },
-          {
-            title: 'Responsive Layout',
-            description: 'Build layouts that adapt to screen size',
-            code: `import { Card, Heading } from '../index';
+      },
+      {
+        titleKey: 'storybook.gettingStarted.responsiveLayout',
+        descriptionKey: 'storybook.gettingStarted.responsiveLayoutDesc',
+        code: `import { Card, Heading } from '../index';
 
 export function DashboardGrid() {
   return (
@@ -678,7 +736,7 @@ export function DashboardGrid() {
       padding: 'var(--ds-spacing-6)',
     }}>
       {widgets.map(widget => (
-        <Card 
+        <Card
           key={widget.id}
           style={{ padding: 'var(--ds-spacing-6)' }}
         >
@@ -691,35 +749,45 @@ export function DashboardGrid() {
     </div>
   );
 }`,
-          },
-        ].map(({ title, description, code }) => (
-          <Card key={title} style={{ padding: 'var(--ds-spacing-6)' }}>
-            <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                {title}
-              </Heading>
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                {description}
-              </Paragraph>
-            </div>
+      },
+    ];
 
-            <pre
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                overflow: 'auto',
-                fontSize: 'var(--ds-font-size-xs)',
-                lineHeight: '1.6',
-              }}
-            >
-              {code}
-            </pre>
-          </Card>
-        ))}
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.gettingStarted.realWorldPatterns')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          {patterns.map(({ titleKey, descriptionKey, code }) => (
+            <Card key={titleKey} style={{ padding: 'var(--ds-spacing-6)' }}>
+              <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+                <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                  {t(titleKey)}
+                </Heading>
+                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  {t(descriptionKey)}
+                </Paragraph>
+              </div>
+
+              <pre
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  overflow: 'auto',
+                  fontSize: 'var(--ds-font-size-xs)',
+                  lineHeight: '1.6',
+                }}
+              >
+                {code}
+              </pre>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -727,13 +795,14 @@ export function DashboardGrid() {
  */
 export const InteractiveQuickStart: Story = {
   render: () => {
+    const t = useT();
     const [name, setName] = useState('');
     const [step, setStep] = useState(1);
 
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          Interactive Quick Start
+          {t('storybook.gettingStarted.interactiveQuickStart')}
         </Heading>
 
         <div
@@ -743,7 +812,7 @@ export const InteractiveQuickStart: Story = {
           <div>
             <Card style={{ padding: 'var(--ds-spacing-6)' }}>
               <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Build Your First Component
+                {t('storybook.gettingStarted.buildFirstComponent')}
               </Heading>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -786,16 +855,16 @@ export const InteractiveQuickStart: Story = {
                     >
                       1
                     </div>
-                    <strong>Enter Your Name</strong>
+                    <strong>{t('storybook.gettingStarted.enterYourName')}</strong>
                   </div>
                   <Textfield
-                    label="Your Name"
+                    label={t('storybook.form.yourName')}
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
                       if (e.target.value && step === 1) setStep(2);
                     }}
-                    placeholder="John Doe"
+                    placeholder={t('storybook.form.enterName')}
                     data-size="sm"
                   />
                 </div>
@@ -840,9 +909,11 @@ export const InteractiveQuickStart: Story = {
                     >
                       2
                     </div>
-                    <strong>See the Preview</strong>
+                    <strong>{t('storybook.gettingStarted.seePreview')}</strong>
                   </div>
-                  <Paragraph data-size="sm">Your component updates in real-time →</Paragraph>
+                  <Paragraph data-size="sm">
+                    {t('storybook.gettingStarted.componentUpdatesRealtime')}
+                  </Paragraph>
                 </div>
 
                 <div
@@ -868,7 +939,7 @@ export const InteractiveQuickStart: Story = {
                             : 'var(--ds-color-neutral-border-default)',
                       }}
                     />
-                    <strong>Ready to Build!</strong>
+                    <strong>{t('storybook.gettingStarted.readyToBuild')}</strong>
                   </div>
                 </div>
               </div>
@@ -879,7 +950,7 @@ export const InteractiveQuickStart: Story = {
                   style={{ width: '100%', marginTop: 'var(--ds-spacing-4)' }}
                   onClick={() => setStep(3)}
                 >
-                  Complete Tutorial
+                  {t('storybook.gettingStarted.completeTutorial')}
                 </Button>
               )}
             </Card>
@@ -889,7 +960,7 @@ export const InteractiveQuickStart: Story = {
           <div>
             <Card style={{ padding: 'var(--ds-spacing-6)', minHeight: '400px' }}>
               <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Live Preview
+                {t('storybook.gettingStarted.livePreview')}
               </Heading>
 
               {name ? (
@@ -900,7 +971,7 @@ export const InteractiveQuickStart: Story = {
                   }}
                 >
                   <Heading level={4} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                    Welcome, {name}!
+                    {t('storybook.gettingStarted.welcomeName', { name })}
                   </Heading>
                   <Paragraph
                     style={{
@@ -908,9 +979,9 @@ export const InteractiveQuickStart: Story = {
                       color: 'var(--ds-color-neutral-text-subtle)',
                     }}
                   >
-                    You're building with Xala Platform design tokens and components.
+                    {t('storybook.gettingStarted.buildingWith')}
                   </Paragraph>
-                  <Button data-variant="primary">Get Started</Button>
+                  <Button data-variant="primary">{t('storybook.form.getStarted')}</Button>
                 </Card>
               ) : (
                 <div
@@ -920,14 +991,14 @@ export const InteractiveQuickStart: Story = {
                     color: 'var(--ds-color-neutral-text-subtle)',
                   }}
                 >
-                  <Paragraph>Enter your name to see the preview</Paragraph>
+                  <Paragraph>{t('storybook.gettingStarted.enterNameToPreview')}</Paragraph>
                 </div>
               )}
 
               {name && (
                 <div style={{ marginTop: 'var(--ds-spacing-6)' }}>
                   <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                    The Code
+                    {t('storybook.gettingStarted.theCode')}
                   </Heading>
                   <pre
                     style={{
@@ -964,76 +1035,82 @@ export const InteractiveQuickStart: Story = {
  * Next Steps
  */
 export const NextSteps: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Next Steps
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-5)' }}>
-        {[
-          {
-            Icon: Package,
-            title: 'Explore Components',
-            description: 'Browse all 50+ components with live examples and code snippets',
-            action: 'View Components',
-            link: '?path=/docs/components-button--docs',
-          },
-          {
-            Icon: Palette,
-            title: 'Learn Design Tokens',
-            description: 'Understand how to use design tokens for consistent styling',
-            action: 'View Tokens',
-            link: '?path=/docs/fundamentals-tokens--docs',
-          },
-          {
-            Icon: Shield,
-            title: 'Accessibility Guide',
-            description: 'Learn how to build accessible applications with WCAG 2.1 AA compliance',
-            action: 'View Guide',
-            link: '?path=/docs/fundamentals-accessibility--docs',
-          },
-          {
-            Icon: Code,
-            title: 'View Examples',
-            description: 'See 1000+ code examples and learn from best practices',
-            action: 'View Examples',
-            link: '?path=/docs/examples-component-examples--docs',
-          },
-        ].map(({ Icon, title, description, action, link }) => (
-          <div
-            key={title}
-            style={{
-              display: 'flex',
-              gap: 'var(--ds-spacing-4)',
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-surface-default)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              alignItems: 'center',
-            }}
-          >
-            <Icon
-              size={32}
-              style={{ flexShrink: 0, color: 'var(--ds-color-accent-base-default)' }}
-            />
-            <div style={{ flex: 1 }}>
-              <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-1)' }}>
-                {title}
-              </Heading>
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                {description}
-              </Paragraph>
-            </div>
-            <Button
-              data-variant="tertiary"
-              data-size="sm"
-              onClick={() => (window.location.href = link)}
+    const nextSteps = [
+      {
+        Icon: Package,
+        titleKey: 'storybook.gettingStarted.exploreComponents',
+        descriptionKey: 'storybook.gettingStarted.exploreComponentsDesc',
+        actionKey: 'storybook.gettingStarted.viewComponents',
+        link: '?path=/docs/components-button--docs',
+      },
+      {
+        Icon: Palette,
+        titleKey: 'storybook.gettingStarted.learnDesignTokens',
+        descriptionKey: 'storybook.gettingStarted.learnDesignTokensDesc',
+        actionKey: 'storybook.gettingStarted.viewTokens',
+        link: '?path=/docs/fundamentals-tokens--docs',
+      },
+      {
+        Icon: Shield,
+        titleKey: 'storybook.gettingStarted.accessibilityGuide',
+        descriptionKey: 'storybook.gettingStarted.accessibilityGuideDesc',
+        actionKey: 'storybook.gettingStarted.viewGuide',
+        link: '?path=/docs/fundamentals-accessibility--docs',
+      },
+      {
+        Icon: Code,
+        titleKey: 'storybook.gettingStarted.viewExamples',
+        descriptionKey: 'storybook.gettingStarted.viewExamplesDesc',
+        actionKey: 'storybook.gettingStarted.viewExamplesAction',
+        link: '?path=/docs/examples-component-examples--docs',
+      },
+    ];
+
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.gettingStarted.nextSteps')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-5)' }}>
+          {nextSteps.map(({ Icon, titleKey, descriptionKey, actionKey, link }) => (
+            <div
+              key={titleKey}
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-4)',
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                alignItems: 'center',
+              }}
             >
-              {action} →
-            </Button>
-          </div>
-        ))}
+              <Icon
+                size={32}
+                style={{ flexShrink: 0, color: 'var(--ds-color-accent-base-default)' }}
+              />
+              <div style={{ flex: 1 }}>
+                <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-1)' }}>
+                  {t(titleKey)}
+                </Heading>
+                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  {t(descriptionKey)}
+                </Paragraph>
+              </div>
+              <Button
+                data-variant="tertiary"
+                data-size="sm"
+                onClick={() => (window.location.href = link)}
+              >
+                {t(actionKey)} →
+              </Button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

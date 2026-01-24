@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn, expect, userEvent, within } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Button, Heading } from '../../index';
 import {
   PlusIcon,
@@ -238,106 +239,118 @@ export const Default: Story = {
  * Emphasis levels - Different button variants show action importance and help users prioritize.
  */
 export const EmphasisLevels: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--ds-spacing-3)',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
-      <Button variant="primary" type="button">
-        Primary
-      </Button>
-      <Button variant="secondary" type="button">
-        Secondary
-      </Button>
-      <Button variant="tertiary" type="button">
-        Tertiary
-      </Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-3)',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Button variant="primary" type="button">
+          {t('storybook.demo.primary')}
+        </Button>
+        <Button variant="secondary" type="button">
+          {t('storybook.demo.secondary')}
+        </Button>
+        <Button variant="tertiary" type="button">
+          {t('storybook.demo.tertiary')}
+        </Button>
+      </div>
+    );
+  },
 };
 
 /**
  * All color variants - Available in all theme colors. Use same color in a group except danger for destructive actions.
  */
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-        <Button variant="primary" data-color="accent" type="button">
-          Accent
-        </Button>
-        <Button variant="primary" data-color="brand1" type="button">
-          Brand 1
-        </Button>
-        <Button variant="primary" data-color="brand2" type="button">
-          Brand 2
-        </Button>
-        <Button variant="primary" data-color="brand3" type="button">
-          Brand 3
-        </Button>
-        <Button variant="primary" data-color="neutral" type="button">
-          Neutral
-        </Button>
-        <Button variant="primary" data-color="danger" type="button">
-          Danger
-        </Button>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+          <Button variant="primary" data-color="accent" type="button">
+            {t('storybook.demo.accent')}
+          </Button>
+          <Button variant="primary" data-color="brand1" type="button">
+            {t('storybook.demo.brand1')}
+          </Button>
+          <Button variant="primary" data-color="brand2" type="button">
+            {t('storybook.demo.brand2')}
+          </Button>
+          <Button variant="primary" data-color="brand3" type="button">
+            {t('storybook.demo.brand3')}
+          </Button>
+          <Button variant="primary" data-color="neutral" type="button">
+            {t('storybook.demo.neutral')}
+          </Button>
+          <Button variant="primary" data-color="danger" type="button">
+            {t('storybook.demo.danger')}
+          </Button>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Combined colors example - Same color in group, except danger for destructive actions.
  */
 export const CombinedColors: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--ds-spacing-3)',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
-      <Button variant="primary" data-color="neutral" type="button">
-        Publish
-      </Button>
-      <Button variant="secondary" data-color="neutral" type="button">
-        Save draft
-      </Button>
-      <Button variant="tertiary" data-color="danger" type="button">
-        Delete
-      </Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-3)',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Button variant="primary" data-color="neutral" type="button">
+          {t('storybook.demo.publish')}
+        </Button>
+        <Button variant="secondary" data-color="neutral" type="button">
+          {t('storybook.demo.saveDraft')}
+        </Button>
+        <Button variant="tertiary" data-color="danger" type="button">
+          {t('platform.common.delete')}
+        </Button>
+      </div>
+    );
+  },
 };
 
 /**
  * Icons - Buttons can have icons left or right of text. Icons automatically get spacing.
  */
 export const WithIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-        <Button variant="primary" type="button">
-          <PencilIcon aria-hidden fontSize="1.25rem" />
-          Edit
-        </Button>
-        <Button variant="secondary" type="button">
-          <FloppydiskIcon aria-hidden fontSize="1.25rem" />
-          Save
-        </Button>
-        <Button variant="tertiary" type="button">
-          Start
-          <ArrowRightIcon aria-hidden fontSize="1.25rem" />
-        </Button>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+          <Button variant="primary" type="button">
+            <PencilIcon aria-hidden fontSize="1.25rem" />
+            {t('platform.common.edit')}
+          </Button>
+          <Button variant="secondary" type="button">
+            <FloppydiskIcon aria-hidden fontSize="1.25rem" />
+            {t('platform.common.save')}
+          </Button>
+          <Button variant="tertiary" type="button">
+            {t('storybook.demo.start')}
+            <ArrowRightIcon aria-hidden fontSize="1.25rem" />
+          </Button>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -372,26 +385,29 @@ export const Disabled: Story = {
  * Loading buttons - Show loading state with spinner. Combine with loading prop.
  */
 export const Loading: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--ds-spacing-3)',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
-      <Button variant="primary" loading type="button">
-        Loading...
-      </Button>
-      <Button variant="secondary" loading type="button">
-        Loading...
-      </Button>
-      <Button variant="tertiary" loading type="button">
-        Loading...
-      </Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-3)',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Button variant="primary" loading type="button">
+          {t('platform.common.loading')}...
+        </Button>
+        <Button variant="secondary" loading type="button">
+          {t('platform.common.loading')}...
+        </Button>
+        <Button variant="tertiary" loading type="button">
+          {t('platform.common.loading')}...
+        </Button>
+      </div>
+    );
+  },
 };
 
 /**
@@ -411,26 +427,29 @@ export const AsLink: Story = {
  * Size variants - Buttons scale with data-size attribute.
  */
 export const Sizes: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--ds-spacing-3)',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
-      <Button data-size="sm" type="button">
-        Small
-      </Button>
-      <Button data-size="md" type="button">
-        Medium
-      </Button>
-      <Button data-size="lg" type="button">
-        Large
-      </Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-3)',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Button data-size="sm" type="button">
+          {t('storybook.story.small')}
+        </Button>
+        <Button data-size="md" type="button">
+          {t('storybook.story.medium')}
+        </Button>
+        <Button data-size="lg" type="button">
+          {t('storybook.story.large')}
+        </Button>
+      </div>
+    );
+  },
 };
 
 /**
@@ -443,279 +462,294 @@ export const Sizes: Story = {
  * - Consider using Tooltip for additional context
  */
 export const IconOnly: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--ds-spacing-3)',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
-      <Button icon aria-label="Add item" type="button">
-        <PlusIcon aria-hidden fontSize="1.25rem" />
-      </Button>
-      <Button icon variant="secondary" aria-label="Save" type="button">
-        <FloppydiskIcon aria-hidden fontSize="1.25rem" />
-      </Button>
-      <Button icon variant="tertiary" data-color="danger" aria-label="Delete" type="button">
-        <TrashIcon aria-hidden fontSize="1.25rem" />
-      </Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-spacing-3)',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Button icon aria-label={t('platform.common.add')} type="button">
+          <PlusIcon aria-hidden fontSize="1.25rem" />
+        </Button>
+        <Button icon variant="secondary" aria-label={t('platform.common.save')} type="button">
+          <FloppydiskIcon aria-hidden fontSize="1.25rem" />
+        </Button>
+        <Button
+          icon
+          variant="tertiary"
+          data-color="danger"
+          aria-label={t('platform.common.delete')}
+          type="button"
+        >
+          <TrashIcon aria-hidden fontSize="1.25rem" />
+        </Button>
+      </div>
+    );
+  },
 };
 
 /**
  * Best Practices - Examples of correct and incorrect button usage.
  */
 export const BestPractices: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Do: One primary button per page
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" type="button">
-            Save changes
-          </Button>
-          <Button variant="secondary" type="button">
-            Cancel
-          </Button>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.story.doOnePrimaryButton')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button variant="primary" type="button">
+              {t('storybook.demo.saveChanges')}
+            </Button>
+            <Button variant="secondary" type="button">
+              {t('platform.common.cancel')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Do: Same color in group, except danger
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" data-color="neutral" type="button">
-            Publish
-          </Button>
-          <Button variant="secondary" data-color="neutral" type="button">
-            Save draft
-          </Button>
-          <Button variant="tertiary" data-color="danger" type="button">
-            Delete
-          </Button>
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.story.doSameColorExceptDanger')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button variant="primary" data-color="neutral" type="button">
+              {t('storybook.demo.publish')}
+            </Button>
+            <Button variant="secondary" data-color="neutral" type="button">
+              {t('storybook.demo.saveDraft')}
+            </Button>
+            <Button variant="tertiary" data-color="danger" type="button">
+              {t('platform.common.delete')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Do: Clear, action-oriented labels
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" type="button">
-            Save changes
-          </Button>
-          <Button variant="secondary" type="button">
-            Discard changes
-          </Button>
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.story.doClearLabels')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button variant="primary" type="button">
+              {t('storybook.demo.saveChanges')}
+            </Button>
+            <Button variant="secondary" type="button">
+              {t('storybook.demo.discardChanges')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-danger-text-default)',
-          }}
-        >
-          Don't: Multiple primary buttons
-        </Heading>
-        <div
-          style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
-        >
-          <Button variant="primary" type="button">
-            Save
-          </Button>
-          <Button variant="primary" type="button">
-            Submit
-          </Button>
-          <Button variant="primary" type="button">
-            Publish
-          </Button>
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-danger-text-default)',
+            }}
+          >
+            {t('storybook.story.dontMultiplePrimary')}
+          </Heading>
+          <div
+            style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
+          >
+            <Button variant="primary" type="button">
+              {t('platform.common.save')}
+            </Button>
+            <Button variant="primary" type="button">
+              {t('platform.common.submit')}
+            </Button>
+            <Button variant="primary" type="button">
+              {t('storybook.demo.publish')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-danger-text-default)',
-          }}
-        >
-          Don't: Unclear labels
-        </Heading>
-        <div
-          style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
-        >
-          <Button variant="primary" type="button">
-            OK
-          </Button>
-          <Button variant="secondary" type="button">
-            Cancel
-          </Button>
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-danger-text-default)',
+            }}
+          >
+            {t('storybook.story.dontUnclearLabels')}
+          </Heading>
+          <div
+            style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
+          >
+            <Button variant="primary" type="button">
+              OK
+            </Button>
+            <Button variant="secondary" type="button">
+              {t('platform.common.cancel')}
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * All variants overview - Complete showcase of all button variations.
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Emphasis Levels
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" type="button">
-            Primary
-          </Button>
-          <Button variant="secondary" type="button">
-            Secondary
-          </Button>
-          <Button variant="tertiary" type="button">
-            Tertiary
-          </Button>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.emphasisLevels')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button variant="primary" type="button">
+              {t('storybook.demo.primary')}
+            </Button>
+            <Button variant="secondary" type="button">
+              {t('storybook.demo.secondary')}
+            </Button>
+            <Button variant="tertiary" type="button">
+              {t('storybook.demo.tertiary')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          All Colors
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button data-color="accent" type="button">
-            Accent
-          </Button>
-          <Button data-color="brand1" type="button">
-            Brand 1
-          </Button>
-          <Button data-color="brand2" type="button">
-            Brand 2
-          </Button>
-          <Button data-color="brand3" type="button">
-            Brand 3
-          </Button>
-          <Button data-color="neutral" type="button">
-            Neutral
-          </Button>
-          <Button data-color="danger" type="button">
-            Danger
-          </Button>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.allColors')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button data-color="accent" type="button">
+              {t('storybook.demo.accent')}
+            </Button>
+            <Button data-color="brand1" type="button">
+              {t('storybook.demo.brand1')}
+            </Button>
+            <Button data-color="brand2" type="button">
+              {t('storybook.demo.brand2')}
+            </Button>
+            <Button data-color="brand3" type="button">
+              {t('storybook.demo.brand3')}
+            </Button>
+            <Button data-color="neutral" type="button">
+              {t('storybook.demo.neutral')}
+            </Button>
+            <Button data-color="danger" type="button">
+              {t('storybook.demo.danger')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div
-          style={{
-            display: 'flex',
-            gap: 'var(--ds-spacing-3)',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Button data-size="sm" type="button">
-            Small
-          </Button>
-          <Button data-size="md" type="button">
-            Medium
-          </Button>
-          <Button data-size="lg" type="button">
-            Large
-          </Button>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-spacing-3)',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
+            <Button data-size="sm" type="button">
+              {t('storybook.story.small')}
+            </Button>
+            <Button data-size="md" type="button">
+              {t('storybook.story.medium')}
+            </Button>
+            <Button data-size="lg" type="button">
+              {t('storybook.story.large')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          With Icons
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button type="button">
-            <PlusIcon aria-hidden fontSize="1.25rem" />
-            Add
-          </Button>
-          <Button type="button">
-            <FloppydiskIcon aria-hidden fontSize="1.25rem" />
-            Save
-          </Button>
-          <Button type="button">
-            Start
-            <ArrowRightIcon aria-hidden fontSize="1.25rem" />
-          </Button>
-          <Button icon aria-label="Edit" type="button">
-            <PencilIcon aria-hidden fontSize="1.25rem" />
-          </Button>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.withIcons')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button type="button">
+              <PlusIcon aria-hidden fontSize="1.25rem" />
+              {t('platform.common.add')}
+            </Button>
+            <Button type="button">
+              <FloppydiskIcon aria-hidden fontSize="1.25rem" />
+              {t('platform.common.save')}
+            </Button>
+            <Button type="button">
+              {t('storybook.demo.start')}
+              <ArrowRightIcon aria-hidden fontSize="1.25rem" />
+            </Button>
+            <Button icon aria-label={t('platform.common.edit')} type="button">
+              <PencilIcon aria-hidden fontSize="1.25rem" />
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          States
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button type="button">Default</Button>
-          <Button loading type="button">
-            Loading
-          </Button>
-          <Button disabled type="button">
-            Disabled
-          </Button>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.states')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button type="button">{t('storybook.story.default')}</Button>
+            <Button loading type="button">
+              {t('storybook.story.loading')}
+            </Button>
+            <Button disabled type="button">
+              {t('storybook.story.disabled')}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Combined Example
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button variant="primary" data-color="neutral" type="button">
-            Publish
-          </Button>
-          <Button variant="secondary" data-color="neutral" type="button">
-            Save draft
-          </Button>
-          <Button variant="tertiary" data-color="danger" type="button">
-            Delete
-          </Button>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.combinedExample')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
+            <Button variant="primary" data-color="neutral" type="button">
+              {t('storybook.demo.publish')}
+            </Button>
+            <Button variant="secondary" data-color="neutral" type="button">
+              {t('storybook.demo.saveDraft')}
+            </Button>
+            <Button variant="tertiary" data-color="danger" type="button">
+              {t('platform.common.delete')}
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

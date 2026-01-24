@@ -5,6 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import {
   ReviewList,
   type ReviewListProps,

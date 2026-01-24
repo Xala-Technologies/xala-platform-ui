@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ListPageShell, DetailPageShell, FormPageShell } from '../../composed/PageShell';
 import { Button, Card, Paragraph } from '@digdir/designsystemet-react';
 import { Badge } from '../../composed/Badge';
@@ -39,15 +40,16 @@ Reusable page layout shells for consistent page structure. Includes ListPageShel
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// List page shell
-export const ListPage: Story = {
-  render: () => (
+// Wrapper for list page story
+const ListPageDemo = () => {
+  const t = useT();
+  return (
     <ListPageShell
-      title="Resources"
-      subtitle="Manage your resources"
+      title={t('storybook.demo.resources')}
+      subtitle={t('storybook.demo.manageYourResources')}
       actions={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          Create Resource
+          {t('storybook.demo.createResource')}
         </Button>
       }
       filters={
@@ -58,7 +60,7 @@ export const ListPage: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <Paragraph data-size="sm">Filter controls go here</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.filterControlsHere')}</Paragraph>
         </div>
       }
     >
@@ -68,45 +70,51 @@ export const ListPage: Story = {
           data-size="medium"
           style={{ marginBottom: 'var(--ds-spacing-2)' }}
         >
-          <Paragraph data-size="sm">Resource 1</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.resource')} 1</Paragraph>
         </Card>
         <Card
           data-color="neutral"
           data-size="medium"
           style={{ marginBottom: 'var(--ds-spacing-2)' }}
         >
-          <Paragraph data-size="sm">Resource 2</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.resource')} 2</Paragraph>
         </Card>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">Resource 3</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.resource')} 3</Paragraph>
         </Card>
       </div>
     </ListPageShell>
-  ),
+  );
 };
 
-// Detail page shell
-export const DetailPage: Story = {
-  render: () => (
+// List page shell
+export const ListPage: Story = {
+  render: () => <ListPageDemo />,
+};
+
+// Wrapper for detail page story
+const DetailPageDemo = () => {
+  const t = useT();
+  return (
     <DetailPageShell
-      title="Resource Details"
-      subtitle={<Badge variant="success">Active</Badge>}
+      title={t('storybook.demo.resourceDetails')}
+      subtitle={<Badge variant="success">{t('platform.status.active')}</Badge>}
       backLink={{
-        label: 'Back to Resources',
+        label: t('storybook.demo.backToResources'),
         href: '/resources',
         onClick: fn(),
       }}
       actions={
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            Edit
+            {t('platform.common.edit')}
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            Save
+            {t('platform.common.save')}
           </Button>
         </div>
       }
-      badges={<Badge variant="info">Featured</Badge>}
+      badges={<Badge variant="info">{t('storybook.demo.featured')}</Badge>}
       statusBanner={
         <div
           style={{
@@ -116,7 +124,9 @@ export const DetailPage: Story = {
             marginBottom: 'var(--ds-spacing-4)',
           }}
         >
-          <Paragraph data-size="sm">Status: Active</Paragraph>
+          <Paragraph data-size="sm">
+            {t('platform.status.label')}: {t('platform.status.active')}
+          </Paragraph>
         </div>
       }
       tabs={
@@ -128,34 +138,40 @@ export const DetailPage: Story = {
           }}
         >
           <Button data-color="accent" data-size="sm">
-            Overview
+            {t('storybook.demo.overview')}
           </Button>
           <Button data-color="neutral" data-size="sm">
-            Details
+            {t('storybook.demo.details')}
           </Button>
           <Button data-color="neutral" data-size="sm">
-            History
+            {t('storybook.demo.history')}
           </Button>
         </div>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">Detail content goes here</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.detailContentHere')}</Paragraph>
         </Card>
       </div>
     </DetailPageShell>
-  ),
+  );
 };
 
-// Form page shell
-export const FormPage: Story = {
-  render: () => (
+// Detail page shell
+export const DetailPage: Story = {
+  render: () => <DetailPageDemo />,
+};
+
+// Wrapper for form page story
+const FormPageDemo = () => {
+  const t = useT();
+  return (
     <FormPageShell
-      title="Create Resource"
-      subtitle="Fill in the form below to create a new resource"
+      title={t('storybook.demo.createResource')}
+      subtitle={t('storybook.demo.fillFormToCreate')}
       backLink={{
-        label: 'Back',
+        label: t('platform.common.back'),
         href: '/resources',
         onClick: fn(),
       }}
@@ -170,67 +186,85 @@ export const FormPage: Story = {
           }}
         >
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            Cancel
+            {t('platform.common.cancel')}
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            Create Resource
+            {t('storybook.demo.createResource')}
           </Button>
         </div>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">Form fields go here</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.formFieldsHere')}</Paragraph>
         </Card>
       </div>
     </FormPageShell>
-  ),
+  );
 };
 
-// List page without filters
-export const ListPageNoFilters: Story = {
-  render: () => (
+// Form page shell
+export const FormPage: Story = {
+  render: () => <FormPageDemo />,
+};
+
+// Wrapper for list page no filters story
+const ListPageNoFiltersDemo = () => {
+  const t = useT();
+  return (
     <ListPageShell
-      title="Simple List"
+      title={t('storybook.demo.simpleList')}
       actions={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          Add Item
+          {t('storybook.demo.addItem')}
         </Button>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">List content</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.listContent')}</Paragraph>
         </Card>
       </div>
     </ListPageShell>
-  ),
+  );
 };
 
-// Detail page minimal
-export const DetailPageMinimal: Story = {
-  render: () => (
+// List page without filters
+export const ListPageNoFilters: Story = {
+  render: () => <ListPageNoFiltersDemo />,
+};
+
+// Wrapper for detail page minimal story
+const DetailPageMinimalDemo = () => {
+  const t = useT();
+  return (
     <DetailPageShell
-      title="Simple Detail"
+      title={t('storybook.demo.simpleDetail')}
       backLink={{
-        label: 'Back',
+        label: t('platform.common.back'),
         href: '/',
       }}
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">Detail content</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.detailContent')}</Paragraph>
         </Card>
       </div>
     </DetailPageShell>
-  ),
+  );
 };
 
-// Form page without back link
-export const FormPageNoBackLink: Story = {
-  render: () => (
+// Detail page minimal
+export const DetailPageMinimal: Story = {
+  render: () => <DetailPageMinimalDemo />,
+};
+
+// Wrapper for form page no back link story
+const FormPageNoBackLinkDemo = () => {
+  const t = useT();
+  return (
     <FormPageShell
-      title="Edit Resource"
+      title={t('storybook.demo.editResource')}
       footer={
         <div
           style={{
@@ -241,16 +275,21 @@ export const FormPageNoBackLink: Story = {
           }}
         >
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            Save Changes
+            {t('platform.common.saveChanges')}
           </Button>
         </div>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">Form content</Paragraph>
+          <Paragraph data-size="sm">{t('storybook.demo.formContent')}</Paragraph>
         </Card>
       </div>
     </FormPageShell>
-  ),
+  );
+};
+
+// Form page without back link
+export const FormPageNoBackLink: Story = {
+  render: () => <FormPageNoBackLinkDemo />,
 };

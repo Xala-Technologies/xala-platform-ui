@@ -5,6 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import {
   ActivityTimeline,
   type ActivityTimelineProps,
@@ -401,6 +402,7 @@ export const RentalObjectHistory: Story = {
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: () => {
+    const t = useT();
     const [selectedItem, setSelectedItem] = React.useState<ActivityTimelineItem | null>(null);
 
     const items: ActivityTimelineItem[] = [
@@ -447,10 +449,10 @@ export const Interactive: Story = {
             const diffMs = now.getTime() - d.getTime();
             const diffMins = Math.floor(diffMs / 60000);
 
-            if (diffMins < 1) return 'Just now';
-            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffMins < 1) return t('storybook.patterns.justNow');
+            if (diffMins < 60) return t('storybook.patterns.minutesAgo', { minutes: diffMins });
             const diffHours = Math.floor(diffMins / 60);
-            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffHours < 24) return t('storybook.patterns.hoursAgo', { hours: diffHours });
             return d.toLocaleDateString();
           }}
         />
@@ -465,7 +467,7 @@ export const Interactive: Story = {
             }}
           >
             <Paragraph data-size="sm" style={{ margin: 0 }}>
-              <strong>Selected:</strong> {selectedItem.title}
+              <strong>{t('storybook.patterns.selected')}:</strong> {selectedItem.title}
             </Paragraph>
             <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)' }}>
               ID: {selectedItem.id}

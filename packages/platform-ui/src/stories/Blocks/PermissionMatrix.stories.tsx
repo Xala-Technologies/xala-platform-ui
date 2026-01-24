@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { PermissionMatrix } from '../../blocks/admin/PermissionMatrix';
 import type { Role, Permission } from '../../blocks/admin/PermissionMatrix';
 
@@ -176,49 +177,53 @@ export const WithoutCategoryGrouping: Story = {
 
 // Many roles and permissions
 export const ManyRolesAndPermissions: Story = {
-  args: {
-    roles: [
+  render: () => {
+    const t = useT();
+    const roles = [
       ...sampleRoles,
       {
         id: 'moderator',
         name: 'Moderator',
-        description: 'Can moderate content',
+        description: t('storybook.demo.cardDescription'),
         permissions: ['view-resources', 'edit-resources'],
       },
       {
         id: 'guest',
         name: 'Guest',
-        description: 'Limited access',
+        description: t('storybook.demo.cardDescription'),
         permissions: ['view-resources'],
       },
-    ],
-    permissions: [
+    ];
+    const permissions = [
       ...samplePermissions,
       {
         id: 'export-data',
         name: 'Export Data',
-        description: 'Can export data',
+        description: t('storybook.demo.cardDescription'),
         category: 'Data',
-        risk: 'medium',
+        risk: 'medium' as const,
       },
       {
         id: 'import-data',
         name: 'Import Data',
-        description: 'Can import data',
+        description: t('storybook.demo.cardDescription'),
         category: 'Data',
-        risk: 'high',
+        risk: 'high' as const,
       },
-    ],
-    onPermissionToggle: fn(),
-    readOnly: false,
-    showRiskIndicators: true,
-    groupByCategory: true,
+    ];
+    return (
+      <div style={{ width: '1000px' }}>
+        <PermissionMatrix
+          roles={roles}
+          permissions={permissions}
+          onPermissionToggle={fn()}
+          readOnly={false}
+          showRiskIndicators={true}
+          groupByCategory={true}
+        />
+      </div>
+    );
   },
-  render: (args) => (
-    <div style={{ width: '1000px' }}>
-      <PermissionMatrix {...args} />
-    </div>
-  ),
 };
 
 // Empty roles

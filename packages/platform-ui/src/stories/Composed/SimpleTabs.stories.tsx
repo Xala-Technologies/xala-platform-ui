@@ -1,4 +1,6 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { SimpleTabs, TabItem } from '../../composed/SimpleTabs';
 import { Paragraph, Heading } from '@digdir/designsystemet-react';
 
@@ -53,127 +55,157 @@ A simplified tabs abstraction that wraps Designsystemet's Tabs component with a 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Simple API with TabItem
-export const SimpleAPI: Story = {
-  render: () => (
+// Wrapper components for stories that need translations
+const SimpleAPIDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
       <SimpleTabs defaultValue="tab1">
-        <TabItem label="Overview" value="tab1">
-          <Paragraph data-size="sm">
-            This is the overview tab content. It demonstrates the simple API using TabItem
-            components.
-          </Paragraph>
+        <TabItem label={t('storybook.demo.overview')} value="tab1">
+          <Paragraph data-size="sm">{t('storybook.demo.overviewTabContent')}</Paragraph>
         </TabItem>
-        <TabItem label="Details" value="tab2">
-          <Paragraph data-size="sm">
-            This is the details tab content. You can add any content here, including forms, tables,
-            or other components.
-          </Paragraph>
+        <TabItem label={t('storybook.demo.details')} value="tab2">
+          <Paragraph data-size="sm">{t('storybook.demo.detailsTabContent')}</Paragraph>
         </TabItem>
-        <TabItem label="Settings" value="tab3">
-          <Paragraph data-size="sm">This is the settings tab content.</Paragraph>
+        <TabItem label={t('platform.nav.settings')} value="tab3">
+          <Paragraph data-size="sm">{t('storybook.demo.settingsTabContent')}</Paragraph>
         </TabItem>
       </SimpleTabs>
     </div>
-  ),
+  );
+};
+
+const AutoValuesDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <SimpleTabs>
+        <TabItem label={t('storybook.demo.firstTab')}>
+          <Paragraph data-size="sm">{t('storybook.demo.firstTabContentAuto')}</Paragraph>
+        </TabItem>
+        <TabItem label={t('storybook.demo.secondTab')}>
+          <Paragraph data-size="sm">{t('storybook.demo.secondTabContent')}</Paragraph>
+        </TabItem>
+        <TabItem label={t('storybook.demo.thirdTab')}>
+          <Paragraph data-size="sm">{t('storybook.demo.thirdTabContent')}</Paragraph>
+        </TabItem>
+      </SimpleTabs>
+    </div>
+  );
+};
+
+const SmallDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <SimpleTabs size="sm">
+        <TabItem label={t('storybook.demo.tab1')}>{t('storybook.demo.content1')}</TabItem>
+        <TabItem label={t('storybook.demo.tab2')}>{t('storybook.demo.content2')}</TabItem>
+      </SimpleTabs>
+    </div>
+  );
+};
+
+const MediumDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <SimpleTabs size="md">
+        <TabItem label={t('storybook.demo.tab1')}>{t('storybook.demo.content1')}</TabItem>
+        <TabItem label={t('storybook.demo.tab2')}>{t('storybook.demo.content2')}</TabItem>
+      </SimpleTabs>
+    </div>
+  );
+};
+
+const LargeDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <SimpleTabs size="lg">
+        <TabItem label={t('storybook.demo.tab1')}>{t('storybook.demo.content1')}</TabItem>
+        <TabItem label={t('storybook.demo.tab2')}>{t('storybook.demo.content2')}</TabItem>
+      </SimpleTabs>
+    </div>
+  );
+};
+
+const ControlledDemo = () => {
+  const t = useT();
+  const [value, setValue] = React.useState('tab1');
+  return (
+    <div style={{ width: '600px' }}>
+      <SimpleTabs value={value} onChange={setValue}>
+        <TabItem label={t('storybook.demo.tab1')} value="tab1">
+          <Paragraph data-size="sm">
+            {t('storybook.demo.controlledTab1')} {value}
+          </Paragraph>
+        </TabItem>
+        <TabItem label={t('storybook.demo.tab2')} value="tab2">
+          <Paragraph data-size="sm">
+            {t('storybook.demo.controlledTab2')} {value}
+          </Paragraph>
+        </TabItem>
+      </SimpleTabs>
+    </div>
+  );
+};
+
+const RichContentDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <SimpleTabs>
+        <TabItem label={t('storybook.demo.overview')}>
+          <div>
+            <Heading level={3} data-size="sm">
+              {t('storybook.demo.overviewSection')}
+            </Heading>
+            <Paragraph data-size="sm">{t('storybook.demo.richContentDescription')}</Paragraph>
+          </div>
+        </TabItem>
+        <TabItem label={t('storybook.demo.details')}>
+          <div>
+            <Heading level={3} data-size="sm">
+              {t('storybook.demo.detailsSection')}
+            </Heading>
+            <Paragraph data-size="sm">{t('storybook.demo.detailedInfoHere')}</Paragraph>
+          </div>
+        </TabItem>
+      </SimpleTabs>
+    </div>
+  );
+};
+
+// Simple API with TabItem
+export const SimpleAPI: Story = {
+  render: () => <SimpleAPIDemo />,
 };
 
 // Without explicit values
 export const AutoValues: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SimpleTabs>
-        <TabItem label="First Tab">
-          <Paragraph data-size="sm">First tab content. Values are auto-generated.</Paragraph>
-        </TabItem>
-        <TabItem label="Second Tab">
-          <Paragraph data-size="sm">Second tab content.</Paragraph>
-        </TabItem>
-        <TabItem label="Third Tab">
-          <Paragraph data-size="sm">Third tab content.</Paragraph>
-        </TabItem>
-      </SimpleTabs>
-    </div>
-  ),
+  render: () => <AutoValuesDemo />,
 };
 
 // Size variants
 export const Small: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SimpleTabs size="sm">
-        <TabItem label="Tab 1">Content 1</TabItem>
-        <TabItem label="Tab 2">Content 2</TabItem>
-      </SimpleTabs>
-    </div>
-  ),
+  render: () => <SmallDemo />,
 };
 
 export const Medium: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SimpleTabs size="md">
-        <TabItem label="Tab 1">Content 1</TabItem>
-        <TabItem label="Tab 2">Content 2</TabItem>
-      </SimpleTabs>
-    </div>
-  ),
+  render: () => <MediumDemo />,
 };
 
 export const Large: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SimpleTabs size="lg">
-        <TabItem label="Tab 1">Content 1</TabItem>
-        <TabItem label="Tab 2">Content 2</TabItem>
-      </SimpleTabs>
-    </div>
-  ),
+  render: () => <LargeDemo />,
 };
 
 // Controlled mode
 export const Controlled: Story = {
-  render: () => {
-    const [value, setValue] = React.useState('tab1');
-    return (
-      <div style={{ width: '600px' }}>
-        <SimpleTabs value={value} onChange={setValue}>
-          <TabItem label="Tab 1" value="tab1">
-            <Paragraph data-size="sm">Controlled tab 1. Current value: {value}</Paragraph>
-          </TabItem>
-          <TabItem label="Tab 2" value="tab2">
-            <Paragraph data-size="sm">Controlled tab 2. Current value: {value}</Paragraph>
-          </TabItem>
-        </SimpleTabs>
-      </div>
-    );
-  },
+  render: () => <ControlledDemo />,
 };
 
 // With rich content
 export const RichContent: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <SimpleTabs>
-        <TabItem label="Overview">
-          <div>
-            <Heading level={3} data-size="sm">
-              Overview Section
-            </Heading>
-            <Paragraph data-size="sm">
-              This tab contains rich content including headings, paragraphs, and other components.
-            </Paragraph>
-          </div>
-        </TabItem>
-        <TabItem label="Details">
-          <div>
-            <Heading level={3} data-size="sm">
-              Details Section
-            </Heading>
-            <Paragraph data-size="sm">Detailed information goes here.</Paragraph>
-          </div>
-        </TabItem>
-      </SimpleTabs>
-    </div>
-  ),
+  render: () => <RichContentDemo />,
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Avatar, UserInfo } from '../../composed/Avatar';
 
 const meta: Meta<typeof Avatar> = {
@@ -159,24 +160,35 @@ export const AllSizes: Story = {
 };
 
 // UserInfo component
-export const UserInfoExample: Story = {
-  render: () => (
+const UserInfoExample = () => {
+  const t = useT();
+  return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <UserInfo name="John Doe" subtitle="Administrator" size="md" />
+      <UserInfo name="John Doe" subtitle={t('storybook.demo.administrator')} size="md" />
       <UserInfo name="Jane Smith" subtitle="jane@example.com" size="md" showStatus isOnline />
-      <UserInfo name="Bob Johnson" subtitle="Developer" size="lg" />
+      <UserInfo name="Bob Johnson" subtitle={t('storybook.demo.developer')} size="lg" />
     </div>
-  ),
+  );
+};
+
+export const UserInfoExampleStory: Story = {
+  name: 'UserInfoExample',
+  render: () => <UserInfoExample />,
 };
 
 // UserInfo clickable
-export const UserInfoClickable: Story = {
-  render: () => (
+const UserInfoClickableExample = () => {
+  const t = useT();
+  return (
     <UserInfo
-      name="Clickable User"
-      subtitle="Click to view profile"
+      name={t('storybook.demo.clickableUser')}
+      subtitle={t('storybook.demo.clickToViewProfile')}
       size="md"
       onClick={() => alert('Clicked!')}
     />
-  ),
+  );
+};
+
+export const UserInfoClickable: Story = {
+  render: () => <UserInfoClickableExample />,
 };

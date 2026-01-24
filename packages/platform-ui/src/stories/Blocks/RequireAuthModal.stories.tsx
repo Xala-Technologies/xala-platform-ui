@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { RequireAuthModal } from '../../blocks/RequireAuthModal';
 
 const meta: Meta<typeof RequireAuthModal> = {
@@ -128,16 +129,19 @@ export const ReviewContext: Story = {
 
 // Custom title and description
 export const CustomContent: Story = {
-  args: {
-    isOpen: true,
-    title: 'Authentication Required',
-    description: 'Please log in or create an account to continue.',
-  },
-  render: (args) => {
+  render: () => {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     return (
       <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <RequireAuthModal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          onLogin={fn()}
+          onRegister={fn()}
+          title={t('platform.auth.login')}
+          description={t('storybook.demo.cardDescription')}
+        />
       </div>
     );
   },
@@ -162,16 +166,21 @@ export const WithoutRegister: Story = {
 
 // Closed state
 export const Closed: Story = {
-  args: {
-    isOpen: false,
-    actionContext: 'general',
-  },
-  render: (args) => (
-    <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-      <RequireAuthModal {...args} />
-      <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <p>Modal is closed. Click the button below to open it.</p>
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
+        <RequireAuthModal
+          isOpen={false}
+          actionContext="general"
+          onClose={fn()}
+          onLogin={fn()}
+          onRegister={fn()}
+        />
+        <div style={{ padding: 'var(--ds-spacing-4)' }}>
+          <p>{t('storybook.demo.sampleText')}</p>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

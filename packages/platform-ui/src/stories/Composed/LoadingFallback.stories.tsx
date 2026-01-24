@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { LoadingFallback } from '../../composed/LoadingFallback';
 
 const meta: Meta<typeof LoadingFallback> = {
@@ -45,17 +46,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Default loading fallback
+const DefaultLoadingFallback = () => {
+  const t = useT();
+  return <LoadingFallback message={t('platform.common.loading')} />;
+};
+
 export const Default: Story = {
-  args: {
-    message: 'Laster...',
-  },
+  render: () => <DefaultLoadingFallback />,
 };
 
 // Custom message
+const CustomMessageLoadingFallback = () => {
+  const t = useT();
+  return <LoadingFallback message={t('storybook.demo.loadingContent')} />;
+};
+
 export const CustomMessage: Story = {
-  args: {
-    message: 'Loading content...',
-  },
+  render: () => <CustomMessageLoadingFallback />,
 };
 
 // English message

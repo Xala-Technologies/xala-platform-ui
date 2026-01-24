@@ -13,6 +13,7 @@ import {
   AlertTriangle,
   BookOpen,
 } from 'lucide-react';
+import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Overview/Contributing',
@@ -43,252 +44,55 @@ type Story = StoryObj;
  * Design Principles Overview
  */
 export const DesignPrinciples: Story = {
-  render: () => (
-    <div>
-      <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Design System Principles
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            Icon: Shield,
-            title: 'Domain Agnostic',
-            description:
-              'Components must be domain-blind with no business logic or domain-specific terms.',
-            bad: '<BookingCard listing={listing} />',
-            good: '<ResourceCard resource={resource} />',
-            color: 'var(--ds-color-accent-base-default)',
-          },
-          {
-            Icon: Zap,
-            title: 'Token-Driven',
-            description: 'All styling uses design tokens. No hard-coded values allowed.',
-            bad: "padding: '16px', color: '#1E40AF'",
-            good: "padding: 'var(--ds-spacing-4)', color: 'var(--ds-color-accent-base-default)'",
-            color: 'var(--ds-color-warning-base-default)',
-          },
-          {
-            Icon: CheckCircle,
-            title: 'Accessibility First',
-            description:
-              'WCAG 2.1 AA compliant with keyboard navigation, screen readers, and proper ARIA.',
-            requirements: [
-              'Keyboard navigation',
-              'Screen reader support',
-              'Focus management',
-              'ARIA attributes',
-              'Color contrast',
-            ],
-            color: 'var(--ds-color-success-base-default)',
-          },
-        ].map(({ Icon, title, description, bad, good, requirements, color }) => (
-          <Card
-            key={title}
-            style={{
-              padding: 'var(--ds-spacing-6)',
-              borderLeft: `4px solid ${color}`,
-              flex: '1 1 300px',
-            }}
-          >
-            <div
+    const principles = [
+      {
+        Icon: Shield,
+        titleKey: 'storybook.contributing.domainAgnostic',
+        descriptionKey: 'storybook.contributing.domainAgnosticDesc',
+        bad: '<BookingCard listing={listing} />',
+        good: '<ResourceCard resource={resource} />',
+        color: 'var(--ds-color-accent-base-default)',
+      },
+      {
+        Icon: Zap,
+        titleKey: 'storybook.contributing.tokenDriven',
+        descriptionKey: 'storybook.contributing.tokenDrivenDesc',
+        bad: "padding: '16px', color: '#1E40AF'",
+        good: "padding: 'var(--ds-spacing-4)', color: 'var(--ds-color-accent-base-default)'",
+        color: 'var(--ds-color-warning-base-default)',
+      },
+      {
+        Icon: CheckCircle,
+        titleKey: 'storybook.contributing.accessibilityFirst',
+        descriptionKey: 'storybook.contributing.accessibilityFirstDesc',
+        requirements: [
+          'storybook.contributing.keyboardNavigation',
+          'storybook.contributing.screenReaderSupport',
+          'storybook.contributing.focusManagement',
+          'storybook.contributing.ariaAttributes',
+          'storybook.contributing.colorContrast',
+        ],
+        color: 'var(--ds-color-success-base-default)',
+      },
+    ];
+
+    return (
+      <div>
+        <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.contributing.designPrinciples')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
+          {principles.map(({ Icon, titleKey, descriptionKey, bad, good, requirements, color }) => (
+            <Card
+              key={titleKey}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-3)',
-                marginBottom: 'var(--ds-spacing-4)',
-              }}
-            >
-              <Icon size={32} style={{ color }} />
-              <Heading level={3} data-size="md">
-                {title}
-              </Heading>
-            </div>
-
-            <Paragraph
-              style={{
-                marginBottom: 'var(--ds-spacing-4)',
-                color: 'var(--ds-color-neutral-text-subtle)',
-              }}
-            >
-              {description}
-            </Paragraph>
-
-            {bad && good && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-                <div
-                  style={{
-                    padding: 'var(--ds-spacing-3)',
-                    backgroundColor: 'var(--ds-color-danger-surface-default)',
-                    borderRadius: 'var(--ds-border-radius-sm)',
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--ds-spacing-2)',
-                      marginBottom: 'var(--ds-spacing-2)',
-                    }}
-                  >
-                    <XCircle size={16} style={{ color: 'var(--ds-color-danger-base-default)' }} />
-                    <strong
-                      style={{
-                        fontSize: 'var(--ds-font-size-sm)',
-                        color: 'var(--ds-color-danger-text-default)',
-                      }}
-                    >
-                      Bad
-                    </strong>
-                  </div>
-                  <code
-                    style={{
-                      fontSize: 'var(--ds-font-size-xs)',
-                      color: 'var(--ds-color-danger-text-default)',
-                    }}
-                  >
-                    {bad}
-                  </code>
-                </div>
-
-                <div
-                  style={{
-                    padding: 'var(--ds-spacing-3)',
-                    backgroundColor: 'var(--ds-color-success-surface-default)',
-                    borderRadius: 'var(--ds-border-radius-sm)',
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--ds-spacing-2)',
-                      marginBottom: 'var(--ds-spacing-2)',
-                    }}
-                  >
-                    <CheckCircle
-                      size={16}
-                      style={{ color: 'var(--ds-color-success-base-default)' }}
-                    />
-                    <strong
-                      style={{
-                        fontSize: 'var(--ds-font-size-sm)',
-                        color: 'var(--ds-color-success-text-default)',
-                      }}
-                    >
-                      Good
-                    </strong>
-                  </div>
-                  <code
-                    style={{
-                      fontSize: 'var(--ds-font-size-xs)',
-                      color: 'var(--ds-color-success-text-default)',
-                    }}
-                  >
-                    {good}
-                  </code>
-                </div>
-              </div>
-            )}
-
-            {requirements && (
-              <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
-                {requirements.map((req, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--ds-spacing-2)',
-                      marginBottom: 'var(--ds-spacing-1)',
-                    }}
-                  >
-                    <CheckCircle size={14} style={{ color }} />
-                    <span style={{ fontSize: 'var(--ds-font-size-sm)' }}>{req}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </Card>
-        ))}
-      </div>
-    </div>
-  ),
-};
-
-/**
- * Component Layer Architecture
- */
-export const ComponentArchitecture: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Component Layer Architecture
-      </Heading>
-
-      <Card style={{ padding: 'var(--ds-spacing-8)' }}>
-        <Paragraph
-          style={{
-            marginBottom: 'var(--ds-spacing-6)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-          }}
-        >
-          Components follow a strict hierarchy. Lower layers cannot import from higher layers.
-        </Paragraph>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-          {[
-            {
-              layer: 'Primitives',
-              level: 1,
-              canImport: 'Designsystemet only',
-              examples: ['Button', 'Input', 'Checkbox', 'Radio'],
-              description: 'Basic building blocks wrapping Designsystemet components',
-            },
-            {
-              layer: 'Blocks',
-              level: 2,
-              canImport: 'Primitives',
-              examples: ['Card', 'Alert', 'Badge', 'Avatar'],
-              description: 'Simple compositions of primitives',
-            },
-            {
-              layer: 'Composed',
-              level: 3,
-              canImport: 'Blocks, Primitives',
-              examples: ['DataTable', 'Form', 'Modal', 'Drawer'],
-              description: 'Complex components combining multiple blocks',
-            },
-            {
-              layer: 'Patterns',
-              level: 4,
-              canImport: 'Composed, Blocks, Primitives',
-              examples: ['Wizard', 'EmptyState', 'ErrorBoundary'],
-              description: 'Reusable UI patterns and templates',
-            },
-            {
-              layer: 'Shells',
-              level: 5,
-              canImport: 'Patterns, Composed, Blocks, Primitives',
-              examples: ['DashboardShell', 'SidebarLayout'],
-              description: 'Page-level layout shells',
-            },
-            {
-              layer: 'Pages',
-              level: 6,
-              canImport: 'All above layers',
-              examples: ['LoginPage', 'DashboardPage'],
-              description: 'Complete page implementations',
-            },
-          ].map(({ layer, level, canImport, examples, description }) => (
-            <div
-              key={layer}
-              style={{
-                padding: 'var(--ds-spacing-5)',
-                backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                borderLeft: `4px solid var(--ds-color-accent-base-default)`,
-                opacity: 1 - (level - 1) * 0.1,
+                padding: 'var(--ds-spacing-6)',
+                borderLeft: `4px solid ${color}`,
+                flex: '1 1 300px',
               }}
             >
               <div
@@ -296,104 +100,313 @@ export const ComponentArchitecture: Story = {
                   display: 'flex',
                   alignItems: 'center',
                   gap: 'var(--ds-spacing-3)',
-                  marginBottom: 'var(--ds-spacing-3)',
+                  marginBottom: 'var(--ds-spacing-4)',
                 }}
               >
-                <div
-                  style={{
-                    width: '32px',
-                    height: '32px',
-                    backgroundColor: 'var(--ds-color-accent-base-default)',
-                    color: 'var(--ds-color-accent-contrast-default)',
-                    borderRadius: 'var(--ds-border-radius-full)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: 600,
-                  }}
-                >
-                  {level}
-                </div>
-                <Heading level={3} data-size="sm">
-                  {layer}
+                <Icon size={32} style={{ color }} />
+                <Heading level={3} data-size="md">
+                  {t(titleKey)}
                 </Heading>
               </div>
 
               <Paragraph
-                data-size="sm"
                 style={{
-                  marginBottom: 'var(--ds-spacing-3)',
+                  marginBottom: 'var(--ds-spacing-4)',
                   color: 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                {description}
+                {t(descriptionKey)}
               </Paragraph>
 
-              <div
-                style={{
-                  display: 'flex',
-                  gap: 'var(--ds-spacing-4)',
-                  flexWrap: 'wrap',
-                  marginBottom: 'var(--ds-spacing-3)',
-                }}
-              >
-                <div>
-                  <strong
+              {bad && good && (
+                <div
+                  style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}
+                >
+                  <div
                     style={{
-                      fontSize: 'var(--ds-font-size-xs)',
-                      color: 'var(--ds-color-accent-text-default)',
-                    }}
-                  >
-                    Can import:
-                  </strong>
-                  <span
-                    style={{
-                      fontSize: 'var(--ds-font-size-xs)',
-                      marginLeft: 'var(--ds-spacing-2)',
-                    }}
-                  >
-                    {canImport}
-                  </span>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-                {examples.map((example) => (
-                  <span
-                    key={example}
-                    style={{
-                      padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-                      backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                      padding: 'var(--ds-spacing-3)',
+                      backgroundColor: 'var(--ds-color-danger-surface-default)',
                       borderRadius: 'var(--ds-border-radius-sm)',
-                      fontSize: 'var(--ds-font-size-xs)',
-                      fontFamily: 'monospace',
                     }}
                   >
-                    {example}
-                  </span>
-                ))}
-              </div>
-            </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--ds-spacing-2)',
+                        marginBottom: 'var(--ds-spacing-2)',
+                      }}
+                    >
+                      <XCircle size={16} style={{ color: 'var(--ds-color-danger-base-default)' }} />
+                      <strong
+                        style={{
+                          fontSize: 'var(--ds-font-size-sm)',
+                          color: 'var(--ds-color-danger-text-default)',
+                        }}
+                      >
+                        {t('storybook.contributing.bad')}
+                      </strong>
+                    </div>
+                    <code
+                      style={{
+                        fontSize: 'var(--ds-font-size-xs)',
+                        color: 'var(--ds-color-danger-text-default)',
+                      }}
+                    >
+                      {bad}
+                    </code>
+                  </div>
+
+                  <div
+                    style={{
+                      padding: 'var(--ds-spacing-3)',
+                      backgroundColor: 'var(--ds-color-success-surface-default)',
+                      borderRadius: 'var(--ds-border-radius-sm)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--ds-spacing-2)',
+                        marginBottom: 'var(--ds-spacing-2)',
+                      }}
+                    >
+                      <CheckCircle
+                        size={16}
+                        style={{ color: 'var(--ds-color-success-base-default)' }}
+                      />
+                      <strong
+                        style={{
+                          fontSize: 'var(--ds-font-size-sm)',
+                          color: 'var(--ds-color-success-text-default)',
+                        }}
+                      >
+                        {t('storybook.contributing.good')}
+                      </strong>
+                    </div>
+                    <code
+                      style={{
+                        fontSize: 'var(--ds-font-size-xs)',
+                        color: 'var(--ds-color-success-text-default)',
+                      }}
+                    >
+                      {good}
+                    </code>
+                  </div>
+                </div>
+              )}
+
+              {requirements && (
+                <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
+                  {requirements.map((reqKey, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--ds-spacing-2)',
+                        marginBottom: 'var(--ds-spacing-1)',
+                      }}
+                    >
+                      <CheckCircle size={14} style={{ color }} />
+                      <span style={{ fontSize: 'var(--ds-font-size-sm)' }}>{t(reqKey)}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Card>
           ))}
         </div>
+      </div>
+    );
+  },
+};
 
-        <div
-          style={{
-            marginTop: 'var(--ds-spacing-6)',
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-warning-surface-default)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}
-        >
-          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
-            <strong>Critical Rule:</strong> Lower layers cannot import from higher layers. This
-            prevents circular dependencies and maintains clear separation of concerns.
+/**
+ * Component Layer Architecture
+ */
+export const ComponentArchitecture: Story = {
+  render: () => {
+    const t = useT();
+
+    const layers = [
+      {
+        layer: 'Primitives',
+        level: 1,
+        canImportKey: 'storybook.contributing.designsystemetOnly',
+        examples: ['Button', 'Input', 'Checkbox', 'Radio'],
+        descriptionKey: 'storybook.contributing.primitivesDesc',
+      },
+      {
+        layer: 'Blocks',
+        level: 2,
+        canImportKey: 'storybook.contributing.primitives',
+        examples: ['Card', 'Alert', 'Badge', 'Avatar'],
+        descriptionKey: 'storybook.contributing.blocksDesc',
+      },
+      {
+        layer: 'Composed',
+        level: 3,
+        canImportKey: 'storybook.contributing.blocksPrimitives',
+        examples: ['DataTable', 'Form', 'Modal', 'Drawer'],
+        descriptionKey: 'storybook.contributing.composedDesc',
+      },
+      {
+        layer: 'Patterns',
+        level: 4,
+        canImportKey: 'storybook.contributing.composedBlocksPrimitives',
+        examples: ['Wizard', 'EmptyState', 'ErrorBoundary'],
+        descriptionKey: 'storybook.contributing.patternsDesc',
+      },
+      {
+        layer: 'Shells',
+        level: 5,
+        canImportKey: 'storybook.contributing.allLowerLayers',
+        examples: ['DashboardShell', 'SidebarLayout'],
+        descriptionKey: 'storybook.contributing.shellsDesc',
+      },
+      {
+        layer: 'Pages',
+        level: 6,
+        canImportKey: 'storybook.contributing.allLayers',
+        examples: ['LoginPage', 'DashboardPage'],
+        descriptionKey: 'storybook.contributing.pagesDesc',
+      },
+    ];
+
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.contributing.componentArchitecture')}
+        </Heading>
+
+        <Card style={{ padding: 'var(--ds-spacing-8)' }}>
+          <Paragraph
+            style={{
+              marginBottom: 'var(--ds-spacing-6)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            {t('storybook.contributing.architectureDesc')}
           </Paragraph>
-        </div>
-      </Card>
-    </div>
-  ),
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+            {layers.map(({ layer, level, canImportKey, examples, descriptionKey }) => (
+              <div
+                key={layer}
+                style={{
+                  padding: 'var(--ds-spacing-5)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  borderLeft: `4px solid var(--ds-color-accent-base-default)`,
+                  opacity: 1 - (level - 1) * 0.1,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-3)',
+                    marginBottom: 'var(--ds-spacing-3)',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '32px',
+                      height: '32px',
+                      backgroundColor: 'var(--ds-color-accent-base-default)',
+                      color: 'var(--ds-color-accent-contrast-default)',
+                      borderRadius: 'var(--ds-border-radius-full)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 'var(--ds-font-size-sm)',
+                      fontWeight: 600,
+                    }}
+                  >
+                    {level}
+                  </div>
+                  <Heading level={3} data-size="sm">
+                    {layer}
+                  </Heading>
+                </div>
+
+                <Paragraph
+                  data-size="sm"
+                  style={{
+                    marginBottom: 'var(--ds-spacing-3)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
+                >
+                  {t(descriptionKey)}
+                </Paragraph>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--ds-spacing-4)',
+                    flexWrap: 'wrap',
+                    marginBottom: 'var(--ds-spacing-3)',
+                  }}
+                >
+                  <div>
+                    <strong
+                      style={{
+                        fontSize: 'var(--ds-font-size-xs)',
+                        color: 'var(--ds-color-accent-text-default)',
+                      }}
+                    >
+                      {t('storybook.contributing.canImport')}:
+                    </strong>
+                    <span
+                      style={{
+                        fontSize: 'var(--ds-font-size-xs)',
+                        marginLeft: 'var(--ds-spacing-2)',
+                      }}
+                    >
+                      {t(canImportKey)}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+                  {examples.map((example) => (
+                    <span
+                      key={example}
+                      style={{
+                        padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                        borderRadius: 'var(--ds-border-radius-sm)',
+                        fontSize: 'var(--ds-font-size-xs)',
+                        fontFamily: 'monospace',
+                      }}
+                    >
+                      {example}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            style={{
+              marginTop: 'var(--ds-spacing-6)',
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-warning-surface-default)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
+              <strong>{t('storybook.contributing.criticalRule')}:</strong>{' '}
+              {t('storybook.contributing.criticalRuleDesc')}
+            </Paragraph>
+          </div>
+        </Card>
+      </div>
+    );
+  },
 };
 
 /**
@@ -401,12 +414,13 @@ export const ComponentArchitecture: Story = {
  */
 export const ComponentCreationWizard: Story = {
   render: () => {
+    const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
     const steps = [
       {
-        title: 'Create Component File',
+        titleKey: 'storybook.contributing.createComponentFile',
         icon: FileCode,
         code: `// src/ui/primitives/MyComponent.tsx
 import React from 'react';
@@ -420,20 +434,20 @@ export interface MyComponentProps {
 
 /**
  * MyComponent - Brief description
- * 
+ *
  * @example
  * \`\`\`tsx
  * <MyComponent label="Hello" variant="primary" />
  * \`\`\`
  */
-export const MyComponent: React.FC<MyComponentProps> = ({ 
-  label, 
-  variant = 'primary' 
+export const MyComponent: React.FC<MyComponentProps> = ({
+  label,
+  variant = 'primary'
 }) => {
   return (
-    <div 
+    <div
       data-variant={variant}
-      style={{ 
+      style={{
         padding: 'var(--ds-spacing-4)',
         backgroundColor: 'var(--ds-color-neutral-surface-default)',
         borderRadius: 'var(--ds-border-radius-md)',
@@ -445,14 +459,14 @@ export const MyComponent: React.FC<MyComponentProps> = ({
 };`,
       },
       {
-        title: 'Export from Index',
+        titleKey: 'storybook.contributing.exportFromIndex',
         icon: Code,
         code: `// src/ui/primitives/index.ts
 export { MyComponent } from './MyComponent';
 export type { MyComponentProps } from './MyComponent';`,
       },
       {
-        title: 'Create Storybook Story',
+        titleKey: 'storybook.contributing.createStorybookStory',
         icon: BookOpen,
         code: `// src/ui/stories/Primitives/MyComponent.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
@@ -488,7 +502,7 @@ export const Secondary: Story = {
 };`,
       },
       {
-        title: 'Add Unit Tests',
+        titleKey: 'storybook.contributing.addUnitTests',
         icon: TestTube,
         code: `// src/ui/primitives/MyComponent.test.tsx
 import { describe, it, expect } from 'vitest';
@@ -506,7 +520,7 @@ describe('MyComponent', () => {
       <MyComponent label="Test" variant="secondary" />
     );
     expect(container.firstChild).toHaveAttribute(
-      'data-variant', 
+      'data-variant',
       'secondary'
     );
   });
@@ -514,7 +528,7 @@ describe('MyComponent', () => {
   it('uses default variant', () => {
     const { container } = render(<MyComponent label="Test" />);
     expect(container.firstChild).toHaveAttribute(
-      'data-variant', 
+      'data-variant',
       'primary'
     );
   });
@@ -533,7 +547,7 @@ describe('MyComponent', () => {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          Component Creation Guide
+          {t('storybook.contributing.componentCreationGuide')}
         </Heading>
 
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -541,7 +555,7 @@ describe('MyComponent', () => {
           <div>
             <Card style={{ padding: 'var(--ds-spacing-4)' }}>
               <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                Steps
+                {t('storybook.contributing.steps')}
               </Heading>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
                 {steps.map((step, index) => {
@@ -590,7 +604,7 @@ describe('MyComponent', () => {
                           color: isActive ? 'var(--ds-color-accent-text-default)' : 'inherit',
                         }}
                       >
-                        {index + 1}. {step.title}
+                        {index + 1}. {t(step.titleKey)}
                       </span>
                     </div>
                   );
@@ -607,9 +621,9 @@ describe('MyComponent', () => {
               >
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
                   <strong>
-                    {completedSteps.length} of {steps.length}
+                    {completedSteps.length} {t('storybook.contributing.of')} {steps.length}
                   </strong>{' '}
-                  steps completed
+                  {t('storybook.contributing.stepsCompleted')}
                 </Paragraph>
               </div>
             </Card>
@@ -630,7 +644,8 @@ describe('MyComponent', () => {
                 style: { color: 'var(--ds-color-accent-base-default)' },
               })}
               <Heading level={3} data-size="md">
-                Step {currentStep + 1}: {steps[currentStep].title}
+                {t('storybook.contributing.step')} {currentStep + 1}:{' '}
+                {t(steps[currentStep].titleKey)}
               </Heading>
             </div>
 
@@ -659,9 +674,9 @@ describe('MyComponent', () => {
                 <Checkbox
                   checked={completedSteps.includes(currentStep)}
                   onChange={() => toggleStep(currentStep)}
-                  aria-label="Mark step as completed"
+                  aria-label={t('storybook.contributing.markCompleted')}
                 >
-                  Mark as completed
+                  {t('storybook.contributing.markCompleted')}
                 </Checkbox>
               </div>
 
@@ -672,7 +687,7 @@ describe('MyComponent', () => {
                   disabled={currentStep === 0}
                   onClick={() => setCurrentStep(currentStep - 1)}
                 >
-                  ← Previous
+                  ← {t('storybook.contributing.previous')}
                 </Button>
                 <Button
                   data-variant="primary"
@@ -680,7 +695,7 @@ describe('MyComponent', () => {
                   disabled={currentStep === steps.length - 1}
                   onClick={() => setCurrentStep(currentStep + 1)}
                 >
-                  Next →
+                  {t('storybook.contributing.next')} →
                 </Button>
               </div>
             </div>
@@ -696,42 +711,43 @@ describe('MyComponent', () => {
  */
 export const QualityChecklist: Story = {
   render: () => {
+    const t = useT();
     const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
     const checklistItems = [
       {
-        category: 'Code Quality',
+        categoryKey: 'storybook.contributing.codeQuality',
         items: [
-          { id: 'typescript', label: 'Full TypeScript definitions with JSDoc' },
-          { id: 'tokens', label: 'Uses design tokens, no hard-coded values' },
-          { id: 'domain', label: 'Domain agnostic - no business logic' },
-          { id: 'layers', label: 'Follows layer hierarchy rules' },
+          { id: 'typescript', labelKey: 'storybook.contributing.typescriptDefs' },
+          { id: 'tokens', labelKey: 'storybook.contributing.usesDesignTokens' },
+          { id: 'domain', labelKey: 'storybook.contributing.domainAgnosticCheck' },
+          { id: 'layers', labelKey: 'storybook.contributing.followsLayerHierarchy' },
         ],
       },
       {
-        category: 'Accessibility',
+        categoryKey: 'storybook.contributing.accessibility',
         items: [
-          { id: 'wcag', label: 'WCAG 2.1 AA compliant' },
-          { id: 'keyboard', label: 'Keyboard navigation support' },
-          { id: 'screen-reader', label: 'Screen reader compatible' },
-          { id: 'aria', label: 'Proper ARIA attributes' },
-          { id: 'contrast', label: 'Color contrast ratios met' },
+          { id: 'wcag', labelKey: 'storybook.contributing.wcagCompliant' },
+          { id: 'keyboard', labelKey: 'storybook.contributing.keyboardNav' },
+          { id: 'screen-reader', labelKey: 'storybook.contributing.screenReaderCompatible' },
+          { id: 'aria', labelKey: 'storybook.contributing.properAria' },
+          { id: 'contrast', labelKey: 'storybook.contributing.colorContrastMet' },
         ],
       },
       {
-        category: 'Documentation',
+        categoryKey: 'storybook.contributing.documentation',
         items: [
-          { id: 'jsdoc', label: 'JSDoc with examples' },
-          { id: 'stories', label: 'At least 2 story variants' },
-          { id: 'props', label: 'All props documented' },
+          { id: 'jsdoc', labelKey: 'storybook.contributing.jsdocExamples' },
+          { id: 'stories', labelKey: 'storybook.contributing.storyVariants' },
+          { id: 'props', labelKey: 'storybook.contributing.propsDocumented' },
         ],
       },
       {
-        category: 'Testing',
+        categoryKey: 'storybook.contributing.testing',
         items: [
-          { id: 'unit', label: 'Unit tests with >80% coverage' },
-          { id: 'interaction', label: 'Storybook interaction tests' },
-          { id: 'a11y-test', label: 'Accessibility tests' },
+          { id: 'unit', labelKey: 'storybook.contributing.unitTests' },
+          { id: 'interaction', labelKey: 'storybook.contributing.interactionTests' },
+          { id: 'a11y-test', labelKey: 'storybook.contributing.a11yTests' },
         ],
       },
     ];
@@ -751,7 +767,7 @@ export const QualityChecklist: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          Quality Checklist
+          {t('storybook.contributing.qualityChecklist')}
         </Heading>
 
         <Card style={{ padding: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-6)' }}>
@@ -764,7 +780,7 @@ export const QualityChecklist: Story = {
               }}
             >
               <Paragraph data-size="sm" style={{ fontWeight: 600 }}>
-                Overall Progress
+                {t('storybook.contributing.overallProgress')}
               </Paragraph>
               <Paragraph
                 data-size="sm"
@@ -808,28 +824,28 @@ export const QualityChecklist: Story = {
             >
               <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
               <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
-                <strong>Ready to submit!</strong> Your component meets all quality standards.
+                <strong>{t('storybook.contributing.readyToSubmit')}</strong>{' '}
+                {t('storybook.contributing.meetsQualityStandards')}
               </Paragraph>
             </div>
           )}
         </Card>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
-          {checklistItems.map(({ category, items }) => {
+          {checklistItems.map(({ categoryKey, items }) => {
             const categoryCompleted = items.filter((item) => checkedItems.includes(item.id)).length;
-            const categoryProgress = Math.round((categoryCompleted / items.length) * 100);
 
             return (
-              <Card key={category} style={{ padding: 'var(--ds-spacing-5)', flex: '1 1 300px' }}>
+              <Card key={categoryKey} style={{ padding: 'var(--ds-spacing-5)', flex: '1 1 300px' }}>
                 <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
                   <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                    {category}
+                    {t(categoryKey)}
                   </Heading>
                   <Paragraph
                     data-size="xs"
                     style={{ color: 'var(--ds-color-accent-text-default)' }}
                   >
-                    {categoryCompleted} / {items.length} completed
+                    {categoryCompleted} / {items.length} {t('storybook.contributing.completed')}
                   </Paragraph>
                 </div>
 
@@ -841,9 +857,9 @@ export const QualityChecklist: Story = {
                       key={item.id}
                       checked={checkedItems.includes(item.id)}
                       onChange={() => toggleItem(item.id)}
-                      aria-label={item.label}
+                      aria-label={t(item.labelKey)}
                     >
-                      {item.label}
+                      {t(item.labelKey)}
                     </Checkbox>
                   ))}
                 </div>
@@ -860,24 +876,20 @@ export const QualityChecklist: Story = {
  * Testing Best Practices
  */
 export const TestingBestPractices: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Testing Best Practices
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        {[
-          {
-            title: 'Unit Tests',
-            icon: TestTube,
-            description: 'Test component behavior in isolation',
-            commands: [
-              { cmd: 'pnpm test', desc: 'Run all unit tests' },
-              { cmd: 'pnpm test:watch', desc: 'Watch mode for development' },
-              { cmd: 'pnpm test:coverage', desc: 'Generate coverage report' },
-            ],
-            example: `describe('Button', () => {
+    const testingTypes = [
+      {
+        titleKey: 'storybook.contributing.unitTests',
+        icon: TestTube,
+        descriptionKey: 'storybook.contributing.unitTestsDesc',
+        commands: [
+          { cmd: 'pnpm test', descKey: 'storybook.contributing.runAllTests' },
+          { cmd: 'pnpm test:watch', descKey: 'storybook.contributing.watchMode' },
+          { cmd: 'pnpm test:coverage', descKey: 'storybook.contributing.generateCoverage' },
+        ],
+        example: `describe('Button', () => {
   it('renders children', () => {
     render(<Button>Click me</Button>);
     expect(screen.getByText('Click me')).toBeInTheDocument();
@@ -886,7 +898,7 @@ export const TestingBestPractices: Story = {
   it('handles click events', async () => {
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);
-    
+
     await userEvent.click(screen.getByText('Click'));
     expect(handleClick).toHaveBeenCalledOnce();
   });
@@ -898,34 +910,34 @@ export const TestingBestPractices: Story = {
     expect(container.firstChild).toHaveAttribute('data-variant', 'primary');
   });
 });`,
-          },
-          {
-            title: 'Storybook Tests',
-            icon: BookOpen,
-            description: 'Test component interactions in Storybook',
-            commands: [
-              { cmd: 'pnpm test:storybook', desc: 'Run Storybook tests' },
-              { cmd: 'pnpm storybook', desc: 'Start Storybook dev server' },
-            ],
-            example: `export const WithInteraction: Story = {
+      },
+      {
+        titleKey: 'storybook.contributing.storybookTests',
+        icon: BookOpen,
+        descriptionKey: 'storybook.contributing.storybookTestsDesc',
+        commands: [
+          { cmd: 'pnpm test:storybook', descKey: 'storybook.contributing.runStorybookTests' },
+          { cmd: 'pnpm storybook', descKey: 'storybook.contributing.startStorybookDev' },
+        ],
+        example: `export const WithInteraction: Story = {
   args: {
     label: 'Click me',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
-    
+
     await userEvent.click(button);
     await expect(button).toHaveFocus();
   },
 };`,
-          },
-          {
-            title: 'Accessibility Tests',
-            icon: Shield,
-            description: 'Ensure WCAG 2.1 AA compliance',
-            commands: [{ cmd: 'pnpm test:a11y', desc: 'Run accessibility tests' }],
-            example: `it('has no accessibility violations', async () => {
+      },
+      {
+        titleKey: 'storybook.contributing.accessibilityTests',
+        icon: Shield,
+        descriptionKey: 'storybook.contributing.accessibilityTestsDesc',
+        commands: [{ cmd: 'pnpm test:a11y', descKey: 'storybook.contributing.runA11yTests' }],
+        example: `it('has no accessibility violations', async () => {
   const { container } = render(<Button>Click me</Button>);
   const results = await axe(container);
   expect(results).toHaveNoViolations();
@@ -934,249 +946,273 @@ export const TestingBestPractices: Story = {
 it('is keyboard accessible', async () => {
   render(<Button>Click me</Button>);
   const button = screen.getByRole('button');
-  
+
   button.focus();
   expect(button).toHaveFocus();
-  
+
   await userEvent.keyboard('{Enter}');
   // Verify action occurred
 });`,
-          },
-        ].map(({ title, icon: Icon, description, commands, example }) => (
-          <Card key={title} style={{ padding: 'var(--ds-spacing-6)', flex: '1 1 350px' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-3)',
-                marginBottom: 'var(--ds-spacing-4)',
-              }}
-            >
-              <Icon size={28} style={{ color: 'var(--ds-color-accent-base-default)' }} />
-              <div>
-                <Heading level={3} data-size="md">
-                  {title}
-                </Heading>
-                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                  {description}
-                </Paragraph>
-              </div>
-            </div>
+      },
+    ];
 
-            <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                Commands
-              </Heading>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-                {commands.map(({ cmd, desc }) => (
-                  <div
-                    key={cmd}
-                    style={{
-                      padding: 'var(--ds-spacing-3)',
-                      backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                      borderRadius: 'var(--ds-border-radius-sm)',
-                    }}
-                  >
-                    <code style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 600 }}>
-                      {cmd}
-                    </code>
-                    <Paragraph
-                      data-size="xs"
-                      style={{
-                        marginTop: 'var(--ds-spacing-1)',
-                        color: 'var(--ds-color-neutral-text-subtle)',
-                      }}
-                    >
-                      {desc}
-                    </Paragraph>
-                  </div>
-                ))}
-              </div>
-            </div>
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.contributing.testingBestPractices')}
+        </Heading>
 
-            <div>
-              <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                Example
-              </Heading>
-              <pre
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          {testingTypes.map(({ titleKey, icon: Icon, descriptionKey, commands, example }) => (
+            <Card key={titleKey} style={{ padding: 'var(--ds-spacing-6)', flex: '1 1 350px' }}>
+              <div
                 style={{
-                  padding: 'var(--ds-spacing-4)',
-                  backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-                  borderRadius: 'var(--ds-border-radius-md)',
-                  overflow: 'auto',
-                  fontSize: 'var(--ds-font-size-xs)',
-                  lineHeight: '1.6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-3)',
+                  marginBottom: 'var(--ds-spacing-4)',
                 }}
               >
-                {example}
-              </pre>
-            </div>
-          </Card>
-        ))}
+                <Icon size={28} style={{ color: 'var(--ds-color-accent-base-default)' }} />
+                <div>
+                  <Heading level={3} data-size="md">
+                    {t(titleKey)}
+                  </Heading>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
+                    {t(descriptionKey)}
+                  </Paragraph>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+                <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+                  {t('storybook.contributing.commands')}
+                </Heading>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
+                >
+                  {commands.map(({ cmd, descKey }) => (
+                    <div
+                      key={cmd}
+                      style={{
+                        padding: 'var(--ds-spacing-3)',
+                        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                        borderRadius: 'var(--ds-border-radius-sm)',
+                      }}
+                    >
+                      <code style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 600 }}>
+                        {cmd}
+                      </code>
+                      <Paragraph
+                        data-size="xs"
+                        style={{
+                          marginTop: 'var(--ds-spacing-1)',
+                          color: 'var(--ds-color-neutral-text-subtle)',
+                        }}
+                      >
+                        {t(descKey)}
+                      </Paragraph>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+                  {t('storybook.contributing.example')}
+                </Heading>
+                <pre
+                  style={{
+                    padding: 'var(--ds-spacing-4)',
+                    backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                    borderRadius: 'var(--ds-border-radius-md)',
+                    overflow: 'auto',
+                    fontSize: 'var(--ds-font-size-xs)',
+                    lineHeight: '1.6',
+                  }}
+                >
+                  {example}
+                </pre>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Common Pitfalls
  */
 export const CommonPitfalls: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Common Pitfalls to Avoid
-      </Heading>
+  render: () => {
+    const t = useT();
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        {[
-          {
-            title: 'Hardcoding Design Values',
-            bad: "style={{ padding: '16px', color: '#1E40AF' }}",
-            good: "style={{ padding: 'var(--ds-spacing-4)', color: 'var(--ds-color-accent-base-default)' }}",
-            why: 'Design tokens ensure consistency and enable theming',
-          },
-          {
-            title: 'Domain-Specific Logic',
-            bad: '<BookingCard booking={booking} onBook={handleBook} />',
-            good: '<ResourceCard resource={resource} onAction={handleAction} />',
-            why: 'Components must be reusable across different domains',
-          },
-          {
-            title: 'Missing Accessibility',
-            bad: '<div onClick={handleClick}>Click me</div>',
-            good: '<button onClick={handleClick} aria-label="Submit form">Click me</button>',
-            why: 'Proper semantic HTML and ARIA ensure accessibility',
-          },
-          {
-            title: 'Circular Dependencies',
-            bad: 'primitives/Button imports from blocks/Card',
-            good: 'blocks/Card imports from primitives/Button',
-            why: 'Lower layers cannot import from higher layers',
-          },
-          {
-            title: 'Inline Styles Without Tokens',
-            bad: '<div style={{ marginTop: 20, fontSize: 14 }}>',
-            good: "<div style={{ marginTop: 'var(--ds-spacing-5)', fontSize: 'var(--ds-font-size-sm)' }}>",
-            why: 'All styling must use design tokens for consistency',
-          },
-          {
-            title: 'Missing TypeScript Types',
-            bad: 'export const MyComponent = ({ data }) => { ... }',
-            good: 'export const MyComponent: React.FC<MyComponentProps> = ({ data }) => { ... }',
-            why: 'Full type safety prevents runtime errors',
-          },
-        ].map(({ title, bad, good, why }) => (
-          <Card
-            key={title}
-            style={{
-              padding: 'var(--ds-spacing-5)',
-              borderLeft: '4px solid var(--ds-color-warning-base-default)',
-              flex: '1 1 350px',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-2)',
-                marginBottom: 'var(--ds-spacing-3)',
-              }}
-            >
-              <AlertTriangle size={20} style={{ color: 'var(--ds-color-warning-base-default)' }} />
-              <Heading level={3} data-size="sm">
-                {title}
-              </Heading>
-            </div>
+    const pitfalls = [
+      {
+        titleKey: 'storybook.contributing.hardcodingValues',
+        bad: "style={{ padding: '16px', color: '#1E40AF' }}",
+        good: "style={{ padding: 'var(--ds-spacing-4)', color: 'var(--ds-color-accent-base-default)' }}",
+        whyKey: 'storybook.contributing.hardcodingValuesWhy',
+      },
+      {
+        titleKey: 'storybook.contributing.domainSpecificLogic',
+        bad: '<BookingCard booking={booking} onBook={handleBook} />',
+        good: '<ResourceCard resource={resource} onAction={handleAction} />',
+        whyKey: 'storybook.contributing.domainSpecificLogicWhy',
+      },
+      {
+        titleKey: 'storybook.contributing.missingAccessibility',
+        bad: '<div onClick={handleClick}>Click me</div>',
+        good: '<button onClick={handleClick} aria-label="Submit form">Click me</button>',
+        whyKey: 'storybook.contributing.missingAccessibilityWhy',
+      },
+      {
+        titleKey: 'storybook.contributing.circularDependencies',
+        bad: 'primitives/Button imports from blocks/Card',
+        good: 'blocks/Card imports from primitives/Button',
+        whyKey: 'storybook.contributing.circularDependenciesWhy',
+      },
+      {
+        titleKey: 'storybook.contributing.inlineStylesNoTokens',
+        bad: '<div style={{ marginTop: 20, fontSize: 14 }}>',
+        good: "<div style={{ marginTop: 'var(--ds-spacing-5)', fontSize: 'var(--ds-font-size-sm)' }}>",
+        whyKey: 'storybook.contributing.inlineStylesNoTokensWhy',
+      },
+      {
+        titleKey: 'storybook.contributing.missingTypescript',
+        bad: 'export const MyComponent = ({ data }) => { ... }',
+        good: 'export const MyComponent: React.FC<MyComponentProps> = ({ data }) => { ... }',
+        whyKey: 'storybook.contributing.missingTypescriptWhy',
+      },
+    ];
 
-            <div
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.contributing.commonPitfalls')}
+        </Heading>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+          {pitfalls.map(({ titleKey, bad, good, whyKey }) => (
+            <Card
+              key={titleKey}
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--ds-spacing-3)',
-                marginBottom: 'var(--ds-spacing-3)',
+                padding: 'var(--ds-spacing-5)',
+                borderLeft: '4px solid var(--ds-color-warning-base-default)',
+                flex: '1 1 350px',
               }}
             >
               <div
                 style={{
-                  padding: 'var(--ds-spacing-3)',
-                  backgroundColor: 'var(--ds-color-danger-surface-default)',
-                  borderRadius: 'var(--ds-border-radius-sm)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-2)',
+                  marginBottom: 'var(--ds-spacing-3)',
+                }}
+              >
+                <AlertTriangle
+                  size={20}
+                  style={{ color: 'var(--ds-color-warning-base-default)' }}
+                />
+                <Heading level={3} data-size="sm">
+                  {t(titleKey)}
+                </Heading>
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--ds-spacing-3)',
+                  marginBottom: 'var(--ds-spacing-3)',
                 }}
               >
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--ds-spacing-2)',
-                    marginBottom: 'var(--ds-spacing-2)',
+                    padding: 'var(--ds-spacing-3)',
+                    backgroundColor: 'var(--ds-color-danger-surface-default)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
                   }}
                 >
-                  <XCircle size={16} style={{ color: 'var(--ds-color-danger-base-default)' }} />
-                  <strong
+                  <div
                     style={{
-                      fontSize: 'var(--ds-font-size-sm)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--ds-spacing-2)',
+                      marginBottom: 'var(--ds-spacing-2)',
+                    }}
+                  >
+                    <XCircle size={16} style={{ color: 'var(--ds-color-danger-base-default)' }} />
+                    <strong
+                      style={{
+                        fontSize: 'var(--ds-font-size-sm)',
+                        color: 'var(--ds-color-danger-text-default)',
+                      }}
+                    >
+                      {t('storybook.contributing.bad')}
+                    </strong>
+                  </div>
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
                       color: 'var(--ds-color-danger-text-default)',
                     }}
                   >
-                    Bad
-                  </strong>
+                    {bad}
+                  </code>
                 </div>
-                <code
-                  style={{
-                    fontSize: 'var(--ds-font-size-xs)',
-                    color: 'var(--ds-color-danger-text-default)',
-                  }}
-                >
-                  {bad}
-                </code>
-              </div>
 
-              <div
-                style={{
-                  padding: 'var(--ds-spacing-3)',
-                  backgroundColor: 'var(--ds-color-success-surface-default)',
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                }}
-              >
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--ds-spacing-2)',
-                    marginBottom: 'var(--ds-spacing-2)',
+                    padding: 'var(--ds-spacing-3)',
+                    backgroundColor: 'var(--ds-color-success-surface-default)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
                   }}
                 >
-                  <CheckCircle
-                    size={16}
-                    style={{ color: 'var(--ds-color-success-base-default)' }}
-                  />
-                  <strong
+                  <div
                     style={{
-                      fontSize: 'var(--ds-font-size-sm)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--ds-spacing-2)',
+                      marginBottom: 'var(--ds-spacing-2)',
+                    }}
+                  >
+                    <CheckCircle
+                      size={16}
+                      style={{ color: 'var(--ds-color-success-base-default)' }}
+                    />
+                    <strong
+                      style={{
+                        fontSize: 'var(--ds-font-size-sm)',
+                        color: 'var(--ds-color-success-text-default)',
+                      }}
+                    >
+                      {t('storybook.contributing.good')}
+                    </strong>
+                  </div>
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
                       color: 'var(--ds-color-success-text-default)',
                     }}
                   >
-                    Good
-                  </strong>
+                    {good}
+                  </code>
                 </div>
-                <code
-                  style={{
-                    fontSize: 'var(--ds-font-size-xs)',
-                    color: 'var(--ds-color-success-text-default)',
-                  }}
-                >
-                  {good}
-                </code>
               </div>
-            </div>
 
-            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-              <strong>Why:</strong> {why}
-            </Paragraph>
-          </Card>
-        ))}
+              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <strong>{t('storybook.contributing.why')}:</strong> {t(whyKey)}
+              </Paragraph>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

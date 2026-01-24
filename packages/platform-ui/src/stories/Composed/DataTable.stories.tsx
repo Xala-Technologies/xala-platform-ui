@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { DataTable } from '../../composed/DataTable';
 import { Badge } from '../../composed/Badge';
 
@@ -81,154 +82,207 @@ const sampleData: SampleRow[] = [
   },
 ];
 
-const columns = [
-  {
-    id: 'name',
-    header: 'Name',
-    accessorKey: 'name' as keyof SampleRow,
-    sortable: true,
-  },
-  {
-    id: 'email',
-    header: 'Email',
-    accessorKey: 'email' as keyof SampleRow,
-    sortable: true,
-  },
-  {
-    id: 'status',
-    header: 'Status',
-    accessorKey: 'status' as keyof SampleRow,
-    cell: (value: SampleRow['status']) => (
-      <Badge variant={value === 'active' ? 'success' : 'default'}>{value}</Badge>
-    ),
-    sortable: true,
-  },
-  {
-    id: 'role',
-    header: 'Role',
-    accessorKey: 'role' as keyof SampleRow,
-    sortable: true,
-  },
-  {
-    id: 'createdAt',
-    header: 'Created',
-    accessorKey: 'createdAt' as keyof SampleRow,
-    sortable: true,
-  },
-];
+// Hook for translated columns
+const useColumns = () => {
+  const t = useT();
+  return [
+    {
+      id: 'name',
+      header: t('platform.common.name'),
+      accessorKey: 'name' as keyof SampleRow,
+      sortable: true,
+    },
+    {
+      id: 'email',
+      header: t('platform.auth.email'),
+      accessorKey: 'email' as keyof SampleRow,
+      sortable: true,
+    },
+    {
+      id: 'status',
+      header: t('platform.status.label'),
+      accessorKey: 'status' as keyof SampleRow,
+      cell: (value: SampleRow['status']) => (
+        <Badge variant={value === 'active' ? 'success' : 'default'}>
+          {value === 'active' ? t('platform.status.active') : t('platform.status.inactive')}
+        </Badge>
+      ),
+      sortable: true,
+    },
+    {
+      id: 'role',
+      header: t('storybook.demo.role'),
+      accessorKey: 'role' as keyof SampleRow,
+      sortable: true,
+    },
+    {
+      id: 'createdAt',
+      header: t('storybook.demo.created'),
+      accessorKey: 'createdAt' as keyof SampleRow,
+      sortable: true,
+    },
+  ];
+};
 
-// Basic table
-export const Default: Story = {
-  render: () => (
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  return (
     <div style={{ width: '800px' }}>
       <DataTable
         data={sampleData}
         columns={columns}
         getRowKey={(row) => row.id}
-        ariaLabel="User table"
+        ariaLabel={t('storybook.demo.userTable')}
       />
     </div>
-  ),
+  );
+};
+
+// Basic table
+export const Default: Story = {
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for sorting story
+const WithSortingDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  const [sortColumn, setSortColumn] = React.useState<string | undefined>('name');
+  const [sortDirection, setSortDirection] = React.useState<'asc' | 'desc' | 'none'>('asc');
+
+  const handleSort = (column: string, direction: 'asc' | 'desc' | 'none') => {
+    setSortColumn(column);
+    setSortDirection(direction);
+  };
+
+  return (
+    <div style={{ width: '800px' }}>
+      <DataTable
+        data={sampleData}
+        columns={columns}
+        getRowKey={(row) => row.id}
+        sortColumn={sortColumn}
+        sortDirection={sortDirection}
+        onSort={handleSort}
+        ariaLabel={t('storybook.demo.sortableUserTable')}
+      />
+    </div>
+  );
 };
 
 // With sorting
 export const WithSorting: Story = {
-  render: () => {
-    const [sortColumn, setSortColumn] = React.useState<string | undefined>('name');
-    const [sortDirection, setSortDirection] = React.useState<'asc' | 'desc' | 'none'>('asc');
-
-    const handleSort = (column: string, direction: 'asc' | 'desc' | 'none') => {
-      setSortColumn(column);
-      setSortDirection(direction);
-    };
-
-    return (
-      <div style={{ width: '800px' }}>
-        <DataTable
-          data={sampleData}
-          columns={columns}
-          getRowKey={(row) => row.id}
-          sortColumn={sortColumn}
-          sortDirection={sortDirection}
-          onSort={handleSort}
-          ariaLabel="Sortable user table"
-        />
-      </div>
-    );
-  },
+  render: () => <WithSortingDemo />,
 };
 
-// With row click
-export const WithRowClick: Story = {
-  render: () => (
+// Wrapper for row click story
+const WithRowClickDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  return (
     <div style={{ width: '800px' }}>
       <DataTable
         data={sampleData}
         columns={columns}
         getRowKey={(row) => row.id}
         onRowClick={fn()}
-        ariaLabel="Clickable user table"
+        ariaLabel={t('storybook.demo.clickableUserTable')}
       />
     </div>
-  ),
+  );
 };
 
-// Loading state
-export const Loading: Story = {
-  render: () => (
+// With row click
+export const WithRowClick: Story = {
+  render: () => <WithRowClickDemo />,
+};
+
+// Wrapper for loading story
+const LoadingDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  return (
     <div style={{ width: '800px' }}>
       <DataTable
         data={[]}
         columns={columns}
         getRowKey={(row) => row.id}
         isLoading={true}
-        ariaLabel="Loading table"
+        ariaLabel={t('storybook.demo.loadingTable')}
       />
     </div>
-  ),
+  );
 };
 
-// Empty state
-export const Empty: Story = {
-  render: () => (
+// Loading state
+export const Loading: Story = {
+  render: () => <LoadingDemo />,
+};
+
+// Wrapper for empty story
+const EmptyDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  return (
     <div style={{ width: '800px' }}>
       <DataTable
         data={[]}
         columns={columns}
         getRowKey={(row) => row.id}
-        emptyMessage="No users found"
-        ariaLabel="Empty table"
+        emptyMessage={t('storybook.demo.noUsersFound')}
+        ariaLabel={t('storybook.demo.emptyTable')}
       />
     </div>
-  ),
+  );
 };
 
-// Sticky header
-export const StickyHeader: Story = {
-  render: () => (
+// Empty state
+export const Empty: Story = {
+  render: () => <EmptyDemo />,
+};
+
+// Wrapper for sticky header story
+const StickyHeaderDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  return (
     <div style={{ width: '800px', height: '400px', overflow: 'auto' }}>
       <DataTable
         data={[...sampleData, ...sampleData, ...sampleData]}
         columns={columns}
         getRowKey={(row) => row.id}
         stickyHeader={true}
-        ariaLabel="Table with sticky header"
+        ariaLabel={t('storybook.demo.stickyHeaderTable')}
       />
     </div>
-  ),
+  );
 };
 
-// Custom height
-export const CustomHeight: Story = {
-  render: () => (
+// Sticky header
+export const StickyHeader: Story = {
+  render: () => <StickyHeaderDemo />,
+};
+
+// Wrapper for custom height story
+const CustomHeightDemo = () => {
+  const t = useT();
+  const columns = useColumns();
+  return (
     <div style={{ width: '800px' }}>
       <DataTable
         data={sampleData}
         columns={columns}
         getRowKey={(row) => row.id}
         height="300px"
-        ariaLabel="Table with custom height"
+        ariaLabel={t('storybook.demo.customHeightTable')}
       />
     </div>
-  ),
+  );
+};
+
+// Custom height
+export const CustomHeight: Story = {
+  render: () => <CustomHeightDemo />,
 };

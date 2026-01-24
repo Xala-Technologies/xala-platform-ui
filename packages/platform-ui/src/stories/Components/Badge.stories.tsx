@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Badge, Button, Heading } from '../../index';
+import { useT } from '@xala-technologies/i18n';
 
 /**
  * Badge component from Digdir Designsystemet.
@@ -119,128 +120,137 @@ export const Sizes: Story = {
 };
 
 export const WithButton: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <Button variant="secondary" type="button">
-        Notifications
-        <Badge
-          count={3}
-          data-color="danger"
-          data-size="sm"
-          style={{ marginLeft: 'var(--ds-spacing-2)' }}
-        />
-      </Button>
-      <Button variant="secondary" type="button">
-        Messages
-        <Badge
-          count={150}
-          maxCount={99}
-          data-color="info"
-          data-size="sm"
-          style={{ marginLeft: 'var(--ds-spacing-2)' }}
-        />
-      </Button>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Button variant="secondary" type="button">
+          Notifications
+          <Badge
+            count={3}
+            data-color="danger"
+            data-size="sm"
+            style={{ marginLeft: 'var(--ds-spacing-2)' }}
+          />
+        </Button>
+        <Button variant="secondary" type="button">
+          Messages
+          <Badge
+            count={150}
+            maxCount={99}
+            data-color="info"
+            data-size="sm"
+            style={{ marginLeft: 'var(--ds-spacing-2)' }}
+          />
+        </Button>
+      </div>
+    );
+  },
 };
 
 export const StatusDots: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-        Active
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+          {t('platform.status.active')}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Badge data-color="warning" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+          {t('platform.status.pending')}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+          {t('platform.status.cancelled')}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Badge data-color="neutral" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+          Draft
+        </div>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Badge data-color="warning" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-        Pending
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-        Cancelled
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Badge data-color="neutral" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-        Draft
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Count Badges
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          <Badge count={5} data-color="neutral" />
-          <Badge count={12} data-color="accent" />
-          <Badge count={3} data-color="success" />
-          <Badge count={7} data-color="warning" />
-          <Badge count={99} data-color="danger" />
-          <Badge count={42} data-color="info" />
-        </div>
-      </div>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Badge count={5} data-size="sm" />
-          <Badge count={15} data-size="md" />
-          <Badge count={99} data-size="lg" />
-        </div>
-      </div>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          On Buttons
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
-          <Button variant="secondary" type="button">
-            Notifications
-            <Badge
-              count={5}
-              data-color="danger"
-              data-size="sm"
-              style={{ marginLeft: 'var(--ds-spacing-2)' }}
-            />
-          </Button>
-          <Button variant="secondary" type="button">
-            Messages
-            <Badge
-              count={150}
-              maxCount={99}
-              data-color="info"
-              data-size="sm"
-              style={{ marginLeft: 'var(--ds-spacing-2)' }}
-            />
-          </Button>
-        </div>
-      </div>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Status Dots
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-            Active
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Badge data-color="warning" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-            Pending
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-            Error
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.variants')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+            <Badge count={5} data-color="neutral" />
+            <Badge count={12} data-color="accent" />
+            <Badge count={3} data-color="success" />
+            <Badge count={7} data-color="warning" />
+            <Badge count={99} data-color="danger" />
+            <Badge count={42} data-color="info" />
           </div>
         </div>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
+            <Badge count={5} data-size="sm" />
+            <Badge count={15} data-size="md" />
+            <Badge count={99} data-size="lg" />
+          </div>
+        </div>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.interactive')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+            <Button variant="secondary" type="button">
+              Notifications
+              <Badge
+                count={5}
+                data-color="danger"
+                data-size="sm"
+                style={{ marginLeft: 'var(--ds-spacing-2)' }}
+              />
+            </Button>
+            <Button variant="secondary" type="button">
+              Messages
+              <Badge
+                count={150}
+                maxCount={99}
+                data-color="info"
+                data-size="sm"
+                style={{ marginLeft: 'var(--ds-spacing-2)' }}
+              />
+            </Button>
+          </div>
+        </div>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.states')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+              {t('platform.status.active')}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Badge data-color="warning" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+              {t('platform.status.pending')}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
+              {t('storybook.story.error')}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

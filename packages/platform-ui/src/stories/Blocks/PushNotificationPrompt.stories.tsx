@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { PushNotificationPrompt } from '../../blocks/PushNotificationPrompt';
 
 const meta: Meta<typeof PushNotificationPrompt> = {
@@ -95,16 +96,19 @@ export const ReminderContext: Story = {
 
 // Custom title and description
 export const CustomContent: Story = {
-  args: {
-    isOpen: true,
-    title: 'Enable Notifications',
-    description: 'Stay updated with important information about your bookings.',
-  },
-  render: (args) => {
+  render: () => {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     return (
       <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <PushNotificationPrompt {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <PushNotificationPrompt
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          onEnable={fn()}
+          onDismiss={fn()}
+          title={t('platform.common.notifications')}
+          description={t('storybook.demo.cardDescription')}
+        />
       </div>
     );
   },
@@ -112,16 +116,21 @@ export const CustomContent: Story = {
 
 // Closed state
 export const Closed: Story = {
-  args: {
-    isOpen: false,
-    context: 'general',
-  },
-  render: (args) => (
-    <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-      <PushNotificationPrompt {...args} />
-      <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <p>Modal is closed. Set isOpen to true to show it.</p>
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
+        <PushNotificationPrompt
+          isOpen={false}
+          context="general"
+          onClose={fn()}
+          onEnable={fn()}
+          onDismiss={fn()}
+        />
+        <div style={{ padding: 'var(--ds-spacing-4)' }}>
+          <p>{t('storybook.demo.sampleText')}</p>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

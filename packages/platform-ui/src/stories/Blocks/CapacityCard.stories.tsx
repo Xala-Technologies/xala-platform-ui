@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { CapacityCard } from '../../blocks/CapacityCard';
 import { Users } from 'lucide-react';
 
@@ -99,11 +100,14 @@ export const CustomIcon: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <CapacityCard maxCapacity={50} variant="dark" />
-      <CapacityCard maxCapacity={50} variant="default" />
-      <CapacityCard maxCapacity={100} label="Maksimal kapasitet" variant="dark" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <CapacityCard maxCapacity={50} variant="dark" />
+        <CapacityCard maxCapacity={50} variant="default" />
+        <CapacityCard maxCapacity={100} label="Maksimal kapasitet" variant="dark" />
+      </div>
+    );
+  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Heading, Paragraph, Label } from '../../index';
 
 const meta: Meta = {
@@ -31,389 +32,415 @@ type Story = StoryObj;
  * Font families used in the design system
  */
 export const FontFamilies: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Default Font (Inter)</Label>
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.typography.defaultFont')} (Inter)
+          </Label>
+          <div
+            style={{
+              fontFamily: 'var(--ds-font-family-default, Inter, system-ui, sans-serif)',
+              fontSize: 'var(--ds-font-size-5)',
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+            <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
+            <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
+            <p>{t('storybook.typography.samplePhrase')}</p>
+          </div>
+          <code
+            style={{
+              fontSize: 'var(--ds-font-size-xs)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              marginTop: 'var(--ds-spacing-2)',
+              display: 'block',
+            }}
+          >
+            font-family: var(--ds-font-family-default)
+          </code>
+        </div>
+
+        <div>
+          <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.typography.monospaceFont')} ({t('storybook.typography.code')})
+          </Label>
+          <div
+            style={{
+              fontFamily: 'var(--ds-font-family-mono, ui-monospace, monospace)',
+              fontSize: 'var(--ds-font-size-3)',
+              padding: 'var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderRadius: 'var(--ds-border-radius-md)',
+            }}
+          >
+            <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+            <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
+            <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
+            <p>{`const resourceRequest = await createResourceRequest(data);`}</p>
+          </div>
+          <code
+            style={{
+              fontSize: 'var(--ds-font-size-xs)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              marginTop: 'var(--ds-spacing-2)',
+              display: 'block',
+            }}
+          >
+            font-family: var(--ds-font-family-mono)
+          </code>
+        </div>
+
         <div
           style={{
-            fontFamily: 'var(--ds-font-family-default, Inter, system-ui, sans-serif)',
-            fontSize: 'var(--ds-font-size-5)',
             padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            backgroundColor: 'var(--ds-color-info-surface-default)',
             borderRadius: 'var(--ds-border-radius-md)',
+            borderLeft: '4px solid var(--ds-color-info-border-default)',
           }}
         >
-          <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-          <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
-          <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
-          <p>Digilist – ResourceRequest for alle</p>
+          <Paragraph data-size="sm">
+            <strong>{t('storybook.typography.note')}:</strong>{' '}
+            {t('storybook.typography.fontFallbackNote')}
+          </Paragraph>
         </div>
-        <code
-          style={{
-            fontSize: 'var(--ds-font-size-xs)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-            marginTop: 'var(--ds-spacing-2)',
-            display: 'block',
-          }}
-        >
-          font-family: var(--ds-font-family-default)
-        </code>
       </div>
-
-      <div>
-        <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Monospace Font (Code)</Label>
-        <div
-          style={{
-            fontFamily: 'var(--ds-font-family-mono, ui-monospace, monospace)',
-            fontSize: 'var(--ds-font-size-3)',
-            padding: 'var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            borderRadius: 'var(--ds-border-radius-md)',
-          }}
-        >
-          <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-          <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
-          <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
-          <p>{`const resourceRequest = await createResourceRequest(data);`}</p>
-        </div>
-        <code
-          style={{
-            fontSize: 'var(--ds-font-size-xs)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-            marginTop: 'var(--ds-spacing-2)',
-            display: 'block',
-          }}
-        >
-          font-family: var(--ds-font-family-mono)
-        </code>
-      </div>
-
-      <div
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-info-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          borderLeft: '4px solid var(--ds-color-info-border-default)',
-        }}
-      >
-        <Paragraph data-size="sm">
-          <strong>Note:</strong> Inter is loaded via Google Fonts or self-hosted. The system falls
-          back to system-ui for optimal performance if Inter is unavailable.
-        </Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Font weights
  */
 export const FontWeights: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-      {[
-        { weight: 400, name: 'Regular', variable: '--ds-font-weight-regular' },
-        { weight: 500, name: 'Medium', variable: '--ds-font-weight-medium' },
-        { weight: 600, name: 'Semibold', variable: '--ds-font-weight-semibold' },
-        { weight: 700, name: 'Bold', variable: '--ds-font-weight-bold' },
-      ].map(({ weight, name, variable }) => (
-        <div
-          key={weight}
-          style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-4)' }}
-        >
-          <span
-            style={{
-              fontWeight: weight,
-              fontSize: 'var(--ds-font-size-5)',
-              minWidth: 'var(--ds-size-50)',
-            }}
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+        {[
+          {
+            weight: 400,
+            nameKey: 'storybook.tokens.regular',
+            variable: '--ds-font-weight-regular',
+          },
+          { weight: 500, nameKey: 'storybook.tokens.medium', variable: '--ds-font-weight-medium' },
+          {
+            weight: 600,
+            nameKey: 'storybook.tokens.semibold',
+            variable: '--ds-font-weight-semibold',
+          },
+          { weight: 700, nameKey: 'storybook.tokens.bold', variable: '--ds-font-weight-bold' },
+        ].map(({ weight, nameKey, variable }) => (
+          <div
+            key={weight}
+            style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-4)' }}
           >
-            {name} ({weight})
-          </span>
-          <code
-            style={{
-              fontSize: 'var(--ds-font-size-xs)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            {variable}
-          </code>
-        </div>
-      ))}
-    </div>
-  ),
+            <span
+              style={{
+                fontWeight: weight,
+                fontSize: 'var(--ds-font-size-5)',
+                minWidth: 'var(--ds-size-50)',
+              }}
+            >
+              {t(nameKey)} ({weight})
+            </span>
+            <code
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {variable}
+            </code>
+          </div>
+        ))}
+      </div>
+    );
+  },
 };
 
 /**
  * Heading sizes from 2xl to 2xs
  */
 export const Headings: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Heading level={1} data-size="2xl">
-        Heading 2XL (h1)
-      </Heading>
-      <Heading level={1} data-size="xl">
-        Heading XL (h1)
-      </Heading>
-      <Heading level={2} data-size="lg">
-        Heading LG (h2)
-      </Heading>
-      <Heading level={2} data-size="md">
-        Heading MD (h2)
-      </Heading>
-      <Heading level={3} data-size="sm">
-        Heading SM (h3)
-      </Heading>
-      <Heading level={3} data-size="xs">
-        Heading XS (h3)
-      </Heading>
-      <Heading level={4} data-size="2xs">
-        Heading 2XS (h4)
-      </Heading>
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Heading level={1} data-size="2xl">
+          {t('storybook.typography.heading')} 2XL (h1)
+        </Heading>
+        <Heading level={1} data-size="xl">
+          {t('storybook.typography.heading')} XL (h1)
+        </Heading>
+        <Heading level={2} data-size="lg">
+          {t('storybook.typography.heading')} LG (h2)
+        </Heading>
+        <Heading level={2} data-size="md">
+          {t('storybook.typography.heading')} MD (h2)
+        </Heading>
+        <Heading level={3} data-size="sm">
+          {t('storybook.typography.heading')} SM (h3)
+        </Heading>
+        <Heading level={3} data-size="xs">
+          {t('storybook.typography.heading')} XS (h3)
+        </Heading>
+        <Heading level={4} data-size="2xs">
+          {t('storybook.typography.heading')} 2XS (h4)
+        </Heading>
+      </div>
+    );
+  },
 };
 
 /**
  * Body text variants
  */
 export const BodyText: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-4)',
-        maxWidth: 'var(--ds-size-150)',
-      }}
-    >
-      <div>
-        <Label>Body XL</Label>
-        <Paragraph data-size="xl">
-          Dette er brødtekst i XL-størrelse. Brukes for fremhevet innhold.
-        </Paragraph>
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-4)',
+          maxWidth: 'var(--ds-size-150)',
+        }}
+      >
+        <div>
+          <Label>{t('storybook.typography.bodyXL')}</Label>
+          <Paragraph data-size="xl">{t('storybook.typography.bodyXLDescription')}</Paragraph>
+        </div>
+        <div>
+          <Label>{t('storybook.typography.bodyLG')}</Label>
+          <Paragraph data-size="lg">{t('storybook.typography.bodyLGDescription')}</Paragraph>
+        </div>
+        <div>
+          <Label>
+            {t('storybook.typography.bodyMD')} ({t('storybook.sizes.default')})
+          </Label>
+          <Paragraph data-size="md">{t('storybook.typography.bodyMDDescription')}</Paragraph>
+        </div>
+        <div>
+          <Label>{t('storybook.typography.bodySM')}</Label>
+          <Paragraph data-size="sm">{t('storybook.typography.bodySMDescription')}</Paragraph>
+        </div>
+        <div>
+          <Label>{t('storybook.typography.bodyXS')}</Label>
+          <Paragraph data-size="xs">{t('storybook.typography.bodyXSDescription')}</Paragraph>
+        </div>
       </div>
-      <div>
-        <Label>Body LG</Label>
-        <Paragraph data-size="lg">
-          Dette er brødtekst i LG-størrelse. God for ingress og viktig informasjon.
-        </Paragraph>
-      </div>
-      <div>
-        <Label>Body MD (default)</Label>
-        <Paragraph data-size="md">
-          Dette er standard brødtekst. Den brukes for mesteparten av innholdet på siden. Lengre
-          avsnitt bør bruke denne størrelsen for optimal lesbarhet.
-        </Paragraph>
-      </div>
-      <div>
-        <Label>Body SM</Label>
-        <Paragraph data-size="sm">
-          Dette er mindre brødtekst. Brukes for sekundært innhold, bildetekster, og metadata.
-        </Paragraph>
-      </div>
-      <div>
-        <Label>Body XS</Label>
-        <Paragraph data-size="xs">
-          Minste brødtekst. Brukes sparsommelig for fotnoter og juridisk tekst.
-        </Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Paragraph variants (short vs long)
  */
 export const ParagraphVariants: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-6)',
-        maxWidth: 'var(--ds-size-175)',
-      }}
-    >
-      <div>
-        <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Short (compact line-height)</Label>
-        <Paragraph variant="short">
-          Kort variant har tettere linjeavstand og passer for UI-tekst, knapper, og korte
-          beskrivelser hvor kompakthet er ønsket.
-        </Paragraph>
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-6)',
+          maxWidth: 'var(--ds-size-175)',
+        }}
+      >
+        <div>
+          <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.typography.short')} ({t('storybook.typography.compactLineHeight')})
+          </Label>
+          <Paragraph variant="short">{t('storybook.typography.shortVariantDescription')}</Paragraph>
+        </div>
+        <div>
+          <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.typography.long')} ({t('storybook.typography.relaxedLineHeight')})
+          </Label>
+          <Paragraph variant="long">{t('storybook.typography.longVariantDescription')}</Paragraph>
+        </div>
       </div>
-      <div>
-        <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>Long (relaxed line-height)</Label>
-        <Paragraph variant="long">
-          Lang variant har romsligere linjeavstand og er ideell for lengre tekster som artikler og
-          dokumentasjon. Den økte linjeavstanden gjør det lettere å følge teksten over flere linjer
-          og forbedrer lesbarheten betydelig for omfattende innhold.
-        </Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Labels and form typography
  */
 export const FormTypography: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-4)',
-        maxWidth: 'var(--ds-size-100)',
-      }}
-    >
-      <div>
-        <Label data-size="lg">Large Label</Label>
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          Description text for the field
-        </Paragraph>
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-4)',
+          maxWidth: 'var(--ds-size-100)',
+        }}
+      >
+        <div>
+          <Label data-size="lg">{t('storybook.typography.largeLabel')}</Label>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            {t('storybook.typography.descriptionText')}
+          </Paragraph>
+        </div>
+        <div>
+          <Label data-size="md">
+            {t('storybook.typography.mediumLabel')} ({t('storybook.sizes.default')})
+          </Label>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            {t('storybook.typography.helperText')}
+          </Paragraph>
+        </div>
+        <div>
+          <Label data-size="sm">{t('storybook.typography.smallLabel')}</Label>
+          <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            {t('storybook.typography.compactHelperText')}
+          </Paragraph>
+        </div>
+        <div>
+          <Label>{t('storybook.typography.fieldWithError')}</Label>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
+            {t('storybook.patterns.requiredField')}
+          </Paragraph>
+        </div>
       </div>
-      <div>
-        <Label data-size="md">Medium Label (default)</Label>
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          Helper text explaining the field
-        </Paragraph>
-      </div>
-      <div>
-        <Label data-size="sm">Small Label</Label>
-        <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          Compact helper text
-        </Paragraph>
-      </div>
-      <div>
-        <Label>Field with Error</Label>
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-          This field is required
-        </Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Responsive sizes via data-size attribute
  */
 export const ResponsiveSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div
-        data-size="sm"
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Heading level={3} data-size="sm">
-          Small Size Context
-        </Heading>
-        <Paragraph>All text in this container uses small size tokens.</Paragraph>
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div
+          data-size="sm"
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Heading level={3} data-size="sm">
+            {t('storybook.typography.smallSizeContext')}
+          </Heading>
+          <Paragraph>{t('storybook.typography.smallSizeDescription')}</Paragraph>
+        </div>
+        <div
+          data-size="md"
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Heading level={3} data-size="sm">
+            {t('storybook.typography.mediumSizeContext')} ({t('storybook.sizes.default')})
+          </Heading>
+          <Paragraph>{t('storybook.typography.mediumSizeDescription')}</Paragraph>
+        </div>
+        <div
+          data-size="lg"
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Heading level={3} data-size="sm">
+            {t('storybook.typography.largeSizeContext')}
+          </Heading>
+          <Paragraph>{t('storybook.typography.largeSizeDescription')}</Paragraph>
+        </div>
       </div>
-      <div
-        data-size="md"
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Heading level={3} data-size="sm">
-          Medium Size Context (default)
-        </Heading>
-        <Paragraph>All text in this container uses medium size tokens.</Paragraph>
-      </div>
-      <div
-        data-size="lg"
-        style={{
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Heading level={3} data-size="sm">
-          Large Size Context
-        </Heading>
-        <Paragraph>All text in this container uses large size tokens.</Paragraph>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Typography with semantic colors
  */
 export const SemanticColors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-      <Paragraph style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-        Default text color - primary content
-      </Paragraph>
-      <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-        Subtle text color - secondary content, descriptions
-      </Paragraph>
-      <Paragraph style={{ color: 'var(--ds-color-accent-text-default)' }}>
-        Accent text color - links, interactive elements
-      </Paragraph>
-      <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
-        Success text color - positive feedback
-      </Paragraph>
-      <Paragraph style={{ color: 'var(--ds-color-warning-text-default)' }}>
-        Warning text color - cautionary messages
-      </Paragraph>
-      <Paragraph style={{ color: 'var(--ds-color-danger-text-default)' }}>
-        Danger text color - errors, destructive actions
-      </Paragraph>
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+        <Paragraph style={{ color: 'var(--ds-color-neutral-text-default)' }}>
+          {t('storybook.typography.defaultTextColor')}
+        </Paragraph>
+        <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          {t('storybook.typography.subtleTextColor')}
+        </Paragraph>
+        <Paragraph style={{ color: 'var(--ds-color-accent-text-default)' }}>
+          {t('storybook.typography.accentTextColor')}
+        </Paragraph>
+        <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
+          {t('storybook.typography.successTextColor')}
+        </Paragraph>
+        <Paragraph style={{ color: 'var(--ds-color-warning-text-default)' }}>
+          {t('storybook.typography.warningTextColor')}
+        </Paragraph>
+        <Paragraph style={{ color: 'var(--ds-color-danger-text-default)' }}>
+          {t('storybook.typography.dangerTextColor')}
+        </Paragraph>
+      </div>
+    );
+  },
 };
 
 /**
  * Complete typography example
  */
 export const ArticleExample: Story = {
-  render: () => (
-    <article style={{ maxWidth: 'var(--ds-size-175)' }}>
-      <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Velkommen til Digilist
-      </Heading>
-      <Paragraph
-        data-size="lg"
-        variant="short"
-        style={{
-          marginBottom: 'var(--ds-spacing-6)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}
-      >
-        En moderne plattform for resourceRequest og utleie av lokaler og ressurser.
-      </Paragraph>
+  render: () => {
+    const t = useT();
+    return (
+      <article style={{ maxWidth: 'var(--ds-size-175)' }}>
+        <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.typography.articleTitle')}
+        </Heading>
+        <Paragraph
+          data-size="lg"
+          variant="short"
+          style={{
+            marginBottom: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          {t('storybook.typography.articleSubtitle')}
+        </Paragraph>
 
-      <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-        Slik fungerer det
-      </Heading>
-      <Paragraph variant="long" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Digilist gjør det enkelt å finne og reservere lokaler i din kommune. Søk blant tilgjengelige
-        rom, sjekk ledighet i sanntid, og book direkte. Alt fra møterom til idrettshaller er samlet
-        på ett sted.
-      </Paragraph>
+        <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+          {t('storybook.typography.howItWorks')}
+        </Heading>
+        <Paragraph variant="long" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.typography.howItWorksDescription')}
+        </Paragraph>
 
-      <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-        For utleiere
-      </Heading>
-      <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        Administrer dine lokaler effektivt med full oversikt over resourceRequester, tilgjengelighet
-        og inntekter.
-      </Paragraph>
+        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          {t('storybook.typography.forRenters')}
+        </Heading>
+        <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.typography.forRentersDescription')}
+        </Paragraph>
 
-      <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-        Sist oppdatert: Januar 2026
-      </Paragraph>
-    </article>
-  ),
+        <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          {t('storybook.typography.lastUpdated')}: {t('storybook.typography.january2026')}
+        </Paragraph>
+      </article>
+    );
+  },
 };

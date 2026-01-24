@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Drawer, DrawerSection, DrawerItem } from '../../composed';
 import { Button } from '../../primitives';
 import { useState } from 'react';
@@ -16,19 +17,28 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DrawerWithTrigger = (args: any) => {
+  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div style={{ padding: '2rem' }}>
-      <Button onClick={() => setIsOpen(true)}>Open Drawer</Button>
+      <Button onClick={() => setIsOpen(true)}>{t('storybook.demo.openDrawer')}</Button>
       <Drawer {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <DrawerSection title="Section 1">
-          <DrawerItem onClick={() => console.log('Item 1')}>Item 1</DrawerItem>
-          <DrawerItem onClick={() => console.log('Item 2')}>Item 2</DrawerItem>
+        <DrawerSection title={t('storybook.demo.section', { number: 1 })}>
+          <DrawerItem onClick={() => console.log('Item 1')}>
+            {t('storybook.demo.item', { number: 1 })}
+          </DrawerItem>
+          <DrawerItem onClick={() => console.log('Item 2')}>
+            {t('storybook.demo.item', { number: 2 })}
+          </DrawerItem>
         </DrawerSection>
-        <DrawerSection title="Section 2">
-          <DrawerItem onClick={() => console.log('Item 3')}>Item 3</DrawerItem>
-          <DrawerItem onClick={() => console.log('Item 4')}>Item 4</DrawerItem>
+        <DrawerSection title={t('storybook.demo.section', { number: 2 })}>
+          <DrawerItem onClick={() => console.log('Item 3')}>
+            {t('storybook.demo.item', { number: 3 })}
+          </DrawerItem>
+          <DrawerItem onClick={() => console.log('Item 4')}>
+            {t('storybook.demo.item', { number: 4 })}
+          </DrawerItem>
         </DrawerSection>
       </Drawer>
     </div>

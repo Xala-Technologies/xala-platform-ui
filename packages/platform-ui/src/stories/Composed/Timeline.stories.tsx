@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Timeline } from '../../composed/Timeline';
 import { CheckCircle, AlertCircle, Info, XCircle } from 'lucide-react';
 
@@ -52,213 +53,265 @@ Activity feed and history timeline for audit logs, notifications, etc. Supports 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <Timeline
+      items={[
+        {
+          id: '1',
+          title: t('storybook.demo.itemCreated'),
+          description: t('storybook.demo.newItemCreated'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 5),
+          type: 'success',
+        },
+        {
+          id: '2',
+          title: t('storybook.demo.itemUpdated'),
+          description: t('storybook.demo.itemModified'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 30),
+          type: 'info',
+        },
+        {
+          id: '3',
+          title: t('storybook.demo.itemPublished'),
+          description: t('storybook.demo.itemNowLive'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
+          type: 'success',
+        },
+      ]}
+      showConnector={true}
+    />
+  );
+};
+
 // Basic timeline
 export const Default: Story = {
-  args: {
-    items: [
-      {
-        id: '1',
-        title: 'Item created',
-        description: 'A new item was created',
-        timestamp: new Date(Date.now() - 1000 * 60 * 5),
-        type: 'success',
-      },
-      {
-        id: '2',
-        title: 'Item updated',
-        description: 'The item was modified',
-        timestamp: new Date(Date.now() - 1000 * 60 * 30),
-        type: 'info',
-      },
-      {
-        id: '3',
-        title: 'Item published',
-        description: 'The item is now live',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
-        type: 'success',
-      },
-    ],
-    showConnector: true,
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for icons story
+const WithIconsDemo = () => {
+  const t = useT();
+  return (
+    <Timeline
+      items={[
+        {
+          id: '1',
+          title: t('storybook.story.success'),
+          description: t('storybook.demo.operationSuccessful'),
+          timestamp: new Date(),
+          type: 'success',
+          icon: <CheckCircle size={16} />,
+        },
+        {
+          id: '2',
+          title: t('storybook.demo.warning'),
+          description: t('storybook.demo.pleaseReview'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 30),
+          type: 'warning',
+          icon: <AlertCircle size={16} />,
+        },
+        {
+          id: '3',
+          title: t('storybook.story.error'),
+          description: t('storybook.demo.errorOccurred'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
+          type: 'danger',
+          icon: <XCircle size={16} />,
+        },
+      ]}
+      showConnector={true}
+    />
+  );
 };
 
 // With icons
 export const WithIcons: Story = {
-  args: {
-    items: [
-      {
-        id: '1',
-        title: 'Success',
-        description: 'Operation completed successfully',
-        timestamp: new Date(),
-        type: 'success',
-        icon: <CheckCircle size={16} />,
-      },
-      {
-        id: '2',
-        title: 'Warning',
-        description: 'Please review this item',
-        timestamp: new Date(Date.now() - 1000 * 60 * 30),
-        type: 'warning',
-        icon: <AlertCircle size={16} />,
-      },
-      {
-        id: '3',
-        title: 'Error',
-        description: 'An error occurred',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
-        type: 'danger',
-        icon: <XCircle size={16} />,
-      },
-    ],
-    showConnector: true,
-  },
+  render: () => <WithIconsDemo />,
+};
+
+// Wrapper for actors story
+const WithActorsDemo = () => {
+  const t = useT();
+  return (
+    <Timeline
+      items={[
+        {
+          id: '1',
+          title: t('storybook.demo.documentCreated'),
+          description: t('storybook.demo.newDocumentCreated'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 10),
+          type: 'success',
+          actor: {
+            name: 'John Doe',
+            avatar: 'https://i.pravatar.cc/150?img=1',
+          },
+        },
+        {
+          id: '2',
+          title: t('storybook.demo.documentReviewed'),
+          description: t('storybook.demo.documentApproved'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60),
+          type: 'info',
+          actor: {
+            name: 'Jane Smith',
+          },
+        },
+        {
+          id: '3',
+          title: t('storybook.demo.documentPublished'),
+          description: t('storybook.demo.documentPubliclyAvailable'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3),
+          type: 'success',
+          actor: {
+            name: 'Bob Johnson',
+            avatar: 'https://i.pravatar.cc/150?img=3',
+          },
+        },
+      ]}
+      showConnector={true}
+    />
+  );
 };
 
 // With actors
 export const WithActors: Story = {
-  args: {
-    items: [
-      {
-        id: '1',
-        title: 'Document created',
-        description: 'A new document was created',
-        timestamp: new Date(Date.now() - 1000 * 60 * 10),
-        type: 'success',
-        actor: {
-          name: 'John Doe',
-          avatar: 'https://i.pravatar.cc/150?img=1',
+  render: () => <WithActorsDemo />,
+};
+
+// Wrapper for all types story
+const AllTypesDemo = () => {
+  const t = useT();
+  return (
+    <Timeline
+      items={[
+        {
+          id: '1',
+          title: t('storybook.demo.defaultItem'),
+          timestamp: new Date(),
+          type: 'default',
         },
-      },
-      {
-        id: '2',
-        title: 'Document reviewed',
-        description: 'The document was reviewed and approved',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60),
-        type: 'info',
-        actor: {
-          name: 'Jane Smith',
+        {
+          id: '2',
+          title: t('storybook.demo.successItem'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 30),
+          type: 'success',
         },
-      },
-      {
-        id: '3',
-        title: 'Document published',
-        description: 'The document is now publicly available',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3),
-        type: 'success',
-        actor: {
-          name: 'Bob Johnson',
-          avatar: 'https://i.pravatar.cc/150?img=3',
+        {
+          id: '3',
+          title: t('storybook.demo.warningItem'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60),
+          type: 'warning',
         },
-      },
-    ],
-    showConnector: true,
-  },
+        {
+          id: '4',
+          title: t('storybook.demo.dangerItem'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
+          type: 'danger',
+        },
+        {
+          id: '5',
+          title: t('storybook.demo.infoItem'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3),
+          type: 'info',
+        },
+      ]}
+      showConnector={true}
+    />
+  );
 };
 
 // All types
 export const AllTypes: Story = {
-  args: {
-    items: [
-      {
-        id: '1',
-        title: 'Default item',
-        timestamp: new Date(),
-        type: 'default',
-      },
-      {
-        id: '2',
-        title: 'Success item',
-        timestamp: new Date(Date.now() - 1000 * 60 * 30),
-        type: 'success',
-      },
-      {
-        id: '3',
-        title: 'Warning item',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60),
-        type: 'warning',
-      },
-      {
-        id: '4',
-        title: 'Danger item',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
-        type: 'danger',
-      },
-      {
-        id: '5',
-        title: 'Info item',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3),
-        type: 'info',
-      },
-    ],
-    showConnector: true,
-  },
+  render: () => <AllTypesDemo />,
+};
+
+// Wrapper for without connector story
+const WithoutConnectorDemo = () => {
+  const t = useT();
+  return (
+    <Timeline
+      items={[
+        {
+          id: '1',
+          title: `${t('storybook.demo.item')} 1`,
+          timestamp: new Date(),
+          type: 'success',
+        },
+        {
+          id: '2',
+          title: `${t('storybook.demo.item')} 2`,
+          timestamp: new Date(Date.now() - 1000 * 60 * 30),
+          type: 'info',
+        },
+        {
+          id: '3',
+          title: `${t('storybook.demo.item')} 3`,
+          timestamp: new Date(Date.now() - 1000 * 60 * 60),
+          type: 'warning',
+        },
+      ]}
+      showConnector={false}
+    />
+  );
 };
 
 // Without connector
 export const WithoutConnector: Story = {
-  args: {
-    items: [
-      {
-        id: '1',
-        title: 'Item 1',
-        timestamp: new Date(),
-        type: 'success',
-      },
-      {
-        id: '2',
-        title: 'Item 2',
-        timestamp: new Date(Date.now() - 1000 * 60 * 30),
-        type: 'info',
-      },
-      {
-        id: '3',
-        title: 'Item 3',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60),
-        type: 'warning',
-      },
-    ],
-    showConnector: false,
-  },
+  render: () => <WithoutConnectorDemo />,
+};
+
+// Wrapper for metadata story
+const WithMetadataDemo = () => {
+  const t = useT();
+  return (
+    <Timeline
+      items={[
+        {
+          id: '1',
+          title: t('storybook.demo.userLoggedIn'),
+          description: t('storybook.demo.userAuthenticated'),
+          timestamp: new Date(),
+          type: 'success',
+          metadata: {
+            ip: '192.168.1.1',
+            device: 'Chrome on Windows',
+          },
+        },
+        {
+          id: '2',
+          title: t('storybook.demo.passwordChanged'),
+          description: t('storybook.demo.userChangedPassword'),
+          timestamp: new Date(Date.now() - 1000 * 60 * 60),
+          type: 'info',
+          metadata: {
+            method: t('storybook.demo.emailVerification'),
+          },
+        },
+      ]}
+      showConnector={true}
+    />
+  );
 };
 
 // With metadata
 export const WithMetadata: Story = {
-  args: {
-    items: [
-      {
-        id: '1',
-        title: 'User logged in',
-        description: 'User successfully authenticated',
-        timestamp: new Date(),
-        type: 'success',
-        metadata: {
-          ip: '192.168.1.1',
-          device: 'Chrome on Windows',
-        },
-      },
-      {
-        id: '2',
-        title: 'Password changed',
-        description: 'User changed their password',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60),
-        type: 'info',
-        metadata: {
-          method: 'Email verification',
-        },
-      },
-    ],
-    showConnector: true,
-  },
+  render: () => <WithMetadataDemo />,
+};
+
+// Wrapper for empty story
+const EmptyDemo = () => {
+  const t = useT();
+  return (
+    <Timeline items={[]} emptyMessage={t('storybook.demo.noActivityYet')} showConnector={true} />
+  );
 };
 
 // Empty state
 export const Empty: Story = {
-  args: {
-    items: [],
-    emptyMessage: 'No activity yet',
-    showConnector: true,
-  },
+  render: () => <EmptyDemo />,
 };
 
 // Loading state

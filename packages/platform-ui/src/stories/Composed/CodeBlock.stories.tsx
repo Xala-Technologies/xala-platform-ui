@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { CodeBlock, CopyButton, InlineCode } from '../../composed/CodeBlock';
 
 const meta: Meta<typeof CodeBlock> = {

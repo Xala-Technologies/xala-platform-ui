@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Alert } from '../../composed/Alert';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -58,120 +59,181 @@ Inline alert banners for displaying contextual messages. Supports info, success,
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for info story
+const InfoDemo = () => {
+  const t = useT();
+  return (
+    <Alert variant="info" title={t('storybook.demo.information')} dismissible={false}>
+      {t('storybook.demo.informationalMessage')}
+    </Alert>
+  );
+};
+
 // Info variant
 export const Info: Story = {
-  args: {
-    variant: 'info',
-    title: 'Information',
-    children:
-      'This is an informational message. Use this for general information that users should be aware of.',
-    dismissible: false,
-  },
+  render: () => <InfoDemo />,
+};
+
+// Wrapper for success story
+const SuccessDemo = () => {
+  const t = useT();
+  return (
+    <Alert variant="success" title={t('storybook.story.success')} dismissible={false}>
+      {t('storybook.demo.changesSavedSuccessfully')}
+    </Alert>
+  );
 };
 
 // Success variant
 export const Success: Story = {
-  args: {
-    variant: 'success',
-    title: 'Success',
-    children: 'Your changes have been saved successfully.',
-    dismissible: false,
-  },
+  render: () => <SuccessDemo />,
+};
+
+// Wrapper for warning story
+const WarningDemo = () => {
+  const t = useT();
+  return (
+    <Alert variant="warning" title={t('storybook.demo.warning')} dismissible={false}>
+      {t('storybook.demo.reviewChangesBeforeProceeding')}
+    </Alert>
+  );
 };
 
 // Warning variant
 export const Warning: Story = {
-  args: {
-    variant: 'warning',
-    title: 'Warning',
-    children: 'Please review your changes before proceeding. Some fields may need attention.',
-    dismissible: false,
-  },
+  render: () => <WarningDemo />,
+};
+
+// Wrapper for error story
+const ErrorDemo = () => {
+  const t = useT();
+  return (
+    <Alert variant="error" title={t('storybook.story.error')} dismissible={false}>
+      {t('storybook.demo.errorProcessingRequest')}
+    </Alert>
+  );
 };
 
 // Error variant
 export const Error: Story = {
-  args: {
-    variant: 'error',
-    title: 'Error',
-    children: 'An error occurred while processing your request. Please try again.',
-    dismissible: false,
-  },
+  render: () => <ErrorDemo />,
+};
+
+// Wrapper for without title story
+const WithoutTitleDemo = () => {
+  const t = useT();
+  return (
+    <Alert variant="info" dismissible={false}>
+      {t('storybook.demo.alertWithoutTitle')}
+    </Alert>
+  );
 };
 
 // Without title
 export const WithoutTitle: Story = {
-  args: {
-    variant: 'info',
-    children: 'This alert does not have a title. The message is displayed directly.',
-    dismissible: false,
-  },
+  render: () => <WithoutTitleDemo />,
+};
+
+// Wrapper for dismissible story
+const DismissibleDemo = () => {
+  const t = useT();
+  return (
+    <Alert
+      variant="info"
+      title={t('storybook.demo.dismissibleAlert')}
+      dismissible={true}
+      onDismiss={fn()}
+    >
+      {t('storybook.demo.alertCanBeDismissed')}
+    </Alert>
+  );
 };
 
 // Dismissible
 export const Dismissible: Story = {
-  args: {
-    variant: 'info',
-    title: 'Dismissible Alert',
-    children: 'This alert can be dismissed by clicking the close button.',
-    dismissible: true,
-    onDismiss: fn(),
-  },
+  render: () => <DismissibleDemo />,
+};
+
+// Wrapper for action story
+const WithActionDemo = () => {
+  const t = useT();
+  return (
+    <Alert
+      variant="warning"
+      title={t('storybook.demo.actionRequired')}
+      dismissible={false}
+      action={{
+        label: t('storybook.demo.extendSession'),
+        onClick: fn(),
+      }}
+    >
+      {t('storybook.demo.sessionExpireSoon')}
+    </Alert>
+  );
 };
 
 // With action button
 export const WithAction: Story = {
-  args: {
-    variant: 'warning',
-    title: 'Action Required',
-    children: 'Your session will expire soon. Click the button below to extend it.',
-    dismissible: false,
-    action: {
-      label: 'Extend Session',
-      onClick: fn(),
-    },
-  },
+  render: () => <WithActionDemo />,
+};
+
+// Wrapper for custom icon story
+const WithCustomIconDemo = () => {
+  const t = useT();
+  return (
+    <Alert
+      variant="info"
+      title={t('storybook.demo.customIcon')}
+      dismissible={false}
+      icon={
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      }
+    >
+      {t('storybook.demo.alertCustomIcon')}
+    </Alert>
+  );
 };
 
 // With custom icon
 export const WithCustomIcon: Story = {
-  args: {
-    variant: 'info',
-    title: 'Custom Icon',
-    children: 'This alert uses a custom icon instead of the default variant icon.',
-    dismissible: false,
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5" />
-        <path d="M2 12l10 5 10-5" />
-      </svg>
-    ),
-  },
+  render: () => <WithCustomIconDemo />,
+};
+
+// Wrapper for long content story
+const LongContentDemo = () => {
+  const t = useT();
+  return (
+    <Alert
+      variant="info"
+      title={t('storybook.demo.detailedInformation')}
+      dismissible={true}
+      onDismiss={fn()}
+    >
+      {t('storybook.demo.longAlertContent')}
+    </Alert>
+  );
 };
 
 // Long content
 export const LongContent: Story = {
-  args: {
-    variant: 'info',
-    title: 'Detailed Information',
-    children:
-      'This alert contains a longer message to demonstrate how the component handles extended content. The text will wrap naturally within the alert container, maintaining proper spacing and readability. This is useful for providing detailed explanations or instructions to users.',
-    dismissible: true,
-    onDismiss: fn(),
-  },
+  render: () => <LongContentDemo />,
 };
 
-// All variants showcase
-export const AllVariants: Story = {
-  render: () => (
+// Wrapper for all variants story
+const AllVariantsDemo = () => {
+  const t = useT();
+  return (
     <div
       style={{
         display: 'flex',
@@ -180,18 +242,23 @@ export const AllVariants: Story = {
         width: '600px',
       }}
     >
-      <Alert variant="info" title="Info">
-        This is an informational alert.
+      <Alert variant="info" title={t('storybook.demo.info')}>
+        {t('storybook.demo.informationalAlert')}
       </Alert>
-      <Alert variant="success" title="Success">
-        Operation completed successfully.
+      <Alert variant="success" title={t('storybook.story.success')}>
+        {t('storybook.demo.operationSuccessful')}
       </Alert>
-      <Alert variant="warning" title="Warning">
-        Please review before proceeding.
+      <Alert variant="warning" title={t('storybook.demo.warning')}>
+        {t('storybook.demo.pleaseReview')}
       </Alert>
-      <Alert variant="error" title="Error">
-        An error occurred. Please try again.
+      <Alert variant="error" title={t('storybook.story.error')}>
+        {t('platform.errors.serverError')}
       </Alert>
     </div>
-  ),
+  );
+};
+
+// All variants showcase
+export const AllVariants: Story = {
+  render: () => <AllVariantsDemo />,
 };

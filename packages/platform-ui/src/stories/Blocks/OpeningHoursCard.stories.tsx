@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { OpeningHoursCard } from '../../blocks/OpeningHoursCard';
 
 const meta: Meta<typeof OpeningHoursCard> = {
@@ -25,8 +26,8 @@ Card displaying opening hours in a table format. Supports highlighting the curre
 <OpeningHoursCard
   hours={[
     { day: 'Mandag-Fredag', hours: '08:00 - 22:00' },
-    { day: 'Lørdag', hours: '09:00 - 20:00' },
-    { day: 'Søndag', hours: '10:00 - 18:00' },
+    { day: 'Lordag', hours: '09:00 - 20:00' },
+    { day: 'Sondag', hours: '10:00 - 18:00' },
   ]}
   highlightToday
 />
@@ -52,10 +53,10 @@ export const Default: Story = {
   args: {
     hours: [
       { day: 'Mandag-Fredag', hours: '08:00 - 22:00' },
-      { day: 'Lørdag', hours: '09:00 - 20:00' },
-      { day: 'Søndag', hours: '10:00 - 18:00' },
+      { day: 'Lordag', hours: '09:00 - 20:00' },
+      { day: 'Sondag', hours: '10:00 - 18:00' },
     ],
-    title: 'Åpningstider',
+    title: 'Apningstider',
     highlightToday: true,
   },
 };
@@ -69,10 +70,10 @@ export const AllDays: Story = {
       { day: 'Onsdag', hours: '08:00 - 20:00' },
       { day: 'Torsdag', hours: '08:00 - 20:00' },
       { day: 'Fredag', hours: '08:00 - 20:00' },
-      { day: 'Lørdag', hours: '10:00 - 18:00' },
-      { day: 'Søndag', hours: 'Stengt' },
+      { day: 'Lordag', hours: '10:00 - 18:00' },
+      { day: 'Sondag', hours: 'Stengt' },
     ],
-    title: 'Åpningstider',
+    title: 'Apningstider',
     highlightToday: true,
   },
 };
@@ -82,10 +83,10 @@ export const WithClosedDays: Story = {
   args: {
     hours: [
       { day: 'Mandag-Fredag', hours: '08:00 - 22:00' },
-      { day: 'Lørdag', hours: '09:00 - 20:00' },
-      { day: 'Søndag', hours: 'Stengt', isClosed: true },
+      { day: 'Lordag', hours: '09:00 - 20:00' },
+      { day: 'Sondag', hours: 'Stengt', isClosed: true },
     ],
-    title: 'Åpningstider',
+    title: 'Apningstider',
     highlightToday: true,
   },
 };
@@ -95,10 +96,10 @@ export const WithoutHighlighting: Story = {
   args: {
     hours: [
       { day: 'Mandag-Fredag', hours: '08:00 - 22:00' },
-      { day: 'Lørdag', hours: '09:00 - 20:00' },
-      { day: 'Søndag', hours: '10:00 - 18:00' },
+      { day: 'Lordag', hours: '09:00 - 20:00' },
+      { day: 'Sondag', hours: '10:00 - 18:00' },
     ],
-    title: 'Åpningstider',
+    title: 'Apningstider',
     highlightToday: false,
   },
 };
@@ -108,8 +109,8 @@ export const WithoutTitle: Story = {
   args: {
     hours: [
       { day: 'Mandag-Fredag', hours: '08:00 - 22:00' },
-      { day: 'Lørdag', hours: '09:00 - 20:00' },
-      { day: 'Søndag', hours: '10:00 - 18:00' },
+      { day: 'Lordag', hours: '09:00 - 20:00' },
+      { day: 'Sondag', hours: '10:00 - 18:00' },
     ],
     highlightToday: true,
   },
@@ -124,10 +125,10 @@ export const ExtendedHours: Story = {
       { day: 'Onsdag', hours: '06:00 - 23:00' },
       { day: 'Torsdag', hours: '06:00 - 23:00' },
       { day: 'Fredag', hours: '06:00 - 01:00' },
-      { day: 'Lørdag', hours: '08:00 - 01:00' },
-      { day: 'Søndag', hours: '10:00 - 22:00' },
+      { day: 'Lordag', hours: '08:00 - 01:00' },
+      { day: 'Sondag', hours: '10:00 - 22:00' },
     ],
-    title: 'Åpningstider',
+    title: 'Apningstider',
     highlightToday: true,
   },
 };

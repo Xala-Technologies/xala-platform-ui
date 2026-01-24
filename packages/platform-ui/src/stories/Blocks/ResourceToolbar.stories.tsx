@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ResourceToolbar } from '../../blocks/ResourceToolbar';
 
 const meta: Meta<typeof ResourceToolbar> = {
@@ -153,13 +154,20 @@ export const WithoutViewToggle: Story = {
 
 // Custom count label
 export const CustomCountLabel: Story = {
-  args: {
-    count: 15,
-    countLabel: 'venues',
-    activeFilterCount: 0,
-    viewMode: 'grid',
-    showViewToggle: true,
-    availableViews: ['grid', 'list', 'map'],
+  render: () => {
+    const t = useT();
+    return (
+      <ResourceToolbar
+        count={15}
+        countLabel={t('storybook.demo.cardTitle')}
+        activeFilterCount={0}
+        viewMode="grid"
+        showViewToggle={true}
+        availableViews={['grid', 'list', 'map']}
+        onFilterClick={fn()}
+        onViewModeChange={fn()}
+      />
+    );
   },
 };
 

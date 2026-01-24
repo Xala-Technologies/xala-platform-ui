@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState, useEffect } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Checkbox, Fieldset, ValidationMessage, Heading } from '../../index';
 
 /**
@@ -64,8 +65,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### Single Confirmation
 \`\`\`tsx
-<Checkbox 
-  label="I accept the terms and conditions" 
+<Checkbox
+  label="I accept the terms and conditions"
   value="accept"
   required
 />
@@ -93,8 +94,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### Indeterminate State
 \`\`\`tsx
-<Checkbox 
-  label="Select all" 
+<Checkbox
+  label="Select all"
   indeterminate={someSelected && !allSelected}
   checked={allSelected}
 />
@@ -141,8 +142,8 @@ Labels like "Yes" or "Option 1" don't provide context. Be specific.
 ### Required Checkboxes
 For consent or required selections:
 \`\`\`tsx
-<Checkbox 
-  label="I accept the terms and conditions" 
+<Checkbox
+  label="I accept the terms and conditions"
   value="accept"
   required
   aria-required="true"
@@ -177,70 +178,92 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <Checkbox label="I accept the terms and conditions" value="accept" />,
+  render: function Render() {
+    const t = useT();
+    return <Checkbox label={t('storybook.demo.acceptTermsAndConditions')} value="accept" />;
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Checkbox
-      label="Subscribe to newsletter"
-      value="newsletter"
-      description="You can unsubscribe at any time"
-    />
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Checkbox
+        label={t('storybook.demo.subscribeToNewsletter')}
+        value="newsletter"
+        description={t('storybook.demo.unsubscribeAnytime')}
+      />
+    );
+  },
 };
 
 export const CheckboxGroup: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Select amenities</Fieldset.Legend>
-      <Checkbox label="WiFi" value="wifi" />
-      <Checkbox label="Parking" value="parking" />
-      <Checkbox label="Kitchen" value="kitchen" />
-      <Checkbox label="Projector" value="projector" />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.selectAmenities')}</Fieldset.Legend>
+        <Checkbox label={t('storybook.demo.wifi')} value="wifi" />
+        <Checkbox label={t('storybook.demo.parking')} value="parking" />
+        <Checkbox label={t('storybook.demo.kitchen')} value="kitchen" />
+        <Checkbox label={t('storybook.demo.projector')} value="projector" />
+      </Fieldset>
+    );
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-      <Checkbox label="Disabled unchecked" value="disabled1" disabled />
-      <Checkbox label="Disabled checked" value="disabled2" disabled defaultChecked />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+        <Checkbox label={t('storybook.demo.disabledUnchecked')} value="disabled1" disabled />
+        <Checkbox
+          label={t('storybook.demo.disabledChecked')}
+          value="disabled2"
+          disabled
+          defaultChecked
+        />
+      </div>
+    );
+  },
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Accept terms</Fieldset.Legend>
-      <Checkbox label="I accept the terms" value="terms" aria-invalid="true" />
-      <ValidationMessage>You must accept the terms to continue</ValidationMessage>
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.acceptTerms')}</Fieldset.Legend>
+        <Checkbox label={t('storybook.demo.iAcceptTheTerms')} value="terms" aria-invalid="true" />
+        <ValidationMessage>{t('storybook.demo.mustAcceptTermsToContinue')}</ValidationMessage>
+      </Fieldset>
+    );
+  },
 };
 
 /**
  * Single confirmation checkbox - For consent or age verification
  */
 export const SingleConfirmation: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Confirm you are over 18 years old</Fieldset.Legend>
-      <Fieldset.Description>
-        To receive the information you are requesting, you must confirm that you are of legal age.
-      </Fieldset.Description>
-      <Checkbox label="I confirm that I am over 18 years old" value="consent" />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.confirmOver18')}</Fieldset.Legend>
+        <Fieldset.Description>{t('storybook.demo.legalAgeRequirement')}</Fieldset.Description>
+        <Checkbox label={t('storybook.demo.iConfirmOver18')} value="consent" />
+      </Fieldset>
+    );
+  },
 };
 
 /**
  * Interactive checkbox group with state management
  */
 export const InteractiveGroup: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [selected, setSelected] = useState<string[]>(['email']);
 
     const handleChange = (value: string, checked: boolean) => {
@@ -253,22 +276,22 @@ export const InteractiveGroup: Story = {
 
     return (
       <Fieldset>
-        <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
-        <Fieldset.Description>Select all options that are relevant to you.</Fieldset.Description>
+        <Fieldset.Legend>{t('storybook.demo.preferredContactMethod')}</Fieldset.Legend>
+        <Fieldset.Description>{t('storybook.demo.selectAllRelevantOptions')}</Fieldset.Description>
         <Checkbox
-          label="Email"
+          label={t('storybook.demo.email')}
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}
         />
         <Checkbox
-          label="Phone"
+          label={t('storybook.demo.phone')}
           value="phone"
           checked={selected.includes('phone')}
           onChange={(e) => handleChange('phone', e.target.checked)}
         />
         <Checkbox
-          label="SMS"
+          label={t('storybook.demo.sms')}
           value="sms"
           checked={selected.includes('sms')}
           onChange={(e) => handleChange('sms', e.target.checked)}
@@ -281,7 +304,8 @@ export const InteractiveGroup: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>Selected:</strong> {selected.length > 0 ? selected.join(', ') : 'None'}
+          <strong>{t('storybook.demo.selected')}:</strong>{' '}
+          {selected.length > 0 ? selected.join(', ') : t('storybook.demo.none')}
         </div>
       </Fieldset>
     );
@@ -292,17 +316,18 @@ export const InteractiveGroup: Story = {
  * Checkbox group with validation
  */
 export const WithValidation: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [selected, setSelected] = useState<string[]>(['email']);
     const [error, setError] = useState('');
 
     useEffect(() => {
       if (selected.length < 2) {
-        setError('You must select at least two options');
+        setError(t('storybook.demo.selectAtLeastTwo'));
       } else {
         setError('');
       }
-    }, [selected]);
+    }, [selected, t]);
 
     const handleChange = (value: string, checked: boolean) => {
       if (checked) {
@@ -314,24 +339,24 @@ export const WithValidation: Story = {
 
     return (
       <Fieldset>
-        <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
-        <Fieldset.Description>Select all options that are relevant to you.</Fieldset.Description>
+        <Fieldset.Legend>{t('storybook.demo.preferredContactMethod')}</Fieldset.Legend>
+        <Fieldset.Description>{t('storybook.demo.selectAllRelevantOptions')}</Fieldset.Description>
         <Checkbox
-          label="Email"
+          label={t('storybook.demo.email')}
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}
           aria-invalid={!!error}
         />
         <Checkbox
-          label="Phone"
+          label={t('storybook.demo.phone')}
           value="phone"
           checked={selected.includes('phone')}
           onChange={(e) => handleChange('phone', e.target.checked)}
           aria-invalid={!!error}
         />
         <Checkbox
-          label="SMS"
+          label={t('storybook.demo.sms')}
           value="sms"
           checked={selected.includes('sms')}
           onChange={(e) => handleChange('sms', e.target.checked)}
@@ -347,70 +372,91 @@ export const WithValidation: Story = {
  * Read-only checkboxes - Avoid when possible
  */
 export const ReadOnly: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>Your selected preferences</Fieldset.Legend>
-      <Fieldset.Description>These preferences are set by your organization.</Fieldset.Description>
-      <Checkbox label="Email notifications" value="email" checked readOnly />
-      <Checkbox label="Phone notifications" value="phone" readOnly />
-      <Checkbox label="SMS notifications" value="sms" checked readOnly />
-    </Fieldset>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Fieldset>
+        <Fieldset.Legend>{t('storybook.demo.yourSelectedPreferences')}</Fieldset.Legend>
+        <Fieldset.Description>
+          {t('storybook.demo.preferencesSetByOrganization')}
+        </Fieldset.Description>
+        <Checkbox label={t('storybook.demo.emailNotifications')} value="email" checked readOnly />
+        <Checkbox label={t('storybook.demo.phoneNotifications')} value="phone" readOnly />
+        <Checkbox label={t('storybook.demo.smsNotifications')} value="sms" checked readOnly />
+      </Fieldset>
+    );
+  },
 };
 
 /**
  * Size variants
  */
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Checkbox label="Small checkbox" value="sm" data-size="sm" />
-      <Checkbox label="Medium checkbox" value="md" data-size="md" />
-      <Checkbox label="Large checkbox" value="lg" data-size="lg" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Checkbox label={t('storybook.demo.smallCheckbox')} value="sm" data-size="sm" />
+        <Checkbox label={t('storybook.demo.mediumCheckbox')} value="md" data-size="md" />
+        <Checkbox label={t('storybook.demo.largeCheckbox')} value="lg" data-size="lg" />
+      </div>
+    );
+  },
 };
 
 /**
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          States
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Checkbox label="Default" value="default" />
-          <Checkbox label="Checked" value="checked" defaultChecked />
-          <Checkbox label="Disabled unchecked" value="disabled1" disabled />
-          <Checkbox label="Disabled checked" value="disabled2" disabled defaultChecked />
-          <Checkbox label="Read-only checked" value="readonly" checked readOnly />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.states')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Checkbox label={t('storybook.story.default')} value="default" />
+            <Checkbox label={t('storybook.demo.checked')} value="checked" defaultChecked />
+            <Checkbox label={t('storybook.demo.disabledUnchecked')} value="disabled1" disabled />
+            <Checkbox
+              label={t('storybook.demo.disabledChecked')}
+              value="disabled2"
+              disabled
+              defaultChecked
+            />
+            <Checkbox
+              label={t('storybook.demo.readOnlyChecked')}
+              value="readonly"
+              checked
+              readOnly
+            />
+          </div>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Checkbox label={t('storybook.story.small')} value="sm" data-size="sm" />
+            <Checkbox label={t('storybook.story.medium')} value="md" data-size="md" />
+            <Checkbox label={t('storybook.story.large')} value="lg" data-size="lg" />
+          </div>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.withDescription')}
+          </Heading>
+          <Checkbox
+            label={t('storybook.demo.subscribeToNewsletter')}
+            value="newsletter"
+            description={t('storybook.demo.unsubscribeAnytime')}
+          />
         </div>
       </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Checkbox label="Small" value="sm" data-size="sm" />
-          <Checkbox label="Medium" value="md" data-size="md" />
-          <Checkbox label="Large" value="lg" data-size="lg" />
-        </div>
-      </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          With Description
-        </Heading>
-        <Checkbox
-          label="Subscribe to newsletter"
-          value="newsletter"
-          description="You can unsubscribe at any time"
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

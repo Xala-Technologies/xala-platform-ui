@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ResourceCard } from '../../blocks/ResourceCard';
 
 const meta: Meta<typeof ResourceCard> = {
@@ -29,7 +30,7 @@ A reusable card component for displaying resource information. Supports images, 
 <ResourceCard
   id="1"
   name="Meeting Room A"
-  type="Møterom"
+  type="Moterom"
   location="Oslo"
   description="Modern meeting room..."
   image="/image.jpg"
@@ -58,7 +59,7 @@ type Story = StoryObj<typeof meta>;
 const sampleResource = {
   id: '1',
   name: 'Meeting Room A',
-  type: 'Møterom',
+  type: 'Moterom',
   location: 'Oslo, Sentrum',
   description: 'Modern meeting room with state-of-the-art equipment and comfortable seating.',
   image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400',

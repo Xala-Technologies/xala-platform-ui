@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { UserInviteForm } from '../../blocks/admin/UserInviteForm';
 import type { InviteUserFormData } from '../../blocks/admin/UserInviteForm';
 
@@ -154,53 +155,61 @@ export const Loading: Story = {
 
 // With default values
 export const WithDefaultValues: Story = {
-  args: {
-    availableRoles: sampleRoles,
-    availableOrganizations: sampleOrganizations,
-    onSubmit: fn(),
-    onCancel: fn(),
-    loading: false,
-    defaultValues: {
-      email: 'user@example.com',
-      role: 'editor',
-      organizationId: 'org-1',
-      sendEmail: true,
-      message: 'Welcome to the platform!',
-    },
-    showOrganization: true,
-    showScopeOption: false,
-    showMessageField: true,
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <UserInviteForm
+          availableRoles={sampleRoles}
+          availableOrganizations={sampleOrganizations}
+          onSubmit={fn()}
+          onCancel={fn()}
+          loading={false}
+          defaultValues={{
+            email: 'user@example.com',
+            role: 'editor',
+            organizationId: 'org-1',
+            sendEmail: true,
+            message: t('storybook.demo.sampleText'),
+          }}
+          showOrganization={true}
+          showScopeOption={false}
+          showMessageField={true}
+        />
+      </div>
+    );
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <UserInviteForm {...args} />
-    </div>
-  ),
 };
 
 // Many roles and organizations
 export const ManyOptions: Story = {
-  args: {
-    availableRoles: [
-      ...sampleRoles,
-      { id: 'moderator', name: 'Moderator', description: 'Can moderate content' },
-      { id: 'guest', name: 'Guest', description: 'Limited access' },
-    ],
-    availableOrganizations: [
-      ...sampleOrganizations,
-      { id: 'org-4', name: 'Stavanger Kommune' },
-      { id: 'org-5', name: 'Tromsø Kommune' },
-    ],
-    onSubmit: fn(),
-    onCancel: fn(),
-    loading: false,
-    showOrganization: true,
-    showScopeOption: false,
-    showMessageField: true,
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ width: '600px' }}>
+        <UserInviteForm
+          availableRoles={[
+            ...sampleRoles,
+            {
+              id: 'moderator',
+              name: 'Moderator',
+              description: t('storybook.demo.cardDescription'),
+            },
+            { id: 'guest', name: 'Guest', description: t('storybook.demo.cardDescription') },
+          ]}
+          availableOrganizations={[
+            ...sampleOrganizations,
+            { id: 'org-4', name: 'Stavanger Kommune' },
+            { id: 'org-5', name: 'Tromso Kommune' },
+          ]}
+          onSubmit={fn()}
+          onCancel={fn()}
+          loading={false}
+          showOrganization={true}
+          showScopeOption={false}
+          showMessageField={true}
+        />
+      </div>
+    );
   },
-  render: (args) => (
-    <div style={{ width: '600px' }}>
-      <UserInviteForm {...args} />
-    </div>
-  ),
 };

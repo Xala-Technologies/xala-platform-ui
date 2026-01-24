@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { ProgressBar, ProgressRing, ProgressSteps } from '../../composed/Progress';
 
 const meta: Meta<typeof ProgressBar> = {
@@ -59,6 +60,73 @@ Progress bars and rings for loading/completion states. Multiple variants and dis
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+// Wrapper components for stories that need translations
+const RingDemo = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <ProgressRing value={75} size={120} variant="default" showLabel />
+      <ProgressRing value={50} size={100} variant="success" showLabel />
+      <ProgressRing value={25} size={80} variant="danger" showLabel />
+    </div>
+  );
+};
+
+const StepsDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <ProgressSteps
+        steps={[
+          `${t('storybook.demo.step')} 1`,
+          `${t('storybook.demo.step')} 2`,
+          `${t('storybook.demo.step')} 3`,
+          `${t('storybook.demo.step')} 4`,
+        ]}
+        currentStep={1}
+        variant="default"
+      />
+      <ProgressSteps
+        steps={[
+          t('storybook.demo.create'),
+          t('storybook.demo.review'),
+          t('storybook.demo.approve'),
+          t('storybook.demo.publish'),
+        ]}
+        currentStep={2}
+        variant="success"
+      />
+      <ProgressSteps
+        steps={[
+          t('storybook.demo.start'),
+          t('storybook.demo.process'),
+          t('storybook.demo.complete'),
+        ]}
+        currentStep={0}
+        variant="info"
+      />
+    </div>
+  );
+};
+
+const AllVariantsDemo = () => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        width: '400px',
+      }}
+    >
+      <ProgressBar value={100} variant="success" showLabel />
+      <ProgressBar value={75} variant="default" showLabel />
+      <ProgressBar value={50} variant="warning" showLabel />
+      <ProgressBar value={25} variant="danger" showLabel />
+      <ProgressBar value={60} variant="info" showLabel />
+    </div>
+  );
+};
 
 // Basic progress bar
 export const Default: Story = {
@@ -205,50 +273,15 @@ export const Striped: Story = {
 
 // ProgressRing
 export const Ring: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <ProgressRing value={75} size={120} variant="default" showLabel />
-      <ProgressRing value={50} size={100} variant="success" showLabel />
-      <ProgressRing value={25} size={80} variant="danger" showLabel />
-    </div>
-  ),
+  render: () => <RingDemo />,
 };
 
 // ProgressSteps
 export const Steps: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <ProgressSteps
-        steps={['Step 1', 'Step 2', 'Step 3', 'Step 4']}
-        currentStep={1}
-        variant="default"
-      />
-      <ProgressSteps
-        steps={['Create', 'Review', 'Approve', 'Publish']}
-        currentStep={2}
-        variant="success"
-      />
-      <ProgressSteps steps={['Start', 'Process', 'Complete']} currentStep={0} variant="info" />
-    </div>
-  ),
+  render: () => <StepsDemo />,
 };
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-4)',
-        width: '400px',
-      }}
-    >
-      <ProgressBar value={100} variant="success" showLabel />
-      <ProgressBar value={75} variant="default" showLabel />
-      <ProgressBar value={50} variant="warning" showLabel />
-      <ProgressBar value={25} variant="danger" showLabel />
-      <ProgressBar value={60} variant="info" showLabel />
-    </div>
-  ),
+  render: () => <AllVariantsDemo />,
 };

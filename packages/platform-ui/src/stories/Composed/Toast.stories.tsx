@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ToastProvider, useToast } from '../../composed/Toast';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -69,57 +70,60 @@ type Story = StoryObj<typeof meta>;
 
 // Toast trigger component
 const ToastDemo = () => {
+  const t = useT();
   const { toast, success, error, warning, info } = useToast();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
       <Button
-        onClick={() => toast({ title: 'Info Toast', variant: 'info' })}
+        onClick={() => toast({ title: t('storybook.demo.infoToast'), variant: 'info' })}
         data-color="info"
         data-size="medium"
       >
-        Show Info
+        {t('storybook.demo.showInfo')}
       </Button>
       <Button
-        onClick={() => success('Success!', 'Operation completed successfully')}
+        onClick={() =>
+          success(t('storybook.story.success'), t('storybook.demo.operationCompleted'))
+        }
         data-color="success"
         data-size="medium"
       >
-        Show Success
+        {t('storybook.demo.showSuccess')}
       </Button>
       <Button
-        onClick={() => warning('Warning!', 'Please review this action')}
+        onClick={() => warning(t('storybook.demo.warning'), t('storybook.demo.reviewAction'))}
         data-color="warning"
         data-size="medium"
       >
-        Show Warning
+        {t('storybook.demo.showWarning')}
       </Button>
       <Button
-        onClick={() => error('Error!', 'Something went wrong')}
+        onClick={() => error(t('storybook.story.error'), t('storybook.demo.somethingWentWrong'))}
         data-color="danger"
         data-size="medium"
       >
-        Show Error
+        {t('storybook.demo.showError')}
       </Button>
       <Button
         onClick={() =>
           toast({
-            title: 'With Action',
-            description: 'This toast has an action button',
+            title: t('storybook.demo.withAction'),
+            description: t('storybook.demo.toastWithActionButton'),
             variant: 'info',
-            action: { label: 'Undo', onClick: fn() },
+            action: { label: t('storybook.demo.undo'), onClick: fn() },
           })
         }
         data-color="accent"
         data-size="medium"
       >
-        Show with Action
+        {t('storybook.demo.showWithAction')}
       </Button>
       <Button
         onClick={() =>
           toast({
-            title: 'Persistent',
-            description: 'This toast will not auto-dismiss',
+            title: t('storybook.demo.persistent'),
+            description: t('storybook.demo.toastWillNotAutoDismiss'),
             variant: 'info',
             duration: 0,
           })
@@ -127,7 +131,7 @@ const ToastDemo = () => {
         data-color="neutral"
         data-size="medium"
       >
-        Show Persistent
+        {t('storybook.demo.showPersistent')}
       </Button>
     </div>
   );

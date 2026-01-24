@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Breadcrumbs } from '../../composed/Breadcrumbs';
 import { Home } from 'lucide-react';
 
@@ -52,93 +53,162 @@ Navigation breadcrumbs with route integration support. Supports icons, custom se
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.resources'), href: '/resources' },
+        { label: t('storybook.demo.currentPage'), current: true },
+      ]}
+      onNavigate={fn()}
+    />
+  );
+};
+
 // Basic breadcrumbs
 export const Default: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Resources', href: '/resources' },
-      { label: 'Current Page', current: true },
-    ],
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for home icon story
+const WithHomeIconDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/', icon: <Home size={16} /> },
+        { label: t('storybook.demo.resources'), href: '/resources' },
+        { label: t('storybook.demo.currentPage'), current: true },
+      ]}
+      homeIcon={<Home size={16} />}
+      onNavigate={fn()}
+    />
+  );
 };
 
 // With home icon
 export const WithHomeIcon: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/', icon: <Home size={16} /> },
-      { label: 'Resources', href: '/resources' },
-      { label: 'Current Page', current: true },
-    ],
-    homeIcon: <Home size={16} />,
-  },
+  render: () => <WithHomeIconDemo />,
+};
+
+// Wrapper for icons story
+const WithIconsDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/', icon: <Home size={16} /> },
+        { label: t('platform.nav.settings'), href: '/settings', icon: <Home size={16} /> },
+        { label: t('platform.nav.profile'), current: true, icon: <Home size={16} /> },
+      ]}
+      onNavigate={fn()}
+    />
+  );
 };
 
 // With icons
 export const WithIcons: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/', icon: <Home size={16} /> },
-      { label: 'Settings', href: '/settings', icon: <Home size={16} /> },
-      { label: 'Profile', current: true, icon: <Home size={16} /> },
-    ],
-  },
+  render: () => <WithIconsDemo />,
+};
+
+// Wrapper for long trail story
+const LongTrailDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.administration'), href: '/admin' },
+        { label: t('platform.nav.settings'), href: '/admin/settings' },
+        { label: t('storybook.demo.userManagement'), href: '/admin/settings/users' },
+        { label: t('storybook.demo.editUser'), current: true },
+      ]}
+      onNavigate={fn()}
+    />
+  );
 };
 
 // Long breadcrumb trail
 export const LongTrail: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Administration', href: '/admin' },
-      { label: 'Settings', href: '/admin/settings' },
-      { label: 'User Management', href: '/admin/settings/users' },
-      { label: 'Edit User', current: true },
-    ],
-  },
+  render: () => <LongTrailDemo />,
+};
+
+// Wrapper for max items story
+const WithMaxItemsDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: `${t('storybook.demo.level')} 1`, href: '/level1' },
+        { label: `${t('storybook.demo.level')} 2`, href: '/level1/level2' },
+        { label: `${t('storybook.demo.level')} 3`, href: '/level1/level2/level3' },
+        { label: `${t('storybook.demo.level')} 4`, href: '/level1/level2/level3/level4' },
+        { label: t('storybook.demo.currentPage'), current: true },
+      ]}
+      maxItems={3}
+      onNavigate={fn()}
+    />
+  );
 };
 
 // With max items
 export const WithMaxItems: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Level 1', href: '/level1' },
-      { label: 'Level 2', href: '/level1/level2' },
-      { label: 'Level 3', href: '/level1/level2/level3' },
-      { label: 'Level 4', href: '/level1/level2/level3/level4' },
-      { label: 'Current Page', current: true },
-    ],
-    maxItems: 3,
-  },
+  render: () => <WithMaxItemsDemo />,
+};
+
+// Wrapper for custom separator story
+const CustomSeparatorDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.resources'), href: '/resources' },
+        { label: t('storybook.demo.currentPage'), current: true },
+      ]}
+      separator="/"
+      onNavigate={fn()}
+    />
+  );
 };
 
 // Custom separator
 export const CustomSeparator: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Resources', href: '/resources' },
-      { label: 'Current Page', current: true },
-    ],
-    separator: '/',
-  },
+  render: () => <CustomSeparatorDemo />,
+};
+
+// Wrapper for single item story
+const SingleItemDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs items={[{ label: t('platform.nav.home'), current: true }]} onNavigate={fn()} />
+  );
 };
 
 // Single item
 export const SingleItem: Story = {
-  args: {
-    items: [{ label: 'Home', current: true }],
-  },
+  render: () => <SingleItemDemo />,
+};
+
+// Wrapper for two items story
+const TwoItemsDemo = () => {
+  const t = useT();
+  return (
+    <Breadcrumbs
+      items={[
+        { label: t('platform.nav.home'), href: '/' },
+        { label: t('storybook.demo.currentPage'), current: true },
+      ]}
+      onNavigate={fn()}
+    />
+  );
 };
 
 // Two items
 export const TwoItems: Story = {
-  args: {
-    items: [
-      { label: 'Home', href: '/' },
-      { label: 'Current Page', current: true },
-    ],
-  },
+  render: () => <TwoItemsDemo />,
 };

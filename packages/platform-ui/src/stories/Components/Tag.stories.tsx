@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Tag, Heading } from '../../index';
 import {
   SparklesIcon,
@@ -191,239 +192,263 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <Tag>Default tag</Tag>,
+  render: function Render() {
+    const t = useT();
+    return <Tag>{t('storybook.demo.defaultTag')}</Tag>;
+  },
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-      <Tag data-color="neutral">Neutral</Tag>
-      <Tag data-color="success">Success</Tag>
-      <Tag data-color="warning">Warning</Tag>
-      <Tag data-color="danger">Danger</Tag>
-      <Tag data-color="info">Info</Tag>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+        <Tag data-color="neutral">{t('storybook.demo.neutral')}</Tag>
+        <Tag data-color="success">{t('storybook.demo.success')}</Tag>
+        <Tag data-color="warning">{t('storybook.demo.warning')}</Tag>
+        <Tag data-color="danger">{t('storybook.demo.danger')}</Tag>
+        <Tag data-color="info">{t('storybook.demo.info')}</Tag>
+      </div>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-      <Tag data-size="sm">Small</Tag>
-      <Tag data-size="md">Medium</Tag>
-      <Tag data-size="lg">Large</Tag>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
+        <Tag data-size="sm">{t('storybook.demo.small')}</Tag>
+        <Tag data-size="md">{t('storybook.demo.medium')}</Tag>
+        <Tag data-size="lg">{t('storybook.demo.large')}</Tag>
+      </div>
+    );
+  },
 };
 
 export const StatusTags: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-      <Tag data-color="success">Active</Tag>
-      <Tag data-color="warning">Pending</Tag>
-      <Tag data-color="danger">Cancelled</Tag>
-      <Tag data-color="neutral">Draft</Tag>
-      <Tag data-color="info">Processing</Tag>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+        <Tag data-color="success">{t('platform.status.active')}</Tag>
+        <Tag data-color="warning">{t('platform.status.pending')}</Tag>
+        <Tag data-color="danger">{t('platform.status.cancelled')}</Tag>
+        <Tag data-color="neutral">{t('storybook.demo.draft')}</Tag>
+        <Tag data-color="info">{t('storybook.demo.processing')}</Tag>
+      </div>
+    );
+  },
 };
 
 export const CategoryTags: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-      <Tag>Meeting Room</Tag>
-      <Tag>Sports Hall</Tag>
-      <Tag>Outdoor</Tag>
-      <Tag>Equipment</Tag>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+        <Tag>{t('storybook.demo.meetingRoom')}</Tag>
+        <Tag>{t('storybook.demo.sportsHall')}</Tag>
+        <Tag>{t('storybook.demo.outdoor')}</Tag>
+        <Tag>{t('storybook.demo.equipment')}</Tag>
+      </div>
+    );
+  },
 };
 
 /**
  * With icons - Add visual information
  */
 export const WithIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-      <Tag
-        data-color="neutral"
-        data-size="md"
-        style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}
-      >
-        <SparklesIcon
-          fontSize="1rem"
-          aria-hidden
-          style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
-        />
-        AI-generated
-      </Tag>
-      <Tag
-        data-color="success"
-        data-size="md"
-        style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}
-      >
-        <CheckmarkCircleIcon
-          fontSize="1rem"
-          aria-hidden
-          style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
-        />
-        Verified
-      </Tag>
-      <Tag
-        data-color="warning"
-        data-size="md"
-        style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}
-      >
-        <ExclamationmarkTriangleIcon
-          fontSize="1rem"
-          aria-hidden
-          style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
-        />
-        Review needed
-      </Tag>
-      <Tag data-color="info" data-size="md" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
-        <InformationSquareIcon
-          fontSize="1rem"
-          aria-hidden
-          style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
-        />
-        New
-      </Tag>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+        <Tag
+          data-color="neutral"
+          data-size="md"
+          style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}
+        >
+          <SparklesIcon
+            fontSize="1rem"
+            aria-hidden
+            style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
+          />
+          {t('storybook.demo.aiGenerated')}
+        </Tag>
+        <Tag
+          data-color="success"
+          data-size="md"
+          style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}
+        >
+          <CheckmarkCircleIcon
+            fontSize="1rem"
+            aria-hidden
+            style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
+          />
+          {t('storybook.demo.verified')}
+        </Tag>
+        <Tag
+          data-color="warning"
+          data-size="md"
+          style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}
+        >
+          <ExclamationmarkTriangleIcon
+            fontSize="1rem"
+            aria-hidden
+            style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
+          />
+          {t('storybook.demo.reviewNeeded')}
+        </Tag>
+        <Tag data-color="info" data-size="md" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
+          <InformationSquareIcon
+            fontSize="1rem"
+            aria-hidden
+            style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
+          />
+          {t('storybook.demo.new')}
+        </Tag>
+      </div>
+    );
+  },
 };
 
 /**
  * Variants - Default vs Outline
  */
 export const Variants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div>
-        <h4 style={{ marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)' }}>
-          Default (filled)
-        </h4>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          {[
-            'accent',
-            'brand1',
-            'brand2',
-            'brand3',
-            'neutral',
-            'success',
-            'warning',
-            'danger',
-            'info',
-          ].map((color) => (
-            <Tag key={color} data-color={color as any} variant="default">
-              {color}
-            </Tag>
-          ))}
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div>
+          <h4 style={{ marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)' }}>
+            {t('storybook.demo.defaultFilled')}
+          </h4>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+            {[
+              'accent',
+              'brand1',
+              'brand2',
+              'brand3',
+              'neutral',
+              'success',
+              'warning',
+              'danger',
+              'info',
+            ].map((color) => (
+              <Tag key={color} data-color={color as any} variant="default">
+                {color}
+              </Tag>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h4 style={{ marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)' }}>
+            {t('storybook.demo.outline')}
+          </h4>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+            {[
+              'accent',
+              'brand1',
+              'brand2',
+              'brand3',
+              'neutral',
+              'success',
+              'warning',
+              'danger',
+              'info',
+            ].map((color) => (
+              <Tag key={color} data-color={color as any} variant="outline">
+                {color}
+              </Tag>
+            ))}
+          </div>
         </div>
       </div>
-      <div>
-        <h4 style={{ marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)' }}>
-          Outline
-        </h4>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          {[
-            'accent',
-            'brand1',
-            'brand2',
-            'brand3',
-            'neutral',
-            'success',
-            'warning',
-            'danger',
-            'info',
-          ].map((color) => (
-            <Tag key={color} data-color={color as any} variant="outline">
-              {color}
-            </Tag>
-          ))}
-        </div>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Colors
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          <Tag data-color="neutral">Neutral</Tag>
-          <Tag data-color="success">Success</Tag>
-          <Tag data-color="warning">Warning</Tag>
-          <Tag data-color="danger">Danger</Tag>
-          <Tag data-color="info">Info</Tag>
-          <Tag data-color="accent">Accent</Tag>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.colors')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+            <Tag data-color="neutral">{t('storybook.demo.neutral')}</Tag>
+            <Tag data-color="success">{t('storybook.demo.success')}</Tag>
+            <Tag data-color="warning">{t('storybook.demo.warning')}</Tag>
+            <Tag data-color="danger">{t('storybook.demo.danger')}</Tag>
+            <Tag data-color="info">{t('storybook.demo.info')}</Tag>
+            <Tag data-color="accent">{t('storybook.demo.accent')}</Tag>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Tag data-size="sm">Small</Tag>
-          <Tag data-size="md">Medium</Tag>
-          <Tag data-size="lg">Large</Tag>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
+            <Tag data-size="sm">{t('storybook.demo.small')}</Tag>
+            <Tag data-size="md">{t('storybook.demo.medium')}</Tag>
+            <Tag data-size="lg">{t('storybook.demo.large')}</Tag>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Variants
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-          <Tag variant="default">Default</Tag>
-          <Tag variant="outline">Outline</Tag>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.variants')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+            <Tag variant="default">{t('storybook.story.default')}</Tag>
+            <Tag variant="outline">{t('storybook.demo.outline')}</Tag>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          With Icons
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          <Tag data-color="success" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
-            <CheckmarkCircleIcon
-              fontSize="1rem"
-              aria-hidden
-              style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
-            />
-            Verified
-          </Tag>
-          <Tag data-color="neutral" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
-            <SparklesIcon
-              fontSize="1rem"
-              aria-hidden
-              style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
-            />
-            AI-generated
-          </Tag>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.withIcons')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+            <Tag data-color="success" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
+              <CheckmarkCircleIcon
+                fontSize="1rem"
+                aria-hidden
+                style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
+              />
+              {t('storybook.demo.verified')}
+            </Tag>
+            <Tag data-color="neutral" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
+              <SparklesIcon
+                fontSize="1rem"
+                aria-hidden
+                style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
+              />
+              {t('storybook.demo.aiGenerated')}
+            </Tag>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Status Examples
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          <Tag data-color="success">Active</Tag>
-          <Tag data-color="warning">Pending</Tag>
-          <Tag data-color="danger">Cancelled</Tag>
-          <Tag data-color="neutral">Draft</Tag>
-          <Tag data-color="info">Processing</Tag>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.statusExamples')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+            <Tag data-color="success">{t('platform.status.active')}</Tag>
+            <Tag data-color="warning">{t('platform.status.pending')}</Tag>
+            <Tag data-color="danger">{t('platform.status.cancelled')}</Tag>
+            <Tag data-color="neutral">{t('storybook.demo.draft')}</Tag>
+            <Tag data-color="info">{t('storybook.demo.processing')}</Tag>
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

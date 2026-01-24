@@ -5,6 +5,7 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import {
   WorkflowStep,
   WorkflowPipeline,
@@ -93,39 +94,48 @@ const cardMeta: Meta<typeof WorkflowCard> = {
 };
 
 export const AvailableWorkflow: StoryObj<typeof WorkflowCard> = {
-  render: () => (
-    <WorkflowCard
-      name="Product Vision"
-      description="Define the product vision, goals, and target users"
-      command="/product-vision"
-      status="available"
-      onCopyCommand={() => alert('Copied!')}
-      onViewDocs={() => alert('View docs')}
-    />
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <WorkflowCard
+        name={t('storybook.demo.cardTitle')}
+        description={t('storybook.demo.cardDescription')}
+        command="/product-vision"
+        status="available"
+        onCopyCommand={() => alert('Copied!')}
+        onViewDocs={() => alert('View docs')}
+      />
+    );
+  },
 };
 
 export const ComingSoonWorkflow: StoryObj<typeof WorkflowCard> = {
-  render: () => (
-    <WorkflowCard
-      name="Advanced Export"
-      description="Export with custom templates and formats"
-      command="/export --advanced"
-      status="coming_soon"
-      prerequisites={['product-vision', 'section-spec']}
-    />
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <WorkflowCard
+        name={t('storybook.demo.cardTitle')}
+        description={t('storybook.demo.cardDescription')}
+        command="/export --advanced"
+        status="coming_soon"
+        prerequisites={['product-vision', 'section-spec']}
+      />
+    );
+  },
 };
 
 export const DeprecatedWorkflow: StoryObj<typeof WorkflowCard> = {
-  render: () => (
-    <WorkflowCard
-      name="Legacy Export"
-      description="Old export format (use new export instead)"
-      command="/export-v1"
-      status="deprecated"
-    />
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <WorkflowCard
+        name={t('storybook.demo.cardTitle')}
+        description={t('storybook.demo.cardDescription')}
+        command="/export-v1"
+        status="deprecated"
+      />
+    );
+  },
 };
 
 // =============================================================================
@@ -142,28 +152,31 @@ const cardGridMeta: Meta<typeof CardGrid> = {
 };
 
 export const WorkflowCardGrid: StoryObj<typeof CardGrid> = {
-  render: () => (
-    <CardGrid>
-      <WorkflowCard
-        name="Product Vision"
-        description="Define the product vision"
-        command="/product-vision"
-        status="available"
-      />
-      <WorkflowCard
-        name="Product Roadmap"
-        description="Break product into phases"
-        command="/product-roadmap"
-        status="available"
-      />
-      <WorkflowCard
-        name="Data Model"
-        description="Define entities and relationships"
-        command="/data-model"
-        status="available"
-      />
-    </CardGrid>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <CardGrid>
+        <WorkflowCard
+          name={t('storybook.demo.cardTitle')}
+          description={t('storybook.demo.cardDescription')}
+          command="/product-vision"
+          status="available"
+        />
+        <WorkflowCard
+          name={t('storybook.demo.cardTitle')}
+          description={t('storybook.demo.cardDescription')}
+          command="/product-roadmap"
+          status="available"
+        />
+        <WorkflowCard
+          name={t('storybook.demo.cardTitle')}
+          description={t('storybook.demo.cardDescription')}
+          command="/data-model"
+          status="available"
+        />
+      </CardGrid>
+    );
+  },
 };
 
 // =============================================================================
@@ -180,45 +193,54 @@ const buttonGroupMeta: Meta<typeof ButtonGroup> = {
 };
 
 export const DefaultButtonGroup: StoryObj<typeof ButtonGroup> = {
-  render: () => (
-    <ButtonGroup>
-      <Button variant="primary" data-size="sm">
-        Save
-      </Button>
-      <Button variant="secondary" data-size="sm">
-        Cancel
-      </Button>
-    </ButtonGroup>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <ButtonGroup>
+        <Button variant="primary" data-size="sm">
+          {t('platform.common.save')}
+        </Button>
+        <Button variant="secondary" data-size="sm">
+          {t('platform.common.cancel')}
+        </Button>
+      </ButtonGroup>
+    );
+  },
 };
 
 export const CenteredButtonGroup: StoryObj<typeof ButtonGroup> = {
-  render: () => (
-    <ButtonGroup align="center">
-      <Button variant="secondary" data-size="sm">
-        Previous
-      </Button>
-      <Button variant="primary" data-size="sm">
-        Next
-      </Button>
-    </ButtonGroup>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <ButtonGroup align="center">
+        <Button variant="secondary" data-size="sm">
+          {t('platform.common.back')}
+        </Button>
+        <Button variant="primary" data-size="sm">
+          {t('platform.common.next')}
+        </Button>
+      </ButtonGroup>
+    );
+  },
 };
 
 export const EndAlignedButtonGroup: StoryObj<typeof ButtonGroup> = {
-  render: () => (
-    <ButtonGroup align="end">
-      <Button variant="tertiary" data-size="sm">
-        Skip
-      </Button>
-      <Button variant="secondary" data-size="sm">
-        Back
-      </Button>
-      <Button variant="primary" data-size="sm">
-        Continue
-      </Button>
-    </ButtonGroup>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <ButtonGroup align="end">
+        <Button variant="tertiary" data-size="sm">
+          {t('platform.common.cancel')}
+        </Button>
+        <Button variant="secondary" data-size="sm">
+          {t('platform.common.back')}
+        </Button>
+        <Button variant="primary" data-size="sm">
+          {t('platform.common.confirm')}
+        </Button>
+      </ButtonGroup>
+    );
+  },
 };
 
 // =============================================================================
@@ -235,38 +257,59 @@ const formGridMeta: Meta<typeof FormGrid> = {
 };
 
 export const TwoColumnForm: StoryObj<typeof FormGrid> = {
-  render: () => (
-    <FormGrid columns={2}>
-      <Textfield label="First Name" placeholder="Enter first name" />
-      <Textfield label="Last Name" placeholder="Enter last name" />
-      <Textfield label="Email" placeholder="Enter email" />
-      <Textfield label="Phone" placeholder="Enter phone" />
-    </FormGrid>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <FormGrid columns={2}>
+        <Textfield label={t('platform.nav.profile')} placeholder={t('storybook.demo.sampleText')} />
+        <Textfield label={t('platform.nav.profile')} placeholder={t('storybook.demo.sampleText')} />
+        <Textfield label={t('platform.auth.email')} placeholder={t('storybook.demo.sampleText')} />
+        <Textfield
+          label={t('platform.common.details')}
+          placeholder={t('storybook.demo.sampleText')}
+        />
+      </FormGrid>
+    );
+  },
 };
 
 export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
-  render: () => (
-    <FormGrid columns={3}>
-      <Textfield label="City" placeholder="City" />
-      <Field>
-        <Label>Country</Label>
-        <Select>
-          <Select.Option value="no">Norway</Select.Option>
-          <Select.Option value="se">Sweden</Select.Option>
-          <Select.Option value="dk">Denmark</Select.Option>
-        </Select>
-      </Field>
-      <Textfield label="Postal Code" placeholder="Postal code" />
-    </FormGrid>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <FormGrid columns={3}>
+        <Textfield
+          label={t('platform.common.details')}
+          placeholder={t('storybook.demo.sampleText')}
+        />
+        <Field>
+          <Label>{t('platform.common.details')}</Label>
+          <Select>
+            <Select.Option value="no">Norway</Select.Option>
+            <Select.Option value="se">Sweden</Select.Option>
+            <Select.Option value="dk">Denmark</Select.Option>
+          </Select>
+        </Field>
+        <Textfield
+          label={t('platform.common.details')}
+          placeholder={t('storybook.demo.sampleText')}
+        />
+      </FormGrid>
+    );
+  },
 };
 
 export const SingleColumnForm: StoryObj<typeof FormGrid> = {
-  render: () => (
-    <FormGrid columns={1}>
-      <Textfield label="Full Name" placeholder="Enter your full name" />
-      <Textfield label="Description" placeholder="Describe yourself" />
-    </FormGrid>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <FormGrid columns={1}>
+        <Textfield label={t('platform.nav.profile')} placeholder={t('storybook.demo.sampleText')} />
+        <Textfield
+          label={t('platform.common.details')}
+          placeholder={t('storybook.demo.sampleText')}
+        />
+      </FormGrid>
+    );
+  },
 };

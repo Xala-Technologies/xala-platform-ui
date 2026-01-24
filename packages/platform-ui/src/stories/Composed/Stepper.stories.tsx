@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Stepper, Wizard } from '../../composed/Stepper';
 import { useState } from 'react';
 import { Button, Paragraph, Heading } from '@digdir/designsystemet-react';
@@ -170,82 +171,88 @@ export const WithOptionalStep: Story = {
 };
 
 // Interactive stepper
-export const Interactive: Story = {
-  render: () => {
-    const [currentStep, setCurrentStep] = useState(1);
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Stepper
-          steps={sampleSteps}
-          currentStep={currentStep}
-          onStepClick={setCurrentStep}
-          orientation="horizontal"
-          size="md"
-          allowClickPrevious={true}
-        />
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-          <Button
-            onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
-            disabled={currentStep === 0}
-            data-color="neutral"
-            data-size="medium"
-          >
-            Previous
-          </Button>
-          <Button
-            onClick={() => setCurrentStep(Math.min(sampleSteps.length - 1, currentStep + 1))}
-            disabled={currentStep === sampleSteps.length - 1}
-            data-color="accent"
-            data-size="medium"
-          >
-            Next
-          </Button>
-        </div>
+const InteractiveStepper = () => {
+  const t = useT();
+  const [currentStep, setCurrentStep] = useState(1);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <Stepper
+        steps={sampleSteps}
+        currentStep={currentStep}
+        onStepClick={setCurrentStep}
+        orientation="horizontal"
+        size="md"
+        allowClickPrevious={true}
+      />
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+        <Button
+          onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
+          disabled={currentStep === 0}
+          data-color="neutral"
+          data-size="medium"
+        >
+          {t('platform.common.back')}
+        </Button>
+        <Button
+          onClick={() => setCurrentStep(Math.min(sampleSteps.length - 1, currentStep + 1))}
+          disabled={currentStep === sampleSteps.length - 1}
+          data-color="accent"
+          data-size="medium"
+        >
+          {t('platform.common.next')}
+        </Button>
       </div>
-    );
-  },
+    </div>
+  );
+};
+
+export const Interactive: Story = {
+  render: () => <InteractiveStepper />,
 };
 
 // Wizard component
-export const WizardExample: Story = {
-  render: () => {
-    const [currentStep, setCurrentStep] = useState(0);
-    const steps = [
-      { id: '1', title: 'Step 1', description: 'First step' },
-      { id: '2', title: 'Step 2', description: 'Second step' },
-      { id: '3', title: 'Step 3', description: 'Final step' },
-    ];
+const WizardExample = () => {
+  const t = useT();
+  const steps = [
+    { id: '1', title: 'Step 1', description: 'First step' },
+    { id: '2', title: 'Step 2', description: 'Second step' },
+    { id: '3', title: 'Step 3', description: 'Final step' },
+  ];
 
-    return (
-      <Wizard
-        steps={steps}
-        showStepIndicator={true}
-        nextLabel="Next"
-        prevLabel="Previous"
-        completeLabel="Complete"
-        cancelLabel="Cancel"
-        onComplete={fn()}
-        onCancel={fn()}
-      >
-        <div>
-          <Heading level={3} data-size="sm">
-            Step 1 Content
-          </Heading>
-          <Paragraph data-size="sm">This is the content for step 1.</Paragraph>
-        </div>
-        <div>
-          <Heading level={3} data-size="sm">
-            Step 2 Content
-          </Heading>
-          <Paragraph data-size="sm">This is the content for step 2.</Paragraph>
-        </div>
-        <div>
-          <Heading level={3} data-size="sm">
-            Step 3 Content
-          </Heading>
-          <Paragraph data-size="sm">This is the content for step 3.</Paragraph>
-        </div>
-      </Wizard>
-    );
-  },
+  return (
+    <Wizard
+      steps={steps}
+      showStepIndicator={true}
+      nextLabel={t('platform.common.next')}
+      prevLabel={t('platform.common.back')}
+      completeLabel={t('platform.common.confirm')}
+      cancelLabel={t('platform.common.cancel')}
+      onComplete={fn()}
+      onCancel={fn()}
+    >
+      <div>
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.stepContent', { step: 1 })}
+        </Heading>
+        <Paragraph data-size="sm">{t('storybook.demo.stepDescription', { step: 1 })}</Paragraph>
+      </div>
+      <div>
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.stepContent', { step: 2 })}
+        </Heading>
+        <Paragraph data-size="sm">{t('storybook.demo.stepDescription', { step: 2 })}</Paragraph>
+      </div>
+      <div>
+        <Heading level={3} data-size="sm">
+          {t('storybook.demo.stepContent', { step: 3 })}
+        </Heading>
+        <Paragraph data-size="sm">{t('storybook.demo.stepDescription', { step: 3 })}</Paragraph>
+      </div>
+    </Wizard>
+  );
+};
+
+export const WizardExampleStory: Story = {
+  name: 'WizardExample',
+  render: () => <WizardExample />,
 };

@@ -4,6 +4,7 @@
  * Card component for displaying user reviews and feedback.
  */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { ReviewCard, type ReviewCardProps, type ReviewAuthor } from '../../patterns/ReviewCard';
 
 const meta: Meta<typeof ReviewCard> = {

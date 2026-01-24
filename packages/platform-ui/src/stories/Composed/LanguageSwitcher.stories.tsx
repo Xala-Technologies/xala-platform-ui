@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { LanguageSwitcher } from '../../composed/LanguageSwitcher';
 
 const meta: Meta<typeof LanguageSwitcher> = {

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { StatusBanner } from '../../composed/StatusBanner';
 import { Button } from '@digdir/designsystemet-react';
 import { CheckCircle, AlertCircle, Info, XCircle } from 'lucide-react';
@@ -47,97 +48,109 @@ Contextual status banners for detail pages. Displays status information with ico
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Info variant
-export const InfoBanner: Story = {
-  args: {
-    variant: 'info',
-    title: 'Information',
-    description:
-      'This is an informational banner. Use this for general information that users should be aware of.',
-  },
+// Wrapper components for stories that need translations
+const InfoBannerDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="info"
+      title={t('storybook.demo.information')}
+      description={t('storybook.demo.informationalBannerDescription')}
+    />
+  );
 };
 
-// Success variant
-export const Success: Story = {
-  args: {
-    variant: 'success',
-    title: 'Success',
-    description: 'Your changes have been saved successfully.',
-  },
+const SuccessBannerDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="success"
+      title={t('storybook.story.success')}
+      description={t('storybook.demo.changesSavedSuccessfully')}
+    />
+  );
 };
 
-// Warning variant
-export const Warning: Story = {
-  args: {
-    variant: 'warning',
-    title: 'Warning',
-    description: 'Please review your changes before proceeding. Some fields may need attention.',
-  },
+const WarningBannerDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="warning"
+      title={t('storybook.demo.warning')}
+      description={t('storybook.demo.reviewChangesBeforeProceeding')}
+    />
+  );
 };
 
-// Danger variant
-export const Danger: Story = {
-  args: {
-    variant: 'danger',
-    title: 'Error',
-    description: 'An error occurred while processing your request. Please try again.',
-  },
+const DangerBannerDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="danger"
+      title={t('storybook.story.error')}
+      description={t('storybook.demo.errorProcessingRequest')}
+    />
+  );
 };
 
-// Neutral variant
-export const Neutral: Story = {
-  args: {
-    variant: 'neutral',
-    title: 'Notice',
-    description: 'This is a neutral status banner without any specific status indication.',
-  },
+const NeutralBannerDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="neutral"
+      title={t('storybook.demo.notice')}
+      description={t('storybook.demo.neutralBannerDescription')}
+    />
+  );
 };
 
-// Without description
-export const WithoutDescription: Story = {
-  args: {
-    variant: 'success',
-    title: 'Operation completed',
-  },
+const WithoutDescriptionDemo = () => {
+  const t = useT();
+  return <StatusBanner variant="success" title={t('storybook.demo.operationCompleted')} />;
 };
 
-// With custom icon
-export const CustomIcon: Story = {
-  args: {
-    variant: 'info',
-    title: 'Custom Icon',
-    description: 'This banner uses a custom icon instead of the default variant icon.',
-    icon: <Info size={24} />,
-  },
+const CustomIconDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="info"
+      title={t('storybook.demo.customIcon')}
+      description={t('storybook.demo.customIconDescription')}
+      icon={<Info size={24} />}
+    />
+  );
 };
 
-// With action button
-export const WithAction: Story = {
-  args: {
-    variant: 'warning',
-    title: 'Action Required',
-    description: 'Your session will expire soon. Click the button below to extend it.',
-    action: (
-      <Button onClick={() => alert('Action clicked')} data-color="accent" data-size="sm">
-        Extend Session
-      </Button>
-    ),
-  },
+const WithActionDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="warning"
+      title={t('storybook.demo.actionRequired')}
+      description={t('storybook.demo.sessionExpiringSoon')}
+      action={
+        <Button onClick={() => alert('Action clicked')} data-color="accent" data-size="sm">
+          {t('storybook.demo.extendSession')}
+        </Button>
+      }
+    />
+  );
 };
 
-// Long content
-export const LongContent: Story = {
-  args: {
-    variant: 'info',
-    title: 'Detailed Information',
-    description:
-      'This banner contains a longer message to demonstrate how the component handles extended content. The text will wrap naturally within the banner container, maintaining proper spacing and readability. This is useful for providing detailed explanations or instructions to users.',
-  },
+const LongContentDemo = () => {
+  const t = useT();
+  return (
+    <StatusBanner
+      variant="info"
+      title={t('storybook.demo.detailedInformation')}
+      description={t('storybook.demo.longContentDescription')}
+    />
+  );
 };
 
-// All variants showcase
-export const AllVariants: Story = {
-  render: () => (
+const AllVariantsDemo = () => {
+  const t = useT();
+  return (
     <div
       style={{
         display: 'flex',
@@ -146,23 +159,81 @@ export const AllVariants: Story = {
         width: '600px',
       }}
     >
-      <StatusBanner variant="info" title="Info" description="This is an informational banner." />
+      <StatusBanner
+        variant="info"
+        title={t('storybook.demo.info')}
+        description={t('storybook.demo.informationalBanner')}
+      />
       <StatusBanner
         variant="success"
-        title="Success"
-        description="Operation completed successfully."
+        title={t('storybook.story.success')}
+        description={t('storybook.demo.operationSuccessful')}
       />
       <StatusBanner
         variant="warning"
-        title="Warning"
-        description="Please review before proceeding."
+        title={t('storybook.demo.warning')}
+        description={t('storybook.demo.pleaseReview')}
       />
       <StatusBanner
         variant="danger"
-        title="Error"
-        description="An error occurred. Please try again."
+        title={t('storybook.story.error')}
+        description={t('platform.errors.serverError')}
       />
-      <StatusBanner variant="neutral" title="Notice" description="This is a neutral banner." />
+      <StatusBanner
+        variant="neutral"
+        title={t('storybook.demo.notice')}
+        description={t('storybook.demo.neutralBanner')}
+      />
     </div>
-  ),
+  );
+};
+
+// Info variant
+export const InfoBanner: Story = {
+  render: () => <InfoBannerDemo />,
+};
+
+// Success variant
+export const Success: Story = {
+  render: () => <SuccessBannerDemo />,
+};
+
+// Warning variant
+export const Warning: Story = {
+  render: () => <WarningBannerDemo />,
+};
+
+// Danger variant
+export const Danger: Story = {
+  render: () => <DangerBannerDemo />,
+};
+
+// Neutral variant
+export const Neutral: Story = {
+  render: () => <NeutralBannerDemo />,
+};
+
+// Without description
+export const WithoutDescription: Story = {
+  render: () => <WithoutDescriptionDemo />,
+};
+
+// With custom icon
+export const CustomIcon: Story = {
+  render: () => <CustomIconDemo />,
+};
+
+// With action button
+export const WithAction: Story = {
+  render: () => <WithActionDemo />,
+};
+
+// Long content
+export const LongContent: Story = {
+  render: () => <LongContentDemo />,
+};
+
+// All variants showcase
+export const AllVariants: Story = {
+  render: () => <AllVariantsDemo />,
 };

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Card, Heading, Paragraph, Button, Input, Alert } from '../../index';
 import { IdPortenIcon, VippsIcon, BankIdIcon } from '../../index';
 
@@ -120,239 +121,251 @@ function LoginOptionDemo({ icon, title, description, onClick, disabled }: LoginO
  * Default login page layout
  */
 export const Default: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        minHeight: '100vh',
-      }}
-    >
-      {/* Left Panel - Login Options */}
+  render: () => {
+    const t = useT();
+    return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: 'var(--ds-spacing-8)',
-          backgroundColor: 'var(--ds-color-neutral-background-default)',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          minHeight: '100vh',
         }}
       >
-        {/* Logo and Branding */}
-        <div style={{ marginBottom: 'var(--ds-spacing-8)' }}>
-          <Heading
-            level={1}
-            data-size="lg"
-            style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
-          >
-            DIGILIST
-          </Heading>
-          <Paragraph
-            data-size="sm"
-            style={{
-              margin: 0,
-              color: 'var(--ds-color-neutral-text-subtle)',
-              letterSpacing: '0.1em',
-            }}
-          >
-            ENKEL BOOKING
-          </Paragraph>
-        </div>
-
-        {/* Login Form */}
+        {/* Left Panel - Login Options */}
         <div
           style={{
-            flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            maxWidth: '400px',
+            padding: 'var(--ds-spacing-8)',
+            backgroundColor: 'var(--ds-color-neutral-background-default)',
           }}
         >
-          <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
-            Logg inn
-          </Heading>
-          <Paragraph
-            data-size="sm"
-            style={{
-              margin: '0 0 var(--ds-spacing-6) 0',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            Velg hvordan du vil logge inn
-          </Paragraph>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <LoginOptionDemo
-              icon={<BankIdIcon size={32} />}
-              title="BankID"
-              description="Logg inn med BankID på mobil eller kodebrikke"
-              onClick={() => console.log('BankID login')}
-            />
-            <LoginOptionDemo
-              icon={<VippsIcon size={32} />}
-              title="Vipps"
-              description="Logg inn med Vipps-appen"
-              onClick={() => console.log('Vipps login')}
-            />
-            <LoginOptionDemo
-              icon={<IdPortenIcon size={32} />}
-              title="ID-porten"
-              description="Logg inn via ID-porten"
-              onClick={() => console.log('ID-porten login')}
-            />
-          </div>
-        </div>
-
-        {/* Footer Links */}
-        <div
-          style={{
-            display: 'flex',
-            gap: 'var(--ds-spacing-4)',
-            marginTop: 'var(--ds-spacing-8)',
-          }}
-        >
-          <a
-            href="#"
-            style={{
-              fontSize: 'var(--ds-font-size-sm)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            Personvern
-          </a>
-          <a
-            href="#"
-            style={{
-              fontSize: 'var(--ds-font-size-sm)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            Vilkår
-          </a>
-          <a
-            href="#"
-            style={{
-              fontSize: 'var(--ds-font-size-sm)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            Hjelp
-          </a>
-        </div>
-      </div>
-
-      {/* Right Panel - Feature Panel */}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: 'var(--ds-spacing-8)',
-          backgroundColor: 'var(--ds-color-accent-surface-default)',
-        }}
-      >
-        <div style={{ maxWidth: '500px' }}>
-          <Heading
-            level={2}
-            data-size="lg"
-            style={{
-              margin: '0 0 var(--ds-spacing-2) 0',
-              color: 'var(--ds-color-accent-text-default)',
-            }}
-          >
-            Backoffice
-          </Heading>
-          <Paragraph
-            data-size="md"
-            style={{
-              margin: '0 0 var(--ds-spacing-6) 0',
-              color: 'var(--ds-color-accent-text-default)',
-            }}
-          >
-            Administrer resourceRequester og utleieobjekter
-          </Paragraph>
-
-          {/* Features List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            {[
-              {
-                title: 'ResourceRequest-administrasjon',
-                description: 'Oversikt over alle resourceRequester med kalendervisning',
-              },
-              { title: 'Utleieobjekter', description: 'Administrer lokaler, utstyr og tjenester' },
-              { title: 'Rapporter', description: 'Detaljerte rapporter og statistikk' },
-              { title: 'Brukerhåndtering', description: 'Administrer brukere og tilganger' },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}
-              >
-                <div
-                  style={{
-                    width: 'var(--ds-spacing-2)',
-                    height: 'var(--ds-spacing-2)',
-                    borderRadius: 'var(--ds-border-radius-full)',
-                    backgroundColor: 'var(--ds-color-accent-base-default)',
-                    marginTop: 'var(--ds-spacing-2)',
-                    flexShrink: 0,
-                  }}
-                />
-                <div>
-                  <Paragraph
-                    data-size="sm"
-                    style={{
-                      margin: 0,
-                      fontWeight: 'var(--ds-font-weight-semibold)',
-                      color: 'var(--ds-color-accent-text-default)',
-                    }}
-                  >
-                    {feature.title}
-                  </Paragraph>
-                  <Paragraph
-                    data-size="sm"
-                    style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)' }}
-                  >
-                    {feature.description}
-                  </Paragraph>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Integrations */}
-          <div style={{ marginTop: 'var(--ds-spacing-8)' }}>
+          {/* Logo and Branding */}
+          <div style={{ marginBottom: 'var(--ds-spacing-8)' }}>
+            <Heading
+              level={1}
+              data-size="lg"
+              style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+            >
+              DIGILIST
+            </Heading>
             <Paragraph
-              data-size="xs"
+              data-size="sm"
               style={{
-                margin: '0 0 var(--ds-spacing-2) 0',
-                color: 'var(--ds-color-accent-text-subtle)',
-                textTransform: 'uppercase',
+                margin: 0,
+                color: 'var(--ds-color-neutral-text-subtle)',
                 letterSpacing: '0.1em',
               }}
             >
-              Integrasjoner
+              {t('storybook.login.simpleBooking')}
             </Paragraph>
-            <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-              {['FEIDE', 'BankID', 'Vipps', 'ID-porten'].map((name) => (
-                <span
-                  key={name}
-                  style={{
-                    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-                    backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-                    borderRadius: 'var(--ds-border-radius-sm)',
-                    fontSize: 'var(--ds-font-size-xs)',
-                    color: 'var(--ds-color-accent-text-default)',
-                  }}
+          </div>
+
+          {/* Login Form */}
+          <div
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              maxWidth: '400px',
+            }}
+          >
+            <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
+              {t('platform.auth.login')}
+            </Heading>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: '0 0 var(--ds-spacing-6) 0',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.login.chooseLoginMethod')}
+            </Paragraph>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+              <LoginOptionDemo
+                icon={<BankIdIcon size={32} />}
+                title="BankID"
+                description={t('storybook.login.bankIdDescription')}
+                onClick={() => console.log('BankID login')}
+              />
+              <LoginOptionDemo
+                icon={<VippsIcon size={32} />}
+                title="Vipps"
+                description={t('storybook.login.vippsDescription')}
+                onClick={() => console.log('Vipps login')}
+              />
+              <LoginOptionDemo
+                icon={<IdPortenIcon size={32} />}
+                title="ID-porten"
+                description={t('storybook.login.idPortenDescription')}
+                onClick={() => console.log('ID-porten login')}
+              />
+            </div>
+          </div>
+
+          {/* Footer Links */}
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-spacing-4)',
+              marginTop: 'var(--ds-spacing-8)',
+            }}
+          >
+            <a
+              href="#"
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.login.privacy')}
+            </a>
+            <a
+              href="#"
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.login.terms')}
+            </a>
+            <a
+              href="#"
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.login.help')}
+            </a>
+          </div>
+        </div>
+
+        {/* Right Panel - Feature Panel */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: 'var(--ds-spacing-8)',
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
+          }}
+        >
+          <div style={{ maxWidth: '500px' }}>
+            <Heading
+              level={2}
+              data-size="lg"
+              style={{
+                margin: '0 0 var(--ds-spacing-2) 0',
+                color: 'var(--ds-color-accent-text-default)',
+              }}
+            >
+              {t('storybook.login.backoffice')}
+            </Heading>
+            <Paragraph
+              data-size="md"
+              style={{
+                margin: '0 0 var(--ds-spacing-6) 0',
+                color: 'var(--ds-color-accent-text-default)',
+              }}
+            >
+              {t('storybook.login.manageBookingsAndRentals')}
+            </Paragraph>
+
+            {/* Features List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+              {[
+                {
+                  titleKey: 'storybook.login.featureBookingAdmin',
+                  descriptionKey: 'storybook.login.featureBookingAdminDesc',
+                },
+                {
+                  titleKey: 'storybook.login.featureRentalObjects',
+                  descriptionKey: 'storybook.login.featureRentalObjectsDesc',
+                },
+                {
+                  titleKey: 'storybook.login.featureReports',
+                  descriptionKey: 'storybook.login.featureReportsDesc',
+                },
+                {
+                  titleKey: 'storybook.login.featureUserManagement',
+                  descriptionKey: 'storybook.login.featureUserManagementDesc',
+                },
+              ].map((feature, i) => (
+                <div
+                  key={i}
+                  style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}
                 >
-                  {name}
-                </span>
+                  <div
+                    style={{
+                      width: 'var(--ds-spacing-2)',
+                      height: 'var(--ds-spacing-2)',
+                      borderRadius: 'var(--ds-border-radius-full)',
+                      backgroundColor: 'var(--ds-color-accent-base-default)',
+                      marginTop: 'var(--ds-spacing-2)',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div>
+                    <Paragraph
+                      data-size="sm"
+                      style={{
+                        margin: 0,
+                        fontWeight: 'var(--ds-font-weight-semibold)',
+                        color: 'var(--ds-color-accent-text-default)',
+                      }}
+                    >
+                      {t(feature.titleKey)}
+                    </Paragraph>
+                    <Paragraph
+                      data-size="sm"
+                      style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)' }}
+                    >
+                      {t(feature.descriptionKey)}
+                    </Paragraph>
+                  </div>
+                </div>
               ))}
+            </div>
+
+            {/* Integrations */}
+            <div style={{ marginTop: 'var(--ds-spacing-8)' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: '0 0 var(--ds-spacing-2) 0',
+                  color: 'var(--ds-color-accent-text-subtle)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                {t('storybook.login.integrations')}
+              </Paragraph>
+              <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+                {['FEIDE', 'BankID', 'Vipps', 'ID-porten'].map((name) => (
+                  <span
+                    key={name}
+                    style={{
+                      padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                      backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+                      borderRadius: 'var(--ds-border-radius-sm)',
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-accent-text-default)',
+                    }}
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -360,6 +373,7 @@ export const Default: Story = {
  */
 export const DemoLoginDialog: Story = {
   render: () => {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -379,11 +393,11 @@ export const DemoLoginDialog: Story = {
         <div style={{ padding: 'var(--ds-spacing-6)', textAlign: 'center' }}>
           <Alert data-color="success">
             <Paragraph style={{ margin: 0 }}>
-              Demo-innlogging fullført som <strong>{name}</strong>
+              {t('storybook.login.demoLoginCompleted')} <strong>{name}</strong>
             </Paragraph>
           </Alert>
           <Button style={{ marginTop: 'var(--ds-spacing-4)' }} onClick={() => setIsOpen(true)}>
-            Vis dialog igjen
+            {t('storybook.login.showDialogAgain')}
           </Button>
         </div>
       );
@@ -407,7 +421,7 @@ export const DemoLoginDialog: Story = {
           }}
         >
           <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
-            Demo-innlogging
+            {t('storybook.login.demoLogin')}
           </Heading>
           <Paragraph
             data-size="sm"
@@ -416,7 +430,7 @@ export const DemoLoginDialog: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            Logg inn med en testbruker for å prøve systemet
+            {t('storybook.login.demoLoginDescription')}
           </Paragraph>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -429,12 +443,12 @@ export const DemoLoginDialog: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                Navn
+                {t('platform.common.name')}
               </label>
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Ola Nordmann"
+                placeholder={t('storybook.login.namePlaceholder')}
               />
             </div>
             <div>
@@ -446,13 +460,13 @@ export const DemoLoginDialog: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                E-post
+                {t('platform.common.email')}
               </label>
               <Input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="ola@example.com"
+                placeholder={t('storybook.login.emailPlaceholder')}
               />
             </div>
             <div>
@@ -464,12 +478,12 @@ export const DemoLoginDialog: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                Demo-token
+                {t('storybook.login.demoToken')}
               </label>
               <Input
                 value={token}
                 onChange={(e) => setToken(e.target.value)}
-                placeholder="demo-token-123"
+                placeholder={t('storybook.login.demoTokenPlaceholder')}
               />
               <Paragraph
                 data-size="xs"
@@ -478,7 +492,7 @@ export const DemoLoginDialog: Story = {
                   color: 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                Bruk &quot;demo&quot; for standard tilgang
+                {t('storybook.login.demoTokenHint')}
               </Paragraph>
             </div>
           </div>
@@ -491,7 +505,7 @@ export const DemoLoginDialog: Story = {
             }}
           >
             <Button variant="secondary" onClick={() => setIsOpen(false)} style={{ flex: 1 }}>
-              Avbryt
+              {t('platform.common.cancel')}
             </Button>
             <Button
               variant="primary"
@@ -499,7 +513,7 @@ export const DemoLoginDialog: Story = {
               disabled={isLoading || !name || !email}
               style={{ flex: 1 }}
             >
-              {isLoading ? 'Logger inn...' : 'Logg inn'}
+              {isLoading ? t('storybook.login.loggingIn') : t('platform.auth.login')}
             </Button>
           </div>
         </Card>
@@ -512,61 +526,68 @@ export const DemoLoginDialog: Story = {
  * Mobile responsive login
  */
 export const MobileView: Story = {
-  render: () => (
-    <div
-      style={{
-        maxWidth: 'var(--ds-sizing-94)',
-        margin: '0 auto',
-        minHeight: '100vh',
-        backgroundColor: 'var(--ds-color-neutral-background-default)',
-      }}
-    >
-      {/* Mobile Header */}
+  render: () => {
+    const t = useT();
+    return (
       <div
         style={{
-          padding: 'var(--ds-spacing-6)',
-          textAlign: 'center',
-          backgroundColor: 'var(--ds-color-accent-surface-default)',
+          maxWidth: 'var(--ds-sizing-94)',
+          margin: '0 auto',
+          minHeight: '100vh',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
         }}
       >
-        <Heading
-          level={1}
-          data-size="md"
-          style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+        {/* Mobile Header */}
+        <div
+          style={{
+            padding: 'var(--ds-spacing-6)',
+            textAlign: 'center',
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
+          }}
         >
-          DIGILIST
-        </Heading>
-        <Paragraph
-          data-size="xs"
-          style={{ margin: 0, color: 'var(--ds-color-accent-text-subtle)', letterSpacing: '0.1em' }}
-        >
-          ENKEL BOOKING
-        </Paragraph>
-      </div>
+          <Heading
+            level={1}
+            data-size="md"
+            style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+          >
+            DIGILIST
+          </Heading>
+          <Paragraph
+            data-size="xs"
+            style={{
+              margin: 0,
+              color: 'var(--ds-color-accent-text-subtle)',
+              letterSpacing: '0.1em',
+            }}
+          >
+            {t('storybook.login.simpleBooking')}
+          </Paragraph>
+        </div>
 
-      {/* Login Options */}
-      <div style={{ padding: 'var(--ds-spacing-6)' }}>
-        <Heading level={2} data-size="sm" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
-          Logg inn
-        </Heading>
+        {/* Login Options */}
+        <div style={{ padding: 'var(--ds-spacing-6)' }}>
+          <Heading level={2} data-size="sm" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
+            {t('platform.auth.login')}
+          </Heading>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <LoginOptionDemo
-            icon={<BankIdIcon size={28} />}
-            title="BankID"
-            description="Mobil eller kodebrikke"
-            onClick={() => console.log('BankID')}
-          />
-          <LoginOptionDemo
-            icon={<VippsIcon size={28} />}
-            title="Vipps"
-            description="Logg inn med Vipps"
-            onClick={() => console.log('Vipps')}
-          />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <LoginOptionDemo
+              icon={<BankIdIcon size={28} />}
+              title="BankID"
+              description={t('storybook.login.mobileOrCodeDevice')}
+              onClick={() => console.log('BankID')}
+            />
+            <LoginOptionDemo
+              icon={<VippsIcon size={28} />}
+              title="Vipps"
+              description={t('storybook.login.loginWithVipps')}
+              onClick={() => console.log('Vipps')}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
   parameters: {
     viewport: {
       defaultViewport: 'mobile1',
@@ -578,103 +599,108 @@ export const MobileView: Story = {
  * Login page with error state
  */
 export const WithError: Story = {
-  render: () => (
-    <div
-      style={{
-        maxWidth: '400px',
-        margin: '0 auto',
-        padding: 'var(--ds-spacing-6)',
-      }}
-    >
-      <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
-        Logg inn
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          maxWidth: '400px',
+          margin: '0 auto',
+          padding: 'var(--ds-spacing-6)',
+        }}
+      >
+        <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
+          {t('platform.auth.login')}
+        </Heading>
 
-      <Alert data-color="danger" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        <Paragraph style={{ margin: 0 }}>
-          <strong>Innlogging feilet</strong>
-          <br />
-          BankID-sesjonen utløp. Vennligst prøv igjen.
-        </Paragraph>
-      </Alert>
+        <Alert data-color="danger" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          <Paragraph style={{ margin: 0 }}>
+            <strong>{t('storybook.login.loginFailed')}</strong>
+            <br />
+            {t('storybook.login.sessionExpired')}
+          </Paragraph>
+        </Alert>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-        <LoginOptionDemo
-          icon={<BankIdIcon size={28} />}
-          title="BankID"
-          description="Prøv igjen med BankID"
-          onClick={() => console.log('Retry BankID')}
-        />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+          <LoginOptionDemo
+            icon={<BankIdIcon size={28} />}
+            title="BankID"
+            description={t('storybook.login.tryAgainWithBankId')}
+            onClick={() => console.log('Retry BankID')}
+          />
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Minimal login for public web
  */
 export const PublicWebLogin: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        padding: 'var(--ds-spacing-6)',
-        backgroundColor: 'var(--ds-color-neutral-background-subtle)',
-      }}
-    >
-      <Card
+  render: () => {
+    const t = useT();
+    return (
+      <div
         style={{
-          width: '100%',
-          maxWidth: '400px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
           padding: 'var(--ds-spacing-6)',
-          textAlign: 'center',
+          backgroundColor: 'var(--ds-color-neutral-background-subtle)',
         }}
       >
-        <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          <Heading
-            level={1}
-            data-size="md"
-            style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
-          >
-            DIGILIST
-          </Heading>
+        <Card
+          style={{
+            width: '100%',
+            maxWidth: '400px',
+            padding: 'var(--ds-spacing-6)',
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+            <Heading
+              level={1}
+              data-size="md"
+              style={{ margin: 0, color: 'var(--ds-color-accent-base-default)' }}
+            >
+              DIGILIST
+            </Heading>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 'var(--ds-spacing-2) 0 0 0',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.login.loginToBook')}
+            </Paragraph>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Button variant="primary" data-size="lg" style={{ width: '100%' }}>
+              <BankIdIcon size={20} />
+              {t('storybook.login.loginWithBankId')}
+            </Button>
+            <Button variant="secondary" data-size="lg" style={{ width: '100%' }}>
+              <VippsIcon size={20} />
+              {t('storybook.login.loginWithVipps')}
+            </Button>
+          </div>
+
           <Paragraph
-            data-size="sm"
+            data-size="xs"
             style={{
-              margin: 'var(--ds-spacing-2) 0 0 0',
+              margin: 'var(--ds-spacing-4) 0 0 0',
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            Logg inn for å booke
+            {t('storybook.login.termsAgreement')}
           </Paragraph>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Button variant="primary" data-size="lg" style={{ width: '100%' }}>
-            <BankIdIcon size={20} />
-            Logg inn med BankID
-          </Button>
-          <Button variant="secondary" data-size="lg" style={{ width: '100%' }}>
-            <VippsIcon size={20} />
-            Logg inn med Vipps
-          </Button>
-        </div>
-
-        <Paragraph
-          data-size="xs"
-          style={{
-            margin: 'var(--ds-spacing-4) 0 0 0',
-            color: 'var(--ds-color-neutral-text-subtle)',
-          }}
-        >
-          Ved å logge inn godtar du våre <a href="#">vilkår</a> og{' '}
-          <a href="#">personvernerklæring</a>.
-        </Paragraph>
-      </Card>
-    </div>
-  ),
+        </Card>
+      </div>
+    );
+  },
 };

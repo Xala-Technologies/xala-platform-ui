@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Button, Textfield, Heading, Paragraph, Card } from '../../index';
 
 const meta: Meta = {
@@ -34,75 +35,90 @@ type Story = StoryObj;
  * Size modes affect component dimensions
  */
 export const SizeModes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      <div data-size="sm">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          Small (data-size="sm")
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Button data-variant="primary" data-size="sm">
-            Button
-          </Button>
-          <Textfield placeholder="Input field" data-size="sm" style={{ flex: 1 }} />
-          <span
-            style={{
-              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-              backgroundColor: 'var(--ds-color-accent-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-sm)',
-            }}
-          >
-            Tag
-          </span>
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        <div data-size="sm">
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.sizes.small')} (data-size="sm")
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
+            <Button data-variant="primary" data-size="sm">
+              {t('storybook.sizes.button')}
+            </Button>
+            <Textfield
+              placeholder={t('storybook.sizes.inputField')}
+              data-size="sm"
+              style={{ flex: 1 }}
+            />
+            <span
+              style={{
+                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-sm)',
+              }}
+            >
+              {t('storybook.sizes.tag')}
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div data-size="md">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          Medium (data-size="md") - Default
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Button data-variant="primary" data-size="md">
-            Button
-          </Button>
-          <Textfield placeholder="Input field" data-size="md" style={{ flex: 1 }} />
-          <span
-            style={{
-              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-              backgroundColor: 'var(--ds-color-accent-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-sm)',
-            }}
-          >
-            Tag
-          </span>
+        <div data-size="md">
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.sizes.medium')} (data-size="md") - {t('storybook.sizes.default')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
+            <Button data-variant="primary" data-size="md">
+              {t('storybook.sizes.button')}
+            </Button>
+            <Textfield
+              placeholder={t('storybook.sizes.inputField')}
+              data-size="md"
+              style={{ flex: 1 }}
+            />
+            <span
+              style={{
+                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-sm)',
+              }}
+            >
+              {t('storybook.sizes.tag')}
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div data-size="lg">
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          Large (data-size="lg")
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-          <Button data-variant="primary" data-size="lg">
-            Button
-          </Button>
-          <Textfield placeholder="Input field" data-size="lg" style={{ flex: 1 }} />
-          <span
-            style={{
-              padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-              backgroundColor: 'var(--ds-color-accent-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-sm)',
-            }}
-          >
-            Tag
-          </span>
+        <div data-size="lg">
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.sizes.large')} (data-size="lg")
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
+            <Button data-variant="primary" data-size="lg">
+              {t('storybook.sizes.button')}
+            </Button>
+            <Textfield
+              placeholder={t('storybook.sizes.inputField')}
+              data-size="lg"
+              style={{ flex: 1 }}
+            />
+            <span
+              style={{
+                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                backgroundColor: 'var(--ds-color-accent-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-sm)',
+              }}
+            >
+              {t('storybook.sizes.tag')}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -110,6 +126,7 @@ export const SizeModes: Story = {
  */
 export const SpacingScale: Story = {
   render: () => {
+    const t = useT();
     const spacings = [
       { token: '0', value: '0' },
       { token: '1', value: '4px / 0.25rem' },
@@ -144,9 +161,9 @@ export const SpacingScale: Story = {
             fontSize: 'var(--ds-font-size-sm)',
           }}
         >
-          <span>Token</span>
-          <span>Visual</span>
-          <span>Value</span>
+          <span>{t('storybook.sizes.token')}</span>
+          <span>{t('storybook.sizes.visual')}</span>
+          <span>{t('storybook.sizes.value')}</span>
         </div>
         {spacings.map(({ token, value }) => (
           <div
@@ -190,71 +207,76 @@ export const SpacingScale: Story = {
  * Spacing in practice - padding and margins
  */
 export const SpacingInPractice: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          Padding Examples
-        </Heading>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
-          {['2', '4', '6', '8'].map((size) => (
-            <div
-              key={size}
-              style={{
-                backgroundColor: 'var(--ds-color-accent-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-              }}
-            >
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.sizes.paddingExamples')}
+          </Heading>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
+            {['2', '4', '6', '8'].map((size) => (
               <div
+                key={size}
                 style={{
-                  padding: `var(--ds-spacing-${size})`,
-                  backgroundColor: 'var(--ds-color-neutral-background-default)',
+                  backgroundColor: 'var(--ds-color-accent-surface-default)',
                   borderRadius: 'var(--ds-border-radius-md)',
-                  border: '1px dashed var(--ds-color-accent-border-default)',
                 }}
               >
-                <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>padding: spacing-{size}</code>
+                <div
+                  style={{
+                    padding: `var(--ds-spacing-${size})`,
+                    backgroundColor: 'var(--ds-color-neutral-background-default)',
+                    borderRadius: 'var(--ds-border-radius-md)',
+                    border: '1px dashed var(--ds-color-accent-border-default)',
+                  }}
+                >
+                  <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>
+                    padding: spacing-{size}
+                  </code>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          Gap Examples (Flexbox/Grid)
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-          {['2', '4', '6'].map((size) => (
-            <div key={size}>
-              <code
-                style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  marginBottom: 'var(--ds-spacing-1)',
-                  display: 'block',
-                }}
-              >
-                gap: spacing-{size}
-              </code>
-              <div style={{ display: 'flex', gap: `var(--ds-spacing-${size})` }}>
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: 'var(--ds-spacing-12)',
-                      height: 'var(--ds-spacing-12)',
-                      backgroundColor: 'var(--ds-color-accent-base-default)',
-                      borderRadius: 'var(--ds-border-radius-md)',
-                    }}
-                  />
-                ))}
+        <div>
+          <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            {t('storybook.sizes.gapExamples')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+            {['2', '4', '6'].map((size) => (
+              <div key={size}>
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    marginBottom: 'var(--ds-spacing-1)',
+                    display: 'block',
+                  }}
+                >
+                  gap: spacing-{size}
+                </code>
+                <div style={{ display: 'flex', gap: `var(--ds-spacing-${size})` }}>
+                  {[1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      style={{
+                        width: 'var(--ds-spacing-12)',
+                        height: 'var(--ds-spacing-12)',
+                        backgroundColor: 'var(--ds-color-accent-base-default)',
+                        borderRadius: 'var(--ds-border-radius-md)',
+                      }}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -262,6 +284,7 @@ export const SpacingInPractice: Story = {
  */
 export const ComponentSizing: Story = {
   render: () => {
+    const t = useT();
     const sizings = [
       { token: '0', value: '0' },
       { token: '1', value: '4px' },
@@ -281,7 +304,7 @@ export const ComponentSizing: Story = {
     return (
       <div>
         <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          Size Tokens (--ds-size-*)
+          {t('storybook.sizes.sizeTokens')} (--ds-size-*)
         </Heading>
         <Paragraph
           data-size="sm"
@@ -290,7 +313,7 @@ export const ComponentSizing: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          Used for component heights, widths, and icon sizes.
+          {t('storybook.sizes.sizeTokensDescription')}
         </Paragraph>
         <div
           style={{
@@ -332,243 +355,251 @@ export const ComponentSizing: Story = {
  * Semantic spacing usage
  */
 export const SemanticUsage: Story = {
-  render: () => (
-    <div>
-      <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-        When to Use Which Spacing
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.sizes.whenToUseWhichSpacing')}
+        </Heading>
 
-      <table
-        style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--ds-font-size-sm)' }}
-      >
-        <thead>
-          <tr style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
-            <th
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                textAlign: 'left',
-                borderBottom: '1px solid var(--ds-color-neutral-border-default)',
-              }}
-            >
-              Use Case
-            </th>
-            <th
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                textAlign: 'left',
-                borderBottom: '1px solid var(--ds-color-neutral-border-default)',
-              }}
-            >
-              Token
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              Inline elements, icon gaps
-            </td>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <code>spacing-1, spacing-2</code>
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              Form field gaps, button groups
-            </td>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <code>spacing-3, spacing-4</code>
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              Card padding, section gaps
-            </td>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <code>spacing-5, spacing-6</code>
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              Page sections, large containers
-            </td>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <code>spacing-8, spacing-10</code>
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              Major page divisions
-            </td>
-            <td
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <code>spacing-12+</code>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  ),
+        <table
+          style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--ds-font-size-sm)' }}
+        >
+          <thead>
+            <tr style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
+              <th
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  textAlign: 'left',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+                }}
+              >
+                {t('storybook.sizes.useCase')}
+              </th>
+              <th
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  textAlign: 'left',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+                }}
+              >
+                {t('storybook.sizes.token')}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                {t('storybook.sizes.inlineElements')}
+              </td>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                <code>spacing-1, spacing-2</code>
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                {t('storybook.sizes.formFieldGaps')}
+              </td>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                <code>spacing-3, spacing-4</code>
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                {t('storybook.sizes.cardPadding')}
+              </td>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                <code>spacing-5, spacing-6</code>
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                {t('storybook.sizes.pageSections')}
+              </td>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                <code>spacing-8, spacing-10</code>
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                {t('storybook.sizes.majorDivisions')}
+              </td>
+              <td
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                <code>spacing-12+</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  },
 };
 
 /**
  * Card layout example with proper spacing
  */
 export const CardLayoutExample: Story = {
-  render: () => (
-    <Card>
-      <div
-        style={{
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          overflow: 'hidden',
-        }}
-      >
+  render: () => {
+    const t = useT();
+    return (
+      <Card>
         <div
           style={{
-            height: 'var(--ds-spacing-20)',
-            backgroundColor: 'var(--ds-color-accent-surface-default)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'var(--ds-color-accent-text-default)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            border: '1px solid var(--ds-color-neutral-border-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            overflow: 'hidden',
           }}
         >
-          Image Area
-        </div>
-
-        <div style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading
-            level={3}
-            data-size="md"
+          <div
             style={{
-              marginBottom: 'var(--ds-spacing-2)',
+              height: 'var(--ds-spacing-20)',
+              backgroundColor: 'var(--ds-color-accent-surface-default)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--ds-color-accent-text-default)',
             }}
           >
-            Card Title
-          </Heading>
+            {t('storybook.sizes.imageArea')}
+          </div>
 
-          <Paragraph
-            data-size="sm"
-            style={{
-              color: 'var(--ds-color-neutral-text-subtle)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            Description text with proper line spacing for readability.
-          </Paragraph>
+          <div style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Heading
+              level={3}
+              data-size="md"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+              }}
+            >
+              {t('storybook.sizes.cardTitle')}
+            </Heading>
+
+            <Paragraph
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-neutral-text-subtle)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              {t('storybook.sizes.descriptionText')}
+            </Paragraph>
+
+            <div
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-2)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <span
+                style={{
+                  padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                  backgroundColor: 'var(--ds-color-accent-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-2)',
+                }}
+              >
+                {t('storybook.sizes.tag')} 1
+              </span>
+              <span
+                style={{
+                  padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
+                  backgroundColor: 'var(--ds-color-accent-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-2)',
+                }}
+              >
+                {t('storybook.sizes.tag')} 2
+              </span>
+            </div>
+          </div>
 
           <div
             style={{
+              padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
+              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+              borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
               display: 'flex',
-              gap: 'var(--ds-spacing-2)',
-              marginBottom: 'var(--ds-spacing-4)',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             <span
               style={{
-                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-                backgroundColor: 'var(--ds-color-accent-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
                 fontSize: 'var(--ds-font-size-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              Tag 1
+              {t('storybook.sizes.metaInfo')}
             </span>
-            <span
-              style={{
-                padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-                backgroundColor: 'var(--ds-color-accent-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-                fontSize: 'var(--ds-font-size-2)',
-              }}
-            >
-              Tag 2
-            </span>
+            <Button data-variant="primary" data-size="sm">
+              {t('storybook.examples.action')}
+            </Button>
           </div>
         </div>
 
-        <div
-          style={{
-            padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
-            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-            borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
+        <Paragraph
+          data-size="xs"
+          style={{ marginTop: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}
         >
-          <span
-            style={{
-              fontSize: 'var(--ds-font-size-2)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            Meta info
-          </span>
-          <Button data-variant="primary" data-size="sm">
-            Action
-          </Button>
-        </div>
-      </div>
-
-      <Paragraph
-        data-size="xs"
-        style={{ marginTop: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}
-      >
-        <strong>Spacing used:</strong> spacing-1 (tags), spacing-2 (gaps), spacing-4 (sections),
-        spacing-6 (card padding)
-      </Paragraph>
-    </Card>
-  ),
+          <strong>{t('storybook.sizes.spacingUsed')}:</strong> spacing-1 (
+          {t('storybook.sizes.tags')}
+          ), spacing-2 ({t('storybook.sizes.gaps')}), spacing-4 ({t('storybook.sizes.sections')}),
+          spacing-6 ({t('storybook.sizes.cardPaddingLabel')})
+        </Paragraph>
+      </Card>
+    );
+  },
 };

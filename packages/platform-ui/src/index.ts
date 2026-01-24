@@ -41,6 +41,8 @@ export type {
 } from './provider';
 export { ThemeProvider, useTheme } from './ThemeProvider';
 export type { ThemeProviderProps, ThemeContextValue } from './ThemeProvider';
+export { StoryProvider } from './StoryProvider';
+export type { StoryProviderProps } from './StoryProvider';
 
 // =============================================================================
 // Composed Components

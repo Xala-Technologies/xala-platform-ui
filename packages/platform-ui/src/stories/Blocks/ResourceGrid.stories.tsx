@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { ResourceGrid } from '../../blocks/ResourceGrid';
 import { Card, Paragraph } from '@digdir/designsystemet-react';
 
@@ -54,11 +55,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Sample card component
-const SampleCard = ({ index }: { index: number }) => (
-  <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-    <Paragraph data-size="sm">Resource Card {index + 1}</Paragraph>
-  </Card>
-);
+const SampleCard = ({ index }: { index: number }) => {
+  const t = useT();
+  return (
+    <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
+      <Paragraph data-size="sm">
+        {t('storybook.demo.cardTitle')} {index + 1}
+      </Paragraph>
+    </Card>
+  );
+};
 
 // Three columns (default)
 export const ThreeColumns: Story = {

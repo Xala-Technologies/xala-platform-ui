@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ActivityFeed } from '../../blocks/activity/ActivityFeed';
 import type { ActivityItemData } from '../../blocks/activity/ActivityFeed';
 
@@ -92,11 +93,14 @@ export const Default: Story = {
   args: {
     activities: sampleActivities,
   },
-  render: (args) => (
-    <div style={{ width: '400px' }}>
-      <ActivityFeed {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px' }}>
+        <ActivityFeed {...args} />
+      </div>
+    );
+  },
 };
 
 // With click handler
@@ -105,11 +109,14 @@ export const WithClickHandler: Story = {
     activities: sampleActivities,
     onClick: fn(),
   },
-  render: (args) => (
-    <div style={{ width: '400px' }}>
-      <ActivityFeed {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px' }}>
+        <ActivityFeed {...args} />
+      </div>
+    );
+  },
 };
 
 // Limited items
@@ -118,11 +125,14 @@ export const LimitedItems: Story = {
     activities: sampleActivities,
     maxItems: 3,
   },
-  render: (args) => (
-    <div style={{ width: '400px' }}>
-      <ActivityFeed {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px' }}>
+        <ActivityFeed {...args} />
+      </div>
+    );
+  },
 };
 
 // Many activities
@@ -143,24 +153,29 @@ export const ManyActivities: Story = {
     })),
     maxItems: 10,
   },
-  render: (args) => (
-    <div style={{ width: '400px' }}>
-      <ActivityFeed {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px' }}>
+        <ActivityFeed {...args} />
+      </div>
+    );
+  },
 };
 
 // Empty state
 export const Empty: Story = {
   args: {
     activities: [],
-    emptyMessage: 'No activities yet',
   },
-  render: (args) => (
-    <div style={{ width: '400px' }}>
-      <ActivityFeed {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px' }}>
+        <ActivityFeed {...args} emptyMessage={t('storybook.demo.sampleText')} />
+      </div>
+    );
+  },
 };
 
 // All types
@@ -208,9 +223,12 @@ export const AllTypes: Story = {
       },
     ],
   },
-  render: (args) => (
-    <div style={{ width: '400px' }}>
-      <ActivityFeed {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px' }}>
+        <ActivityFeed {...args} />
+      </div>
+    );
+  },
 };

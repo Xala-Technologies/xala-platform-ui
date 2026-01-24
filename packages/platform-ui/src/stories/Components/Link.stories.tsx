@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Link, Paragraph } from '../../index';
 import { ExternalLinkIcon, ArrowRightIcon, DownloadIcon } from '@navikt/aksel-icons';
 
@@ -178,142 +179,167 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <Link href="#">Default link</Link>,
+  render: function Render() {
+    const t = useT();
+    return <Link href="#">{t('storybook.demo.defaultLink')}</Link>;
+  },
 };
 
 export const InText: Story = {
-  render: () => (
-    <Paragraph>
-      Read more about our <Link href="#">resourceRequest policies</Link> and{' '}
-      <Link href="#">terms of service</Link> before making a reservation.
-    </Paragraph>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Paragraph>
+        {t('storybook.demo.readMoreAbout')}{' '}
+        <Link href="#">{t('storybook.demo.bookingPolicies')}</Link> {t('storybook.demo.and')}{' '}
+        <Link href="#">{t('storybook.demo.termsOfService')}</Link>{' '}
+        {t('storybook.demo.beforeMakingReservation')}
+      </Paragraph>
+    );
+  },
 };
 
 export const External: Story = {
-  render: () => (
-    <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
-      Designsystemet documentation ↗
-    </Link>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
+        {t('storybook.demo.designsystemetDocumentation')} ↗
+      </Link>
+    );
+  },
 };
 
 /**
  * With icon - Icons can be placed left or right
  */
 export const WithIcon: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-      <Link href="https://designsystemet.no/slack">
-        <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
-        <span>Talk to us on Slack</span>
-      </Link>
-      <Link href="#">
-        <DownloadIcon fontSize="1.25rem" aria-hidden />
-        <span>Download report</span>
-      </Link>
-      <Link href="#">
-        <span>Continue reading</span>
-        <ArrowRightIcon fontSize="1.25rem" aria-hidden />
-      </Link>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+        <Link href="https://designsystemet.no/slack">
+          <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
+          <span>{t('storybook.demo.talkToUsOnSlack')}</span>
+        </Link>
+        <Link href="#">
+          <DownloadIcon fontSize="1.25rem" aria-hidden />
+          <span>{t('storybook.demo.downloadReport')}</span>
+        </Link>
+        <Link href="#">
+          <span>{t('storybook.demo.continueReading')}</span>
+          <ArrowRightIcon fontSize="1.25rem" aria-hidden />
+        </Link>
+      </div>
+    );
+  },
 };
 
 /**
  * Neutral color - For special backgrounds
  */
 export const Neutral: Story = {
-  render: () => (
-    <Link href="#" data-color="neutral">
-      Privacy Policy
-    </Link>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Link href="#" data-color="neutral">
+        {t('storybook.demo.privacyPolicy')}
+      </Link>
+    );
+  },
 };
 
 /**
  * Inverted - For dark backgrounds
  */
 export const Inverted: Story = {
-  render: () => (
-    <div
-      style={{
-        backgroundColor: 'var(--ds-color-accent-base-default)',
-        padding: 'var(--ds-spacing-4)',
-        borderRadius: 'var(--ds-border-radius-md)',
-      }}
-    >
-      <Link href="#" data-color="inverted">
-        Inverted link on dark background
-      </Link>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          backgroundColor: 'var(--ds-color-accent-base-default)',
+          padding: 'var(--ds-spacing-4)',
+          borderRadius: 'var(--ds-border-radius-md)',
+        }}
+      >
+        <Link href="#" data-color="inverted">
+          {t('storybook.demo.invertedLinkOnDarkBackground')}
+        </Link>
+      </div>
+    );
+  },
 };
 
 /**
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Colors
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Link href="#">Default (accent)</Link>
-          <Link href="#" data-color="neutral">
-            Neutral
-          </Link>
-          <div
-            style={{
-              backgroundColor: 'var(--ds-color-accent-base-default)',
-              padding: 'var(--ds-spacing-3)',
-              borderRadius: 'var(--ds-border-radius-md)',
-            }}
-          >
-            <Link href="#" data-color="inverted">
-              Inverted
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.colors')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Link href="#">{t('storybook.demo.defaultAccent')}</Link>
+            <Link href="#" data-color="neutral">
+              {t('storybook.demo.neutral')}
+            </Link>
+            <div
+              style={{
+                backgroundColor: 'var(--ds-color-accent-base-default)',
+                padding: 'var(--ds-spacing-3)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
+              <Link href="#" data-color="inverted">
+                {t('storybook.demo.inverted')}
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.withIcons')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Link href="#">
+              <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
+              <span>{t('storybook.demo.iconOnLeft')}</span>
+            </Link>
+            <Link href="#">
+              <span>{t('storybook.demo.iconOnRight')}</span>
+              <ArrowRightIcon fontSize="1.25rem" aria-hidden />
             </Link>
           </div>
         </div>
-      </div>
 
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          With Icons
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Link href="#">
-            <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
-            <span>Icon on left</span>
-          </Link>
-          <Link href="#">
-            <span>Icon on right</span>
-            <ArrowRightIcon fontSize="1.25rem" aria-hidden />
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.inText')}
+          </h3>
+          <Paragraph>
+            {t('storybook.demo.paragraphWithInlineLink')}{' '}
+            <Link href="#">{t('storybook.demo.inlineLink')}</Link>{' '}
+            {t('storybook.demo.thatDemonstratesLinks')}{' '}
+            <Link href="#">{t('storybook.demo.multipleLinks')}</Link>{' '}
+            {t('storybook.demo.inSameParagraph')}
+          </Paragraph>
+        </div>
+
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.externalLinks')}
+          </h3>
+          <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
+            {t('storybook.demo.visitDesignsystemet')}
           </Link>
         </div>
       </div>
-
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          In Text
-        </h3>
-        <Paragraph>
-          This is a paragraph with an <Link href="#">inline link</Link> that demonstrates how links
-          appear within body text. You can have <Link href="#">multiple links</Link> in the same
-          paragraph.
-        </Paragraph>
-      </div>
-
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          External Links
-        </h3>
-        <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
-          Visit Designsystemet
-        </Link>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

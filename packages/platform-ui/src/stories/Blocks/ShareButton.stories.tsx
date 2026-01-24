@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ShareButton } from '../../blocks/ShareButton';
 
 const meta: Meta<typeof ShareButton> = {
@@ -140,72 +141,26 @@ export const CustomPlatforms: Story = {
 
 // All variants showcase
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <ShareButton
-          shareData={{
-            url: 'https://example.com/resource',
-            title: 'Resource Title',
-            description: 'Check out this resource',
-          }}
-          variant="icon"
-          size="sm"
-          onShare={fn()}
-        />
-        <ShareButton
-          shareData={{
-            url: 'https://example.com/resource',
-            title: 'Resource Title',
-            description: 'Check out this resource',
-          }}
-          variant="icon"
-          size="md"
-          onShare={fn()}
-        />
-        <ShareButton
-          shareData={{
-            url: 'https://example.com/resource',
-            title: 'Resource Title',
-            description: 'Check out this resource',
-          }}
-          variant="icon"
-          size="lg"
-          onShare={fn()}
-        />
+  render: () => {
+    const t = useT();
+    const shareData = {
+      url: 'https://example.com/resource',
+      title: t('storybook.demo.cardTitle'),
+      description: t('storybook.demo.cardDescription'),
+    };
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+          <ShareButton shareData={shareData} variant="icon" size="sm" onShare={fn()} />
+          <ShareButton shareData={shareData} variant="icon" size="md" onShare={fn()} />
+          <ShareButton shareData={shareData} variant="icon" size="lg" onShare={fn()} />
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+          <ShareButton shareData={shareData} variant="button" size="sm" onShare={fn()} />
+          <ShareButton shareData={shareData} variant="button" size="md" onShare={fn()} />
+          <ShareButton shareData={shareData} variant="button" size="lg" onShare={fn()} />
+        </div>
       </div>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <ShareButton
-          shareData={{
-            url: 'https://example.com/resource',
-            title: 'Resource Title',
-            description: 'Check out this resource',
-          }}
-          variant="button"
-          size="sm"
-          onShare={fn()}
-        />
-        <ShareButton
-          shareData={{
-            url: 'https://example.com/resource',
-            title: 'Resource Title',
-            description: 'Check out this resource',
-          }}
-          variant="button"
-          size="md"
-          onShare={fn()}
-        />
-        <ShareButton
-          shareData={{
-            url: 'https://example.com/resource',
-            title: 'Resource Title',
-            description: 'Check out this resource',
-          }}
-          variant="button"
-          size="lg"
-          onShare={fn()}
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

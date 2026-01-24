@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Search } from '../../index';
 
 const meta: Meta = {
@@ -59,9 +61,9 @@ Search input component provides a dedicated interface for searching content, wit
 ### With Custom Placeholder
 \`\`\`tsx
 <Search>
-  <Search.Input 
-    aria-label="Search listings" 
-    placeholder="Search for listings..." 
+  <Search.Input
+    aria-label="Search listings"
+    placeholder="Search for listings..."
   />
   <Search.Clear />
   <Search.Button />
@@ -99,8 +101,8 @@ Search input component provides a dedicated interface for searching content, wit
 ### With Autocomplete
 \`\`\`tsx
 <Search>
-  <Search.Input 
-    aria-label="Search with suggestions" 
+  <Search.Input
+    aria-label="Search with suggestions"
     placeholder="Type to search..."
     list="suggestions"
   />
@@ -127,7 +129,7 @@ const handleSearch = (query: string) => {
 };
 
 <Search>
-  <Search.Input 
+  <Search.Input
     value={searchQuery}
     onChange={(e) => handleSearch(e.target.value)}
     aria-label="Search"
@@ -179,7 +181,7 @@ Not showing search results or loading states.
 \`\`\`tsx
 <form role="search" aria-label="Site search">
   <label htmlFor="search-input">Search</label>
-  <input 
+  <input
     id="search-input"
     type="search"
     aria-describedby="search-help"
@@ -219,15 +221,15 @@ const AdvancedSearch = () => {
     category: 'all',
     dateRange: 'any'
   });
-  
+
   const handleSearch = () => {
     // Perform search with filters
     searchWithFilters(query, filters);
   };
-  
+
   return (
     <Search>
-      <Search.Input 
+      <Search.Input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
@@ -251,60 +253,93 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Search>
-      <Search.Input aria-label="Search" placeholder="Search..." />
-      <Search.Clear />
-      <Search.Button />
-    </Search>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Search>
+        <Search.Input
+          aria-label={t('platform.common.search')}
+          placeholder={t('storybook.demo.searchPlaceholder')}
+        />
+        <Search.Clear />
+        <Search.Button />
+      </Search>
+    );
+  },
 };
 
 export const WithPlaceholder: Story = {
-  render: () => (
-    <Search>
-      <Search.Input aria-label="Search listings" placeholder="Search for listings..." />
-      <Search.Clear />
-      <Search.Button />
-    </Search>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Search>
+        <Search.Input
+          aria-label={t('storybook.demo.searchListings')}
+          placeholder={t('storybook.demo.searchForListings')}
+        />
+        <Search.Clear />
+        <Search.Button />
+      </Search>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Search data-size="sm">
-        <Search.Input aria-label="Small search" placeholder="Small..." />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
-      <Search data-size="md">
-        <Search.Input aria-label="Medium search" placeholder="Medium..." />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
-      <Search data-size="lg">
-        <Search.Input aria-label="Large search" placeholder="Large..." />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Search data-size="sm">
+          <Search.Input
+            aria-label={t('storybook.demo.smallSearch')}
+            placeholder={t('storybook.demo.small') + '...'}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+        <Search data-size="md">
+          <Search.Input
+            aria-label={t('storybook.demo.mediumSearch')}
+            placeholder={t('storybook.demo.medium') + '...'}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+        <Search data-size="lg">
+          <Search.Input
+            aria-label={t('storybook.demo.largeSearch')}
+            placeholder={t('storybook.demo.large') + '...'}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+      </div>
+    );
+  },
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Search data-color="neutral">
-        <Search.Input aria-label="Neutral search" placeholder="Neutral color..." />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
-      <Search data-color="accent">
-        <Search.Input aria-label="Accent search" placeholder="Accent color..." />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Search data-color="neutral">
+          <Search.Input
+            aria-label={t('storybook.demo.neutralSearch')}
+            placeholder={t('storybook.demo.neutralColor') + '...'}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+        <Search data-color="accent">
+          <Search.Input
+            aria-label={t('storybook.demo.accentSearch')}
+            placeholder={t('storybook.demo.accentColor') + '...'}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+      </div>
+    );
+  },
 };

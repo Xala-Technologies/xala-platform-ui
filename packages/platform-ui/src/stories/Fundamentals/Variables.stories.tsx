@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Fundamentals/Variables',
@@ -88,358 +89,536 @@ const SpacingSwatch = ({ variable, size }: { variable: string; size: string }) =
  * Accent color scale
  */
 export const AccentColors: Story = {
-  render: () => (
-    <div>
-      <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>Accent Colors</h3>
-      <ColorSwatch variable="--ds-color-accent-background-default" label="Background default" />
-      <ColorSwatch variable="--ds-color-accent-background-tinted" label="Background tinted" />
-      <ColorSwatch variable="--ds-color-accent-surface-default" label="Surface default" />
-      <ColorSwatch variable="--ds-color-accent-surface-hover" label="Surface hover" />
-      <ColorSwatch variable="--ds-color-accent-surface-active" label="Surface active" />
-      <ColorSwatch variable="--ds-color-accent-border-subtle" label="Border subtle" />
-      <ColorSwatch variable="--ds-color-accent-border-default" label="Border default" />
-      <ColorSwatch variable="--ds-color-accent-border-strong" label="Border strong" />
-      <ColorSwatch variable="--ds-color-accent-base-default" label="Base default" />
-      <ColorSwatch variable="--ds-color-accent-base-hover" label="Base hover" />
-      <ColorSwatch variable="--ds-color-accent-base-active" label="Base active" />
-      <ColorSwatch variable="--ds-color-accent-text-subtle" label="Text subtle" />
-      <ColorSwatch variable="--ds-color-accent-text-default" label="Text default" />
-      <ColorSwatch variable="--ds-color-accent-contrast-default" label="Contrast default" />
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.tokens.accentColors')}
+        </h3>
+        <ColorSwatch
+          variable="--ds-color-accent-background-default"
+          label={t('storybook.tokens.backgroundDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-background-tinted"
+          label={t('storybook.variables.backgroundTinted')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-surface-default"
+          label={t('storybook.tokens.surfaceDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-surface-hover"
+          label={t('storybook.tokens.surfaceHover')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-surface-active"
+          label={t('storybook.variables.surfaceActive')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-border-subtle"
+          label={t('storybook.variables.borderSubtle')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-border-default"
+          label={t('storybook.tokens.borderDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-border-strong"
+          label={t('storybook.variables.borderStrong')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-base-default"
+          label={t('storybook.tokens.baseDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-base-hover"
+          label={t('storybook.variables.baseHover')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-base-active"
+          label={t('storybook.variables.baseActive')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-text-subtle"
+          label={t('storybook.tokens.textSubtle')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-text-default"
+          label={t('storybook.tokens.textDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-accent-contrast-default"
+          label={t('storybook.variables.contrastDefault')}
+        />
+      </div>
+    );
+  },
 };
 
 /**
  * Neutral color scale
  */
 export const NeutralColors: Story = {
-  render: () => (
-    <div>
-      <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>Neutral Colors</h3>
-      <ColorSwatch variable="--ds-color-neutral-background-default" label="Background default" />
-      <ColorSwatch variable="--ds-color-neutral-background-tinted" label="Background tinted" />
-      <ColorSwatch variable="--ds-color-neutral-surface-default" label="Surface default" />
-      <ColorSwatch variable="--ds-color-neutral-surface-hover" label="Surface hover" />
-      <ColorSwatch variable="--ds-color-neutral-surface-active" label="Surface active" />
-      <ColorSwatch variable="--ds-color-neutral-border-subtle" label="Border subtle" />
-      <ColorSwatch variable="--ds-color-neutral-border-default" label="Border default" />
-      <ColorSwatch variable="--ds-color-neutral-border-strong" label="Border strong" />
-      <ColorSwatch variable="--ds-color-neutral-base-default" label="Base default" />
-      <ColorSwatch variable="--ds-color-neutral-base-hover" label="Base hover" />
-      <ColorSwatch variable="--ds-color-neutral-text-subtle" label="Text subtle" />
-      <ColorSwatch variable="--ds-color-neutral-text-default" label="Text default" />
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.tokens.neutralColors')}
+        </h3>
+        <ColorSwatch
+          variable="--ds-color-neutral-background-default"
+          label={t('storybook.tokens.backgroundDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-background-tinted"
+          label={t('storybook.variables.backgroundTinted')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-surface-default"
+          label={t('storybook.tokens.surfaceDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-surface-hover"
+          label={t('storybook.tokens.surfaceHover')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-surface-active"
+          label={t('storybook.variables.surfaceActive')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-border-subtle"
+          label={t('storybook.variables.borderSubtle')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-border-default"
+          label={t('storybook.tokens.borderDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-border-strong"
+          label={t('storybook.variables.borderStrong')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-base-default"
+          label={t('storybook.tokens.baseDefault')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-base-hover"
+          label={t('storybook.variables.baseHover')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-text-subtle"
+          label={t('storybook.tokens.textSubtle')}
+        />
+        <ColorSwatch
+          variable="--ds-color-neutral-text-default"
+          label={t('storybook.tokens.textDefault')}
+        />
+      </div>
+    );
+  },
 };
 
 /**
  * Semantic colors (success, warning, danger, info)
  */
 export const SemanticColors: Story = {
-  render: () => (
-    <div
-      style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--ds-spacing-8)' }}
-    >
-      <div>
-        <h4
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Success
-        </h4>
-        <ColorSwatch variable="--ds-color-success-surface-default" label="Surface" />
-        <ColorSwatch variable="--ds-color-success-border-default" label="Border" />
-        <ColorSwatch variable="--ds-color-success-base-default" label="Base" />
-        <ColorSwatch variable="--ds-color-success-text-default" label="Text" />
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: 'var(--ds-spacing-8)',
+        }}
+      >
+        <div>
+          <h4
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.notifications.success')}
+          </h4>
+          <ColorSwatch
+            variable="--ds-color-success-surface-default"
+            label={t('storybook.tokens.surface')}
+          />
+          <ColorSwatch
+            variable="--ds-color-success-border-default"
+            label={t('storybook.tokens.border')}
+          />
+          <ColorSwatch
+            variable="--ds-color-success-base-default"
+            label={t('storybook.variables.base')}
+          />
+          <ColorSwatch
+            variable="--ds-color-success-text-default"
+            label={t('storybook.tokens.text')}
+          />
+        </div>
+        <div>
+          <h4
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-warning-text-default)',
+            }}
+          >
+            {t('storybook.notifications.warning')}
+          </h4>
+          <ColorSwatch
+            variable="--ds-color-warning-surface-default"
+            label={t('storybook.tokens.surface')}
+          />
+          <ColorSwatch
+            variable="--ds-color-warning-border-default"
+            label={t('storybook.tokens.border')}
+          />
+          <ColorSwatch
+            variable="--ds-color-warning-base-default"
+            label={t('storybook.variables.base')}
+          />
+          <ColorSwatch
+            variable="--ds-color-warning-text-default"
+            label={t('storybook.tokens.text')}
+          />
+        </div>
+        <div>
+          <h4
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-danger-text-default)',
+            }}
+          >
+            {t('storybook.tokens.danger')}
+          </h4>
+          <ColorSwatch
+            variable="--ds-color-danger-surface-default"
+            label={t('storybook.tokens.surface')}
+          />
+          <ColorSwatch
+            variable="--ds-color-danger-border-default"
+            label={t('storybook.tokens.border')}
+          />
+          <ColorSwatch
+            variable="--ds-color-danger-base-default"
+            label={t('storybook.variables.base')}
+          />
+          <ColorSwatch
+            variable="--ds-color-danger-text-default"
+            label={t('storybook.tokens.text')}
+          />
+        </div>
+        <div>
+          <h4
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-info-text-default)',
+            }}
+          >
+            {t('storybook.tokens.info')}
+          </h4>
+          <ColorSwatch
+            variable="--ds-color-info-surface-default"
+            label={t('storybook.tokens.surface')}
+          />
+          <ColorSwatch
+            variable="--ds-color-info-border-default"
+            label={t('storybook.tokens.border')}
+          />
+          <ColorSwatch
+            variable="--ds-color-info-base-default"
+            label={t('storybook.variables.base')}
+          />
+          <ColorSwatch variable="--ds-color-info-text-default" label={t('storybook.tokens.text')} />
+        </div>
       </div>
-      <div>
-        <h4
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-warning-text-default)',
-          }}
-        >
-          Warning
-        </h4>
-        <ColorSwatch variable="--ds-color-warning-surface-default" label="Surface" />
-        <ColorSwatch variable="--ds-color-warning-border-default" label="Border" />
-        <ColorSwatch variable="--ds-color-warning-base-default" label="Base" />
-        <ColorSwatch variable="--ds-color-warning-text-default" label="Text" />
-      </div>
-      <div>
-        <h4
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-danger-text-default)',
-          }}
-        >
-          Danger
-        </h4>
-        <ColorSwatch variable="--ds-color-danger-surface-default" label="Surface" />
-        <ColorSwatch variable="--ds-color-danger-border-default" label="Border" />
-        <ColorSwatch variable="--ds-color-danger-base-default" label="Base" />
-        <ColorSwatch variable="--ds-color-danger-text-default" label="Text" />
-      </div>
-      <div>
-        <h4
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-info-text-default)',
-          }}
-        >
-          Info
-        </h4>
-        <ColorSwatch variable="--ds-color-info-surface-default" label="Surface" />
-        <ColorSwatch variable="--ds-color-info-border-default" label="Border" />
-        <ColorSwatch variable="--ds-color-info-base-default" label="Base" />
-        <ColorSwatch variable="--ds-color-info-text-default" label="Text" />
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Spacing scale
  */
 export const Spacing: Story = {
-  render: () => (
-    <div>
-      <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>Spacing Scale</h3>
-      <SpacingSwatch variable="--ds-spacing-0" size="0" />
-      <SpacingSwatch variable="--ds-spacing-1" size="4px / 0.25rem" />
-      <SpacingSwatch variable="--ds-spacing-2" size="8px / 0.5rem" />
-      <SpacingSwatch variable="--ds-spacing-3" size="12px / 0.75rem" />
-      <SpacingSwatch variable="--ds-spacing-4" size="16px / 1rem" />
-      <SpacingSwatch variable="--ds-spacing-5" size="20px / 1.25rem" />
-      <SpacingSwatch variable="--ds-spacing-6" size="24px / 1.5rem" />
-      <SpacingSwatch variable="--ds-spacing-7" size="28px / 1.75rem" />
-      <SpacingSwatch variable="--ds-spacing-8" size="32px / 2rem" />
-      <SpacingSwatch variable="--ds-spacing-9" size="36px / 2.25rem" />
-      <SpacingSwatch variable="--ds-spacing-10" size="40px / 2.5rem" />
-      <SpacingSwatch variable="--ds-spacing-11" size="44px / 2.75rem" />
-      <SpacingSwatch variable="--ds-spacing-12" size="var(--ds-spacing-12) / 3rem" />
-      <SpacingSwatch variable="--ds-spacing-14" size="56px / 3.5rem" />
-      <SpacingSwatch variable="--ds-spacing-16" size="64px / 4rem" />
-      <SpacingSwatch variable="--ds-spacing-18" size="var(--ds-spacing-18) / 4.5rem" />
-      <SpacingSwatch variable="--ds-spacing-20" size="80px / 5rem" />
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.tokens.spacingScale')}
+        </h3>
+        <SpacingSwatch variable="--ds-spacing-0" size="0" />
+        <SpacingSwatch variable="--ds-spacing-1" size="4px / 0.25rem" />
+        <SpacingSwatch variable="--ds-spacing-2" size="8px / 0.5rem" />
+        <SpacingSwatch variable="--ds-spacing-3" size="12px / 0.75rem" />
+        <SpacingSwatch variable="--ds-spacing-4" size="16px / 1rem" />
+        <SpacingSwatch variable="--ds-spacing-5" size="20px / 1.25rem" />
+        <SpacingSwatch variable="--ds-spacing-6" size="24px / 1.5rem" />
+        <SpacingSwatch variable="--ds-spacing-7" size="28px / 1.75rem" />
+        <SpacingSwatch variable="--ds-spacing-8" size="32px / 2rem" />
+        <SpacingSwatch variable="--ds-spacing-9" size="36px / 2.25rem" />
+        <SpacingSwatch variable="--ds-spacing-10" size="40px / 2.5rem" />
+        <SpacingSwatch variable="--ds-spacing-11" size="44px / 2.75rem" />
+        <SpacingSwatch variable="--ds-spacing-12" size="var(--ds-spacing-12) / 3rem" />
+        <SpacingSwatch variable="--ds-spacing-14" size="56px / 3.5rem" />
+        <SpacingSwatch variable="--ds-spacing-16" size="64px / 4rem" />
+        <SpacingSwatch variable="--ds-spacing-18" size="var(--ds-spacing-18) / 4.5rem" />
+        <SpacingSwatch variable="--ds-spacing-20" size="80px / 5rem" />
+      </div>
+    );
+  },
 };
 
 /**
  * Border radius
  */
 export const BorderRadius: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 'var(--ds-spacing-6)',
-        padding: 'var(--ds-spacing-4)',
-      }}
-    >
-      {[
-        { variable: '--ds-border-radius-sm', label: 'sm' },
-        { variable: '--ds-border-radius-md', label: 'md' },
-        { variable: '--ds-border-radius-lg', label: 'lg' },
-        { variable: '--ds-border-radius-xl', label: 'xl' },
-        { variable: '--ds-border-radius-2xl', label: '2xl' },
-        { variable: '--ds-border-radius-3xl', label: '3xl' },
-        { variable: '--ds-border-radius-4xl', label: '4xl' },
-        { variable: '--ds-border-radius-full', label: 'full' },
-      ].map(({ variable, label }) => (
-        <div key={variable} style={{ textAlign: 'center' }}>
-          <div
-            style={{
-              width: '100px',
-              height: '100px',
-              backgroundColor: 'var(--ds-color-accent-background-default)',
-              border: '2px solid var(--ds-color-accent-border-default)',
-              borderRadius: `var(${variable})`,
-              marginBottom: 'var(--ds-spacing-2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <span
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--ds-spacing-6)',
+          padding: 'var(--ds-spacing-4)',
+        }}
+      >
+        {[
+          {
+            variable: '--ds-border-radius-sm',
+            labelKey: 'storybook.sizes.small',
+            shortLabel: 'sm',
+          },
+          {
+            variable: '--ds-border-radius-md',
+            labelKey: 'storybook.sizes.medium',
+            shortLabel: 'md',
+          },
+          {
+            variable: '--ds-border-radius-lg',
+            labelKey: 'storybook.sizes.large',
+            shortLabel: 'lg',
+          },
+          {
+            variable: '--ds-border-radius-xl',
+            labelKey: 'storybook.tokens.extraLarge',
+            shortLabel: 'xl',
+          },
+          { variable: '--ds-border-radius-2xl', shortLabel: '2xl' },
+          { variable: '--ds-border-radius-3xl', shortLabel: '3xl' },
+          { variable: '--ds-border-radius-4xl', shortLabel: '4xl' },
+          {
+            variable: '--ds-border-radius-full',
+            labelKey: 'storybook.tokens.full',
+            shortLabel: 'full',
+          },
+        ].map(({ variable, labelKey, shortLabel }) => (
+          <div key={variable} style={{ textAlign: 'center' }}>
+            <div
               style={{
-                fontSize: 'var(--ds-font-size-sm)',
-                fontWeight: 600,
-                color: 'var(--ds-color-accent-text-default)',
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'var(--ds-color-accent-background-default)',
+                border: '2px solid var(--ds-color-accent-border-default)',
+                borderRadius: `var(${variable})`,
+                marginBottom: 'var(--ds-spacing-2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              {label}
-            </span>
+              <span
+                style={{
+                  fontSize: 'var(--ds-font-size-sm)',
+                  fontWeight: 600,
+                  color: 'var(--ds-color-accent-text-default)',
+                }}
+              >
+                {shortLabel}
+              </span>
+            </div>
+            <code
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {variable}
+            </code>
           </div>
-          <code
-            style={{
-              fontSize: 'var(--ds-font-size-xs)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            {variable}
-          </code>
-        </div>
-      ))}
-    </div>
-  ),
+        ))}
+      </div>
+    );
+  },
 };
 
 /**
  * Shadows
  */
 export const Shadows: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 'var(--ds-spacing-8)',
-        padding: 'var(--ds-spacing-8)',
-        backgroundColor: 'var(--ds-color-neutral-background-subtle)',
-      }}
-    >
-      {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
-        <div key={size} style={{ textAlign: 'center' }}>
-          <div
-            style={{
-              width: '140px',
-              height: '100px',
-              backgroundColor: 'var(--ds-color-neutral-background-default)',
-              borderRadius: 'var(--ds-border-radius-lg)',
-              boxShadow: `var(--ds-shadow-${size})`,
-              marginBottom: 'var(--ds-spacing-3)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <span
+  render: () => {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--ds-spacing-8)',
+          padding: 'var(--ds-spacing-8)',
+          backgroundColor: 'var(--ds-color-neutral-background-subtle)',
+        }}
+      >
+        {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
+          <div key={size} style={{ textAlign: 'center' }}>
+            <div
               style={{
-                fontSize: 'var(--ds-font-size-sm)',
-                fontWeight: 600,
-                color: 'var(--ds-color-neutral-text-default)',
+                width: '140px',
+                height: '100px',
+                backgroundColor: 'var(--ds-color-neutral-background-default)',
+                borderRadius: 'var(--ds-border-radius-lg)',
+                boxShadow: `var(--ds-shadow-${size})`,
+                marginBottom: 'var(--ds-spacing-3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              {size}
-            </span>
+              <span
+                style={{
+                  fontSize: 'var(--ds-font-size-sm)',
+                  fontWeight: 600,
+                  color: 'var(--ds-color-neutral-text-default)',
+                }}
+              >
+                {size}
+              </span>
+            </div>
+            <code
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              --ds-shadow-{size}
+            </code>
           </div>
-          <code
-            style={{
-              fontSize: 'var(--ds-font-size-xs)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            --ds-shadow-{size}
-          </code>
-        </div>
-      ))}
-    </div>
-  ),
+        ))}
+      </div>
+    );
+  },
 };
 
 /**
  * Font sizes
  */
 export const FontSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-      {[
-        { variable: '--ds-font-size-1', label: 'font-size-1 (12px)' },
-        { variable: '--ds-font-size-2', label: 'font-size-2 (14px)' },
-        { variable: '--ds-font-size-3', label: 'font-size-3 (16px)' },
-        { variable: '--ds-font-size-4', label: 'font-size-4 (18px)' },
-        { variable: '--ds-font-size-5', label: 'font-size-5 (21px)' },
-        { variable: '--ds-font-size-6', label: 'font-size-6 (24px)' },
-        { variable: '--ds-font-size-7', label: 'font-size-7 (30px)' },
-        { variable: '--ds-font-size-8', label: 'font-size-8 (36px)' },
-        { variable: '--ds-font-size-9', label: 'font-size-9 (var(--ds-spacing-12))' },
-        { variable: '--ds-font-size-10', label: 'font-size-10 (60px)' },
-      ].map(({ variable, label }) => (
-        <div
-          key={variable}
-          style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-4)' }}
-        >
-          <span style={{ fontSize: `var(${variable})` }}>Aa</span>
-          <code
-            style={{
-              fontSize: 'var(--ds-font-size-sm)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+        {[
+          { variable: '--ds-font-size-1', label: 'font-size-1 (12px)' },
+          { variable: '--ds-font-size-2', label: 'font-size-2 (14px)' },
+          { variable: '--ds-font-size-3', label: 'font-size-3 (16px)' },
+          { variable: '--ds-font-size-4', label: 'font-size-4 (18px)' },
+          { variable: '--ds-font-size-5', label: 'font-size-5 (21px)' },
+          { variable: '--ds-font-size-6', label: 'font-size-6 (24px)' },
+          { variable: '--ds-font-size-7', label: 'font-size-7 (30px)' },
+          { variable: '--ds-font-size-8', label: 'font-size-8 (36px)' },
+          { variable: '--ds-font-size-9', label: 'font-size-9 (var(--ds-spacing-12))' },
+          { variable: '--ds-font-size-10', label: 'font-size-10 (60px)' },
+        ].map(({ variable, label }) => (
+          <div
+            key={variable}
+            style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--ds-spacing-4)' }}
           >
-            {label}
-          </code>
-        </div>
-      ))}
-    </div>
-  ),
+            <span style={{ fontSize: `var(${variable})` }}>Aa</span>
+            <code
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {label}
+            </code>
+          </div>
+        ))}
+      </div>
+    );
+  },
 };
 
 /**
  * Complete usage example
  */
 export const UsageExample: Story = {
-  render: () => (
-    <div>
-      <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>Usage Example</h3>
-      <div
-        style={{
-          padding: 'var(--ds-spacing-6)',
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          boxShadow: 'var(--ds-shadow-md)',
-        }}
-      >
-        <h4
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+          {t('storybook.variables.usageExample')}
+        </h3>
+        <div
           style={{
-            fontSize: 'var(--ds-font-size-5)',
-            color: 'var(--ds-color-neutral-text-default)',
-            marginBottom: 'var(--ds-spacing-2)',
+            padding: 'var(--ds-spacing-6)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            border: '1px solid var(--ds-color-neutral-border-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            boxShadow: 'var(--ds-shadow-md)',
           }}
         >
-          Card Title
-        </h4>
-        <p
+          <h4
+            style={{
+              fontSize: 'var(--ds-font-size-5)',
+              color: 'var(--ds-color-neutral-text-default)',
+              marginBottom: 'var(--ds-spacing-2)',
+            }}
+          >
+            {t('storybook.sizes.cardTitle')}
+          </h4>
+          <p
+            style={{
+              fontSize: 'var(--ds-font-size-3)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {t('storybook.variables.cardDescription')}
+          </p>
+          <button
+            style={{
+              padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+              backgroundColor: 'var(--ds-color-accent-base-default)',
+              color: 'var(--ds-color-accent-contrast-default)',
+              border: 'none',
+              borderRadius: 'var(--ds-border-radius-md)',
+              fontSize: 'var(--ds-font-size-2)',
+              cursor: 'pointer',
+            }}
+            type="button"
+          >
+            {t('storybook.examples.action')}
+          </button>
+        </div>
+
+        <pre
           style={{
-            fontSize: 'var(--ds-font-size-3)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-            marginBottom: 'var(--ds-spacing-4)',
-          }}
-        >
-          This card uses only CSS variables for styling.
-        </p>
-        <button
-          style={{
-            padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
-            backgroundColor: 'var(--ds-color-accent-base-default)',
-            color: 'var(--ds-color-accent-contrast-default)',
-            border: 'none',
+            marginTop: 'var(--ds-spacing-4)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-hover)',
             borderRadius: 'var(--ds-border-radius-md)',
             fontSize: 'var(--ds-font-size-2)',
-            cursor: 'pointer',
+            overflow: 'auto',
           }}
-          type="button"
         >
-          Action
-        </button>
-      </div>
-
-      <pre
-        style={{
-          marginTop: 'var(--ds-spacing-4)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          fontSize: 'var(--ds-font-size-2)',
-          overflow: 'auto',
-        }}
-      >
-        {`// Always use CSS variables
+          {`// ${t('storybook.variables.alwaysUseCSSVariables')}
 <div style={{
   padding: 'var(--ds-spacing-6)',
   backgroundColor: 'var(--ds-color-neutral-surface-default)',
@@ -448,7 +627,8 @@ export const UsageExample: Story = {
 }}>
   ...
 </div>`}
-      </pre>
-    </div>
-  ),
+        </pre>
+      </div>
+    );
+  },
 };

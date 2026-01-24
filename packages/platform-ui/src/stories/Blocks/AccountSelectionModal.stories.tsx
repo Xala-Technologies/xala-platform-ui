@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { AccountSelectionModal } from '../../blocks/account/AccountSelectionModal';
 import type { BaseOrganization } from '../../blocks/account/AccountSelectionModal';
 
@@ -62,7 +63,8 @@ export const Default: Story = {
     isLoadingOrganizations: false,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
@@ -88,7 +90,8 @@ export const Loading: Story = {
     isLoadingOrganizations: true,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
@@ -114,7 +117,8 @@ export const NoOrganizations: Story = {
     isLoadingOrganizations: false,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
@@ -144,7 +148,8 @@ export const ManyOrganizations: Story = {
     isLoadingOrganizations: false,
     rememberChoice: false,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
@@ -177,7 +182,8 @@ export const CustomLabels: Story = {
       rememberChoice: 'Remember my choice',
     },
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
@@ -203,12 +209,15 @@ export const Closed: Story = {
     isLoadingOrganizations: false,
     rememberChoice: false,
   },
-  render: (args) => (
-    <div style={{ width: '600px', height: '500px', position: 'relative' }}>
-      <AccountSelectionModal {...args} />
-      <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <p>Modal is closed. Set open to true to show it.</p>
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px', height: '500px', position: 'relative' }}>
+        <AccountSelectionModal {...args} />
+        <div style={{ padding: 'var(--ds-spacing-4)' }}>
+          <p>{t('storybook.demo.sampleText')}</p>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

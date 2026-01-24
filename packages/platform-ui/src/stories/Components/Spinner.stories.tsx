@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Button, Spinner } from '../../index';
 
 /**
@@ -86,9 +87,9 @@ Available colors: **neutral**, **accent**.
 
 ### Full Page Loading
 \`\`\`tsx
-<div style={{ 
-  display: 'flex', 
-  justifyContent: 'center', 
+<div style={{
+  display: 'flex',
+  justifyContent: 'center',
   alignItems: 'center',
   minHeight: '400px'
 }}>
@@ -178,93 +179,116 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <Spinner aria-label="Loading" />,
+  render: function Render() {
+    const t = useT();
+    return <Spinner aria-label={t('platform.common.loading')} />;
+  },
 };
 
 export const WithLabel: Story = {
-  render: () => <Spinner aria-label="Loading content..." />,
+  render: function Render() {
+    const t = useT();
+    return <Spinner aria-label={t('storybook.demo.loadingContent')} />;
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <Spinner data-size="sm" aria-label="Loading" />
-      <Spinner data-size="md" aria-label="Loading" />
-      <Spinner data-size="lg" aria-label="Loading" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Spinner data-size="sm" aria-label={t('platform.common.loading')} />
+        <Spinner data-size="md" aria-label={t('platform.common.loading')} />
+        <Spinner data-size="lg" aria-label={t('platform.common.loading')} />
+      </div>
+    );
+  },
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-      <Spinner data-color="neutral" aria-label="Loading" />
-      <Spinner data-color="accent" aria-label="Loading" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Spinner data-color="neutral" aria-label={t('platform.common.loading')} />
+        <Spinner data-color="accent" aria-label={t('platform.common.loading')} />
+      </div>
+    );
+  },
 };
 
 export const InButton: Story = {
-  render: () => (
-    <Button loading disabled type="button">
-      Loading...
-    </Button>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Button loading disabled type="button">
+        {t('platform.common.loading')}...
+      </Button>
+    );
+  },
 };
 
 export const LoadingState: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 'var(--ds-spacing-4)',
-        padding: 'var(--ds-spacing-10)',
-        border: '1px dashed var(--ds-color-neutral-border-default)',
-        borderRadius: 'var(--ds-border-radius-lg)',
-      }}
-    >
-      <Spinner data-size="lg" aria-label="Loading data" />
-      <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>Loading data...</span>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 'var(--ds-spacing-4)',
+          padding: 'var(--ds-spacing-10)',
+          border: '1px dashed var(--ds-color-neutral-border-default)',
+          borderRadius: 'var(--ds-border-radius-lg)',
+        }}
+      >
+        <Spinner data-size="lg" aria-label={t('storybook.demo.loadingData')} />
+        <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          {t('storybook.demo.loadingData')}...
+        </span>
+      </div>
+    );
+  },
 };
 
 /**
  * All variants overview
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Sizes
-        </h3>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-          <Spinner data-size="sm" aria-label="Small spinner" />
-          <Spinner data-size="md" aria-label="Medium spinner" />
-          <Spinner data-size="lg" aria-label="Large spinner" />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.sizes')}
+          </h3>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+            <Spinner data-size="sm" aria-label={t('storybook.demo.smallSpinner')} />
+            <Spinner data-size="md" aria-label={t('storybook.demo.mediumSpinner')} />
+            <Spinner data-size="lg" aria-label={t('storybook.demo.largeSpinner')} />
+          </div>
+        </div>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.colors')}
+          </h3>
+          <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+            <Spinner data-color="neutral" aria-label={t('storybook.demo.neutralSpinner')} />
+            <Spinner data-color="accent" aria-label={t('storybook.demo.accentSpinner')} />
+          </div>
+        </div>
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
+            {t('storybook.story.inButton')}
+          </h3>
+          <Button loading disabled type="button">
+            {t('platform.common.loading')}...
+          </Button>
         </div>
       </div>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          Colors
-        </h3>
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-          <Spinner data-color="neutral" aria-label="Neutral spinner" />
-          <Spinner data-color="accent" aria-label="Accent spinner" />
-        </div>
-      </div>
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-          In Button
-        </h3>
-        <Button loading disabled type="button">
-          Loading...
-        </Button>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

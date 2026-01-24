@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { AppShell } from '../../index';
 import { Heading, Paragraph, Card, Button } from '../../index';
 
@@ -50,79 +51,88 @@ export default meta;
 type Story = StoryObj<typeof AppShell>;
 
 // Sample header component
-const SampleHeader = () => (
-  <div
-    style={{
-      height: 'var(--ds-spacing-16)',
-      backgroundColor: 'var(--ds-color-accent-surface-default)',
-      display: 'flex',
-      alignItems: 'center',
-      padding: '0 var(--ds-spacing-6)',
-      borderBottom: '1px solid var(--ds-color-accent-border-subtle)',
-    }}
-  >
-    <Heading
-      level={1}
-      data-size="sm"
-      style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}
-    >
-      My Application
-    </Heading>
-  </div>
-);
-
-// Sample footer component
-const SampleFooter = () => (
-  <div
-    style={{
-      padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
-      backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-      borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
-      textAlign: 'center',
-    }}
-  >
-    <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
-      © 2026 My Application. All rights reserved.
-    </Paragraph>
-  </div>
-);
-
-// Sample content
-const SampleContent = () => (
-  <div style={{ padding: 'var(--ds-spacing-6)' }}>
-    <Heading level={2} data-size="lg">
-      Welcome to the Dashboard
-    </Heading>
-    <Paragraph>This is the main content area of your application.</Paragraph>
+const SampleHeader = () => {
+  const t = useT();
+  return (
     <div
       style={{
+        height: 'var(--ds-spacing-16)',
+        backgroundColor: 'var(--ds-color-accent-surface-default)',
         display: 'flex',
-        flexWrap: 'wrap',
-        gap: 'var(--ds-spacing-4)',
-        marginTop: 'var(--ds-spacing-4)',
+        alignItems: 'center',
+        padding: '0 var(--ds-spacing-6)',
+        borderBottom: '1px solid var(--ds-color-accent-border-subtle)',
       }}
     >
-      <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">
-          Card 1
-        </Heading>
-        <Paragraph data-size="sm">Some content here</Paragraph>
-      </Card>
-      <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">
-          Card 2
-        </Heading>
-        <Paragraph data-size="sm">Some content here</Paragraph>
-      </Card>
-      <Card style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Heading level={3} data-size="sm">
-          Card 3
-        </Heading>
-        <Paragraph data-size="sm">Some content here</Paragraph>
-      </Card>
+      <Heading
+        level={1}
+        data-size="sm"
+        style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}
+      >
+        {t('storybook.shell.myApplication')}
+      </Heading>
     </div>
-  </div>
-);
+  );
+};
+
+// Sample footer component
+const SampleFooter = () => {
+  const t = useT();
+  return (
+    <div
+      style={{
+        padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
+        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+        borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+        textAlign: 'center',
+      }}
+    >
+      <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+        {t('storybook.shell.copyright')}
+      </Paragraph>
+    </div>
+  );
+};
+
+// Sample content
+const SampleContent = () => {
+  const t = useT();
+  return (
+    <div style={{ padding: 'var(--ds-spacing-6)' }}>
+      <Heading level={2} data-size="lg">
+        {t('storybook.shell.welcomeToDashboard')}
+      </Heading>
+      <Paragraph>{t('storybook.shell.mainContentDescription')}</Paragraph>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 'var(--ds-spacing-4)',
+          marginTop: 'var(--ds-spacing-4)',
+        }}
+      >
+        <Card style={{ padding: 'var(--ds-spacing-4)' }}>
+          <Heading level={3} data-size="sm">
+            {t('storybook.layout.card')} 1
+          </Heading>
+          <Paragraph data-size="sm">{t('storybook.shell.someContentHere')}</Paragraph>
+        </Card>
+        <Card style={{ padding: 'var(--ds-spacing-4)' }}>
+          <Heading level={3} data-size="sm">
+            {t('storybook.layout.card')} 2
+          </Heading>
+          <Paragraph data-size="sm">{t('storybook.shell.someContentHere')}</Paragraph>
+        </Card>
+        <Card style={{ padding: 'var(--ds-spacing-4)' }}>
+          <Heading level={3} data-size="sm">
+            {t('storybook.layout.card')} 3
+          </Heading>
+          <Paragraph data-size="sm">{t('storybook.shell.someContentHere')}</Paragraph>
+        </Card>
+      </div>
+    </div>
+  );
+};
 
 /**
  * Default AppShell with header, content, and footer
@@ -195,14 +205,15 @@ export const CustomBackground: Story = {
  * Minimal content (footer stays at bottom)
  */
 export const MinimalContent: Story = {
-  args: {
-    header: <SampleHeader />,
-    footer: <SampleFooter />,
-    children: (
-      <div style={{ padding: 'var(--ds-spacing-6)' }}>
-        <Paragraph>This is minimal content. The footer stays at the bottom.</Paragraph>
-      </div>
-    ),
+  render: () => {
+    const t = useT();
+    return (
+      <AppShell header={<SampleHeader />} footer={<SampleFooter />}>
+        <div style={{ padding: 'var(--ds-spacing-6)' }}>
+          <Paragraph>{t('storybook.shell.minimalContentDescription')}</Paragraph>
+        </div>
+      </AppShell>
+    );
   },
 };
 
@@ -210,43 +221,47 @@ export const MinimalContent: Story = {
  * Login page layout (centered content)
  */
 export const LoginLayout: Story = {
-  args: {
-    header: (
-      <div
-        style={{
-          height: 'var(--ds-spacing-16)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-        }}
+  render: () => {
+    const t = useT();
+    return (
+      <AppShell
+        header={
+          <div
+            style={{
+              height: 'var(--ds-spacing-16)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+            }}
+          >
+            <Heading level={1} data-size="md" style={{ margin: 0 }}>
+              {t('storybook.shell.myApp')}
+            </Heading>
+          </div>
+        }
+        footer={<SampleFooter />}
       >
-        <Heading level={1} data-size="md" style={{ margin: 0 }}>
-          My App
-        </Heading>
-      </div>
-    ),
-    children: (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flex: 1,
-          padding: 'var(--ds-spacing-6)',
-        }}
-      >
-        <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '400px', width: '100%' }}>
-          <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            Login
-          </Heading>
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            Enter your credentials to continue
-          </Paragraph>
-          <Button style={{ width: '100%' }}>Sign In</Button>
-        </Card>
-      </div>
-    ),
-    footer: <SampleFooter />,
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flex: 1,
+            padding: 'var(--ds-spacing-6)',
+          }}
+        >
+          <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '400px', width: '100%' }}>
+            <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+              {t('platform.auth.login')}
+            </Heading>
+            <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+              {t('storybook.shell.enterCredentials')}
+            </Paragraph>
+            <Button style={{ width: '100%' }}>{t('platform.auth.signIn')}</Button>
+          </Card>
+        </div>
+      </AppShell>
+    );
   },
 };

@@ -12,7 +12,7 @@ import type { DocsContainerProps } from '@storybook/blocks';
 // Note: We import directly from dist to bypass tsconfig-paths source resolution
 import '../packages/platform-ui/dist/styles.js';
 
-import { DesignsystemetProvider } from '../packages/platform-ui/src/provider';
+import { StoryProvider } from '../packages/platform-ui/src/StoryProvider';
 
 // Suppress React 18 act() warnings and WebSocket HMR noise
 const originalError = console.error;
@@ -189,13 +189,13 @@ const customViewports = {
 };
 
 /**
- * Theme decorator - uses dark mode addon hook and createRuntime() from @xala/runtime
+ * Theme decorator - uses dark mode addon hook and StoryProvider for theme/translations
  */
 const withTheme: Decorator = (Story, context) => {
   const isDarkMode = useDarkMode();
   const theme = isDarkMode ? 'dark' : 'light';
 
-  // Get direction from global toolbar
+  // Get locale from global toolbar
   const locale = (context.globals.locale as string) || 'nb';
   const direction = getDirectionForLocale(locale);
 
@@ -207,10 +207,11 @@ const withTheme: Decorator = (Story, context) => {
     document.documentElement.setAttribute('lang', locale);
   }, [theme, direction, locale]);
 
-  // Note: For Storybook, we use a simplified provider setup.
-  // In production apps, use RuntimeProvider from @xala-technologies/platform.
+  // StoryProvider integrates I18nProvider + DesignsystemetProvider
+  // Similar to RuntimeProvider pattern in production apps
+  // Key forces full remount when locale changes (needed for i18n context)
   return (
-    <DesignsystemetProvider theme="xala" colorScheme={theme} direction={direction} locale={locale}>
+    <StoryProvider key={locale} locale={locale} colorScheme={theme}>
       <div
         data-color-scheme={theme}
         data-size="md"
@@ -226,7 +227,7 @@ const withTheme: Decorator = (Story, context) => {
       >
         <Story />
       </div>
-    </DesignsystemetProvider>
+    </StoryProvider>
   );
 };
 

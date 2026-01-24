@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '../../index';
 import { useState } from 'react';
 import { Inbox, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
@@ -44,33 +45,36 @@ type Story = StoryObj;
  * Difficulty: Beginner
  */
 export const ButtonBasic: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
-      <Button data-variant="primary" data-size="md">
-        Primary Action
-      </Button>
-      <Button data-variant="secondary" data-size="md">
-        Secondary Action
-      </Button>
-      <Button data-variant="tertiary" data-size="md">
-        Tertiary Action
-      </Button>
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
+        <Button data-variant="primary" data-size="md">
+          {t('storybook.examples.primaryAction')}
+        </Button>
+        <Button data-variant="secondary" data-size="md">
+          {t('storybook.examples.secondaryAction')}
+        </Button>
+        <Button data-variant="tertiary" data-size="md">
+          {t('storybook.examples.tertiaryAction')}
+        </Button>
+      </div>
+    );
+  },
   parameters: {
     docs: {
       source: {
         code: `
-// ✅ Good: Using design system components
+// Good: Using design system components
 <Button data-variant="primary" data-size="md">
   Primary Action
 </Button>
 
-// ❌ Bad: Custom button with hardcoded styles
-<button style={{ 
-  padding: '12px 24px', 
+// Bad: Custom button with hardcoded styles
+<button style={{
+  padding: '12px 24px',
   backgroundColor: '#0066CC',
-  color: 'white' 
+  color: 'white'
 }}>
   Primary Action
 </button>
@@ -88,22 +92,25 @@ export const ButtonBasic: Story = {
  * Difficulty: Beginner
  */
 export const ButtonWithIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
-      <Button data-variant="primary">
-        <span style={{ marginRight: 'var(--ds-spacing-2)' }}>+</span>
-        Add Item
-      </Button>
-      <Button data-variant="secondary">
-        <span style={{ marginRight: 'var(--ds-spacing-2)' }}>💾</span>
-        Save
-      </Button>
-      <Button data-variant="tertiary">
-        <span style={{ marginRight: 'var(--ds-spacing-2)' }}>🗑️</span>
-        Delete
-      </Button>
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
+        <Button data-variant="primary">
+          <span style={{ marginRight: 'var(--ds-spacing-2)' }}>+</span>
+          {t('platform.common.add')}
+        </Button>
+        <Button data-variant="secondary">
+          <span style={{ marginRight: 'var(--ds-spacing-2)' }}>💾</span>
+          {t('platform.common.save')}
+        </Button>
+        <Button data-variant="tertiary">
+          <span style={{ marginRight: 'var(--ds-spacing-2)' }}>🗑️</span>
+          {t('platform.common.delete')}
+        </Button>
+      </div>
+    );
+  },
 };
 
 /**
@@ -115,6 +122,7 @@ export const ButtonWithIcons: Story = {
  */
 export const ButtonLoadingState: Story = {
   render: () => {
+    const t = useT();
     const [loading, setLoading] = useState(false);
 
     const handleClick = () => {
@@ -124,7 +132,7 @@ export const ButtonLoadingState: Story = {
 
     return (
       <Button data-variant="primary" onClick={handleClick} disabled={loading}>
-        {loading ? 'Loading...' : 'Submit Form'}
+        {loading ? t('storybook.loading.loading') : t('storybook.examples.submitForm')}
       </Button>
     );
   },
@@ -144,8 +152,8 @@ const handleSubmit = async () => {
 };
 
 return (
-  <Button 
-    data-variant="primary" 
+  <Button
+    data-variant="primary"
     onClick={handleSubmit}
     disabled={loading}
   >
@@ -167,14 +175,15 @@ return (
  */
 export const FormComplete: Story = {
   render: () => {
+    const t = useT();
     const [formData, setFormData] = useState({ name: '', email: '', terms: false });
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const validate = () => {
       const newErrors: Record<string, string> = {};
-      if (!formData.name) newErrors.name = 'Name is required';
-      if (!formData.email) newErrors.email = 'Email is required';
-      if (!formData.terms) newErrors.terms = 'You must accept terms';
+      if (!formData.name) newErrors.name = t('storybook.examples.nameRequired');
+      if (!formData.email) newErrors.email = t('storybook.examples.emailRequired');
+      if (!formData.terms) newErrors.terms = t('storybook.examples.termsRequired');
       setErrors(newErrors);
       return Object.keys(newErrors).length === 0;
     };
@@ -182,7 +191,7 @@ export const FormComplete: Story = {
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
       if (validate()) {
-        alert('Form submitted!');
+        alert(t('storybook.examples.formSubmitted'));
       }
     };
 
@@ -190,12 +199,12 @@ export const FormComplete: Story = {
       <Card style={{ maxWidth: '400px', padding: 'var(--ds-spacing-6)' }}>
         <form onSubmit={handleSubmit}>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            Sign Up
+            {t('storybook.examples.signUp')}
           </Heading>
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label="Name"
+              label={t('platform.common.name')}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               error={errors.name}
@@ -204,7 +213,7 @@ export const FormComplete: Story = {
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label="Email"
+              label={t('platform.common.email')}
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -217,7 +226,7 @@ export const FormComplete: Story = {
               checked={formData.terms}
               onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
             >
-              I accept the terms and conditions
+              {t('storybook.examples.acceptTerms')}
             </Checkbox>
             {errors.terms && (
               <Paragraph
@@ -233,7 +242,7 @@ export const FormComplete: Story = {
           </div>
 
           <Button data-variant="primary" type="submit" style={{ width: '100%' }}>
-            Create Account
+            {t('storybook.examples.createAccount')}
           </Button>
         </form>
       </Card>
@@ -244,11 +253,11 @@ export const FormComplete: Story = {
       description: {
         story: `
 **Key Patterns:**
-- ✅ Controlled inputs with state
-- ✅ Client-side validation
-- ✅ Error display
-- ✅ Accessible form structure
-- ✅ Design tokens for spacing
+- Controlled inputs with state
+- Client-side validation
+- Error display
+- Accessible form structure
+- Design tokens for spacing
 
 **Accessibility:**
 - Labels associated with inputs
@@ -269,43 +278,46 @@ export const FormComplete: Story = {
  * Difficulty: Beginner
  */
 export const CardContentLayout: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
-      {[1, 2, 3].map((i) => (
-        <Card key={i} style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            Card Title {i}
-          </Heading>
-          <Paragraph
-            data-size="sm"
-            style={{
-              color: 'var(--ds-color-neutral-text-subtle)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            This is a description of the card content. It provides context and information.
-          </Paragraph>
-          <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-            <Button data-variant="primary" data-size="sm">
-              Action
-            </Button>
-            <Button data-variant="tertiary" data-size="sm">
-              Cancel
-            </Button>
-          </div>
-        </Card>
-      ))}
-    </div>
-  ),
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
+        {[1, 2, 3].map((i) => (
+          <Card key={i} style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+              {t('storybook.examples.cardTitle')} {i}
+            </Heading>
+            <Paragraph
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-neutral-text-subtle)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              {t('storybook.examples.cardDescription')}
+            </Paragraph>
+            <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+              <Button data-variant="primary" data-size="sm">
+                {t('storybook.examples.action')}
+              </Button>
+              <Button data-variant="tertiary" data-size="sm">
+                {t('platform.common.cancel')}
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    );
+  },
   parameters: {
     docs: {
       source: {
         code: `
-// ✅ Good: Responsive grid with design tokens
-<div style={{ 
+// Good: Responsive grid with design tokens
+<div style={{
   display: 'flex',
   flexWrap: 'wrap',
-  gap: 'var(--ds-spacing-4)' 
+  gap: 'var(--ds-spacing-4)'
 }}>
   <Card style={{ padding: 'var(--ds-spacing-6)' }}>
     <Heading level={3} data-size="sm">Title</Heading>
@@ -314,7 +326,7 @@ export const CardContentLayout: Story = {
   </Card>
 </div>
 
-// ❌ Bad: Fixed widths, hardcoded spacing
+// Bad: Fixed widths, hardcoded spacing
 <div style={{ display: 'flex', gap: '16px' }}>
   <div style={{ width: '300px', padding: '24px' }}>
     <h3>Title</h3>
@@ -337,8 +349,14 @@ export const CardContentLayout: Story = {
  */
 export const ListInteractive: Story = {
   render: () => {
+    const t = useT();
     const [selected, setSelected] = useState<number | null>(null);
-    const items = ['Dashboard', 'Projects', 'Team', 'Settings'];
+    const items = [
+      t('platform.nav.dashboard'),
+      t('storybook.examples.projects'),
+      t('storybook.examples.team'),
+      t('platform.common.settings'),
+    ];
 
     return (
       <Card style={{ maxWidth: '300px', padding: 'var(--ds-spacing-4)' }}>
@@ -347,7 +365,7 @@ export const ListInteractive: Story = {
           data-size="sm"
           style={{ marginBottom: 'var(--ds-spacing-3)', paddingLeft: 'var(--ds-spacing-3)' }}
         >
-          Navigation
+          {t('storybook.examples.navigation')}
         </Heading>
         <div role="list">
           {items.map((item, index) => (
@@ -390,35 +408,38 @@ export const ListInteractive: Story = {
  * Difficulty: Beginner
  */
 export const EmptyState: Story = {
-  render: () => (
-    <Card
-      style={{
-        padding: 'var(--ds-spacing-12)',
-        textAlign: 'center',
-      }}
-    >
-      <Inbox
-        size={48}
+  render: () => {
+    const t = useT();
+    return (
+      <Card
         style={{
-          marginBottom: 'var(--ds-spacing-4)',
-          margin: '0 auto',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}
-      />
-      <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-        No items yet
-      </Heading>
-      <Paragraph
-        style={{
-          color: 'var(--ds-color-neutral-text-subtle)',
-          marginBottom: 'var(--ds-spacing-6)',
+          padding: 'var(--ds-spacing-12)',
+          textAlign: 'center',
         }}
       >
-        Get started by creating your first item
-      </Paragraph>
-      <Button data-variant="primary">Create Item</Button>
-    </Card>
-  ),
+        <Inbox
+          size={48}
+          style={{
+            marginBottom: 'var(--ds-spacing-4)',
+            margin: '0 auto',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        />
+        <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+          {t('storybook.patterns.noItemsYet')}
+        </Heading>
+        <Paragraph
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginBottom: 'var(--ds-spacing-6)',
+          }}
+        >
+          {t('storybook.patterns.getStarted')}
+        </Paragraph>
+        <Button data-variant="primary">{t('storybook.patterns.createItem')}</Button>
+      </Card>
+    );
+  },
 };
 
 /**
@@ -429,43 +450,46 @@ export const EmptyState: Story = {
  * Difficulty: Beginner
  */
 export const ErrorState: Story = {
-  render: () => (
-    <Card
-      style={{
-        padding: 'var(--ds-spacing-6)',
-        maxWidth: '400px',
-        borderLeft: '4px solid var(--ds-color-danger-border-default)',
-        backgroundColor: 'var(--ds-color-danger-surface-default)',
-      }}
-    >
-      <Heading
-        level={3}
-        data-size="sm"
+  render: () => {
+    const t = useT();
+    return (
+      <Card
         style={{
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-2)',
+          padding: 'var(--ds-spacing-6)',
+          maxWidth: '400px',
+          borderLeft: '4px solid var(--ds-color-danger-border-default)',
+          backgroundColor: 'var(--ds-color-danger-surface-default)',
         }}
       >
-        Error
-      </Heading>
-      <Paragraph
-        style={{
-          color: 'var(--ds-color-danger-text-default)',
-          marginBottom: 'var(--ds-spacing-4)',
-        }}
-      >
-        Failed to load data. Please try again.
-      </Paragraph>
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-        <Button data-variant="primary" data-size="sm">
-          Retry
-        </Button>
-        <Button data-variant="tertiary" data-size="sm">
-          Cancel
-        </Button>
-      </div>
-    </Card>
-  ),
+        <Heading
+          level={3}
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-2)',
+          }}
+        >
+          {t('storybook.notifications.error')}
+        </Heading>
+        <Paragraph
+          style={{
+            color: 'var(--ds-color-danger-text-default)',
+            marginBottom: 'var(--ds-spacing-4)',
+          }}
+        >
+          {t('storybook.examples.failedToLoadData')}
+        </Paragraph>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
+          <Button data-variant="primary" data-size="sm">
+            {t('storybook.examples.retry')}
+          </Button>
+          <Button data-variant="tertiary" data-size="sm">
+            {t('platform.common.cancel')}
+          </Button>
+        </div>
+      </Card>
+    );
+  },
 };
 
 /**
@@ -476,34 +500,37 @@ export const ErrorState: Story = {
  * Difficulty: Beginner
  */
 export const SuccessState: Story = {
-  render: () => (
-    <Card
-      style={{
-        padding: 'var(--ds-spacing-6)',
-        borderLeft: '4px solid var(--ds-color-success-border-default)',
-        backgroundColor: 'var(--ds-color-success-surface-default)',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
-        <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
-        <div>
-          <Heading
-            level={3}
-            data-size="sm"
-            style={{
-              color: 'var(--ds-color-success-text-default)',
-              marginBottom: 'var(--ds-spacing-1)',
-            }}
-          >
-            Success
-          </Heading>
-          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-            Your changes have been saved
-          </Paragraph>
+  render: () => {
+    const t = useT();
+    return (
+      <Card
+        style={{
+          padding: 'var(--ds-spacing-6)',
+          borderLeft: '4px solid var(--ds-color-success-border-default)',
+          backgroundColor: 'var(--ds-color-success-surface-default)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+          <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
+          <div>
+            <Heading
+              level={3}
+              data-size="sm"
+              style={{
+                color: 'var(--ds-color-success-text-default)',
+                marginBottom: 'var(--ds-spacing-1)',
+              }}
+            >
+              {t('storybook.notifications.success')}
+            </Heading>
+            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
+              {t('storybook.notifications.changesSaved')}
+            </Paragraph>
+          </div>
         </div>
-      </div>
-    </Card>
-  ),
+      </Card>
+    );
+  },
 };
 
 /**
@@ -514,28 +541,33 @@ export const SuccessState: Story = {
  * Difficulty: Beginner
  */
 export const LoadingState: Story = {
-  render: () => (
-    <Card
-      style={{
-        padding: 'var(--ds-spacing-12)',
-        textAlign: 'center',
-      }}
-    >
-      <Loader2
-        size={40}
+  render: () => {
+    const t = useT();
+    return (
+      <Card
         style={{
-          margin: '0 auto var(--ds-spacing-4)',
-          animation: 'spin 1s linear infinite',
-          color: 'var(--ds-color-accent-base-default)',
+          padding: 'var(--ds-spacing-12)',
+          textAlign: 'center',
         }}
-      />
-      <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>Loading...</Paragraph>
-      <style>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
-    </Card>
-  ),
+      >
+        <Loader2
+          size={40}
+          style={{
+            margin: '0 auto var(--ds-spacing-4)',
+            animation: 'spin 1s linear infinite',
+            color: 'var(--ds-color-accent-base-default)',
+          }}
+        />
+        <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          {t('storybook.loading.loading')}
+        </Paragraph>
+        <style>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
+      </Card>
+    );
+  },
 };

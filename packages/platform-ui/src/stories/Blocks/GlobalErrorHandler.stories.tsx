@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { GlobalErrorHandler } from '../../blocks/GlobalErrorHandler';
 
 const meta: Meta<typeof GlobalErrorHandler> = {
@@ -50,16 +51,19 @@ type Story = StoryObj<typeof meta>;
 // Working app (no error)
 export const NoError: Story = {
   args: {},
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <GlobalErrorHandler {...args}>
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <h3>App Running Normally</h3>
-          <p>No errors detected. The app is running smoothly.</p>
-        </div>
-      </GlobalErrorHandler>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <GlobalErrorHandler {...args}>
+          <div style={{ padding: 'var(--ds-spacing-4)' }}>
+            <h3>{t('storybook.demo.cardTitle')}</h3>
+            <p>{t('storybook.demo.cardDescription')}</p>
+          </div>
+        </GlobalErrorHandler>
+      </div>
+    );
+  },
 };
 
 // Custom error title
@@ -68,7 +72,8 @@ export const CustomTitle: Story = {
     errorTitle: 'Application Error',
     showRetryButton: true,
   },
-  render: (args) => {
+  render: function Render(args) {
+    const t = useT();
     // Simulate error by throwing
     React.useEffect(() => {
       // This would normally be caught by GlobalErrorHandler
@@ -78,10 +83,7 @@ export const CustomTitle: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>
-              Note: GlobalErrorHandler catches window-level errors. To see it in action, trigger a
-              window error.
-            </p>
+            <p>{t('storybook.demo.sampleText')}</p>
           </div>
         </GlobalErrorHandler>
       </div>
@@ -95,15 +97,18 @@ export const CustomDescription: Story = {
     errorDescription: 'A critical error occurred. Please refresh the page or contact support.',
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <GlobalErrorHandler {...args}>
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <p>Note: GlobalErrorHandler catches window-level errors.</p>
-        </div>
-      </GlobalErrorHandler>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <GlobalErrorHandler {...args}>
+          <div style={{ padding: 'var(--ds-spacing-4)' }}>
+            <p>{t('storybook.demo.sampleText')}</p>
+          </div>
+        </GlobalErrorHandler>
+      </div>
+    );
+  },
 };
 
 // Without retry button
@@ -111,15 +116,18 @@ export const WithoutRetryButton: Story = {
   args: {
     showRetryButton: false,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <GlobalErrorHandler {...args}>
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <p>Note: GlobalErrorHandler catches window-level errors.</p>
-        </div>
-      </GlobalErrorHandler>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <GlobalErrorHandler {...args}>
+          <div style={{ padding: 'var(--ds-spacing-4)' }}>
+            <p>{t('storybook.demo.sampleText')}</p>
+          </div>
+        </GlobalErrorHandler>
+      </div>
+    );
+  },
 };
 
 // Custom retry button text
@@ -128,15 +136,18 @@ export const CustomRetryText: Story = {
     retryButtonText: 'Reload Page',
     showRetryButton: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <GlobalErrorHandler {...args}>
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <p>Note: GlobalErrorHandler catches window-level errors.</p>
-        </div>
-      </GlobalErrorHandler>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <GlobalErrorHandler {...args}>
+          <div style={{ padding: 'var(--ds-spacing-4)' }}>
+            <p>{t('storybook.demo.sampleText')}</p>
+          </div>
+        </GlobalErrorHandler>
+      </div>
+    );
+  },
 };
 
 // Custom fallback
@@ -156,13 +167,16 @@ export const CustomFallback: Story = {
       </div>
     ),
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <GlobalErrorHandler {...args}>
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <p>Note: GlobalErrorHandler catches window-level errors.</p>
-        </div>
-      </GlobalErrorHandler>
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <GlobalErrorHandler {...args}>
+          <div style={{ padding: 'var(--ds-spacing-4)' }}>
+            <p>{t('storybook.demo.sampleText')}</p>
+          </div>
+        </GlobalErrorHandler>
+      </div>
+    );
+  },
 };

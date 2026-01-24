@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { Field, Label, Input, Textarea, Select, ValidationMessage } from '../../index';
 
 const meta: Meta = {
@@ -145,7 +146,7 @@ Making validation messages hard to find or understand.
 <Field>
   <Label htmlFor="email">Email address</Label>
   <Field.Description id="email-desc">We'll never share your email.</Field.Description>
-  <Input 
+  <Input
     id="email"
     aria-describedby="email-desc email-error"
     aria-invalid="true"
@@ -198,85 +199,106 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Field>
-      <Label>Full name</Label>
-      <Input aria-label="Full name" />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.fullName')}</Label>
+        <Input aria-label={t('storybook.demo.fullName')} />
+      </Field>
+    );
+  },
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Field>
-      <Label>Email address</Label>
-      <Field.Description>We will never share your email with anyone.</Field.Description>
-      <Input type="email" aria-label="Email address" />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.emailAddress')}</Label>
+        <Field.Description>{t('storybook.demo.neverShareEmail')}</Field.Description>
+        <Input type="email" aria-label={t('storybook.demo.emailAddress')} />
+      </Field>
+    );
+  },
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Field>
-      <Label>Phone number</Label>
-      <Input aria-invalid="true" aria-label="Phone number" />
-      <ValidationMessage>Phone number must be 8 digits</ValidationMessage>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.phoneNumber')}</Label>
+        <Input aria-invalid="true" aria-label={t('storybook.demo.phoneNumber')} />
+        <ValidationMessage>{t('storybook.demo.phoneMustBe8Digits')}</ValidationMessage>
+      </Field>
+    );
+  },
 };
 
 export const WithTextarea: Story = {
-  render: () => (
-    <Field>
-      <Label>Description</Label>
-      <Field.Description>Max 500 characters</Field.Description>
-      <Textarea rows={4} />
-      <Field.Counter limit={500} />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.description')}</Label>
+        <Field.Description>{t('storybook.demo.maxNCharacters', { count: 500 })}</Field.Description>
+        <Textarea rows={4} />
+        <Field.Counter limit={500} />
+      </Field>
+    );
+  },
 };
 
 export const WithSelect: Story = {
-  render: () => (
-    <Field>
-      <Label>Country</Label>
-      <Select>
-        <Select.Option value="">Choose a country...</Select.Option>
-        <Select.Option value="no">Norway</Select.Option>
-        <Select.Option value="se">Sweden</Select.Option>
-        <Select.Option value="dk">Denmark</Select.Option>
-      </Select>
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>{t('storybook.demo.country')}</Label>
+        <Select>
+          <Select.Option value="">{t('storybook.demo.chooseCountry')}</Select.Option>
+          <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
+          <Select.Option value="se">{t('storybook.demo.sweden')}</Select.Option>
+          <Select.Option value="dk">{t('storybook.demo.denmark')}</Select.Option>
+        </Select>
+      </Field>
+    );
+  },
 };
 
 export const Required: Story = {
-  render: () => (
-    <Field>
-      <Label>
-        Name <span aria-hidden="true">*</span>
-      </Label>
-      <Input required aria-label="Name" />
-    </Field>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Field>
+        <Label>
+          {t('storybook.demo.name')} <span aria-hidden="true">*</span>
+        </Label>
+        <Input required aria-label={t('storybook.demo.name')} />
+      </Field>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <Field data-size="sm">
-        <Label>Small field</Label>
-        <Input aria-label="Small field input" />
-      </Field>
-      <Field data-size="md">
-        <Label>Medium field</Label>
-        <Input aria-label="Medium field input" />
-      </Field>
-      <Field data-size="lg">
-        <Label>Large field</Label>
-        <Input aria-label="Large field input" />
-      </Field>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <Field data-size="sm">
+          <Label>{t('storybook.demo.smallField')}</Label>
+          <Input aria-label={t('storybook.demo.smallFieldInput')} />
+        </Field>
+        <Field data-size="md">
+          <Label>{t('storybook.demo.mediumField')}</Label>
+          <Input aria-label={t('storybook.demo.mediumFieldInput')} />
+        </Field>
+        <Field data-size="lg">
+          <Label>{t('storybook.demo.largeField')}</Label>
+          <Input aria-label={t('storybook.demo.largeFieldInput')} />
+        </Field>
+      </div>
+    );
+  },
 };

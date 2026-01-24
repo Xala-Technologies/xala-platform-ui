@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import {
   DetailField,
   DetailFieldGroup,
@@ -54,127 +55,198 @@ Reusable components for displaying labeled data fields. Common pattern in detail
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return <DetailField label={t('platform.common.name')} value="John Doe" copyable={false} />;
+};
+
 // Basic detail field
 export const Default: Story = {
-  args: {
-    label: 'Name',
-    value: 'John Doe',
-    copyable: false,
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for with icon story
+const WithIconDemo = () => {
+  const t = useT();
+  return (
+    <DetailField
+      label={t('platform.auth.email')}
+      value="john.doe@example.com"
+      icon={<Mail size={16} />}
+      copyable={false}
+    />
+  );
 };
 
 // With icon
 export const WithIcon: Story = {
-  args: {
-    label: 'Email',
-    value: 'john.doe@example.com',
-    icon: <Mail size={16} />,
-    copyable: false,
-  },
+  render: () => <WithIconDemo />,
+};
+
+// Wrapper for copyable story
+const CopyableDemo = () => {
+  const t = useT();
+  return (
+    <DetailField
+      label={t('storybook.demo.apiKey')}
+      value="sk_live_1234567890abcdef"
+      copyable={true}
+      onCopy={fn()}
+      isCopied={false}
+    />
+  );
 };
 
 // Copyable
 export const Copyable: Story = {
-  args: {
-    label: 'API Key',
-    value: 'sk_live_1234567890abcdef',
-    copyable: true,
-    onCopy: fn(),
-    isCopied: false,
-  },
+  render: () => <CopyableDemo />,
+};
+
+// Wrapper for with react node story
+const WithReactNodeDemo = () => {
+  const t = useT();
+  return (
+    <DetailField
+      label={t('platform.status.label')}
+      value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+      copyable={false}
+    />
+  );
 };
 
 // With React node value
 export const WithReactNode: Story = {
-  args: {
-    label: 'Status',
-    value: <Badge variant="success">Active</Badge>,
-    copyable: false,
-  },
+  render: () => <WithReactNodeDemo />,
+};
+
+// Wrapper for group single column story
+const GroupSingleColumnDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <DetailFieldGroup title={t('storybook.demo.userInformation')} columns={1}>
+        <DetailField label={t('platform.common.name')} value="John Doe" />
+        <DetailField
+          label={t('platform.auth.email')}
+          value="john.doe@example.com"
+          icon={<Mail size={16} />}
+        />
+        <DetailField
+          label={t('storybook.demo.phone')}
+          value="+47 12 34 56 78"
+          icon={<Phone size={16} />}
+        />
+        <DetailField
+          label={t('platform.status.label')}
+          value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+        />
+      </DetailFieldGroup>
+    </div>
+  );
 };
 
 // DetailFieldGroup - single column
 export const GroupSingleColumn: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <DetailFieldGroup title="User Information" columns={1}>
-        <DetailField label="Name" value="John Doe" />
-        <DetailField label="Email" value="john.doe@example.com" icon={<Mail size={16} />} />
-        <DetailField label="Phone" value="+47 12 34 56 78" icon={<Phone size={16} />} />
-        <DetailField label="Status" value={<Badge variant="success">Active</Badge>} />
+  render: () => <GroupSingleColumnDemo />,
+};
+
+// Wrapper for group two columns story
+const GroupTwoColumnsDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '600px' }}>
+      <DetailFieldGroup title={t('storybook.demo.userInformation')} columns={2}>
+        <DetailField label={t('platform.common.name')} value="John Doe" />
+        <DetailField label={t('platform.auth.email')} value="john.doe@example.com" />
+        <DetailField label={t('storybook.demo.phone')} value="+47 12 34 56 78" />
+        <DetailField
+          label={t('platform.status.label')}
+          value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+        />
       </DetailFieldGroup>
     </div>
-  ),
+  );
 };
 
 // DetailFieldGroup - two columns
 export const GroupTwoColumns: Story = {
-  render: () => (
-    <div style={{ width: '600px' }}>
-      <DetailFieldGroup title="User Information" columns={2}>
-        <DetailField label="Name" value="John Doe" />
-        <DetailField label="Email" value="john.doe@example.com" />
-        <DetailField label="Phone" value="+47 12 34 56 78" />
-        <DetailField label="Status" value={<Badge variant="success">Active</Badge>} />
+  render: () => <GroupTwoColumnsDemo />,
+};
+
+// Wrapper for group three columns story
+const GroupThreeColumnsDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '800px' }}>
+      <DetailFieldGroup title={t('storybook.demo.quickInfo')} columns={3}>
+        <DetailField label={t('platform.common.name')} value="John Doe" />
+        <DetailField label={t('platform.auth.email')} value="john@example.com" />
+        <DetailField label={t('storybook.demo.phone')} value="+47 12 34 56 78" />
       </DetailFieldGroup>
     </div>
-  ),
+  );
 };
 
 // DetailFieldGroup - three columns
 export const GroupThreeColumns: Story = {
-  render: () => (
-    <div style={{ width: '800px' }}>
-      <DetailFieldGroup title="Quick Info" columns={3}>
-        <DetailField label="Name" value="John Doe" />
-        <DetailField label="Email" value="john@example.com" />
-        <DetailField label="Phone" value="+47 12 34 56 78" />
-      </DetailFieldGroup>
-    </div>
-  ),
+  render: () => <GroupThreeColumnsDemo />,
 };
 
-// DetailCard
-export const Card: Story = {
-  render: () => (
+// Wrapper for card story
+const CardDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '500px' }}>
       <DetailCard
-        title="User Details"
+        title={t('storybook.demo.userDetails')}
         icon={<User size={20} />}
         actions={
           <Button onClick={fn()} data-color="accent" data-size="sm">
-            Edit
+            {t('platform.common.edit')}
           </Button>
         }
       >
         <DetailFieldGroup columns={1}>
-          <DetailField label="Name" value="John Doe" />
-          <DetailField label="Email" value="john.doe@example.com" />
-          <DetailField label="Role" value="Administrator" />
+          <DetailField label={t('platform.common.name')} value="John Doe" />
+          <DetailField label={t('platform.auth.email')} value="john.doe@example.com" />
+          <DetailField label={t('storybook.demo.role')} value={t('storybook.demo.administrator')} />
         </DetailFieldGroup>
       </DetailCard>
     </div>
-  ),
+  );
 };
 
-// MonoField
-export const MonoFieldExample: Story = {
-  render: () => (
+// DetailCard
+export const Card: Story = {
+  render: () => <CardDemo />,
+};
+
+// Wrapper for mono field story
+const MonoFieldExampleDemo = () => {
+  const t = useT();
+  return (
     <div style={{ width: '400px' }}>
       <MonoField
-        label="Transaction ID"
+        label={t('storybook.demo.transactionId')}
         value="txn_1234567890abcdef"
         copyable={true}
         onCopy={fn()}
         isCopied={false}
       />
     </div>
-  ),
+  );
 };
 
-// LinkField
-export const LinkFieldExample: Story = {
-  render: () => (
+// MonoField
+export const MonoFieldExample: Story = {
+  render: () => <MonoFieldExampleDemo />,
+};
+
+// Wrapper for link field story
+const LinkFieldExampleDemo = () => {
+  const t = useT();
+  return (
     <div
       style={{
         width: '400px',
@@ -184,7 +256,7 @@ export const LinkFieldExample: Story = {
       }}
     >
       <LinkField
-        label="Email"
+        label={t('platform.auth.email')}
         value="john.doe@example.com"
         href="mailto:john.doe@example.com"
         icon={<Mail size={16} />}
@@ -192,7 +264,7 @@ export const LinkFieldExample: Story = {
         onCopy={fn()}
       />
       <LinkField
-        label="Phone"
+        label={t('storybook.demo.phone')}
         value="+47 12 34 56 78"
         href="tel:+4712345678"
         icon={<Phone size={16} />}
@@ -200,7 +272,7 @@ export const LinkFieldExample: Story = {
         onCopy={fn()}
       />
       <LinkField
-        label="Website"
+        label={t('storybook.demo.website')}
         value="https://example.com"
         href="https://example.com"
         icon={<Globe size={16} />}
@@ -208,12 +280,18 @@ export const LinkFieldExample: Story = {
         onCopy={fn()}
       />
     </div>
-  ),
+  );
 };
 
-// Complete example
-export const CompleteExample: Story = {
-  render: () => (
+// LinkField
+export const LinkFieldExample: Story = {
+  render: () => <LinkFieldExampleDemo />,
+};
+
+// Wrapper for complete example story
+const CompleteExampleDemo = () => {
+  const t = useT();
+  return (
     <div
       style={{
         width: '600px',
@@ -222,21 +300,34 @@ export const CompleteExample: Story = {
         gap: 'var(--ds-spacing-4)',
       }}
     >
-      <DetailCard title="Account Information" icon={<User size={20} />}>
+      <DetailCard title={t('storybook.demo.accountInformation')} icon={<User size={20} />}>
         <DetailFieldGroup columns={2}>
-          <DetailField label="Account ID" value="acc_1234567890" />
-          <MonoField label="API Key" value="sk_live_abcdef123456" copyable onCopy={fn()} />
+          <DetailField label={t('storybook.demo.accountId')} value="acc_1234567890" />
+          <MonoField
+            label={t('storybook.demo.apiKey')}
+            value="sk_live_abcdef123456"
+            copyable
+            onCopy={fn()}
+          />
           <LinkField
-            label="Email"
+            label={t('platform.auth.email')}
             value="john.doe@example.com"
             href="mailto:john.doe@example.com"
             icon={<Mail size={16} />}
             copyable
             onCopy={fn()}
           />
-          <DetailField label="Status" value={<Badge variant="success">Active</Badge>} />
+          <DetailField
+            label={t('platform.status.label')}
+            value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+          />
         </DetailFieldGroup>
       </DetailCard>
     </div>
-  ),
+  );
+};
+
+// Complete example
+export const CompleteExample: Story = {
+  render: () => <CompleteExampleDemo />,
 };

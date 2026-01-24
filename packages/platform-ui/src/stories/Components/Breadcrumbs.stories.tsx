@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Breadcrumbs, Heading } from '../../index';
 
 const meta: Meta<typeof Breadcrumbs> = {
@@ -165,87 +166,104 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Breadcrumbs>
-      <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-      <Breadcrumbs.Link href="/listings">Listings</Breadcrumbs.Link>
-      <span>Current Page</span>
-    </Breadcrumbs>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Breadcrumbs>
+        <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+        <Breadcrumbs.Link href="/listings">{t('storybook.demo.listings')}</Breadcrumbs.Link>
+        <span>{t('storybook.demo.currentPage')}</span>
+      </Breadcrumbs>
+    );
+  },
 };
 
 export const ThreeLevels: Story = {
-  render: () => (
-    <Breadcrumbs>
-      <Breadcrumbs.Link href="/">Dashboard</Breadcrumbs.Link>
-      <Breadcrumbs.Link href="/resourceRequests">ResourceRequests</Breadcrumbs.Link>
-      <Breadcrumbs.Link href="/resourceRequests/2024">2024</Breadcrumbs.Link>
-      <span>January</span>
-    </Breadcrumbs>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Breadcrumbs>
+        <Breadcrumbs.Link href="/">{t('storybook.demo.dashboard')}</Breadcrumbs.Link>
+        <Breadcrumbs.Link href="/resourceRequests">
+          {t('storybook.demo.resourceRequests')}
+        </Breadcrumbs.Link>
+        <Breadcrumbs.Link href="/resourceRequests/2024">2024</Breadcrumbs.Link>
+        <span>{t('storybook.demo.january')}</span>
+      </Breadcrumbs>
+    );
+  },
 };
 
 export const TwoLevels: Story = {
-  render: () => (
-    <Breadcrumbs>
-      <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-      <span>Settings</span>
-    </Breadcrumbs>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Breadcrumbs>
+        <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+        <span>{t('storybook.demo.settings')}</span>
+      </Breadcrumbs>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Breadcrumbs data-size="sm">
-        <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-        <span>Small</span>
-      </Breadcrumbs>
-      <Breadcrumbs data-size="md">
-        <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-        <span>Medium</span>
-      </Breadcrumbs>
-      <Breadcrumbs data-size="lg">
-        <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-        <span>Large</span>
-      </Breadcrumbs>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Breadcrumbs data-size="sm">
+          <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+          <span>{t('storybook.story.small')}</span>
+        </Breadcrumbs>
+        <Breadcrumbs data-size="md">
+          <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+          <span>{t('storybook.story.medium')}</span>
+        </Breadcrumbs>
+        <Breadcrumbs data-size="lg">
+          <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+          <span>{t('storybook.story.large')}</span>
+        </Breadcrumbs>
+      </div>
+    );
+  },
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Two Levels
-        </Heading>
-        <Breadcrumbs>
-          <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-          <span>Settings</span>
-        </Breadcrumbs>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.twoLevels')}
+          </Heading>
+          <Breadcrumbs>
+            <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+            <span>{t('storybook.demo.settings')}</span>
+          </Breadcrumbs>
+        </div>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.threeLevels')}
+          </Heading>
+          <Breadcrumbs>
+            <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/products">{t('storybook.demo.products')}</Breadcrumbs.Link>
+            <span>{t('storybook.demo.details')}</span>
+          </Breadcrumbs>
+        </div>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.fourLevels')}
+          </Heading>
+          <Breadcrumbs>
+            <Breadcrumbs.Link href="/">{t('storybook.demo.dashboard')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/bookings">{t('storybook.demo.bookings')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/bookings/2024">2024</Breadcrumbs.Link>
+            <span>{t('storybook.demo.january')}</span>
+          </Breadcrumbs>
+        </div>
       </div>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Three Levels
-        </Heading>
-        <Breadcrumbs>
-          <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-          <Breadcrumbs.Link href="/products">Products</Breadcrumbs.Link>
-          <span>Details</span>
-        </Breadcrumbs>
-      </div>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Four Levels
-        </Heading>
-        <Breadcrumbs>
-          <Breadcrumbs.Link href="/">Dashboard</Breadcrumbs.Link>
-          <Breadcrumbs.Link href="/bookings">Bookings</Breadcrumbs.Link>
-          <Breadcrumbs.Link href="/bookings/2024">2024</Breadcrumbs.Link>
-          <span>January</span>
-        </Breadcrumbs>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

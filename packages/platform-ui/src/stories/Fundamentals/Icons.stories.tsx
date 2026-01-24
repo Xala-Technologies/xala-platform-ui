@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph } from '../../index';
 import {
   EnvelopeClosedIcon,
@@ -68,186 +69,185 @@ type Story = StoryObj;
  * This story demonstrates our dual-library strategy and when to use each.
  */
 export const IconLibraryPriority: Story = {
-  render: () => (
-    <div>
-      <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Icon Library Strategy
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.icons.libraryStrategy')}
+        </Heading>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 'var(--ds-spacing-6)',
-          marginBottom: 'var(--ds-spacing-8)',
-        }}
-      >
-        <Card
+        <div
           style={{
-            padding: 'var(--ds-spacing-6)',
-            borderLeft: '4px solid var(--ds-color-accent-base-default)',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 'var(--ds-spacing-6)',
+            marginBottom: 'var(--ds-spacing-8)',
           }}
         >
-          <div
+          <Card
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
+              padding: 'var(--ds-spacing-6)',
+              borderLeft: '4px solid var(--ds-color-accent-base-default)',
             }}
           >
-            <CheckCircle size={32} style={{ color: 'var(--ds-color-success-base-default)' }} />
-            <Heading level={2} data-size="lg">
-              1. NAV Aksel Icons (Primary)
-            </Heading>
-          </div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <CheckCircle size={32} style={{ color: 'var(--ds-color-success-base-default)' }} />
+              <Heading level={2} data-size="lg">
+                {t('storybook.icons.akselPrimary')}
+              </Heading>
+            </div>
 
-          <Paragraph
-            style={{
-              marginBottom: 'var(--ds-spacing-4)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            900+ icons designed for Norwegian public services. Use these first!
-          </Paragraph>
-
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
-              flexWrap: 'wrap',
-            }}
-          >
-            <EnvelopeClosedIcon fontSize="2rem" title="Email" />
-            <CalendarIcon fontSize="2rem" title="Calendar" />
-            <PersonIcon fontSize="2rem" title="Person" />
-            <PhoneIcon fontSize="2rem" title="Phone" />
-            <FileTextIcon fontSize="2rem" title="Document" />
-            <MagnifyingGlassIcon fontSize="2rem" title="Search" />
-            <CogIcon fontSize="2rem" title="Settings" />
-            <CheckmarkIcon fontSize="2rem" title="Check" />
-          </div>
-
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-
-<EnvelopeClosedIcon 
-  fontSize="1.5rem" 
-  title="Email" 
-/>`}
-          </pre>
-
-          <div
-            style={{
-              marginTop: 'var(--ds-spacing-4)',
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-success-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-            }}
-          >
-            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-              <strong>When to use:</strong>
-              <br />• Norwegian public sector apps
-              <br />• Common UI patterns
-              <br />• Forms and documents
-              <br />• User/organization icons
+            <Paragraph
+              style={{
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.icons.akselDescription')}
             </Paragraph>
-          </div>
-        </Card>
 
-        <Card
-          style={{
-            padding: 'var(--ds-spacing-6)',
-            borderLeft: '4px solid var(--ds-color-warning-base-default)',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <Info size={32} style={{ color: 'var(--ds-color-warning-base-default)' }} />
-            <Heading level={2} data-size="lg">
-              2. Lucide React (Fallback)
-            </Heading>
-          </div>
+            <div
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+                flexWrap: 'wrap',
+              }}
+            >
+              <EnvelopeClosedIcon fontSize="2rem" title="Email" />
+              <CalendarIcon fontSize="2rem" title="Calendar" />
+              <PersonIcon fontSize="2rem" title="Person" />
+              <PhoneIcon fontSize="2rem" title="Phone" />
+              <FileTextIcon fontSize="2rem" title="Document" />
+              <MagnifyingGlassIcon fontSize="2rem" title="Search" />
+              <CogIcon fontSize="2rem" title="Settings" />
+              <CheckmarkIcon fontSize="2rem" title="Check" />
+            </div>
 
-          <Paragraph
-            style={{
-              marginBottom: 'var(--ds-spacing-4)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            1000+ general purpose icons. Use when Aksel doesn't have what you need.
-          </Paragraph>
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
+              }}
+            >
+              {`import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
-              flexWrap: 'wrap',
-            }}
-          >
-            <Code size={32} />
-            <Terminal size={32} />
-            <Github size={32} />
-            <Zap size={32} />
-            <Layers size={32} />
-            <AlertCircle size={32} />
-            <CheckCircle size={32} />
-            <Settings size={32} />
-          </div>
-
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`import { Code } from 'lucide-react';
-
-<Code 
-  size={24} 
-  color="var(--ds-color-accent-base-default)" 
+<EnvelopeClosedIcon
+  fontSize="1.5rem"
+  title="Email"
 />`}
-          </pre>
+            </pre>
 
-          <div
+            <div
+              style={{
+                marginTop: 'var(--ds-spacing-4)',
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-success-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+              }}
+            >
+              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
+                <strong>{t('storybook.icons.whenToUse')}:</strong>
+                <br />
+                {t('storybook.icons.akselUseCases')}
+              </Paragraph>
+            </div>
+          </Card>
+
+          <Card
             style={{
-              marginTop: 'var(--ds-spacing-4)',
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-warning-surface-default)',
-              borderRadius: 'var(--ds-border-radius-sm)',
+              padding: 'var(--ds-spacing-6)',
+              borderLeft: '4px solid var(--ds-color-warning-base-default)',
             }}
           >
-            <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
-              <strong>When to use:</strong>
-              <br />• Developer/technical icons
-              <br />• Social media icons
-              <br />• When Aksel doesn't have it
-              <br />• International applications
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <Info size={32} style={{ color: 'var(--ds-color-warning-base-default)' }} />
+              <Heading level={2} data-size="lg">
+                {t('storybook.icons.lucideFallback')}
+              </Heading>
+            </div>
+
+            <Paragraph
+              style={{
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.icons.lucideDescription')}
             </Paragraph>
-          </div>
-        </Card>
+
+            <div
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Code size={32} />
+              <Terminal size={32} />
+              <Github size={32} />
+              <Zap size={32} />
+              <Layers size={32} />
+              <AlertCircle size={32} />
+              <CheckCircle size={32} />
+              <Settings size={32} />
+            </div>
+
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
+              }}
+            >
+              {`import { Code } from 'lucide-react';
+
+<Code
+  size={24}
+  color="var(--ds-color-accent-base-default)"
+/>`}
+            </pre>
+
+            <div
+              style={{
+                marginTop: 'var(--ds-spacing-4)',
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-warning-surface-default)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+              }}
+            >
+              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
+                <strong>{t('storybook.icons.whenToUse')}:</strong>
+                <br />
+                {t('storybook.icons.lucideUseCases')}
+              </Paragraph>
+            </div>
+          </Card>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -256,66 +256,68 @@ export const IconLibraryPriority: Story = {
  * Demonstrates proper icon sizing using design tokens and rem units.
  */
 export const IconSizingGuide: Story = {
-  render: () => (
-    <Card style={{ padding: 'var(--ds-spacing-8)' }}>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Icon Sizing
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <Card style={{ padding: 'var(--ds-spacing-8)' }}>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.icons.sizing')}
+        </Heading>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
-        <div style={{ textAlign: 'center', flexBasis: '200px' }}>
-          <EnvelopeClosedIcon fontSize="1rem" title="Small icon" />
-          <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-            <strong>Small (1rem)</strong>
-            <br />
-            <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="1rem"</code>
-          </Paragraph>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
+          <div style={{ textAlign: 'center', flexBasis: '200px' }}>
+            <EnvelopeClosedIcon fontSize="1rem" title="Small icon" />
+            <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
+              <strong>{t('storybook.icons.small')} (1rem)</strong>
+              <br />
+              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="1rem"</code>
+            </Paragraph>
+          </div>
+
+          <div style={{ textAlign: 'center', flexBasis: '200px' }}>
+            <EnvelopeClosedIcon fontSize="1.5rem" title="Medium icon" />
+            <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
+              <strong>{t('storybook.icons.medium')} (1.5rem)</strong>
+              <br />
+              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="1.5rem"</code>
+            </Paragraph>
+          </div>
+
+          <div style={{ textAlign: 'center', flexBasis: '200px' }}>
+            <EnvelopeClosedIcon fontSize="2rem" title="Large icon" />
+            <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
+              <strong>{t('storybook.icons.large')} (2rem)</strong>
+              <br />
+              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="2rem"</code>
+            </Paragraph>
+          </div>
+
+          <div style={{ textAlign: 'center', flexBasis: '200px' }}>
+            <EnvelopeClosedIcon fontSize="3rem" title="Extra large icon" />
+            <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
+              <strong>{t('storybook.icons.xl')} (3rem)</strong>
+              <br />
+              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="3rem"</code>
+            </Paragraph>
+          </div>
         </div>
 
-        <div style={{ textAlign: 'center', flexBasis: '200px' }}>
-          <EnvelopeClosedIcon fontSize="1.5rem" title="Medium icon" />
-          <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-            <strong>Medium (1.5rem)</strong>
-            <br />
-            <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="1.5rem"</code>
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-6)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+          }}
+        >
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
+            <strong>{t('storybook.bestPractices.title')}:</strong>{' '}
+            {t('storybook.icons.sizingBestPractice')}
           </Paragraph>
         </div>
-
-        <div style={{ textAlign: 'center', flexBasis: '200px' }}>
-          <EnvelopeClosedIcon fontSize="2rem" title="Large icon" />
-          <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-            <strong>Large (2rem)</strong>
-            <br />
-            <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="2rem"</code>
-          </Paragraph>
-        </div>
-
-        <div style={{ textAlign: 'center', flexBasis: '200px' }}>
-          <EnvelopeClosedIcon fontSize="3rem" title="Extra large icon" />
-          <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-            <strong>XL (3rem)</strong>
-            <br />
-            <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="3rem"</code>
-          </Paragraph>
-        </div>
-      </div>
-
-      <div
-        style={{
-          marginTop: 'var(--ds-spacing-6)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-accent-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-        }}
-      >
-        <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-          <strong>Best Practice:</strong> Use rem units for consistent sizing across themes and zoom
-          levels. Lucide uses <code>size</code> prop in pixels, Aksel uses <code>fontSize</code> in
-          rem.
-        </Paragraph>
-      </div>
-    </Card>
-  ),
+      </Card>
+    );
+  },
 };
 
 /**
@@ -324,215 +326,224 @@ export const IconSizingGuide: Story = {
  * Shows proper accessibility implementation for icons.
  */
 export const AccessibilityGuidelines: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Icon Accessibility
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.icons.accessibility')}
+        </Heading>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        <Card
-          style={{
-            padding: 'var(--ds-spacing-6)',
-            borderLeft: '4px solid var(--ds-color-success-base-default)',
-          }}
-        >
-          <div
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          <Card
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
+              padding: 'var(--ds-spacing-6)',
+              borderLeft: '4px solid var(--ds-color-success-base-default)',
             }}
           >
-            <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
-            <Heading level={3} data-size="md">
-              Decorative Icons (with text)
-            </Heading>
-          </div>
-
-          <Paragraph
-            style={{
-              marginBottom: 'var(--ds-spacing-4)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            When icon is next to text that explains it, mark as decorative with{' '}
-            <code>aria-hidden</code>
-          </Paragraph>
-
-          <div
-            style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-              <EnvelopeClosedIcon fontSize="1.25rem" aria-hidden="true" />
-              <span>Send Email</span>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
+              <Heading level={3} data-size="md">
+                {t('storybook.icons.decorativeIcons')}
+              </Heading>
             </div>
-          </div>
 
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+            <Paragraph
+              style={{
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.icons.decorativeDescription')}
+            </Paragraph>
+
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                <EnvelopeClosedIcon fontSize="1.25rem" aria-hidden="true" />
+                <span>{t('platform.common.email')}</span>
+              </div>
+            </div>
+
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
+              }}
+            >
+              {`<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
   <EnvelopeClosedIcon fontSize="1.25rem" aria-hidden="true" />
   <span>Send Email</span>
 </div>`}
-          </pre>
-        </Card>
+            </pre>
+          </Card>
 
-        <Card
-          style={{
-            padding: 'var(--ds-spacing-6)',
-            borderLeft: '4px solid var(--ds-color-success-base-default)',
-          }}
-        >
-          <div
+          <Card
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
+              padding: 'var(--ds-spacing-6)',
+              borderLeft: '4px solid var(--ds-color-success-base-default)',
             }}
           >
-            <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
-            <Heading level={3} data-size="md">
-              Meaningful Icons (standalone)
-            </Heading>
-          </div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
+              <Heading level={3} data-size="md">
+                {t('storybook.icons.meaningfulIcons')}
+              </Heading>
+            </div>
 
-          <Paragraph
-            style={{
-              marginBottom: 'var(--ds-spacing-4)',
-              color: 'var(--ds-color-neutral-text-subtle)',
-            }}
-          >
-            When icon conveys meaning without text, provide <code>title</code> or{' '}
-            <code>aria-label</code>
-          </Paragraph>
+            <Paragraph
+              style={{
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.icons.meaningfulDescription')}
+            </Paragraph>
 
-          <div
-            style={{
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-md)',
-              marginBottom: 'var(--ds-spacing-4)',
-              display: 'flex',
-              gap: 'var(--ds-spacing-3)',
-            }}
-          >
-            <Button data-variant="tertiary" data-size="sm" aria-label="Delete item">
-              <TrashIcon fontSize="1.25rem" />
-            </Button>
-            <Button data-variant="tertiary" data-size="sm" aria-label="Edit item">
-              <PencilIcon fontSize="1.25rem" />
-            </Button>
-            <Button data-variant="tertiary" data-size="sm" aria-label="Settings">
-              <CogIcon fontSize="1.25rem" />
-            </Button>
-          </div>
+            <div
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                marginBottom: 'var(--ds-spacing-4)',
+                display: 'flex',
+                gap: 'var(--ds-spacing-3)',
+              }}
+            >
+              <Button
+                data-variant="tertiary"
+                data-size="sm"
+                aria-label={t('platform.common.delete')}
+              >
+                <TrashIcon fontSize="1.25rem" />
+              </Button>
+              <Button data-variant="tertiary" data-size="sm" aria-label={t('platform.common.edit')}>
+                <PencilIcon fontSize="1.25rem" />
+              </Button>
+              <Button
+                data-variant="tertiary"
+                data-size="sm"
+                aria-label={t('platform.common.settings')}
+              >
+                <CogIcon fontSize="1.25rem" />
+              </Button>
+            </div>
 
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`<Button data-variant="tertiary" aria-label="Delete item">
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
+              }}
+            >
+              {`<Button data-variant="tertiary" aria-label="Delete item">
   <TrashIcon fontSize="1.25rem" />
 </Button>
 
 // Or with title attribute
 <TrashIcon fontSize="1.25rem" title="Delete item" />`}
-          </pre>
-        </Card>
+            </pre>
+          </Card>
 
-        <Card
-          style={{
-            padding: 'var(--ds-spacing-6)',
-            borderLeft: '4px solid var(--ds-color-danger-base-default)',
-          }}
-        >
-          <div
+          <Card
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
+              padding: 'var(--ds-spacing-6)',
+              borderLeft: '4px solid var(--ds-color-danger-base-default)',
             }}
           >
-            <X size={24} style={{ color: 'var(--ds-color-danger-base-default)' }} />
-            <Heading level={3} data-size="md">
-              Common Mistakes
-            </Heading>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <div
               style={{
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-danger-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
               }}
             >
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                Icon-only button without label
-                <br />
-                <code
-                  style={{ fontSize: 'var(--ds-font-size-xs)' }}
-                >{`<Button><TrashIcon /></Button>`}</code>
-              </Paragraph>
+              <X size={24} style={{ color: 'var(--ds-color-danger-base-default)' }} />
+              <Heading level={3} data-size="md">
+                {t('storybook.icons.commonMistakes')}
+              </Heading>
             </div>
 
-            <div
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-danger-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-              }}
-            >
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                Using emojis instead of icons
-                <br />
-                <code
-                  style={{ fontSize: 'var(--ds-font-size-xs)' }}
-                >{`<span>📧 Email</span>`}</code>
-              </Paragraph>
-            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-danger-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
+                  {t('storybook.icons.iconOnlyNoLabel')}
+                  <br />
+                  <code
+                    style={{ fontSize: 'var(--ds-font-size-xs)' }}
+                  >{`<Button><TrashIcon /></Button>`}</code>
+                </Paragraph>
+              </div>
 
-            <div
-              style={{
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-danger-surface-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-              }}
-            >
-              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                Hardcoded icon colors
-                <br />
-                <code
-                  style={{ fontSize: 'var(--ds-font-size-xs)' }}
-                >{`<Mail color="#0066CC" />`}</code>
-              </Paragraph>
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-danger-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
+                  {t('storybook.icons.emojiInsteadOfIcon')}
+                  <br />
+                  <code
+                    style={{ fontSize: 'var(--ds-font-size-xs)' }}
+                  >{`<span>📧 Email</span>`}</code>
+                </Paragraph>
+              </div>
+
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-danger-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
+                  {t('storybook.icons.hardcodedColors')}
+                  <br />
+                  <code
+                    style={{ fontSize: 'var(--ds-font-size-xs)' }}
+                  >{`<Mail color="#0066CC" />`}</code>
+                </Paragraph>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -542,6 +553,7 @@ export const AccessibilityGuidelines: Story = {
  */
 export const InteractiveIconBrowser: Story = {
   render: () => {
+    const t = useT();
     const [selectedLibrary, setSelectedLibrary] = useState<'aksel' | 'lucide'>('aksel');
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -593,7 +605,7 @@ export const InteractiveIconBrowser: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          Icon Browser
+          {t('storybook.icons.browser')}
         </Heading>
 
         <Card style={{ padding: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-6)' }}>
@@ -635,7 +647,7 @@ export const InteractiveIconBrowser: Story = {
               />
               <input
                 type="text"
-                placeholder="Search icons..."
+                placeholder={t('platform.common.search')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
@@ -708,7 +720,7 @@ export const InteractiveIconBrowser: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              <Paragraph>No icons found matching "{searchTerm}"</Paragraph>
+              <Paragraph>{t('storybook.icons.noResults', { searchTerm })}</Paragraph>
             </div>
           )}
         </Card>
@@ -721,8 +733,9 @@ export const InteractiveIconBrowser: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-            <strong>Full Icon Libraries:</strong>
-            <br />• Aksel:{' '}
+            <strong>{t('storybook.icons.fullLibraries')}:</strong>
+            <br />
+            {t('storybook.icons.akselLink')}:{' '}
             <a
               href="https://aksel.nav.no/ikoner"
               target="_blank"
@@ -732,7 +745,8 @@ export const InteractiveIconBrowser: Story = {
               aksel.nav.no/ikoner
             </a>{' '}
             (900+ icons)
-            <br />• Lucide:{' '}
+            <br />
+            {t('storybook.icons.lucideLink')}:{' '}
             <a
               href="https://lucide.dev"
               target="_blank"
@@ -755,196 +769,199 @@ export const InteractiveIconBrowser: Story = {
  * Common icon usage patterns with real examples.
  */
 export const UsagePatterns: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Common Usage Patterns
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.icons.usagePatterns')}
+        </Heading>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-        <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            1. Icons in Buttons
-          </Heading>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+          <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+              {t('storybook.icons.iconsInButtons')}
+            </Heading>
 
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--ds-spacing-3)',
-              flexWrap: 'wrap',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <Button data-variant="primary" data-size="md">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-                <PlusIcon fontSize="1.25rem" aria-hidden="true" />
-                <span>Add Item</span>
-              </div>
-            </Button>
+            <div
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-3)',
+                flexWrap: 'wrap',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <Button data-variant="primary" data-size="md">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                  <PlusIcon fontSize="1.25rem" aria-hidden="true" />
+                  <span>{t('platform.common.add')}</span>
+                </div>
+              </Button>
 
-            <Button data-variant="secondary" data-size="md">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-                <MagnifyingGlassIcon fontSize="1.25rem" aria-hidden="true" />
-                <span>Search</span>
-              </div>
-            </Button>
+              <Button data-variant="secondary" data-size="md">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                  <MagnifyingGlassIcon fontSize="1.25rem" aria-hidden="true" />
+                  <span>{t('platform.common.search')}</span>
+                </div>
+              </Button>
 
-            <Button data-variant="danger" data-size="md">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-                <TrashIcon fontSize="1.25rem" aria-hidden="true" />
-                <span>Delete</span>
-              </div>
-            </Button>
-          </div>
+              <Button data-variant="danger" data-size="md">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                  <TrashIcon fontSize="1.25rem" aria-hidden="true" />
+                  <span>{t('platform.common.delete')}</span>
+                </div>
+              </Button>
+            </div>
 
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`<Button data-variant="primary">
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
+              }}
+            >
+              {`<Button data-variant="primary">
   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
     <PlusIcon fontSize="1.25rem" aria-hidden="true" />
     <span>Add Item</span>
   </div>
 </Button>`}
-          </pre>
-        </Card>
+            </pre>
+          </Card>
 
-        <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            2. Status Indicators
-          </Heading>
+          <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+              {t('storybook.icons.statusIndicators')}
+            </Heading>
 
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--ds-spacing-3)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-              <CheckmarkIcon
-                fontSize="1.25rem"
-                style={{ color: 'var(--ds-color-success-base-default)' }}
-              />
-              <span>Task completed successfully</span>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--ds-spacing-3)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                <CheckmarkIcon
+                  fontSize="1.25rem"
+                  style={{ color: 'var(--ds-color-success-base-default)' }}
+                />
+                <span>{t('storybook.demo.taskCompleted')}</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                <ExclamationmarkTriangleIcon
+                  fontSize="1.25rem"
+                  style={{ color: 'var(--ds-color-warning-base-default)' }}
+                />
+                <span>{t('storybook.demo.reviewRequired')}</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                <XMarkIcon
+                  fontSize="1.25rem"
+                  style={{ color: 'var(--ds-color-danger-base-default)' }}
+                />
+                <span>{t('storybook.demo.actionFailed')}</span>
+              </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-              <ExclamationmarkTriangleIcon
-                fontSize="1.25rem"
-                style={{ color: 'var(--ds-color-warning-base-default)' }}
-              />
-              <span>Warning: Review required</span>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-              <XMarkIcon
-                fontSize="1.25rem"
-                style={{ color: 'var(--ds-color-danger-base-default)' }}
-              />
-              <span>Error: Action failed</span>
-            </div>
-          </div>
-
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-  <CheckmarkIcon 
-    fontSize="1.25rem" 
-    style={{ color: 'var(--ds-color-success-base-default)' }} 
+            <pre
+              style={{
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
+                borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
+              }}
+            >
+              {`<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+  <CheckmarkIcon
+    fontSize="1.25rem"
+    style={{ color: 'var(--ds-color-success-base-default)' }}
   />
   <span>Task completed successfully</span>
 </div>`}
-          </pre>
-        </Card>
+            </pre>
+          </Card>
 
-        <Card style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            3. Navigation Links
-          </Heading>
+          <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+              {t('storybook.icons.navigationLinks')}
+            </Heading>
 
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--ds-spacing-2)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <a
-              href="#"
+            <div
               style={{
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: 'var(--ds-spacing-3)',
-                textDecoration: 'none',
-                color: 'inherit',
-                borderRadius: 'var(--ds-border-radius-sm)',
+                flexDirection: 'column',
+                gap: 'var(--ds-spacing-2)',
+                marginBottom: 'var(--ds-spacing-4)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-                <PersonIcon fontSize="1.25rem" aria-hidden="true" />
-                <span>Profile Settings</span>
-              </div>
-              <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
-            </a>
+              <a
+                href="#"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: 'var(--ds-spacing-3)',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                  <PersonIcon fontSize="1.25rem" aria-hidden="true" />
+                  <span>{t('platform.nav.profile')}</span>
+                </div>
+                <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
+              </a>
 
-            <a
-              href="#"
+              <a
+                href="#"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: 'var(--ds-spacing-3)',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                  <CogIcon fontSize="1.25rem" aria-hidden="true" />
+                  <span>{t('platform.common.settings')}</span>
+                </div>
+                <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
+              </a>
+            </div>
+
+            <pre
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
                 padding: 'var(--ds-spacing-3)',
-                textDecoration: 'none',
-                color: 'inherit',
+                backgroundColor: 'var(--ds-color-neutral-surface-hover)',
                 borderRadius: 'var(--ds-border-radius-sm)',
+                fontSize: 'var(--ds-font-size-xs)',
+                overflow: 'auto',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-                <CogIcon fontSize="1.25rem" aria-hidden="true" />
-                <span>System Settings</span>
-              </div>
-              <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
-            </a>
-          </div>
-
-          <pre
-            style={{
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-              borderRadius: 'var(--ds-border-radius-sm)',
-              fontSize: 'var(--ds-font-size-xs)',
-              overflow: 'auto',
-            }}
-          >
-            {`<a href="#" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              {`<a href="#" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
     <PersonIcon fontSize="1.25rem" aria-hidden="true" />
     <span>Profile Settings</span>
   </div>
   <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
 </a>`}
-          </pre>
-        </Card>
+            </pre>
+          </Card>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -953,182 +970,187 @@ export const UsagePatterns: Story = {
  * Visual guide showing correct and incorrect icon usage.
  */
 export const DosAndDonts: Story = {
-  render: () => (
-    <div>
-      <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-        Do's and Don'ts
-      </Heading>
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          {t('storybook.icons.dosAndDonts')}
+        </Heading>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-6)' }}>
-        <div>
-          <Heading
-            level={3}
-            data-size="md"
-            style={{
-              marginBottom: 'var(--ds-spacing-4)',
-              color: 'var(--ds-color-success-base-default)',
-            }}
-          >
-            Do
-          </Heading>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            <Card
+        <div
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-6)' }}
+        >
+          <div>
+            <Heading
+              level={3}
+              data-size="md"
               style={{
-                padding: 'var(--ds-spacing-4)',
-                borderLeft: '4px solid var(--ds-color-success-base-default)',
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-success-base-default)',
               }}
             >
-              <Paragraph
-                data-size="sm"
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
-              >
-                Use design tokens for colors
-              </Paragraph>
-              <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                <EnvelopeClosedIcon
-                  fontSize="1.5rem"
-                  style={{ color: 'var(--ds-color-accent-base-default)' }}
-                />
-              </div>
-              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>
-                color: 'var(--ds-color-accent-base-default)'
-              </code>
-            </Card>
+              {t('storybook.bestPractices.do')}
+            </Heading>
 
-            <Card
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                borderLeft: '4px solid var(--ds-color-success-base-default)',
-              }}
-            >
-              <Paragraph
-                data-size="sm"
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+              <Card
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  borderLeft: '4px solid var(--ds-color-success-base-default)',
+                }}
               >
-                Provide accessibility labels
-              </Paragraph>
-              <Button data-variant="tertiary" aria-label="Delete item">
-                <TrashIcon fontSize="1.25rem" />
-              </Button>
-              <br />
-              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>aria-label="Delete item"</code>
-            </Card>
+                <Paragraph
+                  data-size="sm"
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+                >
+                  {t('storybook.icons.useTokenColors')}
+                </Paragraph>
+                <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                  <EnvelopeClosedIcon
+                    fontSize="1.5rem"
+                    style={{ color: 'var(--ds-color-accent-base-default)' }}
+                  />
+                </div>
+                <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>
+                  color: 'var(--ds-color-accent-base-default)'
+                </code>
+              </Card>
 
-            <Card
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                borderLeft: '4px solid var(--ds-color-success-base-default)',
-              }}
-            >
-              <Paragraph
-                data-size="sm"
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+              <Card
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  borderLeft: '4px solid var(--ds-color-success-base-default)',
+                }}
               >
-                Use Aksel icons first
-              </Paragraph>
-              <EnvelopeClosedIcon fontSize="1.5rem" title="Email" />
-              <br />
-              <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>
-                import from '@navikt/aksel-icons'
-              </code>
-            </Card>
+                <Paragraph
+                  data-size="sm"
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+                >
+                  {t('storybook.icons.provideA11yLabels')}
+                </Paragraph>
+                <Button data-variant="tertiary" aria-label={t('platform.common.delete')}>
+                  <TrashIcon fontSize="1.25rem" />
+                </Button>
+                <br />
+                <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>aria-label="Delete item"</code>
+              </Card>
+
+              <Card
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  borderLeft: '4px solid var(--ds-color-success-base-default)',
+                }}
+              >
+                <Paragraph
+                  data-size="sm"
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+                >
+                  {t('storybook.icons.useAkselFirst')}
+                </Paragraph>
+                <EnvelopeClosedIcon fontSize="1.5rem" title="Email" />
+                <br />
+                <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>
+                  import from '@navikt/aksel-icons'
+                </code>
+              </Card>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <Heading
-            level={3}
-            data-size="md"
-            style={{
-              marginBottom: 'var(--ds-spacing-4)',
-              color: 'var(--ds-color-danger-base-default)',
-            }}
-          >
-            Don't
-          </Heading>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            <Card
+          <div>
+            <Heading
+              level={3}
+              data-size="md"
               style={{
-                padding: 'var(--ds-spacing-4)',
-                borderLeft: '4px solid var(--ds-color-danger-base-default)',
-                opacity: 0.7,
+                marginBottom: 'var(--ds-spacing-4)',
+                color: 'var(--ds-color-danger-base-default)',
               }}
             >
-              <Paragraph
-                data-size="sm"
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
-              >
-                Hardcode colors
-              </Paragraph>
-              <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                <Mail size={24} color="#0066CC" />
-              </div>
-              <code
-                style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-danger-text-default)',
-                }}
-              >
-                color="#0066CC"
-              </code>
-            </Card>
+              {t('storybook.bestPractices.dont')}
+            </Heading>
 
-            <Card
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                borderLeft: '4px solid var(--ds-color-danger-base-default)',
-                opacity: 0.7,
-              }}
-            >
-              <Paragraph
-                data-size="sm"
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
-              >
-                Icon-only buttons without labels
-              </Paragraph>
-              <Button data-variant="tertiary">
-                <TrashIcon fontSize="1.25rem" />
-              </Button>
-              <br />
-              <code
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+              <Card
                 style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-danger-text-default)',
+                  padding: 'var(--ds-spacing-4)',
+                  borderLeft: '4px solid var(--ds-color-danger-base-default)',
+                  opacity: 0.7,
                 }}
               >
-                No aria-label
-              </code>
-            </Card>
+                <Paragraph
+                  data-size="sm"
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+                >
+                  {t('storybook.icons.hardcodeColors')}
+                </Paragraph>
+                <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+                  <Mail size={24} color="#0066CC" />
+                </div>
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-danger-text-default)',
+                  }}
+                >
+                  color="#0066CC"
+                </code>
+              </Card>
 
-            <Card
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                borderLeft: '4px solid var(--ds-color-danger-base-default)',
-                opacity: 0.7,
-              }}
-            >
-              <Paragraph
-                data-size="sm"
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
-              >
-                Use emojis instead of icons
-              </Paragraph>
-              <span style={{ fontSize: '1.5rem' }}>📧</span>
-              <br />
-              <code
+              <Card
                 style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-danger-text-default)',
+                  padding: 'var(--ds-spacing-4)',
+                  borderLeft: '4px solid var(--ds-color-danger-base-default)',
+                  opacity: 0.7,
                 }}
               >
-                Emojis are forbidden
-              </code>
-            </Card>
+                <Paragraph
+                  data-size="sm"
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+                >
+                  {t('storybook.icons.iconOnlyNoLabel')}
+                </Paragraph>
+                <Button data-variant="tertiary">
+                  <TrashIcon fontSize="1.25rem" />
+                </Button>
+                <br />
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-danger-text-default)',
+                  }}
+                >
+                  No aria-label
+                </code>
+              </Card>
+
+              <Card
+                style={{
+                  padding: 'var(--ds-spacing-4)',
+                  borderLeft: '4px solid var(--ds-color-danger-base-default)',
+                  opacity: 0.7,
+                }}
+              >
+                <Paragraph
+                  data-size="sm"
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
+                >
+                  {t('storybook.icons.emojiInsteadOfIcon')}
+                </Paragraph>
+                <span style={{ fontSize: '1.5rem' }}>📧</span>
+                <br />
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-danger-text-default)',
+                  }}
+                >
+                  {t('storybook.icons.emojiForbidden')}
+                </code>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { ErrorSummary } from '../../index';
 
 const meta: Meta = {
@@ -104,7 +105,7 @@ const errorCount = errors.length;
 
 <ErrorSummary>
   <ErrorSummary.Heading>
-    {errorCount === 1 
+    {errorCount === 1
       ? 'There is 1 error in your form'
       : \`There are \${errorCount} errors in your form\`
     }
@@ -200,7 +201,7 @@ if (hasErrors) {
 ### Link Implementation
 Links should focus and scroll to error fields:
 \`\`\`tsx
-<ErrorSummary.Link 
+<ErrorSummary.Link
   href="#email-field"
   onClick={(e) => {
     e.preventDefault();
@@ -223,83 +224,115 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <ErrorSummary>
-      <ErrorSummary.Heading>Please fix the following errors:</ErrorSummary.Heading>
-      <ErrorSummary.List>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#name">Name is required</ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#email">Enter a valid email address</ErrorSummary.Link>
-        </ErrorSummary.Item>
-      </ErrorSummary.List>
-    </ErrorSummary>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <ErrorSummary>
+        <ErrorSummary.Heading>{t('storybook.demo.pleaseFixErrors')}</ErrorSummary.Heading>
+        <ErrorSummary.List>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#name">
+              {t('platform.validation.required', { field: t('storybook.demo.name') })}
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#email">{t('platform.validation.email')}</ErrorSummary.Link>
+          </ErrorSummary.Item>
+        </ErrorSummary.List>
+      </ErrorSummary>
+    );
+  },
 };
 
 export const MultipleErrors: Story = {
-  render: () => (
-    <ErrorSummary>
-      <ErrorSummary.Heading>There are 4 errors in your form</ErrorSummary.Heading>
-      <ErrorSummary.List>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#firstName">First name is required</ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#lastName">Last name is required</ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#phone">Phone number must be 8 digits</ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#terms">You must accept the terms</ErrorSummary.Link>
-        </ErrorSummary.Item>
-      </ErrorSummary.List>
-    </ErrorSummary>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <ErrorSummary>
+        <ErrorSummary.Heading>
+          {t('storybook.demo.thereAreNErrorsInForm', { count: 4 })}
+        </ErrorSummary.Heading>
+        <ErrorSummary.List>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#firstName">
+              {t('platform.validation.required', { field: t('storybook.demo.firstName') })}
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#lastName">
+              {t('platform.validation.required', { field: t('storybook.demo.lastName') })}
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#phone">
+              {t('storybook.demo.phoneMustBe8Digits')}
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#terms">
+              {t('storybook.demo.mustAcceptTerms')}
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+        </ErrorSummary.List>
+      </ErrorSummary>
+    );
+  },
 };
 
 export const SingleError: Story = {
-  render: () => (
-    <ErrorSummary>
-      <ErrorSummary.Heading>Please fix the following error:</ErrorSummary.Heading>
-      <ErrorSummary.List>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href="#date">Select a valid date</ErrorSummary.Link>
-        </ErrorSummary.Item>
-      </ErrorSummary.List>
-    </ErrorSummary>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <ErrorSummary>
+        <ErrorSummary.Heading>{t('storybook.demo.pleaseFixFollowingError')}</ErrorSummary.Heading>
+        <ErrorSummary.List>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#date">
+              {t('storybook.demo.selectValidDate')}
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+        </ErrorSummary.List>
+      </ErrorSummary>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <ErrorSummary data-size="sm">
-        <ErrorSummary.Heading>Small size</ErrorSummary.Heading>
-        <ErrorSummary.List>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href="#field1">Error message</ErrorSummary.Link>
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
-      </ErrorSummary>
-      <ErrorSummary data-size="md">
-        <ErrorSummary.Heading>Medium size (default)</ErrorSummary.Heading>
-        <ErrorSummary.List>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href="#field2">Error message</ErrorSummary.Link>
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
-      </ErrorSummary>
-      <ErrorSummary data-size="lg">
-        <ErrorSummary.Heading>Large size</ErrorSummary.Heading>
-        <ErrorSummary.List>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href="#field3">Error message</ErrorSummary.Link>
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
-      </ErrorSummary>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <ErrorSummary data-size="sm">
+          <ErrorSummary.Heading>{t('storybook.story.smallSize')}</ErrorSummary.Heading>
+          <ErrorSummary.List>
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href="#field1">
+                {t('storybook.demo.errorMessage')}
+              </ErrorSummary.Link>
+            </ErrorSummary.Item>
+          </ErrorSummary.List>
+        </ErrorSummary>
+        <ErrorSummary data-size="md">
+          <ErrorSummary.Heading>{t('storybook.story.mediumSizeDefault')}</ErrorSummary.Heading>
+          <ErrorSummary.List>
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href="#field2">
+                {t('storybook.demo.errorMessage')}
+              </ErrorSummary.Link>
+            </ErrorSummary.Item>
+          </ErrorSummary.List>
+        </ErrorSummary>
+        <ErrorSummary data-size="lg">
+          <ErrorSummary.Heading>{t('storybook.story.largeSize')}</ErrorSummary.Heading>
+          <ErrorSummary.List>
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href="#field3">
+                {t('storybook.demo.errorMessage')}
+              </ErrorSummary.Link>
+            </ErrorSummary.Item>
+          </ErrorSummary.List>
+        </ErrorSummary>
+      </div>
+    );
+  },
 };

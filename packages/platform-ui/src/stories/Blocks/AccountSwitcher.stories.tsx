@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { AccountSwitcher } from '../../blocks/account/AccountSwitcher';
 import type { BaseOrganization } from '../../blocks/account/AccountSwitcher';
 
@@ -68,11 +69,14 @@ export const PersonalAccount: Story = {
       displayName: 'John Doe',
     },
   },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <AccountSwitcher {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '300px' }}>
+        <AccountSwitcher {...args} />
+      </div>
+    );
+  },
 };
 
 // Organization account
@@ -88,11 +92,14 @@ export const OrganizationAccount: Story = {
       displayName: 'Acme Corp',
     },
   },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <AccountSwitcher {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '300px' }}>
+        <AccountSwitcher {...args} />
+      </div>
+    );
+  },
 };
 
 // No organizations
@@ -108,11 +115,14 @@ export const NoOrganizations: Story = {
       displayName: 'John Doe',
     },
   },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <AccountSwitcher {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '300px' }}>
+        <AccountSwitcher {...args} />
+      </div>
+    );
+  },
 };
 
 // Many organizations
@@ -132,11 +142,14 @@ export const ManyOrganizations: Story = {
       displayName: 'John Doe',
     },
   },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <AccountSwitcher {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '300px' }}>
+        <AccountSwitcher {...args} />
+      </div>
+    );
+  },
 };
 
 // Custom labels
@@ -157,11 +170,14 @@ export const CustomLabels: Story = {
       manageOrganizations: 'Manage Organizations',
     },
   },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <AccountSwitcher {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '300px' }}>
+        <AccountSwitcher {...args} />
+      </div>
+    );
+  },
 };
 
 // Custom width
@@ -179,9 +195,12 @@ export const CustomWidth: Story = {
     minWidth: '300px',
     dropdownWidth: '400px',
   },
-  render: (args) => (
-    <div style={{ width: '350px' }}>
-      <AccountSwitcher {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '350px' }}>
+        <AccountSwitcher {...args} />
+      </div>
+    );
+  },
 };

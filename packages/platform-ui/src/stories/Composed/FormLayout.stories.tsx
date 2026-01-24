@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import {
   FormSection,
   FormActions,
@@ -49,176 +50,228 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Basic form section
-export const BasicSection: Story = {
-  render: () => (
+const BasicSectionExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Personal Information" description="Enter your personal details">
-        <FormField label="Full Name" required>
+      <FormSection
+        title={t('storybook.demo.personalInformation')}
+        description={t('storybook.demo.enterPersonalDetails')}
+      >
+        <FormField label={t('storybook.demo.fullName')} required>
           <Textfield placeholder="John Doe" />
         </FormField>
-        <FormField label="Email" required>
+        <FormField label={t('platform.auth.email')} required>
           <Textfield type="email" placeholder="john@example.com" />
         </FormField>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const BasicSection: Story = {
+  render: () => <BasicSectionExample />,
 };
 
 // Collapsible section
-export const CollapsibleSection: Story = {
-  render: () => (
+const CollapsibleSectionExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
       <FormSection
-        title="Advanced Settings"
-        description="Optional advanced configuration"
+        title={t('storybook.demo.advancedSettings')}
+        description={t('storybook.demo.optionalAdvancedConfig')}
         collapsible
         defaultCollapsed={true}
       >
-        <FormField label="API Key">
-          <Textfield placeholder="Enter API key" />
+        <FormField label={t('storybook.demo.apiKey')}>
+          <Textfield placeholder={t('storybook.demo.enterApiKey')} />
         </FormField>
-        <FormField label="Webhook URL">
+        <FormField label={t('storybook.demo.webhookUrl')}>
           <Textfield placeholder="https://example.com/webhook" />
         </FormField>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const CollapsibleSection: Story = {
+  render: () => <CollapsibleSectionExample />,
 };
 
 // Form row with multiple columns
-export const FormRowTwoColumns: Story = {
-  render: () => (
+const FormRowTwoColumnsExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Contact Information">
+      <FormSection title={t('storybook.demo.contactInformation')}>
         <FormRow columns={2}>
-          <FormField label="First Name" required>
+          <FormField label={t('storybook.demo.firstName')} required>
             <Textfield placeholder="John" />
           </FormField>
-          <FormField label="Last Name" required>
+          <FormField label={t('storybook.demo.lastName')} required>
             <Textfield placeholder="Doe" />
           </FormField>
         </FormRow>
         <FormRow columns={2}>
-          <FormField label="Phone">
+          <FormField label={t('storybook.demo.phone')}>
             <Textfield type="tel" placeholder="+47 12 34 56 78" />
           </FormField>
-          <FormField label="Email" required>
+          <FormField label={t('platform.auth.email')} required>
             <Textfield type="email" placeholder="john@example.com" />
           </FormField>
         </FormRow>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormRowTwoColumns: Story = {
+  render: () => <FormRowTwoColumnsExample />,
 };
 
 // Form row with three columns
-export const FormRowThreeColumns: Story = {
-  render: () => (
+const FormRowThreeColumnsExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '800px' }}>
-      <FormSection title="Address">
+      <FormSection title={t('storybook.demo.address')}>
         <FormRow columns={3}>
-          <FormField label="Street">
+          <FormField label={t('storybook.demo.street')}>
             <Textfield placeholder="Storgata 1" />
           </FormField>
-          <FormField label="Postal Code">
+          <FormField label={t('storybook.demo.postalCode')}>
             <Textfield placeholder="0155" />
           </FormField>
-          <FormField label="City">
+          <FormField label={t('storybook.demo.city')}>
             <Textfield placeholder="Oslo" />
           </FormField>
         </FormRow>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormRowThreeColumns: Story = {
+  render: () => <FormRowThreeColumnsExample />,
 };
 
 // Form field with error
-export const FormFieldWithError: Story = {
-  render: () => (
+const FormFieldWithErrorExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Validation Example">
-        <FormField label="Email" required error="Please enter a valid email address">
+      <FormSection title={t('storybook.demo.validationExample')}>
+        <FormField
+          label={t('platform.auth.email')}
+          required
+          error={t('storybook.demo.invalidEmailError')}
+        >
           <Textfield type="email" placeholder="invalid-email" />
         </FormField>
-        <FormField label="Password" required helperText="Must be at least 8 characters">
+        <FormField
+          label={t('platform.auth.password')}
+          required
+          helperText={t('storybook.demo.passwordRequirements')}
+        >
           <Textfield type="password" />
         </FormField>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormFieldWithError: Story = {
+  render: () => <FormFieldWithErrorExample />,
 };
 
 // Form actions - right aligned
-export const FormActionsRight: Story = {
-  render: () => (
+const FormActionsRightExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Form with Actions">
-        <FormField label="Name">
-          <Textfield placeholder="Enter name" />
+      <FormSection title={t('storybook.demo.formWithActions')}>
+        <FormField label={t('storybook.demo.name')}>
+          <Textfield placeholder={t('storybook.demo.enterName')} />
         </FormField>
         <FormActions align="right">
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            Cancel
+            {t('platform.common.cancel')}
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            Save
+            {t('platform.common.save')}
           </Button>
         </FormActions>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormActionsRight: Story = {
+  render: () => <FormActionsRightExample />,
 };
 
 // Form actions - left aligned
-export const FormActionsLeft: Story = {
-  render: () => (
+const FormActionsLeftExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Form with Left Actions">
-        <FormField label="Name">
-          <Textfield placeholder="Enter name" />
+      <FormSection title={t('storybook.demo.formWithLeftActions')}>
+        <FormField label={t('storybook.demo.name')}>
+          <Textfield placeholder={t('storybook.demo.enterName')} />
         </FormField>
         <FormActions align="left">
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            Save
+            {t('platform.common.save')}
           </Button>
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            Cancel
+            {t('platform.common.cancel')}
           </Button>
         </FormActions>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormActionsLeft: Story = {
+  render: () => <FormActionsLeftExample />,
 };
 
 // Form actions - between
-export const FormActionsBetween: Story = {
-  render: () => (
+const FormActionsBetweenExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Form with Between Actions">
-        <FormField label="Name">
-          <Textfield placeholder="Enter name" />
+      <FormSection title={t('storybook.demo.formWithBetweenActions')}>
+        <FormField label={t('storybook.demo.name')}>
+          <Textfield placeholder={t('storybook.demo.enterName')} />
         </FormField>
         <FormActions align="between">
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            Delete
+            {t('platform.common.delete')}
           </Button>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
             <Button onClick={fn()} data-color="neutral" data-size="medium">
-              Cancel
+              {t('platform.common.cancel')}
             </Button>
             <Button onClick={fn()} data-color="accent" data-size="medium">
-              Save
+              {t('platform.common.save')}
             </Button>
           </div>
         </FormActions>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormActionsBetween: Story = {
+  render: () => <FormActionsBetweenExample />,
 };
 
 // Form actions - sticky
-export const FormActionsSticky: Story = {
-  render: () => (
+const FormActionsStickyExample = () => {
+  const t = useT();
+  return (
     <div
       style={{
         width: '600px',
@@ -227,89 +280,111 @@ export const FormActionsSticky: Story = {
         border: '1px solid var(--ds-color-neutral-border-subtle)',
       }}
     >
-      <FormSection title="Long Form">
+      <FormSection title={t('storybook.demo.longForm')}>
         {Array.from({ length: 10 }, (_, i) => (
-          <FormField key={i} label={`Field ${i + 1}`}>
-            <Textfield placeholder={`Enter value ${i + 1}`} />
+          <FormField key={i} label={`${t('storybook.demo.field')} ${i + 1}`}>
+            <Textfield placeholder={`${t('storybook.demo.enterValue')} ${i + 1}`} />
           </FormField>
         ))}
         <FormActions align="right" sticky>
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            Cancel
+            {t('platform.common.cancel')}
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            Save
+            {t('platform.common.save')}
           </Button>
         </FormActions>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormActionsSticky: Story = {
+  render: () => <FormActionsStickyExample />,
 };
 
 // Form divider
-export const FormDividerExample: Story = {
-  render: () => (
+const FormDividerExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Form Sections">
-        <FormField label="First Section Field">
-          <Textfield placeholder="Value 1" />
+      <FormSection title={t('storybook.demo.formSections')}>
+        <FormField label={t('storybook.demo.firstSectionField')}>
+          <Textfield placeholder={t('storybook.demo.value', { number: 1 })} />
         </FormField>
-        <FormDivider label="OR" />
-        <FormField label="Second Section Field">
-          <Textfield placeholder="Value 2" />
+        <FormDivider label={t('storybook.demo.or')} />
+        <FormField label={t('storybook.demo.secondSectionField')}>
+          <Textfield placeholder={t('storybook.demo.value', { number: 2 })} />
         </FormField>
       </FormSection>
     </div>
-  ),
+  );
+};
+
+export const FormDividerExampleStory: Story = {
+  name: 'FormDividerExample',
+  render: () => <FormDividerExample />,
 };
 
 // Complete form example
-export const CompleteForm: Story = {
-  render: () => (
+const CompleteFormExample = () => {
+  const t = useT();
+  return (
     <div style={{ width: '600px' }}>
-      <FormSection title="Personal Information" description="Tell us about yourself">
+      <FormSection
+        title={t('storybook.demo.personalInformation')}
+        description={t('storybook.demo.tellUsAboutYourself')}
+      >
         <FormRow columns={2}>
-          <FormField label="First Name" required>
+          <FormField label={t('storybook.demo.firstName')} required>
             <Textfield placeholder="John" />
           </FormField>
-          <FormField label="Last Name" required>
+          <FormField label={t('storybook.demo.lastName')} required>
             <Textfield placeholder="Doe" />
           </FormField>
         </FormRow>
-        <FormField label="Email" required helperText="We'll never share your email">
+        <FormField
+          label={t('platform.auth.email')}
+          required
+          helperText={t('storybook.demo.neverShareEmail')}
+        >
           <Textfield type="email" placeholder="john@example.com" />
         </FormField>
-        <FormField label="Bio">
-          <Textarea placeholder="Tell us about yourself" rows={4} />
+        <FormField label={t('storybook.demo.bio')}>
+          <Textarea placeholder={t('storybook.demo.tellUsAboutYourself')} rows={4} />
         </FormField>
       </FormSection>
 
       <FormDivider />
 
-      <FormSection title="Preferences" collapsible defaultCollapsed={true}>
-        <FormField label="Language">
+      <FormSection title={t('storybook.demo.preferences')} collapsible defaultCollapsed={true}>
+        <FormField label={t('storybook.demo.language')}>
           <Select>
             <option value="en">English</option>
             <option value="no">Norwegian</option>
           </Select>
         </FormField>
-        <FormField label="Theme">
+        <FormField label={t('storybook.demo.theme')}>
           <Select>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="auto">Auto</option>
+            <option value="light">{t('storybook.demo.light')}</option>
+            <option value="dark">{t('storybook.demo.dark')}</option>
+            <option value="auto">{t('storybook.demo.auto')}</option>
           </Select>
         </FormField>
       </FormSection>
 
       <FormActions align="right">
         <Button onClick={fn()} data-color="neutral" data-size="medium">
-          Cancel
+          {t('platform.common.cancel')}
         </Button>
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          Save Changes
+          {t('storybook.demo.saveChanges')}
         </Button>
       </FormActions>
     </div>
-  ),
+  );
+};
+
+export const CompleteForm: Story = {
+  render: () => <CompleteFormExample />,
 };

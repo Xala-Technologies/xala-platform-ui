@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { GuidelinesTab } from '../../blocks/GuidelinesTab';
 import { Paragraph } from '@digdir/designsystemet-react';
 
@@ -27,7 +28,7 @@ Accordion-style expandable rules and policies. Each section expands to show deta
     {
       id: 'cancellation',
       title: 'Avbestilling',
-      content: 'Avbestilling må skje senest 24 timer før...',
+      content: 'Avbestilling ma skje senest 24 timer for...',
     },
   ]}
 />
@@ -50,19 +51,19 @@ export const Default: Story = {
         id: 'cancellation',
         title: 'Avbestilling',
         content:
-          'Avbestilling må skje senest 24 timer før booket tidspunkt. Ved sen avbestilling kan det påløpe gebyrer.',
+          'Avbestilling ma skje senest 24 timer for booket tidspunkt. Ved sen avbestilling kan det palope gebyrer.',
       },
       {
         id: 'damages',
         title: 'Skader',
         content:
-          'Ved skader på utstyr eller lokale må dette rapporteres umiddelbart. Brukeren er ansvarlig for skader forårsaket av uaktsomhet.',
+          'Ved skader pa utstyr eller lokale ma dette rapporteres umiddelbart. Brukeren er ansvarlig for skader forarsaket av uaktsomhet.',
       },
       {
         id: 'usage',
         title: 'Bruksregler',
         content:
-          'Ressursen skal brukes i henhold til formålet. Misbruk kan føre til suspensjon av bookingrettigheter.',
+          'Ressursen skal brukes i henhold til formalet. Misbruk kan fore til suspensjon av bookingrettigheter.',
       },
     ],
   },
@@ -76,7 +77,7 @@ export const SingleSection: Story = {
         id: 'cancellation',
         title: 'Avbestilling',
         content:
-          'Avbestilling må skje senest 24 timer før booket tidspunkt. Ved sen avbestilling kan det påløpe gebyrer.',
+          'Avbestilling ma skje senest 24 timer for booket tidspunkt. Ved sen avbestilling kan det palope gebyrer.',
       },
     ],
   },
@@ -90,25 +91,25 @@ export const ManySections: Story = {
         id: 'cancellation',
         title: 'Avbestilling',
         content:
-          'Avbestilling må skje senest 24 timer før booket tidspunkt. Ved sen avbestilling kan det påløpe gebyrer.',
+          'Avbestilling ma skje senest 24 timer for booket tidspunkt. Ved sen avbestilling kan det palope gebyrer.',
       },
       {
         id: 'damages',
         title: 'Skader',
         content:
-          'Ved skader på utstyr eller lokale må dette rapporteres umiddelbart. Brukeren er ansvarlig for skader forårsaket av uaktsomhet.',
+          'Ved skader pa utstyr eller lokale ma dette rapporteres umiddelbart. Brukeren er ansvarlig for skader forarsaket av uaktsomhet.',
       },
       {
         id: 'usage',
         title: 'Bruksregler',
         content:
-          'Ressursen skal brukes i henhold til formålet. Misbruk kan føre til suspensjon av bookingrettigheter.',
+          'Ressursen skal brukes i henhold til formalet. Misbruk kan fore til suspensjon av bookingrettigheter.',
       },
       {
         id: 'access',
         title: 'Tilgang',
         content:
-          'Kun autoriserte brukere har tilgang til ressursen. Tilgangskort eller nøkkel må hentes ved resepsjonen.',
+          'Kun autoriserte brukere har tilgang til ressursen. Tilgangskort eller nokkel ma hentes ved resepsjonen.',
       },
       {
         id: 'cleanup',
@@ -134,10 +135,10 @@ export const WithReactNodeContent: Story = {
             </Paragraph>
             <ul style={{ paddingLeft: 'var(--ds-spacing-4)', margin: 0 }}>
               <li>
-                <Paragraph data-size="sm">24 timer før: Ingen gebyr</Paragraph>
+                <Paragraph data-size="sm">24 timer for: Ingen gebyr</Paragraph>
               </li>
               <li>
-                <Paragraph data-size="sm">12-24 timer før: 50% gebyr</Paragraph>
+                <Paragraph data-size="sm">12-24 timer for: 50% gebyr</Paragraph>
               </li>
               <li>
                 <Paragraph data-size="sm">Mindre enn 12 timer: Fullt gebyr</Paragraph>
@@ -150,7 +151,7 @@ export const WithReactNodeContent: Story = {
         id: 'damages',
         title: 'Skader',
         content:
-          'Ved skader på utstyr eller lokale må dette rapporteres umiddelbart. Brukeren er ansvarlig for skader forårsaket av uaktsomhet.',
+          'Ved skader pa utstyr eller lokale ma dette rapporteres umiddelbart. Brukeren er ansvarlig for skader forarsaket av uaktsomhet.',
       },
     ],
   },

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { HelpPanel } from '../../blocks/help/HelpPanel';
 import type { TooltipContent, GuideContent, FAQItem } from '../../blocks/help/HelpPanel';
 
@@ -61,11 +62,14 @@ export const Level1Tooltip: Story = {
     category: 'resourceRequests',
     closeable: true,
   },
-  render: (args) => (
-    <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
-      <HelpPanel {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
+        <HelpPanel {...args} />
+      </div>
+    );
+  },
 };
 
 // Level 2: Guide
@@ -100,11 +104,14 @@ export const Level2Guide: Story = {
     category: 'resourceRequests',
     closeable: true,
   },
-  render: (args) => (
-    <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
-      <HelpPanel {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
+        <HelpPanel {...args} />
+      </div>
+    );
+  },
 };
 
 // Level 3: FAQ
@@ -138,11 +145,14 @@ export const Level3FAQ: Story = {
     category: 'resourceRequests',
     closeable: true,
   },
-  render: (args) => (
-    <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
-      <HelpPanel {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
+        <HelpPanel {...args} />
+      </div>
+    );
+  },
 };
 
 // Not closeable
@@ -154,11 +164,14 @@ export const NotCloseable: Story = {
     category: 'resourceRequests',
     closeable: false,
   },
-  render: (args) => (
-    <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
-      <HelpPanel {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
+        <HelpPanel {...args} />
+      </div>
+    );
+  },
 };
 
 // Different categories
@@ -183,9 +196,12 @@ export const DifferentCategories: Story = {
     category: 'users',
     closeable: true,
   },
-  render: (args) => (
-    <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
-      <HelpPanel {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
+        <HelpPanel {...args} />
+      </div>
+    );
+  },
 };

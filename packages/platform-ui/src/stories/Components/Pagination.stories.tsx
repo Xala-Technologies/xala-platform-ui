@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Pagination, Heading } from '../../index';
 
 const meta: Meta<typeof Pagination> = {
@@ -171,45 +172,49 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  args: {
-    'aria-label': 'Pagination navigation',
+  render: function Render() {
+    const t = useT();
+    return <Pagination aria-label={t('storybook.demo.paginationNavigation')} />;
   },
 };
 
 export const Small: Story = {
-  args: {
-    'data-size': 'sm',
-    'aria-label': 'Small pagination',
+  render: function Render() {
+    const t = useT();
+    return <Pagination data-size="sm" aria-label={t('storybook.demo.smallPagination')} />;
   },
 };
 
 export const Medium: Story = {
-  args: {
-    'data-size': 'md',
-    'aria-label': 'Medium pagination',
+  render: function Render() {
+    const t = useT();
+    return <Pagination data-size="md" aria-label={t('storybook.demo.mediumPagination')} />;
   },
 };
 
 export const Large: Story = {
-  args: {
-    'data-size': 'lg',
-    'aria-label': 'Large pagination',
+  render: function Render() {
+    const t = useT();
+    return <Pagination data-size="lg" aria-label={t('storybook.demo.largePagination')} />;
   },
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-          <Pagination data-size="sm" aria-label="Small pagination" />
-          <Pagination data-size="md" aria-label="Medium pagination" />
-          <Pagination data-size="lg" aria-label="Large pagination" />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+            <Pagination data-size="sm" aria-label={t('storybook.demo.smallPagination')} />
+            <Pagination data-size="md" aria-label={t('storybook.demo.mediumPagination')} />
+            <Pagination data-size="lg" aria-label={t('storybook.demo.largePagination')} />
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

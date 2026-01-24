@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import {
   StatusTag,
   PaymentStatusBadge,
@@ -21,9 +22,9 @@ type Story = StoryObj<typeof meta>;
 type AnyStory = StoryObj<any>;
 
 export const StatusTagDefault: Story = {
-  args: {
-    children: 'Active',
-    color: 'success',
+  render: () => {
+    const t = useT();
+    return <StatusTag color="success">{t('platform.status.active')}</StatusTag>;
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { LoadingState, EmptyState, NotFoundState, ErrorState } from '../../composed/PageStates';
 import { Button } from '@digdir/designsystemet-react';
 import { Plus, FileText } from 'lucide-react';
@@ -49,149 +50,225 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // LoadingState - Small
+const LoadingSmallExample = () => {
+  const t = useT();
+  return <LoadingState label={t('platform.common.loading')} size="sm" />;
+};
+
 export const LoadingSmall: Story = {
-  render: () => <LoadingState label="Loading..." size="sm" />,
+  render: () => <LoadingSmallExample />,
 };
 
 // LoadingState - Medium
+const LoadingMediumExample = () => {
+  const t = useT();
+  return <LoadingState label={t('platform.common.loading')} size="md" />;
+};
+
 export const LoadingMedium: Story = {
-  render: () => <LoadingState label="Loading..." size="md" />,
+  render: () => <LoadingMediumExample />,
 };
 
 // LoadingState - Large
+const LoadingLargeExample = () => {
+  const t = useT();
+  return <LoadingState label={t('platform.common.loading')} size="lg" />;
+};
+
 export const LoadingLarge: Story = {
-  render: () => <LoadingState label="Loading..." size="lg" />,
+  render: () => <LoadingLargeExample />,
 };
 
 // LoadingState - Custom label
+const LoadingCustomLabelExample = () => {
+  const t = useT();
+  return <LoadingState label={t('storybook.demo.fetchingData')} size="md" />;
+};
+
 export const LoadingCustomLabel: Story = {
-  render: () => <LoadingState label="Fetching data..." size="md" />,
+  render: () => <LoadingCustomLabelExample />,
 };
 
 // EmptyState - Default
-export const EmptyDefault: Story = {
-  render: () => (
+const EmptyDefaultExample = () => {
+  const t = useT();
+  return (
     <EmptyState
-      title="No items found"
-      description="Get started by creating your first item."
+      title={t('storybook.demo.noItemsFound')}
+      description={t('storybook.demo.getStartedByCreating')}
       action={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          Create Item
+          {t('storybook.demo.createItem')}
         </Button>
       }
     />
-  ),
+  );
+};
+
+export const EmptyDefault: Story = {
+  render: () => <EmptyDefaultExample />,
 };
 
 // EmptyState - Compact
-export const EmptyCompact: Story = {
-  render: () => (
+const EmptyCompactExample = () => {
+  const t = useT();
+  return (
     <EmptyState
-      title="No results"
-      description="Try adjusting your search criteria."
+      title={t('storybook.demo.noResults')}
+      description={t('storybook.demo.tryAdjustingSearch')}
       variant="compact"
     />
-  ),
+  );
+};
+
+export const EmptyCompact: Story = {
+  render: () => <EmptyCompactExample />,
 };
 
 // EmptyState - With custom icon
-export const EmptyWithIcon: Story = {
-  render: () => (
+const EmptyWithIconExample = () => {
+  const t = useT();
+  return (
     <EmptyState
       icon={<FileText size={48} />}
-      title="No documents"
-      description="Upload your first document to get started."
+      title={t('storybook.demo.noDocuments')}
+      description={t('storybook.demo.uploadFirstDocument')}
       action={
         <Button onClick={fn()} data-color="accent" data-size="medium">
           <Plus size={16} style={{ marginRight: 'var(--ds-spacing-1)' }} />
-          Upload Document
+          {t('storybook.demo.uploadDocument')}
         </Button>
       }
     />
-  ),
+  );
+};
+
+export const EmptyWithIcon: Story = {
+  render: () => <EmptyWithIconExample />,
 };
 
 // EmptyState - Without action
+const EmptyNoActionExample = () => {
+  const t = useT();
+  return (
+    <EmptyState
+      title={t('storybook.demo.noItems')}
+      description={t('storybook.demo.noItemsToDisplay')}
+    />
+  );
+};
+
 export const EmptyNoAction: Story = {
-  render: () => <EmptyState title="No items" description="There are no items to display." />,
+  render: () => <EmptyNoActionExample />,
 };
 
 // NotFoundState - Default
-export const NotFoundDefault: Story = {
-  render: () => (
+const NotFoundDefaultExample = () => {
+  const t = useT();
+  return (
     <NotFoundState
-      title="Page not found"
-      description="The page you're looking for doesn't exist or has been moved."
+      title={t('platform.errors.notFound')}
+      description={t('storybook.demo.pageNotFoundDescription')}
       backLink={{
-        label: 'Go back',
+        label: t('platform.common.back'),
         href: '/',
         onClick: fn(),
       }}
     />
-  ),
+  );
+};
+
+export const NotFoundDefault: Story = {
+  render: () => <NotFoundDefaultExample />,
 };
 
 // NotFoundState - Without back link
-export const NotFoundNoBackLink: Story = {
-  render: () => (
+const NotFoundNoBackLinkExample = () => {
+  const t = useT();
+  return (
     <NotFoundState
-      title="Resource not found"
-      description="The requested resource could not be found."
+      title={t('storybook.demo.resourceNotFound')}
+      description={t('storybook.demo.resourceNotFoundDescription')}
     />
-  ),
+  );
+};
+
+export const NotFoundNoBackLink: Story = {
+  render: () => <NotFoundNoBackLinkExample />,
 };
 
 // NotFoundState - Custom title and description
-export const NotFoundCustom: Story = {
-  render: () => (
+const NotFoundCustomExample = () => {
+  const t = useT();
+  return (
     <NotFoundState
       title="404"
-      description="We couldn't find what you're looking for."
+      description={t('storybook.demo.couldNotFind')}
       backLink={{
-        label: 'Return home',
+        label: t('storybook.demo.returnHome'),
         href: '/',
       }}
     />
-  ),
+  );
+};
+
+export const NotFoundCustom: Story = {
+  render: () => <NotFoundCustomExample />,
 };
 
 // ErrorState - Default
-export const ErrorDefault: Story = {
-  render: () => (
+const ErrorDefaultExample = () => {
+  const t = useT();
+  return (
     <ErrorState
-      title="Something went wrong"
-      description="An error occurred while loading this content."
+      title={t('platform.errors.serverError')}
+      description={t('storybook.demo.errorWhileLoading')}
       onRetry={fn()}
-      retryLabel="Try again"
+      retryLabel={t('storybook.demo.tryAgain')}
     />
-  ),
+  );
+};
+
+export const ErrorDefault: Story = {
+  render: () => <ErrorDefaultExample />,
 };
 
 // ErrorState - Custom title
-export const ErrorCustom: Story = {
-  render: () => (
+const ErrorCustomExample = () => {
+  const t = useT();
+  return (
     <ErrorState
-      title="Failed to load"
-      description="Please check your connection and try again."
+      title={t('storybook.demo.failedToLoad')}
+      description={t('storybook.demo.checkConnectionAndRetry')}
       onRetry={fn()}
-      retryLabel="Retry"
+      retryLabel={t('storybook.demo.retry')}
     />
-  ),
+  );
+};
+
+export const ErrorCustom: Story = {
+  render: () => <ErrorCustomExample />,
 };
 
 // ErrorState - Without retry
-export const ErrorNoRetry: Story = {
-  render: () => (
+const ErrorNoRetryExample = () => {
+  const t = useT();
+  return (
     <ErrorState
-      title="Error"
-      description="An unexpected error occurred. Please contact support if the problem persists."
+      title={t('platform.errors.serverError')}
+      description={t('storybook.demo.unexpectedErrorContactSupport')}
     />
-  ),
+  );
+};
+
+export const ErrorNoRetry: Story = {
+  render: () => <ErrorNoRetryExample />,
 };
 
 // All states showcase
-export const AllStates: Story = {
-  render: () => (
+const AllStatesExample = () => {
+  const t = useT();
+  return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       <div
         style={{
@@ -199,7 +276,7 @@ export const AllStates: Story = {
           borderRadius: 'var(--ds-border-radius-md)',
         }}
       >
-        <LoadingState label="Loading content..." size="md" />
+        <LoadingState label={t('storybook.demo.loadingContent')} size="md" />
       </div>
       <div
         style={{
@@ -208,11 +285,11 @@ export const AllStates: Story = {
         }}
       >
         <EmptyState
-          title="No items"
-          description="Create your first item to get started."
+          title={t('storybook.demo.noItems')}
+          description={t('storybook.demo.createFirstToGetStarted')}
           action={
             <Button onClick={fn()} data-color="accent" data-size="medium">
-              Create Item
+              {t('storybook.demo.createItem')}
             </Button>
           }
         />
@@ -224,9 +301,9 @@ export const AllStates: Story = {
         }}
       >
         <NotFoundState
-          title="Not found"
-          description="The requested resource could not be found."
-          backLink={{ label: 'Go back', href: '/' }}
+          title={t('platform.errors.notFound')}
+          description={t('storybook.demo.resourceNotFoundDescription')}
+          backLink={{ label: t('platform.common.back'), href: '/' }}
         />
       </div>
       <div
@@ -236,11 +313,15 @@ export const AllStates: Story = {
         }}
       >
         <ErrorState
-          title="Error"
-          description="Something went wrong. Please try again."
+          title={t('platform.errors.serverError')}
+          description={t('storybook.demo.somethingWentWrongTryAgain')}
           onRetry={fn()}
         />
       </div>
     </div>
-  ),
+  );
+};
+
+export const AllStates: Story = {
+  render: () => <AllStatesExample />,
 };

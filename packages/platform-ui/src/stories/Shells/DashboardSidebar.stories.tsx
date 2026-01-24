@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { MemoryRouter } from 'react-router-dom';
 import { DashboardSidebar, type SidebarSection } from '../../index';
 import {
@@ -31,22 +32,25 @@ const meta: Meta<typeof DashboardSidebar> = {
   title: 'Shells/DashboardSidebar',
   component: DashboardSidebar,
   decorators: [
-    (Story) => (
-      <MemoryRouter initialEntries={['/']}>
-        <div style={{ height: '600px', display: 'flex' }}>
-          <Story />
-          <div
-            style={{
-              flex: 1,
-              padding: 'var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-neutral-background-default)',
-            }}
-          >
-            <p>Main content area</p>
+    (Story) => {
+      const t = useT();
+      return (
+        <MemoryRouter initialEntries={['/']}>
+          <div style={{ height: '600px', display: 'flex' }}>
+            <Story />
+            <div
+              style={{
+                flex: 1,
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-background-default)',
+              }}
+            >
+              <p>{t('storybook.layout.mainContentArea')}</p>
+            </div>
           </div>
-        </div>
-      </MemoryRouter>
-    ),
+        </MemoryRouter>
+      );
+    },
   ],
   parameters: {
     layout: 'fullscreen',
@@ -100,91 +104,103 @@ const SampleLogo = () => (
   </div>
 );
 
-// Sample navigation sections
-const defaultSections: SidebarSection[] = [
-  {
-    title: 'Oversikt',
-    items: [
-      {
-        name: 'Hjem',
-        description: 'Din startside',
-        href: '/',
-        icon: <HomeIcon size={24} />,
-      },
-      {
-        name: 'Mine resourceRequester',
-        description: 'Se og administrer resourceRequester',
-        href: '/resourceRequests',
-        icon: <CalendarIcon size={24} />,
-        badge: 3,
-      },
-      {
-        name: 'Meldinger',
-        description: 'Samtaler og varsler',
-        href: '/messages',
-        icon: <InboxIcon size={24} />,
-        badge: 5,
-        badgeColor: 'danger',
-      },
-    ],
-  },
-  {
-    title: 'Administrasjon',
-    items: [
-      {
-        name: 'Rapporter',
-        description: 'Statistikk og analyser',
-        href: '/reports',
-        icon: <ChartIcon size={24} />,
-      },
-      {
-        name: 'Organisasjoner',
-        description: 'Administrer organisasjoner',
-        href: '/organizations',
-        icon: <BuildingIcon size={24} />,
-      },
-    ],
-  },
-  {
-    title: 'Innstillinger',
-    items: [
-      {
-        name: 'Profil',
-        description: 'Din profil og konto',
-        href: '/profile',
-        icon: <UserIcon size={24} />,
-      },
-      {
-        name: 'Varsler',
-        description: 'Varslingsinnstillinger',
-        href: '/notifications',
-        icon: <BellIcon size={24} />,
-      },
-      {
-        name: 'Innstillinger',
-        description: 'Systeminnstillinger',
-        href: '/settings',
-        icon: <SettingsIcon size={24} />,
-      },
-    ],
-  },
-];
+// Sample navigation sections helper
+const useDefaultSections = (): SidebarSection[] => {
+  const t = useT();
+  return [
+    {
+      title: t('storybook.sidebar.overview'),
+      items: [
+        {
+          name: t('storybook.sidebar.home'),
+          description: t('storybook.sidebar.yourStartPage'),
+          href: '/',
+          icon: <HomeIcon size={24} />,
+        },
+        {
+          name: t('storybook.sidebar.myBookings'),
+          description: t('storybook.sidebar.viewAndManageBookings'),
+          href: '/resourceRequests',
+          icon: <CalendarIcon size={24} />,
+          badge: 3,
+        },
+        {
+          name: t('storybook.sidebar.messages'),
+          description: t('storybook.sidebar.conversationsAndAlerts'),
+          href: '/messages',
+          icon: <InboxIcon size={24} />,
+          badge: 5,
+          badgeColor: 'danger',
+        },
+      ],
+    },
+    {
+      title: t('storybook.sidebar.administration'),
+      items: [
+        {
+          name: t('storybook.sidebar.reports'),
+          description: t('storybook.sidebar.statisticsAndAnalytics'),
+          href: '/reports',
+          icon: <ChartIcon size={24} />,
+        },
+        {
+          name: t('storybook.sidebar.organizations'),
+          description: t('storybook.sidebar.manageOrganizations'),
+          href: '/organizations',
+          icon: <BuildingIcon size={24} />,
+        },
+      ],
+    },
+    {
+      title: t('platform.common.settings'),
+      items: [
+        {
+          name: t('storybook.sidebar.profile'),
+          description: t('storybook.sidebar.yourProfileAndAccount'),
+          href: '/profile',
+          icon: <UserIcon size={24} />,
+        },
+        {
+          name: t('storybook.sidebar.notifications'),
+          description: t('storybook.sidebar.notificationSettings'),
+          href: '/notifications',
+          icon: <BellIcon size={24} />,
+        },
+        {
+          name: t('platform.common.settings'),
+          description: t('storybook.sidebar.systemSettings'),
+          href: '/settings',
+          icon: <SettingsIcon size={24} />,
+        },
+      ],
+    },
+  ];
+};
 
-const sampleUser = {
-  name: 'Ola Nordmann',
-  email: 'ola.nordmann@example.com',
+const useSampleUser = () => {
+  const t = useT();
+  return {
+    name: t('storybook.sidebar.sampleUserName'),
+    email: 'ola.nordmann@example.com',
+  };
 };
 
 /**
  * Default sidebar with all sections
  */
 export const Default: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Digilist',
-    subtitle: 'Min Side',
-    sections: defaultSections,
-    user: sampleUser,
+  render: () => {
+    const sections = useDefaultSections();
+    const user = useSampleUser();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title="Digilist"
+        subtitle={useT()('storybook.sidebar.myPage')}
+        sections={sections}
+        user={user}
+      />
+    );
   },
 };
 
@@ -192,11 +208,17 @@ export const Default: Story = {
  * Sidebar without user info
  */
 export const WithoutUser: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Digilist',
-    subtitle: 'Admin',
-    sections: defaultSections,
+  render: () => {
+    const t = useT();
+    const sections = useDefaultSections();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title="Digilist"
+        subtitle={t('storybook.sidebar.admin')}
+        sections={sections}
+      />
+    );
   },
 };
 
@@ -204,11 +226,12 @@ export const WithoutUser: Story = {
  * Sidebar without subtitle
  */
 export const WithoutSubtitle: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Digilist',
-    sections: defaultSections,
-    user: sampleUser,
+  render: () => {
+    const sections = useDefaultSections();
+    const user = useSampleUser();
+    return (
+      <DashboardSidebar logo={<SampleLogo />} title="Digilist" sections={sections} user={user} />
+    );
   },
 };
 
@@ -216,29 +239,40 @@ export const WithoutSubtitle: Story = {
  * Minimal sidebar (no sections titles)
  */
 export const MinimalSections: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'App',
-    sections: [
-      {
-        items: [
-          { name: 'Dashboard', description: 'Overview', href: '/', icon: <HomeIcon size={24} /> },
+  render: () => {
+    const t = useT();
+    const user = useSampleUser();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title={t('storybook.sidebar.app')}
+        sections={[
           {
-            name: 'Calendar',
-            description: 'ResourceRequests',
-            href: '/calendar',
-            icon: <CalendarIcon size={24} />,
+            items: [
+              {
+                name: t('platform.nav.dashboard'),
+                description: t('storybook.layout.overview'),
+                href: '/',
+                icon: <HomeIcon size={24} />,
+              },
+              {
+                name: t('storybook.sidebar.calendar'),
+                description: t('storybook.sidebar.bookings'),
+                href: '/calendar',
+                icon: <CalendarIcon size={24} />,
+              },
+              {
+                name: t('platform.common.settings'),
+                description: t('storybook.sidebar.preferences'),
+                href: '/settings',
+                icon: <SettingsIcon size={24} />,
+              },
+            ],
           },
-          {
-            name: 'Settings',
-            description: 'Preferences',
-            href: '/settings',
-            icon: <SettingsIcon size={24} />,
-          },
-        ],
-      },
-    ],
-    user: sampleUser,
+        ]}
+        user={user}
+      />
+    );
   },
 };
 
@@ -246,12 +280,18 @@ export const MinimalSections: Story = {
  * Narrower width
  */
 export const NarrowWidth: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Digilist',
-    sections: defaultSections,
-    user: sampleUser,
-    width: 300,
+  render: () => {
+    const sections = useDefaultSections();
+    const user = useSampleUser();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title="Digilist"
+        sections={sections}
+        user={user}
+        width={300}
+      />
+    );
   },
 };
 
@@ -259,12 +299,18 @@ export const NarrowWidth: Story = {
  * Wider width
  */
 export const WideWidth: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Digilist',
-    sections: defaultSections,
-    user: sampleUser,
-    width: 500,
+  render: () => {
+    const sections = useDefaultSections();
+    const user = useSampleUser();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title="Digilist"
+        sections={sections}
+        user={user}
+        width={500}
+      />
+    );
   },
 };
 
@@ -272,39 +318,45 @@ export const WideWidth: Story = {
  * With many badges
  */
 export const WithBadges: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Digilist',
-    subtitle: 'Notifications Demo',
-    sections: [
-      {
-        title: 'Navigation',
-        items: [
+  render: () => {
+    const t = useT();
+    const user = useSampleUser();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title="Digilist"
+        subtitle={t('storybook.sidebar.notificationsDemo')}
+        sections={[
           {
-            name: 'Inbox',
-            description: 'New messages',
-            href: '/inbox',
-            icon: <InboxIcon size={24} />,
-            badge: 12,
+            title: t('storybook.sidebar.navigation'),
+            items: [
+              {
+                name: t('storybook.sidebar.inbox'),
+                description: t('storybook.sidebar.newMessages'),
+                href: '/inbox',
+                icon: <InboxIcon size={24} />,
+                badge: 12,
+              },
+              {
+                name: t('storybook.sidebar.tasks'),
+                description: t('storybook.sidebar.pendingTasks'),
+                href: '/tasks',
+                icon: <CalendarIcon size={24} />,
+                badge: 5,
+              },
+              {
+                name: t('storybook.sidebar.alerts'),
+                description: t('storybook.sidebar.systemAlerts'),
+                href: '/alerts',
+                icon: <BellIcon size={24} />,
+                badge: 99,
+              },
+            ],
           },
-          {
-            name: 'Tasks',
-            description: 'Pending tasks',
-            href: '/tasks',
-            icon: <CalendarIcon size={24} />,
-            badge: 5,
-          },
-          {
-            name: 'Alerts',
-            description: 'System alerts',
-            href: '/alerts',
-            icon: <BellIcon size={24} />,
-            badge: 99,
-          },
-        ],
-      },
-    ],
-    user: sampleUser,
+        ]}
+        user={user}
+      />
+    );
   },
 };
 
@@ -312,68 +364,73 @@ export const WithBadges: Story = {
  * Backoffice admin layout
  */
 export const BackofficeLayout: Story = {
-  args: {
-    logo: <SampleLogo />,
-    title: 'Backoffice',
-    subtitle: 'Administrator',
-    sections: [
-      {
-        title: 'Dashboard',
-        items: [
+  render: () => {
+    const t = useT();
+    return (
+      <DashboardSidebar
+        logo={<SampleLogo />}
+        title={t('storybook.sidebar.backoffice')}
+        subtitle={t('storybook.sidebar.administrator')}
+        sections={[
           {
-            name: 'Oversikt',
-            description: 'Hovedoversikt',
-            href: '/',
-            icon: <HomeIcon size={24} />,
+            title: t('platform.nav.dashboard'),
+            items: [
+              {
+                name: t('storybook.sidebar.overview'),
+                description: t('storybook.sidebar.mainOverview'),
+                href: '/',
+                icon: <HomeIcon size={24} />,
+              },
+              {
+                name: t('storybook.sidebar.reports'),
+                description: t('storybook.sidebar.statistics'),
+                href: '/reports',
+                icon: <ChartIcon size={24} />,
+              },
+            ],
           },
           {
-            name: 'Rapporter',
-            description: 'Statistikk',
-            href: '/reports',
-            icon: <ChartIcon size={24} />,
-          },
-        ],
-      },
-      {
-        title: 'ResourceRequest',
-        items: [
-          {
-            name: 'Alle resourceRequester',
-            description: 'Se alle resourceRequester',
-            href: '/resourceRequests',
-            icon: <CalendarIcon size={24} />,
-            badge: 15,
-          },
-          {
-            name: 'Ventende',
-            description: 'Godkjenning påkrevd',
-            href: '/pending',
-            icon: <InboxIcon size={24} />,
-            badge: 3,
-          },
-        ],
-      },
-      {
-        title: 'Brukere',
-        items: [
-          {
-            name: 'Brukeradministrasjon',
-            description: 'Administrer brukere',
-            href: '/users',
-            icon: <UserIcon size={24} />,
+            title: t('storybook.sidebar.bookings'),
+            items: [
+              {
+                name: t('storybook.sidebar.allBookings'),
+                description: t('storybook.sidebar.viewAllBookings'),
+                href: '/resourceRequests',
+                icon: <CalendarIcon size={24} />,
+                badge: 15,
+              },
+              {
+                name: t('storybook.sidebar.pending'),
+                description: t('storybook.sidebar.approvalRequired'),
+                href: '/pending',
+                icon: <InboxIcon size={24} />,
+                badge: 3,
+              },
+            ],
           },
           {
-            name: 'Organisasjoner',
-            description: 'Administrer org',
-            href: '/orgs',
-            icon: <BuildingIcon size={24} />,
+            title: t('storybook.sidebar.users'),
+            items: [
+              {
+                name: t('storybook.sidebar.userAdministration'),
+                description: t('storybook.sidebar.manageUsers'),
+                href: '/users',
+                icon: <UserIcon size={24} />,
+              },
+              {
+                name: t('storybook.sidebar.organizations'),
+                description: t('storybook.sidebar.manageOrg'),
+                href: '/orgs',
+                icon: <BuildingIcon size={24} />,
+              },
+            ],
           },
-        ],
-      },
-    ],
-    user: {
-      name: 'Admin User',
-      email: 'admin@kommune.no',
-    },
+        ]}
+        user={{
+          name: t('storybook.sidebar.adminUser'),
+          email: 'admin@kommune.no',
+        }}
+      />
+    );
   },
 };

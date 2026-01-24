@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Tooltip, Button } from '../../index';
 
 const meta: Meta = {
@@ -110,8 +112,8 @@ Tooltip displays additional information when users hover over or focus on an ele
 
 ### With Delay
 \`\`\`tsx
-<Tooltip 
-  content="Delayed tooltip" 
+<Tooltip
+  content="Delayed tooltip"
   delayShow={500}
   delayHide={200}
 >
@@ -190,7 +192,7 @@ Use clear, concise text:
 \`\`\`tsx
 const FormField = () => {
   const [showTooltip, setShowTooltip] = useState(false);
-  
+
   return (
     <Field>
       <Label>
@@ -215,7 +217,7 @@ const FormField = () => {
 
 ### Dismissible Tooltip
 \`\`\`tsx
-<Tooltip 
+<Tooltip
   content="Press Escape to close this tooltip"
   dismissible
   trigger="click"
@@ -234,61 +236,75 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Tooltip content="This is a tooltip">
-      <Button type="button">Hover me</Button>
-    </Tooltip>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Tooltip content={t('storybook.demo.thisIsATooltip')}>
+        <Button type="button">{t('storybook.demo.hoverMe')}</Button>
+      </Tooltip>
+    );
+  },
 };
 
 export const Placements: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 'var(--ds-spacing-6)',
-        padding: 'var(--ds-spacing-10)',
-        placeItems: 'center',
-      }}
-    >
-      <div />
-      <Tooltip content="Top tooltip" placement="top">
-        <Button variant="secondary" type="button">
-          Top
-        </Button>
-      </Tooltip>
-      <div />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 'var(--ds-spacing-6)',
+          padding: 'var(--ds-spacing-10)',
+          placeItems: 'center',
+        }}
+      >
+        <div />
+        <Tooltip content={t('storybook.demo.topTooltip')} placement="top">
+          <Button variant="secondary" type="button">
+            {t('storybook.demo.top')}
+          </Button>
+        </Tooltip>
+        <div />
 
-      <Tooltip content="Left tooltip" placement="left">
-        <Button variant="secondary" type="button">
-          Left
-        </Button>
-      </Tooltip>
-      <div />
-      <Tooltip content="Right tooltip" placement="right">
-        <Button variant="secondary" type="button">
-          Right
-        </Button>
-      </Tooltip>
+        <Tooltip content={t('storybook.demo.leftTooltip')} placement="left">
+          <Button variant="secondary" type="button">
+            {t('storybook.demo.left')}
+          </Button>
+        </Tooltip>
+        <div />
+        <Tooltip content={t('storybook.demo.rightTooltip')} placement="right">
+          <Button variant="secondary" type="button">
+            {t('storybook.demo.right')}
+          </Button>
+        </Tooltip>
 
-      <div />
-      <Tooltip content="Bottom tooltip" placement="bottom">
-        <Button variant="secondary" type="button">
-          Bottom
-        </Button>
-      </Tooltip>
-      <div />
-    </div>
-  ),
+        <div />
+        <Tooltip content={t('storybook.demo.bottomTooltip')} placement="bottom">
+          <Button variant="secondary" type="button">
+            {t('storybook.demo.bottom')}
+          </Button>
+        </Tooltip>
+        <div />
+      </div>
+    );
+  },
 };
 
 export const OnIcon: Story = {
-  render: () => (
-    <Tooltip content="More information about this feature">
-      <Button variant="tertiary" data-size="sm" aria-label="Information" type="button">
-        Info
-      </Button>
-    </Tooltip>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Tooltip content={t('storybook.demo.moreInformationAboutFeature')}>
+        <Button
+          variant="tertiary"
+          data-size="sm"
+          aria-label={t('storybook.demo.information')}
+          type="button"
+        >
+          {t('storybook.demo.info')}
+        </Button>
+      </Tooltip>
+    );
+  },
 };

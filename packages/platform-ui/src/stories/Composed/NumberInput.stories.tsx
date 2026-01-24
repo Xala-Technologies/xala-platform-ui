@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { NumberInput } from '../../composed/NumberInput';
 
 const meta: Meta<typeof NumberInput> = {
@@ -80,94 +81,157 @@ export const Default: Story = {
   },
 };
 
+// Wrapper for with label story
+const WithLabelDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.quantity')}
+      defaultValue={5}
+      min={0}
+      max={100}
+      step={1}
+      size="md"
+      onChange={fn()}
+    />
+  );
+};
+
 // With label
 export const WithLabel: Story = {
-  args: {
-    label: 'Quantity',
-    defaultValue: 5,
-    min: 0,
-    max: 100,
-    step: 1,
-    size: 'md',
-  },
+  render: () => <WithLabelDemo />,
+};
+
+// Wrapper for min max story
+const WithMinMaxDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.age')}
+      defaultValue={25}
+      min={0}
+      max={120}
+      step={1}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // With min and max
 export const WithMinMax: Story = {
-  args: {
-    label: 'Age',
-    defaultValue: 25,
-    min: 0,
-    max: 120,
-    step: 1,
-    size: 'md',
-  },
+  render: () => <WithMinMaxDemo />,
+};
+
+// Wrapper for step story
+const WithStepDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.stepBy5')}
+      defaultValue={10}
+      min={0}
+      max={100}
+      step={5}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // With step
 export const WithStep: Story = {
-  args: {
-    label: 'Step by 5',
-    defaultValue: 10,
-    min: 0,
-    max: 100,
-    step: 5,
-    size: 'md',
-  },
+  render: () => <WithStepDemo />,
+};
+
+// Wrapper for decimal story
+const DecimalPrecisionDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.price')}
+      defaultValue={9.99}
+      min={0}
+      max={1000}
+      step={0.01}
+      precision={2}
+      allowDecimal={true}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // Decimal precision
 export const DecimalPrecision: Story = {
-  args: {
-    label: 'Price',
-    defaultValue: 9.99,
-    min: 0,
-    max: 1000,
-    step: 0.01,
-    precision: 2,
-    allowDecimal: true,
-    size: 'md',
-  },
+  render: () => <DecimalPrecisionDemo />,
+};
+
+// Wrapper for prefix story
+const WithPrefixDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.price')}
+      defaultValue={100}
+      prefix="$"
+      min={0}
+      max={10000}
+      step={10}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // With prefix
 export const WithPrefix: Story = {
-  args: {
-    label: 'Price',
-    defaultValue: 100,
-    prefix: '$',
-    min: 0,
-    max: 10000,
-    step: 10,
-    size: 'md',
-  },
+  render: () => <WithPrefixDemo />,
+};
+
+// Wrapper for suffix story
+const WithSuffixDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.weight')}
+      defaultValue={50}
+      suffix="kg"
+      min={0}
+      max={200}
+      step={1}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // With suffix
 export const WithSuffix: Story = {
-  args: {
-    label: 'Weight',
-    defaultValue: 50,
-    suffix: 'kg',
-    min: 0,
-    max: 200,
-    step: 1,
-    size: 'md',
-  },
+  render: () => <WithSuffixDemo />,
+};
+
+// Wrapper for prefix and suffix story
+const WithPrefixAndSuffixDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.amount')}
+      defaultValue={1000}
+      prefix="NOK"
+      suffix="kr"
+      min={0}
+      max={100000}
+      step={100}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // With prefix and suffix
 export const WithPrefixAndSuffix: Story = {
-  args: {
-    label: 'Amount',
-    defaultValue: 1000,
-    prefix: 'NOK',
-    suffix: 'kr',
-    min: 0,
-    max: 100000,
-    step: 100,
-    size: 'md',
-  },
+  render: () => <WithPrefixAndSuffixDemo />,
 };
 
 // Size variants
@@ -205,30 +269,48 @@ export const WithoutControls: Story = {
   },
 };
 
+// Wrapper for error story
+const WithErrorDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.quantity')}
+      defaultValue={150}
+      min={0}
+      max={100}
+      step={1}
+      error={t('storybook.demo.valueMustBeBetween')}
+      size="md"
+      onChange={fn()}
+    />
+  );
+};
+
 // With error
 export const WithError: Story = {
-  args: {
-    label: 'Quantity',
-    defaultValue: 150,
-    min: 0,
-    max: 100,
-    step: 1,
-    error: 'Value must be between 0 and 100',
-    size: 'md',
-  },
+  render: () => <WithErrorDemo />,
+};
+
+// Wrapper for helper text story
+const WithHelperTextDemo = () => {
+  const t = useT();
+  return (
+    <NumberInput
+      label={t('storybook.demo.quantity')}
+      defaultValue={10}
+      min={0}
+      max={100}
+      step={1}
+      helperText={t('storybook.demo.enterValueBetween')}
+      size="md"
+      onChange={fn()}
+    />
+  );
 };
 
 // With helper text
 export const WithHelperText: Story = {
-  args: {
-    label: 'Quantity',
-    defaultValue: 10,
-    min: 0,
-    max: 100,
-    step: 1,
-    helperText: 'Enter a value between 0 and 100',
-    size: 'md',
-  },
+  render: () => <WithHelperTextDemo />,
 };
 
 // Disabled
@@ -273,13 +355,19 @@ export const PositiveOnly: Story = {
   },
 };
 
+// Wrapper for all sizes story
+const AllSizesDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      <NumberInput label={t('storybook.demo.small')} defaultValue={10} size="sm" onChange={fn()} />
+      <NumberInput label={t('storybook.demo.medium')} defaultValue={10} size="md" onChange={fn()} />
+      <NumberInput label={t('storybook.demo.large')} defaultValue={10} size="lg" onChange={fn()} />
+    </div>
+  );
+};
+
 // All sizes showcase
 export const AllSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <NumberInput label="Small" defaultValue={10} size="sm" onChange={fn()} />
-      <NumberInput label="Medium" defaultValue={10} size="md" onChange={fn()} />
-      <NumberInput label="Large" defaultValue={10} size="lg" onChange={fn()} />
-    </div>
-  ),
+  render: () => <AllSizesDemo />,
 };

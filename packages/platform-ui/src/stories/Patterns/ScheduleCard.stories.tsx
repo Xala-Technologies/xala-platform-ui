@@ -4,6 +4,7 @@
  * Schedule display component for showing time-based entries.
  */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { ScheduleCard, type ScheduleCardProps } from '../../patterns/ScheduleCard';
 import type { ScheduleEntry } from '../../patterns/types';
 

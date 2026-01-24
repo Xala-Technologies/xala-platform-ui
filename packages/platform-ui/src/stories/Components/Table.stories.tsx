@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { Table } from '../../index';
 
 const meta: Meta = {
@@ -268,29 +270,29 @@ const SortableTable = () => {
     key: 'name',
     direction: 'ascending'
   });
-  
+
   const handleSort = (key: string) => {
     let direction = 'ascending';
     if (sortConfig.key === key && sortConfig.direction === 'ascending') {
       direction = 'descending';
     }
     setSortConfig({ key, direction });
-    
+
     const sortedData = [...data].sort((a, b) => {
       if (a[key] < b[key]) return direction === 'ascending' ? -1 : 1;
       if (a[key] > b[key]) return direction === 'ascending' ? 1 : -1;
       return 0;
     });
-    
+
     setData(sortedData);
   };
-  
+
   return (
     <Table>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>
-            <button 
+            <button
               onClick={() => handleSort('name')}
               aria-label={\`Sort by name, currently \${sortConfig.direction}\`}
             >
@@ -298,7 +300,7 @@ const SortableTable = () => {
             </button>
           </Table.HeaderCell>
           <Table.HeaderCell>
-            <button 
+            <button
               onClick={() => handleSort('price')}
               aria-label={\`Sort by price, currently \${sortConfig.direction}\`}
             >
@@ -330,144 +332,156 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Table>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Name</Table.HeaderCell>
-          <Table.HeaderCell>Location</Table.HeaderCell>
-          <Table.HeaderCell>Capacity</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>Tennis Court A</Table.Cell>
-          <Table.Cell>Building 1</Table.Cell>
-          <Table.Cell>4</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Football Field</Table.Cell>
-          <Table.Cell>Outdoor</Table.Cell>
-          <Table.Cell>22</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Swimming Pool</Table.Cell>
-          <Table.Cell>Building 2</Table.Cell>
-          <Table.Cell>30</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>{t('storybook.demo.name')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('storybook.demo.location')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('storybook.demo.capacity')}</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>{t('storybook.demo.tennisCourt')} A</Table.Cell>
+            <Table.Cell>{t('storybook.demo.building')} 1</Table.Cell>
+            <Table.Cell>4</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>{t('storybook.demo.footballField')}</Table.Cell>
+            <Table.Cell>{t('storybook.demo.outdoor')}</Table.Cell>
+            <Table.Cell>22</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>{t('storybook.demo.swimmingPool')}</Table.Cell>
+            <Table.Cell>{t('storybook.demo.building')} 2</Table.Cell>
+            <Table.Cell>30</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    );
+  },
 };
 
 export const WithCaption: Story = {
-  render: () => (
-    <Table>
-      <caption>Available Resources</caption>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Resource</Table.HeaderCell>
-          <Table.HeaderCell>Price/hour</Table.HeaderCell>
-          <Table.HeaderCell>Available</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>Tennis Court</Table.Cell>
-          <Table.Cell>200 kr</Table.Cell>
-          <Table.Cell>Yes</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Basketball Court</Table.Cell>
-          <Table.Cell>300 kr</Table.Cell>
-          <Table.Cell>No</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Table>
+        <caption>{t('storybook.demo.availableResources')}</caption>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>{t('storybook.demo.resource')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('storybook.demo.pricePerHour')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('storybook.demo.available')}</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>{t('storybook.demo.tennisCourt')}</Table.Cell>
+            <Table.Cell>200 kr</Table.Cell>
+            <Table.Cell>{t('storybook.demo.yes')}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>{t('storybook.demo.basketballCourt')}</Table.Cell>
+            <Table.Cell>300 kr</Table.Cell>
+            <Table.Cell>{t('storybook.demo.no')}</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    );
+  },
 };
 
 export const Zebra: Story = {
-  render: () => (
-    <Table zebra>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Date</Table.HeaderCell>
-          <Table.HeaderCell>ResourceRequest</Table.HeaderCell>
-          <Table.HeaderCell>Status</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>2024-01-15</Table.Cell>
-          <Table.Cell>Tennis Court A</Table.Cell>
-          <Table.Cell>Confirmed</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>2024-01-16</Table.Cell>
-          <Table.Cell>Swimming Pool</Table.Cell>
-          <Table.Cell>Pending</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>2024-01-17</Table.Cell>
-          <Table.Cell>Football Field</Table.Cell>
-          <Table.Cell>Confirmed</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>2024-01-18</Table.Cell>
-          <Table.Cell>Gym</Table.Cell>
-          <Table.Cell>Cancelled</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Table zebra>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>{t('storybook.demo.date')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('storybook.demo.booking')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('storybook.demo.status')}</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>2024-01-15</Table.Cell>
+            <Table.Cell>{t('storybook.demo.tennisCourt')} A</Table.Cell>
+            <Table.Cell>{t('storybook.demo.confirmed')}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>2024-01-16</Table.Cell>
+            <Table.Cell>{t('storybook.demo.swimmingPool')}</Table.Cell>
+            <Table.Cell>{t('platform.status.pending')}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>2024-01-17</Table.Cell>
+            <Table.Cell>{t('storybook.demo.footballField')}</Table.Cell>
+            <Table.Cell>{t('storybook.demo.confirmed')}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>2024-01-18</Table.Cell>
+            <Table.Cell>{t('storybook.demo.gym')}</Table.Cell>
+            <Table.Cell>{t('platform.status.cancelled')}</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    );
+  },
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      <Table data-size="sm">
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell>Small</Table.HeaderCell>
-            <Table.HeaderCell>Table</Table.HeaderCell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>Data 1</Table.Cell>
-            <Table.Cell>Data 2</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
-      <Table data-size="md">
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell>Medium</Table.HeaderCell>
-            <Table.HeaderCell>Table</Table.HeaderCell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>Data 1</Table.Cell>
-            <Table.Cell>Data 2</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
-      <Table data-size="lg">
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell>Large</Table.HeaderCell>
-            <Table.HeaderCell>Table</Table.HeaderCell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>Data 1</Table.Cell>
-            <Table.Cell>Data 2</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        <Table data-size="sm">
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell>{t('storybook.demo.small')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('storybook.demo.table')}</Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>{t('storybook.demo.data')} 1</Table.Cell>
+              <Table.Cell>{t('storybook.demo.data')} 2</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+        <Table data-size="md">
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell>{t('storybook.demo.medium')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('storybook.demo.table')}</Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>{t('storybook.demo.data')} 1</Table.Cell>
+              <Table.Cell>{t('storybook.demo.data')} 2</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+        <Table data-size="lg">
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell>{t('storybook.demo.large')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('storybook.demo.table')}</Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>{t('storybook.demo.data')} 1</Table.Cell>
+              <Table.Cell>{t('storybook.demo.data')} 2</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </div>
+    );
+  },
 };

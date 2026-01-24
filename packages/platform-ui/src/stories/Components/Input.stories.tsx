@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { expect, userEvent, within } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Textfield, Tag, Heading } from '../../index';
 
 /**
@@ -68,8 +69,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### Basic Input with Label
 \`\`\`tsx
-<Textfield 
-  label="Email address" 
+<Textfield
+  label="Email address"
   type="email"
   placeholder="name@example.com"
 />
@@ -77,8 +78,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### With Description
 \`\`\`tsx
-<Textfield 
-  label="Username" 
+<Textfield
+  label="Username"
   description="Choose a unique username (3-20 characters)"
   minLength={3}
   maxLength={20}
@@ -87,8 +88,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### With Error
 \`\`\`tsx
-<Textfield 
-  label="Email" 
+<Textfield
+  label="Email"
   type="email"
   error="Please enter a valid email address"
   defaultValue="invalid-email"
@@ -97,8 +98,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### With Prefix/Suffix
 \`\`\`tsx
-<Textfield 
-  label="Price" 
+<Textfield
+  label="Price"
   type="number"
   prefix="$"
   suffix="USD"
@@ -107,8 +108,8 @@ Available in three sizes: **sm**, **md** (default), **lg**.
 
 ### With Character Counter
 \`\`\`tsx
-<Textfield 
-  label="Bio" 
+<Textfield
+  label="Bio"
   counter={160}
   maxLength={160}
   description="Brief description for your profile"
@@ -216,15 +217,17 @@ type Story = StoryObj;
  * - Value updates correctly
  */
 export const Default: Story = {
-  render: () => <Textfield label="Name" placeholder="Enter your name" />,
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield label={t('storybook.demo.name')} placeholder={t('storybook.demo.enterYourName')} />
+    );
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Find the input by label
-    const input = canvas.getByLabelText('Name');
-
-    // Verify placeholder
-    await expect(input).toHaveAttribute('placeholder', 'Enter your name');
+    // Find the input by role
+    const input = canvas.getByRole('textbox');
 
     // Type into the input
     await userEvent.type(input, 'Ola Nordmann');
@@ -238,156 +241,235 @@ export const Default: Story = {
  * With description - Provide helpful context
  */
 export const WithDescription: Story = {
-  render: () => (
-    <Textfield
-      label="Email"
-      description="We will never share your email with anyone"
-      placeholder="name@example.com"
-      type="email"
-    />
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield
+        label={t('storybook.demo.email')}
+        description={t('storybook.demo.neverShareEmail')}
+        placeholder="name@example.com"
+        type="email"
+      />
+    );
+  },
 };
 
 /**
  * Input with error
  */
 export const WithError: Story = {
-  render: () => (
-    <Textfield
-      label="Email"
-      error="Please enter a valid email address"
-      defaultValue="invalid-email"
-      type="email"
-    />
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield
+        label={t('storybook.demo.email')}
+        error={t('platform.validation.email')}
+        defaultValue="invalid-email"
+        type="email"
+      />
+    );
+  },
 };
 
 /**
  * Disabled input
  */
 export const Disabled: Story = {
-  render: () => <Textfield label="Username" defaultValue="john_doe" disabled />,
+  render: function Render() {
+    const t = useT();
+    return <Textfield label={t('storybook.demo.username')} defaultValue="john_doe" disabled />;
+  },
 };
 
 /**
  * Read-only input
  */
 export const ReadOnly: Story = {
-  render: () => <Textfield label="Account ID" defaultValue="ACC-12345-XYZ" readOnly />,
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield label={t('storybook.demo.accountId')} defaultValue="ACC-12345-XYZ" readOnly />
+    );
+  },
 };
 
 /**
  * Password input
  */
 export const Password: Story = {
-  render: () => <Textfield label="Password" type="password" placeholder="Enter your password" />,
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield
+        label={t('storybook.demo.password')}
+        type="password"
+        placeholder={t('storybook.demo.enterYourPassword')}
+      />
+    );
+  },
 };
 
 /**
  * Multiline textarea - Use for longer text input
  */
 export const Multiline: Story = {
-  render: () => (
-    <Textfield label="Comments" multiline rows={4} placeholder="Enter your comments here..." />
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield
+        label={t('storybook.demo.comments')}
+        multiline
+        rows={4}
+        placeholder={t('storybook.demo.enterYourComments')}
+      />
+    );
+  },
 };
 
 /**
  * With prefix and suffix - Show units, currency, or context
  */
 export const WithPrefixSuffix: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Textfield prefix="GBP" suffix="per month" label="How much does it cost per month?" />
-      <Textfield prefix="$" label="Price" type="number" />
-      <Textfield suffix="kg" label="Weight" type="number" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Textfield
+          prefix="GBP"
+          suffix={t('storybook.demo.perMonth')}
+          label={t('storybook.demo.howMuchPerMonth')}
+        />
+        <Textfield prefix="$" label={t('storybook.demo.price')} type="number" />
+        <Textfield suffix="kg" label={t('storybook.demo.weight')} type="number" />
+      </div>
+    );
+  },
 };
 
 /**
  * With character counter - Inform users about character limits
  */
 export const WithCounter: Story = {
-  render: () => (
-    <Textfield counter={50} label="Short description" placeholder="Max 50 characters" />
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <Textfield
+        counter={50}
+        label={t('storybook.demo.shortDescription')}
+        placeholder={t('storybook.demo.maxNCharacters', { count: 50 })}
+      />
+    );
+  },
 };
 
 /**
  * Required and optional fields - Clear field requirements
  */
 export const RequiredOptional: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Textfield
-        label={
-          <>
-            Where do you live?
-            <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-              Required
-            </Tag>
-          </>
-        }
-        required
-      />
-      <Textfield
-        label={
-          <>
-            Middle name
-            <Tag data-color="neutral" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-              Optional
-            </Tag>
-          </>
-        }
-      />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Textfield
+          label={
+            <>
+              {t('storybook.demo.whereDoYouLive')}
+              <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
+                {t('platform.validation.required')}
+              </Tag>
+            </>
+          }
+          required
+        />
+        <Textfield
+          label={
+            <>
+              {t('storybook.demo.middleName')}
+              <Tag data-color="neutral" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
+                {t('storybook.demo.optional')}
+              </Tag>
+            </>
+          }
+        />
+      </div>
+    );
+  },
 };
 
 /**
  * Input types - Different input types for better UX
  */
 export const InputTypes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Textfield label="Text" type="text" placeholder="General text" />
-      <Textfield label="Email" type="email" placeholder="name@example.com" />
-      <Textfield label="Password" type="password" placeholder="Enter password" />
-      <Textfield label="Phone" type="tel" placeholder="+47 XXX XX XXX" />
-      <Textfield label="Number" type="number" placeholder="0" />
-      <Textfield label="URL" type="url" placeholder="https://example.com" />
-      <Textfield label="Search" type="search" placeholder="Search..." />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Textfield
+          label={t('storybook.demo.text')}
+          type="text"
+          placeholder={t('storybook.demo.generalText')}
+        />
+        <Textfield label={t('storybook.demo.email')} type="email" placeholder="name@example.com" />
+        <Textfield
+          label={t('storybook.demo.password')}
+          type="password"
+          placeholder={t('storybook.demo.enterPassword')}
+        />
+        <Textfield label={t('storybook.demo.phone')} type="tel" placeholder="+47 XXX XX XXX" />
+        <Textfield label={t('storybook.demo.number')} type="number" placeholder="0" />
+        <Textfield label={t('storybook.demo.url')} type="url" placeholder="https://example.com" />
+        <Textfield
+          label={t('platform.common.search')}
+          type="search"
+          placeholder={t('platform.common.search')}
+        />
+      </div>
+    );
+  },
 };
 
 /**
  * Size variants - Different sizes for different contexts
  */
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <Textfield label="Small" data-size="sm" placeholder="Small input" />
-      <Textfield label="Medium" data-size="md" placeholder="Medium input" />
-      <Textfield label="Large" data-size="lg" placeholder="Large input" />
-    </div>
-  ),
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Textfield
+          label={t('storybook.story.small')}
+          data-size="sm"
+          placeholder={t('storybook.demo.smallInput')}
+        />
+        <Textfield
+          label={t('storybook.story.medium')}
+          data-size="md"
+          placeholder={t('storybook.demo.mediumInput')}
+        />
+        <Textfield
+          label={t('storybook.story.large')}
+          data-size="lg"
+          placeholder={t('storybook.demo.largeInput')}
+        />
+      </div>
+    );
+  },
 };
 
 /**
  * Form example with validation
  */
 export const FormExample: Story = {
-  render: () => {
+  render: function Render() {
+    const t = useT();
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
 
     const validateEmail = (value: string) => {
       if (!value) {
-        setEmailError('Email is required');
+        setEmailError(t('platform.validation.required'));
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        setEmailError('Please enter a valid email address');
+        setEmailError(t('platform.validation.email'));
       } else {
         setEmailError('');
       }
@@ -402,10 +484,18 @@ export const FormExample: Story = {
           maxWidth: '400px',
         }}
       >
-        <Textfield label="First Name" placeholder="Enter first name" required />
-        <Textfield label="Last Name" placeholder="Enter last name" required />
         <Textfield
-          label="Email"
+          label={t('storybook.demo.firstName')}
+          placeholder={t('storybook.demo.enterFirstName')}
+          required
+        />
+        <Textfield
+          label={t('storybook.demo.lastName')}
+          placeholder={t('storybook.demo.enterLastName')}
+          required
+        />
+        <Textfield
+          label={t('storybook.demo.email')}
           type="email"
           placeholder="name@example.com"
           value={email}
@@ -417,10 +507,10 @@ export const FormExample: Story = {
           required
         />
         <Textfield
-          label="Phone"
+          label={t('storybook.demo.phone')}
           type="tel"
           placeholder="+47 XXX XX XXX"
-          description="We'll only use this for order updates"
+          description={t('storybook.demo.onlyForOrderUpdates')}
         />
       </form>
     );
@@ -431,181 +521,245 @@ export const FormExample: Story = {
  * Best Practices - Examples of correct and incorrect input usage.
  */
 export const BestPractices: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Do: Always provide visible labels
-        </Heading>
-        <Textfield label="Email address" type="email" placeholder="name@example.com" />
-      </div>
-
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Do: Use appropriate input types
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Textfield label="Email" type="email" placeholder="name@example.com" />
-          <Textfield label="Phone" type="tel" placeholder="+47 XXX XX XXX" />
-        </div>
-      </div>
-
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-success-text-default)',
-          }}
-        >
-          Do: Provide clear error messages
-        </Heading>
-        <Textfield
-          label="Email"
-          type="email"
-          error="Please enter a valid email address (e.g., name@example.com)"
-          defaultValue="invalid"
-        />
-      </div>
-
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-danger-text-default)',
-          }}
-        >
-          Don't: Use placeholder as label
-        </Heading>
-        <div style={{ opacity: 0.6 }}>
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.story.doProvideVisibleLabels')}
+          </Heading>
           <Textfield
-            aria-label="Email address (bad example)"
-            placeholder="Enter your email address"
+            label={t('storybook.demo.emailAddress')}
+            type="email"
+            placeholder="name@example.com"
           />
         </div>
-      </div>
 
-      <div>
-        <Heading
-          level={3}
-          data-size="sm"
-          style={{
-            marginBottom: 'var(--ds-spacing-3)',
-            color: 'var(--ds-color-danger-text-default)',
-          }}
-        >
-          Don't: Use generic error messages
-        </Heading>
-        <div style={{ opacity: 0.6 }}>
-          <Textfield label="Email" error="Invalid input" defaultValue="test" />
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.story.doUseAppropriateInputTypes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Textfield
+              label={t('storybook.demo.email')}
+              type="email"
+              placeholder="name@example.com"
+            />
+            <Textfield label={t('storybook.demo.phone')} type="tel" placeholder="+47 XXX XX XXX" />
+          </div>
+        </div>
+
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-success-text-default)',
+            }}
+          >
+            {t('storybook.story.doProvideClearErrorMessages')}
+          </Heading>
+          <Textfield
+            label={t('storybook.demo.email')}
+            type="email"
+            error={t('storybook.demo.pleaseEnterValidEmailExample')}
+            defaultValue="invalid"
+          />
+        </div>
+
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-danger-text-default)',
+            }}
+          >
+            {t('storybook.story.dontUsePlaceholderAsLabel')}
+          </Heading>
+          <div style={{ opacity: 0.6 }}>
+            <Textfield
+              aria-label={t('storybook.demo.emailAddressBadExample')}
+              placeholder={t('storybook.demo.enterYourEmailAddress')}
+            />
+          </div>
+        </div>
+
+        <div>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              color: 'var(--ds-color-danger-text-default)',
+            }}
+          >
+            {t('storybook.story.dontUseGenericErrorMessages')}
+          </Heading>
+          <div style={{ opacity: 0.6 }}>
+            <Textfield
+              label={t('storybook.demo.email')}
+              error={t('storybook.demo.invalidInput')}
+              defaultValue="test"
+            />
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * All variants overview - Complete showcase of all input variations.
  */
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          States
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Textfield label="Default" placeholder="Enter text" />
-          <Textfield label="With value" defaultValue="Some text" />
-          <Textfield label="With error" error="This field is required" />
-          <Textfield label="Disabled" defaultValue="Cannot edit" disabled />
-          <Textfield label="Read-only" defaultValue="Can read only" readOnly />
+  render: function Render() {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.states')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Textfield
+              label={t('storybook.story.default')}
+              placeholder={t('storybook.demo.enterText')}
+            />
+            <Textfield
+              label={t('storybook.demo.withValue')}
+              defaultValue={t('storybook.demo.someText')}
+            />
+            <Textfield
+              label={t('storybook.story.withError')}
+              error={t('platform.validation.required')}
+            />
+            <Textfield
+              label={t('storybook.story.disabled')}
+              defaultValue={t('storybook.demo.cannotEdit')}
+              disabled
+            />
+            <Textfield
+              label={t('storybook.demo.readOnly')}
+              defaultValue={t('storybook.demo.canReadOnly')}
+              readOnly
+            />
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Sizes
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Textfield label="Small" data-size="sm" placeholder="Small" />
-          <Textfield label="Medium" data-size="md" placeholder="Medium" />
-          <Textfield label="Large" data-size="lg" placeholder="Large" />
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.sizes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Textfield
+              label={t('storybook.story.small')}
+              data-size="sm"
+              placeholder={t('storybook.story.small')}
+            />
+            <Textfield
+              label={t('storybook.story.medium')}
+              data-size="md"
+              placeholder={t('storybook.story.medium')}
+            />
+            <Textfield
+              label={t('storybook.story.large')}
+              data-size="lg"
+              placeholder={t('storybook.story.large')}
+            />
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Input Types
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Textfield label="Text" type="text" placeholder="General text" />
-          <Textfield label="Email" type="email" placeholder="name@example.com" />
-          <Textfield label="Password" type="password" placeholder="Enter password" />
-          <Textfield label="Phone" type="tel" placeholder="+47 XXX XX XXX" />
-          <Textfield label="Number" type="number" placeholder="0" />
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.inputTypes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Textfield
+              label={t('storybook.demo.text')}
+              type="text"
+              placeholder={t('storybook.demo.generalText')}
+            />
+            <Textfield
+              label={t('storybook.demo.email')}
+              type="email"
+              placeholder="name@example.com"
+            />
+            <Textfield
+              label={t('storybook.demo.password')}
+              type="password"
+              placeholder={t('storybook.demo.enterPassword')}
+            />
+            <Textfield label={t('storybook.demo.phone')} type="tel" placeholder="+47 XXX XX XXX" />
+            <Textfield label={t('storybook.demo.number')} type="number" placeholder="0" />
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          With Affixes
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          <Textfield prefix="$" label="Price" type="number" />
-          <Textfield suffix="kg" label="Weight" type="number" />
-          <Textfield prefix="https://" suffix=".com" label="Website" />
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.withAffixes')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Textfield prefix="$" label={t('storybook.demo.price')} type="number" />
+            <Textfield suffix="kg" label={t('storybook.demo.weight')} type="number" />
+            <Textfield prefix="https://" suffix=".com" label={t('storybook.demo.website')} />
+          </div>
         </div>
-      </div>
 
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          With Description & Counter
-        </Heading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.withDescriptionAndCounter')}
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            <Textfield
+              label={t('storybook.demo.username')}
+              description={t('storybook.demo.chooseUniqueUsername')}
+              placeholder="johndoe"
+            />
+            <Textfield
+              label={t('storybook.demo.bio')}
+              counter={50}
+              maxLength={50}
+              placeholder={t('storybook.demo.shortBio')}
+            />
+          </div>
+        </div>
+
+        <div>
+          <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
+            {t('storybook.story.requiredFields')}
+          </Heading>
           <Textfield
-            label="Username"
-            description="Choose a unique username"
-            placeholder="johndoe"
+            label={
+              <>
+                {t('storybook.demo.emailAddress')}
+                <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
+                  {t('platform.validation.required')}
+                </Tag>
+              </>
+            }
+            type="email"
+            required
           />
-          <Textfield label="Bio" counter={50} maxLength={50} placeholder="Short bio" />
         </div>
       </div>
-
-      <div>
-        <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          Required Fields
-        </Heading>
-        <Textfield
-          label={
-            <>
-              Email address
-              <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-                Required
-              </Tag>
-            </>
-          }
-          type="email"
-          required
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
 };

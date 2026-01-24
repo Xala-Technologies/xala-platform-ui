@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { ConfirmDialog } from '../../composed';
 import { Button } from '../../primitives';
 import { useState } from 'react';
@@ -16,11 +17,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DialogWithTrigger = (args: any) => {
+  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
+      <Button onClick={() => setIsOpen(true)}>{t('storybook.demo.openDialog')}</Button>
       <ConfirmDialog
         {...args}
         open={isOpen}

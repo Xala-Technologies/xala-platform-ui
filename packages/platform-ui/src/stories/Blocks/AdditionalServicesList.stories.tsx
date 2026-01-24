@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { AdditionalServicesList } from '../../blocks/AdditionalServicesList';
 import type { AdditionalService } from '../../types';
 
@@ -79,11 +80,14 @@ export const Default: Story = {
     services: sampleServices,
     showPrices: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };
 
 // With selected services
@@ -93,11 +97,14 @@ export const WithSelected: Story = {
     selectedServices: ['catering', 'parking'],
     showPrices: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };
 
 // Without prices
@@ -106,11 +113,14 @@ export const WithoutPrices: Story = {
     services: sampleServices,
     showPrices: false,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };
 
 // Custom title
@@ -120,11 +130,14 @@ export const CustomTitle: Story = {
     title: 'Additional Options',
     showPrices: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };
 
 // No title
@@ -134,11 +147,14 @@ export const NoTitle: Story = {
     title: '',
     showPrices: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };
 
 // Many services
@@ -173,11 +189,14 @@ export const ManyServices: Story = {
     ],
     showPrices: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };
 
 // Empty state
@@ -186,9 +205,12 @@ export const Empty: Story = {
     services: [],
     showPrices: true,
   },
-  render: (args) => (
-    <div style={{ width: '500px' }}>
-      <AdditionalServicesList {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '500px' }}>
+        <AdditionalServicesList {...args} />
+      </div>
+    );
+  },
 };

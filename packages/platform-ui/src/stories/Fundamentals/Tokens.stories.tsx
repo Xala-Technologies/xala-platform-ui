@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 
 /**
  * Design Tokens from Digdir Designsystemet.
@@ -37,17 +38,17 @@ Design tokens are the visual design atoms of the design system — specifically,
 Always use design tokens instead of hardcoded values:
 
 \`\`\`tsx
-// ❌ Bad - Hardcoded values
-<div style={{ 
-  padding: '16px', 
+// Bad - Hardcoded values
+<div style={{
+  padding: '16px',
   color: '#0066CC',
   fontSize: '14px',
   borderRadius: '8px'
 }} />
 
-// ✅ Good - Design tokens
-<div style={{ 
-  padding: 'var(--ds-spacing-4)', 
+// Good - Design tokens
+<div style={{
+  padding: 'var(--ds-spacing-4)',
   color: 'var(--ds-color-accent-base-default)',
   fontSize: 'var(--ds-font-size-sm)',
   borderRadius: 'var(--ds-border-radius-md)'
@@ -72,329 +73,457 @@ type Story = StoryObj;
  * Color tokens organized by semantic meaning
  */
 export const ColorTokens: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      {/* Accent Colors */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Accent Colors
-        </h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
-          {[
-            { token: '--ds-color-accent-background-default', label: 'Background Default' },
-            { token: '--ds-color-accent-surface-default', label: 'Surface Default' },
-            { token: '--ds-color-accent-surface-hover', label: 'Surface Hover' },
-            { token: '--ds-color-accent-border-default', label: 'Border Default' },
-            { token: '--ds-color-accent-base-default', label: 'Base Default' },
-            { token: '--ds-color-accent-text-default', label: 'Text Default' },
-          ].map(({ token, label }) => (
-            <div
-              key={token}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-3)',
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                border: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        {/* Accent Colors */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.accentColors')}
+          </h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
+            {[
+              {
+                token: '--ds-color-accent-background-default',
+                labelKey: 'storybook.tokens.backgroundDefault',
+              },
+              {
+                token: '--ds-color-accent-surface-default',
+                labelKey: 'storybook.tokens.surfaceDefault',
+              },
+              {
+                token: '--ds-color-accent-surface-hover',
+                labelKey: 'storybook.tokens.surfaceHover',
+              },
+              {
+                token: '--ds-color-accent-border-default',
+                labelKey: 'storybook.tokens.borderDefault',
+              },
+              { token: '--ds-color-accent-base-default', labelKey: 'storybook.tokens.baseDefault' },
+              { token: '--ds-color-accent-text-default', labelKey: 'storybook.tokens.textDefault' },
+            ].map(({ token, labelKey }) => (
               <div
+                key={token}
                 style={{
-                  width: 'var(--ds-spacing-12)',
-                  height: 'var(--ds-spacing-12)',
-                  backgroundColor: `var(${token})`,
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                  border: '1px solid var(--ds-color-neutral-border-default)',
-                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-3)',
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  border: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
-              />
-              <div style={{ minWidth: 0 }}>
-                <div
-                  style={{
-                    fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: 600,
-                    marginBottom: 'var(--ds-spacing-1)',
-                  }}
-                >
-                  {label}
-                </div>
-                <code
-                  style={{
-                    fontSize: 'var(--ds-font-size-xs)',
-                    color: 'var(--ds-color-neutral-text-subtle)',
-                    wordBreak: 'break-all',
-                  }}
-                >
-                  {token}
-                </code>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Neutral Colors */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Neutral Colors
-        </h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
-          {[
-            { token: '--ds-color-neutral-background-default', label: 'Background Default' },
-            { token: '--ds-color-neutral-surface-default', label: 'Surface Default' },
-            { token: '--ds-color-neutral-surface-hover', label: 'Surface Hover' },
-            { token: '--ds-color-neutral-border-default', label: 'Border Default' },
-            { token: '--ds-color-neutral-text-default', label: 'Text Default' },
-            { token: '--ds-color-neutral-text-subtle', label: 'Text Subtle' },
-          ].map(({ token, label }) => (
-            <div
-              key={token}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-3)',
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                border: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <div
-                style={{
-                  width: 'var(--ds-spacing-12)',
-                  height: 'var(--ds-spacing-12)',
-                  backgroundColor: `var(${token})`,
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                  border: '1px solid var(--ds-color-neutral-border-default)',
-                  flexShrink: 0,
-                }}
-              />
-              <div style={{ minWidth: 0 }}>
-                <div
-                  style={{
-                    fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: 600,
-                    marginBottom: 'var(--ds-spacing-1)',
-                  }}
-                >
-                  {label}
-                </div>
-                <code
-                  style={{
-                    fontSize: 'var(--ds-font-size-xs)',
-                    color: 'var(--ds-color-neutral-text-subtle)',
-                    wordBreak: 'break-all',
-                  }}
-                >
-                  {token}
-                </code>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Semantic Colors */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Semantic Colors
-        </h3>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: 'var(--ds-spacing-6)',
-          }}
-        >
-          {[
-            {
-              category: 'Success',
-              colors: [
-                { token: '--ds-color-success-surface-default', label: 'Surface' },
-                { token: '--ds-color-success-border-default', label: 'Border' },
-                { token: '--ds-color-success-text-default', label: 'Text' },
-              ],
-            },
-            {
-              category: 'Warning',
-              colors: [
-                { token: '--ds-color-warning-surface-default', label: 'Surface' },
-                { token: '--ds-color-warning-border-default', label: 'Border' },
-                { token: '--ds-color-warning-text-default', label: 'Text' },
-              ],
-            },
-            {
-              category: 'Danger',
-              colors: [
-                { token: '--ds-color-danger-surface-default', label: 'Surface' },
-                { token: '--ds-color-danger-border-default', label: 'Border' },
-                { token: '--ds-color-danger-text-default', label: 'Text' },
-              ],
-            },
-            {
-              category: 'Info',
-              colors: [
-                { token: '--ds-color-info-surface-default', label: 'Surface' },
-                { token: '--ds-color-info-border-default', label: 'Border' },
-                { token: '--ds-color-info-text-default', label: 'Text' },
-              ],
-            },
-          ].map(({ category, colors }) => (
-            <div key={category}>
-              <h4
-                style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}
               >
-                {category}
-              </h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-                {colors.map(({ token, label }) => (
+                <div
+                  style={{
+                    width: 'var(--ds-spacing-12)',
+                    height: 'var(--ds-spacing-12)',
+                    backgroundColor: `var(${token})`,
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                    border: '1px solid var(--ds-color-neutral-border-default)',
+                    flexShrink: 0,
+                  }}
+                />
+                <div style={{ minWidth: 0 }}>
                   <div
-                    key={token}
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--ds-spacing-2)',
-                      padding: 'var(--ds-spacing-2)',
-                      backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                      borderRadius: 'var(--ds-border-radius-sm)',
+                      fontSize: 'var(--ds-font-size-sm)',
+                      fontWeight: 600,
+                      marginBottom: 'var(--ds-spacing-1)',
                     }}
                   >
-                    <div
-                      style={{
-                        width: 'var(--ds-spacing-8)',
-                        height: 'var(--ds-spacing-8)',
-                        backgroundColor: `var(${token})`,
-                        borderRadius: 'var(--ds-border-radius-sm)',
-                        border: '1px solid var(--ds-color-neutral-border-default)',
-                        flexShrink: 0,
-                      }}
-                    />
-                    <div style={{ minWidth: 0, fontSize: 'var(--ds-font-size-xs)' }}>
-                      <div style={{ fontWeight: 600 }}>{label}</div>
-                      <code style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{token}</code>
-                    </div>
+                    {t(labelKey)}
                   </div>
-                ))}
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                      wordBreak: 'break-all',
+                    }}
+                  >
+                    {token}
+                  </code>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Neutral Colors */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.neutralColors')}
+          </h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
+            {[
+              {
+                token: '--ds-color-neutral-background-default',
+                labelKey: 'storybook.tokens.backgroundDefault',
+              },
+              {
+                token: '--ds-color-neutral-surface-default',
+                labelKey: 'storybook.tokens.surfaceDefault',
+              },
+              {
+                token: '--ds-color-neutral-surface-hover',
+                labelKey: 'storybook.tokens.surfaceHover',
+              },
+              {
+                token: '--ds-color-neutral-border-default',
+                labelKey: 'storybook.tokens.borderDefault',
+              },
+              {
+                token: '--ds-color-neutral-text-default',
+                labelKey: 'storybook.tokens.textDefault',
+              },
+              { token: '--ds-color-neutral-text-subtle', labelKey: 'storybook.tokens.textSubtle' },
+            ].map(({ token, labelKey }) => (
+              <div
+                key={token}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-3)',
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  border: '1px solid var(--ds-color-neutral-border-subtle)',
+                }}
+              >
+                <div
+                  style={{
+                    width: 'var(--ds-spacing-12)',
+                    height: 'var(--ds-spacing-12)',
+                    backgroundColor: `var(${token})`,
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                    border: '1px solid var(--ds-color-neutral-border-default)',
+                    flexShrink: 0,
+                  }}
+                />
+                <div style={{ minWidth: 0 }}>
+                  <div
+                    style={{
+                      fontSize: 'var(--ds-font-size-sm)',
+                      fontWeight: 600,
+                      marginBottom: 'var(--ds-spacing-1)',
+                    }}
+                  >
+                    {t(labelKey)}
+                  </div>
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                      wordBreak: 'break-all',
+                    }}
+                  >
+                    {token}
+                  </code>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Semantic Colors */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.semanticColors')}
+          </h3>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: 'var(--ds-spacing-6)',
+            }}
+          >
+            {[
+              {
+                category: t('storybook.notifications.success'),
+                colors: [
+                  {
+                    token: '--ds-color-success-surface-default',
+                    labelKey: 'storybook.tokens.surface',
+                  },
+                  {
+                    token: '--ds-color-success-border-default',
+                    labelKey: 'storybook.tokens.border',
+                  },
+                  { token: '--ds-color-success-text-default', labelKey: 'storybook.tokens.text' },
+                ],
+              },
+              {
+                category: t('storybook.notifications.warning'),
+                colors: [
+                  {
+                    token: '--ds-color-warning-surface-default',
+                    labelKey: 'storybook.tokens.surface',
+                  },
+                  {
+                    token: '--ds-color-warning-border-default',
+                    labelKey: 'storybook.tokens.border',
+                  },
+                  { token: '--ds-color-warning-text-default', labelKey: 'storybook.tokens.text' },
+                ],
+              },
+              {
+                category: t('storybook.tokens.danger'),
+                colors: [
+                  {
+                    token: '--ds-color-danger-surface-default',
+                    labelKey: 'storybook.tokens.surface',
+                  },
+                  {
+                    token: '--ds-color-danger-border-default',
+                    labelKey: 'storybook.tokens.border',
+                  },
+                  { token: '--ds-color-danger-text-default', labelKey: 'storybook.tokens.text' },
+                ],
+              },
+              {
+                category: t('storybook.tokens.info'),
+                colors: [
+                  {
+                    token: '--ds-color-info-surface-default',
+                    labelKey: 'storybook.tokens.surface',
+                  },
+                  { token: '--ds-color-info-border-default', labelKey: 'storybook.tokens.border' },
+                  { token: '--ds-color-info-text-default', labelKey: 'storybook.tokens.text' },
+                ],
+              },
+            ].map(({ category, colors }) => (
+              <div key={category}>
+                <h4
+                  style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}
+                >
+                  {category}
+                </h4>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
+                >
+                  {colors.map(({ token, labelKey }) => (
+                    <div
+                      key={token}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--ds-spacing-2)',
+                        padding: 'var(--ds-spacing-2)',
+                        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                        borderRadius: 'var(--ds-border-radius-sm)',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 'var(--ds-spacing-8)',
+                          height: 'var(--ds-spacing-8)',
+                          backgroundColor: `var(${token})`,
+                          borderRadius: 'var(--ds-border-radius-sm)',
+                          border: '1px solid var(--ds-color-neutral-border-default)',
+                          flexShrink: 0,
+                        }}
+                      />
+                      <div style={{ minWidth: 0, fontSize: 'var(--ds-font-size-xs)' }}>
+                        <div style={{ fontWeight: 600 }}>{t(labelKey)}</div>
+                        <code style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                          {token}
+                        </code>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Spacing tokens for consistent rhythm
  */
 export const SpacingTokens: Story = {
-  render: () => (
-    <div>
-      <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-        Spacing Scale
-      </h3>
-      <p
-        style={{
-          marginBottom: 'var(--ds-spacing-6)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}
-      >
-        Use spacing tokens for padding, margin, and gaps to maintain consistent rhythm.
-      </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-        {[
-          { token: '1', value: '4px', use: 'Tight spacing, icon gaps' },
-          { token: '2', value: '8px', use: 'Small gaps, compact layouts' },
-          { token: '3', value: '12px', use: 'Form field gaps' },
-          { token: '4', value: '16px', use: 'Standard spacing' },
-          { token: '6', value: '24px', use: 'Card padding, section gaps' },
-          { token: '8', value: '32px', use: 'Large sections' },
-          { token: '12', value: '48px', use: 'Major divisions' },
-          { token: '16', value: '64px', use: 'Page sections' },
-        ].map(({ token, value, use }) => (
-          <div
-            key={token}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '150px 1fr 200px',
-              gap: 'var(--ds-spacing-4)',
-              alignItems: 'center',
-              padding: 'var(--ds-spacing-3)',
-              backgroundColor: 'var(--ds-color-neutral-surface-default)',
-              borderRadius: 'var(--ds-border-radius-md)',
-            }}
-          >
-            <code style={{ fontSize: 'var(--ds-font-size-sm)' }}>--ds-spacing-{token}</code>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
-              <div
-                style={{
-                  width: `var(--ds-spacing-${token})`,
-                  height: 'var(--ds-spacing-6)',
-                  backgroundColor: 'var(--ds-color-accent-base-default)',
-                  borderRadius: 'var(--ds-border-radius-sm)',
-                }}
-              />
+  render: () => {
+    const t = useT();
+    return (
+      <div>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+          {t('storybook.tokens.spacingScale')}
+        </h3>
+        <p
+          style={{
+            marginBottom: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          {t('storybook.tokens.spacingDescription')}
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
+          {[
+            { token: '1', value: '4px', useKey: 'storybook.tokens.tightSpacing' },
+            { token: '2', value: '8px', useKey: 'storybook.tokens.smallGaps' },
+            { token: '3', value: '12px', useKey: 'storybook.tokens.formFieldGaps' },
+            { token: '4', value: '16px', useKey: 'storybook.tokens.standardSpacing' },
+            { token: '6', value: '24px', useKey: 'storybook.tokens.cardPadding' },
+            { token: '8', value: '32px', useKey: 'storybook.tokens.largeSections' },
+            { token: '12', value: '48px', useKey: 'storybook.tokens.majorDivisions' },
+            { token: '16', value: '64px', useKey: 'storybook.tokens.pageSections' },
+          ].map(({ token, value, useKey }) => (
+            <div
+              key={token}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '150px 1fr 200px',
+                gap: 'var(--ds-spacing-4)',
+                alignItems: 'center',
+                padding: 'var(--ds-spacing-3)',
+                backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
+              <code style={{ fontSize: 'var(--ds-font-size-sm)' }}>--ds-spacing-{token}</code>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                <div
+                  style={{
+                    width: `var(--ds-spacing-${token})`,
+                    height: 'var(--ds-spacing-6)',
+                    backgroundColor: 'var(--ds-color-accent-base-default)',
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
+                >
+                  {value}
+                </span>
+              </div>
               <span
                 style={{
                   fontSize: 'var(--ds-font-size-xs)',
                   color: 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                {value}
+                {t(useKey)}
               </span>
             </div>
-            <span
-              style={{
-                fontSize: 'var(--ds-font-size-xs)',
-                color: 'var(--ds-color-neutral-text-subtle)',
-              }}
-            >
-              {use}
-            </span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Typography tokens for text styling
  */
 export const TypographyTokens: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      {/* Font Sizes */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Font Size Tokens
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          {[
-            { token: '--ds-font-size-xs', label: 'Extra Small', sample: 'The quick brown fox' },
-            { token: '--ds-font-size-sm', label: 'Small', sample: 'The quick brown fox' },
-            { token: '--ds-font-size-md', label: 'Medium', sample: 'The quick brown fox' },
-            { token: '--ds-font-size-lg', label: 'Large', sample: 'The quick brown fox' },
-            { token: '--ds-font-size-xl', label: 'Extra Large', sample: 'The quick brown fox' },
-          ].map(({ token, label, sample }) => (
-            <div
-              key={token}
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                border: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
+  render: () => {
+    const t = useT();
+    const sampleText = t('storybook.tokens.sampleText');
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        {/* Font Sizes */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.fontSizeTokens')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            {[
+              { token: '--ds-font-size-xs', labelKey: 'storybook.tokens.extraSmall' },
+              { token: '--ds-font-size-sm', labelKey: 'storybook.sizes.small' },
+              { token: '--ds-font-size-md', labelKey: 'storybook.sizes.medium' },
+              { token: '--ds-font-size-lg', labelKey: 'storybook.sizes.large' },
+              { token: '--ds-font-size-xl', labelKey: 'storybook.tokens.extraLarge' },
+            ].map(({ token, labelKey }) => (
               <div
+                key={token}
                 style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  marginBottom: 'var(--ds-spacing-2)',
+                  padding: 'var(--ds-spacing-4)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  border: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
               >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    marginBottom: 'var(--ds-spacing-2)',
+                  }}
+                >
+                  <code
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
+                    {token}
+                  </code>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
+                    {t(labelKey)}
+                  </span>
+                </div>
+                <div style={{ fontSize: `var(${token})` }}>{sampleText}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Font Weights */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.fontWeightTokens')}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+            {[
+              {
+                token: '--ds-font-weight-regular',
+                value: '400',
+                labelKey: 'storybook.tokens.regular',
+              },
+              {
+                token: '--ds-font-weight-medium',
+                value: '500',
+                labelKey: 'storybook.tokens.medium',
+              },
+              {
+                token: '--ds-font-weight-semibold',
+                value: '600',
+                labelKey: 'storybook.tokens.semibold',
+              },
+              { token: '--ds-font-weight-bold', value: '700', labelKey: 'storybook.tokens.bold' },
+            ].map(({ token, value, labelKey }) => (
+              <div
+                key={token}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-4)',
+                  padding: 'var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                }}
+              >
+                <span
+                  style={{
+                    fontWeight: `var(${token})`,
+                    fontSize: 'var(--ds-font-size-4)',
+                    minWidth: '150px',
+                  }}
+                >
+                  {t(labelKey)} ({value})
+                </span>
                 <code
                   style={{
                     fontSize: 'var(--ds-font-size-xs)',
@@ -403,171 +532,122 @@ export const TypographyTokens: Story = {
                 >
                   {token}
                 </code>
-                <span
-                  style={{
-                    fontSize: 'var(--ds-font-size-xs)',
-                    color: 'var(--ds-color-neutral-text-subtle)',
-                  }}
-                >
-                  {label}
-                </span>
               </div>
-              <div style={{ fontSize: `var(${token})` }}>{sample}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Font Weights */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Font Weight Tokens
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-          {[
-            { token: '--ds-font-weight-regular', value: '400', label: 'Regular' },
-            { token: '--ds-font-weight-medium', value: '500', label: 'Medium' },
-            { token: '--ds-font-weight-semibold', value: '600', label: 'Semibold' },
-            { token: '--ds-font-weight-bold', value: '700', label: 'Bold' },
-          ].map(({ token, value, label }) => (
-            <div
-              key={token}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--ds-spacing-4)',
-                padding: 'var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-neutral-surface-default)',
-                borderRadius: 'var(--ds-border-radius-md)',
-              }}
-            >
-              <span
-                style={{
-                  fontWeight: `var(${token})`,
-                  fontSize: 'var(--ds-font-size-4)',
-                  minWidth: '150px',
-                }}
-              >
-                {label} ({value})
-              </span>
-              <code
-                style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-neutral-text-subtle)',
-                }}
-              >
-                {token}
-              </code>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
  * Border and shadow tokens
  */
 export const BorderAndShadowTokens: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
-      {/* Border Radius */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Border Radius Tokens
-        </h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
-          {[
-            { token: '--ds-border-radius-sm', label: 'Small' },
-            { token: '--ds-border-radius-md', label: 'Medium' },
-            { token: '--ds-border-radius-lg', label: 'Large' },
-            { token: '--ds-border-radius-xl', label: 'Extra Large' },
-            { token: '--ds-border-radius-full', label: 'Full' },
-          ].map(({ token, label }) => (
-            <div key={token} style={{ textAlign: 'center' }}>
-              <div
-                style={{
-                  width: '100px',
-                  height: '100px',
-                  backgroundColor: 'var(--ds-color-accent-background-default)',
-                  border: '2px solid var(--ds-color-accent-border-default)',
-                  borderRadius: `var(${token})`,
-                  marginBottom: 'var(--ds-spacing-2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <span
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+        {/* Border Radius */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.borderRadiusTokens')}
+          </h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
+            {[
+              { token: '--ds-border-radius-sm', labelKey: 'storybook.sizes.small' },
+              { token: '--ds-border-radius-md', labelKey: 'storybook.sizes.medium' },
+              { token: '--ds-border-radius-lg', labelKey: 'storybook.sizes.large' },
+              { token: '--ds-border-radius-xl', labelKey: 'storybook.tokens.extraLarge' },
+              { token: '--ds-border-radius-full', labelKey: 'storybook.tokens.full' },
+            ].map(({ token, labelKey }) => (
+              <div key={token} style={{ textAlign: 'center' }}>
+                <div
                   style={{
-                    fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: 600,
-                    color: 'var(--ds-color-accent-text-default)',
+                    width: '100px',
+                    height: '100px',
+                    backgroundColor: 'var(--ds-color-accent-background-default)',
+                    border: '2px solid var(--ds-color-accent-border-default)',
+                    borderRadius: `var(${token})`,
+                    marginBottom: 'var(--ds-spacing-2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
-                  {label}
-                </span>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-sm)',
+                      fontWeight: 600,
+                      color: 'var(--ds-color-accent-text-default)',
+                    }}
+                  >
+                    {t(labelKey)}
+                  </span>
+                </div>
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
+                >
+                  {token}
+                </code>
               </div>
-              <code
-                style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-neutral-text-subtle)',
-                }}
-              >
-                {token}
-              </code>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Shadows */}
-      <div>
-        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          Shadow Tokens
-        </h3>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 'var(--ds-spacing-6)',
-            padding: 'var(--ds-spacing-6)',
-            backgroundColor: 'var(--ds-color-neutral-background-subtle)',
-            borderRadius: 'var(--ds-border-radius-lg)',
-          }}
-        >
-          {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
-            <div key={size} style={{ textAlign: 'center' }}>
-              <div
-                style={{
-                  width: '120px',
-                  height: '100px',
-                  backgroundColor: 'var(--ds-color-neutral-background-default)',
-                  borderRadius: 'var(--ds-border-radius-md)',
-                  boxShadow: `var(--ds-shadow-${size})`,
-                  marginBottom: 'var(--ds-spacing-2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <span style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 600 }}>{size}</span>
+        {/* Shadows */}
+        <div>
+          <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+            {t('storybook.tokens.shadowTokens')}
+          </h3>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 'var(--ds-spacing-6)',
+              padding: 'var(--ds-spacing-6)',
+              backgroundColor: 'var(--ds-color-neutral-background-subtle)',
+              borderRadius: 'var(--ds-border-radius-lg)',
+            }}
+          >
+            {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
+              <div key={size} style={{ textAlign: 'center' }}>
+                <div
+                  style={{
+                    width: '120px',
+                    height: '100px',
+                    backgroundColor: 'var(--ds-color-neutral-background-default)',
+                    borderRadius: 'var(--ds-border-radius-md)',
+                    boxShadow: `var(--ds-shadow-${size})`,
+                    marginBottom: 'var(--ds-spacing-2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <span style={{ fontSize: 'var(--ds-font-size-sm)', fontWeight: 600 }}>
+                    {size}
+                  </span>
+                </div>
+                <code
+                  style={{
+                    fontSize: 'var(--ds-font-size-xs)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
+                >
+                  --ds-shadow-{size}
+                </code>
               </div>
-              <code
-                style={{
-                  fontSize: 'var(--ds-font-size-xs)',
-                  color: 'var(--ds-color-neutral-text-subtle)',
-                }}
-              >
-                --ds-shadow-{size}
-              </code>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -575,6 +655,7 @@ export const BorderAndShadowTokens: Story = {
  */
 export const InteractiveExplorer: Story = {
   render: () => {
+    const t = useT();
     const [selectedColor, setSelectedColor] = useState('accent');
     const [selectedSpacing, setSelectedSpacing] = useState('4');
     const [selectedRadius, setSelectedRadius] = useState('md');
@@ -584,7 +665,7 @@ export const InteractiveExplorer: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            Interactive Token Explorer
+            {t('storybook.tokens.interactiveExplorer')}
           </h3>
           <p
             style={{
@@ -592,7 +673,7 @@ export const InteractiveExplorer: Story = {
               marginBottom: 'var(--ds-spacing-6)',
             }}
           >
-            Experiment with different token combinations to see how they work together.
+            {t('storybook.tokens.experimentWithTokens')}
           </p>
         </div>
 
@@ -606,7 +687,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              Color
+              {t('storybook.tokens.color')}
             </label>
             <select
               value={selectedColor}
@@ -618,12 +699,12 @@ export const InteractiveExplorer: Story = {
                 border: '1px solid var(--ds-color-neutral-border-default)',
               }}
             >
-              <option value="accent">Accent</option>
-              <option value="neutral">Neutral</option>
-              <option value="success">Success</option>
-              <option value="warning">Warning</option>
-              <option value="danger">Danger</option>
-              <option value="info">Info</option>
+              <option value="accent">{t('storybook.tokens.accent')}</option>
+              <option value="neutral">{t('storybook.tokens.neutral')}</option>
+              <option value="success">{t('storybook.notifications.success')}</option>
+              <option value="warning">{t('storybook.notifications.warning')}</option>
+              <option value="danger">{t('storybook.tokens.danger')}</option>
+              <option value="info">{t('storybook.tokens.info')}</option>
             </select>
           </div>
 
@@ -636,7 +717,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              Spacing
+              {t('storybook.tokens.spacing')}
             </label>
             <select
               value={selectedSpacing}
@@ -664,7 +745,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              Border Radius
+              {t('storybook.tokens.borderRadius')}
             </label>
             <select
               value={selectedRadius}
@@ -676,10 +757,10 @@ export const InteractiveExplorer: Story = {
                 border: '1px solid var(--ds-color-neutral-border-default)',
               }}
             >
-              <option value="sm">Small</option>
-              <option value="md">Medium</option>
-              <option value="lg">Large</option>
-              <option value="xl">Extra Large</option>
+              <option value="sm">{t('storybook.sizes.small')}</option>
+              <option value="md">{t('storybook.sizes.medium')}</option>
+              <option value="lg">{t('storybook.sizes.large')}</option>
+              <option value="xl">{t('storybook.tokens.extraLarge')}</option>
             </select>
           </div>
 
@@ -692,7 +773,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              Shadow
+              {t('storybook.tokens.shadow')}
             </label>
             <select
               value={selectedShadow}
@@ -704,11 +785,11 @@ export const InteractiveExplorer: Story = {
                 border: '1px solid var(--ds-color-neutral-border-default)',
               }}
             >
-              <option value="xs">Extra Small</option>
-              <option value="sm">Small</option>
-              <option value="md">Medium</option>
-              <option value="lg">Large</option>
-              <option value="xl">Extra Large</option>
+              <option value="xs">{t('storybook.tokens.extraSmall')}</option>
+              <option value="sm">{t('storybook.sizes.small')}</option>
+              <option value="md">{t('storybook.sizes.medium')}</option>
+              <option value="lg">{t('storybook.sizes.large')}</option>
+              <option value="xl">{t('storybook.tokens.extraLarge')}</option>
             </select>
           </div>
         </div>
@@ -730,10 +811,10 @@ export const InteractiveExplorer: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            Preview Card
+            {t('storybook.tokens.previewCard')}
           </h4>
           <p style={{ fontSize: 'var(--ds-font-size-sm)' }}>
-            This card updates in real-time as you change the token selections above.
+            {t('storybook.tokens.previewDescription')}
           </p>
         </div>
 
@@ -752,7 +833,7 @@ export const InteractiveExplorer: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            Generated CSS:
+            {t('storybook.tokens.generatedCSS')}:
           </h4>
           <pre
             style={{
@@ -779,127 +860,130 @@ color: var(--ds-color-${selectedColor}-text-default);`}
  * Complete token usage example
  */
 export const TokenUsageExample: Story = {
-  render: () => (
-    <div style={{ maxWidth: '600px' }}>
-      <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-        Token Usage Example
-      </h3>
-      <p
-        style={{
-          marginBottom: 'var(--ds-spacing-6)',
-          color: 'var(--ds-color-neutral-text-subtle)',
-        }}
-      >
-        This card demonstrates proper token usage for a complete component.
-      </p>
-
-      <div
-        style={{
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          boxShadow: 'var(--ds-shadow-md)',
-          overflow: 'hidden',
-        }}
-      >
-        <div
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ maxWidth: '600px' }}>
+        <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
+          {t('storybook.tokens.tokenUsageExample')}
+        </h3>
+        <p
           style={{
-            padding: 'var(--ds-spacing-6)',
-            borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+            marginBottom: 'var(--ds-spacing-6)',
+            color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          <h4
+          {t('storybook.tokens.tokenUsageDescription')}
+        </p>
+
+        <div
+          style={{
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            border: '1px solid var(--ds-color-neutral-border-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            boxShadow: 'var(--ds-shadow-md)',
+            overflow: 'hidden',
+          }}
+        >
+          <div
             style={{
-              fontSize: 'var(--ds-font-size-4)',
-              fontWeight: 'var(--ds-font-weight-semibold)',
-              color: 'var(--ds-color-neutral-text-default)',
-              marginBottom: 'var(--ds-spacing-2)',
+              padding: 'var(--ds-spacing-6)',
+              borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
             }}
           >
-            Card Title
-          </h4>
+            <h4
+              style={{
+                fontSize: 'var(--ds-font-size-4)',
+                fontWeight: 'var(--ds-font-weight-semibold)',
+                color: 'var(--ds-color-neutral-text-default)',
+                marginBottom: 'var(--ds-spacing-2)',
+              }}
+            >
+              {t('storybook.sizes.cardTitle')}
+            </h4>
+            <p
+              style={{
+                fontSize: 'var(--ds-font-size-sm)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('storybook.tokens.cardTokensOnly')}
+            </p>
+          </div>
+
+          <div style={{ padding: 'var(--ds-spacing-6)' }}>
+            <div
+              style={{
+                display: 'flex',
+                gap: 'var(--ds-spacing-2)',
+                marginBottom: 'var(--ds-spacing-4)',
+              }}
+            >
+              <span
+                style={{
+                  padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-accent-surface-default)',
+                  color: 'var(--ds-color-accent-text-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-xs)',
+                  fontWeight: 'var(--ds-font-weight-medium)',
+                }}
+              >
+                {t('storybook.sizes.tag')} 1
+              </span>
+              <span
+                style={{
+                  padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
+                  backgroundColor: 'var(--ds-color-success-surface-default)',
+                  color: 'var(--ds-color-success-text-default)',
+                  borderRadius: 'var(--ds-border-radius-sm)',
+                  fontSize: 'var(--ds-font-size-xs)',
+                  fontWeight: 'var(--ds-font-weight-medium)',
+                }}
+              >
+                {t('storybook.sizes.tag')} 2
+              </span>
+            </div>
+
+            <button
+              style={{
+                padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-accent-base-default)',
+                color: 'var(--ds-color-accent-contrast-default)',
+                border: 'none',
+                borderRadius: 'var(--ds-border-radius-md)',
+                fontSize: 'var(--ds-font-size-sm)',
+                fontWeight: 'var(--ds-font-weight-medium)',
+                cursor: 'pointer',
+              }}
+              type="button"
+            >
+              {t('storybook.tokens.actionButton')}
+            </button>
+          </div>
+        </div>
+
+        <div
+          style={{
+            marginTop: 'var(--ds-spacing-6)',
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-info-surface-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            borderLeft: '4px solid var(--ds-color-info-border-default)',
+          }}
+        >
           <p
             style={{
               fontSize: 'var(--ds-font-size-sm)',
-              color: 'var(--ds-color-neutral-text-subtle)',
+              color: 'var(--ds-color-info-text-default)',
+              margin: 0,
             }}
           >
-            This card uses only design tokens for all styling.
+            <strong>{t('storybook.tokens.tokensUsed')}:</strong>{' '}
+            {t('storybook.tokens.tokensUsedList')}
           </p>
         </div>
-
-        <div style={{ padding: 'var(--ds-spacing-6)' }}>
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--ds-spacing-2)',
-              marginBottom: 'var(--ds-spacing-4)',
-            }}
-          >
-            <span
-              style={{
-                padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-accent-surface-default)',
-                color: 'var(--ds-color-accent-text-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-                fontSize: 'var(--ds-font-size-xs)',
-                fontWeight: 'var(--ds-font-weight-medium)',
-              }}
-            >
-              Tag 1
-            </span>
-            <span
-              style={{
-                padding: 'var(--ds-spacing-1) var(--ds-spacing-3)',
-                backgroundColor: 'var(--ds-color-success-surface-default)',
-                color: 'var(--ds-color-success-text-default)',
-                borderRadius: 'var(--ds-border-radius-sm)',
-                fontSize: 'var(--ds-font-size-xs)',
-                fontWeight: 'var(--ds-font-weight-medium)',
-              }}
-            >
-              Tag 2
-            </span>
-          </div>
-
-          <button
-            style={{
-              padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
-              backgroundColor: 'var(--ds-color-accent-base-default)',
-              color: 'var(--ds-color-accent-contrast-default)',
-              border: 'none',
-              borderRadius: 'var(--ds-border-radius-md)',
-              fontSize: 'var(--ds-font-size-sm)',
-              fontWeight: 'var(--ds-font-weight-medium)',
-              cursor: 'pointer',
-            }}
-            type="button"
-          >
-            Action Button
-          </button>
-        </div>
       </div>
-
-      <div
-        style={{
-          marginTop: 'var(--ds-spacing-6)',
-          padding: 'var(--ds-spacing-4)',
-          backgroundColor: 'var(--ds-color-info-surface-default)',
-          borderRadius: 'var(--ds-border-radius-md)',
-          borderLeft: '4px solid var(--ds-color-info-border-default)',
-        }}
-      >
-        <p
-          style={{
-            fontSize: 'var(--ds-font-size-sm)',
-            color: 'var(--ds-color-info-text-default)',
-            margin: 0,
-          }}
-        >
-          <strong>Tokens used:</strong> Colors, spacing, typography, borders, and shadows — all from
-          design tokens!
-        </p>
-      </div>
-    </div>
-  ),
+    );
+  },
 };

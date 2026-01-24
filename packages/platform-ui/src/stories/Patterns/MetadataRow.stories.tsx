@@ -4,6 +4,7 @@
  * Horizontal row of key-value metadata items with icons and separators.
  */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { MetadataRow, MetadataRowInline, type MetadataRowProps } from '../../patterns/MetadataRow';
 import type { MetadataItem } from '../../patterns/types';
 
@@ -227,22 +228,31 @@ export const EmptyState: Story = {
 
 export const AllSizes: Story = {
   name: 'Size Comparison',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div>
-        <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>Small</p>
-        <MetadataRow items={basicMetadata} size="sm" />
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.sizeSmall')}
+          </p>
+          <MetadataRow items={basicMetadata} size="sm" />
+        </div>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.sizeMedium')}
+          </p>
+          <MetadataRow items={basicMetadata} size="md" />
+        </div>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.sizeLarge')}
+          </p>
+          <MetadataRow items={basicMetadata} size="lg" />
+        </div>
       </div>
-      <div>
-        <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>Medium</p>
-        <MetadataRow items={basicMetadata} size="md" />
-      </div>
-      <div>
-        <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>Large</p>
-        <MetadataRow items={basicMetadata} size="lg" />
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 // =============================================================================
@@ -281,18 +291,25 @@ export const InlineWithOverflow: Story = {
 
 export const VariantComparison: Story = {
   name: 'Variant Comparison (Chip vs Inline)',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div>
-        <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>MetadataRow (Chip Style)</p>
-        <MetadataRow items={basicMetadata} size="sm" />
+  render: () => {
+    const t = useT();
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.variantChip')}
+          </p>
+          <MetadataRow items={basicMetadata} size="sm" />
+        </div>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            {t('storybook.patterns.variantInline')}
+          </p>
+          <MetadataRowInline items={basicMetadata} size="sm" separator="•" />
+        </div>
       </div>
-      <div>
-        <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>MetadataRowInline (Text Style)</p>
-        <MetadataRowInline items={basicMetadata} size="sm" separator="•" />
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const InContextUsage: Story = {

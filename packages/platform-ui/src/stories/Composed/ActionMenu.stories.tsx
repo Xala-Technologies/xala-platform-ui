@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { ActionMenu, ContextMenu } from '../../composed/ActionMenu';
 import { Button } from '@digdir/designsystemet-react';
 import { MoreVertical, Edit, Trash2, Copy, Download, Share2 } from 'lucide-react';
@@ -45,44 +46,48 @@ Dropdown menus for actions and context menus. Supports keyboard navigation and p
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Sample menu items
-const sampleItems = [
-  {
-    id: '1',
-    label: 'Edit',
-    icon: <Edit size={16} />,
-    onClick: fn(),
-  },
-  {
-    id: '2',
-    label: 'Duplicate',
-    icon: <Copy size={16} />,
-    onClick: fn(),
-  },
-  {
-    id: '3',
-    label: 'Download',
-    icon: <Download size={16} />,
-    onClick: fn(),
-  },
-  {
-    id: '4',
-    label: 'Share',
-    icon: <Share2 size={16} />,
-    onClick: fn(),
-  },
-  {
-    id: '5',
-    label: 'Delete',
-    icon: <Trash2 size={16} />,
-    onClick: fn(),
-    danger: true,
-  },
-];
+// Hook to get sample items with translations
+const useSampleItems = () => {
+  const t = useT();
+  return [
+    {
+      id: '1',
+      label: t('platform.common.edit'),
+      icon: <Edit size={16} />,
+      onClick: fn(),
+    },
+    {
+      id: '2',
+      label: t('storybook.demo.duplicate'),
+      icon: <Copy size={16} />,
+      onClick: fn(),
+    },
+    {
+      id: '3',
+      label: t('storybook.demo.download'),
+      icon: <Download size={16} />,
+      onClick: fn(),
+    },
+    {
+      id: '4',
+      label: t('storybook.demo.share'),
+      icon: <Share2 size={16} />,
+      onClick: fn(),
+    },
+    {
+      id: '5',
+      label: t('platform.common.delete'),
+      icon: <Trash2 size={16} />,
+      onClick: fn(),
+      danger: true,
+    },
+  ];
+};
 
-// Basic action menu
-export const Default: Story = {
-  render: () => (
+// Wrapper for default story
+const DefaultDemo = () => {
+  const sampleItems = useSampleItems();
+  return (
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
@@ -91,80 +96,143 @@ export const Default: Story = {
       }
       items={sampleItems}
     />
-  ),
+  );
 };
 
-// With menu groups
-export const WithGroups: Story = {
-  render: () => (
+// Basic action menu
+export const Default: Story = {
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for groups story
+const WithGroupsDemo = () => {
+  const t = useT();
+  return (
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          Actions
+          {t('storybook.demo.actions')}
         </Button>
       }
       groups={[
         {
           id: 'actions',
-          label: 'Actions',
+          label: t('storybook.demo.actions'),
           items: [
-            { id: '1', label: 'Edit', icon: <Edit size={16} />, onClick: fn() },
-            { id: '2', label: 'Duplicate', icon: <Copy size={16} />, onClick: fn() },
+            { id: '1', label: t('platform.common.edit'), icon: <Edit size={16} />, onClick: fn() },
+            {
+              id: '2',
+              label: t('storybook.demo.duplicate'),
+              icon: <Copy size={16} />,
+              onClick: fn(),
+            },
           ],
         },
         {
           id: 'export',
-          label: 'Export',
+          label: t('storybook.demo.export'),
           items: [
-            { id: '3', label: 'Download', icon: <Download size={16} />, onClick: fn() },
-            { id: '4', label: 'Share', icon: <Share2 size={16} />, onClick: fn() },
+            {
+              id: '3',
+              label: t('storybook.demo.download'),
+              icon: <Download size={16} />,
+              onClick: fn(),
+            },
+            {
+              id: '4',
+              label: t('storybook.demo.share'),
+              icon: <Share2 size={16} />,
+              onClick: fn(),
+            },
           ],
         },
         {
           id: 'danger',
-          label: 'Danger Zone',
+          label: t('storybook.demo.dangerZone'),
           items: [
-            { id: '5', label: 'Delete', icon: <Trash2 size={16} />, onClick: fn(), danger: true },
+            {
+              id: '5',
+              label: t('platform.common.delete'),
+              icon: <Trash2 size={16} />,
+              onClick: fn(),
+              danger: true,
+            },
           ],
         },
       ]}
     />
-  ),
+  );
+};
+
+// With menu groups
+export const WithGroups: Story = {
+  render: () => <WithGroupsDemo />,
+};
+
+// Wrapper for disabled items story
+const WithDisabledDemo = () => {
+  const t = useT();
+  return (
+    <ActionMenu
+      trigger={
+        <Button data-color="neutral" data-size="medium">
+          {t('storybook.demo.actions')}
+        </Button>
+      }
+      items={[
+        { id: '1', label: t('platform.common.edit'), icon: <Edit size={16} />, onClick: fn() },
+        {
+          id: '2',
+          label: t('storybook.demo.duplicate'),
+          icon: <Copy size={16} />,
+          onClick: fn(),
+          disabled: true,
+        },
+        {
+          id: '3',
+          label: t('platform.common.delete'),
+          icon: <Trash2 size={16} />,
+          onClick: fn(),
+          danger: true,
+        },
+      ]}
+    />
+  );
 };
 
 // With disabled items
 export const WithDisabled: Story = {
-  render: () => (
-    <ActionMenu
-      trigger={
-        <Button data-color="neutral" data-size="medium">
-          Actions
-        </Button>
-      }
-      items={[
-        { id: '1', label: 'Edit', icon: <Edit size={16} />, onClick: fn() },
-        { id: '2', label: 'Duplicate', icon: <Copy size={16} />, onClick: fn(), disabled: true },
-        { id: '3', label: 'Delete', icon: <Trash2 size={16} />, onClick: fn(), danger: true },
-      ]}
-    />
-  ),
+  render: () => <WithDisabledDemo />,
 };
 
-// With shortcuts
-export const WithShortcuts: Story = {
-  render: () => (
+// Wrapper for shortcuts story
+const WithShortcutsDemo = () => {
+  const t = useT();
+  return (
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          Actions
+          {t('storybook.demo.actions')}
         </Button>
       }
       items={[
-        { id: '1', label: 'Edit', icon: <Edit size={16} />, shortcut: '⌘E', onClick: fn() },
-        { id: '2', label: 'Duplicate', icon: <Copy size={16} />, shortcut: '⌘D', onClick: fn() },
+        {
+          id: '1',
+          label: t('platform.common.edit'),
+          icon: <Edit size={16} />,
+          shortcut: '⌘E',
+          onClick: fn(),
+        },
+        {
+          id: '2',
+          label: t('storybook.demo.duplicate'),
+          icon: <Copy size={16} />,
+          shortcut: '⌘D',
+          onClick: fn(),
+        },
         {
           id: '3',
-          label: 'Delete',
+          label: t('platform.common.delete'),
           icon: <Trash2 size={16} />,
           shortcut: '⌘⌫',
           onClick: fn(),
@@ -172,47 +240,69 @@ export const WithShortcuts: Story = {
         },
       ]}
     />
-  ),
+  );
 };
 
-// Different alignments
-export const BottomStart: Story = {
-  render: () => (
+// With shortcuts
+export const WithShortcuts: Story = {
+  render: () => <WithShortcutsDemo />,
+};
+
+// Wrapper for bottom start story
+const BottomStartDemo = () => {
+  const t = useT();
+  const sampleItems = useSampleItems();
+  return (
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          Bottom Start
+          {t('storybook.demo.bottomStart')}
         </Button>
       }
       items={sampleItems}
       side="bottom"
       align="start"
     />
-  ),
+  );
 };
 
-export const BottomEnd: Story = {
-  render: () => (
+// Different alignments
+export const BottomStart: Story = {
+  render: () => <BottomStartDemo />,
+};
+
+// Wrapper for bottom end story
+const BottomEndDemo = () => {
+  const t = useT();
+  const sampleItems = useSampleItems();
+  return (
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          Bottom End
+          {t('storybook.demo.bottomEnd')}
         </Button>
       }
       items={sampleItems}
       side="bottom"
       align="end"
     />
-  ),
+  );
 };
 
-export const TopStart: Story = {
-  render: () => (
+export const BottomEnd: Story = {
+  render: () => <BottomEndDemo />,
+};
+
+// Wrapper for top start story
+const TopStartDemo = () => {
+  const t = useT();
+  const sampleItems = useSampleItems();
+  return (
     <div style={{ marginTop: '200px' }}>
       <ActionMenu
         trigger={
           <Button data-color="neutral" data-size="medium">
-            Top Start
+            {t('storybook.demo.topStart')}
           </Button>
         }
         items={sampleItems}
@@ -220,27 +310,40 @@ export const TopStart: Story = {
         align="start"
       />
     </div>
-  ),
+  );
 };
 
-// Disabled menu
-export const Disabled: Story = {
-  render: () => (
+export const TopStart: Story = {
+  render: () => <TopStartDemo />,
+};
+
+// Wrapper for disabled story
+const DisabledDemo = () => {
+  const t = useT();
+  const sampleItems = useSampleItems();
+  return (
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium" disabled>
-          Disabled
+          {t('storybook.story.disabled')}
         </Button>
       }
       items={sampleItems}
       disabled={true}
     />
-  ),
+  );
 };
 
-// Context menu example
-export const ContextMenuExample: Story = {
-  render: () => (
+// Disabled menu
+export const Disabled: Story = {
+  render: () => <DisabledDemo />,
+};
+
+// Wrapper for context menu story
+const ContextMenuExampleDemo = () => {
+  const t = useT();
+  const sampleItems = useSampleItems();
+  return (
     <ContextMenu items={sampleItems}>
       <div
         style={{
@@ -251,8 +354,13 @@ export const ContextMenuExample: Story = {
           color: 'var(--ds-color-neutral-text-subtle)',
         }}
       >
-        Right-click here to open context menu
+        {t('storybook.demo.rightClickHere')}
       </div>
     </ContextMenu>
-  ),
+  );
+};
+
+// Context menu example
+export const ContextMenuExample: Story = {
+  render: () => <ContextMenuExampleDemo />,
 };

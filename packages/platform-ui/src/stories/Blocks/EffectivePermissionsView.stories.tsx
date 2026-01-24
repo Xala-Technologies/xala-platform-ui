@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { EffectivePermissionsView } from '../../blocks/admin/EffectivePermissionsView';
 import type { EffectivePermission } from '../../blocks/admin/EffectivePermissionsView';
 
@@ -106,11 +107,14 @@ export const Default: Story = {
     expandAll: false,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Without source
@@ -124,11 +128,14 @@ export const WithoutSource: Story = {
     expandAll: false,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Without category grouping
@@ -142,11 +149,14 @@ export const WithoutCategoryGrouping: Story = {
     expandAll: false,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Without risk indicators
@@ -160,11 +170,14 @@ export const WithoutRiskIndicators: Story = {
     expandAll: false,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Expand all
@@ -178,11 +191,14 @@ export const ExpandAll: Story = {
     expandAll: true,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Loading state
@@ -196,11 +212,14 @@ export const Loading: Story = {
     expandAll: false,
     loading: true,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Empty permissions
@@ -214,11 +233,14 @@ export const Empty: Story = {
     expandAll: false,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };
 
 // Many permissions
@@ -261,9 +283,12 @@ export const ManyPermissions: Story = {
     expandAll: false,
     loading: false,
   },
-  render: (args) => (
-    <div style={{ width: '700px' }}>
-      <EffectivePermissionsView {...args} />
-    </div>
-  ),
+  render: function Render(args) {
+    const t = useT();
+    return (
+      <div style={{ width: '700px' }}>
+        <EffectivePermissionsView {...args} />
+      </div>
+    );
+  },
 };

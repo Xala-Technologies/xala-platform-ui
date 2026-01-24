@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { Slider, RangeSlider } from '../../composed/Slider';
 
 const meta: Meta<typeof Slider> = {
@@ -65,6 +66,299 @@ Interactive sliders with labels, marks, and tooltips. Supports single value and 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper components for stories that need translations
+const WithLabelDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.volume')}
+        defaultValue={50}
+        min={0}
+        max={100}
+        step={1}
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const WithValueDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.progress')}
+        defaultValue={75}
+        min={0}
+        max={100}
+        step={1}
+        showValue
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const WithTooltipDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.price')}
+        defaultValue={50}
+        min={0}
+        max={100}
+        step={1}
+        showTooltip
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const TooltipAlwaysDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.value')}
+        defaultValue={50}
+        min={0}
+        max={100}
+        step={1}
+        showTooltip="always"
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const WithMarksDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.temperature')}
+        defaultValue={20}
+        min={0}
+        max={100}
+        step={5}
+        marks={[
+          { value: 0, label: '0°C' },
+          { value: 25, label: '25°C' },
+          { value: 50, label: '50°C' },
+          { value: 75, label: '75°C' },
+          { value: 100, label: '100°C' },
+        ]}
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const CustomFormatDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.price')}
+        defaultValue={50}
+        min={0}
+        max={100}
+        step={1}
+        formatValue={(value) => `$${value}`}
+        showTooltip
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const SmallDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider label={t('storybook.demo.small')} defaultValue={50} size="sm" onChange={fn()} />
+    </div>
+  );
+};
+
+const MediumDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider label={t('storybook.demo.medium')} defaultValue={50} size="md" onChange={fn()} />
+    </div>
+  );
+};
+
+const LargeDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider label={t('storybook.demo.large')} defaultValue={50} size="lg" onChange={fn()} />
+    </div>
+  );
+};
+
+const SuccessDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.story.success')}
+        defaultValue={75}
+        color="success"
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const WarningDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.warning')}
+        defaultValue={50}
+        color="warning"
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const DangerDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.danger')}
+        defaultValue={25}
+        color="danger"
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const DisabledDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.disabled')}
+        defaultValue={50}
+        disabled
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const WithStepDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <Slider
+        label={t('storybook.demo.stepBy10')}
+        defaultValue={50}
+        min={0}
+        max={100}
+        step={10}
+        size="md"
+        onChange={fn()}
+      />
+    </div>
+  );
+};
+
+const RangeSliderDemo = () => {
+  return (
+    <div style={{ width: '400px' }}>
+      <RangeSlider
+        defaultValue={[20, 80]}
+        min={0}
+        max={100}
+        step={1}
+        onChange={fn()}
+        showTooltip={true}
+      />
+    </div>
+  );
+};
+
+const RangeSliderWithLabelDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <RangeSlider
+        label={t('storybook.demo.priceRange')}
+        defaultValue={[25, 75]}
+        min={0}
+        max={100}
+        step={5}
+        onChange={fn()}
+        showTooltip={true}
+      />
+    </div>
+  );
+};
+
+const RangeSliderWithMarksDemo = () => {
+  const t = useT();
+  return (
+    <div style={{ width: '400px' }}>
+      <RangeSlider
+        label={t('storybook.demo.ageRange')}
+        defaultValue={[25, 65]}
+        min={0}
+        max={100}
+        step={5}
+        marks={[
+          { value: 0, label: '0' },
+          { value: 25, label: '25' },
+          { value: 50, label: '50' },
+          { value: 75, label: '75' },
+          { value: 100, label: '100' },
+        ]}
+        onChange={fn()}
+        showTooltip={true}
+      />
+    </div>
+  );
+};
+
+const AllSizesDemo = () => {
+  const t = useT();
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-6)',
+        width: '400px',
+      }}
+    >
+      <Slider label={t('storybook.demo.small')} defaultValue={50} size="sm" onChange={fn()} />
+      <Slider label={t('storybook.demo.medium')} defaultValue={50} size="md" onChange={fn()} />
+      <Slider label={t('storybook.demo.large')} defaultValue={50} size="lg" onChange={fn()} />
+    </div>
+  );
+};
+
 // Basic slider
 export const Default: Story = {
   args: {
@@ -81,234 +375,86 @@ export const Default: Story = {
 
 // With label
 export const WithLabel: Story = {
-  args: {
-    label: 'Volume',
-    defaultValue: 50,
-    min: 0,
-    max: 100,
-    step: 1,
-    size: 'md',
-  },
+  render: () => <WithLabelDemo />,
 };
 
 // With value display
 export const WithValue: Story = {
-  args: {
-    label: 'Progress',
-    defaultValue: 75,
-    min: 0,
-    max: 100,
-    step: 1,
-    showValue: true,
-    size: 'md',
-  },
+  render: () => <WithValueDemo />,
 };
 
 // With tooltip
 export const WithTooltip: Story = {
-  args: {
-    label: 'Price',
-    defaultValue: 50,
-    min: 0,
-    max: 100,
-    step: 1,
-    showTooltip: true,
-    size: 'md',
-  },
+  render: () => <WithTooltipDemo />,
 };
 
 // Tooltip always visible
 export const TooltipAlways: Story = {
-  args: {
-    label: 'Value',
-    defaultValue: 50,
-    min: 0,
-    max: 100,
-    step: 1,
-    showTooltip: 'always',
-    size: 'md',
-  },
+  render: () => <TooltipAlwaysDemo />,
 };
 
 // With marks
 export const WithMarks: Story = {
-  args: {
-    label: 'Temperature',
-    defaultValue: 20,
-    min: 0,
-    max: 100,
-    step: 5,
-    marks: [
-      { value: 0, label: '0°C' },
-      { value: 25, label: '25°C' },
-      { value: 50, label: '50°C' },
-      { value: 75, label: '75°C' },
-      { value: 100, label: '100°C' },
-    ],
-    size: 'md',
-  },
+  render: () => <WithMarksDemo />,
 };
 
 // With custom format
 export const CustomFormat: Story = {
-  args: {
-    label: 'Price',
-    defaultValue: 50,
-    min: 0,
-    max: 100,
-    step: 1,
-    formatValue: (value) => `$${value}`,
-    showTooltip: true,
-    size: 'md',
-  },
+  render: () => <CustomFormatDemo />,
 };
 
 // Size variants
 export const Small: Story = {
-  args: {
-    label: 'Small',
-    defaultValue: 50,
-    size: 'sm',
-  },
+  render: () => <SmallDemo />,
 };
 
 export const Medium: Story = {
-  args: {
-    label: 'Medium',
-    defaultValue: 50,
-    size: 'md',
-  },
+  render: () => <MediumDemo />,
 };
 
 export const Large: Story = {
-  args: {
-    label: 'Large',
-    defaultValue: 50,
-    size: 'lg',
-  },
+  render: () => <LargeDemo />,
 };
 
 // Color variants
 export const Success: Story = {
-  args: {
-    label: 'Success',
-    defaultValue: 75,
-    color: 'success',
-    size: 'md',
-  },
+  render: () => <SuccessDemo />,
 };
 
 export const Warning: Story = {
-  args: {
-    label: 'Warning',
-    defaultValue: 50,
-    color: 'warning',
-    size: 'md',
-  },
+  render: () => <WarningDemo />,
 };
 
 export const Danger: Story = {
-  args: {
-    label: 'Danger',
-    defaultValue: 25,
-    color: 'danger',
-    size: 'md',
-  },
+  render: () => <DangerDemo />,
 };
 
 // Disabled
 export const Disabled: Story = {
-  args: {
-    label: 'Disabled',
-    defaultValue: 50,
-    disabled: true,
-    size: 'md',
-  },
+  render: () => <DisabledDemo />,
 };
 
 // With step
 export const WithStep: Story = {
-  args: {
-    label: 'Step by 10',
-    defaultValue: 50,
-    min: 0,
-    max: 100,
-    step: 10,
-    size: 'md',
-  },
+  render: () => <WithStepDemo />,
 };
 
 // Range slider
 export const RangeSliderExample: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <RangeSlider
-        defaultValue={[20, 80]}
-        min={0}
-        max={100}
-        step={1}
-        onChange={fn()}
-        showTooltip={true}
-      />
-    </div>
-  ),
+  render: () => <RangeSliderDemo />,
 };
 
 // Range slider with label
 export const RangeSliderWithLabel: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <RangeSlider
-        label="Price Range"
-        defaultValue={[25, 75]}
-        min={0}
-        max={100}
-        step={5}
-        onChange={fn()}
-        showTooltip={true}
-      />
-    </div>
-  ),
+  render: () => <RangeSliderWithLabelDemo />,
 };
 
 // Range slider with marks
 export const RangeSliderWithMarks: Story = {
-  render: () => (
-    <div style={{ width: '400px' }}>
-      <RangeSlider
-        label="Age Range"
-        defaultValue={[25, 65]}
-        min={0}
-        max={100}
-        step={5}
-        marks={[
-          { value: 0, label: '0' },
-          { value: 25, label: '25' },
-          { value: 50, label: '50' },
-          { value: 75, label: '75' },
-          { value: 100, label: '100' },
-        ]}
-        onChange={fn()}
-        showTooltip={true}
-      />
-    </div>
-  ),
+  render: () => <RangeSliderWithMarksDemo />,
 };
 
 // All sizes showcase
 export const AllSizes: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-6)',
-        width: '400px',
-      }}
-    >
-      <Slider label="Small" defaultValue={50} size="sm" onChange={fn()} />
-      <Slider label="Medium" defaultValue={50} size="md" onChange={fn()} />
-      <Slider label="Large" defaultValue={50} size="lg" onChange={fn()} />
-    </div>
-  ),
+  render: () => <AllSizesDemo />,
 };

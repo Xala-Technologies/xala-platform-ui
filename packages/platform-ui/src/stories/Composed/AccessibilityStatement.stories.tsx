@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useT } from '@xala-technologies/i18n';
 import { AccessibilityStatement } from '../../composed/AccessibilityStatement';
 
 const meta: Meta<typeof AccessibilityStatement> = {
@@ -43,127 +44,175 @@ Required accessibility statement page for Norwegian universal design compliance.
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for full conformance story
+const FullConformanceDemo = () => {
+  const t = useT();
+  return (
+    <AccessibilityStatement
+      organizationName={t('storybook.demo.exampleOrganization')}
+      websiteName={t('storybook.demo.exampleWebsite')}
+      websiteUrl="https://example.com"
+      conformanceLevel="full"
+      wcagLevel="AA"
+      lastUpdated="2024-01-15"
+      lastTested="2024-01-10"
+      testingMethod={t('storybook.demo.automatedManualTesting')}
+      contact={{
+        email: 'accessibility@example.com',
+        phone: '+47 12 34 56 78',
+        address: 'Storgata 1, 0155 Oslo',
+      }}
+    />
+  );
+};
+
 // Full conformance
 export const FullConformance: Story = {
-  args: {
-    organizationName: 'Example Organization',
-    websiteName: 'Example Website',
-    websiteUrl: 'https://example.com',
-    conformanceLevel: 'full',
-    wcagLevel: 'AA',
-    lastUpdated: '2024-01-15',
-    lastTested: '2024-01-10',
-    testingMethod: 'Automated testing with axe-core and manual testing',
-    contact: {
-      email: 'accessibility@example.com',
-      phone: '+47 12 34 56 78',
-      address: 'Storgata 1, 0155 Oslo',
-    },
-  },
+  render: () => <FullConformanceDemo />,
+};
+
+// Wrapper for partial conformance story
+const PartialConformanceDemo = () => {
+  const t = useT();
+  return (
+    <AccessibilityStatement
+      organizationName={t('storybook.demo.exampleOrganization')}
+      websiteName={t('storybook.demo.exampleWebsite')}
+      websiteUrl="https://example.com"
+      conformanceLevel="partial"
+      wcagLevel="AA"
+      lastUpdated="2024-01-15"
+      lastTested="2024-01-10"
+      testingMethod={t('storybook.demo.automatedManualTesting')}
+      knownIssues={[
+        {
+          description: t('storybook.demo.imagesLackAltText'),
+          wcagCriterion: '1.1.1',
+          workaround: t('storybook.demo.screenReaderWorkaround'),
+          expectedFix: 'Q2 2024',
+        },
+        {
+          description: t('storybook.demo.colorContrastIssue'),
+          wcagCriterion: '1.4.3',
+          workaround: t('storybook.demo.zoomWorkaround'),
+          expectedFix: 'Q1 2024',
+        },
+      ]}
+      contact={{
+        email: 'accessibility@example.com',
+        phone: '+47 12 34 56 78',
+      }}
+    />
+  );
 };
 
 // Partial conformance with issues
 export const PartialConformance: Story = {
-  args: {
-    organizationName: 'Example Organization',
-    websiteName: 'Example Website',
-    websiteUrl: 'https://example.com',
-    conformanceLevel: 'partial',
-    wcagLevel: 'AA',
-    lastUpdated: '2024-01-15',
-    lastTested: '2024-01-10',
-    testingMethod: 'Automated testing with axe-core and manual testing',
-    knownIssues: [
-      {
-        description: 'Some images lack alternative text',
-        wcagCriterion: '1.1.1',
-        workaround: 'Screen reader users can request alternative text via contact form',
-        expectedFix: 'Q2 2024',
-      },
-      {
-        description: 'Color contrast ratio below 4.5:1 on some buttons',
-        wcagCriterion: '1.4.3',
-        workaround: 'Users can increase browser zoom for better contrast',
-        expectedFix: 'Q1 2024',
-      },
-    ],
-    contact: {
-      email: 'accessibility@example.com',
-      phone: '+47 12 34 56 78',
-    },
-  },
+  render: () => <PartialConformanceDemo />,
+};
+
+// Wrapper for non-conformant story
+const NonConformantDemo = () => {
+  const t = useT();
+  return (
+    <AccessibilityStatement
+      organizationName={t('storybook.demo.exampleOrganization')}
+      websiteName={t('storybook.demo.exampleWebsite')}
+      websiteUrl="https://example.com"
+      conformanceLevel="non-conformant"
+      wcagLevel="AA"
+      lastUpdated="2024-01-15"
+      knownIssues={[
+        {
+          description: t('storybook.demo.multipleAccessibilityIssues'),
+          wcagCriterion: 'Multiple',
+          expectedFix: t('storybook.demo.underReview'),
+        },
+      ]}
+      contact={{
+        email: 'accessibility@example.com',
+      }}
+    />
+  );
 };
 
 // Non-conformant
 export const NonConformant: Story = {
-  args: {
-    organizationName: 'Example Organization',
-    websiteName: 'Example Website',
-    websiteUrl: 'https://example.com',
-    conformanceLevel: 'non-conformant',
-    wcagLevel: 'AA',
-    lastUpdated: '2024-01-15',
-    knownIssues: [
-      {
-        description: 'Multiple accessibility issues identified',
-        wcagCriterion: 'Multiple',
-        expectedFix: 'Under review',
-      },
-    ],
-    contact: {
-      email: 'accessibility@example.com',
-    },
-  },
+  render: () => <NonConformantDemo />,
+};
+
+// Wrapper for with additional info story
+const WithAdditionalInfoDemo = () => {
+  const t = useT();
+  return (
+    <AccessibilityStatement
+      organizationName={t('storybook.demo.exampleOrganization')}
+      websiteName={t('storybook.demo.exampleWebsite')}
+      websiteUrl="https://example.com"
+      conformanceLevel="full"
+      wcagLevel="AA"
+      lastUpdated="2024-01-15"
+      lastTested="2024-01-10"
+      testingMethod={t('storybook.demo.automatedManualTesting')}
+      contact={{
+        email: 'accessibility@example.com',
+        phone: '+47 12 34 56 78',
+        address: 'Storgata 1, 0155 Oslo',
+      }}
+      additionalInfo={t('storybook.demo.commitmentToAccessibility')}
+    />
+  );
 };
 
 // With additional info
 export const WithAdditionalInfo: Story = {
-  args: {
-    organizationName: 'Example Organization',
-    websiteName: 'Example Website',
-    websiteUrl: 'https://example.com',
-    conformanceLevel: 'full',
-    wcagLevel: 'AA',
-    lastUpdated: '2024-01-15',
-    lastTested: '2024-01-10',
-    testingMethod: 'Automated testing with axe-core and manual testing',
-    contact: {
-      email: 'accessibility@example.com',
-      phone: '+47 12 34 56 78',
-      address: 'Storgata 1, 0155 Oslo',
-    },
-    additionalInfo: 'We are committed to improving accessibility and welcome feedback from users.',
-  },
+  render: () => <WithAdditionalInfoDemo />,
+};
+
+// Wrapper for WCAG AAA story
+const WCAGAAADemo = () => {
+  const t = useT();
+  return (
+    <AccessibilityStatement
+      organizationName={t('storybook.demo.exampleOrganization')}
+      websiteName={t('storybook.demo.exampleWebsite')}
+      websiteUrl="https://example.com"
+      conformanceLevel="full"
+      wcagLevel="AAA"
+      lastUpdated="2024-01-15"
+      lastTested="2024-01-10"
+      testingMethod={t('storybook.demo.comprehensiveTesting')}
+      contact={{
+        email: 'accessibility@example.com',
+      }}
+    />
+  );
 };
 
 // WCAG AAA level
 export const WCAGAAA: Story = {
-  args: {
-    organizationName: 'Example Organization',
-    websiteName: 'Example Website',
-    websiteUrl: 'https://example.com',
-    conformanceLevel: 'full',
-    wcagLevel: 'AAA',
-    lastUpdated: '2024-01-15',
-    lastTested: '2024-01-10',
-    testingMethod: 'Comprehensive automated and manual testing',
-    contact: {
-      email: 'accessibility@example.com',
-    },
-  },
+  render: () => <WCAGAAADemo />,
+};
+
+// Wrapper for minimal story
+const MinimalDemo = () => {
+  const t = useT();
+  return (
+    <AccessibilityStatement
+      organizationName={t('storybook.demo.exampleOrganization')}
+      websiteName={t('storybook.demo.exampleWebsite')}
+      websiteUrl="https://example.com"
+      conformanceLevel="full"
+      wcagLevel="AA"
+      lastUpdated="2024-01-15"
+      contact={{
+        email: 'accessibility@example.com',
+      }}
+    />
+  );
 };
 
 // Minimal
 export const Minimal: Story = {
-  args: {
-    organizationName: 'Example Organization',
-    websiteName: 'Example Website',
-    websiteUrl: 'https://example.com',
-    conformanceLevel: 'full',
-    wcagLevel: 'AA',
-    lastUpdated: '2024-01-15',
-    contact: {
-      email: 'accessibility@example.com',
-    },
-  },
+  render: () => <MinimalDemo />,
 };

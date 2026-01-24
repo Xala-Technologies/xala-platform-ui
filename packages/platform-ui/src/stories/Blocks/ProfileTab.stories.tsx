@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
 import { ProfileTab } from '../../blocks/settings/ProfileTab';
 import type { ProfileData } from '../../blocks/settings/ProfileTab';
 
@@ -155,6 +156,7 @@ export const UploadingAvatar: Story = {
 // Custom labels
 export const CustomLabels: Story = {
   render: () => {
+    const t = useT();
     const [profileData, setProfileData] = useState<ProfileData>(sampleProfileData);
     return (
       <div style={{ width: '700px' }}>
@@ -168,26 +170,26 @@ export const CustomLabels: Story = {
           onSaveProfile={fn()}
           onAvatarChange={fn()}
           labels={{
-            profilePicture: 'Profile Picture',
-            uploadDescription: 'Upload a profile picture to display in the system',
-            changeImage: 'Change Image',
-            uploading: 'Uploading...',
-            fileTypeHint: 'JPG, PNG or GIF (max 5MB)',
-            personalInfo: 'Personal Information',
-            personalInfoDescription: 'Your basic contact information',
-            fullName: 'Full Name',
+            profilePicture: t('platform.nav.profile'),
+            uploadDescription: t('storybook.demo.cardDescription'),
+            changeImage: t('platform.common.edit'),
+            uploading: t('platform.common.loading'),
+            fileTypeHint: t('storybook.demo.sampleText'),
+            personalInfo: t('platform.common.details'),
+            personalInfoDescription: t('storybook.demo.cardDescription'),
+            fullName: t('platform.nav.profile'),
             fullNamePlaceholder: 'John Doe',
-            email: 'Email Address',
+            email: t('platform.auth.email'),
             emailPlaceholder: 'john.doe@example.com',
-            phone: 'Phone Number',
+            phone: t('platform.common.details'),
             phonePlaceholder: '+47 123 45 678',
-            dateOfBirth: 'Date of Birth',
-            nationalId: 'National ID',
+            dateOfBirth: t('platform.common.details'),
+            nationalId: t('platform.common.details'),
             nationalIdPlaceholder: '11 digits',
-            saveChanges: 'Save Changes',
-            saving: 'Saving...',
-            changeProfilePicture: 'Change Profile Picture',
-            saveProfileSettings: 'Save Profile Settings',
+            saveChanges: t('platform.common.save'),
+            saving: t('platform.common.loading'),
+            changeProfilePicture: t('platform.common.edit'),
+            saveProfileSettings: t('platform.common.save'),
           }}
         />
       </div>

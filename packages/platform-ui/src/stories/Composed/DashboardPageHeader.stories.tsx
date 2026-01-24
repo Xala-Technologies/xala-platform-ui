@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { useT } from '@xala-technologies/i18n';
 import { DashboardPageHeader } from '../../composed/DashboardPageHeader';
 import { Button, Badge } from '@digdir/designsystemet-react';
 import { MapPin, Calendar, User } from 'lucide-react';
@@ -45,152 +46,227 @@ Professional page header with breadcrumbs, title, badge, metadata, actions, and 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Wrapper for default story
+const DefaultDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.dashboard')}
+      subtitle={t('storybook.demo.overviewOfResources')}
+    />
+  );
+};
+
 // Basic header
 export const Default: Story = {
-  args: {
-    title: 'Dashboard',
-    subtitle: 'Overview of your resources',
-  },
+  render: () => <DefaultDemo />,
+};
+
+// Wrapper for with badge story
+const WithBadgeDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.projectAlpha')}
+      subtitle={t('storybook.demo.activeDevelopmentProject')}
+      badge={<Badge variant="success">{t('platform.status.active')}</Badge>}
+    />
+  );
 };
 
 // With badge
 export const WithBadge: Story = {
-  args: {
-    title: 'Project Alpha',
-    subtitle: 'Active development project',
-    badge: <Badge variant="success">Active</Badge>,
-  },
+  render: () => <WithBadgeDemo />,
+};
+
+// Wrapper for with breadcrumbs story
+const WithBreadcrumbsDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.resourceDetails')}
+      subtitle={t('storybook.demo.viewAndManageResource')}
+      breadcrumb={
+        <nav
+          style={{
+            fontSize: 'var(--ds-font-size-sm)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {t('platform.nav.home')}
+          </a>
+          {' / '}
+          <a href="/resources" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {t('storybook.demo.resources')}
+          </a>
+          {' / '}
+          <span>{t('storybook.demo.details')}</span>
+        </nav>
+      }
+    />
+  );
 };
 
 // With breadcrumbs
 export const WithBreadcrumbs: Story = {
-  args: {
-    title: 'Resource Details',
-    subtitle: 'View and manage resource information',
-    breadcrumb: (
-      <nav
-        style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}
-      >
-        <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          Home
-        </a>
-        {' / '}
-        <a href="/resources" style={{ textDecoration: 'none', color: 'inherit' }}>
-          Resources
-        </a>
-        {' / '}
-        <span>Details</span>
-      </nav>
-    ),
-  },
+  render: () => <WithBreadcrumbsDemo />,
+};
+
+// Wrapper for with metadata story
+const WithMetadataDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.meetingRoom101')}
+      subtitle={t('storybook.demo.conferenceRoomFirstFloor')}
+      meta={[
+        { icon: <MapPin size={16} />, label: 'Storgata 1, Oslo' },
+        { icon: <Calendar size={16} />, label: t('storybook.demo.availableToday') },
+        { icon: <User size={16} />, label: `${t('storybook.demo.capacity')}: 20` },
+      ]}
+    />
+  );
 };
 
 // With metadata
 export const WithMetadata: Story = {
-  args: {
-    title: 'Meeting Room 101',
-    subtitle: 'Conference room on the first floor',
-    meta: [
-      { icon: <MapPin size={16} />, label: 'Storgata 1, Oslo' },
-      { icon: <Calendar size={16} />, label: 'Available today' },
-      { icon: <User size={16} />, label: 'Capacity: 20' },
-    ],
-  },
+  render: () => <WithMetadataDemo />,
+};
+
+// Wrapper for with actions story
+const WithActionsDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.documentEditor')}
+      subtitle={t('storybook.demo.editYourDocument')}
+      secondaryAction={
+        <Button onClick={fn()} data-color="neutral" data-size="medium">
+          {t('storybook.demo.share')}
+        </Button>
+      }
+      primaryAction={
+        <Button onClick={fn()} data-color="accent" data-size="medium">
+          {t('platform.common.saveChanges')}
+        </Button>
+      }
+    />
+  );
 };
 
 // With actions
 export const WithActions: Story = {
-  args: {
-    title: 'Document Editor',
-    subtitle: 'Edit your document',
-    secondaryAction: (
-      <Button onClick={fn()} data-color="neutral" data-size="medium">
-        Share
-      </Button>
-    ),
-    primaryAction: (
-      <Button onClick={fn()} data-color="accent" data-size="medium">
-        Save Changes
-      </Button>
-    ),
-  },
+  render: () => <WithActionsDemo />,
+};
+
+// Wrapper for with tabs story
+const WithTabsDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.userProfile')}
+      subtitle={t('storybook.demo.manageAccountSettings')}
+      tabs={[
+        { id: 'overview', label: t('storybook.demo.overview'), active: true },
+        { id: 'settings', label: t('platform.nav.settings'), count: 3 },
+        { id: 'activity', label: t('storybook.demo.activity') },
+      ]}
+      activeTab="overview"
+      onTabChange={fn()}
+    />
+  );
 };
 
 // With tabs
 export const WithTabs: Story = {
-  args: {
-    title: 'User Profile',
-    subtitle: 'Manage your account settings',
-    tabs: [
-      { id: 'overview', label: 'Overview', active: true },
-      { id: 'settings', label: 'Settings', count: 3 },
-      { id: 'activity', label: 'Activity' },
-    ],
-    activeTab: 'overview',
-    onTabChange: fn(),
-  },
+  render: () => <WithTabsDemo />,
+};
+
+// Wrapper for with tabs pill story
+const WithTabsPillDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.projectDashboard')}
+      subtitle={t('storybook.demo.trackProjectProgress')}
+      tabs={[
+        { id: 'overview', label: t('storybook.demo.overview'), active: true },
+        { id: 'tasks', label: t('storybook.demo.tasks'), count: 12 },
+        { id: 'team', label: t('storybook.demo.team') },
+      ]}
+      activeTab="overview"
+      onTabChange={fn()}
+      tabVariant="pill"
+    />
+  );
 };
 
 // With tabs (pill variant)
 export const WithTabsPill: Story = {
-  args: {
-    title: 'Project Dashboard',
-    subtitle: 'Track project progress',
-    tabs: [
-      { id: 'overview', label: 'Overview', active: true },
-      { id: 'tasks', label: 'Tasks', count: 12 },
-      { id: 'team', label: 'Team' },
-    ],
-    activeTab: 'overview',
-    onTabChange: fn(),
-    tabVariant: 'pill',
-  },
+  render: () => <WithTabsPillDemo />,
+};
+
+// Wrapper for complete story
+const CompleteDemo = () => {
+  const t = useT();
+  return (
+    <DashboardPageHeader
+      title={t('storybook.demo.resourceManagement')}
+      subtitle={t('storybook.demo.manageAndOrganizeResources')}
+      badge={<Badge variant="info">Beta</Badge>}
+      breadcrumb={
+        <nav
+          style={{
+            fontSize: 'var(--ds-font-size-sm)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {t('platform.nav.home')}
+          </a>
+          {' / '}
+          {t('storybook.demo.resources')}
+        </nav>
+      }
+      meta={[
+        { icon: <MapPin size={16} />, label: 'Oslo, Norway' },
+        { icon: <Calendar size={16} />, label: t('storybook.demo.updated2HoursAgo') },
+      ]}
+      lastUpdated={t('storybook.demo.lastUpdated2HoursAgo')}
+      secondaryAction={
+        <Button onClick={fn()} data-color="neutral" data-size="medium">
+          {t('storybook.demo.export')}
+        </Button>
+      }
+      primaryAction={
+        <Button onClick={fn()} data-color="accent" data-size="medium">
+          {t('storybook.demo.createNew')}
+        </Button>
+      }
+      tabs={[
+        { id: 'all', label: t('storybook.demo.all'), count: 42, active: true },
+        { id: 'active', label: t('platform.status.active'), count: 25 },
+        { id: 'archived', label: t('storybook.demo.archived'), count: 17 },
+      ]}
+      activeTab="all"
+      onTabChange={fn()}
+    />
+  );
 };
 
 // Complete example
 export const Complete: Story = {
-  args: {
-    title: 'Resource Management',
-    subtitle: 'Manage and organize your resources',
-    badge: <Badge variant="info">Beta</Badge>,
-    breadcrumb: (
-      <nav
-        style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}
-      >
-        <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          Home
-        </a>
-        {' / Resources'}
-      </nav>
-    ),
-    meta: [
-      { icon: <MapPin size={16} />, label: 'Oslo, Norway' },
-      { icon: <Calendar size={16} />, label: 'Updated 2 hours ago' },
-    ],
-    lastUpdated: 'Last updated 2 hours ago',
-    secondaryAction: (
-      <Button onClick={fn()} data-color="neutral" data-size="medium">
-        Export
-      </Button>
-    ),
-    primaryAction: (
-      <Button onClick={fn()} data-color="accent" data-size="medium">
-        Create New
-      </Button>
-    ),
-    tabs: [
-      { id: 'all', label: 'All', count: 42, active: true },
-      { id: 'active', label: 'Active', count: 25 },
-      { id: 'archived', label: 'Archived', count: 17 },
-    ],
-    activeTab: 'all',
-    onTabChange: fn(),
-  },
+  render: () => <CompleteDemo />,
+};
+
+// Wrapper for minimal story
+const MinimalDemo = () => {
+  const t = useT();
+  return <DashboardPageHeader title={t('storybook.demo.simplePage')} />;
 };
 
 // Minimal
 export const Minimal: Story = {
-  args: {
-    title: 'Simple Page',
-  },
+  render: () => <MinimalDemo />,
 };

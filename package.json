@@ -55,6 +55,8 @@
   },
   "homepage": "https://github.com/Xala-Technologies/xala-platform-ui#readme",
   "devDependencies": {
+    "@xala-technologies/i18n": "^1.0.0",
+    "@xala-technologies/i18n-platform": "^1.0.0",
     "@axe-core/playwright": "^4.10.1",
     "@digdir/designsystemet-css": "^1.0.0",
     "@fontsource/inter": "^5.2.8",
