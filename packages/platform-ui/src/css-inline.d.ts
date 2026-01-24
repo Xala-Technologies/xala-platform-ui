@@ -5,28 +5,12 @@
  *
  * Virtual modules allow us to bundle CSS from node_modules directly
  * into the platform-ui package, so consuming apps don't need to
- * install @digdir/designsystemet-css or @fontsource/inter.
+ * install @digdir/designsystemet-css.
+ *
+ * Note: Fonts are loaded via Google Fonts CDN instead of bundling,
+ * because bundled font CSS references local file paths that don't
+ * resolve when CSS is injected inline.
  */
-
-declare module 'virtual:inter-400' {
-  const content: string;
-  export default content;
-}
-
-declare module 'virtual:inter-500' {
-  const content: string;
-  export default content;
-}
-
-declare module 'virtual:inter-600' {
-  const content: string;
-  export default content;
-}
-
-declare module 'virtual:inter-700' {
-  const content: string;
-  export default content;
-}
 
 declare module 'virtual:designsystemet-css' {
   const content: string;

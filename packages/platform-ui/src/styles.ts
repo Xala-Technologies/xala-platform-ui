@@ -8,26 +8,51 @@
  * - @digdir/designsystemet-css
  * - @fontsource/inter
  *
- * These are bundled into platform-ui and injected at runtime.
- *
- * The CSS is loaded via virtual modules that are resolved at build time
- * by the bundleCssPlugin in tsup.config.ts.
+ * Fonts are loaded from Google Fonts CDN for reliable cross-origin loading.
+ * Design system CSS is bundled inline.
  */
 
 // =============================================================================
-// Import CSS as strings via virtual modules (bundled by tsup)
+// Import designsystemet CSS via virtual modules (bundled by tsup)
 // =============================================================================
-import inter400 from 'virtual:inter-400';
-import inter500 from 'virtual:inter-500';
-import inter600 from 'virtual:inter-600';
-import inter700 from 'virtual:inter-700';
 import designsystemetCSS from 'virtual:designsystemet-css';
 import designsystemetTheme from 'virtual:designsystemet-theme';
 
 const STYLE_ID = 'xala-platform-base-styles';
+const FONT_LINK_ID = 'xala-platform-fonts';
 
 /**
- * Injects all base styles (fonts, designsystemet CSS, global resets) into the document head.
+ * Injects Inter font via Google Fonts CDN.
+ * This is more reliable than bundling @fontsource CSS which references
+ * local font files that won't resolve when CSS is injected inline.
+ */
+function injectFonts(): void {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById(FONT_LINK_ID)) return; // Already injected
+
+  // Preconnect for faster font loading
+  const preconnect = document.createElement('link');
+  preconnect.rel = 'preconnect';
+  preconnect.href = 'https://fonts.googleapis.com';
+  document.head.appendChild(preconnect);
+
+  const preconnectGstatic = document.createElement('link');
+  preconnectGstatic.rel = 'preconnect';
+  preconnectGstatic.href = 'https://fonts.gstatic.com';
+  preconnectGstatic.crossOrigin = 'anonymous';
+  document.head.appendChild(preconnectGstatic);
+
+  // Load Inter font from Google Fonts
+  const fontLink = document.createElement('link');
+  fontLink.id = FONT_LINK_ID;
+  fontLink.rel = 'stylesheet';
+  fontLink.href =
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+  document.head.appendChild(fontLink);
+}
+
+/**
+ * Injects all base styles (designsystemet CSS, global resets) into the document head.
  * This is called automatically when importing this module, but can also be called manually
  * for SSR scenarios or deferred loading.
  */
@@ -36,11 +61,6 @@ function injectBaseStyles(): void {
   if (document.getElementById(STYLE_ID)) return; // Already injected
 
   const css = [
-    // Fonts first
-    inter400,
-    inter500,
-    inter600,
-    inter700,
     // Designsystemet base styles
     designsystemetCSS,
     // Designsystemet theme (CSS variables)
@@ -68,7 +88,8 @@ html, body {
   document.head.appendChild(style);
 }
 
-// Auto-inject on import
+// Auto-inject fonts and styles on import
+injectFonts();
 injectBaseStyles();
 
-export { injectBaseStyles };
+export { injectBaseStyles, injectFonts };

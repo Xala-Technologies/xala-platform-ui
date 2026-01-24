@@ -21,11 +21,9 @@ const bundleCssPlugin: Plugin = {
   setup(build) {
     // Map of virtual module names to their resolved CSS file paths
     // Note: Using package exports (not direct file paths) for proper resolution
+    // Fonts are loaded via Google Fonts CDN, not bundled, because bundled font
+    // CSS references local file paths that don't work when injected inline.
     const cssModules: Record<string, string> = {
-      'virtual:inter-400': '@fontsource/inter/400.css',
-      'virtual:inter-500': '@fontsource/inter/500.css',
-      'virtual:inter-600': '@fontsource/inter/600.css',
-      'virtual:inter-700': '@fontsource/inter/700.css',
       // designsystemet-css uses package exports: "." → dist/src/index.css
       'virtual:designsystemet-css': '@digdir/designsystemet-css',
       // designsystemet-css uses package exports: "./theme" → dist/theme/designsystemet.css

@@ -7,13 +7,10 @@ import { themes, create } from '@storybook/theming';
 import { addons } from '@storybook/preview-api';
 import type { DocsContainerProps } from '@storybook/blocks';
 
-// Inter font from Google Fonts
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-
-// Theme CSS loaded via previewHead in main.ts (vendor/designsystemet.css)
+// All styling (fonts, designsystemet-css, theme) comes from platform-ui built package
+// This is the single source of truth - no direct @digdir or @fontsource imports
+// Note: We import directly from dist to bypass tsconfig-paths source resolution
+import '../packages/platform-ui/dist/styles.js';
 
 import { DesignsystemetProvider } from '../packages/platform-ui/src/provider';
 
