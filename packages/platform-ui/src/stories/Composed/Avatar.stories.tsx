@@ -166,9 +166,9 @@ const UserInfoExample = () => {
   const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <UserInfo name="John Doe" subtitle={t('storybook.demo.administrator')} size="md" />
-      <UserInfo name="Jane Smith" subtitle="jane@example.com" size="md" showStatus isOnline />
-      <UserInfo name="Bob Johnson" subtitle={t('storybook.demo.developer')} size="lg" />
+      <UserInfo name={t('storybook.demo.userName.johnDoe')} subtitle={t('storybook.demo.administrator')} size="md" />
+      <UserInfo name={t('storybook.demo.userName.janeSmith')} subtitle={t('storybook.demo.email.jane')} size="md" showStatus isOnline />
+      <UserInfo name={t('storybook.demo.userName.bobJohnson')} subtitle={t('storybook.demo.developer')} size="lg" />
     </div>
   );
 };

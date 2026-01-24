@@ -54,8 +54,8 @@ const DefaultDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'John Doe',
-        email: 'john.doe@example.com',
+        name: t('storybook.demo.userName.johnDoe'),
+        email: t('storybook.demo.email.john'),
       }}
       items={[
         { id: 'profile', label: t('platform.nav.profile'), href: '/profile' },
@@ -71,8 +71,8 @@ const WithAvatarDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Jane Smith',
-        email: 'jane.smith@example.com',
+        name: t('storybook.demo.userName.janeSmith'),
+        email: t('storybook.demo.email.jane'),
         avatarUrl: 'https://i.pravatar.cc/150?img=1',
       }}
       items={[
@@ -89,8 +89,8 @@ const WithIconsDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Bob Johnson',
-        email: 'bob@example.com',
+        name: t('storybook.demo.userName.bobJohnson'),
+        email: t('storybook.demo.email.bob'),
       }}
       items={[
         {
@@ -122,8 +122,8 @@ const WithDangerItemDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Alice Brown',
-        email: 'alice@example.com',
+        name: t('storybook.demo.userName.aliceBrown'),
+        email: t('storybook.demo.email.alice'),
       }}
       items={[
         { id: 'profile', label: t('platform.nav.profile'), href: '/profile' },
@@ -140,8 +140,8 @@ const WithDisabledItemsDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Charlie Wilson',
-        email: 'charlie@example.com',
+        name: t('storybook.demo.userName.charlieWilson'),
+        email: t('storybook.demo.email.charlie'),
       }}
       items={[
         { id: 'profile', label: t('platform.nav.profile'), href: '/profile' },
@@ -158,7 +158,7 @@ const WithoutEmailDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'David Lee',
+        name: t('storybook.demo.userName.davidLee'),
       }}
       items={[
         { id: 'profile', label: t('platform.nav.profile'), href: '/profile' },
@@ -174,8 +174,8 @@ const ManyItemsDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Emma Davis',
-        email: 'emma@example.com',
+        name: t('storybook.demo.userName.emmaDavis'),
+        email: t('storybook.demo.email.emma'),
       }}
       items={[
         { id: 'profile', label: t('platform.nav.profile'), href: '/profile' },
@@ -195,8 +195,8 @@ const WithOnClickDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Frank Miller',
-        email: 'frank@example.com',
+        name: t('storybook.demo.userName.frankMiller'),
+        email: t('storybook.demo.email.frank'),
       }}
       items={[
         { id: 'profile', label: t('platform.nav.profile'), onClick: fn() },
@@ -213,8 +213,8 @@ const CompleteExampleDemo = () => {
   return (
     <UserMenu
       user={{
-        name: 'Grace Taylor',
-        email: 'grace.taylor@example.com',
+        name: t('storybook.demo.userName.graceTaylor'),
+        email: t('storybook.demo.email.grace'),
         avatarUrl: 'https://i.pravatar.cc/150?img=5',
       }}
       items={[

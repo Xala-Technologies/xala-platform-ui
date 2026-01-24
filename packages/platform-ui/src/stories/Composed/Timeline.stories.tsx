@@ -149,7 +149,7 @@ const WithActorsDemo = () => {
           timestamp: new Date(Date.now() - 1000 * 60 * 10),
           type: 'success',
           actor: {
-            name: 'John Doe',
+            name: t('storybook.demo.userName.johnDoe'),
             avatar: 'https://i.pravatar.cc/150?img=1',
           },
         },
@@ -160,7 +160,7 @@ const WithActorsDemo = () => {
           timestamp: new Date(Date.now() - 1000 * 60 * 60),
           type: 'info',
           actor: {
-            name: 'Jane Smith',
+            name: t('storybook.demo.userName.janeSmith'),
           },
         },
         {
@@ -170,7 +170,7 @@ const WithActorsDemo = () => {
           timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3),
           type: 'success',
           actor: {
-            name: 'Bob Johnson',
+            name: t('storybook.demo.userName.bobJohnson'),
             avatar: 'https://i.pravatar.cc/150?img=3',
           },
         },

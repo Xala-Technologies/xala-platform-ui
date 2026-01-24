@@ -351,6 +351,138 @@ export const storybookNb: Record<string, string> = {
 
   // Loading stories
   'storybook.loading.loading': 'Laster...',
+
+  // Demo data - User names (use Norwegian equivalents)
+  'storybook.demo.userName.johnDoe': 'Ola Nordmann',
+  'storybook.demo.userName.janeSmith': 'Kari Hansen',
+  'storybook.demo.userName.bobJohnson': 'Per Olsen',
+  'storybook.demo.userName.aliceBrown': 'Anne Berg',
+  'storybook.demo.userName.charlieWilson': 'Erik Larsen',
+  'storybook.demo.userName.davidLee': 'Lars Johansen',
+  'storybook.demo.userName.emmaDavis': 'Eva Andersen',
+  'storybook.demo.userName.frankMiller': 'Hans Nilsen',
+  'storybook.demo.userName.graceTaylor': 'Ingrid Pedersen',
+
+  // Demo data - Emails
+  'storybook.demo.email.john': 'ola.nordmann@example.com',
+  'storybook.demo.email.jane': 'kari.hansen@example.com',
+  'storybook.demo.email.bob': 'per@example.com',
+  'storybook.demo.email.alice': 'anne@example.com',
+  'storybook.demo.email.charlie': 'erik@example.com',
+  'storybook.demo.email.david': 'lars@example.com',
+  'storybook.demo.email.emma': 'eva@example.com',
+  'storybook.demo.email.frank': 'hans@example.com',
+  'storybook.demo.email.grace': 'ingrid.pedersen@example.com',
+
+  // Demo data - Menu items
+  'storybook.demo.billing': 'Fakturering',
+  'storybook.demo.deleteAccount': 'Slett konto',
+  'storybook.demo.customAction': 'Egendefinert handling',
+  'storybook.demo.notifications': 'Varsler',
+  'storybook.demo.privacy': 'Personvern',
+
+  // Demo data - Timeline items
+  'storybook.demo.itemCreated': 'Element opprettet',
+  'storybook.demo.itemUpdated': 'Element oppdatert',
+  'storybook.demo.itemPublished': 'Element publisert',
+  'storybook.demo.newItemCreated': 'Nytt element ble opprettet i systemet',
+  'storybook.demo.itemModified': 'Elementet ble endret',
+  'storybook.demo.itemNowLive': 'Elementet er na tilgjengelig',
+  'storybook.demo.operationSuccessful': 'Operasjonen var vellykket',
+  'storybook.demo.pleaseReview': 'Vennligst gjennomga for eventuelle problemer',
+  'storybook.demo.errorOccurred': 'En feil oppstod under behandlingen',
+  'storybook.demo.documentCreated': 'Dokument opprettet',
+  'storybook.demo.documentReviewed': 'Dokument gjennomgatt',
+  'storybook.demo.documentPublished': 'Dokument publisert',
+  'storybook.demo.newDocumentCreated': 'Et nytt dokument ble opprettet',
+  'storybook.demo.documentApproved': 'Dokumentet ble godkjent og gjennomgatt',
+  'storybook.demo.documentPubliclyAvailable': 'Dokumentet er na offentlig tilgjengelig',
+  'storybook.demo.defaultItem': 'Standard element',
+  'storybook.demo.successItem': 'Suksess-element',
+  'storybook.demo.warningItem': 'Advarsels-element',
+  'storybook.demo.dangerItem': 'Fare-element',
+  'storybook.demo.infoItem': 'Info-element',
+  'storybook.demo.item': 'Element',
+  'storybook.demo.userLoggedIn': 'Bruker logget inn',
+  'storybook.demo.userAuthenticated': 'Brukeren ble autentisert',
+  'storybook.demo.passwordChanged': 'Passord endret',
+  'storybook.demo.userChangedPassword': 'Brukeren endret passordet sitt',
+  'storybook.demo.emailVerification': 'E-postbekreftelse',
+  'storybook.demo.noActivityYet': 'Ingen aktivitet enna',
+
+  // Demo data - Status banner
+  'storybook.demo.information': 'Informasjon',
+  'storybook.demo.informationalBannerDescription': 'Dette er en informativ banner for a vise viktige meldinger.',
+  'storybook.demo.changesSavedSuccessfully': 'Endringene dine har blitt lagret.',
+  'storybook.demo.warning': 'Advarsel',
+  'storybook.demo.reviewChangesBeforeProceeding': 'Vennligst gjennomga endringene for du fortsetter.',
+  'storybook.demo.errorProcessingRequest': 'Det oppstod en feil under behandling av foresporsel.',
+  'storybook.demo.notice': 'Merknad',
+  'storybook.demo.neutralBannerDescription': 'Dette er en noytral banner for generell informasjon.',
+  'storybook.demo.operationCompleted': 'Operasjon fullfort',
+  'storybook.demo.customIcon': 'Egendefinert ikon',
+  'storybook.demo.customIconDescription': 'Denne banneren bruker et egendefinert ikon.',
+  'storybook.demo.actionRequired': 'Handling pakrevd',
+  'storybook.demo.sessionExpiringSoon': 'Okten din utloper snart. Vennligst forny.',
+  'storybook.demo.extendSession': 'Forleng okt',
+  'storybook.demo.detailedInformation': 'Detaljert informasjon',
+  'storybook.demo.longContentDescription': 'Dette er en lengre beskrivelse for a demonstrere hvordan banneren handterer mye tekst. Den bor pakke seg pent og forbli lesbar selv med mye innhold.',
+  'storybook.demo.info': 'Info',
+  'storybook.demo.informationalBanner': 'Dette er en informativ banner',
+  'storybook.demo.neutralBanner': 'Dette er en noytral banner',
+
+  // Demo data - Stats
+  'storybook.demo.totalUsers': 'Totalt antall brukere',
+  'storybook.demo.revenue': 'Inntekt',
+  'storybook.demo.orders': 'Bestillinger',
+  'storybook.demo.growth': 'Vekst',
+  'storybook.demo.upTrend': 'Oppadgaende trend',
+  'storybook.demo.downTrend': 'Nedadgaende trend',
+  'storybook.demo.neutral': 'Noytral',
+  'storybook.demo.users': 'Brukere',
+
+  // Demo data - Stepper
+  'storybook.demo.stepContent': 'Steg {step} innhold',
+  'storybook.demo.stepDescription': 'Dette er innholdet for steg {step}. Her kan du legge til skjemaer, informasjon eller andre komponenter.',
+
+  // Demo data - Organizations
+  'storybook.demo.org.acmeCorp': 'Bedrift AS',
+  'storybook.demo.org.techSolutions': 'Teknologilosninger AS',
+  'storybook.demo.org.designStudio': 'Designstudio',
+  'storybook.demo.org.organization': 'Organisasjon',
+
+  // Demo data - Roles
+  'storybook.demo.role.administrator': 'Administrator',
+  'storybook.demo.role.user': 'Bruker',
+  'storybook.demo.role.developer': 'Utvikler',
+  'storybook.demo.role.manager': 'Leder',
+
+  // Demo data - Avatar
+  'storybook.demo.clickableUser': 'Klikkbar bruker',
+  'storybook.demo.clickToViewProfile': 'Klikk for a se profil',
+  'storybook.demo.administrator': 'Administrator',
+  'storybook.demo.developer': 'Utvikler',
+
+  // Demo data - Profile
+  'storybook.demo.memberSince': 'Medlem siden',
+  'storybook.demo.phone': 'Telefon',
+  'storybook.demo.activeBookings': 'Aktive bestillinger',
+  'storybook.demo.pastBookings': 'Tidligere bestillinger',
+  'storybook.demo.reviews': 'Anmeldelser',
+
+  // Demo data - DataTable
+  'storybook.demo.role': 'Rolle',
+  'storybook.demo.created': 'Opprettet',
+  'storybook.demo.userTable': 'Brukertabell',
+  'storybook.demo.sortableUserTable': 'Sorterbar brukertabell',
+  'storybook.demo.clickableUserTable': 'Klikkbar brukertabell',
+  'storybook.demo.loadingTable': 'Tabell som laster',
+  'storybook.demo.noUsersFound': 'Ingen brukere funnet',
+  'storybook.demo.emptyTable': 'Tom tabell',
+  'storybook.demo.stickyHeaderTable': 'Tabell med fast topptekst',
+  'storybook.demo.customHeightTable': 'Tabell med egendefinert hoyde',
+  'storybook.demo.admin': 'Administrator',
+  'storybook.demo.userRole': 'Bruker',
 };
 
 export const storybookEn: Record<string, string> = {
@@ -697,6 +829,138 @@ export const storybookEn: Record<string, string> = {
 
   // Loading stories
   'storybook.loading.loading': 'Loading...',
+
+  // Demo data - User names
+  'storybook.demo.userName.johnDoe': 'John Doe',
+  'storybook.demo.userName.janeSmith': 'Jane Smith',
+  'storybook.demo.userName.bobJohnson': 'Bob Johnson',
+  'storybook.demo.userName.aliceBrown': 'Alice Brown',
+  'storybook.demo.userName.charlieWilson': 'Charlie Wilson',
+  'storybook.demo.userName.davidLee': 'David Lee',
+  'storybook.demo.userName.emmaDavis': 'Emma Davis',
+  'storybook.demo.userName.frankMiller': 'Frank Miller',
+  'storybook.demo.userName.graceTaylor': 'Grace Taylor',
+
+  // Demo data - Emails
+  'storybook.demo.email.john': 'john.doe@example.com',
+  'storybook.demo.email.jane': 'jane.smith@example.com',
+  'storybook.demo.email.bob': 'bob@example.com',
+  'storybook.demo.email.alice': 'alice@example.com',
+  'storybook.demo.email.charlie': 'charlie@example.com',
+  'storybook.demo.email.david': 'david@example.com',
+  'storybook.demo.email.emma': 'emma@example.com',
+  'storybook.demo.email.frank': 'frank@example.com',
+  'storybook.demo.email.grace': 'grace.taylor@example.com',
+
+  // Demo data - Menu items
+  'storybook.demo.billing': 'Billing',
+  'storybook.demo.deleteAccount': 'Delete Account',
+  'storybook.demo.customAction': 'Custom Action',
+  'storybook.demo.notifications': 'Notifications',
+  'storybook.demo.privacy': 'Privacy',
+
+  // Demo data - Timeline items
+  'storybook.demo.itemCreated': 'Item created',
+  'storybook.demo.itemUpdated': 'Item updated',
+  'storybook.demo.itemPublished': 'Item published',
+  'storybook.demo.newItemCreated': 'A new item was created in the system',
+  'storybook.demo.itemModified': 'The item was modified',
+  'storybook.demo.itemNowLive': 'The item is now live',
+  'storybook.demo.operationSuccessful': 'The operation was successful',
+  'storybook.demo.pleaseReview': 'Please review for any issues',
+  'storybook.demo.errorOccurred': 'An error occurred during processing',
+  'storybook.demo.documentCreated': 'Document created',
+  'storybook.demo.documentReviewed': 'Document reviewed',
+  'storybook.demo.documentPublished': 'Document published',
+  'storybook.demo.newDocumentCreated': 'A new document was created',
+  'storybook.demo.documentApproved': 'The document was approved and reviewed',
+  'storybook.demo.documentPubliclyAvailable': 'The document is now publicly available',
+  'storybook.demo.defaultItem': 'Default item',
+  'storybook.demo.successItem': 'Success item',
+  'storybook.demo.warningItem': 'Warning item',
+  'storybook.demo.dangerItem': 'Danger item',
+  'storybook.demo.infoItem': 'Info item',
+  'storybook.demo.item': 'Item',
+  'storybook.demo.userLoggedIn': 'User logged in',
+  'storybook.demo.userAuthenticated': 'The user was successfully authenticated',
+  'storybook.demo.passwordChanged': 'Password changed',
+  'storybook.demo.userChangedPassword': 'The user changed their password',
+  'storybook.demo.emailVerification': 'Email verification',
+  'storybook.demo.noActivityYet': 'No activity yet',
+
+  // Demo data - Status banner
+  'storybook.demo.information': 'Information',
+  'storybook.demo.informationalBannerDescription': 'This is an informational banner for displaying important messages.',
+  'storybook.demo.changesSavedSuccessfully': 'Your changes have been saved successfully.',
+  'storybook.demo.warning': 'Warning',
+  'storybook.demo.reviewChangesBeforeProceeding': 'Please review changes before proceeding.',
+  'storybook.demo.errorProcessingRequest': 'There was an error processing your request.',
+  'storybook.demo.notice': 'Notice',
+  'storybook.demo.neutralBannerDescription': 'This is a neutral banner for general information.',
+  'storybook.demo.operationCompleted': 'Operation completed',
+  'storybook.demo.customIcon': 'Custom Icon',
+  'storybook.demo.customIconDescription': 'This banner uses a custom icon.',
+  'storybook.demo.actionRequired': 'Action Required',
+  'storybook.demo.sessionExpiringSoon': 'Your session is expiring soon. Please renew.',
+  'storybook.demo.extendSession': 'Extend Session',
+  'storybook.demo.detailedInformation': 'Detailed Information',
+  'storybook.demo.longContentDescription': 'This is a longer description to demonstrate how the banner handles a lot of text. It should wrap nicely and remain readable even with a lot of content.',
+  'storybook.demo.info': 'Info',
+  'storybook.demo.informationalBanner': 'This is an informational banner',
+  'storybook.demo.neutralBanner': 'This is a neutral banner',
+
+  // Demo data - Stats
+  'storybook.demo.totalUsers': 'Total Users',
+  'storybook.demo.revenue': 'Revenue',
+  'storybook.demo.orders': 'Orders',
+  'storybook.demo.growth': 'Growth',
+  'storybook.demo.upTrend': 'Up Trend',
+  'storybook.demo.downTrend': 'Down Trend',
+  'storybook.demo.neutral': 'Neutral',
+  'storybook.demo.users': 'Users',
+
+  // Demo data - Stepper
+  'storybook.demo.stepContent': 'Step {step} Content',
+  'storybook.demo.stepDescription': 'This is the content for step {step}. Here you can add forms, information, or other components.',
+
+  // Demo data - Organizations
+  'storybook.demo.org.acmeCorp': 'Acme Corp',
+  'storybook.demo.org.techSolutions': 'Tech Solutions AS',
+  'storybook.demo.org.designStudio': 'Design Studio',
+  'storybook.demo.org.organization': 'Organization',
+
+  // Demo data - Roles
+  'storybook.demo.role.administrator': 'Administrator',
+  'storybook.demo.role.user': 'User',
+  'storybook.demo.role.developer': 'Developer',
+  'storybook.demo.role.manager': 'Manager',
+
+  // Demo data - Avatar
+  'storybook.demo.clickableUser': 'Clickable User',
+  'storybook.demo.clickToViewProfile': 'Click to view profile',
+  'storybook.demo.administrator': 'Administrator',
+  'storybook.demo.developer': 'Developer',
+
+  // Demo data - Profile
+  'storybook.demo.memberSince': 'Member since',
+  'storybook.demo.phone': 'Phone',
+  'storybook.demo.activeBookings': 'Active Bookings',
+  'storybook.demo.pastBookings': 'Past Bookings',
+  'storybook.demo.reviews': 'Reviews',
+
+  // Demo data - DataTable
+  'storybook.demo.role': 'Role',
+  'storybook.demo.created': 'Created',
+  'storybook.demo.userTable': 'User table',
+  'storybook.demo.sortableUserTable': 'Sortable user table',
+  'storybook.demo.clickableUserTable': 'Clickable user table',
+  'storybook.demo.loadingTable': 'Loading table',
+  'storybook.demo.noUsersFound': 'No users found',
+  'storybook.demo.emptyTable': 'Empty table',
+  'storybook.demo.stickyHeaderTable': 'Table with sticky header',
+  'storybook.demo.customHeightTable': 'Table with custom height',
+  'storybook.demo.admin': 'Admin',
+  'storybook.demo.userRole': 'User',
 };
 
 /**

@@ -55,32 +55,36 @@ interface SampleRow {
   createdAt: string;
 }
 
-const sampleData: SampleRow[] = [
-  {
-    id: '1',
-    name: 'John Doe',
-    email: 'john@example.com',
-    status: 'active',
-    role: 'Admin',
-    createdAt: '2024-01-15',
-  },
-  {
-    id: '2',
-    name: 'Jane Smith',
-    email: 'jane@example.com',
-    status: 'active',
-    role: 'User',
-    createdAt: '2024-01-14',
-  },
-  {
-    id: '3',
-    name: 'Bob Johnson',
-    email: 'bob@example.com',
-    status: 'inactive',
-    role: 'User',
-    createdAt: '2024-01-13',
-  },
-];
+// Hook for translated sample data
+const useSampleData = () => {
+  const t = useT();
+  return [
+    {
+      id: '1',
+      name: t('storybook.demo.userName.johnDoe'),
+      email: t('storybook.demo.email.john'),
+      status: 'active' as const,
+      role: t('storybook.demo.admin'),
+      createdAt: '2024-01-15',
+    },
+    {
+      id: '2',
+      name: t('storybook.demo.userName.janeSmith'),
+      email: t('storybook.demo.email.jane'),
+      status: 'active' as const,
+      role: t('storybook.demo.userRole'),
+      createdAt: '2024-01-14',
+    },
+    {
+      id: '3',
+      name: t('storybook.demo.userName.bobJohnson'),
+      email: t('storybook.demo.email.bob'),
+      status: 'inactive' as const,
+      role: t('storybook.demo.userRole'),
+      createdAt: '2024-01-13',
+    },
+  ];
+};
 
 // Hook for translated columns
 const useColumns = () => {
@@ -128,6 +132,7 @@ const useColumns = () => {
 const DefaultDemo = () => {
   const t = useT();
   const columns = useColumns();
+  const sampleData = useSampleData();
   return (
     <div style={{ width: '800px' }}>
       <DataTable
@@ -151,6 +156,7 @@ export const Default: Story = {
 const WithSortingDemo = () => {
   const t = useT();
   const columns = useColumns();
+  const sampleData = useSampleData();
   const [sortColumn, setSortColumn] = React.useState<string | undefined>('name');
   const [sortDirection, setSortDirection] = React.useState<'asc' | 'desc' | 'none'>('asc');
 
@@ -185,6 +191,7 @@ export const WithSorting: Story = {
 const WithRowClickDemo = () => {
   const t = useT();
   const columns = useColumns();
+  const sampleData = useSampleData();
   return (
     <div style={{ width: '800px' }}>
       <DataTable
@@ -257,6 +264,7 @@ export const Empty: Story = {
 const StickyHeaderDemo = () => {
   const t = useT();
   const columns = useColumns();
+  const sampleData = useSampleData();
   return (
     <div style={{ width: '800px', height: '400px', overflow: 'auto' }}>
       <DataTable
@@ -281,6 +289,7 @@ export const StickyHeader: Story = {
 const CustomHeightDemo = () => {
   const t = useT();
   const columns = useColumns();
+  const sampleData = useSampleData();
   return (
     <div style={{ width: '800px' }}>
       <DataTable
