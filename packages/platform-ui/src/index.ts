@@ -25,8 +25,20 @@ export * from './primitives';
 // =============================================================================
 // Provider & Theme
 // =============================================================================
-export { DesignsystemetProvider } from './provider';
-export type { DesignsystemetProviderProps, ColorScheme, DsSize, Typography } from './provider';
+export {
+  DesignsystemetProvider,
+  DirectionContext,
+  useDirection,
+  getAutoDirection,
+} from './provider';
+export type {
+  DesignsystemetProviderProps,
+  ColorScheme,
+  DsSize,
+  Typography,
+  Direction,
+  DirectionContextValue,
+} from './provider';
 export { ThemeProvider, useTheme } from './ThemeProvider';
 export type { ThemeProviderProps, ThemeContextValue } from './ThemeProvider';
 

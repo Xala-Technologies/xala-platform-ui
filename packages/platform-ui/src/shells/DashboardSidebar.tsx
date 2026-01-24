@@ -94,7 +94,7 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
         textDecoration: 'none',
         position: 'relative',
         backgroundColor: isActive ? 'var(--ds-color-neutral-surface-hover)' : 'transparent',
-        borderLeft: isActive
+        borderInlineStart: isActive
           ? '3px solid var(--ds-color-accent-base-default)'
           : '3px solid transparent',
         transition: 'all 0.15s ease',
@@ -421,7 +421,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
             style={{
               width: `${width}px`,
               backgroundColor: 'var(--ds-color-neutral-surface-default)',
-              borderRight: '1px solid var(--ds-color-neutral-border-subtle)',
+              borderInlineEnd: '1px solid var(--ds-color-neutral-border-subtle)',
               display: 'flex',
               flexDirection: 'column',
               height: '100%',

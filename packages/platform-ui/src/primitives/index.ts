@@ -153,3 +153,15 @@ export type { HorizontalLayoutProps } from './horizontal-layout';
 
 export { SelectOption } from './SelectOption';
 export type { SelectOptionProps } from './SelectOption';
+
+export {
+  DirectionalIcon,
+  ChevronForwardIcon,
+  ChevronBackIcon,
+  ArrowForwardIcon,
+  ArrowBackIcon,
+} from './DirectionalIcon';
+export type { DirectionalIconProps, DirectionalIconPresetProps } from './DirectionalIcon';
+
+export { BidiSafeInput } from './BidiSafeInput';
+export type { BidiSafeInputProps, BidiSafeInputType } from './BidiSafeInput';

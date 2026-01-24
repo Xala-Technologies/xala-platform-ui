@@ -159,6 +159,11 @@ function ThemedDocsContainer(props: DocsContainerProps) {
   );
 }
 
+// RTL locales mapping
+const RTL_LOCALES = ['ar', 'he', 'fa', 'ur'];
+const getDirectionForLocale = (locale: string): 'ltr' | 'rtl' =>
+  RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr';
+
 // Custom Norwegian viewports
 const customViewports = {
   mobileNorway: {
@@ -186,22 +191,31 @@ const customViewports = {
 /**
  * Theme decorator - uses dark mode addon hook and createRuntime() from @xala/runtime
  */
-const withTheme: Decorator = (Story) => {
+const withTheme: Decorator = (Story, context) => {
   const isDarkMode = useDarkMode();
   const theme = isDarkMode ? 'dark' : 'light';
+
+  // Get direction from global toolbar
+  const locale = (context.globals.locale as string) || 'nb';
+  const direction = getDirectionForLocale(locale);
 
   useEffect(() => {
     // Apply theme to document for CSS variables
     document.documentElement.setAttribute('data-color-scheme', theme);
-  }, [theme]);
+    // Apply direction and language for RTL support
+    document.documentElement.setAttribute('dir', direction);
+    document.documentElement.setAttribute('lang', locale);
+  }, [theme, direction, locale]);
 
   // Note: For Storybook, we use a simplified provider setup.
   // In production apps, use RuntimeProvider from @xala-technologies/platform.
   return (
-    <DesignsystemetProvider theme="xala" colorScheme={theme}>
+    <DesignsystemetProvider theme="xala" colorScheme={theme} direction={direction} locale={locale}>
       <div
         data-color-scheme={theme}
         data-size="md"
+        dir={direction}
+        lang={locale}
         style={{
           padding: 'var(--ds-spacing-4)',
           fontFamily: 'Inter, system-ui, sans-serif',
@@ -217,6 +231,23 @@ const withTheme: Decorator = (Story) => {
 };
 
 const preview: Preview = {
+  globalTypes: {
+    locale: {
+      name: 'Locale',
+      description: 'Internationalization locale',
+      defaultValue: 'nb',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'nb', title: 'Norsk (LTR)', right: 'nb' },
+          { value: 'en', title: 'English (LTR)', right: 'en' },
+          { value: 'ar', title: 'العربية (RTL)', right: 'ar' },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
+  },
   parameters: {
     controls: {
       matchers: {
