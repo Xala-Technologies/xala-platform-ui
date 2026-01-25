@@ -308,3 +308,108 @@ export type {
 // NOTE: This package contains ONLY platform-neutral UI components.
 // Domain-specific components (reservations, allocations, periods) belong in domain repos.
 // =============================================================================
+
+// =============================================================================
+// XAHEEN-CODER BLOCKS (AI workflow components)
+// =============================================================================
+
+// Approval Components
+export { ApprovalFlow } from './ApprovalFlow';
+export type { ApprovalFlowProps, ApprovalItem, ChecklistItem } from './ApprovalFlow';
+
+// Terminal Components
+export { CommandTerminal } from './CommandTerminal';
+export type { CommandTerminalProps, TerminalStatus } from './CommandTerminal';
+
+// Artifact Components
+export { ArtifactPreview } from './ArtifactPreview';
+export type { ArtifactPreviewProps, Artifact } from './ArtifactPreview';
+
+export { ArtifactValidationPanel } from './ArtifactValidationPanel';
+export type { ArtifactValidationPanelProps, ValidationResult } from './ArtifactValidationPanel';
+
+export { ArtifactDiffViewer } from './ArtifactDiffViewer';
+export type { ArtifactDiffViewerProps, ArtifactChange } from './ArtifactDiffViewer';
+
+// Composition Preview
+export { CompositionPreview } from './CompositionPreview';
+export type { CompositionPreviewProps, CompositionData } from './CompositionPreview';
+
+// Clarification Panel
+export { ClarificationPanel } from './ClarificationPanel';
+export type {
+  ClarificationPanelProps,
+  ClarificationQuestion,
+  ClarificationAnswer,
+} from './ClarificationPanel';
+
+// Wizard Status Sidebar
+export { WizardStatusSidebar } from './WizardStatusSidebar';
+export type {
+  WizardStatusSidebarProps,
+  WizardStatusLabels,
+  StatusSection,
+  WizardStatus,
+  SectionStatus,
+} from './WizardStatusSidebar';
+
+// Accessibility Info Card (universal design features)
+export {
+  AccessibilityInfoCard,
+  defaultAccessibilityFeatures,
+  defaultAccessibilityFeaturesEn,
+} from './AccessibilityInfoCard';
+export type {
+  AccessibilityInfoCardProps,
+  AccessibilityInfoCardLabels,
+  AccessibilityFeature,
+} from './AccessibilityInfoCard';
+
+// Logistics Details Card (pickup/delivery info for equipment)
+export { LogisticsDetailsCard } from './LogisticsDetailsCard';
+export type {
+  LogisticsDetailsCardProps,
+  LogisticsDetailsCardLabels,
+  LogisticsInfo,
+  DetailsInfo,
+} from './LogisticsDetailsCard';
+
+// Return Policy Card (cancellation/refund policy)
+export { ReturnPolicyCard } from './ReturnPolicyCard';
+export type {
+  ReturnPolicyCardProps,
+  ReturnPolicyCardLabels,
+  ReturnPolicy,
+  PolicyType,
+} from './ReturnPolicyCard';
+
+// Event Schedule Card (event timing with recurrence)
+export { EventScheduleCard } from './EventScheduleCard';
+export type {
+  EventScheduleCardProps,
+  EventScheduleCardLabels,
+  EventSchedule,
+  TimeSlot,
+  Recurrence,
+  RecurrencePattern,
+  Weekday,
+} from './EventScheduleCard';
+
+// Ticket Registration Card (event tickets and registration)
+export { TicketRegistrationCard } from './TicketRegistrationCard';
+export type {
+  TicketRegistrationCardProps,
+  TicketRegistrationCardLabels,
+  Registration,
+  RegistrationType,
+  RegistrationStatus,
+  TicketPrice,
+  Capacity,
+} from './TicketRegistrationCard';
+
+// Location Card Editable (editable address input extension)
+export { LocationCardEditable } from './LocationCardEditable';
+export type {
+  LocationCardEditableProps,
+  LocationCardEditableLabels,
+} from './LocationCardEditable';

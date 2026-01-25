@@ -54,7 +54,7 @@ export interface ModeSelectorProps {
   onChange: (id: string) => void;
 
   /** Visual variant */
-  variant?: 'tabs' | 'buttons' | 'cards';
+  variant?: 'tabs' | 'buttons' | 'cards' | 'icons';
 
   /** Size variant */
   size?: 'sm' | 'md' | 'lg';
@@ -360,6 +360,86 @@ function CardsVariant({ options, value, onChange, size, direction, fullWidth }: 
   );
 }
 
+/** Icons variant - icon-only display */
+interface IconsVariantProps {
+  options: ModeOption[];
+  value: string;
+  onChange: (id: string) => void;
+  size: 'sm' | 'md' | 'lg';
+  fullWidth: boolean;
+}
+
+function IconsVariant({ options, value, onChange, size, fullWidth }: IconsVariantProps) {
+  const sizeStyles = getSizeStyles(size);
+
+  const iconSizes = {
+    sm: 18,
+    md: 22,
+    lg: 28,
+  };
+  const iconSize = iconSizes[size];
+
+  return (
+    <div
+      role="group"
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-1)',
+        padding: 'var(--ds-spacing-1)',
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        borderRadius: 'var(--ds-border-radius-lg)',
+        border: '1px solid var(--ds-color-neutral-border-subtle)',
+        width: fullWidth ? '100%' : 'fit-content',
+      }}
+    >
+      {options.map((option) => {
+        const isSelected = option.id === value;
+        return (
+          <button
+            key={option.id}
+            type="button"
+            aria-label={option.label}
+            title={option.label}
+            aria-pressed={isSelected}
+            aria-disabled={option.disabled}
+            disabled={option.disabled}
+            onClick={() => !option.disabled && onChange(option.id)}
+            style={{
+              flex: fullWidth ? 1 : undefined,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: sizeStyles.padding,
+              backgroundColor: isSelected
+                ? 'var(--ds-color-neutral-background-default)'
+                : 'transparent',
+              color: option.disabled
+                ? 'var(--ds-color-neutral-text-subtle)'
+                : isSelected
+                  ? 'var(--ds-color-accent-base-default)'
+                  : 'var(--ds-color-neutral-text-subtle)',
+              border: 'none',
+              borderRadius: 'var(--ds-border-radius-md)',
+              cursor: option.disabled ? 'not-allowed' : 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: isSelected ? 'var(--ds-shadow-sm)' : 'none',
+              opacity: option.disabled ? 0.5 : 1,
+              minWidth: iconSize + 16,
+              minHeight: iconSize + 16,
+            }}
+          >
+            {option.icon && (
+              <span style={{ display: 'flex', alignItems: 'center', width: iconSize, height: iconSize }}>
+                {option.icon}
+              </span>
+            )}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 // ============================================================================
 // Main Component
 // ============================================================================
@@ -419,6 +499,16 @@ export function ModeSelector({
           onChange={onChange}
           size={size}
           direction={direction}
+          fullWidth={fullWidth}
+        />
+      )}
+
+      {variant === 'icons' && (
+        <IconsVariant
+          options={options}
+          value={value}
+          onChange={onChange}
+          size={size}
           fullWidth={fullWidth}
         />
       )}

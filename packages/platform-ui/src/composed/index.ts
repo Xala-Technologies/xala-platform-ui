@@ -574,3 +574,90 @@ export type { SimpleTabsProps, TabItemProps } from './SimpleTabs';
 // PageContainer (consistent page wrapper)
 export { PageContainer } from './PageContainer';
 export type { PageContainerProps } from './PageContainer';
+
+// AvailabilityLegend (calendar status legend)
+export { AvailabilityLegend, defaultBookingLegendItems, defaultBookingLegendItemsEn } from './AvailabilityLegend';
+export type {
+  AvailabilityLegendProps,
+  AvailabilityLegendLabels,
+  LegendItem as AvailabilityLegendItem,
+  AvailabilityStatus as CalendarAvailabilityStatus,
+} from './AvailabilityLegend';
+
+// PublishingChecklist (wizard validation checklist)
+export { PublishingChecklist } from './PublishingChecklist';
+export type {
+  PublishingChecklistProps,
+  PublishingChecklistLabels,
+  ChecklistItem as PublishingChecklistItem,
+  ChecklistItemStatus as PublishingChecklistItemStatus,
+} from './PublishingChecklist';
+
+// OpeningHoursEditor (weekly schedule editor)
+export {
+  OpeningHoursEditor,
+  defaultWeekdaySchedule,
+  emptySchedule,
+  validateSchedule,
+} from './OpeningHoursEditor';
+export type {
+  OpeningHoursEditorProps,
+  OpeningHoursEditorLabels,
+  WeekdaySchedule,
+  DaySchedule,
+  WeekdayKey,
+} from './OpeningHoursEditor';
+
+// PaymentMethodSelector (chip-based payment method display/selector)
+export {
+  PaymentMethodSelector,
+  defaultPaymentMethods,
+  defaultPaymentMethodsEn,
+} from './PaymentMethodSelector';
+export type {
+  PaymentMethodSelectorProps,
+  PaymentMethodSelectorLabels,
+  PaymentMethod,
+} from './PaymentMethodSelector';
+
+// PaymentMethodConfig (admin checkbox config for payment methods)
+export { PaymentMethodConfig } from './PaymentMethodConfig';
+export type {
+  PaymentMethodConfigProps,
+  PaymentMethodConfigLabels,
+  EnabledPaymentMethods,
+} from './PaymentMethodConfig';
+
+// PricingTiersEditor (editable pricing tiers list)
+export { PricingTiersEditor } from './PricingTiersEditor';
+export type {
+  PricingTiersEditorProps,
+  PricingTiersEditorLabels,
+  PricingTier,
+  PriceUnit as PricingTierUnit,
+} from './PricingTiersEditor';
+
+// BlockedPeriodsManager (add/remove blocked date ranges)
+export { BlockedPeriodsManager, validateBlockedPeriods } from './BlockedPeriodsManager';
+export type {
+  BlockedPeriodsManagerProps,
+  BlockedPeriodsManagerLabels,
+  BlockedPeriod,
+} from './BlockedPeriodsManager';
+
+// ExternalImportInput (URL import with validation)
+export { ExternalImportInput } from './ExternalImportInput';
+export type {
+  ExternalImportInputProps,
+  ExternalImportInputLabels,
+  ImportSource,
+  ImportStatus,
+} from './ExternalImportInput';
+
+// ContactPersonsEditor (add/edit/remove contact persons)
+export { ContactPersonsEditor } from './ContactPersonsEditor';
+export type {
+  ContactPersonsEditorProps,
+  ContactPersonsEditorLabels,
+  ContactPerson,
+} from './ContactPersonsEditor';

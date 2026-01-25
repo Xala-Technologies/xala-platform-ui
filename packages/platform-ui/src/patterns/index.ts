@@ -157,3 +157,11 @@ export type {
 // Key Facts
 export { KeyFacts } from './KeyFacts';
 export type { KeyFactsProps, KeyFactsLabels, KeyFactItem, KeyFactType } from './KeyFacts';
+
+// Quantity Slot Calendar (calendar with quantity-based slots)
+export { QuantitySlotCalendar } from './QuantitySlotCalendar';
+export type {
+  QuantitySlotCalendarProps,
+  QuantitySlotCalendarLabels,
+  QuantitySlot,
+} from './QuantitySlotCalendar';

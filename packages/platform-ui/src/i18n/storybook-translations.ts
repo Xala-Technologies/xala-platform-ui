@@ -412,10 +412,12 @@ export const storybookNb: Record<string, string> = {
 
   // Demo data - Status banner
   'storybook.demo.information': 'Informasjon',
-  'storybook.demo.informationalBannerDescription': 'Dette er en informativ banner for a vise viktige meldinger.',
+  'storybook.demo.informationalBannerDescription':
+    'Dette er en informativ banner for a vise viktige meldinger.',
   'storybook.demo.changesSavedSuccessfully': 'Endringene dine har blitt lagret.',
   'storybook.demo.warning': 'Advarsel',
-  'storybook.demo.reviewChangesBeforeProceeding': 'Vennligst gjennomga endringene for du fortsetter.',
+  'storybook.demo.reviewChangesBeforeProceeding':
+    'Vennligst gjennomga endringene for du fortsetter.',
   'storybook.demo.errorProcessingRequest': 'Det oppstod en feil under behandling av foresporsel.',
   'storybook.demo.notice': 'Merknad',
   'storybook.demo.neutralBannerDescription': 'Dette er en noytral banner for generell informasjon.',
@@ -426,7 +428,8 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.sessionExpiringSoon': 'Okten din utloper snart. Vennligst forny.',
   'storybook.demo.extendSession': 'Forleng okt',
   'storybook.demo.detailedInformation': 'Detaljert informasjon',
-  'storybook.demo.longContentDescription': 'Dette er en lengre beskrivelse for a demonstrere hvordan banneren handterer mye tekst. Den bor pakke seg pent og forbli lesbar selv med mye innhold.',
+  'storybook.demo.longContentDescription':
+    'Dette er en lengre beskrivelse for a demonstrere hvordan banneren handterer mye tekst. Den bor pakke seg pent og forbli lesbar selv med mye innhold.',
   'storybook.demo.info': 'Info',
   'storybook.demo.informationalBanner': 'Dette er en informativ banner',
   'storybook.demo.neutralBanner': 'Dette er en noytral banner',
@@ -443,7 +446,8 @@ export const storybookNb: Record<string, string> = {
 
   // Demo data - Stepper
   'storybook.demo.stepContent': 'Steg {step} innhold',
-  'storybook.demo.stepDescription': 'Dette er innholdet for steg {step}. Her kan du legge til skjemaer, informasjon eller andre komponenter.',
+  'storybook.demo.stepDescription':
+    'Dette er innholdet for steg {step}. Her kan du legge til skjemaer, informasjon eller andre komponenter.',
 
   // Demo data - Organizations
   'storybook.demo.org.acmeCorp': 'Bedrift AS',
@@ -890,7 +894,8 @@ export const storybookEn: Record<string, string> = {
 
   // Demo data - Status banner
   'storybook.demo.information': 'Information',
-  'storybook.demo.informationalBannerDescription': 'This is an informational banner for displaying important messages.',
+  'storybook.demo.informationalBannerDescription':
+    'This is an informational banner for displaying important messages.',
   'storybook.demo.changesSavedSuccessfully': 'Your changes have been saved successfully.',
   'storybook.demo.warning': 'Warning',
   'storybook.demo.reviewChangesBeforeProceeding': 'Please review changes before proceeding.',
@@ -904,7 +909,8 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.sessionExpiringSoon': 'Your session is expiring soon. Please renew.',
   'storybook.demo.extendSession': 'Extend Session',
   'storybook.demo.detailedInformation': 'Detailed Information',
-  'storybook.demo.longContentDescription': 'This is a longer description to demonstrate how the banner handles a lot of text. It should wrap nicely and remain readable even with a lot of content.',
+  'storybook.demo.longContentDescription':
+    'This is a longer description to demonstrate how the banner handles a lot of text. It should wrap nicely and remain readable even with a lot of content.',
   'storybook.demo.info': 'Info',
   'storybook.demo.informationalBanner': 'This is an informational banner',
   'storybook.demo.neutralBanner': 'This is a neutral banner',
@@ -921,7 +927,8 @@ export const storybookEn: Record<string, string> = {
 
   // Demo data - Stepper
   'storybook.demo.stepContent': 'Step {step} Content',
-  'storybook.demo.stepDescription': 'This is the content for step {step}. Here you can add forms, information, or other components.',
+  'storybook.demo.stepDescription':
+    'This is the content for step {step}. Here you can add forms, information, or other components.',
 
   // Demo data - Organizations
   'storybook.demo.org.acmeCorp': 'Acme Corp',
