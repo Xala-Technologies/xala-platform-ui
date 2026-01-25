@@ -427,3 +427,48 @@ export type { ResourceToolbarProps } from './ResourceToolbar';
 
 export { ResourceTabs } from './ResourceTabs';
 export type { ResourceTabsProps } from './ResourceTabs';
+
+// =============================================================================
+// XAHEEN-CODER EXTENDED BLOCKS (Task management, Git integration, File browsing)
+// =============================================================================
+
+// TaskCard (Kanban task display)
+export { TaskCard } from './TaskCard';
+export type {
+  TaskCardProps,
+  TaskStatus,
+  TaskPriority,
+  TaskComplexity,
+  TaskPhase,
+  TaskCategory,
+} from './TaskCard';
+
+// IssueCard (GitHub/GitLab issue display)
+export { IssueCard } from './IssueCard';
+export type {
+  IssueCardProps,
+  IssueState,
+  IssueType,
+  IssuePlatform,
+  IssueLabel,
+} from './IssueCard';
+
+// FileTree (File explorer navigation)
+export { FileTree } from './FileTree';
+export type {
+  FileTreeProps,
+  FileNode,
+  FileNodeType,
+} from './FileTree';
+
+// ChangelogCard (Release notes display)
+export { ChangelogCard } from './ChangelogCard';
+export type {
+  ChangelogCardProps,
+  ChangeType,
+  ChangeItem,
+} from './ChangelogCard';
+
+// XTerminal (Terminal display)
+export { XTerminal } from './XTerminal';
+export type { XTerminalProps } from './XTerminal';
