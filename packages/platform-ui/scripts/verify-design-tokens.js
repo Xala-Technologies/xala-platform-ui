@@ -29,6 +29,7 @@ const ALLOWED_FILES = [
   'src/stories/', // Storybook examples
   '.storybook/', // Storybook config
   'scripts/', // Scripts
+  'src/blocks/XTerminal.tsx', // Terminal colors for syntax highlighting
 ];
 
 // File extensions to check

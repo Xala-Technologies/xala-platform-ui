@@ -445,29 +445,15 @@ export type {
 
 // IssueCard (GitHub/GitLab issue display)
 export { IssueCard } from './IssueCard';
-export type {
-  IssueCardProps,
-  IssueState,
-  IssueType,
-  IssuePlatform,
-  IssueLabel,
-} from './IssueCard';
+export type { IssueCardProps, IssueState, IssueType, IssuePlatform, IssueLabel } from './IssueCard';
 
 // FileTree (File explorer navigation)
 export { FileTree } from './FileTree';
-export type {
-  FileTreeProps,
-  FileNode,
-  FileNodeType,
-} from './FileTree';
+export type { FileTreeProps, FileNode, FileNodeType } from './FileTree';
 
 // ChangelogCard (Release notes display)
 export { ChangelogCard } from './ChangelogCard';
-export type {
-  ChangelogCardProps,
-  ChangeType,
-  ChangeItem,
-} from './ChangelogCard';
+export type { ChangelogCardProps, ChangeType, ChangeItem } from './ChangelogCard';
 
 // XTerminal (Terminal display)
 export { XTerminal } from './XTerminal';
