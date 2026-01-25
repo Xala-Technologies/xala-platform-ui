@@ -1,10 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * CartSidebar
  *
  * A domain-neutral sidebar component for displaying selected items with pricing.
  * Useful for booking carts, shopping carts, selection summaries, etc.
  *
- * All text content is pre-localized - this component does not handle i18n internally.
+ * NOTE: Uses raw <button> elements for compact remove item controls.
  *
  * @example
  * ```tsx

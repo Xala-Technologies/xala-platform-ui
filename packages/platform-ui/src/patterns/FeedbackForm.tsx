@@ -1,10 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * FeedbackForm
  *
  * A domain-neutral form component for collecting user feedback and reviews.
  * Includes star rating input, text fields, and optional file upload.
  *
- * All text content is pre-localized - this component does not handle i18n internally.
+ * NOTE: Uses raw <button> elements for interactive star rating input.
  *
  * @example
  * ```tsx

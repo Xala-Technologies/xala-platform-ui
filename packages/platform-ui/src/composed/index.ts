@@ -576,7 +576,11 @@ export { PageContainer } from './PageContainer';
 export type { PageContainerProps } from './PageContainer';
 
 // AvailabilityLegend (calendar status legend)
-export { AvailabilityLegend, defaultBookingLegendItems, defaultBookingLegendItemsEn } from './AvailabilityLegend';
+export {
+  AvailabilityLegend,
+  defaultBookingLegendItems,
+  defaultBookingLegendItemsEn,
+} from './AvailabilityLegend';
 export type {
   AvailabilityLegendProps,
   AvailabilityLegendLabels,

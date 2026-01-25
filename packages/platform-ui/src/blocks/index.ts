@@ -409,7 +409,4 @@ export type {
 
 // Location Card Editable (editable address input extension)
 export { LocationCardEditable } from './LocationCardEditable';
-export type {
-  LocationCardEditableProps,
-  LocationCardEditableLabels,
-} from './LocationCardEditable';
+export type { LocationCardEditableProps, LocationCardEditableLabels } from './LocationCardEditable';

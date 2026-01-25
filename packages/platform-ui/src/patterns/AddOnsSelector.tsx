@@ -1,10 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * AddOnsSelector
  *
  * A domain-neutral pattern for selecting optional add-ons with quantity controls.
  * Useful for booking extras, product upsells, subscription features, etc.
  *
- * All text content is pre-localized - this component does not handle i18n internally.
+ * NOTE: Uses raw <button> elements for compact quantity +/- controls.
  *
  * @example
  * ```tsx

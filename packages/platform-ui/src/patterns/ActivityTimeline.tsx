@@ -245,7 +245,7 @@ function ActivityCardItem({
   labels,
   statusColors,
   formatDate,
-  formatTime,
+  formatTime: _formatTime,
   size,
   onClick,
 }: ActivityCardItemProps): React.ReactElement {

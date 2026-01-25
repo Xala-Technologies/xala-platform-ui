@@ -25,7 +25,55 @@
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
-import { StatusTag, type BadgeColor } from '../blocks/StatusBadges';
+
+// =============================================================================
+// Local StatusIndicator (inlined to avoid layer violation)
+// =============================================================================
+
+type StatusColor = 'success' | 'danger' | 'warning';
+
+const colorStyles: Record<StatusColor, { bg: string; text: string }> = {
+  success: {
+    bg: 'var(--ds-color-success-surface-default)',
+    text: 'var(--ds-color-success-text-default)',
+  },
+  danger: {
+    bg: 'var(--ds-color-danger-surface-default)',
+    text: 'var(--ds-color-danger-text-default)',
+  },
+  warning: {
+    bg: 'var(--ds-color-warning-surface-default)',
+    text: 'var(--ds-color-warning-text-default)',
+  },
+};
+
+function StatusIndicator({
+  children,
+  color,
+}: {
+  children: React.ReactNode;
+  color: StatusColor;
+}): React.ReactElement {
+  const style = colorStyles[color];
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        borderRadius: 'var(--ds-border-radius-full)',
+        backgroundColor: style.bg,
+        color: style.text,
+        padding: '2px 8px',
+        fontSize: 'var(--ds-font-size-xs)',
+        fontWeight: 'var(--ds-font-weight-medium)',
+        lineHeight: 'var(--ds-line-height-sm)',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {children}
+    </span>
+  );
+}
 
 // =============================================================================
 // Types
@@ -34,42 +82,42 @@ import { StatusTag, type BadgeColor } from '../blocks/StatusBadges';
 export type ChecklistItemStatus = 'ok' | 'missing' | 'warning';
 
 export interface ChecklistItem {
-    /** Unique identifier */
-    id: string;
-    /** Display label */
-    label: string;
-    /** Validation status */
-    status: ChecklistItemStatus;
-    /** Optional description or error message */
-    description?: string;
-    /** Optional link to wizard step */
-    stepIndex?: number;
+  /** Unique identifier */
+  id: string;
+  /** Display label */
+  label: string;
+  /** Validation status */
+  status: ChecklistItemStatus;
+  /** Optional description or error message */
+  description?: string;
+  /** Optional link to wizard step */
+  stepIndex?: number;
 }
 
 export interface PublishingChecklistLabels {
-    /** Title for the checklist */
-    title?: string;
-    /** Status labels */
-    ok?: string;
-    missing?: string;
-    warning?: string;
-    /** Screen reader labels */
-    statusOk?: string;
-    statusMissing?: string;
-    statusWarning?: string;
+  /** Title for the checklist */
+  title?: string;
+  /** Status labels */
+  ok?: string;
+  missing?: string;
+  warning?: string;
+  /** Screen reader labels */
+  statusOk?: string;
+  statusMissing?: string;
+  statusWarning?: string;
 }
 
 export interface PublishingChecklistProps {
-    /** Checklist items */
-    items: ChecklistItem[];
-    /** Localization labels */
-    labels?: PublishingChecklistLabels;
-    /** Click handler for navigating to step */
-    onItemClick?: (item: ChecklistItem) => void;
-    /** Show title header */
-    showTitle?: boolean;
-    /** Additional className */
-    className?: string;
+  /** Checklist items */
+  items: ChecklistItem[];
+  /** Localization labels */
+  labels?: PublishingChecklistLabels;
+  /** Click handler for navigating to step */
+  onItemClick?: (item: ChecklistItem) => void;
+  /** Show title header */
+  showTitle?: boolean;
+  /** Additional className */
+  className?: string;
 }
 
 // =============================================================================
@@ -77,23 +125,23 @@ export interface PublishingChecklistProps {
 // =============================================================================
 
 const defaultLabels: Required<PublishingChecklistLabels> = {
-    title: 'Sjekkliste for publisering',
-    ok: 'OK',
-    missing: 'Mangler',
-    warning: 'Anbefalt',
-    statusOk: 'Fullført',
-    statusMissing: 'Mangler - klikk for å fikse',
-    statusWarning: 'Anbefalt - klikk for å legge til',
+  title: 'Sjekkliste for publisering',
+  ok: 'OK',
+  missing: 'Mangler',
+  warning: 'Anbefalt',
+  statusOk: 'Fullført',
+  statusMissing: 'Mangler - klikk for å fikse',
+  statusWarning: 'Anbefalt - klikk for å legge til',
 };
 
 // =============================================================================
 // Status configuration
 // =============================================================================
 
-const statusToColor: Record<ChecklistItemStatus, BadgeColor> = {
-    ok: 'success',
-    missing: 'danger',
-    warning: 'warning',
+const statusToColor: Record<ChecklistItemStatus, StatusColor> = {
+  ok: 'success',
+  missing: 'danger',
+  warning: 'warning',
 };
 
 // =============================================================================
@@ -110,164 +158,165 @@ const statusToColor: Record<ChecklistItemStatus, BadgeColor> = {
  * - Screen reader announcements for status
  */
 export function PublishingChecklist({
-    items,
-    labels: customLabels,
-    onItemClick,
-    showTitle = true,
-    className,
+  items,
+  labels: customLabels,
+  onItemClick,
+  showTitle = true,
+  className,
 }: PublishingChecklistProps): React.ReactElement {
-    const labels = { ...defaultLabels, ...customLabels };
-    const isInteractive = Boolean(onItemClick);
+  const labels = { ...defaultLabels, ...customLabels };
+  const isInteractive = Boolean(onItemClick);
 
-    const getStatusLabel = (status: ChecklistItemStatus): string => {
-        switch (status) {
-            case 'ok':
-                return labels.ok;
-            case 'missing':
-                return labels.missing;
-            case 'warning':
-                return labels.warning;
-        }
-    };
+  const getStatusLabel = (status: ChecklistItemStatus): string => {
+    switch (status) {
+      case 'ok':
+        return labels.ok;
+      case 'missing':
+        return labels.missing;
+      case 'warning':
+        return labels.warning;
+    }
+  };
 
-    const getAriaLabel = (item: ChecklistItem): string => {
-        const statusLabel = getStatusLabel(item.status);
-        const baseLabel = `${item.label}: ${statusLabel}`;
+  const getAriaLabel = (item: ChecklistItem): string => {
+    const statusLabel = getStatusLabel(item.status);
+    const baseLabel = `${item.label}: ${statusLabel}`;
 
-        if (isInteractive && item.status !== 'ok') {
-            switch (item.status) {
-                case 'missing':
-                    return `${baseLabel}. ${labels.statusMissing}`;
-                case 'warning':
-                    return `${baseLabel}. ${labels.statusWarning}`;
-            }
-        }
+    if (isInteractive && item.status !== 'ok') {
+      switch (item.status) {
+        case 'missing':
+          return `${baseLabel}. ${labels.statusMissing}`;
+        case 'warning':
+          return `${baseLabel}. ${labels.statusWarning}`;
+      }
+    }
 
-        return baseLabel;
-    };
+    return baseLabel;
+  };
 
-    // Count statuses for summary
-    const statusCounts = items.reduce(
-        (acc, item) => {
-            acc[item.status]++;
-            return acc;
-        },
-        { ok: 0, missing: 0, warning: 0 }
-    );
+  // Count statuses for summary
+  const statusCounts = items.reduce(
+    (acc, item) => {
+      acc[item.status]++;
+      return acc;
+    },
+    { ok: 0, missing: 0, warning: 0 }
+  );
 
-    const containerStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-3)',
-    };
+  const containerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--ds-spacing-3)',
+  };
 
-    const listStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-2)',
-        padding: 0,
-        margin: 0,
-        listStyle: 'none',
-    };
+  const listStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--ds-spacing-2)',
+    padding: 0,
+    margin: 0,
+    listStyle: 'none',
+  };
 
-    const itemBaseStyle: React.CSSProperties = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: 'var(--ds-spacing-3)',
-        padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
-        borderRadius: 'var(--ds-border-radius-md)',
-        backgroundColor: 'var(--ds-color-neutral-surface-default)',
-        border: 'none',
-        width: '100%',
-        textAlign: 'left',
-    };
+  const itemBaseStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 'var(--ds-spacing-3)',
+    padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
+    borderRadius: 'var(--ds-border-radius-md)',
+    backgroundColor: 'var(--ds-color-neutral-surface-default)',
+    border: 'none',
+    width: '100%',
+    textAlign: 'left',
+  };
 
-    const itemInteractiveStyle: React.CSSProperties = {
-        ...itemBaseStyle,
-        cursor: 'pointer',
-    };
+  const itemInteractiveStyle: React.CSSProperties = {
+    ...itemBaseStyle,
+    cursor: 'pointer',
+  };
 
-    return (
-        <div className={cn('publishing-checklist', className)} style={containerStyle}>
-            {showTitle && (
-                <Heading level={3} data-size="xs" style={{ margin: 0 }}>
-                    {labels.title}
-                </Heading>
-            )}
+  return (
+    <div className={cn('publishing-checklist', className)} style={containerStyle}>
+      {showTitle && (
+        <Heading level={3} data-size="xs" style={{ margin: 0 }}>
+          {labels.title}
+        </Heading>
+      )}
 
-            <ul style={listStyle} role="list" aria-label={labels.title}>
-                {items.map((item) => {
-                    const canClick = isInteractive && item.status !== 'ok';
+      <ul style={listStyle} role="list" aria-label={labels.title}>
+        {items.map((item) => {
+          const canClick = isInteractive && item.status !== 'ok';
 
-                    const content = (
-                        <>
-                            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
-                                <Paragraph data-size="sm" style={{ margin: 0 }}>
-                                    {item.label}
-                                </Paragraph>
-                                {item.description && (
-                                    <Paragraph
-                                        data-size="xs"
-                                        style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
-                                    >
-                                        {item.description}
-                                    </Paragraph>
-                                )}
-                            </div>
-                            <StatusTag color={statusToColor[item.status]} size="sm">
-                                {getStatusLabel(item.status)}
-                            </StatusTag>
-                        </>
-                    );
+          const content = (
+            <>
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+                <Paragraph data-size="sm" style={{ margin: 0 }}>
+                  {item.label}
+                </Paragraph>
+                {item.description && (
+                  <Paragraph
+                    data-size="xs"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
+                    {item.description}
+                  </Paragraph>
+                )}
+              </div>
+              <StatusIndicator color={statusToColor[item.status]}>
+                {getStatusLabel(item.status)}
+              </StatusIndicator>
+            </>
+          );
 
-                    if (canClick) {
-                        return (
-                            <li key={item.id} style={{ listStyle: 'none' }}>
-                                <Button
-                                    variant="tertiary"
-                                    data-size="sm"
-                                    onClick={() => onItemClick?.(item)}
-                                    aria-label={getAriaLabel(item)}
-                                    style={{
-                                        ...itemInteractiveStyle,
-                                        justifyContent: 'space-between',
-                                    }}
-                                >
-                                    {content}
-                                </Button>
-                            </li>
-                        );
-                    }
+          if (canClick) {
+            return (
+              <li key={item.id} style={{ listStyle: 'none' }}>
+                <Button
+                  variant="tertiary"
+                  data-size="sm"
+                  onClick={() => onItemClick?.(item)}
+                  aria-label={getAriaLabel(item)}
+                  style={{
+                    ...itemInteractiveStyle,
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  {content}
+                </Button>
+              </li>
+            );
+          }
 
-                    return (
-                        <li key={item.id} style={{ listStyle: 'none' }}>
-                            <div style={itemBaseStyle} aria-label={getAriaLabel(item)}>
-                                {content}
-                            </div>
-                        </li>
-                    );
-                })}
-            </ul>
+          return (
+            <li key={item.id} style={{ listStyle: 'none' }}>
+              <div style={itemBaseStyle} aria-label={getAriaLabel(item)}>
+                {content}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
 
-            {/* Announce summary for screen readers */}
-            <div
-                style={{
-                    position: 'absolute',
-                    width: 1,
-                    height: 1,
-                    padding: 0,
-                    margin: -1,
-                    overflow: 'hidden',
-                    clip: 'rect(0, 0, 0, 0)',
-                    border: 0,
-                }}
-                aria-live="polite"
-            >
-                {statusCounts.ok} fullført, {statusCounts.missing} mangler, {statusCounts.warning} anbefalinger
-            </div>
-        </div>
-    );
+      {/* Announce summary for screen readers */}
+      <div
+        style={{
+          position: 'absolute',
+          width: 1,
+          height: 1,
+          padding: 0,
+          margin: -1,
+          overflow: 'hidden',
+          clip: 'rect(0, 0, 0, 0)',
+          border: 0,
+        }}
+        aria-live="polite"
+      >
+        {statusCounts.ok} fullført, {statusCounts.missing} mangler, {statusCounts.warning}{' '}
+        anbefalinger
+      </div>
+    </div>
+  );
 }
 
 PublishingChecklist.displayName = 'PublishingChecklist';

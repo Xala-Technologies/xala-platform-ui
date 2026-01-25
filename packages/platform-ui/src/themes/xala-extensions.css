@@ -1055,3 +1055,117 @@
 .booking-stepper-line[data-state="completed"] {
   background-color: var(--ds-color-success-base-default);
 }
+
+/* ==========================================================================
+ * COMPACT BUTTON TOKENS & UTILITIES
+ * Extended button variants for compact UI controls (toggles, calendar slots,
+ * quantity controls, etc.) where Designsystemet Button is too large.
+ * 
+ * Use the .ds-button.ds-button--compact class for compact buttons.
+ * ========================================================================== */
+
+@layer ds.app {
+  :root {
+    /* Compact button sizing */
+    --ds-button-compact-padding-x: var(--ds-spacing-2);
+    --ds-button-compact-padding-y: var(--ds-spacing-1);
+    --ds-button-compact-font-size: var(--ds-font-size-xs);
+    --ds-button-compact-line-height: 1.2;
+    --ds-button-compact-min-height: 24px;
+    --ds-button-compact-border-radius: var(--ds-border-radius-sm);
+    
+    /* Extra-compact for tiny controls (e.g., +/- buttons) */
+    --ds-button-xs-padding-x: var(--ds-spacing-1);
+    --ds-button-xs-padding-y: 2px;
+    --ds-button-xs-font-size: var(--ds-font-size-xs);
+    --ds-button-xs-min-height: 20px;
+    
+    /* Pill button (rounded ends for toggles) */
+    --ds-button-pill-border-radius: var(--ds-border-radius-full);
+    
+    /* Calendar slot button */
+    --ds-button-slot-min-width: 48px;
+    --ds-button-slot-min-height: 48px;
+    --ds-button-slot-padding: var(--ds-spacing-1);
+    
+    /* Ghost button (minimal styling, for icon buttons) */
+    --ds-button-ghost-padding: var(--ds-spacing-1);
+    --ds-button-ghost-border-radius: var(--ds-border-radius-sm);
+  }
+}
+
+/* Compact button utility class - works with ds-button */
+.ds-button.ds-button--compact {
+  padding: var(--ds-button-compact-padding-y) var(--ds-button-compact-padding-x) !important;
+  font-size: var(--ds-button-compact-font-size) !important;
+  min-height: var(--ds-button-compact-min-height) !important;
+  line-height: var(--ds-button-compact-line-height) !important;
+  border-radius: var(--ds-button-compact-border-radius) !important;
+}
+
+/* Extra-small button variant */
+.ds-button.ds-button--xs {
+  padding: var(--ds-button-xs-padding-y) var(--ds-button-xs-padding-x) !important;
+  font-size: var(--ds-button-xs-font-size) !important;
+  min-height: var(--ds-button-xs-min-height) !important;
+  line-height: 1 !important;
+  border-radius: var(--ds-border-radius-sm) !important;
+}
+
+/* Pill-style button (fully rounded) */
+.ds-button.ds-button--pill {
+  border-radius: var(--ds-button-pill-border-radius) !important;
+}
+
+/* Ghost button (transparent, for icons) */
+.ds-button.ds-button--ghost {
+  padding: var(--ds-button-ghost-padding) !important;
+  border-radius: var(--ds-button-ghost-border-radius) !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.ds-button.ds-button--ghost:hover {
+  background-color: var(--ds-color-neutral-surface-hover) !important;
+}
+
+/* Slot button (for calendar/time slots) */
+.ds-button.ds-button--slot {
+  min-width: var(--ds-button-slot-min-width) !important;
+  min-height: var(--ds-button-slot-min-height) !important;
+  padding: var(--ds-button-slot-padding) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Toggle button group - connected appearance */
+.ds-button-group--toggle {
+  display: flex;
+  gap: 0;
+}
+
+.ds-button-group--toggle .ds-button {
+  border-radius: 0 !important;
+  margin: -1px;
+}
+
+.ds-button-group--toggle .ds-button:first-child {
+  border-radius: var(--ds-border-radius-md) 0 0 var(--ds-border-radius-md) !important;
+  margin-left: 0;
+}
+
+.ds-button-group--toggle .ds-button:last-child {
+  border-radius: 0 var(--ds-border-radius-md) var(--ds-border-radius-md) 0 !important;
+  margin-right: 0;
+}
+
+/* Inline action button (for table rows, select-all actions) */
+.ds-button.ds-button--inline {
+  padding: 2px 6px !important;
+  font-size: var(--ds-font-size-xs) !important;
+  min-height: auto !important;
+  line-height: 1.2 !important;
+  border-radius: var(--ds-border-radius-sm) !important;
+}

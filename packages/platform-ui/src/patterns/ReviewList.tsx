@@ -33,7 +33,7 @@
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { NativeSelect } from '../primitives/NativeSelect';
-import { ReviewCard, type ReviewCardProps, type ReviewCardLabels } from './ReviewCard';
+import { ReviewCard, type ReviewCardLabels } from './ReviewCard';
 
 // ============================================================================
 // Types
@@ -192,7 +192,7 @@ interface DistributionBarProps {
   maxRating: number;
 }
 
-function DistributionBar({ star, count, total, maxRating }: DistributionBarProps) {
+function DistributionBar({ star, count, total, maxRating: _maxRating }: DistributionBarProps) {
   const percentage = total > 0 ? (count / total) * 100 : 0;
 
   return (

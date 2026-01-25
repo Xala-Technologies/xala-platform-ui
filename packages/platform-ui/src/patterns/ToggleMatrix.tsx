@@ -1,8 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * ToggleMatrix
  *
  * A domain-neutral matrix component for managing multiple toggle settings.
  * Useful for notification preferences, permissions, feature flags, etc.
+ *
+ * NOTE: This component uses raw <button> elements for compact inline actions.
  *
  * All text content is pre-localized - this component does not handle i18n internally.
  *
@@ -161,29 +164,6 @@ function isColumnAllSelected(
   rows: ToggleMatrixRow[]
 ): boolean {
   return rows.every((row) => !row.disabled && values[row.id]?.[columnId] === true);
-}
-
-/** Check if any values in a row are true */
-function isRowPartiallySelected(
-  rowId: string,
-  values: ToggleMatrixValues,
-  columns: ToggleMatrixColumn[]
-): boolean {
-  const rowValues = values[rowId] || {};
-  const enabledColumns = columns.filter((col) => !col.disabled);
-  const selectedCount = enabledColumns.filter((col) => rowValues[col.id] === true).length;
-  return selectedCount > 0 && selectedCount < enabledColumns.length;
-}
-
-/** Check if any values in a column are true */
-function isColumnPartiallySelected(
-  columnId: string,
-  values: ToggleMatrixValues,
-  rows: ToggleMatrixRow[]
-): boolean {
-  const enabledRows = rows.filter((row) => !row.disabled);
-  const selectedCount = enabledRows.filter((row) => values[row.id]?.[columnId] === true).length;
-  return selectedCount > 0 && selectedCount < enabledRows.length;
 }
 
 // ============================================================================

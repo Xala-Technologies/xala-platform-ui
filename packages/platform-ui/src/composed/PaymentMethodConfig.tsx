@@ -31,44 +31,44 @@ import { cn } from '../utils';
 // =============================================================================
 
 export interface EnabledPaymentMethods {
-    /** Enable invoice (EHF) payment */
-    invoice: boolean;
-    /** Enable card payment */
-    card: boolean;
-    /** Enable Vipps payment */
-    vipps: boolean;
-    /** Enable external/offline payment */
-    external: boolean;
+  /** Enable invoice (EHF) payment */
+  invoice: boolean;
+  /** Enable card payment */
+  card: boolean;
+  /** Enable Vipps payment */
+  vipps: boolean;
+  /** Enable external/offline payment */
+  external: boolean;
 }
 
 export interface PaymentMethodConfigLabels {
-    /** Fieldset legend */
-    legend?: string;
-    /** Helper text */
-    helperText?: string;
-    /** Method labels */
-    invoice?: string;
-    card?: string;
-    vipps?: string;
-    external?: string;
-    /** Method descriptions */
-    invoiceDescription?: string;
-    cardDescription?: string;
-    vippsDescription?: string;
-    externalDescription?: string;
+  /** Fieldset legend */
+  legend?: string;
+  /** Helper text */
+  helperText?: string;
+  /** Method labels */
+  invoice?: string;
+  card?: string;
+  vipps?: string;
+  external?: string;
+  /** Method descriptions */
+  invoiceDescription?: string;
+  cardDescription?: string;
+  vippsDescription?: string;
+  externalDescription?: string;
 }
 
 export interface PaymentMethodConfigProps {
-    /** Current enabled state */
-    value: EnabledPaymentMethods;
-    /** Change handler */
-    onChange: (value: EnabledPaymentMethods) => void;
-    /** Disabled state */
-    disabled?: boolean;
-    /** Localization labels */
-    labels?: PaymentMethodConfigLabels;
-    /** Additional className */
-    className?: string;
+  /** Current enabled state */
+  value: EnabledPaymentMethods;
+  /** Change handler */
+  onChange: (value: EnabledPaymentMethods) => void;
+  /** Disabled state */
+  disabled?: boolean;
+  /** Localization labels */
+  labels?: PaymentMethodConfigLabels;
+  /** Additional className */
+  className?: string;
 }
 
 // =============================================================================
@@ -76,16 +76,16 @@ export interface PaymentMethodConfigProps {
 // =============================================================================
 
 const defaultLabels: Required<PaymentMethodConfigLabels> = {
-    legend: 'Betalingsmetoder',
-    helperText: 'Velg hvilke betalingsmetoder som skal være tilgjengelige',
-    invoice: 'Faktura (EHF)',
-    card: 'Kort',
-    vipps: 'Vipps',
-    external: 'Betaling utenfor systemet',
-    invoiceDescription: 'Elektronisk faktura til organisasjoner',
-    cardDescription: 'Visa, Mastercard og andre korttransaksjoner',
-    vippsDescription: 'Norsk mobilbetaling',
-    externalDescription: 'For betalinger som håndteres manuelt',
+  legend: 'Betalingsmetoder',
+  helperText: 'Velg hvilke betalingsmetoder som skal være tilgjengelige',
+  invoice: 'Faktura (EHF)',
+  card: 'Kort',
+  vipps: 'Vipps',
+  external: 'Betaling utenfor systemet',
+  invoiceDescription: 'Elektronisk faktura til organisasjoner',
+  cardDescription: 'Visa, Mastercard og andre korttransaksjoner',
+  vippsDescription: 'Norsk mobilbetaling',
+  externalDescription: 'For betalinger som håndteres manuelt',
 };
 
 // =============================================================================
@@ -109,107 +109,110 @@ const methodOrder: PaymentMethodKey[] = ['invoice', 'card', 'vipps', 'external']
  * - Keyboard navigation
  */
 export function PaymentMethodConfig({
-    value,
-    onChange,
-    disabled = false,
-    labels: customLabels,
-    className,
+  value,
+  onChange,
+  disabled = false,
+  labels: customLabels,
+  className,
 }: PaymentMethodConfigProps): React.ReactElement {
-    const labels = { ...defaultLabels, ...customLabels };
+  const labels = { ...defaultLabels, ...customLabels };
 
-    const handleChange = (method: PaymentMethodKey, checked: boolean) => {
-        onChange({
-            ...value,
-            [method]: checked,
-        });
-    };
+  const handleChange = (method: PaymentMethodKey, checked: boolean) => {
+    onChange({
+      ...value,
+      [method]: checked,
+    });
+  };
 
-    const getMethodLabel = (method: PaymentMethodKey): string => {
-        return labels[method];
-    };
+  const getMethodLabel = (method: PaymentMethodKey): string => {
+    return labels[method];
+  };
 
-    const getMethodDescription = (method: PaymentMethodKey): string => {
-        const descKey = `${method}Description` as keyof PaymentMethodConfigLabels;
-        return labels[descKey] || '';
-    };
+  const getMethodDescription = (method: PaymentMethodKey): string => {
+    const descKey = `${method}Description` as keyof PaymentMethodConfigLabels;
+    return labels[descKey] || '';
+  };
 
-    const itemStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-1)',
-        padding: 'var(--ds-spacing-3)',
-        backgroundColor: 'var(--ds-color-neutral-surface-default)',
-        borderRadius: 'var(--ds-border-radius-md)',
-        border: '1px solid var(--ds-color-neutral-border-subtle)',
-    };
+  const itemStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--ds-spacing-1)',
+    padding: 'var(--ds-spacing-3)',
+    backgroundColor: 'var(--ds-color-neutral-surface-default)',
+    borderRadius: 'var(--ds-border-radius-md)',
+    border: '1px solid var(--ds-color-neutral-border-subtle)',
+  };
 
-    const checkboxContainerStyle: React.CSSProperties = {
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: 'var(--ds-spacing-3)',
-    };
+  const checkboxContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: 'var(--ds-spacing-3)',
+  };
 
-    const labelContainerStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-spacing-1)',
-        flex: 1,
-    };
+  const labelContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--ds-spacing-1)',
+    flex: 1,
+  };
 
-    return (
-        <Fieldset className={cn('payment-method-config', className)}>
-            <Fieldset.Legend>{labels.legend}</Fieldset.Legend>
-            <Fieldset.Description>{labels.helperText}</Fieldset.Description>
+  return (
+    <Fieldset className={cn('payment-method-config', className)}>
+      <Fieldset.Legend>{labels.legend}</Fieldset.Legend>
+      <Fieldset.Description>{labels.helperText}</Fieldset.Description>
 
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 'var(--ds-spacing-2)',
-                    marginTop: 'var(--ds-spacing-3)',
-                }}
-            >
-                {methodOrder.map((method) => {
-                    const methodLabel = getMethodLabel(method);
-                    const methodDescription = getMethodDescription(method);
-                    const checkboxId = `payment-${method}`;
-                    const labelId = `payment-${method}-label`;
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--ds-spacing-2)',
+          marginTop: 'var(--ds-spacing-3)',
+        }}
+      >
+        {methodOrder.map((method) => {
+          const methodLabel = getMethodLabel(method);
+          const methodDescription = getMethodDescription(method);
+          const checkboxId = `payment-${method}`;
+          const labelId = `payment-${method}-label`;
 
-                    return (
-                        <div key={method} style={itemStyle}>
-                            <div style={checkboxContainerStyle}>
-                                <Checkbox
-                                    id={checkboxId}
-                                    checked={value[method]}
-                                    onChange={(e) => handleChange(method, e.target.checked)}
-                                    disabled={disabled}
-                                    value={method}
-                                    aria-labelledby={labelId}
-                                />
-                                <div style={labelContainerStyle}>
-                                    <Label
-                                        id={labelId}
-                                        htmlFor={checkboxId}
-                                        style={{ cursor: disabled ? 'default' : 'pointer', fontWeight: 'var(--ds-font-weight-medium)' }}
-                                    >
-                                        {methodLabel}
-                                    </Label>
-                                    {methodDescription && (
-                                        <Paragraph
-                                            data-size="xs"
-                                            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
-                                        >
-                                            {methodDescription}
-                                        </Paragraph>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
+          return (
+            <div key={method} style={itemStyle}>
+              <div style={checkboxContainerStyle}>
+                <Checkbox
+                  id={checkboxId}
+                  checked={value[method]}
+                  onChange={(e) => handleChange(method, e.target.checked)}
+                  disabled={disabled}
+                  value={method}
+                  aria-labelledby={labelId}
+                />
+                <div style={labelContainerStyle}>
+                  <Label
+                    id={labelId}
+                    htmlFor={checkboxId}
+                    style={{
+                      cursor: disabled ? 'default' : 'pointer',
+                      fontWeight: 'var(--ds-font-weight-medium)',
+                    }}
+                  >
+                    {methodLabel}
+                  </Label>
+                  {methodDescription && (
+                    <Paragraph
+                      data-size="xs"
+                      style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                    >
+                      {methodDescription}
+                    </Paragraph>
+                  )}
+                </div>
+              </div>
             </div>
-        </Fieldset>
-    );
+          );
+        })}
+      </div>
+    </Fieldset>
+  );
 }
 
 PaymentMethodConfig.displayName = 'PaymentMethodConfig';

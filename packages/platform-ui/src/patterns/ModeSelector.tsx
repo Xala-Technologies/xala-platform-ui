@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * ModeSelector
  *
@@ -5,6 +6,10 @@
  * Supports tabs and segmented button variants.
  *
  * All text content is pre-localized - this component does not handle i18n internally.
+ *
+ * NOTE: This component uses raw <button> elements intentionally for custom styling
+ * that cannot be achieved with the standard Designsystemet Button component.
+ * The styling uses design tokens from xala-extensions.css (compact button tokens).
  *
  * @example
  * ```tsx
@@ -429,7 +434,9 @@ function IconsVariant({ options, value, onChange, size, fullWidth }: IconsVarian
             }}
           >
             {option.icon && (
-              <span style={{ display: 'flex', alignItems: 'center', width: iconSize, height: iconSize }}>
+              <span
+                style={{ display: 'flex', alignItems: 'center', width: iconSize, height: iconSize }}
+              >
                 {option.icon}
               </span>
             )}

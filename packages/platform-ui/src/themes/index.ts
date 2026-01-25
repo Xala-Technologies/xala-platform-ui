@@ -58,7 +58,7 @@ export const DEFAULT_THEME: ThemeId = 'custom';
 /** @deprecated Use THEME_CSS instead */
 export const THEMES = THEME_CSS;
 /** @deprecated Use getThemeCSS instead */
-export function getThemeUrls(themeId: ThemeId): string[] {
+export function getThemeUrls(_themeId: ThemeId): string[] {
   // Return empty array - URLs are no longer used
   return [];
 }
