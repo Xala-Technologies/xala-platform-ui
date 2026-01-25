@@ -261,6 +261,10 @@ export type { Amenity, AmenityChipsProps, AmenityChipsLabels } from './AmenityCh
 export { ShareButton, ShareSheet } from './ShareButton';
 export type { ShareButtonProps, ShareSheetProps, ShareData, SharePlatform } from './ShareButton';
 
+// Favorite Button
+export { FavoriteButton } from './FavoriteButton';
+export type { FavoriteButtonProps } from './FavoriteButton';
+
 // Period & Media Cards
 export { PeriodCard } from './PeriodCard';
 export type {
@@ -269,6 +273,9 @@ export type {
   PeriodDeadline,
   PeriodCardImage,
 } from './PeriodCard';
+
+// Re-export PeriodStatus from patterns for convenience
+export type { PeriodStatus, PeriodInfo } from '../patterns/types';
 
 export { MediaResourceCard } from './MediaResourceCard';
 export type {
@@ -410,3 +417,13 @@ export type {
 // Location Card Editable (editable address input extension)
 export { LocationCardEditable } from './LocationCardEditable';
 export type { LocationCardEditableProps, LocationCardEditableLabels } from './LocationCardEditable';
+
+// Resource Components (generic resource display)
+export { ResourceListItem } from './ResourceListItem';
+export type { ResourceListItemProps } from './ResourceListItem';
+
+export { ResourceToolbar } from './ResourceToolbar';
+export type { ResourceToolbarProps } from './ResourceToolbar';
+
+export { ResourceTabs } from './ResourceTabs';
+export type { ResourceTabsProps } from './ResourceTabs';
