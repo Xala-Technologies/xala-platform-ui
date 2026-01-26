@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Stack, Text } from '../primitives';
 import {
   CheckmarkCircleIcon,
   XMarkOctagonIcon,
@@ -85,11 +86,11 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
         {...cardProps}
       >
         <Card.Block>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Stack direction="horizontal" align="center" justify="between">
             <Heading level={3} data-size="sm">
               {title}
             </Heading>
-            <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+            <Stack direction="horizontal" gap="var(--ds-spacing-3)">
               <span style={{ color: 'var(--ds-color-success-base-default)', fontSize: '14px' }}>
                 ✓ {passedCount}
               </span>
@@ -148,18 +149,19 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
                       </Paragraph>
                     )}
                     {result.details && result.details.length > 0 && (
-                      <div
-                        style={{ marginTop: 'var(--ds-spacing-1)', fontSize: '12px', opacity: 0.6 }}
+                      <Stack
+                        direction="vertical"
+                        style={{ marginTop: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-xs)', opacity: 0.6 }}
                       >
                         {result.details.map((detail, i) => (
-                          <div key={i}>• {detail}</div>
+                          <Text key={i}>• {detail}</Text>
                         ))}
-                      </div>
+                      </Stack>
                     )}
-                  </div>
+                  </Stack>
                 );
               })}
-            </div>
+            </Stack>
           </Card.Block>
         )}
       </Card>

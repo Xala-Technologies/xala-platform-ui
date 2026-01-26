@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 import { MapPinIcon } from '../primitives/icons';
 
@@ -163,7 +164,10 @@ export function LocationCard({
             Vis større kart
           </Link>
         )}
-        <div
+        <Stack
+          direction="vertical"
+          align="center"
+          justify="center"
           onClick={onMapClick}
           role={onMapClick ? 'button' : undefined}
           tabIndex={onMapClick ? 0 : undefined}
@@ -171,9 +175,6 @@ export function LocationCard({
             width: '100%',
             height: '100%',
             cursor: onMapClick ? 'pointer' : 'default',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
           }}
         >
           {mapUrl ? (

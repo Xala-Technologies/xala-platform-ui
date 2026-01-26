@@ -17,6 +17,7 @@ import {
   Select,
   Checkbox,
 } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { QuestionmarkCircleIcon } from '@navikt/aksel-icons';
 import { cn } from '../utils';
 
@@ -206,11 +207,11 @@ export const ClarificationPanel = forwardRef<HTMLDivElement, ClarificationPanelP
         )}
 
         <Card.Block>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Stack direction="horizontal" justify="end">
             <Button onClick={onSubmit} disabled={isSubmitting || !allRequiredAnswered}>
               {isSubmitting ? 'Submitting...' : submitLabel}
             </Button>
-          </div>
+          </Stack>
         </Card.Block>
       </Card>
     );

@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Button, Heading, Paragraph, Dialog } from '@digdir/designsystemet-react';
+import { Text } from '../primitives';
 import { cn } from '../utils';
 import { ShareIcon, CheckIcon, CloseIcon } from '../primitives/icons';
 
@@ -465,7 +466,7 @@ export function ShareButton({
         className={cn('share-button-full', className)}
       >
         <ShareIcon size={16} />
-        <span>Del</span>
+        <Text>Del</Text>
       </Button>
 
       <ShareSheet

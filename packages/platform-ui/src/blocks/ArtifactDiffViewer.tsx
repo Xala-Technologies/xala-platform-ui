@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { forwardRef, useState } from 'react';
 import { Card, Heading, Paragraph, ToggleGroup } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { PlusIcon, MinusIcon, ArrowsUpDownIcon } from '@navikt/aksel-icons';
 import { cn } from '../utils';
 
@@ -83,13 +84,13 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
         {...cardProps}
       >
         <Card.Block>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+          <Stack direction="horizontal" align="center" justify="between">
+            <Stack direction="horizontal" align="center" gap="var(--ds-spacing-2)">
               <ArrowsUpDownIcon />
               <Heading level={4} data-size="xs">
                 {fileName || 'Diff View'}
               </Heading>
-            </div>
+            </Stack>
             <ToggleGroup
               value={viewMode}
               onChange={(v) => setViewMode(v as 'unified' | 'split')}
@@ -98,7 +99,7 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
               <ToggleGroup.Item value="unified">Unified</ToggleGroup.Item>
               <ToggleGroup.Item value="split">Split</ToggleGroup.Item>
             </ToggleGroup>
-          </div>
+          </Stack>
         </Card.Block>
 
         {/* Structured changes */}
@@ -107,23 +108,20 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
             <Heading level={5} data-size="xs">
               Changes ({changes.length})
             </Heading>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--ds-spacing-1)',
-                marginTop: 'var(--ds-spacing-2)',
-              }}
+            <Stack
+              direction="vertical"
+              spacing="var(--ds-spacing-1)"
+              style={{ marginTop: 'var(--ds-spacing-2)' }}
             >
               {changes.map((change, i) => {
                 const colors = changeColors[change.type];
                 return (
-                  <div
+                  <Stack
                     key={i}
+                    direction="horizontal"
+                    align="center"
+                    gap="var(--ds-spacing-2)"
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--ds-spacing-2)',
                       padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
                       background: colors.bg,
                       borderRadius: 'var(--ds-border-radius-sm)',
@@ -134,8 +132,8 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
                     {change.type === 'modified' && (
                       <ArrowsUpDownIcon style={{ color: colors.text }} />
                     )}
-                    <span style={{ fontSize: '13px' }}>{change.path}</span>
-                  </div>
+                    <span style={{ fontSize: 'var(--ds-font-size-sm)' }}>{change.path}</span>
+                  </Stack>
                 );
               })}
             </div>
@@ -156,9 +154,9 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
             }}
           >
             {viewMode === 'unified' ? (
-              <div style={{ padding: 'var(--ds-spacing-2)' }}>
+              <Stack style={{ padding: 'var(--ds-spacing-2)' }}>
                 {oldLines.map((line, i) => (
-                  <div
+                  <Stack
                     key={`old-${i}`}
                     style={{
                       padding: '2px 8px',
@@ -204,14 +202,14 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
                     New
                   </Paragraph>
                   {newLines.map((line, i) => (
-                    <div key={i} style={{ padding: '2px 0' }}>
+                    <Stack key={i} style={{ padding: '2px 0' }}>
                       {line}
-                    </div>
+                    </Stack>
                   ))}
-                </div>
-              </div>
+                </Stack>
+              </Stack>
             )}
-          </div>
+          </Stack>
         </Card.Block>
       </Card>
     );

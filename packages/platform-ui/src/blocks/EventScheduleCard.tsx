@@ -22,6 +22,7 @@
 
 import * as React from 'react';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Stack, Badge } from '../primitives';
 import { cn } from '../utils';
 import { CalendarIcon, ClockIcon } from '../primitives/icons';
 
@@ -228,17 +229,6 @@ export function EventScheduleCard({
     flexShrink: 0,
   };
 
-  const badgeStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-    backgroundColor: 'var(--ds-color-accent-surface-default)',
-    color: 'var(--ds-color-accent-text-default)',
-    borderRadius: 'var(--ds-border-radius-full)',
-    fontSize: 'var(--ds-font-size-xs)',
-    fontWeight: 'var(--ds-font-weight-medium)',
-  };
-
   const timeSlotsStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
@@ -250,29 +240,31 @@ export function EventScheduleCard({
       className={cn('event-schedule-card', className)}
       style={{ padding: compact ? 'var(--ds-spacing-3)' : 'var(--ds-spacing-4)' }}
     >
-      <div style={containerStyle}>
+      <Stack direction="vertical" spacing={compact ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)'}>
         {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: 'var(--ds-spacing-2)',
-          }}
+        <Stack
+          direction="horizontal"
+          align="center"
+          justify="between"
+          wrap
+          gap="var(--ds-spacing-2)"
         >
           <Heading level={3} data-size="xs" style={{ margin: 0 }}>
             {labels.title}
           </Heading>
-          {schedule.type !== 'single' && <span style={badgeStyle}>{getScheduleTypeLabel()}</span>}
-        </div>
+          {schedule.type !== 'single' && (
+            <Badge variant="info" size="sm">
+              {getScheduleTypeLabel()}
+            </Badge>
+          )}
+        </Stack>
 
         {/* Date / Period */}
-        <div style={rowStyle}>
+        <Stack direction="horizontal" align="flex-start" gap="var(--ds-spacing-2)">
           <span style={iconStyle}>
             <CalendarIcon size={16} />
           </span>
-          <div>
+          <Stack direction="vertical">
             {schedule.type === 'single' ? (
               <Paragraph data-size="sm" style={{ margin: 0 }}>
                 {formatDate(schedule.startDate)}
@@ -283,12 +275,12 @@ export function EventScheduleCard({
                 {schedule.endDate ? formatShortDate(schedule.endDate) : '...'}
               </Paragraph>
             )}
-          </div>
-        </div>
+          </Stack>
+        </Stack>
 
         {/* Recurrence */}
         {schedule.recurrence && (
-          <div style={rowStyle}>
+          <Stack direction="horizontal" align="flex-start" gap="var(--ds-spacing-2)">
             <Paragraph
               data-size="sm"
               style={{
@@ -299,19 +291,21 @@ export function EventScheduleCard({
             >
               {getRecurrenceDescription()}
             </Paragraph>
-          </div>
+          </Stack>
         )}
 
         {/* Time slots */}
-        <div style={rowStyle}>
+        <Stack direction="horizontal" align="flex-start" gap="var(--ds-spacing-2)">
           <span style={iconStyle}>
             <ClockIcon size={16} />
           </span>
-          <div style={timeSlotsStyle}>
+          <Stack direction="vertical" spacing="var(--ds-spacing-1)">
             {schedule.timeSlots.map((slot, index) => (
-              <div
+              <Stack
                 key={index}
-                style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}
+                direction="horizontal"
+                align="center"
+                gap="var(--ds-spacing-2)"
               >
                 <Paragraph
                   data-size="sm"
@@ -327,10 +321,10 @@ export function EventScheduleCard({
                     ({slot.label})
                   </Paragraph>
                 )}
-              </div>
+              </Stack>
             ))}
-          </div>
-        </div>
+          </Stack>
+        </Stack>
 
         {/* Occurrence count */}
         {schedule.occurrenceCount !== undefined && schedule.occurrenceCount > 0 && (
@@ -348,7 +342,7 @@ export function EventScheduleCard({
 
         {/* Exceptions */}
         {schedule.exceptions && schedule.exceptions.length > 0 && (
-          <div
+          <Stack
             style={{
               marginLeft: 'calc(16px + var(--ds-spacing-2))',
               padding: 'var(--ds-spacing-2)',
@@ -366,9 +360,9 @@ export function EventScheduleCard({
             >
               {labels.exceptionsLabel}: {schedule.exceptions.length}
             </Paragraph>
-          </div>
+          </Stack>
         )}
-      </div>
+      </Stack>
     </Card>
   );
 }

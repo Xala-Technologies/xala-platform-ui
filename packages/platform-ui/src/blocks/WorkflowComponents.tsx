@@ -218,7 +218,7 @@ export const CardGrid = forwardRef<HTMLDivElement, CardGridProps>(
     ref
   ) => {
     return (
-      <div
+      <Stack
         ref={ref}
         style={{
           display: 'grid',
@@ -229,7 +229,7 @@ export const CardGrid = forwardRef<HTMLDivElement, CardGridProps>(
         {...props}
       >
         {children}
-      </div>
+      </Stack>
     );
   }
 );
@@ -248,7 +248,7 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
+export const ButtonGroup = forwardRef<HTMLElement, ButtonGroupProps>(
   ({ gap = 'var(--ds-spacing-2)', align = 'start', children, style, ...props }, ref) => {
     const justifyMap = {
       start: 'flex-start',
@@ -257,18 +257,16 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     };
 
     return (
-      <div
+      <Stack
         ref={ref}
-        style={{
-          display: 'flex',
-          gap,
-          justifyContent: justifyMap[align],
-          ...style,
-        }}
+        direction="horizontal"
+        gap={gap}
+        justify={align === 'start' ? 'start' : align === 'center' ? 'center' : 'end'}
+        style={style}
         {...props}
       >
         {children}
-      </div>
+      </Stack>
     );
   }
 );
@@ -287,10 +285,10 @@ export interface FormGridProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export const FormGrid = forwardRef<HTMLDivElement, FormGridProps>(
+export const FormGrid = forwardRef<HTMLElement, FormGridProps>(
   ({ columns = 2, gap = 'var(--ds-spacing-4)', children, style, ...props }, ref) => {
     return (
-      <div
+      <Stack
         ref={ref}
         style={{
           display: 'grid',
@@ -301,7 +299,7 @@ export const FormGrid = forwardRef<HTMLDivElement, FormGridProps>(
         {...props}
       >
         {children}
-      </div>
+      </Stack>
     );
   }
 );

@@ -337,11 +337,11 @@ export function DeleteAccountCard({
                 }}
               >
                 {labels.warningItems.map((item, index) => (
-                  <li key={index}>
+                  <Stack key={index} direction="horizontal">
                     <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      {item}
+                      • {item}
                     </Paragraph>
-                  </li>
+                  </Stack>
                 ))}
               </ul>
             </div>

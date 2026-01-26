@@ -6,6 +6,7 @@
  */
 import React, { useState, useCallback } from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { BookOpenIcon, ChevronRightIcon } from '../primitives/icons';
 
 // ============================================================================
@@ -143,18 +144,20 @@ function TreeNode({
   const nodeStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.375rem',
-    padding: '0.25rem 0.5rem',
+    gap: 'var(--ds-spacing-1)',
+    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
     paddingLeft: `${depth * indentSize + 8}px`,
     cursor: 'pointer',
     backgroundColor: isSelected ? 'var(--ds-color-accent-surface-hover)' : 'transparent',
-    borderRadius: '0.25rem',
+    borderRadius: 'var(--ds-border-radius-sm)',
     userSelect: 'none',
   };
 
   return (
     <>
-      <div
+      <Stack
+        direction="horizontal"
+        align="center"
         style={nodeStyle}
         onClick={handleClick}
         onContextMenu={handleContextMenu}
@@ -174,7 +177,7 @@ function TreeNode({
             <ChevronRightIcon size={12} />
           </span>
         )}
-        {!hasChildren && isDirectory && <span style={{ width: '12px' }} />}
+        {!hasChildren && isDirectory && <span style={{ width: '0.75rem' }} />}
         {showIcons && (
           <span
             style={{
@@ -193,10 +196,10 @@ function TreeNode({
         <Paragraph data-size="sm" style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {node.name}
         </Paragraph>
-      </div>
+      </Stack>
 
       {isExpanded && hasChildren && (
-        <div role="group">
+        <Stack role="group" direction="vertical">
           {node.children!.map((child) => (
             <TreeNode
               key={child.id}
@@ -210,7 +213,7 @@ function TreeNode({
               indentSize={indentSize}
             />
           ))}
-        </div>
+        </Stack>
       )}
     </>
   );
@@ -231,12 +234,13 @@ export function FileTree({
   className = '',
 }: FileTreeProps) {
   return (
-    <div
+    <Stack
       role="tree"
+      direction="vertical"
       className={className}
       style={{
         fontFamily: 'var(--ds-font-family-mono)',
-        fontSize: '0.875rem',
+        fontSize: 'var(--ds-font-size-sm)',
       }}
     >
       {nodes.map((node) => (
@@ -252,7 +256,7 @@ export function FileTree({
           indentSize={indentSize}
         />
       ))}
-    </div>
+    </Stack>
   );
 }
 

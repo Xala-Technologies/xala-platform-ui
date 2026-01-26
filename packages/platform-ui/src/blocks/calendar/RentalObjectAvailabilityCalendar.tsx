@@ -369,12 +369,10 @@ export function RentalObjectAvailabilityCalendar({
       )}
 
       {/* Navigation */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
+      <Stack
+        direction="horizontal"
+        justify="between"
+        align="center"
       >
         <Button
           type="button"

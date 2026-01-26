@@ -11,6 +11,7 @@
  */
 
 import * as React from 'react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 
 export interface ResultsSkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -302,7 +303,7 @@ export function ResultsSkeleton({
   const items = Array.from({ length: count }, (_, i) => i);
 
   return (
-    <div
+    <Stack
       className={cn('ds-results-skeleton', className)}
       data-testid={testId}
       data-view-mode={viewMode}

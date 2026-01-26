@@ -445,16 +445,16 @@ export function TicketRegistrationCard({
               >
                 av {registration.capacity.total}
               </Paragraph>
-            </div>
-            <div style={capacityBarStyle()}>
-              <div
+            </Stack>
+            <Stack style={capacityBarStyle()}>
+              <Stack
                 style={capacityFillStyle(
                   registration.capacity.available,
                   registration.capacity.total
                 )}
               />
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         )}
 
         {/* Deadline */}

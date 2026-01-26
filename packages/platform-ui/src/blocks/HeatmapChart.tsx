@@ -6,6 +6,7 @@
  * Follows Digdir design tokens for consistent styling.
  */
 import * as React from 'react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================
@@ -144,7 +145,7 @@ export function HeatmapChart({
           }}
         >
           {/* Row label */}
-          <div
+          <Stack
             style={{
               width: labelWidth,
               fontSize: 'var(--ds-font-size-xs)',
@@ -152,11 +153,11 @@ export function HeatmapChart({
               textAlign: 'right',
               flexShrink: 0,
               paddingRight: 'var(--ds-spacing-2)',
-              fontWeight: 'var(--ds-font-weight-medium)',
+              fontWeight: 'var(--ds-font-weight-medium)' as unknown as number,
             }}
           >
             {row}
-          </div>
+          </Stack>
 
           {/* Cells */}
           {colLabels.map((col, colIdx) => {
@@ -304,21 +305,16 @@ export function CompactHeatmap({
   };
 
   return (
-    <div
+    <Stack
+      direction="vertical"
       className={cn('compact-heatmap', className)}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap,
-      }}
+      spacing={gap}
     >
       {rowLabels.map((row, rowIdx) => (
-        <div
+        <Stack
           key={rowIdx}
-          style={{
-            display: 'flex',
-            gap,
-          }}
+          direction="horizontal"
+          gap={gap}
         >
           {colLabels.map((col, colIdx) => {
             const cellData = getCellData(row, col);

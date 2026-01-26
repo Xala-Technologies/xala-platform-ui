@@ -100,13 +100,11 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
         {...cardProps}
       >
         <Card.Block>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              cursor: 'pointer',
-            }}
+          <Stack
+            direction="horizontal"
+            align="center"
+            justify="between"
+            style={{ cursor: 'pointer' }}
             onClick={() => setExpanded(!expanded)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -122,7 +120,7 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
               {labels.checklist || 'Approval Checklist'}
             </Heading>
             {expanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
-          </div>
+          </Stack>
         </Card.Block>
 
         {expanded && (

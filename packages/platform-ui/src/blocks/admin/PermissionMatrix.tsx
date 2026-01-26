@@ -6,6 +6,7 @@
  */
 import React, { useMemo, useState, useCallback } from 'react';
 import { Card, Heading, Paragraph, Table, Checkbox, Textfield } from '@digdir/designsystemet-react';
+import { Text } from '../../primitives';
 import { Badge } from '../../composed/Badge';
 
 export interface Permission {
@@ -259,12 +260,12 @@ export function PermissionMatrix({
                             gap: 'var(--ds-spacing-2)',
                           }}
                         >
-                          <span>{isExpanded ? '▼' : '▶'}</span>
+                          <Text>{isExpanded ? '▼' : '▶'}</Text>
                           {category}
                           <Badge variant="default" size="sm">
                             {categoryPermissions.length}
                           </Badge>
-                        </span>
+                        </Text>
                       </Table.Cell>
                     </Table.Row>
                   )}

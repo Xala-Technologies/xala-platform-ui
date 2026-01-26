@@ -7,6 +7,7 @@
 
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 
 // Accessibility Report type (from SDK)
 export interface AccessibilityReport {
@@ -156,14 +157,14 @@ export function AccessibilityDashboard({
           border: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <div
+        <Stack
+          direction="vertical"
+          align="center"
+          justify="center"
           style={{
             position: 'relative',
             width: '200px',
             height: '200px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
           }}
         >
           {/* Circular Progress */}
@@ -190,12 +191,11 @@ export function AccessibilityDashboard({
           </svg>
 
           {/* Score Text */}
-          <div
+          <Stack
+            direction="vertical"
+            align="center"
             style={{
               position: 'absolute',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
             }}
           >
             <span

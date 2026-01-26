@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { Card, Paragraph, Heading } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
 import {
@@ -135,7 +136,7 @@ export function TaskCard({
     >
       <Card.Block>
         {/* Header with category and priority */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+        <Stack direction="horizontal" justify="between" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           {category && (
             <Paragraph
               data-size="sm"
@@ -150,10 +151,10 @@ export function TaskCard({
               {PRIORITY_LABELS[priority]}
             </StatusTag>
           )}
-        </div>
+        </Stack>
 
         {/* Title */}
-        <Heading data-size="xs" style={{ marginBottom: '0.5rem' }}>
+        <Heading data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           {title}
         </Heading>
 
@@ -165,7 +166,7 @@ export function TaskCard({
         )}
 
         {/* Status badge */}
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Stack direction="horizontal" gap="var(--ds-spacing-2)" wrap>
           <StatusTag color={STATUS_COLORS[status]} size="sm">
             {STATUS_LABELS[status]}
           </StatusTag>
@@ -174,11 +175,11 @@ export function TaskCard({
               {phase}
             </StatusTag>
           )}
-        </div>
+        </Stack>
 
         {/* Progress bar */}
         {progress !== undefined && (
-          <div style={{ marginTop: '0.75rem' }}>
+          <Stack style={{ marginTop: 'var(--ds-spacing-3)' }}>
             <div
               style={{
                 height: '4px',
@@ -195,19 +196,16 @@ export function TaskCard({
                   transition: 'width 0.3s ease',
                 }}
               />
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         )}
 
         {/* Footer with assignee and due date */}
         {(assignee || dueDate) && (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              marginTop: '0.75rem',
-              opacity: 0.7,
-            }}
+          <Stack
+            direction="horizontal"
+            justify="between"
+            style={{ marginTop: 'var(--ds-spacing-3)', opacity: 0.7 }}
           >
             {assignee && <Paragraph data-size="sm">{assignee}</Paragraph>}
             {dueDate && <Paragraph data-size="sm">{dueDate.toLocaleDateString()}</Paragraph>}
@@ -229,8 +227,8 @@ export function TaskCard({
               >
                 {tag}
               </span>
-            ))}
-          </div>
+            )            )}
+          </Stack>
         )}
       </Card.Block>
     </Card>

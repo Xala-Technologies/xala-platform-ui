@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import { Card, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 
 export type TerminalStatus = 'idle' | 'running' | 'completed' | 'failed';
@@ -69,54 +70,54 @@ export const CommandTerminal = forwardRef<HTMLDivElement, CommandTerminalProps>(
         {...cardProps}
       >
         <Card.Block>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+          <Stack direction="horizontal" align="center" justify="between">
+            <Stack direction="horizontal" align="center" gap="var(--ds-spacing-2)">
               {/* Terminal dots */}
-              <div style={{ display: 'flex', gap: '4px' }}>
+              <Stack direction="horizontal" gap="var(--ds-spacing-1)">
                 <span
                   style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
+                    width: '0.75rem',
+                    height: '0.75rem',
+                    borderRadius: 'var(--ds-border-radius-full)',
                     background: 'var(--ds-color-danger-base-default)',
                   }}
                 />
                 <span
                   style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
+                    width: '0.75rem',
+                    height: '0.75rem',
+                    borderRadius: 'var(--ds-border-radius-full)',
                     background: 'var(--ds-color-warning-base-default)',
                   }}
                 />
                 <span
                   style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
+                    width: '0.75rem',
+                    height: '0.75rem',
+                    borderRadius: 'var(--ds-border-radius-full)',
                     background: 'var(--ds-color-success-base-default)',
                   }}
                 />
-              </div>
+              </Stack>
               <Heading level={4} data-size="xs">
                 {title || 'Terminal'}
               </Heading>
-            </div>
+            </Stack>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+            <Stack direction="horizontal" align="center" gap="var(--ds-spacing-2)">
               {status === 'running' && <Spinner data-size="sm" aria-hidden />}
               <span
                 style={{
-                  fontSize: '12px',
-                  fontWeight: 500,
+                  fontSize: 'var(--ds-font-size-xs)',
+                  fontWeight: 'var(--ds-font-weight-medium)' as unknown as number,
                   color: statusColors[status],
                   textTransform: 'uppercase',
                 }}
               >
                 {status}
               </span>
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         </Card.Block>
 
         <Card.Block>
@@ -146,9 +147,9 @@ export const CommandTerminal = forwardRef<HTMLDivElement, CommandTerminalProps>(
               </Paragraph>
             )}
             {logs.map((log, index) => (
-              <div key={index} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
+              <Stack key={index} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
                 {log}
-              </div>
+              </Stack>
             ))}
           </div>
         </Card.Block>

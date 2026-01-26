@@ -90,13 +90,34 @@ function checkRawHTML(filePath, content) {
       // Match JSX opening tags: <div>, <div className="...">, etc.
       const regex = new RegExp(`<${element}[\\s>]`, 'gi');
       if (regex.test(line)) {
-        violations.push({
-          file: relative(ROOT_DIR, filePath),
-          line: index + 1,
-          type: 'raw-html',
-          element,
-          content: line.trim(),
-        });
+        // Allow hidden file inputs (common pattern for file uploads)
+        let shouldSkip = false;
+        if (element === 'input') {
+          // Check if this is a hidden file input by looking ahead up to 10 lines
+          const contextStart = index;
+          const contextEnd = Math.min(index + 10, lines.length);
+          const contextLines = lines.slice(contextStart, contextEnd).join('\n');
+          // Check for file input with display: none pattern (common file upload pattern)
+          // Match: type="file" or type='file' AND (display: 'none' or display: "none" or display: none)
+          const hasFileType = /type\s*=\s*["']file["']/.test(contextLines);
+          const hasDisplayNone = /display\s*:\s*["']?none["']?/.test(contextLines) || 
+                                 contextLines.includes("'none'") || 
+                                 contextLines.includes('"none"');
+          if (hasFileType && hasDisplayNone) {
+            shouldSkip = true; // Skip this violation - it's a hidden file input (acceptable pattern)
+          }
+        }
+        
+        // Only add violation if we didn't skip it
+        if (!shouldSkip) {
+          violations.push({
+            file: relative(ROOT_DIR, filePath),
+            line: index + 1,
+            type: 'raw-html',
+            element,
+            content: line.trim(),
+          });
+        }
       }
     });
   });

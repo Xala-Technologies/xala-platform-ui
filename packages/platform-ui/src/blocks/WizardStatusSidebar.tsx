@@ -25,6 +25,7 @@
 
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 import { StatusTag, type BadgeColor } from './StatusBadges';
 import { CheckIcon } from '../primitives/icons';
@@ -235,7 +236,7 @@ export function WizardStatusSidebar({
         <span style={{ flexShrink: 0, marginTop: 2, color: sectionConfig.color }}>
           <Icon size={12} />
         </span>
-        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+        <Stack direction="vertical" style={{ flex: 1, minWidth: 0 }}>
           <Paragraph data-size="sm" style={{ margin: 0 }}>
             {section.label}
           </Paragraph>
@@ -261,13 +262,13 @@ export function WizardStatusSidebar({
               {section.errorMessage || labels.notSet}
             </Paragraph>
           )}
-        </div>
+        </Stack>
       </>
     );
 
     if (isInteractive) {
       return (
-        <li key={section.key} style={{ listStyle: 'none' }}>
+        <Stack key={section.key} direction="vertical">
           <Button
             variant="tertiary"
             data-size="sm"
@@ -276,14 +277,14 @@ export function WizardStatusSidebar({
           >
             {content}
           </Button>
-        </li>
+        </Stack>
       );
     }
 
     return (
-      <li key={section.key} style={{ listStyle: 'none' }}>
-        <div style={itemBaseStyle}>{content}</div>
-      </li>
+      <Stack key={section.key} direction="vertical">
+        <Stack direction="horizontal" align="flex-start" style={itemBaseStyle}>{content}</Stack>
+      </Stack>
     );
   };
 
@@ -295,20 +296,20 @@ export function WizardStatusSidebar({
       aria-live="polite"
     >
       {/* Header */}
-      <div style={headerStyle}>
+      <Stack direction="vertical" style={headerStyle}>
         <Heading level={2} data-size="xs" style={{ margin: 0 }}>
           {title}
         </Heading>
         <StatusTag color={config.color} size="sm">
           {labels[config.label]}
         </StatusTag>
-      </div>
+      </Stack>
 
       {/* Missing sections */}
       {missingSections.length > 0 && (
         <>
           <hr style={dividerStyle} />
-          <div style={sectionContainerStyle}>
+          <Stack direction="vertical" style={sectionContainerStyle}>
             <Paragraph
               data-size="xs"
               style={{
@@ -321,10 +322,10 @@ export function WizardStatusSidebar({
             >
               {labels.requiredTitle}
             </Paragraph>
-            <ul style={listStyle} role="list">
+            <Stack direction="vertical" spacing="var(--ds-spacing-1)" role="list">
               {missingSections.map(renderSectionItem)}
-            </ul>
-          </div>
+            </Stack>
+          </Stack>
         </>
       )}
 
@@ -332,7 +333,7 @@ export function WizardStatusSidebar({
       {showSummary && completedSections.length > 0 && (
         <>
           <hr style={dividerStyle} />
-          <div style={sectionContainerStyle}>
+          <Stack direction="vertical" style={sectionContainerStyle}>
             <Paragraph
               data-size="xs"
               style={{
@@ -345,10 +346,10 @@ export function WizardStatusSidebar({
             >
               {labels.summaryTitle}
             </Paragraph>
-            <ul style={listStyle} role="list">
+            <Stack direction="vertical" spacing="var(--ds-spacing-1)" role="list">
               {completedSections.map(renderSectionItem)}
-            </ul>
-          </div>
+            </Stack>
+          </Stack>
         </>
       )}
     </aside>

@@ -37,6 +37,7 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Stack, Text } from '../primitives';
 import type { ResourceBadge, PriceDisplay, StatusIndicator } from '../patterns/types';
 
 // ============================================================================
@@ -440,7 +441,7 @@ export function MediaResourceCard({
         }}
       >
         {/* Image */}
-        <div
+        <Stack
           style={{
             position: 'relative',
             width: '200px',
@@ -458,7 +459,7 @@ export function MediaResourceCard({
               objectFit: 'cover',
             }}
           />
-        </div>
+        </Stack>
 
         {/* Content */}
         <div
@@ -579,9 +580,9 @@ export function MediaResourceCard({
                     backgroundColor: getStatusColor(status.type),
                   }}
                 />
-                <span style={{ color: getStatusColor(status.type), fontWeight: 500 }}>
+                <Text style={{ color: getStatusColor(status.type), fontWeight: 'var(--ds-font-weight-medium)' as unknown as number }}>
                   {status.label}
-                </span>
+                </Text>
               </div>
             )}
           </div>
@@ -658,7 +659,7 @@ export function MediaResourceCard({
 
         {/* Gradient overlay */}
         {showGradientOverlay && (
-          <div
+          <Stack
             style={{
               position: 'absolute',
               bottom: 0,
@@ -782,9 +783,9 @@ export function MediaResourceCard({
                   fontWeight: 700,
                 }}
               >
-                {price.prefix && <span style={{ opacity: 0.8 }}>{price.prefix} </span>}
+                {price.prefix && <Text style={{ opacity: 0.8 }}>{price.prefix} </Text>}
                 {price.amount}
-                {price.unit && <span style={{ opacity: 0.8 }}> {price.unit}</span>}
+                {price.unit && <Text style={{ opacity: 0.8 }}> {price.unit}</Text>}
               </div>
             )}
           </div>
@@ -817,7 +818,7 @@ export function MediaResourceCard({
       }}
     >
       {/* Image section */}
-      <div
+      <Stack
         style={{
           position: 'relative',
           width: '100%',
@@ -840,7 +841,7 @@ export function MediaResourceCard({
 
         {/* Gradient overlay */}
         {showGradientOverlay && (
-          <div
+          <Stack
             style={{
               position: 'absolute',
               bottom: 0,

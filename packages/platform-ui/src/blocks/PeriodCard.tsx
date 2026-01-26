@@ -36,6 +36,7 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Stack, Text } from '../primitives';
 import type { PeriodStatus, PeriodInfo } from '../patterns/types';
 
 // ============================================================================
@@ -263,9 +264,9 @@ function PeriodDateDisplay({ period }: PeriodDateDisplayProps) {
       }}
     >
       <CalendarIcon size={14} />
-      <span>{period.startDate}</span>
+      <Text>{period.startDate}</Text>
       <ArrowRightIcon size={12} />
-      <span>{period.endDate}</span>
+      <Text>{period.endDate}</Text>
       {period.label && (
         <span
           style={{
@@ -301,8 +302,8 @@ function DeadlineDisplay({ deadline }: DeadlineDisplayProps) {
       }}
     >
       <ClockIcon size={12} />
-      <span style={{ fontWeight: 500 }}>{deadline.label}:</span>
-      <span>{deadline.date}</span>
+      <Text style={{ fontWeight: 'var(--ds-font-weight-medium)' as unknown as number }}>{deadline.label}:</Text>
+      <Text>{deadline.date}</Text>
     </div>
   );
 }
@@ -456,7 +457,7 @@ export function PeriodCard({
     >
       {/* Image section (optional) */}
       {image && (
-        <div
+        <Stack
           style={{
             position: 'relative',
             width: '100%',

@@ -465,7 +465,7 @@ export function NotificationCenter({
         ) : filteredNotifications.length === 0 ? (
           <EmptyState filter={filter} labels={labels} />
         ) : (
-          <div>
+          <Stack direction="vertical">
             {filteredNotifications.map((notification) => {
               // Build props object to avoid exactOptionalPropertyTypes issues
               const itemProps: {

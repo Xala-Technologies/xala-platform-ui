@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 import type { AdditionalService } from '../types';
 
@@ -181,8 +182,9 @@ export function AdditionalServicesList({
           const IconComponent = getServiceIcon(service.name);
 
           return (
-            <div
+            <Stack
               key={service.id}
+              direction="vertical"
               className="ds-service-card"
               onClick={() => handleClick(service)}
               role={isClickable ? 'button' : undefined}
@@ -233,11 +235,11 @@ export function AdditionalServicesList({
               />
 
               {/* Icon */}
-              <div
+              <Stack
+                direction="vertical"
+                align="center"
+                justify="center"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   width: 'var(--ds-spacing-11)',
                   height: 'var(--ds-spacing-11)',
                   backgroundColor: isSelected
@@ -250,7 +252,7 @@ export function AdditionalServicesList({
                 }}
               >
                 <IconComponent size={22} />
-              </div>
+              </Stack>
 
               {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>

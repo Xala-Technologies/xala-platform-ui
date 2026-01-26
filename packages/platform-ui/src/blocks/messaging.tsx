@@ -4,7 +4,8 @@
  */
 
 import { useState, useRef, useEffect, type ReactNode, type KeyboardEvent } from 'react';
-import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Spinner, Textfield } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 // Extended tokens available: typography, transitions, components, shadows
 // Import as needed when adding styled features
 
@@ -377,11 +378,11 @@ export function ConversationList({
           borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <div
+        <Stack
+          direction="horizontal"
+          align="center"
+          gap="var(--ds-spacing-2)"
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--ds-spacing-2)',
             padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
             backgroundColor: 'var(--ds-color-neutral-surface-default)',
             borderRadius: 'var(--ds-border-radius-md)',
@@ -389,7 +390,7 @@ export function ConversationList({
           }}
         >
           <SearchIcon size={16} />
-          <input
+          <Textfield
             type="text"
             placeholder={searchPlaceholder}
             value={searchQuery}
@@ -399,11 +400,10 @@ export function ConversationList({
               border: 'none',
               background: 'none',
               outline: 'none',
-              fontSize: 'var(--ds-font-size-sm)',
-              color: 'var(--ds-color-neutral-text-default)',
             }}
+            data-size="sm"
           />
-        </div>
+        </Stack>
       </div>
 
       {/* Filter tabs */}
@@ -680,14 +680,12 @@ export function ChatThread({
             backgroundColor: 'var(--ds-color-neutral-background-subtle)',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--ds-spacing-2)',
-              alignItems: 'center',
-            }}
+          <Stack
+            direction="horizontal"
+            align="center"
+            gap="var(--ds-spacing-2)"
           >
-            <input
+            <Textfield
               ref={inputRef}
               type="text"
               value={inputValue}
@@ -697,12 +695,8 @@ export function ChatThread({
               disabled={isSending}
               style={{
                 flex: 1,
-                padding: 'var(--ds-spacing-3)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                border: '1px solid var(--ds-color-neutral-border-default)',
-                fontSize: 'var(--ds-font-size-sm)',
-                outline: 'none',
               }}
+              data-size="sm"
             />
             <Button
               type="button"

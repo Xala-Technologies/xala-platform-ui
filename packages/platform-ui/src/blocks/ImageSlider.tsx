@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Paragraph, Button } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '../primitives/icons';
 import type { GalleryImage } from '../types';
@@ -197,17 +198,17 @@ export function ImageSlider({
         tabIndex={enableFullscreen && !isFullscreen ? 0 : undefined}
       >
         {/* Slides container */}
-        <div
+        <Stack
+          direction="horizontal"
           className="ds-image-slider-track"
           style={{
-            display: 'flex',
             height: '100%',
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
           {images.map((image, index) => (
-            <div
+            <Stack
               key={image.id}
               className="ds-image-slider-slide"
               style={{
@@ -227,9 +228,9 @@ export function ImageSlider({
                   objectFit: 'cover',
                 }}
               />
-            </div>
+            </Stack>
           ))}
-        </div>
+        </Stack>
 
         {/* Gradient overlays for better arrow visibility */}
         {showArrows && images.length > 1 && (

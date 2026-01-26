@@ -7,6 +7,7 @@ import React from 'react';
 import { Card, Paragraph, Heading, Link } from '@digdir/designsystemet-react';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
+import { Stack } from '../primitives';
 import {
   SparklesIcon,
   RefreshIcon,
@@ -109,15 +110,13 @@ export function ChangelogCard({
     >
       <Card.Block>
         {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '0.75rem',
-          }}
+        <Stack
+          direction="horizontal"
+          justify="between"
+          align="center"
+          style={{ marginBottom: 'var(--ds-spacing-3)' }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Stack direction="horizontal" align="center" gap="var(--ds-spacing-2)">
             <Heading data-size="sm">
               {releaseUrl ? (
                 <Link href={releaseUrl} target="_blank" rel="noopener noreferrer">
@@ -137,37 +136,39 @@ export function ChangelogCard({
                 Pre-release
               </StatusTag>
             )}
-          </div>
+          </Stack>
           <Paragraph data-size="sm" style={{ opacity: 0.7 }}>
             {formatDate(date)}
           </Paragraph>
-        </div>
+        </Stack>
 
         {/* Title */}
         {title && (
-          <Paragraph style={{ marginBottom: '0.75rem', fontWeight: 500 }}>{title}</Paragraph>
+          <Paragraph style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 'var(--ds-font-weight-medium)' as unknown as number }}>
+            {title}
+          </Paragraph>
         )}
 
         {/* Changes grouped by type */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <Stack direction="vertical" spacing="var(--ds-spacing-3)">
           {Object.entries(groupedChanges).map(([type, items]) => (
-            <div key={type}>
+            <Stack key={type} direction="vertical">
               <Paragraph
                 data-size="sm"
                 style={{
-                  fontWeight: 600,
-                  marginBottom: '0.375rem',
+                  fontWeight: 'var(--ds-font-weight-semibold)' as unknown as number,
+                  marginBottom: 'var(--ds-spacing-1)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.375rem',
+                  gap: 'var(--ds-spacing-1)',
                 }}
               >
                 {CHANGE_TYPE_ICONS[type as ChangeType]}
                 {CHANGE_TYPE_LABELS[type as ChangeType]}
               </Paragraph>
-              <ul style={{ margin: 0, paddingLeft: '1.25rem' }}>
+              <ul style={{ margin: 0, paddingLeft: 'var(--ds-spacing-5)' }}>
                 {items.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: '0.25rem' }}>
+                  <li key={idx} style={{ marginBottom: 'var(--ds-spacing-1)' }}>
                     <Paragraph data-size="sm">
                       {item.description}
                       {item.issueNumber && item.issueUrl && (
@@ -187,18 +188,23 @@ export function ChangelogCard({
                   </li>
                 ))}
               </ul>
-            </div>
+            </Stack>
           ))}
-        </div>
+        </Stack>
 
         {/* Summary badges */}
-        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem', flexWrap: 'wrap' }}>
+        <Stack
+          direction="horizontal"
+          gap="var(--ds-spacing-2)"
+          wrap
+          style={{ marginTop: 'var(--ds-spacing-3)' }}
+        >
           {Object.entries(groupedChanges).map(([type, items]) => (
             <StatusTag key={type} color={CHANGE_TYPE_COLORS[type as ChangeType]} size="sm">
               {items.length} {type}
             </StatusTag>
           ))}
-        </div>
+        </Stack>
       </Card.Block>
     </Card>
   );

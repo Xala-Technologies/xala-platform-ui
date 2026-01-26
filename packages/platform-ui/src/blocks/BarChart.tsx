@@ -5,6 +5,7 @@
  * Follows Digdir design tokens for consistent styling.
  */
 import * as React from 'react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================
@@ -169,15 +170,13 @@ export function VerticalBarChart({
   const max = maxValue || Math.max(...data.map((d) => d.value), 1);
 
   return (
-    <div
+    <Stack
+      direction="horizontal"
+      align="flex-end"
+      justify="center"
       className={cn('vertical-bar-chart', className)}
-      style={{
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        gap,
-        height,
-      }}
+      spacing={gap}
+      style={{ height }}
     >
       {data.map((item, idx) => (
         <div

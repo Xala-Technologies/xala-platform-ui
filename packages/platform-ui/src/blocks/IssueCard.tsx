@@ -5,6 +5,7 @@
  */
 import React from 'react';
 import { Card, Paragraph, Heading, Link } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
 import { RepeatIcon, EditIcon, MessageSquareIcon, GridIcon } from '../primitives/icons';
@@ -111,20 +112,24 @@ export function IssueCard({
     <Card data-color="neutral" onClick={onClick} style={cardStyle} className={className}>
       <Card.Block>
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+        <Stack
+          direction="horizontal"
+          justify="between"
+          style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        >
           <Paragraph
             data-size="sm"
-            style={{ opacity: 0.7, display: 'flex', alignItems: 'center', gap: '0.375rem' }}
+            style={{ opacity: 0.7, display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
           >
-            {PLATFORM_ICONS[platform]} {TYPE_ICONS[type]} <span>#{number}</span>
+            {PLATFORM_ICONS[platform]} {TYPE_ICONS[type]} #{number}
           </Paragraph>
           <StatusTag color={STATE_COLORS[state]} size="sm">
             {STATE_LABELS[state]}
           </StatusTag>
-        </div>
+        </Stack>
 
         {/* Title */}
-        <Heading data-size="xs" style={{ marginBottom: '0.5rem' }}>
+        <Heading data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
           {url ? (
             <Link href={url} target="_blank" rel="noopener noreferrer">
               {title}
@@ -136,44 +141,43 @@ export function IssueCard({
 
         {/* Body preview */}
         {body && (
-          <Paragraph data-size="sm" style={{ marginBottom: '0.75rem', opacity: 0.8 }}>
+          <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)', opacity: 0.8 }}>
             {body.length > 120 ? `${body.slice(0, 120)}...` : body}
           </Paragraph>
         )}
 
         {/* Labels */}
         {labels && labels.length > 0 && (
-          <div
-            style={{ display: 'flex', gap: '0.25rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}
+          <Stack
+            direction="horizontal"
+            gap="var(--ds-spacing-1)"
+            wrap
+            style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             {labels.slice(0, 4).map((label) => (
-              <span
+              <StatusTag
                 key={label.name}
+                color="neutral"
+                size="sm"
                 style={{
-                  fontSize: '0.75rem',
-                  padding: '0.125rem 0.375rem',
-                  backgroundColor: label.color || 'var(--ds-color-neutral-surface-hover)',
-                  color: label.color ? '#fff' : 'inherit',
-                  borderRadius: '0.25rem',
+                  backgroundColor: label.color || undefined,
+                  color: label.color ? '#fff' : undefined,
                 }}
               >
                 {label.name}
-              </span>
+              </StatusTag>
             ))}
-          </div>
+          </Stack>
         )}
 
         {/* Footer */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginTop: '0.5rem',
-            opacity: 0.7,
-          }}
+        <Stack
+          direction="horizontal"
+          justify="between"
+          align="center"
+          style={{ marginTop: 'var(--ds-spacing-2)', opacity: 0.7 }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Stack direction="horizontal" align="center" gap="var(--ds-spacing-2)">
             {authorAvatar && (
               <img
                 src={authorAvatar}
@@ -182,19 +186,19 @@ export function IssueCard({
               />
             )}
             {author && <Paragraph data-size="sm">{author}</Paragraph>}
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          </Stack>
+          <Stack direction="horizontal" align="center" gap="var(--ds-spacing-3)">
             {commentCount !== undefined && commentCount > 0 && (
               <Paragraph
                 data-size="sm"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
               >
                 <MessageSquareIcon size={12} /> {commentCount}
               </Paragraph>
             )}
             {createdAt && <Paragraph data-size="sm">{formatDate(createdAt)}</Paragraph>}
-          </div>
-        </div>
+          </Stack>
+        </Stack>
       </Card.Block>
     </Card>
   );

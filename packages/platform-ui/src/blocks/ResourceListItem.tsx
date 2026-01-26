@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Tag, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import { cn } from '../utils';
 
 export interface ResourceListItemProps {
@@ -215,7 +216,9 @@ export function ResourceListItem({
   };
 
   return (
-    <div
+    <Stack
+      direction="horizontal"
+      wrap
       className={cn('resource-object-list-item', className)}
       onClick={handleClick}
       onKeyDown={(e) => {
@@ -229,8 +232,6 @@ export function ResourceListItem({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        display: 'flex',
-        flexWrap: 'wrap',
         minHeight: '250px',
         backgroundColor: 'var(--ds-color-neutral-surface-default)',
         borderRadius: 'var(--ds-border-radius-lg)',
@@ -475,12 +476,12 @@ export function ResourceListItem({
 
         {/* Footer with capacity and price */}
         {(showCapacity || showPrice) && (
-          <div
+          <Stack
+            direction="horizontal"
+            align="center"
+            justify="between"
             style={{
               marginTop: 'auto',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
               width: '100%',
             }}
           >
@@ -652,10 +653,10 @@ export function ResourceListItem({
                 </svg>
               </div>
             </div>
-          )}
-        </div>
-      )}
-    </div>
+            )}
+          </Stack>
+        )}
+    </Stack>
   );
 }
 

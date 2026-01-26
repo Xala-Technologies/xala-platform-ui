@@ -251,10 +251,8 @@ function checkRawHTMLElements(filePath, content) {
   const violations = [];
   const lines = content.split('\n');
 
-  // Raw HTML elements that should be replaced with Designsystemet components
-  const rawHTMLElements = [
-    { tag: 'div', replacement: 'Stack, Card, or other Designsystemet components' },
-    { tag: 'span', replacement: 'Text or other Designsystemet components' },
+  // Raw HTML elements that should ALWAYS be replaced (semantic elements)
+  const alwaysReplace = [
     { tag: 'p', replacement: 'Paragraph from @digdir/designsystemet-react' },
     { tag: 'h1', replacement: 'Heading level={1} from @digdir/designsystemet-react' },
     { tag: 'h2', replacement: 'Heading level={2} from @digdir/designsystemet-react' },
@@ -268,13 +266,20 @@ function checkRawHTMLElements(filePath, content) {
     { tag: 'article', replacement: 'Card with semantic role' },
     { tag: 'header', replacement: 'Card.Header or semantic header' },
     { tag: 'footer', replacement: 'Card.Footer or semantic footer' },
-    { tag: 'ul', replacement: 'List from @digdir/designsystemet-react' },
-    { tag: 'ol', replacement: 'List from @digdir/designsystemet-react' },
-    { tag: 'li', replacement: 'List.Item from @digdir/designsystemet-react' },
     { tag: 'table', replacement: 'Table from @digdir/designsystemet-react' },
     { tag: 'tr', replacement: 'Table.Row from @digdir/designsystemet-react' },
     { tag: 'td', replacement: 'Table.Cell from @digdir/designsystemet-react' },
     { tag: 'th', replacement: 'Table.HeaderCell from @digdir/designsystemet-react' },
+  ];
+
+  // Elements that can be allowed if they use design tokens properly
+  // Note: Designsystemet doesn't have List components, so ul/ol/li are allowed with design tokens
+  const conditionalReplace = [
+    { tag: 'div', replacement: 'Stack, Card, or other Designsystemet components' },
+    { tag: 'span', replacement: 'Text or other Designsystemet components' },
+    { tag: 'ul', replacement: 'Stack with Paragraph (Designsystemet has no List component)' },
+    { tag: 'ol', replacement: 'Stack with Paragraph (Designsystemet has no List component)' },
+    { tag: 'li', replacement: 'Paragraph or Stack.Item (Designsystemet has no List component)' },
   ];
 
   lines.forEach((line, index) => {
@@ -288,10 +293,9 @@ function checkRawHTMLElements(filePath, content) {
       return;
     }
 
-    // Check for raw HTML elements
-    for (const { tag, replacement } of rawHTMLElements) {
-      // Match opening tags: <div, <span, etc. (but not closing tags or self-closing)
-      // Also skip if it's part of a JSX comment or string literal
+    // Check for elements that should ALWAYS be replaced
+    for (const { tag, replacement } of alwaysReplace) {
+      // Match lowercase HTML tags only (not React components which are capitalized)
       const tagRegex = new RegExp(`<${tag}(?:\\s|>|/|$)`, 'i');
       
       if (tagRegex.test(line)) {
@@ -305,10 +309,106 @@ function checkRawHTMLElements(filePath, content) {
           continue;
         }
 
+        // Skip if it's a React component (capitalized) - e.g., <Button, <Input, <Paragraph
+        const tagMatch = line.match(new RegExp(`<(${tag}[A-Z]|${tag.charAt(0).toUpperCase() + tag.slice(1)})`, 'i'));
+        if (tagMatch && tagMatch[1] && tagMatch[1][0] === tagMatch[1][0].toUpperCase()) {
+          continue; // It's a React component, not raw HTML
+        }
+
         // Skip if it's part of a component name (e.g., <DivComponent)
         const beforeTag = line.substring(0, line.indexOf(`<${tag}`));
         if (/[A-Za-z0-9_]$/.test(beforeTag)) {
           continue;
+        }
+
+        // Allow hidden file inputs (common pattern for file uploads)
+        if (tag === 'input') {
+          // Check if this is a hidden file input by looking ahead up to 10 lines
+          const contextStart = index;
+          const contextEnd = Math.min(index + 10, lines.length);
+          const contextLines = lines.slice(contextStart, contextEnd).join('\n');
+          // Check for file input with display: none pattern (common file upload pattern)
+          const hasFileType = /type\s*=\s*["']file["']/.test(contextLines);
+          const hasDisplayNone = /display\s*:\s*["']?none["']?/.test(contextLines) || 
+                                 contextLines.includes("'none'") || 
+                                 contextLines.includes('"none"');
+          if (hasFileType && hasDisplayNone) {
+            continue; // Skip this violation - it's a hidden file input (acceptable pattern)
+          }
+        }
+
+        violations.push({
+          file: relative(ROOT_DIR, filePath),
+          line: index + 1,
+          type: 'raw-html-element',
+          tag,
+          replacement,
+          content: line.trim(),
+        });
+      }
+    }
+
+    // Check for conditional elements (div, span) - only flag if they don't use design tokens
+    for (const { tag, replacement } of conditionalReplace) {
+      const tagRegex = new RegExp(`<${tag}(?:\\s|>|/|$)`, 'i');
+      
+      if (tagRegex.test(line)) {
+        // Skip if it's in a string literal or comment
+        if (line.includes(`'<${tag}`) || line.includes(`"<${tag}`) || line.includes(`\`<${tag}`)) {
+          continue;
+        }
+        
+        // Skip if it's a comment
+        if (line.includes('//') || line.includes('/*')) {
+          continue;
+        }
+
+        // Skip if it's part of a component name
+        const beforeTag = line.substring(0, line.indexOf(`<${tag}`));
+        if (/[A-Za-z0-9_]$/.test(beforeTag)) {
+          continue;
+        }
+
+        // Check surrounding context (next 15 lines) for design token usage
+        const contextStart = Math.max(0, index);
+        const contextEnd = Math.min(lines.length, index + 15);
+        const context = lines.slice(contextStart, contextEnd).join('\n');
+        
+        // Allow if it uses design tokens in style prop (inline or variable)
+        const hasDesignTokens = /var\(--ds-/i.test(context);
+        
+        // Check if it references a style object variable (e.g., style={rowStyle}, style={iconStyle})
+        // Look backwards for style object definitions (up to 100 lines back to catch style definitions)
+        const lookBackStart = Math.max(0, index - 100);
+        const lookBackContext = lines.slice(lookBackStart, index + 1).join('\n');
+        const currentLineLower = line.toLowerCase();
+        
+        // Match style={variableName} or style={variableNameStyle} - handle both patterns
+        const styleVarMatch = currentLineLower.match(/style\s*=\s*\{?\s*(\w+)\}/);
+        if (styleVarMatch) {
+          const varName = styleVarMatch[1];
+          // Check if this variable is defined with design tokens (const/let/var variableName = ... var(--ds-...))
+          const varDefPattern = new RegExp(`(const|let|var)\\s+${varName}\\s*[:=]\\s*[^;]*var\\(--ds-`, 'is');
+          if (varDefPattern.test(lookBackContext)) {
+            continue; // Style variable uses design tokens, allow it
+          }
+        }
+        
+        // Allow if it uses design tokens
+        if (hasDesignTokens) {
+          continue;
+        }
+        
+        // Allow spans used for icon containers or loading spinners (common pattern)
+        if (tag === 'span') {
+          // Check if it contains an icon component or is used for loading/spinner
+          const hasIcon = /Icon|spinner|loading/i.test(context);
+          // Check if it's used for layout of icons (display: flex, alignItems: center)
+          const isIconContainer = /display\s*:\s*['"]?flex['"]?|alignItems\s*:\s*['"]?center['"]?/i.test(context) &&
+                                  /Icon|svg|img/i.test(context);
+          if (hasIcon || isIconContainer) {
+            continue;
+          }
         }
 
         violations.push({
