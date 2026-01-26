@@ -225,7 +225,7 @@ export const Default: Story = {
               {t('platform.common.cancel')}
             </Button>
             <Button variant="primary" onClick={() => dialogRef.current?.close()} type="button">
-              {t('storybook.demo.confirm')}
+              {t('platform.common.confirm')}
             </Button>
           </div>
         </Dialog>

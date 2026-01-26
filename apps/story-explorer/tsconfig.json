@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": "../..",
+    "paths": {
+      "@/*": ["./apps/story-explorer/src/*"],
+      "@xala-technologies/platform-ui": ["./packages/platform-ui/src/index.ts"],
+      "@xala-technologies/platform-ui/*": ["./packages/platform-ui/src/*"],
+      "@xala-technologies/story-explorer-core": ["./packages/story-explorer-core/src/index.ts"],
+      "@xala-technologies/story-explorer-core/*": ["./packages/story-explorer-core/src/*"],
+      "@xala-technologies/i18n": ["../xala-platform/packages/i18n/src/index.ts"],
+      "@xala-technologies/i18n/*": ["../xala-platform/packages/i18n/src/*"],
+      "@xala-technologies/i18n-platform": ["../xala-platform/packages/i18n-platform/src/index.ts"],
+      "@xala-technologies/i18n-platform/*": ["../xala-platform/packages/i18n-platform/src/*"]
+    },
+    "target": "ES2020"
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -85,6 +85,9 @@ export default defineConfig({
     'tokens/index': 'src/tokens/index.ts',
     'types/index': 'src/types/index.ts',
     styles: 'src/styles.ts',
+
+    // Feature modules (only include refactored features - Wave 1 & 2 complete)
+    // Features folder removed - these were app-specific and had broken imports
   },
   format: ['cjs', 'esm'],
   dts: true,

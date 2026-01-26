@@ -338,7 +338,7 @@ export const Default: Story = {
       <Table>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>{t('storybook.demo.name')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('platform.common.name')}</Table.HeaderCell>
             <Table.HeaderCell>{t('storybook.demo.location')}</Table.HeaderCell>
             <Table.HeaderCell>{t('storybook.demo.capacity')}</Table.HeaderCell>
           </Table.Row>
@@ -382,12 +382,12 @@ export const WithCaption: Story = {
           <Table.Row>
             <Table.Cell>{t('storybook.demo.tennisCourt')}</Table.Cell>
             <Table.Cell>200 kr</Table.Cell>
-            <Table.Cell>{t('storybook.demo.yes')}</Table.Cell>
+            <Table.Cell>{t('platform.common.yes')}</Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>{t('storybook.demo.basketballCourt')}</Table.Cell>
             <Table.Cell>300 kr</Table.Cell>
-            <Table.Cell>{t('storybook.demo.no')}</Table.Cell>
+            <Table.Cell>{t('platform.common.no')}</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
@@ -404,7 +404,7 @@ export const Zebra: Story = {
           <Table.Row>
             <Table.HeaderCell>{t('storybook.demo.date')}</Table.HeaderCell>
             <Table.HeaderCell>{t('storybook.demo.booking')}</Table.HeaderCell>
-            <Table.HeaderCell>{t('storybook.demo.status')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('platform.common.status')}</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>

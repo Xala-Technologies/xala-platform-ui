@@ -183,7 +183,7 @@ export const ThreeLevels: Story = {
     const t = useT();
     return (
       <Breadcrumbs>
-        <Breadcrumbs.Link href="/">{t('storybook.demo.dashboard')}</Breadcrumbs.Link>
+        <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
         <Breadcrumbs.Link href="/resourceRequests">
           {t('storybook.demo.resourceRequests')}
         </Breadcrumbs.Link>
@@ -200,7 +200,7 @@ export const TwoLevels: Story = {
     return (
       <Breadcrumbs>
         <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-        <span>{t('storybook.demo.settings')}</span>
+        <span>{t('platform.nav.settings')}</span>
       </Breadcrumbs>
     );
   },
@@ -239,7 +239,7 @@ export const AllVariants: Story = {
           </Heading>
           <Breadcrumbs>
             <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-            <span>{t('storybook.demo.settings')}</span>
+            <span>{t('platform.nav.settings')}</span>
           </Breadcrumbs>
         </div>
         <div>
@@ -257,7 +257,7 @@ export const AllVariants: Story = {
             {t('storybook.story.fourLevels')}
           </Heading>
           <Breadcrumbs>
-            <Breadcrumbs.Link href="/">{t('storybook.demo.dashboard')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
             <Breadcrumbs.Link href="/bookings">{t('storybook.demo.bookings')}</Breadcrumbs.Link>
             <Breadcrumbs.Link href="/bookings/2024">2024</Breadcrumbs.Link>
             <span>{t('storybook.demo.january')}</span>

@@ -141,7 +141,7 @@ const FormRowThreeColumnsExample = () => {
   const t = useT();
   return (
     <div style={{ width: '800px' }}>
-      <FormSection title={t('storybook.demo.address')}>
+      <FormSection title={t('platform.common.address')}>
         <FormRow columns={3}>
           <FormField label={t('storybook.demo.street')}>
             <Textfield placeholder="Storgata 1" />
@@ -149,7 +149,7 @@ const FormRowThreeColumnsExample = () => {
           <FormField label={t('storybook.demo.postalCode')}>
             <Textfield placeholder="0155" />
           </FormField>
-          <FormField label={t('storybook.demo.city')}>
+          <FormField label={t('platform.common.city')}>
             <Textfield placeholder="Oslo" />
           </FormField>
         </FormRow>
@@ -201,7 +201,7 @@ const FormActionsRightExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection title={t('storybook.demo.formWithActions')}>
-        <FormField label={t('storybook.demo.name')}>
+        <FormField label={t('platform.common.name')}>
           <Textfield placeholder={t('storybook.demo.enterName')} />
         </FormField>
         <FormActions align="right">
@@ -229,7 +229,7 @@ const FormActionsLeftExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection title={t('storybook.demo.formWithLeftActions')}>
-        <FormField label={t('storybook.demo.name')}>
+        <FormField label={t('platform.common.name')}>
           <Textfield placeholder={t('storybook.demo.enterName')} />
         </FormField>
         <FormActions align="left">
@@ -257,7 +257,7 @@ const FormActionsBetweenExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection title={t('storybook.demo.formWithBetweenActions')}>
-        <FormField label={t('storybook.demo.name')}>
+        <FormField label={t('platform.common.name')}>
           <Textfield placeholder={t('storybook.demo.enterName')} />
         </FormField>
         <FormActions align="between">

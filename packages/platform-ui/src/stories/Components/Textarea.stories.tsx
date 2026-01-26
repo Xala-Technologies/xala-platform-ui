@@ -43,7 +43,7 @@ export const Default: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.description')}</Label>
+        <Label>{t('platform.common.description')}</Label>
         <Textarea placeholder={t('storybook.demo.enterDescription')} />
       </Field>
     );

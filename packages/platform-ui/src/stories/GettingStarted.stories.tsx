@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { useT } from '@xala-technologies/i18n';
 
+// Docs description is localized via the story components
+// The meta description is minimal since the actual content is in the story components
 const meta: Meta = {
   title: 'Overview/Getting Started',
   parameters: {
@@ -27,25 +29,7 @@ const meta: Meta = {
 
 Quick guide to start building with the Xala Platform Design System.
 
-## Installation
-
-\`\`\`bash
-pnpm add @xala-technologies/platform
-\`\`\`
-
-## Setup
-
-1. Import components
-2. Configure theme
-3. Add i18n
-4. Start building
-
-## First Steps
-
-- Create your first component
-- Use design tokens
-- Follow accessibility guidelines
-- Test in Storybook
+See the stories below for localized content that responds to the locale selector.
         `,
       },
     },

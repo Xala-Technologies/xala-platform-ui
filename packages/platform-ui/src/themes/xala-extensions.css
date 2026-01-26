@@ -11,10 +11,9 @@
  * - --ds-* tokens: Digdir standard (from CLI-generated base)
  * - --xala-* tokens: Custom app-level tokens
  *
- * @layer ds.app - Loaded after ds.theme layers
+ * Note: No @layer wrapper - unlayered CSS has highest cascade priority,
+ * ensuring these overrides always apply over base designsystemet styles.
  */
-
-@layer ds.app {
 
   /* ==========================================================================
    * SPACING TOKEN ALIASES
@@ -768,8 +767,6 @@
     }
   }
 
-}
-
 /* ==========================================================================
  * RESPONSIVE UTILITIES
  * Container query support for responsive components
@@ -858,8 +855,7 @@
  * Tokens for the listing detail page components
  * ========================================================================== */
 
-@layer ds.app {
-  :root {
+:root {
     /* Image gallery */
     --digilist-gallery-hero-ratio: 7fr;
     --digilist-gallery-thumb-ratio: 3fr;
@@ -896,10 +892,9 @@
     --digilist-gallery-counter-bg: rgba(0, 0, 0, 0.8);
   }
 
-  @media (prefers-color-scheme: dark) {
-    [data-color-scheme="auto"] {
-      --digilist-gallery-counter-bg: rgba(0, 0, 0, 0.8);
-    }
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme="auto"] {
+    --digilist-gallery-counter-bg: rgba(0, 0, 0, 0.8);
   }
 }
 
@@ -1064,8 +1059,7 @@
  * Use the .ds-button.ds-button--compact class for compact buttons.
  * ========================================================================== */
 
-@layer ds.app {
-  :root {
+:root {
     /* Compact button sizing */
     --ds-button-compact-padding-x: var(--ds-spacing-2);
     --ds-button-compact-padding-y: var(--ds-spacing-1);
@@ -1088,10 +1082,9 @@
     --ds-button-slot-min-height: 48px;
     --ds-button-slot-padding: var(--ds-spacing-1);
     
-    /* Ghost button (minimal styling, for icon buttons) */
-    --ds-button-ghost-padding: var(--ds-spacing-1);
-    --ds-button-ghost-border-radius: var(--ds-border-radius-sm);
-  }
+  /* Ghost button (minimal styling, for icon buttons) */
+  --ds-button-ghost-padding: var(--ds-spacing-1);
+  --ds-button-ghost-border-radius: var(--ds-border-radius-sm);
 }
 
 /* Compact button utility class - works with ds-button */

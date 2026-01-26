@@ -186,7 +186,7 @@ export const Default: Story = {
         <Tabs.List>
           <Tabs.Tab value="overview">{t('storybook.demo.overview')}</Tabs.Tab>
           <Tabs.Tab value="details">{t('storybook.demo.details')}</Tabs.Tab>
-          <Tabs.Tab value="settings">{t('storybook.demo.settings')}</Tabs.Tab>
+          <Tabs.Tab value="settings">{t('platform.nav.settings')}</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="overview">
           <Paragraph>{t('storybook.demo.overviewContentGoesHere')}</Paragraph>

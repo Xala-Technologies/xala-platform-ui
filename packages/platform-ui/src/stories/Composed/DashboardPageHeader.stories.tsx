@@ -51,7 +51,7 @@ const DefaultDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.dashboard')}
+      title={t('platform.nav.dashboard')}
       subtitle={t('storybook.demo.overviewOfResources')}
     />
   );
@@ -259,7 +259,7 @@ const CompleteDemo = () => {
         </Button>
       }
       tabs={[
-        { id: 'all', label: t('storybook.demo.all'), count: 42, active: true },
+        { id: 'all', label: t('platform.common.all'), count: 42, active: true },
         { id: 'active', label: t('platform.status.active'), count: 25 },
         { id: 'archived', label: t('storybook.demo.archived'), count: 17 },
       ]}

@@ -107,7 +107,7 @@ const WithTooltipDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.price')}
+        label={t('platform.common.price')}
         defaultValue={50}
         min={0}
         max={100}
@@ -167,7 +167,7 @@ const CustomFormatDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.price')}
+        label={t('platform.common.price')}
         defaultValue={50}
         min={0}
         max={100}

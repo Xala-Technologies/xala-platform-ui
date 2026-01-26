@@ -17,29 +17,40 @@ Complete documentation for `@xala-technologies/platform-ui`
 ### Architecture
 - [Package Architecture](./architecture/ARCHITECTURE.md)
 - [Component Structure](./architecture/COMPONENTS.md)
+- [MVVM Architecture](./architecture/MVVM.md) ⭐ **NEW**
 - [Migration Guide](./architecture/MIGRATION.md)
 - [Path Updates](./architecture/PATH_UPDATES.md)
+
+### MVVM Implementation
+- [MVVM Implementation Summary](./MVVM_IMPLEMENTATION_SUMMARY.md) ⭐ **NEW**
+- [MVVM Verification Report](./MVVM_VERIFICATION_REPORT.md)
+- [Complete MVVM Guide (Client-SDK)](../../Digilist/packages/client-sdk/MVVM_ARCHITECTURE.md)
 
 ## Documentation Structure
 
 ```
 docs/
-├── README.md                    # This file
-├── governance/                  # Rules and standards
-│   ├── AGENTS.md               # AI agent guidelines
-│   ├── GOVERNANCE.md           # Governance rules
-│   ├── VERIFICATION.md         # Verification scripts
-│   └── COMPLIANCE.md           # Design system compliance
-├── guides/                      # How-to guides
-│   ├── DESIGN_TOKENS.md        # Design token usage
-│   ├── STORYBOOK.md            # Storybook documentation
-│   ├── TESTING.md              # Testing guidelines
-│   └── ENHANCEMENTS.md         # Enhancements & testing implementation
-└── architecture/                # Technical architecture
-    ├── ARCHITECTURE.md         # Package architecture
-    ├── COMPONENTS.md           # Component structure
-    ├── MIGRATION.md            # Migration guide
-    └── PATH_UPDATES.md         # Path updates documentation
+├── README.md                         # This file
+├── MVVM_IMPLEMENTATION_SUMMARY.md    # MVVM implementation overview ⭐ NEW
+├── MVVM_VERIFICATION_REPORT.md       # MVVM verification results ⭐ NEW
+├── governance/                       # Rules and standards
+│   ├── AGENTS.md                    # AI agent guidelines
+│   ├── GOVERNANCE.md                # Governance rules
+│   ├── VERIFICATION.md              # Verification scripts
+│   └── COMPLIANCE.md                # Design system compliance
+├── guides/                           # How-to guides
+│   ├── DESIGN_TOKENS.md             # Design token usage
+│   ├── STORYBOOK.md                 # Storybook documentation
+│   ├── TESTING.md                   # Testing guidelines
+│   └── ENHANCEMENTS.md              # Enhancements & testing implementation
+├── architecture/                     # Technical architecture
+│   ├── ARCHITECTURE.md              # Package architecture
+│   ├── COMPONENTS.md                # Component structure
+│   ├── MVVM.md                      # MVVM architecture guide ⭐ NEW
+│   ├── MIGRATION.md                 # Migration guide
+│   └── PATH_UPDATES.md              # Path updates documentation
+└── ui/                               # UI-specific documentation
+    └── ...
 ```
 
 ## Key Principles

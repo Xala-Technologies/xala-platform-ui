@@ -8,6 +8,14 @@ import React from 'react';
 import { Card, Paragraph, Heading } from '@digdir/designsystemet-react';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
+import {
+  SparklesIcon,
+  AlertTriangleIcon,
+  RefreshIcon,
+  BookOpenIcon,
+  CheckCircleIcon,
+  SettingsIcon,
+} from '../primitives/icons';
 
 // ============================================================================
 // Types
@@ -73,13 +81,22 @@ const PRIORITY_LABELS: Record<TaskPriority, string> = {
   critical: 'Critical',
 };
 
+const CATEGORY_ICONS: Record<TaskCategory, React.ReactNode> = {
+  feature: <SparklesIcon size={14} />,
+  bug: <AlertTriangleIcon size={14} />,
+  refactor: <RefreshIcon size={14} />,
+  docs: <BookOpenIcon size={14} />,
+  test: <CheckCircleIcon size={14} />,
+  chore: <SettingsIcon size={14} />,
+};
+
 const CATEGORY_LABELS: Record<TaskCategory, string> = {
-  feature: '✨ Feature',
-  bug: '🐛 Bug',
-  refactor: '♻️ Refactor',
-  docs: '📄 Docs',
-  test: '🧪 Test',
-  chore: '🔧 Chore',
+  feature: 'Feature',
+  bug: 'Bug',
+  refactor: 'Refactor',
+  docs: 'Docs',
+  test: 'Test',
+  chore: 'Chore',
 };
 
 // ============================================================================
@@ -120,7 +137,11 @@ export function TaskCard({
         {/* Header with category and priority */}
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
           {category && (
-            <Paragraph data-size="sm" style={{ opacity: 0.7 }}>
+            <Paragraph
+              data-size="sm"
+              style={{ opacity: 0.7, display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+            >
+              {CATEGORY_ICONS[category]}
               {CATEGORY_LABELS[category]}
             </Paragraph>
           )}

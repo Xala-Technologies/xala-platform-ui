@@ -199,7 +199,8 @@ Icons should be hidden from screen readers:
       description: 'Render as child element (e.g., link)',
     },
   },
-  tags: ['autodocs'],
+  // Custom MDX docs page exists (Button.mdx), so no autodocs needed
+  tags: [],
 };
 
 export default meta;

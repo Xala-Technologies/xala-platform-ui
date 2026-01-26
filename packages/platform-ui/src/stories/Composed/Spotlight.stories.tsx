@@ -61,7 +61,7 @@ const HighlightMultipleTermsDemo = () => {
       <Paragraph data-size="sm">
         <HighlightText
           text={t('storybook.demo.searchForKeywordsInText')}
-          highlight={[t('storybook.demo.search'), t('storybook.demo.keywords')]}
+          highlight={[t('platform.common.search'), t('storybook.demo.keywords')]}
         />
       </Paragraph>
     </div>
@@ -75,7 +75,7 @@ const HighlightCaseSensitiveDemo = () => {
       <Paragraph data-size="sm">
         <HighlightText
           text={t('storybook.demo.caseSensitiveSearchText')}
-          highlight={t('storybook.demo.search')}
+          highlight={t('platform.common.search')}
           caseSensitive={true}
         />
       </Paragraph>
@@ -199,7 +199,7 @@ const CombinedExampleDemo = () => {
         <Paragraph data-size="sm">
           <HighlightText
             text={t('storybook.demo.searchResultsWithHighlightedTerms')}
-            highlight={[t('storybook.demo.search'), t('storybook.demo.highlighted')]}
+            highlight={[t('platform.common.search'), t('storybook.demo.highlighted')]}
           />
         </Paragraph>
       </Card>

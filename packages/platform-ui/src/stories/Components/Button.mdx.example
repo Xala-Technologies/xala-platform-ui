@@ -1,0 +1,129 @@
+{/* Components/Button.mdx - Example with Localization */}
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
+import { T } from '../components/MDXTranslation';
+
+<Meta of={ButtonStories} />
+
+# <T tKey="storybook.demo.button">Button</T>
+
+<T tKey="storybook.demo.buttonDescription">Buttons allow users to take actions with a single click or tap.</T>
+
+<Canvas of={ButtonStories.Default} />
+
+## <T tKey="storybook.story.props">Props</T>
+
+<Controls of={ButtonStories.Default} />
+
+## <T tKey="storybook.story.variants">Variants</T>
+
+<T tKey="storybook.demo.variantsDescription">Use variants to indicate the importance of an action:</T>
+
+- **<T tKey="storybook.demo.primary">Primary</T>**: <T tKey="storybook.demo.primaryDescription">Main action on the page</T>
+- **<T tKey="storybook.demo.secondary">Secondary</T>**: <T tKey="storybook.demo.secondaryDescription">Alternative or less important actions</T>
+- **<T tKey="storybook.demo.tertiary">Tertiary</T>**: <T tKey="storybook.demo.tertiaryDescription">Lowest emphasis actions</T>
+
+<Canvas of={ButtonStories.EmphasisLevels} />
+
+## <T tKey="storybook.demo.colors">Colors</T>
+
+<T tKey="storybook.demo.colorsDescription">Available in all theme colors:</T>
+
+<Canvas of={ButtonStories.Colors} />
+
+## <T tKey="storybook.story.sizes">Sizes</T>
+
+<T tKey="storybook.demo.sizesDescription">Three sizes are available to fit different contexts:</T>
+
+<Canvas of={ButtonStories.Sizes} />
+
+## <T tKey="storybook.story.withIcons">With Icons</T>
+
+<T tKey="storybook.demo.iconsDescription">Icons can be added to provide visual context. Always use DS icons from the icon registry.</T>
+
+<Canvas of={ButtonStories.WithIcons} />
+
+## <T tKey="storybook.story.states">States</T>
+
+### <T tKey="storybook.story.disabled">Disabled</T>
+
+<T tKey="storybook.demo.disabledDescription">Use sparingly. Prefer explaining why an action is unavailable.</T>
+
+<Canvas of={ButtonStories.Disabled} />
+
+### <T tKey="storybook.story.loading">Loading</T>
+
+<T tKey="storybook.demo.loadingDescription">Show loading state during async operations.</T>
+
+<Canvas of={ButtonStories.Loading} />
+
+## <T tKey="storybook.demo.iconOnly">Icon Only</T>
+
+<T tKey="storybook.demo.iconOnlyDescription">Icon-only buttons for well-known actions:</T>
+
+<Canvas of={ButtonStories.IconOnly} />
+
+## <T tKey="storybook.story.allVariants">All Variants</T>
+
+<T tKey="storybook.demo.allVariantsDescription">Complete overview of all button variations:</T>
+
+<Canvas of={ButtonStories.AllVariants} />
+
+## <T tKey="storybook.a11y.title">Accessibility</T>
+
+### <T tKey="storybook.a11y.keyboardNavigation">Keyboard Interaction</T>
+
+| <T tKey="storybook.demo.key">Key</T> | <T tKey="storybook.demo.action">Action</T> |
+|-----|--------|
+| `Tab` | <T tKey="storybook.demo.moveFocus">Move focus to button</T> |
+| `Enter` | <T tKey="storybook.demo.activateButton">Activate button</T> |
+| `Space` | <T tKey="storybook.demo.activateButton">Activate button</T> |
+
+### <T tKey="storybook.a11y.screenReader">Screen Reader</T>
+
+<T tKey="storybook.demo.screenReaderDescription">Buttons are announced as "button" role. Include descriptive text.</T>
+
+```tsx
+// Good - clear action
+<Button><T tKey="platform.common.saveChanges">Save Changes</T></Button>
+
+// Avoid - unclear
+<Button><T tKey="storybook.demo.clickHere">Click Here</T></Button>
+```
+
+### <T tKey="storybook.a11y.focusManagement">Focus</T>
+
+<T tKey="storybook.demo.focusDescription">Focus ring is visible on keyboard focus. Do not remove or hide it.</T>
+
+## <T tKey="storybook.bestPractices.do">Do</T> and <T tKey="storybook.bestPractices.dont">Don't</T>
+
+### <T tKey="storybook.bestPractices.do">Do</T>
+
+- <T tKey="storybook.demo.useActionVerbs">Use action verbs</T> (<T tKey="platform.common.save">Save</T>, <T tKey="platform.common.submit">Submit</T>, <T tKey="platform.common.delete">Delete</T>)
+- <T tKey="storybook.demo.keepTextConcise">Keep text concise</T> (2-3 words)
+- <T tKey="storybook.demo.usePrimaryForMain">Use Primary for the main action</T>
+- <T tKey="storybook.demo.addIconsForClarity">Add icons for visual clarity</T>
+
+### <T tKey="storybook.bestPractices.dont">Don't</T>
+
+- <T tKey="storybook.demo.multiplePrimaryButtons">Use multiple Primary buttons in one section</T>
+- <T tKey="storybook.demo.disableWithoutExplanation">Disable without explanation</T>
+- <T tKey="storybook.demo.useVagueText">Use vague text like "Click Here"</T>
+- <T tKey="storybook.demo.mixButtonStyles">Mix button styles inconsistently</T>
+
+## <T tKey="storybook.demo.dataTestIdConvention">data-testid Convention</T>
+
+```tsx
+<Button data-testid="save-button"><T tKey="platform.common.save">Save</T></Button>
+<Button data-testid="delete-button"><T tKey="platform.common.delete">Delete</T></Button>
+<Button data-testid="cancel-button"><T tKey="platform.common.cancel">Cancel</T></Button>
+```
+
+## <T tKey="storybook.demo.migrationNotes">Migration Notes</T>
+
+<T tKey="storybook.demo.migrationDescription">If migrating from custom buttons:</T>
+
+1. <T tKey="storybook.demo.replaceCustomButtons">Replace custom button components with DS `Button`</T>
+2. <T tKey="storybook.demo.mapOldVariants">Map old variants to `primary`, `secondary`, `tertiary`</T>
+3. <T tKey="storybook.demo.replaceCustomIcons">Replace custom icons with DS icon registry</T>
+4. <T tKey="storybook.demo.removeInlineStyles">Remove any inline color styles</T>

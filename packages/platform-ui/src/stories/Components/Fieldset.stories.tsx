@@ -239,7 +239,7 @@ export const WithDescription: Story = {
       <Fieldset>
         <Fieldset.Legend>{t('storybook.demo.contactPreferences')}</Fieldset.Legend>
         <Fieldset.Description>{t('storybook.demo.chooseHowToBeContacted')}</Fieldset.Description>
-        <Checkbox label={t('storybook.demo.email')} value="email" />
+        <Checkbox label={t('platform.auth.email')} value="email" />
         <Checkbox label={t('storybook.demo.sms')} value="sms" />
         <Checkbox label={t('storybook.demo.phone')} value="phone" />
       </Fieldset>

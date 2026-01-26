@@ -7,6 +7,14 @@ import React from 'react';
 import { Card, Paragraph, Heading, Link } from '@digdir/designsystemet-react';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
+import {
+  SparklesIcon,
+  RefreshIcon,
+  AlertTriangleIcon,
+  TrashIcon,
+  InfoIcon,
+  ShieldCheckIcon,
+} from '../primitives/icons';
 
 // ============================================================================
 // Types
@@ -46,13 +54,22 @@ const CHANGE_TYPE_COLORS: Record<ChangeType, BadgeColor> = {
   security: 'danger',
 };
 
+const CHANGE_TYPE_ICONS: Record<ChangeType, React.ReactNode> = {
+  added: <SparklesIcon size={12} />,
+  changed: <RefreshIcon size={12} />,
+  fixed: <AlertTriangleIcon size={12} />,
+  removed: <TrashIcon size={12} />,
+  deprecated: <InfoIcon size={12} />,
+  security: <ShieldCheckIcon size={12} />,
+};
+
 const CHANGE_TYPE_LABELS: Record<ChangeType, string> = {
-  added: '✨ Added',
-  changed: '🔄 Changed',
-  fixed: '🐛 Fixed',
-  removed: '🗑️ Removed',
-  deprecated: '⚠️ Deprecated',
-  security: '🔒 Security',
+  added: 'Added',
+  changed: 'Changed',
+  fixed: 'Fixed',
+  removed: 'Removed',
+  deprecated: 'Deprecated',
+  security: 'Security',
 };
 
 // ============================================================================
@@ -135,7 +152,17 @@ export function ChangelogCard({
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           {Object.entries(groupedChanges).map(([type, items]) => (
             <div key={type}>
-              <Paragraph data-size="sm" style={{ fontWeight: 600, marginBottom: '0.375rem' }}>
+              <Paragraph
+                data-size="sm"
+                style={{
+                  fontWeight: 600,
+                  marginBottom: '0.375rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.375rem',
+                }}
+              >
+                {CHANGE_TYPE_ICONS[type as ChangeType]}
                 {CHANGE_TYPE_LABELS[type as ChangeType]}
               </Paragraph>
               <ul style={{ margin: 0, paddingLeft: '1.25rem' }}>

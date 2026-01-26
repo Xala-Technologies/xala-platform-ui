@@ -16,6 +16,11 @@ declare module './xala-extensions.css?raw' {
   export default content;
 }
 
+declare module './xaheen-extensions.css?raw' {
+  const content: string;
+  export default content;
+}
+
 // Legacy theme module declarations (for reference)
 declare module '@digdir/designsystemet-theme/digdir.css' {
   const content: string;

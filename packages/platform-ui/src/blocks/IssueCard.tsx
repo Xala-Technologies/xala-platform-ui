@@ -7,6 +7,7 @@ import React from 'react';
 import { Card, Paragraph, Heading, Link } from '@digdir/designsystemet-react';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
+import { RepeatIcon, EditIcon, MessageSquareIcon, GridIcon } from '../primitives/icons';
 
 // ============================================================================
 // Types
@@ -57,16 +58,16 @@ const STATE_LABELS: Record<IssueState, string> = {
   draft: 'Draft',
 };
 
-const PLATFORM_ICONS: Record<IssuePlatform, string> = {
-  github: '🐙',
-  gitlab: '🦊',
-  linear: '📋',
+const PLATFORM_ICONS: Record<IssuePlatform, React.ReactNode> = {
+  github: <RepeatIcon size={14} />,
+  gitlab: <RepeatIcon size={14} />,
+  linear: <GridIcon size={14} />,
 };
 
-const TYPE_ICONS: Record<IssueType, string> = {
-  issue: '📝',
-  pull_request: '🔀',
-  merge_request: '🔀',
+const TYPE_ICONS: Record<IssueType, React.ReactNode> = {
+  issue: <EditIcon size={14} />,
+  pull_request: <RepeatIcon size={14} />,
+  merge_request: <RepeatIcon size={14} />,
 };
 
 // ============================================================================
@@ -111,8 +112,11 @@ export function IssueCard({
       <Card.Block>
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-          <Paragraph data-size="sm" style={{ opacity: 0.7 }}>
-            {PLATFORM_ICONS[platform]} {TYPE_ICONS[type]} #{number}
+          <Paragraph
+            data-size="sm"
+            style={{ opacity: 0.7, display: 'flex', alignItems: 'center', gap: '0.375rem' }}
+          >
+            {PLATFORM_ICONS[platform]} {TYPE_ICONS[type]} <span>#{number}</span>
           </Paragraph>
           <StatusTag color={STATE_COLORS[state]} size="sm">
             {STATE_LABELS[state]}
@@ -179,9 +183,14 @@ export function IssueCard({
             )}
             {author && <Paragraph data-size="sm">{author}</Paragraph>}
           </div>
-          <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             {commentCount !== undefined && commentCount > 0 && (
-              <Paragraph data-size="sm">💬 {commentCount}</Paragraph>
+              <Paragraph
+                data-size="sm"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+              >
+                <MessageSquareIcon size={12} /> {commentCount}
+              </Paragraph>
             )}
             {createdAt && <Paragraph data-size="sm">{formatDate(createdAt)}</Paragraph>}
           </div>

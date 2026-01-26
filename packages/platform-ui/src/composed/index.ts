@@ -493,6 +493,10 @@ export type {
   PopoverFooterProps,
 } from './Popover';
 
+// ProjectSelector
+export { ProjectSelector } from './ProjectSelector';
+export type { ProjectSelectorProps, ProjectItem } from './ProjectSelector';
+
 // Skeleton Loading
 export { Skeleton, SkeletonText, SkeletonCard, SkeletonTable, SkeletonAvatar } from './Skeleton';
 export type {
@@ -665,3 +669,30 @@ export type {
   ContactPersonsEditorLabels,
   ContactPerson,
 } from './ContactPersonsEditor';
+
+// TreeView (hierarchical navigation, sidebar, file explorer)
+export { TreeView, TreeViewToolbar, useTreeView } from './TreeView';
+export type { TreeViewProps, TreeViewToolbarProps, TreeNode } from './TreeView';
+
+// ThemeToolbar (theme/locale/brand switching toolbar)
+export { ThemeToolbar } from './ThemeToolbar';
+export type {
+  ThemeToolbarProps,
+  ThemeToolbarLabels,
+  ThemeOption,
+  LocaleOption,
+  ColorScheme,
+} from './ThemeToolbar';
+
+// IframeViewer (iframe container with loading/error states)
+export { IframeViewer } from './IframeViewer';
+export type { IframeViewerProps, IframeViewerLabels } from './IframeViewer';
+
+// CatalogSidebar (searchable, filterable catalog navigation)
+export { CatalogSidebar } from './CatalogSidebar';
+export type {
+  CatalogSidebarProps,
+  CatalogSidebarLabels,
+  CatalogItem,
+  CatalogFilterOption,
+} from './CatalogSidebar';

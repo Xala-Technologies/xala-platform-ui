@@ -279,7 +279,7 @@ export const InteractiveGroup: Story = {
         <Fieldset.Legend>{t('storybook.demo.preferredContactMethod')}</Fieldset.Legend>
         <Fieldset.Description>{t('storybook.demo.selectAllRelevantOptions')}</Fieldset.Description>
         <Checkbox
-          label={t('storybook.demo.email')}
+          label={t('platform.auth.email')}
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}
@@ -304,8 +304,8 @@ export const InteractiveGroup: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>{t('storybook.demo.selected')}:</strong>{' '}
-          {selected.length > 0 ? selected.join(', ') : t('storybook.demo.none')}
+          <strong>{t('platform.common.selected')}:</strong>{' '}
+          {selected.length > 0 ? selected.join(', ') : t('platform.common.none')}
         </div>
       </Fieldset>
     );
@@ -342,7 +342,7 @@ export const WithValidation: Story = {
         <Fieldset.Legend>{t('storybook.demo.preferredContactMethod')}</Fieldset.Legend>
         <Fieldset.Description>{t('storybook.demo.selectAllRelevantOptions')}</Fieldset.Description>
         <Checkbox
-          label={t('storybook.demo.email')}
+          label={t('platform.auth.email')}
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}

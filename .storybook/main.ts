@@ -23,14 +23,13 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-coverage',
-    'storybook-dark-mode',
+    './addons/xala-theme-addon/preset.js', // Our custom theme addon
   ],
   docs: {},
   previewHead: (head) => `
     ${head}
     <link rel="stylesheet" href="/vendor/designsystemet.css" />
-    <link rel="stylesheet" href="/themes/xala.css" />
-    <link rel="stylesheet" href="/themes/xala-extensions.css" />
+    <!-- Theme CSS is injected dynamically by DesignsystemetProvider -->
   `,
   typescript: {
     reactDocgen: 'react-docgen-typescript',

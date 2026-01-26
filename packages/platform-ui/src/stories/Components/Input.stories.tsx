@@ -220,7 +220,7 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Textfield label={t('storybook.demo.name')} placeholder={t('storybook.demo.enterYourName')} />
+      <Textfield label={t('platform.common.name')} placeholder={t('storybook.demo.enterYourName')} />
     );
   },
   play: async ({ canvasElement }) => {
@@ -245,7 +245,7 @@ export const WithDescription: Story = {
     const t = useT();
     return (
       <Textfield
-        label={t('storybook.demo.email')}
+        label={t('platform.auth.email')}
         description={t('storybook.demo.neverShareEmail')}
         placeholder="name@example.com"
         type="email"
@@ -262,7 +262,7 @@ export const WithError: Story = {
     const t = useT();
     return (
       <Textfield
-        label={t('storybook.demo.email')}
+        label={t('platform.auth.email')}
         error={t('platform.validation.email')}
         defaultValue="invalid-email"
         type="email"
@@ -301,7 +301,7 @@ export const Password: Story = {
     const t = useT();
     return (
       <Textfield
-        label={t('storybook.demo.password')}
+        label={t('platform.auth.password')}
         type="password"
         placeholder={t('storybook.demo.enterYourPassword')}
       />
@@ -339,7 +339,7 @@ export const WithPrefixSuffix: Story = {
           suffix={t('storybook.demo.perMonth')}
           label={t('storybook.demo.howMuchPerMonth')}
         />
-        <Textfield prefix="$" label={t('storybook.demo.price')} type="number" />
+        <Textfield prefix="$" label={t('platform.common.price')} type="number" />
         <Textfield suffix="kg" label={t('storybook.demo.weight')} type="number" />
       </div>
     );
@@ -386,7 +386,7 @@ export const RequiredOptional: Story = {
             <>
               {t('storybook.demo.middleName')}
               <Tag data-color="neutral" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-                {t('storybook.demo.optional')}
+                {t('platform.common.optional')}
               </Tag>
             </>
           }
@@ -409,9 +409,9 @@ export const InputTypes: Story = {
           type="text"
           placeholder={t('storybook.demo.generalText')}
         />
-        <Textfield label={t('storybook.demo.email')} type="email" placeholder="name@example.com" />
+        <Textfield label={t('platform.auth.email')} type="email" placeholder="name@example.com" />
         <Textfield
-          label={t('storybook.demo.password')}
+          label={t('platform.auth.password')}
           type="password"
           placeholder={t('storybook.demo.enterPassword')}
         />
@@ -495,7 +495,7 @@ export const FormExample: Story = {
           required
         />
         <Textfield
-          label={t('storybook.demo.email')}
+          label={t('platform.auth.email')}
           type="email"
           placeholder="name@example.com"
           value={email}
@@ -556,7 +556,7 @@ export const BestPractices: Story = {
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
-              label={t('storybook.demo.email')}
+              label={t('platform.auth.email')}
               type="email"
               placeholder="name@example.com"
             />
@@ -576,7 +576,7 @@ export const BestPractices: Story = {
             {t('storybook.story.doProvideClearErrorMessages')}
           </Heading>
           <Textfield
-            label={t('storybook.demo.email')}
+            label={t('platform.auth.email')}
             type="email"
             error={t('storybook.demo.pleaseEnterValidEmailExample')}
             defaultValue="invalid"
@@ -615,7 +615,7 @@ export const BestPractices: Story = {
           </Heading>
           <div style={{ opacity: 0.6 }}>
             <Textfield
-              label={t('storybook.demo.email')}
+              label={t('platform.auth.email')}
               error={t('storybook.demo.invalidInput')}
               defaultValue="test"
             />
@@ -698,12 +698,12 @@ export const AllVariants: Story = {
               placeholder={t('storybook.demo.generalText')}
             />
             <Textfield
-              label={t('storybook.demo.email')}
+              label={t('platform.auth.email')}
               type="email"
               placeholder="name@example.com"
             />
             <Textfield
-              label={t('storybook.demo.password')}
+              label={t('platform.auth.password')}
               type="password"
               placeholder={t('storybook.demo.enterPassword')}
             />
@@ -717,7 +717,7 @@ export const AllVariants: Story = {
             {t('storybook.story.withAffixes')}
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <Textfield prefix="$" label={t('storybook.demo.price')} type="number" />
+            <Textfield prefix="$" label={t('platform.common.price')} type="number" />
             <Textfield suffix="kg" label={t('storybook.demo.weight')} type="number" />
             <Textfield prefix="https://" suffix=".com" label={t('storybook.demo.website')} />
           </div>

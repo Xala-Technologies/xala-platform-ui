@@ -1,6 +1,6 @@
 {
   "name": "@xala-technologies/platform-ui",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Design system components built on Norwegian Designsystemet for React applications",
   "type": "module",
   "main": "dist/index.cjs",
@@ -65,6 +65,66 @@
       "types": "./dist/styles.d.ts",
       "import": "./dist/styles.js",
       "require": "./dist/styles.cjs"
+    },
+    "./features/booking": {
+      "types": "./dist/features/booking.d.ts",
+      "import": "./dist/features/booking.js",
+      "default": "./dist/features/booking.js"
+    },
+    "./features/calendar": {
+      "types": "./dist/features/calendar.d.ts",
+      "import": "./dist/features/calendar.js",
+      "default": "./dist/features/calendar.js"
+    },
+    "./features/seasons": {
+      "types": "./dist/features/seasons.d.ts",
+      "import": "./dist/features/seasons.js",
+      "default": "./dist/features/seasons.js"
+    },
+    "./features/gdpr": {
+      "types": "./dist/features/gdpr.d.ts",
+      "import": "./dist/features/gdpr.js",
+      "default": "./dist/features/gdpr.js"
+    },
+    "./features/settings": {
+      "types": "./dist/features/settings.d.ts",
+      "import": "./dist/features/settings.js",
+      "default": "./dist/features/settings.js"
+    },
+    "./features/organizations": {
+      "types": "./dist/features/organizations.d.ts",
+      "import": "./dist/features/organizations.js",
+      "default": "./dist/features/organizations.js"
+    },
+    "./features/rental-objects": {
+      "types": "./dist/features/rental-objects.d.ts",
+      "import": "./dist/features/rental-objects.js",
+      "default": "./dist/features/rental-objects.js"
+    },
+    "./features/reviews": {
+      "types": "./dist/features/reviews.d.ts",
+      "import": "./dist/features/reviews.js",
+      "default": "./dist/features/reviews.js"
+    },
+    "./features/docs": {
+      "types": "./dist/features/docs.d.ts",
+      "import": "./dist/features/docs.js",
+      "default": "./dist/features/docs.js"
+    },
+    "./features/notifications": {
+      "types": "./dist/features/notifications.d.ts",
+      "import": "./dist/features/notifications.js",
+      "default": "./dist/features/notifications.js"
+    },
+    "./features/rental-object-details": {
+      "types": "./dist/features/rental-object-details.d.ts",
+      "import": "./dist/features/rental-object-details.js",
+      "default": "./dist/features/rental-object-details.js"
+    },
+    "./features/notification-reports": {
+      "types": "./dist/features/notification-reports.d.ts",
+      "import": "./dist/features/notification-reports.js",
+      "default": "./dist/features/notification-reports.js"
     }
   },
   "typesVersions": {

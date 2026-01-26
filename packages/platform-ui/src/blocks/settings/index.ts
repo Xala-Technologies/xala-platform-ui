@@ -10,3 +10,10 @@ export type { PreferencesTabProps, PreferencesTabLabels } from './PreferencesTab
 
 export { ProfileTab } from './ProfileTab';
 export type { ProfileTabProps, ProfileData, ProfileAddress, ProfileTabLabels } from './ProfileTab';
+
+export { NotificationsTab } from './NotificationsTab';
+export type {
+  NotificationsTabProps,
+  NotificationsTabLabels,
+  NotificationSettingsData,
+} from './NotificationsTab';

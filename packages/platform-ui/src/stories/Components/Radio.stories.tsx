@@ -252,7 +252,7 @@ export const Disabled: Story = {
     const t = useT();
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('storybook.demo.status')}</Fieldset.Legend>
+        <Fieldset.Legend>{t('platform.common.status')}</Fieldset.Legend>
         <Radio label={t('platform.status.active')} name="status" value="active" defaultChecked />
         <Radio
           label={t('storybook.demo.inactiveUnavailable')}
@@ -302,7 +302,7 @@ export const InteractiveGroup: Story = {
         <Fieldset.Legend>{t('storybook.demo.howToContactYou')}</Fieldset.Legend>
         <Fieldset.Description>{t('storybook.demo.contactMethodDescription')}</Fieldset.Description>
         <Radio
-          label={t('storybook.demo.email')}
+          label={t('platform.auth.email')}
           description={t('storybook.demo.emailContactDescription')}
           value="email"
           name="contact"
@@ -333,7 +333,7 @@ export const InteractiveGroup: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>{t('storybook.demo.selected')}:</strong> {selected}
+          <strong>{t('platform.common.selected')}:</strong> {selected}
         </div>
       </Fieldset>
     );
@@ -418,7 +418,7 @@ export const AllVariants: Story = {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Radio label={t('storybook.story.default')} name="states" value="default" />
             <Radio
-              label={t('storybook.demo.selected')}
+              label={t('platform.common.selected')}
               name="states"
               value="selected"
               defaultChecked

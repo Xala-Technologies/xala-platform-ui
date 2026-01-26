@@ -241,7 +241,7 @@ export const WithTextarea: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.description')}</Label>
+        <Label>{t('platform.common.description')}</Label>
         <Field.Description>{t('storybook.demo.maxNCharacters', { count: 500 })}</Field.Description>
         <Textarea rows={4} />
         <Field.Counter limit={500} />
@@ -255,7 +255,7 @@ export const WithSelect: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.country')}</Label>
+        <Label>{t('platform.common.country')}</Label>
         <Select>
           <Select.Option value="">{t('storybook.demo.chooseCountry')}</Select.Option>
           <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
@@ -273,9 +273,9 @@ export const Required: Story = {
     return (
       <Field>
         <Label>
-          {t('storybook.demo.name')} <span aria-hidden="true">*</span>
+          {t('platform.common.name')} <span aria-hidden="true">*</span>
         </Label>
-        <Input required aria-label={t('storybook.demo.name')} />
+        <Input required aria-label={t('platform.common.name')} />
       </Field>
     );
   },

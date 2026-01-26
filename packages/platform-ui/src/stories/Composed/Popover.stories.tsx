@@ -240,7 +240,7 @@ const ControlledDemo = () => {
   return (
     <>
       <Button onClick={() => setOpen(!open)} data-color="accent" data-size="medium">
-        {open ? t('storybook.demo.close') : t('storybook.demo.open')} {t('storybook.demo.popover')}
+        {open ? t('platform.common.close') : t('storybook.demo.open')} {t('storybook.demo.popover')}
       </Button>
       <Popover
         content={

@@ -27,6 +27,8 @@ import {
 } from '@navikt/aksel-icons';
 import { useT } from '@xala-technologies/i18n';
 
+// Docs description is localized via the PlatformOverview story component
+// The meta description is minimal since the actual content is in the story components
 const meta: Meta = {
   title: 'Overview/Introduction',
   parameters: {
@@ -37,25 +39,7 @@ const meta: Meta = {
 
 A comprehensive, accessible design system built on Designsystemet for Norwegian public services.
 
-## What is This?
-
-The Xala Platform provides a complete set of UI components, design tokens, and patterns for building consistent, accessible applications.
-
-## Key Features
-
-- **Accessibility First**: WCAG 2.1 AA compliant
-- **Design Tokens**: Consistent styling across all apps
-- **Component Library**: 50+ production-ready components
-- **Multi-tenancy**: Built for SaaS platforms
-- **Internationalization**: Full i18n support
-- **Theme Support**: Customizable visual identity
-
-## Built With
-
-- [Designsystemet](https://designsystemet.no/) - Norwegian Design System
-- React + TypeScript
-- Vite for blazing fast builds
-- Storybook for documentation
+See the stories below for localized content that responds to the locale selector.
         `,
       },
     },
@@ -130,7 +114,7 @@ export const PlatformOverview: Story = {
           }}
         >
           {features.map(({ Icon, titleKey, descriptionKey }) => (
-            <Card key={titleKey} style={{ padding: 'var(--ds-spacing-6)' }}>
+            <Card data-color="neutral" key={titleKey} style={{ padding: 'var(--ds-spacing-6)' }}>
               <Heading
                 level={3}
                 data-size="sm"
@@ -195,7 +179,7 @@ export const ArchitecturePrinciples: Story = {
     ];
 
     return (
-      <Card style={{ padding: 'var(--ds-spacing-8)' }}>
+      <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-8)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
           {t('storybook.architecture.title')}
         </Heading>
@@ -271,7 +255,7 @@ export const ComponentCategories: Story = {
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
           {categories.map(({ category, count, examples }) => (
-            <Card key={category} style={{ padding: 'var(--ds-spacing-5)' }}>
+            <Card data-color="neutral" key={category} style={{ padding: 'var(--ds-spacing-5)' }}>
               <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                 {category}
               </Heading>
@@ -347,9 +331,9 @@ export const InteractiveLiveDemo: Story = {
           </Paragraph>
 
           <Card
+            data-color="neutral"
             style={{
               padding: 'var(--ds-spacing-6)',
-              backgroundColor: 'var(--ds-color-neutral-surface-default)',
             }}
           >
             <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -456,7 +440,7 @@ export function WelcomeForm() {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+    <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-6)' }}>
       <Textfield
         label="Your Name"
         value={name}
@@ -536,7 +520,7 @@ export const ComponentShowcase: Story = {
         titleKey: 'storybook.demo.cards',
         descriptionKey: 'storybook.demo.cardsDesc',
         demo: (
-          <Card style={{ padding: 'var(--ds-spacing-5)' }}>
+          <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-5)' }}>
             <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
               {t('storybook.demo.cardTitle')}
             </Heading>
@@ -605,7 +589,7 @@ export const ComponentShowcase: Story = {
           ))}
         </div>
 
-        <Card style={{ padding: 'var(--ds-spacing-6)' }}>
+        <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-6)' }}>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
             {t(showcases[activeTab].titleKey)}
           </Heading>
@@ -675,6 +659,7 @@ export const ResourcesAndLinks: Story = {
 
             return (
               <Card
+                data-color="neutral"
                 key={resource.link}
                 style={{
                   padding: 'var(--ds-spacing-5)',

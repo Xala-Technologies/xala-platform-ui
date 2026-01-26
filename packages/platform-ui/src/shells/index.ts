@@ -18,3 +18,6 @@ export type { DashboardContentProps } from './DashboardContent';
 
 export { DashboardHeader } from './DashboardHeader';
 export type { DashboardHeaderProps, DashboardHeaderUser } from './DashboardHeader';
+
+export { ExplorerShell, ExplorerPanel, ExplorerEmptyState } from './ExplorerShell';
+export type { ExplorerShellProps, ExplorerPanelProps, ExplorerEmptyStateProps } from './ExplorerShell';

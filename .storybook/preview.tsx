@@ -1,16 +1,22 @@
 import type { Preview, Decorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import React, { useEffect, useState } from 'react';
 import { DocsContainer } from '@storybook/blocks';
-import { themes, create } from '@storybook/theming';
+import { create } from '@storybook/theming';
 import { addons } from '@storybook/preview-api';
 import type { DocsContainerProps } from '@storybook/blocks';
 
-// All styling (fonts, designsystemet-css, theme) comes from platform-ui built package
-// This is the single source of truth - no direct @digdir or @fontsource imports
-// Note: We import directly from dist to bypass tsconfig-paths source resolution
-import '../packages/platform-ui/dist/styles.js';
+// Theme colors - single source of truth for all theme values
+import {
+  THEME_COLORS,
+  getThemeCSS,
+  type ThemeId,
+} from '../packages/platform-ui/src/themes';
+
+// All styling (fonts, designsystemet-css, theme) is loaded via:
+// 1. .storybook/public/vendor/designsystemet.css (loaded in preview-head.html)
+// 2. DesignsystemetProvider (injects theme dynamically)
+// No need to import dist/styles.js in Storybook - it's only for production builds
 
 import { StoryProvider } from '../packages/platform-ui/src/StoryProvider';
 
@@ -47,114 +53,370 @@ console.warn = (...args) => {
   originalWarn.call(console, ...args);
 };
 
-// Get channel for dark mode events
+// Get channel for global events
 const channel = addons.getChannel();
 
-/**
- * Xala Light Theme - using design tokens
- */
-const xalaLightTheme = create({
-  base: 'light',
-  brandTitle: 'Xala Design System',
-  brandUrl: 'https://designsystemet.no',
+// Custom event name for our color scheme changes
+const COLOR_SCHEME_EVENT = 'XALA_COLOR_SCHEME_CHANGED';
 
-  // Colors from Xala light theme tokens
-  colorPrimary: '#0062BA', // --ds-color-accent-base-default
-  colorSecondary: '#0062BA',
+// =============================================================================
+// STORYBOOK THEMES - Generated from @packages/platform-ui/src/themes
+// =============================================================================
 
-  // UI backgrounds
-  appBg: '#f0f4f8', // --ds-color-accent-background-tinted
-  appContentBg: '#ffffff', // --ds-color-accent-background-default
-  appPreviewBg: '#ffffff',
-  appBorderColor: '#a9bed6', // --ds-color-accent-border-subtle
-  appBorderRadius: 4,
-
-  // Text colors
-  textColor: '#1e2b3c', // --ds-color-neutral-text-default
-  textInverseColor: '#ffffff',
-  textMutedColor: '#5b6c7f', // --ds-color-neutral-text-subtle
-
-  // Toolbar
-  barBg: '#ffffff',
-  barTextColor: '#1e2b3c',
-  barHoverColor: '#0062BA',
-  barSelectedColor: '#0062BA',
-
-  // Form colors
-  inputBg: '#ffffff',
-  inputBorder: '#a9bed6',
-  inputTextColor: '#1e2b3c',
-  inputBorderRadius: 4,
-
-  // Typography
+// Typography for Storybook themes
+const storybookTypography = {
   fontBase: 'Inter, system-ui, sans-serif',
-  fontCode: 'monospace',
-});
+  fontCode: '"JetBrains Mono", monospace',
+};
 
 /**
- * Xala Dark Theme - using design tokens
+ * Creates a Storybook theme from the theme colors.
+ * This ensures consistency between CSS themes and Storybook UI.
+ * Includes all theme properties for comprehensive theming of UI and docs.
  */
-const xalaDarkTheme = create({
-  base: 'dark',
-  brandTitle: 'Xala Design System',
-  brandUrl: 'https://designsystemet.no',
+function createStorybookTheme(
+  themeId: ThemeId,
+  mode: 'light' | 'dark',
+  brandUrl: string
+) {
+  const themeConfig = THEME_COLORS[themeId];
+  const colors = themeConfig[mode];
+  return create({
+    base: mode,
+    brandTitle: `${themeConfig.name} Design System`,
+    brandUrl,
+    ...storybookTypography,
+    // Primary colors
+    colorPrimary: colors.accent.base,
+    colorSecondary: colors.accent.base,
+    
+    // App backgrounds
+    appBg: colors.neutral.background,
+    appContentBg: colors.neutral.surface,
+    appPreviewBg: colors.neutral.surface,
+    
+    // Borders and radius
+    appBorderColor: colors.neutral.border,
+    appBorderRadius: 4,
+    
+    // Text colors
+    textColor: colors.neutral.text,
+    textInverseColor: colors.accent.contrast,
+    textMutedColor: colors.neutral.textSubtle,
+    
+    // Bar (toolbar/sidebar)
+    barBg: colors.neutral.surface,
+    barTextColor: colors.neutral.text,
+    barHoverColor: colors.accent.hover,
+    barSelectedColor: colors.accent.base,
+    
+    // Inputs
+    inputBg: colors.neutral.surface,
+    inputBorder: colors.neutral.border,
+    inputTextColor: colors.neutral.text,
+    inputBorderRadius: 4,
+    
+  });
+}
 
-  // Colors from Xala dark theme tokens
-  colorPrimary: '#76b5fb', // --ds-color-accent-base-default (dark)
-  colorSecondary: '#76b5fb',
+// Generate all theme variants from THEME_COLORS
+const customLightTheme = createStorybookTheme('custom', 'light', 'https://xala.no');
+const customDarkTheme = createStorybookTheme('custom', 'dark', 'https://xala.no');
+const xaheenLightTheme = createStorybookTheme('xaheen', 'light', 'https://xala.no');
+const xaheenDarkTheme = createStorybookTheme('xaheen', 'dark', 'https://xala.no');
+const digdirLightTheme = createStorybookTheme('digdir', 'light', 'https://designsystemet.no');
+const digdirDarkTheme = createStorybookTheme('digdir', 'dark', 'https://designsystemet.no');
 
-  // UI backgrounds
-  appBg: '#101822', // --ds-color-accent-background-default (dark)
-  appContentBg: '#1b2939', // --ds-color-accent-surface-default (dark)
-  appPreviewBg: '#1b2939',
-  appBorderColor: '#375272', // --ds-color-accent-border-subtle (dark)
-  appBorderRadius: 4,
+// Theme registry for easy lookup - maps Storybook global to theme
+type BrandTheme = 'custom' | 'xaheen' | 'digdir';
+const themeRegistry: Record<BrandTheme, { light: ReturnType<typeof create>; dark: ReturnType<typeof create> }> = {
+  custom: { light: customLightTheme, dark: customDarkTheme },
+  xaheen: { light: xaheenLightTheme, dark: xaheenDarkTheme },
+  digdir: { light: digdirLightTheme, dark: digdirDarkTheme },
+};
 
-  // Text colors
-  textColor: '#e8edf4', // --ds-color-neutral-text-default (dark)
-  textInverseColor: '#1e2b3c',
-  textMutedColor: '#97aac0', // --ds-color-neutral-text-subtle (dark)
-
-  // Toolbar
-  barBg: '#16202d', // --ds-color-accent-background-tinted (dark)
-  barTextColor: '#e8edf4',
-  barHoverColor: '#76b5fb',
-  barSelectedColor: '#76b5fb',
-
-  // Form colors
-  inputBg: '#1f2f41', // --ds-color-accent-surface-tinted (dark)
-  inputBorder: '#375272',
-  inputTextColor: '#e8edf4',
-  inputBorderRadius: 4,
-
-  // Typography
-  fontBase: 'Inter, system-ui, sans-serif',
-  fontCode: 'monospace',
-});
+// Track current brand theme for docs container (updated by decorator)
+let currentBrandTheme: BrandTheme = 'custom';
 
 /**
- * Custom hook to listen for dark mode changes
+ * Custom hook to get color scheme from globals - reads from URL params!
  */
-function useIsDarkMode() {
-  const [isDark, setIsDark] = useState(false);
+function useColorScheme() {
+  // Read from URL params as initial value
+  const getInitialColorScheme = (): 'light' | 'dark' => {
+    if (typeof window === 'undefined') return 'light';
+    const params = new URLSearchParams(window.location.search);
+    const globalsParam = params.get('globals');
+    if (globalsParam?.includes('colorScheme:dark')) return 'dark';
+    if (globalsParam?.includes('colorScheme:light')) return 'light';
+    return 'light';
+  };
+
+  const [colorScheme, setColorScheme] = useState<'light' | 'dark'>(getInitialColorScheme);
 
   useEffect(() => {
-    channel.on(DARK_MODE_EVENT_NAME, setIsDark);
-    return () => channel.off(DARK_MODE_EVENT_NAME, setIsDark);
+    console.log('[useColorScheme] Hook initialized with:', colorScheme);
+    
+    // Listen for globals updates
+    const handleGlobalsUpdate = (args: { globals?: { colorScheme?: string } }) => {
+      const newScheme = (args.globals?.colorScheme as 'light' | 'dark') || 'light';
+      console.log('[useColorScheme] ✅ Event received, updating to:', newScheme);
+      setColorScheme(newScheme);
+      
+      // Emit our custom event for other components
+      channel.emit(COLOR_SCHEME_EVENT, newScheme);
+    };
+
+    channel.on('updateGlobals', handleGlobalsUpdate);
+    channel.on('setGlobals', handleGlobalsUpdate);
+    
+    return () => {
+      channel.off('updateGlobals', handleGlobalsUpdate);
+      channel.off('setGlobals', handleGlobalsUpdate);
+    };
   }, []);
 
-  return isDark;
+  return colorScheme;
 }
 
 /**
- * Themed DocsContainer that responds to dark mode toggle
+ * Custom hook to listen for brand theme changes - reads from URL params!
+ */
+function useBrandTheme() {
+  const getInitialBrandTheme = (): BrandTheme => {
+    if (typeof window === 'undefined') return 'custom';
+    const params = new URLSearchParams(window.location.search);
+    const globalsParam = params.get('globals');
+    if (globalsParam?.includes('brandTheme:xaheen')) return 'xaheen';
+    if (globalsParam?.includes('brandTheme:digdir')) return 'digdir';
+    if (globalsParam?.includes('brandTheme:custom')) return 'custom';
+    return 'custom';
+  };
+
+  const [brandTheme, setBrandTheme] = useState<BrandTheme>(getInitialBrandTheme);
+
+  useEffect(() => {
+    // Listen to globals updated event
+    const handleGlobalsUpdate = (args: { globals?: { brandTheme?: string } }) => {
+      const newTheme = (args.globals?.brandTheme as BrandTheme) || 'custom';
+      setBrandTheme(newTheme);
+      currentBrandTheme = newTheme;
+    };
+
+    channel.on('updateGlobals', handleGlobalsUpdate);
+    channel.on('setGlobals', handleGlobalsUpdate);
+    
+    return () => {
+      channel.off('updateGlobals', handleGlobalsUpdate);
+      channel.off('setGlobals', handleGlobalsUpdate);
+    };
+  }, []);
+
+  return brandTheme;
+}
+
+/**
+ * Hook to get current locale from Storybook globals - reads from URL params!
+ */
+function useDocsLocale() {
+  const getInitialLocale = (): string => {
+    if (typeof window === 'undefined') return 'nb';
+    const params = new URLSearchParams(window.location.search);
+    const globalsParam = params.get('globals');
+    if (globalsParam?.includes('locale:en')) return 'en';
+    if (globalsParam?.includes('locale:ar')) return 'ar';
+    if (globalsParam?.includes('locale:nb')) return 'nb';
+    return 'nb';
+  };
+
+  const [locale, setLocale] = useState<string>(getInitialLocale);
+
+  useEffect(() => {
+    const handleGlobalsUpdate = (args: { globals?: { locale?: string } }) => {
+      const newLocale = (args.globals?.locale as string) || 'nb';
+      setLocale(newLocale);
+    };
+
+    channel.on('updateGlobals', handleGlobalsUpdate);
+    channel.on('setGlobals', handleGlobalsUpdate);
+    
+    return () => {
+      channel.off('updateGlobals', handleGlobalsUpdate);
+      channel.off('setGlobals', handleGlobalsUpdate);
+    };
+  }, []);
+
+  return locale;
+}
+
+/**
+ * Themed DocsContainer that responds to color scheme toggle and brand theme
+ * Wraps content with StoryProvider to enable translations in MDX files
+ * Uses design tokens for all styling - no hardcoded colors!
  */
 function ThemedDocsContainer(props: DocsContainerProps) {
-  const isDark = useIsDarkMode();
+  // Use our custom hooks that read from URL and listen to channel events
+  const colorScheme = useColorScheme();
+  const brandTheme = useBrandTheme();
+  const locale = useDocsLocale();
+  
+  console.log('[ThemedDocsContainer] Using globals:', { colorScheme, brandTheme, locale });
+  
+  const themes = themeRegistry[brandTheme] || themeRegistry.custom;
+  const selectedTheme = colorScheme === 'dark' ? themes.dark : themes.light;
+
+  // Apply data attributes AND inject theme CSS
+  useEffect(() => {
+    // Inject theme CSS (critical for CSS variables to be defined!)
+    const themeStyleId = 'docs-theme-css';
+    let themeStyle = document.getElementById(themeStyleId) as HTMLStyleElement | null;
+    
+    if (!themeStyle) {
+      themeStyle = document.createElement('style');
+      themeStyle.id = themeStyleId;
+      document.head.appendChild(themeStyle);
+    }
+    
+    const themeCSS = getThemeCSS(brandTheme as ThemeId);
+    themeStyle.textContent = themeCSS;
+    console.log('[Docs Theme] Injected theme CSS:', brandTheme, 'length:', themeCSS.length);
+    
+    // Apply data attributes for theme CSS selectors
+    document.documentElement.setAttribute('data-color-scheme', colorScheme);
+    document.documentElement.setAttribute('data-brand-theme', brandTheme);
+    
+    // Also apply class for CSS selectors that use .dark class
+    if (colorScheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+    
+    console.log('[Docs Theme] ✅ Applied:', { colorScheme, brandTheme, cssVarsLoaded: themeCSS.length > 0 });
+  }, [colorScheme, brandTheme]);
+
+  // Inject CSS that maps Storybook docs to design tokens
+  // CRITICAL: This must re-run when colorScheme changes to update CSS!
+  useEffect(() => {
+    const styleId = 'storybook-docs-design-tokens';
+    
+    // Remove existing style and recreate it (ensures CSS updates)
+    const existingStyle = document.getElementById(styleId);
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+    
+    const styleElement = document.createElement('style');
+    styleElement.id = styleId;
+    document.head.appendChild(styleElement);
+    
+    // Use design tokens - they update automatically via CSS variables!
+    styleElement.textContent = `
+      /* Smooth transitions */
+      .sbdocs-wrapper,
+      .sbdocs-content,
+      .sbdocs * {
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+      }
+      
+      /* AGGRESSIVE: Override ALL possible Storybook docs backgrounds */
+      html,
+      body,
+      #storybook-docs,
+      #storybook-root,
+      #root,
+      .sb-show-main,
+      .sb-main-padded,
+      .docs-story,
+      .sbdocs,
+      .sbdocs-wrapper,
+      .sbdocs-content,
+      .sbdocs > div,
+      .sbdocs > section,
+      [id^="story--"],
+      [id^="anchor--"],
+      main,
+      section {
+        background-color: var(--ds-color-neutral-background-default) !important;
+        background: var(--ds-color-neutral-background-default) !important;
+        color: var(--ds-color-neutral-text-default) !important;
+      }
+      
+      /* Force iframe content */
+      iframe {
+        background-color: transparent !important;
+      }
+      
+      /* Text elements */
+      .sbdocs h1, .sbdocs h2, .sbdocs h3, 
+      .sbdocs h4, .sbdocs h5, .sbdocs h6,
+      .sbdocs p, .sbdocs li, .sbdocs td, .sbdocs th {
+        color: var(--ds-color-neutral-text-default) !important;
+      }
+      
+      /* Links */
+      .sbdocs a {
+        color: var(--ds-color-accent-base-default) !important;
+      }
+      
+      .sbdocs a:hover {
+        color: var(--ds-color-accent-base-hover) !important;
+      }
+      
+      /* Code blocks */
+      .sbdocs pre,
+      .sbdocs code {
+        background-color: var(--ds-color-neutral-surface-hover) !important;
+        color: var(--ds-color-neutral-text-default) !important;
+        border-color: var(--ds-color-neutral-border-default) !important;
+      }
+      
+      /* Tables */
+      .sbdocs table {
+        border-color: var(--ds-color-neutral-border-default) !important;
+      }
+      
+      .sbdocs th {
+        background-color: var(--ds-color-neutral-surface-hover) !important;
+        color: var(--ds-color-neutral-text-default) !important;
+      }
+      
+      /* Borders */
+      .sbdocs hr,
+      [role="separator"] {
+        border-color: var(--ds-color-neutral-border-default) !important;
+      }
+      
+      /* Scrollbars */
+      *::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+      }
+      
+      *::-webkit-scrollbar-track {
+        background: var(--ds-color-neutral-surface-hover);
+      }
+      
+      *::-webkit-scrollbar-thumb {
+        background: var(--ds-color-neutral-border-default);
+        border-radius: 6px;
+      }
+      
+      *::-webkit-scrollbar-thumb:hover {
+        background: var(--ds-color-neutral-text-subtle);
+      }
+    `;
+    
+    console.log('[Docs CSS] Re-injected design token CSS for:', colorScheme);
+  }, [colorScheme]); // Re-run when colorScheme changes!
 
   return (
-    <DocsContainer {...props} theme={isDark ? xalaDarkTheme : xalaLightTheme}>
-      {props.children}
+    <DocsContainer {...props} theme={selectedTheme}>
+      <StoryProvider locale={locale} theme={brandTheme} colorScheme={colorScheme}>
+        {props.children}
+      </StoryProvider>
     </DocsContainer>
   );
 }
@@ -189,40 +451,58 @@ const customViewports = {
 };
 
 /**
- * Theme decorator - uses dark mode addon hook and StoryProvider for theme/translations
+ * Theme decorator - uses custom color scheme control and StoryProvider for theme/translations
  */
 const withTheme: Decorator = (Story, context) => {
-  const isDarkMode = useDarkMode();
-  const theme = isDarkMode ? 'dark' : 'light';
-
-  // Get locale from global toolbar
+  // Get color scheme, locale, and brand theme from global toolbar
+  const colorScheme = (context.globals.colorScheme as 'light' | 'dark') || 'light';
   const locale = (context.globals.locale as string) || 'nb';
+  const brandTheme = (context.globals.brandTheme as BrandTheme) || 'custom';
   const direction = getDirectionForLocale(locale);
 
+  // Update module-level brandTheme for docs container
+  currentBrandTheme = brandTheme;
+
   useEffect(() => {
-    // Apply theme to document for CSS variables
-    document.documentElement.setAttribute('data-color-scheme', theme);
+    // Apply color scheme to document for CSS variables
+    document.documentElement.setAttribute('data-color-scheme', colorScheme);
     // Apply direction and language for RTL support
     document.documentElement.setAttribute('dir', direction);
     document.documentElement.setAttribute('lang', locale);
-  }, [theme, direction, locale]);
+    // Apply brand theme as data attribute for potential CSS targeting
+    document.documentElement.setAttribute('data-brand-theme', brandTheme);
+    
+    // Update color scheme class for proper theme application
+    if (colorScheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Emit color scheme change event for manager
+    channel.emit(COLOR_SCHEME_EVENT, colorScheme);
+  }, [colorScheme, brandTheme, locale, direction]); // Depend on all theme-related values
 
   // StoryProvider integrates I18nProvider + DesignsystemetProvider
   // Similar to RuntimeProvider pattern in production apps
-  // Key forces full remount when locale changes (needed for i18n context)
+  // Key forces full remount when locale or brand theme changes
   return (
-    <StoryProvider key={locale} locale={locale} colorScheme={theme}>
+    <StoryProvider key={`${locale}-${brandTheme}-${colorScheme}`} locale={locale} theme={brandTheme} colorScheme={colorScheme}>
       <div
-        data-color-scheme={theme}
+        data-color-scheme={colorScheme}
+        data-brand-theme={brandTheme}
         data-size="md"
         dir={direction}
         lang={locale}
         style={{
           padding: 'var(--ds-spacing-4)',
           fontFamily: 'Inter, system-ui, sans-serif',
-          minHeight: 'var(--ds-sizing-25)',
-          backgroundColor: isDarkMode ? 'var(--ds-color-neutral-background-default)' : undefined,
-          color: isDarkMode ? 'var(--ds-color-neutral-text-default)' : undefined,
+          minHeight: '100vh',
+          width: '100%',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+          color: 'var(--ds-color-neutral-text-default)',
         }}
       >
         <Story />
@@ -231,8 +511,38 @@ const withTheme: Decorator = (Story, context) => {
   );
 };
 
+
 const preview: Preview = {
   globalTypes: {
+    colorScheme: {
+      name: 'Color Scheme',
+      description: 'Switch between light and dark mode',
+      defaultValue: 'light',
+      toolbar: {
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: 'Light Mode', icon: 'sun' },
+          { value: 'dark', title: 'Dark Mode', icon: 'moon' },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
+    brandTheme: {
+      name: 'Brand Theme',
+      description: 'Switch between brand color themes',
+      defaultValue: 'custom',
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: 'custom', title: 'Xala (Blue)', right: '🔵' },
+          { value: 'xaheen', title: 'Xaheen (Gold)', right: '🟡' },
+          { value: 'digdir', title: 'Digdir (Default)', right: '⚪' },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
     locale: {
       name: 'Locale',
       description: 'Internationalization locale',
@@ -269,14 +579,6 @@ const preview: Preview = {
     },
     backgrounds: {
       disable: true,
-    },
-    darkMode: {
-      dark: xalaDarkTheme,
-      light: xalaLightTheme,
-      stylePreview: true,
-      classTarget: 'html',
-      darkClass: 'dark',
-      lightClass: 'light',
     },
     viewport: {
       options: {

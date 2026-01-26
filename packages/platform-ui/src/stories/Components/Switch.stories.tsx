@@ -312,7 +312,7 @@ export const Interactive: Story = {
           {Object.entries(notifications)
             .filter(([, v]) => v)
             .map(([k]) => k)
-            .join(', ') || t('storybook.demo.none')}
+            .join(', ') || t('platform.common.none')}
         </div>
       </div>
     );
@@ -361,7 +361,7 @@ export const AllVariants: Story = {
             {t('storybook.story.grouped')}
           </Heading>
           <Fieldset>
-            <Fieldset.Legend>{t('storybook.demo.settings')}</Fieldset.Legend>
+            <Fieldset.Legend>{t('platform.nav.settings')}</Fieldset.Legend>
             <Switch label={t('storybook.demo.option') + ' 1'} defaultChecked />
             <Switch label={t('storybook.demo.option') + ' 2'} />
             <Switch label={t('storybook.demo.option') + ' 3'} defaultChecked />

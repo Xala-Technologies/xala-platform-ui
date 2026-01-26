@@ -221,7 +221,7 @@ export const RadioChips: Story = {
           checked={selected === 'option1'}
           onChange={() => setSelected('option1')}
         >
-          {t('storybook.demo.all')}
+          {t('platform.common.all')}
         </Chip.Radio>
         <Chip.Radio
           name="filter"
@@ -304,7 +304,7 @@ export const ButtonChips: Story = {
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
         <Chip.Button onClick={() => {}}>{t('storybook.demo.apply')}</Chip.Button>
-        <Chip.Button onClick={() => {}}>{t('storybook.demo.reset')}</Chip.Button>
+        <Chip.Button onClick={() => {}}>{t('platform.common.reset')}</Chip.Button>
       </div>
     );
   },
@@ -357,7 +357,7 @@ export const AllVariants: Story = {
               checked={radioSelected === 'all'}
               onChange={() => setRadioSelected('all')}
             >
-              {t('storybook.demo.all')}
+              {t('platform.common.all')}
             </Chip.Radio>
             <Chip.Radio
               name="status"

@@ -1,15 +1,20 @@
 /**
  * Testing Utilities for Platform UI Consumers
  *
- * MANDATORY: Apps using @xala-technologies/platform-ui MUST run these tests.
- * This ensures compliance with design system rules.
+ * Provides:
+ * 1. Compliance tests (MANDATORY for apps using platform-ui)
+ * 2. Test data factories (reusable mock data)
+ * 3. Custom matchers (for ViewModels and adapters)
+ * 4. Shared mocks (common test data)
  *
- * Usage in app's vitest.config.ts:
- * ```
- * import { createViolationTests } from '@xala-technologies/guardrails/testing';
- *
- * // In your test file:
- * createViolationTests({ srcDir: './src' });
+ * Usage:
+ * ```typescript
+ * import {
+ *   createViolationTests,
+ *   createMockBooking,
+ *   mockRentalObjectNameMap,
+ *   extendMatchers
+ * } from '@xala-technologies/guardrails/testing';
  * ```
  */
 
@@ -382,6 +387,11 @@ export function createViolationTests(
     });
   });
 }
+
+// Export test utilities
+export * from './factories';
+export * from './mocks';
+export * from './matchers';
 
 export default {
   runViolationChecks,

@@ -1,12 +1,14 @@
 <style>
   /* Make docs content full-width and fluid */
+  /* Note: Actual theming is handled by ThemedDocsContainer via injected CSS */
+  /* This file provides base layout only */
   .sbdocs-wrapper {
     padding: 0 !important;
   }
   
   .sbdocs-content {
     max-width: 100% !important;
-    padding: 2rem !important;
+    padding: var(--ds-spacing-8) !important;
   }
   
   /* Apply design system typography */
@@ -29,5 +31,24 @@
   /* Story preview should also be full-width */
   .docs-story {
     max-width: 100% !important;
+  }
+  
+  /* Base scrollbar styling - will be overridden by ThemedDocsContainer */
+  /* This prevents the default orange/yellow scrollbar flash */
+  * {
+    scrollbar-width: thin;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
   }
 </style>

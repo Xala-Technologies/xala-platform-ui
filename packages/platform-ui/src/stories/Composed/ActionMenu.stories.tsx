@@ -64,7 +64,7 @@ const useSampleItems = () => {
     },
     {
       id: '3',
-      label: t('storybook.demo.download'),
+      label: t('platform.common.download'),
       icon: <Download size={16} />,
       onClick: fn(),
     },
@@ -136,7 +136,7 @@ const WithGroupsDemo = () => {
           items: [
             {
               id: '3',
-              label: t('storybook.demo.download'),
+              label: t('platform.common.download'),
               icon: <Download size={16} />,
               onClick: fn(),
             },

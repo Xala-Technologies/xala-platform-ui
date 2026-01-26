@@ -232,7 +232,7 @@ export const Default: Story = {
         <ErrorSummary.List>
           <ErrorSummary.Item>
             <ErrorSummary.Link href="#name">
-              {t('platform.validation.required', { field: t('storybook.demo.name') })}
+              {t('platform.validation.required', { field: t('platform.common.name') })}
             </ErrorSummary.Link>
           </ErrorSummary.Item>
           <ErrorSummary.Item>

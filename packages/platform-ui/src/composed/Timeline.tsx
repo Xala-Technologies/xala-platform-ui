@@ -93,7 +93,7 @@ interface TimelineEntryProps {
 }
 
 function TimelineEntry({ item, isLast, showConnector }: TimelineEntryProps): React.ReactElement {
-  const styles = typeStyles[item.type || 'default'];
+  const styles = typeStyles[item.type || 'default'] || typeStyles.default;
 
   return (
     <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>

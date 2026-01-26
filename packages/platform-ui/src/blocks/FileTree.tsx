@@ -6,6 +6,7 @@
  */
 import React, { useState, useCallback } from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
+import { BookOpenIcon, ChevronRightIcon } from '../primitives/icons';
 
 // ============================================================================
 // Types
@@ -50,50 +51,46 @@ export interface FileTreeProps {
 }
 
 // ============================================================================
-// File Icons
+// File Icon Component
 // ============================================================================
 
-const FILE_ICONS: Record<string, string> = {
-  // Languages
-  ts: '📘',
-  tsx: '⚛️',
-  js: '📒',
-  jsx: '⚛️',
-  py: '🐍',
-  rs: '🦀',
-  go: '🐹',
-  java: '☕',
-  rb: '💎',
-  php: '🐘',
-  // Config
-  json: '📋',
-  yaml: '📋',
-  yml: '📋',
-  toml: '📋',
-  // Docs
-  md: '📄',
-  mdx: '📄',
-  txt: '📝',
-  // Styles
-  css: '🎨',
-  scss: '🎨',
-  less: '🎨',
-  // Other
-  html: '🌐',
-  svg: '🖼️',
-  png: '🖼️',
-  jpg: '🖼️',
-  gif: '🖼️',
-  // Default
-  default: '📄',
-};
+interface FileIconProps {
+  extension?: string;
+  size?: number;
+}
 
-const FOLDER_ICON_OPEN = '📂';
-const FOLDER_ICON_CLOSED = '📁';
+function FileIcon({ extension: _extension, size = 14 }: FileIconProps) {
+  // Use a simple document icon for all files
+  // Extension parameter reserved for future file-type-specific icons
+  return <BookOpenIcon size={size} />;
+}
 
-function getFileIcon(extension?: string): string {
-  if (!extension) return FILE_ICONS.default;
-  return FILE_ICONS[extension.toLowerCase()] || FILE_ICONS.default;
+interface FolderIconProps {
+  isOpen: boolean;
+  size?: number;
+}
+
+function FolderIcon({ isOpen, size = 14 }: FolderIconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {isOpen ? (
+        <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
+      ) : (
+        <>
+          <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
+        </>
+      )}
+    </svg>
+  );
 }
 
 // ============================================================================
@@ -155,14 +152,6 @@ function TreeNode({
     userSelect: 'none',
   };
 
-  const icon = showIcons
-    ? isDirectory
-      ? isExpanded
-        ? FOLDER_ICON_OPEN
-        : FOLDER_ICON_CLOSED
-      : getFileIcon(node.extension)
-    : null;
-
   return (
     <>
       <div
@@ -174,10 +163,33 @@ function TreeNode({
         aria-expanded={isDirectory ? isExpanded : undefined}
       >
         {hasChildren && (
-          <span style={{ fontSize: '0.625rem', opacity: 0.6 }}>{isExpanded ? '▼' : '▶'}</span>
+          <span
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
+              transition: 'transform 0.15s ease',
+            }}
+          >
+            <ChevronRightIcon size={12} />
+          </span>
         )}
-        {!hasChildren && isDirectory && <span style={{ width: '0.625rem' }} />}
-        {icon && <span style={{ fontSize: '1rem' }}>{icon}</span>}
+        {!hasChildren && isDirectory && <span style={{ width: '12px' }} />}
+        {showIcons && (
+          <span
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            {isDirectory ? (
+              <FolderIcon isOpen={isExpanded} size={14} />
+            ) : (
+              <FileIcon extension={node.extension} size={14} />
+            )}
+          </span>
+        )}
         <Paragraph data-size="sm" style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {node.name}
         </Paragraph>

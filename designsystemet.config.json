@@ -1,0 +1,52 @@
+{
+  "$schema": "https://designsystemet.no/schemas/theme.schema.json",
+  "outDir": "./packages/platform-ui/src/themes/generated",
+  "clean": true,
+  "themes": {
+    "xala": {
+      "colors": {
+        "main": {
+          "primary": "#2A5280"
+        },
+        "neutral": "#1e2b3c",
+        "support": {
+          "success": "#056614",
+          "warning": "#B87A15",
+          "danger": "#9B1515",
+          "info": "#1A4F7A"
+        }
+      },
+      "borderRadius": 4
+    },
+    "xaheen": {
+      "colors": {
+        "main": {
+          "primary": "#8E8F5A"
+        },
+        "neutral": "#0B0B0F",
+        "support": {
+          "success": "#3D9A76",
+          "warning": "#B8A810",
+          "danger": "#B8404D",
+          "info": "#3A7FC8"
+        }
+      },
+      "borderRadius": 4
+    },
+    "digdir": {
+      "colors": {
+        "main": {
+          "primary": "#0062BA"
+        },
+        "neutral": "#1E2B3C",
+        "support": {
+          "success": "#068718",
+          "warning": "#EA9B1B",
+          "danger": "#C01B1B",
+          "info": "#0062BA"
+        }
+      },
+      "borderRadius": 4
+    }
+  }
+}

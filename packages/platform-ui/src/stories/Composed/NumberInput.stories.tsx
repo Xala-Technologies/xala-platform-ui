@@ -155,7 +155,7 @@ const DecimalPrecisionDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.price')}
+      label={t('platform.common.price')}
       defaultValue={9.99}
       min={0}
       max={1000}
@@ -180,7 +180,7 @@ const WithPrefixDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.price')}
+      label={t('platform.common.price')}
       defaultValue={100}
       prefix="$"
       min={0}

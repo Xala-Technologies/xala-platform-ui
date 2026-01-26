@@ -257,7 +257,7 @@ export const Disabled: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.status')}</Label>
+        <Label>{t('platform.common.status')}</Label>
         <Select disabled>
           <Select.Option value="active">{t('platform.status.active')}</Select.Option>
         </Select>
@@ -305,7 +305,7 @@ export const ReadOnly: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.country')}</Label>
+        <Label>{t('platform.common.country')}</Label>
         <Select readOnly value="no">
           <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
         </Select>
@@ -366,7 +366,7 @@ export const FormExample: Story = {
         }}
       >
         <Field>
-          <Label>{t('storybook.demo.country')}</Label>
+          <Label>{t('platform.common.country')}</Label>
           <Field.Description>{t('storybook.demo.selectCountryOfResidence')}</Field.Description>
           <Select value={country} onChange={(e) => setCountry(e.target.value)}>
             <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
@@ -378,7 +378,7 @@ export const FormExample: Story = {
         </Field>
 
         <Field>
-          <Label>{t('storybook.demo.city')}</Label>
+          <Label>{t('platform.common.city')}</Label>
           <Select value={city} onChange={(e) => setCity(e.target.value)} disabled={!country}>
             <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
             {country === 'no' && (

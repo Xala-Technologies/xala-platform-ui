@@ -35,7 +35,9 @@
     "test:e2e:debug": "playwright test --debug",
     "test:all": "pnpm test:unit && pnpm test:integration && pnpm test:e2e",
     "command-center": "pnpm --filter @xala-technologies/command-center dev",
-    "playground": "pnpm --filter @xala-technologies/playground dev"
+    "playground": "pnpm --filter @xala-technologies/playground dev",
+    "story-explorer": "pnpm --filter @xala-technologies/story-explorer dev",
+    "story-explorer:build": "pnpm --filter @xala-technologies/story-explorer build"
   },
   "keywords": [
     "xala",
@@ -55,8 +57,6 @@
   },
   "homepage": "https://github.com/Xala-Technologies/xala-platform-ui#readme",
   "devDependencies": {
-    "@xala-technologies/i18n": "^1.0.0",
-    "@xala-technologies/i18n-platform": "^1.0.0",
     "@axe-core/playwright": "^4.10.1",
     "@digdir/designsystemet-css": "^1.0.0",
     "@fontsource/inter": "^5.2.8",
@@ -81,7 +81,8 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^1.2.0",
-    "@vueless/storybook-dark-mode": "^10.0.6",
+    "@xala-technologies/i18n": "^1.0.0",
+    "@xala-technologies/i18n-platform": "^1.0.0",
     "axe-playwright": "^2.2.2",
     "concurrently": "^9.2.1",
     "globals": "^17.1.0",
@@ -90,7 +91,6 @@
     "playwright": "^1.57.0",
     "prettier": "^3.2.5",
     "storybook": "^8.6.15",
-    "storybook-dark-mode": "^4.0.2",
     "vitest": "^1.2.0",
     "wait-on": "^9.0.3"
   },

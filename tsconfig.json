@@ -18,15 +18,12 @@
       "@xala-technologies/platform-ui": ["./packages/platform-ui/src/index.ts"],
       "@xala-technologies/platform-ui/*": ["./packages/platform-ui/src/*"],
       "@xala-technologies/guardrails": ["./packages/guardrails/src/index.ts"],
-      "@xala-technologies/guardrails/*": ["./packages/guardrails/src/*"],
-      "@xala-technologies/design-workflow": ["./packages/design-workflow/src/index.ts"],
-      "@xala-technologies/design-workflow/*": ["./packages/design-workflow/src/*"]
+      "@xala-technologies/guardrails/*": ["./packages/guardrails/src/*"]
     }
   },
   "references": [
     { "path": "./packages/platform-ui" },
-    { "path": "./packages/guardrails" },
-    { "path": "./packages/design-workflow" }
+    { "path": "./packages/guardrails" }
   ],
   "include": [],
   "exclude": ["node_modules", "dist", "**/dist"]
