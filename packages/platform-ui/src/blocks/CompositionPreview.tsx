@@ -40,13 +40,16 @@ export const CompositionPreview = forwardRef<HTMLDivElement, CompositionPreviewP
     const layer = composeData?.layer;
     const description = composeData?.description;
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     return (
       <Card
         ref={ref}
         className={cn('ds-composition-preview', className)}
         data-color="neutral"
         data-testid={testId}
-        {...props}
+        {...cardProps}
       >
         <Card.Block>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>

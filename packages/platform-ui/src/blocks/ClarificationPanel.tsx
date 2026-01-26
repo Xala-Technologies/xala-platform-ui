@@ -83,12 +83,15 @@ export const ClarificationPanel = forwardRef<HTMLDivElement, ClarificationPanelP
       return answer !== '';
     });
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     return (
       <Card
         ref={ref}
         className={cn('ds-clarification-panel', className)}
         data-color="neutral"
-        {...props}
+        {...cardProps}
       >
         <Card.Block>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
