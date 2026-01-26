@@ -235,7 +235,10 @@ export function AddressesTab({
                 </Button>
                 <Paragraph
                   data-size="xs"
-                  style={{ marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}
+                  style={{
+                    marginTop: 'var(--ds-spacing-2)',
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                  }}
                 >
                   {labels.copyResidenceToInvoiceDescription}
                 </Paragraph>

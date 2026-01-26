@@ -7,7 +7,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
 import { FormWizardModal, type FormWizardModalProps } from '../../patterns/FormWizardModal';
 import type { PatternWizardStep } from '../../patterns/types';
-import { Paragraph, Textfield, Label, Select, Checkbox, Button } from '@digdir/designsystemet-react';
+import {
+  Paragraph,
+  Textfield,
+  Label,
+  Select,
+  Checkbox,
+  Button,
+} from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof FormWizardModal> = {
   title: 'Patterns/FormWizardModal',
@@ -192,7 +199,7 @@ function WizardWithTrigger({
   buttonLabel = 'Open Wizard',
   children,
   ...args
-}: Omit<FormWizardModalProps, 'isOpen' | 'onClose'> & { 
+}: Omit<FormWizardModalProps, 'isOpen' | 'onClose'> & {
   buttonLabel?: string;
   children: React.ReactNode;
 }) {

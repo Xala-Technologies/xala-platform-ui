@@ -9,13 +9,7 @@
 
 import * as React from 'react';
 import { useCallback } from 'react';
-import {
-  Paragraph,
-  Heading,
-  Card,
-  Checkbox,
-  Alert,
-} from '@digdir/designsystemet-react';
+import { Paragraph, Heading, Card, Checkbox, Alert } from '@digdir/designsystemet-react';
 import { Stack } from '@xala-technologies/platform-ui';
 import type { RoleDefinition } from '../types';
 
@@ -198,7 +192,11 @@ export function RolesStep({
           border: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <Stack direction="horizontal" spacing="2" style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Stack
+          direction="horizontal"
+          spacing="2"
+          style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}
+        >
           <span style={{ color: 'var(--ds-color-accent-base-default)' }}>
             <UsersIcon data-size={24} />
           </span>
@@ -233,11 +231,7 @@ export function RolesStep({
                   transition: 'all 0.2s ease',
                 }}
               >
-                <Stack
-                  direction="horizontal"
-                  spacing="3"
-                  style={{ alignItems: 'flex-start' }}
-                >
+                <Stack direction="horizontal" spacing="3" style={{ alignItems: 'flex-start' }}>
                   <Checkbox
                     checked={isSelected}
                     onChange={() => handleRoleToggle(role.id)}

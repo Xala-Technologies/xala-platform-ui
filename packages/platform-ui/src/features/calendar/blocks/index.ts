@@ -201,9 +201,7 @@ export function buildCalendarLegend(
   if (apiLegend) {
     return apiLegend.map((item) => ({
       status: item.status,
-      label: item.labelKey.includes('.')
-        ? item.labelKey.split('.').pop()!
-        : item.labelKey,
+      label: item.labelKey.includes('.') ? item.labelKey.split('.').pop()! : item.labelKey,
     }));
   }
 

@@ -305,11 +305,7 @@ function StepIndicatorDot({
             : isCompleted
               ? '2px solid var(--ds-color-success-base-default)'
               : '2px solid var(--ds-color-neutral-border-subtle)',
-          boxShadow: isActive
-            ? shadows.elevation3
-            : isCompleted
-              ? shadows.elevation1
-              : 'none',
+          boxShadow: isActive ? shadows.elevation3 : isCompleted ? shadows.elevation1 : 'none',
           position: 'relative',
           zIndex: 2,
         }}
@@ -370,7 +366,9 @@ function StepIndicatorDot({
             textOverflow: 'ellipsis',
             textAlign: 'center',
             transition: transitions.colors,
-            letterSpacing: isActive ? typography.letterSpacing.wide : typography.letterSpacing.normal,
+            letterSpacing: isActive
+              ? typography.letterSpacing.wide
+              : typography.letterSpacing.normal,
           }}
         >
           {step.title}
@@ -419,7 +417,8 @@ function StepConnector({ isCompleted }: { isCompleted: boolean }) {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(to right, var(--ds-color-success-base-default), var(--ds-color-success-base-hover))',
+            background:
+              'linear-gradient(to right, var(--ds-color-success-base-default), var(--ds-color-success-base-hover))',
             borderRadius: 'var(--ds-border-radius-full)',
             animation: 'shimmer 2s ease-in-out infinite',
           }}
@@ -455,7 +454,8 @@ function StepIndicatorBar({
         flexDirection: 'column',
         gap: 'var(--ds-spacing-4)',
         padding: 'var(--ds-spacing-5) var(--ds-spacing-7)',
-        background: 'linear-gradient(to bottom, var(--ds-color-neutral-surface-subtle) 0%, var(--ds-color-neutral-surface-default) 100%)',
+        background:
+          'linear-gradient(to bottom, var(--ds-color-neutral-surface-subtle) 0%, var(--ds-color-neutral-surface-default) 100%)',
         borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
         borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
         position: 'relative',
@@ -469,7 +469,8 @@ function StepIndicatorBar({
           left: 0,
           right: 0,
           height: borders.width.thin,
-          background: 'linear-gradient(to right, transparent, var(--ds-color-accent-base-default), transparent)',
+          background:
+            'linear-gradient(to right, transparent, var(--ds-color-accent-base-default), transparent)',
           opacity: opacityTokens.subtle,
         }}
       />
@@ -770,7 +771,8 @@ export function MultiStepFormModal({
               style={{
                 marginBottom: spacingTokens.modal.section.compact.gap,
                 paddingBottom: 'var(--ds-spacing-4)',
-                borderBottom: 'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
+                borderBottom:
+                  'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
                 position: 'relative',
               }}
             >
@@ -823,7 +825,8 @@ export function MultiStepFormModal({
           <div
             style={{
               minHeight: components.card.minHeight.md,
-              paddingTop: currentStepData?.title || currentStepData?.description ? 0 : 'var(--ds-spacing-2)',
+              paddingTop:
+                currentStepData?.title || currentStepData?.description ? 0 : 'var(--ds-spacing-2)',
             }}
           >
             {currentStepData?.content}
@@ -838,7 +841,8 @@ export function MultiStepFormModal({
               flexShrink: 0,
               padding: spacingTokens.modal.content.compact.padding,
               backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
-              borderLeft: 'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
+              borderLeft:
+                'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
               overflowY: 'auto',
               overflowX: 'hidden',
               height: '100%',

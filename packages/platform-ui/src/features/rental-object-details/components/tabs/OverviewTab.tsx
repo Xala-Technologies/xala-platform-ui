@@ -17,9 +17,24 @@ import { createPresenter } from '../../presenters';
 // Icons
 // =============================================================================
 
-function CheckIcon({ size = 16, color = 'currentColor' }: { size?: number; color?: string }): React.ReactElement {
+function CheckIcon({
+  size = 16,
+  color = 'currentColor',
+}: {
+  size?: number;
+  color?: string;
+}): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -27,7 +42,16 @@ function CheckIcon({ size = 16, color = 'currentColor' }: { size?: number; color
 
 function UsersIcon({ size = 24 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
       <circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -39,7 +63,16 @@ function UsersIcon({ size = 24 }: { size?: number }): React.ReactElement {
 // Amenity Icons
 function ProjectorIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="7" width="20" height="10" rx="2" />
       <circle cx="8" cy="12" r="2" />
       <path d="M18 12h.01" />
@@ -49,7 +82,16 @@ function ProjectorIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function WhiteboardIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="14" rx="2" />
       <path d="M3 17h18" />
     </svg>
@@ -58,7 +100,16 @@ function WhiteboardIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function WifiIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M5 12.55a11 11 0 0 1 14.08 0" />
       <path d="M1.42 9a16 16 0 0 1 21.16 0" />
       <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
@@ -69,7 +120,16 @@ function WifiIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function VideoIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polygon points="23 7 16 12 23 17 23 7" />
       <rect x="1" y="5" width="15" height="14" rx="2" />
     </svg>
@@ -78,7 +138,16 @@ function VideoIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function ParkingIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
     </svg>
@@ -87,7 +156,16 @@ function ParkingIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function CoffeeIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
       <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z" />
       <line x1="6" y1="2" x2="6" y2="4" />
@@ -99,7 +177,16 @@ function CoffeeIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function ToiletIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M7 12h10" />
       <path d="M5 12a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5z" />
       <path d="M12 19v3" />
@@ -112,7 +199,16 @@ function ToiletIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function AirConditionerIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="4" width="20" height="8" rx="2" />
       <path d="M6 12v4" />
       <path d="M10 12v6" />
@@ -124,7 +220,16 @@ function AirConditionerIcon({ size = 16 }: { size?: number }): React.ReactElemen
 
 function SpeakerIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="4" y="2" width="16" height="20" rx="2" />
       <circle cx="12" cy="14" r="4" />
       <line x1="12" y1="6" x2="12" y2="6.01" />
@@ -134,7 +239,16 @@ function SpeakerIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function MicrophoneIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
       <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
       <line x1="12" y1="19" x2="12" y2="23" />
@@ -145,7 +259,16 @@ function MicrophoneIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function TVIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="7" width="20" height="15" rx="2" />
       <polyline points="17 2 12 7 7 2" />
     </svg>
@@ -154,7 +277,16 @@ function TVIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function KitchenIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
       <path d="M7 2v20" />
       <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
@@ -164,7 +296,16 @@ function KitchenIcon({ size = 16 }: { size?: number }): React.ReactElement {
 
 function AccessibilityIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="4" r="2" />
       <path d="M12 6v6" />
       <path d="M8 10h8" />
@@ -175,7 +316,16 @@ function AccessibilityIcon({ size = 16 }: { size?: number }): React.ReactElement
 
 function StorageIcon({ size = 16 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z" />
       <path d="M6 18h12" />
       <path d="M6 14h12" />
@@ -189,18 +339,61 @@ function getAmenityIcon(name: string): React.ReactElement {
 
   if (lowerName.includes('projektor') || lowerName.includes('projector')) return <ProjectorIcon />;
   if (lowerName.includes('tavle') || lowerName.includes('whiteboard')) return <WhiteboardIcon />;
-  if (lowerName.includes('tv') || lowerName.includes('skjerm') || lowerName.includes('screen')) return <TVIcon />;
+  if (lowerName.includes('tv') || lowerName.includes('skjerm') || lowerName.includes('screen'))
+    return <TVIcon />;
   if (lowerName.includes('video') || lowerName.includes('konferanse')) return <VideoIcon />;
-  if (lowerName.includes('wifi') || lowerName.includes('internet') || lowerName.includes('nett')) return <WifiIcon />;
-  if (lowerName.includes('lyd') || lowerName.includes('høyttaler') || lowerName.includes('speaker') || lowerName.includes('sound')) return <SpeakerIcon />;
-  if (lowerName.includes('mikrofon') || lowerName.includes('microphone') || lowerName.includes('mic')) return <MicrophoneIcon />;
+  if (lowerName.includes('wifi') || lowerName.includes('internet') || lowerName.includes('nett'))
+    return <WifiIcon />;
+  if (
+    lowerName.includes('lyd') ||
+    lowerName.includes('høyttaler') ||
+    lowerName.includes('speaker') ||
+    lowerName.includes('sound')
+  )
+    return <SpeakerIcon />;
+  if (
+    lowerName.includes('mikrofon') ||
+    lowerName.includes('microphone') ||
+    lowerName.includes('mic')
+  )
+    return <MicrophoneIcon />;
   if (lowerName.includes('parkering') || lowerName.includes('parking')) return <ParkingIcon />;
-  if (lowerName.includes('kaffe') || lowerName.includes('coffee') || lowerName.includes('te') || lowerName.includes('drikke')) return <CoffeeIcon />;
-  if (lowerName.includes('toalett') || lowerName.includes('wc') || lowerName.includes('bad') || lowerName.includes('toilet')) return <ToiletIcon />;
-  if (lowerName.includes('kjøkken') || lowerName.includes('kitchen') || lowerName.includes('mat')) return <KitchenIcon />;
-  if (lowerName.includes('klima') || lowerName.includes('ac') || lowerName.includes('air') || lowerName.includes('ventilasjon')) return <AirConditionerIcon />;
-  if (lowerName.includes('rullestol') || lowerName.includes('handicap') || lowerName.includes('tilgjengelig') || lowerName.includes('accessibility')) return <AccessibilityIcon />;
-  if (lowerName.includes('lager') || lowerName.includes('storage') || lowerName.includes('oppbevaring')) return <StorageIcon />;
+  if (
+    lowerName.includes('kaffe') ||
+    lowerName.includes('coffee') ||
+    lowerName.includes('te') ||
+    lowerName.includes('drikke')
+  )
+    return <CoffeeIcon />;
+  if (
+    lowerName.includes('toalett') ||
+    lowerName.includes('wc') ||
+    lowerName.includes('bad') ||
+    lowerName.includes('toilet')
+  )
+    return <ToiletIcon />;
+  if (lowerName.includes('kjøkken') || lowerName.includes('kitchen') || lowerName.includes('mat'))
+    return <KitchenIcon />;
+  if (
+    lowerName.includes('klima') ||
+    lowerName.includes('ac') ||
+    lowerName.includes('air') ||
+    lowerName.includes('ventilasjon')
+  )
+    return <AirConditionerIcon />;
+  if (
+    lowerName.includes('rullestol') ||
+    lowerName.includes('handicap') ||
+    lowerName.includes('tilgjengelig') ||
+    lowerName.includes('accessibility')
+  )
+    return <AccessibilityIcon />;
+  if (
+    lowerName.includes('lager') ||
+    lowerName.includes('storage') ||
+    lowerName.includes('oppbevaring')
+  )
+    return <StorageIcon />;
 
   return <CheckIcon size={16} />;
 }
@@ -358,7 +551,10 @@ export function OverviewTab({
             {metadata.description}
           </Paragraph>
         ) : (
-          <Paragraph data-size="sm" style={{ fontStyle: 'italic', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{ fontStyle: 'italic', color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
             {labels.noDescriptionMessage}
           </Paragraph>
         )}
@@ -515,7 +711,10 @@ export function OverviewTab({
                     {service.description && (
                       <Paragraph
                         data-size="xs"
-                        style={{ margin: 'var(--ds-spacing-1) 0 0 0', color: 'var(--ds-color-neutral-text-subtle)' }}
+                        style={{
+                          margin: 'var(--ds-spacing-1) 0 0 0',
+                          color: 'var(--ds-color-neutral-text-subtle)',
+                        }}
                       >
                         {service.description}
                       </Paragraph>
@@ -546,7 +745,11 @@ export function OverviewTab({
       {/* Included Equipment */}
       {metadata.includedEquipment && metadata.includedEquipment.length > 0 && (
         <section>
-          <Heading level={2} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={2}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             {labels.includedEquipmentHeading}
           </Heading>
           <div
@@ -582,7 +785,11 @@ export function OverviewTab({
       {/* Highlights */}
       {metadata.highlights && metadata.highlights.length > 0 && (
         <section>
-          <Heading level={2} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={2}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             {labels.highlightsHeading}
           </Heading>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-2)' }}>
@@ -609,19 +816,21 @@ export function OverviewTab({
       )}
 
       {/* Empty state if no content */}
-      {!metadata.description && (!metadata.amenities || metadata.amenities.length === 0) && !capacity && (
-        <div
-          style={{
-            textAlign: 'center',
-            padding: 'var(--ds-spacing-8)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-          }}
-        >
-          <Paragraph data-size="sm" style={{ margin: 0, fontStyle: 'italic' }}>
-            {labels.noInfoMessage}
-          </Paragraph>
-        </div>
-      )}
+      {!metadata.description &&
+        (!metadata.amenities || metadata.amenities.length === 0) &&
+        !capacity && (
+          <div
+            style={{
+              textAlign: 'center',
+              padding: 'var(--ds-spacing-8)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            <Paragraph data-size="sm" style={{ margin: 0, fontStyle: 'italic' }}>
+              {labels.noInfoMessage}
+            </Paragraph>
+          </div>
+        )}
     </div>
   );
 }

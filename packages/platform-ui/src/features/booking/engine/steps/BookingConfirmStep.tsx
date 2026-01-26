@@ -43,15 +43,19 @@ export function BookingConfirmStep({
   onSubmit,
 }: BookingConfirmStepProps): React.ReactElement {
   const selectedServiceNames = additionalServices
-    .filter(s => formData.additionalServices.includes(s.id))
-    .map(s => s.name);
+    .filter((s) => formData.additionalServices.includes(s.id))
+    .map((s) => s.name);
 
   return (
     <div className="confirm-view">
       <div className="confirm-grid">
         {/* Booking Summary */}
         <div className="confirm-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             Bookingsammendrag
           </Heading>
 
@@ -60,43 +64,73 @@ export function BookingConfirmStep({
               <img src={rentalObjectImage} alt={rentalObjectName} className="rental-object-image" />
             )}
             <div className="rental-object-info">
-              <Heading level={4} data-size="xs" style={{ margin: 0 }}>{rentalObjectName}</Heading>
+              <Heading level={4} data-size="xs" style={{ margin: 0 }}>
+                {rentalObjectName}
+              </Heading>
               {config.category && <span className="rental-object-type">{config.category}</span>}
             </div>
           </div>
 
           {/* Time Selection Summary */}
           <div className="confirm-card">
-            <Heading level={4} data-size="2xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-              <CalendarIcon size={16} style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }} />
+            <Heading
+              level={4}
+              data-size="2xs"
+              style={{
+                margin: 0,
+                marginBottom: 'var(--ds-spacing-3)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              <CalendarIcon
+                size={16}
+                style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }}
+              />
               Tid
             </Heading>
 
             {config.mode === 'slots' && selection.slots.length > 0 && (
               <div className="time-list">
-                {selection.slots.slice(0, 3).map(slot => (
+                {selection.slots.slice(0, 3).map((slot) => (
                   <div key={slot.id} className="time-item">
-                    <span>{new Date(slot.date).toLocaleDateString('nb-NO', { weekday: 'short', day: 'numeric', month: 'short' })}</span>
-                    <span>{slot.startTime} - {slot.endTime}</span>
+                    <span>
+                      {new Date(slot.date).toLocaleDateString('nb-NO', {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                      })}
+                    </span>
+                    <span>
+                      {slot.startTime} - {slot.endTime}
+                    </span>
                   </div>
                 ))}
                 {selection.slots.length > 3 && (
-                  <span className="more-times">+{selection.slots.length - 3} flere tidspunkter</span>
+                  <span className="more-times">
+                    +{selection.slots.length - 3} flere tidspunkter
+                  </span>
                 )}
               </div>
             )}
 
             {config.mode === 'dateRange' && selection.dateRange && (
               <div className="date-range-display">
-                <span>{new Date(selection.dateRange.start).toLocaleDateString('nb-NO')} - {new Date(selection.dateRange.end).toLocaleDateString('nb-NO')}</span>
+                <span>
+                  {new Date(selection.dateRange.start).toLocaleDateString('nb-NO')} -{' '}
+                  {new Date(selection.dateRange.end).toLocaleDateString('nb-NO')}
+                </span>
               </div>
             )}
 
             {config.mode === 'event' && selection.tickets && (
               <div className="tickets-display">
-                <span>{selection.tickets} billett{selection.tickets !== 1 ? 'er' : ''}</span>
+                <span>
+                  {selection.tickets} billett{selection.tickets !== 1 ? 'er' : ''}
+                </span>
                 {config.eventDate && (
-                  <span className="event-date">{new Date(config.eventDate).toLocaleDateString('nb-NO', { dateStyle: 'full' })}</span>
+                  <span className="event-date">
+                    {new Date(config.eventDate).toLocaleDateString('nb-NO', { dateStyle: 'full' })}
+                  </span>
                 )}
               </div>
             )}
@@ -104,12 +138,25 @@ export function BookingConfirmStep({
 
           {/* Contact Info Summary */}
           <div className="confirm-card">
-            <Heading level={4} data-size="2xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-              <UsersIcon size={16} style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }} />
+            <Heading
+              level={4}
+              data-size="2xs"
+              style={{
+                margin: 0,
+                marginBottom: 'var(--ds-spacing-3)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              <UsersIcon
+                size={16}
+                style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }}
+              />
               Kontakt
             </Heading>
             <div className="contact-summary">
-              <p><strong>{formData.name}</strong></p>
+              <p>
+                <strong>{formData.name}</strong>
+              </p>
               <p>{formData.email}</p>
               <p>{formData.phone}</p>
               {formData.organization && <p>{formData.organization}</p>}
@@ -118,8 +165,19 @@ export function BookingConfirmStep({
 
           {/* Booking Details Summary */}
           <div className="confirm-card">
-            <Heading level={4} data-size="2xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)', color: 'var(--ds-color-neutral-text-subtle)' }}>
-              <InfoIcon size={16} style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }} />
+            <Heading
+              level={4}
+              data-size="2xs"
+              style={{
+                margin: 0,
+                marginBottom: 'var(--ds-spacing-3)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              <InfoIcon
+                size={16}
+                style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }}
+              />
               Detaljer
             </Heading>
             <div className="details-summary">
@@ -149,15 +207,22 @@ export function BookingConfirmStep({
 
         {/* Price Summary */}
         <div className="confirm-section price-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             Pris
           </Heading>
 
           <div className="price-breakdown">
-            {priceCalculation.items.map(item => (
+            {priceCalculation.items.map((item) => (
               <div key={item.id} className={cn('price-row', item.type)}>
                 <span>{item.label}</span>
-                <span>{item.type === 'discount' ? '-' : ''}{formatPrice(item.total, priceCalculation.currency)}</span>
+                <span>
+                  {item.type === 'discount' ? '-' : ''}
+                  {formatPrice(item.total, priceCalculation.currency)}
+                </span>
               </div>
             ))}
 
@@ -180,8 +245,10 @@ export function BookingConfirmStep({
             <div>
               <strong>Avbestillingsregler</strong>
               <p>
-                {config.rules.cancellationPolicy === 'flexible' && 'Gratis avbestilling inntil 24 timer for.'}
-                {config.rules.cancellationPolicy === 'moderate' && `Gratis avbestilling inntil ${config.rules.freeCancellationHours} timer for.`}
+                {config.rules.cancellationPolicy === 'flexible' &&
+                  'Gratis avbestilling inntil 24 timer for.'}
+                {config.rules.cancellationPolicy === 'moderate' &&
+                  `Gratis avbestilling inntil ${config.rules.freeCancellationHours} timer for.`}
                 {config.rules.cancellationPolicy === 'strict' && 'Ingen refusjon ved avbestilling.'}
               </p>
             </div>
@@ -209,12 +276,24 @@ export function BookingConfirmStep({
           onClick={onSubmit}
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Sender booking...' : config.rules.requireApproval ? 'Send forespørsel' : 'Bekreft booking'}
+          {isSubmitting
+            ? 'Sender booking...'
+            : config.rules.requireApproval
+              ? 'Send forespørsel'
+              : 'Bekreft booking'}
         </Button>
       </div>
 
       {config.rules.requireApproval && (
-        <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-4)', textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <Paragraph
+          data-size="sm"
+          style={{
+            margin: 0,
+            marginTop: 'var(--ds-spacing-4)',
+            textAlign: 'center',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           Denne bookingen krever godkjenning. Du vil motta svar pa e-post.
         </Paragraph>
       )}

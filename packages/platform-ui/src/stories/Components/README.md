@@ -23,20 +23,21 @@ import { T } from '../components/MDXTranslation';
 ```
 
 **Props:**
+
 - `tKey` (required): Translation key (e.g., `'platform.common.save'` or `'storybook.demo.buttonDescription'`)
 - `children` (optional): Fallback text if translation is missing
 - `values` (optional): Interpolation values for template strings
 
 **Example with fallback:**
+
 ```mdx
-<T tKey="storybook.demo.buttonDescription">
-  Buttons allow users to take actions
-</T>
+<T tKey="storybook.demo.buttonDescription">Buttons allow users to take actions</T>
 ```
 
 **Example with interpolation:**
+
 ```mdx
-<T tKey="storybook.demo.welcomeMessage" values={{ name: "User" }}>
+<T tKey="storybook.demo.welcomeMessage" values={{ name: 'User' }}>
   Welcome, User!
 </T>
 ```
@@ -49,9 +50,8 @@ For more complex scenarios, you can use the `useT()` hook directly in JSX blocks
 import { useT } from '@xala-technologies/i18n';
 
 <script>
-  const t = useT();
-  const saveText = t('platform.common.save');
-  const cancelText = t('platform.common.cancel');
+  const t = useT(); const saveText = t('platform.common.save'); const cancelText =
+  t('platform.common.cancel');
 </script>
 
 <Button>{saveText}</Button>
@@ -83,6 +83,7 @@ import { useT } from '@xala-technologies/i18n';
 The locale can be changed using the Storybook toolbar (globe icon). The MDX content will automatically update to show translations in the selected language.
 
 Supported locales:
+
 - `nb` - Norwegian Bokmål (default)
 - `en` - English
 - `ar` - Arabic (RTL) - falls back to English translations

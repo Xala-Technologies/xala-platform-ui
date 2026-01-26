@@ -7,6 +7,7 @@ The calendar feature has been refactored from smart components with SDK dependen
 **Refactoring Date:** 2026-01-26
 
 **Components Refactored:** 5 files
+
 - CalendarSection.tsx
 - ConflictIndicator.tsx
 - EventDrawer.tsx
@@ -18,12 +19,14 @@ The calendar feature has been refactored from smart components with SDK dependen
 ### 1. Removed Forbidden Imports
 
 **Before:**
+
 ```typescript
 import { useT } from '@xala-technologies/platform/i18n';
 import { useCalendarConfig, useAvailabilityMatrix } from '@digilist/client-sdk/hooks';
 ```
 
 **After:**
+
 ```typescript
 // No forbidden imports - pure presentational component
 ```
@@ -33,6 +36,7 @@ import { useCalendarConfig, useAvailabilityMatrix } from '@digilist/client-sdk/h
 Each component now accepts a `labels` prop for all UI text:
 
 #### CalendarSection
+
 ```typescript
 export interface CalendarSectionLabels {
   selectTime?: string;
@@ -50,6 +54,7 @@ export interface CalendarSectionLabels {
 ```
 
 #### ConflictIndicator
+
 ```typescript
 export interface ConflictIndicatorLabels {
   booking?: string;
@@ -64,6 +69,7 @@ export interface ConflictIndicatorLabels {
 ```
 
 #### EventDrawer
+
 ```typescript
 export interface EventDrawerLabels {
   booking?: string;
@@ -98,6 +104,7 @@ export interface EventDrawerLabels {
 ```
 
 #### TimelineView
+
 ```typescript
 export interface TimelineViewLabels {
   booking?: string;
@@ -124,6 +131,7 @@ export interface EventDrawerProps {
 ```
 
 **Usage:**
+
 ```typescript
 // In connected wrapper
 <EventDrawer
@@ -159,6 +167,7 @@ const DEFAULT_LABELS: CalendarSectionLabels = {
 ## Connected Wrapper Pattern
 
 The `CalendarSectionConnected` component remains as a convenience wrapper that:
+
 1. Uses SDK hooks (`useCalendarConfig`, `useAvailabilityMatrix`, `useCalendarRealtime`)
 2. Manages date navigation state
 3. Handles realtime updates

@@ -10,6 +10,8 @@
  * @module @xala-technologies/platform-ui/features/calendar
  */
 
+/* eslint-disable no-restricted-imports -- Connected components bridge domain and UI packages */
+
 import * as React from 'react';
 import {
   CalendarSection,

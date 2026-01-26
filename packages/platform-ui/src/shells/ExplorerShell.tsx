@@ -80,7 +80,12 @@ export function ExplorerShell({
         }}
       >
         <Card.Block>
-          <Stack direction="horizontal" gap="var(--ds-spacing-4)" align="center" justify="space-between">
+          <Stack
+            direction="horizontal"
+            gap="var(--ds-spacing-4)"
+            align="center"
+            justify="space-between"
+          >
             <Stack direction="horizontal" gap="var(--ds-spacing-4)" align="center">
               {backAction}
               {icon && (
@@ -103,7 +108,10 @@ export function ExplorerShell({
                   {title}
                 </Heading>
                 {subtitle && (
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
                     {subtitle}
                   </Paragraph>
                 )}
@@ -208,7 +216,12 @@ export function ExplorerPanel({
           }}
         >
           <Card.Block>
-            <Stack direction="horizontal" gap="var(--ds-spacing-4)" align="center" justify="space-between">
+            <Stack
+              direction="horizontal"
+              gap="var(--ds-spacing-4)"
+              align="center"
+              justify="space-between"
+            >
               <Stack direction="vertical" gap="0">
                 {title && (
                   <Heading level={2} data-size="xs" style={{ margin: 0 }}>
@@ -216,7 +229,10 @@ export function ExplorerPanel({
                   </Heading>
                 )}
                 {subtitle && (
-                  <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  <Paragraph
+                    data-size="xs"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
                     {subtitle}
                   </Paragraph>
                 )}

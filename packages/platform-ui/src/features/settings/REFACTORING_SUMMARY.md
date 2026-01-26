@@ -135,6 +135,7 @@ These files are **pure presentational components** in `/features/settings/tenant
 ### 1. Removed Forbidden Dependencies from Tenant Tabs
 
 **Before (GeneralTab.tsx):**
+
 ```typescript
 import { useT } from '@xala-technologies/platform/i18n';
 
@@ -155,6 +156,7 @@ export function GeneralTab({ data, onSave }: GeneralTabProps) {
 ```
 
 **After (GeneralTab.tsx):**
+
 ```typescript
 export interface GeneralTabLabels {
   title: string;
@@ -196,6 +198,7 @@ Each tenant tab now has a complete labels interface:
 ### 3. Updated IntegrationRow Subcomponent
 
 **Before:**
+
 ```typescript
 function IntegrationRow({ title, description, enabled, onToggle }) {
   const t = useT();
@@ -212,6 +215,7 @@ function IntegrationRow({ title, description, enabled, onToggle }) {
 ```
 
 **After:**
+
 ```typescript
 interface IntegrationRowProps {
   title: string;
@@ -445,6 +449,7 @@ The following tenant tabs are **pure presentational**:
 ### ✅ All Designsystemet Components
 
 All tenant tabs use Designsystemet primitives:
+
 - `Card` for containers
 - `Heading`, `Paragraph` for text content
 - `Stack` for layout
@@ -739,6 +744,7 @@ const labels: GeneralTabLabels = {
 **TODO:** Create comprehensive Storybook stories demonstrating:
 
 **GeneralTab.stories.tsx:**
+
 - Default state
 - Saving state
 - All locale options
@@ -748,6 +754,7 @@ const labels: GeneralTabLabels = {
 - Interactive example
 
 **BrandingTab.stories.tsx:**
+
 - Default state
 - With logo preview
 - Color picker integration
@@ -755,6 +762,7 @@ const labels: GeneralTabLabels = {
 - Interactive example
 
 **BookingTab.stories.tsx:**
+
 - Auto-confirm enabled
 - Approval required
 - Cancellation enabled/disabled
@@ -762,6 +770,7 @@ const labels: GeneralTabLabels = {
 - Interactive example
 
 **IntegrationsTab.stories.tsx:**
+
 - All integrations enabled
 - All integrations disabled
 - Mixed state

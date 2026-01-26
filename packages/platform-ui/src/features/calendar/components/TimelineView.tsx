@@ -11,7 +11,11 @@ import * as React from 'react';
 import { useMemo } from 'react';
 import { Paragraph, Spinner } from '@xala-technologies/platform-ui';
 
-import { ConflictIndicator, getConflictColors, type ConflictIndicatorLabels } from './ConflictIndicator';
+import {
+  ConflictIndicator,
+  getConflictColors,
+  type ConflictIndicatorLabels,
+} from './ConflictIndicator';
 import type { CalendarEvent, RentalObject, ConflictInfo } from '../types';
 
 // =============================================================================
@@ -219,7 +223,9 @@ export function TimelineView({
           cursor: 'pointer',
           transition: 'transform 0.1s ease, box-shadow 0.1s ease',
           zIndex: eventHasConflict ? 3 : 2,
-          boxShadow: eventHasConflict ? '0 0 0 1px var(--ds-color-danger-border-default)' : undefined,
+          boxShadow: eventHasConflict
+            ? '0 0 0 1px var(--ds-color-danger-border-default)'
+            : undefined,
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'scale(1.02)';
@@ -307,9 +313,17 @@ export function TimelineView({
   }
 
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}
+    >
       {/* Time axis header */}
-      <div style={{ display: 'flex', borderBottom: '2px solid var(--ds-color-neutral-border-default)' }}>
+      <div
+        style={{
+          display: 'flex',
+          borderBottom: '2px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
         {/* Resource label column */}
         <div
           style={{
@@ -361,7 +375,9 @@ export function TimelineView({
               style={{
                 display: 'flex',
                 borderBottom:
-                  index < listings.length - 1 ? '1px solid var(--ds-color-neutral-border-subtle)' : undefined,
+                  index < listings.length - 1
+                    ? '1px solid var(--ds-color-neutral-border-subtle)'
+                    : undefined,
                 minHeight: '80px',
                 position: 'relative',
               }}

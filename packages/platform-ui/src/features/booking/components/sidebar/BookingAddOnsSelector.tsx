@@ -123,7 +123,6 @@ export function BookingAddOnsSelector({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   // Don't render if no add-ons available
   if (!addOns || addOns.length === 0) {
     return null;

@@ -271,21 +271,21 @@ pnpm verify:design-tokens
 
 ## Compliance Summary
 
-| Requirement | Status |
-|------------|--------|
-| No SDK imports in pure components | ✅ |
-| No i18n imports in pure components | ✅ |
-| No router imports in pure components | ✅ |
-| All text via props | ✅ |
-| All actions via callbacks | ✅ |
-| All data via props | ✅ |
-| Use Designsystemet components | ✅ |
-| ViewModel pattern | ✅ |
-| TypeScript documentation | ✅ |
-| Storybook stories | ✅ |
-| Connected wrapper examples | ✅ |
-| Migration guide | ✅ |
-| Backwards compatibility | ✅ |
+| Requirement                          | Status |
+| ------------------------------------ | ------ |
+| No SDK imports in pure components    | ✅     |
+| No i18n imports in pure components   | ✅     |
+| No router imports in pure components | ✅     |
+| All text via props                   | ✅     |
+| All actions via callbacks            | ✅     |
+| All data via props                   | ✅     |
+| Use Designsystemet components        | ✅     |
+| ViewModel pattern                    | ✅     |
+| TypeScript documentation             | ✅     |
+| Storybook stories                    | ✅     |
+| Connected wrapper examples           | ✅     |
+| Migration guide                      | ✅     |
+| Backwards compatibility              | ✅     |
 
 ---
 

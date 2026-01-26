@@ -1,12 +1,12 @@
 /**
  * Translation component for MDX files
- * 
+ *
  * Allows MDX documentation to use translations from @xala-technologies/i18n-platform
- * 
+ *
  * @example
  * ```mdx
  * import { T } from './components/MDXTranslation';
- * 
+ *
  * <T tKey="platform.common.save" />
  * <T tKey="storybook.demo.buttonDescription">Button allows users to take actions</T>
  * ```
@@ -25,17 +25,17 @@ export interface TProps {
 
 /**
  * Translation component for MDX files
- * 
+ *
  * Usage in MDX:
  * ```mdx
  * import { T } from './components/MDXTranslation';
- * 
+ *
  * <T tKey="platform.common.save" />
  * ```
  */
 export function T({ tKey, children, values }: TProps): React.ReactElement {
   const t = useT();
-  
+
   try {
     const translated = t(tKey, values);
     // If translation returns the key itself (missing translation), use fallback
@@ -54,11 +54,11 @@ export function T({ tKey, children, values }: TProps): React.ReactElement {
 
 /**
  * Translation hook for use in MDX JSX blocks
- * 
+ *
  * @example
  * ```mdx
  * import { useT } from '@xala-technologies/i18n';
- * 
+ *
  * <script>
  *   const t = useT();
  *   const saveText = t('platform.common.save');

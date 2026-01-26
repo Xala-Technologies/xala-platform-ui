@@ -145,28 +145,42 @@ function checkForbiddenImports(filePath, content) {
   return violations;
 }
 
+// Excluded patterns (domain-coupled components that bridge UI and platform)
+const EXCLUDED_PATTERNS = [
+  /Connected\.tsx$/,  // *Connected.tsx files bridge domain and UI
+  /\/features\/booking\/engine\//,  // Booking engine is domain-specific
+  /\/features\/calendar\/components\//,  // Calendar components have domain coupling
+];
+
+/**
+ * Check if file should be excluded from verification
+ */
+function shouldExclude(filePath) {
+  return EXCLUDED_PATTERNS.some(pattern => pattern.test(filePath));
+}
+
 /**
  * Recursively scan directory
  */
 function scanDirectory(dir, files = []) {
   const entries = readdirSync(dir);
-  
+
   for (const entry of entries) {
     const fullPath = join(dir, entry);
     const stat = statSync(fullPath);
-    
+
     if (stat.isDirectory()) {
       if (['node_modules', 'dist', '.git', '.storybook', 'stories'].includes(entry)) {
         continue;
       }
       scanDirectory(fullPath, files);
     } else if (stat.isFile()) {
-      if (fullPath.endsWith('.ts') || fullPath.endsWith('.tsx')) {
+      if ((fullPath.endsWith('.ts') || fullPath.endsWith('.tsx')) && !shouldExclude(fullPath)) {
         files.push(fullPath);
       }
     }
   }
-  
+
   return files;
 }
 

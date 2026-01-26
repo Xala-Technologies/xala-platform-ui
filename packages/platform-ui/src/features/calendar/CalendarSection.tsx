@@ -343,9 +343,7 @@ export function CalendarSection({
     if (legend) {
       return legend.map((item) => ({
         status: item.status,
-        label: item.labelKey.includes('.')
-          ? item.labelKey.split('.').pop()!
-          : item.labelKey,
+        label: item.labelKey.includes('.') ? item.labelKey.split('.').pop()! : item.labelKey,
       }));
     }
 
@@ -426,14 +424,16 @@ export function CalendarSection({
 
   // Compute title and subtitle
   const effectiveTitle = title ?? effectiveLabels.selectTime ?? 'Velg tidspunkt';
-  const effectiveSubtitle = subtitle ?? (() => {
-    const subtitles: Record<string, string> = {
-      TIME_SLOTS: effectiveLabels.selectTimeSlots ?? 'Velg tidspunkt',
-      ALL_DAY: effectiveLabels.selectDays ?? 'Velg dag(er)',
-      MULTI_DAY: effectiveLabels.selectPeriod ?? 'Velg periode',
-    };
-    return subtitles[calendarMode] ?? subtitles.TIME_SLOTS;
-  })();
+  const effectiveSubtitle =
+    subtitle ??
+    (() => {
+      const subtitles: Record<string, string> = {
+        TIME_SLOTS: effectiveLabels.selectTimeSlots ?? 'Velg tidspunkt',
+        ALL_DAY: effectiveLabels.selectDays ?? 'Velg dag(er)',
+        MULTI_DAY: effectiveLabels.selectPeriod ?? 'Velg periode',
+      };
+      return subtitles[calendarMode] ?? subtitles.TIME_SLOTS;
+    })();
 
   // Empty state if no config and not loading
   if (!isLoading && !config && !errorMessage) {

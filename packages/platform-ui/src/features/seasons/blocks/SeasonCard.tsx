@@ -27,7 +27,14 @@
  * />
  * ```
  */
-import { Card, Heading, Paragraph, Button, Tag, Stack } from '@xala-technologies/platform-ui/primitives';
+import {
+  Card,
+  Heading,
+  Paragraph,
+  Button,
+  Tag,
+  Stack,
+} from '@xala-technologies/platform-ui/primitives';
 
 // =============================================================================
 // Types

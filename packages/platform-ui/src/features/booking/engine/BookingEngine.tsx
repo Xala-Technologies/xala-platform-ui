@@ -8,26 +8,229 @@
  * mode view components and step components for better maintainability.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert, Card, Stack } from '@digdir/designsystemet-react';
-import {
-  CalendarIcon,
-  ClockIcon,
-  CheckIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CloseIcon,
-} from '@digdir/designsystemet-react';
-import type {
-  BookingConfig,
-  BookingSelection,
-  BookingFormData,
-  BookingPriceCalculation,
-  AvailabilitySlot,
-  DayAvailability,
-  PriceItem,
-  AdditionalService,
-} from '@digilist/contracts';
-import { getBookingSteps } from '@digilist/contracts';
+import { Heading, Paragraph, Button, Alert, Card } from '@digdir/designsystemet-react';
+import { Stack } from '../../../primitives/stack';
+
+// =============================================================================
+// Icons - Local SVG versions (designsystemet-react doesn't export these)
+// =============================================================================
+
+function CalendarIcon({ size = 20 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
+function ClockIcon({ size = 20 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+}
+
+function CheckIcon({ size = 20 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
+function ChevronLeftIcon({ size = 20 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon({ size = 20 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  );
+}
+
+function CloseIcon({ size = 20 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  );
+}
+
+// =============================================================================
+// Types - Local definitions (platform-ui should not depend on @digilist/contracts)
+// =============================================================================
+
+export type BookingMode =
+  | 'SLOT'
+  | 'DAILY'
+  | 'HOURLY'
+  | 'DATE_RANGE'
+  | 'EVENT'
+  | 'RECURRING'
+  | 'INSTANT';
+
+export interface BookingConfig {
+  mode: BookingMode;
+  minDuration?: number;
+  maxDuration?: number;
+  leadTime?: number;
+  cancellationPolicy?: string;
+  requiresApproval?: boolean;
+  allowRecurring?: boolean;
+  maxRecurringWeeks?: number;
+  pricePerHour?: number;
+  pricePerDay?: number;
+  currency?: string;
+}
+
+export interface BookingSelection {
+  date?: string;
+  startDate?: string;
+  endDate?: string;
+  startTime?: string;
+  endTime?: string;
+  slots?: string[];
+  recurring?: {
+    frequency: 'weekly' | 'biweekly' | 'monthly';
+    endDate: string;
+  };
+}
+
+export interface BookingFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  organization?: string;
+  purpose?: string;
+  notes?: string;
+  additionalServices?: string[];
+}
+
+export interface BookingPriceCalculation {
+  basePrice: number;
+  additionalServicesPrice: number;
+  discounts: number;
+  total: number;
+  currency: string;
+  breakdown: PriceItem[];
+}
+
+export interface AvailabilitySlot {
+  id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  status: 'available' | 'booked' | 'blocked';
+  price?: number;
+}
+
+export interface DayAvailability {
+  date: string;
+  status: 'available' | 'partially_available' | 'unavailable';
+  slots?: AvailabilitySlot[];
+}
+
+export interface PriceItem {
+  label: string;
+  amount: number;
+  type: 'base' | 'addon' | 'discount' | 'tax';
+}
+
+export interface AdditionalService {
+  id: string;
+  name: string;
+  description?: string;
+  price: number;
+  currency?: string;
+}
+
+export interface BookingStep {
+  id: string;
+  label: string;
+  icon?: string;
+}
+
+// Helper function to get booking steps based on config
+function getBookingSteps(config: BookingConfig): BookingStep[] {
+  const steps: BookingStep[] = [
+    { id: 'select', label: 'Select Time', icon: 'calendar' },
+    { id: 'form', label: 'Your Details', icon: 'form' },
+  ];
+
+  if (config.requiresApproval) {
+    steps.push({ id: 'confirm', label: 'Review', icon: 'confirm' });
+  }
+
+  steps.push({ id: 'success', label: 'Confirmation', icon: 'success' });
+
+  return steps;
+}
 
 // Import extracted utilities
 import { getModeLabel, getModeDescription, formatPrice, formatPriceUnit, cn } from './utils';
@@ -147,7 +350,7 @@ export function BookingEngine({
 
     // Base price calculation
     if (config.mode === 'slots' && selection.slots.length > 0) {
-      const hours = selection.slots.length * (config.slotDurationMinutes || 60) / 60;
+      const hours = (selection.slots.length * (config.slotDurationMinutes || 60)) / 60;
       const baseTotal = hours * config.pricing.basePrice;
       items.push({
         id: 'base',
@@ -170,9 +373,11 @@ export function BookingEngine({
       });
       subtotal += ticketTotal;
     } else if (config.mode === 'dateRange' && selection.dateRange) {
-      const days = Math.ceil(
-        (selection.dateRange.end.getTime() - selection.dateRange.start.getTime()) / (1000 * 60 * 60 * 24)
-      ) + 1;
+      const days =
+        Math.ceil(
+          (selection.dateRange.end.getTime() - selection.dateRange.start.getTime()) /
+            (1000 * 60 * 60 * 24)
+        ) + 1;
       const rangeTotal = days * config.pricing.basePrice;
       items.push({
         id: 'range',
@@ -186,8 +391,8 @@ export function BookingEngine({
     }
 
     // Additional services
-    formData.additionalServices?.forEach(serviceId => {
-      const service = additionalServices.find(s => s.id === serviceId);
+    formData.additionalServices?.forEach((serviceId: string) => {
+      const service = additionalServices.find((s: AdditionalService) => s.id === serviceId);
       if (service) {
         items.push({
           id: service.id,
@@ -247,10 +452,10 @@ export function BookingEngine({
   const handleSlotClick = (slot: AvailabilitySlot) => {
     if (slot.status !== 'available' && slot.status !== 'selected') return;
 
-    setSelection(prev => {
-      const isSelected = prev.slots.some(s => s.id === slot.id);
+    setSelection((prev: BookingSelection) => {
+      const isSelected = prev.slots.some((s: AvailabilitySlot) => s.id === slot.id);
       const newSlots = isSelected
-        ? prev.slots.filter(s => s.id !== slot.id)
+        ? prev.slots.filter((s: AvailabilitySlot) => s.id !== slot.id)
         : [...prev.slots, { ...slot, status: 'selected' as const }];
 
       const newSelection = { ...prev, slots: newSlots };
@@ -261,7 +466,7 @@ export function BookingEngine({
 
   // Handle week navigation
   const handleWeekChange = (direction: 'prev' | 'next') => {
-    setCalendarDate(prev => {
+    setCalendarDate((prev: Date) => {
       const newDate = new Date(prev);
       newDate.setDate(newDate.getDate() + (direction === 'next' ? 7 : -7));
       return newDate;
@@ -270,7 +475,7 @@ export function BookingEngine({
 
   // Handle month navigation
   const handleMonthChange = (direction: 'prev' | 'next') => {
-    setCalendarDate(prev => {
+    setCalendarDate((prev: Date) => {
       const newDate = new Date(prev);
       newDate.setMonth(newDate.getMonth() + (direction === 'next' ? 1 : -1));
       return newDate;
@@ -279,16 +484,16 @@ export function BookingEngine({
 
   // Handle day selection (for daily mode)
   const handleDaySelect = (date: Date) => {
-    setSelection(prev => {
+    setSelection((prev: BookingSelection) => {
       // Check if date is already selected
       const isSelected = prev.slots.some(
-        s => new Date(s.date).toDateString() === date.toDateString()
+        (s: AvailabilitySlot) => new Date(s.date).toDateString() === date.toDateString()
       );
 
       let newSlots: AvailabilitySlot[];
       if (isSelected) {
         newSlots = prev.slots.filter(
-          s => new Date(s.date).toDateString() !== date.toDateString()
+          (s: AvailabilitySlot) => new Date(s.date).toDateString() !== date.toDateString()
         );
       } else {
         newSlots = [
@@ -311,7 +516,7 @@ export function BookingEngine({
 
   // Handle date range selection
   const handleDateRangeSelect = (start: Date, end: Date | null) => {
-    setSelection(prev => {
+    setSelection((prev: BookingSelection) => {
       const newSelection: BookingSelection = {
         slots: [], // Clear slots for range mode
       };
@@ -331,7 +536,7 @@ export function BookingEngine({
 
   // Handle ticket change (for event mode)
   const handleTicketChange = (tickets: number) => {
-    setSelection(prev => {
+    setSelection((prev: BookingSelection) => {
       const newSelection = { ...prev, tickets };
       onSelectionChange?.(newSelection);
       return newSelection;
@@ -340,7 +545,7 @@ export function BookingEngine({
 
   // Handle recurring pattern change
   const handleRecurringChange = (pattern: BookingSelection['recurring']) => {
-    setSelection(prev => {
+    setSelection((prev: BookingSelection) => {
       const newSelection: BookingSelection = {
         slots: prev.slots,
       };
@@ -360,7 +565,7 @@ export function BookingEngine({
 
   // Handle form data change
   const handleFormChange = (field: keyof BookingFormData, value: unknown) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev: Partial<BookingFormData>) => ({ ...prev, [field]: value }));
   };
 
   // Get week dates
@@ -377,7 +582,7 @@ export function BookingEngine({
   // Group slots by date
   const slotsByDate = React.useMemo(() => {
     const grouped = new Map<string, AvailabilitySlot[]>();
-    availableSlots.forEach(slot => {
+    availableSlots.forEach((slot) => {
       const dateKey = new Date(slot.date).toDateString();
       const existing = grouped.get(dateKey) || [];
       grouped.set(dateKey, [...existing, slot]);
@@ -401,7 +606,7 @@ export function BookingEngine({
 
   // Is slot selected
   const isSlotSelected = (slot: AvailabilitySlot) => {
-    return selection.slots.some(s => s.id === slot.id);
+    return selection.slots.some((s) => s.id === slot.id);
   };
 
   // Can continue to next step
@@ -474,16 +679,31 @@ export function BookingEngine({
             <Heading level={2} data-size="lg" style={{ margin: 0 }}>
               {rentalObjectName}
             </Heading>
-            <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginTop: 'var(--ds-spacing-1)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {getModeDescription(config.mode)}
             </Paragraph>
           </div>
           <Stack className="header-price" spacing="1">
-            <Paragraph data-size="xs" data-color="subtle" className="price-from">fra</Paragraph>
-            <Paragraph data-size="lg" className="price-amount" style={{ fontWeight: 'var(--ds-font-weight-bold)' }}>
+            <Paragraph data-size="xs" data-color="subtle" className="price-from">
+              fra
+            </Paragraph>
+            <Paragraph
+              data-size="lg"
+              className="price-amount"
+              style={{ fontWeight: 'var(--ds-font-weight-bold)' }}
+            >
               {formatPrice(config.pricing.basePrice, config.pricing.currency)}
             </Paragraph>
-            <Paragraph data-size="xs" data-color="subtle" className="price-unit">/{formatPriceUnit(config.pricing.unit)}</Paragraph>
+            <Paragraph data-size="xs" data-color="subtle" className="price-unit">
+              /{formatPriceUnit(config.pricing.unit)}
+            </Paragraph>
           </Stack>
         </div>
 
@@ -542,11 +762,21 @@ export function BookingEngine({
                     </Heading>
                   </div>
                   <div className="calendar-navigation">
-                    <button type="button" className="nav-button" onClick={() => handleWeekChange('prev')} aria-label="Forrige uke">
+                    <button
+                      type="button"
+                      className="nav-button"
+                      onClick={() => handleWeekChange('prev')}
+                      aria-label="Forrige uke"
+                    >
                       <ChevronLeftIcon size={20} />
                     </button>
                     <span className="nav-date">{formatDateRange(calendarDate)}</span>
-                    <button type="button" className="nav-button" onClick={() => handleWeekChange('next')} aria-label="Neste uke">
+                    <button
+                      type="button"
+                      className="nav-button"
+                      onClick={() => handleWeekChange('next')}
+                      aria-label="Neste uke"
+                    >
                       <ChevronRightIcon size={20} />
                     </button>
                   </div>
@@ -581,7 +811,7 @@ export function BookingEngine({
                           {weekDates.map((date, dayIndex) => {
                             const dateKey = date.toDateString();
                             const daySlots = slotsByDate.get(dateKey) || [];
-                            const slot = daySlots.find(s => s.startTime === timeStr);
+                            const slot = daySlots.find((s) => s.startTime === timeStr);
 
                             if (!slot) {
                               return <div key={dayIndex} className="slot-cell unavailable" />;
@@ -644,7 +874,14 @@ export function BookingEngine({
                     <div className="empty-illustration">
                       <CalendarIcon size={40} />
                     </div>
-                    <Paragraph data-size="sm" style={{ margin: 0, textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                    <Paragraph
+                      data-size="sm"
+                      style={{
+                        margin: 0,
+                        textAlign: 'center',
+                        color: 'var(--ds-color-neutral-text-subtle)',
+                      }}
+                    >
                       Velg tidspunkter fra kalenderen for a starte bookingen
                     </Paragraph>
                   </div>
@@ -686,7 +923,7 @@ export function BookingEngine({
 
                     {/* Price Summary */}
                     <div className="price-summary">
-                      {priceCalculation.items.map(item => (
+                      {priceCalculation.items.map((item) => (
                         <div key={item.id} className={cn('price-row', item.type)}>
                           <span className="price-label">{item.label}</span>
                           <span className="price-value">
@@ -698,12 +935,16 @@ export function BookingEngine({
                       {priceCalculation.vat > 0 && (
                         <div className="price-row vat">
                           <span className="price-label">MVA ({config.pricing.vatPercentage}%)</span>
-                          <span className="price-value">{formatPrice(priceCalculation.vat, priceCalculation.currency)}</span>
+                          <span className="price-value">
+                            {formatPrice(priceCalculation.vat, priceCalculation.currency)}
+                          </span>
                         </div>
                       )}
                       <div className="price-row total">
                         <span className="price-label">Totalt</span>
-                        <span className="price-value">{formatPrice(priceCalculation.total, priceCalculation.currency)}</span>
+                        <span className="price-value">
+                          {formatPrice(priceCalculation.total, priceCalculation.currency)}
+                        </span>
                       </div>
                     </div>
 
@@ -845,7 +1086,15 @@ export function BookingEngine({
               <Heading level={2} data-size="lg" style={{ margin: 0, textAlign: 'center' }}>
                 Booking sendt!
               </Heading>
-              <Paragraph data-size="md" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="md"
+                style={{
+                  margin: 0,
+                  marginTop: 'var(--ds-spacing-2)',
+                  textAlign: 'center',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 Du vil motta en bekreftelse pa e-post.
               </Paragraph>
             </div>

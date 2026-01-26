@@ -1,1 +1,6 @@
-export { CalendarSection, type CalendarSectionProps, type CalendarSectionLabels, type QuoteData } from './CalendarSection';
+export {
+  CalendarSection,
+  type CalendarSectionProps,
+  type CalendarSectionLabels,
+  type QuoteData,
+} from './CalendarSection';

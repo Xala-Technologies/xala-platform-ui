@@ -70,7 +70,10 @@ export interface GeneralTabProps {
   /** Whether save is in progress */
   isSaving?: boolean;
   /** Handler for field updates */
-  onFieldChange: <K extends keyof GeneralSettingsData>(field: K, value: GeneralSettingsData[K]) => void;
+  onFieldChange: <K extends keyof GeneralSettingsData>(
+    field: K,
+    value: GeneralSettingsData[K]
+  ) => void;
   /** Handler for saving settings */
   onSave: () => void;
 }
@@ -100,7 +103,13 @@ export function GeneralTab({
 
         <Stack spacing={4}>
           <FormField label={labels.systemName}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.systemNameDescription}
             </Paragraph>
             <Textfield
@@ -144,7 +153,9 @@ export function GeneralTab({
             </Select>
           </FormField>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-3)' }}>
+          <div
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-3)' }}
+          >
             <FormField label={labels.dateFormat}>
               <Select
                 value={data.dateFormat}

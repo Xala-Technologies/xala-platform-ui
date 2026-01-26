@@ -18,7 +18,7 @@ export interface PriceSummaryProps {
 export function PriceSummary({ priceCalculation }: PriceSummaryProps): React.ReactElement {
   return (
     <div className="price-summary">
-      {priceCalculation.items.map(item => (
+      {priceCalculation.items.map((item) => (
         <div key={item.id} className={cn('price-row', item.type)}>
           <span className="price-label">{item.label}</span>
           <span className="price-value">
@@ -30,12 +30,16 @@ export function PriceSummary({ priceCalculation }: PriceSummaryProps): React.Rea
       {priceCalculation.vat > 0 && (
         <div className="price-row vat">
           <span className="price-label">MVA</span>
-          <span className="price-value">{formatPrice(priceCalculation.vat, priceCalculation.currency)}</span>
+          <span className="price-value">
+            {formatPrice(priceCalculation.vat, priceCalculation.currency)}
+          </span>
         </div>
       )}
       <div className="price-row total">
         <span className="price-label">Totalt</span>
-        <span className="price-value">{formatPrice(priceCalculation.total, priceCalculation.currency)}</span>
+        <span className="price-value">
+          {formatPrice(priceCalculation.total, priceCalculation.currency)}
+        </span>
       </div>
     </div>
   );

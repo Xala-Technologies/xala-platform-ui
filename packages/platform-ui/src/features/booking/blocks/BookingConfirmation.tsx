@@ -5,16 +5,43 @@
  * Shows summary of all booking details for user confirmation.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert, Stack, Card } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button, Alert } from '@digdir/designsystemet-react';
 import {
   CalendarIcon,
   UsersIcon,
   MailIcon,
   PhoneIcon,
-  CheckCircleIcon,
+  CheckCircle2Icon,
   ChevronLeftIcon,
-} from '@xala-technologies/platform-ui';
-import type { BookingDetails, AdditionalService } from '@digilist/contracts';
+} from 'lucide-react';
+import { Stack } from '../../../primitives/stack';
+
+/**
+ * Booking details interface (platform-ui local definition)
+ */
+export interface BookingDetails {
+  email: string;
+  phone?: string;
+  name?: string;
+  purpose?: string;
+  notes?: string;
+  organization?: string;
+  numberOfPeople?: number;
+  showPurposeInCalendar?: boolean;
+  bookMultipleDays?: boolean;
+  acceptedTerms?: boolean;
+}
+
+/**
+ * Additional service interface (platform-ui local definition)
+ */
+export interface AdditionalService {
+  id: string;
+  name: string;
+  price: number;
+  currency?: string;
+  description?: string;
+}
 
 // Utility function for class name concatenation
 function cn(...classes: (string | undefined | false)[]): string {
@@ -76,7 +103,7 @@ function formatTimeSlots(slots: TimeSlot[]): string[] {
 
   // Group by date
   const byDate = new Map<string, TimeSlot[]>();
-  slots.forEach(slot => {
+  slots.forEach((slot) => {
     const dateKey = new Date(slot.date).toDateString();
     const existing = byDate.get(dateKey) || [];
     byDate.set(dateKey, [...existing, slot]);
@@ -122,16 +149,16 @@ export function BookingConfirmation({
   // Calculate totals
   const hoursBooked = selectedSlots.length;
   const baseTotal = (basePrice || 0) * hoursBooked;
-  const selectedServiceDetails = availableServices.filter(s => selectedServices.includes(s.id));
+  const selectedServiceDetails = availableServices.filter((s) => selectedServices.includes(s.id));
   const servicesTotal = selectedServiceDetails.reduce((sum, s) => sum + s.price, 0);
   const totalPrice = baseTotal + servicesTotal;
 
   const formattedSlots = formatTimeSlots(selectedSlots);
 
   return (
-    <Stack className={cn('booking-confirmation', className)} spacing="5">
+    <Stack className={cn('booking-confirmation', className)} gap="var(--ds-spacing-5)">
       {/* Header */}
-      <Stack spacing="2">
+      <Stack gap="var(--ds-spacing-2)">
         <Heading level={2} data-size="md">
           Bekreft din booking
         </Heading>
@@ -141,7 +168,7 @@ export function BookingConfirmation({
       </Stack>
 
       {/* Booking Summary Cards */}
-      <Stack spacing="4">
+      <Stack gap="var(--ds-spacing-4)">
         {/* Venue & Time Card */}
         <div
           style={{
@@ -151,27 +178,60 @@ export function BookingConfirmation({
             border: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
-          <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)', display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{
+              margin: 0,
+              marginBottom: 'var(--ds-spacing-4)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-2)',
+            }}
+          >
             <CalendarIcon size={18} style={{ color: 'var(--ds-color-accent-base-default)' }} />
             Lokale og tidspunkt
           </Heading>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <div>
-              <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: 0,
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                }}
+              >
                 Lokale
               </Paragraph>
-              <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+              >
                 {rentalObjectName}
               </Paragraph>
             </div>
 
             <div>
-              <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: 0,
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                }}
+              >
                 Tidspunkt
               </Paragraph>
               {formattedSlots.map((slot, i) => (
-                <Paragraph key={i} data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+                <Paragraph
+                  key={i}
+                  data-size="sm"
+                  style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+                >
                   {slot}
                 </Paragraph>
               ))}
@@ -179,19 +239,47 @@ export function BookingConfirmation({
 
             <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)' }}>
               <div>
-                <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    margin: 0,
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
                   Antall personer
                 </Paragraph>
-                <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)', display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{
+                    margin: 0,
+                    fontWeight: 'var(--ds-font-weight-medium)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-1)',
+                  }}
+                >
                   <UsersIcon size={14} />
                   {bookingDetails.numberOfPeople || 1}
                 </Paragraph>
               </div>
               <div>
-                <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    margin: 0,
+                    color: 'var(--ds-color-neutral-text-subtle)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
                   Aktivitet
                 </Paragraph>
-                <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+                >
                   {activityTypeLabels['meeting']}
                 </Paragraph>
               </div>
@@ -208,14 +296,28 @@ export function BookingConfirmation({
             border: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
-          <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+          >
             Formal
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+          >
             {bookingDetails.purpose || '-'}
           </Paragraph>
           {bookingDetails.notes && (
-            <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                marginTop: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {bookingDetails.notes}
             </Paragraph>
           )}
@@ -231,8 +333,11 @@ export function BookingConfirmation({
                 gap: 'var(--ds-spacing-2)',
               }}
             >
-              <CheckCircleIcon size={14} style={{ color: 'var(--ds-color-info-base-default)' }} />
-              <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-info-text-default)' }}>
+              <CheckCircle2Icon size={14} style={{ color: 'var(--ds-color-info-base-default)' }} />
+              <Paragraph
+                data-size="xs"
+                style={{ margin: 0, color: 'var(--ds-color-info-text-default)' }}
+              >
                 Vises i kalender
               </Paragraph>
             </div>
@@ -248,20 +353,38 @@ export function BookingConfirmation({
             border: '1px solid var(--ds-color-neutral-border-subtle)',
           }}
         >
-          <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             Kontaktinformasjon
           </Heading>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <div>
-              <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: 0,
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                }}
+              >
                 Navn
               </Paragraph>
-              <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+              >
                 {bookingDetails.name}
               </Paragraph>
               {bookingDetails.organization && (
-                <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <Paragraph
+                  data-size="xs"
+                  style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                >
                   {bookingDetails.organization}
                 </Paragraph>
               )}
@@ -294,16 +417,26 @@ export function BookingConfirmation({
               border: '1px solid var(--ds-color-neutral-border-subtle)',
             }}
           >
-            <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+            <Heading
+              level={3}
+              data-size="xs"
+              style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+            >
               Tilleggstjenester
             </Heading>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-              {selectedServiceDetails.map(service => (
-                <div key={service.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              {selectedServiceDetails.map((service) => (
+                <div
+                  key={service.id}
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
                   <Paragraph data-size="sm" style={{ margin: 0 }}>
                     {service.name}
                   </Paragraph>
-                  <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+                  >
                     +{service.price} {service.currency || currency}
                   </Paragraph>
                 </div>
@@ -323,8 +456,13 @@ export function BookingConfirmation({
             }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <div
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+              >
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                >
                   {hoursBooked} time{hoursBooked !== 1 ? 'r' : ''} x {basePrice} {currency}
                 </Paragraph>
                 <Paragraph data-size="sm" style={{ margin: 0 }}>
@@ -332,8 +470,13 @@ export function BookingConfirmation({
                 </Paragraph>
               </div>
               {servicesTotal > 0 && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
                     Tilleggstjenester
                   </Paragraph>
                   <Paragraph data-size="sm" style={{ margin: 0 }}>
@@ -351,10 +494,20 @@ export function BookingConfirmation({
                   alignItems: 'center',
                 }}
               >
-                <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+                <Paragraph
+                  data-size="md"
+                  style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+                >
                   Totalt
                 </Paragraph>
-                <Paragraph data-size="lg" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-bold)', color: 'var(--ds-color-accent-base-default)' }}>
+                <Paragraph
+                  data-size="lg"
+                  style={{
+                    margin: 0,
+                    fontWeight: 'var(--ds-font-weight-bold)',
+                    color: 'var(--ds-color-accent-base-default)',
+                  }}
+                >
                   {totalPrice.toLocaleString('nb-NO')} {currency}
                 </Paragraph>
               </div>
@@ -364,19 +517,18 @@ export function BookingConfirmation({
 
         {/* Info Alert */}
         <Alert data-color="info" data-size="sm">
-          Du vil motta en bekreftelse pa e-post nar bookingen er registrert.
-          Ved sporsmal, kontakt oss direkte.
+          Du vil motta en bekreftelse pa e-post nar bookingen er registrert. Ved sporsmal, kontakt
+          oss direkte.
         </Alert>
       </Stack>
 
       {/* Action Buttons */}
-      <Stack direction="horizontal" spacing="4" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-        <Button
-          type="button"
-          variant="tertiary"
-          onClick={onBack}
-          disabled={isSubmitting}
-        >
+      <Stack
+        direction="horizontal"
+        gap="var(--ds-spacing-4)"
+        style={{ justifyContent: 'space-between', alignItems: 'center' }}
+      >
+        <Button type="button" variant="tertiary" onClick={onBack} disabled={isSubmitting}>
           <ChevronLeftIcon size={16} />
           Tilbake
         </Button>

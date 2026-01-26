@@ -24,12 +24,7 @@
  */
 
 import * as React from 'react';
-import {
-  Button,
-  Heading,
-  Paragraph,
-  Spinner,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
 import { Stack } from '../../primitives';
 import type {
   CalendarMode,
@@ -207,11 +202,7 @@ function isSameDay(a: Date, b: Date): boolean {
 /**
  * Get cells for a specific date and hour
  */
-function getCellsForSlot(
-  cells: CalendarCell[],
-  date: Date,
-  hour: number
-): CalendarCell[] {
+function getCellsForSlot(cells: CalendarCell[], date: Date, hour: number): CalendarCell[] {
   const dateStr = formatDateToISO(date);
   const hourStr = hour.toString().padStart(2, '0');
 
@@ -491,9 +482,7 @@ export function RentalObjectAvailabilityCalendar({
               {dates.map((date, dayIndex) => {
                 const dateCells = getCellsForSlot(cells, date, hour);
                 const cell = dateCells[0];
-                const isSelected = cell
-                  ? selection?.cells.some((c) => c.id === cell.id)
-                  : false;
+                const isSelected = cell ? selection?.cells.some((c) => c.id === cell.id) : false;
                 const canSelect = cell ? isSelectable(cell) && !readOnly : false;
 
                 return (

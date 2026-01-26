@@ -12,10 +12,7 @@ export {
   type ActivityType,
 } from './BookingFormModal';
 
-export {
-  BookingConfirmation,
-  type BookingConfirmationProps,
-} from './BookingConfirmation';
+export { BookingConfirmation, type BookingConfirmationProps } from './BookingConfirmation';
 
 export {
   BookingSuccess,

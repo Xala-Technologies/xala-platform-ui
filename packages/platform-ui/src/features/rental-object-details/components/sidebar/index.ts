@@ -4,11 +4,7 @@
  * @module @xala-technologies/platform-ui/features/rental-object-details/components/sidebar
  */
 
-export {
-  ContactWidget,
-  type ContactWidgetProps,
-  type ContactWidgetLabels,
-} from './ContactWidget';
+export { ContactWidget, type ContactWidgetProps, type ContactWidgetLabels } from './ContactWidget';
 
 export {
   MapWidget,

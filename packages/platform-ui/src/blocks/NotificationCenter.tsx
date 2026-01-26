@@ -436,7 +436,12 @@ export function NotificationCenter({
 
       {/* Filter Tabs */}
       {onFilterChange && (
-        <FilterTabs activeFilter={filter} onFilterChange={onFilterChange} counts={counts} labels={labels} />
+        <FilterTabs
+          activeFilter={filter}
+          onFilterChange={onFilterChange}
+          counts={counts}
+          labels={labels}
+        />
       )}
 
       {/* Content */}

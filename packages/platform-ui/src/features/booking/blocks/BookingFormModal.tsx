@@ -13,11 +13,35 @@ import {
   Textarea,
   Checkbox,
   Button,
-  Stack,
-  Card,
-} from '@xala-technologies/platform-ui';
-import { CalendarIcon, ClockIcon, CloseIcon } from '@xala-technologies/platform-ui';
-import type { BookingDetails, AdditionalService } from '@digilist/contracts';
+} from '@digdir/designsystemet-react';
+import { CalendarIcon, ClockIcon, XIcon } from 'lucide-react';
+
+/**
+ * Booking details interface (platform-ui local definition)
+ */
+export interface BookingDetails {
+  email: string;
+  phone?: string;
+  name?: string;
+  purpose?: string;
+  notes?: string;
+  organization?: string;
+  numberOfPeople?: number;
+  showPurposeInCalendar?: boolean;
+  bookMultipleDays?: boolean;
+  acceptedTerms?: boolean;
+}
+
+/**
+ * Additional service interface (platform-ui local definition)
+ */
+export interface AdditionalService {
+  id: string;
+  name: string;
+  price: number;
+  currency?: string;
+  description?: string;
+}
 
 // Utility function for class name concatenation
 function cn(...classes: (string | undefined | false)[]): string {
@@ -102,12 +126,18 @@ function formatSelectedSlots(slots: TimeSlot[]): { date: string; timeRange: stri
   });
 
   // Get unique dates
-  const dates = [...new Set(sorted.map(s => new Date(s.date).toLocaleDateString('nb-NO', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  })))];
+  const dates = [
+    ...new Set(
+      sorted.map((s) =>
+        new Date(s.date).toLocaleDateString('nb-NO', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        })
+      )
+    ),
+  ];
 
   // Get time range
   const firstSlot = sorted[0];
@@ -120,8 +150,8 @@ function formatSelectedSlots(slots: TimeSlot[]): { date: string; timeRange: stri
   const endTime = lastSlot.endTime || `${parseInt(hourPart) + 1}:00`;
 
   return {
-    date: dates.length === 1 ? dates[0] ?? 'Ukjent dato' : `${dates.length} dager valgt`,
-    timeRange: `${startTime} - ${endTime}`
+    date: dates.length === 1 ? (dates[0] ?? 'Ukjent dato') : `${dates.length} dager valgt`,
+    timeRange: `${startTime} - ${endTime}`,
   };
 }
 
@@ -186,14 +216,14 @@ export function BookingFormModal({
   };
 
   // Update form field
-  const updateField = <K extends keyof BookingDetails>(
-    field: K,
-    value: BookingDetails[K]
-  ) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const updateField = <K extends keyof BookingDetails>(field: K, value: BookingDetails[K]) => {
+    setFormData((prev: BookingDetails) => ({ ...prev, [field]: value }));
     // Clear error when field is updated
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
+      setErrors((prev: Partial<Record<keyof BookingDetails, string>>) => ({
+        ...prev,
+        [field]: undefined,
+      }));
     }
   };
 
@@ -201,15 +231,15 @@ export function BookingFormModal({
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof BookingDetails, string>> = {};
 
-    if (!formData.name.trim()) {
+    if (!formData.name?.trim()) {
       newErrors.name = 'Navn er pakrevd';
     }
-    if (!formData.email.trim()) {
+    if (!formData.email?.trim()) {
       newErrors.email = 'E-post er pakrevd';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Ugyldig e-postadresse';
     }
-    if (!formData.phone.trim()) {
+    if (!formData.phone?.trim()) {
       newErrors.phone = 'Telefon er pakrevd';
     }
     if (!formData.purpose?.trim()) {
@@ -243,7 +273,7 @@ export function BookingFormModal({
     const baseTotal = (basePrice || 0) * hoursBooked;
 
     const servicesTotal = selectedServices.reduce((sum, serviceId) => {
-      const service = availableServices.find(s => s.id === serviceId);
+      const service = availableServices.find((s) => s.id === serviceId);
       return sum + (service?.price || 0);
     }, 0);
 
@@ -285,7 +315,14 @@ export function BookingFormModal({
           <Heading level={2} data-size="md" style={{ margin: 0 }}>
             Bekreft booking
           </Heading>
-          <Paragraph data-size="sm" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: 0,
+              marginTop: 'var(--ds-spacing-1)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
             {rentalObjectName}
           </Paragraph>
         </div>
@@ -307,7 +344,7 @@ export function BookingFormModal({
             transition: 'all 0.2s ease',
           }}
         >
-          <CloseIcon size={20} />
+          <XIcon size={20} />
         </button>
       </div>
 
@@ -324,10 +361,16 @@ export function BookingFormModal({
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
           <CalendarIcon size={18} style={{ color: 'var(--ds-color-accent-base-default)' }} />
           <div>
-            <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               Dato
             </Paragraph>
-            <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+            >
               {date}
             </Paragraph>
           </div>
@@ -335,21 +378,44 @@ export function BookingFormModal({
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
           <ClockIcon size={18} style={{ color: 'var(--ds-color-accent-base-default)' }} />
           <div>
-            <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               Tidspunkt
             </Paragraph>
-            <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+            >
               {timeRange || '-'}
             </Paragraph>
           </div>
         </div>
         {basePrice && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginLeft: 'auto' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-2)',
+              marginLeft: 'auto',
+            }}
+          >
             <div style={{ textAlign: 'right' }}>
-              <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="xs"
+                style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+              >
                 Totalt
               </Paragraph>
-              <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-bold)', color: 'var(--ds-color-accent-base-default)' }}>
+              <Paragraph
+                data-size="md"
+                style={{
+                  margin: 0,
+                  fontWeight: 'var(--ds-font-weight-bold)',
+                  color: 'var(--ds-color-accent-base-default)',
+                }}
+              >
                 {totalPrice.toLocaleString('nb-NO')} {currency}
               </Paragraph>
             </div>
@@ -369,7 +435,11 @@ export function BookingFormModal({
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-5)' }}>
             {/* Purpose Section */}
             <div>
-              <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+              <Heading
+                level={3}
+                data-size="xs"
+                style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+              >
                 Formal med bookingen
               </Heading>
               <Textfield
@@ -405,7 +475,14 @@ export function BookingFormModal({
                 />
                 <span style={{ marginLeft: 'var(--ds-spacing-2)' }}>Book flere dager?</span>
                 {formData.bookMultipleDays && (
-                  <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  <Paragraph
+                    data-size="xs"
+                    style={{
+                      margin: 0,
+                      marginTop: 'var(--ds-spacing-2)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
                     Du kan velge flere dager i kalenderen etter at du har sendt denne forsporselen.
                   </Paragraph>
                 )}
@@ -431,13 +508,26 @@ export function BookingFormModal({
                   error={errors.numberOfPeople}
                 />
                 {maxCapacity && (
-                  <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  <Paragraph
+                    data-size="xs"
+                    style={{
+                      margin: 0,
+                      marginTop: 'var(--ds-spacing-1)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
+                  >
                     Maks kapasitet: {maxCapacity} pers
                   </Paragraph>
                 )}
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: 'var(--ds-font-size-sm)', marginBottom: 'var(--ds-spacing-2)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: 'var(--ds-font-size-sm)',
+                    marginBottom: 'var(--ds-spacing-2)',
+                  }}
+                >
                   Type aktivitet
                 </label>
                 <select
@@ -452,7 +542,7 @@ export function BookingFormModal({
                     backgroundColor: 'var(--ds-color-neutral-background-default)',
                   }}
                 >
-                  {activityTypeOptions.map(opt => (
+                  {activityTypeOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
@@ -463,7 +553,11 @@ export function BookingFormModal({
 
             {/* Contact Information */}
             <div>
-              <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+              <Heading
+                level={3}
+                data-size="xs"
+                style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+              >
                 Kontaktinformasjon
               </Heading>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -513,7 +607,13 @@ export function BookingFormModal({
 
             {/* Description */}
             <div>
-              <label style={{ display: 'block', fontSize: 'var(--ds-font-size-sm)', marginBottom: 'var(--ds-spacing-2)' }}>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: 'var(--ds-font-size-sm)',
+                  marginBottom: 'var(--ds-spacing-2)',
+                }}
+              >
                 Kort beskrivelse (valgfritt)
               </label>
               <Textarea
@@ -532,7 +632,9 @@ export function BookingFormModal({
                 padding: 'var(--ds-spacing-4)',
                 backgroundColor: 'var(--ds-color-neutral-surface-default)',
                 borderRadius: 'var(--ds-border-radius-md)',
-                border: errors.acceptedTerms ? '1px solid var(--ds-color-danger-border-default)' : '1px solid var(--ds-color-neutral-border-subtle)',
+                border: errors.acceptedTerms
+                  ? '1px solid var(--ds-color-danger-border-default)'
+                  : '1px solid var(--ds-color-neutral-border-subtle)',
               }}
             >
               <Checkbox
@@ -544,7 +646,14 @@ export function BookingFormModal({
                 Jeg godtar vilkar og betingelser for booking
               </Checkbox>
               {errors.acceptedTerms && (
-                <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', color: 'var(--ds-color-danger-text-default)' }}>
+                <Paragraph
+                  data-size="xs"
+                  style={{
+                    margin: 0,
+                    marginTop: 'var(--ds-spacing-2)',
+                    color: 'var(--ds-color-danger-text-default)',
+                  }}
+                >
                   {errors.acceptedTerms}
                 </Paragraph>
               )}
@@ -564,18 +673,10 @@ export function BookingFormModal({
             borderRadius: '0 0 var(--ds-border-radius-xl) var(--ds-border-radius-xl)',
           }}
         >
-          <Button
-            type="button"
-            variant="tertiary"
-            onClick={onClose}
-          >
+          <Button type="button" variant="tertiary" onClick={onClose}>
             Avbryt
           </Button>
-          <Button
-            type="submit"
-            variant="primary"
-            data-color="accent"
-          >
+          <Button type="submit" variant="primary" data-color="accent">
             Bekreft booking
           </Button>
         </div>

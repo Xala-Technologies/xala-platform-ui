@@ -13,12 +13,7 @@
 // Status Badge Types
 // =============================================================================
 
-export type BookingStatusColor =
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'neutral';
+export type BookingStatusColor = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
 export interface StatusBadgeData {
   label: string;

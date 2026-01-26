@@ -221,7 +221,9 @@ export function EventDrawer({
       // Use custom confirmation callback or fallback to window.confirm
       const confirmed = onConfirmReject
         ? await onConfirmReject()
-        : window.confirm(effectiveLabels.confirmReject ?? 'Er du sikker på at du vil avvise denne bookingen?');
+        : window.confirm(
+            effectiveLabels.confirmReject ?? 'Er du sikker på at du vil avvise denne bookingen?'
+          );
 
       if (confirmed) {
         onReject(event.bookingId);
@@ -234,7 +236,10 @@ export function EventDrawer({
       // Use custom confirmation callback or fallback to window.confirm
       const confirmed = onConfirmDeleteBlock
         ? await onConfirmDeleteBlock()
-        : window.confirm(effectiveLabels.confirmDeleteBlock ?? 'Er du sikker på at du vil slette denne blokkeringen?');
+        : window.confirm(
+            effectiveLabels.confirmDeleteBlock ??
+              'Er du sikker på at du vil slette denne blokkeringen?'
+          );
 
       if (confirmed) {
         onDeleteBlock(event.id);
@@ -386,11 +391,14 @@ export function EventDrawer({
                   const labelKey = BLOCK_TYPE_CONFIG[blockType]?.label;
 
                   // Map block type to label
-                  if (blockType === 'maintenance') return effectiveLabels.blockTypeMaintenance ?? 'Vedlikehold';
+                  if (blockType === 'maintenance')
+                    return effectiveLabels.blockTypeMaintenance ?? 'Vedlikehold';
                   if (blockType === 'closed') return effectiveLabels.blockTypeClosed ?? 'Stengt';
                   if (blockType === 'hold') return effectiveLabels.blockTypeHold ?? 'Hold';
-                  if (blockType === 'emergency') return effectiveLabels.blockTypeEmergency ?? 'Nødsituasjon';
-                  if (blockType === 'internal') return effectiveLabels.blockTypeInternal ?? 'Intern';
+                  if (blockType === 'emergency')
+                    return effectiveLabels.blockTypeEmergency ?? 'Nødsituasjon';
+                  if (blockType === 'internal')
+                    return effectiveLabels.blockTypeInternal ?? 'Intern';
                   return effectiveLabels.statusBlocked ?? 'Blokkert';
                 })()}
               </Paragraph>
@@ -423,7 +431,11 @@ export function EventDrawer({
                 data-color="danger"
               >
                 {isRejecting ? (
-                  <Spinner data-size="sm" aria-label={effectiveLabels.rejecting} aria-hidden="true" />
+                  <Spinner
+                    data-size="sm"
+                    aria-label={effectiveLabels.rejecting}
+                    aria-hidden="true"
+                  />
                 ) : (
                   effectiveLabels.reject
                 )}
@@ -435,7 +447,11 @@ export function EventDrawer({
                 disabled={isApproving}
               >
                 {isApproving ? (
-                  <Spinner data-size="sm" aria-label={effectiveLabels.approving} aria-hidden="true" />
+                  <Spinner
+                    data-size="sm"
+                    aria-label={effectiveLabels.approving}
+                    aria-hidden="true"
+                  />
                 ) : (
                   effectiveLabels.approve
                 )}
@@ -459,7 +475,11 @@ export function EventDrawer({
                 data-color="danger"
               >
                 {isDeletingBlock ? (
-                  <Spinner data-size="sm" aria-label={effectiveLabels.deleting} aria-hidden="true" />
+                  <Spinner
+                    data-size="sm"
+                    aria-label={effectiveLabels.deleting}
+                    aria-hidden="true"
+                  />
                 ) : (
                   effectiveLabels.delete
                 )}

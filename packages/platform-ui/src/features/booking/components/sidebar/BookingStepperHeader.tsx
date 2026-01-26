@@ -10,7 +10,8 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Stack } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../../../../primitives/stack';
 
 // =============================================================================
 // Icons
@@ -198,8 +199,11 @@ export function BookingStepperHeader({
       }}
     >
       {/* Header content - compact */}
-      <Stack direction="row" style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-        <Stack direction="row" style={{ alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+      <Stack
+        direction="horizontal"
+        style={{ alignItems: 'center', justifyContent: 'space-between' }}
+      >
+        <Stack direction="horizontal" style={{ alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
           <span
             style={{
               width: '32px',
@@ -214,12 +218,12 @@ export function BookingStepperHeader({
           >
             <CalendarIcon size={18} />
           </span>
-          <Heading level={2} size="sm">
+          <Heading level={2} data-size="sm">
             {listingTitle || labels.defaultTitle}
           </Heading>
         </Stack>
         <Paragraph
-          size="xs"
+          data-size="xs"
           style={{
             color: 'var(--ds-color-neutral-text-subtle)',
             backgroundColor: 'var(--ds-color-neutral-surface-default)',
@@ -233,7 +237,7 @@ export function BookingStepperHeader({
 
       {/* Step Indicator - horizontal pills */}
       <Stack
-        direction="row"
+        direction="horizontal"
         className={isMobile ? 'booking-stepper-mobile' : ''}
         style={{
           gap: 'var(--ds-spacing-1)',
@@ -250,7 +254,7 @@ export function BookingStepperHeader({
           return (
             <Stack
               key={step.id}
-              direction="row"
+              direction="horizontal"
               style={{
                 flex: 1,
                 gap: 'var(--ds-spacing-2)',
@@ -299,7 +303,7 @@ export function BookingStepperHeader({
               {/* Step label - only show on current and completed on desktop */}
               {!isMobile && (
                 <Paragraph
-                  size="xs"
+                  data-size="xs"
                   style={{
                     color: isCurrent
                       ? 'var(--ds-color-accent-text-default)'

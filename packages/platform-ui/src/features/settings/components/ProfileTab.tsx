@@ -12,6 +12,11 @@ import { ProfileTab as DSProfileTab } from '../../../blocks/settings';
 
 // Re-export the pure presentational component
 export { ProfileTab } from '../../../blocks/settings';
-export type { ProfileTabProps, ProfileData, ProfileAddress, ProfileTabLabels } from '../../../blocks/settings';
+export type {
+  ProfileTabProps,
+  ProfileData,
+  ProfileAddress,
+  ProfileTabLabels,
+} from '../../../blocks/settings';
 
 export default DSProfileTab;

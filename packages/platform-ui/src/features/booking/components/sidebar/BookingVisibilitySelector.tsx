@@ -106,11 +106,12 @@ interface VisibilityOption {
 /**
  * Visibility option configs (icons only - labels/descriptions are translated)
  */
-const VISIBILITY_CONFIGS: Array<{ value: BookingVisibility; key: string; icon: React.ReactNode }> = [
-  { value: 'PUBLIC_TITLE', key: 'public', icon: <EyeIcon size={20} /> },
-  { value: 'PRIVATE_TITLE', key: 'private', icon: <EyeOffIcon size={20} /> },
-  { value: 'ANONYMOUS', key: 'anonymous', icon: <LockIcon size={20} /> },
-];
+const VISIBILITY_CONFIGS: Array<{ value: BookingVisibility; key: string; icon: React.ReactNode }> =
+  [
+    { value: 'PUBLIC_TITLE', key: 'public', icon: <EyeIcon size={20} /> },
+    { value: 'PRIVATE_TITLE', key: 'private', icon: <EyeOffIcon size={20} /> },
+    { value: 'ANONYMOUS', key: 'anonymous', icon: <LockIcon size={20} /> },
+  ];
 
 // =============================================================================
 // Component
@@ -125,7 +126,6 @@ export function BookingVisibilitySelector({
 }: BookingVisibilitySelectorProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
-
 
   // Generate translated visibility options
   const visibilityOptions: VisibilityOption[] = React.useMemo(

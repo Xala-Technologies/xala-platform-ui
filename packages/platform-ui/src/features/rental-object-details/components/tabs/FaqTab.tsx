@@ -35,6 +35,53 @@ function HelpIcon(): React.ReactElement {
   );
 }
 
+/**
+ * Individual FAQ item card with accordion behavior.
+ * Extracted as separate component to use React.useState properly.
+ */
+function FAQItemCard({ item }: { item: FAQItem }): React.ReactElement {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <details
+      open={isOpen}
+      onToggle={(e) => setIsOpen((e.target as HTMLDetailsElement).open)}
+      style={{
+        padding: 'var(--ds-spacing-4)',
+        backgroundColor: 'var(--ds-color-neutral-background-default)',
+        borderRadius: 'var(--ds-border-radius-lg)',
+        border: '1px solid var(--ds-color-neutral-border-subtle)',
+      }}
+    >
+      <summary
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--ds-spacing-2)',
+          cursor: 'pointer',
+          fontWeight: 'var(--ds-font-weight-medium)',
+          color: 'var(--ds-color-neutral-text-default)',
+          listStyle: 'none',
+        }}
+      >
+        <HelpIcon />
+        <span>{item.question}</span>
+      </summary>
+      <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
+        <Paragraph
+          data-size="sm"
+          style={{
+            whiteSpace: 'pre-wrap',
+            lineHeight: 'var(--ds-font-line-height-default)',
+          }}
+        >
+          {item.answer}
+        </Paragraph>
+      </div>
+    </details>
+  );
+}
+
 // =============================================================================
 // Types
 // =============================================================================
@@ -119,7 +166,10 @@ export function FaqTab({
         <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
           <HelpIcon />
         </span>
-        <Paragraph data-size="sm" style={{ fontStyle: 'italic', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <Paragraph
+          data-size="sm"
+          style={{ fontStyle: 'italic', color: 'var(--ds-color-neutral-text-subtle)' }}
+        >
           {labels.noFaqMessage}
         </Paragraph>
       </div>
@@ -127,55 +177,18 @@ export function FaqTab({
   }
 
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}
+    >
       <Heading level={2} data-size="sm">
         {labels.faqHeading}
       </Heading>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-        {faq.map((item: FAQItem, index: number) => {
-          const [isOpen, setIsOpen] = React.useState(false);
-
-          return (
-            <details
-              key={`${item.id}-${index}`}
-              open={isOpen}
-              onToggle={(e) => setIsOpen((e.target as HTMLDetailsElement).open)}
-              style={{
-                padding: 'var(--ds-spacing-4)',
-                backgroundColor: 'var(--ds-color-neutral-background-default)',
-                borderRadius: 'var(--ds-border-radius-lg)',
-                border: '1px solid var(--ds-color-neutral-border-subtle)',
-              }}
-            >
-              <summary
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--ds-spacing-2)',
-                  cursor: 'pointer',
-                  fontWeight: 'var(--ds-font-weight-medium)',
-                  color: 'var(--ds-color-neutral-text-default)',
-                  listStyle: 'none',
-                }}
-              >
-                <HelpIcon />
-                <span>{item.question}</span>
-              </summary>
-              <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
-                <Paragraph
-                  data-size="sm"
-                  style={{
-                    whiteSpace: 'pre-wrap',
-                    lineHeight: 'var(--ds-font-line-height-default)',
-                  }}
-                >
-                  {item.answer}
-                </Paragraph>
-              </div>
-            </details>
-          );
-        })}
+        {faq.map((item: FAQItem, index: number) => (
+          <FAQItemCard key={`${item.id}-${index}`} item={item} />
+        ))}
       </div>
     </div>
   );

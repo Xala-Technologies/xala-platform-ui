@@ -568,8 +568,10 @@ export const storybookNb: Record<string, string> = {
   'storybook.tokens.previewDescription': 'Dette kortet viser hvordan valgte tokens ser ut sammen.',
   'storybook.tokens.generatedCSS': 'Generert CSS',
   'storybook.tokens.tokenUsageExample': 'Token-brukseksempel',
-  'storybook.tokens.tokenUsageDescription': 'Dette eksemplet viser hvordan du bruker design tokens i praksis.',
-  'storybook.tokens.cardTokensOnly': 'Dette kortet bruker kun design tokens - ingen hardkodede verdier.',
+  'storybook.tokens.tokenUsageDescription':
+    'Dette eksemplet viser hvordan du bruker design tokens i praksis.',
+  'storybook.tokens.cardTokensOnly':
+    'Dette kortet bruker kun design tokens - ingen hardkodede verdier.',
   'storybook.tokens.actionButton': 'Handlingsknapp',
   'storybook.tokens.tokensUsed': 'Brukte tokens',
   'storybook.tokens.tokensUsedList': 'spacing, colors, typography, borders, shadows',
@@ -609,10 +611,11 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.volume': 'Volum',
   'storybook.demo.progress': 'Fremgang',
   'storybook.demo.value': 'Verdi',
-  
+
   // Button MDX documentation keys
   'storybook.demo.button': 'Knapp',
-  'storybook.demo.buttonDescription': 'Knapper lar brukere utføre handlinger med et enkelt klikk eller trykk.',
+  'storybook.demo.buttonDescription':
+    'Knapper lar brukere utføre handlinger med et enkelt klikk eller trykk.',
   'storybook.demo.variantsDescription': 'Bruk varianter for å indikere viktigheten av en handling:',
   'storybook.demo.primary': 'Primær',
   'storybook.demo.primaryDescription': 'Hovedhandling på siden',
@@ -622,9 +625,12 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.tertiaryDescription': 'Handlinger med lavest vektlegging',
   'storybook.demo.colors': 'Farger',
   'storybook.demo.colorsDescription': 'Tilgjengelig i alle temafarger:',
-  'storybook.demo.sizesDescription': 'Tre størrelser er tilgjengelige for å passe forskjellige sammenhenger:',
-  'storybook.demo.iconsDescription': 'Ikoner kan legges til for å gi visuell kontekst. Bruk alltid DS-ikoner fra ikonregisteret.',
-  'storybook.demo.disabledDescription': 'Bruk sparsomt. Foretrekk å forklare hvorfor en handling ikke er tilgjengelig.',
+  'storybook.demo.sizesDescription':
+    'Tre størrelser er tilgjengelige for å passe forskjellige sammenhenger:',
+  'storybook.demo.iconsDescription':
+    'Ikoner kan legges til for å gi visuell kontekst. Bruk alltid DS-ikoner fra ikonregisteret.',
+  'storybook.demo.disabledDescription':
+    'Bruk sparsomt. Foretrekk å forklare hvorfor en handling ikke er tilgjengelig.',
   'storybook.demo.loadingDescription': 'Vis lastetilstand under asynkrone operasjoner.',
   'storybook.demo.iconOnly': 'Bare ikon',
   'storybook.demo.iconOnlyDescription': 'Ikon-knapper for velkjente handlinger:',
@@ -633,8 +639,10 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.action': 'Handling',
   'storybook.demo.moveFocus': 'Flytt fokus til knapp',
   'storybook.demo.activateButton': 'Aktiver knapp',
-  'storybook.demo.screenReaderDescription': 'Knapper annonseres som "knapp"-rolle. Inkluder beskrivende tekst.',
-  'storybook.demo.focusDescription': 'Fokusring er synlig ved tastaturfokus. Ikke fjern eller skjul den.',
+  'storybook.demo.screenReaderDescription':
+    'Knapper annonseres som "knapp"-rolle. Inkluder beskrivende tekst.',
+  'storybook.demo.focusDescription':
+    'Fokusring er synlig ved tastaturfokus. Ikke fjern eller skjul den.',
   'storybook.demo.clickHere': 'Klikk her',
   'storybook.demo.useActionVerbs': 'Bruk handlingsverb',
   'storybook.demo.keepTextConcise': 'Hold teksten kortfattet',
@@ -648,7 +656,8 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.migrationNotes': 'Migrationsnotater',
   'storybook.demo.migrationDescription': 'Hvis du migrerer fra egendefinerte knapper:',
   'storybook.demo.replaceCustomButtons': 'Erstatt egendefinerte knappkomponenter med DS `Button`',
-  'storybook.demo.mapOldVariants': 'Kartlegg gamle varianter til `primary`, `secondary`, `tertiary`',
+  'storybook.demo.mapOldVariants':
+    'Kartlegg gamle varianter til `primary`, `secondary`, `tertiary`',
   'storybook.demo.replaceCustomIcons': 'Erstatt egendefinerte ikoner med DS-ikonregister',
   'storybook.demo.removeInlineStyles': 'Fjern eventuelle inline-fargestiler',
   'storybook.demo.firstItem': 'Første element',
@@ -703,7 +712,7 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.responsiveLayout': 'Responsivt layout',
   'storybook.demo.bodyText': 'Brødtekst',
   'storybook.demo.componentShowcase': 'Komponentutstilling',
-  
+
   // Demo - Additional missing keys (batch 1)
   'storybook.demo.aboutDesignsystemet': 'Om Designsystemet',
   'storybook.demo.accent': 'Aksent',
@@ -963,7 +972,7 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.focusMe': 'Fokuser meg',
   'storybook.demo.footballField': 'Fotballbane',
   'storybook.demo.footer': 'Bunntekst',
-  
+
   // Demo - Additional missing keys (batch 2)
   'storybook.demo.formContent': 'Skjemainnhold',
   'storybook.demo.formFieldsHere': 'Skjemafelt her',
@@ -1159,7 +1168,7 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.outlinedVariantContent': 'Innhold for konturvariant',
   'storybook.demo.outlinedVariantDescription': 'Beskrivelse av konturvariant',
   'storybook.demo.overflow': 'Overflyt',
-  
+
   // Demo - Additional missing keys (batch 3 - continuing)
   'storybook.demo.studenterlunden': 'Studenterlunden',
   'storybook.demo.subComponentsDescription': 'Beskrivelse av underkomponenter',
@@ -1257,7 +1266,7 @@ export const storybookNb: Record<string, string> = {
   'storybook.demo.withDescription': 'Med beskrivelse',
   'storybook.demo.withOnClick': 'Med onClick',
   'storybook.demo.withValue': 'Med verdi',
-  
+
   // Demo - Additional missing keys (batch 4)
   'storybook.demo.searchItems': 'Søk elementer',
   'storybook.demo.searchListings': 'Søk annonser',
@@ -1995,7 +2004,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.customHeightTable': 'Table with custom height',
   'storybook.demo.admin': 'Admin',
   'storybook.demo.userRole': 'User',
-  
+
   // Demo - Additional missing keys (batch 2 - English)
   'storybook.demo.formContent': 'Form Content',
   'storybook.demo.formFieldsHere': 'Form Fields Here',
@@ -2191,7 +2200,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.outlinedVariantContent': 'Outlined Variant Content',
   'storybook.demo.outlinedVariantDescription': 'Outlined Variant Description',
   'storybook.demo.overflow': 'Overflow',
-  
+
   // Demo - Additional missing keys (batch 3 - English)
   'storybook.demo.studenterlunden': 'Studenterlunden',
   'storybook.demo.subComponentsDescription': 'Sub Components Description',
@@ -2289,7 +2298,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.withDescription': 'With Description',
   'storybook.demo.withOnClick': 'With onClick',
   'storybook.demo.withValue': 'With Value',
-  
+
   // Demo - Additional missing keys (batch 4 - English)
   'storybook.demo.searchItems': 'Search Items',
   'storybook.demo.searchListings': 'Search Listings',
@@ -2388,13 +2397,13 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.stepTwo': 'Step Two',
   'storybook.demo.stockholm': 'Stockholm',
   'storybook.demo.street': 'Street',
-  
+
   // Demo - Additional missing keys (batch 5)
   'storybook.demo.writeShortBio': 'Skriv kort biografi',
   'storybook.demo.yourSelectedPreferences': 'Dine valgte preferanser',
   'storybook.demo.zeroCount': 'Null antall',
   'storybook.demo.zoomWorkaround': 'Zoom workaround',
-  
+
   // Getting Started
   'storybook.gettingStarted.accessibleProps': 'Tilgjengelige props',
   'storybook.gettingStarted.bestPractices': 'Beste praksis',
@@ -2411,7 +2420,8 @@ export const storybookEn: Record<string, string> = {
   'storybook.gettingStarted.enterYourName': 'Skriv inn navnet ditt',
   'storybook.gettingStarted.i18nText': 'i18n tekst',
   'storybook.gettingStarted.importComponents': 'Importer komponenter',
-  'storybook.gettingStarted.quickGuide': 'Hurtigguide for å begynne å bygge med Xala Platform Design System.',
+  'storybook.gettingStarted.quickGuide':
+    'Hurtigguide for å begynne å bygge med Xala Platform Design System.',
   'storybook.gettingStarted.startBuilding': 'Begynn å bygge',
   'storybook.gettingStarted.firstSteps': 'Første steg',
   'storybook.gettingStarted.createFirstComponent': 'Opprett din første komponent',
@@ -2432,7 +2442,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.gettingStarted.setupI18n': 'Sett opp i18n',
   'storybook.gettingStarted.theCode': 'Koden',
   'storybook.gettingStarted.yourFirstComponent': 'Din første komponent',
-  
+
   // Icons
   'storybook.icons.accessibility': 'Tilgjengelighet',
   'storybook.icons.akselDescription': 'Beskrivelse av Aksel',
@@ -2471,20 +2481,20 @@ export const storybookEn: Record<string, string> = {
   'storybook.icons.useTokenColors': 'Bruk token-farger',
   'storybook.icons.whenToUse': 'Når skal man bruke',
   'storybook.icons.xl': 'Ekstra stor',
-  
+
   // Loading
   'storybook.loading.buttonLoading': 'Knapp laster',
   'storybook.loading.saving': 'Lagrer',
   'storybook.loading.skeleton': 'Skjelett',
   'storybook.loading.spinner': 'Spinner',
-  
+
   // Notifications
   'storybook.notifications.information': 'Informasjon',
   'storybook.notifications.saveFailed': 'Lagring feilet',
   'storybook.notifications.scheduledMaintenance': 'Planlagt vedlikehold',
   'storybook.notifications.sessionExpiring': 'Økt utløper',
   'storybook.notifications.warning': 'Advarsel',
-  
+
   // Patterns
   'storybook.patterns.adjustSearch': 'Juster søk',
   'storybook.patterns.asterisksClutter': 'Stjerner rot',
@@ -2506,7 +2516,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.patterns.invalidEmail': 'Ugyldig e-post',
   'storybook.patterns.markOptional': 'Merk som valgfritt',
   'storybook.patterns.markOptionalFields': 'Merk valgfrie felt',
-  
+
   // Demo - Additional missing keys (batch 6)
   'storybook.demo.actionButton': 'Handlingsknapp',
   'storybook.demo.createItem': 'Opprett element',
@@ -2606,7 +2616,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.saveDraft': 'Lagre utkast',
   'storybook.demo.screenReaderWorkaround': 'Skjermleser workaround',
   'storybook.demo.searchForListings': 'Søk etter annonser',
-  
+
   // Patterns - Additional missing keys
   'storybook.patterns.multiStepWizard': 'Flerstegs veiviser',
   'storybook.patterns.navigationPatterns': 'Navigasjonsmønstre',
@@ -2630,10 +2640,10 @@ export const storybookEn: Record<string, string> = {
   'storybook.patterns.validateOnBlur': 'Valider ved blur',
   'storybook.patterns.validateOnBlurPattern': 'Valider ved blur mønster',
   'storybook.patterns.wrongPattern': 'Feil mønster',
-  
+
   // Sizes - Additional missing keys
   'storybook.sizes.gaps': 'Mellomrom',
-  
+
   // Story - Additional missing keys
   'storybook.story.allColors': 'Alle farger',
   'storybook.story.basicUsage': 'Grunnleggende bruk',
@@ -2688,7 +2698,7 @@ export const storybookEn: Record<string, string> = {
   'storybook.story.withError': 'Med feil',
   'storybook.story.withSections': 'Med seksjoner',
   'storybook.story.withSpacing': 'Med mellomrom',
-  
+
   // Theme - Additional missing keys
   'storybook.theme.accentContext': 'Aksentkontekst',
   'storybook.theme.accentDescription': 'Beskrivelse av aksent',
@@ -2765,7 +2775,8 @@ export const storybookEn: Record<string, string> = {
   'storybook.tokens.previewDescription': 'This card shows how your selected tokens look together.',
   'storybook.tokens.generatedCSS': 'Generated CSS',
   'storybook.tokens.tokenUsageExample': 'Token Usage Example',
-  'storybook.tokens.tokenUsageDescription': 'This example shows how to use design tokens in practice.',
+  'storybook.tokens.tokenUsageDescription':
+    'This example shows how to use design tokens in practice.',
   'storybook.tokens.cardTokensOnly': 'This card uses only design tokens - no hardcoded values.',
   'storybook.tokens.actionButton': 'Action Button',
   'storybook.tokens.tokensUsed': 'Tokens Used',
@@ -2806,10 +2817,11 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.volume': 'Volume',
   'storybook.demo.progress': 'Progress',
   'storybook.demo.value': 'Value',
-  
+
   // Button MDX documentation keys
   'storybook.demo.button': 'Button',
-  'storybook.demo.buttonDescription': 'Buttons allow users to take actions with a single click or tap.',
+  'storybook.demo.buttonDescription':
+    'Buttons allow users to take actions with a single click or tap.',
   'storybook.demo.variantsDescription': 'Use variants to indicate the importance of an action:',
   'storybook.demo.primary': 'Primary',
   'storybook.demo.primaryDescription': 'Main action on the page',
@@ -2820,8 +2832,10 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.colors': 'Colors',
   'storybook.demo.colorsDescription': 'Available in all theme colors:',
   'storybook.demo.sizesDescription': 'Three sizes are available to fit different contexts:',
-  'storybook.demo.iconsDescription': 'Icons can be added to provide visual context. Always use DS icons from the icon registry.',
-  'storybook.demo.disabledDescription': 'Use sparingly. Prefer explaining why an action is unavailable.',
+  'storybook.demo.iconsDescription':
+    'Icons can be added to provide visual context. Always use DS icons from the icon registry.',
+  'storybook.demo.disabledDescription':
+    'Use sparingly. Prefer explaining why an action is unavailable.',
   'storybook.demo.loadingDescription': 'Show loading state during async operations.',
   'storybook.demo.iconOnly': 'Icon Only',
   'storybook.demo.iconOnlyDescription': 'Icon-only buttons for well-known actions:',
@@ -2830,8 +2844,10 @@ export const storybookEn: Record<string, string> = {
   'storybook.demo.action': 'Action',
   'storybook.demo.moveFocus': 'Move focus to button',
   'storybook.demo.activateButton': 'Activate button',
-  'storybook.demo.screenReaderDescription': 'Buttons are announced as "button" role. Include descriptive text.',
-  'storybook.demo.focusDescription': 'Focus ring is visible on keyboard focus. Do not remove or hide it.',
+  'storybook.demo.screenReaderDescription':
+    'Buttons are announced as "button" role. Include descriptive text.',
+  'storybook.demo.focusDescription':
+    'Focus ring is visible on keyboard focus. Do not remove or hide it.',
   'storybook.demo.clickHere': 'Click Here',
   'storybook.demo.useActionVerbs': 'Use action verbs',
   'storybook.demo.keepTextConcise': 'Keep text concise',

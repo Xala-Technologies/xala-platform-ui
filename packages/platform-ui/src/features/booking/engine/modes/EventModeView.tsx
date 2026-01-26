@@ -5,13 +5,14 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph, Button, Alert } from '@xala-technologies/platform-ui';
-import { CalendarIcon, ChevronRightIcon, InfoIcon, UsersIcon } from '@xala-technologies/platform-ui';
+import {
+  CalendarIcon,
+  ChevronRightIcon,
+  InfoIcon,
+  UsersIcon,
+} from '@xala-technologies/platform-ui';
 import { PriceSummary } from '../components/PriceSummary';
-import type {
-  BookingConfig,
-  BookingSelection,
-  BookingPriceCalculation,
-} from '@digilist/contracts';
+import type { BookingConfig, BookingSelection, BookingPriceCalculation } from '@digilist/contracts';
 
 interface ModeViewProps {
   formatPrice: (amount: number, currency: string) => string;
@@ -70,8 +71,13 @@ export function EventModeView({
         <div className="ticket-selector">
           <div className="ticket-type">
             <div className="ticket-info">
-              <Heading level={3} data-size="sm" style={{ margin: 0 }}>Standardbillett</Heading>
-              <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Heading level={3} data-size="sm" style={{ margin: 0 }}>
+                Standardbillett
+              </Heading>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+              >
                 Inkluderer adgang til arrangementet
               </Paragraph>
             </div>
@@ -111,7 +117,8 @@ export function EventModeView({
         {tickets >= minTickets && (
           <Alert data-color="info">
             <InfoIcon size={16} />
-            Du har valgt {tickets} billett{tickets !== 1 ? 'er' : ''}. Minimum {minTickets} billett{minTickets !== 1 ? 'er' : ''} kreves.
+            Du har valgt {tickets} billett{tickets !== 1 ? 'er' : ''}. Minimum {minTickets} billett
+            {minTickets !== 1 ? 'er' : ''} kreves.
           </Alert>
         )}
       </div>
@@ -129,7 +136,14 @@ export function EventModeView({
             <div className="empty-illustration">
               <UsersIcon size={40} />
             </div>
-            <Paragraph data-size="sm" style={{ margin: 0, textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                textAlign: 'center',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Velg antall billetter for a fortsette
             </Paragraph>
           </div>
@@ -138,7 +152,9 @@ export function EventModeView({
             <div className="order-summary">
               <div className="order-item">
                 <span>Standardbillett x {tickets}</span>
-                <span>{formatPrice(tickets * config.pricing.basePrice, config.pricing.currency)}</span>
+                <span>
+                  {formatPrice(tickets * config.pricing.basePrice, config.pricing.currency)}
+                </span>
               </div>
             </div>
 
@@ -148,7 +164,13 @@ export function EventModeView({
               <Button type="button" variant="tertiary" onClick={() => onTicketChange(0)}>
                 Tom
               </Button>
-              <Button type="button" variant="primary" data-color="accent" onClick={onContinue} disabled={!canContinue}>
+              <Button
+                type="button"
+                variant="primary"
+                data-color="accent"
+                onClick={onContinue}
+                disabled={!canContinue}
+              >
                 Fortsett
                 <ChevronRightIcon size={18} />
               </Button>

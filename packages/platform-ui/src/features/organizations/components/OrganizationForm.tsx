@@ -235,12 +235,7 @@ export function OrganizationForm({
               {labels.basicInfoTitle}
             </Heading>
 
-            <FormField
-              label={labels.name}
-              required
-              
-              error={errors.name}
-            >
+            <FormField label={labels.name} required error={errors.name}>
               <Textfield
                 value={formData.name}
                 onChange={(e) => handleChange('name')(e.target.value)}
@@ -249,11 +244,7 @@ export function OrganizationForm({
               />
             </FormField>
 
-            <FormField
-              label={labels.type}
-              required
-              
-            >
+            <FormField label={labels.type} required>
               <Select
                 value={formData.actorType}
                 onChange={(e) => handleChange('actorType')(e.target.value as ActorType)}
@@ -267,11 +258,7 @@ export function OrganizationForm({
               </Select>
             </FormField>
 
-            <FormField
-              label={labels.organizationNumber}
-              error={errors.organizationNumber}
-              
-            >
+            <FormField label={labels.organizationNumber} error={errors.organizationNumber}>
               <Textfield
                 value={formData.organizationNumber || ''}
                 onChange={(e) => handleChange('organizationNumber')(e.target.value)}
@@ -296,11 +283,7 @@ export function OrganizationForm({
               {labels.contactInfo}
             </Heading>
 
-            <FormField
-              label={labels.email}
-              error={errors.email}
-              
-            >
+            <FormField label={labels.email} error={errors.email}>
               <Textfield
                 type="email"
                 value={formData.email || ''}
@@ -310,7 +293,7 @@ export function OrganizationForm({
               />
             </FormField>
 
-            <FormField label={labels.phone} >
+            <FormField label={labels.phone}>
               <Textfield
                 type="tel"
                 value={formData.phone || ''}
@@ -335,10 +318,7 @@ export function OrganizationForm({
               {labels.address}
             </Heading>
 
-            <FormField
-              label={labels.streetAddress}
-              
-            >
+            <FormField label={labels.streetAddress}>
               <Textfield
                 value={formData.address || ''}
                 onChange={(e) => handleChange('address')(e.target.value)}
@@ -389,18 +369,12 @@ export function OrganizationForm({
             spacing="2"
             style={{ justifyContent: 'flex-end', alignItems: 'center' }}
           >
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={onCancel}
-              disabled={isSubmitting}
-            >
+            <Button type="button" variant="secondary" onClick={onCancel} disabled={isSubmitting}>
               {labels.cancel}
             </Button>
             <Button type="submit" variant="primary" disabled={isSubmitting}>
               {isSubmitting && <Spinner aria-label={labels.saveChanges} data-size="sm" />}
-              {!isSubmitting &&
-                (organization ? labels.saveChanges : labels.createOrganization)}
+              {!isSubmitting && (organization ? labels.saveChanges : labels.createOrganization)}
             </Button>
           </Stack>
         </Card>

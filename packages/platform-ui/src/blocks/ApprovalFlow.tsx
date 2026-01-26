@@ -93,7 +93,12 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
     const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
 
     return (
-      <Card ref={ref} className={cn('ds-approval-flow', className)} data-color="neutral" {...cardProps}>
+      <Card
+        ref={ref}
+        className={cn('ds-approval-flow', className)}
+        data-color="neutral"
+        {...cardProps}
+      >
         <Card.Block>
           <div
             style={{

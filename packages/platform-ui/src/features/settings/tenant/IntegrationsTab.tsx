@@ -117,11 +117,7 @@ function IntegrationRow({
         ) : (
           <Tag data-color="neutral">{inactiveLabel}</Tag>
         )}
-        <Switch
-          aria-label={title}
-          checked={enabled}
-          onChange={(e) => onToggle(e.target.checked)}
-        />
+        <Switch aria-label={title} checked={enabled} onChange={(e) => onToggle(e.target.checked)} />
       </div>
     </div>
   );

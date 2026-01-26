@@ -6,7 +6,4 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-export {
-  useNotificationSettings,
-  type NotificationSettingsData,
-} from './useNotificationSettings';
+export { useNotificationSettings, type NotificationSettingsData } from './useNotificationSettings';

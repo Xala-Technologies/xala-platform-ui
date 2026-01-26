@@ -25,18 +25,35 @@ export interface PaymentSectionProps {
   className?: string;
 }
 
-export function PaymentSection({ priceLines, subtotal, tax, total, currency, labels, className }: PaymentSectionProps): React.ReactElement {
+export function PaymentSection({
+  priceLines,
+  subtotal,
+  tax,
+  total,
+  currency,
+  labels,
+  className,
+}: PaymentSectionProps): React.ReactElement {
   return (
     <Card className={className} data-color="neutral">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-        <Heading level={3} data-size="sm">{labels.heading}</Heading>
+        <Heading level={3} data-size="sm">
+          {labels.heading}
+        </Heading>
         {priceLines.map((line, idx) => (
           <div key={idx} style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Paragraph data-size="sm">{line.label}</Paragraph>
-            <Paragraph data-size="sm">{line.amount} {line.currency}</Paragraph>
+            <Paragraph data-size="sm">
+              {line.amount} {line.currency}
+            </Paragraph>
           </div>
         ))}
-        <div style={{ borderTop: '1px solid var(--ds-color-neutral-border-subtle)', paddingTop: 'var(--ds-spacing-2)' }}>
+        <div
+          style={{
+            borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+            paddingTop: 'var(--ds-spacing-2)',
+          }}
+        >
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Paragraph data-size="md" style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
               {labels.totalLabel}

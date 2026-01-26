@@ -17,15 +17,8 @@ import {
   type AvailabilitySlot,
   type DayAvailability,
 } from '@digilist/client-sdk';
-import {
-  useRentalObjectAvailability,
-  useCreateBooking,
-} from '@digilist/client-sdk/hooks';
-import type {
-  BookingConfig,
-  AdditionalService,
-  BookingFormData,
-} from '@digilist/contracts';
+import { useRentalObjectAvailability, useCreateBooking } from '@digilist/client-sdk/hooks';
+import type { BookingConfig, AdditionalService, BookingFormData } from '@digilist/contracts';
 import { BookingEngine } from './BookingEngine';
 
 /**
@@ -71,7 +64,6 @@ export function BookingPage({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   // Feature module provides state, selectors, and commands
   const { state, commands } = useFeature(bookingFeature);
 
@@ -99,10 +91,10 @@ export function BookingPage({
   }, [state.calendarDate, config.mode]);
 
   // Fetch availability data
-  const {
-    data: availabilityData,
-    isLoading: isLoadingAvailability,
-  } = useRentalObjectAvailability(rentalObjectId, availabilityParams);
+  const { data: availabilityData, isLoading: isLoadingAvailability } = useRentalObjectAvailability(
+    rentalObjectId,
+    availabilityParams
+  );
 
   // Booking mutation
   const createBookingMutation = useCreateBooking();
@@ -217,7 +209,9 @@ export function BookingPage({
         formData.name && `Contact: ${formData.name}`,
         formData.email && `Email: ${formData.email}`,
         formData.phone && `Phone: ${formData.phone}`,
-      ].filter(Boolean).join('\n');
+      ]
+        .filter(Boolean)
+        .join('\n');
 
       const result = await createBookingMutation.mutateAsync({
         rentalObjectId,
@@ -232,9 +226,8 @@ export function BookingPage({
       commands.submitSuccess(undefined);
       onBookingSuccess?.(result.data.id);
     } catch (error) {
-      const errorMessage = error instanceof Error
-        ? error.message
-        : t('booking.errors.submitFailed');
+      const errorMessage =
+        error instanceof Error ? error.message : t('booking.errors.submitFailed');
       commands.submitError(errorMessage);
     }
   };
@@ -250,7 +243,7 @@ export function BookingPage({
   const engineSelectedSlots = (state.selectedSlots || []).map(mapSlotToContracts);
 
   // Transform day availability to contracts format
-  const engineDayAvailability = (state.dayAvailability || []).map(day => ({
+  const engineDayAvailability = (state.dayAvailability || []).map((day) => ({
     date: typeof day.date === 'string' ? new Date(day.date) : day.date,
     isAvailable: day.isAvailable,
     availableSlots: day.availableSlots,

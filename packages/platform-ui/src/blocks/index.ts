@@ -232,13 +232,7 @@ export { SettingsTabLayout, SettingsField, SettingsSection } from './settings';
 export type { SettingsTabLayoutProps, SettingsFieldProps, SettingsSectionProps } from './settings';
 
 // Settings Tab Components
-export {
-  PreferencesTab,
-  ProfileTab,
-  NotificationsTab,
-  AddressesTab,
-  PrivacyTab,
-} from './settings';
+export { PreferencesTab, ProfileTab, NotificationsTab, AddressesTab, PrivacyTab } from './settings';
 export type {
   PreferencesTabProps,
   PreferencesTabLabels,

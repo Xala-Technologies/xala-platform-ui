@@ -12,6 +12,10 @@ import { PrivacyTab as DSPrivacyTab } from '../../../blocks/settings';
 
 // Re-export the pure presentational component
 export { PrivacyTab } from '../../../blocks/settings';
-export type { PrivacyTabProps, PrivacyTabLabels, PrivacyConsentSettings } from '../../../blocks/settings';
+export type {
+  PrivacyTabProps,
+  PrivacyTabLabels,
+  PrivacyConsentSettings,
+} from '../../../blocks/settings';
 
 export default DSPrivacyTab;

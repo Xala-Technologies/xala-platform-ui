@@ -5,12 +5,7 @@
  */
 
 // Wizard Step Components
-export {
-  BasicStep,
-  type BasicStepProps,
-  type BasicStepLabels,
-  type BasicData,
-} from './BasicStep';
+export { BasicStep, type BasicStepProps, type BasicStepLabels, type BasicData } from './BasicStep';
 export {
   BrandingStep,
   type BrandingStepProps,

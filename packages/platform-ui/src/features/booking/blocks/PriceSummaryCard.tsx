@@ -100,11 +100,16 @@ export function PriceSummaryCard({
         style={{
           padding: 'var(--ds-spacing-4)',
           borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-          background: 'linear-gradient(135deg, var(--ds-color-accent-surface-default) 0%, var(--ds-color-accent-surface-hover) 100%)',
+          background:
+            'linear-gradient(135deg, var(--ds-color-accent-surface-default) 0%, var(--ds-color-accent-surface-hover) 100%)',
         }}
       >
         <Stack direction="horizontal" spacing="2" style={{ alignItems: 'baseline' }}>
-          <Heading level={3} data-size="lg" style={{ color: 'var(--ds-color-accent-text-default)' }}>
+          <Heading
+            level={3}
+            data-size="lg"
+            style={{ color: 'var(--ds-color-accent-text-default)' }}
+          >
             {formatPrice(basePrice)} {currency}
           </Heading>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-subtle)' }}>
@@ -147,7 +152,8 @@ export function PriceSummaryCard({
                   {item.label}
                   {item.quantity && item.unitPrice && (
                     <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                      {' '}({item.quantity} x {formatPrice(item.unitPrice)} {currency})
+                      {' '}
+                      ({item.quantity} x {formatPrice(item.unitPrice)} {currency})
                     </span>
                   )}
                 </Paragraph>
@@ -160,7 +166,8 @@ export function PriceSummaryCard({
                       : 'var(--ds-color-neutral-text-default)',
                   }}
                 >
-                  {item.isDiscount ? '-' : ''}{formatPrice(item.total)} {currency}
+                  {item.isDiscount ? '-' : ''}
+                  {formatPrice(item.total)} {currency}
                 </Paragraph>
               </Stack>
             ))}

@@ -15,10 +15,15 @@ export interface RecurringPreviewTableProps {
   className?: string;
 }
 
-export function RecurringPreviewTable({ labels, className }: RecurringPreviewTableProps): React.ReactElement {
+export function RecurringPreviewTable({
+  labels,
+  className,
+}: RecurringPreviewTableProps): React.ReactElement {
   return (
     <div className={className}>
-      <Heading level={3} data-size="sm">{labels.heading}</Heading>
+      <Heading level={3} data-size="sm">
+        {labels.heading}
+      </Heading>
       <Paragraph data-size="sm">{labels.dateHeader}</Paragraph>
     </div>
   );

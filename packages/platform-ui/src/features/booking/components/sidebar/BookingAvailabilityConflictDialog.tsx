@@ -157,7 +157,6 @@ export function BookingAvailabilityConflictDialog({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   // Translated day names
   const dayNames = React.useMemo(
     () => [
@@ -264,7 +263,10 @@ export function BookingAvailabilityConflictDialog({
             <div style={{ color: 'var(--ds-color-warning-text-default)', flexShrink: 0 }}>
               <WarningIcon size={20} />
             </div>
-            <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-warning-text-default)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, color: 'var(--ds-color-warning-text-default)' }}
+            >
               {t('booking.conflictDialog.warning')}
             </Paragraph>
           </div>
@@ -367,7 +369,10 @@ export function BookingAvailabilityConflictDialog({
               border: '1px dashed var(--ds-color-neutral-border-default)',
             }}
           >
-            <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               {availableSlots.length > 0
                 ? t('booking.conflictDialog.availableCount', { count: availableSlots.length })
                 : t('booking.conflictDialog.noAvailable')}
@@ -387,7 +392,10 @@ export function BookingAvailabilityConflictDialog({
                 gap: 'var(--ds-spacing-2)',
               }}
             >
-              <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}
+              >
                 {t('booking.conflictDialog.willBook', { count: availableSlots.length })}
               </Paragraph>
             </div>
@@ -403,7 +411,13 @@ export function BookingAvailabilityConflictDialog({
             gap: 'var(--ds-spacing-3)',
           }}
         >
-          <Button type="button" variant="secondary" data-size="md" onClick={onChangeTime} style={{ flex: 1 }}>
+          <Button
+            type="button"
+            variant="secondary"
+            data-size="md"
+            onClick={onChangeTime}
+            style={{ flex: 1 }}
+          >
             {t('booking.conflictDialog.changeTime')}
           </Button>
           <Button

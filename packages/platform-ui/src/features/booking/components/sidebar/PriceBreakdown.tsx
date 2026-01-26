@@ -12,7 +12,8 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Spinner, Stack, Card } from '@digdir/designsystemet-react';
+import { Paragraph, Spinner, Card } from '@digdir/designsystemet-react';
+import { Stack } from '../../../../primitives/stack';
 
 // =============================================================================
 // Types
@@ -77,12 +78,11 @@ export function PriceBreakdown({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   if (isLoading) {
     return (
       <Stack
         direction="horizontal"
-        spacing="2"
+        gap="var(--ds-spacing-2)"
         className={className}
         style={{
           alignItems: 'center',
@@ -100,10 +100,7 @@ export function PriceBreakdown({
 
   if (error) {
     return (
-      <Card
-        className={className}
-        data-color="danger"
-      >
+      <Card className={className} data-color="danger">
         <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
           {error}
         </Paragraph>
@@ -113,10 +110,7 @@ export function PriceBreakdown({
 
   if (!data) {
     return (
-      <Card
-        className={className}
-        data-color="neutral"
-      >
+      <Card className={className} data-color="neutral">
         <Paragraph data-size="sm" data-color="subtle">
           {t('booking.selectTimeToSeePrice')}
         </Paragraph>
@@ -184,7 +178,10 @@ export function PriceBreakdown({
                   </Paragraph>
                 )}
               </div>
-              <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+              >
                 {formatPrice(item.totalPrice, data.currency)}
               </Paragraph>
             </div>
@@ -310,7 +307,10 @@ export function PriceBreakdown({
             marginBottom: 'var(--ds-spacing-3)',
           }}
         >
-          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-info-text-default)' }}>
+          <Paragraph
+            data-size="xs"
+            style={{ margin: 0, color: 'var(--ds-color-info-text-default)' }}
+          >
             {t('booking.depositNotice', { amount: formatPrice(data.depositAmount, data.currency) })}
           </Paragraph>
         </div>

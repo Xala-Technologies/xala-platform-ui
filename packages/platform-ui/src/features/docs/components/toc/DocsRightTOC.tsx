@@ -166,9 +166,7 @@ export function DocsRightTOC({ items, labels, onItemClick }: DocsRightTOCProps) 
                     : 'var(--ds-color-neutral-text-subtle)',
                   textDecoration: 'none',
                   borderLeft: '2px solid',
-                  borderColor: isActive
-                    ? 'var(--ds-color-accent-border-default)'
-                    : 'transparent',
+                  borderColor: isActive ? 'var(--ds-color-accent-border-default)' : 'transparent',
                   paddingLeft: 'var(--ds-spacing-3)',
                   marginLeft: '-2px',
                   transition: 'all 0.2s ease',

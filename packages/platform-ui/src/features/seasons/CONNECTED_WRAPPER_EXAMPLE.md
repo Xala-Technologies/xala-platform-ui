@@ -7,6 +7,7 @@ This guide shows how to create connected wrappers for the pure presentational se
 The seasons components (`SeasonCard`, `VenueCard`, `SeasonStatusBadge`) are now pure presentational components. They receive all data via props and have no SDK, i18n, or routing dependencies.
 
 Your application needs to create "connected wrappers" that:
+
 1. Fetch data from the SDK
 2. Provide i18n translations
 3. Handle routing and navigation

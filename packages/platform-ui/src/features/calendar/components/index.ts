@@ -21,10 +21,7 @@ export {
   type DragHandlers,
 } from './TimelineView';
 
-export {
-  EventDrawer,
-  type EventDrawerProps,
-} from './EventDrawer';
+export { EventDrawer, type EventDrawerProps } from './EventDrawer';
 
 // COMMENTED OUT: Contains forbidden imports (@xala-technologies/platform)
 // export {

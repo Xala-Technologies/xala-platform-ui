@@ -5,7 +5,12 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, InfoIcon } from '@xala-technologies/platform-ui';
+import {
+  CalendarIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  InfoIcon,
+} from '@xala-technologies/platform-ui';
 import { cn, formatPrice as utilFormatPrice, formatPriceUnit } from '../utils';
 import { PriceSummary } from '../components/PriceSummary';
 import type {
@@ -45,7 +50,9 @@ export function DateRangeModeView({
   onContinue,
   canContinue,
 }: DateRangeModeViewProps): React.ReactElement {
-  const [rangeStart, setRangeStart] = React.useState<Date | null>(selection.dateRange?.start || null);
+  const [rangeStart, setRangeStart] = React.useState<Date | null>(
+    selection.dateRange?.start || null
+  );
   const [rangeEnd, setRangeEnd] = React.useState<Date | null>(selection.dateRange?.end || null);
   const [hoverDate, setHoverDate] = React.useState<Date | null>(null);
 
@@ -108,11 +115,23 @@ export function DateRangeModeView({
             </Heading>
           </div>
           <div className="calendar-navigation">
-            <button type="button" className="nav-button" onClick={() => onMonthChange('prev')} aria-label="Forrige maned">
+            <button
+              type="button"
+              className="nav-button"
+              onClick={() => onMonthChange('prev')}
+              aria-label="Forrige maned"
+            >
               <ChevronLeftIcon size={20} />
             </button>
-            <span className="nav-date" style={{ minWidth: '160px' }}>{monthName}</span>
-            <button type="button" className="nav-button" onClick={() => onMonthChange('next')} aria-label="Neste maned">
+            <span className="nav-date" style={{ minWidth: '160px' }}>
+              {monthName}
+            </span>
+            <button
+              type="button"
+              className="nav-button"
+              onClick={() => onMonthChange('next')}
+              aria-label="Neste maned"
+            >
               <ChevronRightIcon size={20} />
             </button>
           </div>
@@ -121,14 +140,20 @@ export function DateRangeModeView({
         <div className="range-hint">
           <InfoIcon size={16} />
           <Paragraph data-size="sm" style={{ margin: 0 }}>
-            {!rangeStart ? 'Klikk for a velge startdato' : !rangeEnd ? 'Klikk for a velge sluttdato' : 'Klikk for a endre'}
+            {!rangeStart
+              ? 'Klikk for a velge startdato'
+              : !rangeEnd
+                ? 'Klikk for a velge sluttdato'
+                : 'Klikk for a endre'}
           </Paragraph>
         </div>
 
         <div className="month-calendar">
           <div className="month-header">
-            {['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lor', 'Son'].map(day => (
-              <div key={day} className="month-day-name">{day}</div>
+            {['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lor', 'Son'].map((day) => (
+              <div key={day} className="month-day-name">
+                {day}
+              </div>
             ))}
           </div>
           <div className="month-grid range-grid">
@@ -178,7 +203,14 @@ export function DateRangeModeView({
             <div className="empty-illustration">
               <CalendarIcon size={40} />
             </div>
-            <Paragraph data-size="sm" style={{ margin: 0, textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                textAlign: 'center',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Velg start- og sluttdato for din booking
             </Paragraph>
           </div>
@@ -188,7 +220,11 @@ export function DateRangeModeView({
               <div className="range-date-box">
                 <span className="range-label">Fra</span>
                 <span className="range-date">
-                  {rangeStart.toLocaleDateString('nb-NO', { weekday: 'short', day: 'numeric', month: 'short' })}
+                  {rangeStart.toLocaleDateString('nb-NO', {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short',
+                  })}
                 </span>
               </div>
               <div className="range-arrow">-&gt;</div>
@@ -196,9 +232,12 @@ export function DateRangeModeView({
                 <span className="range-label">Til</span>
                 <span className="range-date">
                   {rangeEnd
-                    ? rangeEnd.toLocaleDateString('nb-NO', { weekday: 'short', day: 'numeric', month: 'short' })
-                    : 'Velg sluttdato'
-                  }
+                    ? rangeEnd.toLocaleDateString('nb-NO', {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                      })
+                    : 'Velg sluttdato'}
                 </span>
               </div>
             </div>
@@ -219,10 +258,24 @@ export function DateRangeModeView({
                 <PriceSummary priceCalculation={priceCalculation} />
 
                 <div className="summary-actions">
-                  <Button type="button" variant="tertiary" onClick={() => { setRangeStart(null); setRangeEnd(null); onRangeSelect(new Date(), null); }}>
+                  <Button
+                    type="button"
+                    variant="tertiary"
+                    onClick={() => {
+                      setRangeStart(null);
+                      setRangeEnd(null);
+                      onRangeSelect(new Date(), null);
+                    }}
+                  >
                     Tom valg
                   </Button>
-                  <Button type="button" variant="primary" data-color="accent" onClick={onContinue} disabled={!canContinue}>
+                  <Button
+                    type="button"
+                    variant="primary"
+                    data-color="accent"
+                    onClick={onContinue}
+                    disabled={!canContinue}
+                  >
                     Fortsett
                     <ChevronRightIcon size={18} />
                   </Button>

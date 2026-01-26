@@ -84,15 +84,7 @@ export const WEEKDAY_LABELS = [
   'Lørdag',
 ] as const;
 
-export const WEEKDAY_SHORT_LABELS = [
-  'Søn',
-  'Man',
-  'Tir',
-  'Ons',
-  'Tor',
-  'Fre',
-  'Lør',
-] as const;
+export const WEEKDAY_SHORT_LABELS = ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'] as const;
 
 // =============================================================================
 // Time Configuration

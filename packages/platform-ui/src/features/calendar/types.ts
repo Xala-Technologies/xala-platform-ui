@@ -220,7 +220,15 @@ export const BLOCK_TYPE_CONFIG: Record<BlockType, BlockTypeConfig> = {
 // =============================================================================
 
 export const WEEKDAY_LABELS = ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'];
-export const WEEKDAY_FULL_LABELS = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
+export const WEEKDAY_FULL_LABELS = [
+  'Søndag',
+  'Mandag',
+  'Tirsdag',
+  'Onsdag',
+  'Torsdag',
+  'Fredag',
+  'Lørdag',
+];
 
 export const DEFAULT_BLOCK_FORM: BlockFormData = {
   listingId: '',

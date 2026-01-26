@@ -1,1 +1,6 @@
-export { PaymentSection, type PaymentSectionProps, type PaymentSectionLabels, type PriceLine } from './PaymentSection';
+export {
+  PaymentSection,
+  type PaymentSectionProps,
+  type PaymentSectionLabels,
+  type PriceLine,
+} from './PaymentSection';

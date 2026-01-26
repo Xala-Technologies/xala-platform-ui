@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Stack, Card, Button } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Card, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Icons
@@ -231,7 +231,10 @@ export function BookingCartSidebar({
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
           <ShoppingCartIcon size={18} />
-          <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+          <Paragraph
+            data-size="sm"
+            style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+          >
             {slotCount > 0 ? t('bookingCart.title') : t('bookingCart.empty.title')}
           </Paragraph>
         </div>
@@ -318,16 +321,23 @@ export function BookingCartSidebar({
                     display: 'flex',
                     alignItems: 'center',
                     gap: 'var(--ds-spacing-2)',
-                    backgroundColor: isExpanded ? 'var(--ds-color-accent-surface-default)' : 'transparent',
+                    backgroundColor: isExpanded
+                      ? 'var(--ds-color-accent-surface-default)'
+                      : 'transparent',
                     border: 'none',
                     cursor: 'pointer',
                     textAlign: 'left',
                   }}
                 >
                   <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                    <div
+                      style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}
+                    >
                       <CalendarIcon size={16} />
-                      <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
+                      <Paragraph
+                        data-size="md"
+                        style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
+                      >
                         {slotDate.getDate()}. {monthNames[slotDate.getMonth()]}
                       </Paragraph>
                     </div>
@@ -443,11 +453,20 @@ export function BookingCartSidebar({
             return (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
                 {/* Base price */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
-                    {selectedGroup?.label} ({totalHours}t × {selectedGroup?.pricePerHour} {currency})
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
+                    {selectedGroup?.label} ({totalHours}t × {selectedGroup?.pricePerHour} {currency}
+                    )
                   </Paragraph>
-                  <Paragraph data-size="sm" style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}
+                  >
                     {basePrice.toLocaleString('nb-NO')} {currency}
                   </Paragraph>
                 </div>
@@ -459,12 +478,22 @@ export function BookingCartSidebar({
                     .map((service) => (
                       <div
                         key={service.id}
-                        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
                       >
-                        <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                        <Paragraph
+                          data-size="sm"
+                          style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                        >
                           {service.label}
                         </Paragraph>
-                        <Paragraph data-size="sm" style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}>
+                        <Paragraph
+                          data-size="sm"
+                          style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}
+                        >
                           +{service.price.toLocaleString('nb-NO')} {currency}
                         </Paragraph>
                       </div>
@@ -480,21 +509,37 @@ export function BookingCartSidebar({
                 />
 
                 {/* Subtotal */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
                     {t('bookingCart.subtotal')}
                   </Paragraph>
-                  <Paragraph data-size="sm" style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}
+                  >
                     {subtotal.toLocaleString('nb-NO')} {currency}
                   </Paragraph>
                 </div>
 
                 {/* VAT */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                  >
                     {t('bookingCart.vat')} ({(vatRate * 100).toFixed(0)}%)
                   </Paragraph>
-                  <Paragraph data-size="sm" style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}
+                  >
                     {vatAmount.toLocaleString('nb-NO')} {currency}
                   </Paragraph>
                 </div>
@@ -511,7 +556,10 @@ export function BookingCartSidebar({
                     marginTop: 'var(--ds-spacing-2)',
                   }}
                 >
-                  <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+                  <Paragraph
+                    data-size="md"
+                    style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+                  >
                     {t('bookingCart.total')}
                   </Paragraph>
                   <Paragraph

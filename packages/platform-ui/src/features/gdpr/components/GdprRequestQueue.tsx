@@ -7,14 +7,7 @@
  * @module @xala-technologies/platform-ui/features/gdpr
  */
 import * as React from 'react';
-import {
-  Card,
-  Paragraph,
-  Button,
-  Table,
-  Spinner,
-  Textfield,
-} from '@digdir/designsystemet-react';
+import { Card, Paragraph, Button, Table, Spinner, Textfield } from '@digdir/designsystemet-react';
 import { StatusTag } from '../../../blocks/StatusBadges';
 import type { BadgeColor } from '../../../blocks/StatusBadges';
 import type { GdprRequestVM, GdprSortOption } from '../types';
@@ -229,10 +222,7 @@ export function GdprRequestQueue({
             }}
           >
             <Spinner aria-label={labels.loadingLabel} />
-            <Paragraph
-              data-size="md"
-              style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-            >
+            <Paragraph data-size="md" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
               {labels.loadingRequests}
             </Paragraph>
           </div>
@@ -411,7 +401,9 @@ export function GdprRequestQueue({
               >
                 {/* User */}
                 <Table.Cell>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
+                  <div
+                    style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}
+                  >
                     <Paragraph
                       data-size="sm"
                       style={{ fontWeight: 'var(--ds-font-weight-medium)' }}
@@ -488,11 +480,7 @@ export function GdprRequestQueue({
                     aria-label={labels.copyId}
                     style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
                   >
-                    {copiedId === request.id ? (
-                      <CheckIcon size={16} />
-                    ) : (
-                      <CopyIcon size={16} />
-                    )}
+                    {copiedId === request.id ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
                   </Button>
                 </Table.Cell>
               </Table.Row>

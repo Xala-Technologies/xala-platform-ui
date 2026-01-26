@@ -234,7 +234,16 @@ interface NotificationTypeConfig {
   icon: React.ReactNode;
   color: string;
   backgroundColor: string;
-  labelKey: keyof Pick<NotificationItemLabels, 'confirmedLabel' | 'reminderLabel' | 'cancelledLabel' | 'modifiedLabel' | 'upcomingLabel' | 'completedLabel' | 'defaultLabel'>;
+  labelKey: keyof Pick<
+    NotificationItemLabels,
+    | 'confirmedLabel'
+    | 'reminderLabel'
+    | 'cancelledLabel'
+    | 'modifiedLabel'
+    | 'upcomingLabel'
+    | 'completedLabel'
+    | 'defaultLabel'
+  >;
 }
 
 const notificationTypeConfig: Record<NotificationType, NotificationTypeConfig> = {

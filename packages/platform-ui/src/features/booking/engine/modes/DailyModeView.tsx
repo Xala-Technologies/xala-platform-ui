@@ -5,7 +5,13 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
-import { CalendarIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@xala-technologies/platform-ui';
+import {
+  CalendarIcon,
+  CheckIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CloseIcon,
+} from '@xala-technologies/platform-ui';
 import { cn } from '@xala-technologies/platform-ui';
 import { PriceSummary } from '../components/PriceSummary';
 import type {
@@ -59,11 +65,11 @@ export function DailyModeView({
   }
 
   const isDateSelected = (date: Date) => {
-    return selection.slots.some(s => new Date(s.date).toDateString() === date.toDateString());
+    return selection.slots.some((s) => new Date(s.date).toDateString() === date.toDateString());
   };
 
   const getDateAvailability = (date: Date): DayAvailability | undefined => {
-    return dayAvailability.find(d => new Date(d.date).toDateString() === date.toDateString());
+    return dayAvailability.find((d) => new Date(d.date).toDateString() === date.toDateString());
   };
 
   return (
@@ -77,11 +83,23 @@ export function DailyModeView({
             </Heading>
           </div>
           <div className="calendar-navigation">
-            <button type="button" className="nav-button" onClick={() => onMonthChange('prev')} aria-label="Forrige maned">
+            <button
+              type="button"
+              className="nav-button"
+              onClick={() => onMonthChange('prev')}
+              aria-label="Forrige maned"
+            >
               <ChevronLeftIcon size={20} />
             </button>
-            <span className="nav-date" style={{ minWidth: '160px' }}>{monthName}</span>
-            <button type="button" className="nav-button" onClick={() => onMonthChange('next')} aria-label="Neste maned">
+            <span className="nav-date" style={{ minWidth: '160px' }}>
+              {monthName}
+            </span>
+            <button
+              type="button"
+              className="nav-button"
+              onClick={() => onMonthChange('next')}
+              aria-label="Neste maned"
+            >
               <ChevronRightIcon size={20} />
             </button>
           </div>
@@ -89,8 +107,10 @@ export function DailyModeView({
 
         <div className="month-calendar">
           <div className="month-header">
-            {['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lor', 'Son'].map(day => (
-              <div key={day} className="month-day-name">{day}</div>
+            {['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lor', 'Son'].map((day) => (
+              <div key={day} className="month-day-name">
+                {day}
+              </div>
             ))}
           </div>
           <div className="month-grid">
@@ -120,7 +140,9 @@ export function DailyModeView({
                 >
                   <span className="day-number">{date.getDate()}</span>
                   {availability?.minPrice && !selected && (
-                    <span className="day-price">{formatPrice(availability.minPrice, currency)}</span>
+                    <span className="day-price">
+                      {formatPrice(availability.minPrice, currency)}
+                    </span>
                   )}
                   {selected && <CheckIcon size={14} className="day-check" />}
                 </button>
@@ -158,7 +180,14 @@ export function DailyModeView({
             <div className="empty-illustration">
               <CalendarIcon size={40} />
             </div>
-            <Paragraph data-size="sm" style={{ margin: 0, textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                textAlign: 'center',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Klikk pa datoer i kalenderen for a velge
             </Paragraph>
           </div>
@@ -168,7 +197,11 @@ export function DailyModeView({
               {selection.slots
                 .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
                 .map((slot, index) => (
-                  <div key={slot.id} className="selected-slot-item" style={{ animationDelay: `${index * 40}ms` }}>
+                  <div
+                    key={slot.id}
+                    className="selected-slot-item"
+                    style={{ animationDelay: `${index * 40}ms` }}
+                  >
                     <div className="slot-info">
                       <span className="slot-date">
                         {new Date(slot.date).toLocaleDateString('nb-NO', {
@@ -194,7 +227,13 @@ export function DailyModeView({
             <PriceSummary priceCalculation={priceCalculation} />
 
             <div className="summary-actions">
-              <Button type="button" variant="primary" data-color="accent" onClick={onContinue} disabled={!canContinue}>
+              <Button
+                type="button"
+                variant="primary"
+                data-color="accent"
+                onClick={onContinue}
+                disabled={!canContinue}
+              >
                 Fortsett
                 <ChevronRightIcon size={18} />
               </Button>

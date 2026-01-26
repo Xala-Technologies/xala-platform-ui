@@ -376,12 +376,15 @@ function DocsRoutes() {
 Always use `useMemo` for labels to avoid recreating objects on every render:
 
 ```typescript
-const labels: DocsLayoutLabels = useMemo(() => ({
-  header: {
-    searchPlaceholder: t('form.docs.search.placeholder'),
-    // ... other labels
-  },
-}), [t]);
+const labels: DocsLayoutLabels = useMemo(
+  () => ({
+    header: {
+      searchPlaceholder: t('form.docs.search.placeholder'),
+      // ... other labels
+    },
+  }),
+  [t]
+);
 ```
 
 ### 2. Feature Flag Filtering

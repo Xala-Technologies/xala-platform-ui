@@ -220,7 +220,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Textfield label={t('platform.common.name')} placeholder={t('storybook.demo.enterYourName')} />
+      <Textfield
+        label={t('platform.common.name')}
+        placeholder={t('storybook.demo.enterYourName')}
+      />
     );
   },
   play: async ({ canvasElement }) => {

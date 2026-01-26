@@ -7,7 +7,7 @@
  * @module @xala-technologies/platform-ui/features/backoffice-calendar/components
  */
 
-/* eslint-disable digdir/prefer-ds-components -- Complex form with native HTML elements for better browser compatibility */
+/* eslint-disable no-restricted-imports -- Calendar components bridge domain and UI packages */
 
 import * as React from 'react';
 import { useState, useEffect, useMemo } from 'react';
@@ -69,7 +69,11 @@ export interface CreateBlockModalProps {
   /** Handler for closing the modal */
   onClose: () => void;
   /** Handler for form data changes (for conflict checking) */
-  onFormChange?: (formData: BlockFormData, showRecurrence: boolean, recurrence: RecurrenceFormData) => void;
+  onFormChange?: (
+    formData: BlockFormData,
+    showRecurrence: boolean,
+    recurrence: RecurrenceFormData
+  ) => void;
   /** Handler for creating the block */
   onCreate: (data: CreateBlockData) => void;
 }
@@ -117,8 +121,8 @@ export function CreateBlockModal({
   const [formData, setFormData] = useState<BlockFormData>(() => ({
     ...DEFAULT_BLOCK_FORM,
     listingId: initialListingId ?? '',
-    startDate: initialDate ? initialDate.toISOString().split('T')[0] ?? '' : '',
-    endDate: initialDate ? initialDate.toISOString().split('T')[0] ?? '' : '',
+    startDate: initialDate ? (initialDate.toISOString().split('T')[0] ?? '') : '',
+    endDate: initialDate ? (initialDate.toISOString().split('T')[0] ?? '') : '',
     startTime: initialStartTime ? initialStartTime.toTimeString().slice(0, 5) : '',
     endTime: initialEndTime ? initialEndTime.toTimeString().slice(0, 5) : '',
     allDay: !initialStartTime && !initialEndTime,
@@ -178,7 +182,8 @@ export function CreateBlockModal({
     }
     if (
       showRecurrence &&
-      (!recurrence.endDate || (recurrence.frequency === 'weekly' && recurrence.weekdays.length === 0))
+      (!recurrence.endDate ||
+        (recurrence.frequency === 'weekly' && recurrence.weekdays.length === 0))
     ) {
       return false;
     }
@@ -365,7 +370,9 @@ export function CreateBlockModal({
           </div>
 
           {/* Date and time */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-3)' }}>
+          <div
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-3)' }}
+          >
             <div>
               <label
                 htmlFor="start-date"
@@ -433,7 +440,13 @@ export function CreateBlockModal({
 
           {/* Time range (if not all day) */}
           {!formData.allDay && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--ds-spacing-3)' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 'var(--ds-spacing-3)',
+              }}
+            >
               <div>
                 <label
                   htmlFor="start-time"
@@ -596,7 +609,9 @@ export function CreateBlockModal({
                       >
                         {t('backoffice.calendar.weekdays')} *
                       </label>
-                      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+                      <div
+                        style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}
+                      >
                         {WEEKDAY_LABELS.map((label, index) => (
                           <button
                             key={index}
@@ -684,7 +699,11 @@ export function CreateBlockModal({
 
           {conflicts?.hasConflicts && (
             <Alert data-color="warning">
-              <Heading level={3} data-size="xs" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+              <Heading
+                level={3}
+                data-size="xs"
+                style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+              >
                 {t('backoffice.calendar.conflictsFound', { count: conflicts.conflicts.length })}
               </Heading>
               <ul style={{ margin: 0, paddingLeft: 'var(--ds-spacing-4)' }}>

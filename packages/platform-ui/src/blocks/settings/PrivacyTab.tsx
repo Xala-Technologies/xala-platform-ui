@@ -139,9 +139,7 @@ export function PrivacyTab({
         <Stack spacing="var(--ds-spacing-4)">
           <div>
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              <ShieldIcon
-                style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }}
-              />
+              <ShieldIcon style={{ verticalAlign: 'middle', marginRight: 'var(--ds-spacing-2)' }} />
               {labels.dataExportTitle}
             </Heading>
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>

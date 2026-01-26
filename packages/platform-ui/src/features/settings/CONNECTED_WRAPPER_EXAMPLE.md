@@ -34,6 +34,7 @@ export function UserSettingsPage() {
 ```
 
 The `ProfileTab` wrapper automatically:
+
 - Fetches current user data
 - Manages profile form state
 - Handles avatar uploads
@@ -57,6 +58,7 @@ export function NotificationsPage() {
 ```
 
 The `NotificationsTab` wrapper automatically:
+
 - Uses `useNotificationSettings` hook
 - Fetches tenant notification settings
 - Manages notification preferences
@@ -819,17 +821,20 @@ You'll need to add the following translation keys to your i18n files:
 ## Summary
 
 **User Settings:**
+
 - Use the pre-built wrappers from `/features/settings/components/`
 - ProfileTab, NotificationsTab, AddressesTab, PreferencesTab work out of the box
 - PrivacyTab requires a custom wrapper (example provided)
 
 **Tenant Settings:**
+
 - Create connected wrappers in your app
 - Use `useTenantSettings` and `useUpdateTenantSettings` hooks
 - Map i18n translations to label props
 - Handle form state and mutations in the wrapper
 
 **Best Practices:**
+
 - Keep all SDK/i18n logic in connected wrappers
 - Pass complete label objects to pure components
 - Use TypeScript for type safety

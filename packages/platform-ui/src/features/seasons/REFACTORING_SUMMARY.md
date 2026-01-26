@@ -125,6 +125,7 @@ The seasons feature has been successfully refactored to follow pure presentation
 ### 1. Removed Forbidden Dependencies
 
 **Before (SeasonCard):**
+
 ```typescript
 import { useT } from '@xala-technologies/platform/i18n';
 
@@ -136,6 +137,7 @@ const formatDate = (d: string) => new Date(d).toLocaleDateString('no-NO', ...);
 ```
 
 **After (SeasonCard):**
+
 ```typescript
 export interface SeasonCardLabels {
   periodLabel: string;
@@ -157,6 +159,7 @@ export interface SeasonCardProps {
 ### 2. Replaced Raw HTML with Designsystemet Components
 
 **Before (VenueCard):**
+
 ```typescript
 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
   <Heading level={3} style={{ margin: 0 }}>{venue.name}</Heading>
@@ -167,6 +170,7 @@ export interface SeasonCardProps {
 ```
 
 **After (VenueCard):**
+
 ```typescript
 <Stack spacing="3">
   <Heading level={3} data-size="sm" style={{ margin: 0 }}>
@@ -181,6 +185,7 @@ export interface SeasonCardProps {
 ### 3. Simplified Status Badge Component
 
 **Before (SeasonStatusBadge):**
+
 ```typescript
 import type { SeasonStatus } from '@digilist/client-sdk/types';
 import { SEASON_STATUS_CONFIG } from './constants';
@@ -196,6 +201,7 @@ export function SeasonStatusBadge({ status, size = 'sm' }: SeasonStatusBadgeProp
 ```
 
 **After (SeasonStatusBadge):**
+
 ```typescript
 export type BadgeColor = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
@@ -213,6 +219,7 @@ export function SeasonStatusBadge({ label, color, size = 'sm' }: SeasonStatusBad
 ### 4. ViewModel Pattern
 
 Renamed data types to follow ViewModel pattern:
+
 - `SeasonCardData` → `SeasonVM` (with backwards compatibility export)
 - `VenueCardData` → `VenueVM` (with backwards compatibility export)
 
@@ -300,6 +307,7 @@ grep -r "useT\|@xala-technologies/platform/i18n" src/features/seasons/blocks/*.t
 ### ✅ No Raw HTML Elements
 
 All components use Designsystemet primitives:
+
 - `Stack` for layout
 - `Card` for containers
 - `Heading`, `Paragraph` for text
@@ -369,6 +377,7 @@ function SeasonsList({ seasons }: { seasons: SeasonDTO[] }) {
 ### Connected Wrapper Pattern (For Applications)
 
 See `CONNECTED_WRAPPER_EXAMPLE.md` for full example showing how to:
+
 - Fetch data with SDK hooks
 - Provide i18n translations
 - Handle routing and navigation
@@ -383,6 +392,7 @@ See `CONNECTED_WRAPPER_EXAMPLE.md` for full example showing how to:
 Created comprehensive Storybook stories demonstrating:
 
 **SeasonCard.stories.tsx:**
+
 - Open season (with apply button)
 - Draft season
 - Closed season
@@ -398,6 +408,7 @@ Created comprehensive Storybook stories demonstrating:
 - Long content handling
 
 **VenueCard.stories.tsx:**
+
 - Default venue with all fields
 - Minimal venue (only name)
 - No image variant
@@ -415,6 +426,7 @@ Created comprehensive Storybook stories demonstrating:
 - Grid layout preview
 
 **Story Files:**
+
 - `/src/stories/Features/SeasonCard.stories.tsx`
 - `/src/stories/Features/VenueCard.stories.tsx`
 

@@ -9,14 +9,7 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import {
-  Button,
-  Table,
-  Select,
-  Paragraph,
-  Heading,
-  Card,
-} from '@digdir/designsystemet-react';
+import { Button, Table, Select, Paragraph, Heading, Card } from '@digdir/designsystemet-react';
 import { Stack, FormField, Badge } from '@xala-technologies/platform-ui';
 import type { OrganizationMemberVM, UserVM, MemberRole } from '../types';
 
@@ -258,7 +251,12 @@ export function MemberManagement({
       {/* Add Member Section */}
       <div>
         {!isAdding ? (
-          <Button variant="secondary" data-size="sm" onClick={() => setIsAdding(true)} type="button">
+          <Button
+            variant="secondary"
+            data-size="sm"
+            onClick={() => setIsAdding(true)}
+            type="button"
+          >
             <PlusIcon size={16} />
             {labels.addMember}
           </Button>
@@ -302,7 +300,11 @@ export function MemberManagement({
               </FormField>
 
               <Stack direction="horizontal" spacing="2">
-                <Button onClick={handleAddMember} disabled={!selectedUserId || isSubmitting} type="button">
+                <Button
+                  onClick={handleAddMember}
+                  disabled={!selectedUserId || isSubmitting}
+                  type="button"
+                >
                   {isSubmitting ? labels.adding : labels.add}
                 </Button>
                 <Button

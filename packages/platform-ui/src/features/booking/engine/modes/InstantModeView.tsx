@@ -7,10 +7,7 @@ import * as React from 'react';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
 import { SparklesIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
 import { formatPriceUnit } from '../utils';
-import type {
-  BookingConfig,
-  BookingPriceCalculation,
-} from '@digilist/contracts';
+import type { BookingConfig, BookingPriceCalculation } from '@digilist/contracts';
 
 interface ModeViewProps {
   formatPrice: (amount: number, currency: string) => string;
@@ -40,7 +37,16 @@ export function InstantModeView({
         <Heading level={2} data-size="lg" style={{ margin: 0, textAlign: 'center' }}>
           Direkte booking
         </Heading>
-        <Paragraph data-size="md" style={{ margin: 0, marginTop: 'var(--ds-spacing-2)', textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)', maxWidth: '400px' }}>
+        <Paragraph
+          data-size="md"
+          style={{
+            margin: 0,
+            marginTop: 'var(--ds-spacing-2)',
+            textAlign: 'center',
+            color: 'var(--ds-color-neutral-text-subtle)',
+            maxWidth: '400px',
+          }}
+        >
           Denne tjenesten krever ingen kalendervalg. Fyll ut skjemaet for a fullfare bestillingen.
         </Paragraph>
 
@@ -52,7 +58,13 @@ export function InstantModeView({
           <span className="instant-price-unit">per {formatPriceUnit(config.pricing.unit)}</span>
         </div>
 
-        <Button type="button" variant="primary" data-color="accent" data-size="lg" onClick={onContinue}>
+        <Button
+          type="button"
+          variant="primary"
+          data-color="accent"
+          data-size="lg"
+          onClick={onContinue}
+        >
           Fortsett til bestilling
           <ChevronRightIcon size={20} />
         </Button>

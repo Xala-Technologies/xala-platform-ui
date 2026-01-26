@@ -27,10 +27,15 @@ export const DEFAULT_RECURRING_PATTERN: RecurringPatternData = {
   interval: 1,
 };
 
-export function RecurringPatternBuilder({ labels, className }: RecurringPatternBuilderProps): React.ReactElement {
+export function RecurringPatternBuilder({
+  labels,
+  className,
+}: RecurringPatternBuilderProps): React.ReactElement {
   return (
     <div className={className}>
-      <Heading level={3} data-size="sm">{labels.heading}</Heading>
+      <Heading level={3} data-size="sm">
+        {labels.heading}
+      </Heading>
       <Paragraph data-size="sm">{labels.frequencyLabel}</Paragraph>
     </div>
   );

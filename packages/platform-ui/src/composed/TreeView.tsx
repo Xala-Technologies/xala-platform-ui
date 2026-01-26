@@ -7,7 +7,13 @@
 
 import { useState, useCallback, useMemo, createContext, useContext, type ReactNode } from 'react';
 import { Paragraph, Button } from '@digdir/designsystemet-react';
-import { ChevronDownIcon, ChevronRightIcon, FolderIcon, FolderOpenIcon, FileIcon } from 'lucide-react';
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  FileIcon,
+} from 'lucide-react';
 
 /**
  * Tree node data structure
@@ -388,12 +394,20 @@ function TreeNodeItem({ node, level }: TreeNodeItemProps) {
     if (!showIcons) return null;
     if (hasChildren) {
       return isExpanded ? (
-        <FolderOpenIcon size={styles.iconSize} style={{ color: 'var(--ds-color-accent-base-default)' }} />
+        <FolderOpenIcon
+          size={styles.iconSize}
+          style={{ color: 'var(--ds-color-accent-base-default)' }}
+        />
       ) : (
-        <FolderIcon size={styles.iconSize} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />
+        <FolderIcon
+          size={styles.iconSize}
+          style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
+        />
       );
     }
-    return <FileIcon size={styles.iconSize} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />;
+    return (
+      <FileIcon size={styles.iconSize} style={{ color: 'var(--ds-color-neutral-text-subtle)' }} />
+    );
   };
 
   return (
@@ -418,9 +432,7 @@ function TreeNodeItem({ node, level }: TreeNodeItemProps) {
           textAlign: 'left',
           justifyContent: 'flex-start',
           gap: 'var(--ds-spacing-2)',
-          backgroundColor: isSelected
-            ? 'var(--ds-color-accent-surface-default)'
-            : 'transparent',
+          backgroundColor: isSelected ? 'var(--ds-color-accent-surface-default)' : 'transparent',
           borderLeft: isSelected
             ? '3px solid var(--ds-color-accent-base-default)'
             : '3px solid transparent',
@@ -430,7 +442,9 @@ function TreeNodeItem({ node, level }: TreeNodeItemProps) {
             : node.disabled
               ? 'var(--ds-color-neutral-text-subtle)'
               : 'var(--ds-color-neutral-text-default)',
-          fontWeight: isSelected ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-regular)',
+          fontWeight: isSelected
+            ? 'var(--ds-font-weight-semibold)'
+            : 'var(--ds-font-weight-regular)',
           cursor: node.disabled ? 'not-allowed' : 'pointer',
           opacity: node.disabled ? 0.5 : 1,
         }}
@@ -464,9 +478,7 @@ function TreeNodeItem({ node, level }: TreeNodeItemProps) {
 
         {/* Icon */}
         {showIcons && (
-          <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            {getIcon()}
-          </span>
+          <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>{getIcon()}</span>
         )}
 
         {/* Label */}

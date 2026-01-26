@@ -72,9 +72,7 @@ function SidebarNavItem({
         color: isActive
           ? 'var(--ds-color-accent-text-default)'
           : 'var(--ds-color-neutral-text-default)',
-        backgroundColor: isActive
-          ? 'var(--ds-color-accent-background-subtle)'
-          : 'transparent',
+        backgroundColor: isActive ? 'var(--ds-color-accent-background-subtle)' : 'transparent',
         transition: 'background-color 0.2s ease',
       }}
       onMouseEnter={(e) => {

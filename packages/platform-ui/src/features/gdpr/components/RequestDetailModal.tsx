@@ -236,11 +236,7 @@ export function RequestDetailModal({
   };
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      style={{ maxWidth: '600px', width: '100%' }}
-    >
+    <Dialog open={isOpen} onClose={onClose} style={{ maxWidth: '600px', width: '100%' }}>
       <Dialog.Block>
         {/* Loading state */}
         {isLoading && (
@@ -256,10 +252,7 @@ export function RequestDetailModal({
             }}
           >
             <Spinner aria-label={labels.loading} />
-            <Paragraph
-              data-size="md"
-              style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-            >
+            <Paragraph data-size="md" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
               {labels.loading}
             </Paragraph>
           </div>
@@ -315,11 +308,7 @@ export function RequestDetailModal({
                 justifyContent: 'flex-end',
               }}
             >
-              <Button
-                onClick={handleBackFromReject}
-                variant="secondary"
-                disabled={isSubmitting}
-              >
+              <Button onClick={handleBackFromReject} variant="secondary" disabled={isSubmitting}>
                 {labels.back}
               </Button>
               <Button
@@ -365,17 +354,13 @@ export function RequestDetailModal({
 
             {/* Deletion warning */}
             {request.requestType === 'deletion' && request.status === 'pending' && (
-              <Alert
-                data-color="warning"
-                style={{ marginBottom: 'var(--ds-spacing-4)' }}
-              >
-                <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'flex-start' }}>
+              <Alert data-color="warning" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+                <div
+                  style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'flex-start' }}
+                >
                   <AlertTriangleIcon size={20} />
                   <div>
-                    <Paragraph
-                      data-size="sm"
-                      style={{ fontWeight: 'var(--ds-font-weight-bold)' }}
-                    >
+                    <Paragraph data-size="sm" style={{ fontWeight: 'var(--ds-font-weight-bold)' }}>
                       {labels.warning}
                     </Paragraph>
                     <Paragraph data-size="sm">{labels.deletionWarning}</Paragraph>

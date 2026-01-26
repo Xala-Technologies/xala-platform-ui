@@ -9,12 +9,58 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Button, UserIcon, BuildingIcon, Card, Stack, Alert, Divider, NativeSelect } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Card, Alert, Divider } from '@digdir/designsystemet-react';
+import { Stack } from '../../../../primitives/stack';
 import { BookingVisibilitySelector, type BookingVisibility } from './BookingVisibilitySelector';
 
 // =============================================================================
 // Icons
 // =============================================================================
+
+function UserIcon({ size = 18 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function BuildingIcon({ size = 18 }: { size?: number }): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+      <path d="M9 22v-4h6v4" />
+      <path d="M8 6h.01" />
+      <path d="M16 6h.01" />
+      <path d="M12 6h.01" />
+      <path d="M12 10h.01" />
+      <path d="M12 14h.01" />
+      <path d="M16 10h.01" />
+      <path d="M16 14h.01" />
+      <path d="M8 10h.01" />
+      <path d="M8 14h.01" />
+    </svg>
+  );
+}
 
 function CheckCircleIcon({ size = 18 }: { size?: number }): React.ReactElement {
   return (
@@ -164,7 +210,10 @@ export interface BookingConfirmationStepProps {
   /** Selected organization ID */
   selectedOrganizationId?: string;
   /** Handler for account type selection */
-  onAccountTypeSelect?: (type: 'private' | 'organization' | undefined, organizationId?: string) => void;
+  onAccountTypeSelect?: (
+    type: 'private' | 'organization' | undefined,
+    organizationId?: string
+  ) => void;
   /** Handler to confirm account type selection */
   onConfirmAccountType?: () => void;
   /** User's organizations */
@@ -228,7 +277,6 @@ export function BookingConfirmationStep({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   /**
    * Convert internal slot format to FlowSelectedSlot[]
    */
@@ -274,7 +322,14 @@ export function BookingConfirmationStep({
       selectedOrganizationId,
       visibility,
     };
-  }, [convertSlotsToFlowFormat, slotDetails, weekStart, bookingAccountType, selectedOrganizationId, visibility]);
+  }, [
+    convertSlotsToFlowFormat,
+    slotDetails,
+    weekStart,
+    bookingAccountType,
+    selectedOrganizationId,
+    visibility,
+  ]);
 
   /**
    * Handle Vipps login with flow context preservation
@@ -292,7 +347,14 @@ export function BookingConfirmationStep({
     } else {
       onLoginWithVipps?.();
     }
-  }, [onLoginWithFlowContext, captureBookingState, onLoginWithVipps, rentalObjectId, tenantId, bookingMode]);
+  }, [
+    onLoginWithFlowContext,
+    captureBookingState,
+    onLoginWithVipps,
+    rentalObjectId,
+    tenantId,
+    bookingMode,
+  ]);
 
   /**
    * Handle BankID/Employee login with flow context preservation
@@ -310,7 +372,14 @@ export function BookingConfirmationStep({
     } else {
       onLoginAsEmployee?.();
     }
-  }, [onLoginWithFlowContext, captureBookingState, onLoginAsEmployee, rentalObjectId, tenantId, bookingMode]);
+  }, [
+    onLoginWithFlowContext,
+    captureBookingState,
+    onLoginAsEmployee,
+    rentalObjectId,
+    tenantId,
+    bookingMode,
+  ]);
 
   // Determine what to show based on displayMode
   const showAccountSelection =
@@ -320,19 +389,22 @@ export function BookingConfirmationStep({
         ? false
         : isAuthenticated && !bookingAccountType;
 
-  const showBookingConfirmation = displayMode === 'confirmation-only'
-    ? true
-    : displayMode === 'login-and-selection'
-      ? false
-      : isAuthenticated && bookingAccountType && (bookingAccountType === 'private' || selectedOrganizationId);
+  const showBookingConfirmation =
+    displayMode === 'confirmation-only'
+      ? true
+      : displayMode === 'login-and-selection'
+        ? false
+        : isAuthenticated &&
+          bookingAccountType &&
+          (bookingAccountType === 'private' || selectedOrganizationId);
 
   // If not authenticated, always show login
   if (!isAuthenticated) {
     return (
       <Card className={className} data-color="neutral">
         {/* Visual header with icon */}
-        <Stack spacing="6" style={{ alignItems: 'center', textAlign: 'center' }}>
-          <Stack spacing="4" style={{ alignItems: 'center' }}>
+        <Stack gap="var(--ds-spacing-6)" style={{ alignItems: 'center', textAlign: 'center' }}>
+          <Stack gap="var(--ds-spacing-4)" style={{ alignItems: 'center' }}>
             <div
               className="ds-login-icon"
               style={{
@@ -357,96 +429,103 @@ export function BookingConfirmationStep({
             </Paragraph>
           </Stack>
 
-        {/* Login Buttons */}
-        <Stack spacing="3" style={{ maxWidth: '400px', margin: '0 auto', width: '100%' }}>
-          {/* Vipps Button */}
-          <Button
-            type="button"
-            variant="primary"
-            data-size="lg"
-            data-color="accent"
-            onClick={handleLoginWithVipps}
-            disabled={isLoggingIn}
-            style={{
-              width: '100%',
-              backgroundColor: '#ff5b24',
-              color: 'white',
-              fontWeight: 'var(--ds-font-weight-semibold)',
-              boxShadow: '0 2px 8px rgba(255, 91, 36, 0.3)',
-              transition: 'all 0.2s ease',
-            }}
+          {/* Login Buttons */}
+          <Stack
+            gap="var(--ds-spacing-3)"
+            style={{ maxWidth: '400px', margin: '0 auto', width: '100%' }}
           >
-            {isLoggingIn ? t('auth.loggingIn') : t('auth.loginWithVipps')}
-          </Button>
-
-          {/* Divider */}
-          <Divider>{t('common.or')}</Divider>
-
-          {/* BankID Button */}
-          <Button
-            type="button"
-            variant="secondary"
-            data-size="lg"
-            onClick={handleLoginAsEmployee}
-            disabled={isLoggingIn}
-            style={{ width: '100%' }}
-          >
-            {isLoggingIn ? t('auth.loggingIn') : t('auth.loginWithBankID')}
-          </Button>
-
-          {/* Demo Login */}
-          {onDemoLogin && (
-            <>
-              <Divider>{t('auth.demoMode')}</Divider>
-
-              <Button
-                type="button"
-                variant="tertiary"
-                data-size="md"
-                onClick={onDemoLogin}
-                disabled={isLoggingIn}
-                style={{
-                  width: '100%',
-                  backgroundColor: 'var(--ds-color-warning-surface-default)',
-                  color: 'var(--ds-color-warning-text-default)',
-                  border: '1px dashed var(--ds-color-warning-border-default)',
-                }}
-              >
-                [TEST] {t('auth.demoLoginButton')}
-              </Button>
-            </>
-          )}
-        </Stack>
-
-        {/* Security badges */}
-        <Card data-color="neutral" style={{ marginTop: 'var(--ds-spacing-6)' }}>
-          <Stack direction="horizontal" spacing="3" style={{ alignItems: 'flex-start' }}>
-            <div
-              className="ds-icon-container"
+            {/* Vipps Button */}
+            <Button
+              type="button"
+              variant="primary"
+              data-size="lg"
+              data-color="accent"
+              onClick={handleLoginWithVipps}
+              disabled={isLoggingIn}
               style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: 'var(--ds-border-radius-md)',
-                backgroundColor: 'var(--ds-color-success-surface-default)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: 'var(--ds-color-success-base-default)',
+                width: '100%',
+                backgroundColor: '#ff5b24',
+                color: 'white',
+                fontWeight: 'var(--ds-font-weight-semibold)',
+                boxShadow: '0 2px 8px rgba(255, 91, 36, 0.3)',
+                transition: 'all 0.2s ease',
               }}
             >
-              <ShieldIcon size={18} />
-            </div>
-            <Stack spacing="1">
-              <Paragraph data-size="sm" style={{ fontWeight: 'var(--ds-font-weight-medium)' }}>
-                {t('booking.security.title')}
-              </Paragraph>
-              <Paragraph data-size="xs" data-color="subtle">
-                {t('booking.security.description')}
-              </Paragraph>
-            </Stack>
+              {isLoggingIn ? t('auth.loggingIn') : t('auth.loginWithVipps')}
+            </Button>
+
+            {/* Divider */}
+            <Divider>{t('common.or')}</Divider>
+
+            {/* BankID Button */}
+            <Button
+              type="button"
+              variant="secondary"
+              data-size="lg"
+              onClick={handleLoginAsEmployee}
+              disabled={isLoggingIn}
+              style={{ width: '100%' }}
+            >
+              {isLoggingIn ? t('auth.loggingIn') : t('auth.loginWithBankID')}
+            </Button>
+
+            {/* Demo Login */}
+            {onDemoLogin && (
+              <>
+                <Divider>{t('auth.demoMode')}</Divider>
+
+                <Button
+                  type="button"
+                  variant="tertiary"
+                  data-size="md"
+                  onClick={onDemoLogin}
+                  disabled={isLoggingIn}
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'var(--ds-color-warning-surface-default)',
+                    color: 'var(--ds-color-warning-text-default)',
+                    border: '1px dashed var(--ds-color-warning-border-default)',
+                  }}
+                >
+                  [TEST] {t('auth.demoLoginButton')}
+                </Button>
+              </>
+            )}
           </Stack>
-        </Card>
+
+          {/* Security badges */}
+          <Card data-color="neutral" style={{ marginTop: 'var(--ds-spacing-6)' }}>
+            <Stack
+              direction="horizontal"
+              gap="var(--ds-spacing-3)"
+              style={{ alignItems: 'flex-start' }}
+            >
+              <div
+                className="ds-icon-container"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  backgroundColor: 'var(--ds-color-success-surface-default)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  color: 'var(--ds-color-success-base-default)',
+                }}
+              >
+                <ShieldIcon size={18} />
+              </div>
+              <Stack gap="var(--ds-spacing-1)">
+                <Paragraph data-size="sm" style={{ fontWeight: 'var(--ds-font-weight-medium)' }}>
+                  {t('booking.security.title')}
+                </Paragraph>
+                <Paragraph data-size="xs" data-color="subtle">
+                  {t('booking.security.description')}
+                </Paragraph>
+              </Stack>
+            </Stack>
+          </Card>
         </Stack>
       </Card>
     );
@@ -458,12 +537,20 @@ export function BookingConfirmationStep({
       {showAccountSelection ? (
         /* Account Selection - Choose Private or Organization */
         <>
-          <Heading level={3} data-size="md" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={3}
+            data-size="md"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+          >
             {t('booking.howWouldYouLikeToBook')}
           </Heading>
           <Paragraph
             data-size="sm"
-            style={{ margin: 0, marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}
+            style={{
+              margin: 0,
+              marginBottom: 'var(--ds-spacing-6)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
           >
             {t('booking.choosePrivateOrOrganization')}
           </Paragraph>
@@ -510,13 +597,21 @@ export function BookingConfirmationStep({
                 <div style={{ flex: 1 }}>
                   <Paragraph
                     data-size="md"
-                    style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-neutral-text-default)' }}
+                    style={{
+                      margin: 0,
+                      fontWeight: 'var(--ds-font-weight-semibold)',
+                      color: 'var(--ds-color-neutral-text-default)',
+                    }}
                   >
                     {t('booking.asPrivatePerson')}
                   </Paragraph>
                   <Paragraph
                     data-size="sm"
-                    style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}
+                    style={{
+                      margin: 0,
+                      marginTop: 'var(--ds-spacing-1)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
                   >
                     {t('booking.bookForYourself')}
                   </Paragraph>
@@ -558,13 +653,21 @@ export function BookingConfirmationStep({
                 <div style={{ flex: 1 }}>
                   <Paragraph
                     data-size="md"
-                    style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-neutral-text-default)' }}
+                    style={{
+                      margin: 0,
+                      fontWeight: 'var(--ds-font-weight-semibold)',
+                      color: 'var(--ds-color-neutral-text-default)',
+                    }}
                   >
                     {t('booking.onBehalfOfOrganization')}
                   </Paragraph>
                   <Paragraph
                     data-size="sm"
-                    style={{ margin: 0, marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}
+                    style={{
+                      margin: 0,
+                      marginTop: 'var(--ds-spacing-1)',
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                    }}
                   >
                     {t('booking.bookForOrganization')}
                   </Paragraph>
@@ -576,7 +679,11 @@ export function BookingConfirmationStep({
           {/* Organization Selection (shown when organization is selected) */}
           {bookingAccountType === 'organization' && (
             <div style={{ marginTop: 'var(--ds-spacing-6)' }}>
-              <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+              <Heading
+                level={4}
+                data-size="sm"
+                style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+              >
                 {t('booking.selectOrganization')}
               </Heading>
               {organizations.length === 0 ? (
@@ -588,7 +695,10 @@ export function BookingConfirmationStep({
                     border: '1px solid var(--ds-color-info-border-subtle)',
                   }}
                 >
-                  <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-info-text-default)' }}>
+                  <Paragraph
+                    data-size="sm"
+                    style={{ margin: 0, color: 'var(--ds-color-info-text-default)' }}
+                  >
                     {t('booking.notAssociatedWithOrganizations')}
                   </Paragraph>
                 </div>
@@ -647,7 +757,11 @@ export function BookingConfirmationStep({
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Paragraph
               data-size="sm"
-              style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)', fontWeight: 'var(--ds-font-weight-medium)' }}
+              style={{
+                margin: 0,
+                marginBottom: 'var(--ds-spacing-2)',
+                fontWeight: 'var(--ds-font-weight-medium)',
+              }}
             >
               {t('booking.howWouldYouLikeToBook')}
             </Paragraph>
@@ -676,7 +790,10 @@ export function BookingConfirmationStep({
                 <span
                   style={{
                     fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: bookingAccountType === 'private' ? 'var(--ds-font-weight-semibold)' : 'normal',
+                    fontWeight:
+                      bookingAccountType === 'private'
+                        ? 'var(--ds-font-weight-semibold)'
+                        : 'normal',
                   }}
                 >
                   {t('booking.asPrivatePerson')}
@@ -706,7 +823,10 @@ export function BookingConfirmationStep({
                 <span
                   style={{
                     fontSize: 'var(--ds-font-size-sm)',
-                    fontWeight: bookingAccountType === 'organization' ? 'var(--ds-font-weight-semibold)' : 'normal',
+                    fontWeight:
+                      bookingAccountType === 'organization'
+                        ? 'var(--ds-font-weight-semibold)'
+                        : 'normal',
                   }}
                 >
                   {t('booking.onBehalfOfOrganization')}
@@ -718,7 +838,9 @@ export function BookingConfirmationStep({
               <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
                 <select
                   value={selectedOrganizationId || ''}
-                  onChange={(e) => onAccountTypeSelect?.('organization', e.target.value || undefined)}
+                  onChange={(e) =>
+                    onAccountTypeSelect?.('organization', e.target.value || undefined)
+                  }
                   style={{
                     width: '100%',
                     padding: 'var(--ds-spacing-3)',
@@ -755,7 +877,10 @@ export function BookingConfirmationStep({
                 marginTop: 'var(--ds-spacing-4)',
               }}
             >
-              <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-danger-text-default)' }}>
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, color: 'var(--ds-color-danger-text-default)' }}
+              >
                 {bookingError}
               </Paragraph>
             </div>
@@ -764,12 +889,20 @@ export function BookingConfirmationStep({
       ) : isAuthenticated ? (
         /* Fallback: Show account selection */
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
-          <Heading level={3} data-size="md" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={3}
+            data-size="md"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+          >
             {t('booking.howWouldYouLikeToBook')}
           </Heading>
           <Paragraph
             data-size="sm"
-            style={{ margin: 0, marginBottom: 'var(--ds-spacing-6)', color: 'var(--ds-color-neutral-text-subtle)' }}
+            style={{
+              margin: 0,
+              marginBottom: 'var(--ds-spacing-6)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
           >
             {t('booking.choosePrivateOrOrganization')}
           </Paragraph>
@@ -786,7 +919,10 @@ export function BookingConfirmationStep({
                 textAlign: 'left',
               }}
             >
-              <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+              <Paragraph
+                data-size="md"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+              >
                 {t('booking.asPrivatePerson')}
               </Paragraph>
             </button>
@@ -802,7 +938,10 @@ export function BookingConfirmationStep({
                 textAlign: 'left',
               }}
             >
-              <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+              <Paragraph
+                data-size="md"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+              >
                 {t('booking.onBehalfOfOrganization')}
               </Paragraph>
             </button>

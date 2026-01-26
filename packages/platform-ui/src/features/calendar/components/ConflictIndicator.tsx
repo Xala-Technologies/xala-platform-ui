@@ -109,12 +109,15 @@ export function ConflictIndicator({
     })
     .join(', ');
 
-  const extraCount = conflicts.length > 3 ? ` +${conflicts.length - 3} ${effectiveLabels.more}` : '';
+  const extraCount =
+    conflicts.length > 3 ? ` +${conflicts.length - 3} ${effectiveLabels.more}` : '';
 
   // Different tooltip based on conflict type
   let tooltipContent: string;
   if (isBufferConflict && bufferTimeMinutes) {
-    const bufferMessage = (effectiveLabels.requiresBuffer ?? 'Krever {minutes} min buffertid').replace('{minutes}', bufferTimeMinutes.toString());
+    const bufferMessage = (
+      effectiveLabels.requiresBuffer ?? 'Krever {minutes} min buffertid'
+    ).replace('{minutes}', bufferTimeMinutes.toString());
     tooltipContent = `${effectiveLabels.bufferConflict}: ${bufferMessage}. ${effectiveLabels.overlapsWith} ${conflictNames}${extraCount}`;
   } else {
     tooltipContent = `${effectiveLabels.conflict}: ${effectiveLabels.overlapsWith} ${conflictNames}${extraCount}`;
@@ -165,9 +168,7 @@ export function ConflictIndicator({
             cursor: 'help',
           }}
           aria-label={
-            isBufferConflict
-              ? effectiveLabels.bufferConflictLabel
-              : effectiveLabels.conflictLabel
+            isBufferConflict ? effectiveLabels.bufferConflictLabel : effectiveLabels.conflictLabel
           }
         >
           <XCircleIcon

@@ -9,9 +9,11 @@ Successfully refactored the `notification-reports` feature to pure presentationa
 ## Files Refactored
 
 ### Component Files
+
 1. `components/NotificationDeliveryDashboard.tsx` - Main dashboard component
 
 ### Supporting Files
+
 2. `components/index.ts` - Component exports
 3. `types.ts` - Type definitions
 4. `index.ts` - Feature exports
@@ -23,6 +25,7 @@ Successfully refactored the `notification-reports` feature to pure presentationa
 ### 1. NotificationDeliveryDashboard.tsx
 
 #### Removed Forbidden Imports
+
 ```diff
 - import { useT } from '@xala-technologies/platform/i18n';
 - import { Button, Paragraph, Spinner, Table, Badge, HeaderSearch, Stack, Card } from '@xala-technologies/platform-ui';
@@ -33,6 +36,7 @@ Successfully refactored the `notification-reports` feature to pure presentationa
 ```
 
 #### Created Labels Interface
+
 ```typescript
 export interface NotificationDeliveryDashboardLabels {
   // Header
@@ -71,6 +75,7 @@ export interface NotificationDeliveryDashboardLabels {
 ```
 
 #### Replaced i18n Calls
+
 ```diff
 - const t = useT();
 - {t('notifications.dashboard.title')}
@@ -79,6 +84,7 @@ export interface NotificationDeliveryDashboardLabels {
 ```
 
 All `t()` calls replaced with `labels.*` properties:
+
 - `t('notifications.dashboard.title')` → `labels.title`
 - `t('notifications.dashboard.description')` → `labels.description`
 - `t('common.total')` → `labels.totalLabel`
@@ -105,6 +111,7 @@ All `t()` calls replaced with `labels.*` properties:
 - `t('notifications.type.inApp')` → `labels.inAppTypeLabel`
 
 #### Updated Component Props
+
 ```typescript
 export interface NotificationDeliveryDashboardProps {
   reports: DeliveryReport[];
@@ -122,6 +129,7 @@ export interface NotificationDeliveryDashboardProps {
 ```
 
 #### Fixed Component Imports
+
 - Changed `Badge` to `StatusTag` for text labels (Badge is for count indicators only)
 - Updated color types to use `BadgeColor` from StatusBadges
 - Imported `HeaderSearch` from correct path `composed/header-parts`
@@ -141,6 +149,7 @@ export {
 ### 3. types.ts
 
 No changes - already pure type definitions:
+
 - `DeliveryReport`
 - `DeliveryStats`
 - `DeliveryReportFilters`
@@ -157,17 +166,13 @@ export {
   type NotificationDeliveryDashboardLabels, // NEW
 } from './components';
 
-export type {
-  DeliveryReport,
-  DeliveryStats,
-  DeliveryReportFilters,
-  PaginationMeta,
-} from './types';
+export type { DeliveryReport, DeliveryStats, DeliveryReportFilters, PaginationMeta } from './types';
 ```
 
 ## Component API
 
 ### Before (Coupled)
+
 ```tsx
 import { NotificationDeliveryDashboard } from '@xala-technologies/platform-ui/features/notification-reports';
 
@@ -176,10 +181,11 @@ import { NotificationDeliveryDashboard } from '@xala-technologies/platform-ui/fe
   reports={reports}
   isLoading={isLoading}
   onRetryFailed={handleRetry}
-/>
+/>;
 ```
 
 ### After (Pure)
+
 ```tsx
 import {
   NotificationDeliveryDashboard,
@@ -226,12 +232,13 @@ const labels: NotificationDeliveryDashboardLabels = {
   onRetryFailed={handleRetry}
   formatDate={(d) => new Date(d).toLocaleDateString('nb-NO')}
   formatTime={(d) => new Date(d).toLocaleTimeString('nb-NO')}
-/>
+/>;
 ```
 
 ## Validation
 
 ### TypeScript Compilation
+
 ```bash
 cd /Volumes/Laravel/Xala-SAAS/tools/xala-platform-ui/packages/platform-ui
 pnpm typecheck
@@ -240,6 +247,7 @@ pnpm typecheck
 **Result**: ✅ No errors in notification-reports feature
 
 ### Code Quality Checks
+
 - ✅ No forbidden imports (`@digilist/client-sdk`, `@xala-technologies/platform/i18n`)
 - ✅ All components use Designsystemet primitives
 - ✅ All text content via labels props
@@ -249,22 +257,25 @@ pnpm typecheck
 ## Architecture Compliance
 
 ### Layer Rules ✅
+
 - Uses `composed/header-parts` (lower layer)
 - Uses `blocks/StatusBadges` (lower layer)
 - No forbidden cross-layer imports
 
 ### Design System Compliance ✅
+
 - Uses only Designsystemet components
 - Uses `StatusTag` for text badges
 - Uses design tokens for colors and spacing
 - No raw HTML elements
-- No inline styles (except var(--ds-*))
+- No inline styles (except var(--ds-\*))
 
 ## Migration Guide
 
 For apps using this feature, update your implementation:
 
 ### 1. Create Labels Provider
+
 ```typescript
 // src/features/notification-reports/labels.ts
 import type { NotificationDeliveryDashboardLabels } from '@xala-technologies/platform-ui/features/notification-reports';
@@ -304,6 +315,7 @@ export function useNotificationReportsLabels(): NotificationDeliveryDashboardLab
 ```
 
 ### 2. Update Page Component
+
 ```typescript
 // src/pages/NotificationReportsPage.tsx
 import { NotificationDeliveryDashboard } from '@xala-technologies/platform-ui/features/notification-reports';
@@ -335,21 +347,25 @@ export function NotificationReportsPage() {
 ## Benefits
 
 ### 1. **Pure Presentational**
+
 - No business logic in UI components
 - Easy to test with mock data
 - Works in Storybook without SDK
 
 ### 2. **Framework Agnostic**
+
 - No coupling to i18n library
 - No coupling to SDK implementation
 - Reusable across different apps
 
 ### 3. **Type Safe**
+
 - Full TypeScript coverage
 - Compile-time validation
 - IntelliSense support for labels
 
 ### 4. **Maintainable**
+
 - Clear separation of concerns
 - Single responsibility
 - Easy to update and extend

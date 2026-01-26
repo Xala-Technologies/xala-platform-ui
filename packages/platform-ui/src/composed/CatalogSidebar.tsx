@@ -7,13 +7,7 @@
 
 import { useState, useMemo, useCallback, type ReactNode } from 'react';
 import { Textfield, Paragraph, Chip, Spinner, Button } from '@digdir/designsystemet-react';
-import {
-  SearchIcon,
-  XIcon,
-  FolderIcon,
-  FileTextIcon,
-  BookOpenIcon,
-} from 'lucide-react';
+import { SearchIcon, XIcon, FolderIcon, FileTextIcon, BookOpenIcon } from 'lucide-react';
 
 /**
  * Catalog item for display

@@ -9,11 +9,13 @@ Pure presentational calendar components for availability display.
 A comprehensive availability calendar component supporting three display modes.
 
 **Import:**
+
 ```typescript
 import { RentalObjectAvailabilityCalendar } from '@xala-technologies/platform-ui/blocks/calendar';
 ```
 
 **Features:**
+
 - Three calendar modes: TIME_SLOTS (week view), ALL_DAY (month view), MULTI_DAY (range selection)
 - Navigation controls (previous, next, today)
 - Status visualization with customizable legend
@@ -22,6 +24,7 @@ import { RentalObjectAvailabilityCalendar } from '@xala-technologies/platform-ui
 - Full accessibility (ARIA labels, keyboard navigation)
 
 **Props:**
+
 ```typescript
 interface RentalObjectAvailabilityCalendarProps {
   mode: 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY';
@@ -32,9 +35,9 @@ interface RentalObjectAvailabilityCalendarProps {
   onDateChange: (date: Date) => void;
   onCellClick?: (cell: CalendarCell) => void;
   onSelectionChange?: (selection: CalendarSelection | undefined) => void;
-  startHour?: number;        // Default: 8
-  endHour?: number;          // Default: 17
-  slotSizeMinutes?: number;  // Default: 60
+  startHour?: number; // Default: 8
+  endHour?: number; // Default: 17
+  slotSizeMinutes?: number; // Default: 60
   showTips?: boolean;
   title?: string;
   subtitle?: string;
@@ -47,6 +50,7 @@ interface RentalObjectAvailabilityCalendarProps {
 ```
 
 **Basic Usage:**
+
 ```typescript
 import { RentalObjectAvailabilityCalendar } from '@xala-technologies/platform-ui/blocks/calendar';
 import type { CalendarCell, CalendarSelection } from '@xala-technologies/platform-ui/types/rental-object-detail';
@@ -103,6 +107,7 @@ function MyCalendar() {
    - Best for: Multi-day stays, vacation rentals
 
 **Cell Status Values:**
+
 - `AVAILABLE` - Can be booked (green)
 - `RESERVED` - Temporarily held (yellow)
 - `BOOKED` - Confirmed booking (red)
@@ -111,6 +116,7 @@ function MyCalendar() {
 - `CLOSED` - Outside opening hours (gray)
 
 **Legend Example:**
+
 ```typescript
 const legend = [
   { status: 'AVAILABLE', label: 'Available' },
@@ -128,6 +134,7 @@ const legend = [
 ```
 
 **With Loading State:**
+
 ```typescript
 <RentalObjectAvailabilityCalendar
   mode="TIME_SLOTS"
@@ -139,6 +146,7 @@ const legend = [
 ```
 
 **With Error State:**
+
 ```typescript
 <RentalObjectAvailabilityCalendar
   mode="TIME_SLOTS"
@@ -150,6 +158,7 @@ const legend = [
 ```
 
 **Read-Only Mode:**
+
 ```typescript
 <RentalObjectAvailabilityCalendar
   mode="TIME_SLOTS"
@@ -163,6 +172,7 @@ const legend = [
 ## Architecture
 
 This is a **pure presentational component** that:
+
 - ✅ Receives all data via props
 - ✅ Emits all events via callbacks
 - ✅ Contains no business logic
@@ -204,6 +214,7 @@ export function CalendarWrapper({ rentalObjectId }: { rentalObjectId: string }) 
 ## Accessibility
 
 The component is fully accessible:
+
 - All interactive elements have ARIA labels
 - Selected cells have `aria-pressed` state
 - Keyboard navigation supported (Tab, Enter, Space)

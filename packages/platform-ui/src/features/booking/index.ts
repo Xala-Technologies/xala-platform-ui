@@ -61,7 +61,6 @@ export {
   // Confirmation components
   BookingConfirmation,
   type BookingConfirmationProps,
-
   BookingSuccess,
   type BookingSuccessProps,
   type BookingSuccessLabels,

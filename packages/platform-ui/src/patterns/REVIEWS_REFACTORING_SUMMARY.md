@@ -11,12 +11,14 @@ The reviews feature components are **already 100% production-ready pure presenta
 ## Component Inventory
 
 ### 1. ReviewCard (`ReviewCard.tsx`)
+
 **Status**: ✅ Production-ready
 **Location**: `src/patterns/ReviewCard.tsx`
 
 A domain-neutral card component for displaying user reviews and feedback.
 
 **Features**:
+
 - Star rating display
 - Author information with avatar
 - Review title and content
@@ -26,6 +28,7 @@ A domain-neutral card component for displaying user reviews and feedback.
 - Compact and default variants
 
 **Props Interface**:
+
 ```typescript
 export interface ReviewCardProps {
   id?: string;
@@ -53,6 +56,7 @@ export interface ReviewCardProps {
 ```
 
 **Labels Interface**:
+
 ```typescript
 export interface ReviewCardLabels {
   helpful?: string;
@@ -68,6 +72,7 @@ export interface ReviewCardLabels {
 ```
 
 **Compliance**:
+
 - ✅ No SDK imports
 - ✅ No i18n dependencies
 - ✅ Pure presentational
@@ -78,12 +83,14 @@ export interface ReviewCardLabels {
 ---
 
 ### 2. ReviewList (`ReviewList.tsx`)
+
 **Status**: ✅ Production-ready
 **Location**: `src/patterns/ReviewList.tsx`
 
 A component for displaying a list of reviews with summary statistics.
 
 **Features**:
+
 - Review summary statistics (average, total, distribution)
 - Rating distribution visualization
 - Sortable review list
@@ -92,6 +99,7 @@ A component for displaying a list of reviews with summary statistics.
 - Write review CTA
 
 **Props Interface**:
+
 ```typescript
 export interface ReviewListProps {
   reviews: ReviewListItem[];
@@ -113,6 +121,7 @@ export interface ReviewListProps {
 ```
 
 **Labels Interface**:
+
 ```typescript
 export interface ReviewListLabels extends ReviewCardLabels {
   reviews?: string;
@@ -125,6 +134,7 @@ export interface ReviewListLabels extends ReviewCardLabels {
 ```
 
 **Compliance**:
+
 - ✅ No SDK imports
 - ✅ No i18n dependencies
 - ✅ Pure presentational
@@ -135,12 +145,14 @@ export interface ReviewListLabels extends ReviewCardLabels {
 ---
 
 ### 3. ReviewStep (`ReviewStep.tsx`)
+
 **Status**: ✅ Production-ready
 **Location**: `src/patterns/ReviewStep.tsx`
 
 A review/confirmation step component for multi-step workflows.
 
 **Features**:
+
 - Summary sections with editable items
 - Terms and conditions checkbox
 - Icon customization
@@ -148,6 +160,7 @@ A review/confirmation step component for multi-step workflows.
 - Edit capability for each section
 
 **Props Interface**:
+
 ```typescript
 export interface ReviewStepProps {
   title?: string;
@@ -161,6 +174,7 @@ export interface ReviewStepProps {
 ```
 
 **Supporting Types**:
+
 ```typescript
 export interface ReviewStepTerms {
   label: string;
@@ -171,6 +185,7 @@ export interface ReviewStepTerms {
 ```
 
 **Compliance**:
+
 - ✅ No SDK imports
 - ✅ No i18n dependencies
 - ✅ Pure presentational
@@ -182,12 +197,14 @@ export interface ReviewStepTerms {
 ---
 
 ### 4. FeedbackForm (`FeedbackForm.tsx`)
+
 **Status**: ✅ Production-ready
 **Location**: `src/patterns/FeedbackForm.tsx`
 
 A form component for collecting user feedback and reviews.
 
 **Features**:
+
 - Interactive star rating input
 - Optional review title field
 - Review content textarea with character count
@@ -196,6 +213,7 @@ A form component for collecting user feedback and reviews.
 - Character count and minimum length tracking
 
 **Props Interface**:
+
 ```typescript
 export interface FeedbackFormProps {
   initialValues?: Partial<FeedbackFormData>;
@@ -216,6 +234,7 @@ export interface FeedbackFormProps {
 ```
 
 **Labels Interface**:
+
 ```typescript
 export interface FeedbackFormLabels {
   title?: string;
@@ -242,10 +261,12 @@ export interface FeedbackFormLabels {
 ```
 
 **Special Note**:
+
 - Uses raw `<button>` elements for interactive star rating (allowed with ESLint disable comment)
 - This is necessary for proper interactive star rating UX
 
 **Compliance**:
+
 - ✅ No SDK imports
 - ✅ No i18n dependencies
 - ✅ Pure presentational
@@ -298,14 +319,18 @@ export type { ReviewStepProps, ReviewStepTerms } from './ReviewStep';
 ## Architecture Compliance
 
 ### ✅ No Forbidden Imports
+
 All components are free of:
+
 - `@digilist/client-sdk`
 - `@xala-technologies/platform/i18n`
 - `@xala-technologies/platform-schema`
 - SDK hooks (useT, useQuery, etc.)
 
 ### ✅ Pure Presentational
+
 All components:
+
 - Receive data via props
 - Emit events via callbacks
 - No business logic
@@ -314,14 +339,18 @@ All components:
 - No database queries
 
 ### ✅ Labels Pattern
+
 All components implement the labels pattern:
+
 - `*Labels` interface for each component
 - Default labels provided
 - Support for i18n via props
 - Template string support (e.g., `{count}` placeholders)
 
 ### ✅ Designsystemet Compliance
+
 All components use:
+
 - Designsystemet React components
 - Design tokens (`var(--ds-*)`)
 - No raw HTML elements (except documented exceptions)
@@ -330,6 +359,7 @@ All components use:
 ## Usage Examples
 
 ### ReviewCard
+
 ```typescript
 import { ReviewCard, type ReviewCardLabels } from '@xala-technologies/platform-ui/patterns';
 
@@ -358,6 +388,7 @@ const labels: ReviewCardLabels = {
 ```
 
 ### ReviewList
+
 ```typescript
 import { ReviewList, type ReviewListLabels } from '@xala-technologies/platform-ui/patterns';
 
@@ -383,6 +414,7 @@ const labels: ReviewListLabels = {
 ```
 
 ### FeedbackForm
+
 ```typescript
 import { FeedbackForm, type FeedbackFormLabels } from '@xala-technologies/platform-ui/patterns';
 
@@ -405,6 +437,7 @@ const labels: FeedbackFormLabels = {
 ```
 
 ### ReviewStep
+
 ```typescript
 import { ReviewStep } from '@xala-technologies/platform-ui/patterns';
 
@@ -443,12 +476,14 @@ All review components have comprehensive Storybook stories:
 ## Testing Status
 
 ### Type Safety
+
 - ✅ All components have proper TypeScript types
 - ✅ All props interfaces exported
 - ✅ All labels interfaces exported
 - ✅ Strict mode compatible
 
 ### Component Testing
+
 - ✅ Storybook stories exist for all components
 - ✅ Visual regression testing via Storybook
 - ✅ Interactive testing via Storybook
@@ -456,6 +491,7 @@ All review components have comprehensive Storybook stories:
 ## Migration Notes
 
 ### No Migration Required
+
 These components are already production-ready and require no refactoring. They can be used directly in any application by:
 
 1. Installing the package: `@xala-technologies/platform-ui`
@@ -466,6 +502,7 @@ These components are already production-ready and require no refactoring. They c
 ### Best Practices
 
 1. **Labels**: Always provide labels for i18n support
+
    ```typescript
    const labels: ReviewCardLabels = {
      helpful: t('reviews.helpful'),
@@ -474,6 +511,7 @@ These components are already production-ready and require no refactoring. They c
    ```
 
 2. **Event Handlers**: Implement all callback props
+
    ```typescript
    <ReviewList
      onSortChange={handleSort}
@@ -483,14 +521,16 @@ These components are already production-ready and require no refactoring. They c
    ```
 
 3. **Data Formatting**: Format data before passing to components
+
    ```typescript
-   const formattedReviews = reviews.map(review => ({
+   const formattedReviews = reviews.map((review) => ({
      ...review,
      date: formatRelativeTime(review.createdAt, locale),
    }));
    ```
 
 4. **Connected Wrappers**: Create domain-specific wrappers for data fetching
+
    ```typescript
    // In your app layer
    export function ProductReviewsConnected({ productId }: Props) {
@@ -525,12 +565,14 @@ ReviewStep
 ## Performance Notes
 
 ### Optimizations
+
 - All components use React best practices
 - No unnecessary re-renders
 - Proper key usage in lists
 - Event handler memoization recommended for parent components
 
 ### Bundle Size
+
 - Tree-shakeable exports
 - No heavy dependencies
 - Inline SVG icons (portable, no external deps)
@@ -538,6 +580,7 @@ ReviewStep
 ## Accessibility
 
 All components follow accessibility best practices:
+
 - ✅ Proper ARIA labels
 - ✅ Keyboard navigation support
 - ✅ Screen reader friendly

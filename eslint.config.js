@@ -14,6 +14,14 @@ export default [
       '**/stories/**',
       '**/AccessibilityDashboard.tsx',
       '**/apps/**',
+      // Domain-coupled components excluded from platform-ui build
+      '**/*Connected.tsx',
+      '**/features/booking/engine/**',
+      '**/features/calendar/components/**',
+      // Explicit paths for platform-ui package
+      'packages/platform-ui/src/features/**/*Connected.tsx',
+      'packages/platform-ui/src/features/booking/engine/**',
+      'packages/platform-ui/src/features/calendar/components/**',
     ],
   },
   {

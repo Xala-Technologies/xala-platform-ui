@@ -8,12 +8,7 @@
  */
 import * as React from 'react';
 import { Heading, Paragraph, Button, Card } from '@digdir/designsystemet-react';
-import {
-  CheckCircle2Icon,
-  CalendarIcon,
-  MailIcon,
-  PhoneIcon,
-} from 'lucide-react';
+import { CheckCircle2Icon, CalendarIcon, MailIcon, PhoneIcon } from 'lucide-react';
 import { Stack } from '../../../primitives/stack';
 
 /**
@@ -129,7 +124,14 @@ export function BookingSuccess({
           }}
         >
           <Stack gap="var(--ds-spacing-1)" align="center">
-            <Paragraph data-size="xs" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.referenceNumber}
             </Paragraph>
             <Paragraph
@@ -250,11 +252,7 @@ export function BookingSuccess({
         }}
       >
         {onNewBooking && (
-          <Button
-            type="button"
-            variant="secondary"
-            onClick={onNewBooking}
-          >
+          <Button type="button" variant="secondary" onClick={onNewBooking}>
             <CalendarIcon size={16} />
             {labels.newBooking}
           </Button>

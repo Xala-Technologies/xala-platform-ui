@@ -12,22 +12,8 @@ export {
   type AdditionalService,
 } from './OverviewTab';
 
-export {
-  RulesTab,
-  type RulesTabProps,
-  type RulesTabLabels,
-  type Rule,
-} from './RulesTab';
+export { RulesTab, type RulesTabProps, type RulesTabLabels, type Rule } from './RulesTab';
 
-export {
-  FaqTab,
-  type FaqTabProps,
-  type FaqTabLabels,
-  type FAQItem,
-} from './FaqTab';
+export { FaqTab, type FaqTabProps, type FaqTabLabels, type FAQItem } from './FaqTab';
 
-export {
-  ActivityTab,
-  type ActivityTabProps,
-  type ActivityTabLabels,
-} from './ActivityTab';
+export { ActivityTab, type ActivityTabProps, type ActivityTabLabels } from './ActivityTab';

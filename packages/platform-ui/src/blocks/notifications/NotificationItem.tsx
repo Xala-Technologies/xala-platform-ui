@@ -44,15 +44,13 @@ export interface NotificationListProps {
 // Constants
 // ============================================================================
 
-const TYPE_COLORS: Record<
-  NotificationItemData['type'],
-  'info' | 'success' | 'warning' | 'danger'
-> = {
-  info: 'info',
-  success: 'success',
-  warning: 'warning',
-  error: 'danger',
-};
+const TYPE_COLORS: Record<NotificationItemData['type'], 'info' | 'success' | 'warning' | 'danger'> =
+  {
+    info: 'info',
+    success: 'success',
+    warning: 'warning',
+    error: 'danger',
+  };
 
 // ============================================================================
 // NotificationItem Component

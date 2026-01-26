@@ -7,7 +7,13 @@
 
 import { useState, useCallback, useEffect, type ReactNode } from 'react';
 import { Button, Paragraph, Spinner, Alert, Heading } from '@digdir/designsystemet-react';
-import { RefreshCwIcon, ExternalLinkIcon, CopyIcon, CheckIcon, AlertTriangleIcon } from 'lucide-react';
+import {
+  RefreshCwIcon,
+  ExternalLinkIcon,
+  CopyIcon,
+  CheckIcon,
+  AlertTriangleIcon,
+} from 'lucide-react';
 
 /**
  * IframeViewer Props
@@ -294,7 +300,11 @@ export function IframeViewer({
             }}
           >
             <Alert data-color="danger" style={{ maxWidth: '400px' }}>
-              <Heading level={3} data-size="xs" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+              <Heading
+                level={3}
+                data-size="xs"
+                style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}
+              >
                 <AlertTriangleIcon size={16} />
                 {error}
               </Heading>

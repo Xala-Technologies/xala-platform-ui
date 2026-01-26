@@ -153,7 +153,7 @@ interface ConflictCardProps {
   onSelectAlternative: (alternative: AlternativeSlot) => void;
   onSkip: () => void;
   onRequestMore?: () => void;
-  t: (key: string) => string;
+  t: (key: string, params?: Record<string, unknown>) => string;
 }
 
 function ConflictCard({
@@ -292,9 +292,7 @@ function ConflictCard({
               </Paragraph>
             </div>
           ) : alternatives.length > 0 ? (
-            <div
-              style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
-            >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
               {alternatives.slice(0, 3).map((alt) => (
                 <button
                   key={alt.id}
@@ -402,7 +400,13 @@ function ConflictCard({
 
       {/* Undo button for resolved conflicts */}
       {isResolved && (
-        <Button type="button" variant="tertiary" data-size="sm" onClick={onSkip} style={{ width: '100%' }}>
+        <Button
+          type="button"
+          variant="tertiary"
+          data-size="sm"
+          onClick={onSkip}
+          style={{ width: '100%' }}
+        >
           {t('action.undo')}
         </Button>
       )}
@@ -425,7 +429,6 @@ export function ConflictResolver({
 }: ConflictResolverProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
-
 
   // Initialize resolutions if empty
   React.useEffect(() => {
@@ -545,7 +548,10 @@ export function ConflictResolver({
           {t('conflictResolver.title')} ({conflicts.length})
         </Heading>
         <Tag data-color={allResolved ? 'success' : 'warning'} data-size="sm">
-          {t('conflictResolver.resolvedCount', { resolved: resolvedCount, total: conflicts.length })}
+          {t('conflictResolver.resolvedCount', {
+            resolved: resolvedCount,
+            total: conflicts.length,
+          })}
         </Tag>
       </div>
 

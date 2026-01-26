@@ -273,7 +273,9 @@ export const Confirmation: Story = {
           <Heading level={2} data-size="sm">
             Delete Confirmation
           </Heading>
-          <Paragraph>Are you sure you want to delete this item? This action cannot be undone.</Paragraph>
+          <Paragraph>
+            Are you sure you want to delete this item? This action cannot be undone.
+          </Paragraph>
           <div
             style={{
               display: 'flex',

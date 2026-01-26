@@ -16,10 +16,21 @@ export interface RecurringResultSummaryProps {
   className?: string;
 }
 
-export function RecurringResultSummary({ total, successful, failed, labels, className }: RecurringResultSummaryProps): React.ReactElement {
+export function RecurringResultSummary({
+  total,
+  successful,
+  failed,
+  labels,
+  className,
+}: RecurringResultSummaryProps): React.ReactElement {
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-      <Paragraph data-size="sm">{labels.totalBookingsLabel}: {total}</Paragraph>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
+    >
+      <Paragraph data-size="sm">
+        {labels.totalBookingsLabel}: {total}
+      </Paragraph>
       <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
         {labels.successfulLabel}: {successful}
       </Paragraph>

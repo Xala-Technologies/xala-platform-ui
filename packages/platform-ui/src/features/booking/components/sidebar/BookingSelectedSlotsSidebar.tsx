@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Stack, Card, Button } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Card, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Icons
@@ -91,7 +91,6 @@ export function BookingSelectedSlotsSidebar({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   // Translated day and month names
   const dayNames = React.useMemo(
     () => [
@@ -152,7 +151,15 @@ export function BookingSelectedSlotsSidebar({
 
       {/* Selected Slots List or Empty State */}
       {selectedSlots.size > 0 ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)', flex: 1, overflow: 'auto' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-spacing-3)',
+            flex: 1,
+            overflow: 'auto',
+          }}
+        >
           {Array.from(selectedSlots).map((slotKey) => {
             const parts = slotKey.split('-');
             const dayIdxStr = parts[0] ?? '0';
@@ -194,8 +201,17 @@ export function BookingSelectedSlotsSidebar({
                     transition: 'background-color 150ms ease',
                   }}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)', flex: 1 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 'var(--ds-spacing-1)',
+                      flex: 1,
+                    }}
+                  >
+                    <div
+                      style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}
+                    >
                       <Paragraph
                         data-size="sm"
                         style={{
@@ -204,7 +220,8 @@ export function BookingSelectedSlotsSidebar({
                           color: 'var(--ds-color-accent-text-default)',
                         }}
                       >
-                        {dayNames[slotDate.getDay()]} {slotDate.getDate()}. {monthNames[slotDate.getMonth()]}
+                        {dayNames[slotDate.getDay()]} {slotDate.getDate()}.{' '}
+                        {monthNames[slotDate.getMonth()]}
                       </Paragraph>
                       <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>•</span>
                       <Paragraph
@@ -219,7 +236,10 @@ export function BookingSelectedSlotsSidebar({
                       </Paragraph>
                     </div>
                     {details.purpose && (
-                      <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                      <Paragraph
+                        data-size="xs"
+                        style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                      >
                         {details.purpose}
                       </Paragraph>
                     )}
@@ -321,7 +341,9 @@ export function BookingSelectedSlotsSidebar({
                       >
                         {t('booking.duration')}
                       </Paragraph>
-                      <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+                      <div
+                        style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}
+                      >
                         {durationOptions.map((dur) => (
                           <button
                             key={dur}
@@ -364,7 +386,10 @@ export function BookingSelectedSlotsSidebar({
                     >
                       {details.purpose && (
                         <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                          <Paragraph
+                            data-size="xs"
+                            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                          >
                             {t('booking.purpose')}
                           </Paragraph>
                           <Paragraph data-size="sm" style={{ margin: 0 }}>
@@ -374,7 +399,10 @@ export function BookingSelectedSlotsSidebar({
                       )}
                       {details.attendees && (
                         <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                          <Paragraph
+                            data-size="xs"
+                            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                          >
                             {t('booking.attendees')}
                           </Paragraph>
                           <Paragraph data-size="sm" style={{ margin: 0 }}>
@@ -384,7 +412,10 @@ export function BookingSelectedSlotsSidebar({
                       )}
                       {details.activityType && (
                         <div>
-                          <Paragraph data-size="xs" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                          <Paragraph
+                            data-size="xs"
+                            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                          >
                             {t('booking.activityType')}
                           </Paragraph>
                           <Paragraph data-size="sm" style={{ margin: 0 }}>
@@ -429,11 +460,19 @@ export function BookingSelectedSlotsSidebar({
         >
           <Paragraph
             data-size="xs"
-            style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)', marginBottom: 'var(--ds-spacing-1)' }}
+            style={{
+              margin: 0,
+              color: 'var(--ds-color-neutral-text-subtle)',
+              marginBottom: 'var(--ds-spacing-1)',
+            }}
           >
             {t('booking.totalPrice')}
           </Paragraph>
-          <Heading level={3} data-size="md" style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}>
+          <Heading
+            level={3}
+            data-size="md"
+            style={{ margin: 0, color: 'var(--ds-color-accent-text-default)' }}
+          >
             {totalPrice} {currency}
           </Heading>
         </div>

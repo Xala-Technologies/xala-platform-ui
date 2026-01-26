@@ -88,10 +88,12 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
       disabled = false,
       className,
       'data-testid': testId,
+      'data-size': _dataSize, // Filter out data-size to avoid type conflict with Button
       ...props
     },
     ref
   ) => {
+    void _dataSize; // Mark as intentionally unused
     const [isHovered, setIsHovered] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -171,7 +173,6 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
         className={cn('ds-filter-chip', className)}
         data-testid={testId}
         data-variant={variant}
-        data-size={size}
         data-color={variant === 'accent' ? 'accent' : 'neutral'}
         style={{
           display: 'inline-flex',

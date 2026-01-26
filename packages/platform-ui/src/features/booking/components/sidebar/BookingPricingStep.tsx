@@ -8,7 +8,37 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Alert, InfoIcon, Stack, Card, Checkbox } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Alert, Card, Checkbox } from '@digdir/designsystemet-react';
+
+// =============================================================================
+// Icons
+// =============================================================================
+
+function InfoIcon({
+  size = 18,
+  style,
+}: {
+  size?: number;
+  style?: React.CSSProperties;
+}): React.ReactElement {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={style}
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="16" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12.01" y2="8" />
+    </svg>
+  );
+}
 
 // =============================================================================
 // Types
@@ -134,7 +164,11 @@ export function BookingPricingStep({
     >
       {/* Price Group Selection */}
       <div>
-        <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}
+        >
           {t('booking.priceGroup')}
         </Heading>
         <Paragraph
@@ -182,7 +216,9 @@ export function BookingPricingStep({
                   color: selected
                     ? 'var(--ds-color-accent-base-contrast-default)'
                     : 'var(--ds-color-neutral-text-default)',
-                  fontWeight: selected ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-regular)',
+                  fontWeight: selected
+                    ? 'var(--ds-font-weight-semibold)'
+                    : 'var(--ds-font-weight-regular)',
                   boxShadow: selected ? 'var(--ds-shadow-sm)' : 'none',
                   transition: 'all 150ms ease',
                   cursor: 'pointer',
@@ -200,7 +236,12 @@ export function BookingPricingStep({
                     width: '100%',
                   }}
                 >
-                  <span style={{ fontSize: 'var(--ds-font-size-sm)', lineHeight: 'var(--ds-line-height-sm)' }}>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-sm)',
+                      lineHeight: 'var(--ds-line-height-sm)',
+                    }}
+                  >
                     {group.label}
                   </span>
                   <span
@@ -244,7 +285,14 @@ export function BookingPricingStep({
           <Alert data-color="info" data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-2)' }}>
               <InfoIcon size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
+              <div
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--ds-spacing-1)',
+                }}
+              >
                 {allowMultiplePriceGroups ? (
                   <>
                     {Array.from(internalSelectedGroups).map((groupId) => {
@@ -269,7 +317,11 @@ export function BookingPricingStep({
 
       {/* Additional Services */}
       <div>
-        <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+        >
           {t('booking.recommendedAddons')}
         </Heading>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
@@ -311,7 +363,10 @@ export function BookingPricingStep({
                     marginBottom: 'var(--ds-spacing-1)',
                   }}
                 >
-                  <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+                  <Paragraph
+                    data-size="md"
+                    style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+                  >
                     {service.label}
                   </Paragraph>
                   <Paragraph
@@ -325,7 +380,10 @@ export function BookingPricingStep({
                     +{service.price} {currency}
                   </Paragraph>
                 </div>
-                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                <Paragraph
+                  data-size="sm"
+                  style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+                >
                   {service.description}
                 </Paragraph>
               </div>
@@ -336,7 +394,11 @@ export function BookingPricingStep({
 
       {/* Terms and Conditions */}
       <div>
-        <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+        <Heading
+          level={4}
+          data-size="sm"
+          style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+        >
           {t('booking.termsAndConditions')}
         </Heading>
         <div
@@ -371,7 +433,13 @@ export function BookingPricingStep({
             <li>{t('terms.damageResponsibility')}</li>
             <li>{t('terms.houseRules')}</li>
           </ul>
-          <div style={{ marginTop: 'var(--ds-spacing-3)', display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+          <div
+            style={{
+              marginTop: 'var(--ds-spacing-3)',
+              display: 'flex',
+              gap: 'var(--ds-spacing-3)',
+            }}
+          >
             <a
               href="#"
               style={{

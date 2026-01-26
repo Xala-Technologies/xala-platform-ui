@@ -148,64 +148,68 @@ export function ThemeToolbar({
     <Card data-color="neutral">
       <Card.Block>
         <Stack direction="horizontal" gap="var(--ds-spacing-6)" align="center" wrap>
-        {/* Color Scheme Toggle */}
-        {showColorScheme && (
-          <Stack direction="horizontal" gap="var(--ds-spacing-2)" align="center">
-            <Paragraph data-size="xs" data-color="subtle">
-              {labels.theme}
-            </Paragraph>
-            <ToggleGroup data-size={size} value={colorScheme} onChange={handleColorSchemeChange}>
-              <ToggleGroup.Item value="light" aria-label={labels.lightMode}>
-                <SunIcon size={iconSize} />
-              </ToggleGroup.Item>
-              <ToggleGroup.Item value="dark" aria-label={labels.darkMode}>
-                <MoonIcon size={iconSize} />
-              </ToggleGroup.Item>
-            </ToggleGroup>
-          </Stack>
-        )}
-
-        {/* Locale Toggle */}
-        {showLocale && locales.length > 1 && (
-          <Stack direction="horizontal" gap="var(--ds-spacing-2)" align="center">
-            <GlobeIcon size={iconSize} />
-            <ToggleGroup data-size={size} value={locale} onChange={handleLocaleChange}>
-              {locales.map((loc) => (
-                <ToggleGroup.Item key={loc.value} value={loc.value}>
-                  {loc.label}
+          {/* Color Scheme Toggle */}
+          {showColorScheme && (
+            <Stack direction="horizontal" gap="var(--ds-spacing-2)" align="center">
+              <Paragraph data-size="xs" data-color="subtle">
+                {labels.theme}
+              </Paragraph>
+              <ToggleGroup data-size={size} value={colorScheme} onChange={handleColorSchemeChange}>
+                <ToggleGroup.Item value="light" aria-label={labels.lightMode}>
+                  <SunIcon size={iconSize} />
                 </ToggleGroup.Item>
-              ))}
-            </ToggleGroup>
-          </Stack>
-        )}
+                <ToggleGroup.Item value="dark" aria-label={labels.darkMode}>
+                  <MoonIcon size={iconSize} />
+                </ToggleGroup.Item>
+              </ToggleGroup>
+            </Stack>
+          )}
 
-        {/* Brand Theme Toggle */}
-        {showBrandTheme && brandThemes.length > 0 && (
-          <Stack direction="horizontal" gap="var(--ds-spacing-2)" align="center">
-            <Paragraph data-size="xs" data-color="subtle">
-              {labels.brand}
-            </Paragraph>
-            <ToggleGroup
-              data-size={size}
-              value={brandTheme || brandThemes[0]?.value || ''}
-              onChange={handleBrandChange}
+          {/* Locale Toggle */}
+          {showLocale && locales.length > 1 && (
+            <Stack direction="horizontal" gap="var(--ds-spacing-2)" align="center">
+              <GlobeIcon size={iconSize} />
+              <ToggleGroup data-size={size} value={locale} onChange={handleLocaleChange}>
+                {locales.map((loc) => (
+                  <ToggleGroup.Item key={loc.value} value={loc.value}>
+                    {loc.label}
+                  </ToggleGroup.Item>
+                ))}
+              </ToggleGroup>
+            </Stack>
+          )}
+
+          {/* Brand Theme Toggle */}
+          {showBrandTheme && brandThemes.length > 0 && (
+            <Stack direction="horizontal" gap="var(--ds-spacing-2)" align="center">
+              <Paragraph data-size="xs" data-color="subtle">
+                {labels.brand}
+              </Paragraph>
+              <ToggleGroup
+                data-size={size}
+                value={brandTheme || brandThemes[0]?.value || ''}
+                onChange={handleBrandChange}
+              >
+                {brandThemes.map((theme) => (
+                  <ToggleGroup.Item key={theme.value} value={theme.value}>
+                    {theme.icon || theme.label}
+                  </ToggleGroup.Item>
+                ))}
+              </ToggleGroup>
+            </Stack>
+          )}
+
+          {/* Additional actions */}
+          {actions && (
+            <Stack
+              direction="horizontal"
+              gap="var(--ds-spacing-2)"
+              style={{ marginInlineStart: 'auto' }}
             >
-              {brandThemes.map((theme) => (
-                <ToggleGroup.Item key={theme.value} value={theme.value}>
-                  {theme.icon || theme.label}
-                </ToggleGroup.Item>
-              ))}
-            </ToggleGroup>
-          </Stack>
-        )}
-
-        {/* Additional actions */}
-        {actions && (
-          <Stack direction="horizontal" gap="var(--ds-spacing-2)" style={{ marginInlineStart: 'auto' }}>
-            {actions}
-          </Stack>
-        )}
-      </Stack>
+              {actions}
+            </Stack>
+          )}
+        </Stack>
       </Card.Block>
     </Card>
   );

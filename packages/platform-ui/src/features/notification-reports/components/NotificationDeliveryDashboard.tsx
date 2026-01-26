@@ -7,12 +7,7 @@
  */
 
 import { useMemo } from 'react';
-import {
-  Button,
-  Paragraph,
-  Spinner,
-  Table,
-} from '@digdir/designsystemet-react';
+import { Button, Paragraph, Spinner, Table } from '@digdir/designsystemet-react';
 import { HeaderSearch } from '../../../composed/header-parts';
 import { StatusTag } from '../../../blocks/StatusBadges';
 import type { BadgeColor } from '../../../blocks/StatusBadges';
@@ -343,7 +338,10 @@ export function NotificationDeliveryDashboard({
               border: '1px solid var(--ds-color-neutral-border-subtle)',
             }}
           >
-            <Paragraph data-size="md" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="md"
+              style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+            >
               {labels.emptyTitle}
             </Paragraph>
             <Paragraph
@@ -461,7 +459,9 @@ export function NotificationDeliveryDashboard({
             data-size="sm"
             style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
           >
-            {labels.showingOfTotal.replace('{count}', String(reports.length)).replace('{total}', String(displayTotal))}
+            {labels.showingOfTotal
+              .replace('{count}', String(reports.length))
+              .replace('{total}', String(displayTotal))}
           </Paragraph>
         </div>
       )}

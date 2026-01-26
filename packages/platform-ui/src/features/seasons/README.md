@@ -95,6 +95,7 @@ import { SeasonCard } from '@xala-technologies/platform-ui/features/seasons';
 ```
 
 **Props:**
+
 - `season: SeasonVM` - Season data
 - `labels: SeasonCardLabels` - All text labels
 - `statusDisplay: SeasonStatusDisplay` - Status badge configuration
@@ -131,6 +132,7 @@ import { VenueCard } from '@xala-technologies/platform-ui/features/seasons';
 ```
 
 **Props:**
+
 - `venue: VenueVM` - Venue data
 - `labels: VenueCardLabels` - All text labels
 - `onApply?: (id: string) => void` - Apply callback
@@ -152,6 +154,7 @@ import { SeasonStatusBadge } from '@xala-technologies/platform-ui/features/seaso
 ```
 
 **Props:**
+
 - `label: string` - Status label text
 - `color: BadgeColor` - Badge color ('success' | 'warning' | 'danger' | 'info' | 'neutral')
 - `size?: 'sm' | 'md' | 'lg'` - Badge size (default: 'sm')
@@ -275,6 +278,7 @@ For detailed integration examples with SDK, i18n, routing, and state management,
 📖 **[CONNECTED_WRAPPER_EXAMPLE.md](./CONNECTED_WRAPPER_EXAMPLE.md)**
 
 Examples include:
+
 - Connected wrappers with i18n
 - React Query integration
 - Error handling with toasts

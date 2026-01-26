@@ -154,6 +154,7 @@ The Organizations feature has been successfully refactored to follow pure presen
 ### 1. Removed Forbidden Dependencies
 
 **Before:**
+
 ```typescript
 import { useT } from '@xala-technologies/platform/i18n';
 import type { ActorType } from '@digilist/client-sdk';
@@ -163,6 +164,7 @@ const t = useT();
 ```
 
 **After:**
+
 ```typescript
 import { Stack, FormField } from '@digdir/designsystemet-react';
 import type { BasicData, ActorType } from '../types';
@@ -177,12 +179,14 @@ export interface BasicStepLabels {
 ### 2. Created Comprehensive Labels Interfaces
 
 **BasicStepLabels (22 properties):**
+
 - Section headers: `title`, `description`, `contactInfoHeader`, `addressHeader`
 - Field labels: `nameLabel`, `typeLabel`, `emailLabel`, `phoneLabel`, etc.
 - Placeholders: `namePlaceholder`, `emailPlaceholder`, `phonePlaceholder`, etc.
 - Actor types: `actorTypeMunicipality`, `actorTypeBusiness`, etc.
 
 **BrandingStepLabels (25 properties):**
+
 - Section headers: `title`, `description`
 - Logo section: `logoHeader`, `logoDescription`, `logoDropHere`, etc.
 - Colors section: `colorsHeader`, `primaryColorLabel`, etc.
@@ -190,6 +194,7 @@ export interface BasicStepLabels {
 - Tips section: `tipsTitle`, `tipLogo`, `tipColors`, etc.
 
 **RolesStepLabels (11 properties):**
+
 - Section headers: `title`, `description`, `availableRolesHeader`
 - Badges: `requiredBadge`, `defaultBadge`
 - Info section: `infoTitle`, `infoAdminRequired`, `infoDefaultRole`
@@ -198,11 +203,13 @@ export interface BasicStepLabels {
 ### 3. Replaced Import Paths
 
 **Before:**
+
 ```typescript
 import { Stack, Heading } from '@xala-technologies/platform-ui';
 ```
 
 **After:**
+
 ```typescript
 import { Stack, Heading } from '@digdir/designsystemet-react';
 ```
@@ -286,6 +293,7 @@ $ grep -r "useT\|@digilist/client-sdk\|@xala-technologies/platform/i18n" src/fea
 ### ✅ Using Designsystemet Components
 
 All components use Designsystemet primitives:
+
 - `Stack` for layout
 - `Card` for containers
 - `Heading`, `Paragraph` for text content
@@ -304,6 +312,7 @@ Will verify after all components are refactored.
 ### 1. Refactor OrganizationWizard.tsx
 
 **Required:**
+
 - Create `OrganizationWizardLabels` interface
 - Remove `useT()` hook
 - Pass labels to child step components
@@ -314,6 +323,7 @@ Will verify after all components are refactored.
 ### 2. Refactor OrganizationForm.tsx
 
 **Required:**
+
 - Create `OrganizationFormLabels` interface
 - Remove `useT()` hook
 - Remove `@digilist/client-sdk` type imports
@@ -324,6 +334,7 @@ Will verify after all components are refactored.
 ### 3. Refactor MemberManagement.tsx
 
 **Required:**
+
 - Create `MemberManagementLabels` interface
 - Remove all SDK hooks (`useUsers`, `useQueryClient`)
 - Remove `organizationService` calls
@@ -337,6 +348,7 @@ Will verify after all components are refactored.
 ### 4. Update Export Files
 
 After all components are refactored:
+
 - Update `components/index.ts` with new exports
 - Update `index.ts` with new exports
 - Export all Labels interfaces
@@ -344,6 +356,7 @@ After all components are refactored:
 ### 5. Create Storybook Stories
 
 For each component:
+
 - Default state
 - With validation errors
 - Loading/submitting states
@@ -353,6 +366,7 @@ For each component:
 ### 6. Create Connected Wrapper Documentation
 
 Create `CONNECTED_WRAPPER_EXAMPLE.md` showing:
+
 - How to connect wizard to SDK
 - How to connect form to SDK
 - How to connect member management to SDK

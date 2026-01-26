@@ -7,17 +7,9 @@
  * @module @xala-technologies/platform-ui/features/organizations
  */
 
-/* eslint-disable digdir/prefer-ds-components -- File upload requires native input */
-
 import * as React from 'react';
 import { useCallback, useState } from 'react';
-import {
-  Paragraph,
-  Heading,
-  Card,
-  Button,
-  Alert,
-} from '@digdir/designsystemet-react';
+import { Paragraph, Heading, Card, Button, Alert } from '@digdir/designsystemet-react';
 import { Stack, FormField } from '@xala-technologies/platform-ui';
 import type { BrandingData } from '../types';
 
@@ -343,7 +335,11 @@ export function BrandingStep({
           border: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <Stack direction="horizontal" spacing="2" style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Stack
+          direction="horizontal"
+          spacing="2"
+          style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}
+        >
           <span style={{ color: 'var(--ds-color-accent-base-default)' }}>
             <ImageIcon data-size={24} />
           </span>
@@ -376,11 +372,7 @@ export function BrandingStep({
               cursor: 'pointer',
             }}
           >
-            <Stack
-              direction="vertical"
-              spacing="2"
-              style={{ alignItems: 'center' }}
-            >
+            <Stack direction="vertical" spacing="2" style={{ alignItems: 'center' }}>
               <div style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
                 <ImageIcon data-size={40} />
               </div>
@@ -447,7 +439,11 @@ export function BrandingStep({
           border: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <Stack direction="horizontal" spacing="2" style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Stack
+          direction="horizontal"
+          spacing="2"
+          style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}
+        >
           <span style={{ color: 'var(--ds-color-accent-base-default)' }}>
             <PaletteIcon data-size={24} />
           </span>
@@ -544,7 +540,11 @@ export function BrandingStep({
           border: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <Stack direction="horizontal" spacing="2" style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}>
+        <Stack
+          direction="horizontal"
+          spacing="2"
+          style={{ marginBottom: 'var(--ds-spacing-4)', alignItems: 'center' }}
+        >
           <span style={{ color: 'var(--ds-color-accent-base-default)' }}>
             <DeviceIcon data-size={24} />
           </span>
@@ -577,11 +577,7 @@ export function BrandingStep({
               cursor: 'pointer',
             }}
           >
-            <Stack
-              direction="vertical"
-              spacing="2"
-              style={{ alignItems: 'center' }}
-            >
+            <Stack direction="vertical" spacing="2" style={{ alignItems: 'center' }}>
               <div style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
                 <DeviceIcon data-size={40} />
               </div>

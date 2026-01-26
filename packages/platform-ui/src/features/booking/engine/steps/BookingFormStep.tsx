@@ -4,14 +4,19 @@
  * Booking Form Step - Collect user details and additional services
  */
 import * as React from 'react';
-import { Heading, Button, Stack, Card, Paragraph, Textfield, Textarea, Checkbox } from '@xala-technologies/platform-ui';
+import {
+  Heading,
+  Button,
+  Stack,
+  Card,
+  Paragraph,
+  Textfield,
+  Textarea,
+  Checkbox,
+} from '@xala-technologies/platform-ui';
 import { ChevronLeftIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
 import { formatPrice } from '@digilist/contracts';
-import type {
-  BookingFormData,
-  BookingConfig,
-  AdditionalService,
-} from '@digilist/contracts';
+import type { BookingFormData, BookingConfig, AdditionalService } from '@digilist/contracts';
 
 export interface BookingFormStepProps {
   formData: Partial<BookingFormData>;
@@ -40,7 +45,11 @@ export function BookingFormStep({
       <div className="form-grid">
         {/* Contact Information */}
         <div className="form-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             Kontaktinformasjon
           </Heading>
 
@@ -50,7 +59,7 @@ export function BookingFormStep({
               id="name"
               type="text"
               value={formData.name || ''}
-              onChange={e => onFormChange('name', e.target.value)}
+              onChange={(e) => onFormChange('name', e.target.value)}
               placeholder="Ditt fulle navn"
               required
             />
@@ -63,7 +72,7 @@ export function BookingFormStep({
                 id="email"
                 type="email"
                 value={formData.email || ''}
-                onChange={e => onFormChange('email', e.target.value)}
+                onChange={(e) => onFormChange('email', e.target.value)}
                 placeholder="din@epost.no"
                 required
               />
@@ -74,7 +83,7 @@ export function BookingFormStep({
                 id="phone"
                 type="tel"
                 value={formData.phone || ''}
-                onChange={e => onFormChange('phone', e.target.value)}
+                onChange={(e) => onFormChange('phone', e.target.value)}
                 placeholder="+47 XXX XX XXX"
                 required
               />
@@ -87,7 +96,7 @@ export function BookingFormStep({
               id="organization"
               type="text"
               value={formData.organization || ''}
-              onChange={e => onFormChange('organization', e.target.value)}
+              onChange={(e) => onFormChange('organization', e.target.value)}
               placeholder="Bedrift eller organisasjon (valgfritt)"
             />
           </div>
@@ -95,7 +104,11 @@ export function BookingFormStep({
 
         {/* Booking Details */}
         <div className="form-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+          >
             Bookingdetaljer
           </Heading>
 
@@ -105,7 +118,7 @@ export function BookingFormStep({
               id="purpose"
               type="text"
               value={formData.purpose || ''}
-              onChange={e => onFormChange('purpose', e.target.value)}
+              onChange={(e) => onFormChange('purpose', e.target.value)}
               placeholder="Hva skal du bruke lokalet til?"
               required
             />
@@ -116,7 +129,7 @@ export function BookingFormStep({
               <input
                 type="checkbox"
                 checked={formData.showPurposeInCalendar || false}
-                onChange={e => onFormChange('showPurposeInCalendar', e.target.checked)}
+                onChange={(e) => onFormChange('showPurposeInCalendar', e.target.checked)}
               />
               <span>Vis formal i offentlig kalender</span>
             </label>
@@ -131,7 +144,7 @@ export function BookingFormStep({
                 min={1}
                 max={config.rules.maxAttendees || 100}
                 value={formData.numberOfPeople || 1}
-                onChange={e => onFormChange('numberOfPeople', parseInt(e.target.value))}
+                onChange={(e) => onFormChange('numberOfPeople', parseInt(e.target.value))}
               />
             </div>
             {config.activityTypes && config.activityTypes.length > 0 && (
@@ -140,11 +153,13 @@ export function BookingFormStep({
                 <select
                   id="activityType"
                   value={formData.activityType || ''}
-                  onChange={e => onFormChange('activityType', e.target.value)}
+                  onChange={(e) => onFormChange('activityType', e.target.value)}
                 >
                   <option value="">Velg type</option>
-                  {config.activityTypes.map(type => (
-                    <option key={type} value={type}>{type}</option>
+                  {config.activityTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -157,7 +172,7 @@ export function BookingFormStep({
               id="notes"
               rows={3}
               value={formData.notes || ''}
-              onChange={e => onFormChange('notes', e.target.value)}
+              onChange={(e) => onFormChange('notes', e.target.value)}
               placeholder="Eventuelle spesielle behov eller kommentarer"
             />
           </div>
@@ -166,20 +181,24 @@ export function BookingFormStep({
         {/* Additional Services */}
         {additionalServices.length > 0 && (
           <div className="form-section services-section">
-            <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+            <Heading
+              level={3}
+              data-size="sm"
+              style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+            >
               Tilleggstjenester
             </Heading>
             <div className="services-list">
-              {additionalServices.map(service => (
+              {additionalServices.map((service) => (
                 <label key={service.id} className="service-item">
                   <input
                     type="checkbox"
                     checked={formData.additionalServices?.includes(service.id) || false}
-                    onChange={e => {
+                    onChange={(e) => {
                       const current = formData.additionalServices || [];
                       const newServices = e.target.checked
                         ? [...current, service.id]
-                        : current.filter(id => id !== service.id);
+                        : current.filter((id) => id !== service.id);
                       onFormChange('additionalServices', newServices);
                     }}
                   />
@@ -189,7 +208,9 @@ export function BookingFormStep({
                       <span className="service-desc">{service.description}</span>
                     )}
                   </div>
-                  <span className="service-price">+{formatPrice(service.price, config.pricing.currency)}</span>
+                  <span className="service-price">
+                    +{formatPrice(service.price, config.pricing.currency)}
+                  </span>
                 </label>
               ))}
             </div>
@@ -203,11 +224,15 @@ export function BookingFormStep({
               <input
                 type="checkbox"
                 checked={formData.acceptedTerms || false}
-                onChange={e => onFormChange('acceptedTerms', e.target.checked)}
+                onChange={(e) => onFormChange('acceptedTerms', e.target.checked)}
                 required
               />
               <span>
-                Jeg godtar <a href={config.rules.termsUrl || '#'} target="_blank" rel="noopener noreferrer">vilkarene</a> for booking *
+                Jeg godtar{' '}
+                <a href={config.rules.termsUrl || '#'} target="_blank" rel="noopener noreferrer">
+                  vilkarene
+                </a>{' '}
+                for booking *
               </span>
             </label>
           </div>
@@ -217,7 +242,7 @@ export function BookingFormStep({
               <input
                 type="checkbox"
                 checked={formData.acceptedCancellationPolicy || false}
-                onChange={e => onFormChange('acceptedCancellationPolicy', e.target.checked)}
+                onChange={(e) => onFormChange('acceptedCancellationPolicy', e.target.checked)}
               />
               <span>
                 Jeg har lest og forstar avbestillingsreglene ({config.rules.cancellationPolicy})
@@ -233,7 +258,13 @@ export function BookingFormStep({
           <ChevronLeftIcon size={18} />
           Tilbake
         </Button>
-        <Button type="button" variant="primary" data-color="accent" onClick={onContinue} disabled={!canContinue}>
+        <Button
+          type="button"
+          variant="primary"
+          data-color="accent"
+          onClick={onContinue}
+          disabled={!canContinue}
+        >
           Fortsett til bekreftelse
           <ChevronRightIcon size={18} />
         </Button>

@@ -8,11 +8,7 @@ import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
 import { CalendarIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
 import { cn } from '@xala-technologies/platform-ui';
 import { PriceSummary } from '../components/PriceSummary';
-import type {
-  BookingConfig,
-  BookingSelection,
-  BookingPriceCalculation,
-} from '@digilist/contracts';
+import type { BookingConfig, BookingSelection, BookingPriceCalculation } from '@digilist/contracts';
 
 interface ModeViewProps {
   formatPrice: (amount: number, currency: string) => string;
@@ -37,7 +33,9 @@ export function RecurringModeView({
   canContinue,
 }: RecurringModeViewProps): React.ReactElement {
   const [weekdays, setWeekdays] = React.useState<number[]>(selection.recurring?.weekdays || []);
-  const [startDate, setStartDate] = React.useState<Date>(selection.recurring?.startDate || new Date());
+  const [startDate, setStartDate] = React.useState<Date>(
+    selection.recurring?.startDate || new Date()
+  );
   const [endDate, setEndDate] = React.useState<Date>(
     selection.recurring?.endDate || new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)
   );
@@ -49,15 +47,27 @@ export function RecurringModeView({
 
   const toggleWeekday = (day: number) => {
     const newWeekdays = weekdays.includes(day)
-      ? weekdays.filter(d => d !== day)
+      ? weekdays.filter((d) => d !== day)
       : [...weekdays, day].sort();
     setWeekdays(newWeekdays);
     updateRecurring(newWeekdays, startDate, endDate, startTime, endTime);
   };
 
-  const updateRecurring = (days: number[], start: Date, end: Date, sTime: string, eTime: string) => {
+  const updateRecurring = (
+    days: number[],
+    start: Date,
+    end: Date,
+    sTime: string,
+    eTime: string
+  ) => {
     if (days.length > 0) {
-      onRecurringChange({ weekdays: days, startDate: start, endDate: end, startTime: sTime, endTime: eTime });
+      onRecurringChange({
+        weekdays: days,
+        startDate: start,
+        endDate: end,
+        startTime: sTime,
+        endTime: eTime,
+      });
     } else {
       onRecurringChange(undefined);
     }
@@ -79,12 +89,20 @@ export function RecurringModeView({
   return (
     <div className="selection-view recurring-mode">
       <div className="recurring-panel">
-        <Heading level={2} data-size="lg" style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}>
+        <Heading
+          level={2}
+          data-size="lg"
+          style={{ margin: 0, marginBottom: 'var(--ds-spacing-4)' }}
+        >
           Sett opp sesongbooking
         </Heading>
 
         <div className="recurring-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+          >
             Velg ukedager
           </Heading>
           <div className="weekday-selector">
@@ -102,7 +120,11 @@ export function RecurringModeView({
         </div>
 
         <div className="recurring-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+          >
             Tidspunkt
           </Heading>
           <div className="time-selector">
@@ -110,9 +132,16 @@ export function RecurringModeView({
               <label>Fra</label>
               <select
                 value={startTime}
-                onChange={e => { setStartTime(e.target.value); updateRecurring(weekdays, startDate, endDate, e.target.value, endTime); }}
+                onChange={(e) => {
+                  setStartTime(e.target.value);
+                  updateRecurring(weekdays, startDate, endDate, e.target.value, endTime);
+                }}
               >
-                {timeOptions.map(t => <option key={t} value={t}>{t}</option>)}
+                {timeOptions.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
             <span className="time-separator">-</span>
@@ -120,16 +149,27 @@ export function RecurringModeView({
               <label>Til</label>
               <select
                 value={endTime}
-                onChange={e => { setEndTime(e.target.value); updateRecurring(weekdays, startDate, endDate, startTime, e.target.value); }}
+                onChange={(e) => {
+                  setEndTime(e.target.value);
+                  updateRecurring(weekdays, startDate, endDate, startTime, e.target.value);
+                }}
               >
-                {timeOptions.map(t => <option key={t} value={t}>{t}</option>)}
+                {timeOptions.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
         </div>
 
         <div className="recurring-section">
-          <Heading level={3} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+          <Heading
+            level={3}
+            data-size="sm"
+            style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}
+          >
             Periode
           </Heading>
           <div className="date-selector">
@@ -138,7 +178,11 @@ export function RecurringModeView({
               <input
                 type="date"
                 value={startDate.toISOString().split('T')[0]}
-                onChange={e => { const d = new Date(e.target.value); setStartDate(d); updateRecurring(weekdays, d, endDate, startTime, endTime); }}
+                onChange={(e) => {
+                  const d = new Date(e.target.value);
+                  setStartDate(d);
+                  updateRecurring(weekdays, d, endDate, startTime, endTime);
+                }}
               />
             </div>
             <div className="date-input">
@@ -146,7 +190,11 @@ export function RecurringModeView({
               <input
                 type="date"
                 value={endDate.toISOString().split('T')[0]}
-                onChange={e => { const d = new Date(e.target.value); setEndDate(d); updateRecurring(weekdays, startDate, d, startTime, endTime); }}
+                onChange={(e) => {
+                  const d = new Date(e.target.value);
+                  setEndDate(d);
+                  updateRecurring(weekdays, startDate, d, startTime, endTime);
+                }}
               />
             </div>
           </div>
@@ -166,7 +214,14 @@ export function RecurringModeView({
             <div className="empty-illustration">
               <CalendarIcon size={40} />
             </div>
-            <Paragraph data-size="sm" style={{ margin: 0, textAlign: 'center', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{
+                margin: 0,
+                textAlign: 'center',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               Velg ukedager for a se sammendrag
             </Paragraph>
           </div>
@@ -175,15 +230,19 @@ export function RecurringModeView({
             <div className="recurring-summary">
               <div className="summary-row">
                 <span>Ukedager</span>
-                <span>{weekdays.map(d => dayNames[d]).join(', ')}</span>
+                <span>{weekdays.map((d) => dayNames[d]).join(', ')}</span>
               </div>
               <div className="summary-row">
                 <span>Tidspunkt</span>
-                <span>{startTime} - {endTime}</span>
+                <span>
+                  {startTime} - {endTime}
+                </span>
               </div>
               <div className="summary-row">
                 <span>Periode</span>
-                <span>{startDate.toLocaleDateString('nb-NO')} - {endDate.toLocaleDateString('nb-NO')}</span>
+                <span>
+                  {startDate.toLocaleDateString('nb-NO')} - {endDate.toLocaleDateString('nb-NO')}
+                </span>
               </div>
               <div className="summary-row highlight">
                 <span>Antall okter</span>
@@ -194,7 +253,13 @@ export function RecurringModeView({
             <PriceSummary priceCalculation={priceCalculation} />
 
             <div className="summary-actions">
-              <Button type="button" variant="primary" data-color="accent" onClick={onContinue} disabled={!canContinue}>
+              <Button
+                type="button"
+                variant="primary"
+                data-color="accent"
+                onClick={onContinue}
+                disabled={!canContinue}
+              >
                 Fortsett
                 <ChevronRightIcon size={18} />
               </Button>

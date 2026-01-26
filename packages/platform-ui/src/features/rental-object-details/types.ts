@@ -136,7 +136,13 @@ export interface KeyFacts {
 export interface RentalObjectMetadata {
   description?: string;
   shortDescription?: string;
-  amenities: Array<{ id: string; name: string; icon?: string; category?: string; description?: string }>;
+  amenities: Array<{
+    id: string;
+    name: string;
+    icon?: string;
+    category?: string;
+    description?: string;
+  }>;
   includedEquipment: IncludedEquipment[];
   rules: Rule[];
   faq: Array<{ id: string; question: string; answer: string; category?: string }>;

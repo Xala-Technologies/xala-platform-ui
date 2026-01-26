@@ -4,7 +4,16 @@
  * Temporary local component until moved to platform-ui-extended.
  * Manages notification preferences including email, SMS, push notifications.
  */
-import { Card, Heading, Paragraph, Button, Textfield, Switch, Spinner, Alert } from '@digdir/designsystemet-react';
+import {
+  Card,
+  Heading,
+  Paragraph,
+  Button,
+  Textfield,
+  Switch,
+  Spinner,
+  Alert,
+} from '@digdir/designsystemet-react';
 
 export interface NotificationSettingsData {
   emailEnabled: boolean;
@@ -61,13 +70,17 @@ export function NotificationsTab({
     <Card>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
-          <Heading level={2} data-size="sm">Notification Settings</Heading>
+          <Heading level={2} data-size="sm">
+            Notification Settings
+          </Heading>
           <Paragraph>Manage how you receive notifications</Paragraph>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-          <Heading level={3} data-size="xs">Notification Channels</Heading>
-          
+          <Heading level={3} data-size="xs">
+            Notification Channels
+          </Heading>
+
           <Switch
             label="Email Notifications"
             description="Receive notifications via email"
@@ -94,8 +107,10 @@ export function NotificationsTab({
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-          <Heading level={3} data-size="xs">Notification Types</Heading>
-          
+          <Heading level={3} data-size="xs">
+            Notification Types
+          </Heading>
+
           <Switch
             label="Booking Confirmations"
             description="Get notified when bookings are confirmed"
@@ -133,7 +148,7 @@ export function NotificationsTab({
             Settings saved successfully
           </Alert>
         )}
-        
+
         {saveError && (
           <Alert data-color="danger" data-size="sm">
             {saveError}
@@ -149,13 +164,8 @@ export function NotificationsTab({
           >
             Reset
           </Button>
-          
-          <Button
-            variant="primary"
-            onClick={onSave}
-            disabled={!canSave}
-            data-size="sm"
-          >
+
+          <Button variant="primary" onClick={onSave} disabled={!canSave} data-size="sm">
             {isSaving ? 'Saving...' : 'Save Settings'}
           </Button>
         </div>

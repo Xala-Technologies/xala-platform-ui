@@ -86,7 +86,13 @@ export function BrandingTab({
 
         <Stack spacing={4}>
           <FormField label={labels.logoUrl}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.logoUrlDescription}
             </Paragraph>
             <Textfield
@@ -98,7 +104,13 @@ export function BrandingTab({
           </FormField>
 
           <FormField label={labels.primaryColor}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.primaryColorDescription}
             </Paragraph>
             <Textfield
@@ -109,7 +121,13 @@ export function BrandingTab({
           </FormField>
 
           <FormField label={labels.secondaryColor}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.secondaryColorDescription}
             </Paragraph>
             <Textfield
@@ -120,7 +138,13 @@ export function BrandingTab({
           </FormField>
 
           <FormField label={labels.faviconUrl}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.faviconUrlDescription}
             </Paragraph>
             <Textfield

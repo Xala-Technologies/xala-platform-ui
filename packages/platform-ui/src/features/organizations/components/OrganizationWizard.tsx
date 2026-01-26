@@ -9,13 +9,7 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import {
-  Button,
-  Heading,
-  Paragraph,
-  Spinner,
-  Card,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph, Spinner, Card } from '@digdir/designsystemet-react';
 import { Stack } from '@xala-technologies/platform-ui';
 import type { BasicStepLabels } from './BasicStep';
 import type { BrandingStepLabels } from './BrandingStep';
@@ -23,11 +17,7 @@ import type { RolesStepLabels } from './RolesStep';
 import { BasicStep } from './BasicStep';
 import { BrandingStep } from './BrandingStep';
 import { RolesStep } from './RolesStep';
-import type {
-  OrganizationWizardData,
-  OrganizationWizardStepId,
-  RoleDefinition,
-} from '../types';
+import type { OrganizationWizardData, OrganizationWizardStepId, RoleDefinition } from '../types';
 
 // =============================================================================
 // Labels Interface

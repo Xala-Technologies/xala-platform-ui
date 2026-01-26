@@ -24,7 +24,4 @@ export type {
   GdprRequestQueueLabels,
 } from './GdprRequestQueue';
 
-export type {
-  RequestDetailModalProps,
-  RequestDetailModalLabels,
-} from './RequestDetailModal';
+export type { RequestDetailModalProps, RequestDetailModalLabels } from './RequestDetailModal';

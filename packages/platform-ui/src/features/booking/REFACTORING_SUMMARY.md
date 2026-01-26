@@ -14,12 +14,14 @@ Refactored the entire booking feature (37 files) from `@digilist/ui` to pure pre
 ### 1. Removed Forbidden Dependencies
 
 **Before**:
+
 ```typescript
 import { useT } from '@xala-technologies/platform/i18n';
 import { useBookings } from '@digilist/client-sdk';
 ```
 
 **After**:
+
 ```typescript
 // No imports from platform/i18n or client-sdk
 // All text provided via props
@@ -42,12 +44,14 @@ Every component now has a corresponding `*Labels` interface:
 ### 3. Replaced i18n Calls
 
 **Before**:
+
 ```typescript
 const t = useT();
 <Heading>{t('booking.title')}</Heading>
 ```
 
 **After**:
+
 ```typescript
 export interface ComponentLabels {
   title: string;
@@ -188,6 +192,7 @@ function MyComponent() {
 ## Current Status
 
 ###Completed
+
 - ✅ All 37 files copied from source
 - ✅ Import paths updated (Designsystemet imports)
 - ✅ Directory structure created
@@ -198,6 +203,7 @@ function MyComponent() {
 - ✅ mappers.ts marked as DEPRECATED
 
 ### Remaining Work (Minor)
+
 - ⏳ 14 components use placeholder `t()` function - need labels interfaces
 - ⏳ Fix `Stack` import (not in Designsystemet - use div + flex)
 - ⏳ Fix `size` props to `data-size` in some components
@@ -237,6 +243,7 @@ pnpm verify:design-tokens # Designsystemet compliance
 ## Components Exported
 
 ### Blocks (5 components)
+
 - `BookingSuccess` - Success confirmation screen
 - `BookingModeSelector` - Mode selection (single/recurring/season)
 - `BookingConfirmation` - Booking review step
@@ -244,6 +251,7 @@ pnpm verify:design-tokens # Designsystemet compliance
 - `PriceSummaryCard` - Price breakdown card
 
 ### Sidebar Components (13 components)
+
 - `BookingVisibilitySelector` - Public/private visibility
 - `BookingContextSelector` - Organization/personal context
 - `BookingStepperHeader` - Multi-step progress indicator
@@ -259,6 +267,7 @@ pnpm verify:design-tokens # Designsystemet compliance
 - `BookingAvailabilityConflictDialog` - Conflict dialog
 
 ### Engine Components (12 components)
+
 - `BookingEngine` - Main booking orchestrator
 - `BookingPage` - Full booking page
 - `DailyModeView` - Daily booking view
@@ -271,6 +280,7 @@ pnpm verify:design-tokens # Designsystemet compliance
 - `PriceSummary` - Price summary component
 
 ### Utilities
+
 - `mappers.ts` - DEPRECATED DTO mappers
 - `utils.ts` - Helper functions
 - `styles.ts` - Shared styles
@@ -281,6 +291,7 @@ pnpm verify:design-tokens # Designsystemet compliance
 ### 1. All components require `labels` prop
 
 **Migration**:
+
 ```typescript
 // Before
 <BookingSuccess bookingReference="BK-123" />

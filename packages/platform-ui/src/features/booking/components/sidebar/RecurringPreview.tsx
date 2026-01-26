@@ -16,7 +16,8 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Tag, Card, Spinner, Stack } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Tag, Card, Spinner } from '@digdir/designsystemet-react';
+import { Stack } from '../../../../primitives/stack';
 
 // =============================================================================
 // Types
@@ -107,7 +108,20 @@ const WEEKDAY_KEYS: Record<number, string> = {
 };
 
 /** Month index to translation key mapping */
-const MONTH_KEYS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const MONTH_KEYS = [
+  'jan',
+  'feb',
+  'mar',
+  'apr',
+  'may',
+  'jun',
+  'jul',
+  'aug',
+  'sep',
+  'oct',
+  'nov',
+  'dec',
+];
 
 // =============================================================================
 // Helper Functions
@@ -154,7 +168,6 @@ export function RecurringPreview({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   const handleToggleOccurrence = (index: number) => {
     if (!allowSelection || !onSelectionChange || !selectedIndices) return;
 
@@ -185,7 +198,7 @@ export function RecurringPreview({
     return (
       <Stack
         className={className}
-        spacing="3"
+        gap="var(--ds-spacing-3)"
         style={{
           alignItems: 'center',
           justifyContent: 'center',

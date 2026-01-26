@@ -30,17 +30,24 @@ export interface OpeningHoursWidgetProps {
   className?: string;
 }
 
-export function OpeningHoursWidget({ openingHours, labels, className }: OpeningHoursWidgetProps): React.ReactElement {
+export function OpeningHoursWidget({
+  openingHours,
+  labels,
+  className,
+}: OpeningHoursWidgetProps): React.ReactElement {
   if (!openingHours || !openingHours.regular || openingHours.regular.length === 0) return <></>;
-  
+
   return (
     <Card className={className} data-color="neutral">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-        <Paragraph data-size="xs" style={{ 
-          textTransform: 'uppercase',
-          fontWeight: 'var(--ds-font-weight-medium)',
-          color: 'var(--ds-color-neutral-text-subtle)'
-        }}>
+        <Paragraph
+          data-size="xs"
+          style={{
+            textTransform: 'uppercase',
+            fontWeight: 'var(--ds-font-weight-medium)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           {labels.openingHoursHeading}
         </Paragraph>
         {openingHours.regular.map((day, idx) => (

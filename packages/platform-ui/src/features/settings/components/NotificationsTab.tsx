@@ -12,6 +12,10 @@ import { NotificationsTab as DSNotificationsTab } from '../../../blocks/settings
 
 // Re-export the pure presentational component
 export { NotificationsTab } from '../../../blocks/settings';
-export type { NotificationsTabProps, NotificationsTabLabels, NotificationSettingsData } from '../../../blocks/settings';
+export type {
+  NotificationsTabProps,
+  NotificationsTabLabels,
+  NotificationSettingsData,
+} from '../../../blocks/settings';
 
 export default DSNotificationsTab;

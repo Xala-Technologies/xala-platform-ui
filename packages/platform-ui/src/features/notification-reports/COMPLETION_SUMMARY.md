@@ -27,14 +27,17 @@ src/features/notification-reports/
 ### 2. Configuration Updates ✅
 
 **package.json**
+
 - Added export entry: `./features/notification-reports`
 
 **tsup.config.ts**
+
 - Added build entry: `features/notification-reports`
 
 ### 3. Build Artifacts ✅
 
 All build outputs generated successfully:
+
 - `dist/features/notification-reports.js` (56.54 KB)
 - `dist/features/notification-reports.cjs` (59.01 KB)
 - `dist/features/notification-reports.d.ts` (3.01 KB)
@@ -51,7 +54,7 @@ import { useT } from '@xala-technologies/platform/i18n';
 
 export function NotificationDeliveryDashboard({ reports }) {
   const t = useT();
-  
+
   return (
     <div>
       <Paragraph>{t('notifications.dashboard.title')}</Paragraph>
@@ -70,9 +73,9 @@ export interface NotificationDeliveryDashboardLabels {
   // ... 24 more label properties
 }
 
-export function NotificationDeliveryDashboard({ 
-  reports, 
-  labels 
+export function NotificationDeliveryDashboard({
+  reports,
+  labels
 }: NotificationDeliveryDashboardProps) {
   return (
     <div>
@@ -90,22 +93,23 @@ export function NotificationDeliveryDashboard({
 ### NotificationDeliveryDashboard
 
 **Props Interface**:
+
 ```typescript
 interface NotificationDeliveryDashboardProps {
   // Data
   reports: DeliveryReport[];
   labels: NotificationDeliveryDashboardLabels;
-  
+
   // State
   isLoading?: boolean;
   totalCount?: number;
   searchValue?: string;
   isRetrying?: boolean;
-  
+
   // Formatters
   formatDate?: (date: string) => string;
   formatTime?: (date: string) => string;
-  
+
   // Callbacks
   onSearchChange?: (value: string) => void;
   onSearch?: (value: string) => void;
@@ -114,6 +118,7 @@ interface NotificationDeliveryDashboardProps {
 ```
 
 **Labels Interface** (26 properties):
+
 - Header: `title`, `description`
 - Stats: `totalLabel`, `sentLabel`, `pendingLabel`, `failedLabel`, `deliveredLabel`
 - Actions: `searchPlaceholder`, `retryFailedLabel`, `retryingLabel`, `loadingLabel`
@@ -127,10 +132,12 @@ interface NotificationDeliveryDashboardProps {
 ## Forbidden Imports Removed
 
 ✅ **Removed**:
+
 - `@xala-technologies/platform/i18n` (useT hook)
 - All internal component imports replaced with Designsystemet
 
 ✅ **Added**:
+
 - `@digdir/designsystemet-react` components
 - `../../../composed/header-parts` (HeaderSearch)
 - `../../../blocks/StatusBadges` (StatusTag, BadgeColor)
@@ -140,13 +147,15 @@ interface NotificationDeliveryDashboardProps {
 ## Design System Compliance
 
 ✅ **Component Fixes**:
+
 - Changed `Badge` → `StatusTag` (Badge is for counts, StatusTag for text labels)
 - Updated color types to `BadgeColor` from StatusBadges
 - All components use Designsystemet primitives
 - No raw HTML elements
-- No custom CSS (only var(--ds-*) tokens)
+- No custom CSS (only var(--ds-\*) tokens)
 
 ✅ **Import Paths**:
+
 - HeaderSearch: `composed/header-parts` ✓
 - StatusTag: `blocks/StatusBadges` ✓
 - Layer hierarchy respected ✓
@@ -156,22 +165,28 @@ interface NotificationDeliveryDashboardProps {
 ## Validation Results
 
 ### TypeScript Compilation ✅
+
 ```bash
 pnpm typecheck
 ```
+
 **Result**: 0 errors in notification-reports feature
 
 ### Build Success ✅
+
 ```bash
 pnpm build
 ```
-**Result**: 
+
+**Result**:
+
 - ESM build: 56.54 KB
 - CJS build: 59.01 KB
 - Type definitions: 3.01 KB
 - No warnings
 
 ### Code Quality ✅
+
 - No forbidden imports
 - All text via labels props
 - Pure presentational components
@@ -190,7 +205,7 @@ import { useT } from '@xala-technologies/platform/i18n';
 
 export function useNotificationReportsLabels() {
   const t = useT();
-  
+
   return {
     title: t('notifications.dashboard.title'),
     description: t('notifications.dashboard.description'),
@@ -207,7 +222,7 @@ import { useDeliveryReports } from '@digilist/client-sdk';
 export function NotificationReportsPage() {
   const labels = useNotificationReportsLabels();
   const { data, isLoading } = useDeliveryReports();
-  
+
   return (
     <NotificationDeliveryDashboard
       reports={data?.data || []}
@@ -226,11 +241,13 @@ export function NotificationReportsPage() {
 All types exported from `@xala-technologies/platform-ui/features/notification-reports`:
 
 **Component Types**:
+
 - `NotificationDeliveryDashboard` (component)
 - `NotificationDeliveryDashboardProps` (interface)
 - `NotificationDeliveryDashboardLabels` (interface)
 
 **Data Types**:
+
 - `DeliveryReport` (interface)
 - `DeliveryStats` (interface)
 - `DeliveryReportFilters` (interface)
@@ -240,10 +257,11 @@ All types exported from `@xala-technologies/platform-ui/features/notification-re
 
 ## Storybook Integration
 
-✅ **Story File Exists**: 
+✅ **Story File Exists**:
 `src/stories/Components/NotificationDeliveryDashboard.stories.tsx`
 
 **Features**:
+
 - Default story with labels
 - Loading state
 - Empty states
@@ -257,23 +275,27 @@ All types exported from `@xala-technologies/platform-ui/features/notification-re
 ## Benefits Achieved
 
 ### 1. Framework Independence
+
 - No i18n coupling
 - No SDK dependencies
 - Works in any React app
 - Testable in isolation
 
 ### 2. Type Safety
+
 - Full TypeScript coverage
 - Compile-time label validation
 - IntelliSense support
 
 ### 3. Maintainability
+
 - Clear separation of concerns
 - Single responsibility
 - Easy to update
 - Follows established patterns
 
 ### 4. Reusability
+
 - Works in Storybook
 - Works in multiple apps
 - Easy to test
@@ -284,7 +306,9 @@ All types exported from `@xala-technologies/platform-ui/features/notification-re
 ## Next Steps for Integration
 
 ### 1. Runtime Implementation (App Layer)
+
 Create labels provider in consuming apps:
+
 ```typescript
 // runtime/src/features/backoffice/notification-reports/labels.ts
 export function useNotificationReportsLabels() {
@@ -297,12 +321,14 @@ export function useNotificationReportsLabels() {
 ```
 
 ### 2. Update Page Components
+
 Replace direct i18n usage with labels hook:
+
 ```typescript
 // Before
 import { NotificationDeliveryDashboard } from '@digilist/ui';
 
-// After  
+// After
 import { NotificationDeliveryDashboard } from '@xala-technologies/platform-ui/features/notification-reports';
 import { useNotificationReportsLabels } from './labels';
 
@@ -310,6 +336,7 @@ const labels = useNotificationReportsLabels();
 ```
 
 ### 3. Testing
+
 - Unit tests with mock labels
 - Storybook visual tests
 - Integration tests in app
@@ -319,16 +346,19 @@ const labels = useNotificationReportsLabels();
 ## Files Modified
 
 ### Source Files (4)
+
 1. `src/features/notification-reports/components/NotificationDeliveryDashboard.tsx` - Refactored
 2. `src/features/notification-reports/components/index.ts` - Updated exports
 3. `src/features/notification-reports/index.ts` - Updated exports
 4. `src/features/notification-reports/types.ts` - No changes (already pure)
 
 ### Configuration Files (2)
+
 5. `package.json` - Added export entry
 6. `tsup.config.ts` - Added build entry
 
 ### Documentation (1)
+
 7. `REFACTORING_SUMMARY.md` - Created
 
 **Total**: 7 files modified/created
@@ -337,14 +367,14 @@ const labels = useNotificationReportsLabels();
 
 ## Quality Metrics
 
-| Metric | Before | After | Status |
-|--------|--------|-------|--------|
-| Forbidden imports | 1 (useT) | 0 | ✅ |
-| i18n calls | 25+ | 0 | ✅ |
-| Props interfaces | 1 | 2 | ✅ |
-| TypeScript errors | 0 | 0 | ✅ |
-| Build output | ❌ | ✅ | ✅ |
-| Layer compliance | ⚠️ | ✅ | ✅ |
+| Metric            | Before   | After | Status |
+| ----------------- | -------- | ----- | ------ |
+| Forbidden imports | 1 (useT) | 0     | ✅     |
+| i18n calls        | 25+      | 0     | ✅     |
+| Props interfaces  | 1        | 2     | ✅     |
+| TypeScript errors | 0        | 0     | ✅     |
+| Build output      | ❌       | ✅    | ✅     |
+| Layer compliance  | ⚠️       | ✅    | ✅     |
 
 ---
 

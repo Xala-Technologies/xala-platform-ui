@@ -25,7 +25,9 @@ export interface CalendarSectionProps {
 export function CalendarSection({ labels, className }: CalendarSectionProps): React.ReactElement {
   return (
     <div className={className}>
-      <Heading level={2} data-size="md">{labels.heading}</Heading>
+      <Heading level={2} data-size="md">
+        {labels.heading}
+      </Heading>
       <Paragraph data-size="sm">{labels.selectDateLabel}</Paragraph>
     </div>
   );

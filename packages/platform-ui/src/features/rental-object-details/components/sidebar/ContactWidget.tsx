@@ -19,7 +19,11 @@ export interface ContactWidgetProps {
   className?: string;
 }
 
-export function ContactWidget({ contact, labels, className }: ContactWidgetProps): React.ReactElement {
+export function ContactWidget({
+  contact,
+  labels,
+  className,
+}: ContactWidgetProps): React.ReactElement {
   if (!contact.email && !contact.phone && !contact.name) {
     return <></>;
   }
@@ -27,12 +31,15 @@ export function ContactWidget({ contact, labels, className }: ContactWidgetProps
   return (
     <Card className={className} data-color="neutral">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-        <Paragraph data-size="xs" style={{ 
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          fontWeight: 'var(--ds-font-weight-medium)',
-          color: 'var(--ds-color-neutral-text-subtle)'
-        }}>
+        <Paragraph
+          data-size="xs"
+          style={{
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            fontWeight: 'var(--ds-font-weight-medium)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           {labels.contactInfoHeading}
         </Paragraph>
         {contact.name && <Paragraph data-size="sm">{contact.name}</Paragraph>}

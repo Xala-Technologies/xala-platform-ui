@@ -70,9 +70,4 @@ export {
 // Types
 // =============================================================================
 
-export type {
-  DeliveryReport,
-  DeliveryStats,
-  DeliveryReportFilters,
-  PaginationMeta,
-} from './types';
+export type { DeliveryReport, DeliveryStats, DeliveryReportFilters, PaginationMeta } from './types';

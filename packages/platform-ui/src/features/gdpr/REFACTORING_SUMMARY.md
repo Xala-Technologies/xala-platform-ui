@@ -69,6 +69,7 @@ The GDPR feature has been successfully refactored to follow pure presentational 
 ### 1. Removed Forbidden Dependencies
 
 **Before:**
+
 ```typescript
 import {
   usePendingGdprRequests,
@@ -85,6 +86,7 @@ const { data: usersData } = useUsers({ limit: 100 });
 ```
 
 **After:**
+
 ```typescript
 import type { GdprRequestVM, GdprSortOption } from '../types';
 
@@ -105,6 +107,7 @@ export interface GdprRequestDisplayVM extends GdprRequestVM {
 ### 2. Replaced Raw HTML with Designsystemet Components
 
 **Before:**
+
 ```typescript
 <div
   style={{
@@ -120,6 +123,7 @@ export interface GdprRequestDisplayVM extends GdprRequestVM {
 ```
 
 **After:**
+
 ```typescript
 <Stack
   direction="vertical"
@@ -141,6 +145,7 @@ export interface GdprRequestDisplayVM extends GdprRequestVM {
 ### 3. Moved Data Processing to Props
 
 **Before:**
+
 ```typescript
 const processedRequests = useMemo(() => {
   const data = requestsData?.data ?? [];
@@ -153,6 +158,7 @@ const processedRequests = useMemo(() => {
 ```
 
 **After (in component):**
+
 ```typescript
 // Component just receives processed data
 export interface GdprRequestQueueProps {
@@ -163,6 +169,7 @@ export interface GdprRequestQueueProps {
 ```
 
 **After (in connected wrapper):**
+
 ```typescript
 // Connected wrapper handles all data processing
 const processedRequests = useMemo(() => {
@@ -180,6 +187,7 @@ const processedRequests = useMemo(() => {
 ### 4. Replaced Inline Form Elements
 
 **Before:**
+
 ```typescript
 <label style={{ display: 'block', fontSize: '...' }}>
   {t('gdpr.modal.requestType')}
@@ -194,6 +202,7 @@ const processedRequests = useMemo(() => {
 ```
 
 **After:**
+
 ```typescript
 <Text
   style={{
@@ -305,12 +314,14 @@ $ grep -r "useT\|@digilist/client-sdk\|@xala-technologies/platform/i18n" src/fea
 ```
 
 Only pure type imports remain in `types.ts`:
+
 - No runtime imports
 - Only local type definitions
 
 ### ✅ No Raw HTML Elements
 
 All components use Designsystemet primitives:
+
 - `Stack` for layout
 - `Card` for containers
 - `Heading`, `Paragraph`, `Text` for text content
@@ -358,6 +369,7 @@ All components compile without errors when used with proper imports.
 Created comprehensive Storybook stories demonstrating:
 
 **GdprRequestQueue.stories.tsx:**
+
 - Default state with data
 - Loading state
 - Empty state (no data)
@@ -370,6 +382,7 @@ Created comprehensive Storybook stories demonstrating:
 - Norwegian translation example
 
 **RequestDetailModal.stories.tsx:**
+
 - Pending export request
 - Pending deletion request
 - Completed request

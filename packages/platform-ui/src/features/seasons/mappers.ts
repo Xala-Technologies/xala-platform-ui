@@ -244,10 +244,7 @@ export function mapVenueDTOToVM(dto: VenueDTO): VenueVM {
  * Note: This is a convenience helper. Applications should use their own
  * date formatting based on user locale and preferences.
  */
-export function formatSeasonDate(
-  dateString: string,
-  locale: string = 'nb-NO'
-): string {
+export function formatSeasonDate(dateString: string, locale: string = 'nb-NO'): string {
   return new Date(dateString).toLocaleDateString(locale, {
     day: 'numeric',
     month: 'short',
@@ -309,10 +306,7 @@ export function mapVenueDTOsToVMs(items: VenueDTO[]): VenueVM[] {
 /**
  * Filters seasons by status.
  */
-export function filterSeasonsByStatus(
-  seasons: SeasonVM[],
-  statuses: SeasonStatus[]
-): SeasonVM[] {
+export function filterSeasonsByStatus(seasons: SeasonVM[], statuses: SeasonStatus[]): SeasonVM[] {
   return seasons.filter((s) => statuses.includes(s.status));
 }
 

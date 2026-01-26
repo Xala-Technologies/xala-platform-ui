@@ -26,10 +26,7 @@ declare module 'react-map-gl/mapbox' {
     getCenter(): { lng: number; lat: number };
     getZoom(): number;
     flyTo(options: { center: [number, number]; zoom?: number; duration?: number }): void;
-    fitBounds(
-      bounds: [[number, number], [number, number]],
-      options?: FitBoundsOptions
-    ): void;
+    fitBounds(bounds: [[number, number], [number, number]], options?: FitBoundsOptions): void;
   }
 
   export interface ViewState {

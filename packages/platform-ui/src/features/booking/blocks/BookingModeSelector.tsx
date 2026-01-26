@@ -34,13 +34,10 @@
  */
 
 import * as React from 'react';
-import { Tabs, Paragraph, Badge, Stack } from '@digdir/designsystemet-react';
-import {
-  CalendarIcon,
-  ClockIcon,
-  RepeatIcon,
-  SunIcon,
-} from 'lucide-react';
+import { Tabs, Paragraph } from '@digdir/designsystemet-react';
+import { Stack } from '../../../primitives/stack';
+import { Badge } from '../../../composed/Badge';
+import { CalendarIcon, ClockIcon, RepeatIcon, SunIcon } from 'lucide-react';
 
 // =============================================================================
 // Types
@@ -300,24 +297,21 @@ export function BookingModeSelector({
     return (
       <Stack
         className={className}
+        gap="var(--ds-spacing-2)"
         style={{
-          gap: 'var(--ds-spacing-2)',
           padding: tabsVariant === 'compact' ? 0 : getPadding(size),
           backgroundColor:
             tabsVariant === 'compact'
               ? 'transparent'
               : 'var(--ds-color-neutral-background-default)',
-          borderRadius:
-            tabsVariant === 'compact' ? 0 : 'var(--ds-border-radius-md)',
+          borderRadius: tabsVariant === 'compact' ? 0 : 'var(--ds-border-radius-md)',
           border:
-            tabsVariant === 'compact'
-              ? 'none'
-              : '1px solid var(--ds-color-neutral-border-subtle)',
+            tabsVariant === 'compact' ? 'none' : '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
         {tabsVariant === 'default' && labels && (
           <Paragraph
-            size="sm"
+            data-size="sm"
             style={{
               color: 'var(--ds-color-neutral-text-subtle)',
               fontWeight: 'var(--ds-font-weight-medium)',
@@ -352,10 +346,7 @@ export function BookingModeSelector({
                       ? 'var(--ds-spacing-1) var(--ds-spacing-2)'
                       : 'var(--ds-spacing-2) var(--ds-spacing-3)',
                   borderRadius: 'var(--ds-border-radius-sm)',
-                  fontSize:
-                    size === 'sm'
-                      ? 'var(--ds-font-size-xs)'
-                      : 'var(--ds-font-size-sm)',
+                  fontSize: size === 'sm' ? 'var(--ds-font-size-xs)' : 'var(--ds-font-size-sm)',
                   fontWeight: 'var(--ds-font-weight-medium)',
                   transition: 'all 150ms ease',
                   pointerEvents: disabled ? 'none' : undefined,
@@ -372,7 +363,7 @@ export function BookingModeSelector({
         </Tabs>
 
         {tabsVariant === 'default' && (
-          <Paragraph size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
             {displayedModes.find((m) => m.mode === currentMode)?.description ??
               displayedModes[0]?.description}
           </Paragraph>
@@ -384,10 +375,10 @@ export function BookingModeSelector({
   // Render buttons variant
   return (
     <Stack
-      direction="row"
+      direction="horizontal"
       className={className}
+      gap="var(--ds-spacing-1)"
       style={{
-        gap: 'var(--ds-spacing-1)',
         padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
         backgroundColor: 'var(--ds-color-neutral-background-default)',
         borderRadius: 'var(--ds-border-radius-lg)',
@@ -413,12 +404,8 @@ export function BookingModeSelector({
               padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
               borderRadius: 'var(--ds-border-radius-md)',
               border: 'none',
-              backgroundColor: isSelected
-                ? 'var(--ds-color-accent-base-default)'
-                : 'transparent',
-              color: isSelected
-                ? 'white'
-                : 'var(--ds-color-neutral-text-default)',
+              backgroundColor: isSelected ? 'var(--ds-color-accent-base-default)' : 'transparent',
+              color: isSelected ? 'white' : 'var(--ds-color-neutral-text-default)',
               cursor: disabled ? 'not-allowed' : 'pointer',
               opacity: disabled ? 0.6 : 1,
               transition: 'all 0.15s ease',
@@ -432,8 +419,7 @@ export function BookingModeSelector({
             title={description}
             onMouseEnter={(e) => {
               if (!isSelected && !disabled) {
-                e.currentTarget.style.backgroundColor =
-                  'var(--ds-color-neutral-surface-hover)';
+                e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
               }
             }}
             onMouseLeave={(e) => {
@@ -448,12 +434,11 @@ export function BookingModeSelector({
 
             <span>{modeOption.label}</span>
 
-            {modeOption.mode === 'RECURRING' &&
-              recurringConstraints?.maxOccurrences && (
-                <Badge color="info" size="sm">
-                  {recurringConstraints.maxOccurrences}
-                </Badge>
-              )}
+            {modeOption.mode === 'RECURRING' && recurringConstraints?.maxOccurrences && (
+              <Badge variant="info" size="sm">
+                {String(recurringConstraints.maxOccurrences)}
+              </Badge>
+            )}
           </button>
         );
       })}

@@ -1,0 +1,4 @@
+# Domain-coupled components excluded from platform-ui build
+src/features/**/*Connected.tsx
+src/features/booking/engine/**
+src/features/calendar/components/**

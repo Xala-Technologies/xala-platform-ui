@@ -12,6 +12,11 @@ import { AddressesTab as DSAddressesTab, type AddressData } from '../../../block
 
 // Re-export the pure presentational component
 export { AddressesTab } from '../../../blocks/settings';
-export type { AddressesTabProps, AddressesTabLabels, AddressData, Address } from '../../../blocks/settings';
+export type {
+  AddressesTabProps,
+  AddressesTabLabels,
+  AddressData,
+  Address,
+} from '../../../blocks/settings';
 
 export default DSAddressesTab;

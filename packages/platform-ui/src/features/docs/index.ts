@@ -55,12 +55,7 @@
 // Components
 // =============================================================================
 
-export {
-  DocsLayout,
-  DocsHeader,
-  DocsSidebar,
-  DocsRightTOC,
-} from './components';
+export { DocsLayout, DocsHeader, DocsSidebar, DocsRightTOC } from './components';
 
 // =============================================================================
 // Component Props and Labels
@@ -81,12 +76,7 @@ export type {
 // Types
 // =============================================================================
 
-export type {
-  DocsNavItem,
-  DocsNavSection,
-  DocsArticle,
-  DocsTocItem,
-} from './types';
+export type { DocsNavItem, DocsNavSection, DocsArticle, DocsTocItem } from './types';
 
 // =============================================================================
 // Library (Feature Flags, Utilities)

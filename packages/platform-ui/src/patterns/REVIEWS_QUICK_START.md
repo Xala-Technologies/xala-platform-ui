@@ -310,6 +310,7 @@ All components use Designsystemet tokens and can be customized via:
 ## Accessibility
 
 All components are accessible by default:
+
 - Proper ARIA labels
 - Keyboard navigation
 - Screen reader support

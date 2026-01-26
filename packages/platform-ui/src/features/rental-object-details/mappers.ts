@@ -136,7 +136,9 @@ const DAY_NAMES: Record<number, string> = {
  * }
  * ```
  */
-export function mapOpeningHoursToCardProps(dto: OpeningHoursDTO | undefined): OpeningHoursCardProps {
+export function mapOpeningHoursToCardProps(
+  dto: OpeningHoursDTO | undefined
+): OpeningHoursCardProps {
   if (!dto || !dto.regular || dto.regular.length === 0) {
     return { days: [] };
   }

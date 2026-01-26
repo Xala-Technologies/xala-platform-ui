@@ -113,13 +113,13 @@ export interface BookingStep {
  * Activity type for booking
  */
 export type ActivityType =
-  | 'meeting'      // Mote
-  | 'training'     // Trening
-  | 'event'        // Arrangement
-  | 'workshop'     // Workshop
+  | 'meeting' // Mote
+  | 'training' // Trening
+  | 'event' // Arrangement
+  | 'workshop' // Workshop
   | 'presentation' // Presentasjon
-  | 'party'        // Fest/Selskap
-  | 'other';       // Annet
+  | 'party' // Fest/Selskap
+  | 'other'; // Annet
 
 /**
  * Booking details form data
@@ -225,12 +225,12 @@ export type CalendarMode = 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY';
  * Matches API SlotStatus for consistency
  */
 export type CalendarSlotStatus =
-  | 'AVAILABLE'  // Slot can be booked
-  | 'RESERVED'   // Temporarily held (lock)
-  | 'BOOKED'     // Confirmed booking
-  | 'BLOCKED'    // Manually blocked by admin
-  | 'BLACKOUT'   // System blackout period
-  | 'CLOSED';    // Outside opening hours
+  | 'AVAILABLE' // Slot can be booked
+  | 'RESERVED' // Temporarily held (lock)
+  | 'BOOKED' // Confirmed booking
+  | 'BLOCKED' // Manually blocked by admin
+  | 'BLACKOUT' // System blackout period
+  | 'CLOSED'; // Outside opening hours
 
 /**
  * Selection type for calendar interaction

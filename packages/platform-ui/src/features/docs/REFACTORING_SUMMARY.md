@@ -10,40 +10,43 @@ Successfully refactored the entire **docs feature** from Digilist to pure presen
 
 ### Component Files (6 files)
 
-| File | Status | Changes |
-|------|--------|---------|
-| `components/layout/DocsLayout.tsx` | ✅ Complete | Removed `useT()`, `useLocation()`, router deps; Added `DocsLayoutLabels` interface |
-| `components/layout/DocsHeader.tsx` | ✅ Complete | Removed `useT()`, `useLocale()`, `useNavigate()`; Added `DocsHeaderLabels` interface |
+| File                                | Status      | Changes                                                                                                      |
+| ----------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------ |
+| `components/layout/DocsLayout.tsx`  | ✅ Complete | Removed `useT()`, `useLocation()`, router deps; Added `DocsLayoutLabels` interface                           |
+| `components/layout/DocsHeader.tsx`  | ✅ Complete | Removed `useT()`, `useLocale()`, `useNavigate()`; Added `DocsHeaderLabels` interface                         |
 | `components/layout/DocsSidebar.tsx` | ✅ Complete | Removed `useT()`, `useFeatureFlags()`, `useNavigationItems()`, SDK deps; Added `DocsSidebarLabels` interface |
-| `components/layout/index.ts` | ✅ Complete | Exports all layout components and types |
-| `components/toc/DocsRightTOC.tsx` | ✅ Complete | Removed `useT()`; Added `DocsRightTOCLabels` interface |
-| `components/toc/index.ts` | ✅ Complete | Exports TOC components and types |
+| `components/layout/index.ts`        | ✅ Complete | Exports all layout components and types                                                                      |
+| `components/toc/DocsRightTOC.tsx`   | ✅ Complete | Removed `useT()`; Added `DocsRightTOCLabels` interface                                                       |
+| `components/toc/index.ts`           | ✅ Complete | Exports TOC components and types                                                                             |
 
 ### Type & Utility Files (5 files)
 
-| File | Status | Changes |
-|------|--------|---------|
-| `types.ts` | ✅ Complete | Pure type definitions (no changes needed) |
+| File                   | Status      | Changes                                    |
+| ---------------------- | ----------- | ------------------------------------------ |
+| `types.ts`             | ✅ Complete | Pure type definitions (no changes needed)  |
 | `lib/feature-flags.ts` | ✅ Complete | Pure utility functions (no changes needed) |
-| `lib/index.ts` | ✅ Complete | Barrel export for lib |
-| `components/index.ts` | ✅ Complete | Barrel export for all components |
-| `index.ts` | ✅ Complete | Main feature export with documentation |
+| `lib/index.ts`         | ✅ Complete | Barrel export for lib                      |
+| `components/index.ts`  | ✅ Complete | Barrel export for all components           |
+| `index.ts`             | ✅ Complete | Main feature export with documentation     |
 
 ## Refactoring Details
 
 ### 1. DocsLayout.tsx
 
 **Removed:**
+
 - `useLocation()` from react-router-dom
 - `useT()` from @xala-technologies/platform/runtime
 
 **Added:**
+
 - `DocsLayoutLabels` interface with nested label interfaces
 - `currentPath` prop for active state
 - `mobileNavItems` prop for bottom navigation
 - `onSearch`, `onLocaleToggle`, `onNavItemClick` callbacks
 
 **Pattern:**
+
 ```typescript
 // Before
 const t = useT();
@@ -69,11 +72,13 @@ interface DocsLayoutLabels {
 ### 2. DocsHeader.tsx
 
 **Removed:**
+
 - `useT()` from @xala-technologies/platform/runtime
 - `useLocale()` from @xala-technologies/platform/runtime
 - `useNavigate()` from react-router-dom
 
 **Added:**
+
 - `DocsHeaderLabels` interface (5 label properties)
 - `locale` prop for current locale
 - `onSearch` callback for search submission
@@ -81,11 +86,14 @@ interface DocsLayoutLabels {
 - `initialSearchQuery` optional prop
 
 **Pattern:**
+
 ```typescript
 // Before
 const t = useT();
 const { locale, setLocale } = useLocale();
-{t('form.docs.search.placeholder')}
+{
+  t('form.docs.search.placeholder');
+}
 
 // After
 interface DocsHeaderLabels {
@@ -96,12 +104,15 @@ interface DocsHeaderLabels {
   languageToggleEnglish: string;
 }
 
-{labels.searchPlaceholder}
+{
+  labels.searchPlaceholder;
+}
 ```
 
 ### 3. DocsSidebar.tsx
 
 **Removed:**
+
 - `useT()` from @xala-technologies/platform/runtime
 - `useFeatureFlags()` from @digilist/client-sdk
 - `useNavigationItems()` hook
@@ -109,6 +120,7 @@ interface DocsHeaderLabels {
 - All CSS module imports
 
 **Added:**
+
 - `DocsSidebarLabels` interface
 - `sections` prop for navigation data
 - `currentPath` prop for active state
@@ -116,6 +128,7 @@ interface DocsHeaderLabels {
 - Inline styles using Designsystemet tokens
 
 **Pattern:**
+
 ```typescript
 // Before
 const t = useT();
@@ -140,18 +153,23 @@ interface DocsSidebarLabels {
 ### 4. DocsRightTOC.tsx
 
 **Removed:**
+
 - `useT()` from @xala-technologies/platform/runtime
 - All CSS module imports
 
 **Added:**
+
 - `DocsRightTOCLabels` interface (2 label properties)
 - Inline styles using Designsystemet tokens
 
 **Pattern:**
+
 ```typescript
 // Before
 const t = useT();
-{t('docs.toc.label')}
+{
+  t('docs.toc.label');
+}
 
 // After
 interface DocsRightTOCLabels {
@@ -159,7 +177,9 @@ interface DocsRightTOCLabels {
   tocTitle: string;
 }
 
-{labels.tocLabel}
+{
+  labels.tocLabel;
+}
 ```
 
 ## CSS to Inline Styles Conversion
@@ -182,6 +202,7 @@ All CSS modules were converted to inline styles using Designsystemet design toke
 ## Label Interfaces Summary
 
 ### DocsLayoutLabels
+
 - `header: DocsHeaderLabels`
 - `sidebar: DocsSidebarLabels`
 - `mobileNavHome: string`
@@ -189,6 +210,7 @@ All CSS modules were converted to inline styles using Designsystemet design toke
 - `mobileNavGuides: string`
 
 ### DocsHeaderLabels
+
 - `searchPlaceholder: string`
 - `searchLabel: string`
 - `searchButton: string`
@@ -196,16 +218,19 @@ All CSS modules were converted to inline styles using Designsystemet design toke
 - `languageToggleEnglish: string`
 
 ### DocsSidebarLabels
+
 - `brandName: string`
 - `brandTagline: string`
 
 ### DocsRightTOCLabels
+
 - `tocLabel: string`
 - `tocTitle: string`
 
 ## Validation
 
 ### TypeScript Compilation
+
 ```bash
 cd /Volumes/Laravel/Xala-SAAS/tools/xala-platform-ui/packages/platform-ui
 pnpm typecheck
@@ -225,12 +250,7 @@ pnpm typecheck
 
 ```typescript
 // Main exports from index.ts
-export {
-  DocsLayout,
-  DocsHeader,
-  DocsSidebar,
-  DocsRightTOC,
-} from './components';
+export { DocsLayout, DocsHeader, DocsSidebar, DocsRightTOC } from './components';
 
 export type {
   DocsLayoutProps,
@@ -243,12 +263,7 @@ export type {
   DocsRightTOCLabels,
 } from './components';
 
-export type {
-  DocsNavItem,
-  DocsNavSection,
-  DocsArticle,
-  DocsTocItem,
-} from './types';
+export type { DocsNavItem, DocsNavSection, DocsArticle, DocsTocItem } from './types';
 
 export {
   DOCS_FEATURE_FLAGS,

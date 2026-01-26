@@ -102,9 +102,9 @@ export function RecurringBuilder({
   // TODO: Inject t() via runtime/props instead of placeholder
   const t = (key: string, params?: any): string => key;
 
-
   // Get allowed frequencies from constraints, default to WEEKLY only
-  const allowedFrequencies = constraints?.allowedFrequencies ?? (['WEEKLY'] as RecurringFrequency[]);
+  const allowedFrequencies =
+    constraints?.allowedFrequencies ?? (['WEEKLY'] as RecurringFrequency[]);
   const maxOccurrences = constraints?.maxOccurrences ?? 52;
   const allowedWeekdays = constraints?.allowedWeekdays ?? [1, 2, 3, 4, 5, 6, 7];
 
@@ -499,10 +499,7 @@ export function RecurringBuilder({
           borderRadius: 'var(--ds-border-radius-md)',
         }}
       >
-        <Paragraph
-          data-size="sm"
-          style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}
-        >
+        <Paragraph data-size="sm" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}>
           {t('booking.recurring.summary')}
         </Paragraph>
         <Paragraph

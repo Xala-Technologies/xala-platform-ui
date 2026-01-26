@@ -121,7 +121,13 @@ export function BookingTab({
               checked={data.autoConfirm}
               onChange={(e) => onFieldChange('autoConfirm', e.target.checked)}
             />
-            <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginTop: 'var(--ds-spacing-1)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.autoConfirmDescription}
             </Paragraph>
           </div>
@@ -145,7 +151,13 @@ export function BookingTab({
                 checked={data.requireApproval}
                 onChange={(e) => onFieldChange('requireApproval', e.target.checked)}
               />
-              <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  marginTop: 'var(--ds-spacing-1)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 {labels.requireApprovalDescription}
               </Paragraph>
             </div>
@@ -169,14 +181,26 @@ export function BookingTab({
               checked={data.allowCancellation}
               onChange={(e) => onFieldChange('allowCancellation', e.target.checked)}
             />
-            <Paragraph data-size="xs" style={{ marginTop: 'var(--ds-spacing-1)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginTop: 'var(--ds-spacing-1)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.allowCancellationDescription}
             </Paragraph>
           </div>
 
           {shouldShowCancellationDeadline && (
             <FormField label={labels.cancellationDeadline}>
-              <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph
+                data-size="xs"
+                style={{
+                  marginBottom: 'var(--ds-spacing-2)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
                 {labels.cancellationDeadlineDescription}
               </Paragraph>
               <Textfield
@@ -193,7 +217,13 @@ export function BookingTab({
           )}
 
           <FormField label={labels.maxAdvanceBooking}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.maxAdvanceBookingDescription}
             </Paragraph>
             <Textfield
@@ -209,7 +239,13 @@ export function BookingTab({
           </FormField>
 
           <FormField label={labels.minAdvanceBooking}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.minAdvanceBookingDescription}
             </Paragraph>
             <Textfield
@@ -225,7 +261,13 @@ export function BookingTab({
           </FormField>
 
           <FormField label={labels.bufferTime}>
-            <Paragraph data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Paragraph
+              data-size="xs"
+              style={{
+                marginBottom: 'var(--ds-spacing-2)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
               {labels.bufferTimeDescription}
             </Paragraph>
             <Textfield

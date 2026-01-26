@@ -14,9 +14,21 @@ export interface RentalObjectDetailsLayoutProps {
   className?: string;
 }
 
-export function RentalObjectDetailsLayout({ header, mainContent, sidebar, className }: RentalObjectDetailsLayoutProps): React.ReactElement {
+export function RentalObjectDetailsLayout({
+  header,
+  mainContent,
+  sidebar,
+  className,
+}: RentalObjectDetailsLayoutProps): React.ReactElement {
   return (
-    <div className={className} style={{ display: 'grid', gap: 'var(--ds-spacing-6)', gridTemplateColumns: sidebar ? '1fr 300px' : '1fr' }}>
+    <div
+      className={className}
+      style={{
+        display: 'grid',
+        gap: 'var(--ds-spacing-6)',
+        gridTemplateColumns: sidebar ? '1fr 300px' : '1fr',
+      }}
+    >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         {header}
         {mainContent}

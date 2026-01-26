@@ -18,7 +18,16 @@ import { createPresenter } from '../../presenters';
 
 function LockIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
     </svg>
@@ -27,7 +36,16 @@ function LockIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function SparklesIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
       <path d="M5 19l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z" />
     </svg>
@@ -36,7 +54,16 @@ function SparklesIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function UtensilsIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
       <path d="M7 2v20" />
       <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
@@ -46,7 +73,16 @@ function UtensilsIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function WrenchIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
     </svg>
   );
@@ -54,7 +90,16 @@ function WrenchIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function CalendarIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
       <line x1="16" y1="2" x2="16" y2="6" />
       <line x1="8" y1="2" x2="8" y2="6" />
@@ -65,7 +110,16 @@ function CalendarIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function ShieldIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   );
@@ -73,7 +127,16 @@ function ShieldIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function VolumeOffIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
       <line x1="23" y1="9" x2="17" y2="15" />
       <line x1="17" y1="9" x2="23" y2="15" />
@@ -83,7 +146,16 @@ function VolumeOffIcon({ size = 20 }: { size?: number }): React.ReactElement {
 
 function AlertCircleIcon({ size = 20 }: { size?: number }): React.ReactElement {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="8" x2="12" y2="12" />
       <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -99,7 +171,15 @@ export interface Rule {
   id: string;
   title: string;
   content: string;
-  category?: 'general' | 'cancellation' | 'safety' | 'cleaning' | 'noise' | 'food' | 'equipment' | 'other';
+  category?:
+    | 'general'
+    | 'cancellation'
+    | 'safety'
+    | 'cleaning'
+    | 'noise'
+    | 'food'
+    | 'equipment'
+    | 'other';
   icon?: string;
 }
 
@@ -210,12 +290,26 @@ function detectCategory(rule: Rule): string {
 
   const text = `${rule.title} ${rule.content}`.toLowerCase();
 
-  if (text.includes('lås') || text.includes('sikkerhet') || text.includes('nødutgang') || text.includes('brann')) return 'safety';
-  if (text.includes('rydde') || text.includes('renhold') || text.includes('rengjør') || text.includes('søppel')) return 'cleaning';
+  if (
+    text.includes('lås') ||
+    text.includes('sikkerhet') ||
+    text.includes('nødutgang') ||
+    text.includes('brann')
+  )
+    return 'safety';
+  if (
+    text.includes('rydde') ||
+    text.includes('renhold') ||
+    text.includes('rengjør') ||
+    text.includes('søppel')
+  )
+    return 'cleaning';
   if (text.includes('mat') || text.includes('drikke') || text.includes('spise')) return 'food';
   if (text.includes('støy') || text.includes('musikk') || text.includes('ro')) return 'noise';
-  if (text.includes('avbestill') || text.includes('kanseller') || text.includes('booking')) return 'cancellation';
-  if (text.includes('utstyr') || text.includes('inventar') || text.includes('behandl')) return 'equipment';
+  if (text.includes('avbestill') || text.includes('kanseller') || text.includes('booking'))
+    return 'cancellation';
+  if (text.includes('utstyr') || text.includes('inventar') || text.includes('behandl'))
+    return 'equipment';
 
   return 'general';
 }
@@ -271,7 +365,12 @@ function isRequired(rule: Rule): boolean {
  * }
  * ```
  */
-export function RulesTab({ rules, rentalObjectType, labels, className }: RulesTabProps): React.ReactElement {
+export function RulesTab({
+  rules,
+  rentalObjectType,
+  labels,
+  className,
+}: RulesTabProps): React.ReactElement {
   const presenter = React.useMemo(() => createPresenter(rentalObjectType), [rentalObjectType]);
 
   // Empty state
@@ -290,7 +389,10 @@ export function RulesTab({ rules, rentalObjectType, labels, className }: RulesTa
         <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
           <AlertCircleIcon size={32} />
         </span>
-        <Paragraph data-size="sm" style={{ fontStyle: 'italic', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <Paragraph
+          data-size="sm"
+          style={{ fontStyle: 'italic', color: 'var(--ds-color-neutral-text-subtle)' }}
+        >
           {labels.noRulesMessage}
         </Paragraph>
       </div>
@@ -298,7 +400,10 @@ export function RulesTab({ rules, rentalObjectType, labels, className }: RulesTa
   }
 
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+    <div
+      className={className}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}
+    >
       <Heading level={2} data-size="sm" style={{ margin: 0 }}>
         {labels.rulesHeading}
       </Heading>
@@ -343,7 +448,14 @@ export function RulesTab({ rules, rentalObjectType, labels, className }: RulesTa
 
               {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-2)',
+                    flexWrap: 'wrap',
+                  }}
+                >
                   <Paragraph
                     data-size="sm"
                     style={{
