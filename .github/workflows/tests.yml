@@ -19,8 +19,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PKG_READ_TOKEN }}
       - name: Run unit tests
         run: pnpm test:unit
       - name: Upload coverage
@@ -42,8 +45,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PKG_READ_TOKEN }}
       - name: Run integration tests
         run: pnpm test:integration
 
@@ -59,8 +65,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PKG_READ_TOKEN }}
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps
       - name: Build Storybook
