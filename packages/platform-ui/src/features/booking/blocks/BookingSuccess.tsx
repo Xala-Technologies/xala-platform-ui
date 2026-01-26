@@ -7,13 +7,14 @@
  * Pure presentational component - all text provided via labels prop.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Stack, Card } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Card } from '@digdir/designsystemet-react';
 import {
   CheckCircle2Icon,
   CalendarIcon,
   MailIcon,
   PhoneIcon,
 } from 'lucide-react';
+import { Stack } from '../../../primitives/stack';
 
 /**
  * Booking details interface
@@ -81,10 +82,11 @@ export function BookingSuccess({
   return (
     <Stack
       className={className}
+      gap="var(--ds-spacing-4)"
+      align="center"
       style={{
         textAlign: 'center',
         padding: 'var(--ds-spacing-8)',
-        alignItems: 'center',
       }}
     >
       {/* Success Icon */}
@@ -104,11 +106,11 @@ export function BookingSuccess({
       </span>
 
       {/* Success Message */}
-      <Heading level={2} size="lg">
+      <Heading level={2} data-size="lg">
         {labels.heading}
       </Heading>
       <Paragraph
-        size="md"
+        data-size="md"
         style={{
           maxWidth: '400px',
           color: 'var(--ds-color-neutral-text-subtle)',
@@ -120,18 +122,18 @@ export function BookingSuccess({
       {/* Reference Number */}
       {bookingReference && (
         <Card
-          color="accent"
+          data-color="accent"
           style={{
             marginTop: 'var(--ds-spacing-5)',
             display: 'inline-block',
           }}
         >
-          <Stack spacing="1" style={{ alignItems: 'center' }}>
-            <Paragraph size="xs" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Stack gap="var(--ds-spacing-1)" align="center">
+            <Paragraph data-size="xs" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ds-color-neutral-text-subtle)' }}>
               {labels.referenceNumber}
             </Paragraph>
             <Paragraph
-              size="lg"
+              data-size="lg"
               style={{
                 fontWeight: 'var(--ds-font-weight-bold)',
                 fontFamily: 'monospace',
@@ -147,15 +149,15 @@ export function BookingSuccess({
 
       {/* Confirmation Email Notice */}
       <Card
-        color="neutral"
+        data-color="neutral"
         style={{
           marginTop: 'var(--ds-spacing-6)',
           textAlign: 'left',
           maxWidth: '400px',
         }}
       >
-        <Stack spacing="3">
-          <Stack direction="horizontal" spacing="3" style={{ alignItems: 'center' }}>
+        <Stack gap="var(--ds-spacing-3)">
+          <Stack direction="horizontal" gap="var(--ds-spacing-3)" align="center">
             <span
               style={{
                 display: 'flex',
@@ -170,17 +172,17 @@ export function BookingSuccess({
             >
               <MailIcon size={18} />
             </span>
-            <Stack spacing="1">
-              <Paragraph size="sm" style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
+            <Stack gap="var(--ds-spacing-1)">
+              <Paragraph data-size="sm" style={{ fontWeight: 'var(--ds-font-weight-semibold)' }}>
                 {labels.confirmationSent}
               </Paragraph>
-              <Paragraph size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+              <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
                 {labels.confirmationEmail.replace('{email}', bookingDetails.email)}
               </Paragraph>
             </Stack>
           </Stack>
 
-          <Paragraph size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
             {labels.checkSpam}
           </Paragraph>
         </Stack>
@@ -189,17 +191,17 @@ export function BookingSuccess({
       {/* Contact Info */}
       {(venueEmail || venuePhone) && (
         <Card
-          color="neutral"
+          data-color="neutral"
           style={{
             marginTop: 'var(--ds-spacing-5)',
             maxWidth: '400px',
           }}
         >
-          <Stack spacing="2">
-            <Paragraph size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+          <Stack gap="var(--ds-spacing-2)">
+            <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
               {labels.contactQuestion}
             </Paragraph>
-            <Stack direction="horizontal" spacing="4" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Stack direction="horizontal" gap="var(--ds-spacing-4)" justify="center" wrap>
               {venueEmail && (
                 <a
                   href={`mailto:${venueEmail}`}
@@ -240,11 +242,11 @@ export function BookingSuccess({
       {/* Action Buttons */}
       <Stack
         direction="horizontal"
-        spacing="4"
+        gap="var(--ds-spacing-4)"
+        justify="center"
+        wrap
         style={{
           marginTop: 'var(--ds-spacing-8)',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
         }}
       >
         {onNewBooking && (
@@ -261,7 +263,7 @@ export function BookingSuccess({
           <Button
             type="button"
             variant="primary"
-            color="accent"
+            data-color="accent"
             onClick={onBackToRentalObject}
           >
             {labels.backToObject}

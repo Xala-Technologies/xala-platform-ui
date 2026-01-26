@@ -124,6 +124,9 @@ export const MobileNavToggle = forwardRef<HTMLButtonElement, MobileNavToggleProp
   ) => {
     const [isHovered, setIsHovered] = useState(false);
 
+    // Filter out data-size to avoid type conflict with Button
+    const { 'data-size': _dataSize, ...buttonProps } = props as Record<string, unknown>;
+
     const buttonStyle: React.CSSProperties = {
       display: 'flex',
       alignItems: 'center',
@@ -153,7 +156,7 @@ export const MobileNavToggle = forwardRef<HTMLButtonElement, MobileNavToggleProp
         style={buttonStyle}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        {...props}
+        {...buttonProps}
       >
         {icon ?? <MenuIcon />}
       </Button>

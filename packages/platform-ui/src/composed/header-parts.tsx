@@ -1240,6 +1240,9 @@ export const HeaderIconButton = forwardRef<HTMLButtonElement, HeaderIconButtonPr
     const displayBadge = badge !== undefined && badge > 0;
     const badgeText = badge && badge > maxBadge ? `${maxBadge}+` : badge?.toString();
 
+    // Filter out data-size to avoid type conflict with Button
+    const { 'data-size': _dataSize, ...buttonProps } = props as Record<string, unknown>;
+
     return (
       <Button
         ref={ref}
@@ -1273,7 +1276,7 @@ export const HeaderIconButton = forwardRef<HTMLButtonElement, HeaderIconButtonPr
           transform: isPressed ? 'scale(0.95)' : 'scale(1)',
           ...style,
         }}
-        {...props}
+        {...buttonProps}
       >
         <span
           style={{
