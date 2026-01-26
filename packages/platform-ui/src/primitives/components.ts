@@ -44,7 +44,7 @@ export { Textfield as Input } from '@digdir/designsystemet-react';
 export {
   Alert,
   Avatar,
-  Badge,
+  // Badge - use custom Badge from ./badge.tsx with variant support
   Breadcrumbs,
   Card,
   Details,
