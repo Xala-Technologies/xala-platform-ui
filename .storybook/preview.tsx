@@ -344,6 +344,19 @@ function ThemedDocsContainer(props: DocsContainerProps) {
         color: var(--ds-color-neutral-text-default) !important;
       }
       
+      /* Fix padding: Prevent content from going under sidebar */
+      .sbdocs-wrapper,
+      .sbdocs-content {
+        padding-left: calc(var(--ds-spacing-8) + 10px) !important;
+        padding-right: var(--ds-spacing-8) !important;
+      }
+      
+      /* Ensure main content area has proper spacing */
+      .sbdocs {
+        padding-left: calc(var(--ds-spacing-8) + 10px) !important;
+        padding-right: var(--ds-spacing-8) !important;
+      }
+      
       /* Force iframe content */
       iframe {
         background-color: transparent !important;

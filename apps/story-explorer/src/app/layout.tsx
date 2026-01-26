@@ -6,6 +6,10 @@ import { translations as platformTranslations } from '@xala-technologies/i18n-pl
 import { DesignsystemetProvider, type ColorScheme } from '@xala-technologies/platform-ui';
 import { configureStoryApi, type StorybookGlobals, DEFAULT_GLOBALS } from '@xala-technologies/story-explorer-core';
 
+// Import Designsystemet CSS and Xala theme
+import '@digdir/designsystemet-css';
+import './globals.css';
+
 // Configure Story API on load
 if (typeof window !== 'undefined') {
   configureStoryApi({
@@ -20,7 +24,7 @@ const explorerTranslations = {
   nb: {
     'explorer.title': 'Story Explorer',
     'explorer.subtitle': 'Komponentkatalog',
-    'explorer.search.placeholder': 'Sok etter komponenter...',
+    'explorer.search.placeholder': 'Finn komponenter',
     'explorer.search.noResults': 'Ingen resultater funnet',
     'explorer.search.results': '{count} resultater',
     'explorer.filter.all': 'Alle',
@@ -36,11 +40,13 @@ const explorerTranslations = {
     'explorer.approval.pending': 'Venter',
     'explorer.approval.approved': 'Godkjent',
     'explorer.approval.changes': 'Endringer',
+    'explorer.lightMode': 'Lys modus',
+    'explorer.darkMode': 'Mork modus',
   },
   en: {
     'explorer.title': 'Story Explorer',
     'explorer.subtitle': 'Component Catalog',
-    'explorer.search.placeholder': 'Search components...',
+    'explorer.search.placeholder': 'Find components',
     'explorer.search.noResults': 'No results found',
     'explorer.search.results': '{count} results',
     'explorer.filter.all': 'All',
@@ -56,6 +62,8 @@ const explorerTranslations = {
     'explorer.approval.pending': 'Pending',
     'explorer.approval.approved': 'Approved',
     'explorer.approval.changes': 'Changes',
+    'explorer.lightMode': 'Light Mode',
+    'explorer.darkMode': 'Dark Mode',
   },
 };
 
@@ -115,11 +123,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <html lang={globals.locale}>
+    <html lang={globals.locale} data-color-scheme={colorScheme}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Story Explorer</title>
+        <title>Story Explorer - Xala Design System</title>
+        <link rel="stylesheet" href="/themes/xala.css" />
+        <link rel="stylesheet" href="/themes/xala-extensions.css" />
       </head>
       <body>
         <GlobalsContext.Provider value={{ globals, setGlobals }}>

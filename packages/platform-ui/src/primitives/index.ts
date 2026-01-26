@@ -21,8 +21,12 @@ export type { StackProps } from './stack';
 export { Icon } from './icon';
 export type { IconProps } from './icon';
 
-// Note: Card and Badge are provided by @digdir/designsystemet-react
-// Custom versions removed to avoid export conflicts
+// Custom Badge with variant support (neutral, info, success, warning, danger)
+export { Badge } from './badge';
+export type { BadgeProps } from './badge';
+
+// Note: Card is provided by @digdir/designsystemet-react
+// Custom Card version removed to avoid export conflicts
 
 export { Text } from './text';
 export type { TextProps } from './text';

@@ -240,6 +240,16 @@ export function ExplorerPanel({
 }
 
 /**
+ * Stat item for ExplorerEmptyState
+ */
+export interface ExplorerStatItem {
+  /** Stat value */
+  value: number | string;
+  /** Stat label */
+  label: string;
+}
+
+/**
  * ExplorerEmptyState - Empty state display for explorer panels
  */
 export interface ExplorerEmptyStateProps {
@@ -251,6 +261,8 @@ export interface ExplorerEmptyStateProps {
   description?: string;
   /** Action button or content */
   action?: ReactNode;
+  /** Stats to display */
+  stats?: ExplorerStatItem[];
 }
 
 export function ExplorerEmptyState({
@@ -258,6 +270,7 @@ export function ExplorerEmptyState({
   title,
   description,
   action,
+  stats,
 }: ExplorerEmptyStateProps) {
   return (
     <Stack
@@ -287,14 +300,13 @@ export function ExplorerEmptyState({
         </Stack>
       )}
       <Stack direction="vertical" gap="var(--ds-spacing-2)" align="center">
-        <Heading level={2} data-size="sm" style={{ margin: 0 }}>
+        <Heading level={2} data-size="sm">
           {title}
         </Heading>
         {description && (
           <Paragraph
             data-size="md"
             style={{
-              margin: 0,
               color: 'var(--ds-color-neutral-text-subtle)',
               maxWidth: '400px',
             }}
@@ -303,6 +315,24 @@ export function ExplorerEmptyState({
           </Paragraph>
         )}
       </Stack>
+      {stats && stats.length > 0 && (
+        <Stack
+          direction="horizontal"
+          gap="var(--ds-spacing-8)"
+          style={{ marginTop: 'var(--ds-spacing-4)' }}
+        >
+          {stats.map((stat, index) => (
+            <Stack key={index} direction="vertical" align="center" gap="var(--ds-spacing-1)">
+              <Heading level={3} data-size="xl">
+                {stat.value}
+              </Heading>
+              <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+                {stat.label}
+              </Paragraph>
+            </Stack>
+          ))}
+        </Stack>
+      )}
       {action}
     </Stack>
   );

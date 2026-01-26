@@ -188,7 +188,7 @@ export type {
 export {
   ConsentManager,
   ConsentPopup,
-  ConsentSettings,
+  ConsentSettings as GdprPrivacyConsentSettings,
   DataExportCard,
   DeleteAccountCard,
   DataSubjectRequestForm,
@@ -227,6 +227,33 @@ export type {
 // Settings Blocks
 export { SettingsTabLayout, SettingsField, SettingsSection } from './settings';
 export type { SettingsTabLayoutProps, SettingsFieldProps, SettingsSectionProps } from './settings';
+
+// Settings Tab Components
+export {
+  PreferencesTab,
+  ProfileTab,
+  NotificationsTab,
+  AddressesTab,
+  PrivacyTab,
+} from './settings';
+export type {
+  PreferencesTabProps,
+  PreferencesTabLabels,
+  ProfileTabProps,
+  ProfileData,
+  ProfileAddress,
+  ProfileTabLabels,
+  NotificationsTabProps,
+  NotificationsTabLabels,
+  NotificationSettingsData,
+  AddressesTabProps,
+  AddressesTabLabels,
+  AddressData,
+  Address,
+  PrivacyTabProps,
+  PrivacyTabLabels,
+  PrivacyConsentSettings,
+} from './settings';
 
 // Notifications Blocks
 export { NotificationItem, NotificationList } from './notifications';

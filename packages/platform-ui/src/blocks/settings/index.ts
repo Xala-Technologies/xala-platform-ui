@@ -17,3 +17,9 @@ export type {
   NotificationsTabLabels,
   NotificationSettingsData,
 } from './NotificationsTab';
+
+export { AddressesTab } from './AddressesTab';
+export type { AddressesTabProps, AddressesTabLabels, AddressData, Address } from './AddressesTab';
+
+export { PrivacyTab } from './PrivacyTab';
+export type { PrivacyTabProps, PrivacyTabLabels, PrivacyConsentSettings } from './PrivacyTab';

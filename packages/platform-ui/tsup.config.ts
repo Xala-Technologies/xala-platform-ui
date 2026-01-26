@@ -86,8 +86,12 @@ export default defineConfig({
     'types/index': 'src/types/index.ts',
     styles: 'src/styles.ts',
 
-    // Feature modules (only include refactored features - Wave 1 & 2 complete)
-    // Features folder removed - these were app-specific and had broken imports
+    // Feature modules (Wave 2 & 3 refactored - pure presentational components)
+    'features/gdpr': 'src/features/gdpr/index.ts', // ✅ Wave 2 - REFACTORED
+    'features/seasons': 'src/features/seasons/index.ts', // ✅ Wave 2 - REFACTORED
+    'features/calendar': 'src/features/calendar/index.ts', // ✅ Wave 3 - REFACTORED
+    'features/organizations': 'src/features/organizations/index.ts', // ✅ Wave 3 - REFACTORED
+    'features/settings': 'src/features/settings/index.ts', // ✅ Wave 3 - REFACTORED
   },
   format: ['cjs', 'esm'],
   dts: true,

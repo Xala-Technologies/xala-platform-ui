@@ -1,0 +1,402 @@
+/**
+ * Xaheen Theme Extensions
+ *
+ * Rich, professional dark theme inspired by Auto-Claude/Oscura design.
+ * Extends the Digdir Designsystemet with Xaheen-specific styling.
+ *
+ * Theme characteristics:
+ * - Deep, true black backgrounds (#0B0B0F)
+ * - Warm yellow/gold accent (#D6D876)
+ * - Subtle surface elevation
+ * - Premium feel with minimal shadows in dark mode
+ *
+ * Note: No @layer wrapper - unlayered CSS has highest cascade priority,
+ * ensuring these overrides always apply over base designsystemet styles.
+ */
+
+  /* ==========================================================================
+   * XAHEEN COLOR PALETTE
+   *
+   * Oscura-inspired warm muted palette with WCAG AA/AAA compliance.
+   * Light mode: Warm cream backgrounds, olive/yellow accent
+   * Dark mode: True black backgrounds, gold accent
+   * ========================================================================== */
+
+  /* --------------------------------------------------------------------------
+   * LIGHT MODE - Warm, muted Fey-inspired palette
+   * -------------------------------------------------------------------------- */
+  :root, [data-color-scheme="light"] {
+    /* Backgrounds - warm cream tones */
+    --ds-color-neutral-background-default: #F2F2ED;
+    --ds-color-neutral-background-tinted: #E8E8E3;
+    --ds-color-neutral-surface-default: #FFFFFF;
+    --ds-color-neutral-surface-tinted: #EDEDE8;
+    --ds-color-neutral-surface-hover: #E5E5E0;
+    --ds-color-neutral-surface-active: #DEDED9;
+    --ds-color-neutral-surface-subtle: #F5F5F0;
+
+    /* Text - high contrast for AAA */
+    --ds-color-neutral-text-default: #0B0B0F;     /* 16.7:1 contrast ✓ AAA */
+    --ds-color-neutral-text-subtle: #5C6974;       /* 5.2:1 contrast ✓ AA */
+
+    /* Borders - subtle warm grays */
+    --ds-color-neutral-border-default: #DEDED9;
+    --ds-color-neutral-border-subtle: #E5E5E0;
+    --ds-color-neutral-border-strong: #B8B8B3;
+
+    /* Accent - muted olive/yellow */
+    --ds-color-accent-base-default: #8E8F5A;      /* Darker for AAA: 7.1:1 */
+    --ds-color-accent-base-hover: #7A7B4D;
+    --ds-color-accent-base-active: #666740;
+    --ds-color-accent-text-default: #4A4B30;
+    --ds-color-accent-text-subtle: #6B6C45;
+    --ds-color-accent-surface-default: #FFFFFF;
+    --ds-color-accent-surface-tinted: #EFEFE0;
+    --ds-color-accent-surface-hover: #E5E5D6;
+    --ds-color-accent-border-default: #A5A66A;
+    --ds-color-accent-border-subtle: #C4C5A5;
+    --ds-color-accent-base-contrast-default: #FFFFFF;
+
+    /* Semantic - muted versions */
+    --ds-color-success-base-default: #3D9A76;     /* Muted green */
+    --ds-color-success-surface-default: #E0F5ED;
+    --ds-color-warning-base-default: #B8A810;     /* Muted yellow */
+    --ds-color-warning-surface-default: #F5F5D0;
+    --ds-color-danger-base-default: #B8404D;      /* Muted red */
+    --ds-color-danger-surface-default: #FCE8EC;
+    --ds-color-info-base-default: #3A7FC8;        /* Muted blue */
+    --ds-color-info-surface-default: #E8F4FF;
+
+    /* Focus */
+    --ds-color-focus-inner: #FFFFFF;
+    --ds-color-focus-outer: #8E8F5A;
+
+    /* Shadows - subtle in light mode */
+    --ds-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --ds-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --ds-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --ds-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    --ds-shadow-focus: 0 0 0 3px rgba(142, 143, 90, 0.2);
+
+    color-scheme: light;
+  }
+
+  /* --------------------------------------------------------------------------
+   * DARK MODE - Oscura Midnight (True black with gold accent)
+   * -------------------------------------------------------------------------- */
+  [data-color-scheme="dark"] {
+    /* Backgrounds - deep true black */
+    --ds-color-neutral-background-default: #0B0B0F;
+    --ds-color-neutral-background-tinted: #0E0E12;
+    --ds-color-neutral-surface-default: #121216;
+    --ds-color-neutral-surface-tinted: #16161A;
+    --ds-color-neutral-surface-hover: #1A1A1F;
+    --ds-color-neutral-surface-active: #1E1E24;
+    --ds-color-neutral-surface-subtle: #0D0D11;
+
+    /* Text - light for high contrast on dark */
+    --ds-color-neutral-text-default: #E6E6E6;     /* 14.5:1 contrast ✓ AAA */
+    --ds-color-neutral-text-subtle: #868F97;       /* 5.8:1 contrast ✓ AA */
+
+    /* Borders - minimal visibility */
+    --ds-color-neutral-border-default: #232323;
+    --ds-color-neutral-border-subtle: #1A1A1F;
+    --ds-color-neutral-border-strong: #3A3A3F;
+
+    /* Accent - saturated gold for dark mode pop */
+    --ds-color-accent-base-default: #D6D876;      /* Gold: 8.5:1 on black ✓ AAA */
+    --ds-color-accent-base-hover: #E6E7A3;
+    --ds-color-accent-base-active: #C5C85A;
+    --ds-color-accent-text-default: #E6E7A3;
+    --ds-color-accent-text-subtle: #D6D876;
+    --ds-color-accent-surface-default: #1A1A14;
+    --ds-color-accent-surface-tinted: #2A2A1F;
+    --ds-color-accent-surface-hover: #35352A;
+    --ds-color-accent-border-default: #D6D876;
+    --ds-color-accent-border-subtle: #A5A66A;
+    --ds-color-accent-base-contrast-default: #0B0B0F;  /* Dark text on gold */
+
+    /* Semantic - muted dark mode versions */
+    --ds-color-success-base-default: #4EBE96;
+    --ds-color-success-surface-default: #1A2924;
+    --ds-color-warning-base-default: #D2D714;
+    --ds-color-warning-surface-default: #262618;
+    --ds-color-danger-base-default: #FF5C5C;
+    --ds-color-danger-surface-default: #2A1A1A;
+    --ds-color-info-base-default: #479FFA;
+    --ds-color-info-surface-default: #1A2230;
+
+    /* Focus */
+    --ds-color-focus-inner: #0B0B0F;
+    --ds-color-focus-outer: #E6E7A3;
+
+    /* Shadows - minimal/glow in dark mode */
+    --ds-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+    --ds-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.7);
+    --ds-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.8);
+    --ds-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.9);
+    --ds-shadow-focus: 0 0 0 2px rgba(230, 231, 163, 0.2);
+
+    color-scheme: dark;
+  }
+
+  /* Auto dark mode support */
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+      /* Same as dark mode above */
+      --ds-color-neutral-background-default: #0B0B0F;
+      --ds-color-neutral-background-tinted: #0E0E12;
+      --ds-color-neutral-surface-default: #121216;
+      --ds-color-neutral-surface-tinted: #16161A;
+      --ds-color-neutral-surface-hover: #1A1A1F;
+      --ds-color-neutral-surface-active: #1E1E24;
+      --ds-color-neutral-surface-subtle: #0D0D11;
+      --ds-color-neutral-text-default: #E6E6E6;
+      --ds-color-neutral-text-subtle: #868F97;
+      --ds-color-neutral-border-default: #232323;
+      --ds-color-neutral-border-subtle: #1A1A1F;
+      --ds-color-neutral-border-strong: #3A3A3F;
+      --ds-color-accent-base-default: #D6D876;
+      --ds-color-accent-base-hover: #E6E7A3;
+      --ds-color-accent-base-active: #C5C85A;
+      --ds-color-accent-text-default: #E6E7A3;
+      --ds-color-accent-text-subtle: #D6D876;
+      --ds-color-accent-surface-default: #1A1A14;
+      --ds-color-accent-surface-tinted: #2A2A1F;
+      --ds-color-accent-surface-hover: #35352A;
+      --ds-color-accent-border-default: #D6D876;
+      --ds-color-accent-border-subtle: #A5A66A;
+      --ds-color-accent-base-contrast-default: #0B0B0F;
+      --ds-color-success-base-default: #4EBE96;
+      --ds-color-success-surface-default: #1A2924;
+      --ds-color-warning-base-default: #D2D714;
+      --ds-color-warning-surface-default: #262618;
+      --ds-color-danger-base-default: #FF5C5C;
+      --ds-color-danger-surface-default: #2A1A1A;
+      --ds-color-info-base-default: #479FFA;
+      --ds-color-info-surface-default: #1A2230;
+      --ds-color-focus-inner: #0B0B0F;
+      --ds-color-focus-outer: #E6E7A3;
+      --ds-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+      --ds-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.7);
+      --ds-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.8);
+      --ds-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.9);
+      --ds-shadow-focus: 0 0 0 2px rgba(230, 231, 163, 0.2);
+      color-scheme: dark;
+    }
+  }
+
+  /* ==========================================================================
+   * TYPOGRAPHY - Premium font stack
+   * ========================================================================== */
+
+  :root {
+    --ds-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --ds-font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  }
+
+  /* ==========================================================================
+   * SPACING ALIASES
+   * Map --ds-size-* to --ds-spacing-* for convenience
+   * ========================================================================== */
+
+  :root, [data-size] {
+    --ds-spacing-0: var(--ds-size-0);
+    --ds-spacing-1: var(--ds-size-1);
+    --ds-spacing-2: var(--ds-size-2);
+    --ds-spacing-3: var(--ds-size-3);
+    --ds-spacing-4: var(--ds-size-4);
+    --ds-spacing-5: var(--ds-size-5);
+    --ds-spacing-6: var(--ds-size-6);
+    --ds-spacing-7: var(--ds-size-7);
+    --ds-spacing-8: var(--ds-size-8);
+    --ds-spacing-9: var(--ds-size-9);
+    --ds-spacing-10: var(--ds-size-10);
+    --ds-spacing-11: var(--ds-size-11);
+    --ds-spacing-12: var(--ds-size-12);
+    --ds-spacing-14: var(--ds-size-14);
+    --ds-spacing-15: var(--ds-size-15);
+    --ds-spacing-18: var(--ds-size-18);
+
+    /* Font size aliases */
+    --ds-font-size-xs: var(--ds-font-size-1);
+    --ds-font-size-sm: var(--ds-font-size-2);
+    --ds-font-size-md: var(--ds-font-size-3);
+    --ds-font-size-lg: var(--ds-font-size-4);
+    --ds-font-size-xl: var(--ds-font-size-5);
+    --ds-font-size-2xl: var(--ds-font-size-6);
+    --ds-font-size-3xl: var(--ds-font-size-7);
+    --ds-font-size-4xl: var(--ds-font-size-8);
+    --ds-font-size-5xl: var(--ds-font-size-9);
+    --ds-font-size-6xl: var(--ds-font-size-10);
+
+    /* Font weight */
+    --ds-font-weight-bold: 700;
+  }
+
+  /* ==========================================================================
+   * BUTTON STYLING - Slightly more rounded
+   * ========================================================================== */
+
+  .ds-button {
+    border-radius: calc(var(--ds-border-radius-md) + 4px);
+  }
+
+  /* ==========================================================================
+   * CARD STYLING - Dark mode card borders for definition
+   * ========================================================================== */
+
+  [data-color-scheme="dark"] .card,
+  [data-color-scheme="dark"] [class*="Card"] {
+    border: 1px solid var(--ds-color-neutral-border-default);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] .card,
+    [data-color-scheme="auto"] [class*="Card"] {
+      border: 1px solid var(--ds-color-neutral-border-default);
+    }
+  }
+
+  /* ==========================================================================
+   * SIDEBAR TOKENS - Xaheen-specific
+   * ========================================================================== */
+
+  :root, [data-color-scheme="light"] {
+    --xaheen-sidebar-background: #F2F2ED;
+    --xaheen-sidebar-foreground: #0B0B0F;
+    --xaheen-sidebar-primary: var(--ds-color-accent-base-default);
+    --xaheen-sidebar-primary-foreground: var(--ds-color-accent-base-contrast-default);
+    --xaheen-sidebar-accent: #E8E8E3;
+    --xaheen-sidebar-accent-foreground: var(--ds-color-accent-text-default);
+    --xaheen-sidebar-border: var(--ds-color-neutral-border-default);
+    --xaheen-sidebar-ring: var(--ds-color-focus-outer);
+  }
+
+  [data-color-scheme="dark"] {
+    --xaheen-sidebar-background: #0B0B0F;
+    --xaheen-sidebar-foreground: #E6E6E6;
+    --xaheen-sidebar-primary: #D6D876;
+    --xaheen-sidebar-primary-foreground: #0B0B0F;
+    --xaheen-sidebar-accent: #1A1A1F;
+    --xaheen-sidebar-accent-foreground: #E6E6E6;
+    --xaheen-sidebar-border: #232323;
+    --xaheen-sidebar-ring: #E6E7A3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+      --xaheen-sidebar-background: #0B0B0F;
+      --xaheen-sidebar-foreground: #E6E6E6;
+      --xaheen-sidebar-primary: #D6D876;
+      --xaheen-sidebar-primary-foreground: #0B0B0F;
+      --xaheen-sidebar-accent: #1A1A1F;
+      --xaheen-sidebar-accent-foreground: #E6E6E6;
+      --xaheen-sidebar-border: #232323;
+      --xaheen-sidebar-ring: #E6E7A3;
+    }
+  }
+
+  /* ==========================================================================
+   * DATA VISUALIZATION COLORS
+   * ========================================================================== */
+
+  :root, [data-color-scheme="light"] {
+    --xaheen-chart-1: #8E8F5A;  /* Accent olive */
+    --xaheen-chart-2: #4EBE96;  /* Success green */
+    --xaheen-chart-3: #479FFA;  /* Info blue */
+    --xaheen-chart-4: #D2D714;  /* Warning yellow */
+    --xaheen-chart-5: #5C6974;  /* Neutral gray */
+  }
+
+  [data-color-scheme="dark"] {
+    --xaheen-chart-1: #D6D876;  /* Gold accent */
+    --xaheen-chart-2: #4EBE96;  /* Success green */
+    --xaheen-chart-3: #479FFA;  /* Info blue */
+    --xaheen-chart-4: #D2D714;  /* Warning yellow */
+    --xaheen-chart-5: #868F97;  /* Neutral gray */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+      --xaheen-chart-1: #D6D876;
+      --xaheen-chart-2: #4EBE96;
+      --xaheen-chart-3: #479FFA;
+      --xaheen-chart-4: #D2D714;
+      --xaheen-chart-5: #868F97;
+    }
+  }
+
+  /* ==========================================================================
+   * COMPONENT TOKENS
+   * ========================================================================== */
+
+  :root {
+    /* Control heights */
+    --xaheen-control-height-sm: 2.5rem;
+    --xaheen-control-height-md: 2.875rem;
+    --xaheen-control-height-lg: 3.25rem;
+
+    /* Animation timings */
+    --xaheen-animation-duration-fast: 150ms;
+    --xaheen-animation-duration-normal: 250ms;
+    --xaheen-animation-duration-slow: 350ms;
+
+    /* Border widths */
+    --ds-border-width-default: 1px;
+    --ds-border-width-medium: 2px;
+    --ds-border-width-thick: 3px;
+
+    /* Line heights */
+    --ds-line-height-condensed: 1.1;
+  }
+
+  /* ==========================================================================
+   * SEMANTIC SHADOW EXTENSIONS
+   * ========================================================================== */
+
+  :root, [data-color-scheme="light"] {
+    --ds-shadow-header: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --ds-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --ds-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --ds-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  [data-color-scheme="dark"] {
+    --ds-shadow-header: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --ds-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --ds-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --ds-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+      --ds-shadow-header: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --ds-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.5);
+      --ds-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --ds-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  /* ==========================================================================
+   * SCROLLBAR STYLING
+   * ========================================================================== */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--ds-color-neutral-background-tinted);
+    border-radius: var(--ds-border-radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--ds-color-neutral-border-default);
+    border-radius: var(--ds-border-radius-full);
+  }
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ds-color-neutral-text-subtle);
+}

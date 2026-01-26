@@ -1,0 +1,18 @@
+/* Story Explorer global styles - using Designsystemet tokens only */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--ds-font-family);
+  background-color: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-default);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
