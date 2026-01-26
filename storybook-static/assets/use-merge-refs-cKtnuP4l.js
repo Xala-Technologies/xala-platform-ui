@@ -1,2 +1,0 @@
-import{r as t}from"./index-ClcD9ViR.js";function i(r){const e=t.useRef(void 0),o=t.useCallback(u=>{const f=r.map(n=>{if(n==null)return null;if(typeof n=="function"){const c=n,l=c(u);return typeof l=="function"?l:()=>{c(null)}}return n.current=u,()=>{n.current=null}});return()=>{for(const n of f)n==null||n()}},r);return t.useMemo(()=>r.every(u=>u==null)?null:u=>{e.current&&(e.current(),e.current=void 0),u!=null&&(e.current=o(u))},r)}export{i as u};
-//# sourceMappingURL=use-merge-refs-cKtnuP4l.js.map

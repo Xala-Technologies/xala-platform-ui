@@ -1,0 +1,513 @@
+/**
+ * Common Theme Extensions
+ *
+ * ONLY for special rich features beyond what Designsystemet provides.
+ * Font sizes, spacing, padding - all come from Designsystemet (xala.css).
+ *
+ * This file contains:
+ * - Spacing aliases (--ds-spacing-* -> --ds-size-*)
+ * - Button style variants (compact, pill, ghost)
+ * - Component-specific tokens (calendar, gallery, stepper)
+ * - Responsive utilities
+ * - Scrollbar styling
+ *
+ * NO colors defined here - colors are in theme-specific files.
+ */
+
+/* ==========================================================================
+ * SPACING ALIASES
+ *
+ * The Digdir CLI generates --ds-size-* tokens, but many of our components
+ * use --ds-spacing-* as the semantic name. This creates aliases only.
+ * ========================================================================== */
+
+:root, [data-size] {
+  --ds-spacing-0: var(--ds-size-0);
+  --ds-spacing-1: var(--ds-size-1);
+  --ds-spacing-2: var(--ds-size-2);
+  --ds-spacing-3: var(--ds-size-3);
+  --ds-spacing-4: var(--ds-size-4);
+  --ds-spacing-5: var(--ds-size-5);
+  --ds-spacing-6: var(--ds-size-6);
+  --ds-spacing-7: var(--ds-size-7);
+  --ds-spacing-8: var(--ds-size-8);
+  --ds-spacing-9: var(--ds-size-9);
+  --ds-spacing-10: var(--ds-size-10);
+  --ds-spacing-11: var(--ds-size-11);
+  --ds-spacing-12: var(--ds-size-12);
+  --ds-spacing-13: var(--ds-size-13);
+  --ds-spacing-14: var(--ds-size-14);
+  --ds-spacing-15: var(--ds-size-15);
+  --ds-spacing-18: var(--ds-size-18);
+  --ds-spacing-22: var(--ds-size-22);
+  --ds-spacing-26: var(--ds-size-26);
+  --ds-spacing-30: var(--ds-size-30);
+}
+
+/* ==========================================================================
+ * FONT FAMILY (only if not defined by Designsystemet)
+ * ========================================================================== */
+
+:root {
+  --ds-font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+}
+
+/* ==========================================================================
+ * BUTTON BORDER RADIUS ENHANCEMENT
+ *
+ * Slightly more rounded corners for buttons (+5px from default)
+ * ========================================================================== */
+
+.ds-button {
+  border-radius: calc(var(--ds-border-radius-md) + 5px);
+}
+
+/* Reset for toggle group buttons */
+.ds-toggle-group .ds-button,
+.ds-togglegroup .ds-button,
+[class*="toggle-group"] .ds-button {
+  border-radius: var(--ds-border-radius-md) !important;
+}
+
+/* ==========================================================================
+ * BUTTON VARIANTS (special utility classes)
+ * ========================================================================== */
+
+/* Compact button variant */
+.ds-button.ds-button--compact {
+  padding: var(--ds-size-1) var(--ds-size-2) !important;
+  font-size: var(--ds-font-size-2) !important;
+  min-height: 24px !important;
+  line-height: 1.2 !important;
+  border-radius: var(--ds-border-radius-sm) !important;
+}
+
+/* Extra-small button variant */
+.ds-button.ds-button--xs {
+  padding: 2px var(--ds-size-1) !important;
+  font-size: var(--ds-font-size-2) !important;
+  min-height: 20px !important;
+  line-height: 1 !important;
+  border-radius: var(--ds-border-radius-sm) !important;
+}
+
+/* Pill-style button */
+.ds-button.ds-button--pill {
+  border-radius: var(--ds-border-radius-full) !important;
+}
+
+/* Ghost button */
+.ds-button.ds-button--ghost {
+  padding: var(--ds-size-1) !important;
+  border-radius: var(--ds-border-radius-sm) !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.ds-button.ds-button--ghost:hover {
+  background-color: var(--ds-color-neutral-surface-hover) !important;
+}
+
+/* Inline action button */
+.ds-button.ds-button--inline {
+  padding: 2px 6px !important;
+  font-size: var(--ds-font-size-2) !important;
+  min-height: auto !important;
+  line-height: 1.2 !important;
+  border-radius: var(--ds-border-radius-sm) !important;
+}
+
+/* Toggle button group */
+.ds-button-group--toggle {
+  display: flex;
+  gap: 0;
+}
+
+.ds-button-group--toggle .ds-button {
+  border-radius: 0 !important;
+  margin: -1px;
+}
+
+.ds-button-group--toggle .ds-button:first-child {
+  border-radius: var(--ds-border-radius-md) 0 0 var(--ds-border-radius-md) !important;
+  margin-left: 0;
+}
+
+.ds-button-group--toggle .ds-button:last-child {
+  border-radius: 0 var(--ds-border-radius-md) var(--ds-border-radius-md) 0 !important;
+  margin-right: 0;
+}
+
+/* ==========================================================================
+ * COMPONENT-SPECIFIC TOKENS
+ * ========================================================================== */
+
+:root {
+  /* Search field constraints */
+  --ds-size-search-max-width: 520px;
+  --ds-size-search-min-width: 80px;
+
+  /* Container max widths */
+  --ds-size-container-max: 1440px;
+  --ds-size-container-lg: 1200px;
+  --ds-size-container-md: 960px;
+  --ds-size-container-sm: 600px;
+
+  /* Login page overlay */
+  --ds-login-overlay-gradient: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  --ds-login-overlay-text: rgba(255, 255, 255, 1);
+  --ds-login-overlay-text-muted: rgba(255, 255, 255, 0.85);
+  --ds-login-overlay-bullet: rgba(255, 255, 255, 0.7);
+
+  /* Image gallery */
+  --ds-gallery-hero-ratio: 7fr;
+  --ds-gallery-thumb-ratio: 3fr;
+  --ds-gallery-thumb-height: 120px;
+  --ds-gallery-counter-bg: rgba(0, 0, 0, 0.6);
+  --ds-gallery-gap: var(--ds-size-3);
+
+  /* Calendar sizing */
+  --ds-calendar-cell-height: 48px;
+  --ds-calendar-time-column-width: 60px;
+  --ds-calendar-day-header-height: 56px;
+
+  /* Stepper */
+  --ds-stepper-circle-size: 32px;
+  --ds-stepper-line-height: 2px;
+
+  /* Detail page layout */
+  --ds-detail-sidebar-width: 320px;
+  --ds-detail-content-gap: var(--ds-size-6);
+
+  /* Decorative effects */
+  --ds-size-orb-large: 32rem;
+  --ds-size-orb-medium: 24rem;
+  --ds-size-orb-small: 16rem;
+  --ds-size-blur-large: 100px;
+  --ds-size-blur-medium: 60px;
+  --ds-size-blur-small: 30px;
+}
+
+[data-color-scheme="dark"] {
+  --ds-gallery-counter-bg: rgba(0, 0, 0, 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme="auto"] {
+    --ds-gallery-counter-bg: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* ==========================================================================
+ * RESPONSIVE GRID UTILITIES
+ * ========================================================================== */
+
+.ds-grid-responsive {
+  --_grid-columns: var(--_grid-sm, 1);
+}
+
+@container ds-container (min-width: 600px) {
+  .ds-grid-responsive {
+    --_grid-columns: var(--_grid-md, 2);
+  }
+}
+
+@container ds-container (min-width: 900px) {
+  .ds-grid-responsive {
+    --_grid-columns: var(--_grid-lg, 3);
+  }
+}
+
+@media (min-width: 640px) {
+  .ds-grid-responsive {
+    --_grid-columns: var(--_grid-md, 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ds-grid-responsive {
+    --_grid-columns: var(--_grid-lg, 3);
+  }
+}
+
+/* ==========================================================================
+ * LISTING GRID - RESPONSIVE COLUMNS
+ * ========================================================================== */
+
+.listing-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .listing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .listing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .listing-grid[data-max-columns="3"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .listing-grid[data-max-columns="2"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .listing-grid[data-max-columns="1"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 991px) {
+  .listing-grid[data-max-columns="3"],
+  .listing-grid[data-max-columns="2"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .listing-grid[data-max-columns="1"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .listing-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+ * MOBILE COMPONENT OVERRIDES
+ * ========================================================================== */
+
+@media (max-width: 700px) {
+  .listing-list-item {
+    flex-direction: column !important;
+  }
+
+  .listing-list-item > div:first-child {
+    width: 100% !important;
+    min-width: unset !important;
+    max-height: 200px;
+  }
+
+  .listing-list-item > div:last-child:not(:nth-child(2)) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .main-content-layout {
+    padding-left: var(--ds-size-4) !important;
+    padding-right: var(--ds-size-4) !important;
+  }
+}
+
+/* ==========================================================================
+ * LISTING DETAIL PAGE RESPONSIVE LAYOUT
+ * ========================================================================== */
+
+.listing-detail-layout {
+  display: grid;
+  gap: var(--ds-detail-content-gap, var(--ds-size-6));
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 992px) {
+  .listing-detail-layout {
+    grid-template-columns: 1fr var(--ds-detail-sidebar-width, 320px);
+  }
+}
+
+/* ==========================================================================
+ * IMAGE GALLERY RESPONSIVE
+ * ========================================================================== */
+
+.image-gallery {
+  display: grid;
+  gap: var(--ds-gallery-gap, var(--ds-size-3));
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .image-gallery {
+    grid-template-columns: var(--ds-gallery-hero-ratio, 7fr) var(--ds-gallery-thumb-ratio, 3fr);
+  }
+}
+
+.image-gallery-thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: var(--ds-size-2);
+  overflow-x: auto;
+}
+
+@media (min-width: 600px) {
+  .image-gallery-thumbnails {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+}
+
+/* ==========================================================================
+ * AVAILABILITY CALENDAR
+ * ========================================================================== */
+
+.availability-calendar-grid {
+  display: grid;
+  grid-template-columns: var(--ds-calendar-time-column-width, 60px) repeat(7, 1fr);
+  overflow-x: auto;
+}
+
+@media (max-width: 599px) {
+  .availability-calendar-grid {
+    min-width: 600px;
+  }
+}
+
+.availability-calendar-cell {
+  height: var(--ds-calendar-cell-height, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--ds-font-size-2);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.availability-calendar-cell[data-status="available"] {
+  background-color: var(--ds-color-success-surface-default);
+  color: var(--ds-color-success-text-default);
+}
+
+.availability-calendar-cell[data-status="occupied"] {
+  background-color: var(--ds-color-danger-surface-default);
+  color: var(--ds-color-danger-text-default);
+  cursor: not-allowed;
+}
+
+.availability-calendar-cell[data-status="selected"] {
+  background-color: var(--ds-color-accent-surface-default);
+  color: var(--ds-color-accent-text-default);
+}
+
+.availability-calendar-cell[data-status="unavailable"] {
+  background-color: var(--ds-color-neutral-surface-hover);
+  color: var(--ds-color-neutral-text-subtle);
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+ * BOOKING STEPPER
+ * ========================================================================== */
+
+.booking-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+}
+
+.booking-stepper-step {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+}
+
+.booking-stepper-circle {
+  width: var(--ds-stepper-circle-size, 32px);
+  height: var(--ds-stepper-circle-size, 32px);
+  border-radius: var(--ds-border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--ds-font-size-2);
+  font-weight: 600;
+  border: 2px solid var(--ds-color-neutral-border-default);
+  background-color: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-subtle);
+  transition: all 0.2s ease;
+}
+
+.booking-stepper-circle[data-state="active"] {
+  border-color: var(--ds-color-accent-base-default);
+  background-color: var(--ds-color-accent-base-default);
+  color: var(--ds-color-accent-base-contrast-default);
+}
+
+.booking-stepper-circle[data-state="completed"] {
+  border-color: var(--ds-color-success-base-default);
+  background-color: var(--ds-color-success-base-default);
+  color: var(--ds-color-success-base-contrast-default);
+}
+
+.booking-stepper-line {
+  flex: 1;
+  height: var(--ds-stepper-line-height, 2px);
+  background-color: var(--ds-color-neutral-border-default);
+  min-width: var(--ds-size-4);
+}
+
+.booking-stepper-line[data-state="completed"] {
+  background-color: var(--ds-color-success-base-default);
+}
+
+/* ==========================================================================
+ * THEME TRANSITION SMOOTHING
+ *
+ * Prevents visual "jumping" when switching themes by adding smooth transitions
+ * to background and text colors. Only affects color-related properties.
+ * ========================================================================== */
+
+:root,
+[data-color-scheme],
+body,
+main,
+header,
+footer,
+aside,
+nav,
+.ds-card,
+.ds-button {
+  transition: 
+    background-color 0.15s ease-out,
+    color 0.15s ease-out,
+    border-color 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+}
+
+/* Disable transitions during initial load to prevent flash */
+.no-transitions,
+.no-transitions * {
+  transition: none !important;
+}
+
+/* ==========================================================================
+ * SCROLLBAR STYLING
+ * ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ds-color-neutral-background-tinted);
+  border-radius: var(--ds-border-radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ds-color-neutral-border-default);
+  border-radius: var(--ds-border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ds-color-neutral-text-subtle);
+}

@@ -18,7 +18,7 @@ import { THEME_COLORS, type ThemeId } from '../packages/platform-ui/src/themes';
 // Custom event for color scheme changes
 const COLOR_SCHEME_EVENT = 'XALA_COLOR_SCHEME_CHANGED';
 
-type BrandTheme = 'custom' | 'xaheen' | 'digdir';
+type BrandTheme = 'digilist' | 'xaheen' | 'digdir' | 'altinn' | 'brreg' | 'platform';
 type ColorScheme = 'light' | 'dark';
 
 // =============================================================================
@@ -43,19 +43,23 @@ async function fetchThemeCSS(themeId: ThemeId): Promise<string> {
     // Map theme to CSS files
     let files: string[] = [];
     switch (themeId) {
-      case 'custom':
-        files = ['/themes/xala.css', '/themes/xala-extensions.css'];
+      case 'digilist':
+        files = ['/themes/xala.css', '/themes/common-extensions.css', '/themes/digilist-colors.css'];
         break;
       case 'xaheen':
-        files = ['/themes/xala.css', '/themes/xaheen-extensions.css'];
+        files = ['/themes/xala.css', '/themes/common-extensions.css', '/themes/xaheen-colors.css'];
+        break;
+      case 'platform':
+        files = ['/themes/xala.css', '/themes/common-extensions.css', '/themes/platform-colors.css'];
         break;
       case 'digdir':
       case 'altinn':
       case 'brreg':
-        // Use base Designsystemet (already loaded in manager-head.html)
-        return '';
+        // Use base Designsystemet + common extensions
+        files = ['/themes/xala.css', '/themes/common-extensions.css'];
+        break;
       default:
-        files = ['/themes/xala.css', '/themes/xala-extensions.css'];
+        files = ['/themes/xala.css', '/themes/common-extensions.css', '/themes/digilist-colors.css'];
     }
 
     // Fetch all CSS files
@@ -251,7 +255,8 @@ const storybookTypography = {
  * Creates Storybook theme from our THEME_COLORS
  */
 function createStorybookTheme(themeId: ThemeId, colorScheme: ColorScheme) {
-  const themeConfig = THEME_COLORS[themeId];
+  // Fallback to digilist if theme doesn't exist (handles legacy 'custom' theme)
+  const themeConfig = THEME_COLORS[themeId] || THEME_COLORS.digilist;
   const colors = themeConfig[colorScheme];
 
   return create({
@@ -298,14 +303,14 @@ function getInitialBrandTheme(): BrandTheme {
       const match = globalsParam.match(/brandTheme:(\w+)/);
       if (match && match[1]) {
         const theme = match[1] as BrandTheme;
-        if (['custom', 'xaheen', 'digdir', 'altinn', 'brreg'].includes(theme)) {
+        if (['digilist', 'xaheen', 'digdir', 'altinn', 'brreg', 'platform'].includes(theme)) {
           return theme;
         }
       }
     }
   }
   
-  return 'custom';
+  return 'digilist';
 }
 
 function getInitialColorScheme(): ColorScheme {
@@ -405,7 +410,7 @@ addons.register('xala-theme-manager', (api) => {
   if (channel) {
     // Listen for globals updates (brand theme or color scheme changes)
     channel.on(GLOBALS_UPDATED, ({ globals }) => {
-      const brandTheme = (globals?.brandTheme as BrandTheme) || 'custom';
+      const brandTheme = (globals?.brandTheme as BrandTheme) || 'digilist';
       const colorScheme = (globals?.colorScheme as ColorScheme) || 'light';
       
       console.log('[Manager Theme] GLOBALS_UPDATED received:', { brandTheme, colorScheme });
@@ -415,7 +420,7 @@ addons.register('xala-theme-manager', (api) => {
     // Listen for color scheme changes from preview
     channel.on(COLOR_SCHEME_EVENT, (colorScheme: ColorScheme) => {
       const currentGlobals = api.getGlobals();
-      const brandTheme = (currentGlobals?.brandTheme as BrandTheme) || 'custom';
+      const brandTheme = (currentGlobals?.brandTheme as BrandTheme) || 'digilist';
       
       console.log('[Manager Theme] COLOR_SCHEME_EVENT received:', { brandTheme, colorScheme });
       debouncedApplyTheme(brandTheme, colorScheme);

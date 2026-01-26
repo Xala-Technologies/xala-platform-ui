@@ -79,7 +79,8 @@ function createStorybookTheme(
   mode: 'light' | 'dark',
   brandUrl: string
 ) {
-  const themeConfig = THEME_COLORS[themeId];
+  // Fallback to digilist if theme doesn't exist (handles legacy 'custom' theme)
+  const themeConfig = THEME_COLORS[themeId] || THEME_COLORS.digilist;
   const colors = themeConfig[mode];
   return create({
     base: mode,
@@ -120,23 +121,28 @@ function createStorybookTheme(
 }
 
 // Generate all theme variants from THEME_COLORS
-const customLightTheme = createStorybookTheme('custom', 'light', 'https://xala.no');
-const customDarkTheme = createStorybookTheme('custom', 'dark', 'https://xala.no');
+const digilistLightTheme = createStorybookTheme('digilist', 'light', 'https://xala.no');
+const digilistDarkTheme = createStorybookTheme('digilist', 'dark', 'https://xala.no');
 const xaheenLightTheme = createStorybookTheme('xaheen', 'light', 'https://xala.no');
 const xaheenDarkTheme = createStorybookTheme('xaheen', 'dark', 'https://xala.no');
 const digdirLightTheme = createStorybookTheme('digdir', 'light', 'https://designsystemet.no');
 const digdirDarkTheme = createStorybookTheme('digdir', 'dark', 'https://designsystemet.no');
+const platformLightTheme = createStorybookTheme('platform', 'light', 'https://xala.no');
+const platformDarkTheme = createStorybookTheme('platform', 'dark', 'https://xala.no');
 
 // Theme registry for easy lookup - maps Storybook global to theme
-type BrandTheme = 'custom' | 'xaheen' | 'digdir';
+type BrandTheme = 'digilist' | 'xaheen' | 'digdir' | 'altinn' | 'brreg' | 'platform';
 const themeRegistry: Record<BrandTheme, { light: ReturnType<typeof create>; dark: ReturnType<typeof create> }> = {
-  custom: { light: customLightTheme, dark: customDarkTheme },
+  digilist: { light: digilistLightTheme, dark: digilistDarkTheme },
   xaheen: { light: xaheenLightTheme, dark: xaheenDarkTheme },
   digdir: { light: digdirLightTheme, dark: digdirDarkTheme },
+  altinn: { light: digdirLightTheme, dark: digdirDarkTheme },
+  brreg: { light: digdirLightTheme, dark: digdirDarkTheme },
+  platform: { light: platformLightTheme, dark: platformDarkTheme },
 };
 
 // Track current brand theme for docs container (updated by decorator)
-let currentBrandTheme: BrandTheme = 'custom';
+let currentBrandTheme: BrandTheme = 'digilist';
 
 /**
  * Custom hook to get color scheme from globals - reads from URL params!
@@ -184,13 +190,16 @@ function useColorScheme() {
  */
 function useBrandTheme() {
   const getInitialBrandTheme = (): BrandTheme => {
-    if (typeof window === 'undefined') return 'custom';
+    if (typeof window === 'undefined') return 'digilist';
     const params = new URLSearchParams(window.location.search);
     const globalsParam = params.get('globals');
     if (globalsParam?.includes('brandTheme:xaheen')) return 'xaheen';
     if (globalsParam?.includes('brandTheme:digdir')) return 'digdir';
-    if (globalsParam?.includes('brandTheme:custom')) return 'custom';
-    return 'custom';
+    if (globalsParam?.includes('brandTheme:digilist')) return 'digilist';
+    if (globalsParam?.includes('brandTheme:altinn')) return 'altinn';
+    if (globalsParam?.includes('brandTheme:brreg')) return 'brreg';
+    if (globalsParam?.includes('brandTheme:platform')) return 'platform';
+    return 'digilist';
   };
 
   const [brandTheme, setBrandTheme] = useState<BrandTheme>(getInitialBrandTheme);
@@ -198,7 +207,7 @@ function useBrandTheme() {
   useEffect(() => {
     // Listen to globals updated event
     const handleGlobalsUpdate = (args: { globals?: { brandTheme?: string } }) => {
-      const newTheme = (args.globals?.brandTheme as BrandTheme) || 'custom';
+      const newTheme = (args.globals?.brandTheme as BrandTheme) || 'digilist';
       setBrandTheme(newTheme);
       currentBrandTheme = newTheme;
     };
@@ -262,7 +271,7 @@ function ThemedDocsContainer(props: DocsContainerProps) {
   
   console.log('[ThemedDocsContainer] Using globals:', { colorScheme, brandTheme, locale });
   
-  const themes = themeRegistry[brandTheme] || themeRegistry.custom;
+  const themes = themeRegistry[brandTheme] || themeRegistry.digilist;
   const selectedTheme = colorScheme === 'dark' ? themes.dark : themes.light;
 
   // Apply data attributes AND inject theme CSS
@@ -502,7 +511,7 @@ const withTheme: Decorator = (Story, context) => {
   // Get color scheme, locale, and brand theme from global toolbar
   const colorScheme = (context.globals.colorScheme as 'light' | 'dark') || 'light';
   const locale = (context.globals.locale as string) || 'nb';
-  const brandTheme = (context.globals.brandTheme as BrandTheme) || 'custom';
+  const brandTheme = (context.globals.brandTheme as BrandTheme) || 'digilist';
   const direction = getDirectionForLocale(locale);
 
   // Update module-level brandTheme for docs container
@@ -532,9 +541,10 @@ const withTheme: Decorator = (Story, context) => {
 
   // StoryProvider integrates I18nProvider + DesignsystemetProvider
   // Similar to RuntimeProvider pattern in production apps
-  // Key forces full remount when locale or brand theme changes
+  // Key only forces remount when locale changes (I18nProvider requires this)
+  // Theme and colorScheme changes are handled reactively without remount
   return (
-    <StoryProvider key={`${locale}-${brandTheme}-${colorScheme}`} locale={locale} theme={brandTheme} colorScheme={colorScheme}>
+    <StoryProvider key={locale} locale={locale} theme={brandTheme} colorScheme={colorScheme}>
       <div
         data-color-scheme={colorScheme}
         data-brand-theme={brandTheme}
@@ -548,6 +558,7 @@ const withTheme: Decorator = (Story, context) => {
           width: '100%',
           backgroundColor: 'var(--ds-color-neutral-background-default)',
           color: 'var(--ds-color-neutral-text-default)',
+          transition: 'background-color 0.2s ease, color 0.2s ease',
         }}
       >
         <Story />
@@ -576,12 +587,13 @@ const preview: Preview = {
     brandTheme: {
       name: 'Brand Theme',
       description: 'Switch between brand color themes',
-      defaultValue: 'custom',
+      defaultValue: 'digilist',
       toolbar: {
         icon: 'paintbrush',
         items: [
-          { value: 'custom', title: 'Xala (Blue)', right: '🔵' },
+          { value: 'digilist', title: 'Digilist (Blue)', right: '🔵' },
           { value: 'xaheen', title: 'Xaheen (Gold)', right: '🟡' },
+          { value: 'platform', title: 'Platform (Blue/Gold)', right: '🟦' },
           { value: 'digdir', title: 'Digdir (Default)', right: '⚪' },
         ],
         showName: true,

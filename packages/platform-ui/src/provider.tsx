@@ -11,7 +11,7 @@
  *
  * function App() {
  *   return (
- *     <DesignsystemetProvider theme="custom" colorScheme="auto" size="auto">
+ *     <DesignsystemetProvider theme="digilist" colorScheme="auto" size="md">
  *       <YourApp />
  *     </DesignsystemetProvider>
  *   );
@@ -41,9 +41,9 @@ export type ColorScheme = 'light' | 'dark' | 'auto';
 
 /**
  * Available size modes for component scaling.
- * 'auto' enables viewport-based responsive switching.
+ * Designsystemet v1 only supports sm, md, lg.
  */
-export type DsSize = 'sm' | 'md' | 'lg' | 'auto';
+export type DsSize = 'sm' | 'md' | 'lg';
 
 /**
  * Available typography presets.
@@ -189,7 +189,7 @@ export function DesignsystemetProvider({
   children,
   theme = DEFAULT_THEME,
   colorScheme = 'auto',
-  size = 'auto',
+  size = 'md',
   typography = 'primary',
   direction = 'ltr',
   locale = 'nb',

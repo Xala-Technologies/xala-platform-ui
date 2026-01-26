@@ -20,7 +20,7 @@ import { THEME_COLORS, type ThemeId } from '../../../packages/platform-ui/src/th
 // Custom event for color scheme changes
 const COLOR_SCHEME_EVENT = 'XALA_COLOR_SCHEME_CHANGED';
 
-type BrandTheme = 'custom' | 'xaheen' | 'digdir';
+type BrandTheme = 'digilist' | 'xaheen' | 'digdir' | 'altinn' | 'brreg' | 'platform';
 type ColorScheme = 'light' | 'dark';
 
 // Typography for Storybook themes
@@ -37,7 +37,8 @@ function createStorybookTheme(
   mode: ColorScheme,
   brandUrl: string = 'https://xala.no'
 ) {
-  const themeConfig = THEME_COLORS[themeId];
+  // Fallback to digilist if theme doesn't exist (handles legacy 'custom' theme)
+  const themeConfig = THEME_COLORS[themeId] || THEME_COLORS.digilist;
   const colors = themeConfig[mode];
 
   return create({
@@ -130,7 +131,7 @@ function getBrandThemeFromURL(): BrandTheme | null {
     if (match && match[1]) {
       const theme = match[1] as BrandTheme;
       // Validate it's a known theme
-      if (['custom', 'xaheen', 'digdir', 'altinn', 'brreg'].includes(theme)) {
+      if (['digilist', 'xaheen', 'digdir', 'altinn', 'brreg', 'platform'].includes(theme)) {
         return theme;
       }
     }
@@ -166,7 +167,7 @@ function getInitialTheme(globals?: Record<string, unknown>): {
   colorScheme: ColorScheme;
 } {
   // Try globals first, then URL, then default
-  const brandTheme = (globals?.brandTheme as BrandTheme) || getBrandThemeFromURL() || 'custom';
+  const brandTheme = (globals?.brandTheme as BrandTheme) || getBrandThemeFromURL() || 'digilist';
   const colorScheme = (globals?.colorScheme as ColorScheme) || getColorSchemeFromURL() || 'light';
   
   return { brandTheme, colorScheme };
@@ -229,7 +230,7 @@ addons.register('xala-theme-addon', (api) => {
   // Listen for global updates (theme changes, color scheme toggles, etc.)
   if (channel) {
     channel.on(GLOBALS_UPDATED, ({ globals }) => {
-      const brandTheme = (globals?.brandTheme as BrandTheme) || 'custom';
+      const brandTheme = (globals?.brandTheme as BrandTheme) || 'digilist';
       const colorScheme = (globals?.colorScheme as ColorScheme) || 'light';
       
       debouncedApplyTheme(brandTheme, colorScheme);
@@ -238,7 +239,7 @@ addons.register('xala-theme-addon', (api) => {
     // Listen for our custom color scheme event (from preview)
     channel.on(COLOR_SCHEME_EVENT, (colorScheme: ColorScheme) => {
       const currentGlobals = api.getGlobals();
-      const brandTheme = (currentGlobals?.brandTheme as BrandTheme) || 'custom';
+      const brandTheme = (currentGlobals?.brandTheme as BrandTheme) || 'digilist';
       debouncedApplyTheme(brandTheme, colorScheme);
     });
   }
