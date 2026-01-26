@@ -172,6 +172,7 @@ function TimelineEntry({ item, isLast, showConnector }: TimelineEntryProps): Rea
                       alt={item.actor.name}
                       style={{
                         width: 'var(--ds-sizing-5)',
+                        maxWidth: '100%',
                         height: 'var(--ds-sizing-5)',
                         borderRadius: 'var(--ds-border-radius-full)',
                         objectFit: 'cover',

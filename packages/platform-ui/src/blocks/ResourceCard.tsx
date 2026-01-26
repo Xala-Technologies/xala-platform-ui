@@ -313,7 +313,18 @@ export function ResourceCard({
           </Button>
         )}
 
-        <div style={{ cursor: onClick ? 'pointer' : 'default' }} onClick={handleClick}>
+        <div
+          style={{ cursor: onClick ? 'pointer' : 'default' }}
+          onClick={handleClick}
+          onKeyDown={(e) => {
+            if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+              e.preventDefault();
+              handleClick();
+            }
+          }}
+          role={onClick ? 'button' : undefined}
+          tabIndex={onClick ? 0 : undefined}
+        >
           {/* Image */}
           {image && (
             <img
@@ -323,6 +334,7 @@ export function ResourceCard({
               decoding="async"
               style={{
                 width: '100%',
+                maxWidth: '100%',
                 height: 'var(--ds-size-image-detailed, 240px)',
                 objectFit: 'cover',
               }}
@@ -490,6 +502,14 @@ export function ResourceCard({
     <div
       className={cn('resource-object-card', className)}
       onClick={handleClick}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -523,6 +543,7 @@ export function ResourceCard({
           decoding="async"
           style={{
             width: '100%',
+            maxWidth: '100%',
             height: '100%',
             objectFit: 'cover',
           }}

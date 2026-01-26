@@ -378,7 +378,8 @@ export function GdprRequestQueue({
         )}
 
         {/* Table */}
-        <Table style={{ width: '100%' }}>
+        <div style={{ overflowX: 'auto', width: '100%' }}>
+          <Table style={{ width: '100%' }}>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell>{labels.userHeader}</Table.HeaderCell>
@@ -487,6 +488,7 @@ export function GdprRequestQueue({
             ))}
           </Table.Body>
         </Table>
+        </div>
       </Card.Block>
     </Card>
   );

@@ -545,12 +545,13 @@ function BlockRenderer({
         const rows = (block.content.rows as number) || 3;
         const cols = (block.content.cols as number) || 3;
         return (
-          <table
-            style={{
-              width: '100%',
-              borderCollapse: 'collapse',
-            }}
-          >
+          <div style={{ overflowX: 'auto', width: '100%' }}>
+            <table
+              style={{
+                width: '100%',
+                borderCollapse: 'collapse',
+              }}
+            >
             <tbody>
               {Array.from({ length: rows }).map((_, rowIndex) => (
                 <tr key={rowIndex}>
@@ -574,6 +575,7 @@ function BlockRenderer({
               ))}
             </tbody>
           </table>
+          </div>
         );
       case 'footer':
         return (

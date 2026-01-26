@@ -178,7 +178,7 @@ export function IssueCard({
               <img
                 src={authorAvatar}
                 alt={author}
-                style={{ width: '20px', height: '20px', borderRadius: '50%' }}
+                style={{ width: '20px', maxWidth: '100%', height: '20px', borderRadius: '50%' }}
               />
             )}
             {author && <Paragraph data-size="sm">{author}</Paragraph>}

@@ -176,7 +176,9 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,json,md}\"",
     "verify:boundaries": "node scripts/verify-boundaries.js",
     "verify:design-tokens": "node scripts/verify-design-tokens.js",
-    "verify:all": "pnpm verify:boundaries && pnpm verify:design-tokens",
+    "verify:accessibility": "node scripts/verify-accessibility.js",
+    "verify:responsive": "node scripts/verify-responsive.js",
+    "verify:all": "pnpm verify:boundaries && pnpm verify:design-tokens && pnpm verify:accessibility && pnpm verify:responsive",
     "quality": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm verify:all",
     "prepublishOnly": "pnpm quality && pnpm build"
   },

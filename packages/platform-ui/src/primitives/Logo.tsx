@@ -25,7 +25,7 @@ export function Logo({ src = '/logo.svg', height = 40, alt = 'Platform', classNa
       src={src}
       alt={alt}
       className={className}
-      style={{ height: `${height}px`, width: 'auto' }}
+      style={{ height: `${height}px`, width: 'auto', maxWidth: '100%' }}
     />
   );
 }

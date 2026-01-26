@@ -26,10 +26,16 @@ const ROOT_DIR = join(__dirname, '..');
 
 // Allowed exceptions (files where violations are acceptable)
 const ALLOWED_FILES = [
-  'src/stories/', // Storybook examples
   '.storybook/', // Storybook config
   'scripts/', // Scripts
   'src/blocks/XTerminal.tsx', // Terminal colors for syntax highlighting
+  'src/stories/Examples/AntiPatterns.stories.tsx', // Intentionally shows anti-patterns
+  'src/stories/Fundamentals/BestPractices.stories.tsx', // Shows examples (may include anti-patterns)
+  'src/stories/Fundamentals/Accessibility.stories.tsx', // Shows examples
+  'src/stories/Fundamentals/Tokens.stories.tsx', // Shows token examples
+  'src/stories/Examples/ComponentExamples.stories.tsx', // Shows examples
+  'src/stories/Contributing.stories.tsx', // Documentation story
+  // NOTE: Component stories are now included in verification - they must follow design system rules
 ];
 
 // Excluded patterns (domain-coupled components that bridge UI and platform)
@@ -69,7 +75,8 @@ function scanDirectory(dir, files = []) {
     const stat = statSync(fullPath);
 
     if (stat.isDirectory()) {
-      if (['node_modules', 'dist', '.git', '.storybook', 'stories'].includes(entry)) {
+      // Only exclude build/config directories, not source directories like stories
+      if (['node_modules', 'dist', '.git', '.storybook'].includes(entry)) {
         continue;
       }
       scanDirectory(fullPath, files);
@@ -234,6 +241,92 @@ function checkCustomClasses(filePath, content) {
 }
 
 /**
+ * Check for raw HTML elements that should use Designsystemet components
+ */
+function checkRawHTMLElements(filePath, content) {
+  if (isAllowedFile(filePath)) {
+    return [];
+  }
+
+  const violations = [];
+  const lines = content.split('\n');
+
+  // Raw HTML elements that should be replaced with Designsystemet components
+  const rawHTMLElements = [
+    { tag: 'div', replacement: 'Stack, Card, or other Designsystemet components' },
+    { tag: 'span', replacement: 'Text or other Designsystemet components' },
+    { tag: 'p', replacement: 'Paragraph from @digdir/designsystemet-react' },
+    { tag: 'h1', replacement: 'Heading level={1} from @digdir/designsystemet-react' },
+    { tag: 'h2', replacement: 'Heading level={2} from @digdir/designsystemet-react' },
+    { tag: 'h3', replacement: 'Heading level={3} from @digdir/designsystemet-react' },
+    { tag: 'h4', replacement: 'Heading level={4} from @digdir/designsystemet-react' },
+    { tag: 'h5', replacement: 'Heading level={5} from @digdir/designsystemet-react' },
+    { tag: 'h6', replacement: 'Heading level={6} from @digdir/designsystemet-react' },
+    { tag: 'button', replacement: 'Button from @digdir/designsystemet-react' },
+    { tag: 'input', replacement: 'Textfield, Select, or other form components' },
+    { tag: 'section', replacement: 'Card or Stack with semantic role' },
+    { tag: 'article', replacement: 'Card with semantic role' },
+    { tag: 'header', replacement: 'Card.Header or semantic header' },
+    { tag: 'footer', replacement: 'Card.Footer or semantic footer' },
+    { tag: 'ul', replacement: 'List from @digdir/designsystemet-react' },
+    { tag: 'ol', replacement: 'List from @digdir/designsystemet-react' },
+    { tag: 'li', replacement: 'List.Item from @digdir/designsystemet-react' },
+    { tag: 'table', replacement: 'Table from @digdir/designsystemet-react' },
+    { tag: 'tr', replacement: 'Table.Row from @digdir/designsystemet-react' },
+    { tag: 'td', replacement: 'Table.Cell from @digdir/designsystemet-react' },
+    { tag: 'th', replacement: 'Table.HeaderCell from @digdir/designsystemet-react' },
+  ];
+
+  lines.forEach((line, index) => {
+    // Skip comments and JSX comments
+    if (line.trim().startsWith('//') || line.trim().startsWith('/*') || line.trim().startsWith('*')) {
+      return;
+    }
+
+    // Skip if it's a closing tag only
+    if (line.trim().startsWith('</')) {
+      return;
+    }
+
+    // Check for raw HTML elements
+    for (const { tag, replacement } of rawHTMLElements) {
+      // Match opening tags: <div, <span, etc. (but not closing tags or self-closing)
+      // Also skip if it's part of a JSX comment or string literal
+      const tagRegex = new RegExp(`<${tag}(?:\\s|>|/|$)`, 'i');
+      
+      if (tagRegex.test(line)) {
+        // Skip if it's in a string literal or comment
+        if (line.includes(`'<${tag}`) || line.includes(`"<${tag}`) || line.includes(`\`<${tag}`)) {
+          continue;
+        }
+        
+        // Skip if it's a comment
+        if (line.includes('//') || line.includes('/*')) {
+          continue;
+        }
+
+        // Skip if it's part of a component name (e.g., <DivComponent)
+        const beforeTag = line.substring(0, line.indexOf(`<${tag}`));
+        if (/[A-Za-z0-9_]$/.test(beforeTag)) {
+          continue;
+        }
+
+        violations.push({
+          file: relative(ROOT_DIR, filePath),
+          line: index + 1,
+          type: 'raw-html-element',
+          tag,
+          replacement,
+          content: line.trim(),
+        });
+      }
+    }
+  });
+
+  return violations;
+}
+
+/**
  * Main execution
  */
 function main() {
@@ -251,8 +344,9 @@ function main() {
 
     const styleViolations = checkInlineStyles(file, content);
     const classViolations = checkCustomClasses(file, content);
+    const rawHTMLViolations = checkRawHTMLElements(file, content);
 
-    allViolations = allViolations.concat(styleViolations, classViolations);
+    allViolations = allViolations.concat(styleViolations, classViolations, rawHTMLViolations);
   }
 
   if (allViolations.length === 0) {
@@ -296,6 +390,21 @@ function main() {
     });
     if (byType['custom-class'].length > 20) {
       console.log(`   ... and ${byType['custom-class'].length - 20} more\n`);
+    }
+  }
+
+  // Report raw HTML element violations
+  if (byType['raw-html-element']) {
+    console.log(`\n🚫 RAW HTML ELEMENTS (${byType['raw-html-element'].length}):`);
+    console.log('   Use Designsystemet components instead of raw HTML\n');
+    byType['raw-html-element'].slice(0, 30).forEach((v) => {
+      console.log(`   ${v.file}:${v.line}`);
+      console.log(`   → Found: <${v.tag}>`);
+      console.log(`   → Use: ${v.replacement}`);
+      console.log('');
+    });
+    if (byType['raw-html-element'].length > 30) {
+      console.log(`   ... and ${byType['raw-html-element'].length - 30} more\n`);
     }
   }
 

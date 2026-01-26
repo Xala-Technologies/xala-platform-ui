@@ -323,6 +323,7 @@ export function ShareSheet({
                 onClick={() =>
                   platform === 'copy' ? handleCopyLink() : handlePlatformShare(platform)
                 }
+                aria-label={config.label}
                 data-color="neutral"
                 style={{
                   display: 'flex',

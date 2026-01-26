@@ -142,6 +142,7 @@ export function AvatarItem({
           onError={() => setImgError(true)}
           style={{
             width: '100%',
+            maxWidth: '100%',
             height: '100%',
             objectFit: 'cover',
           }}

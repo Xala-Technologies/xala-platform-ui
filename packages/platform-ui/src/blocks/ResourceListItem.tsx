@@ -218,6 +218,14 @@ export function ResourceListItem({
     <div
       className={cn('resource-object-list-item', className)}
       onClick={handleClick}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -251,6 +259,7 @@ export function ResourceListItem({
           decoding="async"
           style={{
             width: '100%',
+            maxWidth: '100%',
             height: '100%',
             objectFit: 'cover',
           }}
@@ -535,6 +544,7 @@ export function ResourceListItem({
               decoding="async"
               style={{
                 width: '100%',
+                maxWidth: '100%',
                 height: '100%',
                 objectFit: 'cover',
               }}

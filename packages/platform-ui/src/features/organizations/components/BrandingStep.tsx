@@ -415,7 +415,7 @@ export function BrandingStep({
               <img
                 src={data.logo}
                 alt={labels.logoPreview}
-                style={{ maxWidth: '200px', maxHeight: '100px', objectFit: 'contain' }}
+                style={{ maxWidth: '200px', width: '100%', maxHeight: '100px', objectFit: 'contain' }}
               />
             </Card>
             <Button
@@ -620,7 +620,7 @@ export function BrandingStep({
               <img
                 src={data.favicon}
                 alt={labels.faviconPreview}
-                style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+                style={{ width: '32px', maxWidth: '100%', height: '32px', objectFit: 'contain' }}
               />
             </Card>
             <Button

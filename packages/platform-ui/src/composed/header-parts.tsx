@@ -84,7 +84,7 @@ export const HeaderLogo = forwardRef<HTMLDivElement, HeaderLogoProps>(
             <img
               src={src}
               alt=""
-              style={{ height, width: 'auto' }}
+              style={{ height, width: 'auto', maxWidth: '100%' }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
@@ -1561,6 +1561,7 @@ export const HeaderLoginButton: React.FC<HeaderLoginButtonProps> = ({
             alt=""
             style={{
               width: '20px',
+              maxWidth: '100%',
               height: '20px',
               borderRadius: 'var(--ds-border-radius-full)',
               objectFit: 'cover',

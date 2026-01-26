@@ -350,6 +350,7 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
               alt=""
               style={{
                 width: '20px',
+                maxWidth: '100%',
                 height: '20px',
                 borderRadius: 'var(--ds-border-radius-full)',
                 objectFit: 'cover',

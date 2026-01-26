@@ -132,6 +132,7 @@ function UserAvatar({ user, size = 32 }: UserAvatarProps) {
         alt={user.name}
         style={{
           width: size,
+          maxWidth: '100%',
           height: size,
           borderRadius: 'var(--ds-border-radius-full)',
           objectFit: 'cover',

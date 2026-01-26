@@ -536,6 +536,7 @@ export function FileUploader({
                   alt={file.name}
                   style={{
                     width: previewType === 'grid' ? '100%' : 'var(--ds-sizing-12)',
+                    maxWidth: '100%',
                     height: previewType === 'grid' ? 'var(--ds-sizing-20)' : 'var(--ds-sizing-12)',
                     objectFit: 'cover',
                     borderRadius: 'var(--ds-border-radius-sm)',

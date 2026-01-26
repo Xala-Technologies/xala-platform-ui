@@ -521,6 +521,7 @@ export function ResourceCard({
               loading="lazy"
               style={{
                 width: '100%',
+                maxWidth: '100%',
                 height: '100%',
                 objectFit: 'cover',
               }}
@@ -611,6 +612,7 @@ export function ResourceCard({
               loading="lazy"
               style={{
                 width: '100%',
+                maxWidth: '100%',
                 height: '100%',
                 objectFit: 'cover',
               }}
@@ -799,6 +801,7 @@ export function ResourceCard({
             decoding="async"
             style={{
               width: '100%',
+              maxWidth: '100%',
               height: '100%',
               objectFit: 'cover',
             }}

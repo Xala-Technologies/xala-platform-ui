@@ -2,6 +2,7 @@
  * ActivityFeed Block
  * Display timeline of user activity
  */
+import * as React from 'react';
 import { Card, Badge } from '@digdir/designsystemet-react';
 import { Paragraph } from '@digdir/designsystemet-react';
 
@@ -39,9 +40,19 @@ const getStatusColor = (status: string): 'success' | 'danger' | 'warning' => {
 };
 
 export function ActivityItem({ activity, onClick }: ActivityItemProps) {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      onClick(activity.id);
+    }
+  };
+
   return (
     <div
       onClick={() => onClick?.(activity.id)}
+      onKeyDown={handleKeyDown}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
       style={{
         display: 'flex',
         gap: 'var(--ds-spacing-3)',

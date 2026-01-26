@@ -110,12 +110,21 @@ export function ImageGallery({
           cursor: onImageClick ? 'pointer' : 'default',
         }}
         onClick={handleHeroClick}
+        onKeyDown={(e) => {
+          if (onImageClick && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            handleHeroClick();
+          }
+        }}
+        role={onImageClick ? 'button' : undefined}
+        tabIndex={onImageClick ? 0 : undefined}
       >
         <img
           src={currentImage?.src}
           alt={currentImage?.alt || ''}
           style={{
             width: '100%',
+            maxWidth: '100%',
             height: '100%',
             objectFit: 'cover',
           }}

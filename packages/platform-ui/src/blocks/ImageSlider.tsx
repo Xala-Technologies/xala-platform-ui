@@ -187,6 +187,14 @@ export function ImageSlider({
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         onClick={!isFullscreen ? handleImageClick : undefined}
+        onKeyDown={(e) => {
+          if (enableFullscreen && !isFullscreen && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            handleImageClick();
+          }
+        }}
+        role={enableFullscreen && !isFullscreen ? 'button' : undefined}
+        tabIndex={enableFullscreen && !isFullscreen ? 0 : undefined}
       >
         {/* Slides container */}
         <div
@@ -214,6 +222,7 @@ export function ImageSlider({
                 loading={index === 0 ? 'eager' : 'lazy'}
                 style={{
                   width: '100%',
+                  maxWidth: '100%',
                   height: '100%',
                   objectFit: 'cover',
                 }}
@@ -444,6 +453,7 @@ export function ImageSlider({
                 loading="lazy"
                 style={{
                   width: '100%',
+                  maxWidth: '100%',
                   height: '100%',
                   objectFit: 'cover',
                 }}
@@ -478,6 +488,15 @@ export function ImageSlider({
             animation: 'fadeIn 0.3s ease',
           }}
           onClick={() => setIsFullscreen(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+              e.preventDefault();
+              setIsFullscreen(false);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Lukk fullskjerm"
         >
           {/* Close button */}
           <Button
@@ -515,6 +534,7 @@ export function ImageSlider({
               padding: 'var(--ds-spacing-8)',
             }}
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
           >
             <ImageSlider
               images={images}

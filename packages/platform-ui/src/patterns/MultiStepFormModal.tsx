@@ -1092,7 +1092,7 @@ export function MultiStepFormModal({
         
         /* Smooth scrollbar styling */
         .multi-step-form-modal div[style*="overflow-y: auto"]::-webkit-scrollbar {
-          width: 8px;
+          width: 0.5rem; /* 8px */
         }
         
         .multi-step-form-modal div[style*="overflow-y: auto"]::-webkit-scrollbar-track {

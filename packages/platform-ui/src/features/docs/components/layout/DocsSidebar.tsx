@@ -207,6 +207,7 @@ export function DocsSidebar({
             alt={labels.brandName}
             style={{
               width: '40px',
+              maxWidth: '100%',
               height: '40px',
             }}
           />

@@ -2,6 +2,11 @@ import { defineConfig, devices } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
+ * 
+ * Accessibility scanning is enabled via:
+ * - @axe-core/playwright for automated WCAG compliance checks
+ * - Storybook test-runner for story-level accessibility testing
+ * - E2E accessibility tests in tests/e2e/accessibility.spec.ts
  */
 export default defineConfig({
   testDir: './tests/e2e',

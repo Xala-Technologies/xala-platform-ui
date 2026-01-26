@@ -318,6 +318,7 @@ function Avatar({ author, size = 40 }: AvatarProps) {
         alt={author.name}
         style={{
           width: size,
+          maxWidth: '100%',
           height: size,
           borderRadius: 'var(--ds-border-radius-full)',
           objectFit: 'cover',

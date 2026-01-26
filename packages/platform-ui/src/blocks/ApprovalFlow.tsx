@@ -108,6 +108,15 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
               cursor: 'pointer',
             }}
             onClick={() => setExpanded(!expanded)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setExpanded(!expanded);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-expanded={expanded}
           >
             <Heading level={3} data-size="sm">
               {labels.checklist || 'Approval Checklist'}

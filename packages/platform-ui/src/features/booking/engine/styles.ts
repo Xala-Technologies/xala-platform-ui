@@ -105,8 +105,8 @@ export const bookingEngineStyles = `
   }
 
   .stepper-icon {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem; /* 36px */
+    height: 2.25rem; /* 36px */
     border-radius: var(--ds-border-radius-full);
     display: flex;
     align-items: center;
@@ -175,7 +175,7 @@ export const bookingEngineStyles = `
 
   /* Content */
   .booking-engine-content {
-    min-height: 500px;
+    min-height: 31.25rem; /* 500px */
   }
 
   /* Selection View */
@@ -216,8 +216,8 @@ export const bookingEngineStyles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 2.25rem; /* 36px */
+    height: 2.25rem; /* 36px */
     border: 1px solid var(--ds-color-neutral-border-default);
     border-radius: var(--ds-border-radius-md);
     background: var(--ds-color-neutral-background-default);
@@ -235,7 +235,7 @@ export const bookingEngineStyles = `
   .nav-date {
     font-size: var(--ds-font-size-sm);
     font-weight: var(--ds-font-weight-semibold);
-    min-width: 180px;
+    min-width: 11.25rem; /* 180px */
     text-align: center;
   }
 
@@ -250,7 +250,7 @@ export const bookingEngineStyles = `
     border: 1px solid var(--ds-color-neutral-border-subtle);
     border-radius: var(--ds-border-radius-lg);
     overflow: hidden;
-    min-width: 600px;
+    min-width: 37.5rem; /* 600px */
   }
 
   .grid-row {
@@ -292,7 +292,7 @@ export const bookingEngineStyles = `
   }
 
   .day-name {
-    font-size: 10px;
+    font-size: 0.625rem; /* 10px */
     font-weight: var(--ds-font-weight-semibold);
     color: var(--ds-color-neutral-text-subtle);
     letter-spacing: 0.05em;
@@ -305,7 +305,7 @@ export const bookingEngineStyles = `
   }
 
   .today-indicator {
-    font-size: 9px;
+    font-size: 0.5625rem; /* 9px */
     font-weight: var(--ds-font-weight-semibold);
     color: var(--ds-color-accent-text-default);
     text-transform: uppercase;
@@ -316,7 +316,7 @@ export const bookingEngineStyles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 38px;
+    min-height: 2.375rem; /* 38px */
     border-right: 1px solid var(--ds-color-neutral-border-subtle);
     position: relative;
     transition: all 0.15s ease;
@@ -334,7 +334,7 @@ export const bookingEngineStyles = `
   .slot-cell.available:hover {
     background: var(--ds-color-success-surface-hover);
     transform: scale(1.02);
-    z-index: 1;
+    z-index: var(--ds-z-index-sticky, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -445,8 +445,8 @@ export const bookingEngineStyles = `
   }
 
   .empty-illustration {
-    width: 72px;
-    height: 72px;
+    width: 4.5rem; /* 72px */
+    height: 4.5rem; /* 72px */
     border-radius: var(--ds-border-radius-full);
     background: var(--ds-color-neutral-background-default);
     display: flex;
@@ -459,7 +459,7 @@ export const bookingEngineStyles = `
   .selected-slots-list {
     flex: 1;
     overflow-y: auto;
-    max-height: 240px;
+    max-height: 15rem; /* 240px */
   }
 
   .selected-slot-item {
@@ -500,8 +500,8 @@ export const bookingEngineStyles = `
   }
 
   .slot-remove {
-    width: 28px;
-    height: 28px;
+    width: 1.75rem; /* 28px */
+    height: 1.75rem; /* 28px */
     border: none;
     border-radius: var(--ds-border-radius-full);
     background: transparent;
@@ -589,7 +589,7 @@ export const bookingEngineStyles = `
     align-items: center;
     justify-content: center;
     padding: var(--ds-spacing-12);
-    min-height: 400px;
+    min-height: 25rem; /* 400px */
   }
 
   .success-icon {
@@ -629,7 +629,7 @@ export const bookingEngineStyles = `
     }
 
     .summary-panel {
-      max-height: 400px;
+      max-height: 25rem; /* 400px */
     }
   }
 
@@ -711,7 +711,7 @@ export const bookingEngineStyles = `
     cursor: pointer;
     transition: all 0.15s ease;
     position: relative;
-    min-height: 48px;
+    min-height: 3rem; /* 48px */
     font-family: inherit;
   }
 
@@ -755,7 +755,7 @@ export const bookingEngineStyles = `
   }
 
   .month-day .day-price {
-    font-size: 9px;
+    font-size: 0.5625rem; /* 9px */
     color: var(--ds-color-success-text-default);
     margin-top: 2px;
   }
@@ -932,8 +932,8 @@ export const bookingEngineStyles = `
   }
 
   .ticket-btn {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
     border: 1px solid var(--ds-color-neutral-border-default);
     border-radius: var(--ds-border-radius-md);
     background: var(--ds-color-neutral-background-default);
@@ -957,7 +957,7 @@ export const bookingEngineStyles = `
   }
 
   .ticket-count {
-    min-width: 48px;
+    min-width: 3rem; /* 48px */
     text-align: center;
     font-size: var(--ds-font-size-xl);
     font-weight: var(--ds-font-weight-bold);
@@ -1107,13 +1107,13 @@ export const bookingEngineStyles = `
     flex-direction: column;
     align-items: center;
     gap: var(--ds-spacing-4);
-    max-width: 500px;
+    max-width: 31.25rem; /* 500px */
     text-align: center;
   }
 
   .instant-icon {
-    width: 96px;
-    height: 96px;
+    width: 6rem; /* 96px */
+    height: 6rem; /* 96px */
     border-radius: var(--ds-border-radius-full);
     background: linear-gradient(135deg, var(--ds-color-accent-surface-default) 0%, var(--ds-color-brand1-surface-default) 100%);
     display: flex;
@@ -1339,8 +1339,9 @@ export const bookingEngineStyles = `
   }
 
   .rental-object-image {
-    width: 80px;
-    height: 60px;
+    width: 5rem; /* 80px */
+    max-width: 100%;
+    height: 3.75rem; /* 60px */
     object-fit: cover;
     border-radius: var(--ds-border-radius-sm);
   }

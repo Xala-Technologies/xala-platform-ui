@@ -299,6 +299,7 @@ function GuideHelp({
                 alt={`Step ${currentStep + 1} screenshot`}
                 style={{
                   width: '100%',
+                  maxWidth: '100%',
                   borderRadius: 'var(--ds-border-radius-md)',
                   marginBottom: 'var(--ds-spacing-4)',
                 }}

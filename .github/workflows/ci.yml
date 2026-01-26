@@ -34,6 +34,10 @@ jobs:
         run: pnpm verify:boundaries
       - name: Verify design tokens
         run: pnpm verify:design-tokens
+      - name: Verify accessibility
+        run: pnpm verify:accessibility
+      - name: Verify responsive design
+        run: pnpm verify:responsive
 
   build:
     name: Build

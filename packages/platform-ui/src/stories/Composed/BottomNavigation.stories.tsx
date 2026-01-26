@@ -99,12 +99,12 @@ export const WithoutLabels: Story = {
   render: function Render() {
     const items = useSampleItems();
     return (
-      <div style={{ height: '100vh', paddingBottom: '80px' }}>
+      <Stack spacing="var(--ds-spacing-4)" style={{ height: '100vh', paddingBottom: '80px' }}>
         <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
           <Paragraph data-size="md">Bottom navigation without labels</Paragraph>
         </Stack>
         <BottomNavigation items={items} showLabels={false} />
-      </div>
+      </Stack>
     );
   },
 };
@@ -144,12 +144,12 @@ export const ManyItems: Story = {
       },
     ];
     return (
-      <div style={{ height: '100vh', paddingBottom: '80px' }}>
+      <Stack spacing="var(--ds-spacing-4)" style={{ height: '100vh', paddingBottom: '80px' }}>
         <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
           <Paragraph data-size="md">Bottom navigation with 5 items</Paragraph>
         </Stack>
         <BottomNavigation items={items} />
-      </div>
+      </Stack>
     );
   },
 };
@@ -161,9 +161,9 @@ export const NotFixed: Story = {
   render: function Render() {
     const items = useSampleItems();
     return (
-      <div style={{ padding: 'var(--ds-spacing-4)' }}>
+      <Stack style={{ padding: 'var(--ds-spacing-4)' }}>
         <BottomNavigation items={items} fixed={false} />
-      </div>
+      </Stack>
     );
   },
 };
@@ -175,12 +175,12 @@ export const BackgroundVariant: Story = {
   render: function Render() {
     const items = useSampleItems();
     return (
-      <div style={{ height: '100vh', paddingBottom: '80px' }}>
+      <Stack spacing="var(--ds-spacing-4)" style={{ height: '100vh', paddingBottom: '80px' }}>
         <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
           <Paragraph data-size="md">Bottom navigation with background variant</Paragraph>
         </Stack>
         <BottomNavigation items={items} variant="background" />
-      </div>
+      </Stack>
     );
   },
 };

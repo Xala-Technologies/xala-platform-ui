@@ -177,6 +177,14 @@ export function HeatmapChart({
                   transition: 'transform 0.2s ease',
                 }}
                 onClick={() => cellData && onCellClick?.(cellData)}
+                onKeyDown={(e) => {
+                  if (onCellClick && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault();
+                    cellData && onCellClick?.(cellData);
+                  }
+                }}
+                role={onCellClick ? 'button' : undefined}
+                tabIndex={onCellClick ? 0 : undefined}
                 onMouseEnter={(e) => {
                   if (onCellClick) {
                     e.currentTarget.style.transform = 'scale(1.05)';
@@ -329,6 +337,14 @@ export function CompactHeatmap({
                   cursor: onCellClick ? 'pointer' : 'default',
                 }}
                 onClick={() => cellData && onCellClick?.(cellData)}
+                onKeyDown={(e) => {
+                  if (onCellClick && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault();
+                    cellData && onCellClick?.(cellData);
+                  }
+                }}
+                role={onCellClick ? 'button' : undefined}
+                tabIndex={onCellClick ? 0 : undefined}
                 title={cellData?.tooltip}
               >
                 <div
