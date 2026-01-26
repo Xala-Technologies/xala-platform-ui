@@ -51,6 +51,9 @@ export const ArtifactPreview = forwardRef<HTMLDivElement, ArtifactPreviewProps>(
 
     const selectedArtifact = allArtifacts.find((a) => a.id === selectedId) || allArtifacts[0];
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     if (allArtifacts.length === 0) {
       return (
         <Card
@@ -58,7 +61,7 @@ export const ArtifactPreview = forwardRef<HTMLDivElement, ArtifactPreviewProps>(
           className={cn('ds-artifact-preview', className)}
           data-color="neutral"
           data-testid={testId}
-          {...props}
+          {...cardProps}
         >
           <Card.Block>
             <div
@@ -85,7 +88,7 @@ export const ArtifactPreview = forwardRef<HTMLDivElement, ArtifactPreviewProps>(
         className={cn('ds-artifact-preview', className)}
         data-color="neutral"
         data-testid={testId}
-        {...props}
+        {...cardProps}
       >
         {allArtifacts.length > 1 && (
           <Card.Block>

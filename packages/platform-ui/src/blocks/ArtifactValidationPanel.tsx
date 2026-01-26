@@ -73,13 +73,16 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
     const passedCount = allResults.filter((r) => r.status === 'passed').length;
     const failedCount = allResults.filter((r) => r.status === 'failed').length;
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     return (
       <Card
         ref={ref}
         className={cn('ds-artifact-validation-panel', className)}
         data-color="neutral"
         data-testid={testId}
-        {...props}
+        {...cardProps}
       >
         <Card.Block>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>

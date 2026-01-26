@@ -71,13 +71,16 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
       },
     };
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     return (
       <Card
         ref={ref}
         className={cn('ds-artifact-diff-viewer', className)}
         data-color="neutral"
         data-testid={testId}
-        {...props}
+        {...cardProps}
       >
         <Card.Block>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
