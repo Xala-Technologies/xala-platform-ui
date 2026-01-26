@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import React from 'react';
-import { useT } from '@xala-technologies/i18n';
+import React, { useState } from 'react';
+import { Button } from '@digdir/designsystemet-react';
 import { NotificationCenter } from '../../blocks/NotificationCenter';
 import type { NotificationItemData } from '../../blocks/NotificationItem';
 
@@ -9,8 +9,14 @@ const meta: Meta<typeof NotificationCenter> = {
   title: 'Blocks/NotificationCenter',
   component: NotificationCenter,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 700,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 ## NotificationCenter
@@ -93,111 +99,84 @@ const sampleNotifications: NotificationItemData[] = [
   },
 ];
 
+// Helper component with trigger button
+function CenterWithTrigger(args: any) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Notification Center</Button>
+      <NotificationCenter {...args} open={open} onClose={() => setOpen(false)} />
+    </>
+  );
+}
+
 // Basic notification center
 export const Default: Story = {
   args: {
-    open: true,
     notifications: sampleNotifications,
     filter: 'all',
   },
-  render: (args) => (
-    <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-      <NotificationCenter {...args} />
-    </div>
-  ),
+  render: (args) => <CenterWithTrigger {...args} />,
 };
 
 // With unread filter
 export const UnreadFilter: Story = {
   args: {
-    open: true,
     notifications: sampleNotifications,
     filter: 'unread',
   },
-  render: (args) => (
-    <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-      <NotificationCenter {...args} />
-    </div>
-  ),
+  render: (args) => <CenterWithTrigger {...args} />,
 };
 
 // With read filter
 export const ReadFilter: Story = {
   args: {
-    open: true,
     notifications: sampleNotifications,
     filter: 'read',
   },
-  render: (args) => (
-    <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-      <NotificationCenter {...args} />
-    </div>
-  ),
+  render: (args) => <CenterWithTrigger {...args} />,
 };
 
 // Loading state
 export const Loading: Story = {
   args: {
-    open: true,
     notifications: [],
     loading: true,
     filter: 'all',
   },
-  render: (args) => (
-    <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-      <NotificationCenter {...args} />
-    </div>
-  ),
+  render: (args) => <CenterWithTrigger {...args} />,
 };
 
 // Empty state
 export const Empty: Story = {
   args: {
-    open: true,
     notifications: [],
     loading: false,
     filter: 'all',
   },
-  render: (args) => (
-    <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-      <NotificationCenter {...args} />
-    </div>
-  ),
+  render: (args) => <CenterWithTrigger {...args} />,
 };
 
 // Many notifications
-export const ManyNotifications: Story = {
-  render: function Render() {
-    const t = useT();
-    const notifications = Array.from({ length: 20 }, (_, i) => ({
-      id: `notif-${i}`,
-      type: [
-        'resourceRequest_confirmed',
-        'resourceRequest_reminder_24h',
-        'resourceRequest_reminder_1h',
-        'resourceRequest_cancelled',
-      ][i % 4] as NotificationItemData['type'],
-      title: `${t('platform.common.notifications')} ${i + 1}`,
-      message: `${t('storybook.demo.sampleText')} ${i + 1}`,
-      priority: ['low', 'normal', 'high', 'urgent'][i % 4] as NotificationItemData['priority'],
-      createdAt: new Date(Date.now() - 1000 * 60 * i).toISOString(),
-      readAt: i % 3 === 0 ? new Date(Date.now() - 1000 * 60 * (i - 1)).toISOString() : null,
-    }));
+const manyNotifications = Array.from({ length: 20 }, (_, i) => ({
+  id: `notif-${i}`,
+  type: [
+    'resourceRequest_confirmed',
+    'resourceRequest_reminder_24h',
+    'resourceRequest_reminder_1h',
+    'resourceRequest_cancelled',
+  ][i % 4] as NotificationItemData['type'],
+  title: `Notification ${i + 1}`,
+  message: `This is notification message ${i + 1}`,
+  priority: ['low', 'normal', 'high', 'urgent'][i % 4] as NotificationItemData['priority'],
+  createdAt: new Date(Date.now() - 1000 * 60 * i).toISOString(),
+  readAt: i % 3 === 0 ? new Date(Date.now() - 1000 * 60 * (i - 1)).toISOString() : null,
+}));
 
-    return (
-      <div style={{ width: '500px', height: '600px', position: 'relative' }}>
-        <NotificationCenter
-          open={true}
-          notifications={notifications}
-          filter="all"
-          onClose={fn()}
-          onFilterChange={fn()}
-          onNotificationClick={fn()}
-          onMarkAsRead={fn()}
-          onDelete={fn()}
-          onMarkAllAsRead={fn()}
-        />
-      </div>
-    );
+export const ManyNotifications: Story = {
+  args: {
+    notifications: manyNotifications,
+    filter: 'all',
   },
+  render: (args) => <CenterWithTrigger {...args} />,
 };

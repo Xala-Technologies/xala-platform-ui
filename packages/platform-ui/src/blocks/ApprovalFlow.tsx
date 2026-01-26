@@ -89,8 +89,11 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
 
     const allChecked = checklistItems.every((item) => item.checked || !item.required);
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     return (
-      <Card ref={ref} className={cn('ds-approval-flow', className)} data-color="neutral" {...props}>
+      <Card ref={ref} className={cn('ds-approval-flow', className)} data-color="neutral" {...cardProps}>
         <Card.Block>
           <div
             style={{

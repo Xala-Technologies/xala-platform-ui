@@ -1,15 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
+import { Button } from '@digdir/designsystemet-react';
 import { RequireAuthModal } from '../../blocks/RequireAuthModal';
 
 const meta: Meta<typeof RequireAuthModal> = {
   title: 'Blocks/RequireAuthModal',
   component: RequireAuthModal,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 500,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 ## RequireAuthModal
@@ -47,140 +53,71 @@ Modal dialog displayed when an unauthenticated user attempts an action that requ
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Helper component with trigger button
+function ModalWithTrigger(args: any) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Auth Modal</Button>
+      <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
+  );
+}
+
 // Basic modal
 export const Default: Story = {
   args: {
-    isOpen: true,
     actionContext: 'general',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 // Favorite action context
 export const FavoriteContext: Story = {
   args: {
-    isOpen: true,
     actionContext: 'favorite',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 // Book action context
 export const BookContext: Story = {
   args: {
-    isOpen: true,
     actionContext: 'book',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 // Message action context
 export const MessageContext: Story = {
   args: {
-    isOpen: true,
     actionContext: 'message',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 // Review action context
 export const ReviewContext: Story = {
   args: {
-    isOpen: true,
     actionContext: 'review',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 // Custom title and description
 export const CustomContent: Story = {
-  render: function Render() {
-    const t = useT();
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          onLogin={fn()}
-          onRegister={fn()}
-          title={t('platform.auth.login')}
-          description={t('storybook.demo.cardDescription')}
-        />
-      </div>
-    );
+  args: {
+    title: 'Login Required',
+    description: 'Please login to continue with this action.',
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 // Without register button
 export const WithoutRegister: Story = {
   args: {
-    isOpen: true,
     actionContext: 'general',
     onRegister: undefined,
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
-};
-
-// Closed state
-export const Closed: Story = {
-  render: function Render() {
-    const t = useT();
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <RequireAuthModal
-          isOpen={false}
-          actionContext="general"
-          onClose={fn()}
-          onLogin={fn()}
-          onRegister={fn()}
-        />
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <p>{t('storybook.demo.sampleText')}</p>
-        </div>
-      </div>
-    );
-  },
+  render: (args) => <ModalWithTrigger {...args} />,
 };

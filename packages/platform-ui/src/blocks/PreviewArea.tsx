@@ -65,8 +65,11 @@ export const PreviewArea = forwardRef<HTMLDivElement, PreviewAreaProps>(
       }
     };
 
+    // Filter out data-size to avoid type conflict with Card
+    const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
+
     return (
-      <Card className={cn('ds-preview-area', className)} style={style} {...props}>
+      <Card className={cn('ds-preview-area', className)} style={style} {...cardProps}>
         <div
           ref={ref}
           style={{

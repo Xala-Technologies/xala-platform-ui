@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../../composed/Modal';
 import { Button, Paragraph, Heading } from '@digdir/designsystemet-react';
@@ -9,8 +8,14 @@ const meta: Meta<typeof Modal> = {
   title: 'Composed/Modal',
   component: Modal,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 600,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 ## Modal
@@ -68,15 +73,14 @@ type Story = StoryObj<typeof meta>;
 
 // Modal wrapper component for stories
 const ModalWrapper = (args: any) => {
-  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-        {t('storybook.demo.openModal')}
+        Open Modal
       </Button>
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        {args.children || <Paragraph data-size="sm">{t('storybook.demo.modalContent')}</Paragraph>}
+        {args.children || <Paragraph data-size="sm">Modal content goes here.</Paragraph>}
       </Modal>
     </>
   );

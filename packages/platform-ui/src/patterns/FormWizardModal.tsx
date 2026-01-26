@@ -38,6 +38,7 @@ import * as React from 'react';
 import { Dialog, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import type { PatternWizardStep } from './types';
 import { cn } from './utils';
+import { CloseIcon, CheckIcon } from '../utils/icons';
 
 // ============================================================================
 // Types
@@ -109,41 +110,6 @@ export interface FormWizardModalProps {
   /** Handler for closing/canceling the modal */
   onClose?: () => void;
 }
-
-// ============================================================================
-// Icons (inline SVG for portability)
-// ============================================================================
-
-const CloseIcon = ({ size = 20 }: { size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
-const CheckIcon = ({ size = 14 }: { size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="3"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);
 
 // ============================================================================
 // Sub-components

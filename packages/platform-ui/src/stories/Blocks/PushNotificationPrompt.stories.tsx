@@ -1,15 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
+import { Button } from '@digdir/designsystemet-react';
 import { PushNotificationPrompt } from '../../blocks/PushNotificationPrompt';
 
 const meta: Meta<typeof PushNotificationPrompt> = {
   title: 'Blocks/PushNotificationPrompt',
   component: PushNotificationPrompt,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 500,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 ## PushNotificationPrompt
@@ -46,91 +52,46 @@ Modal dialog displayed to request browser push notification permission from the 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Helper component with trigger button
+function PromptWithTrigger(args: any) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Notification Prompt</Button>
+      <PushNotificationPrompt {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
+  );
+}
+
 // Basic prompt
 export const Default: Story = {
   args: {
-    isOpen: true,
     context: 'general',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <PushNotificationPrompt {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <PromptWithTrigger {...args} />,
 };
 
 // Booking context
 export const BookingContext: Story = {
   args: {
-    isOpen: true,
     context: 'resourceRequest',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <PushNotificationPrompt {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <PromptWithTrigger {...args} />,
 };
 
 // Reminder context
 export const ReminderContext: Story = {
   args: {
-    isOpen: true,
     context: 'reminder',
   },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <PushNotificationPrompt {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      </div>
-    );
-  },
+  render: (args) => <PromptWithTrigger {...args} />,
 };
 
 // Custom title and description
 export const CustomContent: Story = {
-  render: function Render() {
-    const t = useT();
-    const [isOpen, setIsOpen] = useState(true);
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <PushNotificationPrompt
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          onEnable={fn()}
-          onDismiss={fn()}
-          title={t('platform.common.notifications')}
-          description={t('storybook.demo.cardDescription')}
-        />
-      </div>
-    );
+  args: {
+    title: 'Enable Notifications',
+    description: 'Stay updated with the latest notifications about your activity.',
   },
-};
-
-// Closed state
-export const Closed: Story = {
-  render: function Render() {
-    const t = useT();
-    return (
-      <div style={{ width: '500px', height: '400px', position: 'relative' }}>
-        <PushNotificationPrompt
-          isOpen={false}
-          context="general"
-          onClose={fn()}
-          onEnable={fn()}
-          onDismiss={fn()}
-        />
-        <div style={{ padding: 'var(--ds-spacing-4)' }}>
-          <p>{t('storybook.demo.sampleText')}</p>
-        </div>
-      </div>
-    );
-  },
+  render: (args) => <PromptWithTrigger {...args} />,
 };

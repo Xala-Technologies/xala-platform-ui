@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
-import { Paragraph, Checkbox } from '@digdir/designsystemet-react';
+import { Paragraph, Checkbox, Button } from '@digdir/designsystemet-react';
 import { MultiStepFormModal } from '../../patterns/MultiStepFormModal';
 import { ReviewStep } from '../../patterns/ReviewStep';
 import { PricingSummary } from '../../patterns/PricingSummary';
@@ -13,8 +12,14 @@ const meta: Meta<typeof MultiStepFormModal> = {
   title: 'Patterns/MultiStepFormModal',
   component: MultiStepFormModal,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 700,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 ## MultiStepFormModal
@@ -206,10 +211,51 @@ const sampleSteps: FormStep[] = [
   },
 ];
 
+// =============================================================================
+// Helper Component - Prevents multiple modals opening in docs
+// =============================================================================
+
+function ModalWithTrigger({
+  buttonLabel = 'Open Modal',
+  ...args
+}: React.ComponentProps<typeof MultiStepFormModal> & { buttonLabel?: string }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [currentStep, setCurrentStep] = React.useState(args.currentStep ?? 0);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setCurrentStep(args.currentStep ?? 0);
+    }
+  }, [isOpen, args.currentStep]);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>{buttonLabel}</Button>
+      <MultiStepFormModal
+        {...args}
+        open={isOpen}
+        currentStep={currentStep}
+        onStepChange={(step) => {
+          setCurrentStep(step);
+          args.onStepChange?.(step);
+        }}
+        onSubmit={() => {
+          setIsOpen(false);
+          args.onSubmit?.();
+        }}
+        onClose={() => {
+          setIsOpen(false);
+          args.onClose?.();
+        }}
+      />
+    </>
+  );
+}
+
 // Default story
 export const Default: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Booking Modal" />,
   args: {
-    open: true,
     title: 'Book a Resource',
     subtitle: 'Complete the form to make a reservation',
     steps: sampleSteps,
@@ -229,6 +275,7 @@ export const Default: Story = {
 
 // Second step
 export const SecondStep: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Step 2" />,
   args: {
     ...Default.args,
     currentStep: 1,
@@ -237,6 +284,7 @@ export const SecondStep: Story = {
 
 // Final step
 export const FinalStep: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Final Step" />,
   args: {
     ...Default.args,
     currentStep: 2,
@@ -245,8 +293,8 @@ export const FinalStep: Story = {
 
 // Single step
 export const SingleStep: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Quick Form" />,
   args: {
-    open: true,
     title: 'Quick Form',
     steps: [
       {
@@ -284,8 +332,8 @@ export const SingleStep: Story = {
 
 // With sidebar
 export const WithSidebar: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open With Sidebar" />,
   args: {
-    open: true,
     title: 'Book a Court',
     subtitle: 'Reserve your playing time',
     steps: sampleSteps,
@@ -320,8 +368,8 @@ export const WithSidebar: Story = {
 
 // Loading state
 export const LoadingState: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Loading State" />,
   args: {
-    open: true,
     title: 'Submit Form',
     steps: [
       {
@@ -349,8 +397,8 @@ export const LoadingState: Story = {
 
 // Cannot proceed (validation)
 export const CannotProceed: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Validation Example" />,
   args: {
-    open: true,
     title: 'Required Fields',
     steps: [
       {
@@ -394,8 +442,8 @@ export const CannotProceed: Story = {
 
 // With optional step
 export const WithOptionalStep: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Optional Step" />,
   args: {
-    open: true,
     title: 'Registration',
     steps: [
       {
@@ -438,6 +486,7 @@ export const WithOptionalStep: Story = {
 
 // Medium size
 export const SizeMedium: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Medium Size" />,
   args: {
     ...SingleStep.args,
     title: 'Medium Size Modal',
@@ -447,6 +496,7 @@ export const SizeMedium: Story = {
 
 // Large size
 export const SizeLarge: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Large Size" />,
   args: {
     ...Default.args,
     title: 'Large Size Modal',
@@ -456,6 +506,7 @@ export const SizeLarge: Story = {
 
 // Extra large size
 export const SizeExtraLarge: Story = {
+  render: (args) => <ModalWithTrigger {...args} buttonLabel="Open Extra Large Size" />,
   args: {
     ...Default.args,
     title: 'Extra Large Size Modal',

@@ -59,6 +59,16 @@ import * as React from 'react';
 import type { ReactNode } from 'react';
 import { Dialog, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from './utils';
+import {
+  shadows,
+  animation,
+  spacing as spacingTokens,
+  transitions,
+  typography,
+  opacity as opacityTokens,
+  borders,
+  components,
+} from '../tokens/extended';
 
 // ============================================================================
 // Types
@@ -265,56 +275,102 @@ function StepIndicatorDot({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 'var(--ds-spacing-1)',
+        gap: 'var(--ds-spacing-2)',
+        position: 'relative',
       }}
     >
-      {/* Dot/Circle */}
+      {/* Dot/Circle - Premium Enhanced */}
       <div
         style={{
-          width: 'var(--ds-spacing-8)',
-          height: 'var(--ds-spacing-8)',
+          width: 'var(--ds-spacing-10)',
+          height: 'var(--ds-spacing-10)',
           borderRadius: 'var(--ds-border-radius-full)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: 'var(--ds-font-size-sm)',
-          fontWeight: 600,
-          transition: 'all 0.2s ease',
+          fontSize: 'var(--ds-font-size-base)',
+          fontWeight: 'var(--ds-font-weight-bold)',
+          transition: transitions.card,
           backgroundColor: isCompleted
             ? 'var(--ds-color-success-base-default)'
             : isActive
               ? 'var(--ds-color-accent-base-default)'
-              : 'var(--ds-color-neutral-surface-hover)',
+              : 'var(--ds-color-neutral-surface-default)',
           color:
             isCompleted || isActive
               ? 'var(--ds-color-neutral-background-default)'
               : 'var(--ds-color-neutral-text-subtle)',
+          border: isActive
+            ? '3px solid var(--ds-color-accent-base-default)'
+            : isCompleted
+              ? '2px solid var(--ds-color-success-base-default)'
+              : '2px solid var(--ds-color-neutral-border-subtle)',
+          boxShadow: isActive
+            ? shadows.elevation3
+            : isCompleted
+              ? shadows.elevation1
+              : 'none',
+          position: 'relative',
+          zIndex: 2,
         }}
         aria-current={isActive ? 'step' : undefined}
+        onMouseEnter={(e) => {
+          if (!isActive && !isCompleted) {
+            e.currentTarget.style.transform = 'scale(1.1)';
+            e.currentTarget.style.boxShadow = shadows.elevation2;
+            e.currentTarget.style.borderColor = 'var(--ds-color-neutral-border-default)';
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isActive && !isCompleted) {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = 'none';
+            e.currentTarget.style.borderColor = 'var(--ds-color-neutral-border-subtle)';
+          }
+        }}
       >
         {isCompleted ? <CheckIcon /> : index + 1}
+        {/* Active step pulse animation */}
+        {isActive && (
+          <div
+            style={{
+              position: 'absolute',
+              inset: '-4px',
+              borderRadius: 'var(--ds-border-radius-full)',
+              border: `${borders.width.medium} solid var(--ds-color-accent-base-default)`,
+              opacity: opacityTokens.light,
+              animation: 'pulse 2s ease-in-out infinite',
+            }}
+          />
+        )}
       </div>
 
-      {/* Label */}
+      {/* Label - Premium Enhanced */}
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          gap: 'var(--ds-spacing-1)',
+          marginTop: 'var(--ds-spacing-1)',
         }}
       >
         <span
           style={{
-            fontSize: 'var(--ds-font-size-xs)',
-            fontWeight: isActive ? 600 : 400,
+            fontSize: 'var(--ds-font-size-sm)',
+            fontWeight: isActive ? 'var(--ds-font-weight-bold)' : 'var(--ds-font-weight-medium)',
             color: isActive
               ? 'var(--ds-color-neutral-text-default)'
-              : 'var(--ds-color-neutral-text-subtle)',
+              : isCompleted
+                ? 'var(--ds-color-neutral-text-default)'
+                : 'var(--ds-color-neutral-text-subtle)',
             whiteSpace: 'nowrap',
-            maxWidth: '100px',
+            maxWidth: 'var(--ds-sizing-30)',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             textAlign: 'center',
+            transition: transitions.colors,
+            letterSpacing: isActive ? typography.letterSpacing.wide : typography.letterSpacing.normal,
           }}
         >
           {step.title}
@@ -324,6 +380,7 @@ function StepIndicatorDot({
             style={{
               fontSize: 'var(--ds-font-size-xs)',
               color: 'var(--ds-color-neutral-text-subtle)',
+              fontStyle: 'italic',
             }}
           >
             {optionalLabel}
@@ -334,22 +391,41 @@ function StepIndicatorDot({
   );
 }
 
-/** Step connector line */
+/** Step connector line - Premium Enhanced */
 function StepConnector({ isCompleted }: { isCompleted: boolean }) {
   return (
     <div
       style={{
         flex: 1,
-        height: 'var(--ds-border-width-medium)',
-        marginTop: 'calc(var(--ds-spacing-4) - 1px)',
-        marginLeft: 'var(--ds-spacing-1)',
-        marginRight: 'var(--ds-spacing-1)',
+        height: borders.width.thick,
+        marginTop: 'calc(var(--ds-spacing-5) - 2px)',
+        marginLeft: 'var(--ds-spacing-2)',
+        marginRight: 'var(--ds-spacing-2)',
         backgroundColor: isCompleted
           ? 'var(--ds-color-success-base-default)'
           : 'var(--ds-color-neutral-border-subtle)',
-        transition: 'background-color 0.2s ease',
+        borderRadius: 'var(--ds-border-radius-full)',
+        transition: transitions.colors,
+        position: 'relative',
+        overflow: 'hidden',
       }}
-    />
+    >
+      {/* Animated progress line for completed steps */}
+      {isCompleted && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to right, var(--ds-color-success-base-default), var(--ds-color-success-base-hover))',
+            borderRadius: 'var(--ds-border-radius-full)',
+            animation: 'shimmer 2s ease-in-out infinite',
+          }}
+        />
+      )}
+    </div>
   );
 }
 
@@ -377,19 +453,37 @@ function StepIndicatorBar({
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 'var(--ds-spacing-3)',
-        padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
-        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        gap: 'var(--ds-spacing-4)',
+        padding: 'var(--ds-spacing-5) var(--ds-spacing-7)',
+        background: 'linear-gradient(to bottom, var(--ds-color-neutral-surface-subtle) 0%, var(--ds-color-neutral-surface-default) 100%)',
         borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+        borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+        position: 'relative',
       }}
     >
-      {/* Step text indicator */}
+      {/* Subtle top accent line */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: borders.width.thin,
+          background: 'linear-gradient(to right, transparent, var(--ds-color-accent-base-default), transparent)',
+          opacity: opacityTokens.subtle,
+        }}
+      />
+      {/* Step text indicator - Enhanced */}
       <Paragraph
         data-size="sm"
         style={{
           margin: 0,
-          color: 'var(--ds-color-neutral-text-subtle)',
+          color: 'var(--ds-color-neutral-text-default)',
           textAlign: 'center',
+          fontWeight: 'var(--ds-font-weight-semibold)',
+          fontSize: 'var(--ds-font-size-sm)',
+          letterSpacing: typography.letterSpacing.wide,
+          textTransform: 'uppercase',
         }}
       >
         {stepText}
@@ -504,27 +598,71 @@ export function MultiStepFormModal({
       style={{
         maxWidth: modalWidth,
         width: '95vw',
-        maxHeight: '90vh',
-        borderRadius: 'var(--ds-border-radius-xl)',
+        height: '100vh',
+        maxHeight: '100vh',
+        borderRadius: 'var(--ds-border-radius-2xl)',
         padding: 0,
-        border: 'none',
-        boxShadow: 'var(--ds-shadow-xl)',
+        margin: 0,
+        border: '1px solid var(--ds-color-neutral-border-subtle)',
+        boxShadow: shadows.modalPremium,
         overflow: 'hidden',
+        backgroundColor: 'var(--ds-color-neutral-background-default)',
+        transition: transitions.modal,
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      {/* Modal Header */}
+      {/* Modal Header - Compact & Enriched */}
       <div
         style={{
-          padding: 'var(--ds-spacing-5) var(--ds-spacing-6)',
-          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+          padding: spacingTokens.modal.header.compact.padding,
+          borderBottom: 'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           backgroundColor: 'var(--ds-color-neutral-background-default)',
+          gap: spacingTokens.modal.header.compact.gap,
+          position: 'relative',
+          flexShrink: 0,
+          width: '100%',
         }}
       >
-        <div>
-          <Heading level={2} data-size="md" style={{ margin: 0 }}>
+        {/* Subtle accent line */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 'var(--ds-border-width-medium)',
+            background: `linear-gradient(to right, transparent, var(--ds-color-accent-base-default), transparent)`,
+            opacity: opacityTokens.subtle,
+          }}
+        />
+        <div
+          style={{
+            flex: 1,
+            minWidth: 0,
+            position: 'relative',
+            zIndex: 1,
+            paddingRight: 'var(--ds-spacing-3)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-spacing-1)',
+          }}
+        >
+          <Heading
+            level={2}
+            data-size="md"
+            style={{
+              margin: 0,
+              fontSize: 'var(--ds-font-size-lg)',
+              fontWeight: typography.fontWeight.semibold,
+              lineHeight: typography.lineHeight.tight,
+              color: 'var(--ds-color-neutral-text-default)',
+              letterSpacing: typography.letterSpacing.tight,
+            }}
+          >
             {title}
           </Heading>
           {subtitle && (
@@ -532,8 +670,9 @@ export function MultiStepFormModal({
               data-size="sm"
               style={{
                 margin: 0,
-                marginTop: 'var(--ds-spacing-1)',
                 color: 'var(--ds-color-neutral-text-subtle)',
+                lineHeight: typography.lineHeight.normal,
+                fontSize: 'var(--ds-font-size-sm)',
               }}
             >
               {subtitle}
@@ -543,59 +682,123 @@ export function MultiStepFormModal({
         <Button
           type="button"
           onClick={onClose}
-          aria-label="Close"
+          aria-label="Close modal"
           data-color="neutral"
+          variant="tertiary"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             width: 'var(--ds-spacing-9)',
             height: 'var(--ds-spacing-9)',
-            border: 'none',
-            borderRadius: 'var(--ds-border-radius-full)',
-            backgroundColor: 'transparent',
+            minWidth: 'var(--ds-spacing-9)',
+            maxWidth: 'var(--ds-spacing-9)',
+            padding: 0,
+            borderRadius: 'var(--ds-border-radius-md)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
             color: 'var(--ds-color-neutral-text-subtle)',
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
+            transition: transitions.button,
+            flexShrink: 0,
+            border: 'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
+            boxShadow: shadows.elevation1,
+            position: 'relative',
+            zIndex: 1,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
+            e.currentTarget.style.color = 'var(--ds-color-neutral-text-default)';
+            e.currentTarget.style.boxShadow = shadows.elevation2;
+            e.currentTarget.style.transform = 'scale(1.05)';
+            e.currentTarget.style.borderColor = 'var(--ds-color-neutral-border-default)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-default)';
+            e.currentTarget.style.color = 'var(--ds-color-neutral-text-subtle)';
+            e.currentTarget.style.boxShadow = shadows.elevation1;
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.borderColor = 'var(--ds-color-neutral-border-subtle)';
           }}
         >
-          <CloseIcon size={20} />
+          <CloseIcon size={18} />
         </Button>
       </div>
 
-      {/* Step Indicator */}
+      {/* Step Indicator - Premium Enhanced */}
       {steps.length > 1 && (
-        <StepIndicatorBar
-          steps={steps}
-          currentStep={currentStep}
-          stepIndicatorLabel={mergedLabels.stepIndicator}
-          optionalLabel={mergedLabels.optional}
-        />
+        <div
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <StepIndicatorBar
+            steps={steps}
+            currentStep={currentStep}
+            stepIndicatorLabel={mergedLabels.stepIndicator}
+            optionalLabel={mergedLabels.optional}
+          />
+        </div>
       )}
 
-      {/* Main Content Area */}
+      {/* Main Content Area - Scrollable */}
       <div
         style={{
           display: 'flex',
           minHeight: 0,
           flex: 1,
           overflow: 'hidden',
+          width: '100%',
         }}
       >
-        {/* Step Content */}
+        {/* Step Content - Compact & Scrollable */}
         <div
           style={{
             flex: 1,
-            padding: 'var(--ds-spacing-6)',
+            padding: spacingTokens.modal.content.compact.padding,
             overflowY: 'auto',
-            maxHeight: displaySidebar ? 'calc(90vh - 280px)' : 'calc(90vh - 220px)',
+            overflowX: 'hidden',
+            height: '100%',
+            backgroundColor: 'var(--ds-color-neutral-background-default)',
+            position: 'relative',
+            minHeight: 0,
           }}
         >
-          {/* Step title and description */}
+          {/* Step title and description - Compact */}
           {(currentStepData?.title || currentStepData?.description) && (
-            <div style={{ marginBottom: 'var(--ds-spacing-5)' }}>
+            <div
+              style={{
+                marginBottom: spacingTokens.modal.section.compact.gap,
+                paddingBottom: 'var(--ds-spacing-4)',
+                borderBottom: 'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
+                position: 'relative',
+              }}
+            >
+              {/* Accent line */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: `calc(-1 * var(--ds-border-width-medium))`,
+                  left: 0,
+                  width: 'var(--ds-spacing-12)',
+                  height: 'var(--ds-border-width-medium)',
+                  backgroundColor: 'var(--ds-color-accent-base-default)',
+                  borderRadius: 'var(--ds-border-radius-full)',
+                }}
+              />
               {currentStepData.title && steps.length === 1 && (
-                <Heading level={3} data-size="sm" style={{ margin: 0 }}>
+                <Heading
+                  level={3}
+                  data-size="sm"
+                  style={{
+                    margin: 0,
+                    fontSize: 'var(--ds-font-size-lg)',
+                    fontWeight: typography.fontWeight.semibold,
+                    color: 'var(--ds-color-neutral-text-default)',
+                    letterSpacing: typography.letterSpacing.tight,
+                    lineHeight: typography.lineHeight.tight,
+                  }}
+                >
                   {currentStepData.title}
                 </Heading>
               )}
@@ -606,6 +809,8 @@ export function MultiStepFormModal({
                     margin: 0,
                     marginTop: currentStepData.title ? 'var(--ds-spacing-2)' : 0,
                     color: 'var(--ds-color-neutral-text-subtle)',
+                    lineHeight: typography.lineHeight.normal,
+                    fontSize: 'var(--ds-font-size-sm)',
                   }}
                 >
                   {currentStepData.description}
@@ -614,42 +819,110 @@ export function MultiStepFormModal({
             </div>
           )}
 
-          {/* Step content */}
-          {currentStepData?.content}
+          {/* Step content with enhanced spacing */}
+          <div
+            style={{
+              minHeight: components.card.minHeight.md,
+              paddingTop: currentStepData?.title || currentStepData?.description ? 0 : 'var(--ds-spacing-2)',
+            }}
+          >
+            {currentStepData?.content}
+          </div>
         </div>
 
-        {/* Sidebar */}
+        {/* Sidebar - Compact & Scrollable */}
         {displaySidebar && (
           <div
             style={{
               width: '320px',
               flexShrink: 0,
-              padding: 'var(--ds-spacing-6)',
-              backgroundColor: 'var(--ds-color-neutral-surface-default)',
-              borderLeft: '1px solid var(--ds-color-neutral-border-subtle)',
+              padding: spacingTokens.modal.content.compact.padding,
+              backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+              borderLeft: 'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
               overflowY: 'auto',
-              maxHeight: 'calc(90vh - 280px)',
+              overflowX: 'hidden',
+              height: '100%',
+              position: 'relative',
+              minHeight: 0,
             }}
           >
+            {/* Subtle left border accent */}
+            <div
+              style={{
+                position: 'absolute',
+                left: `calc(-1 * var(--ds-border-width-medium))`,
+                top: 0,
+                bottom: 0,
+                width: 'var(--ds-border-width-medium)',
+                background: `linear-gradient(to bottom, transparent, var(--ds-color-accent-base-default), transparent)`,
+                opacity: opacityTokens.light,
+              }}
+            />
             {sidebar}
           </div>
         )}
       </div>
 
-      {/* Modal Footer */}
+      {/* Modal Footer - Compact & Enriched */}
       <div
         style={{
-          padding: 'var(--ds-spacing-4) var(--ds-spacing-6)',
-          borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+          padding: spacingTokens.modal.footer.compact.padding,
+          borderTop: 'var(--ds-border-width-medium) solid var(--ds-color-neutral-border-subtle)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: 'var(--ds-color-neutral-background-default)',
+          backgroundColor: 'var(--ds-color-neutral-surface-subtle)',
+          gap: spacingTokens.modal.footer.compact.gap,
+          flexWrap: 'wrap',
+          position: 'relative',
+          flexShrink: 0,
+          width: '100%',
         }}
       >
-        {/* Left side: Cancel and Back */}
-        <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
-          <Button type="button" variant="tertiary" onClick={onClose} disabled={isSubmitting}>
+        {/* Subtle top border accent */}
+        <div
+          style={{
+            position: 'absolute',
+            top: `calc(-1 * var(--ds-border-width-medium))`,
+            left: 0,
+            right: 0,
+            height: 'var(--ds-border-width-medium)',
+            background: `linear-gradient(to right, transparent, var(--ds-color-accent-base-default), transparent)`,
+            opacity: opacityTokens.light,
+          }}
+        />
+        {/* Left side: Cancel and Back - Enhanced */}
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-spacing-3)',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          <Button
+            type="button"
+            variant="tertiary"
+            onClick={onClose}
+            disabled={isSubmitting}
+            style={{
+              minWidth: 'auto',
+              transition: transitions.button,
+              padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+            }}
+            onMouseEnter={(e) => {
+              if (!isSubmitting) {
+                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.boxShadow = shadows.elevation1;
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
             {mergedLabels.cancel}
           </Button>
           {!isFirstStep && (
@@ -661,7 +934,20 @@ export function MultiStepFormModal({
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 'var(--ds-spacing-1)',
+                gap: 'var(--ds-spacing-2)',
+                minWidth: 'auto',
+                transition: transitions.button,
+                padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+              }}
+              onMouseEnter={(e) => {
+                if (!isSubmitting) {
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = shadows.elevation2;
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <ChevronLeftIcon size={16} />
@@ -670,7 +956,7 @@ export function MultiStepFormModal({
           )}
         </div>
 
-        {/* Right side: Next or Submit */}
+        {/* Right side: Next or Submit - Compact & Enriched */}
         <Button
           type="button"
           variant="primary"
@@ -682,6 +968,24 @@ export function MultiStepFormModal({
             display: 'inline-flex',
             alignItems: 'center',
             gap: 'var(--ds-spacing-2)',
+            minWidth: '120px',
+            justifyContent: 'center',
+            padding: 'var(--ds-spacing-3) var(--ds-spacing-5)',
+            fontWeight: typography.fontWeight.semibold,
+            transition: transitions.button,
+            boxShadow: shadows.elevation2,
+            position: 'relative',
+            zIndex: 1,
+          }}
+          onMouseEnter={(e) => {
+            if (!isSubmitting && canProceed) {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = shadows.elevation3;
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = shadows.elevation2;
           }}
         >
           {isSubmitting ? (
@@ -694,42 +998,66 @@ export function MultiStepFormModal({
                   borderTopColor: 'transparent',
                   borderRadius: '50%',
                   animation: 'spin 0.8s linear infinite',
+                  flexShrink: 0,
                 }}
               />
-              {isLastStep ? mergedLabels.submit : mergedLabels.next}
+              <span>{isLastStep ? mergedLabels.submit : mergedLabels.next}</span>
             </>
           ) : (
             <>
-              {isLastStep ? mergedLabels.submit : mergedLabels.next}
+              <span>{isLastStep ? mergedLabels.submit : mergedLabels.next}</span>
               {!isLastStep && <ChevronRightIcon size={16} />}
             </>
           )}
         </Button>
       </div>
 
-      {/* Modal Styles */}
+      {/* Modal Styles - Premium Enhanced */}
       <style>{`
         .multi-step-form-modal::backdrop {
-          background-color: var(--ds-color-neutral-background-overlay);
-          backdrop-filter: blur(4px);
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+          );
+          backdrop-filter: blur(8px) saturate(180%);
+          animation: backdrop-fade-in ${animation.duration.normal} ${animation.easing.smoothOut};
         }
-
-        .multi-step-form-modal button:hover:not(:disabled) {
-          transform: translateY(-1px);
+        
+        .multi-step-form-modal button:focus-visible {
+          outline: 3px solid var(--ds-color-accent-base-default);
+          outline-offset: 3px;
+          border-radius: var(--ds-border-radius-md);
         }
 
         .multi-step-form-modal[open] {
-          animation: modal-fade-in 0.2s ease-out;
+          animation: modal-enter-premium ${animation.duration.slow} ${animation.easing.smooth};
         }
 
-        @keyframes modal-fade-in {
+        @keyframes modal-enter-premium {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.96);
+            filter: blur(4px);
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(0.98);
+          }
+          100% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            filter: blur(0);
+          }
+        }
+        
+        @keyframes backdrop-fade-in {
           from {
             opacity: 0;
-            transform: scale(0.95) translateY(-10px);
+            backdrop-filter: blur(0) saturate(100%);
           }
           to {
             opacity: 1;
-            transform: scale(1) translateY(0);
+            backdrop-filter: blur(8px) saturate(180%);
           }
         }
 
@@ -737,7 +1065,80 @@ export function MultiStepFormModal({
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.1;
+            transform: scale(1.1);
+          }
+        }
+        
+        @keyframes shimmer {
+          0% {
+            background-position: -100% 0;
+          }
+          100% {
+            background-position: 100% 0;
+          }
+        }
+        
+        /* Smooth scrollbar styling */
+        .multi-step-form-modal div[style*="overflow-y: auto"]::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        .multi-step-form-modal div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+          background: var(--ds-color-neutral-surface-subtle);
+          border-radius: var(--ds-border-radius-full);
+        }
+        
+        .multi-step-form-modal div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+          background: var(--ds-color-neutral-border-default);
+          border-radius: var(--ds-border-radius-full);
+          transition: background ${animation.duration.fast} ${animation.easing.default};
+        }
+        
+        .multi-step-form-modal div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb:hover {
+          background: var(--ds-color-neutral-text-subtle);
+        }
 
+        /* Enhanced focus states */
+        .multi-step-form-modal *:focus-visible {
+          outline: 2px solid var(--ds-color-accent-base-default);
+          outline-offset: 2px;
+          border-radius: var(--ds-border-radius-sm);
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        .multi-step-form-modal button,
+        .multi-step-form-modal [role="button"] {
+          transition: ${transitions.button};
+        }
+        
+        /* Enhanced hover effects */
+        .multi-step-form-modal button:not(:disabled):hover {
+          cursor: pointer;
+        }
+        
+        /* Ensure modal fills viewport properly */
+        .multi-step-form-modal {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        
+        .multi-step-form-modal[open] {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        
         @media (max-width: 768px) {
           .multi-step-form-modal {
             max-width: 100vw !important;
@@ -745,6 +1146,42 @@ export function MultiStepFormModal({
             max-height: 100vh !important;
             height: 100vh !important;
             border-radius: 0 !important;
+            border: none !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+          }
+          
+          .multi-step-form-modal[open] {
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+          }
+          
+          .multi-step-form-modal > div:first-child {
+            padding: var(--ds-spacing-5) var(--ds-spacing-5) var(--ds-spacing-4) !important;
+          }
+          
+          .multi-step-form-modal > div:last-child {
+            padding: var(--ds-spacing-5) !important;
+            flex-wrap: wrap;
+          }
+          
+          .multi-step-form-modal > div:last-child > div:first-child,
+          .multi-step-form-modal > div:last-child > button {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+          .multi-step-form-modal,
+          .multi-step-form-modal *,
+          .multi-step-form-modal::backdrop {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
           }
         }
       `}</style>

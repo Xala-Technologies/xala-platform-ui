@@ -420,6 +420,38 @@ function ThemedDocsContainer(props: DocsContainerProps) {
       *::-webkit-scrollbar-thumb:hover {
         background: var(--ds-color-neutral-text-subtle);
       }
+      
+      /* Hide Storybook's default iframe close button for modals */
+      .docs-story iframe + button,
+      .docs-story iframe ~ button,
+      .sbdocs iframe + button,
+      .sbdocs iframe ~ button,
+      [data-testid="storybook-iframe-wrapper"] button,
+      .os-host[data-testid] button,
+      .os-padding[data-testid] button,
+      /* Storybook's iframe container close buttons */
+      .os-host button[aria-label*="close" i],
+      .os-host button[aria-label*="Close" i],
+      .os-viewport button[aria-label*="close" i],
+      .os-viewport button[aria-label*="Close" i],
+      /* Any button positioned absolutely in iframe containers */
+      .docs-story .os-host > button,
+      .docs-story .os-viewport > button,
+      /* Storybook's story wrapper close buttons */
+      .docs-story > div > button[aria-label*="close" i],
+      .docs-story > div > button[aria-label*="Close" i],
+      .sbdocs .docs-story button[aria-label*="close" i],
+      .sbdocs .docs-story button[aria-label*="Close" i],
+      /* Hide buttons with specific Storybook classes */
+      button[class*="close"],
+      button[class*="Close"],
+      /* Hide buttons that are siblings of iframes */
+      iframe ~ button:not([data-testid]),
+      /* Hide any button in the iframe wrapper that's not part of the story */
+      .os-host:has(iframe) > button:not([data-testid]),
+      .os-viewport:has(iframe) > button:not([data-testid]) {
+        display: none !important;
+      }
     `;
     
     console.log('[Docs CSS] Re-injected design token CSS for:', colorScheme);

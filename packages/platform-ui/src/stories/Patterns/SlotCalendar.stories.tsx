@@ -4,40 +4,44 @@
  * Calendar component for displaying and selecting time slots.
  */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
+import * as React from 'react';
 import { SlotCalendar, type SlotCalendarProps } from '../../patterns/SlotCalendar';
+import type { CalendarCell, LegendItem } from '../../patterns/types';
 
 const meta: Meta<typeof SlotCalendar> = {
   title: 'Patterns/SlotCalendar',
   component: SlotCalendar,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component: `
 ## SlotCalendar
 
-A calendar pattern for displaying and selecting available time slots.
+A domain-neutral calendar pattern for displaying and selecting time slots.
+Supports week, month, and day views with various selection modes.
 
 ### Features
-- Week/day view modes
-- Slot availability status (available, booked, selected)
-- Multi-select support
-- Time range display
+- Week/month/day view modes
+- Slot availability status (available, unavailable, selected, partial, blocked)
+- Single, multiple, and range selection modes
+- Navigation controls
+- Legend display
 - Responsive layout
 
 ### Usage
 
 \`\`\`tsx
 <SlotCalendar
-  slots={[
-    { id: '1', date: '2026-01-15', startTime: '09:00', endTime: '10:00', status: 'available' },
-    { id: '2', date: '2026-01-15', startTime: '10:00', endTime: '11:00', status: 'booked' },
-    // ...
+  cells={[
+    { id: '1', date: new Date('2026-01-20'), status: 'available', label: '09:00' },
+    { id: '2', date: new Date('2026-01-20'), status: 'unavailable', label: '10:00' },
   ]}
-  selectedSlots={['1']}
-  onSlotSelect={(slotId) => handleSelect(slotId)}
-  onSlotDeselect={(slotId) => handleDeselect(slotId)}
+  visibleStart={new Date('2026-01-20')}
+  viewMode="week"
+  selectionMode="multiple"
+  onCellClick={(cell) => console.log('Clicked:', cell)}
+  onSelectionChange={(ids) => console.log('Selection:', ids)}
 />
 \`\`\`
         `,
@@ -45,53 +49,86 @@ A calendar pattern for displaying and selecting available time slots.
     },
   },
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ padding: '2rem', maxWidth: '800px' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof SlotCalendar>;
 
-// Generate sample slots for a week
-const generateWeekSlots = () => {
-  const slots = [];
-  const baseDate = new Date('2026-01-20');
-  const times = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
-  const statuses = [
+// =============================================================================
+// Helper Functions
+// =============================================================================
+
+/**
+ * Generate sample cells for a week starting from a given date
+ */
+function generateWeekCells(startDate: Date): CalendarCell[] {
+  const cells: CalendarCell[] = [];
+  const statuses: CalendarCell['status'][] = [
     'available',
     'available',
-    'booked',
+    'unavailable',
     'available',
     'available',
-    'booked',
+    'blocked',
     'available',
-    'available',
+    'partial',
   ];
 
   for (let day = 0; day < 7; day++) {
-    const date = new Date(baseDate);
-    date.setDate(baseDate.getDate() + day);
-    const dateStr = date.toISOString().split('T')[0];
+    const date = new Date(startDate);
+    date.setDate(startDate.getDate() + day);
 
-    times.forEach((time, i) => {
-      const endHour = parseInt(time.split(':')[0]) + 1;
-      slots.push({
-        id: `${dateStr}-${time}`,
-        date: dateStr,
-        startTime: time,
-        endTime: `${endHour.toString().padStart(2, '0')}:00`,
-        status: statuses[(day + i) % statuses.length] as 'available' | 'booked',
+    // Generate time slots for each day (8am to 5pm)
+    for (let hour = 8; hour < 17; hour++) {
+      const cellDate = new Date(date);
+      cellDate.setHours(hour, 0, 0, 0);
+
+      const statusIndex = (day + hour) % statuses.length;
+
+      cells.push({
+        id: `${date.toISOString().split('T')[0]}-${hour.toString().padStart(2, '0')}:00`,
+        date: cellDate,
+        status: statuses[statusIndex],
+        label: `${hour.toString().padStart(2, '0')}:00`,
+        price: statuses[statusIndex] === 'available' ? `${450 + hour * 25} kr` : undefined,
       });
+    }
+  }
+
+  return cells;
+}
+
+/**
+ * Generate cells for a single day
+ */
+function generateDayCells(date: Date): CalendarCell[] {
+  const cells: CalendarCell[] = [];
+  const statuses: CalendarCell['status'][] = ['available', 'unavailable', 'available', 'blocked'];
+
+  for (let hour = 8; hour < 17; hour++) {
+    const cellDate = new Date(date);
+    cellDate.setHours(hour, 0, 0, 0);
+
+    cells.push({
+      id: `${date.toISOString().split('T')[0]}-${hour.toString().padStart(2, '0')}:00`,
+      date: cellDate,
+      status: statuses[hour % statuses.length],
+      label: `${hour.toString().padStart(2, '0')}:00 - ${(hour + 1).toString().padStart(2, '0')}:00`,
     });
   }
 
-  return slots;
-};
+  return cells;
+}
+
+const defaultLegend: LegendItem[] = [
+  { status: 'available', label: 'Available', color: 'var(--ds-color-success-surface-default)' },
+  { status: 'unavailable', label: 'Unavailable', color: 'var(--ds-color-neutral-surface-hover)' },
+  { status: 'selected', label: 'Selected', color: 'var(--ds-color-accent-surface-default)' },
+  { status: 'partial', label: 'Partial', color: 'var(--ds-color-warning-surface-default)' },
+  { status: 'blocked', label: 'Blocked', color: 'var(--ds-color-danger-surface-default)' },
+];
+
+const baseDate = new Date('2026-01-20');
 
 // =============================================================================
 // Stories
@@ -99,88 +136,239 @@ const generateWeekSlots = () => {
 
 export const Default: Story = {
   args: {
-    slots: generateWeekSlots(),
-    selectedSlots: [],
-    view: 'week',
-    onSlotSelect: (slotId) => console.log('Selected:', slotId),
-    onSlotDeselect: (slotId) => console.log('Deselected:', slotId),
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+    onNavigate: (direction) => console.log('Navigate:', direction),
+    onViewModeChange: (mode) => console.log('View mode:', mode),
   },
 };
 
 export const WithSelection: Story = {
-  name: 'With Selected Slots',
+  name: 'With Pre-selected Cells',
   args: {
-    slots: generateWeekSlots(),
-    selectedSlots: ['2026-01-20-10:00', '2026-01-20-11:00'],
-    view: 'week',
-    onSlotSelect: (slotId) => console.log('Selected:', slotId),
-    onSlotDeselect: (slotId) => console.log('Deselected:', slotId),
+    cells: generateWeekCells(baseDate),
+    selectedCellIds: ['2026-01-20-10:00', '2026-01-20-11:00', '2026-01-20-12:00'],
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
   },
 };
 
 export const DayView: Story = {
   name: 'Day View',
   args: {
-    slots: generateWeekSlots().filter((s) => s.date === '2026-01-20'),
-    selectedSlots: [],
-    view: 'day',
-    currentDate: '2026-01-20',
-    onSlotSelect: (slotId) => console.log('Selected:', slotId),
-    onSlotDeselect: (slotId) => console.log('Deselected:', slotId),
-  },
-  decorators: [
-    (Story) => (
-      <div style={{ padding: '2rem', maxWidth: '400px' }}>
-        <Story />
-      </div>
-    ),
-  ],
-};
-
-export const Loading: Story = {
-  args: {
-    slots: [],
-    selectedSlots: [],
-    isLoading: true,
-    view: 'week',
+    cells: generateDayCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'day',
+    selectionMode: 'single',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
   },
 };
 
-export const NoAvailability: Story = {
-  name: 'No Available Slots',
+export const MonthView: Story = {
+  name: 'Month View',
   args: {
-    slots: generateWeekSlots().map((s) => ({ ...s, status: 'booked' as const })),
-    selectedSlots: [],
-    view: 'week',
-    emptyMessage: 'No available slots this week. Try selecting another date.',
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'month',
+    selectionMode: 'multiple',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
   },
 };
 
-export const WithPricing: Story = {
-  name: 'With Slot Pricing',
+export const SingleSelect: Story = {
+  name: 'Single Selection Mode',
   args: {
-    slots: generateWeekSlots().map((s) => ({
-      ...s,
-      price: s.status === 'available' ? (Math.random() > 0.5 ? 500 : 750) : undefined,
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'single',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+  },
+};
+
+export const RangeSelect: Story = {
+  name: 'Range Selection Mode',
+  args: {
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'range',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+  },
+};
+
+export const NoLegend: Story = {
+  name: 'Without Legend',
+  args: {
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    showLegend: false,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+  },
+};
+
+export const CustomHours: Story = {
+  name: 'Custom Hour Range',
+  args: {
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    startHour: 6,
+    endHour: 22,
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+  },
+};
+
+export const CustomLabels: Story = {
+  name: 'Custom Labels (Norwegian)',
+  args: {
+    cells: generateWeekCells(baseDate),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    labels: {
+      today: 'I dag',
+      prev: 'Forrige',
+      next: 'Neste',
+      week: 'Uke',
+      month: 'Måned',
+      day: 'Dag',
+      time: 'Tid',
+      legendTitle: 'Forklaring',
+    },
+    legend: [
+      { status: 'available', label: 'Ledig', color: 'var(--ds-color-success-surface-default)' },
+      {
+        status: 'unavailable',
+        label: 'Opptatt',
+        color: 'var(--ds-color-neutral-surface-hover)',
+      },
+      { status: 'selected', label: 'Valgt', color: 'var(--ds-color-accent-surface-default)' },
+      { status: 'partial', label: 'Delvis', color: 'var(--ds-color-warning-surface-default)' },
+      { status: 'blocked', label: 'Blokkert', color: 'var(--ds-color-danger-surface-default)' },
+    ],
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+  },
+};
+
+export const EmptyCells: Story = {
+  name: 'Empty Calendar',
+  args: {
+    cells: [],
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
+  },
+};
+
+export const AllBlocked: Story = {
+  name: 'All Slots Blocked',
+  args: {
+    cells: generateWeekCells(baseDate).map((cell) => ({
+      ...cell,
+      status: 'blocked' as const,
     })),
-    selectedSlots: [],
-    view: 'week',
-    showPrices: true,
-    currency: 'kr',
-    onSlotSelect: (slotId) => console.log('Selected:', slotId),
-    onSlotDeselect: (slotId) => console.log('Deselected:', slotId),
+    visibleStart: baseDate,
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    legend: defaultLegend,
+    showLegend: true,
+    onCellClick: (cell) => console.log('Clicked:', cell),
+    onSelectionChange: (ids) => console.log('Selection changed:', ids),
   },
 };
 
-export const MultiSelect: Story = {
-  name: 'Multi-Select Mode',
+/**
+ * Interactive example with state management
+ */
+function InteractiveCalendar(props: SlotCalendarProps) {
+  const [selectedIds, setSelectedIds] = React.useState<string[]>(props.selectedCellIds || []);
+  const [viewMode, setViewMode] = React.useState(props.viewMode || 'week');
+  const [visibleStart, setVisibleStart] = React.useState(props.visibleStart);
+
+  const handleNavigate = (direction: 'prev' | 'next' | 'today') => {
+    const newDate = new Date(visibleStart);
+    if (direction === 'today') {
+      setVisibleStart(new Date());
+    } else if (direction === 'prev') {
+      if (viewMode === 'week') {
+        newDate.setDate(newDate.getDate() - 7);
+      } else if (viewMode === 'month') {
+        newDate.setMonth(newDate.getMonth() - 1);
+      } else {
+        newDate.setDate(newDate.getDate() - 1);
+      }
+      setVisibleStart(newDate);
+    } else {
+      if (viewMode === 'week') {
+        newDate.setDate(newDate.getDate() + 7);
+      } else if (viewMode === 'month') {
+        newDate.setMonth(newDate.getMonth() + 1);
+      } else {
+        newDate.setDate(newDate.getDate() + 1);
+      }
+      setVisibleStart(newDate);
+    }
+  };
+
+  return (
+    <SlotCalendar
+      {...props}
+      selectedCellIds={selectedIds}
+      viewMode={viewMode}
+      visibleStart={visibleStart}
+      onSelectionChange={setSelectedIds}
+      onViewModeChange={setViewMode}
+      onNavigate={handleNavigate}
+    />
+  );
+}
+
+export const Interactive: Story = {
+  name: 'Interactive Demo',
+  render: (args) => <InteractiveCalendar {...args} />,
   args: {
-    slots: generateWeekSlots(),
-    selectedSlots: ['2026-01-21-09:00', '2026-01-21-10:00', '2026-01-21-11:00'],
-    view: 'week',
-    allowMultiSelect: true,
-    maxSelections: 5,
-    onSlotSelect: (slotId) => console.log('Selected:', slotId),
-    onSlotDeselect: (slotId) => console.log('Deselected:', slotId),
+    cells: generateWeekCells(new Date()),
+    visibleStart: new Date(),
+    viewMode: 'week',
+    selectionMode: 'multiple',
+    legend: defaultLegend,
+    showLegend: true,
   },
 };

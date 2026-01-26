@@ -277,7 +277,7 @@ function SummaryRow({ label, amount, variant = 'default' }: SummaryRowProps): Re
  * Domain-neutral design allows use across any pricing context.
  */
 export function PricingSummary({
-  items,
+  items = [],
   subtotal,
   tax,
   total,

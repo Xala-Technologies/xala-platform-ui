@@ -84,12 +84,24 @@ export const animation = {
     fast: '150ms',
     normal: '250ms',
     slow: '350ms',
+    slower: '500ms',
   },
   easing: {
     default: 'ease',
     easeIn: 'ease-in',
     easeOut: 'ease-out',
     easeInOut: 'ease-in-out',
+    // Premium easing functions for smooth animations
+    smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    smoothOut: 'cubic-bezier(0, 0, 0.2, 1)',
+    smoothIn: 'cubic-bezier(0.4, 0, 1, 1)',
+    bounce: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+  },
+  // Modal-specific animations
+  modal: {
+    enter: 'modal-enter 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+    exit: 'modal-exit 200ms cubic-bezier(0.4, 0, 1, 1)',
+    backdrop: 'backdrop-enter 200ms ease-out',
   },
 } as const;
 
@@ -649,6 +661,17 @@ export const shadows = {
   dropdown:
     'var(--ds-extended-shadow-dropdown, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1))',
   modal: 'var(--ds-extended-shadow-modal, 0 25px 50px -12px rgb(0 0 0 / 0.25))',
+  // Premium modal shadows for rich experience
+  modalPremium:
+    'var(--ds-extended-shadow-modal-premium, 0 20px 60px -15px rgb(0 0 0 / 0.3), 0 0 0 1px rgb(0 0 0 / 0.05))',
+  modalBackdrop:
+    'var(--ds-extended-shadow-modal-backdrop, 0 0 0 1px rgb(0 0 0 / 0.05), 0 8px 16px -4px rgb(0 0 0 / 0.1))',
+  // Enhanced elevation shadows
+  elevation1: 'var(--ds-extended-shadow-elevation-1, 0 1px 2px 0 rgb(0 0 0 / 0.05))',
+  elevation2: 'var(--ds-extended-shadow-elevation-2, 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1))',
+  elevation3: 'var(--ds-extended-shadow-elevation-3, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1))',
+  elevation4: 'var(--ds-extended-shadow-elevation-4, 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1))',
+  elevation5: 'var(--ds-extended-shadow-elevation-5, 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 0 0 1px rgb(0 0 0 / 0.05))',
 } as const;
 
 // =============================================================================
@@ -702,6 +725,39 @@ export const spacing = {
     sm: 'var(--ds-spacing-2)',
     md: 'var(--ds-spacing-3)',
     lg: 'var(--ds-spacing-4)',
+  },
+  // Premium modal spacing
+  modal: {
+    header: {
+      padding: 'var(--ds-spacing-5) var(--ds-spacing-6)',
+      gap: 'var(--ds-spacing-3)',
+      compact: {
+        padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+        gap: 'var(--ds-spacing-2)',
+      },
+    },
+    content: {
+      padding: 'var(--ds-spacing-6)',
+      gap: 'var(--ds-spacing-5)',
+      compact: {
+        padding: 'var(--ds-spacing-5)',
+        gap: 'var(--ds-spacing-4)',
+      },
+    },
+    footer: {
+      padding: 'var(--ds-spacing-5) var(--ds-spacing-6)',
+      gap: 'var(--ds-spacing-3)',
+      compact: {
+        padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+        gap: 'var(--ds-spacing-2)',
+      },
+    },
+    section: {
+      gap: 'var(--ds-spacing-4)',
+      compact: {
+        gap: 'var(--ds-spacing-3)',
+      },
+    },
   },
 } as const;
 

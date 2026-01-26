@@ -1,13 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within, waitFor } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Dialog, Button, Paragraph, Heading } from '../../index';
 import { useRef } from 'react';
 
 const meta: Meta = {
   title: 'Components/Dialog',
   parameters: {
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 400,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 Dialog (Modal) displays important interactions that require user attention. It appears as an overlay that blocks interaction with the rest of the page.
@@ -202,18 +208,17 @@ type Story = StoryObj;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const dialogRef = useRef<HTMLDialogElement>(null);
     return (
       <>
         <Button onClick={() => dialogRef.current?.showModal()} type="button">
-          {t('storybook.demo.openDialog')}
+          Open Dialog
         </Button>
         <Dialog ref={dialogRef}>
           <Heading level={2} data-size="sm">
-            {t('storybook.demo.dialogTitle')}
+            Dialog Title
           </Heading>
-          <Paragraph>{t('storybook.demo.dialogContent')}</Paragraph>
+          <Paragraph>This is the dialog content. You can add any content here.</Paragraph>
           <div
             style={{
               display: 'flex',
@@ -222,10 +227,10 @@ export const Default: Story = {
             }}
           >
             <Button variant="secondary" onClick={() => dialogRef.current?.close()} type="button">
-              {t('platform.common.cancel')}
+              Cancel
             </Button>
             <Button variant="primary" onClick={() => dialogRef.current?.close()} type="button">
-              {t('platform.common.confirm')}
+              Confirm
             </Button>
           </div>
         </Dialog>
@@ -258,18 +263,17 @@ export const Default: Story = {
 
 export const Confirmation: Story = {
   render: function Render() {
-    const t = useT();
     const dialogRef = useRef<HTMLDialogElement>(null);
     return (
       <>
         <Button data-color="danger" onClick={() => dialogRef.current?.showModal()} type="button">
-          {t('storybook.demo.deleteItem')}
+          Delete Item
         </Button>
         <Dialog ref={dialogRef}>
           <Heading level={2} data-size="sm">
-            {t('storybook.demo.deleteConfirmation')}
+            Delete Confirmation
           </Heading>
-          <Paragraph>{t('storybook.demo.deleteConfirmationMessage')}</Paragraph>
+          <Paragraph>Are you sure you want to delete this item? This action cannot be undone.</Paragraph>
           <div
             style={{
               display: 'flex',
@@ -278,10 +282,10 @@ export const Confirmation: Story = {
             }}
           >
             <Button variant="secondary" onClick={() => dialogRef.current?.close()} type="button">
-              {t('platform.common.cancel')}
+              Cancel
             </Button>
             <Button data-color="danger" onClick={() => dialogRef.current?.close()} type="button">
-              {t('platform.common.delete')}
+              Delete
             </Button>
           </div>
         </Dialog>
@@ -292,18 +296,17 @@ export const Confirmation: Story = {
 
 export const Information: Story = {
   render: function Render() {
-    const t = useT();
     const dialogRef = useRef<HTMLDialogElement>(null);
     return (
       <>
         <Button variant="secondary" onClick={() => dialogRef.current?.showModal()} type="button">
-          {t('storybook.demo.showInfo')}
+          Show Info
         </Button>
         <Dialog ref={dialogRef}>
           <Heading level={2} data-size="sm">
-            {t('storybook.demo.information')}
+            Information
           </Heading>
-          <Paragraph>{t('storybook.demo.bookingCreatedSuccessfully')}</Paragraph>
+          <Paragraph>Your action was completed successfully.</Paragraph>
           <div
             style={{
               display: 'flex',

@@ -116,8 +116,14 @@ const meta: Meta<typeof RequestDetailModal> = {
   title: 'Features/GDPR/RequestDetailModal',
   component: RequestDetailModal,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 700,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component:
           'Pure presentational modal for viewing and processing GDPR request details. Provides approve/reject actions for admins.',
@@ -141,29 +147,42 @@ type Story = StoryObj<typeof RequestDetailModal>;
 // Stories
 // =============================================================================
 
+// Helper component with trigger button
+function ModalWithTrigger(args: any) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open GDPR Request Modal</Button>
+      <RequestDetailModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
+  );
+}
+
+// Base args for reuse
+const baseArgs = {
+  request: mockPendingExportRequest,
+  labels: mockLabels,
+  isLoading: false,
+  isSubmitting: false,
+  userName: 'Alice Johnson',
+  userEmail: 'alice@example.com',
+  daysRemaining: 24,
+  requestedDate: 'Jan 20, 2025',
+  requestedTime: '10:00 AM',
+  expiresDate: 'Feb 19, 2025',
+  expiresTime: '10:00 AM',
+  onApprove: () => console.log('Approve clicked'),
+  onReject: (reason: string) => console.log('Reject with reason:', reason),
+};
+
 export const PendingExportRequest: Story = {
-  args: {
-    isOpen: true,
-    onClose: () => console.log('Close modal'),
-    request: mockPendingExportRequest,
-    labels: mockLabels,
-    isLoading: false,
-    isSubmitting: false,
-    userName: 'Alice Johnson',
-    userEmail: 'alice@example.com',
-    daysRemaining: 24,
-    requestedDate: 'Jan 20, 2025',
-    requestedTime: '10:00 AM',
-    expiresDate: 'Feb 19, 2025',
-    expiresTime: '10:00 AM',
-    onApprove: () => console.log('Approve clicked'),
-    onReject: (reason) => console.log('Reject with reason:', reason),
-  },
+  args: baseArgs,
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const PendingDeletionRequest: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     request: mockPendingDeletionRequest,
     userName: 'Bob Smith',
     userEmail: 'bob@example.com',
@@ -173,11 +192,12 @@ export const PendingDeletionRequest: Story = {
     expiresDate: 'Feb 14, 2025',
     expiresTime: '2:30 PM',
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const CompletedRequest: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     request: mockCompletedRequest,
     userName: 'Charlie Davis',
     userEmail: 'charlie@example.com',
@@ -189,11 +209,12 @@ export const CompletedRequest: Story = {
     processedDate: 'Jan 12, 2025',
     processedTime: '2:30 PM',
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const RejectedRequest: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     request: mockRejectedRequest,
     userName: 'Diana Prince',
     userEmail: 'diana@example.com',
@@ -205,11 +226,12 @@ export const RejectedRequest: Story = {
     processedDate: 'Jan 9, 2025',
     processedTime: '4:45 PM',
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const UrgentRequest: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     request: mockUrgentRequest,
     userName: 'Frank Miller',
     userEmail: 'frank@example.com',
@@ -219,37 +241,42 @@ export const UrgentRequest: Story = {
     expiresDate: 'Feb 2, 2025',
     expiresTime: '8:00 AM',
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const Loading: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     request: null,
     isLoading: true,
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const LoadError: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     request: null,
     isLoading: false,
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const Submitting: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     isSubmitting: true,
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const WithUnknownUser: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     userName: '550e8400-e29b-41d4-a716-446655440000',
     userEmail: undefined,
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };
 
 export const Interactive: Story = {
@@ -304,7 +331,7 @@ export const Interactive: Story = {
 
 export const Norwegian: Story = {
   args: {
-    ...PendingExportRequest.args,
+    ...baseArgs,
     labels: {
       title: 'GDPR-forespørselsdetaljer',
       loading: 'Laster forespørselsdetaljer...',
@@ -343,4 +370,5 @@ export const Norwegian: Story = {
       rejectFormPlaceholder: 'Skriv inn avvisningsårsak...',
     },
   },
+  render: (args) => <ModalWithTrigger {...args} />,
 };

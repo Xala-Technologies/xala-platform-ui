@@ -548,7 +548,7 @@ function ChevronRightIcon() {
 // -----------------------------------------------------------------------------
 
 export function SlotCalendar({
-  cells,
+  cells = [],
   selectedCellIds = [],
   visibleStart,
   viewMode = 'week',

@@ -5,17 +5,22 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { FormWizardModal, type FormWizardModalProps } from '../../patterns/FormWizardModal';
 import type { PatternWizardStep } from '../../patterns/types';
-import { Paragraph, Textfield, Label, Select, Checkbox } from '@digdir/designsystemet-react';
+import { Paragraph, Textfield, Label, Select, Checkbox, Button } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof FormWizardModal> = {
   title: 'Patterns/FormWizardModal',
   component: FormWizardModal,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
+      inlineStories: false,
+      iframeHeight: 700,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
       description: {
         component: `
 ## FormWizardModal
@@ -180,95 +185,168 @@ const fiveSteps: PatternWizardStep[] = [
 ];
 
 // =============================================================================
+// Helper Component - Prevents multiple modals opening in docs
+// =============================================================================
+
+function WizardWithTrigger({
+  buttonLabel = 'Open Wizard',
+  children,
+  ...args
+}: Omit<FormWizardModalProps, 'isOpen' | 'onClose'> & { 
+  buttonLabel?: string;
+  children: React.ReactNode;
+}) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [currentStep, setCurrentStep] = React.useState(args.currentStepIndex ?? 0);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setCurrentStep(args.currentStepIndex ?? 0);
+    }
+  }, [isOpen, args.currentStepIndex]);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>{buttonLabel}</Button>
+      <FormWizardModal
+        {...args}
+        isOpen={isOpen}
+        currentStepIndex={currentStep}
+        onNext={() => {
+          if (currentStep < args.steps.length - 1) {
+            setCurrentStep(currentStep + 1);
+          }
+          args.onNext?.();
+        }}
+        onBack={() => {
+          if (currentStep > 0) {
+            setCurrentStep(currentStep - 1);
+          }
+          args.onBack?.();
+        }}
+        onComplete={() => {
+          setIsOpen(false);
+          setCurrentStep(0);
+          args.onComplete?.();
+        }}
+        onClose={() => {
+          setIsOpen(false);
+          setCurrentStep(0);
+        }}
+      >
+        {children}
+      </FormWizardModal>
+    </>
+  );
+}
+
+// =============================================================================
 // Stories
 // =============================================================================
 
 export const Default: Story = {
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Wizard">
+      <DetailsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: threeSteps,
     currentStepIndex: 0,
     title: 'Create New Item',
-    children: <DetailsStep />,
   },
 };
 
 export const SecondStep: Story = {
   name: 'Second Step',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Step 2">
+      <OptionsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: threeSteps,
     currentStepIndex: 1,
     title: 'Create New Item',
-    children: <OptionsStep />,
   },
 };
 
 export const FinalStep: Story = {
   name: 'Final Step',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Final Step">
+      <ConfirmStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: threeSteps,
     currentStepIndex: 2,
     title: 'Create New Item',
-    children: <ConfirmStep />,
   },
 };
 
 export const WithSubtitle: Story = {
   name: 'With Subtitle',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open With Subtitle">
+      <DetailsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: threeSteps,
     currentStepIndex: 0,
     title: 'Create Booking',
     subtitle: 'Complete all steps to confirm your reservation',
-    children: <DetailsStep />,
   },
 };
 
 export const FourSteps: Story = {
   name: 'Four Steps',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open 4-Step Wizard">
+      <DetailsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: fourSteps,
     currentStepIndex: 1,
     title: 'Book Resource',
-    children: <DetailsStep />,
   },
 };
 
 export const FiveSteps: Story = {
   name: 'Five Steps',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open 5-Step Wizard">
+      <OptionsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: fiveSteps,
     currentStepIndex: 2,
     title: 'Registration',
-    children: <OptionsStep />,
   },
 };
 
 export const CompletingState: Story = {
   name: 'Completing (Loading)',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Loading State">
+      <ConfirmStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: threeSteps,
     currentStepIndex: 2,
     title: 'Create New Item',
-    children: <ConfirmStep />,
     isCompleting: true,
   },
 };
 
 export const CannotProceed: Story = {
   name: 'Cannot Proceed (Validation)',
-  args: {
-    isOpen: true,
-    steps: threeSteps,
-    currentStepIndex: 0,
-    title: 'Create New Item',
-    children: (
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Validation Example">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
           label="Required Field"
@@ -279,38 +357,53 @@ export const CannotProceed: Story = {
           Please complete all required fields to continue.
         </Paragraph>
       </div>
-    ),
+    </WizardWithTrigger>
+  ),
+  args: {
+    steps: threeSteps,
+    currentStepIndex: 0,
+    title: 'Create New Item',
     canGoNext: false,
   },
 };
 
 export const NoStepIndicator: Story = {
   name: 'Without Step Indicator',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open No Indicator">
+      <DetailsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: threeSteps,
     currentStepIndex: 0,
     title: 'Quick Action',
-    children: <DetailsStep />,
     showStepIndicator: false,
   },
 };
 
 export const SingleStep: Story = {
   name: 'Single Step',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Single Step">
+      <DetailsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: [{ id: 'only', title: 'Details' }],
     currentStepIndex: 0,
     title: 'Edit Item',
-    children: <DetailsStep />,
   },
 };
 
 export const NorwegianLabels: Story = {
   name: 'Norwegian Labels (i18n)',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Åpne Wizard">
+      <OptionsStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: [
       { id: 'detaljer', title: 'Detaljer' },
       { id: 'alternativer', title: 'Alternativer' },
@@ -319,7 +412,6 @@ export const NorwegianLabels: Story = {
     currentStepIndex: 1,
     title: 'Ny Bestilling',
     subtitle: 'Fullfør alle stegene for å bekrefte',
-    children: <OptionsStep />,
     labels: {
       back: 'Tilbake',
       next: 'Neste',
@@ -332,18 +424,8 @@ export const NorwegianLabels: Story = {
 
 export const BookingWizard: Story = {
   name: 'Domain Example: Booking Wizard',
-  args: {
-    isOpen: true,
-    steps: [
-      { id: 'select', title: 'Select Resource' },
-      { id: 'datetime', title: 'Date & Time' },
-      { id: 'details', title: 'Details' },
-      { id: 'confirm', title: 'Confirm' },
-    ],
-    currentStepIndex: 2,
-    title: 'Book Meeting Room',
-    subtitle: 'Conference Room Alpha - Jan 15, 2026',
-    children: (
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Booking Wizard">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
           label="Meeting Title"
@@ -361,14 +443,33 @@ export const BookingWizard: Story = {
           </Select>
         </div>
       </div>
-    ),
+    </WizardWithTrigger>
+  ),
+  args: {
+    steps: [
+      { id: 'select', title: 'Select Resource' },
+      { id: 'datetime', title: 'Date & Time' },
+      { id: 'details', title: 'Details' },
+      { id: 'confirm', title: 'Confirm' },
+    ],
+    currentStepIndex: 2,
+    title: 'Book Meeting Room',
+    subtitle: 'Conference Room Alpha - Jan 15, 2026',
   },
 };
 
 export const RegistrationWizard: Story = {
   name: 'Domain Example: Registration',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Registration">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Textfield label="Email" type="email" placeholder="your@email.com" />
+        <Textfield label="Password" type="password" placeholder="Create a password" />
+        <Textfield label="Confirm Password" type="password" placeholder="Confirm your password" />
+      </div>
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: [
       { id: 'account', title: 'Account' },
       { id: 'profile', title: 'Profile' },
@@ -376,20 +477,17 @@ export const RegistrationWizard: Story = {
     ],
     currentStepIndex: 0,
     title: 'Create Account',
-    children: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Textfield label="Email" type="email" placeholder="your@email.com" />
-        <Textfield label="Password" type="password" placeholder="Create a password" />
-        <Textfield label="Confirm Password" type="password" placeholder="Confirm your password" />
-      </div>
-    ),
   },
 };
 
 export const WithCompletedSteps: Story = {
   name: 'With Completed Steps',
+  render: (args) => (
+    <WizardWithTrigger {...args} buttonLabel="Open Completed Steps">
+      <ConfirmStep />
+    </WizardWithTrigger>
+  ),
   args: {
-    isOpen: true,
     steps: [
       { id: 'details', title: 'Details', isCompleted: true },
       { id: 'options', title: 'Options', isCompleted: true },
@@ -397,7 +495,6 @@ export const WithCompletedSteps: Story = {
     ],
     currentStepIndex: 2,
     title: 'Almost Done!',
-    children: <ConfirmStep />,
   },
 };
 
@@ -405,42 +502,33 @@ export const StepIndicatorVariants: Story = {
   name: 'Step Progress States',
   render: function Render() {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-        <div>
-          <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
-            Step 1 of 4 (Beginning)
-          </Paragraph>
-          <FormWizardModal
-            isOpen={true}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+        <Paragraph data-size="sm">Click buttons to see different step states:</Paragraph>
+        <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
+          <WizardWithTrigger
             steps={fourSteps}
             currentStepIndex={0}
             title="Progress: Beginning"
-            children={<Paragraph>First step content</Paragraph>}
-          />
-        </div>
-        <div>
-          <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
-            Step 2 of 4 (In Progress)
-          </Paragraph>
-          <FormWizardModal
-            isOpen={true}
+            buttonLabel="Step 1 of 4"
+          >
+            <Paragraph>First step content</Paragraph>
+          </WizardWithTrigger>
+          <WizardWithTrigger
             steps={fourSteps.map((s, i) => ({ ...s, isCompleted: i < 1 }))}
             currentStepIndex={1}
             title="Progress: In Progress"
-            children={<Paragraph>Second step content</Paragraph>}
-          />
-        </div>
-        <div>
-          <Paragraph data-size="sm" style={{ marginBottom: '1rem' }}>
-            Step 4 of 4 (Final)
-          </Paragraph>
-          <FormWizardModal
-            isOpen={true}
+            buttonLabel="Step 2 of 4"
+          >
+            <Paragraph>Second step content</Paragraph>
+          </WizardWithTrigger>
+          <WizardWithTrigger
             steps={fourSteps.map((s, i) => ({ ...s, isCompleted: i < 3 }))}
             currentStepIndex={3}
             title="Progress: Final Step"
-            children={<Paragraph>Final step content</Paragraph>}
-          />
+            buttonLabel="Step 4 of 4"
+          >
+            <Paragraph>Final step content</Paragraph>
+          </WizardWithTrigger>
         </div>
       </div>
     );

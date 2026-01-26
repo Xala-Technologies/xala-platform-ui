@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ConfirmDialog } from '../../composed';
 import { Button } from '../../primitives';
 import { useState } from 'react';
@@ -8,7 +7,15 @@ const meta = {
   title: 'Composed/ConfirmDialog',
   component: ConfirmDialog,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
+    docs: {
+      inlineStories: false,
+      iframeHeight: 400,
+      source: {
+        type: 'code',
+        state: 'closed',
+      },
+    },
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof ConfirmDialog>;
@@ -17,12 +24,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DialogWithTrigger = (args: any) => {
-  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>{t('storybook.demo.openDialog')}</Button>
+      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
       <ConfirmDialog
         {...args}
         open={isOpen}
