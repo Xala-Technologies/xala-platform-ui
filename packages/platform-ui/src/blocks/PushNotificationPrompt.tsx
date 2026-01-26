@@ -13,6 +13,27 @@ import { BellIcon, CloseIcon } from '../primitives/icons';
 // Types
 // =============================================================================
 
+export interface PushNotificationPromptLabels {
+  /** Close button aria-label */
+  closeAriaLabel: string;
+  /** Enable button text */
+  enableButton: string;
+  /** Dismiss button text */
+  dismissButton: string;
+  /** Booking context title */
+  bookingTitle: string;
+  /** Booking context description */
+  bookingDescription: string;
+  /** Reminder context title */
+  reminderTitle: string;
+  /** Reminder context description */
+  reminderDescription: string;
+  /** General context title */
+  generalTitle: string;
+  /** General context description */
+  generalDescription: string;
+}
+
 export interface PushNotificationPromptProps {
   /** Whether the modal is open */
   isOpen: boolean;
@@ -22,15 +43,35 @@ export interface PushNotificationPromptProps {
   onEnable?: () => void;
   /** Dismiss handler (optional, defaults to onClose) */
   onDismiss?: () => void;
-  /** Title text */
+  /** Override title text (overrides context-based title) */
   title?: string;
-  /** Description text */
+  /** Override description text (overrides context-based description) */
   description?: string;
   /** Context for the prompt (affects messaging) */
-  context?: 'resourceRequest' | 'reminder' | 'general';
+  context?: 'booking' | 'reminder' | 'general';
+  /** UI labels */
+  labels?: Partial<PushNotificationPromptLabels>;
   /** Custom class name */
   className?: string;
 }
+
+// =============================================================================
+// Default Labels
+// =============================================================================
+
+const defaultLabels: PushNotificationPromptLabels = {
+  closeAriaLabel: 'Lukk',
+  enableButton: 'Aktiver varsler',
+  dismissButton: 'Kanskje senere',
+  bookingTitle: 'Få varsler om dine bookinger',
+  bookingDescription:
+    'Hold deg oppdatert om bookingbekreftelser, endringer og kanselleringer direkte i nettleseren din.',
+  reminderTitle: 'Ikke gå glipp av dine bookinger',
+  reminderDescription:
+    'Vi kan sende deg påminnelser før dine bookinger så du aldri glemmer en avtale.',
+  generalTitle: 'Aktiver varsler',
+  generalDescription: 'Få viktige oppdateringer om dine bookinger direkte i nettleseren din.',
+};
 
 // =============================================================================
 // Component
@@ -44,31 +85,28 @@ export function PushNotificationPrompt({
   title,
   description,
   context = 'general',
+  labels: customLabels,
   className,
 }: PushNotificationPromptProps): React.ReactElement {
+  const labels = { ...defaultLabels, ...customLabels };
+
   // Get contextual messages
   const getContextualContent = () => {
     switch (context) {
-      case 'resourceRequest':
+      case 'booking':
         return {
-          title: title || 'Få varsler om dine resourceRequester',
-          description:
-            description ||
-            'Hold deg oppdatert om resourceRequestbekreftelser, endringer og kanselleringer direkte i nettleseren din.',
+          title: title || labels.bookingTitle,
+          description: description || labels.bookingDescription,
         };
       case 'reminder':
         return {
-          title: title || 'Ikke gå glipp av dine resourceRequester',
-          description:
-            description ||
-            'Vi kan sende deg påminnelser før dine resourceRequester så du aldri glemmer en avtale.',
+          title: title || labels.reminderTitle,
+          description: description || labels.reminderDescription,
         };
       default:
         return {
-          title: title || 'Aktiver varsler',
-          description:
-            description ||
-            'Få viktige oppdateringer om dine resourceRequester direkte i nettleseren din.',
+          title: title || labels.generalTitle,
+          description: description || labels.generalDescription,
         };
     }
   };
@@ -94,7 +132,7 @@ export function PushNotificationPrompt({
           <Button
             type="button"
             onClick={onClose}
-            aria-label="Lukk"
+            aria-label={labels.closeAriaLabel}
             data-color="neutral"
             style={{
               display: 'flex',
@@ -173,7 +211,7 @@ export function PushNotificationPrompt({
         >
           {onEnable && (
             <Button type="button" onClick={onEnable} data-size="md" style={{ width: '100%' }}>
-              Aktiver varsler
+              {labels.enableButton}
             </Button>
           )}
           <Button
@@ -183,7 +221,7 @@ export function PushNotificationPrompt({
             data-size="md"
             style={{ width: '100%' }}
           >
-            Kanskje senere
+            {labels.dismissButton}
           </Button>
         </div>
       </Dialog.Block>

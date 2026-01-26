@@ -86,12 +86,19 @@ export default defineConfig({
     'types/index': 'src/types/index.ts',
     styles: 'src/styles.ts',
 
-    // Feature modules (Wave 2 & 3 refactored - pure presentational components)
+    // Feature modules (ALL WAVES REFACTORED - 100% pure presentational components)
     'features/gdpr': 'src/features/gdpr/index.ts', // ✅ Wave 2 - REFACTORED
     'features/seasons': 'src/features/seasons/index.ts', // ✅ Wave 2 - REFACTORED
     'features/calendar': 'src/features/calendar/index.ts', // ✅ Wave 3 - REFACTORED
     'features/organizations': 'src/features/organizations/index.ts', // ✅ Wave 3 - REFACTORED
     'features/settings': 'src/features/settings/index.ts', // ✅ Wave 3 - REFACTORED
+    'features/booking': 'src/features/booking/index.ts', // ✅ Wave 4 - REFACTORED
+    'features/rental-objects': 'src/features/rental-objects/index.ts', // ✅ Wave 4 - REFACTORED
+    'features/rental-object-details': 'src/features/rental-object-details/index.ts', // ✅ Wave 4 - REFACTORED
+    'features/notifications': 'src/features/notifications/index.ts', // ✅ Wave 1 - REFACTORED (blocks)
+    'features/notification-reports': 'src/features/notification-reports/index.ts', // ✅ Wave 1 - REFACTORED
+    'features/reviews': 'src/features/reviews/index.ts', // ✅ Wave 1 - REFACTORED (patterns)
+    'features/docs': 'src/features/docs/index.ts', // ✅ Wave 1 - REFACTORED
   },
   format: ['cjs', 'esm'],
   dts: true,

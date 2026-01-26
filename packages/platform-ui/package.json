@@ -96,6 +96,11 @@
       "import": "./dist/features/organizations.js",
       "default": "./dist/features/organizations.js"
     },
+    "./features/notification-reports": {
+      "types": "./dist/features/notification-reports.d.ts",
+      "import": "./dist/features/notification-reports.js",
+      "default": "./dist/features/notification-reports.js"
+    },
     "./features/rental-objects": {
       "types": "./dist/features/rental-objects.d.ts",
       "import": "./dist/features/rental-objects.js",
@@ -120,11 +125,6 @@
       "types": "./dist/features/rental-object-details.d.ts",
       "import": "./dist/features/rental-object-details.js",
       "default": "./dist/features/rental-object-details.js"
-    },
-    "./features/notification-reports": {
-      "types": "./dist/features/notification-reports.d.ts",
-      "import": "./dist/features/notification-reports.js",
-      "default": "./dist/features/notification-reports.js"
     }
   },
   "typesVersions": {

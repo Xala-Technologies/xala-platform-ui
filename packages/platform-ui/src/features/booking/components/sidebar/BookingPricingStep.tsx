@@ -1,0 +1,430 @@
+/**
+ * BookingPricingStep Component
+ *
+ * Step 1 of the booking flow: Price group selection, additional services, and terms acceptance.
+ * Supports both single-select and multi-select modes for price groups.
+ *
+ * @module @xala-technologies/platform-ui/features/booking/components/sidebar
+ */
+
+import * as React from 'react';
+import { Heading, Paragraph, Alert, InfoIcon, Stack, Card, Checkbox } from '@digdir/designsystemet-react';
+
+// =============================================================================
+// Types
+// =============================================================================
+
+export interface PriceGroup {
+  id: string;
+  label: string;
+  pricePerHour: number;
+  description: string;
+}
+
+export interface AdditionalService {
+  id: string;
+  label: string;
+  description: string;
+  price: number;
+}
+
+export interface BookingPricingStepProps {
+  /** Available price groups */
+  priceGroups: PriceGroup[];
+  /** Available additional services */
+  additionalServices: AdditionalService[];
+  /** Selected price group ID (single-select mode) */
+  selectedPriceGroup: string;
+  /** Selected service IDs */
+  selectedServices: Set<string>;
+  /** Whether terms are accepted */
+  termsAccepted: boolean;
+  /** Handler for price group selection change */
+  onPriceGroupChange: (groupId: string) => void;
+  /** Handler for service toggle */
+  onServiceToggle: (serviceId: string, checked: boolean) => void;
+  /** Handler for terms acceptance change */
+  onTermsChange: (accepted: boolean) => void;
+  /** Enable multi-select for price groups (default: false) */
+  allowMultiplePriceGroups?: boolean;
+  /** Selected price groups (for multi-select mode) */
+  selectedPriceGroups?: Set<string>;
+  /** Handler for multi-select price groups */
+  onPriceGroupsChange?: (groupIds: Set<string>) => void;
+  /** Currency code for display */
+  currency?: string;
+  /** Custom className */
+  className?: string;
+}
+
+// =============================================================================
+// Component
+// =============================================================================
+
+export function BookingPricingStep({
+  priceGroups,
+  additionalServices,
+  selectedPriceGroup,
+  selectedServices,
+  termsAccepted,
+  onPriceGroupChange,
+  onServiceToggle,
+  onTermsChange,
+  allowMultiplePriceGroups = false,
+  selectedPriceGroups,
+  onPriceGroupsChange,
+  currency = 'kr',
+  className,
+}: BookingPricingStepProps): React.ReactElement {
+  // TODO: Inject t() via runtime/props instead of placeholder
+  const t = (key: string, params?: any): string => key;
+
+  const [internalSelectedGroups, setInternalSelectedGroups] = React.useState<Set<string>>(
+    selectedPriceGroups ?? new Set(selectedPriceGroup ? [selectedPriceGroup] : [])
+  );
+
+  React.useEffect(() => {
+    if (selectedPriceGroups) {
+      setInternalSelectedGroups(selectedPriceGroups);
+    } else if (selectedPriceGroup) {
+      setInternalSelectedGroups(new Set([selectedPriceGroup]));
+    } else {
+      setInternalSelectedGroups(new Set());
+    }
+  }, [selectedPriceGroup, selectedPriceGroups]);
+
+  const handlePriceGroupClick = (groupId: string): void => {
+    if (allowMultiplePriceGroups) {
+      const newSelection = new Set(internalSelectedGroups);
+      if (newSelection.has(groupId)) {
+        newSelection.delete(groupId);
+      } else {
+        newSelection.add(groupId);
+      }
+      setInternalSelectedGroups(newSelection);
+      onPriceGroupsChange?.(newSelection);
+      // Also call single-select handler for backward compatibility
+      if (newSelection.size === 1) {
+        onPriceGroupChange(Array.from(newSelection)[0] ?? '');
+      } else if (newSelection.size === 0) {
+        onPriceGroupChange('');
+      }
+    } else {
+      const newValue = selectedPriceGroup === groupId ? '' : groupId;
+      onPriceGroupChange(newValue);
+    }
+  };
+
+  const isSelected = (groupId: string): boolean => {
+    if (allowMultiplePriceGroups) {
+      return internalSelectedGroups.has(groupId);
+    }
+    return selectedPriceGroup === groupId;
+  };
+
+  return (
+    <div
+      className={className}
+      style={{
+        padding: 'var(--ds-spacing-6)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-6)',
+      }}
+    >
+      {/* Price Group Selection */}
+      <div>
+        <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-2)' }}>
+          {t('booking.priceGroup')}
+        </Heading>
+        <Paragraph
+          data-size="sm"
+          style={{
+            margin: 0,
+            marginBottom: 'var(--ds-spacing-3)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
+          {t('booking.priceGroupDescription')}
+          {allowMultiplePriceGroups && ` ${t('booking.canSelectMultiplePriceGroups')}`}
+        </Paragraph>
+
+        {/* Button-based Price Group Selection */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'var(--ds-spacing-2)',
+            marginBottom: 'var(--ds-spacing-2)',
+          }}
+        >
+          {priceGroups.map((group) => {
+            const selected = isSelected(group.id);
+            return (
+              <button
+                key={group.id}
+                type="button"
+                onClick={() => handlePriceGroupClick(group.id)}
+                aria-pressed={selected}
+                aria-label={`${group.label} - ${group.pricePerHour} ${currency}/${t('booking.perHour')}`}
+                style={{
+                  minWidth: '140px',
+                  flex: '1 1 auto',
+                  position: 'relative',
+                  padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  border: selected
+                    ? '2px solid var(--ds-color-accent-base-default)'
+                    : '1px solid var(--ds-color-neutral-border-default)',
+                  backgroundColor: selected
+                    ? 'var(--ds-color-accent-base-default)'
+                    : 'var(--ds-color-neutral-background-default)',
+                  color: selected
+                    ? 'var(--ds-color-accent-base-contrast-default)'
+                    : 'var(--ds-color-neutral-text-default)',
+                  fontWeight: selected ? 'var(--ds-font-weight-semibold)' : 'var(--ds-font-weight-regular)',
+                  boxShadow: selected ? 'var(--ds-shadow-sm)' : 'none',
+                  transition: 'all 150ms ease',
+                  cursor: 'pointer',
+                  outline: 'none',
+                  fontFamily: 'inherit',
+                  fontSize: 'var(--ds-font-size-sm)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 'var(--ds-spacing-1)',
+                    width: '100%',
+                  }}
+                >
+                  <span style={{ fontSize: 'var(--ds-font-size-sm)', lineHeight: 'var(--ds-line-height-sm)' }}>
+                    {group.label}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 'var(--ds-font-size-xs)',
+                      opacity: 0.9,
+                      fontWeight: 'var(--ds-font-weight-medium)',
+                    }}
+                  >
+                    {group.pricePerHour} {currency}/{t('booking.perHour')}
+                  </span>
+                  {allowMultiplePriceGroups && selected && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '4px',
+                        right: '4px',
+                        width: '20px',
+                        height: '20px',
+                        borderRadius: 'var(--ds-border-radius-full)',
+                        backgroundColor: 'var(--ds-color-accent-base-contrast-default)',
+                        color: 'var(--ds-color-accent-base-default)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 'var(--ds-font-size-xs)',
+                        fontWeight: 'var(--ds-font-weight-bold)',
+                      }}
+                    >
+                      ✓
+                    </div>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Show info alert for selected price groups */}
+        {(allowMultiplePriceGroups ? internalSelectedGroups.size > 0 : selectedPriceGroup) && (
+          <Alert data-color="info" data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-2)' }}>
+              <InfoIcon size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}>
+                {allowMultiplePriceGroups ? (
+                  <>
+                    {Array.from(internalSelectedGroups).map((groupId) => {
+                      const group = priceGroups.find((pg) => pg.id === groupId);
+                      return group ? (
+                        <Paragraph key={groupId} data-size="sm" style={{ margin: 0 }}>
+                          <strong>{group.label}:</strong> {group.description}
+                        </Paragraph>
+                      ) : null;
+                    })}
+                  </>
+                ) : (
+                  <Paragraph data-size="sm" style={{ margin: 0 }}>
+                    {priceGroups.find((pg) => pg.id === selectedPriceGroup)?.description}
+                  </Paragraph>
+                )}
+              </div>
+            </div>
+          </Alert>
+        )}
+      </div>
+
+      {/* Additional Services */}
+      <div>
+        <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+          {t('booking.recommendedAddons')}
+        </Heading>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
+          {additionalServices.map((service) => (
+            <label
+              key={service.id}
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 'var(--ds-spacing-3)',
+                padding: 'var(--ds-spacing-4)',
+                backgroundColor: 'var(--ds-color-neutral-background-default)',
+                borderRadius: 'var(--ds-border-radius-lg)',
+                border: selectedServices.has(service.id)
+                  ? '2px solid var(--ds-color-accent-base-default)'
+                  : '1px solid var(--ds-color-neutral-border-subtle)',
+                cursor: 'pointer',
+                transition: 'all 150ms ease',
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={selectedServices.has(service.id)}
+                onChange={(e) => onServiceToggle(service.id, e.target.checked)}
+                style={{
+                  width: '20px',
+                  height: '20px',
+                  marginTop: '2px',
+                  accentColor: 'var(--ds-color-accent-base-default)',
+                  cursor: 'pointer',
+                }}
+              />
+              <div style={{ flex: 1 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: 'var(--ds-spacing-1)',
+                  }}
+                >
+                  <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+                    {service.label}
+                  </Paragraph>
+                  <Paragraph
+                    data-size="md"
+                    style={{
+                      margin: 0,
+                      fontWeight: 'var(--ds-font-weight-semibold)',
+                      color: 'var(--ds-color-accent-text-default)',
+                    }}
+                  >
+                    +{service.price} {currency}
+                  </Paragraph>
+                </div>
+                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  {service.description}
+                </Paragraph>
+              </div>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Terms and Conditions */}
+      <div>
+        <Heading level={4} data-size="sm" style={{ margin: 0, marginBottom: 'var(--ds-spacing-3)' }}>
+          {t('booking.termsAndConditions')}
+        </Heading>
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            borderRadius: 'var(--ds-border-radius-lg)',
+            border: '1px solid var(--ds-color-neutral-border-subtle)',
+            marginBottom: 'var(--ds-spacing-3)',
+          }}
+        >
+          <Paragraph
+            data-size="sm"
+            style={{
+              margin: 0,
+              marginBottom: 'var(--ds-spacing-2)',
+              fontWeight: 'var(--ds-font-weight-semibold)',
+            }}
+          >
+            {t('booking.readImportantTerms')}
+          </Paragraph>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: 'var(--ds-spacing-4)',
+              fontSize: 'var(--ds-font-size-sm)',
+              lineHeight: 'var(--ds-line-height-lg)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            <li>{t('terms.cancellationAndRefund')}</li>
+            <li>{t('terms.damageResponsibility')}</li>
+            <li>{t('terms.houseRules')}</li>
+          </ul>
+          <div style={{ marginTop: 'var(--ds-spacing-3)', display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+            <a
+              href="#"
+              style={{
+                color: 'var(--ds-color-accent-text-default)',
+                fontSize: 'var(--ds-font-size-sm)',
+                textDecoration: 'underline',
+              }}
+            >
+              {t('common.readFullTerms')}
+            </a>
+            <a
+              href="#"
+              style={{
+                color: 'var(--ds-color-accent-text-default)',
+                fontSize: 'var(--ds-font-size-sm)',
+                textDecoration: 'underline',
+              }}
+            >
+              {t('common.privacyPolicy')}
+            </a>
+          </div>
+        </div>
+
+        {/* Terms acceptance checkbox */}
+        <label
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: 'var(--ds-spacing-3)',
+            cursor: 'pointer',
+            padding: 'var(--ds-spacing-3)',
+            backgroundColor: 'var(--ds-color-neutral-background-default)',
+            borderRadius: 'var(--ds-border-radius-md)',
+            border: '1px solid var(--ds-color-neutral-border-default)',
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={termsAccepted}
+            onChange={(e) => onTermsChange(e.target.checked)}
+            style={{
+              width: '20px',
+              height: '20px',
+              marginTop: '2px',
+              accentColor: 'var(--ds-color-accent-base-default)',
+              cursor: 'pointer',
+            }}
+          />
+          <Paragraph data-size="sm" style={{ margin: 0 }}>
+            {t('booking.acceptTermsLabel')}
+          </Paragraph>
+        </label>
+      </div>
+    </div>
+  );
+}

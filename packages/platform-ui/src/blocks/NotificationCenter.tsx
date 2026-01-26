@@ -15,6 +15,28 @@ import { NotificationItem, type NotificationItemData } from './NotificationItem'
 
 export type NotificationFilter = 'all' | 'unread' | 'read';
 
+export interface NotificationCenterLabels {
+  /** Main title */
+  title: string;
+  /** Mark all as read button text */
+  markAllAsRead: string;
+  /** Close button aria-label */
+  closeAriaLabel: string;
+  /** Filter tab labels */
+  filterAll: string;
+  filterUnread: string;
+  filterRead: string;
+  /** Empty state messages */
+  emptyAllTitle: string;
+  emptyAllDescription: string;
+  emptyUnreadTitle: string;
+  emptyUnreadDescription: string;
+  emptyReadTitle: string;
+  emptyReadDescription: string;
+  /** Loading aria-label */
+  loadingAriaLabel: string;
+}
+
 export interface NotificationCenterProps {
   /** Whether the modal is open */
   open: boolean;
@@ -38,6 +60,8 @@ export interface NotificationCenterProps {
   onMarkAllAsRead?: () => void;
   /** Custom time formatting function */
   formatTimeAgo?: (date: string) => string;
+  /** UI labels */
+  labels?: Partial<NotificationCenterLabels>;
   /** Custom class name */
   className?: string;
 }
@@ -95,6 +119,26 @@ function InboxIcon({ size = 48 }: { size?: number }) {
 }
 
 // =============================================================================
+// Default Labels
+// =============================================================================
+
+const defaultLabels: NotificationCenterLabels = {
+  title: 'Varsler',
+  markAllAsRead: 'Merk alle som lest',
+  closeAriaLabel: 'Lukk varselssenter',
+  filterAll: 'Alle',
+  filterUnread: 'Uleste',
+  filterRead: 'Leste',
+  emptyAllTitle: 'Ingen varsler',
+  emptyAllDescription: 'Du har ingen varsler ennå. Når du får nye varsler, vil de vises her.',
+  emptyUnreadTitle: 'Ingen uleste varsler',
+  emptyUnreadDescription: 'Du har lest alle varslene dine. Godt jobbet!',
+  emptyReadTitle: 'Ingen leste varsler',
+  emptyReadDescription: 'Du har ingen leste varsler ennå.',
+  loadingAriaLabel: 'Laster varsler...',
+};
+
+// =============================================================================
 // Filter Tabs Component
 // =============================================================================
 
@@ -106,13 +150,14 @@ interface FilterTabsProps {
     unread: number;
     read: number;
   };
+  labels: NotificationCenterLabels;
 }
 
-function FilterTabs({ activeFilter, onFilterChange, counts }: FilterTabsProps) {
+function FilterTabs({ activeFilter, onFilterChange, counts, labels }: FilterTabsProps) {
   const filters: Array<{ value: NotificationFilter; label: string; count: number }> = [
-    { value: 'all', label: 'Alle', count: counts.all },
-    { value: 'unread', label: 'Uleste', count: counts.unread },
-    { value: 'read', label: 'Leste', count: counts.read },
+    { value: 'all', label: labels.filterAll, count: counts.all },
+    { value: 'unread', label: labels.filterUnread, count: counts.unread },
+    { value: 'read', label: labels.filterRead, count: counts.read },
   ];
 
   return (
@@ -188,21 +233,22 @@ function FilterTabs({ activeFilter, onFilterChange, counts }: FilterTabsProps) {
 
 interface EmptyStateProps {
   filter: NotificationFilter;
+  labels: NotificationCenterLabels;
 }
 
-function EmptyState({ filter }: EmptyStateProps) {
+function EmptyState({ filter, labels }: EmptyStateProps) {
   const messages = {
     all: {
-      title: 'Ingen varsler',
-      description: 'Du har ingen varsler ennå. Når du får nye varsler, vil de vises her.',
+      title: labels.emptyAllTitle,
+      description: labels.emptyAllDescription,
     },
     unread: {
-      title: 'Ingen uleste varsler',
-      description: 'Du har lest alle varslene dine. Godt jobbet!',
+      title: labels.emptyUnreadTitle,
+      description: labels.emptyUnreadDescription,
     },
     read: {
-      title: 'Ingen leste varsler',
-      description: 'Du har ingen leste varsler ennå.',
+      title: labels.emptyReadTitle,
+      description: labels.emptyReadDescription,
     },
   };
 
@@ -269,9 +315,11 @@ export function NotificationCenter({
   onDelete,
   onMarkAllAsRead,
   formatTimeAgo,
+  labels: customLabels,
   className = '',
 }: NotificationCenterProps): React.ReactElement {
   const dialogRef = React.useRef<HTMLDialogElement>(null);
+  const labels = { ...defaultLabels, ...customLabels };
 
   // Control dialog visibility
   React.useEffect(() => {
@@ -338,7 +386,7 @@ export function NotificationCenter({
         }}
       >
         <Heading data-size="xs" style={{ margin: 0 }}>
-          Varsler
+          {labels.title}
         </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
           {hasUnreadNotifications && onMarkAllAsRead && (
@@ -353,13 +401,13 @@ export function NotificationCenter({
               }}
             >
               <CheckAllIcon size={16} />
-              Merk alle som lest
+              {labels.markAllAsRead}
             </Button>
           )}
           <Button
             type="button"
             onClick={onClose}
-            aria-label="Lukk varselssenter"
+            aria-label={labels.closeAriaLabel}
             data-color="neutral"
             style={{
               display: 'flex',
@@ -388,7 +436,7 @@ export function NotificationCenter({
 
       {/* Filter Tabs */}
       {onFilterChange && (
-        <FilterTabs activeFilter={filter} onFilterChange={onFilterChange} counts={counts} />
+        <FilterTabs activeFilter={filter} onFilterChange={onFilterChange} counts={counts} labels={labels} />
       )}
 
       {/* Content */}
@@ -407,10 +455,10 @@ export function NotificationCenter({
               padding: 'var(--ds-spacing-12)',
             }}
           >
-            <Spinner aria-label="Laster varsler..." />
+            <Spinner aria-label={labels.loadingAriaLabel} />
           </div>
         ) : filteredNotifications.length === 0 ? (
-          <EmptyState filter={filter} />
+          <EmptyState filter={filter} labels={labels} />
         ) : (
           <div>
             {filteredNotifications.map((notification) => {

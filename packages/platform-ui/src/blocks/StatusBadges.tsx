@@ -108,6 +108,44 @@ export function StatusTag({
 }
 
 // =============================================================================
+// Booking Status Badge
+// =============================================================================
+
+export type BookingStatusType =
+  | 'pending'
+  | 'confirmed'
+  | 'cancelled'
+  | 'completed'
+  | 'no_show'
+  | 'in_progress';
+
+const bookingStatusConfig: Record<BookingStatusType, StatusBadgeConfig> = {
+  pending: { color: 'warning', label: 'Venter' },
+  confirmed: { color: 'success', label: 'Bekreftet' },
+  cancelled: { color: 'danger', label: 'Kansellert' },
+  completed: { color: 'neutral', label: 'Fullført' },
+  no_show: { color: 'danger', label: 'Ikke møtt' },
+  in_progress: { color: 'info', label: 'Pågår' },
+};
+
+export interface BookingStatusBadgeProps {
+  status: BookingStatusType;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export function BookingStatusBadge({
+  status,
+  size = 'sm',
+}: BookingStatusBadgeProps): React.ReactElement {
+  const config = bookingStatusConfig[status] || { color: 'neutral' as BadgeColor, label: status };
+  return (
+    <StatusTag color={config.color} size={size}>
+      {config.label}
+    </StatusTag>
+  );
+}
+
+// =============================================================================
 // Payment Status Badge
 // =============================================================================
 

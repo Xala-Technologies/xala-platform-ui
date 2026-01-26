@@ -35,6 +35,37 @@ export interface NotificationItemData {
   metadata?: Record<string, unknown>;
 }
 
+export interface NotificationItemLabels {
+  /** Default notification type label */
+  defaultLabel: string;
+  /** Confirmed notification label */
+  confirmedLabel: string;
+  /** Reminder notification label */
+  reminderLabel: string;
+  /** Cancelled notification label */
+  cancelledLabel: string;
+  /** Modified notification label */
+  modifiedLabel: string;
+  /** Upcoming notification label */
+  upcomingLabel: string;
+  /** Completed notification label */
+  completedLabel: string;
+  /** Unread indicator aria-label */
+  unreadAriaLabel: string;
+  /** Mark as read button title */
+  markAsReadTitle: string;
+  /** Mark as read button aria-label */
+  markAsReadAriaLabel: string;
+  /** Delete button title */
+  deleteTitle: string;
+  /** Delete button aria-label */
+  deleteAriaLabel: string;
+  /** Urgent priority label */
+  urgentLabel: string;
+  /** High priority label */
+  highLabel: string;
+}
+
 export interface NotificationItemProps {
   /** Notification data */
   notification: NotificationItemData;
@@ -48,6 +79,8 @@ export interface NotificationItemProps {
   showActions?: boolean;
   /** Custom time formatting function */
   formatTimeAgo?: (date: string) => string;
+  /** UI labels */
+  labels?: Partial<NotificationItemLabels>;
   /** Custom class name */
   className?: string;
 }
@@ -173,6 +206,27 @@ function CheckIcon({ size = 16 }: { size?: number }) {
 }
 
 // =============================================================================
+// Default Labels
+// =============================================================================
+
+const defaultLabels: NotificationItemLabels = {
+  defaultLabel: 'Varsel',
+  confirmedLabel: 'Bekreftet',
+  reminderLabel: 'Påminnelse',
+  cancelledLabel: 'Kansellert',
+  modifiedLabel: 'Endret',
+  upcomingLabel: 'Kommende',
+  completedLabel: 'Fullført',
+  unreadAriaLabel: 'Ulest varsel',
+  markAsReadTitle: 'Marker som lest',
+  markAsReadAriaLabel: 'Marker som lest',
+  deleteTitle: 'Slett varsel',
+  deleteAriaLabel: 'Slett varsel',
+  urgentLabel: 'Viktig',
+  highLabel: 'Høy',
+};
+
+// =============================================================================
 // Notification Type Configuration
 // =============================================================================
 
@@ -180,7 +234,7 @@ interface NotificationTypeConfig {
   icon: React.ReactNode;
   color: string;
   backgroundColor: string;
-  label: string;
+  labelKey: keyof Pick<NotificationItemLabels, 'confirmedLabel' | 'reminderLabel' | 'cancelledLabel' | 'modifiedLabel' | 'upcomingLabel' | 'completedLabel' | 'defaultLabel'>;
 }
 
 const notificationTypeConfig: Record<NotificationType, NotificationTypeConfig> = {
@@ -188,43 +242,43 @@ const notificationTypeConfig: Record<NotificationType, NotificationTypeConfig> =
     icon: <CheckCircleIcon />,
     color: 'var(--ds-color-success-text-default)',
     backgroundColor: 'var(--ds-color-success-surface-default)',
-    label: 'Bekreftet',
+    labelKey: 'confirmedLabel',
   },
   resourceRequest_reminder_24h: {
     icon: <BellIcon />,
     color: 'var(--ds-color-warning-text-default)',
     backgroundColor: 'var(--ds-color-warning-surface-default)',
-    label: 'Påminnelse',
+    labelKey: 'reminderLabel',
   },
   resourceRequest_reminder_1h: {
     icon: <BellIcon />,
     color: 'var(--ds-color-warning-text-default)',
     backgroundColor: 'var(--ds-color-warning-surface-default)',
-    label: 'Påminnelse',
+    labelKey: 'reminderLabel',
   },
   resourceRequest_cancelled: {
     icon: <XCircleIcon />,
     color: 'var(--ds-color-danger-text-default)',
     backgroundColor: 'var(--ds-color-danger-surface-default)',
-    label: 'Kansellert',
+    labelKey: 'cancelledLabel',
   },
   resourceRequest_modified: {
     icon: <EditIcon />,
     color: 'var(--ds-color-info-text-default)',
     backgroundColor: 'var(--ds-color-info-surface-default)',
-    label: 'Endret',
+    labelKey: 'modifiedLabel',
   },
   resourceRequest_upcoming: {
     icon: <CalendarIcon />,
     color: 'var(--ds-color-accent-text-default)',
     backgroundColor: 'var(--ds-color-accent-surface-default)',
-    label: 'Kommende',
+    labelKey: 'upcomingLabel',
   },
   resourceRequest_completed: {
     icon: <CheckCircleIcon />,
     color: 'var(--ds-color-neutral-text-subtle)',
     backgroundColor: 'var(--ds-color-neutral-surface-default)',
-    label: 'Fullført',
+    labelKey: 'completedLabel',
   },
 };
 
@@ -235,7 +289,7 @@ const defaultNotificationConfig: NotificationTypeConfig = {
   icon: <BellIcon />,
   color: 'var(--ds-color-neutral-text-default)',
   backgroundColor: 'var(--ds-color-neutral-surface-default)',
-  label: 'Varsel',
+  labelKey: 'defaultLabel',
 };
 
 // =============================================================================
@@ -276,8 +330,10 @@ export function NotificationItem({
   onDelete,
   showActions = true,
   formatTimeAgo = defaultFormatTimeAgo,
+  labels: customLabels,
   className = '',
 }: NotificationItemProps): React.ReactElement {
+  const labels = { ...defaultLabels, ...customLabels };
   const isUnread = !notification.readAt;
   const config = notificationTypeConfig[notification.type] || defaultNotificationConfig;
 
@@ -330,7 +386,7 @@ export function NotificationItem({
             borderRadius: 'var(--ds-border-radius-full)',
             backgroundColor: 'var(--ds-color-accent-base-default)',
           }}
-          aria-label="Ulest varsel"
+          aria-label={labels.unreadAriaLabel}
         />
       )}
 
@@ -365,7 +421,7 @@ export function NotificationItem({
           }}
         >
           <StatusTag size="sm" color="neutral">
-            {config.label}
+            {labels[config.labelKey]}
           </StatusTag>
           <span
             style={{
@@ -377,12 +433,12 @@ export function NotificationItem({
           </span>
           {notification.priority === 'urgent' && (
             <StatusTag size="sm" color="danger">
-              Viktig
+              {labels.urgentLabel}
             </StatusTag>
           )}
           {notification.priority === 'high' && (
             <StatusTag size="sm" color="warning">
-              Høy
+              {labels.highLabel}
             </StatusTag>
           )}
         </div>
@@ -432,7 +488,7 @@ export function NotificationItem({
             <Button
               type="button"
               onClick={handleMarkAsRead}
-              title="Marker som lest"
+              title={labels.markAsReadTitle}
               data-color="neutral"
               style={{
                 display: 'flex',
@@ -455,7 +511,7 @@ export function NotificationItem({
                 e.currentTarget.style.backgroundColor = 'transparent';
                 e.currentTarget.style.color = 'var(--ds-color-neutral-text-subtle)';
               }}
-              aria-label="Marker som lest"
+              aria-label={labels.markAsReadAriaLabel}
             >
               <CheckIcon />
             </Button>
@@ -464,7 +520,7 @@ export function NotificationItem({
             <Button
               type="button"
               onClick={handleDelete}
-              title="Slett varsel"
+              title={labels.deleteTitle}
               data-color="danger"
               style={{
                 display: 'flex',
@@ -487,7 +543,7 @@ export function NotificationItem({
                 e.currentTarget.style.backgroundColor = 'transparent';
                 e.currentTarget.style.color = 'var(--ds-color-neutral-text-subtle)';
               }}
-              aria-label="Slett varsel"
+              aria-label={labels.deleteAriaLabel}
             >
               <TrashIcon />
             </Button>

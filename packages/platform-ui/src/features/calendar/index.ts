@@ -94,15 +94,14 @@
 // Main Component Export
 // =============================================================================
 
-// COMMENTED OUT: Depends on RentalObjectAvailabilityCalendar which doesn't exist
-// export {
-//   CalendarSection,
-//   type CalendarSectionProps,
-//   type CalendarSectionLabels,
-//   type CalendarConfig,
-//   type RawCalendarCell,
-//   type RawLegendItem,
-// } from './CalendarSection';
+export {
+  CalendarSection,
+  type CalendarSectionProps,
+  type CalendarSectionLabels,
+  type CalendarConfig,
+  type RawCalendarCell,
+  type RawLegendItem,
+} from './CalendarSection';
 
 // =============================================================================
 // Re-export Utilities from blocks/calendar
@@ -156,11 +155,9 @@ export {
   type CalendarLegendItem,
   type CalendarSectionControllerProps,
 
-  // COMMENTED OUT: rental-objects components not available
-  // RentalObjectAvailabilityCalendar,
-  // type RentalObjectAvailabilityCalendarProps,
-  // AvailabilityCalendar,
-  // type AvailabilityCalendarProps,
+  // Calendar Components
+  RentalObjectAvailabilityCalendar,
+  type RentalObjectAvailabilityCalendarProps,
 } from './blocks';
 
 // =============================================================================

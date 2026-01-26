@@ -81,16 +81,10 @@ export {
 // Re-export Calendar Components
 // =============================================================================
 
-// COMMENTED OUT: rental-objects feature does not exist in this location
-// export {
-//   RentalObjectAvailabilityCalendar,
-//   type RentalObjectAvailabilityCalendarProps,
-// } from '../../rental-objects/blocks/RentalObjectAvailabilityCalendar';
-
-// export {
-//   AvailabilityCalendar,
-//   type AvailabilityCalendarProps,
-// } from '../../rental-objects/blocks/AvailabilityCalendar';
+export {
+  RentalObjectAvailabilityCalendar,
+  type RentalObjectAvailabilityCalendarProps,
+} from '../../../blocks/calendar/RentalObjectAvailabilityCalendar';
 
 // =============================================================================
 // Utility Functions

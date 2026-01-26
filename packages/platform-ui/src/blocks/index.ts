@@ -82,6 +82,7 @@ export type {
 // Status Badge Components (Platform-neutral only)
 export {
   StatusTag,
+  BookingStatusBadge,
   PaymentStatusBadge,
   ResourceStatusBadge,
   RequestStatusBadge,
@@ -104,6 +105,8 @@ export type {
   StatusTagProps,
   BadgeColor,
   StatusBadgeConfig,
+  BookingStatusType,
+  BookingStatusBadgeProps,
   PaymentStatusType,
   PaymentStatusBadgeProps,
   ResourceStatusType,
@@ -262,6 +265,29 @@ export type {
   NotificationItemData,
   NotificationListProps,
 } from './notifications';
+
+export { NotificationCenter } from './NotificationCenter';
+export type {
+  NotificationCenterProps,
+  NotificationCenterLabels,
+  NotificationFilter,
+} from './NotificationCenter';
+
+export { PushNotificationPrompt } from './PushNotificationPrompt';
+export type {
+  PushNotificationPromptProps,
+  PushNotificationPromptLabels,
+} from './PushNotificationPrompt';
+
+// NotificationItem (main blocks version with StatusTag)
+export { NotificationItem as NotificationItemBlock } from './NotificationItem';
+export type {
+  NotificationItemProps as NotificationItemBlockProps,
+  NotificationItemData as NotificationItemBlockData,
+  NotificationItemLabels,
+  NotificationType,
+  NotificationPriority,
+} from './NotificationItem';
 
 // Profile Blocks
 export { ProfileCard, QuickStat } from './profile';
@@ -485,3 +511,11 @@ export type { ChangelogCardProps, ChangeType, ChangeItem } from './ChangelogCard
 // XTerminal (Terminal display)
 export { XTerminal } from './XTerminal';
 export type { XTerminalProps } from './XTerminal';
+
+// =============================================================================
+// CALENDAR BLOCKS
+// =============================================================================
+
+// Calendar Components
+export { RentalObjectAvailabilityCalendar } from './calendar';
+export type { RentalObjectAvailabilityCalendarProps } from './calendar';
