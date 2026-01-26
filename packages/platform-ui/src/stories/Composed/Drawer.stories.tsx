@@ -1,62 +1,217 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
-import { Drawer, DrawerSection, DrawerItem } from '../../composed';
-import { Button } from '../../primitives';
 import { useState } from 'react';
+import { useT } from '@xala-technologies/i18n';
+import { Drawer, Button, Paragraph, Stack } from '../../index';
 
-const meta = {
+/**
+ * Drawer provides a sliding panel that can open from any side.
+ *
+ * ## Features
+ * - Multiple positions (left, right, top, bottom)
+ * - Size presets
+ * - Backdrop overlay
+ * - Footer support
+ * - Mobile responsive
+ *
+ * ## When to Use
+ * - Side panels
+ * - Mobile menus
+ * - Detail views
+ * - Filters
+ */
+const meta: Meta<typeof Drawer> = {
   title: 'Composed/Drawer',
   component: Drawer,
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+Drawer provides a sliding panel that can open from any side.
+
+## Features
+- Multiple positions (left, right, top, bottom)
+- Size presets (sm, md, lg, xl, full)
+- Backdrop overlay
+- Footer support
+- Mobile responsive
+
+## When to Use
+- Side panels
+- Mobile menus
+- Detail views
+- Filters
+        `,
+      },
+    },
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Drawer>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-const DrawerWithTrigger = (args: any) => {
-  const t = useT();
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div style={{ padding: '2rem' }}>
-      <Button onClick={() => setIsOpen(true)}>{t('storybook.demo.openDrawer')}</Button>
-      <Drawer {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <DrawerSection title={t('storybook.demo.section', { number: 1 })}>
-          <DrawerItem onClick={() => console.log('Item 1')}>
-            {t('storybook.demo.item', { number: 1 })}
-          </DrawerItem>
-          <DrawerItem onClick={() => console.log('Item 2')}>
-            {t('storybook.demo.item', { number: 2 })}
-          </DrawerItem>
-        </DrawerSection>
-        <DrawerSection title={t('storybook.demo.section', { number: 2 })}>
-          <DrawerItem onClick={() => console.log('Item 3')}>
-            {t('storybook.demo.item', { number: 3 })}
-          </DrawerItem>
-          <DrawerItem onClick={() => console.log('Item 4')}>
-            {t('storybook.demo.item', { number: 4 })}
-          </DrawerItem>
-        </DrawerSection>
-      </Drawer>
-    </div>
-  );
 };
 
-export const RightDrawer: Story = {
-  render: (args) => <DrawerWithTrigger {...args} />,
-  args: {
-    position: 'right',
-    title: 'Drawer Title',
+export default meta;
+type Story = StoryObj<typeof Drawer>;
+
+/**
+ * Default drawer (right)
+ */
+export const Default: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openDrawer')}</Button>
+        <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('storybook.drawer.drawerTitle')}>
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
   },
 };
 
-export const LeftDrawer: Story = {
-  render: (args) => <DrawerWithTrigger {...args} />,
-  args: {
-    position: 'left',
-    title: 'Left Drawer',
+/**
+ * Drawer from left
+ */
+export const Left: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openLeftDrawer')}</Button>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          position="left"
+          title={t('storybook.drawer.navigation')}
+        >
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
+  },
+};
+
+/**
+ * Drawer from bottom
+ */
+export const Bottom: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <div style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openBottomDrawer')}</Button>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          position="bottom"
+          title={t('storybook.drawer.drawerTitle')}
+        >
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
+  },
+};
+
+/**
+ * Drawer with footer
+ */
+export const WithFooter: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openDrawer')}</Button>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          title={t('storybook.drawer.drawerTitle')}
+          footer={
+            <Stack direction="horizontal" spacing="var(--ds-spacing-2)" justify="end">
+              <Button data-color="neutral" variant="tertiary" onClick={() => setIsOpen(false)}>
+                {t('storybook.drawer.cancel')}
+              </Button>
+              <Button data-color="accent" onClick={() => setIsOpen(false)}>
+                {t('storybook.drawer.save')}
+              </Button>
+            </Stack>
+          }
+        >
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
+  },
+};
+
+/**
+ * Small drawer
+ */
+export const Small: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openDrawer')}</Button>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="sm"
+          title={t('storybook.drawer.drawerTitle')}
+        >
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
+  },
+};
+
+/**
+ * Large drawer
+ */
+export const Large: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openDrawer')}</Button>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="lg"
+          title={t('storybook.drawer.drawerTitle')}
+        >
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
+  },
+};
+
+/**
+ * Drawer without overlay
+ */
+export const WithoutOverlay: Story = {
+  render: function Render() {
+    const t = useT();
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
+        <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openDrawer')}</Button>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          overlay={false}
+          title={t('storybook.drawer.drawerTitle')}
+        >
+          <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
+        </Drawer>
+      </Stack>
+    );
   },
 };

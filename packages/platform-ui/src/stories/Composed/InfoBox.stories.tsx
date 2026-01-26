@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { InfoBox } from '../../composed/InfoBox';
+import { InfoBox } from '../../index';
 
 const meta: Meta<typeof InfoBox> = {
   title: 'Composed/InfoBox',

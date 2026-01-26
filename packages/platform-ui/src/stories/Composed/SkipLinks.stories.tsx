@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { SkipLinks } from '../../composed/SkipLinks';
+import { SkipLinks } from '../../index';
 
 const meta: Meta<typeof SkipLinks> = {
   title: 'Composed/SkipLinks',

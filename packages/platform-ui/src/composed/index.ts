@@ -431,17 +431,27 @@ export type {
 // Rich Notification Toast (with queue management)
 export {
   ToastProvider as RichToastProvider,
+  ToastProvider,
   useToast as useRichToast,
+  useToast,
   toast as richToast,
+  toast,
   setGlobalToastHandler,
 } from './NotificationToast';
 export type {
   ToastProviderProps as RichToastProviderProps,
+  ToastProviderProps,
   Toast as RichToast,
+  Toast,
   ToastOptions as RichToastOptions,
+  ToastOptions,
   ToastType as RichToastType,
+  ToastType,
   ToastPosition as RichToastPosition,
+  ToastPosition,
   ToastContextValue as RichToastContextValue,
+  ToastContextValue,
+  ToastItemProps,
 } from './NotificationToast';
 
 // Breadcrumbs - Custom implementation with context
@@ -453,11 +463,17 @@ export type { BreadcrumbsProps, BreadcrumbItem } from './Breadcrumbs';
 export { CommandPalette, useCommandPalette } from './CommandPalette';
 export type { CommandPaletteProps, CommandItem, CommandGroup } from './CommandPalette';
 
-// Form Layout Components
-export { FormSection, FormActions, FormRow, FormField, FormDivider } from './FormLayout';
+// FormSection and FormActions (standalone versions - simpler API)
+export { FormSection } from './FormSection';
+export { FormActions } from './FormActions';
+export type { FormSectionProps } from './FormSection';
+export type { FormActionsProps } from './FormActions';
+
+// Form Layout Components (from FormLayout.tsx - collapsible sections, layout helpers)
+export { FormSection as FormLayoutSection, FormActions as FormLayoutActions, FormRow, FormField, FormDivider } from './FormLayout';
 export type {
-  FormSectionProps,
-  FormActionsProps,
+  FormSectionProps as FormLayoutSectionProps,
+  FormActionsProps as FormLayoutActionsProps,
   FormRowProps,
   FormFieldProps,
   FormDividerProps,
@@ -578,6 +594,14 @@ export type { SimpleTabsProps, TabItemProps } from './SimpleTabs';
 // PageContainer (consistent page wrapper)
 export { PageContainer } from './PageContainer';
 export type { PageContainerProps } from './PageContainer';
+
+// InfoBox (colored info/status boxes)
+export { InfoBox } from './InfoBox';
+export type { InfoBoxProps, InfoBoxVariant } from './InfoBox';
+
+// SkipLinks (accessibility skip navigation)
+export { SkipLinks } from './SkipLinks';
+export type { SkipLinksProps, SkipLink } from './SkipLinks';
 
 // AvailabilityLegend (calendar status legend)
 export {

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useT } from '@xala-technologies/i18n';
 import {
   NotificationBell,
@@ -8,326 +7,165 @@ import {
   ConversationList,
   MessageBubble,
   ChatThread,
-} from '../../blocks/messaging';
-import type { ConversationItem, MessageItem } from '../../blocks/messaging';
+  Stack,
+  Paragraph,
+  Card,
+} from '../../index';
 
+/**
+ * Messaging provides reusable components for chat/messaging functionality.
+ *
+ * ## Components
+ * - NotificationBell: Notification bell with count
+ * - ConversationListItem: Individual conversation item
+ * - ConversationList: List of conversations
+ * - MessageBubble: Single message bubble
+ * - ChatThread: Full chat thread with messages
+ *
+ * ## When to Use
+ * - Chat interfaces
+ * - Messaging systems
+ * - Notification centers
+ */
 const meta: Meta<typeof NotificationBell> = {
   title: 'Blocks/Messaging',
-  component: NotificationBell,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: `
-## Messaging Components
-
-Reusable components for chat/messaging functionality including notification bell, conversation lists, and chat threads.
-
-### Features
-- Notification bell with badge count
-- Conversation list with search
-- Message bubbles with read receipts
-- Chat thread with input
-
-### Usage
-\`\`\`tsx
-<NotificationBell count={5} onClick={handleClick} />
-<ConversationList conversations={conversations} onSelect={handleSelect} />
-<ChatThread messages={messages} onSend={handleSend} />
-\`\`\`
-        `,
-      },
-    },
   },
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof NotificationBell>;
 
-// Sample conversations
-const sampleConversations: ConversationItem[] = [
-  {
-    id: '1',
-    userName: 'John Doe',
-    subject: 'Booking inquiry',
-    lastMessage: 'Thank you for your response!',
-    lastMessageTime: new Date(Date.now() - 1000 * 60 * 5).toISOString(),
-    unreadCount: 2,
-    status: 'active',
-    isOnline: true,
-  },
-  {
-    id: '2',
-    userName: 'Jane Smith',
-    subject: 'Resource availability',
-    lastMessage: 'When will the room be available?',
-    lastMessageTime: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
-    unreadCount: 0,
-    status: 'pending',
-    isOnline: false,
-  },
-  {
-    id: '3',
-    userName: 'Bob Johnson',
-    subject: 'Payment confirmation',
-    lastMessage: 'Payment has been received.',
-    lastMessageTime: new Date(Date.now() - 1000 * 60 * 60).toISOString(),
-    unreadCount: 1,
-    status: 'resolved',
-    isOnline: true,
-  },
-];
-
-// Sample messages
-const sampleMessages: MessageItem[] = [
-  {
-    id: '1',
-    content: 'Hello, I have a question about the booking.',
-    senderId: 'user-1',
-    senderName: 'John Doe',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60).toISOString(),
-    isRead: true,
-    isFromCurrentUser: false,
-  },
-  {
-    id: '2',
-    content: 'Sure, how can I help you?',
-    senderId: 'current-user',
-    senderName: 'You',
-    createdAt: new Date(Date.now() - 1000 * 60 * 55).toISOString(),
-    isRead: true,
-    isFromCurrentUser: true,
-  },
-  {
-    id: '3',
-    content: 'When is the earliest I can book?',
-    senderId: 'user-1',
-    senderName: 'John Doe',
-    createdAt: new Date(Date.now() - 1000 * 60 * 50).toISOString(),
-    isRead: true,
-    isFromCurrentUser: false,
-  },
-  {
-    id: '4',
-    content: 'You can book starting from next week.',
-    senderId: 'current-user',
-    senderName: 'You',
-    createdAt: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
-    isRead: false,
-    isFromCurrentUser: true,
-  },
-];
-
-// NotificationBell stories
-export const NotificationBellDefault: Story = {
+/**
+ * NotificationBell component
+ */
+export const NotificationBellExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <NotificationBell count={0} onClick={fn()} />
-        <NotificationBell count={5} onClick={fn()} />
-        <NotificationBell count={99} onClick={fn()} />
-        <NotificationBell count={150} onClick={fn()} maxCount={99} />
-      </div>
+      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '200px', padding: 'var(--ds-spacing-4)' }}>
+        <Card data-color="neutral" data-size="medium">
+          <Stack spacing="var(--ds-spacing-4)">
+            <Paragraph data-size="md">{t('storybook.messaging.notificationBell')}</Paragraph>
+            <NotificationBell count={5} onClick={() => console.log('Bell clicked')} />
+          </Stack>
+        </Card>
+      </Stack>
     );
   },
 };
 
-// ConversationListItem stories
-export const ConversationListItemDefault: Story = {
+/**
+ * ConversationListItem component
+ */
+export const ConversationListItemExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <div style={{ width: '300px' }}>
-        <ConversationListItem
-          conversation={sampleConversations[0]}
-          isSelected={false}
-          onClick={fn()}
-        />
-        <ConversationListItem
-          conversation={sampleConversations[1]}
-          isSelected={true}
-          onClick={fn()}
-        />
-        <ConversationListItem
-          conversation={sampleConversations[2]}
-          isSelected={false}
-          onClick={fn()}
-        />
-      </div>
+      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+        <Card data-color="neutral" data-size="medium">
+          <Stack spacing="var(--ds-spacing-4)">
+            <Paragraph data-size="md">{t('storybook.messaging.conversationItem')}</Paragraph>
+            <ConversationListItem
+              conversation={{
+                id: '1',
+                userName: t('storybook.messaging.userName'),
+                lastMessage: t('storybook.messaging.lastMessage'),
+                lastMessageTime: new Date().toISOString(),
+                unreadCount: 2,
+                isOnline: true,
+              }}
+              isSelected={false}
+              onClick={() => console.log('Conversation clicked')}
+            />
+          </Stack>
+        </Card>
+      </Stack>
     );
   },
 };
 
-// ConversationList stories
-export const ConversationListDefault: Story = {
+/**
+ * ConversationList component
+ */
+export const ConversationListExample: Story = {
   render: function Render() {
     const t = useT();
-    const [selectedId, setSelectedId] = useState<string | null>(null);
+    const [selectedId, setSelectedId] = useState<string | undefined>();
     return (
-      <div
-        style={{
-          width: '350px',
-          height: '500px',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-        }}
-      >
-        <ConversationList
-          conversations={sampleConversations}
-          selectedId={selectedId}
-          onSelect={(id) => setSelectedId(id)}
-        />
-      </div>
+      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+        <Card data-color="neutral" data-size="medium">
+          <Stack spacing="var(--ds-spacing-4)">
+            <Paragraph data-size="md">{t('storybook.messaging.conversationList')}</Paragraph>
+            <div style={{ height: '400px', border: '1px solid var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
+              <ConversationList
+                conversations={[
+                  {
+                    id: '1',
+                    userName: t('storybook.messaging.userName'),
+                    lastMessage: t('storybook.messaging.lastMessage'),
+                    lastMessageTime: new Date().toISOString(),
+                    unreadCount: 2,
+                  },
+                  {
+                    id: '2',
+                    userName: t('storybook.messaging.userName2'),
+                    lastMessage: t('storybook.messaging.lastMessage2'),
+                    lastMessageTime: new Date(Date.now() - 3600000).toISOString(),
+                    unreadCount: 0,
+                  },
+                ]}
+                selectedId={selectedId}
+                onSelect={setSelectedId}
+                emptyMessage={t('storybook.messaging.noConversations')}
+              />
+            </div>
+          </Stack>
+        </Card>
+      </Stack>
     );
   },
 };
 
-export const ConversationListWithFilters: Story = {
-  render: function Render() {
-    const t = useT();
-    const [selectedId, setSelectedId] = useState<string | null>(null);
-    const [activeFilter, setActiveFilter] = useState('all');
-    return (
-      <div
-        style={{
-          width: '350px',
-          height: '500px',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-        }}
-      >
-        <ConversationList
-          conversations={sampleConversations}
-          selectedId={selectedId}
-          onSelect={(id) => setSelectedId(id)}
-          filterTabs={[
-            { id: 'all', label: 'All', count: 3 },
-            { id: 'active', label: t('platform.status.active'), count: 1 },
-            { id: 'pending', label: t('platform.status.pending'), count: 1 },
-          ]}
-          activeFilter={activeFilter}
-          onFilterChange={setActiveFilter}
-        />
-      </div>
-    );
-  },
-};
-
-export const ConversationListEmpty: Story = {
+/**
+ * MessageBubble component
+ */
+export const MessageBubbleExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <div
-        style={{
-          width: '350px',
-          height: '500px',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-        }}
-      >
-        <ConversationList conversations={[]} emptyMessage={t('storybook.demo.sampleText')} />
-      </div>
-    );
-  },
-};
-
-// MessageBubble stories
-export const MessageBubbleDefault: Story = {
-  render: function Render() {
-    const t = useT();
-    return (
-      <div
-        style={{
-          width: '400px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--ds-spacing-2)',
-        }}
-      >
-        <MessageBubble
-          message={sampleMessages[0]}
-          isFromCurrentUser={false}
-          showReadReceipt={true}
-        />
-        <MessageBubble
-          message={sampleMessages[1]}
-          isFromCurrentUser={true}
-          showReadReceipt={true}
-        />
-        <MessageBubble
-          message={sampleMessages[3]}
-          isFromCurrentUser={true}
-          showReadReceipt={true}
-        />
-      </div>
-    );
-  },
-};
-
-// ChatThread stories
-export const ChatThreadDefault: Story = {
-  render: function Render() {
-    const t = useT();
-    const [messages, setMessages] = useState(sampleMessages);
-    return (
-      <div
-        style={{
-          width: '500px',
-          height: '600px',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-        }}
-      >
-        <ChatThread
-          messages={messages}
-          currentUserId="current-user"
-          onSend={(content) => {
-            const newMessage: MessageItem = {
-              id: `msg-${Date.now()}`,
-              content,
-              senderId: 'current-user',
-              senderName: 'You',
-              createdAt: new Date().toISOString(),
-              isRead: false,
-              isFromCurrentUser: true,
-            };
-            setMessages([...messages, newMessage]);
-          }}
-          placeholder={t('storybook.demo.sampleText')}
-        />
-      </div>
-    );
-  },
-};
-
-export const ChatThreadEmpty: Story = {
-  render: function Render() {
-    const t = useT();
-    const [messages, setMessages] = useState<MessageItem[]>([]);
-    return (
-      <div
-        style={{
-          width: '500px',
-          height: '600px',
-          border: '1px solid var(--ds-color-neutral-border-default)',
-        }}
-      >
-        <ChatThread
-          messages={messages}
-          currentUserId="current-user"
-          onSend={(content) => {
-            const newMessage: MessageItem = {
-              id: `msg-${Date.now()}`,
-              content,
-              senderId: 'current-user',
-              senderName: 'You',
-              createdAt: new Date().toISOString(),
-              isRead: false,
-              isFromCurrentUser: true,
-            };
-            setMessages([newMessage]);
-          }}
-          placeholder={t('storybook.demo.sampleText')}
-        />
-      </div>
+      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+        <Card data-color="neutral" data-size="medium">
+          <Stack spacing="var(--ds-spacing-4)">
+            <Paragraph data-size="md">{t('storybook.messaging.messageBubble')}</Paragraph>
+            <Stack spacing="var(--ds-spacing-2)">
+              <MessageBubble
+                message={{
+                  id: '1',
+                  content: t('storybook.messaging.message1'),
+                  senderId: 'user1',
+                  senderName: t('storybook.messaging.userName'),
+                  createdAt: new Date().toISOString(),
+                  isFromCurrentUser: false,
+                }}
+              />
+              <MessageBubble
+                message={{
+                  id: '2',
+                  content: t('storybook.messaging.message2'),
+                  senderId: 'current',
+                  senderName: t('storybook.messaging.currentUser'),
+                  createdAt: new Date().toISOString(),
+                  isFromCurrentUser: true,
+                }}
+                isFromCurrentUser={true}
+              />
+            </Stack>
+          </Stack>
+        </Card>
+      </Stack>
     );
   },
 };
