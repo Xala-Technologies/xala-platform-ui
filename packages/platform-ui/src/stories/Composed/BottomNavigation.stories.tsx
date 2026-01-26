@@ -104,7 +104,7 @@ export const WithoutLabels: Story = {
           <Paragraph data-size="md">Bottom navigation without labels</Paragraph>
         </Stack>
         <BottomNavigation items={items} showLabels={false} />
-      </Stack>
+      </div>
     );
   },
 };
@@ -149,7 +149,7 @@ export const ManyItems: Story = {
           <Paragraph data-size="md">Bottom navigation with 5 items</Paragraph>
         </Stack>
         <BottomNavigation items={items} />
-      </Stack>
+      </div>
     );
   },
 };
@@ -180,7 +180,7 @@ export const BackgroundVariant: Story = {
           <Paragraph data-size="md">Bottom navigation with background variant</Paragraph>
         </Stack>
         <BottomNavigation items={items} variant="background" />
-      </Stack>
+      </div>
     );
   },
 };

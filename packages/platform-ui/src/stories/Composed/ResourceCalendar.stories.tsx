@@ -100,7 +100,7 @@ export const Default: Story = {
           onBook={(sel) => console.log('Book:', sel)}
           t={(key) => t(key)}
         />
-      </Stack>
+      </div>
     );
   },
 };
@@ -126,7 +126,7 @@ export const WithSelection: Story = {
           onBook={(sel) => console.log('Book:', sel)}
           t={(key) => t(key)}
         />
-      </Stack>
+      </div>
     );
   },
 };
@@ -181,7 +181,7 @@ export const MultipleStatuses: Story = {
           onBook={(sel) => console.log('Book:', sel)}
           t={(key) => t(key)}
         />
-      </Stack>
+      </div>
     );
   },
 };

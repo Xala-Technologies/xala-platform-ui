@@ -135,7 +135,7 @@ export const WithFilters: Story = {
             { value: 'doc', label: t('storybook.catalogSidebar.docs'), count: 1 },
           ]}
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -149,7 +149,7 @@ export const Loading: Story = {
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}>
         <CatalogSidebar items={[]} loading />
-      </div>
+      </Stack>
     );
   },
 };
@@ -166,7 +166,7 @@ export const WithError: Story = {
           items={[]}
           error={t('storybook.catalogSidebar.errorMessage')}
         />
-      </div>
+      </Stack>
     );
   },
 };

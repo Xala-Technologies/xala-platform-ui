@@ -87,7 +87,7 @@ export const Left: Story = {
         >
           <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
         </Drawer>
-      </Stack>
+      </div>
     );
   },
 };
@@ -110,7 +110,7 @@ export const Bottom: Story = {
         >
           <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
         </Drawer>
-      </Stack>
+      </div>
     );
   },
 };

@@ -76,7 +76,7 @@ export const Default: Story = {
           }}
           label={t('storybook.projectSelector.selectProject')}
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -127,7 +127,7 @@ export const ManyProjects: Story = {
           }}
           label={t('storybook.projectSelector.selectProject')}
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -151,7 +151,7 @@ export const Small: Story = {
           }}
           size="sm"
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -175,7 +175,7 @@ export const Large: Story = {
           }}
           size="lg"
         />
-      </div>
+      </Stack>
     );
   },
 };

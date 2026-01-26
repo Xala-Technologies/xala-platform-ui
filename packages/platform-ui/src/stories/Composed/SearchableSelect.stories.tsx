@@ -121,7 +121,7 @@ export const MultiSelect: Story = {
           multiple
           placeholder={t('storybook.searchableSelect.selectCountries')}
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -165,7 +165,7 @@ export const Loading: Story = {
           loading
           placeholder={t('storybook.searchableSelect.loading')}
         />
-      </div>
+      </Stack>
     );
   },
 };

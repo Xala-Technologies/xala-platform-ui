@@ -131,7 +131,7 @@ export const Multiple: Story = {
             </Stack>
           </FormSection>
         </Stack>
-      </Stack>
+      </div>
     );
   },
 };

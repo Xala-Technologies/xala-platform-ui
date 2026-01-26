@@ -128,7 +128,7 @@ export const AllDay: Story = {
           onSelectionChange={setSelection}
           title={t('storybook.rentalCalendar.selectDate')}
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -163,7 +163,7 @@ export const MultiDay: Story = {
           onSelectionChange={setSelection}
           title={t('storybook.rentalCalendar.selectDateRange')}
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -193,7 +193,7 @@ export const WithLegend: Story = {
           ]}
           title={t('storybook.rentalCalendar.selectTime')}
         />
-      </div>
+      </Stack>
     );
   },
 };

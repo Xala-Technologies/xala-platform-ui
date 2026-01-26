@@ -80,7 +80,7 @@ export const CustomSpacing: Story = {
           <NavigationLink href="/about">{t('storybook.navigation.about')}</NavigationLink>
           <NavigationLink href="/services">{t('storybook.navigation.services')}</NavigationLink>
         </Navigation>
-      </Stack>
+      </div>
     );
   },
 };

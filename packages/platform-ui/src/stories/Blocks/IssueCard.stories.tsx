@@ -67,7 +67,7 @@ export const Default: Story = {
           createdAt={new Date(2026, 0, 20)}
           commentCount={5}
         />
-      </Stack>
+      </div>
     );
   },
 };

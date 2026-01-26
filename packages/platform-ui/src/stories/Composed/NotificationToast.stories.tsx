@@ -184,7 +184,7 @@ export const CustomDuration: Story = {
           >
             {t('storybook.notificationToast.showCustomDuration')}
           </Button>
-        </div>
+        </Stack>
         <NotificationToast />
       </>
     );
@@ -211,7 +211,7 @@ export const Multiple: Story = {
           >
             {t('storybook.notificationToast.showMultiple')}
           </Button>
-        </div>
+        </Stack>
         <NotificationToast />
       </>
     );

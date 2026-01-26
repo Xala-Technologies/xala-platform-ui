@@ -108,10 +108,10 @@ export const Weights: Story = {
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.text.weights')}</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
-              <Text weight="normal">{t('storybook.text.normal')}</Text>
-              <Text weight="medium">{t('storybook.text.medium')}</Text>
-              <Text weight="semibold">{t('storybook.text.semibold')}</Text>
-              <Text weight="bold">{t('storybook.text.bold')}</Text>
+              <Text weight="normal">{t('storybook.text.weightNormal')}</Text>
+              <Text weight="medium">{t('storybook.text.weightMedium')}</Text>
+              <Text weight="semibold">{t('storybook.text.weightSemibold')}</Text>
+              <Text weight="bold">{t('storybook.text.weightBold')}</Text>
             </Stack>
           </Stack>
         </Card>

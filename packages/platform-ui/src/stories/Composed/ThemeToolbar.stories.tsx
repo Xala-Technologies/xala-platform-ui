@@ -61,7 +61,7 @@ export const Default: Story = {
           onColorSchemeChange={setColorScheme}
           showColorScheme
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -89,7 +89,7 @@ export const WithLocale: Story = {
           onLocaleChange={setLocale}
           showLocale
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -174,7 +174,7 @@ export const Small: Story = {
           showColorScheme
           size="sm"
         />
-      </div>
+      </Stack>
     );
   },
 };

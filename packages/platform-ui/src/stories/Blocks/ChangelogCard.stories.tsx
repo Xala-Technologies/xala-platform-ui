@@ -127,7 +127,7 @@ export const Prerelease: Story = {
           isPrerelease
           releaseUrl="https://github.com/example/releases/tag/v1.3.0-beta.1"
         />
-      </div>
+      </Stack>
     );
   },
 };

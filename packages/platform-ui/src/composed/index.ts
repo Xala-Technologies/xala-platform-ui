@@ -431,26 +431,18 @@ export type {
 // Rich Notification Toast (with queue management)
 export {
   ToastProvider as RichToastProvider,
-  ToastProvider,
   useToast as useRichToast,
-  useToast,
   toast as richToast,
   toast,
   setGlobalToastHandler,
 } from './NotificationToast';
 export type {
   ToastProviderProps as RichToastProviderProps,
-  ToastProviderProps,
   Toast as RichToast,
-  Toast,
   ToastOptions as RichToastOptions,
-  ToastOptions,
   ToastType as RichToastType,
-  ToastType,
   ToastPosition as RichToastPosition,
-  ToastPosition,
   ToastContextValue as RichToastContextValue,
-  ToastContextValue,
   ToastItemProps,
 } from './NotificationToast';
 

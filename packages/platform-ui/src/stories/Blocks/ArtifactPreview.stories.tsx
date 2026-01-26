@@ -145,7 +145,7 @@ export const Multiple: Story = {
     return (
       <div style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
         <ArtifactPreview artifacts={artifacts} />
-      </Stack>
+      </div>
     );
   },
 };

@@ -87,7 +87,7 @@ export const WithCustomHeader: Story = {
             </Stack>
           }
         />
-      </div>
+      </Stack>
     );
   },
 };
@@ -107,7 +107,7 @@ export const WithExternalUrl: Story = {
           headerTitle={t('storybook.iframeViewer.preview')}
           externalUrl="https://example.com/full"
         />
-      </div>
+      </Stack>
     );
   },
 };
