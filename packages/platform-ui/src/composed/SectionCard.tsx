@@ -1,14 +1,15 @@
 /**
  * SectionCard Component
  *
- * Consistent section containers for page content.
- * Provides standardized header, content, and footer areas.
+ * Enhanced section containers for page content with smooth animations.
+ * Uses design token-based CSS classes for consistent styling.
  *
  * @module @xala-technologies/platform/ui/composed/SectionCard
  */
 
 import React, { type ReactNode } from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { cn } from '../utils';
 
 // =============================================================================
 // Types
@@ -66,7 +67,7 @@ function ChevronDownIcon({ isCollapsed }: { isCollapsed: boolean }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{
-        transition: 'transform 0.2s ease',
+        transition: 'transform var(--ds-animation-duration-fast) var(--ds-animation-easing-default)',
         transform: isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
       }}
     >
@@ -106,30 +107,6 @@ const sizeStyles = {
   },
 };
 
-const variantStyles = {
-  default: {
-    backgroundColor: 'var(--ds-color-neutral-background-default)',
-    borderWidth: 'var(--ds-border-width-default)',
-    borderStyle: 'solid',
-    borderColor: 'var(--ds-color-neutral-border-subtle)',
-    boxShadow: 'none',
-  },
-  outlined: {
-    backgroundColor: 'transparent',
-    borderWidth: 'var(--ds-border-width-default)',
-    borderStyle: 'solid',
-    borderColor: 'var(--ds-color-neutral-border-default)',
-    boxShadow: 'none',
-  },
-  elevated: {
-    backgroundColor: 'var(--ds-color-neutral-background-default)',
-    borderWidth: '0',
-    borderStyle: 'none',
-    borderColor: 'transparent',
-    boxShadow: 'var(--ds-shadow-md)',
-  },
-};
-
 // =============================================================================
 // Skeleton Loader
 // =============================================================================
@@ -140,25 +117,21 @@ function SectionSkeleton({ size }: { size: 'sm' | 'md' | 'lg' }) {
   return (
     <div style={{ padding: sizeStyle.padding }}>
       <div
+        className="ds-stat-skeleton"
         style={{
           height: 'var(--ds-sizing-5)',
           width: '40%',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
           marginBottom: sizeStyle.gap,
-          animation: 'pulse 1.5s ease-in-out infinite',
         }}
       />
       <div
+        className="ds-stat-skeleton"
         style={{
           height: 'var(--ds-sizing-25)',
           width: '100%',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
           borderRadius: 'var(--ds-border-radius-md)',
-          animation: 'pulse 1.5s ease-in-out infinite',
         }}
       />
-      <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }`}</style>
     </div>
   );
 }
@@ -178,27 +151,12 @@ export function SectionCardHeader({
 
   return (
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        padding: sizeStyle.headerPadding,
-        borderBottomWidth: 'var(--ds-border-width-default)',
-        borderBottomStyle: 'solid',
-        borderBottomColor: 'var(--ds-color-neutral-border-subtle)',
-      }}
+      className="ds-section-header"
+      style={{ padding: sizeStyle.headerPadding }}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}>
         {icon && (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--ds-color-neutral-text-subtle)',
-              flexShrink: 0,
-            }}
-          >
+          <div className="ds-section-icon">
             {icon}
           </div>
         )}
@@ -247,7 +205,14 @@ export function SectionCardContent({
 }: SectionCardContentProps): React.ReactElement {
   const sizeStyle = sizeStyles[size];
 
-  return <div style={{ padding: noPadding ? 0 : sizeStyle.padding }}>{children}</div>;
+  return (
+    <div
+      className="ds-section-content"
+      style={{ padding: noPadding ? 0 : sizeStyle.padding }}
+    >
+      {children}
+    </div>
+  );
 }
 
 // =============================================================================
@@ -276,9 +241,7 @@ export function SectionCardFooter({
         justifyContent,
         gap: 'var(--ds-spacing-3)',
         padding: sizeStyle.footerPadding,
-        borderTopWidth: 'var(--ds-border-width-default)',
-        borderTopStyle: 'solid',
-        borderTopColor: 'var(--ds-color-neutral-border-subtle)',
+        borderTop: 'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
       }}
     >
       {children}
@@ -306,42 +269,35 @@ export function SectionCard({
   style,
 }: SectionCardProps): React.ReactElement {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const variantStyle = variantStyles[variant];
   const sizeStyle = sizeStyles[size];
 
   const hasHeader = title || description || icon || actions;
 
+  // Build class names using design token-based CSS classes
+  const cardClasses = cn(
+    'ds-section-card',
+    variant === 'elevated' && 'ds-section-card--elevated',
+    variant === 'outlined' && 'ds-section-card--outlined',
+    className
+  );
+
+  const headerClasses = cn(
+    'ds-section-header',
+    collapsible && 'ds-section-header--clickable'
+  );
+
   return (
-    <div
-      className={className}
-      style={{
-        backgroundColor: variantStyle.backgroundColor,
-        borderWidth: variantStyle.borderWidth,
-        borderStyle: variantStyle.borderStyle,
-        borderColor: variantStyle.borderColor,
-        borderRadius: 'var(--ds-border-radius-lg)',
-        boxShadow: variantStyle.boxShadow,
-        overflow: 'hidden',
-        ...style,
-      }}
-    >
+    <div className={cardClasses} style={style}>
       {loading ? (
         <SectionSkeleton size={size} />
       ) : (
         <>
           {hasHeader && (
             <div
+              className={headerClasses}
               style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                justifyContent: 'space-between',
                 padding: sizeStyle.headerPadding,
-                borderBottomWidth: isCollapsed ? '0' : 'var(--ds-border-width-default)',
-                borderBottomStyle: isCollapsed ? 'none' : 'solid',
-                borderBottomColor: isCollapsed
-                  ? 'transparent'
-                  : 'var(--ds-color-neutral-border-subtle)',
-                cursor: collapsible ? 'pointer' : 'default',
+                borderBottom: isCollapsed ? 'none' : undefined,
               }}
               onClick={collapsible ? () => setIsCollapsed(!isCollapsed) : undefined}
               role={collapsible ? 'button' : undefined}
@@ -371,15 +327,7 @@ export function SectionCard({
                   </div>
                 )}
                 {icon && !collapsible && (
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--ds-color-neutral-text-subtle)',
-                      flexShrink: 0,
-                    }}
-                  >
+                  <div className="ds-section-icon">
                     {icon}
                   </div>
                 )}
@@ -424,16 +372,17 @@ export function SectionCard({
 
           {!isCollapsed && (
             <>
-              <div style={{ padding: hasHeader ? sizeStyle.padding : sizeStyle.padding }}>
+              <div
+                className="ds-section-content"
+                style={{ padding: hasHeader ? sizeStyle.padding : sizeStyle.padding }}
+              >
                 {children}
               </div>
               {footer && (
                 <div
                   style={{
                     padding: sizeStyle.footerPadding,
-                    borderTopWidth: 'var(--ds-border-width-default)',
-                    borderTopStyle: 'solid',
-                    borderTopColor: 'var(--ds-color-neutral-border-subtle)',
+                    borderTop: 'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
                   }}
                 >
                   {footer}

@@ -1,21 +1,22 @@
 /**
  * StatCard Component
  *
- * Consistent stat/metric cards for dashboards.
- * Displays a value with label, optional trend indicator, and icon.
+ * Enhanced stat/metric cards for dashboards.
+ * Uses design token-based CSS classes for animations and styling.
  *
  * @module @xala-technologies/platform/ui/composed/StatCard
  */
 
 import React, { type ReactNode } from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
+import { cn } from '../utils';
 
 // =============================================================================
 // Types
 // =============================================================================
 
 export type StatTrend = 'up' | 'down' | 'neutral';
-export type StatVariant = 'default' | 'success' | 'warning' | 'danger' | 'info';
+export type StatVariant = 'default' | 'success' | 'warning' | 'danger' | 'info' | 'accent';
 
 export interface StatCardProps {
   label: string;
@@ -106,81 +107,47 @@ function StatSkeleton({ size }: { size: 'sm' | 'md' | 'lg' }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
       <div
+        className="ds-stat-skeleton"
         style={{
           height: 'var(--ds-sizing-3-5)',
           width: '60%',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          animation: 'pulse 1.5s ease-in-out infinite',
         }}
       />
       <div
+        className="ds-stat-skeleton"
         style={{
           height: valueHeight,
           width: '80%',
-          backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-          borderRadius: 'var(--ds-border-radius-sm)',
-          animation: 'pulse 1.5s ease-in-out infinite',
         }}
       />
-      <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }`}</style>
     </div>
   );
 }
 
 // =============================================================================
-// Variant Styles
+// Size Styles
 // =============================================================================
-
-const variantStyles: Record<StatVariant, { iconBg: string; iconColor: string }> = {
-  default: {
-    iconBg: 'var(--ds-color-neutral-surface-hover)',
-    iconColor: 'var(--ds-color-neutral-text-default)',
-  },
-  success: {
-    iconBg: 'var(--ds-color-success-surface-default)',
-    iconColor: 'var(--ds-color-success-text-default)',
-  },
-  warning: {
-    iconBg: 'var(--ds-color-warning-surface-default)',
-    iconColor: 'var(--ds-color-warning-text-default)',
-  },
-  danger: {
-    iconBg: 'var(--ds-color-danger-surface-default)',
-    iconColor: 'var(--ds-color-danger-text-default)',
-  },
-  info: {
-    iconBg: 'var(--ds-color-info-surface-default)',
-    iconColor: 'var(--ds-color-info-text-default)',
-  },
-};
-
-const trendColors: Record<StatTrend, string> = {
-  up: 'var(--ds-color-success-text-default)',
-  down: 'var(--ds-color-danger-text-default)',
-  neutral: 'var(--ds-color-neutral-text-subtle)',
-};
 
 const sizeStyles = {
   sm: {
-    padding: 'var(--ds-spacing-3)',
+    padding: 'var(--ds-spacing-4)',
     labelSize: 'var(--ds-font-size-xs)',
     valueSize: 'var(--ds-font-size-lg)',
-    iconSize: 'var(--ds-sizing-8)',
+    iconSize: 'var(--ds-stat-icon-size-sm)',
     trendSize: 'var(--ds-font-size-xs)',
   },
   md: {
-    padding: 'var(--ds-spacing-4)',
+    padding: 'var(--ds-spacing-5)',
     labelSize: 'var(--ds-font-size-sm)',
     valueSize: 'var(--ds-font-size-xl)',
-    iconSize: 'var(--ds-sizing-10)',
+    iconSize: 'var(--ds-stat-icon-size-md)',
     trendSize: 'var(--ds-font-size-sm)',
   },
   lg: {
-    padding: 'var(--ds-spacing-5)',
+    padding: 'var(--ds-spacing-6)',
     labelSize: 'var(--ds-font-size-md)',
     valueSize: 'var(--ds-font-size-2xl)',
-    iconSize: 'var(--ds-sizing-12)',
+    iconSize: 'var(--ds-stat-icon-size-lg)',
     trendSize: 'var(--ds-font-size-sm)',
   },
 };
@@ -201,7 +168,6 @@ export function StatCard({
   className,
   style,
 }: StatCardProps): React.ReactElement {
-  const variantStyle = variantStyles[variant];
   const sizeStyle = sizeStyles[size];
 
   const TrendIcon =
@@ -211,22 +177,30 @@ export function StatCard({
         ? TrendDownIcon
         : TrendNeutralIcon;
 
+  // Build class names using design token-based CSS classes
+  const cardClasses = cn(
+    'ds-stat-card',
+    `ds-stat-card--${variant}`,
+    onClick && 'ds-stat-card--clickable',
+    className
+  );
+
+  const iconClasses = cn('ds-stat-icon', `ds-stat-icon--${variant}`);
+
+  const trendIconClasses = cn(
+    'ds-stat-trend-icon',
+    trend?.direction && `ds-stat-trend-icon--${trend.direction}`
+  );
+
   return (
     <div
-      className={className}
+      className={cardClasses}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={onClick ? (e) => e.key === 'Enter' && onClick() : undefined}
       style={{
-        backgroundColor: 'var(--ds-color-neutral-background-default)',
-        borderWidth: 'var(--ds-border-width-default)',
-        borderStyle: 'solid',
-        borderColor: 'var(--ds-color-neutral-border-subtle)',
-        borderRadius: 'var(--ds-border-radius-lg)',
         padding: sizeStyle.padding,
-        cursor: onClick ? 'pointer' : 'default',
-        transition: 'all 0.15s ease',
         ...style,
       }}
     >
@@ -242,46 +216,41 @@ export function StatCard({
                 fontSize: sizeStyle.labelSize,
                 color: 'var(--ds-color-neutral-text-subtle)',
                 fontWeight: 'var(--ds-font-weight-medium)',
-                marginBottom: 'var(--ds-spacing-1)',
+                marginBottom: 'var(--ds-spacing-2)',
+                letterSpacing: 'var(--ds-font-letter-spacing-wide)',
               }}
             >
               {label}
             </Paragraph>
             <Paragraph
               data-size="md"
+              className="ds-stat-value"
               style={{
                 margin: 0,
                 fontSize: sizeStyle.valueSize,
-                fontWeight: 'var(--ds-font-weight-semibold)',
+                fontWeight: 'var(--ds-font-weight-bold)',
                 color: 'var(--ds-color-neutral-text-default)',
                 lineHeight: 1.2,
+                letterSpacing: 'var(--ds-font-letter-spacing-tight)',
               }}
             >
               {value}
             </Paragraph>
             {trend && (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--ds-spacing-1)',
-                  marginTop: 'var(--ds-spacing-2)',
-                }}
-              >
-                <span
-                  style={{
-                    color: trendColors[trend.direction],
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
+              <div className="ds-stat-trend" style={{ marginTop: 'var(--ds-spacing-3)' }}>
+                <span className={trendIconClasses}>
                   <TrendIcon />
                 </span>
                 <span
                   style={{
                     fontSize: sizeStyle.trendSize,
-                    fontWeight: 'var(--ds-font-weight-medium)',
-                    color: trendColors[trend.direction],
+                    fontWeight: 'var(--ds-font-weight-semibold)',
+                    color:
+                      trend.direction === 'up'
+                        ? 'var(--ds-color-success-text-default)'
+                        : trend.direction === 'down'
+                          ? 'var(--ds-color-danger-text-default)'
+                          : 'var(--ds-color-neutral-text-subtle)',
                   }}
                 >
                   {trend.value}
@@ -301,15 +270,10 @@ export function StatCard({
           </div>
           {icon && (
             <div
+              className={iconClasses}
               style={{
                 width: sizeStyle.iconSize,
                 height: sizeStyle.iconSize,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: variantStyle.iconBg,
-                color: variantStyle.iconColor,
-                borderRadius: 'var(--ds-border-radius-md)',
                 flexShrink: 0,
               }}
             >

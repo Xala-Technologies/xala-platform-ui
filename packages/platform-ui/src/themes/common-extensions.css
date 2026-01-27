@@ -21,7 +21,8 @@
  * use --ds-spacing-* as the semantic name. This creates aliases only.
  * ========================================================================== */
 
-:root, [data-size] {
+:root,
+[data-size] {
   --ds-spacing-0: var(--ds-size-0);
   --ds-spacing-1: var(--ds-size-1);
   --ds-spacing-2: var(--ds-size-2);
@@ -154,12 +155,10 @@
   --ds-size-container-sm: 600px;
 
   /* Login page overlay */
-  --ds-login-overlay-gradient: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
+  --ds-login-overlay-gradient: linear-gradient(to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.25) 100%);
   --ds-login-overlay-text: rgba(255, 255, 255, 1);
   --ds-login-overlay-text-muted: rgba(255, 255, 255, 0.85);
   --ds-login-overlay-bullet: rgba(255, 255, 255, 0.7);
@@ -183,6 +182,63 @@
   /* Detail page layout */
   --ds-detail-sidebar-width: 320px;
   --ds-detail-content-gap: var(--ds-size-6);
+
+  /* ==========================================================================
+   * ANIMATION & TRANSITION TOKENS
+   *
+   * Standardized timing, easing, and duration for consistent animations
+   * ========================================================================== */
+
+  /* Durations */
+  --ds-animation-duration-instant: 100ms;
+  --ds-animation-duration-fast: 150ms;
+  --ds-animation-duration-normal: 250ms;
+  --ds-animation-duration-slow: 400ms;
+  --ds-animation-duration-slower: 600ms;
+
+  /* Easing curves */
+  --ds-animation-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-animation-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --ds-animation-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --ds-animation-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-animation-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ds-animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Common transitions */
+  --ds-transition-colors: color, background-color, border-color, fill, stroke;
+  --ds-transition-opacity: opacity;
+  --ds-transition-shadow: box-shadow;
+  --ds-transition-transform: transform;
+  --ds-transition-all: all;
+
+  /* ==========================================================================
+   * CARD ENHANCEMENT TOKENS
+   *
+   * Rich visual effects for premium card components
+   * ========================================================================== */
+
+  /* Card shadows - elevation levels */
+  --ds-card-shadow-rest: var(--ds-shadow-xs);
+  --ds-card-shadow-hover: 0 8px 24px -8px rgba(0, 0, 0, 0.12);
+  --ds-card-shadow-active: 0 4px 12px -4px rgba(0, 0, 0, 0.08);
+  --ds-card-shadow-elevated: 0 12px 32px -12px rgba(0, 0, 0, 0.15);
+
+  /* Card hover lift */
+  --ds-card-hover-translate-y: -2px;
+  --ds-card-hover-scale: 1.005;
+  --ds-card-active-scale: 0.995;
+
+  /* Card accent bar height (top border accent) */
+  --ds-card-accent-height: 3px;
+
+  /* ==========================================================================
+   * STAT CARD SPECIFIC TOKENS
+   * ========================================================================== */
+
+  /* Icon container sizes by card size */
+  --ds-stat-icon-size-sm: var(--ds-sizing-10);
+  --ds-stat-icon-size-md: var(--ds-sizing-12);
+  --ds-stat-icon-size-lg: var(--ds-sizing-14);
 
   /* Decorative effects */
   --ds-size-orb-large: 32rem;
@@ -259,19 +315,23 @@
   .listing-grid[data-max-columns="3"] {
     grid-template-columns: repeat(3, 1fr) !important;
   }
+
   .listing-grid[data-max-columns="2"] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
   .listing-grid[data-max-columns="1"] {
     grid-template-columns: 1fr !important;
   }
 }
 
 @media (min-width: 600px) and (max-width: 991px) {
+
   .listing-grid[data-max-columns="3"],
   .listing-grid[data-max-columns="2"] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
   .listing-grid[data-max-columns="1"] {
     grid-template-columns: 1fr !important;
   }
@@ -292,13 +352,13 @@
     flex-direction: column !important;
   }
 
-  .listing-list-item > div:first-child {
+  .listing-list-item>div:first-child {
     width: 100% !important;
     min-width: unset !important;
     max-height: 200px;
   }
 
-  .listing-list-item > div:last-child:not(:nth-child(2)) {
+  .listing-list-item>div:last-child:not(:nth-child(2)) {
     display: none !important;
   }
 }
@@ -476,7 +536,7 @@ aside,
 nav,
 .ds-card,
 .ds-button {
-  transition: 
+  transition:
     background-color 0.15s ease-out,
     color 0.15s ease-out,
     border-color 0.15s ease-out,
@@ -510,4 +570,530 @@ nav,
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--ds-color-neutral-text-subtle);
+}
+
+/* ==========================================================================
+ * STAT CARD COMPONENT STYLING
+ *
+ * Enhanced card styling using design tokens
+ * ========================================================================== */
+
+.ds-stat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--ds-border-radius-xl);
+  background-color: var(--ds-color-neutral-background-default);
+  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  box-shadow: var(--ds-card-shadow-rest);
+  transition:
+    transform var(--ds-animation-duration-normal) var(--ds-animation-easing-default),
+    box-shadow var(--ds-animation-duration-normal) var(--ds-animation-easing-default),
+    border-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default),
+    background-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+}
+
+.ds-stat-card:hover {
+  box-shadow: var(--ds-card-shadow-hover);
+  transform: translateY(var(--ds-card-hover-translate-y));
+}
+
+.ds-stat-card--clickable {
+  cursor: pointer;
+}
+
+.ds-stat-card--clickable:hover {
+  border-color: var(--ds-color-accent-border-default);
+}
+
+.ds-stat-card--clickable:active {
+  transform: translateY(0) scale(var(--ds-card-active-scale));
+  box-shadow: var(--ds-card-shadow-active);
+}
+
+/* Stat card accent bar (top) */
+.ds-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--ds-card-accent-height);
+  background: var(--ds-color-accent-base-default);
+  opacity: 0;
+  transition: opacity var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+}
+
+.ds-stat-card:hover::before {
+  opacity: 1;
+}
+
+/* Variant accent colors */
+.ds-stat-card--success::before {
+  background: var(--ds-color-success-base-default);
+}
+
+.ds-stat-card--warning::before {
+  background: var(--ds-color-warning-base-default);
+}
+
+.ds-stat-card--danger::before {
+  background: var(--ds-color-danger-base-default);
+}
+
+.ds-stat-card--info::before {
+  background: var(--ds-color-info-base-default);
+}
+
+/* Stat card icon */
+.ds-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ds-border-radius-lg);
+  box-shadow: var(--ds-shadow-sm);
+  transition: transform var(--ds-animation-duration-normal) var(--ds-animation-easing-spring);
+}
+
+.ds-stat-card:hover .ds-stat-icon {
+  transform: scale(1.08);
+}
+
+/* Icon variant backgrounds */
+.ds-stat-icon--default {
+  background-color: var(--ds-color-neutral-surface-hover);
+  color: var(--ds-color-neutral-text-default);
+}
+
+.ds-stat-icon--success {
+  background-color: var(--ds-color-success-base-default);
+  color: var(--ds-color-success-base-contrast-default);
+}
+
+.ds-stat-icon--warning {
+  background-color: var(--ds-color-warning-base-default);
+  color: var(--ds-color-warning-base-contrast-default);
+}
+
+.ds-stat-icon--danger {
+  background-color: var(--ds-color-danger-base-default);
+  color: var(--ds-color-danger-base-contrast-default);
+}
+
+.ds-stat-icon--info {
+  background-color: var(--ds-color-info-base-default);
+  color: var(--ds-color-info-base-contrast-default);
+}
+
+.ds-stat-icon--accent {
+  background-color: var(--ds-color-accent-base-default);
+  color: var(--ds-color-accent-base-contrast-default);
+}
+
+/* Stat card value animation */
+.ds-stat-value {
+  animation: ds-stat-value-in var(--ds-animation-duration-slow) var(--ds-animation-easing-out);
+}
+
+@keyframes ds-stat-value-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stat card skeleton loading */
+.ds-stat-skeleton {
+  animation: ds-stat-pulse 1.5s ease-in-out infinite;
+  background-color: var(--ds-color-neutral-surface-hover);
+  border-radius: var(--ds-border-radius-sm);
+}
+
+@keyframes ds-stat-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Trend indicator styling */
+.ds-stat-trend {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-1);
+  animation: ds-stat-value-in var(--ds-animation-duration-slow) var(--ds-animation-easing-out) 0.1s both;
+}
+
+.ds-stat-trend-icon {
+  display: flex;
+  align-items: center;
+  padding: var(--ds-spacing-1);
+  border-radius: var(--ds-border-radius-sm);
+}
+
+.ds-stat-trend-icon--up {
+  background-color: var(--ds-color-success-surface-default);
+  color: var(--ds-color-success-text-default);
+}
+
+.ds-stat-trend-icon--down {
+  background-color: var(--ds-color-danger-surface-default);
+  color: var(--ds-color-danger-text-default);
+}
+
+.ds-stat-trend-icon--neutral {
+  background-color: transparent;
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+/* ==========================================================================
+ * SECTION CARD COMPONENT STYLING
+ *
+ * Enhanced section cards with smooth transitions
+ * ========================================================================== */
+
+.ds-section-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--ds-border-radius-xl);
+  background-color: var(--ds-color-neutral-background-default);
+  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  transition:
+    box-shadow var(--ds-animation-duration-normal) var(--ds-animation-easing-default),
+    border-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+}
+
+.ds-section-card:hover {
+  box-shadow: var(--ds-card-shadow-hover);
+}
+
+.ds-section-card--elevated {
+  border: none;
+  box-shadow: var(--ds-shadow-md);
+}
+
+.ds-section-card--elevated:hover {
+  box-shadow: var(--ds-card-shadow-elevated);
+}
+
+.ds-section-card--outlined {
+  background-color: transparent;
+  border-color: var(--ds-color-neutral-border-default);
+}
+
+/* Section card header */
+.ds-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+}
+
+.ds-section-header--clickable {
+  cursor: pointer;
+  transition: background-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+}
+
+.ds-section-header--clickable:hover {
+  background-color: var(--ds-color-neutral-surface-hover);
+}
+
+/* Section header icon */
+.ds-section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ds-sizing-10);
+  height: var(--ds-sizing-10);
+  border-radius: var(--ds-border-radius-md);
+  background-color: var(--ds-color-accent-surface-default);
+  color: var(--ds-color-accent-text-default);
+  flex-shrink: 0;
+  transition: transform var(--ds-animation-duration-normal) var(--ds-animation-easing-spring);
+}
+
+.ds-section-card:hover .ds-section-icon {
+  transform: scale(1.05);
+}
+
+/* Section card content with fade-in */
+.ds-section-content {
+  animation: ds-content-fade-in var(--ds-animation-duration-normal) var(--ds-animation-easing-out);
+}
+
+@keyframes ds-content-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+ * QUICK ACTION BUTTONS
+ *
+ * Action buttons with hover effects
+ * ========================================================================== */
+
+.ds-quick-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-2);
+  padding: var(--ds-spacing-3) var(--ds-spacing-4);
+  border-radius: var(--ds-border-radius-lg);
+  background-color: var(--ds-color-neutral-surface-default);
+  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  color: var(--ds-color-neutral-text-default);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  cursor: pointer;
+  transition:
+    transform var(--ds-animation-duration-fast) var(--ds-animation-easing-default),
+    box-shadow var(--ds-animation-duration-fast) var(--ds-animation-easing-default),
+    border-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default),
+    background-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+}
+
+.ds-quick-action:hover {
+  background-color: var(--ds-color-neutral-surface-hover);
+  border-color: var(--ds-color-accent-border-default);
+  box-shadow: var(--ds-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.ds-quick-action:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.ds-quick-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ds-color-accent-text-default);
+  transition: transform var(--ds-animation-duration-fast) var(--ds-animation-easing-spring);
+}
+
+.ds-quick-action:hover .ds-quick-action-icon {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+ * BADGE COMPONENT
+ *
+ * Status badges with pulse animation
+ * ========================================================================== */
+
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-1);
+  padding: var(--ds-spacing-1) var(--ds-spacing-3);
+  border-radius: var(--ds-border-radius-full);
+  font-size: var(--ds-font-size-xs);
+  font-weight: var(--ds-font-weight-medium);
+  animation: ds-badge-in var(--ds-animation-duration-normal) var(--ds-animation-easing-out);
+}
+
+@keyframes ds-badge-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ds-badge--success {
+  background-color: var(--ds-color-success-surface-default);
+  color: var(--ds-color-success-text-default);
+}
+
+.ds-badge--warning {
+  background-color: var(--ds-color-warning-surface-default);
+  color: var(--ds-color-warning-text-default);
+}
+
+.ds-badge--danger {
+  background-color: var(--ds-color-danger-surface-default);
+  color: var(--ds-color-danger-text-default);
+}
+
+.ds-badge--info {
+  background-color: var(--ds-color-info-surface-default);
+  color: var(--ds-color-info-text-default);
+}
+
+.ds-badge--neutral {
+  background-color: var(--ds-color-neutral-surface-hover);
+  color: var(--ds-color-neutral-text-default);
+}
+
+/* Badge with live pulse indicator */
+.ds-badge--live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: ds-badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ds-badge-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* ==========================================================================
+ * ACTIVITY LIST
+ *
+ * Activity feed with staggered animations
+ * ========================================================================== */
+
+.ds-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}
+
+.ds-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-spacing-3);
+  padding: var(--ds-spacing-3);
+  border-radius: var(--ds-border-radius-md);
+  background-color: transparent;
+  transition: background-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+  animation: ds-activity-slide-in var(--ds-animation-duration-normal) var(--ds-animation-easing-out) backwards;
+}
+
+.ds-activity-item:hover {
+  background-color: var(--ds-color-neutral-surface-hover);
+}
+
+/* Staggered animation delays */
+.ds-activity-item:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.ds-activity-item:nth-child(2) {
+  animation-delay: 50ms;
+}
+
+.ds-activity-item:nth-child(3) {
+  animation-delay: 100ms;
+}
+
+.ds-activity-item:nth-child(4) {
+  animation-delay: 150ms;
+}
+
+.ds-activity-item:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+@keyframes ds-activity-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ds-activity-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ds-sizing-8);
+  height: var(--ds-sizing-8);
+  border-radius: var(--ds-border-radius-full);
+  background-color: var(--ds-color-accent-surface-default);
+  color: var(--ds-color-accent-text-default);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+ * SYSTEM HEALTH INDICATOR
+ * ========================================================================== */
+
+.ds-health-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-2);
+}
+
+.ds-health-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: ds-health-pulse 2s ease-in-out infinite;
+}
+
+.ds-health-dot--healthy {
+  background-color: var(--ds-color-success-base-default);
+  box-shadow: 0 0 8px var(--ds-color-success-base-default);
+}
+
+.ds-health-dot--warning {
+  background-color: var(--ds-color-warning-base-default);
+  box-shadow: 0 0 8px var(--ds-color-warning-base-default);
+}
+
+.ds-health-dot--critical {
+  background-color: var(--ds-color-danger-base-default);
+  box-shadow: 0 0 8px var(--ds-color-danger-base-default);
+  animation: ds-health-pulse-fast 1s ease-in-out infinite;
+}
+
+@keyframes ds-health-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes ds-health-pulse-fast {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
 }
