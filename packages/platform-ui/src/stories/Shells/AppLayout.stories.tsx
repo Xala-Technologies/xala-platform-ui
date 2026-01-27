@@ -170,7 +170,11 @@ export const Default: Story = {
             {t('storybook.appLayout.dashboard')}
           </Heading>
           <Paragraph data-size="md">{t('storybook.appLayout.welcomeMessage')}</Paragraph>
-          <Card data-color="neutral" data-size="medium" style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <Card
+            data-color="neutral"
+            data-size="medium"
+            style={{ marginTop: 'var(--ds-spacing-4)' }}
+          >
             <Card.Content>
               <Paragraph data-size="sm">{t('storybook.appLayout.contentArea')}</Paragraph>
             </Card.Content>
@@ -222,7 +226,10 @@ export const WithTopContent: Story = {
               borderBottom: '1px solid var(--ds-color-warning-border-subtle)',
             }}
           >
-            <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-warning-text-default)' }}>
+            <Paragraph
+              data-size="sm"
+              style={{ margin: 0, color: 'var(--ds-color-warning-text-default)' }}
+            >
               {t('storybook.appLayout.maintenanceNotice')}
             </Paragraph>
           </div>
@@ -250,7 +257,13 @@ export const WithBottomNavigation: Story = {
         sidebar={<SampleSidebar />}
         header={<SampleHeader />}
         bottomNavItems={[
-          { id: 'home', label: t('storybook.sidebar.home'), icon: <HomeIcon size={20} />, href: '/', active: true },
+          {
+            id: 'home',
+            label: t('storybook.sidebar.home'),
+            icon: <HomeIcon size={20} />,
+            href: '/',
+            active: true,
+          },
           {
             id: 'resourceRequests',
             label: t('storybook.sidebar.myBookings'),

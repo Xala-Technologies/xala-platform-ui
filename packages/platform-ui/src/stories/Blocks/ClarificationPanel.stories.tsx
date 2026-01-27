@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { useT } from '@xala-technologies/i18n';
-import { ClarificationPanel, type ClarificationQuestion, type ClarificationAnswer, Stack } from '../../index';
+import {
+  ClarificationPanel,
+  type ClarificationQuestion,
+  type ClarificationAnswer,
+  Stack,
+} from '../../index';
 
 /**
  * ClarificationPanel provides a Q&A panel for workflow clarifications.
@@ -88,13 +93,18 @@ export const Default: Story = {
     const [answers, setAnswers] = useState<ClarificationAnswer[]>([]);
     const questions = useSampleQuestions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ClarificationPanel
           intro={t('storybook.clarificationPanel.intro')}
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
-            setAnswers(answers.filter((a) => a.questionId !== questionId).concat({ questionId, value }));
+            setAnswers(
+              answers.filter((a) => a.questionId !== questionId).concat({ questionId, value })
+            );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
           submitLabel={t('storybook.clarificationPanel.submit')}
@@ -116,13 +126,18 @@ export const WithAnswers: Story = {
     ]);
     const questions = useSampleQuestions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ClarificationPanel
           intro={t('storybook.clarificationPanel.intro')}
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
-            setAnswers(answers.filter((a) => a.questionId !== questionId).concat({ questionId, value }));
+            setAnswers(
+              answers.filter((a) => a.questionId !== questionId).concat({ questionId, value })
+            );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
           submitLabel={t('storybook.clarificationPanel.submit')}
@@ -148,13 +163,18 @@ export const WithBoolean: Story = {
       },
     ];
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ClarificationPanel
           intro={t('storybook.clarificationPanel.intro')}
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
-            setAnswers(answers.filter((a) => a.questionId !== questionId).concat({ questionId, value }));
+            setAnswers(
+              answers.filter((a) => a.questionId !== questionId).concat({ questionId, value })
+            );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
           submitLabel={t('storybook.clarificationPanel.submit')}
@@ -173,13 +193,18 @@ export const Loading: Story = {
     const [answers, setAnswers] = useState<ClarificationAnswer[]>([]);
     const questions = useSampleQuestions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ClarificationPanel
           intro={t('storybook.clarificationPanel.intro')}
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
-            setAnswers(answers.filter((a) => a.questionId !== questionId).concat({ questionId, value }));
+            setAnswers(
+              answers.filter((a) => a.questionId !== questionId).concat({ questionId, value })
+            );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
           isSubmitting

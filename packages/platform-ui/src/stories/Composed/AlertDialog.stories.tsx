@@ -37,7 +37,10 @@ export const Default: Story = {
     const t = useT();
     const [open, setOpen] = useState(false);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.alertDialog.description')}</Paragraph>
@@ -64,7 +67,10 @@ export const Info: Story = {
     const t = useT();
     const [open, setOpen] = useState(false);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.alertDialog.info')}</Paragraph>
@@ -92,7 +98,10 @@ export const Success: Story = {
     const t = useT();
     const [open, setOpen] = useState(false);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.alertDialog.success')}</Paragraph>
@@ -120,7 +129,10 @@ export const Warning: Story = {
     const t = useT();
     const [open, setOpen] = useState(false);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.alertDialog.warning')}</Paragraph>
@@ -148,7 +160,10 @@ export const Danger: Story = {
     const t = useT();
     const [open, setOpen] = useState(false);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.alertDialog.danger')}</Paragraph>

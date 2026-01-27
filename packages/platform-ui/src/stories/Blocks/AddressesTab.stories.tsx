@@ -50,7 +50,10 @@ export const Default: Story = {
       },
     });
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.addressesTab.description')}</Paragraph>
@@ -73,7 +76,9 @@ export const Default: Story = {
                 invoiceAddress: t('storybook.addressesTab.invoiceAddress'),
                 invoiceAddressDescription: t('storybook.addressesTab.invoiceAddressDescription'),
                 residenceAddress: t('storybook.addressesTab.residenceAddress'),
-                residenceAddressDescription: t('storybook.addressesTab.residenceAddressDescription'),
+                residenceAddressDescription: t(
+                  'storybook.addressesTab.residenceAddressDescription'
+                ),
                 street: t('storybook.addressesTab.street'),
                 streetPlaceholder: t('storybook.addressesTab.streetPlaceholder'),
                 postalCode: t('storybook.addressesTab.postalCode'),
@@ -83,7 +88,9 @@ export const Default: Story = {
                 country: t('storybook.addressesTab.country'),
                 countryPlaceholder: t('storybook.addressesTab.countryPlaceholder'),
                 copyResidenceToInvoice: t('storybook.addressesTab.copyResidenceToInvoice'),
-                copyResidenceToInvoiceDescription: t('storybook.addressesTab.copyResidenceToInvoiceDescription'),
+                copyResidenceToInvoiceDescription: t(
+                  'storybook.addressesTab.copyResidenceToInvoiceDescription'
+                ),
                 saveChanges: t('storybook.addressesTab.saveChanges'),
                 saving: t('storybook.addressesTab.saving'),
                 saveAddressSettings: t('storybook.addressesTab.saveAddressSettings'),

@@ -63,7 +63,10 @@ export const Default: Story = {
     const t = useT();
     const [value, setValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -82,7 +85,10 @@ export const WithLabel: Story = {
     const t = useT();
     const [value, setValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -100,9 +106,14 @@ export const WithLabel: Story = {
 export const WithValue: Story = {
   render: function Render() {
     const t = useT();
-    const [value, setValue] = useState('<p>This is <strong>bold</strong> and <em>italic</em> text.</p>');
+    const [value, setValue] = useState(
+      '<p>This is <strong>bold</strong> and <em>italic</em> text.</p>'
+    );
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -121,7 +132,10 @@ export const CustomToolbar: Story = {
     const t = useT();
     const [value, setValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -141,7 +155,10 @@ export const WithError: Story = {
     const t = useT();
     const [value, setValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -162,7 +179,10 @@ export const Disabled: Story = {
     const t = useT();
     const [value, setValue] = useState('<p>This is disabled content.</p>');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -182,7 +202,10 @@ export const ReadOnly: Story = {
     const t = useT();
     const [value, setValue] = useState('<p>This is read-only content.</p>');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}
@@ -202,7 +225,10 @@ export const CustomHeight: Story = {
     const t = useT();
     const [value, setValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RichTextEditor
           value={value}
           onChange={setValue}

@@ -45,7 +45,10 @@ export const LoginOptionExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.loginComponents.loginOption')}</Paragraph>
@@ -69,7 +72,10 @@ export const MultipleLoginOptions: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.loginComponents.multipleOptions')}</Paragraph>
@@ -107,7 +113,10 @@ export const FeatureItemExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.loginComponents.featureItem')}</Paragraph>
@@ -129,7 +138,10 @@ export const IntegrationBadgeExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.loginComponents.integrationBadge')}</Paragraph>

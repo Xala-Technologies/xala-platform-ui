@@ -39,7 +39,10 @@ export const Default: Story = {
     const t = useT();
     const [blocks, setBlocks] = useState<TemplateBlock[]>([]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.templateCanvas.description')}</Paragraph>
@@ -48,7 +51,11 @@ export const Default: Story = {
               onChange={setBlocks}
               placeholders={[
                 { id: 'name', name: t('storybook.templateCanvas.name'), defaultValue: 'John Doe' },
-                { id: 'email', name: t('storybook.templateCanvas.email'), defaultValue: 'john@example.com' },
+                {
+                  id: 'email',
+                  name: t('storybook.templateCanvas.email'),
+                  defaultValue: 'john@example.com',
+                },
               ]}
             />
           </Stack>
@@ -82,7 +89,10 @@ export const WithBlocks: Story = {
       },
     ]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.templateCanvas.withBlocks')}</Paragraph>
@@ -91,7 +101,11 @@ export const WithBlocks: Story = {
               onChange={setBlocks}
               placeholders={[
                 { id: 'name', name: t('storybook.templateCanvas.name'), defaultValue: 'John Doe' },
-                { id: 'email', name: t('storybook.templateCanvas.email'), defaultValue: 'john@example.com' },
+                {
+                  id: 'email',
+                  name: t('storybook.templateCanvas.email'),
+                  defaultValue: 'john@example.com',
+                },
               ]}
             />
           </Stack>
@@ -126,13 +140,21 @@ export const PreviewMode: Story = {
       },
     ]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Stack spacing="var(--ds-spacing-2)" style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Stack
+              spacing="var(--ds-spacing-2)"
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
               <Paragraph data-size="md">{t('storybook.templateCanvas.previewMode')}</Paragraph>
               <Button onClick={() => setPreviewMode(!previewMode)}>
-                {previewMode ? t('storybook.templateCanvas.edit') : t('storybook.templateCanvas.preview')}
+                {previewMode
+                  ? t('storybook.templateCanvas.edit')
+                  : t('storybook.templateCanvas.preview')}
               </Button>
             </Stack>
             <TemplateCanvas
@@ -145,7 +167,11 @@ export const PreviewMode: Story = {
               }}
               placeholders={[
                 { id: 'name', name: t('storybook.templateCanvas.name'), defaultValue: 'John Doe' },
-                { id: 'email', name: t('storybook.templateCanvas.email'), defaultValue: 'john@example.com' },
+                {
+                  id: 'email',
+                  name: t('storybook.templateCanvas.email'),
+                  defaultValue: 'john@example.com',
+                },
               ]}
             />
           </Stack>
@@ -163,7 +189,10 @@ export const BlockPaletteStandalone: Story = {
     const t = useT();
     const [draggedType, setDraggedType] = useState<string | null>(null);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.templateCanvas.blockPalette')}</Paragraph>

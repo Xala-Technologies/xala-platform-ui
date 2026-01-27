@@ -36,7 +36,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
@@ -77,7 +80,10 @@ export const AllVariants: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
@@ -122,7 +128,10 @@ export const WithDisabledActions: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
@@ -165,7 +174,10 @@ export const WithCopyAction: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>

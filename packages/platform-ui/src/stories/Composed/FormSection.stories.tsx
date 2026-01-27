@@ -51,7 +51,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <FormSection title={t('storybook.formSection.personalInfo')}>
           <Stack spacing="var(--ds-spacing-3)" direction="vertical">
             <Stack spacing="var(--ds-spacing-2)" direction="vertical">
@@ -60,7 +63,11 @@ export const Default: Story = {
             </Stack>
             <Stack spacing="var(--ds-spacing-2)" direction="vertical">
               <Label htmlFor="email">{t('storybook.formSection.email')}</Label>
-              <Textfield id="email" type="email" placeholder={t('storybook.formSection.enterEmail')} />
+              <Textfield
+                id="email"
+                type="email"
+                placeholder={t('storybook.formSection.enterEmail')}
+              />
             </Stack>
           </Stack>
         </FormSection>
@@ -88,7 +95,11 @@ export const WithDescription: Story = {
             </div>
             <div>
               <Label htmlFor="email">{t('storybook.formSection.email')}</Label>
-              <Textfield id="email" type="email" placeholder={t('storybook.formSection.enterEmail')} />
+              <Textfield
+                id="email"
+                type="email"
+                placeholder={t('storybook.formSection.enterEmail')}
+              />
             </div>
           </div>
         </FormSection>
@@ -113,7 +124,11 @@ export const Multiple: Story = {
             </div>
             <div>
               <Label htmlFor="email">{t('storybook.formSection.email')}</Label>
-              <Textfield id="email" type="email" placeholder={t('storybook.formSection.enterEmail')} />
+              <Textfield
+                id="email"
+                type="email"
+                placeholder={t('storybook.formSection.enterEmail')}
+              />
             </div>
           </div>
         </FormSection>

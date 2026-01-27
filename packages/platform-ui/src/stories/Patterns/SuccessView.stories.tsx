@@ -36,7 +36,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.successView.description')}</Paragraph>
@@ -62,7 +65,10 @@ export const WithDetails: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.successView.withDetails')}</Paragraph>
@@ -71,7 +77,10 @@ export const WithDetails: Story = {
               message={t('storybook.successView.message')}
               details={[
                 { label: t('storybook.successView.reference'), value: 'REF-12345' },
-                { label: t('storybook.successView.status'), value: t('storybook.successView.confirmed') },
+                {
+                  label: t('storybook.successView.status'),
+                  value: t('storybook.successView.confirmed'),
+                },
               ]}
               primaryAction={{
                 label: t('storybook.successView.continue'),
@@ -96,7 +105,10 @@ export const WithCustomIcon: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.successView.withCustomIcon')}</Paragraph>

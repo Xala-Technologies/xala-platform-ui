@@ -61,13 +61,13 @@ type Story = StoryObj<typeof ResourceCalendar>;
 const useSampleSlots = (): CalendarSlot[] => {
   const baseDate = new Date(2026, 0, 26);
   const slots: CalendarSlot[] = [];
-  
+
   for (let hour = 9; hour < 17; hour++) {
     const start = new Date(baseDate);
     start.setHours(hour, 0, 0, 0);
     const end = new Date(baseDate);
     end.setHours(hour + 1, 0, 0, 0);
-    
+
     slots.push({
       id: `slot-${hour}`,
       startTime: start.toISOString(),
@@ -78,7 +78,7 @@ const useSampleSlots = (): CalendarSlot[] => {
       availableActions: hour % 3 === 0 ? [] : ['BOOK'],
     });
   }
-  
+
   return slots;
 };
 

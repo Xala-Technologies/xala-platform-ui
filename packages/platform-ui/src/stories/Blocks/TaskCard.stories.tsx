@@ -219,11 +219,7 @@ export const Minimal: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
-        <TaskCard
-          title={t('storybook.taskCard.simpleTask')}
-          status="todo"
-          priority="low"
-        />
+        <TaskCard title={t('storybook.taskCard.simpleTask')} status="todo" priority="low" />
       </div>
     );
   },

@@ -38,16 +38,34 @@ export const Default: Story = {
     const t = useT();
     const [activeTab, setActiveTab] = useState('all');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.statusTabs.description')}</Paragraph>
             <StatusTabs
               tabs={[
                 { id: 'all', label: t('storybook.statusTabs.all'), count: 42 },
-                { id: 'active', label: t('storybook.statusTabs.active'), count: 25, color: 'success' },
-                { id: 'pending', label: t('storybook.statusTabs.pending'), count: 12, color: 'warning' },
-                { id: 'inactive', label: t('storybook.statusTabs.inactive'), count: 5, color: 'neutral' },
+                {
+                  id: 'active',
+                  label: t('storybook.statusTabs.active'),
+                  count: 25,
+                  color: 'success',
+                },
+                {
+                  id: 'pending',
+                  label: t('storybook.statusTabs.pending'),
+                  count: 12,
+                  color: 'warning',
+                },
+                {
+                  id: 'inactive',
+                  label: t('storybook.statusTabs.inactive'),
+                  count: 5,
+                  color: 'neutral',
+                },
               ]}
               activeTab={activeTab}
               onChange={setActiveTab}
@@ -67,16 +85,37 @@ export const WithIcons: Story = {
     const t = useT();
     const [activeTab, setActiveTab] = useState('active');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.statusTabs.withIcons')}</Paragraph>
             <StatusTabs
               tabs={[
                 { id: 'all', label: t('storybook.statusTabs.all'), count: 42 },
-                { id: 'active', label: t('storybook.statusTabs.active'), count: 25, color: 'success', icon: <CheckCircleIcon /> },
-                { id: 'pending', label: t('storybook.statusTabs.pending'), count: 12, color: 'warning', icon: <ClockIcon /> },
-                { id: 'inactive', label: t('storybook.statusTabs.inactive'), count: 5, color: 'danger', icon: <XCircleIcon /> },
+                {
+                  id: 'active',
+                  label: t('storybook.statusTabs.active'),
+                  count: 25,
+                  color: 'success',
+                  icon: <CheckCircleIcon />,
+                },
+                {
+                  id: 'pending',
+                  label: t('storybook.statusTabs.pending'),
+                  count: 12,
+                  color: 'warning',
+                  icon: <ClockIcon />,
+                },
+                {
+                  id: 'inactive',
+                  label: t('storybook.statusTabs.inactive'),
+                  count: 5,
+                  color: 'danger',
+                  icon: <XCircleIcon />,
+                },
               ]}
               activeTab={activeTab}
               onChange={setActiveTab}
@@ -96,7 +135,10 @@ export const WithoutCounts: Story = {
     const t = useT();
     const [activeTab, setActiveTab] = useState('all');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.statusTabs.withoutCounts')}</Paragraph>

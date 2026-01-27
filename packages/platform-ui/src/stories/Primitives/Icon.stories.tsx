@@ -34,7 +34,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.icon.description')}</Paragraph>
@@ -57,11 +60,17 @@ export const Sizes: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.icon.sizes')}</Paragraph>
-            <Stack spacing="var(--ds-spacing-2)" style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+            <Stack
+              spacing="var(--ds-spacing-2)"
+              style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}
+            >
               <Icon size={16}>
                 <circle cx="12" cy="12" r="10" />
               </Icon>
@@ -89,11 +98,17 @@ export const Colors: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.icon.colors')}</Paragraph>
-            <Stack spacing="var(--ds-spacing-2)" style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+            <Stack
+              spacing="var(--ds-spacing-2)"
+              style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}
+            >
               <Icon color="var(--ds-color-neutral-text-default)">
                 <circle cx="12" cy="12" r="10" />
               </Icon>

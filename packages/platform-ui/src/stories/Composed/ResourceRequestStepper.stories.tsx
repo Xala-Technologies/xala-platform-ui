@@ -37,10 +37,15 @@ export const Default: Story = {
     const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.resourceRequestStepper.description')}</Paragraph>
+            <Paragraph data-size="md">
+              {t('storybook.resourceRequestStepper.description')}
+            </Paragraph>
             <ResourceRequestStepper
               steps={[
                 { id: 'select', label: t('storybook.resourceRequestStepper.select') },
@@ -66,7 +71,10 @@ export const FiveSteps: Story = {
     const t = useT();
     const [currentStep, setCurrentStep] = useState(2);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.resourceRequestStepper.fiveSteps')}</Paragraph>
@@ -97,10 +105,15 @@ export const WithoutStepCounter: Story = {
     const t = useT();
     const [currentStep, setCurrentStep] = useState(1);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.resourceRequestStepper.withoutCounter')}</Paragraph>
+            <Paragraph data-size="md">
+              {t('storybook.resourceRequestStepper.withoutCounter')}
+            </Paragraph>
             <ResourceRequestStepper
               steps={[
                 { id: 'select', label: t('storybook.resourceRequestStepper.select') },
@@ -126,7 +139,10 @@ export const Completed: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.resourceRequestStepper.completed')}</Paragraph>

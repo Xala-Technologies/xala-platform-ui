@@ -61,9 +61,13 @@ type Story = StoryObj<typeof ToastProvider>;
 function ToastTrigger() {
   const t = useT();
   const { addToast } = useToast();
-    return (
-      <Stack direction="horizontal" spacing="var(--ds-spacing-2)" style={{ padding: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
-        <Button
+  return (
+    <Stack
+      direction="horizontal"
+      spacing="var(--ds-spacing-2)"
+      style={{ padding: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}
+    >
+      <Button
         data-color="success"
         onClick={() =>
           addToast({
@@ -111,7 +115,7 @@ function ToastTrigger() {
       >
         {t('storybook.notificationToast.showInfo')}
       </Button>
-      </Stack>
+    </Stack>
   );
 }
 
@@ -205,8 +209,14 @@ export const Multiple: Story = {
             data-color="accent"
             onClick={() => {
               addToast({ type: 'success', title: t('storybook.notificationToast.toast1') });
-              setTimeout(() => addToast({ type: 'info', title: t('storybook.notificationToast.toast2') }), 500);
-              setTimeout(() => addToast({ type: 'warning', title: t('storybook.notificationToast.toast3') }), 1000);
+              setTimeout(
+                () => addToast({ type: 'info', title: t('storybook.notificationToast.toast2') }),
+                500
+              );
+              setTimeout(
+                () => addToast({ type: 'warning', title: t('storybook.notificationToast.toast3') }),
+                1000
+              );
             }}
           >
             {t('storybook.notificationToast.showMultiple')}

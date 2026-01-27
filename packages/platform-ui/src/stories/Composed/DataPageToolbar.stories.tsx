@@ -37,7 +37,10 @@ export const Default: Story = {
     const t = useT();
     const [searchValue, setSearchValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.dataPageToolbar.description')}</Paragraph>
@@ -62,7 +65,10 @@ export const WithViewMode: Story = {
     const [searchValue, setSearchValue] = useState('');
     const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map' | 'table'>('grid');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.dataPageToolbar.withViewMode')}</Paragraph>
@@ -91,7 +97,10 @@ export const WithFilters: Story = {
     const [statusFilter, setStatusFilter] = useState('all');
     const [categoryFilter, setCategoryFilter] = useState('all');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.dataPageToolbar.withFilters')}</Paragraph>

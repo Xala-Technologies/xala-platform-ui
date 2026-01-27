@@ -67,7 +67,8 @@ function ChevronDownIcon({ isCollapsed }: { isCollapsed: boolean }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{
-        transition: 'transform var(--ds-animation-duration-fast) var(--ds-animation-easing-default)',
+        transition:
+          'transform var(--ds-animation-duration-fast) var(--ds-animation-easing-default)',
         transform: isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
       }}
     >
@@ -150,16 +151,9 @@ export function SectionCardHeader({
   const sizeStyle = sizeStyles[size];
 
   return (
-    <div
-      className="ds-section-header"
-      style={{ padding: sizeStyle.headerPadding }}
-    >
+    <div className="ds-section-header" style={{ padding: sizeStyle.headerPadding }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ds-spacing-3)' }}>
-        {icon && (
-          <div className="ds-section-icon">
-            {icon}
-          </div>
-        )}
+        {icon && <div className="ds-section-icon">{icon}</div>}
         <div>
           <Heading
             level={3}
@@ -206,10 +200,7 @@ export function SectionCardContent({
   const sizeStyle = sizeStyles[size];
 
   return (
-    <div
-      className="ds-section-content"
-      style={{ padding: noPadding ? 0 : sizeStyle.padding }}
-    >
+    <div className="ds-section-content" style={{ padding: noPadding ? 0 : sizeStyle.padding }}>
       {children}
     </div>
   );
@@ -281,10 +272,7 @@ export function SectionCard({
     className
   );
 
-  const headerClasses = cn(
-    'ds-section-header',
-    collapsible && 'ds-section-header--clickable'
-  );
+  const headerClasses = cn('ds-section-header', collapsible && 'ds-section-header--clickable');
 
   return (
     <div className={cardClasses} style={style}>
@@ -326,11 +314,7 @@ export function SectionCard({
                     <ChevronDownIcon isCollapsed={isCollapsed} />
                   </div>
                 )}
-                {icon && !collapsible && (
-                  <div className="ds-section-icon">
-                    {icon}
-                  </div>
-                )}
+                {icon && !collapsible && <div className="ds-section-icon">{icon}</div>}
                 <div style={{ flex: 1 }}>
                   {title && (
                     <Heading
@@ -382,7 +366,8 @@ export function SectionCard({
                 <div
                   style={{
                     padding: sizeStyle.footerPadding,
-                    borderTop: 'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
+                    borderTop:
+                      'var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle)',
                   }}
                 >
                   {footer}

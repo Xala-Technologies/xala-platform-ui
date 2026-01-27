@@ -89,7 +89,10 @@ export const WithDetails: Story = {
           title={t('storybook.confirmation.withDetailsTitle')}
           message={t('storybook.confirmation.withDetailsMessage')}
           details={[
-            { label: t('storybook.confirmation.item'), value: t('storybook.confirmation.premiumPackage') },
+            {
+              label: t('storybook.confirmation.item'),
+              value: t('storybook.confirmation.premiumPackage'),
+            },
             { label: t('storybook.confirmation.date'), value: '2026-01-26' },
             { label: t('storybook.confirmation.price'), value: 'NOK 1,500' },
           ]}
@@ -116,7 +119,10 @@ export const Warning: Story = {
           title={t('storybook.confirmation.warningTitle')}
           message={t('storybook.confirmation.warningMessage')}
           details={[
-            { label: t('storybook.confirmation.action'), value: t('storybook.confirmation.deleteItem') },
+            {
+              label: t('storybook.confirmation.action'),
+              value: t('storybook.confirmation.deleteItem'),
+            },
             { label: t('storybook.confirmation.affectedItems'), value: '5' },
           ]}
           confirmLabel={t('storybook.confirmation.proceed')}
@@ -142,7 +148,10 @@ export const Danger: Story = {
           title={t('storybook.confirmation.dangerTitle')}
           message={t('storybook.confirmation.dangerMessage')}
           details={[
-            { label: t('storybook.confirmation.action'), value: t('storybook.confirmation.deleteAccount') },
+            {
+              label: t('storybook.confirmation.action'),
+              value: t('storybook.confirmation.deleteAccount'),
+            },
             { label: t('storybook.confirmation.email'), value: 'user@example.com' },
           ]}
           confirmLabel={t('storybook.confirmation.delete')}
@@ -165,7 +174,14 @@ export const WithCustomIcon: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
           icon={
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M12 2v20M2 12h20" />
             </svg>
           }
@@ -193,7 +209,10 @@ export const Loading: Story = {
           title={t('storybook.confirmation.loadingTitle')}
           message={t('storybook.confirmation.loadingMessage')}
           details={[
-            { label: t('storybook.confirmation.item'), value: t('storybook.confirmation.premiumPackage') },
+            {
+              label: t('storybook.confirmation.item'),
+              value: t('storybook.confirmation.premiumPackage'),
+            },
             { label: t('storybook.confirmation.date'), value: '2026-01-26' },
           ]}
           confirmLabel={t('storybook.confirmation.confirm')}
@@ -238,14 +257,21 @@ export const WithAdditionalContent: Story = {
           title={t('storybook.confirmation.additionalContentTitle')}
           message={t('storybook.confirmation.additionalContentMessage')}
           details={[
-            { label: t('storybook.confirmation.item'), value: t('storybook.confirmation.premiumPackage') },
+            {
+              label: t('storybook.confirmation.item'),
+              value: t('storybook.confirmation.premiumPackage'),
+            },
           ]}
           confirmLabel={t('storybook.confirmation.confirm')}
           cancelLabel={t('storybook.confirmation.cancel')}
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         >
-          <Card data-color="neutral" data-size="medium" style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <Card
+            data-color="neutral"
+            data-size="medium"
+            style={{ marginTop: 'var(--ds-spacing-4)' }}
+          >
             <Card.Content>
               <p style={{ margin: 0, fontSize: 'var(--ds-font-size-sm)' }}>
                 {t('storybook.confirmation.additionalInfo')}

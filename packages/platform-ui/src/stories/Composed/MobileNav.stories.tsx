@@ -1,7 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { useT } from '@xala-technologies/i18n';
-import { MobileNav, MobileNavToggle, type MobileNavItem, HomeIcon, CalendarIcon, SettingsIcon, UserIcon, BellIcon, Stack, Paragraph } from '../../index';
+import {
+  MobileNav,
+  MobileNavToggle,
+  type MobileNavItem,
+  HomeIcon,
+  CalendarIcon,
+  SettingsIcon,
+  UserIcon,
+  BellIcon,
+  Stack,
+  Paragraph,
+} from '../../index';
 
 /**
  * MobileNav provides mobile hamburger navigation.
@@ -53,7 +64,13 @@ type Story = StoryObj<typeof MobileNav>;
 const useSampleItems = (): MobileNavItem[] => {
   const t = useT();
   return [
-    { id: 'home', label: t('storybook.mobileNav.home'), icon: <HomeIcon size={20} />, href: '/', active: true },
+    {
+      id: 'home',
+      label: t('storybook.mobileNav.home'),
+      icon: <HomeIcon size={20} />,
+      href: '/',
+      active: true,
+    },
     {
       id: 'calendar',
       label: t('storybook.mobileNav.calendar'),
@@ -92,8 +109,17 @@ export const Default: Story = {
     const items = useSampleItems();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} aria-label={t('storybook.mobileNav.toggleMenu')} />
-        <MobileNav isOpen={isOpen} onClose={() => setIsOpen(false)} items={items} title={t('storybook.mobileNav.navigation')} />
+        <MobileNavToggle
+          isOpen={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={t('storybook.mobileNav.toggleMenu')}
+        />
+        <MobileNav
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          items={items}
+          title={t('storybook.mobileNav.navigation')}
+        />
       </Stack>
     );
   },
@@ -108,7 +134,11 @@ export const WithSections: Story = {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} aria-label={t('storybook.mobileNav.toggleMenu')} />
+        <MobileNavToggle
+          isOpen={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={t('storybook.mobileNav.toggleMenu')}
+        />
         <MobileNav
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -116,7 +146,13 @@ export const WithSections: Story = {
             {
               title: t('storybook.mobileNav.main'),
               items: [
-                { id: 'home', label: t('storybook.mobileNav.home'), icon: <HomeIcon size={20} />, href: '/', active: true },
+                {
+                  id: 'home',
+                  label: t('storybook.mobileNav.home'),
+                  icon: <HomeIcon size={20} />,
+                  href: '/',
+                  active: true,
+                },
                 {
                   id: 'calendar',
                   label: t('storybook.mobileNav.calendar'),
@@ -128,7 +164,12 @@ export const WithSections: Story = {
             {
               title: t('storybook.mobileNav.account'),
               items: [
-                { id: 'profile', label: t('storybook.mobileNav.profile'), icon: <UserIcon size={20} />, href: '/profile' },
+                {
+                  id: 'profile',
+                  label: t('storybook.mobileNav.profile'),
+                  icon: <UserIcon size={20} />,
+                  href: '/profile',
+                },
                 {
                   id: 'settings',
                   label: t('storybook.mobileNav.settings'),
@@ -155,14 +196,27 @@ export const WithHeader: Story = {
     const items = useSampleItems();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} aria-label={t('storybook.mobileNav.toggleMenu')} />
+        <MobileNavToggle
+          isOpen={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={t('storybook.mobileNav.toggleMenu')}
+        />
         <MobileNav
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           items={items}
           header={
-            <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>
-              <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+            <Stack
+              spacing="var(--ds-spacing-4)"
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <Paragraph
+                data-size="md"
+                style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
+              >
                 {t('storybook.mobileNav.appName')}
               </Paragraph>
             </Stack>
@@ -183,14 +237,27 @@ export const WithFooter: Story = {
     const items = useSampleItems();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} aria-label={t('storybook.mobileNav.toggleMenu')} />
+        <MobileNavToggle
+          isOpen={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={t('storybook.mobileNav.toggleMenu')}
+        />
         <MobileNav
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           items={items}
           footer={
-            <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)', borderTop: '1px solid var(--ds-color-neutral-border-subtle)' }}>
-              <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+            <Stack
+              spacing="var(--ds-spacing-4)"
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <Paragraph
+                data-size="sm"
+                style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
+              >
                 {t('storybook.mobileNav.footerText')}
               </Paragraph>
             </Stack>

@@ -54,9 +54,18 @@ export const Default: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <FilterChip label={t('storybook.filterChip.oslo')} onRemove={() => console.log('Remove Oslo')} />
-        <FilterChip label={t('storybook.filterChip.active')} onRemove={() => console.log('Remove Active')} />
-        <FilterChip label={t('storybook.filterChip.premium')} onRemove={() => console.log('Remove Premium')} />
+        <FilterChip
+          label={t('storybook.filterChip.oslo')}
+          onRemove={() => console.log('Remove Oslo')}
+        />
+        <FilterChip
+          label={t('storybook.filterChip.active')}
+          onRemove={() => console.log('Remove Active')}
+        />
+        <FilterChip
+          label={t('storybook.filterChip.premium')}
+          onRemove={() => console.log('Remove Premium')}
+        />
       </div>
     );
   },
@@ -139,11 +148,26 @@ export const Multiple: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <FilterChip label={t('storybook.filterChip.oslo')} onRemove={() => console.log('Remove Oslo')} />
-        <FilterChip label={t('storybook.filterChip.bergen')} onRemove={() => console.log('Remove Bergen')} />
-        <FilterChip label={t('storybook.filterChip.active')} onRemove={() => console.log('Remove Active')} />
-        <FilterChip label={t('storybook.filterChip.premium')} onRemove={() => console.log('Remove Premium')} />
-        <FilterChip label={t('storybook.filterChip.verified')} onRemove={() => console.log('Remove Verified')} />
+        <FilterChip
+          label={t('storybook.filterChip.oslo')}
+          onRemove={() => console.log('Remove Oslo')}
+        />
+        <FilterChip
+          label={t('storybook.filterChip.bergen')}
+          onRemove={() => console.log('Remove Bergen')}
+        />
+        <FilterChip
+          label={t('storybook.filterChip.active')}
+          onRemove={() => console.log('Remove Active')}
+        />
+        <FilterChip
+          label={t('storybook.filterChip.premium')}
+          onRemove={() => console.log('Remove Premium')}
+        />
+        <FilterChip
+          label={t('storybook.filterChip.verified')}
+          onRemove={() => console.log('Remove Verified')}
+        />
       </div>
     );
   },

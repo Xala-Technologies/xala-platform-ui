@@ -36,11 +36,18 @@ export const Default: Story = {
     const t = useT();
     const [value, setValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.selectOption.description')}</Paragraph>
-            <Select label={t('storybook.selectOption.label')} value={value} onChange={(e) => setValue(e.target.value)}>
+            <Select
+              label={t('storybook.selectOption.label')}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            >
               <SelectOption value="">{t('storybook.selectOption.select')}</SelectOption>
               <SelectOption value="option1">{t('storybook.selectOption.option1')}</SelectOption>
               <SelectOption value="option2">{t('storybook.selectOption.option2')}</SelectOption>

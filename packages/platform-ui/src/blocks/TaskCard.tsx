@@ -136,7 +136,11 @@ export function TaskCard({
     >
       <Card.Block>
         {/* Header with category and priority */}
-        <Stack direction="horizontal" justify="between" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+        <Stack
+          direction="horizontal"
+          justify="between"
+          style={{ marginBottom: 'var(--ds-spacing-2)' }}
+        >
           {category && (
             <Paragraph
               data-size="sm"

@@ -154,7 +154,10 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
       </Stack>
 
       {/* Badge or Arrow */}
-      <Stack direction="horizontal" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+      <Stack
+        direction="horizontal"
+        style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}
+      >
         {item.badge && item.badge > 0 && (
           <Stack
             style={{
@@ -223,7 +226,10 @@ function SidebarContent({
           alignItems: 'center',
         }}
       >
-        <Stack direction="horizontal" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+        <Stack
+          direction="horizontal"
+          style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}
+        >
           {logo && <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>}
           {title && (
             <Stack>
@@ -307,7 +313,10 @@ function SidebarContent({
             backgroundColor: 'var(--ds-color-neutral-surface-hover)',
           }}
         >
-          <Stack direction="horizontal" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}>
+          <Stack
+            direction="horizontal"
+            style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}
+          >
             <Stack
               style={{
                 width: 'var(--ds-spacing-11)',
@@ -446,7 +455,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
         {isMobile && (
           <Drawer
             isOpen={isMobileOpen}
-            onClose={onMobileClose || (() => { })}
+            onClose={onMobileClose || (() => {})}
             position="left"
             size="lg"
             overlay={true}

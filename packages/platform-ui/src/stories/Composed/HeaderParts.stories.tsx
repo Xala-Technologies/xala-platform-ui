@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { useT } from '@xala-technologies/i18n';
-import { HeaderLogo, HeaderSearch, HeaderActions, Stack, Paragraph, Card, Button } from '../../index';
+import {
+  HeaderLogo,
+  HeaderSearch,
+  HeaderActions,
+  Stack,
+  Paragraph,
+  Card,
+  Button,
+} from '../../index';
 import { UserIcon, BellIcon, SettingsIcon } from '../../index';
 
 /**
@@ -35,11 +43,17 @@ export const Logo: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.headerParts.logo')}</Paragraph>
-            <HeaderLogo title={t('storybook.headerParts.appName')} subtitle={t('storybook.headerParts.subtitle')} />
+            <HeaderLogo
+              title={t('storybook.headerParts.appName')}
+              subtitle={t('storybook.headerParts.subtitle')}
+            />
           </Stack>
         </Card>
       </Stack>
@@ -55,7 +69,10 @@ export const Search: Story = {
     const t = useT();
     const [searchValue, setSearchValue] = useState('');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.headerParts.search')}</Paragraph>
@@ -79,7 +96,10 @@ export const Actions: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.headerParts.actions')}</Paragraph>

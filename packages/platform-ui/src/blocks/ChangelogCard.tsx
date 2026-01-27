@@ -144,7 +144,12 @@ export function ChangelogCard({
 
         {/* Title */}
         {title && (
-          <Paragraph style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 'var(--ds-font-weight-medium)' as unknown as number }}>
+          <Paragraph
+            style={{
+              marginBottom: 'var(--ds-spacing-3)',
+              fontWeight: 'var(--ds-font-weight-medium)' as unknown as number,
+            }}
+          >
             {title}
           </Paragraph>
         )}

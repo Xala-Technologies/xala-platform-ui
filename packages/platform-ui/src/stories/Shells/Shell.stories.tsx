@@ -37,10 +37,7 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Shell
-        title={t('storybook.shell.title')}
-        subtitle={t('storybook.shell.subtitle')}
-      >
+      <Shell title={t('storybook.shell.title')} subtitle={t('storybook.shell.subtitle')}>
         <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
           <Card data-color="neutral" data-size="medium">
             <Stack spacing="var(--ds-spacing-4)">
@@ -87,11 +84,7 @@ export const Fluid: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Shell
-        fluid
-        title={t('storybook.shell.title')}
-        subtitle={t('storybook.shell.subtitle')}
-      >
+      <Shell fluid title={t('storybook.shell.title')} subtitle={t('storybook.shell.subtitle')}>
         <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
           <Card data-color="neutral" data-size="medium">
             <Stack spacing="var(--ds-spacing-4)">

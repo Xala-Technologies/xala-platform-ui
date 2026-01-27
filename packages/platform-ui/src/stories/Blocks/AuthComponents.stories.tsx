@@ -44,9 +44,7 @@ type Story = StoryObj<typeof LoadingScreen>;
 export const Loading: Story = {
   render: function Render() {
     const t = useT();
-    return (
-      <LoadingScreen message={t('storybook.authComponents.loading')} height="400px" />
-    );
+    return <LoadingScreen message={t('storybook.authComponents.loading')} height="400px" />;
   },
 };
 
@@ -132,13 +130,18 @@ export const PermissionGateExample: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.authComponents.permissionGate')}</Paragraph>
             <PermissionGate
               hasPermission={true}
-              fallback={<Paragraph data-size="sm">{t('storybook.authComponents.noPermission')}</Paragraph>}
+              fallback={
+                <Paragraph data-size="sm">{t('storybook.authComponents.noPermission')}</Paragraph>
+              }
             >
               <Paragraph data-size="sm">{t('storybook.authComponents.hasPermission')}</Paragraph>
             </PermissionGate>

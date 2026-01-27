@@ -37,7 +37,10 @@ export const Default: Story = {
     const t = useT();
     const [primaryValue, setPrimaryValue] = useState<'SPACE' | 'EQUIPMENT' | 'ALL'>('ALL');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.filterBar.description')}</Paragraph>
@@ -70,7 +73,10 @@ export const WithViewMode: Story = {
     const [primaryValue, setPrimaryValue] = useState<'SPACE' | 'EQUIPMENT' | 'ALL'>('ALL');
     const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map'>('grid');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.filterBar.withViewMode')}</Paragraph>

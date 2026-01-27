@@ -36,13 +36,20 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     const [open, setOpen] = useState(false);
-    const [loadingRole, setLoadingRole] = useState<null | 'admin' | 'case_handler' | 'org_admin' | 'org_member'>(null);
+    const [loadingRole, setLoadingRole] = useState<
+      null | 'admin' | 'case_handler' | 'org_admin' | 'org_member'
+    >(null);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.demoRoleSwitcher.description')}</Paragraph>
-            <Button onClick={() => setOpen(true)}>{t('storybook.demoRoleSwitcher.openDialog')}</Button>
+            <Button onClick={() => setOpen(true)}>
+              {t('storybook.demoRoleSwitcher.openDialog')}
+            </Button>
             <DemoRoleSwitcher
               open={open}
               onClose={() => setOpen(false)}
@@ -72,9 +79,14 @@ export const CustomOptions: Story = {
   render: function Render() {
     const t = useT();
     const [open, setOpen] = useState(true);
-    const [loadingRole, setLoadingRole] = useState<null | 'admin' | 'case_handler' | 'org_admin' | 'org_member'>(null);
+    const [loadingRole, setLoadingRole] = useState<
+      null | 'admin' | 'case_handler' | 'org_admin' | 'org_member'
+    >(null);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.demoRoleSwitcher.customOptions')}</Paragraph>
@@ -119,7 +131,10 @@ export const WithError: Story = {
     const t = useT();
     const [open, setOpen] = useState(true);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.demoRoleSwitcher.withError')}</Paragraph>

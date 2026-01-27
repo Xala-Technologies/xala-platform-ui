@@ -35,16 +35,14 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.xTerminal.description')}</Paragraph>
-            <XTerminal
-              sessionId="session-1"
-              cwd="~/projects/my-app"
-              height={300}
-              isActive={true}
-            />
+            <XTerminal sessionId="session-1" cwd="~/projects/my-app" height={300} isActive={true} />
           </Stack>
         </Card>
       </Stack>
@@ -59,7 +57,10 @@ export const WithInitialCommand: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.xTerminal.withCommand')}</Paragraph>
@@ -84,16 +85,14 @@ export const CustomHeight: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.xTerminal.customHeight')}</Paragraph>
-            <XTerminal
-              sessionId="session-3"
-              cwd="~/projects/my-app"
-              height={500}
-              isActive={true}
-            />
+            <XTerminal sessionId="session-3" cwd="~/projects/my-app" height={500} isActive={true} />
           </Stack>
         </Card>
       </Stack>
@@ -108,7 +107,10 @@ export const Inactive: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.xTerminal.inactive')}</Paragraph>

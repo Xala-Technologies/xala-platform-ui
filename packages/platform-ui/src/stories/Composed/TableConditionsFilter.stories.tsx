@@ -37,7 +37,10 @@ export const Default: Story = {
     const t = useT();
     const [conditions, setConditions] = useState([]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableConditions.description')}</Paragraph>
@@ -46,10 +49,15 @@ export const Default: Story = {
                 { id: 'name', label: t('storybook.tableConditions.name'), type: 'text' },
                 { id: 'email', label: t('storybook.tableConditions.email'), type: 'text' },
                 { id: 'age', label: t('storybook.tableConditions.age'), type: 'number' },
-                { id: 'status', label: t('storybook.tableConditions.status'), type: 'select', options: [
-                  { value: 'active', label: t('storybook.tableConditions.active') },
-                  { value: 'inactive', label: t('storybook.tableConditions.inactive') },
-                ]},
+                {
+                  id: 'status',
+                  label: t('storybook.tableConditions.status'),
+                  type: 'select',
+                  options: [
+                    { value: 'active', label: t('storybook.tableConditions.active') },
+                    { value: 'inactive', label: t('storybook.tableConditions.inactive') },
+                  ],
+                },
               ]}
               conditions={conditions}
               onChange={setConditions}
@@ -84,7 +92,10 @@ export const WithInitialConditions: Story = {
       },
     ]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableConditions.withInitial')}</Paragraph>
@@ -93,10 +104,15 @@ export const WithInitialConditions: Story = {
                 { id: 'name', label: t('storybook.tableConditions.name'), type: 'text' },
                 { id: 'email', label: t('storybook.tableConditions.email'), type: 'text' },
                 { id: 'age', label: t('storybook.tableConditions.age'), type: 'number' },
-                { id: 'status', label: t('storybook.tableConditions.status'), type: 'select', options: [
-                  { value: 'active', label: t('storybook.tableConditions.active') },
-                  { value: 'inactive', label: t('storybook.tableConditions.inactive') },
-                ]},
+                {
+                  id: 'status',
+                  label: t('storybook.tableConditions.status'),
+                  type: 'select',
+                  options: [
+                    { value: 'active', label: t('storybook.tableConditions.active') },
+                    { value: 'inactive', label: t('storybook.tableConditions.inactive') },
+                  ],
+                },
               ]}
               conditions={conditions}
               onChange={setConditions}
@@ -116,7 +132,10 @@ export const WithDateFields: Story = {
     const t = useT();
     const [conditions, setConditions] = useState([]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableConditions.withDates')}</Paragraph>
@@ -144,14 +163,21 @@ export const WithBooleanFields: Story = {
     const t = useT();
     const [conditions, setConditions] = useState([]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.tableConditions.withBooleans')}</Paragraph>
             <TableConditionsFilter
               fields={[
                 { id: 'isActive', label: t('storybook.tableConditions.isActive'), type: 'boolean' },
-                { id: 'isVerified', label: t('storybook.tableConditions.isVerified'), type: 'boolean' },
+                {
+                  id: 'isVerified',
+                  label: t('storybook.tableConditions.isVerified'),
+                  type: 'boolean',
+                },
                 { id: 'name', label: t('storybook.tableConditions.name'), type: 'text' },
               ]}
               conditions={conditions}

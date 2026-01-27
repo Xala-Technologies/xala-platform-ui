@@ -179,9 +179,9 @@ export function HeatmapChart({
                 }}
                 onClick={() => cellData && onCellClick?.(cellData)}
                 onKeyDown={(e) => {
-                  if (onCellClick && (e.key === 'Enter' || e.key === ' ')) {
+                  if (onCellClick && cellData && (e.key === 'Enter' || e.key === ' ')) {
                     e.preventDefault();
-                    cellData && onCellClick?.(cellData);
+                    onCellClick(cellData);
                   }
                 }}
                 role={onCellClick ? 'button' : undefined}
@@ -305,17 +305,9 @@ export function CompactHeatmap({
   };
 
   return (
-    <Stack
-      direction="vertical"
-      className={cn('compact-heatmap', className)}
-      spacing={gap}
-    >
+    <Stack direction="vertical" className={cn('compact-heatmap', className)} spacing={gap}>
       {rowLabels.map((row, rowIdx) => (
-        <Stack
-          key={rowIdx}
-          direction="horizontal"
-          gap={gap}
-        >
+        <Stack key={rowIdx} direction="horizontal" gap={gap}>
           {colLabels.map((col, colIdx) => {
             const cellData = getCellData(row, col);
             const value = cellData?.value || 0;
@@ -334,9 +326,9 @@ export function CompactHeatmap({
                 }}
                 onClick={() => cellData && onCellClick?.(cellData)}
                 onKeyDown={(e) => {
-                  if (onCellClick && (e.key === 'Enter' || e.key === ' ')) {
+                  if (onCellClick && cellData && (e.key === 'Enter' || e.key === ' ')) {
                     e.preventDefault();
-                    cellData && onCellClick?.(cellData);
+                    onCellClick(cellData);
                   }
                 }}
                 role={onCellClick ? 'button' : undefined}

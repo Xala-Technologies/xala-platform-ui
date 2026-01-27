@@ -460,7 +460,13 @@ export type { FormSectionProps } from './FormSection';
 export type { FormActionsProps } from './FormActions';
 
 // Form Layout Components (from FormLayout.tsx - collapsible sections, layout helpers)
-export { FormSection as FormLayoutSection, FormActions as FormLayoutActions, FormRow, FormField, FormDivider } from './FormLayout';
+export {
+  FormSection as FormLayoutSection,
+  FormActions as FormLayoutActions,
+  FormRow,
+  FormField,
+  FormDivider,
+} from './FormLayout';
 export type {
   FormSectionProps as FormLayoutSectionProps,
   FormActionsProps as FormLayoutActionsProps,
@@ -595,7 +601,6 @@ export type { SkipLinksProps, SkipLink } from './SkipLinks';
 
 // Note: AvailabilityLegend now re-exported from @xala-technologies/platform-ui-digilist
 
-
 // PublishingChecklist (wizard validation checklist)
 export { PublishingChecklist } from './PublishingChecklist';
 export type {
@@ -606,7 +611,6 @@ export type {
 } from './PublishingChecklist';
 
 // Note: OpeningHoursEditor now re-exported from @xala-technologies/platform-ui-digilist
-
 
 // PaymentMethodSelector (chip-based payment method display/selector)
 export {
@@ -630,9 +634,7 @@ export type {
 
 // Note: PricingTiersEditor now re-exported from @xala-technologies/platform-ui-digilist
 
-
 // Note: BlockedPeriodsManager now re-exported from @xala-technologies/platform-ui-digilist
-
 
 // ExternalImportInput (URL import with validation)
 export { ExternalImportInput } from './ExternalImportInput';
@@ -644,7 +646,6 @@ export type {
 } from './ExternalImportInput';
 
 // Note: ContactPersonsEditor now re-exported from @xala-technologies/platform-ui-digilist
-
 
 // TreeView (hierarchical navigation, sidebar, file explorer)
 export { TreeView, TreeViewToolbar, useTreeView } from './TreeView';

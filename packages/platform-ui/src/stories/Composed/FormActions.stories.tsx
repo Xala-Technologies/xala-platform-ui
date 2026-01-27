@@ -54,7 +54,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -64,7 +67,10 @@ export const Default: Story = {
           <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
             <Paragraph data-size="md">{t('storybook.formActions.formContent')}</Paragraph>
           </Stack>
-          <FormActions submitText={t('storybook.formActions.save')} onCancel={() => console.log('Cancelled')} />
+          <FormActions
+            submitText={t('storybook.formActions.save')}
+            onCancel={() => console.log('Cancelled')}
+          />
         </form>
       </Stack>
     );

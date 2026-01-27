@@ -70,7 +70,10 @@ export const Default: Story = {
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}
@@ -91,7 +94,10 @@ export const WithLabel: Story = {
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}
@@ -113,7 +119,10 @@ export const MultiSelect: Story = {
     const [value, setValue] = useState<string[]>([]);
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}
@@ -135,7 +144,10 @@ export const Clearable: Story = {
     const [value, setValue] = useState<string>('no');
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}
@@ -157,7 +169,10 @@ export const Loading: Story = {
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}
@@ -179,7 +194,10 @@ export const WithError: Story = {
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}
@@ -201,7 +219,10 @@ export const Disabled: Story = {
     const [value, setValue] = useState<string>('no');
     const options = useSampleOptions();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}
+      >
         <SearchableSelect
           options={options}
           value={value}

@@ -283,7 +283,9 @@ export function WizardStatusSidebar({
 
     return (
       <Stack key={section.key} direction="vertical">
-        <Stack direction="horizontal" align="flex-start" style={itemBaseStyle}>{content}</Stack>
+        <Stack direction="horizontal" align="flex-start" style={itemBaseStyle}>
+          {content}
+        </Stack>
       </Stack>
     );
   };

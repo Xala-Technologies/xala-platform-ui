@@ -41,7 +41,10 @@ export const Default: Story = {
       thirdPartySharing: false,
     });
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.privacyTab.description')}</Paragraph>
@@ -76,11 +79,15 @@ export const Default: Story = {
                 analyticsConsent: t('storybook.privacyTab.analyticsConsent'),
                 analyticsConsentDescription: t('storybook.privacyTab.analyticsConsentDescription'),
                 thirdPartyConsent: t('storybook.privacyTab.thirdPartyConsent'),
-                thirdPartyConsentDescription: t('storybook.privacyTab.thirdPartyConsentDescription'),
+                thirdPartyConsentDescription: t(
+                  'storybook.privacyTab.thirdPartyConsentDescription'
+                ),
                 deleteAccountTitle: t('storybook.privacyTab.deleteAccountTitle'),
                 deleteAccountDescription: t('storybook.privacyTab.deleteAccountDescription'),
                 deleteAccountWarningTitle: t('storybook.privacyTab.deleteAccountWarningTitle'),
-                deleteAccountWarningDescription: t('storybook.privacyTab.deleteAccountWarningDescription'),
+                deleteAccountWarningDescription: t(
+                  'storybook.privacyTab.deleteAccountWarningDescription'
+                ),
                 deleteMyAccount: t('storybook.privacyTab.deleteMyAccount'),
                 exportDataAction: t('storybook.privacyTab.exportDataAction'),
               }}

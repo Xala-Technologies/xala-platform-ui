@@ -369,11 +369,7 @@ export function RentalObjectAvailabilityCalendar({
       )}
 
       {/* Navigation */}
-      <Stack
-        direction="horizontal"
-        justify="between"
-        align="center"
-      >
+      <Stack direction="horizontal" justify="between" align="center">
         <Button
           type="button"
           variant="tertiary"

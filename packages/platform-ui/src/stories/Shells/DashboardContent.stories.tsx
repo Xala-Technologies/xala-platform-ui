@@ -68,7 +68,11 @@ export const Default: Story = {
             {t('storybook.dashboardContent.title')}
           </Heading>
           <Paragraph data-size="md">{t('storybook.dashboardContent.description')}</Paragraph>
-          <Card data-color="neutral" data-size="medium" style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <Card
+            data-color="neutral"
+            data-size="medium"
+            style={{ marginTop: 'var(--ds-spacing-4)' }}
+          >
             <Card.Content>
               <Paragraph data-size="sm">{t('storybook.dashboardContent.cardContent')}</Paragraph>
             </Card.Content>
@@ -92,7 +96,11 @@ export const WithBottomNav: Story = {
             {t('storybook.dashboardContent.title')}
           </Heading>
           <Paragraph data-size="md">{t('storybook.dashboardContent.withBottomNav')}</Paragraph>
-          <Card data-color="neutral" data-size="medium" style={{ marginTop: 'var(--ds-spacing-4)' }}>
+          <Card
+            data-color="neutral"
+            data-size="medium"
+            style={{ marginTop: 'var(--ds-spacing-4)' }}
+          >
             <Card.Content>
               <Paragraph data-size="sm">{t('storybook.dashboardContent.cardContent')}</Paragraph>
             </Card.Content>

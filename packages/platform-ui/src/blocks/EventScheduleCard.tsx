@@ -301,12 +301,7 @@ export function EventScheduleCard({
           </span>
           <Stack direction="vertical" spacing="var(--ds-spacing-1)">
             {schedule.timeSlots.map((slot, index) => (
-              <Stack
-                key={index}
-                direction="horizontal"
-                align="center"
-                gap="var(--ds-spacing-2)"
-              >
+              <Stack key={index} direction="horizontal" align="center" gap="var(--ds-spacing-2)">
                 <Paragraph
                   data-size="sm"
                   style={{ margin: 0, fontWeight: 'var(--ds-font-weight-medium)' }}

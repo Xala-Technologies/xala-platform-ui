@@ -78,7 +78,10 @@ export const Default: Story = {
     const t = useT();
     const changes = useSampleChanges();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ChangelogCard
           version="1.2.0"
           date={new Date(2026, 0, 26)}
@@ -98,7 +101,10 @@ export const Latest: Story = {
     const t = useT();
     const changes = useSampleChanges();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ChangelogCard
           version="1.2.0"
           date={new Date(2026, 0, 26)}
@@ -119,7 +125,10 @@ export const Prerelease: Story = {
     const t = useT();
     const changes = useSampleChanges();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ChangelogCard
           version="1.3.0-beta.1"
           date={new Date(2026, 0, 26)}
@@ -147,7 +156,10 @@ export const AllChangeTypes: Story = {
       { type: 'security', description: t('storybook.changelogCard.securityFix') },
     ];
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ChangelogCard
           version="1.2.0"
           date={new Date(2026, 0, 26)}
@@ -167,7 +179,10 @@ export const WithTitle: Story = {
     const t = useT();
     const changes = useSampleChanges();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ChangelogCard
           version="1.2.0"
           title={t('storybook.changelogCard.majorRelease')}

@@ -35,7 +35,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.progress.description')}</Paragraph>
@@ -54,15 +57,30 @@ export const Colors: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.progress.colors')}</Paragraph>
             <Stack spacing="var(--ds-spacing-3)">
-              <Progress value={75} data-color="success" aria-label={t('storybook.progress.success')} />
+              <Progress
+                value={75}
+                data-color="success"
+                aria-label={t('storybook.progress.success')}
+              />
               <Progress value={50} data-color="info" aria-label={t('storybook.progress.info')} />
-              <Progress value={30} data-color="warning" aria-label={t('storybook.progress.warning')} />
-              <Progress value={10} data-color="danger" aria-label={t('storybook.progress.danger')} />
+              <Progress
+                value={30}
+                data-color="warning"
+                aria-label={t('storybook.progress.warning')}
+              />
+              <Progress
+                value={10}
+                data-color="danger"
+                aria-label={t('storybook.progress.danger')}
+              />
             </Stack>
           </Stack>
         </Card>
@@ -78,7 +96,10 @@ export const Sizes: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.progress.sizes')}</Paragraph>
@@ -101,7 +122,10 @@ export const Values: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.progress.values')}</Paragraph>

@@ -552,29 +552,29 @@ function BlockRenderer({
                 borderCollapse: 'collapse',
               }}
             >
-            <tbody>
-              {Array.from({ length: rows }).map((_, rowIndex) => (
-                <tr key={rowIndex}>
-                  {Array.from({ length: cols }).map((_, colIndex) => (
-                    <td
-                      key={colIndex}
-                      style={{
-                        padding: 'var(--ds-spacing-2)',
-                        borderWidth: 'var(--ds-border-width-default)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--ds-color-neutral-border-default)',
-                        fontSize: 'var(--ds-font-size-sm)',
-                      }}
-                    >
-                      {rowIndex === 0
-                        ? `Header ${colIndex + 1}`
-                        : `Cell ${rowIndex}-${colIndex + 1}`}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              <tbody>
+                {Array.from({ length: rows }).map((_, rowIndex) => (
+                  <tr key={rowIndex}>
+                    {Array.from({ length: cols }).map((_, colIndex) => (
+                      <td
+                        key={colIndex}
+                        style={{
+                          padding: 'var(--ds-spacing-2)',
+                          borderWidth: 'var(--ds-border-width-default)',
+                          borderStyle: 'solid',
+                          borderColor: 'var(--ds-color-neutral-border-default)',
+                          fontSize: 'var(--ds-font-size-sm)',
+                        }}
+                      >
+                        {rowIndex === 0
+                          ? `Header ${colIndex + 1}`
+                          : `Cell ${rowIndex}-${colIndex + 1}`}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         );
       case 'footer':

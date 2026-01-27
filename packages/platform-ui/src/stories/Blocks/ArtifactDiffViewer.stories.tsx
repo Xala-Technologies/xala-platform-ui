@@ -35,7 +35,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.artifactDiff.description')}</Paragraph>
@@ -73,7 +76,10 @@ export const WithStructuredChanges: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.artifactDiff.structured')}</Paragraph>
@@ -112,7 +118,10 @@ export const CustomHeight: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.artifactDiff.customHeight')}</Paragraph>
@@ -139,10 +148,18 @@ export const CustomHeight: Story = {
 export const LargeDiff: Story = {
   render: function Render() {
     const t = useT();
-    const oldContent = Array.from({ length: 100 }, (_, i) => `Line ${i + 1}: Old content`).join('\n');
-    const newContent = Array.from({ length: 100 }, (_, i) => `Line ${i + 1}: ${i < 50 ? 'Old' : 'New'} content`).join('\n');
+    const oldContent = Array.from({ length: 100 }, (_, i) => `Line ${i + 1}: Old content`).join(
+      '\n'
+    );
+    const newContent = Array.from(
+      { length: 100 },
+      (_, i) => `Line ${i + 1}: ${i < 50 ? 'Old' : 'New'} content`
+    ).join('\n');
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '1000px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.artifactDiff.large')}</Paragraph>

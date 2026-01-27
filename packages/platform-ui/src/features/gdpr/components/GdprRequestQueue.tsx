@@ -380,114 +380,118 @@ export function GdprRequestQueue({
         {/* Table */}
         <div style={{ overflowX: 'auto', width: '100%' }}>
           <Table style={{ width: '100%' }}>
-          <Table.Head>
-            <Table.Row>
-              <Table.HeaderCell>{labels.userHeader}</Table.HeaderCell>
-              <Table.HeaderCell>{labels.typeHeader}</Table.HeaderCell>
-              <Table.HeaderCell>{labels.statusHeader}</Table.HeaderCell>
-              <Table.HeaderCell>{labels.requestedHeader}</Table.HeaderCell>
-              <Table.HeaderCell>{labels.daysRemainingHeader}</Table.HeaderCell>
-              <Table.HeaderCell>{labels.idHeader}</Table.HeaderCell>
-              <Table.HeaderCell>{labels.actions}</Table.HeaderCell>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            {requests.map((request) => (
-              <Table.Row
-                key={request.id}
-                style={{
-                  cursor: onRequestClick ? 'pointer' : 'default',
-                }}
-                onClick={() => onRequestClick?.(request)}
-              >
-                {/* User */}
-                <Table.Cell>
-                  <div
-                    style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-1)' }}
-                  >
+            <Table.Head>
+              <Table.Row>
+                <Table.HeaderCell>{labels.userHeader}</Table.HeaderCell>
+                <Table.HeaderCell>{labels.typeHeader}</Table.HeaderCell>
+                <Table.HeaderCell>{labels.statusHeader}</Table.HeaderCell>
+                <Table.HeaderCell>{labels.requestedHeader}</Table.HeaderCell>
+                <Table.HeaderCell>{labels.daysRemainingHeader}</Table.HeaderCell>
+                <Table.HeaderCell>{labels.idHeader}</Table.HeaderCell>
+                <Table.HeaderCell>{labels.actions}</Table.HeaderCell>
+              </Table.Row>
+            </Table.Head>
+            <Table.Body>
+              {requests.map((request) => (
+                <Table.Row
+                  key={request.id}
+                  style={{
+                    cursor: onRequestClick ? 'pointer' : 'default',
+                  }}
+                  onClick={() => onRequestClick?.(request)}
+                >
+                  {/* User */}
+                  <Table.Cell>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 'var(--ds-spacing-1)',
+                      }}
+                    >
+                      <Paragraph
+                        data-size="sm"
+                        style={{ fontWeight: 'var(--ds-font-weight-medium)' }}
+                      >
+                        {request.userName || labels.unknownUser}
+                      </Paragraph>
+                      {request.userEmail && (
+                        <Paragraph
+                          data-size="xs"
+                          style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
+                        >
+                          {request.userEmail}
+                        </Paragraph>
+                      )}
+                    </div>
+                  </Table.Cell>
+
+                  {/* Type */}
+                  <Table.Cell>
+                    <Paragraph data-size="sm">{getTypeLabel(request.requestType)}</Paragraph>
+                  </Table.Cell>
+
+                  {/* Status */}
+                  <Table.Cell>
+                    <StatusTag color={STATUS_COLORS[request.status] || 'neutral'} size="sm">
+                      {getStatusLabel(request.status)}
+                    </StatusTag>
+                  </Table.Cell>
+
+                  {/* Requested date */}
+                  <Table.Cell>
+                    <Paragraph data-size="sm">{request.requestedDate}</Paragraph>
+                  </Table.Cell>
+
+                  {/* Days remaining */}
+                  <Table.Cell>
                     <Paragraph
                       data-size="sm"
-                      style={{ fontWeight: 'var(--ds-font-weight-medium)' }}
+                      style={{
+                        color: getUrgencyColor(request.daysRemaining),
+                        fontWeight:
+                          request.daysRemaining <= 3
+                            ? 'var(--ds-font-weight-bold)'
+                            : 'var(--ds-font-weight-regular)',
+                      }}
                     >
-                      {request.userName || labels.unknownUser}
+                      {request.daysRemaining} {labels.daysRemainingLabel}
                     </Paragraph>
-                    {request.userEmail && (
-                      <Paragraph
-                        data-size="xs"
-                        style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
-                      >
-                        {request.userEmail}
-                      </Paragraph>
-                    )}
-                  </div>
-                </Table.Cell>
+                  </Table.Cell>
 
-                {/* Type */}
-                <Table.Cell>
-                  <Paragraph data-size="sm">{getTypeLabel(request.requestType)}</Paragraph>
-                </Table.Cell>
+                  {/* ID */}
+                  <Table.Cell>
+                    <Paragraph
+                      data-size="xs"
+                      style={{
+                        fontFamily: 'monospace',
+                        color: 'var(--ds-color-neutral-text-subtle)',
+                      }}
+                    >
+                      {request.id.substring(0, 8)}...
+                    </Paragraph>
+                  </Table.Cell>
 
-                {/* Status */}
-                <Table.Cell>
-                  <StatusTag color={STATUS_COLORS[request.status] || 'neutral'} size="sm">
-                    {getStatusLabel(request.status)}
-                  </StatusTag>
-                </Table.Cell>
-
-                {/* Requested date */}
-                <Table.Cell>
-                  <Paragraph data-size="sm">{request.requestedDate}</Paragraph>
-                </Table.Cell>
-
-                {/* Days remaining */}
-                <Table.Cell>
-                  <Paragraph
-                    data-size="sm"
-                    style={{
-                      color: getUrgencyColor(request.daysRemaining),
-                      fontWeight:
-                        request.daysRemaining <= 3
-                          ? 'var(--ds-font-weight-bold)'
-                          : 'var(--ds-font-weight-regular)',
-                    }}
-                  >
-                    {request.daysRemaining} {labels.daysRemainingLabel}
-                  </Paragraph>
-                </Table.Cell>
-
-                {/* ID */}
-                <Table.Cell>
-                  <Paragraph
-                    data-size="xs"
-                    style={{
-                      fontFamily: 'monospace',
-                      color: 'var(--ds-color-neutral-text-subtle)',
-                    }}
-                  >
-                    {request.id.substring(0, 8)}...
-                  </Paragraph>
-                </Table.Cell>
-
-                {/* Actions */}
-                <Table.Cell>
-                  <Button
-                    type="button"
-                    variant="tertiary"
-                    data-size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onCopyId(request.id);
-                    }}
-                    aria-label={labels.copyId}
-                    style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
-                  >
-                    {copiedId === request.id ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+                  {/* Actions */}
+                  <Table.Cell>
+                    <Button
+                      type="button"
+                      variant="tertiary"
+                      data-size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onCopyId(request.id);
+                      }}
+                      aria-label={labels.copyId}
+                      style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
+                    >
+                      {copiedId === request.id ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
+                    </Button>
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
         </div>
       </Card.Block>
     </Card>

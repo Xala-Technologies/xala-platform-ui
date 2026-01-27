@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { BottomNavigation, HomeIcon, CalendarIcon, SettingsIcon, UserIcon, BellIcon, Stack, Paragraph } from '../../index';
+import {
+  BottomNavigation,
+  HomeIcon,
+  CalendarIcon,
+  SettingsIcon,
+  UserIcon,
+  BellIcon,
+  Stack,
+  Paragraph,
+} from '../../index';
 
 /**
  * BottomNavigation provides mobile-first bottom navigation.
@@ -52,7 +61,13 @@ type Story = StoryObj<typeof BottomNavigation>;
 const useSampleItems = () => {
   const t = useT();
   return [
-    { id: 'home', label: t('storybook.bottomNav.home'), icon: <HomeIcon size={20} />, href: '/', active: true },
+    {
+      id: 'home',
+      label: t('storybook.bottomNav.home'),
+      icon: <HomeIcon size={20} />,
+      href: '/',
+      active: true,
+    },
     {
       id: 'calendar',
       label: t('storybook.bottomNav.calendar'),
@@ -116,7 +131,13 @@ export const ManyItems: Story = {
   render: function Render() {
     const t = useT();
     const items = [
-      { id: 'home', label: t('storybook.bottomNav.home'), icon: <HomeIcon size={20} />, href: '/', active: true },
+      {
+        id: 'home',
+        label: t('storybook.bottomNav.home'),
+        icon: <HomeIcon size={20} />,
+        href: '/',
+        active: true,
+      },
       {
         id: 'calendar',
         label: t('storybook.bottomNav.calendar'),

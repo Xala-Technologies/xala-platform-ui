@@ -107,10 +107,20 @@ const SampleAccountSwitcher = () => {
         A
       </div>
       <div>
-        <div style={{ fontWeight: 'var(--ds-font-weight-semibold)', fontSize: 'var(--ds-font-size-sm)' }}>
+        <div
+          style={{
+            fontWeight: 'var(--ds-font-weight-semibold)',
+            fontSize: 'var(--ds-font-size-sm)',
+          }}
+        >
           {t('storybook.header.acmeCorp')}
         </div>
-        <div style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+        <div
+          style={{
+            fontSize: 'var(--ds-font-size-xs)',
+            color: 'var(--ds-color-neutral-text-subtle)',
+          }}
+        >
           {t('storybook.header.workspace')}
         </div>
       </div>
@@ -132,9 +142,24 @@ const useSampleSearchResults = (): SearchResultGroup[] => {
     {
       title: t('storybook.header.suggestions'),
       items: [
-        { id: '3', title: t('storybook.header.productCatalog'), subtitle: t('storybook.header.productsCategory'), type: 'page' },
-        { id: '4', title: t('storybook.header.orderHistory'), subtitle: t('storybook.header.ordersCategory'), type: 'page' },
-        { id: '5', title: t('storybook.header.customerDatabase'), subtitle: t('storybook.header.customersCategory'), type: 'page' },
+        {
+          id: '3',
+          title: t('storybook.header.productCatalog'),
+          subtitle: t('storybook.header.productsCategory'),
+          type: 'page',
+        },
+        {
+          id: '4',
+          title: t('storybook.header.orderHistory'),
+          subtitle: t('storybook.header.ordersCategory'),
+          type: 'page',
+        },
+        {
+          id: '5',
+          title: t('storybook.header.customerDatabase'),
+          subtitle: t('storybook.header.customersCategory'),
+          type: 'page',
+        },
       ],
     },
   ];
@@ -160,7 +185,12 @@ export const Default: Story = {
     const user = useSampleUser();
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           leftSlot={<SampleAccountSwitcher />}
@@ -200,7 +230,12 @@ export const WithoutSearch: Story = {
     const user = useSampleUser();
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           leftSlot={<SampleAccountSwitcher />}
@@ -233,7 +268,12 @@ export const WithoutUser: Story = {
     const [searchValue, setSearchValue] = useState('');
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           searchPlaceholder={t('storybook.header.searchPlaceholder')}
@@ -264,7 +304,12 @@ export const WithCustomActions: Story = {
     const user = useSampleUser();
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           leftSlot={<SampleAccountSwitcher />}
@@ -303,7 +348,12 @@ export const ManyNotifications: Story = {
     const user = useSampleUser();
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           leftSlot={<SampleAccountSwitcher />}
@@ -335,7 +385,12 @@ export const Minimal: Story = {
     const user = useSampleUser();
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           user={user}
@@ -362,7 +417,12 @@ export const WithUserAvatar: Story = {
     const [isDark, setIsDark] = useState(false);
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           leftSlot={<SampleAccountSwitcher />}
@@ -401,7 +461,12 @@ export const CustomHeight: Story = {
     const user = useSampleUser();
 
     return (
-      <div style={{ minHeight: '400px', backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div
+        style={{
+          minHeight: '400px',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+        }}
+      >
         <DashboardHeader
           logo={<SampleLogo />}
           leftSlot={<SampleAccountSwitcher />}

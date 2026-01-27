@@ -39,7 +39,10 @@ export const Default: Story = {
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({ name: '', email: '', confirm: false });
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.wizard.description')}</Paragraph>
@@ -82,7 +85,9 @@ export const Default: Story = {
                 return (
                   <Stack spacing="var(--ds-spacing-4)">
                     <Paragraph data-size="md">{t('storybook.wizard.step3Content')}</Paragraph>
-                    <Button onClick={() => console.log('Submit')}>{t('storybook.wizard.submit')}</Button>
+                    <Button onClick={() => console.log('Submit')}>
+                      {t('storybook.wizard.submit')}
+                    </Button>
                   </Stack>
                 );
               }}
@@ -102,7 +107,10 @@ export const WithOptionalStep: Story = {
     const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.wizard.withOptional')}</Paragraph>
@@ -138,7 +146,10 @@ export const WithErrors: Story = {
     const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.wizard.withErrors')}</Paragraph>

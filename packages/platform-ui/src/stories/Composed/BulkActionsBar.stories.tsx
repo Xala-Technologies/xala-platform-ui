@@ -38,12 +38,17 @@ export const Default: Story = {
     const t = useT();
     const [selectedCount, setSelectedCount] = useState(5);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.bulkActionsBar.description')}</Paragraph>
             <Button onClick={() => setSelectedCount(selectedCount > 0 ? 0 : 5)}>
-              {selectedCount > 0 ? t('storybook.bulkActionsBar.clearSelection') : t('storybook.bulkActionsBar.selectItems')}
+              {selectedCount > 0
+                ? t('storybook.bulkActionsBar.clearSelection')
+                : t('storybook.bulkActionsBar.selectItems')}
             </Button>
             <BulkActionsBar
               selectedCount={selectedCount}
@@ -79,7 +84,10 @@ export const Inline: Story = {
     const t = useT();
     const [selectedCount, setSelectedCount] = useState(3);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.bulkActionsBar.inline')}</Paragraph>
@@ -117,7 +125,10 @@ export const MultipleActions: Story = {
     const t = useT();
     const [selectedCount, setSelectedCount] = useState(10);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.bulkActionsBar.multipleActions')}</Paragraph>

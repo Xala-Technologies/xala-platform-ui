@@ -82,7 +82,11 @@ const useSampleTree = (): TreeNode[] => {
       icon: <FolderIcon size={16} />,
       children: [
         { id: 'home', label: t('storybook.treeView.home'), icon: <HomeIcon size={16} /> },
-        { id: 'settings', label: t('storybook.treeView.settings'), icon: <SettingsIcon size={16} /> },
+        {
+          id: 'settings',
+          label: t('storybook.treeView.settings'),
+          icon: <SettingsIcon size={16} />,
+        },
       ],
     },
   ];
@@ -235,7 +239,11 @@ export const DeepNesting: Story = {
                 label: t('storybook.treeView.level3'),
                 icon: <FolderIcon size={16} />,
                 children: [
-                  { id: 'level4', label: t('storybook.treeView.level4'), icon: <FileIcon size={16} /> },
+                  {
+                    id: 'level4',
+                    label: t('storybook.treeView.level4'),
+                    icon: <FileIcon size={16} />,
+                  },
                 ],
               },
             ],
@@ -273,7 +281,12 @@ export const WithDisabledNodes: Story = {
         icon: <FolderIcon size={16} />,
         children: [
           { id: 'button', label: t('storybook.treeView.button'), icon: <FileIcon size={16} /> },
-          { id: 'input', label: t('storybook.treeView.input'), icon: <FileIcon size={16} />, disabled: true },
+          {
+            id: 'input',
+            label: t('storybook.treeView.input'),
+            icon: <FileIcon size={16} />,
+            disabled: true,
+          },
           { id: 'card', label: t('storybook.treeView.card'), icon: <FileIcon size={16} /> },
         ],
       },
@@ -283,7 +296,11 @@ export const WithDisabledNodes: Story = {
         icon: <FolderIcon size={16} />,
         disabled: true,
         children: [
-          { id: 'disabled-item', label: t('storybook.treeView.disabledItem'), icon: <FileIcon size={16} /> },
+          {
+            id: 'disabled-item',
+            label: t('storybook.treeView.disabledItem'),
+            icon: <FileIcon size={16} />,
+          },
         ],
       },
     ];

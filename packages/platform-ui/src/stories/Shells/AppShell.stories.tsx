@@ -38,7 +38,12 @@ export const Default: Story = {
     return (
       <AppShell
         header={
-          <div style={{ padding: 'var(--ds-spacing-4)', borderBottom: '1px solid var(--ds-color-neutral-border-default)' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+            }}
+          >
             <HeaderLogo title={t('storybook.appShell.appName')} />
           </div>
         }
@@ -65,12 +70,23 @@ export const WithFooter: Story = {
     return (
       <AppShell
         header={
-          <div style={{ padding: 'var(--ds-spacing-4)', borderBottom: '1px solid var(--ds-color-neutral-border-default)' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+            }}
+          >
             <HeaderLogo title={t('storybook.appShell.appName')} />
           </div>
         }
         footer={
-          <div style={{ padding: 'var(--ds-spacing-4)', borderTop: '1px solid var(--ds-color-neutral-border-default)', textAlign: 'center' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              borderTop: '1px solid var(--ds-color-neutral-border-default)',
+              textAlign: 'center',
+            }}
+          >
             <Paragraph data-size="sm">{t('storybook.appShell.footer')}</Paragraph>
           </div>
         }
@@ -98,7 +114,12 @@ export const Fluid: Story = {
       <AppShell
         fluid
         header={
-          <div style={{ padding: 'var(--ds-spacing-4)', borderBottom: '1px solid var(--ds-color-neutral-border-default)' }}>
+          <div
+            style={{
+              padding: 'var(--ds-spacing-4)',
+              borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+            }}
+          >
             <HeaderLogo title={t('storybook.appShell.appName')} />
           </div>
         }

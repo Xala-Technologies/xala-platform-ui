@@ -62,7 +62,10 @@ export const Default: Story = {
       path: '/components/Button.tsx',
     };
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ArtifactPreview artifact={artifact} />
       </Stack>
     );
@@ -83,7 +86,10 @@ export const JSON: Story = {
       path: '/config.json',
     };
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ArtifactPreview artifact={artifact} />
       </Stack>
     );
@@ -104,7 +110,10 @@ export const Markdown: Story = {
       path: '/README.md',
     };
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ArtifactPreview artifact={artifact} />
       </Stack>
     );

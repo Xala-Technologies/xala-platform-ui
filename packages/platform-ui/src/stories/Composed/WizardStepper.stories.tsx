@@ -53,8 +53,16 @@ const useSampleSteps = () => {
   const t = useT();
   return [
     { id: 'select', label: t('storybook.wizardStepper.select'), icon: <UserIcon size={16} /> },
-    { id: 'details', label: t('storybook.wizardStepper.details'), icon: <CalendarIcon size={16} /> },
-    { id: 'confirm', label: t('storybook.wizardStepper.confirm'), icon: <CheckCircleIcon size={16} /> },
+    {
+      id: 'details',
+      label: t('storybook.wizardStepper.details'),
+      icon: <CalendarIcon size={16} />,
+    },
+    {
+      id: 'confirm',
+      label: t('storybook.wizardStepper.confirm'),
+      icon: <CheckCircleIcon size={16} />,
+    },
   ];
 };
 

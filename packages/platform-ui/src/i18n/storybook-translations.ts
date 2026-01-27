@@ -8,9 +8,7 @@
 import { nb, en } from '@xala-technologies/i18n';
 
 // Extract storybook-prefixed translations from each locale
-function extractStorybookTranslations(
-  locale: Record<string, string>
-): Record<string, string> {
+function extractStorybookTranslations(locale: Record<string, string>): Record<string, string> {
   const result: Record<string, string> = {};
   for (const [key, value] of Object.entries(locale)) {
     if (key.startsWith('storybook.')) {

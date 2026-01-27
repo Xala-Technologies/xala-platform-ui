@@ -34,7 +34,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.badge.description')}</Paragraph>
@@ -53,7 +56,10 @@ export const Variants: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.badge.variants')}</Paragraph>
@@ -78,11 +84,17 @@ export const Sizes: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.badge.sizes')}</Paragraph>
-            <Stack spacing="var(--ds-spacing-2)" style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+            <Stack
+              spacing="var(--ds-spacing-2)"
+              style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}
+            >
               <Badge size="sm">{t('storybook.badge.small')}</Badge>
               <Badge size="md">{t('storybook.badge.medium')}</Badge>
               <Badge size="lg">{t('storybook.badge.large')}</Badge>

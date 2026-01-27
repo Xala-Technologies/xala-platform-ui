@@ -61,7 +61,11 @@ export const Default: Story = {
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Button onClick={() => setIsOpen(true)}>{t('storybook.drawer.openDrawer')}</Button>
-        <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('storybook.drawer.drawerTitle')}>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          title={t('storybook.drawer.drawerTitle')}
+        >
           <Paragraph data-size="md">{t('storybook.drawer.drawerContent')}</Paragraph>
         </Drawer>
       </Stack>

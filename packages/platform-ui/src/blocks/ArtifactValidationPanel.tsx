@@ -151,7 +151,11 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
                     {result.details && result.details.length > 0 && (
                       <Stack
                         direction="vertical"
-                        style={{ marginTop: 'var(--ds-spacing-1)', fontSize: 'var(--ds-font-size-xs)', opacity: 0.6 }}
+                        style={{
+                          marginTop: 'var(--ds-spacing-1)',
+                          fontSize: 'var(--ds-font-size-xs)',
+                          opacity: 0.6,
+                        }}
                       >
                         {result.details.map((detail, i) => (
                           <Text key={i}>• {detail}</Text>

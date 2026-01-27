@@ -57,7 +57,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <IframeViewer
           src="https://example.com"
           title={t('storybook.iframeViewer.exampleTitle')}
@@ -77,13 +80,24 @@ export const WithCustomHeader: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <IframeViewer
           src="https://example.com"
           title={t('storybook.iframeViewer.exampleTitle')}
           header={
-            <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)', borderBottom: '1px solid var(--ds-color-neutral-border-subtle)' }}>
-              <Paragraph data-size="md" style={{ margin: 0 }}>{t('storybook.iframeViewer.customHeader')}</Paragraph>
+            <Stack
+              spacing="var(--ds-spacing-4)"
+              style={{
+                padding: 'var(--ds-spacing-4)',
+                borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+              }}
+            >
+              <Paragraph data-size="md" style={{ margin: 0 }}>
+                {t('storybook.iframeViewer.customHeader')}
+              </Paragraph>
             </Stack>
           }
         />
@@ -99,7 +113,10 @@ export const WithExternalUrl: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <IframeViewer
           src="https://example.com"
           title={t('storybook.iframeViewer.exampleTitle')}

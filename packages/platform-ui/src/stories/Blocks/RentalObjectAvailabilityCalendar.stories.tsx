@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { useT } from '@xala-technologies/i18n';
-import { RentalObjectAvailabilityCalendar, type CalendarCell, type CalendarSelection, Stack } from '../../index';
+import {
+  RentalObjectAvailabilityCalendar,
+  type CalendarCell,
+  type CalendarSelection,
+  Stack,
+} from '../../index';
 
 /**
  * RentalObjectAvailabilityCalendar provides a calendar for rental object availability.
@@ -51,13 +56,13 @@ type Story = StoryObj<typeof RentalObjectAvailabilityCalendar>;
 const useSampleCells = (): CalendarCell[] => {
   const baseDate = new Date(2026, 0, 26);
   const cells: CalendarCell[] = [];
-  
+
   for (let hour = 9; hour < 17; hour++) {
     const start = new Date(baseDate);
     start.setHours(hour, 0, 0, 0);
     const end = new Date(baseDate);
     end.setHours(hour + 1, 0, 0, 0);
-    
+
     cells.push({
       id: `cell-${hour}`,
       date: start.toISOString().split('T')[0] ?? '',
@@ -67,7 +72,7 @@ const useSampleCells = (): CalendarCell[] => {
       price: hour % 2 === 0 ? 500 : undefined,
     });
   }
-  
+
   return cells;
 };
 
@@ -81,7 +86,10 @@ export const Default: Story = {
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const cells = useSampleCells();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RentalObjectAvailabilityCalendar
           mode="TIME_SLOTS"
           cells={cells}
@@ -117,7 +125,10 @@ export const AllDay: Story = {
       };
     });
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RentalObjectAvailabilityCalendar
           mode="ALL_DAY"
           cells={cells}
@@ -152,7 +163,10 @@ export const MultiDay: Story = {
       };
     });
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RentalObjectAvailabilityCalendar
           mode="MULTI_DAY"
           cells={cells}
@@ -178,7 +192,10 @@ export const WithLegend: Story = {
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const cells = useSampleCells();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <RentalObjectAvailabilityCalendar
           mode="TIME_SLOTS"
           cells={cells}

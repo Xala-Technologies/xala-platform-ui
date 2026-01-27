@@ -53,7 +53,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CompositionPreview
           componentName={t('storybook.compositionPreview.button')}
           composeData={{
@@ -77,7 +80,10 @@ export const CustomRender: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CompositionPreview
           componentName={t('storybook.compositionPreview.card')}
           composeData={{
@@ -87,7 +93,9 @@ export const CustomRender: Story = {
           }}
           renderPreview={() => (
             <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Paragraph data-size="md">{t('storybook.compositionPreview.customPreview')}</Paragraph>
+              <Paragraph data-size="md">
+                {t('storybook.compositionPreview.customPreview')}
+              </Paragraph>
             </Stack>
           )}
         />
@@ -103,7 +111,10 @@ export const PrimitivesLayer: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CompositionPreview
           componentName={t('storybook.compositionPreview.input')}
           composeData={{
@@ -129,7 +140,10 @@ export const BlocksLayer: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CompositionPreview
           componentName={t('storybook.compositionPreview.notificationBell')}
           composeData={{
@@ -139,7 +153,9 @@ export const BlocksLayer: Story = {
           }}
           renderPreview={() => (
             <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Paragraph data-size="md">{t('storybook.compositionPreview.notificationBellPreview')}</Paragraph>
+              <Paragraph data-size="md">
+                {t('storybook.compositionPreview.notificationBellPreview')}
+              </Paragraph>
             </Stack>
           )}
         />

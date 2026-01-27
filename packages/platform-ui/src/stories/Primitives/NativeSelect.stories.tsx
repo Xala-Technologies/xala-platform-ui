@@ -114,7 +114,10 @@ export const WithError: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <NativeSelect label={t('storybook.nativeSelect.country')} error={t('storybook.nativeSelect.countryError')}>
+        <NativeSelect
+          label={t('storybook.nativeSelect.country')}
+          error={t('storybook.nativeSelect.countryError')}
+        >
           <option value="">{t('storybook.nativeSelect.selectCountry')}</option>
           <option value="no">{t('storybook.nativeSelect.norway')}</option>
           <option value="se">{t('storybook.nativeSelect.sweden')}</option>

@@ -415,7 +415,12 @@ export function BrandingStep({
               <img
                 src={data.logo}
                 alt={labels.logoPreview}
-                style={{ maxWidth: '200px', width: '100%', maxHeight: '100px', objectFit: 'contain' }}
+                style={{
+                  maxWidth: '200px',
+                  width: '100%',
+                  maxHeight: '100px',
+                  objectFit: 'contain',
+                }}
               />
             </Card>
             <Button

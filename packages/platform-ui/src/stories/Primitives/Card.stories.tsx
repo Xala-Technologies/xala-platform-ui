@@ -33,10 +33,15 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card>
           <Stack spacing="var(--ds-spacing-4)">
-            <Heading level={3} data-size="md">{t('storybook.card.title')}</Heading>
+            <Heading level={3} data-size="md">
+              {t('storybook.card.title')}
+            </Heading>
             <Paragraph data-size="sm">{t('storybook.card.description')}</Paragraph>
           </Stack>
         </Card>
@@ -52,10 +57,15 @@ export const Outlined: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card variant="outlined">
           <Stack spacing="var(--ds-spacing-4)">
-            <Heading level={3} data-size="md">{t('storybook.card.outlined')}</Heading>
+            <Heading level={3} data-size="md">
+              {t('storybook.card.outlined')}
+            </Heading>
             <Paragraph data-size="sm">{t('storybook.card.description')}</Paragraph>
           </Stack>
         </Card>
@@ -71,10 +81,15 @@ export const Elevated: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card variant="elevated">
           <Stack spacing="var(--ds-spacing-4)">
-            <Heading level={3} data-size="md">{t('storybook.card.elevated')}</Heading>
+            <Heading level={3} data-size="md">
+              {t('storybook.card.elevated')}
+            </Heading>
             <Paragraph data-size="sm">{t('storybook.card.description')}</Paragraph>
           </Stack>
         </Card>

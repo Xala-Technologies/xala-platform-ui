@@ -35,11 +35,21 @@ export const BothAxes: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.center.bothAxes')}</Paragraph>
-            <Center axis="both" style={{ height: '200px', border: '1px solid var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
+            <Center
+              axis="both"
+              style={{
+                height: '200px',
+                border: '1px solid var(--ds-color-neutral-border-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
               <Button>{t('storybook.center.centered')}</Button>
             </Center>
           </Stack>
@@ -56,11 +66,21 @@ export const Horizontal: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.center.horizontal')}</Paragraph>
-            <Center axis="horizontal" style={{ border: '1px solid var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-md)', padding: 'var(--ds-spacing-4)' }}>
+            <Center
+              axis="horizontal"
+              style={{
+                border: '1px solid var(--ds-color-neutral-border-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                padding: 'var(--ds-spacing-4)',
+              }}
+            >
               <Button>{t('storybook.center.centered')}</Button>
             </Center>
           </Stack>
@@ -77,11 +97,21 @@ export const Vertical: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.center.vertical')}</Paragraph>
-            <Center axis="vertical" style={{ height: '200px', border: '1px solid var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-md)' }}>
+            <Center
+              axis="vertical"
+              style={{
+                height: '200px',
+                border: '1px solid var(--ds-color-neutral-border-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+              }}
+            >
               <Button>{t('storybook.center.centered')}</Button>
             </Center>
           </Stack>

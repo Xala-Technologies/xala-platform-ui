@@ -363,10 +363,10 @@ export function ConversationList({
 
   const filteredConversations = searchQuery
     ? conversations.filter(
-      (c) =>
-        c.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.subject?.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+        (c) =>
+          c.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.subject?.toLowerCase().includes(searchQuery.toLowerCase())
+      )
     : conversations;
 
   return (
@@ -681,11 +681,7 @@ export function ChatThread({
             backgroundColor: 'var(--ds-color-neutral-background-subtle)',
           }}
         >
-          <Stack
-            direction="horizontal"
-            align="center"
-            gap="var(--ds-spacing-2)"
-          >
+          <Stack direction="horizontal" align="center" gap="var(--ds-spacing-2)">
             <Textfield
               ref={inputRef}
               type="text"

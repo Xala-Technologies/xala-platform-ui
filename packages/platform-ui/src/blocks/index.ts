@@ -302,7 +302,6 @@ export type {
 
 // Note: Domain blocks (AmenityChips) now re-exported from @xala-technologies/platform-ui-digilist
 
-
 // Share Components
 export { ShareButton, ShareSheet } from './ShareButton';
 export type { ShareButtonProps, ShareSheetProps, ShareData, SharePlatform } from './ShareButton';
@@ -315,7 +314,6 @@ export type { FavoriteButtonProps } from './FavoriteButton';
 
 // Re-export PeriodStatus from patterns for convenience
 export type { PeriodStatus, PeriodInfo } from '../patterns/types';
-
 
 // Workflow Components (for design governance apps)
 export {
@@ -452,7 +450,6 @@ export { LocationCardEditable } from './LocationCardEditable';
 export type { LocationCardEditableProps, LocationCardEditableLabels } from './LocationCardEditable';
 
 // Note: ResourceListItem, ResourceToolbar, ResourceTabs now re-exported from @xala-technologies/platform-ui-digilist
-
 
 // =============================================================================
 // XAHEEN-CODER EXTENDED BLOCKS (Task management, Git integration, File browsing)

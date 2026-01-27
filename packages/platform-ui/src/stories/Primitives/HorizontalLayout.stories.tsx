@@ -37,7 +37,10 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.horizontalLayout.description')}</Paragraph>
@@ -60,11 +63,23 @@ export const WithAlignment: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.horizontalLayout.withAlignment')}</Paragraph>
-            <HorizontalLayout gap="var(--ds-spacing-4)" align="center" justify="space-between" style={{ border: '1px solid var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-md)', padding: 'var(--ds-spacing-4)' }}>
+            <HorizontalLayout
+              gap="var(--ds-spacing-4)"
+              align="center"
+              justify="space-between"
+              style={{
+                border: '1px solid var(--ds-color-neutral-border-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                padding: 'var(--ds-spacing-4)',
+              }}
+            >
               <Button>{t('storybook.horizontalLayout.left')}</Button>
               <Button>{t('storybook.horizontalLayout.right')}</Button>
             </HorizontalLayout>
@@ -82,11 +97,23 @@ export const FullHeight: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.horizontalLayout.fullHeight')}</Paragraph>
-            <HorizontalLayout fullHeight gap="var(--ds-spacing-4)" style={{ height: '200px', border: '1px solid var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-md)', padding: 'var(--ds-spacing-4)' }}>
+            <HorizontalLayout
+              fullHeight
+              gap="var(--ds-spacing-4)"
+              style={{
+                height: '200px',
+                border: '1px solid var(--ds-color-neutral-border-default)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                padding: 'var(--ds-spacing-4)',
+              }}
+            >
               <Button>{t('storybook.horizontalLayout.button1')}</Button>
               <Button>{t('storybook.horizontalLayout.button2')}</Button>
             </HorizontalLayout>

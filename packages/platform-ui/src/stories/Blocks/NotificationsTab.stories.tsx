@@ -45,7 +45,10 @@ export const Default: Story = {
       reminderHoursBefore: 24,
     });
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.notificationsTab.description')}</Paragraph>
@@ -78,11 +81,17 @@ export const Default: Story = {
                 pushNotifications: t('storybook.notificationsTab.pushNotifications'),
                 pushDescription: t('storybook.notificationsTab.pushDescription'),
                 bookingConfirmation: t('storybook.notificationsTab.bookingConfirmation'),
-                bookingConfirmationDescription: t('storybook.notificationsTab.bookingConfirmationDescription'),
+                bookingConfirmationDescription: t(
+                  'storybook.notificationsTab.bookingConfirmationDescription'
+                ),
                 bookingReminder: t('storybook.notificationsTab.bookingReminder'),
-                bookingReminderDescription: t('storybook.notificationsTab.bookingReminderDescription'),
+                bookingReminderDescription: t(
+                  'storybook.notificationsTab.bookingReminderDescription'
+                ),
                 reminderHoursBefore: t('storybook.notificationsTab.reminderHoursBefore'),
-                reminderHoursBeforePlaceholder: t('storybook.notificationsTab.reminderHoursBeforePlaceholder'),
+                reminderHoursBeforePlaceholder: t(
+                  'storybook.notificationsTab.reminderHoursBeforePlaceholder'
+                ),
                 saveSettings: t('storybook.notificationsTab.saveSettings'),
                 resetSettings: t('storybook.notificationsTab.resetSettings'),
                 saving: t('storybook.notificationsTab.saving'),

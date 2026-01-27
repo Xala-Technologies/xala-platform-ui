@@ -40,7 +40,10 @@ export const Default: Story = {
       { key: 'category', label: t('storybook.filterChips.categoryTech'), onRemove: () => {} },
     ]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.filterChips.description')}</Paragraph>
@@ -70,7 +73,10 @@ export const ManyFilters: Story = {
       { key: 'location', label: t('storybook.filterChips.locationOslo'), onRemove: () => {} },
     ]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.filterChips.manyFilters')}</Paragraph>
@@ -98,7 +104,10 @@ export const WithoutLabel: Story = {
       { key: 'category', label: t('storybook.filterChips.categoryTech'), onRemove: () => {} },
     ]);
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">{t('storybook.filterChips.withoutLabel')}</Paragraph>

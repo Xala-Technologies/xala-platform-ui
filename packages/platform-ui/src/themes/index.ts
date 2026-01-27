@@ -316,5 +316,5 @@ export type LegacyThemeId = ThemeId | 'custom';
 
 /** @deprecated Map 'custom' to 'digilist' for backwards compatibility */
 export function normalizeThemeId(themeId: LegacyThemeId): ThemeId {
-  return themeId === 'custom' ? 'digilist' : themeId as ThemeId;
+  return themeId === 'custom' ? 'digilist' : (themeId as ThemeId);
 }

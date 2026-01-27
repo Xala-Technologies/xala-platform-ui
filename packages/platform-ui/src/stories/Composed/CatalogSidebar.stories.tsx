@@ -93,7 +93,10 @@ export const Default: Story = {
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const items = useSampleItems();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CatalogSidebar
           items={items}
           selectedId={selectedId}
@@ -116,7 +119,10 @@ export const WithFilters: Story = {
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const items = useSampleItems();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CatalogSidebar
           items={items}
           selectedId={selectedId}
@@ -147,7 +153,10 @@ export const Loading: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CatalogSidebar items={[]} loading />
       </Stack>
     );
@@ -161,11 +170,11 @@ export const WithError: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}>
-        <CatalogSidebar
-          items={[]}
-          error={t('storybook.catalogSidebar.errorMessage')}
-        />
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
+        <CatalogSidebar items={[]} error={t('storybook.catalogSidebar.errorMessage')} />
       </Stack>
     );
   },
@@ -181,11 +190,17 @@ export const ManyItems: Story = {
     const items: CatalogItem[] = Array.from({ length: 20 }, (_, i) => ({
       id: String(i + 1),
       label: t('storybook.catalogSidebar.itemNumber', { number: i + 1 }),
-      category: i % 2 === 0 ? t('storybook.catalogSidebar.components') : t('storybook.catalogSidebar.composed'),
+      category:
+        i % 2 === 0
+          ? t('storybook.catalogSidebar.components')
+          : t('storybook.catalogSidebar.composed'),
       type: i % 3 === 0 ? 'story' : 'file',
     }));
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <CatalogSidebar
           items={items}
           selectedId={selectedId}

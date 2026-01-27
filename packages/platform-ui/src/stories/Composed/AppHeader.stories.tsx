@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { AppHeader, HeaderLogo, HeaderSearch, HeaderActions, Stack, Paragraph, Card, Button } from '../../index';
+import {
+  AppHeader,
+  HeaderLogo,
+  HeaderSearch,
+  HeaderActions,
+  Stack,
+  Paragraph,
+  Card,
+  Button,
+} from '../../index';
 import { UserIcon, BellIcon } from '../../index';
 
 /**

@@ -119,7 +119,12 @@ export function IssueCard({
         >
           <Paragraph
             data-size="sm"
-            style={{ opacity: 0.7, display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-1)' }}
+            style={{
+              opacity: 0.7,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-spacing-1)',
+            }}
           >
             {PLATFORM_ICONS[platform]} {TYPE_ICONS[type]} #{number}
           </Paragraph>
@@ -162,10 +167,7 @@ export function IssueCard({
                   borderRadius: 'var(--ds-border-radius-full)',
                 }}
               >
-                <StatusTag
-                  color="neutral"
-                  size="sm"
-                >
+                <StatusTag color="neutral" size="sm">
                   {label.name}
                 </StatusTag>
               </span>

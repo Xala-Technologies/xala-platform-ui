@@ -100,7 +100,10 @@ export const Default: Story = {
     const [checklist, setChecklist] = useState(useSampleChecklist());
     const items = useSampleItems();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ApprovalFlow
           items={items}
           checklistItems={checklist}
@@ -129,7 +132,10 @@ export const WithoutChecklist: Story = {
     const t = useT();
     const items = useSampleItems();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ApprovalFlow
           items={items}
           onApprove={() => console.log('Approved')}
@@ -153,7 +159,10 @@ export const Loading: Story = {
     const [checklist, setChecklist] = useState(useSampleChecklist());
     const items = useSampleItems();
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ApprovalFlow
           items={items}
           checklistItems={checklist}
@@ -187,7 +196,10 @@ export const ManyItems: Story = {
       type: i % 2 === 0 ? 'component' : 'change',
     }));
     return (
-      <Stack spacing="var(--ds-spacing-4)" style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
+      >
         <ApprovalFlow
           items={items}
           checklistItems={checklist}
