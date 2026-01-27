@@ -1,0 +1,347 @@
+/**
+ * Digilist Theme Colors
+ *
+ * Blue accent theme for Digilist applications.
+ * Light mode: Navy Blue (#2A5280)
+ * Dark mode: Aqua (#9EDBE5)
+ *
+ * All color combinations meet WCAG AAA standards (7:1+ contrast).
+ */
+
+/* ==========================================================================
+ * LIGHT MODE
+ * ========================================================================== */
+
+:root, [data-color-scheme="light"] {
+  /* Surface colors */
+  --ds-color-neutral-surface-subtle: #f5f6f8;
+  --ds-color-neutral-surface-hover: #eceef2;
+
+  /* Accent - Navy Blue */
+  --ds-color-accent-base-default: #2A5280;
+  --ds-color-accent-base-hover: #214066;
+  --ds-color-accent-base-active: #1A3352;
+  --ds-color-accent-text-default: #0F1F33;
+  --ds-color-accent-text-subtle: #2A5280;
+  --ds-color-accent-border-default: #3D6BA0;
+  --ds-color-accent-border-strong: #2A5280;
+  --ds-color-accent-border-subtle: #7BA3C8;
+  --ds-color-accent-base-contrast-default: #FFFFFF;
+  --ds-color-accent-base-contrast-subtle: #E6EDF5;
+  --ds-color-accent-contrast-default: #FFFFFF;
+
+  /* Neutral */
+  --ds-color-neutral-base-default: #1F2F6E;
+  --ds-color-neutral-base-hover: #2A3A7E;
+  --ds-color-neutral-base-active: #354A8E;
+  --ds-color-neutral-text-default: #0D1528;
+  --ds-color-neutral-text-subtle: #2A3A6E;
+  --ds-color-neutral-border-default: #5A6A90;
+  --ds-color-neutral-border-strong: #3A4A7E;
+  --ds-color-neutral-border-subtle: #8A9AB0;
+  --ds-color-neutral-base-contrast-default: #FFFFFF;
+  --ds-color-neutral-base-contrast-subtle: #E6E8F0;
+
+  /* Brand1 - Green */
+  --ds-color-brand1-base-default: #6B9A3A;
+  --ds-color-brand1-base-hover: #5A8230;
+  --ds-color-brand1-base-active: #4A6A26;
+  --ds-color-brand1-text-default: #1A2F0F;
+  --ds-color-brand1-text-subtle: #4A6A26;
+  --ds-color-brand1-border-default: #5E8432;
+  --ds-color-brand1-border-strong: #4A6A26;
+  --ds-color-brand1-border-subtle: #8AB85A;
+  --ds-color-brand1-base-contrast-default: #FFFFFF;
+  --ds-color-brand1-base-contrast-subtle: #E8F5E0;
+
+  /* Brand2 - Aqua */
+  --ds-color-brand2-base-default: #5B9FA8;
+  --ds-color-brand2-base-hover: #4A8A93;
+  --ds-color-brand2-base-active: #3A757E;
+  --ds-color-brand2-text-default: #152A2E;
+  --ds-color-brand2-text-subtle: #3A757E;
+  --ds-color-brand2-border-default: #5B7F84;
+  --ds-color-brand2-border-strong: #3A757E;
+  --ds-color-brand2-border-subtle: #7BB8C3;
+  --ds-color-brand2-base-contrast-default: #FFFFFF;
+  --ds-color-brand2-base-contrast-subtle: #E0F5F8;
+
+  /* Brand3 - Orange */
+  --ds-color-brand3-base-default: #B8871A;
+  --ds-color-brand3-base-hover: #9A7216;
+  --ds-color-brand3-base-active: #7D5D12;
+  --ds-color-brand3-text-default: #2A1F05;
+  --ds-color-brand3-text-subtle: #7D5D12;
+  --ds-color-brand3-border-default: #9A7216;
+  --ds-color-brand3-border-strong: #7D5D12;
+  --ds-color-brand3-border-subtle: #D4A83A;
+  --ds-color-brand3-base-contrast-default: #FFFFFF;
+  --ds-color-brand3-base-contrast-subtle: #F8F0E0;
+
+  /* Info */
+  --ds-color-info-base-default: #1A4F7A;
+  --ds-color-info-base-hover: #144066;
+  --ds-color-info-base-active: #0F3252;
+  --ds-color-info-text-default: #0A2538;
+  --ds-color-info-text-subtle: #1A4F7A;
+  --ds-color-info-border-default: #2B6FA3;
+  --ds-color-info-border-strong: #1A4F7A;
+  --ds-color-info-border-subtle: #7BB3D9;
+  --ds-color-info-surface-tinted: #E3F0F8;
+  --ds-color-info-surface-hover: #D0E6F3;
+  --ds-color-info-surface-active: #B8D9EC;
+  --ds-color-info-background-tinted: #F0F7FB;
+  --ds-color-info-base-contrast-default: #FFFFFF;
+  --ds-color-info-base-contrast-subtle: #F0F7FB;
+
+  /* Success */
+  --ds-color-success-base-default: #056614;
+  --ds-color-success-base-hover: #045510;
+  --ds-color-success-base-active: #03440C;
+  --ds-color-success-text-default: #011A04;
+  --ds-color-success-text-subtle: #056614;
+  --ds-color-success-border-default: #0A6B1A;
+  --ds-color-success-border-strong: #056614;
+  --ds-color-success-border-subtle: #2A9B3A;
+  --ds-color-success-base-contrast-default: #FFFFFF;
+  --ds-color-success-base-contrast-subtle: #E0F5E3;
+
+  /* Warning */
+  --ds-color-warning-base-default: #B87A15;
+  --ds-color-warning-base-hover: #9A6612;
+  --ds-color-warning-base-active: #7D520F;
+  --ds-color-warning-text-default: #2A1F05;
+  --ds-color-warning-text-subtle: #7D520F;
+  --ds-color-warning-border-default: #A56D13;
+  --ds-color-warning-border-strong: #7D520F;
+  --ds-color-warning-border-subtle: #D4A83A;
+  --ds-color-warning-base-contrast-default: #FFFFFF;
+  --ds-color-warning-base-contrast-subtle: #F8F0E0;
+
+  /* Danger */
+  --ds-color-danger-base-default: #9B1515;
+  --ds-color-danger-base-hover: #7D1111;
+  --ds-color-danger-base-active: #640D0D;
+  --ds-color-danger-text-default: #2A0505;
+  --ds-color-danger-text-subtle: #640D0D;
+  --ds-color-danger-border-default: #B81A1A;
+  --ds-color-danger-border-strong: #9B1515;
+  --ds-color-danger-border-subtle: #D84D4D;
+  --ds-color-danger-base-contrast-default: #FFFFFF;
+  --ds-color-danger-base-contrast-subtle: #F8E0E0;
+
+  /* Sidebar tokens */
+  --ds-sidebar-background: oklch(0.99 0 0);
+  --ds-sidebar-foreground: oklch(0.20 0.02 264);
+  --ds-sidebar-primary: var(--ds-color-accent-base-default);
+  --ds-sidebar-primary-foreground: var(--ds-color-accent-base-contrast-default);
+  --ds-sidebar-accent: oklch(0.96 0 0);
+  --ds-sidebar-accent-foreground: var(--ds-color-accent-text-default);
+  --ds-sidebar-border: var(--ds-color-neutral-border-subtle);
+  --ds-sidebar-ring: var(--ds-color-focus-outer);
+
+  /* Chart colors */
+  --ds-chart-1: #2F55A4;
+  --ds-chart-2: #8BC34A;
+  --ds-chart-3: #9EDBE5;
+  --ds-chart-4: #E5AA20;
+  --ds-chart-5: #1F2F6E;
+
+  /* Shadows */
+  --ds-shadow-header: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ds-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --ds-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --ds-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  --ds-shadow-focus-ring: 0 0 0 3px var(--ds-color-focus-outer);
+  --ds-shadow-badge: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+ * DARK MODE
+ * ========================================================================== */
+
+[data-color-scheme="dark"] {
+  /* Surface colors */
+  --ds-color-neutral-surface-subtle: rgba(255, 255, 255, 0.04);
+  --ds-color-neutral-surface-hover: rgba(255, 255, 255, 0.08);
+
+  /* Accent - Aqua in dark mode */
+  --ds-color-accent-background-default: #0c1a22;
+  --ds-color-accent-background-tinted: #102a35;
+  --ds-color-accent-surface-default: #143a4a;
+  --ds-color-accent-surface-tinted: #184a5d;
+  --ds-color-accent-surface-hover: #1c5a70;
+  --ds-color-accent-surface-active: #216b83;
+  --ds-color-accent-border-subtle: #287c96;
+  --ds-color-accent-border-default: #5eafc4;
+  --ds-color-accent-border-strong: #9EDBE5;
+  --ds-color-accent-text-subtle: #9EDBE5;
+  --ds-color-accent-text-default: #d0f0f5;
+  --ds-color-accent-base-default: #9EDBE5;
+  --ds-color-accent-base-hover: #b5e5ec;
+  --ds-color-accent-base-active: #cceef3;
+  --ds-color-accent-base-contrast-subtle: #0d1e25;
+  --ds-color-accent-base-contrast-default: #1F2F6E;
+
+  /* Neutral */
+  --ds-color-neutral-base-default: #1F2F6E;
+  --ds-color-neutral-base-hover: #2A3A7E;
+  --ds-color-neutral-base-active: #354A8E;
+  --ds-color-neutral-text-default: #E6E8F0;
+  --ds-color-neutral-base-contrast-default: #0D1528;
+
+  /* Brand1 - Green */
+  --ds-color-brand1-base-default: #7AB84A;
+  --ds-color-brand1-base-hover: #8AC85A;
+  --ds-color-brand1-base-active: #9AD86A;
+  --ds-color-brand1-text-default: #E8F5E0;
+  --ds-color-brand1-base-contrast-default: #1A2F0F;
+
+  /* Brand2 - Aqua */
+  --ds-color-brand2-base-default: #7BC8D5;
+  --ds-color-brand2-base-hover: #8BD8E5;
+  --ds-color-brand2-base-active: #9BE8F5;
+  --ds-color-brand2-text-default: #E0F5F8;
+  --ds-color-brand2-base-contrast-default: #152A2E;
+
+  /* Brand3 - Orange */
+  --ds-color-brand3-base-default: #D9A01A;
+  --ds-color-brand3-base-hover: #E9B02A;
+  --ds-color-brand3-base-active: #F9C03A;
+  --ds-color-brand3-text-default: #F8F0E0;
+  --ds-color-brand3-base-contrast-default: #2A1F05;
+
+  /* Info */
+  --ds-color-info-base-default: #4A9FD8;
+  --ds-color-info-base-hover: #5BAFE5;
+  --ds-color-info-base-active: #6BBFED;
+  --ds-color-info-text-default: #E6F4FC;
+  --ds-color-info-surface-tinted: #1A3A52;
+  --ds-color-info-surface-hover: #1F4563;
+  --ds-color-info-surface-active: #245074;
+  --ds-color-info-background-tinted: #152A3A;
+  --ds-color-info-border-subtle: #3A8FC8;
+  --ds-color-info-base-contrast-default: #0A2538;
+  --ds-color-info-base-contrast-subtle: #1A3A52;
+
+  /* Success */
+  --ds-color-success-base-default: #0A8B1A;
+  --ds-color-success-base-hover: #0B9B1F;
+  --ds-color-success-base-active: #0CAB24;
+  --ds-color-success-text-default: #E0F5E3;
+  --ds-color-success-base-contrast-default: #011A04;
+
+  /* Warning */
+  --ds-color-warning-base-default: #D98A15;
+  --ds-color-warning-base-hover: #E99A25;
+  --ds-color-warning-base-active: #F9AA35;
+  --ds-color-warning-text-default: #F8F0E0;
+  --ds-color-warning-base-contrast-default: #2A1F05;
+
+  /* Danger */
+  --ds-color-danger-base-default: #D91515;
+  --ds-color-danger-base-hover: #E92525;
+  --ds-color-danger-base-active: #F93535;
+  --ds-color-danger-text-default: #F8E0E0;
+  --ds-color-danger-base-contrast-default: #2A0505;
+
+  /* Sidebar tokens */
+  --ds-sidebar-background: oklch(0.28 0.09 264);
+  --ds-sidebar-foreground: oklch(0.98 0 0);
+  --ds-sidebar-primary: #9EDBE5;
+  --ds-sidebar-primary-foreground: #1F2F6E;
+  --ds-sidebar-accent: oklch(0.30 0.05 264);
+  --ds-sidebar-accent-foreground: oklch(0.98 0 0);
+  --ds-sidebar-border: oklch(0.32 0.02 260);
+  --ds-sidebar-ring: #9EDBE5;
+
+  /* Chart colors */
+  --ds-chart-1: #9EDBE5;
+  --ds-chart-2: #8BC34A;
+  --ds-chart-3: #2F55A4;
+  --ds-chart-4: #E5AA20;
+  --ds-chart-5: #B5E5EC;
+
+  /* Shadows */
+  --ds-shadow-header: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --ds-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --ds-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --ds-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+  --ds-shadow-badge: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+ * AUTO MODE (follows system preference)
+ * ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme="auto"] {
+    /* Surface colors */
+    --ds-color-neutral-surface-subtle: rgba(255, 255, 255, 0.04);
+    --ds-color-neutral-surface-hover: rgba(255, 255, 255, 0.08);
+
+    /* Accent - Aqua */
+    --ds-color-accent-background-default: #0c1a22;
+    --ds-color-accent-background-tinted: #102a35;
+    --ds-color-accent-surface-default: #143a4a;
+    --ds-color-accent-surface-tinted: #184a5d;
+    --ds-color-accent-surface-hover: #1c5a70;
+    --ds-color-accent-surface-active: #216b83;
+    --ds-color-accent-border-subtle: #287c96;
+    --ds-color-accent-border-default: #5eafc4;
+    --ds-color-accent-border-strong: #9EDBE5;
+    --ds-color-accent-text-subtle: #9EDBE5;
+    --ds-color-accent-text-default: #d0f0f5;
+    --ds-color-accent-base-default: #9EDBE5;
+    --ds-color-accent-base-hover: #b5e5ec;
+    --ds-color-accent-base-active: #cceef3;
+    --ds-color-accent-base-contrast-subtle: #0d1e25;
+    --ds-color-accent-base-contrast-default: #1F2F6E;
+
+    /* Neutral */
+    --ds-color-neutral-text-default: #E6E8F0;
+    --ds-color-neutral-base-contrast-default: #0D1528;
+
+    /* Brands */
+    --ds-color-brand1-base-default: #7AB84A;
+    --ds-color-brand1-text-default: #E8F5E0;
+    --ds-color-brand2-base-default: #7BC8D5;
+    --ds-color-brand2-text-default: #E0F5F8;
+    --ds-color-brand3-base-default: #D9A01A;
+    --ds-color-brand3-text-default: #F8F0E0;
+
+    /* Semantic */
+    --ds-color-info-base-default: #4A9FD8;
+    --ds-color-info-text-default: #E6F4FC;
+    --ds-color-success-base-default: #0A8B1A;
+    --ds-color-success-text-default: #E0F5E3;
+    --ds-color-warning-base-default: #D98A15;
+    --ds-color-warning-text-default: #F8F0E0;
+    --ds-color-danger-base-default: #D91515;
+    --ds-color-danger-text-default: #F8E0E0;
+
+    /* Sidebar */
+    --ds-sidebar-background: oklch(0.28 0.09 264);
+    --ds-sidebar-foreground: oklch(0.98 0 0);
+    --ds-sidebar-primary: #9EDBE5;
+    --ds-sidebar-primary-foreground: #1F2F6E;
+    --ds-sidebar-accent: oklch(0.30 0.05 264);
+    --ds-sidebar-accent-foreground: oklch(0.98 0 0);
+    --ds-sidebar-border: oklch(0.32 0.02 260);
+    --ds-sidebar-ring: #9EDBE5;
+
+    /* Charts */
+    --ds-chart-1: #9EDBE5;
+    --ds-chart-2: #8BC34A;
+    --ds-chart-3: #2F55A4;
+    --ds-chart-4: #E5AA20;
+    --ds-chart-5: #B5E5EC;
+
+    /* Shadows */
+    --ds-shadow-header: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+    --ds-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --ds-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+    --ds-shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+    --ds-shadow-badge: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+}

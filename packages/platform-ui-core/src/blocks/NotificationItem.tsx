@@ -1,0 +1,564 @@
+/**
+ * NotificationItem Component
+ * Reusable component for displaying individual notifications in notification center
+ */
+
+import * as React from 'react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
+import { StatusTag } from './StatusBadges';
+
+// =============================================================================
+// Types
+// =============================================================================
+
+export type NotificationType =
+  | 'resourceRequest_confirmed'
+  | 'resourceRequest_reminder_24h'
+  | 'resourceRequest_reminder_1h'
+  | 'resourceRequest_cancelled'
+  | 'resourceRequest_modified'
+  | 'resourceRequest_upcoming'
+  | 'resourceRequest_completed';
+
+export type NotificationPriority = 'low' | 'normal' | 'high' | 'urgent';
+
+export interface NotificationItemData {
+  id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  priority: NotificationPriority;
+  createdAt: string;
+  readAt?: string | null;
+  relatedResourceRequestId?: string;
+  relatedResourceId?: string;
+  metadata?: Record<string, unknown>;
+}
+
+export interface NotificationItemLabels {
+  /** Default notification type label */
+  defaultLabel: string;
+  /** Confirmed notification label */
+  confirmedLabel: string;
+  /** Reminder notification label */
+  reminderLabel: string;
+  /** Cancelled notification label */
+  cancelledLabel: string;
+  /** Modified notification label */
+  modifiedLabel: string;
+  /** Upcoming notification label */
+  upcomingLabel: string;
+  /** Completed notification label */
+  completedLabel: string;
+  /** Unread indicator aria-label */
+  unreadAriaLabel: string;
+  /** Mark as read button title */
+  markAsReadTitle: string;
+  /** Mark as read button aria-label */
+  markAsReadAriaLabel: string;
+  /** Delete button title */
+  deleteTitle: string;
+  /** Delete button aria-label */
+  deleteAriaLabel: string;
+  /** Urgent priority label */
+  urgentLabel: string;
+  /** High priority label */
+  highLabel: string;
+}
+
+export interface NotificationItemProps {
+  /** Notification data */
+  notification: NotificationItemData;
+  /** Click handler for the notification */
+  onClick?: (id: string) => void;
+  /** Click handler for mark as read */
+  onMarkAsRead?: (id: string) => void;
+  /** Click handler for delete */
+  onDelete?: (id: string) => void;
+  /** Whether to show action buttons */
+  showActions?: boolean;
+  /** Custom time formatting function */
+  formatTimeAgo?: (date: string) => string;
+  /** UI labels */
+  labels?: Partial<NotificationItemLabels>;
+  /** Custom class name */
+  className?: string;
+}
+
+// =============================================================================
+// Icons (inline SVG)
+// =============================================================================
+
+function CheckCircleIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="9 12 11 14 15 10" />
+    </svg>
+  );
+}
+
+function BellIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    </svg>
+  );
+}
+
+function XCircleIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="15" y1="9" x2="9" y2="15" />
+      <line x1="9" y1="9" x2="15" y2="15" />
+    </svg>
+  );
+}
+
+function EditIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+    </svg>
+  );
+}
+
+function CalendarIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
+function TrashIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <polyline points="3 6 5 6 21 6" />
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      <line x1="10" y1="11" x2="10" y2="17" />
+      <line x1="14" y1="11" x2="14" y2="17" />
+    </svg>
+  );
+}
+
+function CheckIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
+// =============================================================================
+// Default Labels
+// =============================================================================
+
+const defaultLabels: NotificationItemLabels = {
+  defaultLabel: 'Varsel',
+  confirmedLabel: 'Bekreftet',
+  reminderLabel: 'Påminnelse',
+  cancelledLabel: 'Kansellert',
+  modifiedLabel: 'Endret',
+  upcomingLabel: 'Kommende',
+  completedLabel: 'Fullført',
+  unreadAriaLabel: 'Ulest varsel',
+  markAsReadTitle: 'Marker som lest',
+  markAsReadAriaLabel: 'Marker som lest',
+  deleteTitle: 'Slett varsel',
+  deleteAriaLabel: 'Slett varsel',
+  urgentLabel: 'Viktig',
+  highLabel: 'Høy',
+};
+
+// =============================================================================
+// Notification Type Configuration
+// =============================================================================
+
+interface NotificationTypeConfig {
+  icon: React.ReactNode;
+  color: string;
+  backgroundColor: string;
+  labelKey: keyof Pick<
+    NotificationItemLabels,
+    | 'confirmedLabel'
+    | 'reminderLabel'
+    | 'cancelledLabel'
+    | 'modifiedLabel'
+    | 'upcomingLabel'
+    | 'completedLabel'
+    | 'defaultLabel'
+  >;
+}
+
+const notificationTypeConfig: Record<NotificationType, NotificationTypeConfig> = {
+  resourceRequest_confirmed: {
+    icon: <CheckCircleIcon />,
+    color: 'var(--ds-color-success-text-default)',
+    backgroundColor: 'var(--ds-color-success-surface-default)',
+    labelKey: 'confirmedLabel',
+  },
+  resourceRequest_reminder_24h: {
+    icon: <BellIcon />,
+    color: 'var(--ds-color-warning-text-default)',
+    backgroundColor: 'var(--ds-color-warning-surface-default)',
+    labelKey: 'reminderLabel',
+  },
+  resourceRequest_reminder_1h: {
+    icon: <BellIcon />,
+    color: 'var(--ds-color-warning-text-default)',
+    backgroundColor: 'var(--ds-color-warning-surface-default)',
+    labelKey: 'reminderLabel',
+  },
+  resourceRequest_cancelled: {
+    icon: <XCircleIcon />,
+    color: 'var(--ds-color-danger-text-default)',
+    backgroundColor: 'var(--ds-color-danger-surface-default)',
+    labelKey: 'cancelledLabel',
+  },
+  resourceRequest_modified: {
+    icon: <EditIcon />,
+    color: 'var(--ds-color-info-text-default)',
+    backgroundColor: 'var(--ds-color-info-surface-default)',
+    labelKey: 'modifiedLabel',
+  },
+  resourceRequest_upcoming: {
+    icon: <CalendarIcon />,
+    color: 'var(--ds-color-accent-text-default)',
+    backgroundColor: 'var(--ds-color-accent-surface-default)',
+    labelKey: 'upcomingLabel',
+  },
+  resourceRequest_completed: {
+    icon: <CheckCircleIcon />,
+    color: 'var(--ds-color-neutral-text-subtle)',
+    backgroundColor: 'var(--ds-color-neutral-surface-default)',
+    labelKey: 'completedLabel',
+  },
+};
+
+/**
+ * Default configuration for unknown notification types
+ */
+const defaultNotificationConfig: NotificationTypeConfig = {
+  icon: <BellIcon />,
+  color: 'var(--ds-color-neutral-text-default)',
+  backgroundColor: 'var(--ds-color-neutral-surface-default)',
+  labelKey: 'defaultLabel',
+};
+
+// =============================================================================
+// Helper Functions
+// =============================================================================
+
+/**
+ * Default time formatting function
+ */
+function defaultFormatTimeAgo(date: string): string {
+  const now = new Date();
+  const then = new Date(date);
+  const seconds = Math.floor((now.getTime() - then.getTime()) / 1000);
+
+  if (seconds < 60) return 'Akkurat nå';
+  if (seconds < 3600) return `${Math.floor(seconds / 60)} min siden`;
+  if (seconds < 86400) return `${Math.floor(seconds / 3600)} timer siden`;
+  if (seconds < 604800) return `${Math.floor(seconds / 86400)} dager siden`;
+
+  return then.toLocaleDateString('nb-NO', {
+    day: 'numeric',
+    month: 'short',
+    year: now.getFullYear() !== then.getFullYear() ? 'numeric' : undefined,
+  });
+}
+
+// =============================================================================
+// NotificationItem Component
+// =============================================================================
+
+/**
+ * Displays a single notification item with icon, content, and actions
+ */
+export function NotificationItem({
+  notification,
+  onClick,
+  onMarkAsRead,
+  onDelete,
+  showActions = true,
+  formatTimeAgo = defaultFormatTimeAgo,
+  labels: customLabels,
+  className = '',
+}: NotificationItemProps): React.ReactElement {
+  const labels = { ...defaultLabels, ...customLabels };
+  const isUnread = !notification.readAt;
+  const config = notificationTypeConfig[notification.type] || defaultNotificationConfig;
+
+  const handleClick = () => {
+    onClick?.(notification.id);
+  };
+
+  const handleMarkAsRead = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onMarkAsRead?.(notification.id);
+  };
+
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onDelete?.(notification.id);
+  };
+
+  return (
+    <div
+      className={className}
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-spacing-3)',
+        padding: 'var(--ds-spacing-4)',
+        backgroundColor: isUnread ? 'var(--ds-color-accent-surface-default)' : 'transparent',
+        borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+        cursor: onClick ? 'pointer' : 'default',
+        transition: 'background-color 0.2s',
+        position: 'relative',
+      }}
+      onClick={handleClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+    >
+      {/* Unread indicator dot */}
+      {isUnread && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 'var(--ds-spacing-4)',
+            left: 'var(--ds-spacing-2)',
+            width: 'var(--ds-spacing-2)',
+            height: 'var(--ds-spacing-2)',
+            borderRadius: 'var(--ds-border-radius-full)',
+            backgroundColor: 'var(--ds-color-accent-base-default)',
+          }}
+          aria-label={labels.unreadAriaLabel}
+        />
+      )}
+
+      {/* Icon */}
+      <div
+        style={{
+          flexShrink: 0,
+          width: '40px',
+          height: '40px',
+          borderRadius: 'var(--ds-border-radius-md)',
+          backgroundColor: config.backgroundColor,
+          color: config.color,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: isUnread ? 'var(--ds-spacing-2)' : '0',
+        }}
+      >
+        {config.icon}
+      </div>
+
+      {/* Content */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        {/* Header with type tag and time */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--ds-spacing-2)',
+            marginBottom: 'var(--ds-spacing-1)',
+            flexWrap: 'wrap',
+          }}
+        >
+          <StatusTag size="sm" color="neutral">
+            {labels[config.labelKey]}
+          </StatusTag>
+          <span
+            style={{
+              fontSize: '12px',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            {formatTimeAgo(notification.createdAt)}
+          </span>
+          {notification.priority === 'urgent' && (
+            <StatusTag size="sm" color="danger">
+              {labels.urgentLabel}
+            </StatusTag>
+          )}
+          {notification.priority === 'high' && (
+            <StatusTag size="sm" color="warning">
+              {labels.highLabel}
+            </StatusTag>
+          )}
+        </div>
+
+        {/* Title */}
+        <div
+          style={{
+            fontSize: 'var(--ds-font-size-4)',
+            fontWeight: isUnread ? 600 : 500,
+            color: 'var(--ds-color-neutral-text-default)',
+            marginBottom: 'var(--ds-spacing-1)',
+            lineHeight: 1.4,
+          }}
+        >
+          {notification.title}
+        </div>
+
+        {/* Message */}
+        <Paragraph
+          data-size="sm"
+          style={{
+            color: 'var(--ds-color-neutral-text-subtle)',
+            marginBottom: 0,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            lineHeight: 1.4,
+          }}
+        >
+          {notification.message}
+        </Paragraph>
+      </div>
+
+      {/* Actions */}
+      {showActions && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-spacing-1)',
+            flexShrink: 0,
+          }}
+        >
+          {isUnread && onMarkAsRead && (
+            <Button
+              type="button"
+              onClick={handleMarkAsRead}
+              title={labels.markAsReadTitle}
+              data-color="neutral"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 'var(--ds-spacing-8)',
+                height: 'var(--ds-spacing-8)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                color: 'var(--ds-color-neutral-text-subtle)',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-default)';
+                e.currentTarget.style.color = 'var(--ds-color-accent-text-default)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'var(--ds-color-neutral-text-subtle)';
+              }}
+              aria-label={labels.markAsReadAriaLabel}
+            >
+              <CheckIcon />
+            </Button>
+          )}
+          {onDelete && (
+            <Button
+              type="button"
+              onClick={handleDelete}
+              title={labels.deleteTitle}
+              data-color="danger"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 'var(--ds-spacing-8)',
+                height: 'var(--ds-spacing-8)',
+                borderRadius: 'var(--ds-border-radius-md)',
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                color: 'var(--ds-color-neutral-text-subtle)',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--ds-color-danger-surface-default)';
+                e.currentTarget.style.color = 'var(--ds-color-danger-text-default)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'var(--ds-color-neutral-text-subtle)';
+              }}
+              aria-label={labels.deleteAriaLabel}
+            >
+              <TrashIcon />
+            </Button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

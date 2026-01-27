@@ -1,0 +1,409 @@
+/**
+ * RentalObjectCalendar Styles
+ * 
+ * XALA Architecture Compliance:
+ * - Uses design tokens from Designsystemet
+ * - Supports light and dark themes
+ * - Slot states visually distinct
+ */
+
+/* =============================================================================
+   Base Container
+   ============================================================================= */
+
+.rental-object-calendar {
+  --calendar-bg: var(--ds-color-neutral-background-default);
+  --calendar-border: var(--ds-color-neutral-border-subtle);
+  --calendar-text: var(--ds-color-neutral-text-default);
+  --calendar-text-subtle: var(--ds-color-neutral-text-subtle);
+  
+  background: var(--calendar-bg);
+  border: var(--ds-border-width-default) solid var(--calendar-border);
+  border-radius: var(--ds-border-radius-md);
+  overflow: hidden;
+  font-family: var(--ds-font-family);
+}
+
+/* =============================================================================
+   Header
+   ============================================================================= */
+
+.ds-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ds-spacing-4) var(--ds-spacing-5);
+  border-bottom: var(--ds-border-width-default) solid var(--calendar-border);
+  background: var(--ds-color-neutral-background-subtle);
+}
+
+.ds-calendar-header h3 {
+  margin: 0;
+  font-size: var(--ds-font-size-lg);
+  font-weight: var(--ds-font-weight-semibold);
+  color: var(--calendar-text);
+}
+
+/* Mode Switcher */
+.ds-mode-switcher {
+  display: flex;
+  gap: var(--ds-spacing-2);
+}
+
+.ds-mode-button {
+  padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  border: var(--ds-border-width-default) solid var(--calendar-border);
+  border-radius: var(--ds-border-radius-sm);
+  background: var(--calendar-bg);
+  color: var(--calendar-text-subtle);
+  font-size: var(--ds-font-size-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ds-mode-button:hover {
+  background: var(--ds-color-neutral-background-subtle);
+}
+
+.ds-mode-button.active {
+  background: var(--ds-color-accent-background-default);
+  border-color: var(--ds-color-accent-border-default);
+  color: var(--ds-color-accent-text-default);
+}
+
+/* =============================================================================
+   Calendar Body
+   ============================================================================= */
+
+.ds-calendar-body {
+  padding: var(--ds-spacing-4);
+  max-height: var(--ds-sizing-500);
+  overflow-y: auto;
+}
+
+.ds-calendar-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: var(--ds-sizing-200);
+  color: var(--calendar-text-subtle);
+  font-size: var(--ds-font-size-md);
+}
+
+/* =============================================================================
+   Day Sections
+   ============================================================================= */
+
+.ds-calendar-day {
+  margin-bottom: var(--ds-spacing-4);
+}
+
+.ds-calendar-day:last-child {
+  margin-bottom: 0;
+}
+
+.ds-day-header {
+  margin-bottom: var(--ds-spacing-3);
+}
+
+.ds-day-date {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--calendar-text);
+  text-transform: capitalize;
+}
+
+.ds-day-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--ds-spacing-2);
+}
+
+/* =============================================================================
+   Slot States
+   ============================================================================= */
+
+.ds-calendar-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ds-spacing-3);
+  border: var(--ds-border-width-default) solid var(--calendar-border);
+  border-radius: var(--ds-border-radius-sm);
+  background: var(--calendar-bg);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: var(--ds-sizing-60);
+}
+
+.ds-calendar-slot:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ds-slot-time {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--calendar-text);
+}
+
+.ds-slot-price {
+  font-size: var(--ds-font-size-xs);
+  color: var(--ds-color-success-text-default);
+  margin-top: var(--ds-spacing-1);
+}
+
+.ds-slot-reason {
+  font-size: var(--ds-font-size-xs);
+  color: var(--calendar-text-subtle);
+  margin-top: var(--ds-spacing-1);
+  text-align: center;
+}
+
+/* AVAILABLE - Green tint */
+.ds-slot-available {
+  background: var(--ds-color-success-background-subtle);
+  border-color: var(--ds-color-success-border-subtle);
+}
+
+.ds-slot-available:hover:not(:disabled) {
+  background: var(--ds-color-success-background-default);
+  border-color: var(--ds-color-success-border-default);
+}
+
+.ds-slot-available .ds-slot-time {
+  color: var(--ds-color-success-text-default);
+}
+
+/* RESERVED - Yellow/warning tint */
+.ds-slot-reserved {
+  background: var(--ds-color-warning-background-subtle);
+  border-color: var(--ds-color-warning-border-subtle);
+}
+
+.ds-slot-reserved .ds-slot-time {
+  color: var(--ds-color-warning-text-default);
+}
+
+/* BOOKED - Blue/info tint */
+.ds-slot-booked {
+  background: var(--ds-color-info-background-subtle);
+  border-color: var(--ds-color-info-border-subtle);
+}
+
+.ds-slot-booked .ds-slot-time {
+  color: var(--ds-color-info-text-default);
+}
+
+/* BLOCKED - Red/danger tint */
+.ds-slot-blocked {
+  background: var(--ds-color-danger-background-subtle);
+  border-color: var(--ds-color-danger-border-subtle);
+}
+
+.ds-slot-blocked .ds-slot-time {
+  color: var(--ds-color-danger-text-default);
+}
+
+/* BLACKOUT - Dark/neutral */
+.ds-slot-blackout {
+  background: var(--ds-color-neutral-background-subtle);
+  border-color: var(--ds-color-neutral-border-default);
+}
+
+.ds-slot-blackout .ds-slot-time {
+  color: var(--calendar-text-subtle);
+  text-decoration: line-through;
+}
+
+/* Selected state */
+.ds-slot-selected {
+  outline: var(--ds-border-width-medium) solid var(--ds-color-accent-border-strong);
+  outline-offset: var(--ds-spacing-1);
+}
+
+/* =============================================================================
+   Footer / Actions
+   ============================================================================= */
+
+.ds-calendar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ds-spacing-4) var(--ds-spacing-5);
+  border-top: var(--ds-border-width-default) solid var(--calendar-border);
+  background: var(--ds-color-neutral-background-subtle);
+}
+
+.ds-selection-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-1);
+}
+
+.ds-selection-time {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--calendar-text);
+}
+
+.ds-calendar-actions {
+  display: flex;
+  gap: var(--ds-spacing-2);
+}
+
+/* Action Buttons */
+.ds-action-book,
+.ds-action-request,
+.ds-action-waitlist,
+.ds-action-modify {
+  padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  border-radius: var(--ds-border-radius-sm);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ds-action-book {
+  background: var(--ds-color-accent-background-default);
+  border: var(--ds-border-width-default) solid var(--ds-color-accent-border-default);
+  color: var(--ds-color-accent-contrast-default);
+}
+
+.ds-action-book:hover:not(:disabled) {
+  background: var(--ds-color-accent-background-strong);
+}
+
+.ds-action-request {
+  background: var(--ds-color-info-background-default);
+  border: var(--ds-border-width-default) solid var(--ds-color-info-border-default);
+  color: var(--ds-color-info-contrast-default);
+}
+
+.ds-action-request:hover:not(:disabled) {
+  background: var(--ds-color-info-background-strong);
+}
+
+.ds-action-waitlist {
+  background: var(--ds-color-warning-background-default);
+  border: var(--ds-border-width-default) solid var(--ds-color-warning-border-default);
+  color: var(--ds-color-warning-contrast-default);
+}
+
+.ds-action-waitlist:hover:not(:disabled) {
+  background: var(--ds-color-warning-background-strong);
+}
+
+.ds-action-modify {
+  background: var(--calendar-bg);
+  border: var(--ds-border-width-default) solid var(--calendar-border);
+  color: var(--calendar-text);
+}
+
+.ds-action-modify:hover:not(:disabled) {
+  background: var(--ds-color-neutral-background-subtle);
+}
+
+.ds-action-book:disabled,
+.ds-action-request:disabled,
+.ds-action-waitlist:disabled,
+.ds-action-modify:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =============================================================================
+   Loading & Error States
+   ============================================================================= */
+
+.ds-calendar-loading,
+.ds-calendar-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: var(--ds-sizing-200);
+  padding: var(--ds-spacing-6);
+}
+
+.ds-calendar-loading span {
+  color: var(--calendar-text-subtle);
+  font-size: var(--ds-font-size-md);
+}
+
+.ds-calendar-error span {
+  color: var(--ds-color-danger-text-default);
+  font-size: var(--ds-font-size-md);
+}
+
+/* =============================================================================
+   Mode Variants
+   ============================================================================= */
+
+/* TIME mode - default grid */
+.ds-mode-time .ds-day-slots {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+/* ALL_DAY mode - single column */
+.ds-mode-all_day .ds-day-slots {
+  grid-template-columns: 1fr;
+}
+
+.ds-mode-all_day .ds-calendar-slot {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--ds-spacing-4);
+}
+
+/* RECURRING mode - weekly view */
+.ds-mode-recurring .ds-day-slots {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+
+@media (max-width: var(--ds-sizing-192)) {
+  .ds-calendar-header {
+    flex-direction: column;
+    gap: var(--ds-spacing-3);
+    align-items: flex-start;
+  }
+
+  .ds-mode-switcher {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .ds-mode-button {
+    flex: 1;
+    text-align: center;
+  }
+
+  .ds-day-slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ds-calendar-footer {
+    flex-direction: column;
+    gap: var(--ds-spacing-3);
+    align-items: stretch;
+  }
+
+  .ds-calendar-actions {
+    justify-content: stretch;
+  }
+
+  .ds-calendar-actions button {
+    flex: 1;
+  }
+}
+
+@media (max-width: var(--ds-sizing-480)) {
+  .ds-day-slots {
+    grid-template-columns: 1fr;
+  }
+}
