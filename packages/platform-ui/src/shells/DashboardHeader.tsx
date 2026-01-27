@@ -29,6 +29,8 @@ import {
 import { HeaderThemeToggle } from '../composed/header-parts';
 import { NotificationBell } from '../blocks/NotificationBell';
 import { UserIcon, SettingsIcon, LogOutIcon } from '../primitives/icons';
+import { Stack } from '../primitives/stack';
+import { Text } from '../primitives/text';
 import { cn } from '../utils';
 
 // =============================================================================
@@ -142,7 +144,7 @@ function UserAvatar({ user, size = 32 }: UserAvatarProps) {
   }
 
   return (
-    <div
+    <Stack
       style={{
         width: size,
         height: size,
@@ -157,7 +159,7 @@ function UserAvatar({ user, size = 32 }: UserAvatarProps) {
       }}
     >
       {user.name?.charAt(0).toUpperCase() || <UserIcon size={size * 0.5} />}
-    </div>
+    </Stack>
   );
 }
 
@@ -191,7 +193,7 @@ function UserMenuDropdown({
   ].filter(Boolean) as Array<{ label: string; icon: React.ReactNode; onClick: () => void }>;
 
   return (
-    <div
+    <Stack
       style={{
         position: 'absolute',
         top: '100%',
@@ -207,32 +209,32 @@ function UserMenuDropdown({
       }}
     >
       {/* User info */}
-      <div
+      <Stack
         style={{
           padding: 'var(--ds-spacing-4)',
           borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
         }}
       >
-        <div
+        <Text
           style={{
             fontWeight: 'var(--ds-font-weight-semibold)',
             marginBottom: 'var(--ds-spacing-1)',
           }}
         >
           {user.name}
-        </div>
-        <div
+        </Text>
+        <Text
           style={{
             fontSize: 'var(--ds-font-size-sm)',
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
           {user.email}
-        </div>
-      </div>
+        </Text>
+      </Stack>
 
       {/* Menu items */}
-      <div style={{ padding: 'var(--ds-spacing-2)' }}>
+      <Stack style={{ padding: 'var(--ds-spacing-2)' }}>
         {menuItems.map((item, index) => (
           <Button
             key={index}
@@ -259,11 +261,11 @@ function UserMenuDropdown({
             }}
             className="ds-user-menu-item"
           >
-            <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{item.icon}</span>
+            <Text style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>{item.icon}</Text>
             {item.label}
           </Button>
         ))}
-      </div>
+      </Stack>
 
       {/* Hover styles */}
       <style>{`
@@ -271,7 +273,7 @@ function UserMenuDropdown({
           background-color: var(--ds-color-neutral-surface-hover) !important;
         }
       `}</style>
-    </div>
+    </Stack>
   );
 }
 
@@ -385,7 +387,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
           }}
           {...props}
         >
-          <div
+          <Stack
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -396,7 +398,8 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
             }}
           >
             {/* Left zone - Logo/AccountSwitcher */}
-            <div
+            <Stack
+              direction="horizontal"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -407,11 +410,11 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
             >
               {isMobile && logo}
               {!isMobile && leftSlot}
-            </div>
+            </Stack>
 
             {/* Center zone - Search (absolute center) */}
             {!isMobile && onSearchChange && (
-              <div
+              <Stack
                 className="ds-header-search-container"
                 style={{
                   position: 'absolute',
@@ -424,7 +427,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                   pointerEvents: 'none',
                 }}
               >
-                <div style={{ width: '100%', pointerEvents: 'auto' }}>
+                <Stack style={{ width: '100%', pointerEvents: 'auto' }}>
                   <HeaderSearch
                     placeholder={searchPlaceholder}
                     value={searchQuery}
@@ -435,12 +438,13 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                     enableGlobalShortcut
                     noResultsText={noSearchResultsText}
                   />
-                </div>
-              </div>
+                </Stack>
+              </Stack>
             )}
 
             {/* Right zone - Actions, Icons & User Profile */}
-            <div
+            <Stack
+              direction="horizontal"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -464,7 +468,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
 
               {/* User profile dropdown - rightmost */}
               {user && (
-                <div ref={userMenuRef} style={{ position: 'relative' }}>
+                <Stack ref={userMenuRef} style={{ position: 'relative' }}>
                   <Button
                     type="button"
                     variant="tertiary"
@@ -480,7 +484,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                     }}
                   >
                     <UserAvatar user={user} />
-                    <span
+                    <Text
                       style={{
                         fontWeight: 'var(--ds-font-weight-medium)',
                         fontSize: 'var(--ds-font-size-sm)',
@@ -488,7 +492,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                       }}
                     >
                       {user.name}
-                    </span>
+                    </Text>
                   </Button>
 
                   {isUserMenuOpen && (
@@ -500,10 +504,10 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                       onClose={() => setIsUserMenuOpen(false)}
                     />
                   )}
-                </div>
+                </Stack>
               )}
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         </header>
       </>
     );

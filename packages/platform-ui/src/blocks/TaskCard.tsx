@@ -196,7 +196,7 @@ export function TaskCard({
                   transition: 'width 0.3s ease',
                 }}
               />
-            </Stack>
+            </div>
           </Stack>
         )}
 
@@ -209,7 +209,7 @@ export function TaskCard({
           >
             {assignee && <Paragraph data-size="sm">{assignee}</Paragraph>}
             {dueDate && <Paragraph data-size="sm">{dueDate.toLocaleDateString()}</Paragraph>}
-          </div>
+          </Stack>
         )}
 
         {/* Tags */}
@@ -227,8 +227,8 @@ export function TaskCard({
               >
                 {tag}
               </span>
-            )            )}
-          </Stack>
+            ))}
+          </div>
         )}
       </Card.Block>
     </Card>

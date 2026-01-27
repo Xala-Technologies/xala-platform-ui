@@ -485,7 +485,7 @@ export function PeriodCard({
           >
             <StatusBadge status={status} />
           </div>
-        </div>
+        </Stack>
       )}
 
       {/* Content section */}

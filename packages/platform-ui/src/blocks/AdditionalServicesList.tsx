@@ -192,11 +192,11 @@ export function AdditionalServicesList({
               onKeyDown={
                 isClickable
                   ? (e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        handleClick(service);
-                      }
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleClick(service);
                     }
+                  }
                   : undefined
               }
               style={{
@@ -207,11 +207,10 @@ export function AdditionalServicesList({
                 backgroundColor: isSelected
                   ? 'var(--ds-color-accent-surface-default)'
                   : 'var(--ds-color-neutral-background-default)',
-                border: `2px solid ${
-                  isSelected
+                border: `2px solid ${isSelected
                     ? 'var(--ds-color-accent-base-default)'
                     : 'var(--ds-color-neutral-border-subtle)'
-                }`,
+                  }`,
                 borderRadius: 'var(--ds-border-radius-lg)',
                 cursor: isClickable ? 'pointer' : 'default',
                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -324,11 +323,10 @@ export function AdditionalServicesList({
                   width: 'var(--ds-spacing-6)',
                   height: 'var(--ds-spacing-6)',
                   borderRadius: 'var(--ds-border-radius-sm)',
-                  border: `2px solid ${
-                    isSelected
+                  border: `2px solid ${isSelected
                       ? 'var(--ds-color-accent-base-default)'
                       : 'var(--ds-color-neutral-border-default)'
-                  }`,
+                    }`,
                   backgroundColor: isSelected
                     ? 'var(--ds-color-accent-base-default)'
                     : 'transparent',
@@ -352,7 +350,7 @@ export function AdditionalServicesList({
                   </svg>
                 )}
               </div>
-            </div>
+            </Stack>
           );
         })}
       </div>

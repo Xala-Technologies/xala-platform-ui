@@ -97,8 +97,8 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
               <span style={{ color: 'var(--ds-color-danger-base-default)', fontSize: '14px' }}>
                 ✗ {failedCount}
               </span>
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         </Card.Block>
 
         {allResults.length === 0 ? (
@@ -158,10 +158,10 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
                         ))}
                       </Stack>
                     )}
-                  </Stack>
+                  </div>
                 );
               })}
-            </Stack>
+            </div>
           </Card.Block>
         )}
       </Card>

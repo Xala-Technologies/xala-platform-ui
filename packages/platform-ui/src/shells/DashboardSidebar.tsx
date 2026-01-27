@@ -8,9 +8,11 @@
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, List } from '@digdir/designsystemet-react';
 import { Drawer } from '../composed/Drawer';
 import { ChevronRightIcon } from '../primitives/icons';
+import { Stack } from '../primitives/stack';
+import { Text } from '../primitives/text';
 
 // =============================================================================
 // Types
@@ -101,7 +103,7 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
       }}
     >
       {/* Icon with background - var(--ds-spacing-12) */}
-      <div
+      <Stack
         className="ds-sidebar-nav-icon"
         style={{
           width: 'var(--ds-spacing-12)',
@@ -121,10 +123,10 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
         }}
       >
         {item.icon}
-      </div>
+      </Stack>
 
       {/* Text content */}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <Stack style={{ flex: 1, minWidth: 0 }}>
         <Paragraph
           data-size="sm"
           style={{
@@ -149,12 +151,12 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
         >
           {item.description}
         </Paragraph>
-      </div>
+      </Stack>
 
       {/* Badge or Arrow */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+      <Stack direction="horizontal" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
         {item.badge && item.badge > 0 && (
-          <div
+          <Stack
             style={{
               minWidth: 'var(--ds-spacing-8)',
               height: 'var(--ds-spacing-8)',
@@ -170,9 +172,9 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
             }}
           >
             {item.badge}
-          </div>
+          </Stack>
         )}
-        <div
+        <Text
           style={{
             color: isActive
               ? 'var(--ds-color-accent-text-default)'
@@ -181,8 +183,8 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
           }}
         >
           <ChevronRightIcon size={20} />
-        </div>
-      </div>
+        </Text>
+      </Stack>
     </NavLink>
   );
 }
@@ -211,7 +213,7 @@ function SidebarContent({
   return (
     <>
       {/* Logo Section - var(--ds-spacing-18) height, exact match */}
-      <div
+      <Stack
         style={{
           height: 'var(--ds-spacing-18)',
           padding: '0 var(--ds-spacing-6)',
@@ -220,11 +222,11 @@ function SidebarContent({
           alignItems: 'center',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
-          {logo && <div style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</div>}
+        <Stack direction="horizontal" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+          {logo && <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>}
           {title && (
-            <div>
-              <div
+            <Stack>
+              <Text
                 style={{
                   fontSize: 'var(--ds-font-size-md)',
                   fontWeight: 'var(--ds-font-weight-bold)',
@@ -234,9 +236,9 @@ function SidebarContent({
                 }}
               >
                 {title}
-              </div>
+              </Text>
               {subtitle && (
-                <div
+                <Text
                   style={{
                     fontSize: 'var(--ds-font-size-2xs)',
                     color: 'var(--ds-color-neutral-text-subtle)',
@@ -246,19 +248,19 @@ function SidebarContent({
                   }}
                 >
                   {subtitle}
-                </div>
+                </Text>
               )}
-            </div>
+            </Stack>
           )}
-        </div>
-      </div>
+        </Stack>
+      </Stack>
 
       {/* Navigation */}
       <nav
         style={{ flex: 1, padding: 'var(--ds-spacing-4) var(--ds-spacing-3)', overflowY: 'auto' }}
       >
         {sections.map((section, sectionIndex) => (
-          <div key={sectionIndex} style={{ marginBottom: 'var(--ds-spacing-6)' }}>
+          <Stack key={sectionIndex} style={{ marginBottom: 'var(--ds-spacing-6)' }}>
             {section.title && (
               <Paragraph
                 data-size="xs"
@@ -275,7 +277,7 @@ function SidebarContent({
                 {section.title}
               </Paragraph>
             )}
-            <ul
+            <List.Unordered
               style={{
                 listStyle: 'none',
                 margin: 0,
@@ -286,26 +288,26 @@ function SidebarContent({
               }}
             >
               {section.items.map((item) => (
-                <li key={item.href}>
+                <List.Item key={item.href}>
                   <SidebarNavItemComponent item={item} onClick={onItemClick} />
-                </li>
+                </List.Item>
               ))}
-            </ul>
-          </div>
+            </List.Unordered>
+          </Stack>
         ))}
       </nav>
 
       {/* User Info Section - exact match */}
       {user && (
-        <div
+        <Stack
           style={{
             padding: 'var(--ds-spacing-5) var(--ds-spacing-6)',
             borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
             backgroundColor: 'var(--ds-color-neutral-surface-hover)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}>
-            <div
+          <Stack direction="horizontal" style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-4)' }}>
+            <Stack
               style={{
                 width: 'var(--ds-spacing-11)',
                 height: 'var(--ds-spacing-11)',
@@ -321,8 +323,8 @@ function SidebarContent({
               }}
             >
               {user.name.charAt(0).toUpperCase()}
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
+            </Stack>
+            <Stack style={{ flex: 1, minWidth: 0 }}>
               <Paragraph
                 data-size="sm"
                 style={{
@@ -345,9 +347,9 @@ function SidebarContent({
               >
                 {user.email}
               </Paragraph>
-            </div>
-          </div>
-        </div>
+            </Stack>
+          </Stack>
+        </Stack>
       )}
 
       {/* CSS for hover states - exact match */}
@@ -443,14 +445,14 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
         {isMobile && (
           <Drawer
             isOpen={isMobileOpen}
-            onClose={onMobileClose || (() => {})}
+            onClose={onMobileClose || (() => { })}
             position="left"
             size="lg"
             overlay={true}
             closeOnOverlayClick={true}
             closeOnEscape={true}
           >
-            <div
+            <Stack
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -466,7 +468,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
                 user={user}
                 onItemClick={handleItemClick}
               />
-            </div>
+            </Stack>
           </Drawer>
         )}
       </>

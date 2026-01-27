@@ -339,7 +339,7 @@ export function ResultsSkeleton({
           ))}
         </div>
       )}
-    </div>
+    </Stack>
   );
 }
 

@@ -932,7 +932,7 @@ export function MediaResourceCard({
             <span style={{ color: getStatusColor(status.type) }}>{status.label}</span>
           </div>
         )}
-      </div>
+      </Stack>
 
       {/* Content section */}
       <div

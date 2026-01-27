@@ -265,7 +265,7 @@ export function PermissionMatrix({
                           <Badge variant="default" size="sm">
                             {categoryPermissions.length}
                           </Badge>
-                        </Text>
+                        </span>
                       </Table.Cell>
                     </Table.Row>
                   )}

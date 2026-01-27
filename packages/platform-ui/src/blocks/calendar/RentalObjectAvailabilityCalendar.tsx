@@ -411,7 +411,7 @@ export function RentalObjectAvailabilityCalendar({
         >
           →
         </Button>
-      </div>
+      </Stack>
 
       {/* Calendar Grid */}
       {mode === 'TIME_SLOTS' ? (

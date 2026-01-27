@@ -225,7 +225,7 @@ export function VerticalBarChart({
           </div>
         </div>
       ))}
-    </div>
+    </Stack>
   );
 }
 

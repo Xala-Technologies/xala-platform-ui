@@ -363,10 +363,10 @@ export function ConversationList({
 
   const filteredConversations = searchQuery
     ? conversations.filter(
-        (c) =>
-          c.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          c.subject?.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      (c) =>
+        c.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        c.subject?.toLowerCase().includes(searchQuery.toLowerCase())
+    )
     : conversations;
 
   return (
@@ -707,7 +707,7 @@ export function ChatThread({
             >
               <SendIcon size={18} />
             </Button>
-          </div>
+          </Stack>
         </div>
       )}
     </div>

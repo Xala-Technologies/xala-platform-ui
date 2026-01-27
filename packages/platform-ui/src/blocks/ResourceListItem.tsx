@@ -521,7 +521,7 @@ export function ResourceListItem({
                 fra {price} {currency}/{priceUnit}
               </span>
             )}
-          </div>
+          </Stack>
         )}
       </div>
 
@@ -653,9 +653,9 @@ export function ResourceListItem({
                 </svg>
               </div>
             </div>
-            )}
-          </Stack>
-        )}
+          )}
+        </div>
+      )}
     </Stack>
   );
 }

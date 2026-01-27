@@ -136,7 +136,7 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
                   </Stack>
                 );
               })}
-            </div>
+            </Stack>
           </Card.Block>
         )}
 
@@ -170,9 +170,9 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
                       {i + 1}
                     </span>
                     {line}
-                  </div>
+                  </Stack>
                 ))}
-              </div>
+              </Stack>
             ) : (
               <div style={{ display: 'flex' }}>
                 <div
@@ -206,10 +206,10 @@ export const ArtifactDiffViewer = forwardRef<HTMLDivElement, ArtifactDiffViewerP
                       {line}
                     </Stack>
                   ))}
-                </Stack>
-              </Stack>
+                </div>
+              </div>
             )}
-          </Stack>
+          </div>
         </Card.Block>
       </Card>
     );

@@ -199,7 +199,7 @@ export function LocationCard({
               Kart
             </Paragraph>
           )}
-        </div>
+        </Stack>
       </div>
     </div>
   );
