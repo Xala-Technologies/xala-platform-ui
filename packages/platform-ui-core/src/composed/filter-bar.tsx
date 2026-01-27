@@ -6,7 +6,7 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Select, Button } from '@digdir/designsystemet-react';
+import { Select, Button } from '../primitives';
 import { Grid, Stack } from '../primitives';
 import { GridIcon, ListIcon, MapIcon } from '../primitives/icons';
 import type { FilterConfig, ResourceType } from '../types/filters';

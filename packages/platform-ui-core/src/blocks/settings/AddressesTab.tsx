@@ -30,7 +30,7 @@
  * }
  * ```
  */
-import { Card, Heading, Paragraph, Button, Textfield } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Textfield } from '../../primitives';
 import { Stack, SaveIcon, CopyIcon } from '../../primitives';
 import { FormField } from '../../composed';
 

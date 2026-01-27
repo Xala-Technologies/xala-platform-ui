@@ -10,7 +10,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 
 // =============================================================================
 // Types

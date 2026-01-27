@@ -5,7 +5,7 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Fieldset, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Fieldset, Heading, Paragraph } from '../primitives';
 import { Stack } from '../primitives';
 
 export interface ContentSectionProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Button, Textfield, Fieldset, Paragraph, Alert } from '@digdir/designsystemet-react';
+import { Button, Textfield, Fieldset, Paragraph, Alert } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================

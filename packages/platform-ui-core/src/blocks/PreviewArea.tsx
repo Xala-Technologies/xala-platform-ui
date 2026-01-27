@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Card } from '@digdir/designsystemet-react';
+import { Card } from '../primitives';
 import { cn } from '../utils';
 
 export interface PreviewAreaProps extends React.HTMLAttributes<HTMLDivElement> {

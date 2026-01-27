@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { GridIcon, ListIcon, MapIcon, TableIcon } from '../../primitives';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../../primitives';
 import { HeaderSearch } from '../header-parts';
 import { cn } from '../../utils';
 

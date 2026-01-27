@@ -36,7 +36,7 @@
  * ```
  */
 import { useRef } from 'react';
-import { Card, Heading, Paragraph, Button, Textfield } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Textfield } from '../../primitives';
 import { Stack, SaveIcon, UserIcon, CameraIcon } from '../../primitives';
 import { FormField } from '../../composed';
 

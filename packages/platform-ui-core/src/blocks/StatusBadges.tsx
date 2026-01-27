@@ -71,6 +71,8 @@ export interface StatusTagProps {
   size?: 'sm' | 'md' | 'lg';
   /** Custom class name */
   className?: string;
+  /** Custom inline styles */
+  style?: React.CSSProperties;
 }
 
 /**
@@ -82,6 +84,7 @@ export function StatusTag({
   color,
   size = 'sm',
   className,
+  style,
 }: StatusTagProps): React.ReactElement {
   const colorStyle = colorStyles[color];
   const sizeStyle = sizeStyles[size];
@@ -100,6 +103,7 @@ export function StatusTag({
         fontWeight: 'var(--ds-font-weight-medium)',
         lineHeight: 'var(--ds-line-height-sm)',
         whiteSpace: 'nowrap',
+        ...style,
       }}
     >
       {children}

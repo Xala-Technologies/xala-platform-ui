@@ -20,7 +20,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import { cn } from '../utils';
 
 // Icons

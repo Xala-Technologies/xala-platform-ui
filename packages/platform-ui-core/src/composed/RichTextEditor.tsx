@@ -15,7 +15,7 @@
 'use client';
 
 import React, { useRef, useState, useCallback, useEffect, type ReactNode } from 'react';
-import { Button, Paragraph, Label } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Label } from '../primitives';
 
 // =============================================================================
 // Types

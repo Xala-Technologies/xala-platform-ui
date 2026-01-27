@@ -24,7 +24,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Heading, Paragraph, Button, Spinner } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Spinner } from '../primitives';
 import { cn } from './utils';
 
 // ============================================================================

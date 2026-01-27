@@ -6,7 +6,7 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '../primitives';
 
 export interface AppShellProps extends React.HTMLAttributes<HTMLDivElement> {
   /**

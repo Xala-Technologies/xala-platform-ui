@@ -24,7 +24,7 @@
  */
 
 import * as React from 'react';
-import { Card, Heading, Paragraph, Button, Link } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Link } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================

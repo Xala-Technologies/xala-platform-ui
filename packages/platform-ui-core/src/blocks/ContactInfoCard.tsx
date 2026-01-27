@@ -4,7 +4,7 @@
  * Card displaying contact information with email and phone.
  */
 import * as React from 'react';
-import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { MailIcon, PhoneIcon } from '../primitives/icons';
 

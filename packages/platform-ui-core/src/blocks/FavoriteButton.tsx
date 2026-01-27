@@ -5,7 +5,7 @@
  * Supports auth gating with callback for unauthenticated users.
  */
 import * as React from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import { cn } from '../utils';
 import { HeartIcon } from '../primitives/icons';
 

@@ -40,7 +40,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Heading, Paragraph, Button, Checkbox } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Checkbox } from '../primitives';
 import type { ReviewSection, ReviewItem } from './types';
 import { cn } from './utils';
 

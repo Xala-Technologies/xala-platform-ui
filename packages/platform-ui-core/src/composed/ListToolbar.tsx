@@ -21,7 +21,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState, useCallback, useRef, useEffect } from 'react';
-import { Button, Textfield } from '@digdir/designsystemet-react';
+import { Button, Textfield } from '../primitives';
 import { SearchIcon } from '../primitives/icons';
 import { cn } from '../utils';
 

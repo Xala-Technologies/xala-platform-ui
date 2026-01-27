@@ -16,7 +16,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 
 export interface ResultsEmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {

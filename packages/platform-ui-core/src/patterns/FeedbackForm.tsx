@@ -35,7 +35,7 @@ import {
   Checkbox,
   Field,
   Label,
-} from '@digdir/designsystemet-react';
+} from '../primitives';
 
 // ============================================================================
 // Types

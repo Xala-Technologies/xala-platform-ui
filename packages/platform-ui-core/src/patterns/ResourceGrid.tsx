@@ -24,7 +24,7 @@
  * ```
  */
 import * as React from 'react';
-import { Spinner, Paragraph } from '@digdir/designsystemet-react';
+import { Spinner, Paragraph } from '../primitives';
 import { cn, getGapValue } from './utils';
 
 export interface ResourceGridProps<T> {

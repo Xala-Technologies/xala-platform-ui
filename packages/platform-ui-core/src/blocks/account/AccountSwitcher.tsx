@@ -21,7 +21,7 @@
  */
 
 import { useState, useRef, useEffect } from 'react';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '../../primitives';
 import { UserIcon, BuildingIcon, CheckIcon, SettingsIcon } from '../../primitives/icons';
 
 // =============================================================================

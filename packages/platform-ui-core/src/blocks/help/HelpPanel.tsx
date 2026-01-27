@@ -25,7 +25,7 @@ import {
   Alert,
   Link,
   Textfield,
-} from '@digdir/designsystemet-react';
+} from '../../primitives';
 import {
   InfoIcon,
   BookOpenIcon,

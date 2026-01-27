@@ -5,7 +5,7 @@
  * Example: Hjem > Fasiliteter > Møterom 101
  */
 import * as React from 'react';
-import { Link, Button } from '@digdir/designsystemet-react';
+import { Link, Button } from '../primitives';
 import { cn } from '../utils';
 import type { BreadcrumbItem } from '../types';
 

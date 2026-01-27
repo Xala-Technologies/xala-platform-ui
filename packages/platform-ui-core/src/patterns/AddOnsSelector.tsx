@@ -22,7 +22,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Paragraph, Checkbox, Tag } from '@digdir/designsystemet-react';
+import { Paragraph, Checkbox, Tag } from '../primitives';
 
 // ============================================================================
 // Types

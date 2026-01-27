@@ -5,7 +5,7 @@
  * Supports grouping by category, risk indicators, and permission toggling.
  */
 import React, { useMemo, useState, useCallback } from 'react';
-import { Card, Heading, Paragraph, Table, Checkbox, Textfield } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Table, Checkbox, Textfield } from '../../primitives';
 import { Text } from '../../primitives';
 import { Badge } from '../../composed/Badge';
 

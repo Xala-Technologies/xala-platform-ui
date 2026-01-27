@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Card, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button } from '../primitives';
 import { Stack } from '../primitives/stack';
 import { ArrowRightIcon } from '../primitives/icons';
 import { StatusTag } from './StatusBadges';

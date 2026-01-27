@@ -12,7 +12,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, type ReactNode, type DragEvent } from 'react';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '../primitives';
 
 // =============================================================================
 // Types

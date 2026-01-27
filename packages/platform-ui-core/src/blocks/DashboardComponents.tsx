@@ -5,7 +5,7 @@
  * stat cards, activity feeds, and quick actions.
  */
 import * as React from 'react';
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '../primitives';
 import { TrendUpIcon, TrendDownIcon } from '../primitives/icons';
 import { Stack, HorizontalLayout } from '../primitives';
 import { cn } from '../utils';

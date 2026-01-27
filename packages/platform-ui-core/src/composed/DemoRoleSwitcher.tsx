@@ -13,8 +13,8 @@
  */
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
-import { Dialog } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Spinner } from '../primitives';
+import { Dialog } from '../primitives';
 import { Stack } from '../primitives';
 import { ShieldCheckIcon, ClipboardListIcon, BuildingIcon, UserIcon } from '../primitives/icons';
 

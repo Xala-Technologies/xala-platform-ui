@@ -5,7 +5,7 @@
  * Used in Kanban boards, task lists, and task management UIs.
  */
 import React from 'react';
-import { Card, Paragraph, Heading } from '@digdir/designsystemet-react';
+import { Card, Paragraph, Heading } from '../primitives';
 import { Stack } from '../primitives';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';

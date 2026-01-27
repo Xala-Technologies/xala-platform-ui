@@ -29,8 +29,8 @@
  */
 
 import React, { useState } from 'react';
-import { Card } from '@digdir/designsystemet-react';
-import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Card } from '../../primitives';
+import { Heading, Paragraph, Button } from '../../primitives';
 
 // =============================================================================
 // Types
@@ -337,11 +337,11 @@ export function DeleteAccountCard({
                 }}
               >
                 {labels.warningItems.map((item, index) => (
-                  <Stack key={index} direction="horizontal">
+                  <li key={index}>
                     <Paragraph data-size="sm" style={{ margin: 0 }}>
-                      • {item}
+                      {item}
                     </Paragraph>
-                  </Stack>
+                  </li>
                 ))}
               </ul>
             </div>

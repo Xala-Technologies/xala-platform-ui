@@ -6,7 +6,7 @@
  * Permissions can be grouped by category and show risk indicators.
  */
 import React, { useMemo } from 'react';
-import { Card, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Spinner } from '../../primitives';
 import { Badge, type BadgeVariant } from '../../composed/Badge';
 import { Collapsible } from '../../composed/Accordion';
 

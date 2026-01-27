@@ -32,7 +32,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Button, Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Card, Heading, Paragraph } from '../primitives';
 import { XMarkIcon } from '@navikt/aksel-icons';
 
 // ============================================================================

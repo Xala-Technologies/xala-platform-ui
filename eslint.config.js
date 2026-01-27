@@ -90,4 +90,25 @@ export default [
       },
     },
   },
+  // =========================================================================
+  // Platform-UI-Core: Enforce Digdir wrapper usage
+  // =========================================================================
+  {
+    files: ['packages/platform-ui-core/src/**/*.{ts,tsx}'],
+    ignores: [
+      // Allow wrapper files to import directly from Digdir
+      'packages/platform-ui-core/src/digdir/**',
+      'packages/platform-ui-core/src/primitives/components.ts',
+    ],
+    rules: {
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['@digdir/designsystemet-react'],
+            message: '❌ WRAPPER VIOLATION: Import from "src/digdir/" or "../digdir" instead of directly from @digdir/designsystemet-react.',
+          },
+        ],
+      }],
+    },
+  },
 ];

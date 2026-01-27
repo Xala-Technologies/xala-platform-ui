@@ -6,7 +6,7 @@
  * Supports completed, active, and future step states.
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { CheckIcon } from '../primitives/icons';
 import type { ResourceRequestStep } from '../types';

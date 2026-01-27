@@ -6,7 +6,7 @@
  */
 
 import { useState, useCallback, useMemo, createContext, useContext, type ReactNode } from 'react';
-import { Paragraph, Button } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '../primitives';
 import {
   ChevronDownIcon,
   ChevronRightIcon,

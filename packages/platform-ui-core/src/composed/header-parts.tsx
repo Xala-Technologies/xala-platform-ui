@@ -5,7 +5,7 @@
  */
 
 import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import { SunIcon, MoonIcon, UserIcon, SearchIcon, Stack, HorizontalLayout } from '../primitives';
 // Extended tokens available: typography, transitions, accessibility
 // Import as needed when adding styled features

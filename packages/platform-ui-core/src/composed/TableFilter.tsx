@@ -14,7 +14,7 @@
 
 import * as React from 'react';
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 
 // =============================================================================
 // Types

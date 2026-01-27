@@ -27,7 +27,7 @@
  */
 
 import * as React from 'react';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { CheckIcon } from '../primitives/icons';
 

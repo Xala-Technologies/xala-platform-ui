@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Paragraph, List } from '@digdir/designsystemet-react';
+import { Paragraph, List } from '../primitives';
 import { Drawer } from '../composed/Drawer';
 import { ChevronRightIcon } from '../primitives/icons';
 import { Stack } from '../primitives/stack';

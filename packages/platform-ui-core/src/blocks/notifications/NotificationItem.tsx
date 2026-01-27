@@ -5,7 +5,7 @@
  *
  * @pure - All data via props, all actions via callbacks
  */
-import { Card, Paragraph, Badge, Button } from '@digdir/designsystemet-react';
+import { Card, Paragraph, Badge, Button } from '../../primitives';
 import { Stack } from '../../primitives/stack';
 
 // ============================================================================

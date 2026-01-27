@@ -9,7 +9,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Heading, Button, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Button, Paragraph } from '../primitives';
 
 // =============================================================================
 // TYPES

@@ -2,7 +2,7 @@
  * ProfileCard Block
  * Display user profile information
  */
-import { Card, Heading, Paragraph, Button, Avatar } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Avatar } from '../../primitives';
 
 export interface ProfileCardData {
   id: string;

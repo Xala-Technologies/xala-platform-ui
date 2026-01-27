@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState } from 'react';
-import { Card, Heading, Paragraph, Tabs } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, DSTabs as Tabs } from '../primitives';
 import { FileIcon, CodeIcon, ImageIcon } from '@navikt/aksel-icons';
 import { cn } from '../utils';
 

@@ -21,7 +21,7 @@
  */
 
 import { useState } from 'react';
-import { Button, Checkbox, Spinner } from '@digdir/designsystemet-react';
+import { Button, Checkbox, Spinner } from '../../primitives';
 import { UserIcon, BuildingIcon, CheckIcon, ArrowLeftIcon } from '../../primitives/icons';
 
 // =============================================================================

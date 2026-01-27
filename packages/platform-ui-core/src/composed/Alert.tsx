@@ -8,7 +8,7 @@
  */
 
 import React, { useState, type ReactNode } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 
 // =============================================================================
 // Types

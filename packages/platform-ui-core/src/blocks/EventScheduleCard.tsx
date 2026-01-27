@@ -21,7 +21,7 @@
  */
 
 import * as React from 'react';
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '../primitives';
 import { Stack, Badge } from '../primitives';
 import { cn } from '../utils';
 import { CalendarIcon, ClockIcon } from '../primitives/icons';

@@ -6,7 +6,7 @@
  *
  * @example
  * ```tsx
- * import { SkipLinks } from '@digdir/designsystemet-react';
+ * import { SkipLinks } from '../primitives';
  *
  * function App() {
  *   return (

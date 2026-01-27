@@ -27,7 +27,7 @@
  * }
  * ```
  */
-import { Card, Heading, Paragraph, Button, Select } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Select } from '../../primitives';
 import { Stack } from '../../primitives';
 import { FormField } from '../../composed';
 

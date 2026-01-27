@@ -4,7 +4,7 @@
  * Display card for changelog entries with version, date, and changes.
  */
 import React from 'react';
-import { Card, Paragraph, Heading, Link } from '@digdir/designsystemet-react';
+import { Card, Paragraph, Heading, Link } from '../primitives';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';
 import { Stack } from '../primitives';

@@ -6,7 +6,7 @@
  * Supports image navigation and counter display.
  */
 import * as React from 'react';
-import { Paragraph, Button } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '../primitives';
 import { cn } from '../utils';
 import type { GalleryImage } from '../types';
 

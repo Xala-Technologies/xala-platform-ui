@@ -6,7 +6,7 @@
  */
 
 import { useState, useCallback, useEffect, type ReactNode } from 'react';
-import { Button, Paragraph, Spinner, Alert, Heading } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Spinner, Alert, Heading } from '../primitives';
 import {
   RefreshCwIcon,
   ExternalLinkIcon,

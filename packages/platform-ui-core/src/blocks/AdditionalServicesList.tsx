@@ -5,7 +5,7 @@
  * Services can be selectable for resourceRequest.
  */
 import * as React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 import { Stack } from '../primitives';
 import { cn } from '../utils';
 import type { AdditionalService } from '../types';

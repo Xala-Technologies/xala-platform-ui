@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { Paragraph, Button } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '../../primitives';
 import { cn } from '../../utils';
 
 export type EmptyStateVariant = 'default' | 'success' | 'warning' | 'info';

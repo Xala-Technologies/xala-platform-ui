@@ -2,7 +2,7 @@
  * Settings Tab Layout Block
  * Reusable layout for settings tab content
  */
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '../../primitives';
 
 export interface SettingsTabLayoutProps {
   title: string;

@@ -27,7 +27,7 @@
  */
 
 import React from 'react';
-import { Card, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button } from '../../primitives';
 
 // =============================================================================
 // Types

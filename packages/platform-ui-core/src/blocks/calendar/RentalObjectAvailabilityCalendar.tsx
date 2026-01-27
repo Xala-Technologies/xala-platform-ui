@@ -24,7 +24,7 @@
  */
 
 import * as React from 'react';
-import { Button, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph, Spinner } from '../../primitives';
 import { Stack } from '../../primitives';
 import type {
   CalendarMode,

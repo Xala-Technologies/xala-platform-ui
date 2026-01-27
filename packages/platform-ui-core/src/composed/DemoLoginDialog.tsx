@@ -11,8 +11,8 @@
  */
 
 import React, { useState } from 'react';
-import { Textfield, Button, Alert, Fieldset } from '@digdir/designsystemet-react';
-import { Dialog } from '@digdir/designsystemet-react';
+import { Textfield, Button, Alert, Fieldset } from '../primitives';
+import { Dialog } from '../primitives';
 import { Stack } from '../primitives';
 
 export interface DemoLoginDialogProps {

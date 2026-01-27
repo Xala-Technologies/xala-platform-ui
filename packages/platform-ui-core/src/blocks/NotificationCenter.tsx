@@ -6,7 +6,7 @@
  */
 
 import * as React from 'react';
-import { Dialog, Heading, Paragraph, Button, Spinner } from '@digdir/designsystemet-react';
+import { Dialog, Heading, Paragraph, Button, Spinner } from '../primitives';
 import { Stack } from '../primitives';
 import { NotificationItem, type NotificationItemData } from './NotificationItem';
 

@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 import { AVATAR_COLOR_PALETTE } from '../tokens/extended';
 
 // =============================================================================

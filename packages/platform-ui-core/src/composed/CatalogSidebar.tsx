@@ -6,7 +6,7 @@
  */
 
 import { useState, useMemo, useCallback, type ReactNode } from 'react';
-import { Textfield, Paragraph, Chip, Spinner, Button } from '@digdir/designsystemet-react';
+import { Textfield, Paragraph, Chip, Spinner, Button } from '../primitives';
 import { SearchIcon, XIcon, FolderIcon, FileTextIcon, BookOpenIcon } from 'lucide-react';
 
 /**

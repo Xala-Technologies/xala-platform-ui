@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState, useCallback } from 'react';
-import { Card, Heading, Paragraph, Button, Checkbox } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Checkbox } from '../primitives';
 import {
   CheckmarkCircleIcon,
   XMarkIcon,
@@ -15,6 +15,7 @@ import {
   ChevronUpIcon,
 } from '@navikt/aksel-icons';
 import { cn } from '../utils';
+import { Stack } from '../primitives';
 
 export interface ApprovalItem {
   id: string;

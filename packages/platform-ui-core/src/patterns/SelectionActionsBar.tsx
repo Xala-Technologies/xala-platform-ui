@@ -25,7 +25,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Button, Tag } from '@digdir/designsystemet-react';
+import { Button, Tag } from '../primitives';
 
 // ============================================================================
 // Types

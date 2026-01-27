@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import { cn } from '../utils';
-import { Button, ToggleGroup, Tooltip, Badge } from '@digdir/designsystemet-react';
+import { Button, ToggleGroup, Tooltip, Badge } from '../primitives';
 import { FilterIcon, GridIcon, ListIcon, MapIcon, TableIcon } from '../primitives';
 
 export type ViewMode = 'grid' | 'list' | 'map' | 'table';
@@ -87,7 +87,7 @@ export function ResourceToolbar({
           >
             <FilterIcon size={18} aria-hidden />
             Filtre
-            {activeFilterCount > 0 && <Badge count={activeFilterCount} data-color="accent" />}
+            {activeFilterCount > 0 && <Badge data-color="accent">{activeFilterCount}</Badge>}
           </Button>
         )}
         <span

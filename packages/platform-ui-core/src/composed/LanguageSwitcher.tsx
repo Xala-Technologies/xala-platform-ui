@@ -18,7 +18,7 @@
  */
 
 import React, { forwardRef, useState, useCallback } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import { cn } from '../utils';
 
 /**
@@ -523,7 +523,7 @@ LanguageSwitcher.displayName = 'LanguageSwitcher';
  *
  * Usage:
  * ```tsx
- * import { ConnectedLanguageSwitcher } from '@digdir/designsystemet-react';
+ * import { ConnectedLanguageSwitcher } from '../primitives';
  * import { I18nProvider } from '@xala/i18n';
  *
  * function App() {

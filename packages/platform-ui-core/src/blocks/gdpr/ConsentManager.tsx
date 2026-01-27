@@ -37,7 +37,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Card, Heading, Paragraph, Button, Switch } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Switch } from '../../primitives';
 
 // =============================================================================
 // Types

@@ -6,7 +6,7 @@
  *
  * @example
  * ```tsx
- * import { FormSection } from '@digdir/designsystemet-react';
+ * import { FormSection } from '../primitives';
  *
  * function MyForm() {
  *   return (
@@ -19,7 +19,7 @@
  * ```
  */
 
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 import type { ReactNode } from 'react';
 
 export interface FormSectionProps {

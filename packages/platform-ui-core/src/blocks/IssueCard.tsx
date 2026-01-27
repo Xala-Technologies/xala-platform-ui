@@ -4,7 +4,7 @@
  * Display card for GitHub/GitLab issues and pull requests.
  */
 import React from 'react';
-import { Card, Paragraph, Heading, Link } from '@digdir/designsystemet-react';
+import { Card, Paragraph, Heading, Link } from '../primitives';
 import { Stack } from '../primitives';
 import { StatusTag } from './StatusBadges';
 import type { BadgeColor } from './StatusBadges';

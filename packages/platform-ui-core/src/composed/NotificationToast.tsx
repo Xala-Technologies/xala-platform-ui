@@ -17,7 +17,7 @@ import React, {
   useContext,
   type ReactNode,
 } from 'react';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '../primitives';
 
 // =============================================================================
 // Types

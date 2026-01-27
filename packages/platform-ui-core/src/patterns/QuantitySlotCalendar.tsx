@@ -22,7 +22,7 @@
  */
 
 import * as React from 'react';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================

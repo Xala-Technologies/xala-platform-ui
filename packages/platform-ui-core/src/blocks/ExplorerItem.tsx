@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '../primitives';
 import { Stack } from '../primitives/stack';
 import { cn } from '../utils';
 

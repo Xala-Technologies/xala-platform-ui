@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '../../primitives';
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon } from '../../primitives/icons';
 import { Stack, HorizontalLayout } from '../../primitives';
 import { cn } from '../../utils';

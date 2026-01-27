@@ -16,7 +16,7 @@ import {
   Textarea,
   Select,
   Checkbox,
-} from '@digdir/designsystemet-react';
+} from '../primitives';
 import { Stack } from '../primitives';
 import { QuestionmarkCircleIcon } from '@navikt/aksel-icons';
 import { cn } from '../utils';

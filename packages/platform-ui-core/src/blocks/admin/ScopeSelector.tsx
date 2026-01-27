@@ -15,7 +15,7 @@ import {
   Button,
   Textfield,
   Fieldset,
-} from '@digdir/designsystemet-react';
+} from '../../primitives';
 
 export type ScopeType = 'none' | 'specific' | 'organization' | 'category' | 'all';
 

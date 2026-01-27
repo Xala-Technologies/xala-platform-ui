@@ -6,7 +6,7 @@
  *
  * @example
  * ```tsx
- * import { InfoBox } from '@digdir/designsystemet-react';
+ * import { InfoBox } from '../primitives';
  *
  * function StatusDisplay() {
  *   return (
@@ -18,7 +18,7 @@
  * ```
  */
 
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 import type { ReactNode } from 'react';
 
 export type InfoBoxVariant = 'info' | 'success' | 'warning' | 'danger' | 'neutral';

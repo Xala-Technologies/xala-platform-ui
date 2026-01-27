@@ -45,7 +45,7 @@
  */
 
 import * as React from 'react';
-import { Tabs as DSTabs } from '@digdir/designsystemet-react';
+import { DSTabs } from '../primitives';
 
 // =============================================================================
 // TabItem

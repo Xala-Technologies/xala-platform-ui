@@ -5,7 +5,7 @@
  * Used in list view mode. Supports images, location map, amenities, and capacity.
  */
 import * as React from 'react';
-import { Tag, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Tag, Button, Heading, Paragraph } from '../primitives';
 import { Stack } from '../primitives';
 import { cn } from '../utils';
 

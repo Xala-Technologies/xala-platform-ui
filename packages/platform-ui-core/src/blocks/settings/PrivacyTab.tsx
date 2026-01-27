@@ -33,7 +33,7 @@
  * }
  * ```
  */
-import { Card, Heading, Paragraph, Button, Switch, Alert } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Button, Switch, Alert } from '../../primitives';
 import { Stack, DownloadIcon, TrashIcon, ShieldIcon } from '../../primitives';
 
 // =============================================================================

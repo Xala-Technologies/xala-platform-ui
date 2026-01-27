@@ -5,7 +5,7 @@
  * Example: "MAKS TILLATT: 50 personer"
  */
 import * as React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { PeopleIcon } from '../primitives/icons';
 

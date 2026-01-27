@@ -8,7 +8,7 @@
  */
 
 import React, { forwardRef, useCallback, useState } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import { Drawer, DrawerProps } from './Drawer';
 
 // =============================================================================

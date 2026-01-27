@@ -5,7 +5,7 @@
  * Uses Mapbox static image for the map preview.
  */
 import * as React from 'react';
-import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '../primitives';
 import { Stack } from '../primitives';
 import { cn } from '../utils';
 import { MapPinIcon } from '../primitives/icons';

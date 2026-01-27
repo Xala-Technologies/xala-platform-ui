@@ -4,7 +4,7 @@
  */
 
 import { useState, useRef, useEffect, type ReactNode, type KeyboardEvent } from 'react';
-import { Button, Paragraph, Spinner, Textfield } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Spinner, Textfield } from '../primitives';
 import { Stack } from '../primitives';
 // Extended tokens available: typography, transitions, components, shadows
 // Import as needed when adding styled features
@@ -402,6 +402,7 @@ export function ConversationList({
               outline: 'none',
             }}
             data-size="sm"
+            aria-label={searchPlaceholder}
           />
         </Stack>
       </div>
@@ -697,6 +698,7 @@ export function ChatThread({
                 flex: 1,
               }}
               data-size="sm"
+              aria-label={placeholder}
             />
             <Button
               type="button"

@@ -23,7 +23,7 @@
  */
 
 import * as React from 'react';
-import { Checkbox, Fieldset, Paragraph, Label } from '@digdir/designsystemet-react';
+import { Checkbox, Fieldset, Paragraph, Label } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================

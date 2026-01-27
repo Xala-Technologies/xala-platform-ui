@@ -3,8 +3,8 @@
  * Display timeline of user activity
  */
 import * as React from 'react';
-import { Card, Badge } from '@digdir/designsystemet-react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Card, Badge } from '../../primitives';
+import { Paragraph } from '../../primitives';
 
 export interface ActivityItemData {
   id: string;

@@ -30,7 +30,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Checkbox, Spinner, Heading, Paragraph, Card } from '@digdir/designsystemet-react';
+import { Button, Checkbox, Spinner, Heading, Paragraph, Card } from '../../primitives';
 import { UserIcon, BuildingIcon, CheckIcon } from '../../primitives/icons';
 
 // =============================================================================

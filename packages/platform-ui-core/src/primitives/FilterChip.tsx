@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from './components';
 import { cn } from '../utils';
 
 export interface FilterChipProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'children'> {

@@ -17,7 +17,7 @@
  * ```
  */
 import React, { useState } from 'react';
-import { Card } from '@digdir/designsystemet-react';
+import { Card } from '../../primitives';
 import {
   Heading,
   Paragraph,
@@ -28,7 +28,7 @@ import {
   Checkbox,
   Alert,
   Label,
-} from '@digdir/designsystemet-react';
+} from '../../primitives';
 import { MailIcon, ShieldIcon, CheckIcon } from '../../primitives/icons';
 import { Stack, HorizontalLayout } from '../../primitives';
 import { typography } from '../../tokens/extended';

@@ -20,7 +20,7 @@
  */
 
 import * as React from 'react';
-import { Button, Textfield, Fieldset, Paragraph, Label } from '@digdir/designsystemet-react';
+import { Button, Textfield, Fieldset, Paragraph, Label } from '../primitives';
 import { cn } from '../utils';
 import { CalendarIcon } from '../primitives/icons';
 

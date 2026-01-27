@@ -6,7 +6,7 @@
  */
 
 import { type ReactNode } from 'react';
-import { ToggleGroup, Paragraph, Card } from '@digdir/designsystemet-react';
+import { ToggleGroup, Paragraph, Card } from '../primitives';
 import { SunIcon, MoonIcon, GlobeIcon } from 'lucide-react';
 import { Stack } from '../primitives';
 

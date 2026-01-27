@@ -35,7 +35,7 @@
  * ```
  */
 import * as React from 'react';
-import { Dialog, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Dialog, Heading, Paragraph, Button } from '../primitives';
 import type { PatternWizardStep } from './types';
 import { cn } from './utils';
 import { CloseIcon, CheckIcon } from '../utils/icons';

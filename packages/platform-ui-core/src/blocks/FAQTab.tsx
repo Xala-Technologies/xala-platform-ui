@@ -11,7 +11,7 @@ import {
   DetailsContent,
   Heading,
   Paragraph,
-} from '@digdir/designsystemet-react';
+} from '../primitives';
 import { cn } from '../utils';
 import type { FAQItem } from '../types';
 

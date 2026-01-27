@@ -28,7 +28,7 @@ import {
   Fieldset,
   Paragraph,
   Label,
-} from '@digdir/designsystemet-react';
+} from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================

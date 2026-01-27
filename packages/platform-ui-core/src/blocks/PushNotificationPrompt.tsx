@@ -5,7 +5,7 @@
  * from the user for receiving resourceRequest updates and reminders.
  */
 import * as React from 'react';
-import { Dialog, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Dialog, Button, Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { BellIcon, CloseIcon } from '../primitives/icons';
 

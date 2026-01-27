@@ -6,7 +6,7 @@
  *
  * @example
  * ```tsx
- * import { FormActions } from '@digdir/designsystemet-react';
+ * import { FormActions } from '../primitives';
  *
  * function MyForm() {
  *   return (
@@ -23,7 +23,7 @@
  * ```
  */
 
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 
 export interface FormActionsProps {
   /** Text for the primary submit button */

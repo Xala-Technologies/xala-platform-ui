@@ -12,7 +12,7 @@
  */
 
 import * as React from 'react';
-import { Button, Heading } from '@digdir/designsystemet-react';
+import { Button, Heading } from '../../primitives';
 import './ResourceCalendar.css';
 import type { ResourceCalendarProps, CalendarSlot, CalendarSelection, SlotStatus } from './types';
 

@@ -5,7 +5,7 @@
  * and other auth-related UI patterns.
  */
 import * as React from 'react';
-import { Spinner, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
+import { Spinner, Heading, Paragraph, Button } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================

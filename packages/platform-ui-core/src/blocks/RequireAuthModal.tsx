@@ -5,7 +5,7 @@
  * an action that requires authentication.
  */
 import * as React from 'react';
-import { Dialog, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Dialog, Button, Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { UserIcon, CloseIcon } from '../primitives/icons';
 

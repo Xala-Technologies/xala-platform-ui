@@ -5,7 +5,7 @@
  * Supports expand/collapse, file icons, and selection.
  */
 import React, { useState, useCallback } from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 import { Stack } from '../primitives';
 import { BookOpenIcon, ChevronRightIcon } from '../primitives/icons';
 

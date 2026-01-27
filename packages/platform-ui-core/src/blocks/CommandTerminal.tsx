@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
-import { Card, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Spinner } from '../primitives';
 import { Stack } from '../primitives';
 import { cn } from '../utils';
 

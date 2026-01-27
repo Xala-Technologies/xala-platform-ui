@@ -14,7 +14,7 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '../primitives';
 
 // =============================================================================
 // Types

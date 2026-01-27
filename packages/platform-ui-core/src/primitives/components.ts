@@ -4,6 +4,9 @@
  * This is the SINGLE SOURCE OF TRUTH for all @digdir base components.
  * Import from here instead of directly from @digdir/designsystemet-react.
  *
+ * Form controls are re-exported from src/digdir/ wrappers.
+ * Other components are re-exported directly from Digdir or passthrough.
+ *
  * @example
  * // Inside platform/ui modules:
  * import { Button, Paragraph } from '../primitives/components';
@@ -13,122 +16,112 @@
  */
 
 // =============================================================================
-// Typography
-// =============================================================================
-export { Paragraph, Heading, Label } from '@digdir/designsystemet-react';
-
-// =============================================================================
-// Form Components
+// Form Controls (via src/digdir/ wrappers)
+// These wrappers add Xala-specific features: loading state, a11y, etc.
 // =============================================================================
 export {
   Button,
+  type ButtonProps,
   Textfield,
+  Input, // Alias for Textfield
+  type TextfieldProps,
   Textarea,
+  type TextareaProps,
   Checkbox,
+  type CheckboxProps,
   Radio,
+  type RadioProps,
   Switch,
+  type SwitchProps,
   Select,
-  Combobox,
-  Search,
-  Field,
-  Fieldset,
-  ValidationMessage,
-} from '@digdir/designsystemet-react';
-
-// Alias: Input -> Textfield for convenience
-export { Textfield as Input } from '@digdir/designsystemet-react';
+  type SelectProps,
+} from '../digdir';
 
 // =============================================================================
-// Layout Components
+// Typography (passthrough from src/digdir/)
 // =============================================================================
+export { Paragraph, Heading, Label } from '../digdir';
+export type { ParagraphProps, HeadingProps, LabelProps } from '../digdir';
+
+// =============================================================================
+// Form Utilities (passthrough from src/digdir/)
+// =============================================================================
+export { Combobox, Search, Field, Fieldset, ValidationMessage } from '../digdir';
+export type {
+  ComboboxProps,
+  SearchProps,
+  FieldProps,
+  FieldsetProps,
+  ValidationMessageProps,
+} from '../digdir';
+
+// =============================================================================
+// Feedback (passthrough from src/digdir/)
+// =============================================================================
+export { Alert, Spinner, Tooltip } from '../digdir';
+export type { AlertProps, SpinnerProps, TooltipProps } from '../digdir';
+
+// =============================================================================
+// Overlays (passthrough from src/digdir/)
+// =============================================================================
+export { Dialog, DialogTrigger, DialogTriggerContext, DialogBlock } from '../digdir';
+export type { DialogProps } from '../digdir';
+
+// =============================================================================
+// Data Display (passthrough from src/digdir/)
+// =============================================================================
+export { Tag, Table, Pagination, Breadcrumbs } from '../digdir';
+export type { TagProps, TableProps, PaginationProps } from '../digdir';
+// Note: BreadcrumbsProps exported elsewhere, avoid duplicate
+
+// Table compound components
 export {
-  Alert,
-  Avatar,
-  // Badge - use custom Badge from ./badge.tsx with variant support
-  Breadcrumbs,
-  Card,
-  Details,
-  Dialog,
-  Divider,
-  Link,
-  List,
-  // Note: Tabs is exported from composed/SimpleTabs.tsx with TabItem support
-  // Use the composed Tabs which supports both simple TabItem API and compound pattern
-  Table,
-  Tag,
-  Tooltip,
-  Spinner,
-  ErrorSummary,
-  ToggleGroup,
-  Pagination,
-  Chip,
-  Dropdown,
-} from '@digdir/designsystemet-react';
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+  TableFoot,
+} from '../digdir';
 
-// Re-export original Tabs as DSTabs for direct access if needed
-export { Tabs as DSTabs } from '@digdir/designsystemet-react';
+// Breadcrumbs compound components
+export { BreadcrumbsLink, BreadcrumbsList } from '../digdir';
 
-// Tabs compound components - exported as named exports for convenience
-// These allow usage like: import { Tabs, TabsList, TabsTab, TabsPanel } from '...'
-import { Tabs as DesignsystemetTabs } from '@digdir/designsystemet-react';
-export const TabsList = DesignsystemetTabs.List;
-export const TabsTab = DesignsystemetTabs.Tab;
-export const TabsPanel = DesignsystemetTabs.Panel;
+// =============================================================================
+// Layout (passthrough from src/digdir/)
+// =============================================================================
+export { Card, CardBlock, Avatar, Chip, Divider, Details, Link, List } from '../digdir';
+export type { CardProps, AvatarProps, ChipProps, DividerProps, DetailsProps, ListProps } from '../digdir';
 
-// Dropdown compound components - exported as named exports for convenience
-// These allow usage like: import { Dropdown, DropdownTrigger, DropdownList, DropdownItem } from '...'
-import { Dropdown as DesignsystemetDropdown } from '@digdir/designsystemet-react';
-export const DropdownTrigger = DesignsystemetDropdown.Trigger;
-export const DropdownList = DesignsystemetDropdown.List;
-export const DropdownItem = DesignsystemetDropdown.Item;
-export const DropdownHeading = DesignsystemetDropdown.Heading;
+// Details compound components
+export { DetailsSummary, DetailsContent } from '../digdir';
 
-// Table compound components - exported as named exports for convenience
-// These allow usage like: import { Table, TableHead, TableBody, TableRow, TableCell } from '...'
-import { Table as DesignsystemetTable } from '@digdir/designsystemet-react';
-export const TableHead = DesignsystemetTable.Head;
-export const TableBody = DesignsystemetTable.Body;
-export const TableRow = DesignsystemetTable.Row;
-export const TableCell = DesignsystemetTable.Cell;
-export const TableHeaderCell = DesignsystemetTable.HeaderCell;
-export const TableFoot = DesignsystemetTable.Foot;
+// List compound components
+export { ListItem, ListOrdered, ListUnordered } from '../digdir';
 
-// List compound components - exported as named exports for convenience
-import { List as DesignsystemetList } from '@digdir/designsystemet-react';
-export const ListItem = DesignsystemetList.Item;
-export const ListOrdered = DesignsystemetList.Ordered;
-export const ListUnordered = DesignsystemetList.Unordered;
+// =============================================================================
+// Navigation (passthrough from src/digdir/)
+// =============================================================================
+export { Dropdown, ToggleGroup } from '../digdir';
+export type { DropdownProps, ToggleGroupProps } from '../digdir';
+// Note: Tabs exported as DSTabs below to avoid conflict
 
-// Card compound components - exported as named exports for convenience
-import { Card as DesignsystemetCard } from '@digdir/designsystemet-react';
-export const CardBlock = DesignsystemetCard.Block;
+// Dropdown compound components
+export { DropdownTrigger, DropdownList, DropdownItem, DropdownHeading } from '../digdir';
 
-// Details compound components - exported as named exports for convenience
-import { Details as DesignsystemetDetails } from '@digdir/designsystemet-react';
-export const DetailsSummary = DesignsystemetDetails.Summary;
-export const DetailsContent = DesignsystemetDetails.Content;
+// ToggleGroup compound components
+export { ToggleGroupItem } from '../digdir';
 
-// Dialog compound components - exported as named exports for convenience
-import { Dialog as DesignsystemetDialog } from '@digdir/designsystemet-react';
-export const DialogTrigger = DesignsystemetDialog.Trigger;
-export const DialogTriggerContext = DesignsystemetDialog.TriggerContext;
-export const DialogBlock = DesignsystemetDialog.Block;
+// Tabs compound components - DSTabs is the raw Digdir Tabs (SimpleTabs exported as Tabs from composed/)
+import { Tabs as TabsComponent, TabsList as TabsListComp, TabsTab as TabsTabComp, TabsPanel as TabsPanelComp } from '../digdir';
+export { TabsComponent as DSTabs };
+export { TabsListComp as TabsList, TabsTabComp as TabsTab, TabsPanelComp as TabsPanel };
 
-// ErrorSummary compound components - exported as named exports for convenience
-import { ErrorSummary as DesignsystemetErrorSummary } from '@digdir/designsystemet-react';
-export const ErrorSummaryHeading = DesignsystemetErrorSummary.Heading;
-export const ErrorSummaryList = DesignsystemetErrorSummary.List;
-export const ErrorSummaryItem = DesignsystemetErrorSummary.Item;
-export const ErrorSummaryLink = DesignsystemetErrorSummary.Link;
-
-// ToggleGroup compound components - exported as named exports for convenience
-import { ToggleGroup as DesignsystemetToggleGroup } from '@digdir/designsystemet-react';
-export const ToggleGroupItem = DesignsystemetToggleGroup.Item;
-
-// Breadcrumbs compound components - exported as named exports for convenience
-import { Breadcrumbs as DesignsystemetBreadcrumbs } from '@digdir/designsystemet-react';
-export const BreadcrumbsLink = DesignsystemetBreadcrumbs.Link;
-export const BreadcrumbsList = DesignsystemetBreadcrumbs.List;
+// =============================================================================
+// Error Handling (passthrough from src/digdir/)
+// =============================================================================
+export { ErrorSummary, ErrorSummaryHeading, ErrorSummaryList, ErrorSummaryItem, ErrorSummaryLink } from '../digdir';
+export type { ErrorSummaryProps } from '../digdir';
 
 // Note: Custom Badge, Tag, Avatar, Tooltip implementations in composed/ are deprecated
 // Use official Designsystemet components exported above instead

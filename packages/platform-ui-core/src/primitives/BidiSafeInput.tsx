@@ -21,7 +21,7 @@
  * ```
  */
 import * as React from 'react';
-import { Textfield } from '@digdir/designsystemet-react';
+import { Textfield } from './components';
 
 /**
  * Input types that should always render as LTR.

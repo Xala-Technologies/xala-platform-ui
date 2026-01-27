@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { CloseIcon } from '../../primitives';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '../../primitives';
 import { cn } from '../../utils';
 
 export interface FilterChip {

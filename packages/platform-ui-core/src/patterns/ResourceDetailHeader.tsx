@@ -38,7 +38,7 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph, Tag, Button } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Tag, Button } from '../primitives';
 import { cn } from './utils';
 import type { ResourceBadge, ActionButton, PatternBreadcrumbItem } from './types';
 

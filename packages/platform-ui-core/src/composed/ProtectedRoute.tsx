@@ -38,7 +38,7 @@
 
 import { useEffect, useRef, useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { Spinner, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Spinner, Heading, Paragraph } from '../primitives';
 
 // =============================================================================
 // Types

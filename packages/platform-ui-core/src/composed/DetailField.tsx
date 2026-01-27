@@ -13,7 +13,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
-import { Button, Heading } from '@digdir/designsystemet-react';
+import { Button, Heading } from '../primitives';
 
 // =============================================================================
 // Types

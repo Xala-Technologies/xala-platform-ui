@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef, Suspense } from 'react';
-import { Card, Heading, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph, Spinner } from '../primitives';
 import { EyeIcon, CodeIcon } from '@navikt/aksel-icons';
 import { cn } from '../utils';
 

@@ -5,7 +5,7 @@
  * Supports highlighting the current day.
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { ClockIcon } from '../primitives/icons';
 import type { OpeningHoursDay } from '../types';

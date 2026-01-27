@@ -39,7 +39,7 @@ import {
   Switch,
   Spinner,
   Alert,
-} from '@digdir/designsystemet-react';
+} from '../../primitives';
 import { Stack, SaveIcon, RefreshIcon } from '../../primitives';
 
 // =============================================================================

@@ -3,7 +3,7 @@
  * A wrapper for form inputs with label, description, and error message
  */
 import React from 'react';
-import { Label } from '@digdir/designsystemet-react';
+import { Label } from './components';
 
 export interface FormFieldProps {
   /** Field label */

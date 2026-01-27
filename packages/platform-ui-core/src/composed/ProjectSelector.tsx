@@ -19,7 +19,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import { Popover } from './Popover';
 import { CheckIcon } from '../primitives/icons';
 

@@ -19,7 +19,7 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Textfield } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Textfield } from '../primitives';
 import { cn } from '../utils';
 import { MapPinIcon } from '../primitives/icons';
 

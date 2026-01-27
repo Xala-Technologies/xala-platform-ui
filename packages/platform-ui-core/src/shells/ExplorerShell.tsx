@@ -6,7 +6,7 @@
  */
 
 import { type ReactNode } from 'react';
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '../primitives';
 import { Stack } from '../primitives';
 
 /**

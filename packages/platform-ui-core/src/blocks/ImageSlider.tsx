@@ -5,7 +5,7 @@
  * Supports keyboard navigation, touch swipe, and fullscreen mode.
  */
 import * as React from 'react';
-import { Paragraph, Button } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '../primitives';
 import { Stack } from '../primitives';
 import { cn } from '../utils';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '../primitives/icons';

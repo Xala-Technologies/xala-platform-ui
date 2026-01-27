@@ -5,7 +5,7 @@
  * Supports dynamic tabs based on resource type and available content.
  */
 import * as React from 'react';
-import { Tabs, Paragraph } from '@digdir/designsystemet-react';
+import { DSTabs as Tabs, Paragraph } from '../primitives';
 import { cn } from '../utils';
 
 // =============================================================================
@@ -80,7 +80,7 @@ export function ResourceTabs({
 
   return (
     <div className={cn('resource-object-tabs', className)}>
-      <Tabs value={effectiveActiveTab} onChange={onTabChange || (() => {})}>
+      <Tabs value={effectiveActiveTab} onChange={onTabChange || (() => { })}>
         <Tabs.List style={getTabListStyle()}>
           {visibleTabs.map((tab) => (
             <Tabs.Tab key={tab.id} value={tab.id}>

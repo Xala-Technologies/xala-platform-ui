@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '../primitives';
 import { Stack, Text } from '../primitives';
 import {
   CheckmarkCircleIcon,

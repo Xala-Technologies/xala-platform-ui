@@ -20,7 +20,7 @@
 
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useRef, useCallback } from 'react';
-import { Button } from '@digdir/designsystemet-react';
+import { Button } from '../primitives';
 import {
   HeaderSearch,
   type SearchResultItem,

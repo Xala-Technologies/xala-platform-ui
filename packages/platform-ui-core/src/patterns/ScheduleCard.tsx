@@ -25,7 +25,7 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '../primitives';
 import type { ScheduleEntry } from './types';
 import { cn } from './utils';
 

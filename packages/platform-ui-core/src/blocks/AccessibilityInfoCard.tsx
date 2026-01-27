@@ -19,7 +19,7 @@
  */
 
 import * as React from 'react';
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Paragraph } from '../primitives';
 import { cn } from '../utils';
 import { CheckIcon } from '../primitives/icons';
 

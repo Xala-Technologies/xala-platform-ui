@@ -6,7 +6,7 @@
  *
  * @example
  * ```tsx
- * import { LoadingFallback } from '@digdir/designsystemet-react';
+ * import { LoadingFallback } from '../primitives';
  *
  * function App() {
  *   return (
@@ -18,7 +18,7 @@
  * ```
  */
 
-import { Spinner } from '@digdir/designsystemet-react';
+import { Spinner } from '../primitives';
 
 export interface LoadingFallbackProps {
   /** Loading message to display */

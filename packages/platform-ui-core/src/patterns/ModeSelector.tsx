@@ -27,7 +27,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '../primitives';
 
 // ============================================================================
 // Types

@@ -4,7 +4,7 @@
  */
 
 import React, { useId } from 'react';
-import { Paragraph, Label } from '@digdir/designsystemet-react';
+import { Paragraph, Label } from './components';
 
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   /** Label for the select */
