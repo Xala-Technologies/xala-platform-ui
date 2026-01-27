@@ -5,7 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { ResourceGrid, type ResourceGridProps } from '../../patterns/ResourceGrid';
+import { ResourceGrid, type ResourceGridProps } from '@xala-technologies/platform-ui-digilist';
 import { Card, Heading, Paragraph, Tag } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof ResourceGrid> = {

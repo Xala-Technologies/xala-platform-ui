@@ -11,7 +11,7 @@ import {
   type AddOnsSelectorProps,
   type AddOnItem,
   type SelectedAddOn,
-} from '../../patterns/AddOnsSelector';
+} from '@xala-technologies/platform-ui-digilist';
 import { Paragraph } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof AddOnsSelector> = {

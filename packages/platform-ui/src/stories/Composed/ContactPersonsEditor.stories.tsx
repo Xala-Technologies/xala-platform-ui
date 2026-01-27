@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { ContactPersonsEditor } from '../../composed/ContactPersonsEditor';
-import type { ContactPerson } from '../../composed/ContactPersonsEditor';
+import { ContactPersonsEditor } from '@xala-technologies/platform-ui-digilist';
+import type { ContactPerson } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof ContactPersonsEditor> = {
   title: 'Composed/ContactPersonsEditor',

@@ -5,8 +5,8 @@ import {
   defaultWeekdaySchedule,
   emptySchedule,
   validateSchedule,
-} from '../../composed/OpeningHoursEditor';
-import type { WeekdaySchedule } from '../../composed/OpeningHoursEditor';
+} from '@xala-technologies/platform-ui-digilist';
+import type { WeekdaySchedule } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof OpeningHoursEditor> = {
   title: 'Composed/OpeningHoursEditor',

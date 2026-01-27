@@ -300,9 +300,8 @@ export type {
 
 // Activity Blocks
 
-// Amenity Chips
-export { AmenityChips } from './AmenityChips';
-export type { Amenity, AmenityChipsProps, AmenityChipsLabels } from './AmenityChips';
+// Note: Domain blocks (AmenityChips) now re-exported from @xala-technologies/platform-ui-digilist
+
 
 // Share Components
 export { ShareButton, ShareSheet } from './ShareButton';
@@ -312,24 +311,11 @@ export type { ShareButtonProps, ShareSheetProps, ShareData, SharePlatform } from
 export { FavoriteButton } from './FavoriteButton';
 export type { FavoriteButtonProps } from './FavoriteButton';
 
-// Period & Media Cards
-export { PeriodCard } from './PeriodCard';
-export type {
-  PeriodCardProps,
-  PeriodStatusDisplay,
-  PeriodDeadline,
-  PeriodCardImage,
-} from './PeriodCard';
+// Note: Domain blocks (PeriodCard, MediaResourceCard) now re-exported from @xala-technologies/platform-ui-digilist
 
 // Re-export PeriodStatus from patterns for convenience
 export type { PeriodStatus, PeriodInfo } from '../patterns/types';
 
-export { MediaResourceCard } from './MediaResourceCard';
-export type {
-  MediaResourceCardProps,
-  MediaResourceCardImage,
-  MediaResourceCardCapacity,
-} from './MediaResourceCard';
 
 // Workflow Components (for design governance apps)
 export {
@@ -465,15 +451,8 @@ export type {
 export { LocationCardEditable } from './LocationCardEditable';
 export type { LocationCardEditableProps, LocationCardEditableLabels } from './LocationCardEditable';
 
-// Resource Components (generic resource display)
-export { ResourceListItem } from './ResourceListItem';
-export type { ResourceListItemProps } from './ResourceListItem';
+// Note: ResourceListItem, ResourceToolbar, ResourceTabs now re-exported from @xala-technologies/platform-ui-digilist
 
-export { ResourceToolbar } from './ResourceToolbar';
-export type { ResourceToolbarProps } from './ResourceToolbar';
-
-export { ResourceTabs } from './ResourceTabs';
-export type { ResourceTabsProps } from './ResourceTabs';
 
 // =============================================================================
 // XAHEEN-CODER EXTENDED BLOCKS (Task management, Git integration, File browsing)

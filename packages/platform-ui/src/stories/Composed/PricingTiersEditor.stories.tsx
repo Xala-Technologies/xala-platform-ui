@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { PricingTiersEditor } from '../../composed/PricingTiersEditor';
-import type { PricingTier } from '../../composed/PricingTiersEditor';
+import { PricingTiersEditor } from '@xala-technologies/platform-ui-digilist';
+import type { PricingTier } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof PricingTiersEditor> = {
   title: 'Composed/PricingTiersEditor',

@@ -8,7 +8,7 @@ import { useT } from '@xala-technologies/i18n';
 import {
   ResourceDetailHeader,
   type ResourceDetailHeaderProps,
-} from '../../patterns/ResourceDetailHeader';
+} from '@xala-technologies/platform-ui-digilist';
 import type { ResourceBadge, ActionButton, PatternBreadcrumbItem } from '../../patterns/types';
 
 const meta: Meta<typeof ResourceDetailHeader> = {

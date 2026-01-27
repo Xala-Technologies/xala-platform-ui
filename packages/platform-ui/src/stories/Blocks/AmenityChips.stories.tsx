@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { AmenityChips } from '../../blocks/AmenityChips';
+import { AmenityChips } from '@xala-technologies/platform-ui-digilist';
 import { Wifi, Car, Coffee, Utensils, Dumbbell, Music } from 'lucide-react';
 
 const meta: Meta<typeof AmenityChips> = {

@@ -85,3 +85,9 @@ export * from './themes';
 // Utilities
 // =============================================================================
 export { cn } from './utils';
+
+// =============================================================================
+// Domain-Specific Components (from @xala-technologies/platform-ui-digilist)
+// Re-exported for backward compatibility
+// =============================================================================
+export * from '@xala-technologies/platform-ui-digilist';

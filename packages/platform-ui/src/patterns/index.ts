@@ -11,33 +11,8 @@ export type { FeatureChipsProps, FeatureChipsLabels } from './FeatureChips';
 export { MetadataRow, MetadataRowInline } from './MetadataRow';
 export type { MetadataRowProps } from './MetadataRow';
 
-export { ResourceCard } from './ResourceCard';
-export type { ResourceCardProps, ResourceCardVariant, ResourceCardImage } from './ResourceCard';
-
-export { PricingSummary } from './PricingSummary';
-export type {
-  PricingSummaryProps,
-  PricingSummaryLineItem,
-  PriceLineItemType,
-} from './PricingSummary';
-
-export { SlotCalendar } from './SlotCalendar';
-export type {
-  SlotCalendarProps,
-  SlotCalendarLabels,
-  ViewMode as SlotViewMode,
-  SelectionMode,
-  CellStatus,
-} from './SlotCalendar';
-
-export { ResourceGrid } from './ResourceGrid';
-export type { ResourceGridProps } from './ResourceGrid';
-
-export { ResourceDetailHeader } from './ResourceDetailHeader';
-export type { ResourceDetailHeaderProps } from './ResourceDetailHeader';
-
-export { ScheduleCard } from './ScheduleCard';
-export type { ScheduleCardProps } from './ScheduleCard';
+// Note: Domain patterns (ResourceCard, PricingSummary, SlotCalendar, ResourceGrid, ResourceDetailHeader, ScheduleCard, CartSidebar, AddOnsSelector, QuantitySlotCalendar)
+// are now re-exported from @xala-technologies/platform-ui-digilist
 
 // Utilities
 export { cn, getGapValue, spacingValues } from './utils';
@@ -120,26 +95,6 @@ export type {
   SelectionAction,
 } from './SelectionActionsBar';
 
-// Cart Sidebar
-export { CartSidebar } from './CartSidebar';
-export type {
-  CartSidebarProps,
-  CartSidebarLabels,
-  CartItem,
-  CartSummary,
-  PriceBreakdownLine,
-} from './CartSidebar';
-
-// Add-Ons Selector
-export { AddOnsSelector } from './AddOnsSelector';
-export type {
-  AddOnsSelectorProps,
-  AddOnsSelectorLabels,
-  AddOnItem,
-  SelectedAddOn,
-  AddOnPricingUnit,
-} from './AddOnsSelector';
-
 // Stepper Header
 export { StepperHeader } from './StepperHeader';
 export type { StepperHeaderProps, StepperHeaderLabels, StepperStep } from './StepperHeader';
@@ -152,16 +107,7 @@ export type {
   ActivityTimelineItem,
   StatusColorMap,
 } from './ActivityTimeline';
-// Note: ActivityStatus is not exported to avoid conflict with blocks/activity
 
 // Key Facts
 export { KeyFacts } from './KeyFacts';
 export type { KeyFactsProps, KeyFactsLabels, KeyFactItem, KeyFactType } from './KeyFacts';
-
-// Quantity Slot Calendar (calendar with quantity-based slots)
-export { QuantitySlotCalendar } from './QuantitySlotCalendar';
-export type {
-  QuantitySlotCalendarProps,
-  QuantitySlotCalendarLabels,
-  QuantitySlot,
-} from './QuantitySlotCalendar';

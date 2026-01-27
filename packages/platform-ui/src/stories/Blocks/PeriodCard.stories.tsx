@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useT } from '@xala-technologies/i18n';
-import { PeriodCard } from '../../blocks/PeriodCard';
+import { PeriodCard } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof PeriodCard> = {
   title: 'Blocks/PeriodCard',

@@ -79,9 +79,7 @@ export type {
 export { Breadcrumb } from './Breadcrumb';
 export type { BreadcrumbProps } from './Breadcrumb';
 
-// ResourceRequest Stepper
-export { ResourceRequestStepper } from './ResourceRequestStepper';
-export type { ResourceRequestStepperProps } from './ResourceRequestStepper';
+// Note: ResourceRequestStepper moved to @xala-technologies/platform-ui-digilist
 export { WizardStepper } from './WizardStepper';
 export type {
   WizardStepperProps,
@@ -595,18 +593,8 @@ export type { InfoBoxProps, InfoBoxVariant } from './InfoBox';
 export { SkipLinks } from './SkipLinks';
 export type { SkipLinksProps, SkipLink } from './SkipLinks';
 
-// AvailabilityLegend (calendar status legend)
-export {
-  AvailabilityLegend,
-  defaultBookingLegendItems,
-  defaultBookingLegendItemsEn,
-} from './AvailabilityLegend';
-export type {
-  AvailabilityLegendProps,
-  AvailabilityLegendLabels,
-  LegendItem as AvailabilityLegendItem,
-  AvailabilityStatus as CalendarAvailabilityStatus,
-} from './AvailabilityLegend';
+// Note: AvailabilityLegend moved to @xala-technologies/platform-ui-digilist
+
 
 // PublishingChecklist (wizard validation checklist)
 export { PublishingChecklist } from './PublishingChecklist';
@@ -617,20 +605,8 @@ export type {
   ChecklistItemStatus as PublishingChecklistItemStatus,
 } from './PublishingChecklist';
 
-// OpeningHoursEditor (weekly schedule editor)
-export {
-  OpeningHoursEditor,
-  defaultWeekdaySchedule,
-  emptySchedule,
-  validateSchedule,
-} from './OpeningHoursEditor';
-export type {
-  OpeningHoursEditorProps,
-  OpeningHoursEditorLabels,
-  WeekdaySchedule,
-  DaySchedule,
-  WeekdayKey,
-} from './OpeningHoursEditor';
+// Note: OpeningHoursEditor moved to @xala-technologies/platform-ui-digilist
+
 
 // PaymentMethodSelector (chip-based payment method display/selector)
 export {
@@ -652,22 +628,11 @@ export type {
   EnabledPaymentMethods,
 } from './PaymentMethodConfig';
 
-// PricingTiersEditor (editable pricing tiers list)
-export { PricingTiersEditor } from './PricingTiersEditor';
-export type {
-  PricingTiersEditorProps,
-  PricingTiersEditorLabels,
-  PricingTier,
-  PriceUnit as PricingTierUnit,
-} from './PricingTiersEditor';
+// Note: PricingTiersEditor moved to @xala-technologies/platform-ui-digilist
 
-// BlockedPeriodsManager (add/remove blocked date ranges)
-export { BlockedPeriodsManager, validateBlockedPeriods } from './BlockedPeriodsManager';
-export type {
-  BlockedPeriodsManagerProps,
-  BlockedPeriodsManagerLabels,
-  BlockedPeriod,
-} from './BlockedPeriodsManager';
+
+// Note: BlockedPeriodsManager moved to @xala-technologies/platform-ui-digilist
+
 
 // ExternalImportInput (URL import with validation)
 export { ExternalImportInput } from './ExternalImportInput';
@@ -678,13 +643,8 @@ export type {
   ImportStatus,
 } from './ExternalImportInput';
 
-// ContactPersonsEditor (add/edit/remove contact persons)
-export { ContactPersonsEditor } from './ContactPersonsEditor';
-export type {
-  ContactPersonsEditorProps,
-  ContactPersonsEditorLabels,
-  ContactPerson,
-} from './ContactPersonsEditor';
+// Note: ContactPersonsEditor moved to @xala-technologies/platform-ui-digilist
+
 
 // TreeView (hierarchical navigation, sidebar, file explorer)
 export { TreeView, TreeViewToolbar, useTreeView } from './TreeView';

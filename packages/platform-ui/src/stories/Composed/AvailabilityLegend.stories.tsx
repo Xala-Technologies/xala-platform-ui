@@ -3,7 +3,7 @@ import {
   AvailabilityLegend,
   defaultBookingLegendItems,
   defaultBookingLegendItemsEn,
-} from '../../composed/AvailabilityLegend';
+} from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof AvailabilityLegend> = {
   title: 'Composed/AvailabilityLegend',

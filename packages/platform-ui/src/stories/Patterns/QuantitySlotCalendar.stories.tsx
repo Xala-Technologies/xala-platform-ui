@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { QuantitySlotCalendar } from '../../patterns/QuantitySlotCalendar';
-import type { QuantitySlot } from '../../patterns/QuantitySlotCalendar';
+import { QuantitySlotCalendar } from '@xala-technologies/platform-ui-digilist';
+import type { QuantitySlot } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof QuantitySlotCalendar> = {
   title: 'Patterns/QuantitySlotCalendar',

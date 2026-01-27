@@ -3,8 +3,8 @@ import { useState } from 'react';
 import {
   BlockedPeriodsManager,
   validateBlockedPeriods,
-} from '../../composed/BlockedPeriodsManager';
-import type { BlockedPeriod } from '../../composed/BlockedPeriodsManager';
+} from '@xala-technologies/platform-ui-digilist';
+import type { BlockedPeriod } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof BlockedPeriodsManager> = {
   title: 'Composed/BlockedPeriodsManager',

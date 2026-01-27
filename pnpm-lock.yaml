@@ -233,6 +233,12 @@ importers:
       '@navikt/aksel-icons':
         specifier: ^8.0.1
         version: 8.1.0
+      '@xala-technologies/platform-ui-core':
+        specifier: workspace:^
+        version: link:../platform-ui-core
+      '@xala-technologies/platform-ui-digilist':
+        specifier: workspace:^
+        version: link:../platform-ui-digilist
       lucide-react:
         specifier: ^0.562.0
         version: 0.562.0(react@18.3.1)

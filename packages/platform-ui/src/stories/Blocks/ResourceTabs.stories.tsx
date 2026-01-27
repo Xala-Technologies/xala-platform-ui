@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useT } from '@xala-technologies/i18n';
-import { ResourceTabs } from '../../blocks/ResourceTabs';
+import { ResourceTabs } from '@xala-technologies/platform-ui-digilist';
 import { Paragraph, Heading } from '@digdir/designsystemet-react';
 import { Info, Settings, FileText, Calendar } from 'lucide-react';
 

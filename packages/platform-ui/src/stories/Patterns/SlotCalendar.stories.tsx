@@ -5,7 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { SlotCalendar, type SlotCalendarProps } from '../../patterns/SlotCalendar';
+import { SlotCalendar, type SlotCalendarProps } from '@xala-technologies/platform-ui-digilist';
 import type { CalendarCell, LegendItem } from '../../patterns/types';
 
 const meta: Meta<typeof SlotCalendar> = {

@@ -11,7 +11,7 @@ import {
   type CartSidebarProps,
   type CartItem,
   type CartSummary,
-} from '../../patterns/CartSidebar';
+} from '@xala-technologies/platform-ui-digilist';
 import { Paragraph, Alert } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof CartSidebar> = {

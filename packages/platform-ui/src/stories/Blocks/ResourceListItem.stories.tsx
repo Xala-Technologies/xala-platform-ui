@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useT } from '@xala-technologies/i18n';
-import { ResourceListItem } from '../../blocks/ResourceListItem';
+import { ResourceListItem } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof ResourceListItem> = {
   title: 'Blocks/ResourceListItem',

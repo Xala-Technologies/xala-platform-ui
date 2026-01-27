@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Paragraph, Checkbox, Button } from '@digdir/designsystemet-react';
 import { MultiStepFormModal } from '../../patterns/MultiStepFormModal';
 import { ReviewStep } from '../../patterns/ReviewStep';
-import { PricingSummary } from '../../patterns/PricingSummary';
+import { PricingSummary } from '@xala-technologies/platform-ui-digilist';
 import type { FormStep } from '../../patterns/MultiStepFormModal';
 import type { ReviewSection } from '../../patterns/types';
 

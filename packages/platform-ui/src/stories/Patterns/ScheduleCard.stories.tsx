@@ -5,7 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { ScheduleCard, type ScheduleCardProps } from '../../patterns/ScheduleCard';
+import { ScheduleCard, type ScheduleCardProps } from '@xala-technologies/platform-ui-digilist';
 import type { ScheduleEntry } from '../../patterns/types';
 
 const meta: Meta<typeof ScheduleCard> = {

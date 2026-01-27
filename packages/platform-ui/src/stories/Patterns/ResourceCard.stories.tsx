@@ -6,7 +6,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import { useT } from '@xala-technologies/i18n';
-import { ResourceCard, type ResourceCardProps } from '../../patterns/ResourceCard';
+import { ResourceCard, type ResourceCardProps } from '@xala-technologies/platform-ui-digilist';
 import type {
   ResourceBadge,
   PriceDisplay,
