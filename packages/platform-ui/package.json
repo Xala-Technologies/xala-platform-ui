@@ -212,6 +212,7 @@
     "@digdir/designsystemet-react": "^1.9.0",
     "@fontsource/inter": "^5.2.8",
     "@navikt/aksel-icons": "^8.0.1",
+    "@xala-technologies/i18n": "1.1.0",
     "@xala-technologies/platform-ui-core": "workspace:^",
     "@xala-technologies/platform-ui-digilist": "workspace:^",
     "lucide-react": "^0.562.0",
