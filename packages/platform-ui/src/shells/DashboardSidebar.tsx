@@ -214,6 +214,7 @@ function SidebarContent({
     <>
       {/* Logo Section - var(--ds-spacing-18) height, exact match */}
       <Stack
+        direction="horizontal"
         style={{
           height: 'var(--ds-spacing-18)',
           padding: '0 var(--ds-spacing-6)',
