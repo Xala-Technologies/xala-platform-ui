@@ -13,7 +13,7 @@ import {
   Switch,
   Spinner,
   Alert,
-} from '@digdir/designsystemet-react';
+} from '@xala-technologies/platform-ui-core';
 
 export interface NotificationSettingsData {
   emailEnabled: boolean;

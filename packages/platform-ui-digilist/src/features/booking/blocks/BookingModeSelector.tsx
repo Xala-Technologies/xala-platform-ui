@@ -34,9 +34,9 @@
  */
 
 import * as React from 'react';
-import { Tabs, Paragraph } from '@digdir/designsystemet-react';
-import { Stack } from '../../../primitives/stack';
-import { Badge } from '../../../composed/Badge';
+import { Tabs, Paragraph } from '@xala-technologies/platform-ui-core';
+import { Stack } from '@xala-technologies/platform-ui-core';
+import { Badge } from '@xala-technologies/platform-ui-core';
 import { CalendarIcon, ClockIcon, RepeatIcon, SunIcon } from 'lucide-react';
 
 // =============================================================================

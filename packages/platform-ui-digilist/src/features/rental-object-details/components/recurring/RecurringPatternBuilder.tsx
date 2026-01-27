@@ -1,6 +1,6 @@
 /** RecurringPatternBuilder - Refactored Pure UI */
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@xala-technologies/platform-ui-core';
 
 export interface RecurringPatternData {
   frequency: 'daily' | 'weekly' | 'monthly';

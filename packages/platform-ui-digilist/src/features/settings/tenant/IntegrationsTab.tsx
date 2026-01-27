@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Card, Heading, Paragraph, Switch, Tag, Stack } from '@xala-technologies/platform-ui';
+import { Card, Heading, Paragraph, Switch, Tag, Stack } from '@xala-technologies/platform-ui-core';
 
 import type { IntegrationsData, IntegrationProvider } from '../tenant-types';
 

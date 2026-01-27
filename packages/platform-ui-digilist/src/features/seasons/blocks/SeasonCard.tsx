@@ -34,7 +34,7 @@ import {
   Button,
   Tag,
   Stack,
-} from '@xala-technologies/platform-ui/primitives';
+} from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

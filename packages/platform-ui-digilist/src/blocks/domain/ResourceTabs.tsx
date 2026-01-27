@@ -5,8 +5,8 @@
  * Supports dynamic tabs based on resource type and available content.
  */
 import * as React from 'react';
-import { DSTabs as Tabs, Paragraph } from '../primitives';
-import { cn } from '../utils';
+import { DSTabs as Tabs, Paragraph } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

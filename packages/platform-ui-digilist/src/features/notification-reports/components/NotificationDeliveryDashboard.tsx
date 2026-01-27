@@ -7,10 +7,10 @@
  */
 
 import { useMemo } from 'react';
-import { Button, Paragraph, Spinner, Table } from '@digdir/designsystemet-react';
-import { HeaderSearch } from '../../../composed/header-parts';
-import { StatusTag } from '../../../blocks/StatusBadges';
-import type { BadgeColor } from '../../../blocks/StatusBadges';
+import { Button, Paragraph, Spinner, Table } from '@xala-technologies/platform-ui-core';
+import { HeaderSearch } from '@xala-technologies/platform-ui-core';
+import { StatusTag } from '@xala-technologies/platform-ui-core';
+import type { BadgeColor } from '@xala-technologies/platform-ui-core';
 import type { DeliveryReport, DeliveryStats } from '../types';
 
 // ============================================================================

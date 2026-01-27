@@ -8,8 +8,8 @@
  * mode view components and step components for better maintainability.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert, Card } from '@digdir/designsystemet-react';
-import { Stack } from '../../../primitives/stack';
+import { Heading, Paragraph, Button, Alert, Card } from '@xala-technologies/platform-ui-core';
+import { Stack } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Icons - Local SVG versions (designsystemet-react doesn't export these)

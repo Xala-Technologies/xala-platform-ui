@@ -34,6 +34,20 @@
 export * from './types';
 
 // =============================================================================
+// Domain-Specific Components (moved from platform-ui-core)
+// =============================================================================
+
+// Blocks: Domain-specific UI building blocks
+export * from './blocks';
+
+// Patterns: Domain-specific composed patterns
+export * from './patterns';
+
+// Composed: Higher-level domain components
+export * from './composed';
+
+
+// =============================================================================
 // i18n Registration
 // =============================================================================
 // Digilist UI provides i18n strings for business-specific components

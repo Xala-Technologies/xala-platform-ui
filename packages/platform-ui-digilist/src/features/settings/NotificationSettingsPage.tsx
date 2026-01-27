@@ -43,8 +43,8 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-import { NotificationsTab } from '../../blocks/settings';
-import type { NotificationSettingsData } from '../../blocks/settings';
+import { NotificationsTab } from '@xala-technologies/platform-ui-core';
+import type { NotificationSettingsData } from '@xala-technologies/platform-ui-core';
 
 export interface NotificationSettingsPageProps {
   /** Current notification settings data */

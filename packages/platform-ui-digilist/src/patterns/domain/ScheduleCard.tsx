@@ -25,9 +25,9 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '../primitives';
-import type { ScheduleEntry } from './types';
-import { cn } from './utils';
+import { Heading, Paragraph } from '@xala-technologies/platform-ui-core';
+import type { ScheduleEntry } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

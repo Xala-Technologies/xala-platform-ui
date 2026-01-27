@@ -8,8 +8,8 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
-import type { RentalObjectType } from '../../../../types/rental-object-detail';
+import { Heading, Paragraph } from '@xala-technologies/platform-ui-core';
+type RentalObjectType = 'SPACE' | 'RESOURCE' | 'EVENT' | 'SERVICE' | 'VEHICLE' | 'OTHER';
 import { createPresenter } from '../../presenters';
 
 // =============================================================================
@@ -172,14 +172,14 @@ export interface Rule {
   title: string;
   content: string;
   category?:
-    | 'general'
-    | 'cancellation'
-    | 'safety'
-    | 'cleaning'
-    | 'noise'
-    | 'food'
-    | 'equipment'
-    | 'other';
+  | 'general'
+  | 'cancellation'
+  | 'safety'
+  | 'cleaning'
+  | 'noise'
+  | 'food'
+  | 'equipment'
+  | 'other';
   icon?: string;
 }
 

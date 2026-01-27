@@ -7,9 +7,9 @@
  * Pure presentational component - all text provided via labels prop.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Card } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Card } from '@xala-technologies/platform-ui-core';
 import { CheckCircle2Icon, CalendarIcon, MailIcon, PhoneIcon } from 'lucide-react';
-import { Stack } from '../../../primitives/stack';
+import { Stack } from '@xala-technologies/platform-ui-core';
 
 /**
  * Booking details interface

@@ -4,8 +4,8 @@
  * Instant Mode View - Direct booking without calendar
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
-import { SparklesIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
+import { SparklesIcon, ChevronRightIcon } from '@xala-technologies/platform-ui-core';
 import { formatPriceUnit } from '../utils';
 import type { BookingConfig, BookingPriceCalculation } from '@digilist/contracts';
 

@@ -4,13 +4,13 @@
  * Event Mode View - Select tickets for events
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button, Alert } from '@xala-technologies/platform-ui-core';
 import {
   CalendarIcon,
   ChevronRightIcon,
   InfoIcon,
   UsersIcon,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 import { PriceSummary } from '../components/PriceSummary';
 import type { BookingConfig, BookingSelection, BookingPriceCalculation } from '@digilist/contracts';
 

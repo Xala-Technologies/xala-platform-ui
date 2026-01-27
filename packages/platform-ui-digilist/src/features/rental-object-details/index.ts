@@ -208,41 +208,11 @@ export {
 } from './mappers';
 
 // =============================================================================
-// Re-exported Types from Base Types
+// Calendar Types - Import from Core
 // =============================================================================
+// Calendar types (CalendarMode, CalendarCell, CalendarSelection, etc.) 
+// should be imported directly from @xala-technologies/platform-ui-core
+// 
+// Example:
+// import { CalendarMode, CalendarCell } from '@xala-technologies/platform-ui-core';
 
-export type {
-  RentalObjectDetail,
-  RentalObjectType,
-  ContactInfo,
-  OpeningHoursDay,
-  Coordinates,
-  GalleryImage,
-  GuidelineSection,
-  CalendarMode,
-  CalendarSlotStatus,
-  CalendarSelectionType,
-  CalendarViewMode,
-  CalendarCell,
-  CalendarSelection,
-  CalendarSelectionRange,
-  CalendarLegendItem,
-  BookingDetails,
-  BookingState,
-  BookingStep,
-  TimeSlotStatus,
-} from '../../types/rental-object-detail';
-
-// =============================================================================
-// Re-exported Utilities
-// =============================================================================
-
-export {
-  isCalendarSlotSelectable,
-  getCalendarSlotLabel,
-  getCalendarSlotKey,
-  CALENDAR_SLOT_STATUS_LABELS,
-  CALENDAR_SLOT_STATUS_KEYS,
-  CALENDAR_MODE_LABELS,
-  DEFAULT_CALENDAR_LEGEND,
-} from '../../types/rental-object-detail';

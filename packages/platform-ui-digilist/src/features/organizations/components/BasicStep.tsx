@@ -8,8 +8,8 @@
  */
 
 import * as React from 'react';
-import { Textfield, Select, Paragraph, Heading, Alert } from '@digdir/designsystemet-react';
-import { Stack, FormField } from '@xala-technologies/platform-ui';
+import { Textfield, Select, Paragraph, Heading, Alert } from '@xala-technologies/platform-ui-core';
+import { Stack, FormField } from '@xala-technologies/platform-ui-core';
 import type { BasicData, ActorType } from '../types';
 
 // =============================================================================

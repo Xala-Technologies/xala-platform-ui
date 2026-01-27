@@ -15,9 +15,9 @@ import {
   Spinner,
   Alert,
   Textarea,
-} from '@digdir/designsystemet-react';
-import { StatusTag } from '../../../blocks/StatusBadges';
-import type { BadgeColor } from '../../../blocks/StatusBadges';
+} from '@xala-technologies/platform-ui-core';
+import { StatusTag } from '@xala-technologies/platform-ui-core';
+import type { BadgeColor } from '@xala-technologies/platform-ui-core';
 import type { GdprRequestVM } from '../types';
 import {
   AlertTriangleIcon,
@@ -26,7 +26,7 @@ import {
   ClockIcon,
   UserIcon,
   CalendarIcon,
-} from '../../../primitives/icons';
+} from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

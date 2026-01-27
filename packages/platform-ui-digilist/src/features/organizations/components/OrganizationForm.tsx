@@ -17,8 +17,8 @@ import {
   Button,
   Spinner,
   Card,
-} from '@digdir/designsystemet-react';
-import { Stack, FormField } from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
+import { Stack, FormField } from '@xala-technologies/platform-ui-core';
 import type { OrganizationFormData, ActorType, OrganizationVM } from '../types';
 
 // =============================================================================

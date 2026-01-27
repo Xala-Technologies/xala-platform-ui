@@ -45,7 +45,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Stack, Card, Heading, Spinner } from '@xala-technologies/platform-ui';
+import { Paragraph, Stack, Card, Heading, Spinner } from '@xala-technologies/platform-ui-core';
 import {
   RentalObjectAvailabilityCalendar,
   buildCalendarLegend,

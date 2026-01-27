@@ -10,7 +10,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Paragraph } from '../../../../primitives';
+import { Paragraph } from '@xala-technologies/platform-ui-core';
 import type { DocsTocItem } from '../../types';
 
 export interface DocsRightTOCLabels {

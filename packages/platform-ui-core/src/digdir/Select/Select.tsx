@@ -3,14 +3,14 @@
  *
  * Thin wrapper around Digdir Select with Option compound component
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type ForwardRefExoticComponent, type RefAttributes } from 'react';
 import { Select as DigdirSelect } from '@digdir/designsystemet-react';
 import type { ComponentProps } from 'react';
 
 export type SelectProps = ComponentProps<typeof DigdirSelect>;
 
-// Create wrapper component
-const SelectBase = forwardRef<HTMLSelectElement, SelectProps>(
+// Create wrapper component with explicit type
+const SelectBase: ForwardRefExoticComponent<SelectProps & RefAttributes<HTMLSelectElement>> = forwardRef<HTMLSelectElement, SelectProps>(
     (props, ref) => {
         return <DigdirSelect ref={ref} {...props} />;
     }
@@ -18,7 +18,12 @@ const SelectBase = forwardRef<HTMLSelectElement, SelectProps>(
 
 SelectBase.displayName = 'Select';
 
-// Create compound Select with Option attached
-export const Select = Object.assign(SelectBase, {
+// Export Option type explicitly
+type SelectOptionProps = ComponentProps<typeof DigdirSelect.Option>;
+
+// Create compound Select with Option attached - cast to any then back to proper interface
+export const Select: ForwardRefExoticComponent<SelectProps & RefAttributes<HTMLSelectElement>> & {
+    Option: typeof DigdirSelect.Option;
+} = Object.assign(SelectBase, {
     Option: DigdirSelect.Option,
 });

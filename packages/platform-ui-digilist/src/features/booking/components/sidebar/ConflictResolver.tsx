@@ -14,7 +14,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Tag, Button, Card, Spinner } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Tag, Button, Card, Spinner } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

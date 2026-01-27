@@ -3,8 +3,14 @@
  * All text via labels prop, Designsystemet only
  */
 import * as React from 'react';
-import { Paragraph, Card } from '@digdir/designsystemet-react';
-import type { ContactInfo } from '../../../../types/rental-object-detail';
+import { Paragraph, Card } from '@xala-technologies/platform-ui-core';
+
+// Local type definition to avoid workspace import issues
+interface ContactInfo {
+  name?: string;
+  email?: string;
+  phone?: string;
+}
 
 export interface ContactWidgetLabels {
   contactInfoHeading: string;

@@ -1,29 +1,15 @@
 /**
- * @xala-technologies/platform-ui - Notifications Feature
+ * @xala-technologies/platform-ui-digilist - Notifications Feature
  *
- * Pure presentational notification components.
- * All notification components are located in blocks/ and composed/ directories.
+ * NOTE: Notification components (NotificationBell, NotificationCenter, etc.) live in 
+ * @xala-technologies/platform-ui-core. Import directly from core instead.
  *
- * @module @xala-technologies/platform-ui/features/notifications
+ * @example
+ * import { NotificationBell, NotificationCenter } from '@xala-technologies/platform-ui-core';
+ *
+ * @module @xala-technologies/platform-ui-digilist/features/notifications
+ * @deprecated Import from core instead
  */
 
-// Re-export from blocks
-export {
-  NotificationBell,
-  type NotificationBellProps,
-  NotificationCenter,
-  type NotificationCenterProps,
-  type NotificationCenterLabels,
-  PushNotificationPrompt,
-  type PushNotificationPromptProps,
-  type PushNotificationPromptLabels,
-  NotificationItemBlock,
-  type NotificationItemProps,
-  type NotificationItemLabels,
-} from '../../blocks';
-
-// Note: NotificationToast is in composed but not exported from the composed index yet
-// Import directly from @xala-technologies/platform-ui/composed if needed
-
-// Note: Notification types should be defined by the application or SDK layer
-// This feature only provides UI components
+// Placeholder export to maintain module structure
+export { };

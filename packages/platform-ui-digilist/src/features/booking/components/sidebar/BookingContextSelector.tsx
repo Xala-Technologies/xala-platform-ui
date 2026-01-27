@@ -16,7 +16,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Paragraph, Spinner } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

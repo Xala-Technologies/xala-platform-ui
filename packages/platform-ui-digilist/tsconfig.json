@@ -34,12 +34,6 @@
             ],
             "@xala-technologies/platform-ui-digilist/*": [
                 "./src/*"
-            ],
-            "@xala-technologies/platform-ui-core": [
-                "../platform-ui-core/src/index.ts"
-            ],
-            "@xala-technologies/platform-ui-core/*": [
-                "../platform-ui-core/src/*"
             ]
         }
     },

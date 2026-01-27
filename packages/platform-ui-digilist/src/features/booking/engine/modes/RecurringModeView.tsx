@@ -4,9 +4,9 @@
  * Recurring Mode View - Set up seasonal/recurring bookings with weekday selection
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
-import { CalendarIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
-import { cn } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
+import { CalendarIcon, ChevronRightIcon } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 import { PriceSummary } from '../components/PriceSummary';
 import type { BookingConfig, BookingSelection, BookingPriceCalculation } from '@digilist/contracts';
 

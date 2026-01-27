@@ -17,7 +17,7 @@ import {
   FormField,
   Textfield,
   SaveIcon,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 
 import type { BrandingSettingsData } from '../tenant-types';
 

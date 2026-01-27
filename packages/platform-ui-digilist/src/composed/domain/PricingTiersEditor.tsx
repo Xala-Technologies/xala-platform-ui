@@ -28,8 +28,8 @@ import {
   Fieldset,
   Paragraph,
   Label,
-} from '../primitives';
-import { cn } from '../utils';
+} from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

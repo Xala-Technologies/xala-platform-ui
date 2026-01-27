@@ -9,7 +9,7 @@
 
 import * as React from 'react';
 import { useMemo } from 'react';
-import { Paragraph, Spinner } from '@xala-technologies/platform-ui';
+import { Paragraph, Spinner } from '@xala-technologies/platform-ui-core';
 
 import {
   ConflictIndicator,

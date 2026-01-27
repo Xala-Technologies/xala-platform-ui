@@ -37,6 +37,7 @@ export default defineConfig({
         'react-router-dom',
         '@digdir/designsystemet-react',
         '@xala-technologies/platform-ui-core',
+        'lucide-react',
         'zod',
     ],
     esbuildOptions(options) {

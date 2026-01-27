@@ -8,15 +8,15 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-import { AddressesTab as DSAddressesTab, type AddressData } from '../../../blocks/settings';
+import { AddressesTab as DSAddressesTab, type AddressData } from '@xala-technologies/platform-ui-core';
 
 // Re-export the pure presentational component
-export { AddressesTab } from '../../../blocks/settings';
+export { AddressesTab } from '@xala-technologies/platform-ui-core';
 export type {
   AddressesTabProps,
   AddressesTabLabels,
   AddressData,
   Address,
-} from '../../../blocks/settings';
+} from '@xala-technologies/platform-ui-core';
 
 export default DSAddressesTab;

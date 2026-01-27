@@ -20,7 +20,7 @@ import {
   Checkbox,
   Alert,
   Stack,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 import { useT } from '@xala-technologies/platform/i18n';
 
 import {

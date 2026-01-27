@@ -18,7 +18,7 @@ import {
   Textfield,
   Switch,
   SaveIcon,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 
 import type { BookingSettingsData } from '../tenant-types';
 

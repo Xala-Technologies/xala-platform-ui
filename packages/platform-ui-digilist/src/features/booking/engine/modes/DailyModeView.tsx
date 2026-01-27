@@ -4,15 +4,15 @@
  * Daily Mode View - Select full days from a month calendar
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
 import {
   CalendarIcon,
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CloseIcon,
-} from '@xala-technologies/platform-ui';
-import { cn } from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 import { PriceSummary } from '../components/PriceSummary';
 import type {
   BookingSelection,

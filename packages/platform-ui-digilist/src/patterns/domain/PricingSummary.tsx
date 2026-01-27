@@ -25,8 +25,8 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '../primitives';
-import type { PriceLineItem as BasePriceLineItem } from './types';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
+import type { PriceLineItem as BasePriceLineItem } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

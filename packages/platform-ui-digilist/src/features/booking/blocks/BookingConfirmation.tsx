@@ -5,7 +5,7 @@
  * Shows summary of all booking details for user confirmation.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Alert } from '@xala-technologies/platform-ui-core';
 import {
   CalendarIcon,
   UsersIcon,
@@ -14,7 +14,7 @@ import {
   CheckCircle2Icon,
   ChevronLeftIcon,
 } from 'lucide-react';
-import { Stack } from '../../../primitives/stack';
+import { Stack } from '@xala-technologies/platform-ui-core';
 
 /**
  * Booking details interface (platform-ui local definition)

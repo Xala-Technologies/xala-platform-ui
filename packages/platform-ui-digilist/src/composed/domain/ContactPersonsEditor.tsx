@@ -20,8 +20,8 @@
  */
 
 import * as React from 'react';
-import { Button, Textfield, Fieldset, Paragraph } from '../primitives';
-import { cn } from '../utils';
+import { Button, Textfield, Fieldset, Paragraph } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

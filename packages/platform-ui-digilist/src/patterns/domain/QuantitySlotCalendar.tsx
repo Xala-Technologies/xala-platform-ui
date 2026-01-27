@@ -22,8 +22,8 @@
  */
 
 import * as React from 'react';
-import { Button, Heading, Paragraph } from '../primitives';
-import { cn } from '../utils';
+import { Button, Heading, Paragraph } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

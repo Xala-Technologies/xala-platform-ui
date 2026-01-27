@@ -8,15 +8,15 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-import { ProfileTab as DSProfileTab } from '../../../blocks/settings';
+import { ProfileTab as DSProfileTab } from '@xala-technologies/platform-ui-core';
 
 // Re-export the pure presentational component
-export { ProfileTab } from '../../../blocks/settings';
+export { ProfileTab } from '@xala-technologies/platform-ui-core';
 export type {
   ProfileTabProps,
   ProfileData,
   ProfileAddress,
   ProfileTabLabels,
-} from '../../../blocks/settings';
+} from '@xala-technologies/platform-ui-core';
 
 export default DSProfileTab;

@@ -143,11 +143,13 @@
         "eslint": "^9.0.0",
         "eslint-plugin-react": "^7.37.0",
         "eslint-plugin-react-hooks": "^5.1.0",
+        "lucide-react": "^0.562.0",
         "prettier": "^3.2.5",
         "tsup": "^8.0.1",
         "typescript": "^5.3.3"
     },
     "peerDependencies": {
+        "lucide-react": ">=0.400.0",
         "react": ">=18.0.0",
         "react-dom": ">=18.0.0",
         "react-router-dom": ">=6.0.0"

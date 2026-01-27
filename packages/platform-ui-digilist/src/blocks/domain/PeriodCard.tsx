@@ -35,9 +35,9 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '../primitives';
-import { Stack, Text } from '../primitives';
-import type { PeriodStatus, PeriodInfo } from '../patterns/types';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
+import { Stack, Text } from '@xala-technologies/platform-ui-core';
+import type { PeriodStatus, PeriodInfo } from '@xala-technologies/platform-ui-core';
 
 // ============================================================================
 // Types

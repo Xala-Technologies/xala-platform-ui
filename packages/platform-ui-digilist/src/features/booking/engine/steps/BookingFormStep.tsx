@@ -13,8 +13,8 @@ import {
   Textfield,
   Textarea,
   Checkbox,
-} from '@xala-technologies/platform-ui';
-import { ChevronLeftIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
+import { ChevronLeftIcon, ChevronRightIcon } from '@xala-technologies/platform-ui-core';
 import { formatPrice } from '@digilist/contracts';
 import type { BookingFormData, BookingConfig, AdditionalService } from '@digilist/contracts';
 

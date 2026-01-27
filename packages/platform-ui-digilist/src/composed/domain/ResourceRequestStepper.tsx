@@ -6,12 +6,32 @@
  * Supports completed, active, and future step states.
  */
 import * as React from 'react';
-import { Heading, Paragraph } from '../primitives';
-import { cn } from '../utils';
-import { CheckIcon } from '../primitives/icons';
-import type { ResourceRequestStep } from '../types';
+import { Heading, Paragraph, cn } from '@xala-technologies/platform-ui-core';
+
+// Local type definition (moved from core types)
+export interface ResourceRequestStep {
+  id: string;
+  label: string;
+}
+
+// Inline CheckIcon to avoid dependency on core primitives/icons
+const CheckIcon = ({ size = 22 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
 
 export interface ResourceRequestStepperProps {
+
   /** Array of resourceRequest steps */
   steps: ResourceRequestStep[];
   /** Current step index (0-based) */
@@ -339,11 +359,11 @@ export function ResourceRequestStepper({
                 onKeyDown={
                   isClickable
                     ? (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          onStepClick(index);
-                        }
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onStepClick(index);
                       }
+                    }
                     : undefined
                 }
                 style={stepperStyles.stepButton(!!isClickable)}

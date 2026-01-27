@@ -32,8 +32,26 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Button, Card, Heading, Paragraph } from '../primitives';
-import { XMarkIcon } from '@navikt/aksel-icons';
+import { Button, Card, Heading, Paragraph } from '@xala-technologies/platform-ui-core';
+
+// Inline XMarkIcon to avoid @navikt/aksel-icons dependency
+const XMarkIcon = ({ fontSize }: { fontSize?: string }) => (
+  <svg
+    width={fontSize || '16px'}
+    height={fontSize || '16px'}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 
 // ============================================================================
 // Types

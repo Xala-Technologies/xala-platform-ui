@@ -37,7 +37,7 @@ interface ContactInfoCardProps {
  * Use with the platform ContactInfoCard component:
  * @example
  * ```tsx
- * import { ContactInfoCard } from '@xala-technologies/platform-ui';
+ * import { ContactInfoCard } from '@xala-technologies/platform-ui-core';
  * import { mapContactInfoToCardProps } from '@xala-technologies/platform-ui/features/rental-object-details';
  *
  * function ContactSection({ contact }: { contact: ContactInfoDTO }) {
@@ -128,7 +128,7 @@ const DAY_NAMES: Record<number, string> = {
  * Use with the platform OpeningHoursCard component:
  * @example
  * ```tsx
- * import { OpeningHoursCard } from '@xala-technologies/platform-ui';
+ * import { OpeningHoursCard } from '@xala-technologies/platform-ui-core';
  * import { mapOpeningHoursToCardProps } from '@xala-technologies/platform-ui/features/rental-object-details';
  *
  * function OpeningHoursSection({ openingHours }: { openingHours: OpeningHoursDTO }) {

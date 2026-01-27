@@ -17,7 +17,7 @@ import {
   Spinner,
   Stack,
   Card,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 
 import { BLOCK_TYPE_CONFIG } from '../types';
 import type { CalendarEvent, BlockType, CalendarPermissions } from '../types';

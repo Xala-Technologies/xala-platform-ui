@@ -25,8 +25,8 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '../primitives';
-import type { ResourceBadge, PriceDisplay, MetadataItem, StatusIndicator } from './types';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
+import type { ResourceBadge, PriceDisplay, MetadataItem, StatusIndicator } from '@xala-technologies/platform-ui-core';
 
 // ============================================================================
 // Types

@@ -20,7 +20,7 @@ import {
   BookOpenIcon,
   ArrowRightIcon,
   UsersIcon,
-} from '../../../../primitives';
+} from '@xala-technologies/platform-ui-core';
 import type { DocsNavItem, DocsNavSection } from '../../types';
 
 export interface DocsSidebarLabels {

@@ -13,7 +13,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

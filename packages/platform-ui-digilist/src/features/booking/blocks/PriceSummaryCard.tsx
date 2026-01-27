@@ -4,7 +4,7 @@
  * A card showing price summary for bookings with calculation breakdown.
  */
 import * as React from 'react';
-import { Heading, Paragraph, Stack, Card, Button } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Stack, Card, Button } from '@xala-technologies/platform-ui-core';
 
 // Utility function for class name concatenation
 function cn(...classes: (string | undefined | false)[]): string {

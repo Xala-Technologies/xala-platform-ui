@@ -9,8 +9,8 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import { Button, Table, Select, Paragraph, Heading, Card } from '@digdir/designsystemet-react';
-import { Stack, FormField, Badge } from '@xala-technologies/platform-ui';
+import { Button, Table, Select, Paragraph, Heading, Card } from '@xala-technologies/platform-ui-core';
+import { Stack, FormField, Badge } from '@xala-technologies/platform-ui-core';
 import type { OrganizationMemberVM, UserVM, MemberRole } from '../types';
 
 // =============================================================================

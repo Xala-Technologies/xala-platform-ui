@@ -1,6 +1,6 @@
 /** PaymentSection - Refactored Pure UI */
 import * as React from 'react';
-import { Heading, Paragraph, Card } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Card } from '@xala-technologies/platform-ui-core';
 
 export interface PriceLine {
   label: string;

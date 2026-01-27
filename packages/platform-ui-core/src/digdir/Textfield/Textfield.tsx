@@ -6,11 +6,11 @@
  * - Error state handling
  * - Character limit display
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type ForwardRefExoticComponent, type RefAttributes } from 'react';
 import { Textfield as DigdirTextfield } from '@digdir/designsystemet-react';
 import type { TextfieldProps } from './Textfield.types';
 
-export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
+export const Textfield: ForwardRefExoticComponent<TextfieldProps & RefAttributes<HTMLInputElement>> = forwardRef<HTMLInputElement, TextfieldProps>(
     (
         {
             errorMessage,
@@ -42,5 +42,5 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
 
 Textfield.displayName = 'Textfield';
 
-// Alias for convenience
-export const Input = Textfield;
+// Alias for convenience - also needs explicit type
+export const Input: ForwardRefExoticComponent<TextfieldProps & RefAttributes<HTMLInputElement>> = Textfield;

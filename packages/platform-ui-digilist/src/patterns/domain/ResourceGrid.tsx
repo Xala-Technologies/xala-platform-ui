@@ -24,8 +24,8 @@
  * ```
  */
 import * as React from 'react';
-import { Spinner, Paragraph } from '../primitives';
-import { cn, getGapValue } from './utils';
+import { Spinner, Paragraph } from '@xala-technologies/platform-ui-core';
+import { cn, getGapValue } from '@xala-technologies/platform-ui-core';
 
 export interface ResourceGridProps<T> {
   /** Array of items to render */

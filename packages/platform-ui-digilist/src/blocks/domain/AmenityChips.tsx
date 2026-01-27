@@ -32,7 +32,7 @@
  */
 
 import * as React from 'react';
-import { Chip } from '../primitives';
+import { Chip } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

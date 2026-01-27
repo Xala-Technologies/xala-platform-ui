@@ -9,8 +9,8 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Button, Card, Alert, Divider } from '@digdir/designsystemet-react';
-import { Stack } from '../../../../primitives/stack';
+import { Heading, Paragraph, Button, Card, Alert, Divider } from '@xala-technologies/platform-ui-core';
+import { Stack } from '@xala-technologies/platform-ui-core';
 import { BookingVisibilitySelector, type BookingVisibility } from './BookingVisibilitySelector';
 
 // =============================================================================

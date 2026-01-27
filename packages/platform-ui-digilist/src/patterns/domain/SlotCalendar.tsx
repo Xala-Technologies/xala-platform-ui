@@ -20,8 +20,8 @@
  * ```
  */
 import * as React from 'react';
-import { Button, Paragraph } from '../primitives';
-import type { CalendarCell, LegendItem } from './types';
+import { Button, Paragraph } from '@xala-technologies/platform-ui-core';
+import type { CalendarCell, LegendItem } from '@xala-technologies/platform-ui-core';
 
 // -----------------------------------------------------------------------------
 // Types

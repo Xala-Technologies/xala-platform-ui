@@ -11,8 +11,8 @@
  */
 
 import { useState, useEffect } from 'react';
-import { BottomNavigation, type BottomNavigationItem } from '../../../../composed';
-import { DashboardContent } from '../../../../shells';
+import { BottomNavigation, type BottomNavigationItem } from '@xala-technologies/platform-ui-core';
+import { DashboardContent } from '@xala-technologies/platform-ui-core';
 import { DocsSidebar, type DocsSidebarLabels } from './DocsSidebar';
 import { DocsHeader, type DocsHeaderLabels } from './DocsHeader';
 import type { DocsNavItem, DocsNavSection } from '../../types';

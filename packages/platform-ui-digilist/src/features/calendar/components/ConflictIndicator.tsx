@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Tooltip, XCircleIcon, Stack } from '@xala-technologies/platform-ui';
+import { Tooltip, XCircleIcon, Stack } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

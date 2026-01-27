@@ -8,14 +8,14 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-import { PrivacyTab as DSPrivacyTab } from '../../../blocks/settings';
+import { PrivacyTab as DSPrivacyTab } from '@xala-technologies/platform-ui-core';
 
 // Re-export the pure presentational component
-export { PrivacyTab } from '../../../blocks/settings';
+export { PrivacyTab } from '@xala-technologies/platform-ui-core';
 export type {
   PrivacyTabProps,
   PrivacyTabLabels,
   PrivacyConsentSettings,
-} from '../../../blocks/settings';
+} from '@xala-technologies/platform-ui-core';
 
 export default DSPrivacyTab;

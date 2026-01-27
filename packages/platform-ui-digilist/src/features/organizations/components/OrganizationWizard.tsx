@@ -9,8 +9,8 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import { Button, Heading, Paragraph, Spinner, Card } from '@digdir/designsystemet-react';
-import { Stack } from '@xala-technologies/platform-ui';
+import { Button, Heading, Paragraph, Spinner, Card } from '@xala-technologies/platform-ui-core';
+import { Stack } from '@xala-technologies/platform-ui-core';
 import type { BasicStepLabels } from './BasicStep';
 import type { BrandingStepLabels } from './BrandingStep';
 import type { RolesStepLabels } from './RolesStep';

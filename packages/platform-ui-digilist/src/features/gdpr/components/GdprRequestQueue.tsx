@@ -7,11 +7,11 @@
  * @module @xala-technologies/platform-ui/features/gdpr
  */
 import * as React from 'react';
-import { Card, Paragraph, Button, Table, Spinner, Textfield } from '@digdir/designsystemet-react';
-import { StatusTag } from '../../../blocks/StatusBadges';
-import type { BadgeColor } from '../../../blocks/StatusBadges';
+import { Card, Paragraph, Button, Table, Spinner, Textfield } from '@xala-technologies/platform-ui-core';
+import { StatusTag } from '@xala-technologies/platform-ui-core';
+import type { BadgeColor } from '@xala-technologies/platform-ui-core';
 import type { GdprRequestVM, GdprSortOption } from '../types';
-import { SearchIcon, FilterIcon, CopyIcon, CheckIcon } from '../../../primitives/icons';
+import { SearchIcon, FilterIcon, CopyIcon, CheckIcon } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

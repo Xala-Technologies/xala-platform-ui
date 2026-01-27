@@ -1,5 +1,5 @@
 /**
- * @digilist/ui - Calendar Blocks
+ * @xala-technologies/platform-ui-digilist - Calendar Blocks
  *
  * Shared calendar utilities, types, and helper functions.
  * These are used by CalendarSection controllers in apps.
@@ -31,51 +31,12 @@
  *   getMonthStart,
  *   getMonthEnd,
  *   mapToCalendarCell,
+ * } from '@xala-technologies/platform-ui-digilist/features/calendar';
  *
- *   // Default configuration
- *   DEFAULT_CALENDAR_LEGEND,
- *
- *   // Re-exported types
- *   type CalendarMode,
- *   type CalendarSlotStatus,
- *   type CalendarCell,
- *   type CalendarSelection,
- * } from '@xala-technologies/platform-ui/blocks/calendar';
- *
- * // Use with RentalObjectAvailabilityCalendar
- * import { RentalObjectAvailabilityCalendar } from '@digilist/ui';
+ * // For calendar types (CalendarMode, CalendarCell, etc.), import from core:
+ * import { CalendarMode, CalendarCell } from '@xala-technologies/platform-ui-core';
  * ```
  */
-
-// =============================================================================
-// Re-export Calendar Types from types module
-// =============================================================================
-
-import type { CalendarSelection as CalendarSelectionType_ } from '../../../types/rental-object-detail';
-
-export type {
-  CalendarMode,
-  CalendarSlotStatus,
-  CalendarSelectionType,
-  CalendarViewMode,
-  CalendarCell,
-  CalendarSelectionRange,
-  CalendarSelection,
-  CalendarLegendItem,
-} from '../../../types/rental-object-detail';
-
-// Local alias for use in this module
-type CalendarSelection = CalendarSelectionType_;
-
-export {
-  CALENDAR_SLOT_STATUS_LABELS,
-  CALENDAR_SLOT_STATUS_KEYS,
-  CALENDAR_MODE_LABELS,
-  DEFAULT_CALENDAR_LEGEND,
-  isCalendarSlotSelectable,
-  getCalendarSlotLabel,
-  getCalendarSlotKey,
-} from '../../../types/rental-object-detail';
 
 // =============================================================================
 // Re-export Calendar Components
@@ -84,11 +45,123 @@ export {
 export {
   RentalObjectAvailabilityCalendar,
   type RentalObjectAvailabilityCalendarProps,
-} from '../../../blocks/calendar/RentalObjectAvailabilityCalendar';
+} from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
-// Utility Functions
+// Local Calendar Type Definitions (matching core types)
 // =============================================================================
+
+/**
+ * Calendar display and selection mode
+ */
+export type CalendarMode = 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY';
+
+/**
+ * Availability status for calendar slots
+ */
+export type CalendarSlotStatus =
+  | 'AVAILABLE'
+  | 'RESERVED'
+  | 'BOOKED'
+  | 'BLOCKED'
+  | 'BLACKOUT'
+  | 'CLOSED';
+
+/**
+ * Single cell in the availability calendar
+ */
+export interface CalendarCell {
+  id: string;
+  start: string;
+  end: string;
+  status: CalendarSlotStatus;
+  reasonKey?: string | null;
+  bookingId?: string | null;
+  blockId?: string | null;
+  lockedUntil?: string | null;
+}
+
+/**
+ * Selected time range for booking
+ */
+export interface CalendarSelectionRange {
+  startDate: string;
+  endDate: string;
+  startTime?: string;
+  endTime?: string;
+}
+
+/**
+ * Current calendar selection state
+ */
+export interface CalendarSelection {
+  cells: CalendarCell[];
+  range?: CalendarSelectionRange;
+  isValid: boolean;
+  errorKey?: string;
+}
+
+/**
+ * Legend item for slot status display
+ */
+export interface CalendarLegendItem {
+  status: CalendarSlotStatus;
+  labelKey: string;
+  label: string;
+}
+
+// =============================================================================
+// Calendar Constants
+// =============================================================================
+
+export const CALENDAR_SLOT_STATUS_LABELS: Record<CalendarSlotStatus, string> = {
+  AVAILABLE: 'Ledig',
+  RESERVED: 'Reservert',
+  BOOKED: 'Booket',
+  BLOCKED: 'Blokkert',
+  BLACKOUT: 'Utilgjengelig',
+  CLOSED: 'Stengt',
+};
+
+export const CALENDAR_SLOT_STATUS_KEYS: Record<CalendarSlotStatus, string> = {
+  AVAILABLE: 'calendar.slot.available',
+  RESERVED: 'calendar.slot.reserved',
+  BOOKED: 'calendar.slot.booked',
+  BLOCKED: 'calendar.slot.blocked',
+  BLACKOUT: 'calendar.slot.blackout',
+  CLOSED: 'calendar.slot.closed',
+};
+
+export const CALENDAR_MODE_LABELS: Record<CalendarMode, string> = {
+  TIME_SLOTS: 'Tidsluke',
+  ALL_DAY: 'Heldag',
+  MULTI_DAY: 'Flere dager',
+};
+
+export const DEFAULT_CALENDAR_LEGEND: CalendarLegendItem[] = [
+  { status: 'AVAILABLE', labelKey: 'calendar.slot.available', label: 'Ledig' },
+  { status: 'RESERVED', labelKey: 'calendar.slot.reserved', label: 'Reservert' },
+  { status: 'BOOKED', labelKey: 'calendar.slot.booked', label: 'Booket' },
+  { status: 'BLOCKED', labelKey: 'calendar.slot.blocked', label: 'Blokkert' },
+  { status: 'BLACKOUT', labelKey: 'calendar.slot.blackout', label: 'Utilgjengelig' },
+  { status: 'CLOSED', labelKey: 'calendar.slot.closed', label: 'Stengt' },
+];
+
+// =============================================================================
+// Calendar Utility Functions
+// =============================================================================
+
+export function isCalendarSlotSelectable(status: CalendarSlotStatus): boolean {
+  return status === 'AVAILABLE';
+}
+
+export function getCalendarSlotLabel(status: CalendarSlotStatus): string {
+  return CALENDAR_SLOT_STATUS_LABELS[status] ?? status;
+}
+
+export function getCalendarSlotKey(status: CalendarSlotStatus): string {
+  return CALENDAR_SLOT_STATUS_KEYS[status] ?? `calendar.slot.${status.toLowerCase()}`;
+}
 
 /**
  * Format date to ISO date string (YYYY-MM-DD).
@@ -137,16 +210,14 @@ export function getMonthEnd(date: Date): Date {
  * Calculate date range based on calendar mode.
  */
 export function getDateRangeForMode(
-  mode: 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY',
+  mode: CalendarMode,
   currentDate: Date
 ): { from: string; to: string } {
   if (mode === 'TIME_SLOTS') {
-    // Week view - Monday to Sunday
     const from = getWeekStart(currentDate);
     const to = getWeekEnd(currentDate);
     return { from: formatDateToISO(from), to: formatDateToISO(to) };
   } else {
-    // Month view for ALL_DAY and MULTI_DAY
     const from = getMonthStart(currentDate);
     const to = getMonthEnd(currentDate);
     return { from: formatDateToISO(from), to: formatDateToISO(to) };
@@ -155,11 +226,6 @@ export function getDateRangeForMode(
 
 /**
  * Map SDK AvailabilityCellDTO to CalendarCell.
- *
- * @example
- * ```tsx
- * const cells = matrixResponse.data.cells.map(mapToCalendarCell);
- * ```
  */
 export function mapToCalendarCell(cell: {
   start: string;
@@ -169,21 +235,12 @@ export function mapToCalendarCell(cell: {
   bookingId?: string | null;
   blockId?: string | null;
   lockedUntil?: string | null;
-}): {
-  id: string;
-  start: string;
-  end: string;
-  status: string;
-  reasonKey?: string;
-  bookingId?: string;
-  blockId?: string;
-  lockedUntil?: string;
-} {
+}): CalendarCell {
   return {
     id: `${cell.start}-${cell.end}`,
     start: cell.start,
     end: cell.end,
-    status: cell.status,
+    status: cell.status as CalendarSlotStatus,
     reasonKey: cell.reasonKey ?? undefined,
     bookingId: cell.bookingId ?? undefined,
     blockId: cell.blockId ?? undefined,
@@ -205,7 +262,6 @@ export function buildCalendarLegend(
     }));
   }
 
-  // Default legend with translations or fallback labels
   const fallbackLegend = [
     { status: 'AVAILABLE', label: t?.('components.calendar.statusAvailable') ?? 'Ledig' },
     { status: 'RESERVED', label: t?.('components.calendar.statusReserved') ?? 'Reservert' },
@@ -222,7 +278,7 @@ export function buildCalendarLegend(
  * Get subtitle text based on calendar mode.
  */
 export function getCalendarSubtitle(
-  mode: 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY',
+  mode: CalendarMode,
   t?: (key: string) => string
 ): string {
   const subtitles: Record<string, string> = {
@@ -239,27 +295,17 @@ export function getCalendarSubtitle(
 
 /**
  * Standard props for CalendarSection controller components.
- * Apps should implement this interface for consistent behavior.
  */
 export interface CalendarSectionControllerProps {
-  /** Rental object ID to fetch calendar data for */
   rentalObjectId: string;
   /** @deprecated Use rentalObjectId instead */
   listingId?: string;
-  /** Optional booking type filter */
   bookingType?: string;
-  /** Calendar interaction mode */
   mode?: 'view' | 'interactive';
-  /** Callback when selection changes (interactive mode only) */
   onSelectionChange?: (selection: CalendarSelection) => void;
-  /** Whether the calendar is read-only */
   readOnly?: boolean;
-  /** Custom title */
   title?: string;
-  /** Custom subtitle */
   subtitle?: string;
-  /** Force a specific calendar mode (TIME_SLOTS, ALL_DAY, MULTI_DAY) */
-  forceMode?: 'TIME_SLOTS' | 'ALL_DAY' | 'MULTI_DAY';
-  /** Custom class name */
+  forceMode?: CalendarMode;
   className?: string;
 }

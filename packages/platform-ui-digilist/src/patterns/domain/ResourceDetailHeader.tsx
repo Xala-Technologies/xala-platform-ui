@@ -38,9 +38,9 @@
  * ```
  */
 import * as React from 'react';
-import { Heading, Paragraph, Tag, Button } from '../primitives';
-import { cn } from './utils';
-import type { ResourceBadge, ActionButton, PatternBreadcrumbItem } from './types';
+import { Heading, Paragraph, Tag, Button } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
+import type { ResourceBadge, ActionButton, PatternBreadcrumbItem } from '@xala-technologies/platform-ui-core';
 
 // Icon components (inline SVG for platform independence)
 const HeartIcon = ({ filled = false, size = 20 }: { filled?: boolean; size?: number }) => (

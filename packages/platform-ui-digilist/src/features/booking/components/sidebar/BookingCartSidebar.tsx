@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Card, Button } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Card, Button } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Icons

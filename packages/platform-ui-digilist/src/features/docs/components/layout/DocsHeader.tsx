@@ -6,7 +6,7 @@
  */
 
 import { useState, useCallback } from 'react';
-import { Textfield, Button, SearchIcon } from '../../../../primitives';
+import { Textfield, Button, SearchIcon } from '@xala-technologies/platform-ui-core';
 
 export interface DocsHeaderLabels {
   searchPlaceholder: string;

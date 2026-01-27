@@ -1,6 +1,6 @@
 /** OpeningHoursWidget - Refactored Pure UI */
 import * as React from 'react';
-import { Card, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Paragraph } from '@xala-technologies/platform-ui-core';
 
 export interface DayHours {
   day: string;

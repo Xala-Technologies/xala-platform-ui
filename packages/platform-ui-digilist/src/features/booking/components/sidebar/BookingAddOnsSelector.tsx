@@ -16,7 +16,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Checkbox, Tag } from '@digdir/designsystemet-react';
+import { Paragraph, Checkbox, Tag } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

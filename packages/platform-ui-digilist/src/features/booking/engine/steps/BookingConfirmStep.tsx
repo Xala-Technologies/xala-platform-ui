@@ -4,8 +4,8 @@
  * Confirmation step showing booking summary and price breakdown
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert, Stack, Card } from '@xala-technologies/platform-ui';
-import { CalendarIcon, ChevronLeftIcon, UsersIcon, InfoIcon } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button, Alert, Stack, Card } from '@xala-technologies/platform-ui-core';
+import { CalendarIcon, ChevronLeftIcon, UsersIcon, InfoIcon } from '@xala-technologies/platform-ui-core';
 import { cn, formatPrice } from '../utils';
 import type {
   BookingConfig,

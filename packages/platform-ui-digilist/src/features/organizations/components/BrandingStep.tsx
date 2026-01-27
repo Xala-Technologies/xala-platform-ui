@@ -9,8 +9,8 @@
 
 import * as React from 'react';
 import { useCallback, useState } from 'react';
-import { Paragraph, Heading, Card, Button, Alert } from '@digdir/designsystemet-react';
-import { Stack, FormField } from '@xala-technologies/platform-ui';
+import { Paragraph, Heading, Card, Button, Alert } from '@xala-technologies/platform-ui-core';
+import { Stack, FormField } from '@xala-technologies/platform-ui-core';
 import type { BrandingData } from '../types';
 
 // =============================================================================

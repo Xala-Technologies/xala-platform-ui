@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Alert, Card, Checkbox } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Alert, Card, Checkbox } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Icons

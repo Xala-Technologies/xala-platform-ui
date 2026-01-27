@@ -4,13 +4,13 @@
  * Date Range Mode View - Select start and end date
  */
 import * as React from 'react';
-import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
+import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui-core';
 import {
   CalendarIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   InfoIcon,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 import { cn, formatPrice as utilFormatPrice, formatPriceUnit } from '../utils';
 import { PriceSummary } from '../components/PriceSummary';
 import type {

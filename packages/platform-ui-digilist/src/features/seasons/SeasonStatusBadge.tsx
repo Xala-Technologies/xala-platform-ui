@@ -20,7 +20,7 @@
  * ```
  */
 
-import { Tag } from '@xala-technologies/platform-ui/primitives';
+import { Tag } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

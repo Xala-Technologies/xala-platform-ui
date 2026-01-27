@@ -147,8 +147,6 @@ export {
   // Types
   type CalendarMode,
   type CalendarSlotStatus,
-  type CalendarSelectionType,
-  type CalendarViewMode,
   type CalendarCell,
   type CalendarSelectionRange,
   type CalendarSelection,

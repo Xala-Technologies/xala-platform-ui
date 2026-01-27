@@ -89,11 +89,13 @@ export const FilterChip = forwardRef<HTMLButtonElement, FilterChipProps>(
       className,
       'data-testid': testId,
       'data-size': _dataSize, // Filter out data-size to avoid type conflict with Button
+      color: _color, // Filter out color to avoid type conflict with Button wrapper
       ...props
     },
     ref
   ) => {
     void _dataSize; // Mark as intentionally unused
+    void _color; // Mark as intentionally unused
     const [isHovered, setIsHovered] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 

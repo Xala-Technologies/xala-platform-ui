@@ -1,38 +1,12 @@
 /**
  * Rental Object Details Feature - Extended Type Definitions
  *
- * These types extend the base types from @digilist/ui/types for the
- * rental object details feature components.
+ * Local type definitions for the rental object details feature components.
+ * For calendar types (CalendarMode, CalendarCell, etc.) import directly from
+ * @xala-technologies/platform-ui-core
  *
- * @module @xala-technologies/platform-ui/features/rental-object-details
+ * @module @xala-technologies/platform-ui-digilist/features/rental-object-details
  */
-
-// Re-export base types
-export type {
-  RentalObjectType,
-  RentalObjectDetail,
-  ContactInfo,
-  Coordinates,
-  OpeningHoursDay,
-  GalleryImage,
-  AdditionalService,
-  GuidelineSection,
-  FAQItem,
-  Amenity,
-  TimeSlotStatus,
-  BookingDetails,
-  BookingState,
-  BookingStep,
-  ActivityType,
-  CalendarMode,
-  CalendarSlotStatus,
-  CalendarSelectionType,
-  CalendarViewMode,
-  CalendarCell,
-  CalendarSelection,
-  CalendarSelectionRange,
-  CalendarLegendItem,
-} from '../../types/rental-object-detail';
 
 // =============================================================================
 // Booking Mode Types

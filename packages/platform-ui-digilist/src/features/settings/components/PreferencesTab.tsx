@@ -8,10 +8,10 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-import { PreferencesTab as DSPreferencesTab } from '../../../blocks/settings';
+import { PreferencesTab as DSPreferencesTab } from '@xala-technologies/platform-ui-core';
 
 // Re-export the pure presentational component
-export { PreferencesTab } from '../../../blocks/settings';
-export type { PreferencesTabProps, PreferencesTabLabels } from '../../../blocks/settings';
+export { PreferencesTab } from '@xala-technologies/platform-ui-core';
+export type { PreferencesTabProps, PreferencesTabLabels } from '@xala-technologies/platform-ui-core';
 
 export default DSPreferencesTab;

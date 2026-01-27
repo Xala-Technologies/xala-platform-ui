@@ -5,9 +5,9 @@
  * Uses Digdir ToggleGroup for view mode selection and standard Button patterns.
  */
 import * as React from 'react';
-import { cn } from '../utils';
-import { Button, ToggleGroup, Tooltip, Badge } from '../primitives';
-import { FilterIcon, GridIcon, ListIcon, MapIcon, TableIcon } from '../primitives';
+import { cn } from '@xala-technologies/platform-ui-core';
+import { Button, ToggleGroup, Tooltip, Badge } from '@xala-technologies/platform-ui-core';
+import { FilterIcon, GridIcon, ListIcon, MapIcon, TableIcon } from '@xala-technologies/platform-ui-core';
 
 export type ViewMode = 'grid' | 'list' | 'map' | 'table';
 

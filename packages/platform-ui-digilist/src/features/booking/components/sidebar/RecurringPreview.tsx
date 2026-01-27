@@ -16,8 +16,8 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Tag, Card, Spinner } from '@digdir/designsystemet-react';
-import { Stack } from '../../../../primitives/stack';
+import { Heading, Paragraph, Tag, Card, Spinner } from '@xala-technologies/platform-ui-core';
+import { Stack } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

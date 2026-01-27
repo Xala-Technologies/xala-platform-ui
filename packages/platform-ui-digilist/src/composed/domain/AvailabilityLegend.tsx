@@ -20,8 +20,8 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Button } from '../primitives';
-import { cn } from '../utils';
+import { Paragraph, Button } from '@xala-technologies/platform-ui-core';
+import { cn } from '@xala-technologies/platform-ui-core';
 
 // =============================================================================
 // Types

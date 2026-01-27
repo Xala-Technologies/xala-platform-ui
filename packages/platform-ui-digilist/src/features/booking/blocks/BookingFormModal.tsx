@@ -13,7 +13,7 @@ import {
   Textarea,
   Checkbox,
   Button,
-} from '@digdir/designsystemet-react';
+} from '@xala-technologies/platform-ui-core';
 import { CalendarIcon, ClockIcon, XIcon } from 'lucide-react';
 
 /**

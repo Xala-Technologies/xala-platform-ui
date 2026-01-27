@@ -5,9 +5,8 @@
  * Used in list view mode. Supports images, location map, amenities, and capacity.
  */
 import * as React from 'react';
-import { Tag, Button, Heading, Paragraph } from '../primitives';
-import { Stack } from '../primitives';
-import { cn } from '../utils';
+import { Tag, Button, Heading, Paragraph, Stack, cn } from '@xala-technologies/platform-ui-core';
+
 
 export interface ResourceListItemProps {
   /** Unique identifier */

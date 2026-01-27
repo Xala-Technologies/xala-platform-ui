@@ -1,27 +1,15 @@
 /**
- * @xala-technologies/platform-ui - Reviews Feature
+ * @xala-technologies/platform-ui-digilist - Reviews Feature
  *
- * Pure presentational review components.
- * All review components are located in patterns/ directory.
+ * NOTE: Review components (ReviewCard, ReviewList, FeedbackForm, ReviewStep) live in 
+ * @xala-technologies/platform-ui-core. Import directly from core instead.
  *
- * @module @xala-technologies/platform-ui/features/reviews
+ * @example
+ * import { ReviewCard, ReviewList, FeedbackForm } from '@xala-technologies/platform-ui-core';
+ *
+ * @module @xala-technologies/platform-ui-digilist/features/reviews
+ * @deprecated Import from core instead
  */
 
-// Re-export from patterns
-export {
-  ReviewCard,
-  type ReviewCardProps,
-  type ReviewCardLabels,
-  ReviewList,
-  type ReviewListProps,
-  type ReviewListLabels,
-  FeedbackForm,
-  type FeedbackFormProps,
-  type FeedbackFormLabels,
-  ReviewStep,
-  type ReviewStepProps,
-  // Note: ReviewStep doesn't export labels type - component uses inline labels
-} from '../../patterns';
-
-// Note: Review data types should be defined by the application or SDK layer
-// This feature only provides UI components
+// Placeholder export to maintain module structure
+export { };

@@ -9,8 +9,8 @@
 
 import * as React from 'react';
 import { useCallback } from 'react';
-import { Paragraph, Heading, Card, Checkbox, Alert } from '@digdir/designsystemet-react';
-import { Stack } from '@xala-technologies/platform-ui';
+import { Paragraph, Heading, Card, Checkbox, Alert } from '@xala-technologies/platform-ui-core';
+import { Stack } from '@xala-technologies/platform-ui-core';
 import type { RoleDefinition } from '../types';
 
 // =============================================================================

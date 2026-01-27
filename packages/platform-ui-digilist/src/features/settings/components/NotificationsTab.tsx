@@ -8,14 +8,14 @@
  * @module @xala-technologies/platform-ui/features/settings
  */
 
-import { NotificationsTab as DSNotificationsTab } from '../../../blocks/settings';
+import { NotificationsTab as DSNotificationsTab } from '@xala-technologies/platform-ui-core';
 
 // Re-export the pure presentational component
-export { NotificationsTab } from '../../../blocks/settings';
+export { NotificationsTab } from '@xala-technologies/platform-ui-core';
 export type {
   NotificationsTabProps,
   NotificationsTabLabels,
   NotificationSettingsData,
-} from '../../../blocks/settings';
+} from '@xala-technologies/platform-ui-core';
 
 export default DSNotificationsTab;

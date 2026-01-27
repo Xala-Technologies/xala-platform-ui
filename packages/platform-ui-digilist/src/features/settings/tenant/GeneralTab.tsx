@@ -18,7 +18,7 @@ import {
   Textfield,
   Select,
   SaveIcon,
-} from '@xala-technologies/platform-ui';
+} from '@xala-technologies/platform-ui-core';
 
 import type {
   GeneralSettingsData,

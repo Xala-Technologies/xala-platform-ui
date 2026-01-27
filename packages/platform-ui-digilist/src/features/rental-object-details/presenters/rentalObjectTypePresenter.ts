@@ -8,8 +8,10 @@
  * @module @xala-technologies/platform-ui/features/rental-object-details/presenters
  */
 
-import type { RentalObjectType } from '../../../types/rental-object-detail';
 import type { KeyFacts, BookingMode } from '../types';
+
+// Local type definition to avoid workspace import issues
+export type RentalObjectType = 'SPACE' | 'RESOURCE' | 'EVENT' | 'SERVICE' | 'VEHICLE' | 'OTHER';
 
 // =============================================================================
 // Presenter Configuration Types
