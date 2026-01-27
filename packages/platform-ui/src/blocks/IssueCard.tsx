@@ -155,17 +155,20 @@ export function IssueCard({
             style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             {labels.slice(0, 4).map((label) => (
-              <StatusTag
+              <span
                 key={label.name}
-                color="neutral"
-                size="sm"
                 style={{
                   backgroundColor: label.color || undefined,
-                  color: label.color ? '#fff' : undefined,
+                  borderRadius: 'var(--ds-border-radius-full)',
                 }}
               >
-                {label.name}
-              </StatusTag>
+                <StatusTag
+                  color="neutral"
+                  size="sm"
+                >
+                  {label.name}
+                </StatusTag>
+              </span>
             ))}
           </Stack>
         )}

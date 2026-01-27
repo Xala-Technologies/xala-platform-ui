@@ -395,6 +395,7 @@ export function ConversationList({
             placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label={searchPlaceholder}
             style={{
               flex: 1,
               border: 'none',
@@ -692,6 +693,7 @@ export function ChatThread({
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={placeholder}
+              aria-label={placeholder}
               disabled={isSending}
               style={{
                 flex: 1,

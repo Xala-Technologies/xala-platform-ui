@@ -19,7 +19,7 @@ export {
   type PeriodStatusDisplay,
   type PeriodDeadline,
   type PeriodCardImage,
-} from '@xala-technologies/platform-ui/blocks';
+} from '@xala-technologies/platform-ui-digilist';
 
 // =============================================================================
 // Status Mapping Utilities
