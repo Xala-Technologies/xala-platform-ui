@@ -121,13 +121,19 @@ export {
   ToggleLeftIcon,
   CreditCardIcon,
   StorageIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  FileIcon,
 } from './icons';
 
 // Re-export from layout-grid for backward compatibility
 export { LayoutGrid } from './layout-grid';
 export type { LayoutGridProps } from './layout-grid';
 
-// Note: FormField, CodeBlock, FilterChip are exported from composed with more features
+// Note: FormField, CodeBlock are exported from composed with more features
+// FilterChip is exported from primitives as a standalone component
+export { FilterChip } from './FilterChip';
+export type { FilterChipProps } from './FilterChip';
 
 export { Progress } from './progress';
 export type { ProgressProps } from './progress';

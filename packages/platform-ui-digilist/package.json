@@ -1,6 +1,6 @@
 {
     "name": "@xala-technologies/platform-ui-digilist",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Digilist-specific UI components and features - Extension package",
     "type": "module",
     "main": "dist/index.cjs",
@@ -135,7 +135,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@xala-technologies/platform-ui-core": "workspace:*"
+        "@xala-technologies/platform-ui-core": "^1.0.0"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^8.0.0",

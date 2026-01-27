@@ -573,28 +573,45 @@ nav,
 }
 
 /* ==========================================================================
- * STAT CARD COMPONENT STYLING
+ * STAT CARD COMPONENT STYLING - PREMIUM EDITION
  *
- * Enhanced card styling using design tokens
+ * Enhanced stat/metric cards with premium animations and glassmorphism
  * ========================================================================== */
+
+/* Gradient overlays for premium look */
+:root {
+  --ds-stat-gradient-info: linear-gradient(135deg, hsl(210, 85%, 50%) 0%, hsl(230, 75%, 60%) 100%);
+  --ds-stat-gradient-success: linear-gradient(135deg, hsl(145, 65%, 42%) 0%, hsl(165, 60%, 45%) 100%);
+  --ds-stat-gradient-warning: linear-gradient(135deg, hsl(35, 90%, 55%) 0%, hsl(25, 85%, 50%) 100%);
+  --ds-stat-gradient-danger: linear-gradient(135deg, hsl(0, 75%, 55%) 0%, hsl(350, 70%, 50%) 100%);
+  --ds-stat-gradient-default: linear-gradient(135deg, hsl(220, 15%, 50%) 0%, hsl(220, 20%, 60%) 100%);
+}
 
 .ds-stat-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--ds-border-radius-xl);
-  background-color: var(--ds-color-neutral-background-default);
+  background: linear-gradient(145deg,
+      var(--ds-color-neutral-background-default) 0%,
+      color-mix(in srgb, var(--ds-color-neutral-background-default) 96%, var(--ds-color-accent-base-default) 4%) 100%);
   border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
-  box-shadow: var(--ds-card-shadow-rest);
+  box-shadow:
+    var(--ds-card-shadow-rest),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
   transition:
-    transform var(--ds-animation-duration-normal) var(--ds-animation-easing-default),
-    box-shadow var(--ds-animation-duration-normal) var(--ds-animation-easing-default),
+    transform var(--ds-animation-duration-normal) var(--ds-animation-easing-spring),
+    box-shadow var(--ds-animation-duration-normal) var(--ds-animation-easing-spring),
     border-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default),
-    background-color var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+    background var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
 }
 
 .ds-stat-card:hover {
-  box-shadow: var(--ds-card-shadow-hover);
-  transform: translateY(var(--ds-card-hover-translate-y));
+  box-shadow:
+    var(--ds-card-shadow-hover),
+    0 12px 40px -8px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  transform: translateY(-5px);
+  border-color: var(--ds-color-neutral-border-default);
 }
 
 .ds-stat-card--clickable {
@@ -606,87 +623,164 @@ nav,
 }
 
 .ds-stat-card--clickable:active {
-  transform: translateY(0) scale(var(--ds-card-active-scale));
+  transform: translateY(-2px) scale(0.985);
   box-shadow: var(--ds-card-shadow-active);
+  transition-duration: var(--ds-animation-duration-instant);
 }
 
-/* Stat card accent bar (top) */
+/* Shimmer effect on hover */
 .ds-stat-card::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: var(--ds-card-accent-height);
-  background: var(--ds-color-accent-base-default);
-  opacity: 0;
-  transition: opacity var(--ds-animation-duration-fast) var(--ds-animation-easing-default);
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 100%);
+  transition: left 0.7s ease-out;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .ds-stat-card:hover::before {
+  left: 100%;
+}
+
+/* Left accent bar */
+.ds-stat-card::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 0;
+  bottom: 16px;
+  width: 3px;
+  background: var(--ds-color-neutral-border-default);
+  border-radius: 0 3px 3px 0;
+  opacity: 0;
+  transform: scaleY(0.5);
+  transition:
+    opacity var(--ds-animation-duration-fast) var(--ds-animation-easing-default),
+    transform var(--ds-animation-duration-normal) var(--ds-animation-easing-spring);
+}
+
+.ds-stat-card:hover::after {
   opacity: 1;
+  transform: scaleY(1);
 }
 
-/* Variant accent colors */
-.ds-stat-card--success::before {
-  background: var(--ds-color-success-base-default);
+
+/* Variant accent bar colors */
+.ds-stat-card--success::after {
+  background: var(--ds-stat-gradient-success);
 }
 
-.ds-stat-card--warning::before {
-  background: var(--ds-color-warning-base-default);
+.ds-stat-card--warning::after {
+  background: var(--ds-stat-gradient-warning);
 }
 
-.ds-stat-card--danger::before {
-  background: var(--ds-color-danger-base-default);
+.ds-stat-card--danger::after {
+  background: var(--ds-stat-gradient-danger);
 }
 
-.ds-stat-card--info::before {
-  background: var(--ds-color-info-base-default);
+.ds-stat-card--info::after {
+  background: var(--ds-stat-gradient-info);
 }
 
-/* Stat card icon */
+/* Stat card icon - Premium styling */
 .ds-stat-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--ds-border-radius-lg);
-  box-shadow: var(--ds-shadow-sm);
-  transition: transform var(--ds-animation-duration-normal) var(--ds-animation-easing-spring);
+  transition:
+    transform var(--ds-animation-duration-normal) var(--ds-animation-easing-spring),
+    box-shadow var(--ds-animation-duration-normal) var(--ds-animation-easing-default);
+  position: relative;
 }
 
+/* Icon hover with rotation */
 .ds-stat-card:hover .ds-stat-icon {
-  transform: scale(1.08);
+  transform: scale(1.12) rotate(3deg);
 }
 
-/* Icon variant backgrounds */
+/* Icon variant backgrounds with gradients and glow */
 .ds-stat-icon--default {
-  background-color: var(--ds-color-neutral-surface-hover);
-  color: var(--ds-color-neutral-text-default);
+  background: var(--ds-stat-gradient-default);
+  color: white;
+  box-shadow:
+    0 4px 14px -3px rgba(100, 100, 140, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
 }
 
 .ds-stat-icon--success {
-  background-color: var(--ds-color-success-base-default);
-  color: var(--ds-color-success-base-contrast-default);
+  background: var(--ds-stat-gradient-success);
+  color: white;
+  box-shadow:
+    0 4px 18px -3px hsla(145, 65%, 42%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.ds-stat-card:hover .ds-stat-icon--success {
+  box-shadow:
+    0 6px 28px -4px hsla(145, 65%, 42%, 0.6),
+    0 0 24px -6px hsla(145, 65%, 55%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
 }
 
 .ds-stat-icon--warning {
-  background-color: var(--ds-color-warning-base-default);
-  color: var(--ds-color-warning-base-contrast-default);
+  background: var(--ds-stat-gradient-warning);
+  color: white;
+  box-shadow:
+    0 4px 18px -3px hsla(35, 90%, 55%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.ds-stat-card:hover .ds-stat-icon--warning {
+  box-shadow:
+    0 6px 28px -4px hsla(35, 90%, 55%, 0.6),
+    0 0 24px -6px hsla(35, 90%, 65%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
 }
 
 .ds-stat-icon--danger {
-  background-color: var(--ds-color-danger-base-default);
-  color: var(--ds-color-danger-base-contrast-default);
+  background: var(--ds-stat-gradient-danger);
+  color: white;
+  box-shadow:
+    0 4px 18px -3px hsla(0, 75%, 55%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.ds-stat-card:hover .ds-stat-icon--danger {
+  box-shadow:
+    0 6px 28px -4px hsla(0, 75%, 55%, 0.6),
+    0 0 24px -6px hsla(0, 75%, 65%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
 }
 
 .ds-stat-icon--info {
-  background-color: var(--ds-color-info-base-default);
-  color: var(--ds-color-info-base-contrast-default);
+  background: var(--ds-stat-gradient-info);
+  color: white;
+  box-shadow:
+    0 4px 18px -3px hsla(210, 85%, 50%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.ds-stat-card:hover .ds-stat-icon--info {
+  box-shadow:
+    0 6px 28px -4px hsla(210, 85%, 50%, 0.6),
+    0 0 24px -6px hsla(210, 85%, 65%, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
 }
 
 .ds-stat-icon--accent {
-  background-color: var(--ds-color-accent-base-default);
+  background: linear-gradient(135deg, var(--ds-color-accent-base-default) 0%, var(--ds-color-accent-base-hover) 100%);
   color: var(--ds-color-accent-base-contrast-default);
+  box-shadow:
+    0 4px 18px -3px color-mix(in srgb, var(--ds-color-accent-base-default) 60%, transparent),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
 }
 
 /* Stat card value animation */

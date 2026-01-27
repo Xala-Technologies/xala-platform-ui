@@ -5,16 +5,16 @@
  * moved from platform-ui-core to platform-ui-digilist.
  */
 
-export { AvailabilityLegend } from './AvailabilityLegend';
+export { AvailabilityLegend, defaultBookingLegendItems, defaultBookingLegendItemsEn } from './AvailabilityLegend';
 export type { AvailabilityLegendProps } from './AvailabilityLegend';
 
-export { BlockedPeriodsManager } from './BlockedPeriodsManager';
+export { BlockedPeriodsManager, validateBlockedPeriods } from './BlockedPeriodsManager';
 export type { BlockedPeriodsManagerProps } from './BlockedPeriodsManager';
 
 export { ResourceRequestStepper } from './ResourceRequestStepper';
 export type { ResourceRequestStepperProps } from './ResourceRequestStepper';
 
-export { OpeningHoursEditor } from './OpeningHoursEditor';
+export { OpeningHoursEditor, defaultWeekdaySchedule, emptySchedule, validateSchedule } from './OpeningHoursEditor';
 export type { OpeningHoursEditorProps } from './OpeningHoursEditor';
 
 export { ContactPersonsEditor } from './ContactPersonsEditor';

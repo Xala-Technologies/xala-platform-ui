@@ -191,6 +191,7 @@ export type {
 export {
   ConsentManager,
   ConsentPopup,
+  ConsentSettings,
   ConsentSettings as GdprPrivacyConsentSettings,
   DataExportCard,
   DeleteAccountCard,
