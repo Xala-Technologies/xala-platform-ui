@@ -4,6 +4,9 @@
  * Central export for all utility functions and components
  */
 
+// Utility functions (cn, spacing, etc.)
+export { cn } from '../utils';
+
 // Icons
 export * from './icons';
 

@@ -1,0 +1,145 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/actions.catalog.json",
+    "title": "Gazetteer Action Catalog",
+    "description": "Approved action behavior types for the Monster Motor system",
+    "version": "0.1.0",
+    "types": [
+        {
+            "type": "NAVIGATE",
+            "description": "Navigate to a route",
+            "category": "navigation",
+            "params": {
+                "target": {
+                    "type": "string",
+                    "required": true
+                },
+                "params": {
+                    "type": "object"
+                },
+                "replace": {
+                    "type": "boolean"
+                }
+            }
+        },
+        {
+            "type": "OPEN_DRAWER",
+            "description": "Open a side drawer",
+            "category": "ui",
+            "params": {
+                "drawerId": {
+                    "type": "string",
+                    "required": true
+                },
+                "context": {
+                    "type": "object"
+                }
+            }
+        },
+        {
+            "type": "CLOSE_DRAWER",
+            "description": "Close a drawer",
+            "category": "ui",
+            "params": {
+                "drawerId": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "type": "OPEN_MODAL",
+            "description": "Open a modal dialog",
+            "category": "ui",
+            "params": {
+                "modalId": {
+                    "type": "string",
+                    "required": true
+                },
+                "context": {
+                    "type": "object"
+                }
+            }
+        },
+        {
+            "type": "CLOSE_MODAL",
+            "description": "Close a modal dialog",
+            "category": "ui",
+            "params": {
+                "modalId": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "type": "CALL_CONTROLLER",
+            "description": "Call a backend controller method",
+            "category": "data",
+            "params": {
+                "controllerRef": {
+                    "type": "string",
+                    "required": true
+                },
+                "method": {
+                    "type": "string",
+                    "required": true
+                },
+                "params": {
+                    "type": "object"
+                },
+                "onSuccess": {
+                    "type": "object"
+                },
+                "onError": {
+                    "type": "object"
+                }
+            }
+        },
+        {
+            "type": "DOWNLOAD",
+            "description": "Download a file",
+            "category": "data",
+            "params": {
+                "urlBinding": {
+                    "type": "string",
+                    "required": true
+                },
+                "filename": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "type": "TOAST",
+            "description": "Show a toast notification",
+            "category": "feedback",
+            "params": {
+                "messageKey": {
+                    "type": "string",
+                    "required": true
+                },
+                "variant": {
+                    "type": "string",
+                    "enum": [
+                        "info",
+                        "success",
+                        "warning",
+                        "error"
+                    ]
+                },
+                "duration": {
+                    "type": "number"
+                }
+            }
+        }
+    ],
+    "enum": [
+        "NAVIGATE",
+        "OPEN_DRAWER",
+        "CLOSE_DRAWER",
+        "OPEN_MODAL",
+        "CLOSE_MODAL",
+        "CALL_CONTROLLER",
+        "DOWNLOAD",
+        "TOAST"
+    ]
+}

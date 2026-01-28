@@ -14,7 +14,7 @@ const config: StorybookConfig = {
   },
   stories: [
     // Monorepo: only use packages/platform-ui stories
-    '../packages/platform-ui/src/stories/**/*.mdx',
+    // Note: No MDX files currently exist - pattern removed to eliminate build warnings
     '../packages/platform-ui/src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   // Static directories - reference source packages to avoid duplicates
@@ -113,6 +113,11 @@ const config: StorybookConfig = {
             global: 'globalThis',
           },
         },
+      },
+      build: {
+        ...config.build,
+        // Increase chunk size warning limit since Storybook naturally has larger chunks
+        chunkSizeWarningLimit: 1500,
       },
     };
   },

@@ -1,0 +1,28 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "declaration": true,
+        "declarationDir": "./dist",
+        "composite": true,
+        "jsx": "react-jsx",
+        "paths": {
+            "@xala-technologies/platform-ui": [
+                "../platform-ui/src"
+            ],
+            "@xala-technologies/platform-ui/*": [
+                "../platform-ui/src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.test.ts",
+        "**/*.test.tsx"
+    ]
+}

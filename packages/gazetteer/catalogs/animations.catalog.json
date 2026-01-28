@@ -1,0 +1,69 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/animations.catalog.json",
+    "title": "Gazetteer Animation Catalog",
+    "description": "Animation presets for page and widget transitions",
+    "version": "0.1.0",
+    "enter": [
+        {
+            "type": "none",
+            "description": "No animation"
+        },
+        {
+            "type": "fadeIn",
+            "description": "Fade in opacity",
+            "duration": 300
+        },
+        {
+            "type": "slideInRight",
+            "description": "Slide in from right",
+            "duration": 300
+        },
+        {
+            "type": "slideInUp",
+            "description": "Slide in from bottom",
+            "duration": 300
+        },
+        {
+            "type": "scaleIn",
+            "description": "Scale up from 0.95",
+            "duration": 200
+        },
+        {
+            "type": "pulse",
+            "description": "Subtle pulse effect",
+            "duration": 500
+        },
+        {
+            "type": "shimmer",
+            "description": "Shimmer loading effect",
+            "duration": 1500
+        }
+    ],
+    "exit": [
+        {
+            "type": "none",
+            "description": "No animation"
+        },
+        {
+            "type": "fadeOut",
+            "description": "Fade out opacity",
+            "duration": 200
+        },
+        {
+            "type": "slideOutLeft",
+            "description": "Slide out to left",
+            "duration": 300
+        },
+        {
+            "type": "slideOutDown",
+            "description": "Slide out to bottom",
+            "duration": 300
+        },
+        {
+            "type": "scaleOut",
+            "description": "Scale down to 0.95",
+            "duration": 200
+        }
+    ]
+}

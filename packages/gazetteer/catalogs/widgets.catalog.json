@@ -1,0 +1,95 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.catalog.json",
+    "title": "Gazetteer Widget Catalog",
+    "description": "Approved widget types for the Monster Motor system. Domain extensions may add additional types.",
+    "version": "0.1.0",
+    "types": [
+        {
+            "type": "DashboardHeader",
+            "description": "Page header with title, subtitle, and primary action",
+            "category": "layout",
+            "platformUi": "composed/DashboardHeader"
+        },
+        {
+            "type": "StatsGrid",
+            "description": "Grid of StatCard components showing metrics",
+            "category": "layout",
+            "platformUi": "composed/StatsGrid"
+        },
+        {
+            "type": "Tabs",
+            "description": "Tabbed content container",
+            "category": "layout",
+            "platformUi": "primitives/Tabs"
+        },
+        {
+            "type": "EntityTable",
+            "description": "Data table with sorting, row actions, and pagination",
+            "category": "data",
+            "platformUi": "composed/DataTable"
+        },
+        {
+            "type": "DetailPanel",
+            "description": "Single entity detail view with sections",
+            "category": "data",
+            "platformUi": "composed/DetailCard"
+        },
+        {
+            "type": "Timeline",
+            "description": "Activity/event timeline",
+            "category": "data",
+            "platformUi": "composed/Timeline"
+        },
+        {
+            "type": "AuditLog",
+            "description": "Audit event log table",
+            "category": "data",
+            "platformUi": "composed/AuditLog"
+        },
+        {
+            "type": "FilterBar",
+            "description": "Search input with filter dropdowns",
+            "category": "form",
+            "platformUi": "composed/FilterBar"
+        },
+        {
+            "type": "DrawerForm",
+            "description": "Side drawer with form fields",
+            "category": "form",
+            "platformUi": "patterns/DrawerForm"
+        },
+        {
+            "type": "ModalConfirm",
+            "description": "Confirmation modal dialog",
+            "category": "feedback",
+            "platformUi": "composed/ConfirmDialog"
+        },
+        {
+            "type": "EmptyState",
+            "description": "Empty state with icon, message, and action",
+            "category": "feedback",
+            "platformUi": "composed/EmptyState"
+        },
+        {
+            "type": "LoadingSkeleton",
+            "description": "Loading skeleton placeholder",
+            "category": "feedback",
+            "platformUi": "primitives/Skeleton"
+        }
+    ],
+    "enum": [
+        "DashboardHeader",
+        "StatsGrid",
+        "Tabs",
+        "EntityTable",
+        "DetailPanel",
+        "Timeline",
+        "AuditLog",
+        "FilterBar",
+        "DrawerForm",
+        "ModalConfirm",
+        "EmptyState",
+        "LoadingSkeleton"
+    ]
+}

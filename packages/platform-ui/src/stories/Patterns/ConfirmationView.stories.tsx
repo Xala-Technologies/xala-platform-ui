@@ -272,11 +272,11 @@ export const WithAdditionalContent: Story = {
             data-size="medium"
             style={{ marginTop: 'var(--ds-spacing-4)' }}
           >
-            <Card.Content>
+            <Card.Block>
               <p style={{ margin: 0, fontSize: 'var(--ds-font-size-sm)' }}>
                 {t('storybook.confirmation.additionalInfo')}
               </p>
-            </Card.Content>
+            </Card.Block>
           </Card>
         </ConfirmationView>
       </div>

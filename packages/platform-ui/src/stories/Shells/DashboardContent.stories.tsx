@@ -73,9 +73,9 @@ export const Default: Story = {
             data-size="medium"
             style={{ marginTop: 'var(--ds-spacing-4)' }}
           >
-            <Card.Content>
+            <Card.Block>
               <Paragraph data-size="sm">{t('storybook.dashboardContent.cardContent')}</Paragraph>
-            </Card.Content>
+            </Card.Block>
           </Card>
         </DashboardContent>
       </div>
@@ -101,9 +101,9 @@ export const WithBottomNav: Story = {
             data-size="medium"
             style={{ marginTop: 'var(--ds-spacing-4)' }}
           >
-            <Card.Content>
+            <Card.Block>
               <Paragraph data-size="sm">{t('storybook.dashboardContent.cardContent')}</Paragraph>
-            </Card.Content>
+            </Card.Block>
           </Card>
         </DashboardContent>
       </div>
@@ -137,9 +137,9 @@ export const WithMultipleCards: Story = {
                   {t('storybook.dashboardContent.card1')}
                 </Heading>
               </Card.Header>
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="sm">{t('storybook.dashboardContent.card1Content')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
             <Card data-color="neutral" data-size="medium">
               <Card.Header>
@@ -147,9 +147,9 @@ export const WithMultipleCards: Story = {
                   {t('storybook.dashboardContent.card2')}
                 </Heading>
               </Card.Header>
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="sm">{t('storybook.dashboardContent.card2Content')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
             <Card data-color="neutral" data-size="medium">
               <Card.Header>
@@ -157,9 +157,9 @@ export const WithMultipleCards: Story = {
                   {t('storybook.dashboardContent.card3')}
                 </Heading>
               </Card.Header>
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="sm">{t('storybook.dashboardContent.card3Content')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </div>
         </DashboardContent>
@@ -187,11 +187,11 @@ export const ScrollableContent: Story = {
               data-size="medium"
               style={{ marginTop: 'var(--ds-spacing-4)' }}
             >
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="sm">
                   {t('storybook.dashboardContent.scrollableItem', { number: i + 1 })}
                 </Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           ))}
         </DashboardContent>

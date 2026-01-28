@@ -99,32 +99,32 @@ export const Default: Story = {
         <Card.Header>
           <Heading level={1} data-size="lg">Page Title</Heading>
         </Card.Header>
-        <Card.Content>
+        <Card.Block>
           <Paragraph>
             This is a semantic page container that renders as a &lt;main&gt; element.
             It provides consistent spacing and max-width constraints for page content.
           </Paragraph>
-        </Card.Content>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" data-size="md">
         <Card.Header>
           <Heading level={2} data-size="md">Section One</Heading>
         </Card.Header>
-        <Card.Content>
+        <Card.Block>
           <Paragraph>
             Content sections are spaced using the gap prop, which maps to design tokens.
           </Paragraph>
-        </Card.Content>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" data-size="md">
         <Card.Header>
           <Heading level={2} data-size="md">Section Two</Heading>
         </Card.Header>
-        <Card.Content>
+        <Card.Block>
           <Paragraph>
             The container is centered by default and has a constrained max-width for readability.
           </Paragraph>
-        </Card.Content>
+        </Card.Block>
       </Card>
     </PageContainer>
   ),
@@ -212,9 +212,9 @@ export const MaxWidthVariants: Story = {
             style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}
           >
             <Card data-color="neutral" data-size="sm">
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="sm">Content with maxWidth=&quot;{width}&quot;</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </PageContainer>
         </div>
@@ -249,13 +249,13 @@ export const GapVariants: Story = {
             style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}
           >
             <Card data-color="neutral" data-size="sm">
-              <Card.Content><Paragraph data-size="sm">Card 1</Paragraph></Card.Content>
+              <Card.Block><Paragraph data-size="sm">Card 1</Paragraph></Card.Block>
             </Card>
             <Card data-color="neutral" data-size="sm">
-              <Card.Content><Paragraph data-size="sm">Card 2</Paragraph></Card.Content>
+              <Card.Block><Paragraph data-size="sm">Card 2</Paragraph></Card.Block>
             </Card>
             <Card data-color="neutral" data-size="sm">
-              <Card.Content><Paragraph data-size="sm">Card 3</Paragraph></Card.Content>
+              <Card.Block><Paragraph data-size="sm">Card 3</Paragraph></Card.Block>
             </Card>
           </PageContainer>
         </div>
@@ -293,9 +293,9 @@ export const AsDiv: Story = {
           use asMain=false to render as a &lt;div&gt; instead.
         </Paragraph>
         <Card data-color="neutral" data-size="sm">
-          <Card.Content>
+          <Card.Block>
             <Paragraph data-size="sm">This maintains valid HTML structure.</Paragraph>
-          </Card.Content>
+          </Card.Block>
         </Card>
       </PageContainer>
     </main>
@@ -335,11 +335,11 @@ export const DashboardLayout: Story = {
             <Card.Header>
               <Heading level={3} data-size="sm">{stat}</Heading>
             </Card.Header>
-            <Card.Content>
+            <Card.Block>
               <Paragraph data-size="lg" style={{ fontWeight: 'bold' }}>
                 {Math.floor(Math.random() * 10000).toLocaleString()}
               </Paragraph>
-            </Card.Content>
+            </Card.Block>
           </Card>
         ))}
       </div>
@@ -348,9 +348,9 @@ export const DashboardLayout: Story = {
         <Card.Header>
           <Heading level={2} data-size="md">Recent Activity</Heading>
         </Card.Header>
-        <Card.Content>
+        <Card.Block>
           <Paragraph>Activity list would go here...</Paragraph>
-        </Card.Content>
+        </Card.Block>
       </Card>
     </PageContainer>
   ),

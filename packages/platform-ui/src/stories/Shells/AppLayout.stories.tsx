@@ -175,9 +175,9 @@ export const Default: Story = {
             data-size="medium"
             style={{ marginTop: 'var(--ds-spacing-4)' }}
           >
-            <Card.Content>
+            <Card.Block>
               <Paragraph data-size="sm">{t('storybook.appLayout.contentArea')}</Paragraph>
-            </Card.Content>
+            </Card.Block>
           </Card>
         </div>
       </AppLayout>

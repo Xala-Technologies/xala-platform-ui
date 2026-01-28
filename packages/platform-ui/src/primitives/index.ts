@@ -18,6 +18,9 @@ export type { GridProps, GridGapSize, GridColCount, ResponsiveCols } from './gri
 export { Stack } from './stack';
 export type { StackProps } from './stack';
 
+export { Box } from './box';
+export type { BoxProps } from './box';
+
 export { Icon } from './icon';
 export type { IconProps } from './icon';
 

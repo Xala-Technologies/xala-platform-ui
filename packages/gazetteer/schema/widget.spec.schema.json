@@ -1,0 +1,86 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/schemas/gazetteer/widget.spec.schema.json",
+    "title": "Gazetteer Widget Specification",
+    "description": "Schema for widget definitions in the Monster Motor system",
+    "type": "object",
+    "required": [
+        "widgetId",
+        "type"
+    ],
+    "properties": {
+        "widgetId": {
+            "type": "string",
+            "description": "Unique identifier for this widget instance"
+        },
+        "type": {
+            "type": "string",
+            "description": "Widget type from the catalog",
+            "enum": [
+                "DashboardHeader",
+                "StatsGrid",
+                "Tabs",
+                "EntityTable",
+                "DetailPanel",
+                "Timeline",
+                "AuditLog",
+                "FilterBar",
+                "DrawerForm",
+                "ModalConfirm",
+                "EmptyState",
+                "LoadingSkeleton"
+            ]
+        },
+        "props": {
+            "type": "object",
+            "description": "Static props passed to the widget"
+        },
+        "bindings": {
+            "type": "object",
+            "description": "Dynamic bindings (prop name → binding path)",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "events": {
+            "type": "object",
+            "description": "Event handlers (event name → action ID)",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "visibility": {
+            "type": "object",
+            "properties": {
+                "permissionKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "featureFlags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "when": {
+                    "type": "string",
+                    "description": "Binding expression"
+                }
+            }
+        },
+        "animationPreset": {
+            "type": "string",
+            "enum": [
+                "none",
+                "fadeIn",
+                "slideInRight",
+                "slideInUp",
+                "scaleIn",
+                "pulse",
+                "shimmer"
+            ]
+        }
+    }
+}

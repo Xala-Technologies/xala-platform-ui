@@ -63,9 +63,9 @@ const SampleSidebar = () => {
             {t('storybook.explorer.navigation')}
           </Heading>
         </Card.Header>
-        <Card.Content>
+        <Card.Block>
           <Paragraph data-size="sm">{t('storybook.explorer.sidebarContent')}</Paragraph>
-        </Card.Content>
+        </Card.Block>
       </Card>
     </div>
   );
@@ -120,9 +120,9 @@ export const Default: Story = {
         >
           <div style={{ padding: 'var(--ds-spacing-6)' }}>
             <Card data-color="neutral" data-size="medium">
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="md">{t('storybook.explorer.mainContent')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </div>
         </ExplorerPanel>
@@ -147,9 +147,9 @@ export const WithoutToolbar: Story = {
         <ExplorerPanel title={t('storybook.explorer.storyViewer')}>
           <div style={{ padding: 'var(--ds-spacing-6)' }}>
             <Card data-color="neutral" data-size="medium">
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="md">{t('storybook.explorer.mainContent')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </div>
         </ExplorerPanel>
@@ -239,9 +239,9 @@ export const CustomSidebarWidth: Story = {
         <ExplorerPanel title={t('storybook.explorer.storyViewer')}>
           <div style={{ padding: 'var(--ds-spacing-6)' }}>
             <Card data-color="neutral" data-size="medium">
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="md">{t('storybook.explorer.widerSidebar')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </div>
         </ExplorerPanel>
@@ -271,9 +271,9 @@ export const WithBackAction: Story = {
         <ExplorerPanel title={t('storybook.explorer.storyViewer')}>
           <div style={{ padding: 'var(--ds-spacing-6)' }}>
             <Card data-color="neutral" data-size="medium">
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="md">{t('storybook.explorer.mainContent')}</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </div>
         </ExplorerPanel>

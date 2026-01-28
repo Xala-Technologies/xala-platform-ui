@@ -1,0 +1,149 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/schemas/gazetteer/page.spec.schema.json",
+    "title": "Gazetteer Page Specification",
+    "description": "Schema for page definitions in the Monster Motor system",
+    "type": "object",
+    "required": [
+        "pageId",
+        "layoutType",
+        "shellType",
+        "widgets"
+    ],
+    "properties": {
+        "pageId": {
+            "type": "string",
+            "description": "Unique identifier for this page"
+        },
+        "layoutType": {
+            "type": "string",
+            "enum": [
+                "list",
+                "detail",
+                "form",
+                "dashboard",
+                "wizard",
+                "custom"
+            ]
+        },
+        "shellType": {
+            "type": "string",
+            "enum": [
+                "DataPageShell",
+                "DetailPageShell",
+                "FormPageShell",
+                "DashboardShell",
+                "WizardShell",
+                "BlankShell"
+            ]
+        },
+        "controllerRefs": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Controller references for data fetching"
+        },
+        "projectionsUsed": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featureDependencies": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "featureId": {
+                        "type": "string"
+                    },
+                    "requiredCapabilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "featureId"
+                ]
+            }
+        },
+        "widgets": {
+            "type": "object",
+            "properties": {
+                "header": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "widget.spec.schema.json"
+                    }
+                },
+                "aboveContent": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "widget.spec.schema.json"
+                    }
+                },
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "widget.spec.schema.json"
+                    }
+                },
+                "belowContent": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "widget.spec.schema.json"
+                    }
+                },
+                "sidebar": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "widget.spec.schema.json"
+                    }
+                },
+                "overlays": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "widget.spec.schema.json"
+                    }
+                }
+            },
+            "required": [
+                "content"
+            ]
+        },
+        "behaviors": {
+            "type": "object",
+            "properties": {
+                "actions": {
+                    "type": "object"
+                },
+                "navigation": {
+                    "type": "object"
+                },
+                "lifecycle": {
+                    "type": "object"
+                }
+            }
+        },
+        "i18nRequiredKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "animations": {
+            "type": "object",
+            "properties": {
+                "pageEnter": {
+                    "type": "string"
+                },
+                "pageExit": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

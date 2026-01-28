@@ -74,13 +74,13 @@ type Story = StoryObj<typeof Container>;
 function ContentBlock() {
   return (
     <Card data-color="neutral" data-size="sm">
-      <Card.Content>
+      <Card.Block>
         <Paragraph data-size="sm">
           This is sample content inside the container. The container provides consistent
           max-width constraints and responsive padding. Resize the viewport to see how
           the container adapts.
         </Paragraph>
-      </Card.Content>
+      </Card.Block>
     </Card>
   );
 }
@@ -141,9 +141,9 @@ export const SizePresets: Story = {
           </Heading>
           <Container size={size} style={{ backgroundColor: 'var(--ds-color-accent-surface-default)' }}>
             <Card data-color="neutral" data-size="sm">
-              <Card.Content>
+              <Card.Block>
                 <Paragraph data-size="sm">Container with size=&quot;{size}&quot;</Paragraph>
-              </Card.Content>
+              </Card.Block>
             </Card>
           </Container>
         </div>
@@ -171,13 +171,13 @@ export const Fluid: Story = {
     <div style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}>
       <Container {...args}>
         <Card data-color="neutral" data-size="sm">
-          <Card.Content>
+          <Card.Block>
             <Heading level={3} data-size="sm">Fluid Container</Heading>
             <Paragraph data-size="sm">
               This container has no max-width constraint and spans the full width of its parent.
               Useful for full-bleed sections or edge-to-edge layouts.
             </Paragraph>
-          </Card.Content>
+          </Card.Block>
         </Card>
       </Container>
     </div>
@@ -196,12 +196,12 @@ export const CustomWidth: Story = {
     <div style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)', padding: 'var(--ds-spacing-4)' }}>
       <Container {...args}>
         <Card data-color="accent" data-size="sm">
-          <Card.Content>
+          <Card.Block>
             <Heading level={3} data-size="sm">Custom Width: 800px</Heading>
             <Paragraph data-size="sm">
               Use the maxWidth prop for custom widths that don&apos;t match the presets.
             </Paragraph>
-          </Card.Content>
+          </Card.Block>
         </Card>
       </Container>
     </div>
@@ -221,12 +221,12 @@ export const NotCentered: Story = {
     <div style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)', padding: 'var(--ds-spacing-4)' }}>
       <Container {...args}>
         <Card data-color="neutral" data-size="sm">
-          <Card.Content>
+          <Card.Block>
             <Heading level={3} data-size="sm">Left-aligned Container</Heading>
             <Paragraph data-size="sm">
               Set centered=false to align the container to the left instead of centering it.
             </Paragraph>
-          </Card.Content>
+          </Card.Block>
         </Card>
       </Container>
     </div>
@@ -246,17 +246,17 @@ export const PaddingVariants: Story = {
     }}>
       <Container size="lg" padding="var(--ds-spacing-2)" style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}>
         <Card data-color="neutral" data-size="sm">
-          <Card.Content><Paragraph data-size="sm">Padding: spacing-2</Paragraph></Card.Content>
+          <Card.Block><Paragraph data-size="sm">Padding: spacing-2</Paragraph></Card.Block>
         </Card>
       </Container>
       <Container size="lg" padding="var(--ds-spacing-4)" style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}>
         <Card data-color="neutral" data-size="sm">
-          <Card.Content><Paragraph data-size="sm">Padding: spacing-4</Paragraph></Card.Content>
+          <Card.Block><Paragraph data-size="sm">Padding: spacing-4</Paragraph></Card.Block>
         </Card>
       </Container>
       <Container size="lg" padding="var(--ds-spacing-8)" style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}>
         <Card data-color="neutral" data-size="sm">
-          <Card.Content><Paragraph data-size="sm">Padding: spacing-8 (default)</Paragraph></Card.Content>
+          <Card.Block><Paragraph data-size="sm">Padding: spacing-8 (default)</Paragraph></Card.Block>
         </Card>
       </Container>
     </div>

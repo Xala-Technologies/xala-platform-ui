@@ -7,6 +7,7 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Grid } from '../../primitives/grid';
 
@@ -83,9 +84,9 @@ type Story = StoryObj<typeof Grid>;
 function DemoCard({ children, index }: { children?: React.ReactNode; index?: number }) {
   return (
     <Card data-color="neutral" data-size="sm" style={{ minHeight: '100px' }}>
-      <Card.Content>
+      <Card.Block>
         <Paragraph data-size="sm">{children ?? `Card ${index}`}</Paragraph>
-      </Card.Content>
+      </Card.Block>
     </Card>
   );
 }
@@ -145,16 +146,18 @@ export const AutoFit: Story = {
     gap: 'lg',
   },
   render: (args) => (
-    <Grid {...args}>
-      {Array.from({ length: 6 }, (_, i) => (
-        <DemoCard key={i} index={i + 1} />
-      ))}
-    </Grid>
+    <div style={{ padding: 'var(--ds-spacing-4)' }}>
+      <Grid {...args}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <DemoCard key={i} index={i + 1} />
+        ))}
+      </Grid>
+    </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Uses CSS auto-fit to create responsive columns without breakpoints. Each column is at least 280px wide.',
+        story: 'Uses CSS auto-fit to create responsive columns without breakpoints. Each column is at least 280px wide. Wrapped in a container with padding for proper mobile display.',
       },
     },
   },
@@ -225,19 +228,19 @@ export const TwelveColumn: Story = {
   render: (args) => (
     <Grid {...args}>
       <Card data-color="accent" style={{ gridColumn: 'span 8', minHeight: '80px' }}>
-        <Card.Content><Paragraph data-size="sm">Main content (8 cols)</Paragraph></Card.Content>
+        <Card.Block><Paragraph data-size="sm">Main content (8 cols)</Paragraph></Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '80px' }}>
-        <Card.Content><Paragraph data-size="sm">Sidebar (4 cols)</Paragraph></Card.Content>
+        <Card.Block><Paragraph data-size="sm">Sidebar (4 cols)</Paragraph></Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '60px' }}>
-        <Card.Content><Paragraph data-size="sm">Card 1 (4 cols)</Paragraph></Card.Content>
+        <Card.Block><Paragraph data-size="sm">Card 1 (4 cols)</Paragraph></Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '60px' }}>
-        <Card.Content><Paragraph data-size="sm">Card 2 (4 cols)</Paragraph></Card.Content>
+        <Card.Block><Paragraph data-size="sm">Card 2 (4 cols)</Paragraph></Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '60px' }}>
-        <Card.Content><Paragraph data-size="sm">Card 3 (4 cols)</Paragraph></Card.Content>
+        <Card.Block><Paragraph data-size="sm">Card 3 (4 cols)</Paragraph></Card.Block>
       </Card>
     </Grid>
   ),

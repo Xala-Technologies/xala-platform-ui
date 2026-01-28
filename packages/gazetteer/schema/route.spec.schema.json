@@ -1,0 +1,145 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/schemas/gazetteer/route.spec.schema.json",
+    "title": "Gazetteer Route Specification",
+    "description": "Schema for route definitions in the Monster Motor system",
+    "type": "object",
+    "required": [
+        "routeId",
+        "path",
+        "pageRef",
+        "navigation"
+    ],
+    "properties": {
+        "routeId": {
+            "type": "string",
+            "description": "Unique identifier for this route"
+        },
+        "path": {
+            "type": "string",
+            "description": "URL path pattern (e.g., /bookings/:id)"
+        },
+        "pageRef": {
+            "type": "string",
+            "description": "Reference to the page spec"
+        },
+        "navigation": {
+            "type": "object",
+            "required": [
+                "labelKey",
+                "group"
+            ],
+            "properties": {
+                "labelKey": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string",
+                    "enum": [
+                        "main",
+                        "settings",
+                        "admin",
+                        "hidden"
+                    ]
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "badge": {
+                    "type": "object",
+                    "properties": {
+                        "bindingRef": {
+                            "type": "string"
+                        },
+                        "color": {
+                            "type": "string",
+                            "enum": [
+                                "info",
+                                "success",
+                                "warning",
+                                "danger",
+                                "neutral"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "access": {
+            "type": "object",
+            "properties": {
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "featureFlags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "breadcrumbs": {
+            "type": "object",
+            "properties": {
+                "strategy": {
+                    "type": "string",
+                    "enum": [
+                        "auto",
+                        "explicit",
+                        "none"
+                    ]
+                },
+                "explicitCrumbs": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "labelKey": {
+                                "type": "string"
+                            },
+                            "toRouteId": {
+                                "type": "string"
+                            },
+                            "paramsBinding": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "labelKey"
+                        ]
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "titleKey": {
+                    "type": "string"
+                },
+                "descriptionKey": {
+                    "type": "string"
+                },
+                "keywords": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
