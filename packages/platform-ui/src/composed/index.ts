@@ -160,7 +160,7 @@ export type {
   BulkActionsBarProps,
   BulkAction,
   FilterChipsProps,
-  FilterChip,
+  FilterChipItem,
   DataPageHeaderProps,
   DataPageToolbarProps,
   FilterConfig as DataPageFilterConfig,

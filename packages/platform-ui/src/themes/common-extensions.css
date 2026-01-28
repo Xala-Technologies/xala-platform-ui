@@ -5,14 +5,49 @@
  * Font sizes, spacing, padding - all come from Designsystemet (xala.css).
  *
  * This file contains:
+ * - Breakpoints (centralized responsive breakpoints)
  * - Spacing aliases (--ds-spacing-* -> --ds-size-*)
+ * - Layout tokens (grid gutters, container constraints)
  * - Button style variants (compact, pill, ghost)
  * - Component-specific tokens (calendar, gallery, stepper)
  * - Responsive utilities
  * - Scrollbar styling
  *
  * NO colors defined here - colors are in theme-specific files.
+ *
+ * @see https://designsystemet.no/en/fundamentals/design-elements/sizes-and-spacing/
  */
+
+/* ==========================================================================
+ * BREAKPOINTS - SINGLE SOURCE OF TRUTH
+ *
+ * Mobile-first breakpoints following Designsystemet naming conventions.
+ * These are the ONLY breakpoint values that should be used across the platform.
+ *
+ * Usage in CSS:
+ *   @media (min-width: 640px) { ... }  // sm and up
+ *   @media (min-width: 768px) { ... }  // md and up (mobile breakpoint)
+ *   @media (min-width: 1024px) { ... } // lg and up
+ *   @media (min-width: 1280px) { ... } // xl and up
+ *
+ * Note: CSS custom properties cannot be used directly in @media queries.
+ * These are defined for documentation and JavaScript usage.
+ * ========================================================================== */
+
+:root {
+  /* Breakpoint values - mobile-first (min-width) */
+  --ds-breakpoint-xs: 320px;   /* Extra small: small phones */
+  --ds-breakpoint-sm: 640px;   /* Small: large phones, small tablets */
+  --ds-breakpoint-md: 768px;   /* Medium: tablets (MOBILE_BREAKPOINT in components) */
+  --ds-breakpoint-lg: 1024px;  /* Large: laptops, small desktops */
+  --ds-breakpoint-xl: 1280px;  /* Extra large: desktops */
+  --ds-breakpoint-2xl: 1536px; /* 2X large: large desktops, ultra-wide */
+
+  /* Named semantic breakpoints (aliases) */
+  --ds-breakpoint-mobile: var(--ds-breakpoint-md);  /* 768px - sidebar collapse point */
+  --ds-breakpoint-tablet: var(--ds-breakpoint-lg);  /* 1024px */
+  --ds-breakpoint-desktop: var(--ds-breakpoint-xl); /* 1280px */
+}
 
 /* ==========================================================================
  * SPACING ALIASES
@@ -43,6 +78,41 @@
   --ds-spacing-22: var(--ds-size-22);
   --ds-spacing-26: var(--ds-size-26);
   --ds-spacing-30: var(--ds-size-30);
+}
+
+/* ==========================================================================
+ * LAYOUT TOKENS
+ *
+ * Grid, container, and layout-specific tokens for consistent layouts.
+ * These extend Designsystemet with layout primitives they don't provide.
+ * ========================================================================== */
+
+:root {
+  /* Grid gutters - semantic gap sizes for layout grids */
+  --ds-grid-gap-xs: var(--ds-spacing-1);
+  --ds-grid-gap-sm: var(--ds-spacing-2);
+  --ds-grid-gap-md: var(--ds-spacing-4);
+  --ds-grid-gap-lg: var(--ds-spacing-6);
+  --ds-grid-gap-xl: var(--ds-spacing-8);
+
+  /* Default grid gap (used when no gap specified) */
+  --ds-grid-gap-default: var(--ds-grid-gap-md);
+
+  /* Layout-specific sidebar widths */
+  --ds-layout-sidebar-collapsed: 64px;
+  --ds-layout-sidebar-compact: 200px;
+  --ds-layout-sidebar-default: 256px;
+  --ds-layout-sidebar-wide: 320px;
+
+  /* Layout header heights */
+  --ds-layout-header-compact: 48px;
+  --ds-layout-header-default: 64px;
+  --ds-layout-header-tall: 80px;
+
+  /* Content width constraints */
+  --ds-layout-content-max: 1200px;
+  --ds-layout-content-readable: 65ch;  /* Optimal for reading (WCAG) */
+  --ds-layout-content-narrow: 45ch;
 }
 
 /* ==========================================================================
@@ -261,41 +331,194 @@
 
 /* ==========================================================================
  * RESPONSIVE GRID UTILITIES
+ *
+ * Mobile-first responsive grid system using consistent breakpoints:
+ * - xs: 320px (base, mobile)
+ * - sm: 640px (large phones, small tablets)
+ * - md: 768px (tablets, sidebar collapse)
+ * - lg: 1024px (laptops)
+ * - xl: 1280px (desktops)
+ *
+ * Usage:
+ *   <div class="ds-grid ds-grid-cols-1 ds-grid-cols-md-2 ds-grid-cols-lg-3">
+ *     ...
+ *   </div>
  * ========================================================================== */
 
+/* Base grid with token-driven gap */
+.ds-grid {
+  display: grid;
+  gap: var(--ds-grid-gap-default);
+}
+
+/* Grid gap variants */
+.ds-grid-gap-none { gap: 0; }
+.ds-grid-gap-xs { gap: var(--ds-grid-gap-xs); }
+.ds-grid-gap-sm { gap: var(--ds-grid-gap-sm); }
+.ds-grid-gap-md { gap: var(--ds-grid-gap-md); }
+.ds-grid-gap-lg { gap: var(--ds-grid-gap-lg); }
+.ds-grid-gap-xl { gap: var(--ds-grid-gap-xl); }
+
+/* Base column utilities (mobile-first) */
+.ds-grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.ds-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.ds-grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.ds-grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.ds-grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+.ds-grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
+
+/* Auto-fit grid (responsive without media queries) */
+.ds-grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(var(--ds-grid-min-col-width, 280px), 1fr));
+}
+
+.ds-grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(var(--ds-grid-min-col-width, 280px), 1fr));
+}
+
+/* sm breakpoint (640px) */
+@media (min-width: 640px) {
+  .ds-grid-cols-sm-1 { grid-template-columns: repeat(1, 1fr); }
+  .ds-grid-cols-sm-2 { grid-template-columns: repeat(2, 1fr); }
+  .ds-grid-cols-sm-3 { grid-template-columns: repeat(3, 1fr); }
+  .ds-grid-cols-sm-4 { grid-template-columns: repeat(4, 1fr); }
+  .ds-grid-cols-sm-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* md breakpoint (768px) - mobile/tablet boundary */
+@media (min-width: 768px) {
+  .ds-grid-cols-md-1 { grid-template-columns: repeat(1, 1fr); }
+  .ds-grid-cols-md-2 { grid-template-columns: repeat(2, 1fr); }
+  .ds-grid-cols-md-3 { grid-template-columns: repeat(3, 1fr); }
+  .ds-grid-cols-md-4 { grid-template-columns: repeat(4, 1fr); }
+  .ds-grid-cols-md-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* lg breakpoint (1024px) */
+@media (min-width: 1024px) {
+  .ds-grid-cols-lg-1 { grid-template-columns: repeat(1, 1fr); }
+  .ds-grid-cols-lg-2 { grid-template-columns: repeat(2, 1fr); }
+  .ds-grid-cols-lg-3 { grid-template-columns: repeat(3, 1fr); }
+  .ds-grid-cols-lg-4 { grid-template-columns: repeat(4, 1fr); }
+  .ds-grid-cols-lg-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* xl breakpoint (1280px) */
+@media (min-width: 1280px) {
+  .ds-grid-cols-xl-1 { grid-template-columns: repeat(1, 1fr); }
+  .ds-grid-cols-xl-2 { grid-template-columns: repeat(2, 1fr); }
+  .ds-grid-cols-xl-3 { grid-template-columns: repeat(3, 1fr); }
+  .ds-grid-cols-xl-4 { grid-template-columns: repeat(4, 1fr); }
+  .ds-grid-cols-xl-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Legacy responsive grid (container query based) */
 .ds-grid-responsive {
   --_grid-columns: var(--_grid-sm, 1);
 }
 
-@container ds-container (min-width: 600px) {
+@container ds-container (min-width: 640px) {
   .ds-grid-responsive {
     --_grid-columns: var(--_grid-md, 2);
   }
 }
 
-@container ds-container (min-width: 900px) {
-  .ds-grid-responsive {
-    --_grid-columns: var(--_grid-lg, 3);
-  }
-}
-
-@media (min-width: 640px) {
-  .ds-grid-responsive {
-    --_grid-columns: var(--_grid-md, 2);
-  }
-}
-
-@media (min-width: 1024px) {
+@container ds-container (min-width: 1024px) {
   .ds-grid-responsive {
     --_grid-columns: var(--_grid-lg, 3);
   }
 }
 
 /* ==========================================================================
- * LISTING GRID - RESPONSIVE COLUMNS
+ * STACK UTILITIES
+ *
+ * Flexbox stack utilities with token-driven spacing.
+ * ========================================================================== */
+
+.ds-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-grid-gap-default);
+}
+
+.ds-stack-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: var(--ds-grid-gap-default);
+}
+
+/* Stack gap variants */
+.ds-stack-gap-none { gap: 0; }
+.ds-stack-gap-xs { gap: var(--ds-grid-gap-xs); }
+.ds-stack-gap-sm { gap: var(--ds-grid-gap-sm); }
+.ds-stack-gap-md { gap: var(--ds-grid-gap-md); }
+.ds-stack-gap-lg { gap: var(--ds-grid-gap-lg); }
+.ds-stack-gap-xl { gap: var(--ds-grid-gap-xl); }
+
+/* Responsive stack direction */
+@media (min-width: 768px) {
+  .ds-stack-md-horizontal {
+    flex-direction: row;
+  }
+  .ds-stack-md-vertical {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ds-stack-lg-horizontal {
+    flex-direction: row;
+  }
+  .ds-stack-lg-vertical {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+ * CONTAINER UTILITIES
+ *
+ * Constrained content containers with responsive padding.
+ * ========================================================================== */
+
+.ds-container {
+  width: 100%;
+  max-width: var(--ds-size-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--ds-spacing-4);
+  padding-right: var(--ds-spacing-4);
+}
+
+@media (min-width: 640px) {
+  .ds-container {
+    padding-left: var(--ds-spacing-6);
+    padding-right: var(--ds-spacing-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ds-container {
+    padding-left: var(--ds-spacing-8);
+    padding-right: var(--ds-spacing-8);
+  }
+}
+
+/* Container size variants */
+.ds-container-sm { max-width: var(--ds-size-container-sm); }
+.ds-container-md { max-width: var(--ds-size-container-md); }
+.ds-container-lg { max-width: var(--ds-size-container-lg); }
+.ds-container-full { max-width: 100%; }
+.ds-container-fluid { max-width: none; padding: 0; }
+
+/* ==========================================================================
+ * LISTING GRID - RESPONSIVE COLUMNS (Legacy)
+ *
+ * Maintained for backward compatibility. Prefer .ds-grid classes for new code.
  * ========================================================================== */
 
 .listing-grid {
+  display: grid;
+  gap: var(--ds-grid-gap-default);
   grid-template-columns: 1fr;
 }
 
@@ -311,7 +534,8 @@
   }
 }
 
-@media (min-width: 992px) {
+/* Max columns constraint */
+@media (min-width: 1024px) {
   .listing-grid[data-max-columns="3"] {
     grid-template-columns: repeat(3, 1fr) !important;
   }
@@ -325,8 +549,7 @@
   }
 }
 
-@media (min-width: 600px) and (max-width: 991px) {
-
+@media (min-width: 640px) and (max-width: 1023px) {
   .listing-grid[data-max-columns="3"],
   .listing-grid[data-max-columns="2"] {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -337,7 +560,7 @@
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 639px) {
   .listing-grid {
     grid-template-columns: 1fr !important;
   }
@@ -345,9 +568,11 @@
 
 /* ==========================================================================
  * MOBILE COMPONENT OVERRIDES
+ *
+ * Mobile-first overrides using consistent md breakpoint (768px).
  * ========================================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .listing-list-item {
     flex-direction: column !important;
   }
@@ -361,26 +586,26 @@
   .listing-list-item>div:last-child:not(:nth-child(2)) {
     display: none !important;
   }
-}
 
-@media (max-width: 599px) {
   .main-content-layout {
-    padding-left: var(--ds-size-4) !important;
-    padding-right: var(--ds-size-4) !important;
+    padding-left: var(--ds-spacing-4) !important;
+    padding-right: var(--ds-spacing-4) !important;
   }
 }
 
 /* ==========================================================================
  * LISTING DETAIL PAGE RESPONSIVE LAYOUT
+ *
+ * Two-column layout with sidebar on lg+ screens (1024px).
  * ========================================================================== */
 
 .listing-detail-layout {
   display: grid;
-  gap: var(--ds-detail-content-gap, var(--ds-size-6));
+  gap: var(--ds-detail-content-gap, var(--ds-grid-gap-lg));
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .listing-detail-layout {
     grid-template-columns: 1fr var(--ds-detail-sidebar-width, 320px);
   }
@@ -388,15 +613,17 @@
 
 /* ==========================================================================
  * IMAGE GALLERY RESPONSIVE
+ *
+ * Hero + thumbnails layout on sm+ screens (640px).
  * ========================================================================== */
 
 .image-gallery {
   display: grid;
-  gap: var(--ds-gallery-gap, var(--ds-size-3));
+  gap: var(--ds-gallery-gap, var(--ds-grid-gap-sm));
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .image-gallery {
     grid-template-columns: var(--ds-gallery-hero-ratio, 7fr) var(--ds-gallery-thumb-ratio, 3fr);
   }
@@ -405,11 +632,11 @@
 .image-gallery-thumbnails {
   display: flex;
   flex-direction: row;
-  gap: var(--ds-size-2);
+  gap: var(--ds-spacing-2);
   overflow-x: auto;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .image-gallery-thumbnails {
     flex-direction: column;
     overflow-x: visible;
@@ -418,6 +645,8 @@
 
 /* ==========================================================================
  * AVAILABILITY CALENDAR
+ *
+ * Horizontal scroll on mobile (< sm breakpoint).
  * ========================================================================== */
 
 .availability-calendar-grid {
@@ -426,7 +655,7 @@
   overflow-x: auto;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 639px) {
   .availability-calendar-grid {
     min-width: 600px;
   }

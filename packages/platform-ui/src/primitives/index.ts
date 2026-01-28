@@ -10,10 +10,10 @@
 export * from './components';
 
 export { Container } from './container';
-export type { ContainerProps } from './container';
+export type { ContainerProps, ContainerSize } from './container';
 
 export { Grid } from './grid';
-export type { GridProps } from './grid';
+export type { GridProps, GridGapSize, GridColCount, ResponsiveCols } from './grid';
 
 export { Stack } from './stack';
 export type { StackProps } from './stack';

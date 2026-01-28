@@ -13,6 +13,7 @@ import { Drawer } from '../composed/Drawer';
 import { ChevronRightIcon } from '../primitives/icons';
 import { Stack } from '../primitives/stack';
 import { Text } from '../primitives/text';
+import { MOBILE_BREAKPOINT } from '../tokens';
 
 // =============================================================================
 // Types
@@ -63,8 +64,6 @@ export interface DashboardSidebarProps extends Omit<React.HTMLAttributes<HTMLEle
   /** Test ID */
   'data-testid'?: string;
 }
-
-const MOBILE_BREAKPOINT = 768;
 
 // =============================================================================
 // SidebarNavItem - Exact copy from MinSide

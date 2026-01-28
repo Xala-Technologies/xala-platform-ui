@@ -17,7 +17,14 @@ const config: StorybookConfig = {
     '../packages/platform-ui/src/stories/**/*.mdx',
     '../packages/platform-ui/src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  staticDirs: ['./public'],
+  // Static directories - reference source packages to avoid duplicates
+  // '/themes' path maps to platform-ui-core themes (single source of truth)
+  // '/vendor' path for designsystemet.css and other vendor files
+  staticDirs: [
+    { from: './public/vendor', to: '/vendor' },
+    { from: './public', to: '/' },
+    { from: '../packages/platform-ui-core/src/themes', to: '/themes' },
+  ],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',

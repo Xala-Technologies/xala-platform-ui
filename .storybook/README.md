@@ -23,6 +23,24 @@
 - ✅ React Strict Mode disabled
 - ✅ Using latest Storybook 8.5 patterns
 - ✅ Using `getAbsolutePath` for addons
+- ✅ Static files served from source packages (no duplicates)
+
+### 4. Static Files Configuration
+The `staticDirs` in `main.ts` references source packages directly:
+```typescript
+staticDirs: [
+  { from: './public/vendor', to: '/vendor' },        // designsystemet.css
+  { from: './public', to: '/' },                     // favicon, etc.
+  { from: '../packages/platform-ui-core/src/themes', to: '/themes' }, // Theme CSS
+]
+```
+
+**Important:** Theme CSS files are served directly from `platform-ui-core`:
+- `/themes/common-extensions.css` → `packages/platform-ui-core/src/themes/common-extensions.css`
+- `/themes/xala.css` → `packages/platform-ui-core/src/themes/xala.css`
+- `/themes/*-colors.css` → `packages/platform-ui-core/src/themes/*-colors.css`
+
+**DO NOT duplicate theme files in `.storybook/public/themes/`** - they're served from source.
 
 ### 4. Documentation
 - ✅ `docs/guides/STORYBOOK_REACT18_FIX.md` - Complete explanation

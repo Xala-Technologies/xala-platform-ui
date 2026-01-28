@@ -1,275 +1,364 @@
+/**
+ * PageContainer Stories
+ *
+ * Demonstrates the PageContainer composed component with semantic HTML support.
+ *
+ * @module @xala-technologies/platform-ui/stories/composed/PageContainer
+ */
+
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
+import { Card, Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { PageContainer } from '../../composed/PageContainer';
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+// =============================================================================
+// Meta
+// =============================================================================
 
 const meta: Meta<typeof PageContainer> = {
   title: 'Composed/PageContainer',
   component: PageContainer,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
       description: {
         component: `
-## PageContainer
+Semantic page wrapper with proper spacing from design tokens.
 
-Consistent page wrapper with proper spacing from design tokens. Eliminates repeated inline styles across pages.
+## Accessibility Features
+- **Renders as \`<main>\` element** by default for proper document structure
+- **Skip-link support**: Uses \`id="main-content"\` by default for keyboard navigation
+- **\`tabIndex={-1}\`**: Allows focus to be programmatically moved to main content
 
-### Features
-- Configurable gap between children
-- Max width constraints
-- Padding options
-- Design token compliant
+## Features
+- Token-based gap spacing (1-8 scale)
+- Max-width presets (sm, md, lg, xl, full, none)
+- Optional padding
+- Can render as \`<div>\` for nested containers
 
-### Usage
-\`\`\`tsx
-<PageContainer gap={6} maxWidth="lg" padding={4}>
-  <Heading>Page Title</Heading>
-  <Content />
-</PageContainer>
-\`\`\`
+## Semantic HTML
+The PageContainer renders as a \`<main>\` element, which is important for:
+- Screen readers to identify the main content area
+- Skip-link navigation to bypass header/nav
+- SEO and document structure
+
+Use \`asMain={false}\` when nesting containers or when another element serves as main.
         `,
       },
     },
   },
   argTypes: {
     gap: {
-      control: 'select',
-      options: [1, 2, 3, 4, 5, 6, 7, 8],
-      description: 'Spacing between children',
+      description: 'Spacing between child elements (1-8)',
+      control: { type: 'number', min: 1, max: 8, step: 1 },
     },
     maxWidth: {
-      control: 'select',
-      options: ['sm', 'md', 'lg', 'xl', 'full', 'none'],
       description: 'Maximum width constraint',
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg', 'xl', 'full', 'none'],
     },
     padding: {
-      control: 'select',
-      options: [0, 1, 2, 3, 4, 5, 6],
-      description: 'Padding around content',
+      description: 'Padding around content (0-6)',
+      control: { type: 'number', min: 0, max: 6, step: 1 },
+    },
+    asMain: {
+      description: 'Render as <main> element',
+      control: { type: 'boolean' },
+    },
+    skipLinkId: {
+      description: 'ID for skip-link navigation',
+      control: { type: 'text' },
+    },
+    centered: {
+      description: 'Center the container horizontally',
+      control: { type: 'boolean' },
     },
   },
-  tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof PageContainer>;
 
-// Wrapper for default story
-const DefaultDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={6} maxWidth="lg" padding={4}>
-      <Heading level={1} data-size="lg">
-        {t('storybook.demo.pageTitle')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.pageContentHere')}</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.moreContent')}</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
+// =============================================================================
+// Stories
+// =============================================================================
 
-// Default page container
+/**
+ * Default page container
+ */
 export const Default: Story = {
-  render: function Render() {
-    return <DefaultDemo />;
+  args: {
+    gap: 6,
+    maxWidth: 'lg',
+    padding: 4,
+    asMain: true,
+  },
+  render: (args) => (
+    <PageContainer {...args}>
+      <Card data-color="neutral" data-size="md">
+        <Card.Header>
+          <Heading level={1} data-size="lg">Page Title</Heading>
+        </Card.Header>
+        <Card.Content>
+          <Paragraph>
+            This is a semantic page container that renders as a &lt;main&gt; element.
+            It provides consistent spacing and max-width constraints for page content.
+          </Paragraph>
+        </Card.Content>
+      </Card>
+      <Card data-color="neutral" data-size="md">
+        <Card.Header>
+          <Heading level={2} data-size="md">Section One</Heading>
+        </Card.Header>
+        <Card.Content>
+          <Paragraph>
+            Content sections are spaced using the gap prop, which maps to design tokens.
+          </Paragraph>
+        </Card.Content>
+      </Card>
+      <Card data-color="neutral" data-size="md">
+        <Card.Header>
+          <Heading level={2} data-size="md">Section Two</Heading>
+        </Card.Header>
+        <Card.Content>
+          <Paragraph>
+            The container is centered by default and has a constrained max-width for readability.
+          </Paragraph>
+        </Card.Content>
+      </Card>
+    </PageContainer>
+  ),
+};
+
+/**
+ * With skip-link demonstration
+ */
+export const WithSkipLink: Story = {
+  args: {
+    gap: 6,
+    maxWidth: 'lg',
+    padding: 4,
+    skipLinkId: 'main-content',
+  },
+  render: (args) => (
+    <div>
+      {/* Skip link (usually in layout header) */}
+      <a
+        href="#main-content"
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          top: '0',
+          padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-accent-base-default)',
+          color: 'var(--ds-color-accent-contrast-default)',
+          zIndex: 9999,
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.left = '0';
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.left = '-9999px';
+        }}
+      >
+        Skip to main content
+      </a>
+
+      {/* Simulated header */}
+      <header style={{
+        padding: 'var(--ds-spacing-4)',
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+      }}>
+        <Heading level={2} data-size="sm">Site Header (Tab here to see skip link)</Heading>
+      </header>
+
+      {/* Main content */}
+      <PageContainer {...args}>
+        <Heading level={1} data-size="lg">Main Content</Heading>
+        <Paragraph>
+          Press Tab when focused on the header area to reveal the skip link.
+          The skip link targets the main-content ID which this container provides.
+        </Paragraph>
+        <Button data-color="accent">Focusable Button</Button>
+      </PageContainer>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Demonstrates skip-link accessibility. Focus on the header and press Tab to see the skip link appear.',
+      },
+    },
   },
 };
 
-// Wrapper for small gap story
-const SmallGapDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={2} maxWidth="md" padding={2}>
-      <Heading level={2} data-size="md">
-        {t('storybook.demo.compactLayout')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.item')} 1</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.item')} 2</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-// Small gap
-export const SmallGap: Story = {
-  render: function Render() {
-    return <SmallGapDemo />;
+/**
+ * Different max-width presets
+ */
+export const MaxWidthVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+      {(['sm', 'md', 'lg', 'xl', 'full'] as const).map((width) => (
+        <div key={width}>
+          <Heading level={3} data-size="xs" style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-2)' }}>
+            maxWidth: {width}
+          </Heading>
+          <PageContainer
+            maxWidth={width}
+            gap={4}
+            padding={4}
+            asMain={false}
+            style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}
+          >
+            <Card data-color="neutral" data-size="sm">
+              <Card.Content>
+                <Paragraph data-size="sm">Content with maxWidth=&quot;{width}&quot;</Paragraph>
+              </Card.Content>
+            </Card>
+          </PageContainer>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Shows all available max-width presets. The colored background indicates the container bounds.',
+      },
+    },
   },
 };
 
-// Wrapper for large gap story
-const LargeGapDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={8} maxWidth="xl" padding={6}>
-      <Heading level={1} data-size="lg">
-        {t('storybook.demo.spaciousLayout')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.contentWithLargeSpacing')}</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.moreContent')}</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-// Large gap
-export const LargeGap: Story = {
-  render: function Render() {
-    return <LargeGapDemo />;
+/**
+ * Gap spacing variations
+ */
+export const GapVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
+      {([2, 4, 6, 8] as const).map((gapValue) => (
+        <div key={gapValue}>
+          <Heading level={3} data-size="xs" style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-2)' }}>
+            gap: {gapValue}
+          </Heading>
+          <PageContainer
+            maxWidth="md"
+            gap={gapValue}
+            padding={4}
+            asMain={false}
+            style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}
+          >
+            <Card data-color="neutral" data-size="sm">
+              <Card.Content><Paragraph data-size="sm">Card 1</Paragraph></Card.Content>
+            </Card>
+            <Card data-color="neutral" data-size="sm">
+              <Card.Content><Paragraph data-size="sm">Card 2</Paragraph></Card.Content>
+            </Card>
+            <Card data-color="neutral" data-size="sm">
+              <Card.Content><Paragraph data-size="sm">Card 3</Paragraph></Card.Content>
+            </Card>
+          </PageContainer>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Different gap values controlling spacing between child elements.',
+      },
+    },
   },
 };
 
-// Wrapper for max width small story
-const MaxWidthSmallDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={4} maxWidth="sm" padding={3}>
-      <Heading level={2} data-size="md">
-        {t('storybook.demo.smallMaxWidth')}
+/**
+ * As div (for nested containers)
+ */
+export const AsDiv: Story = {
+  args: {
+    asMain: false,
+    gap: 4,
+    maxWidth: 'md',
+    padding: 4,
+  },
+  render: (args) => (
+    <main style={{ padding: 'var(--ds-spacing-4)' }}>
+      <Heading level={1} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
+        Page with Existing Main Element
       </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.contentConstrainedSmall')}</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-// Max width variants
-export const MaxWidthSmall: Story = {
-  render: function Render() {
-    return <MaxWidthSmallDemo />;
+      <PageContainer {...args} style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}>
+        <Heading level={2} data-size="md">Nested Section</Heading>
+        <Paragraph>
+          When there&apos;s already a &lt;main&gt; element in the page structure,
+          use asMain=false to render as a &lt;div&gt; instead.
+        </Paragraph>
+        <Card data-color="neutral" data-size="sm">
+          <Card.Content>
+            <Paragraph data-size="sm">This maintains valid HTML structure.</Paragraph>
+          </Card.Content>
+        </Card>
+      </PageContainer>
+    </main>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Use asMain={false} when the PageContainer is nested within an existing <main> element.',
+      },
+    },
   },
 };
 
-// Wrapper for max width medium story
-const MaxWidthMediumDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={4} maxWidth="md" padding={3}>
-      <Heading level={2} data-size="md">
-        {t('storybook.demo.mediumMaxWidth')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.contentConstrainedMedium')}</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-export const MaxWidthMedium: Story = {
-  render: function Render() {
-    return <MaxWidthMediumDemo />;
+/**
+ * Dashboard-style layout
+ */
+export const DashboardLayout: Story = {
+  args: {
+    gap: 6,
+    maxWidth: 'xl',
+    padding: 6,
   },
-};
+  render: (args) => (
+    <PageContainer {...args} style={{ backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Heading level={1} data-size="lg">Dashboard</Heading>
+        <Button data-color="accent">New Item</Button>
+      </div>
 
-// Wrapper for max width large story
-const MaxWidthLargeDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={4} maxWidth="lg" padding={3}>
-      <Heading level={2} data-size="md">
-        {t('storybook.demo.largeMaxWidth')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.contentConstrainedLarge')}</Paragraph>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: 'var(--ds-spacing-4)',
+      }}>
+        {['Revenue', 'Users', 'Orders', 'Conversion'].map((stat) => (
+          <Card key={stat} data-color="neutral" data-size="sm">
+            <Card.Header>
+              <Heading level={3} data-size="sm">{stat}</Heading>
+            </Card.Header>
+            <Card.Content>
+              <Paragraph data-size="lg" style={{ fontWeight: 'bold' }}>
+                {Math.floor(Math.random() * 10000).toLocaleString()}
+              </Paragraph>
+            </Card.Content>
+          </Card>
+        ))}
+      </div>
+
+      <Card data-color="neutral" data-size="md">
+        <Card.Header>
+          <Heading level={2} data-size="md">Recent Activity</Heading>
+        </Card.Header>
+        <Card.Content>
+          <Paragraph>Activity list would go here...</Paragraph>
+        </Card.Content>
       </Card>
     </PageContainer>
-  );
-};
-
-export const MaxWidthLarge: Story = {
-  render: function Render() {
-    return <MaxWidthLargeDemo />;
-  },
-};
-
-// Wrapper for max width full story
-const MaxWidthFullDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={4} maxWidth="full" padding={3}>
-      <Heading level={2} data-size="md">
-        {t('storybook.demo.fullWidth')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.contentFullWidth')}</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-export const MaxWidthFull: Story = {
-  render: function Render() {
-    return <MaxWidthFullDemo />;
-  },
-};
-
-// Wrapper for no padding story
-const NoPaddingDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={4} maxWidth="lg" padding={0}>
-      <Heading level={2} data-size="md">
-        {t('storybook.demo.noPadding')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Paragraph data-size="sm">{t('storybook.demo.contentNoPadding')}</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-// No padding
-export const NoPadding: Story = {
-  render: function Render() {
-    return <NoPaddingDemo />;
-  },
-};
-
-// Wrapper for multiple children story
-const MultipleChildrenDemo = () => {
-  const t = useT();
-  return (
-    <PageContainer gap={4} maxWidth="lg" padding={4}>
-      <Heading level={1} data-size="lg">
-        {t('storybook.demo.pageTitle')}
-      </Heading>
-      <Card data-color="neutral" data-size="medium">
-        <Heading level={3} data-size="sm">
-          {t('storybook.demo.section')} 1
-        </Heading>
-        <Paragraph data-size="sm">{t('storybook.demo.contentForSection')} 1.</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Heading level={3} data-size="sm">
-          {t('storybook.demo.section')} 2
-        </Heading>
-        <Paragraph data-size="sm">{t('storybook.demo.contentForSection')} 2.</Paragraph>
-      </Card>
-      <Card data-color="neutral" data-size="medium">
-        <Heading level={3} data-size="sm">
-          {t('storybook.demo.section')} 3
-        </Heading>
-        <Paragraph data-size="sm">{t('storybook.demo.contentForSection')} 3.</Paragraph>
-      </Card>
-    </PageContainer>
-  );
-};
-
-// With multiple children
-export const MultipleChildren: Story = {
-  render: function Render() {
-    return <MultipleChildrenDemo />;
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Example of a dashboard-style page layout using PageContainer.',
+      },
+    },
   },
 };

@@ -32,6 +32,7 @@ import { UserIcon, SettingsIcon, LogOutIcon } from '../primitives/icons';
 import { Stack } from '../primitives/stack';
 import { Text } from '../primitives/text';
 import { cn } from '../utils';
+import { MOBILE_BREAKPOINT } from '../tokens';
 
 // =============================================================================
 // Types
@@ -110,12 +111,6 @@ export interface DashboardHeaderProps extends React.HTMLAttributes<HTMLElement> 
   /** Test ID */
   'data-testid'?: string;
 }
-
-// =============================================================================
-// Constants
-// =============================================================================
-
-const MOBILE_BREAKPOINT = 768;
 
 // =============================================================================
 // UserAvatar Component

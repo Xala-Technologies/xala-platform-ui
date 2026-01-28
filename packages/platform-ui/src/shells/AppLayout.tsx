@@ -16,6 +16,7 @@ import { Outlet } from 'react-router-dom';
 import { ReactNode, useState, useEffect } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../composed/bottom-navigation';
 import { DashboardContent } from './DashboardContent';
+import { MOBILE_BREAKPOINT } from '../tokens';
 
 export interface AppLayoutProps {
   /** Sidebar component (required) */
@@ -39,7 +40,7 @@ export interface AppLayoutProps {
   /** Additional content to render above main content (e.g., alerts, banners) */
   topContent?: ReactNode;
 
-  /** Mobile breakpoint in pixels (default: 768) */
+  /** Mobile breakpoint in pixels (default: MOBILE_BREAKPOINT from tokens - 768px) */
   mobileBreakpoint?: number;
 
   /** Bottom navigation items for mobile (optional) */
@@ -72,7 +73,7 @@ export function AppLayout({
   className,
   style,
   topContent,
-  mobileBreakpoint = 768,
+  mobileBreakpoint = MOBILE_BREAKPOINT,
   bottomNavItems,
   showSidebarOnMobile = false,
 }: AppLayoutProps) {

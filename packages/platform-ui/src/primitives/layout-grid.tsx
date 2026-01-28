@@ -1,7 +1,24 @@
 /**
  * Layout Grid Component
  *
- * A responsive grid layout component for consistent spacing and alignment
+ * @deprecated Use `Grid` from primitives instead.
+ *
+ * The `Grid` component offers:
+ * - Responsive columns: `cols={{ base: 1, md: 2, lg: 3 }}`
+ * - Token-based gaps: `gap="md"` (uses --ds-grid-gap-* tokens)
+ * - Auto-fit/fill: `autoFit minColWidth="280px"`
+ * - CSS class-based responsive behavior
+ *
+ * Migration example:
+ * ```tsx
+ * // Before (LayoutGrid)
+ * <LayoutGrid columns={{ md: 2, lg: 3 }} gap={16}>
+ *
+ * // After (Grid)
+ * <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">
+ * ```
+ *
+ * @see packages/platform-ui/src/primitives/grid.tsx
  */
 
 import React, { forwardRef } from 'react';

@@ -1180,22 +1180,55 @@ export const motion = {
 
 /**
  * Breakpoint tokens for responsive design.
- * Follow mobile-first approach.
+ * Follow mobile-first approach (min-width).
+ *
+ * These values MUST match the CSS custom properties in common-extensions.css:
+ * - --ds-breakpoint-xs: 320px
+ * - --ds-breakpoint-sm: 640px
+ * - --ds-breakpoint-md: 768px (MOBILE_BREAKPOINT - sidebar collapse)
+ * - --ds-breakpoint-lg: 1024px
+ * - --ds-breakpoint-xl: 1280px
+ * - --ds-breakpoint-2xl: 1536px
+ *
+ * @see packages/platform-ui-core/src/themes/common-extensions.css
  */
 export const breakpoints = {
+  /** Extra small: small phones (320px) */
   xs: '320px',
+  /** Small: large phones, small tablets (640px) */
   sm: '640px',
+  /** Medium: tablets - MOBILE_BREAKPOINT for sidebar collapse (768px) */
   md: '768px',
+  /** Large: laptops, small desktops (1024px) */
   lg: '1024px',
+  /** Extra large: desktops (1280px) */
   xl: '1280px',
+  /** 2X large: large desktops, ultra-wide (1536px) */
   '2xl': '1536px',
-  // Named breakpoints for common devices
-  mobile: '480px',
-  tablet: '768px',
-  laptop: '1024px',
+  // Semantic aliases
+  /** Mobile breakpoint - when sidebar collapses to drawer (768px) */
+  mobile: '768px',
+  /** Tablet breakpoint (1024px) */
+  tablet: '1024px',
+  /** Desktop breakpoint (1280px) */
   desktop: '1280px',
-  wide: '1536px',
 } as const;
+
+/** Numeric breakpoint values for JavaScript comparisons */
+export const breakpointValues = {
+  xs: 320,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
+  mobile: 768,
+  tablet: 1024,
+  desktop: 1280,
+} as const;
+
+/** The mobile breakpoint value used by shell components (768px) */
+export const MOBILE_BREAKPOINT = breakpointValues.md;
 
 // =============================================================================
 // Layout Tokens
@@ -1203,43 +1236,47 @@ export const breakpoints = {
 
 /**
  * Layout tokens for consistent page structure.
+ * These map to CSS custom properties in common-extensions.css.
+ *
+ * @see packages/platform-ui-core/src/themes/common-extensions.css
  */
 export const layout = {
-  // Container max-widths
+  // Container max-widths (map to --ds-size-container-*)
   container: {
-    xs: '320px',
-    sm: '540px',
-    md: '720px',
-    lg: '960px',
-    xl: '1140px',
-    '2xl': '1320px',
+    sm: '600px',  // --ds-size-container-sm
+    md: '960px',  // --ds-size-container-md
+    lg: '1200px', // --ds-size-container-lg
+    max: '1440px', // --ds-size-container-max
     full: '100%',
   },
-  // Sidebar widths
+  // Sidebar widths (map to --ds-layout-sidebar-*)
   sidebar: {
     collapsed: '64px',
     compact: '200px',
     default: '256px',
     wide: '320px',
   },
-  // Header heights
+  // Header heights (map to --ds-layout-header-*)
   header: {
     compact: '48px',
     default: '64px',
     tall: '80px',
   },
-  // Content areas
+  // Content areas (map to --ds-layout-content-*)
   content: {
     maxWidth: '1200px',
     readableWidth: '65ch', // Optimal for reading (WCAG)
     narrowWidth: '45ch',
   },
-  // Grid gutters
-  gutter: {
-    xs: 'var(--ds-spacing-2)',
-    sm: 'var(--ds-spacing-4)',
-    md: 'var(--ds-spacing-6)',
-    lg: 'var(--ds-spacing-8)',
+  // Grid gutters (map to --ds-grid-gap-*)
+  gridGap: {
+    none: '0',
+    xs: 'var(--ds-spacing-1)',
+    sm: 'var(--ds-spacing-2)',
+    md: 'var(--ds-spacing-4)',
+    lg: 'var(--ds-spacing-6)',
+    xl: 'var(--ds-spacing-8)',
+    default: 'var(--ds-spacing-4)',
   },
 } as const;
 

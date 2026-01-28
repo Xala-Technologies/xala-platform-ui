@@ -15,7 +15,8 @@ export { BulkActionsBar } from './BulkActionsBar';
 export type { BulkActionsBarProps, BulkAction } from './BulkActionsBar';
 
 export { FilterChips } from './FilterChips';
-export type { FilterChipsProps, FilterChip } from './FilterChips';
+export type { FilterChipsProps, FilterChipItem } from './FilterChips';
+// Note: FilterChip type is intentionally NOT re-exported to avoid conflict with primitives/FilterChip component
 
 export { DataPageHeader } from './DataPageHeader';
 export type { DataPageHeaderProps } from './DataPageHeader';

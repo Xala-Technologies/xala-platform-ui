@@ -10,7 +10,11 @@ import { CloseIcon } from '../../primitives';
 import { Button, Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../../utils';
 
-export interface FilterChip {
+/**
+ * FilterChipItem interface - defines a single filter chip
+ * Renamed from FilterChip to avoid conflict with primitives/FilterChip component
+ */
+export interface FilterChipItem {
   /** Unique key for the chip */
   key: string;
   /** Display label (must be translated by caller) */
@@ -19,9 +23,12 @@ export interface FilterChip {
   onRemove: () => void;
 }
 
+/** @deprecated Use FilterChipItem instead */
+export type FilterChip = FilterChipItem;
+
 export interface FilterChipsProps {
   /** Array of active filter chips */
-  chips: FilterChip[];
+  chips: FilterChipItem[];
   /** Reset all filters handler */
   onResetAll: () => void;
   /** Reset button label (must be translated by caller) */

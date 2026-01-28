@@ -867,3 +867,25 @@ export const StorageIcon = (props: React.ComponentProps<typeof Icon>) => (
     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
   </Icon>
 );
+
+// Folder Icon - for folder/directory
+export const FolderIcon = (props: React.ComponentProps<typeof Icon>) => (
+  <Icon {...props}>
+    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+  </Icon>
+);
+
+// Folder Open Icon - for open folder/directory
+export const FolderOpenIcon = (props: React.ComponentProps<typeof Icon>) => (
+  <Icon {...props}>
+    <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2" />
+  </Icon>
+);
+
+// File Icon - for files/documents
+export const FileIcon = (props: React.ComponentProps<typeof Icon>) => (
+  <Icon {...props}>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <polyline points="14 2 14 8 20 8" />
+  </Icon>
+);
