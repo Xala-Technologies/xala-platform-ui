@@ -9,6 +9,14 @@ export {
   type CalendarSectionLabels,
 } from '../../../calendar';
 
+// Local calendar components
+export { RentalObjectCalendarSection } from './RentalObjectCalendarSection';
+export type { RentalObjectCalendarSectionProps } from './RentalObjectCalendarSection';
+
+// Deprecated wrapper - re-exported for backward compatibility
+export { CalendarSection as LegacyCalendarSection } from './CalendarSection';
+export type { CalendarSectionProps as LegacyCalendarSectionProps } from './CalendarSection';
+
 // QuoteData is defined in the payment section now
 export interface QuoteData {
   totalPrice: number;

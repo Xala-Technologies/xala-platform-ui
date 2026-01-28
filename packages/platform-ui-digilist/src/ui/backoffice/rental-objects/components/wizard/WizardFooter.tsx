@@ -1,0 +1,115 @@
+/**
+ * WizardFooter
+ * Navigation footer for the rental object wizard with prev/next/save/publish actions
+ */
+
+import { useT } from '@xala-technologies/platform/runtime';
+import { Button, Stack, Spinner } from '@xala-technologies/platform-ui';
+import type { UseRentalObjectWizardReturn } from '../../hooks/useRentalObjectWizard';
+
+export interface WizardFooterProps {
+  wizard: UseRentalObjectWizardReturn;
+}
+
+export function WizardFooter({ wizard }: WizardFooterProps) {
+  const t = useT();
+
+  const {
+    canGoPrev,
+    canGoNext,
+    isLastStep,
+    isSaving,
+    prevStep,
+    nextStep,
+    saveDraft,
+    publish,
+    cancel,
+  } = wizard;
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: 'var(--ds-spacing-4)',
+      }}
+    >
+      {/* Left Side - Cancel Button */}
+      <Button
+        variant="tertiary"
+        onClick={cancel}
+        disabled={isSaving} type="button"
+      >
+        {t('action.cancel')}
+      </Button>
+
+      {/* Center - Step Navigation */}
+      <Stack direction="row" gap={3} align="center">
+        {/* Previous Button */}
+        <Button
+          variant="secondary"
+          onClick={prevStep}
+          disabled={!canGoPrev || isSaving} type="button"
+        >
+          {t('wizard.goToPreviousStep')}
+        </Button>
+
+        {/* Next Button */}
+        {!isLastStep && (
+          <Button
+            variant="primary"
+            onClick={nextStep}
+            disabled={!canGoNext || isSaving} type="button"
+          >
+            {isSaving ? (
+              <Stack direction="row" gap={2} align="center">
+                <Spinner size="sm" />
+                {t('state.loading')}
+              </Stack>
+            ) : (
+              t('wizard.goToNextStep')
+            )}
+          </Button>
+        )}
+      </Stack>
+
+      {/* Right Side - Save/Publish Actions */}
+      <Stack direction="row" gap={3}>
+        {/* Save Draft Button */}
+        <Button
+          variant="secondary"
+          onClick={saveDraft}
+          disabled={isSaving} type="button"
+        >
+          {isSaving ? (
+            <Stack direction="row" gap={2} align="center">
+              <Spinner size="sm" />
+              {t('state.loading')}
+            </Stack>
+          ) : (
+            t('wizard.saveDraft')
+          )}
+        </Button>
+
+        {/* Publish Button (only on last step) */}
+        {isLastStep && (
+          <Button
+            variant="primary"
+            onClick={publish}
+            disabled={isSaving} type="button"
+          >
+            {isSaving ? (
+              <Stack direction="row" gap={2} align="center">
+                <Spinner size="sm" />
+                {t('state.loading')}
+              </Stack>
+            ) : (
+              t('wizard.saveAndPublish')
+            )}
+          </Button>
+        )}
+      </Stack>
+    </div>
+  );
+}

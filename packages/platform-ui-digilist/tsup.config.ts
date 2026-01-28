@@ -23,6 +23,17 @@ export default defineConfig({
         'features/notification-reports': 'src/features/notification-reports/index.ts',
         'features/organizations': 'src/features/organizations/index.ts',
         'features/docs': 'src/features/docs/index.ts',
+
+        // UI modules
+        'ui/backoffice/index': 'src/ui/backoffice/index.ts',
+        'ui/dashboard/index': 'src/ui/dashboard/index.ts',
+        'ui/docs/index': 'src/ui/docs/index.ts',
+        'ui/monitoring/index': 'src/ui/monitoring/index.ts',
+        'ui/notifications/index': 'src/ui/notifications/index.ts',
+        'ui/seasons/index': 'src/ui/seasons/index.ts',
+        'ui/settings/index': 'src/ui/settings/index.ts',
+        'ui/shared/index': 'src/ui/shared/index.ts',
+        'ui/web/index': 'src/ui/web/index.ts',
     },
     format: ['cjs', 'esm'],
     dts: true,

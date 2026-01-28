@@ -1,0 +1,425 @@
+/**
+ * DocsSidebar Component
+ *
+ * Navigation sidebar with feature-flag controlled sections.
+ * Adapts tenant-admin Sidebar pattern for documentation.
+ */
+
+import { useMemo } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import {
+  Paragraph,
+  HomeIcon,
+  SearchIcon,
+  CalendarIcon,
+  ShieldIcon,
+  ChartIcon,
+  SettingsIcon,
+  MapIcon,
+  ExternalLinkIcon,
+  InfoIcon,
+  BookOpenIcon,
+  ArrowRightIcon,
+  UsersIcon,
+} from '@xala-technologies/platform-ui';
+import { useT } from '@xala-technologies/platform/runtime';
+import { useFeatureFlags } from '@digilist/client-sdk';
+import { isSectionEnabled, DOCS_FEATURE_FLAGS } from '../../lib/feature-flags';
+import { useNavigationItems, type NavItemFromApi } from '../../hooks/useNavigation';
+import type { DocsNavItem, DocsNavSection } from '../../types';
+
+// NavItem component with proper active state handling
+function SidebarNavItem({ item }: { item: DocsNavItem }) {
+  const location = useLocation();
+  const isActive =
+    item.href === '/' ? location.pathname === '/' : location.pathname.startsWith(item.href);
+
+  return (
+    <NavLink
+      to={item.href}
+      end={item.href === '/'}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--ds-spacing-3)',
+        padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
+        borderRadius: 'var(--ds-border-radius-md)',
+        textDecoration: 'none',
+        backgroundColor: isActive
+          ? 'var(--ds-color-accent-surface-default)'
+          : 'transparent',
+        color: isActive
+          ? 'var(--ds-color-accent-text-default)'
+          : 'var(--ds-color-neutral-text-default)',
+        transition: 'all 0.15s ease',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '24px',
+          height: '24px',
+          color: isActive
+            ? 'var(--ds-color-accent-base-default)'
+            : 'var(--ds-color-neutral-text-subtle)',
+        }}
+      >
+        {getIcon(item.icon)}
+      </div>
+
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <Paragraph
+          data-size="sm"
+          style={{
+            margin: 0,
+            fontWeight: isActive
+              ? 'var(--ds-font-weight-semibold)'
+              : 'var(--ds-font-weight-medium)',
+          }}
+        >
+          {item.label}
+        </Paragraph>
+        {item.description && (
+          <Paragraph
+            data-size="xs"
+            style={{
+              margin: 0,
+              marginTop: 'var(--ds-spacing-1)',
+              color: 'var(--ds-color-neutral-text-subtle)',
+            }}
+          >
+            {item.description}
+          </Paragraph>
+        )}
+      </div>
+
+      <div
+        style={{
+          opacity: isActive ? 1 : 0,
+          transition: 'opacity 0.15s ease',
+        }}
+      >
+        <ArrowRightIcon />
+      </div>
+    </NavLink>
+  );
+}
+
+function getIcon(iconName?: string): React.ReactNode {
+  const icons: Record<string, React.ReactNode> = {
+    home: <HomeIcon />,
+    search: <SearchIcon />,
+    calendar: <CalendarIcon />,
+    shield: <ShieldIcon />,
+    'credit-card': <ChartIcon />,
+    settings: <SettingsIcon />,
+    api: <MapIcon />,
+    link: <ExternalLinkIcon />,
+    help: <InfoIcon />,
+    book: <BookOpenIcon />,
+    users: <UsersIcon />,
+  };
+  return icons[iconName || 'book'] || <BookOpenIcon />;
+}
+
+/**
+ * Transform API navigation items to DocsNavSection format
+ */
+function transformApiNavToSections(
+  items: NavItemFromApi[],
+  t: (key: string) => string
+): DocsNavSection[] {
+  if (!items.length) return [];
+
+  const sectionMap = new Map<string | null, DocsNavItem[]>();
+
+  for (const item of items) {
+    const sectionKey = item.section || null;
+    if (!sectionMap.has(sectionKey)) {
+      sectionMap.set(sectionKey, []);
+    }
+
+    const navItem: DocsNavItem = {
+      id: item.key,
+      label: t(item.labelKey),
+      description: t(`${item.labelKey}Desc`),
+      href: item.routeKey || '/',
+      icon: item.iconKey,
+    };
+
+    sectionMap.get(sectionKey)!.push(navItem);
+  }
+
+  const sections: DocsNavSection[] = [];
+  for (const [sectionKey, sectionItems] of sectionMap) {
+    sections.push({
+      title: sectionKey ? t(sectionKey) : undefined,
+      items: sectionItems,
+    });
+  }
+
+  return sections;
+}
+
+export function DocsSidebar() {
+  const t = useT();
+  const flags = useFeatureFlags();
+  const { items: apiNavItems } = useNavigationItems();
+
+  // Use default flags if SDK hasn't loaded yet
+  const activeFlags = Object.keys(flags).length > 0 ? flags : { ...DOCS_FEATURE_FLAGS, 'docs.enabled': true };
+
+  // Transform API items to sections
+  const apiSections = useMemo(() => {
+    if (apiNavItems.length > 0) {
+      return transformApiNavToSections(apiNavItems, t);
+    }
+    return null;
+  }, [apiNavItems, t]);
+
+  // Static fallback navigation
+  const staticNavSections: DocsNavSection[] = [
+    {
+      items: [
+        {
+          id: 'home',
+          label: t('docs.nav.home') || 'Oversikt',
+          description: t('docs.nav.homeDesc') || 'Kom i gang med Digilist',
+          href: '/',
+          icon: 'home',
+        },
+        {
+          id: 'search',
+          label: t('docs.nav.search') || 'Søk',
+          description: t('docs.nav.searchDesc') || 'Søk i dokumentasjon',
+          href: '/search',
+          icon: 'search',
+          featureFlag: 'docs.search.enabled',
+        },
+      ],
+    },
+    {
+      title: t('docs.nav.sections') || 'Seksoner',
+      items: [
+        {
+          id: 'booking',
+          label: t('docs.nav.booking') || 'Bookingsystem',
+          description: t('docs.nav.bookingDesc') || 'Opprett og administrer bookinger',
+          href: '/booking',
+          icon: 'calendar',
+          featureFlag: 'docs.section.booking.enabled',
+        },
+        {
+          id: 'rbac',
+          label: t('docs.nav.rbac') || 'Roller og tilgang',
+          description: t('docs.nav.rbacDesc') || 'Forstå brukerroller og tilgang',
+          href: '/rbac',
+          icon: 'shield',
+          featureFlag: 'docs.section.rbac.enabled',
+        },
+        {
+          id: 'payments',
+          label: t('docs.nav.payments') || 'Betalinger',
+          description: t('docs.nav.paymentsDesc') || 'Betalinger og fakturering',
+          href: '/payments',
+          icon: 'credit-card',
+          featureFlag: 'docs.section.payments.enabled',
+        },
+        {
+          id: 'admin',
+          label: t('docs.nav.admin') || 'Administrasjon',
+          description: t('docs.nav.adminDesc') || 'Innstillinger og konfigurasjon',
+          href: '/admin',
+          icon: 'settings',
+          featureFlag: 'docs.section.admin.enabled',
+        },
+        {
+          id: 'api',
+          label: t('docs.nav.api') || 'API-dokumentasjon',
+          description: t('docs.nav.apiDesc') || 'Teknisk referanse for utviklere',
+          href: '/api',
+          icon: 'api',
+          featureFlag: 'docs.section.api.enabled',
+        },
+        {
+          id: 'integrations',
+          label: t('docs.nav.integrations') || 'Integrasjoner',
+          description: t('docs.nav.integrationsDesc') || 'Koble til andre systemer',
+          href: '/integrations',
+          icon: 'link',
+          featureFlag: 'docs.section.integrations.enabled',
+        },
+        {
+          id: 'faq',
+          label: t('docs.nav.faq') || 'Ofte stilte spørsmål',
+          description: t('docs.nav.faqDesc') || 'Vanlige spørsmål og svar',
+          href: '/faq',
+          icon: 'help',
+          featureFlag: 'docs.section.faq.enabled',
+        },
+      ],
+    },
+    {
+      title: t('docs.nav.roleGuides') || 'Rolleguider',
+      items: [
+        {
+          id: 'role-end-user',
+          label: t('docs.nav.roleEndUser') || 'For sluttbrukere',
+          href: '/roles/web/end-user',
+          icon: 'users',
+          featureFlag: 'docs.roleGuides.enabled',
+        },
+        {
+          id: 'role-org-member',
+          label: t('docs.nav.roleOrgMember') || 'For org-medlemmer',
+          href: '/roles/backoffice/org-member',
+          icon: 'users',
+          featureFlag: 'docs.roleGuides.enabled',
+        },
+        {
+          id: 'role-org-admin',
+          label: t('docs.nav.roleOrgAdmin') || 'For org-admins',
+          href: '/roles/backoffice/org-admin',
+          icon: 'users',
+          featureFlag: 'docs.roleGuides.enabled',
+        },
+      ],
+    },
+    {
+      items: [
+        {
+          id: 'releases',
+          label: t('docs.nav.releases') || 'Endringslogg',
+          description: t('docs.nav.releasesDesc') || 'Nytt i siste oppdatering',
+          href: '/releases',
+          icon: 'book',
+          featureFlag: 'docs.releases.enabled',
+        },
+      ],
+    },
+  ];
+
+  // Filter static items based on feature flags (fallback only)
+  const filteredStaticSections = staticNavSections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter((item) => {
+        if (!item.featureFlag) return true;
+        return isSectionEnabled(item.id, activeFlags);
+      }),
+    }))
+    .filter((section) => section.items.length > 0);
+
+  // Use API sections if available, otherwise fall back to static
+  const filteredSections = apiSections || filteredStaticSections;
+
+  return (
+    <aside
+      style={{
+        width: '280px',
+        flexShrink: 0,
+        height: '100vh',
+        position: 'sticky',
+        top: 0,
+        overflowY: 'auto',
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        borderRight: '1px solid var(--ds-color-neutral-border-subtle)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
+      {/* Logo Section */}
+      <div
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          marginBottom: 'var(--ds-spacing-4)',
+          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--ds-spacing-3)',
+          }}
+        >
+          <img
+            src="/logo.svg"
+            alt="Digilist"
+            style={{
+              width: '32px',
+              height: '32px',
+            }}
+          />
+          <div>
+            <div
+              style={{
+                fontWeight: 'var(--ds-font-weight-semibold)',
+                fontSize: 'var(--ds-font-size-md)',
+                color: 'var(--ds-color-neutral-text-default)',
+              }}
+            >
+              {t('common.text.digilist')}
+            </div>
+            <div
+              style={{
+                fontSize: 'var(--ds-font-size-xs)',
+                color: 'var(--ds-color-neutral-text-subtle)',
+              }}
+            >
+              {t('docs.page.title') || 'Dokumentasjon'}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav>
+        {filteredSections.map((section, sectionIndex) => (
+          <div
+            key={sectionIndex}
+            style={{
+              marginBottom: 'var(--ds-spacing-4)',
+            }}
+          >
+            {section.title && (
+              <Paragraph
+                data-size="xs"
+                style={{
+                  margin: 0,
+                  marginBottom: 'var(--ds-spacing-2)',
+                  padding: '0 var(--ds-spacing-4)',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  fontWeight: 'var(--ds-font-weight-medium)',
+                }}
+              >
+                {section.title}
+              </Paragraph>
+            )}
+            <ul
+              style={{
+                listStyle: 'none',
+                margin: 0,
+                padding: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--ds-spacing-1)',
+              }}
+            >
+              {section.items.map((item) => (
+                <li key={item.href}>
+                  <SidebarNavItem item={item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </aside>
+  );
+}
+
+export default DocsSidebar;

@@ -82,6 +82,51 @@
             "import": "./dist/features/docs.js",
             "default": "./dist/features/docs.js"
         },
+        "./ui/backoffice": {
+            "types": "./dist/ui/backoffice/index.d.ts",
+            "import": "./dist/ui/backoffice/index.js",
+            "default": "./dist/ui/backoffice/index.js"
+        },
+        "./ui/dashboard": {
+            "types": "./dist/ui/dashboard/index.d.ts",
+            "import": "./dist/ui/dashboard/index.js",
+            "default": "./dist/ui/dashboard/index.js"
+        },
+        "./ui/monitoring": {
+            "types": "./dist/ui/monitoring/index.d.ts",
+            "import": "./dist/ui/monitoring/index.js",
+            "default": "./dist/ui/monitoring/index.js"
+        },
+        "./ui/web": {
+            "types": "./dist/ui/web/index.d.ts",
+            "import": "./dist/ui/web/index.js",
+            "default": "./dist/ui/web/index.js"
+        },
+        "./ui/docs": {
+            "types": "./dist/ui/docs/index.d.ts",
+            "import": "./dist/ui/docs/index.js",
+            "default": "./dist/ui/docs/index.js"
+        },
+        "./ui/seasons": {
+            "types": "./dist/ui/seasons/index.d.ts",
+            "import": "./dist/ui/seasons/index.js",
+            "default": "./dist/ui/seasons/index.js"
+        },
+        "./ui/settings": {
+            "types": "./dist/ui/settings/index.d.ts",
+            "import": "./dist/ui/settings/index.js",
+            "default": "./dist/ui/settings/index.js"
+        },
+        "./ui/notifications": {
+            "types": "./dist/ui/notifications/index.d.ts",
+            "import": "./dist/ui/notifications/index.js",
+            "default": "./dist/ui/notifications/index.js"
+        },
+        "./ui/shared": {
+            "types": "./dist/ui/shared/index.d.ts",
+            "import": "./dist/ui/shared/index.js",
+            "default": "./dist/ui/shared/index.js"
+        },
         "./types": {
             "types": "./dist/types/index.d.ts",
             "import": "./dist/types/index.js",
@@ -149,12 +194,24 @@
         "typescript": "^5.3.3"
     },
     "peerDependencies": {
+        "@digilist/client-sdk": "*",
+        "@xala-technologies/platform": "*",
+        "@xala-technologies/platform-ui": "*",
         "lucide-react": ">=0.400.0",
         "react": ">=18.0.0",
         "react-dom": ">=18.0.0",
         "react-router-dom": ">=6.0.0"
     },
     "peerDependenciesMeta": {
+        "@digilist/client-sdk": {
+            "optional": false
+        },
+        "@xala-technologies/platform": {
+            "optional": false
+        },
+        "@xala-technologies/platform-ui": {
+            "optional": false
+        },
         "react": {
             "optional": false
         },

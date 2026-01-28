@@ -86,10 +86,29 @@ export {
 
 export {
   CalendarSection,
+  RentalObjectCalendarSection,
+  LegacyCalendarSection,
   type CalendarSectionProps,
   type CalendarSectionLabels,
+  type RentalObjectCalendarSectionProps,
+  type LegacyCalendarSectionProps,
   type QuoteData,
 } from './calendar';
+
+// =============================================================================
+// Booking Components
+// =============================================================================
+
+export {
+  BookingDialog,
+  BookingWidgetPlacement,
+  type BookingDialogProps,
+  type BookingSlot,
+  type BookingFormData,
+  type BookingDialogOpeningHours,
+  type BookingWidgetPlacementProps,
+  type BookingWidgetOpeningHours,
+} from './booking';
 
 // =============================================================================
 // Payment Components

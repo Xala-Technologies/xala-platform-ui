@@ -1,0 +1,756 @@
+/**
+ * BookingDialog Component
+ *
+ * Professional drawer with smart calendar that respects:
+ * - Listing opening hours
+ * - Past date/time restrictions
+ * - Availability status
+ */
+
+import * as React from 'react';
+import {
+  Heading,
+  Paragraph,
+  Textfield,
+  Textarea,
+  Button,
+  Label,
+  Select,
+  SelectOption,
+  InfoIcon,
+} from '@xala-technologies/platform-ui';
+import { useT } from '@xala-technologies/platform/runtime';
+import { PaymentSection } from '../payment/PaymentSection';
+
+// =============================================================================
+// Icons
+// =============================================================================
+
+const Icons = {
+  calendar: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  ),
+  users: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  ),
+  tag: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+      <line x1="7" y1="7" x2="7.01" y2="7" />
+    </svg>
+  ),
+  repeat: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="17 1 21 5 17 9" />
+      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+      <polyline points="7 23 3 19 7 15" />
+      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+    </svg>
+  ),
+  close: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  ),
+  text: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="17" y1="10" x2="3" y2="10" />
+      <line x1="21" y1="6" x2="3" y2="6" />
+      <line x1="21" y1="14" x2="3" y2="14" />
+      <line x1="17" y1="18" x2="3" y2="18" />
+    </svg>
+  ),
+  clock: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  ),
+  check: (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  ),
+  chevronLeft: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  ),
+  chevronRight: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  ),
+};
+
+// =============================================================================
+// Types
+// =============================================================================
+
+export interface BookingSlot {
+  date: Date;
+  startTime: string;
+  endTime?: string;
+}
+
+export interface OpeningHours {
+  open: string; // "10:00"
+  close: string; // "21:00"
+}
+
+export interface BookingFormData {
+  purpose: string;
+  showPurposeInCalendar: boolean;
+  date: string;
+  startTime: string;
+  endTime: string;
+  attendees: string;
+  activityType: string;
+  description: string;
+  isRecurring: boolean;
+  endDate: string;
+  selectedDays: string[];
+  repetition: string;
+}
+
+export interface BookingDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: (data: BookingFormData) => void;
+  slot: BookingSlot | undefined;
+  openingHours?: OpeningHours;
+  busySlots?: Array<{ date: string; startTime: string; endTime: string }>;
+}
+
+// =============================================================================
+// Constants
+// =============================================================================
+
+// Weekday keys for calendar header (Monday-Saturday for booking week view)
+const WEEKDAY_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const;
+
+// Day name keys for date formatting (Sunday first, matching JS Date.getDay())
+const DAY_NAME_KEYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const;
+
+// Month keys for date formatting
+const MONTH_KEYS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'] as const;
+
+// =============================================================================
+// Helper Functions
+// =============================================================================
+
+function formatDateKey(date: Date): string {
+  return date.toISOString().split('T')[0] ?? '';
+}
+
+// =============================================================================
+// Component
+// =============================================================================
+
+export function BookingDialog({
+  isOpen,
+  onClose,
+  onConfirm,
+  slot,
+  openingHours = { open: '08:00', close: '21:00' },
+}: BookingDialogProps): React.ReactElement | null {
+  const t = useT();
+  const [formData, setFormData] = React.useState<BookingFormData>({
+    purpose: '',
+    showPurposeInCalendar: false,
+    date: '',
+    startTime: '',
+    endTime: '',
+    attendees: '',
+    activityType: '',
+    description: '',
+    isRecurring: false,
+    endDate: '',
+    selectedDays: [],
+    repetition: 'weekly',
+  });
+
+  const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
+  const [isMounted, setIsMounted] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
+  const closeTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Generate translated weekday labels for calendar header
+  const weekdays = React.useMemo(() =>
+    WEEKDAY_KEYS.map(key => ({ key, label: t(`weekdays.tiny.${key}`) })),
+    [t]
+  );
+
+  // Generate translated day names for date display
+  const dayNames = React.useMemo(() =>
+    DAY_NAME_KEYS.map(key => t(`weekdays.short.${key}`)),
+    [t]
+  );
+
+  // Generate translated month names for date display
+  const monthNames = React.useMemo(() =>
+    MONTH_KEYS.map(key => t(`months.short.${key}`)),
+    [t]
+  );
+
+  // Parse opening hours
+  const openHour = parseInt(openingHours.open.split(':')[0] ?? '8', 10);
+  const closeHour = parseInt(openingHours.close.split(':')[0] ?? '21', 10);
+
+  // Animation handling
+  React.useEffect(() => {
+    if (isOpen) {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+        closeTimeoutRef.current = null;
+      }
+      setIsMounted(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setIsVisible(true));
+      });
+    } else {
+      setIsVisible(false);
+      closeTimeoutRef.current = setTimeout(() => setIsMounted(false), 350);
+    }
+    return () => {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
+  }, [isOpen]);
+
+  // Populate from slot
+  React.useEffect(() => {
+    if (slot) {
+      setSelectedDate(slot.date);
+      const [startHour, startMin] = slot.startTime.split(':').map(Number);
+      const endHour = ((startHour ?? 0) + 1).toString().padStart(2, '0');
+      const endTime = `${endHour}:${(startMin ?? 0).toString().padStart(2, '0')}`;
+      setFormData((prev) => ({
+        ...prev,
+        date: formatDateKey(slot.date),
+        startTime: slot.startTime,
+        endTime: slot.endTime || endTime,
+      }));
+    }
+  }, [slot]);
+
+  // Update form date when selectedDate changes
+  React.useEffect(() => {
+    const dateStr = formatDateKey(selectedDate);
+    const [year, month, day] = dateStr.split('-');
+    setFormData(prev => ({ ...prev, date: `${day}.${month}.${year}` }));
+  }, [selectedDate]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onConfirm(formData);
+  };
+
+  const updateField = <K extends keyof BookingFormData>(field: K, value: BookingFormData[K]) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const toggleDay = (day: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      selectedDays: prev.selectedDays.includes(day)
+        ? prev.selectedDays.filter((d) => d !== day)
+        : [...prev.selectedDays, day],
+    }));
+  };
+
+  const selectTimeSlot = (time: string) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    const endHour = ((hours ?? 0) + 1).toString().padStart(2, '0');
+    const endTime = `${endHour}:${(minutes ?? 0).toString().padStart(2, '0')}`;
+    setFormData(prev => ({ ...prev, startTime: time, endTime }));
+  };
+
+  // Form validation - check required fields
+  const isFormValid = React.useMemo(() => {
+    const hasPurpose = formData.purpose.trim().length > 0;
+    const hasAttendees = formData.attendees.trim().length > 0 && parseInt(formData.attendees, 10) > 0;
+    const hasActivityType = formData.activityType.trim().length > 0;
+    const hasTimeSlot = formData.startTime.length > 0;
+    return hasPurpose && hasAttendees && hasActivityType && hasTimeSlot;
+  }, [formData.purpose, formData.attendees, formData.activityType, formData.startTime]);
+
+  if (!isMounted) return null;
+
+  const baseDelay = isVisible ? 80 : 0;
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        onClick={onClose}
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: 'var(--ds-color-neutral-background-overlay)',
+          backdropFilter: isVisible ? 'blur(4px)' : 'blur(0px)',
+          zIndex: 1000,
+          opacity: isVisible ? 1 : 0,
+          transition: 'opacity 350ms ease, backdrop-filter 350ms ease',
+        }}
+      />
+
+      {/* Drawer */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-dialog-title"
+        className={`booking-drawer ${isVisible ? 'drawer-visible' : ''}`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          width: '100%',
+          maxWidth: '560px',
+          height: '100vh',
+          backgroundColor: 'var(--ds-color-neutral-background-default)',
+          boxShadow: isVisible ? '-8px 0 40px rgba(0, 0, 0, 0.2)' : 'none',
+          zIndex: 1001,
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          transform: isVisible ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 350ms cubic-bezier(0.32, 0.72, 0, 1), box-shadow 350ms ease',
+        }}
+      >
+        {/* Drawer Handle (mobile only) */}
+        <div className="drawer-handle" style={{ display: 'none', justifyContent: 'center', padding: 'var(--ds-spacing-3) 0 0' }}>
+          <div style={{ width: '40px', height: '5px', backgroundColor: 'var(--ds-color-neutral-border-default)', borderRadius: 'var(--ds-border-radius-full)' }} />
+        </div>
+
+        {/* Header */}
+        <div
+          style={{
+            padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+            borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+            backgroundColor: 'var(--ds-color-accent-surface-default)',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateX(0)' : 'translateX(20px)',
+              transition: 'all 400ms cubic-bezier(0.32, 0.72, 0, 1)',
+              transitionDelay: `${baseDelay}ms`,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+              <span style={{ color: 'var(--ds-color-accent-base-default)', display: 'flex' }}>{Icons.calendar}</span>
+              <div>
+                <Heading level={2} data-size="sm" id="booking-dialog-title" style={{ margin: 0 }}>
+                  {t('booking.selectTimeSlot')}
+                </Heading>
+                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}>
+                  {t('booking.openingHours')}: {openingHours.open} – {openingHours.close}
+                </Paragraph>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={t('common.close')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '36px',
+                height: '36px',
+                border: 'none',
+                backgroundColor: 'transparent',
+                cursor: 'pointer',
+                color: 'var(--ds-color-neutral-text-subtle)',
+                borderRadius: 'var(--ds-border-radius-full)',
+                transition: 'all 200ms ease',
+              }}
+            >
+              {Icons.close}
+            </button>
+          </div>
+        </div>
+
+        {/* Time Selection Section */}
+        <div
+          style={{
+            borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+            backgroundColor: 'var(--ds-color-neutral-surface-default)',
+            padding: 'var(--ds-spacing-4) var(--ds-spacing-5)',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+            transition: 'all 400ms cubic-bezier(0.32, 0.72, 0, 1)',
+            transitionDelay: `${baseDelay + 50}ms`,
+          }}
+        >
+          {/* Date and Time in single row */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
+            {/* Selected Date */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}>
+              <span style={{ color: 'var(--ds-color-accent-text-default)', display: 'flex' }}>{Icons.calendar}</span>
+              <Paragraph data-size="md" style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}>
+                {dayNames[selectedDate.getDay()]} {selectedDate.getDate()}. {monthNames[selectedDate.getMonth()]}
+              </Paragraph>
+            </div>
+
+            {/* Time Selector - Compact inline */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
+              <button
+                type="button"
+                onClick={() => {
+                  const [h, m] = (formData.startTime || '08:00').split(':').map(Number);
+                  let totalMins = (h ?? 8) * 60 + (m ?? 0) - 30;
+                  const minMins = openHour * 60;
+                  if (totalMins < minMins) totalMins = minMins;
+                  const newH = Math.floor(totalMins / 60);
+                  const newM = totalMins % 60;
+                  const newTime = `${newH.toString().padStart(2, '0')}:${newM.toString().padStart(2, '0')}`;
+                  selectTimeSlot(newTime);
+                }}
+                aria-label={t('booking.subtractThirtyMinutes')}
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: 'var(--ds-border-radius-full)',
+                  border: '1px solid var(--ds-color-neutral-border-default)',
+                  backgroundColor: 'var(--ds-color-neutral-background-default)',
+                  cursor: 'pointer',
+                  fontSize: 'var(--ds-font-size-md)',
+                  fontWeight: 'var(--ds-font-weight-bold)',
+                  color: 'var(--ds-color-neutral-text-default)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                −
+              </button>
+
+              <div
+                style={{
+                  padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
+                  backgroundColor: 'var(--ds-color-accent-base-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  color: 'var(--ds-color-accent-contrast-default)',
+                  fontWeight: 'var(--ds-font-weight-bold)',
+                  fontSize: 'var(--ds-font-size-lg)',
+                  fontVariantNumeric: 'tabular-nums',
+                  minWidth: '80px',
+                  textAlign: 'center',
+                }}
+              >
+                {formData.startTime || '08:00'}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  const [h, m] = (formData.startTime || '08:00').split(':').map(Number);
+                  let totalMins = (h ?? 8) * 60 + (m ?? 0) + 30;
+                  const maxMins = (closeHour - 1) * 60 + 30;
+                  if (totalMins > maxMins) totalMins = maxMins;
+                  const newH = Math.floor(totalMins / 60);
+                  const newM = totalMins % 60;
+                  const newTime = `${newH.toString().padStart(2, '0')}:${newM.toString().padStart(2, '0')}`;
+                  selectTimeSlot(newTime);
+                }}
+                aria-label={t('booking.addThirtyMinutes')}
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: 'var(--ds-border-radius-full)',
+                  border: '1px solid var(--ds-color-neutral-border-default)',
+                  backgroundColor: 'var(--ds-color-neutral-background-default)',
+                  cursor: 'pointer',
+                  fontSize: 'var(--ds-font-size-md)',
+                  fontWeight: 'var(--ds-font-weight-bold)',
+                  color: 'var(--ds-color-neutral-text-default)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* Duration selector - Compact */}
+          {/* Duration Selector */}
+          <div style={{ marginTop: 'var(--ds-spacing-4)' }}>
+            <Paragraph data-size="sm" style={{ margin: '0 0 var(--ds-spacing-2) 0', color: 'var(--ds-color-neutral-text-subtle)', fontWeight: 'var(--ds-font-weight-medium)' }}>
+              {t('booking.duration')}
+            </Paragraph>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--ds-spacing-2)' }}>
+              {['30m', '1t', '2t', '3t'].map((duration, i) => {
+                const durationMinutes = [30, 60, 120, 180][i] ?? 60;
+                const [startH, startM] = (formData.startTime || '08:00').split(':').map(Number);
+                const endMinutes = ((startH ?? 8) * 60 + (startM ?? 0)) + durationMinutes;
+                const endH = Math.floor(endMinutes / 60);
+                const endM = endMinutes % 60;
+                const endTime = `${endH.toString().padStart(2, '0')}:${endM.toString().padStart(2, '0')}`;
+                const isSelectedDur = formData.endTime === endTime;
+
+                return (
+                  <button
+                    key={duration}
+                    type="button"
+                    onClick={() => updateField('endTime', endTime)}
+                    style={{
+                      padding: 'var(--ds-spacing-3) var(--ds-spacing-2)',
+                      borderRadius: 'var(--ds-border-radius-md)',
+                      border: isSelectedDur
+                        ? '2px solid var(--ds-color-accent-base-default)'
+                        : '1px solid var(--ds-color-neutral-border-default)',
+                      backgroundColor: isSelectedDur
+                        ? 'var(--ds-color-accent-surface-default)'
+                        : 'var(--ds-color-neutral-surface-default)',
+                      color: isSelectedDur
+                        ? 'var(--ds-color-accent-text-default)'
+                        : 'var(--ds-color-neutral-text-default)',
+                      fontSize: 'var(--ds-font-size-md)',
+                      fontWeight: 'var(--ds-font-weight-semibold)',
+                      cursor: 'pointer',
+                      transition: 'all 200ms ease',
+                      textAlign: 'center',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isSelectedDur) {
+                        e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-hover)';
+                        e.currentTarget.style.borderColor = 'var(--ds-color-accent-border-default)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isSelectedDur) {
+                        e.currentTarget.style.backgroundColor = 'var(--ds-color-neutral-surface-default)';
+                        e.currentTarget.style.borderColor = 'var(--ds-color-neutral-border-default)';
+                      }
+                    }}
+                  >
+                    {duration}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
+          <div
+            style={{
+              flex: 1,
+              overflow: 'auto',
+              padding: 'var(--ds-spacing-4)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--ds-spacing-4)',
+            }}
+          >
+            {/* Purpose Field */}
+            <div
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 400ms cubic-bezier(0.32, 0.72, 0, 1)',
+                transitionDelay: `${baseDelay + 100}ms`,
+              }}
+            >
+              <Label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)' }}>
+                <span style={{ color: 'var(--ds-color-accent-text-default)' }}>{Icons.tag}</span>
+                <span>{t('booking.purpose')}</span>
+                <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-danger-text-default)', marginLeft: 'auto' }}>{t('common.required')}</span>
+              </Label>
+              <Textfield
+                aria-label={t('booking.purpose')}
+                value={formData.purpose}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField('purpose', e.target.value)}
+                placeholder={t('booking.purposePlaceholder')}
+                style={{ width: '100%' }}
+              />
+              <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-3)', cursor: 'pointer' }}>
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    updateField('showPurposeInCalendar', !formData.showPurposeInCalendar);
+                  }}
+                  style={{
+                    width: '22px',
+                    height: '22px',
+                    borderRadius: 'var(--ds-border-radius-sm)',
+                    border: `2px solid ${formData.showPurposeInCalendar ? 'var(--ds-color-accent-base-default)' : 'var(--ds-color-neutral-border-default)'}`,
+                    backgroundColor: formData.showPurposeInCalendar ? 'var(--ds-color-accent-base-default)' : 'transparent',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 200ms ease',
+                    color: 'white',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {formData.showPurposeInCalendar && Icons.check}
+                </div>
+                <Paragraph data-size="sm" style={{ margin: 0 }}>{t('booking.showPurposeInCalendar')}</Paragraph>
+              </label>
+            </div>
+
+
+            {/* Attendees & Activity */}
+            <div
+              className="booking-details-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 'var(--ds-spacing-4)',
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 400ms cubic-bezier(0.32, 0.72, 0, 1)',
+                transitionDelay: `${baseDelay + 200}ms`,
+              }}
+            >
+              <div>
+                <Label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)', whiteSpace: 'nowrap' }}>
+                  <span style={{ color: 'var(--ds-color-accent-text-default)' }}>{Icons.users}</span>
+                  <span>{t('booking.attendees')}</span>
+                  <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-danger-text-default)', marginLeft: 'auto' }}>{t('common.required')}</span>
+                </Label>
+                <Textfield aria-label={t('booking.attendees')} type="number" value={formData.attendees} onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField('attendees', e.target.value)} placeholder="0" min="1" style={{ width: '100%' }} />
+              </div>
+              <div>
+                <Label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)', whiteSpace: 'nowrap' }}>
+                  <span style={{ color: 'var(--ds-color-accent-text-default)' }}>{Icons.tag}</span>
+                  <span>{t('booking.activityType')}</span>
+                  <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-danger-text-default)', marginLeft: 'auto' }}>{t('common.required')}</span>
+                </Label>
+                <Select value={formData.activityType} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => updateField('activityType', e.target.value)} style={{ width: '100%' }}>
+                  <SelectOption value="">{t('booking.selectType')}</SelectOption>
+                  <SelectOption value="trening">{t('booking.activity.training')}</SelectOption>
+                  <SelectOption value="møte">{t('booking.activity.meeting')}</SelectOption>
+                  <SelectOption value="kurs">{t('booking.activity.course')}</SelectOption>
+                  <SelectOption value="arrangement">{t('booking.activity.event')}</SelectOption>
+                  <SelectOption value="annet">{t('booking.activity.other')}</SelectOption>
+                </Select>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 400ms cubic-bezier(0.32, 0.72, 0, 1)',
+                transitionDelay: `${baseDelay + 250}ms`,
+              }}
+            >
+              <Label style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)', marginBottom: 'var(--ds-spacing-2)' }}>
+                <span style={{ color: 'var(--ds-color-accent-text-default)' }}>{Icons.text}</span>
+                <span>{t('common.description')}</span>
+                <span style={{ fontSize: 'var(--ds-font-size-xs)', color: 'var(--ds-color-neutral-text-subtle)', marginLeft: 'auto' }}>{t('common.optional')}</span>
+              </Label>
+              <Textarea value={formData.description} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => updateField('description', e.target.value)} placeholder={t('booking.descriptionPlaceholder')} rows={2} style={{ width: '100%' }} />
+            </div>
+
+          </div>
+
+          {/* Footer */}
+          <div
+            style={{
+              padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
+              borderTop: '1px solid var(--ds-color-neutral-border-subtle)',
+              backgroundColor: 'var(--ds-color-neutral-surface-default)',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 400ms cubic-bezier(0.32, 0.72, 0, 1)',
+              transitionDelay: `${baseDelay + 350}ms`,
+            }}
+          >
+            {/* Validation message */}
+            {!isFormValid && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--ds-spacing-2)',
+                  marginBottom: 'var(--ds-spacing-2)',
+                  padding: 'var(--ds-spacing-2)',
+                  backgroundColor: 'var(--ds-color-warning-surface-default)',
+                  borderRadius: 'var(--ds-border-radius-md)',
+                  border: '1px solid var(--ds-color-warning-border-subtle)',
+                }}
+              >
+                <InfoIcon width={16} height={16} fill="var(--ds-color-warning-text-default)" />
+                <Paragraph data-size="sm" style={{ margin: 0, color: 'var(--ds-color-warning-text-default)' }}>
+                  {t('booking.fillRequiredFields')}
+                </Paragraph>
+              </div>
+            )}
+            <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
+              <Button type="button" variant="secondary" onClick={onClose} style={{ flex: 1 }}>{t("action.cancel")}</Button>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={!isFormValid}
+                style={{
+                  flex: 2,
+                  opacity: isFormValid ? 1 : 0.6,
+                  cursor: isFormValid ? 'pointer' : 'not-allowed',
+                }}
+              >
+                {t('booking.confirmBooking')}
+              </Button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {/* Styles */}
+      <style>{`
+        @media (max-width: 560px) {
+          .booking-drawer {
+            top: auto !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            max-height: 96vh !important;
+            border-radius: var(--ds-border-radius-xl) var(--ds-border-radius-xl) 0 0 !important;
+            box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2) !important;
+            transform: translateY(100%) !important;
+          }
+          .booking-drawer.drawer-visible {
+            transform: translateY(0) !important;
+          }
+          .booking-details-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .booking-recurring-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .drawer-handle {
+            display: flex !important;
+          }
+        }
+      `}</style>
+    </>
+  );
+}
+
+export default BookingDialog;

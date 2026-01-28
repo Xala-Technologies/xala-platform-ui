@@ -1,0 +1,21 @@
+// Auto-generated index
+export { DetailsStep } from './DetailsStep';
+export { ReviewStep } from './ReviewStep';
+export { BookingSettingsStep } from './BookingSettingsStep';
+export { MediaStep } from './MediaStep';
+export { PackagesStep } from './PackagesStep';
+export { OpeningHoursStep } from './OpeningHoursStep';
+export { CustodyStep } from './CustodyStep';
+export { RequirementsStep } from './RequirementsStep';
+export { CategorySelector } from './CategorySelector';
+export { LocationStep } from './LocationStep';
+export { BasicsStep } from './BasicsStep';
+export { CapacityStep } from './CapacityStep';
+export { ResourcesStep } from './ResourcesStep';
+export { ScheduleStep } from './ScheduleStep';
+export { BookingStep } from './BookingStep';
+export { ContentStep } from './ContentStep';
+export { AvailabilityStep } from './AvailabilityStep';
+export { InventoryStep } from './InventoryStep';
+export { CloneSelectionStep } from './CloneSelectionStep';
+export { PickupStep } from './PickupStep';
