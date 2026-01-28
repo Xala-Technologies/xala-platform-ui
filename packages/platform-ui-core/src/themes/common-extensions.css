@@ -357,6 +357,76 @@
   .ds-grid-cols-xl-6 { grid-template-columns: repeat(6, 1fr); }
 }
 
+/* ==========================================================================
+ * RESPONSIVE PADDING UTILITIES
+ *
+ * Token-based responsive padding for grid layouts.
+ * ========================================================================== */
+
+/* Base padding utilities (mobile-first) */
+.ds-grid-p-none { padding: 0; }
+.ds-grid-p-xs { padding: var(--ds-spacing-1); }
+.ds-grid-p-sm { padding: var(--ds-spacing-2); }
+.ds-grid-p-md { padding: var(--ds-spacing-4); }
+.ds-grid-p-lg { padding: var(--ds-spacing-6); }
+.ds-grid-p-xl { padding: var(--ds-spacing-8); }
+
+/* Horizontal padding */
+.ds-grid-px-none { padding-left: 0; padding-right: 0; }
+.ds-grid-px-xs { padding-left: var(--ds-spacing-1); padding-right: var(--ds-spacing-1); }
+.ds-grid-px-sm { padding-left: var(--ds-spacing-2); padding-right: var(--ds-spacing-2); }
+.ds-grid-px-md { padding-left: var(--ds-spacing-4); padding-right: var(--ds-spacing-4); }
+.ds-grid-px-lg { padding-left: var(--ds-spacing-6); padding-right: var(--ds-spacing-6); }
+.ds-grid-px-xl { padding-left: var(--ds-spacing-8); padding-right: var(--ds-spacing-8); }
+
+/* Vertical padding */
+.ds-grid-py-none { padding-top: 0; padding-bottom: 0; }
+.ds-grid-py-xs { padding-top: var(--ds-spacing-1); padding-bottom: var(--ds-spacing-1); }
+.ds-grid-py-sm { padding-top: var(--ds-spacing-2); padding-bottom: var(--ds-spacing-2); }
+.ds-grid-py-md { padding-top: var(--ds-spacing-4); padding-bottom: var(--ds-spacing-4); }
+.ds-grid-py-lg { padding-top: var(--ds-spacing-6); padding-bottom: var(--ds-spacing-6); }
+.ds-grid-py-xl { padding-top: var(--ds-spacing-8); padding-bottom: var(--ds-spacing-8); }
+
+/* sm breakpoint padding (640px) */
+@media (min-width: 640px) {
+  .ds-grid-p-sm-none { padding: 0; }
+  .ds-grid-p-sm-xs { padding: var(--ds-spacing-1); }
+  .ds-grid-p-sm-sm { padding: var(--ds-spacing-2); }
+  .ds-grid-p-sm-md { padding: var(--ds-spacing-4); }
+  .ds-grid-p-sm-lg { padding: var(--ds-spacing-6); }
+  .ds-grid-p-sm-xl { padding: var(--ds-spacing-8); }
+}
+
+/* md breakpoint padding (768px) */
+@media (min-width: 768px) {
+  .ds-grid-p-md-none { padding: 0; }
+  .ds-grid-p-md-xs { padding: var(--ds-spacing-1); }
+  .ds-grid-p-md-sm { padding: var(--ds-spacing-2); }
+  .ds-grid-p-md-md { padding: var(--ds-spacing-4); }
+  .ds-grid-p-md-lg { padding: var(--ds-spacing-6); }
+  .ds-grid-p-md-xl { padding: var(--ds-spacing-8); }
+}
+
+/* lg breakpoint padding (1024px) */
+@media (min-width: 1024px) {
+  .ds-grid-p-lg-none { padding: 0; }
+  .ds-grid-p-lg-xs { padding: var(--ds-spacing-1); }
+  .ds-grid-p-lg-sm { padding: var(--ds-spacing-2); }
+  .ds-grid-p-lg-md { padding: var(--ds-spacing-4); }
+  .ds-grid-p-lg-lg { padding: var(--ds-spacing-6); }
+  .ds-grid-p-lg-xl { padding: var(--ds-spacing-8); }
+}
+
+/* xl breakpoint padding (1280px) */
+@media (min-width: 1280px) {
+  .ds-grid-p-xl-none { padding: 0; }
+  .ds-grid-p-xl-xs { padding: var(--ds-spacing-1); }
+  .ds-grid-p-xl-sm { padding: var(--ds-spacing-2); }
+  .ds-grid-p-xl-md { padding: var(--ds-spacing-4); }
+  .ds-grid-p-xl-lg { padding: var(--ds-spacing-6); }
+  .ds-grid-p-xl-xl { padding: var(--ds-spacing-8); }
+}
+
 /* Legacy responsive grid (container query based) */
 .ds-grid-responsive {
   --_grid-columns: var(--_grid-sm, 1);

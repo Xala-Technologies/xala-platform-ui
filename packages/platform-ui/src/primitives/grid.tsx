@@ -52,6 +52,23 @@ export interface ResponsiveCols {
   xl?: GridColCount;
 }
 
+/** Padding token sizes */
+export type GridPaddingSize = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+/** Responsive padding configuration */
+export interface ResponsivePadding {
+  /** Base (mobile-first) padding */
+  base?: GridPaddingSize;
+  /** Small screens (640px+) */
+  sm?: GridPaddingSize;
+  /** Medium screens (768px+) */
+  md?: GridPaddingSize;
+  /** Large screens (1024px+) */
+  lg?: GridPaddingSize;
+  /** Extra large screens (1280px+) */
+  xl?: GridPaddingSize;
+}
+
 export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Number of columns or responsive column configuration.
@@ -117,6 +134,25 @@ export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   minColWidth?: string;
 
   /**
+   * Padding around the grid.
+   * Can be a token name ('sm', 'md', 'lg'), responsive object, CSS value, or number (px).
+   *
+   * @example padding="md"
+   * @example padding={{ base: 'sm', md: 'md', lg: 'lg' }}
+   */
+  padding?: GridPaddingSize | ResponsivePadding | string | number;
+
+  /**
+   * Horizontal padding (left/right)
+   */
+  px?: GridPaddingSize | string | number;
+
+  /**
+   * Vertical padding (top/bottom)
+   */
+  py?: GridPaddingSize | string | number;
+
+  /**
    * Align items on the block axis (vertical in LTR)
    */
   alignItems?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
@@ -161,6 +197,16 @@ const gapTokenMap: Record<GridGapSize, string> = {
   xl: 'var(--ds-grid-gap-xl)',
 };
 
+/** Map padding token to CSS variable */
+const paddingTokenMap: Record<GridPaddingSize, string> = {
+  none: '0',
+  xs: 'var(--ds-spacing-1)',
+  sm: 'var(--ds-spacing-2)',
+  md: 'var(--ds-spacing-4)',
+  lg: 'var(--ds-spacing-6)',
+  xl: 'var(--ds-spacing-8)',
+};
+
 /** Resolve gap value to CSS */
 function resolveGap(gap: GridGapSize | string | number | undefined): string | undefined {
   if (gap === undefined) return undefined;
@@ -169,12 +215,33 @@ function resolveGap(gap: GridGapSize | string | number | undefined): string | un
   return gap; // Already a CSS value
 }
 
+/** Resolve padding value to CSS */
+function resolvePadding(padding: GridPaddingSize | string | number | undefined): string | undefined {
+  if (padding === undefined) return undefined;
+  if (typeof padding === 'number') return `${padding}px`;
+  if (padding in paddingTokenMap) return paddingTokenMap[padding as GridPaddingSize];
+  return padding; // Already a CSS value
+}
+
 /** Get CSS class for column count at breakpoint */
 function getColClass(breakpoint: string, cols: GridColCount): string {
   if (breakpoint === 'base') {
     return `ds-grid-cols-${cols}`;
   }
   return `ds-grid-cols-${breakpoint}-${cols}`;
+}
+
+/** Get CSS class for padding at breakpoint */
+function getPaddingClass(breakpoint: string, size: GridPaddingSize): string {
+  if (breakpoint === 'base') {
+    return `ds-grid-p-${size}`;
+  }
+  return `ds-grid-p-${breakpoint}-${size}`;
+}
+
+/** Check if padding is a responsive object */
+function isResponsivePadding(padding: unknown): padding is ResponsivePadding {
+  return typeof padding === 'object' && padding !== null && !Array.isArray(padding);
 }
 
 // =============================================================================
@@ -194,6 +261,9 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
       autoFit,
       autoFill,
       minColWidth = '280px',
+      padding,
+      px,
+      py,
       alignItems,
       justifyItems,
       alignContent,
@@ -227,13 +297,53 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
       return classes;
     }, [cols]);
 
+    // Build responsive padding classes
+    const paddingClasses = useMemo(() => {
+      if (!padding) return [];
+
+      // Responsive padding object - use CSS classes
+      if (isResponsivePadding(padding)) {
+        const classes: string[] = [];
+        const { base, sm, md, lg, xl } = padding;
+
+        if (base) classes.push(getPaddingClass('base', base));
+        if (sm) classes.push(getPaddingClass('sm', sm));
+        if (md) classes.push(getPaddingClass('md', md));
+        if (lg) classes.push(getPaddingClass('lg', lg));
+        if (xl) classes.push(getPaddingClass('xl', xl));
+
+        return classes;
+      }
+
+      // Token string - use CSS class
+      if (typeof padding === 'string' && padding in paddingTokenMap) {
+        return [`ds-grid-p-${padding}`];
+      }
+
+      return [];
+    }, [padding]);
+
     // Build style object
     const gridStyle = useMemo<React.CSSProperties>(() => {
+      // Only use inline styles for padding if it's a custom value (not a token or responsive)
+      const useInlinePadding = padding !== undefined &&
+        !isResponsivePadding(padding) &&
+        (typeof padding === 'number' || !(padding in paddingTokenMap));
+
+      const resolvedPx = resolvePadding(px);
+      const resolvedPy = resolvePadding(py);
+
       const baseStyle: React.CSSProperties = {
         display: 'grid',
         gap: resolveGap(gap),
         columnGap: resolveGap(gapX),
         rowGap: resolveGap(gapY),
+        // Only apply inline padding for custom values
+        padding: useInlinePadding ? resolvePadding(padding) : undefined,
+        paddingLeft: resolvedPx,
+        paddingRight: resolvedPx,
+        paddingTop: resolvedPy,
+        paddingBottom: resolvedPy,
         alignItems,
         justifyItems,
         alignContent,
@@ -262,6 +372,9 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
       gap,
       gapX,
       gapY,
+      padding,
+      px,
+      py,
       columns,
       cols,
       rows,
@@ -280,6 +393,8 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
       'ds-grid',
       // Only add col classes if not using columns prop or auto-fit/fill
       !columns && !autoFit && !autoFill ? colClasses.join(' ') : undefined,
+      // Add responsive padding classes
+      paddingClasses.join(' '),
       className
     );
 
