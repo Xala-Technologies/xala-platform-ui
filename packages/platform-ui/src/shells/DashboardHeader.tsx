@@ -384,7 +384,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
         >
           <Stack
             direction="horizontal"
-            px="lg"
+            px="xl"
             style={{
               display: 'flex',
               alignItems: 'center',
