@@ -1,19 +1,52 @@
 /**
  * PageShell Components
  *
- * Reusable page layout shells for consistent page structure.
+ * Reusable page layout shells for consistent page structure with responsive support.
  * Includes ListPageShell, DetailPageShell, and FormPageShell.
  *
  * SSR-safe: No browser APIs used at module level.
  * Hydration-safe: All state is passed as props.
+ *
+ * @example
+ * ```tsx
+ * // Detail page with responsive maxWidth
+ * <DetailPageShell
+ *   title="User Details"
+ *   backLink={{ label: 'Back', href: '/users' }}
+ *   maxWidth={{ base: 'full', md: 'lg', xl: 'max' }}
+ *   padding={{ base: 'sm', md: 'md' }}
+ * >
+ *   <Content />
+ * </DetailPageShell>
+ *
+ * // Form page with responsive padding
+ * <FormPageShell
+ *   title="Edit User"
+ *   maxWidth="md"
+ *   padding={{ base: 'sm', md: 'lg' }}
+ * >
+ *   <Form />
+ * </FormPageShell>
+ * ```
  *
  * @module @xala-technologies/platform/ui/composed/PageShell
  */
 
 'use client';
 
-import React, { type ReactNode } from 'react';
+import React, { type ReactNode, useMemo } from 'react';
 import { Heading } from '@digdir/designsystemet-react';
+import { cn } from '../utils';
+import {
+  type ContainerSize,
+  type ResponsiveContainerSize,
+  type PaddingSize,
+  type ResponsivePadding,
+  type Breakpoint,
+  isResponsive,
+  containerSizeMap,
+  spacingTokenMap,
+} from '../primitives/responsive-types';
 
 // =============================================================================
 // Types
@@ -29,6 +62,13 @@ export interface PageHeaderProps {
     onClick?: () => void;
   };
   badges?: ReactNode;
+  /**
+   * Stack actions vertically on mobile.
+   * - 'sm': Stack until 640px, row at 640px+
+   * - 'md': Stack until 768px, row at 768px+
+   * - 'lg': Stack until 1024px, row at 1024px+
+   */
+  stackActionsOn?: 'sm' | 'md' | 'lg';
   className?: string;
   style?: React.CSSProperties;
 }
@@ -39,6 +79,7 @@ export interface ListPageShellProps {
   actions?: ReactNode;
   filters?: ReactNode;
   children: ReactNode;
+  stackActionsOn?: 'sm' | 'md' | 'lg';
   className?: string;
   style?: React.CSSProperties;
 }
@@ -56,7 +97,25 @@ export interface DetailPageShellProps {
   statusBanner?: ReactNode;
   tabs?: ReactNode;
   children: ReactNode;
-  maxWidth?: string;
+  /**
+   * Maximum width of the page. Can be a simple value or responsive object.
+   *
+   * @example maxWidth="lg"
+   * @example maxWidth={{ base: 'full', md: 'lg', xl: 'max' }}
+   * @default 'var(--ds-sizing-1400)'
+   */
+  maxWidth?: ContainerSize | ResponsiveContainerSize | string;
+  /**
+   * Padding around the content. Can be a token name or responsive object.
+   * Uses responsive defaults for sensible spacing at all breakpoints.
+   *
+   * @example padding="md"
+   * @example padding={{ base: 'sm', md: 'md', lg: 'lg' }}
+   * @example padding="none" // to disable default padding
+   * @default { base: 'md', md: 'lg' } (16px mobile, 20px desktop)
+   */
+  padding?: PaddingSize | ResponsivePadding;
+  stackActionsOn?: 'sm' | 'md' | 'lg';
   className?: string;
   style?: React.CSSProperties;
 }
@@ -71,7 +130,24 @@ export interface FormPageShellProps {
   };
   children: ReactNode;
   footer?: ReactNode;
-  maxWidth?: string;
+  /**
+   * Maximum width of the form. Can be a simple value or responsive object.
+   *
+   * @example maxWidth="md"
+   * @example maxWidth={{ base: 'full', md: 'md', lg: 'lg' }}
+   * @default '800px'
+   */
+  maxWidth?: ContainerSize | ResponsiveContainerSize | string;
+  /**
+   * Padding around the content. Can be a token name or responsive object.
+   * Uses responsive defaults for sensible spacing at all breakpoints.
+   *
+   * @example padding="md"
+   * @example padding={{ base: 'sm', md: 'md', lg: 'lg' }}
+   * @example padding="none" // to disable default padding
+   * @default { base: 'md', md: 'lg' } (16px mobile, 20px desktop)
+   */
+  padding?: PaddingSize | ResponsivePadding;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -80,7 +156,7 @@ export interface FormPageShellProps {
 // Icons
 // =============================================================================
 
-function ArrowLeftIcon() {
+function ArrowLeftIcon(): React.ReactElement {
   return (
     <svg
       width="16"
@@ -98,6 +174,56 @@ function ArrowLeftIcon() {
 }
 
 // =============================================================================
+// Helpers
+// =============================================================================
+
+/**
+ * Check if maxWidth is a container size token
+ */
+function isContainerSize(value: unknown): value is ContainerSize {
+  return typeof value === 'string' && value in containerSizeMap;
+}
+
+/**
+ * Check if padding is a spacing token
+ */
+function isPaddingToken(value: unknown): value is PaddingSize {
+  return typeof value === 'string' && value in spacingTokenMap;
+}
+
+/**
+ * Resolve maxWidth to CSS value
+ */
+function resolveMaxWidth(maxWidth: ContainerSize | string | undefined): string | undefined {
+  if (maxWidth === undefined) return undefined;
+  if (isContainerSize(maxWidth)) return containerSizeMap[maxWidth];
+  return maxWidth;
+}
+
+/**
+ * Get CSS class for container size at breakpoint
+ */
+function getContainerSizeClass(breakpoint: Breakpoint, size: ContainerSize): string {
+  if (breakpoint === 'base') {
+    return `ds-container-${size}`;
+  }
+  return `ds-container-${breakpoint}-${size}`;
+}
+
+/**
+ * Get CSS class for padding at breakpoint
+ */
+function getPaddingClass(breakpoint: Breakpoint, size: PaddingSize): string {
+  if (breakpoint === 'base') {
+    return `ds-p-${size}`;
+  }
+  return `ds-p-${breakpoint}-${size}`;
+}
+
+/** Default responsive padding: 16px mobile, 20px desktop */
+const defaultPadding: ResponsivePadding = { base: 'md', md: 'lg' };
+
+// =============================================================================
 // PageHeader Component
 // =============================================================================
 
@@ -107,9 +233,16 @@ export function PageHeader({
   actions,
   backLink,
   badges,
+  stackActionsOn,
   className,
   style,
 }: PageHeaderProps): React.ReactElement {
+  // Build class name with stacking support for actions
+  const actionsClassName = cn(
+    'ds-page-header-actions',
+    stackActionsOn && `ds-horizontal-layout--stack-${stackActionsOn}`
+  );
+
   return (
     <div className={className} style={style}>
       {backLink && (
@@ -189,6 +322,7 @@ export function PageHeader({
 
         {actions && (
           <div
+            className={actionsClassName}
             style={{
               display: 'flex',
               gap: 'var(--ds-spacing-2)',
@@ -213,6 +347,7 @@ export function ListPageShell({
   actions,
   filters,
   children,
+  stackActionsOn,
   className,
   style,
 }: ListPageShellProps): React.ReactElement {
@@ -226,7 +361,12 @@ export function ListPageShell({
         ...style,
       }}
     >
-      <PageHeader title={title} subtitle={subtitle} actions={actions} />
+      <PageHeader
+        title={title}
+        subtitle={subtitle}
+        actions={actions}
+        stackActionsOn={stackActionsOn}
+      />
 
       {filters && (
         <div
@@ -273,17 +413,87 @@ export function DetailPageShell({
   tabs,
   children,
   maxWidth = 'var(--ds-sizing-1400)',
+  padding = defaultPadding,
+  stackActionsOn,
   className,
   style,
 }: DetailPageShellProps): React.ReactElement {
+  // Build responsive maxWidth classes
+  const maxWidthClasses = useMemo(() => {
+    if (!maxWidth) return [];
+
+    // Responsive maxWidth object - use CSS classes
+    if (typeof maxWidth === 'object' && isResponsive(maxWidth)) {
+      const classes: string[] = [];
+      const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+      for (const bp of breakpoints) {
+        const bpSize = maxWidth[bp];
+        if (bpSize) {
+          classes.push(getContainerSizeClass(bp, bpSize));
+        }
+      }
+
+      return classes;
+    }
+
+    // Token size - use CSS class
+    if (isContainerSize(maxWidth)) {
+      return [`ds-container-${maxWidth}`];
+    }
+
+    return [];
+  }, [maxWidth]);
+
+  // Build responsive padding classes
+  const paddingClasses = useMemo(() => {
+    if (!padding) return [];
+
+    // Responsive padding object - use CSS classes
+    if (isResponsive(padding)) {
+      const classes: string[] = [];
+      const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+      for (const bp of breakpoints) {
+        const bpPadding = padding[bp];
+        if (bpPadding) {
+          classes.push(getPaddingClass(bp, bpPadding));
+        }
+      }
+
+      return classes;
+    }
+
+    // Token padding - use CSS class
+    if (isPaddingToken(padding)) {
+      return [`ds-p-${padding}`];
+    }
+
+    return [];
+  }, [padding]);
+
+  // Determine if we should use inline styles
+  const useInlineMaxWidth =
+    maxWidth !== undefined &&
+    !isResponsive(maxWidth) &&
+    !isContainerSize(maxWidth);
+
+  // Build class name
+  const shellClassName = cn(
+    'ds-detail-page-shell',
+    maxWidthClasses.join(' '),
+    paddingClasses.join(' '),
+    className
+  );
+
   return (
     <div
-      className={className}
+      className={shellClassName}
       style={{
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-spacing-5)',
-        maxWidth,
+        maxWidth: useInlineMaxWidth ? (maxWidth as string) : undefined,
         margin: '0 auto',
         ...style,
       }}
@@ -294,6 +504,7 @@ export function DetailPageShell({
         backLink={backLink}
         actions={actions}
         badges={badges}
+        stackActionsOn={stackActionsOn}
       />
 
       {statusBanner}
@@ -314,17 +525,86 @@ export function FormPageShell({
   children,
   footer,
   maxWidth = '800px',
+  padding = defaultPadding,
   className,
   style,
 }: FormPageShellProps): React.ReactElement {
+  // Build responsive maxWidth classes
+  const maxWidthClasses = useMemo(() => {
+    if (!maxWidth) return [];
+
+    // Responsive maxWidth object - use CSS classes
+    if (typeof maxWidth === 'object' && isResponsive(maxWidth)) {
+      const classes: string[] = [];
+      const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+      for (const bp of breakpoints) {
+        const bpSize = maxWidth[bp];
+        if (bpSize) {
+          classes.push(getContainerSizeClass(bp, bpSize));
+        }
+      }
+
+      return classes;
+    }
+
+    // Token size - use CSS class
+    if (isContainerSize(maxWidth)) {
+      return [`ds-container-${maxWidth}`];
+    }
+
+    return [];
+  }, [maxWidth]);
+
+  // Build responsive padding classes
+  const paddingClasses = useMemo(() => {
+    if (!padding) return [];
+
+    // Responsive padding object - use CSS classes
+    if (isResponsive(padding)) {
+      const classes: string[] = [];
+      const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+      for (const bp of breakpoints) {
+        const bpPadding = padding[bp];
+        if (bpPadding) {
+          classes.push(getPaddingClass(bp, bpPadding));
+        }
+      }
+
+      return classes;
+    }
+
+    // Token padding - use CSS class
+    if (isPaddingToken(padding)) {
+      return [`ds-p-${padding}`];
+    }
+
+    return [];
+  }, [padding]);
+
+  // Determine if we should use inline styles
+  const useInlineMaxWidth =
+    maxWidth !== undefined &&
+    !isResponsive(maxWidth) &&
+    !isContainerSize(maxWidth);
+
+  // Build class name
+  const shellClassName = cn(
+    'ds-form-page-shell',
+    maxWidthClasses.join(' '),
+    paddingClasses.join(' '),
+    className
+  );
+
   return (
     <div
-      className={className}
+      className={shellClassName}
       style={{
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-spacing-5)',
-        maxWidth,
+        maxWidth: useInlineMaxWidth ? (maxWidth as string) : undefined,
         margin: '0 auto',
         ...style,
       }}

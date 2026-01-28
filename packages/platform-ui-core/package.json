@@ -1,6 +1,6 @@
 {
     "name": "@xala-technologies/platform-ui-core",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Universal UI components built on Norwegian Designsystemet - Core package",
     "type": "module",
     "main": "dist/index.cjs",

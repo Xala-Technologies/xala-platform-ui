@@ -81,27 +81,33 @@ function ChevronDownIcon({ isCollapsed }: { isCollapsed: boolean }) {
 // Size Styles
 // =============================================================================
 
+/**
+ * Size style configurations for SectionCard.
+ *
+ * Note: All sizes use a minimum of 16px (--ds-spacing-4) padding
+ * to ensure consistent spacing standards across the UI.
+ */
 const sizeStyles = {
   sm: {
-    padding: 'var(--ds-spacing-3)',
-    headerPadding: 'var(--ds-spacing-3)',
-    footerPadding: 'var(--ds-spacing-3)',
+    padding: 'var(--ds-spacing-4)',        // 16px - enforced minimum
+    headerPadding: 'var(--ds-spacing-4)',  // 16px - enforced minimum
+    footerPadding: 'var(--ds-spacing-4)',  // 16px - enforced minimum
     titleSize: 'var(--ds-font-size-sm)',
     descSize: 'var(--ds-font-size-xs)',
     gap: 'var(--ds-spacing-2)',
   },
   md: {
-    padding: 'var(--ds-spacing-4)',
-    headerPadding: 'var(--ds-spacing-4)',
-    footerPadding: 'var(--ds-spacing-4)',
+    padding: 'var(--ds-spacing-5)',        // 20px
+    headerPadding: 'var(--ds-spacing-5)',  // 20px
+    footerPadding: 'var(--ds-spacing-5)',  // 20px
     titleSize: 'var(--ds-font-size-md)',
     descSize: 'var(--ds-font-size-sm)',
     gap: 'var(--ds-spacing-3)',
   },
   lg: {
-    padding: 'var(--ds-spacing-5)',
-    headerPadding: 'var(--ds-spacing-5)',
-    footerPadding: 'var(--ds-spacing-5)',
+    padding: 'var(--ds-spacing-6)',        // 24px
+    headerPadding: 'var(--ds-spacing-6)',  // 24px
+    footerPadding: 'var(--ds-spacing-6)',  // 24px
     titleSize: 'var(--ds-font-size-lg)',
     descSize: 'var(--ds-font-size-md)',
     gap: 'var(--ds-spacing-4)',

@@ -12,6 +12,16 @@
  * // Size preset
  * <Container size="md">Narrower content</Container>
  *
+ * // Responsive size (different max-width at breakpoints)
+ * <Container size={{ base: 'full', md: 'lg', xl: 'max' }}>
+ *   Responsive width content
+ * </Container>
+ *
+ * // Responsive padding
+ * <Container padding={{ base: 'sm', md: 'md', lg: 'lg' }}>
+ *   Responsive padding content
+ * </Container>
+ *
  * // Fluid container (full width)
  * <Container fluid>Full width content</Container>
  *
@@ -22,33 +32,37 @@
 
 import React, { forwardRef, useMemo } from 'react';
 import { cn } from '../utils';
+import {
+  type ContainerSize,
+  type ResponsiveContainerSize,
+  type PaddingSize,
+  type ResponsivePadding,
+  type Breakpoint,
+  isResponsive,
+  containerSizeMap,
+  spacingTokenMap,
+} from './responsive-types';
 
 // =============================================================================
 // Types
 // =============================================================================
 
-/** Container size presets matching --ds-size-container-* CSS variables */
-export type ContainerSize = 'sm' | 'md' | 'lg' | 'max' | 'full';
-
-/** Size preset map to CSS variables */
-const sizeMap: Record<ContainerSize, string> = {
-  sm: 'var(--ds-size-container-sm)',   // 600px
-  md: 'var(--ds-size-container-md)',   // 960px
-  lg: 'var(--ds-size-container-lg)',   // 1200px
-  max: 'var(--ds-size-container-max)', // 1440px
-  full: '100%',
-};
+// Re-export for backward compatibility
+export type { ContainerSize } from './responsive-types';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * Container size preset.
+   * Container size preset. Can be a single value or responsive object.
    * - 'sm': 600px
    * - 'md': 960px
    * - 'lg': 1200px
    * - 'max': 1440px (default)
    * - 'full': 100%
+   *
+   * @example size="md"
+   * @example size={{ base: 'full', md: 'lg', xl: 'max' }}
    */
-  size?: ContainerSize;
+  size?: ContainerSize | ResponsiveContainerSize;
 
   /**
    * Maximum width of the container (overrides size preset)
@@ -63,20 +77,26 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
 
   /**
-   * Padding - can be a token name or CSS value
-   * @default 'var(--ds-spacing-8)'
+   * Padding - can be a token name, responsive object, or CSS value.
+   * Uses responsive defaults for sensible spacing at all breakpoints.
+   *
+   * @example padding="md"
+   * @example padding={{ base: 'sm', md: 'md', lg: 'lg' }}
+   * @example padding="2rem"
+   * @example padding="none" // or padding={{ base: 'none' }}
+   * @default { base: 'md', md: 'lg' } (16px mobile, 20px desktop)
    */
-  padding?: string | number;
+  padding?: PaddingSize | ResponsivePadding | string | number;
 
   /**
    * Horizontal padding only
    */
-  px?: string | number;
+  px?: PaddingSize | string | number;
 
   /**
    * Vertical padding only
    */
-  py?: string | number;
+  py?: PaddingSize | string | number;
 
   /**
    * Center the container
@@ -86,8 +106,52 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // =============================================================================
+// Helpers
+// =============================================================================
+
+/**
+ * Check if a padding value is a token size
+ */
+function isPaddingToken(value: unknown): value is PaddingSize {
+  return typeof value === 'string' && value in spacingTokenMap;
+}
+
+/**
+ * Resolve a padding value to CSS
+ */
+function resolvePadding(padding: PaddingSize | string | number | undefined): string | undefined {
+  if (padding === undefined) return undefined;
+  if (typeof padding === 'number') return `${padding}px`;
+  if (isPaddingToken(padding)) return spacingTokenMap[padding];
+  return padding; // Already a CSS value
+}
+
+/**
+ * Get CSS class for container size at breakpoint
+ */
+function getContainerSizeClass(breakpoint: Breakpoint, size: ContainerSize): string {
+  if (breakpoint === 'base') {
+    return `ds-container-${size}`;
+  }
+  return `ds-container-${breakpoint}-${size}`;
+}
+
+/**
+ * Get CSS class for padding at breakpoint
+ */
+function getPaddingClass(breakpoint: Breakpoint, size: PaddingSize): string {
+  if (breakpoint === 'base') {
+    return `ds-p-${size}`;
+  }
+  return `ds-p-${breakpoint}-${size}`;
+}
+
+// =============================================================================
 // Component
 // =============================================================================
+
+/** Default responsive padding: 16px mobile, 20px desktop */
+const defaultPadding: ResponsivePadding = { base: 'md', md: 'lg' };
 
 export const Container = forwardRef<HTMLDivElement, ContainerProps>(
   (
@@ -96,7 +160,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
       size,
       maxWidth,
       fluid = false,
-      padding = 'var(--ds-spacing-8)',
+      padding = defaultPadding,
       px,
       py,
       centered = true,
@@ -106,38 +170,109 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
     },
     ref
   ) => {
+    // Build responsive size classes
+    const sizeClasses = useMemo(() => {
+      if (fluid || maxWidth || !size) return [];
+
+      // Simple size value - use CSS class
+      if (!isResponsive(size)) {
+        return [`ds-container-${size}`];
+      }
+
+      // Responsive size object - build classes for each breakpoint
+      const classes: string[] = [];
+      const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+      for (const bp of breakpoints) {
+        const bpSize = size[bp];
+        if (bpSize) {
+          classes.push(getContainerSizeClass(bp, bpSize));
+        }
+      }
+
+      return classes;
+    }, [size, fluid, maxWidth]);
+
+    // Build responsive padding classes
+    const paddingClasses = useMemo(() => {
+      // Skip if using custom CSS value or number
+      if (padding === undefined) return [];
+
+      // Responsive padding object - use CSS classes
+      if (isResponsive(padding)) {
+        const classes: string[] = [];
+        const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+        for (const bp of breakpoints) {
+          const bpPadding = padding[bp];
+          if (bpPadding) {
+            classes.push(getPaddingClass(bp, bpPadding));
+          }
+        }
+
+        return classes;
+      }
+
+      // Token padding - use CSS class
+      if (isPaddingToken(padding)) {
+        return [`ds-p-${padding}`];
+      }
+
+      return [];
+    }, [padding]);
+
+    // Build style object
     const containerStyle = useMemo<React.CSSProperties>(() => {
-      // Determine max-width: fluid > maxWidth prop > size preset > default
-      let resolvedMaxWidth: string;
+      // Determine if we should use inline styles for max-width
+      const useInlineMaxWidth = fluid || maxWidth || (!size && !fluid);
+
+      // Determine max-width value for inline style
+      let resolvedMaxWidth: string | undefined;
       if (fluid) {
         resolvedMaxWidth = 'none';
       } else if (maxWidth) {
         resolvedMaxWidth = maxWidth;
-      } else if (size) {
-        resolvedMaxWidth = sizeMap[size];
-      } else {
-        resolvedMaxWidth = sizeMap.max; // Default to 1440px
+      } else if (!size) {
+        resolvedMaxWidth = containerSizeMap.max; // Default to 1440px
+      } else if (!isResponsive(size)) {
+        // Simple size - could use inline or class, prefer class
+        resolvedMaxWidth = undefined; // Let CSS class handle it
       }
+
+      // Determine if we should use inline styles for padding
+      const useInlinePadding =
+        padding !== undefined &&
+        !isResponsive(padding) &&
+        !isPaddingToken(padding);
+
+      // Resolve px and py
+      const resolvedPx = resolvePadding(px);
+      const resolvedPy = resolvePadding(py);
 
       return {
         containerType: 'inline-size',
         containerName: 'ds-container',
-        maxWidth: resolvedMaxWidth,
+        maxWidth: useInlineMaxWidth ? resolvedMaxWidth : undefined,
         width: '100%',
         margin: centered ? '0 auto' : undefined,
-        padding: typeof padding === 'number' ? `${padding}px` : padding,
-        paddingLeft: px ? (typeof px === 'number' ? `${px}px` : px) : undefined,
-        paddingRight: px ? (typeof px === 'number' ? `${px}px` : px) : undefined,
-        paddingTop: py ? (typeof py === 'number' ? `${py}px` : py) : undefined,
-        paddingBottom: py ? (typeof py === 'number' ? `${py}px` : py) : undefined,
+        padding: useInlinePadding
+          ? typeof padding === 'number'
+            ? `${padding}px`
+            : (padding as string)
+          : undefined,
+        paddingLeft: resolvedPx,
+        paddingRight: resolvedPx,
+        paddingTop: resolvedPy,
+        paddingBottom: resolvedPy,
         ...style,
       } as React.CSSProperties;
     }, [fluid, maxWidth, size, padding, px, py, centered, style]);
 
-    // Build class name with size variant if using CSS classes
+    // Build class name
     const containerClassName = cn(
       'ds-container',
-      size && `ds-container-${size}`,
+      sizeClasses.join(' '),
+      paddingClasses.join(' '),
       className
     );
 

@@ -81,6 +81,38 @@
 }
 
 /* ==========================================================================
+ * SEMANTIC SPACING DEFAULTS
+ *
+ * Minimum spacing standards for consistent UI layouts.
+ * These tokens provide sensible defaults for page, card, and section spacing.
+ *
+ * Spacing Scale (5-tier system):
+ *   xs:   8px  (var(--ds-spacing-2))  - Tight: inline elements, icon gaps
+ *   sm:  12px  (var(--ds-spacing-3))  - Compact: button groups, chips
+ *   md:  16px  (var(--ds-spacing-4))  - Default: form fields, card padding
+ *   lg:  20px  (var(--ds-spacing-5))  - Comfortable: sections, page padding mobile
+ *   xl:  24px  (var(--ds-spacing-6))  - Spacious: page padding desktop
+ * ========================================================================== */
+
+:root {
+  /* Page content padding defaults */
+  --ds-spacing-page-mobile: var(--ds-spacing-4);    /* 16px - mobile page padding */
+  --ds-spacing-page-tablet: var(--ds-spacing-5);    /* 20px - tablet page padding */
+  --ds-spacing-page-desktop: var(--ds-spacing-6);   /* 24px - desktop page padding */
+
+  /* Card/section padding defaults */
+  --ds-spacing-card: var(--ds-spacing-4);           /* 16px - minimum card padding */
+  --ds-spacing-card-lg: var(--ds-spacing-5);        /* 20px - comfortable card padding */
+  --ds-spacing-section: var(--ds-spacing-5);        /* 20px - section padding */
+
+  /* Element gap defaults */
+  --ds-spacing-element-gap: var(--ds-spacing-4);    /* 16px - gap between stacked cards/sections */
+  --ds-spacing-form-gap: var(--ds-spacing-4);       /* 16px - gap between form fields */
+  --ds-spacing-button-gap: var(--ds-spacing-3);     /* 12px - gap between buttons */
+  --ds-spacing-inline-gap: var(--ds-spacing-2);     /* 8px - gap between inline elements */
+}
+
+/* ==========================================================================
  * LAYOUT TOKENS
  *
  * Grid, container, and layout-specific tokens for consistent layouts.
@@ -471,6 +503,15 @@
 .ds-stack-gap-xl { gap: var(--ds-grid-gap-xl); }
 
 /* Responsive stack direction */
+@media (min-width: 640px) {
+  .ds-stack-sm-horizontal {
+    flex-direction: row;
+  }
+  .ds-stack-sm-vertical {
+    flex-direction: column;
+  }
+}
+
 @media (min-width: 768px) {
   .ds-stack-md-horizontal {
     flex-direction: row;
@@ -486,6 +527,332 @@
   }
   .ds-stack-lg-vertical {
     flex-direction: column;
+  }
+}
+
+@media (min-width: 1280px) {
+  .ds-stack-xl-horizontal {
+    flex-direction: row;
+  }
+  .ds-stack-xl-vertical {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+ * RESPONSIVE FLEX UTILITIES
+ *
+ * Flex direction classes for responsive layouts.
+ * ========================================================================== */
+
+/* Base flex direction */
+.ds-flex-row { flex-direction: row; }
+.ds-flex-col { flex-direction: column; }
+
+/* sm breakpoint (640px) */
+@media (min-width: 640px) {
+  .ds-flex-sm-row { flex-direction: row; }
+  .ds-flex-sm-col { flex-direction: column; }
+}
+
+/* md breakpoint (768px) */
+@media (min-width: 768px) {
+  .ds-flex-md-row { flex-direction: row; }
+  .ds-flex-md-col { flex-direction: column; }
+}
+
+/* lg breakpoint (1024px) */
+@media (min-width: 1024px) {
+  .ds-flex-lg-row { flex-direction: row; }
+  .ds-flex-lg-col { flex-direction: column; }
+}
+
+/* xl breakpoint (1280px) */
+@media (min-width: 1280px) {
+  .ds-flex-xl-row { flex-direction: row; }
+  .ds-flex-xl-col { flex-direction: column; }
+}
+
+/* ==========================================================================
+ * RESPONSIVE GAP UTILITIES
+ *
+ * Token-based responsive gap for flex and grid layouts.
+ * ========================================================================== */
+
+/* Base gap utilities */
+.ds-gap-none { gap: 0; }
+.ds-gap-xs { gap: var(--ds-grid-gap-xs); }
+.ds-gap-sm { gap: var(--ds-grid-gap-sm); }
+.ds-gap-md { gap: var(--ds-grid-gap-md); }
+.ds-gap-lg { gap: var(--ds-grid-gap-lg); }
+.ds-gap-xl { gap: var(--ds-grid-gap-xl); }
+
+/* sm breakpoint (640px) */
+@media (min-width: 640px) {
+  .ds-gap-sm-none { gap: 0; }
+  .ds-gap-sm-xs { gap: var(--ds-grid-gap-xs); }
+  .ds-gap-sm-sm { gap: var(--ds-grid-gap-sm); }
+  .ds-gap-sm-md { gap: var(--ds-grid-gap-md); }
+  .ds-gap-sm-lg { gap: var(--ds-grid-gap-lg); }
+  .ds-gap-sm-xl { gap: var(--ds-grid-gap-xl); }
+}
+
+/* md breakpoint (768px) */
+@media (min-width: 768px) {
+  .ds-gap-md-none { gap: 0; }
+  .ds-gap-md-xs { gap: var(--ds-grid-gap-xs); }
+  .ds-gap-md-sm { gap: var(--ds-grid-gap-sm); }
+  .ds-gap-md-md { gap: var(--ds-grid-gap-md); }
+  .ds-gap-md-lg { gap: var(--ds-grid-gap-lg); }
+  .ds-gap-md-xl { gap: var(--ds-grid-gap-xl); }
+}
+
+/* lg breakpoint (1024px) */
+@media (min-width: 1024px) {
+  .ds-gap-lg-none { gap: 0; }
+  .ds-gap-lg-xs { gap: var(--ds-grid-gap-xs); }
+  .ds-gap-lg-sm { gap: var(--ds-grid-gap-sm); }
+  .ds-gap-lg-md { gap: var(--ds-grid-gap-md); }
+  .ds-gap-lg-lg { gap: var(--ds-grid-gap-lg); }
+  .ds-gap-lg-xl { gap: var(--ds-grid-gap-xl); }
+}
+
+/* xl breakpoint (1280px) */
+@media (min-width: 1280px) {
+  .ds-gap-xl-none { gap: 0; }
+  .ds-gap-xl-xs { gap: var(--ds-grid-gap-xs); }
+  .ds-gap-xl-sm { gap: var(--ds-grid-gap-sm); }
+  .ds-gap-xl-md { gap: var(--ds-grid-gap-md); }
+  .ds-gap-xl-lg { gap: var(--ds-grid-gap-lg); }
+  .ds-gap-xl-xl { gap: var(--ds-grid-gap-xl); }
+}
+
+/* ==========================================================================
+ * RESPONSIVE DISPLAY UTILITIES
+ *
+ * Show/hide elements at different breakpoints.
+ * ========================================================================== */
+
+/* Base display utilities */
+.ds-hidden { display: none; }
+.ds-block { display: block; }
+.ds-flex { display: flex; }
+.ds-grid { display: grid; }
+.ds-inline { display: inline; }
+.ds-inline-flex { display: inline-flex; }
+.ds-inline-block { display: inline-block; }
+
+/* sm breakpoint (640px) */
+@media (min-width: 640px) {
+  .ds-sm-hidden { display: none; }
+  .ds-sm-block { display: block; }
+  .ds-sm-flex { display: flex; }
+  .ds-sm-grid { display: grid; }
+  .ds-sm-inline { display: inline; }
+  .ds-sm-inline-flex { display: inline-flex; }
+  .ds-sm-inline-block { display: inline-block; }
+}
+
+/* md breakpoint (768px) */
+@media (min-width: 768px) {
+  .ds-md-hidden { display: none; }
+  .ds-md-block { display: block; }
+  .ds-md-flex { display: flex; }
+  .ds-md-grid { display: grid; }
+  .ds-md-inline { display: inline; }
+  .ds-md-inline-flex { display: inline-flex; }
+  .ds-md-inline-block { display: inline-block; }
+}
+
+/* lg breakpoint (1024px) */
+@media (min-width: 1024px) {
+  .ds-lg-hidden { display: none; }
+  .ds-lg-block { display: block; }
+  .ds-lg-flex { display: flex; }
+  .ds-lg-grid { display: grid; }
+  .ds-lg-inline { display: inline; }
+  .ds-lg-inline-flex { display: inline-flex; }
+  .ds-lg-inline-block { display: inline-block; }
+}
+
+/* xl breakpoint (1280px) */
+@media (min-width: 1280px) {
+  .ds-xl-hidden { display: none; }
+  .ds-xl-block { display: block; }
+  .ds-xl-flex { display: flex; }
+  .ds-xl-grid { display: grid; }
+  .ds-xl-inline { display: inline; }
+  .ds-xl-inline-flex { display: inline-flex; }
+  .ds-xl-inline-block { display: inline-block; }
+}
+
+/* ==========================================================================
+ * RESPONSIVE PADDING UTILITIES (General)
+ *
+ * General-purpose responsive padding utilities.
+ * ========================================================================== */
+
+/* Base padding utilities */
+.ds-p-none { padding: 0; }
+.ds-p-xs { padding: var(--ds-spacing-1); }
+.ds-p-sm { padding: var(--ds-spacing-2); }
+.ds-p-md { padding: var(--ds-spacing-4); }
+.ds-p-lg { padding: var(--ds-spacing-6); }
+.ds-p-xl { padding: var(--ds-spacing-8); }
+
+/* Horizontal padding */
+.ds-px-none { padding-left: 0; padding-right: 0; }
+.ds-px-xs { padding-left: var(--ds-spacing-1); padding-right: var(--ds-spacing-1); }
+.ds-px-sm { padding-left: var(--ds-spacing-2); padding-right: var(--ds-spacing-2); }
+.ds-px-md { padding-left: var(--ds-spacing-4); padding-right: var(--ds-spacing-4); }
+.ds-px-lg { padding-left: var(--ds-spacing-6); padding-right: var(--ds-spacing-6); }
+.ds-px-xl { padding-left: var(--ds-spacing-8); padding-right: var(--ds-spacing-8); }
+
+/* Vertical padding */
+.ds-py-none { padding-top: 0; padding-bottom: 0; }
+.ds-py-xs { padding-top: var(--ds-spacing-1); padding-bottom: var(--ds-spacing-1); }
+.ds-py-sm { padding-top: var(--ds-spacing-2); padding-bottom: var(--ds-spacing-2); }
+.ds-py-md { padding-top: var(--ds-spacing-4); padding-bottom: var(--ds-spacing-4); }
+.ds-py-lg { padding-top: var(--ds-spacing-6); padding-bottom: var(--ds-spacing-6); }
+.ds-py-xl { padding-top: var(--ds-spacing-8); padding-bottom: var(--ds-spacing-8); }
+
+/* sm breakpoint padding (640px) */
+@media (min-width: 640px) {
+  .ds-p-sm-none { padding: 0; }
+  .ds-p-sm-xs { padding: var(--ds-spacing-1); }
+  .ds-p-sm-sm { padding: var(--ds-spacing-2); }
+  .ds-p-sm-md { padding: var(--ds-spacing-4); }
+  .ds-p-sm-lg { padding: var(--ds-spacing-6); }
+  .ds-p-sm-xl { padding: var(--ds-spacing-8); }
+
+  .ds-px-sm-none { padding-left: 0; padding-right: 0; }
+  .ds-px-sm-xs { padding-left: var(--ds-spacing-1); padding-right: var(--ds-spacing-1); }
+  .ds-px-sm-sm { padding-left: var(--ds-spacing-2); padding-right: var(--ds-spacing-2); }
+  .ds-px-sm-md { padding-left: var(--ds-spacing-4); padding-right: var(--ds-spacing-4); }
+  .ds-px-sm-lg { padding-left: var(--ds-spacing-6); padding-right: var(--ds-spacing-6); }
+  .ds-px-sm-xl { padding-left: var(--ds-spacing-8); padding-right: var(--ds-spacing-8); }
+
+  .ds-py-sm-none { padding-top: 0; padding-bottom: 0; }
+  .ds-py-sm-xs { padding-top: var(--ds-spacing-1); padding-bottom: var(--ds-spacing-1); }
+  .ds-py-sm-sm { padding-top: var(--ds-spacing-2); padding-bottom: var(--ds-spacing-2); }
+  .ds-py-sm-md { padding-top: var(--ds-spacing-4); padding-bottom: var(--ds-spacing-4); }
+  .ds-py-sm-lg { padding-top: var(--ds-spacing-6); padding-bottom: var(--ds-spacing-6); }
+  .ds-py-sm-xl { padding-top: var(--ds-spacing-8); padding-bottom: var(--ds-spacing-8); }
+}
+
+/* md breakpoint padding (768px) */
+@media (min-width: 768px) {
+  .ds-p-md-none { padding: 0; }
+  .ds-p-md-xs { padding: var(--ds-spacing-1); }
+  .ds-p-md-sm { padding: var(--ds-spacing-2); }
+  .ds-p-md-md { padding: var(--ds-spacing-4); }
+  .ds-p-md-lg { padding: var(--ds-spacing-6); }
+  .ds-p-md-xl { padding: var(--ds-spacing-8); }
+
+  .ds-px-md-none { padding-left: 0; padding-right: 0; }
+  .ds-px-md-xs { padding-left: var(--ds-spacing-1); padding-right: var(--ds-spacing-1); }
+  .ds-px-md-sm { padding-left: var(--ds-spacing-2); padding-right: var(--ds-spacing-2); }
+  .ds-px-md-md { padding-left: var(--ds-spacing-4); padding-right: var(--ds-spacing-4); }
+  .ds-px-md-lg { padding-left: var(--ds-spacing-6); padding-right: var(--ds-spacing-6); }
+  .ds-px-md-xl { padding-left: var(--ds-spacing-8); padding-right: var(--ds-spacing-8); }
+
+  .ds-py-md-none { padding-top: 0; padding-bottom: 0; }
+  .ds-py-md-xs { padding-top: var(--ds-spacing-1); padding-bottom: var(--ds-spacing-1); }
+  .ds-py-md-sm { padding-top: var(--ds-spacing-2); padding-bottom: var(--ds-spacing-2); }
+  .ds-py-md-md { padding-top: var(--ds-spacing-4); padding-bottom: var(--ds-spacing-4); }
+  .ds-py-md-lg { padding-top: var(--ds-spacing-6); padding-bottom: var(--ds-spacing-6); }
+  .ds-py-md-xl { padding-top: var(--ds-spacing-8); padding-bottom: var(--ds-spacing-8); }
+}
+
+/* lg breakpoint padding (1024px) */
+@media (min-width: 1024px) {
+  .ds-p-lg-none { padding: 0; }
+  .ds-p-lg-xs { padding: var(--ds-spacing-1); }
+  .ds-p-lg-sm { padding: var(--ds-spacing-2); }
+  .ds-p-lg-md { padding: var(--ds-spacing-4); }
+  .ds-p-lg-lg { padding: var(--ds-spacing-6); }
+  .ds-p-lg-xl { padding: var(--ds-spacing-8); }
+
+  .ds-px-lg-none { padding-left: 0; padding-right: 0; }
+  .ds-px-lg-xs { padding-left: var(--ds-spacing-1); padding-right: var(--ds-spacing-1); }
+  .ds-px-lg-sm { padding-left: var(--ds-spacing-2); padding-right: var(--ds-spacing-2); }
+  .ds-px-lg-md { padding-left: var(--ds-spacing-4); padding-right: var(--ds-spacing-4); }
+  .ds-px-lg-lg { padding-left: var(--ds-spacing-6); padding-right: var(--ds-spacing-6); }
+  .ds-px-lg-xl { padding-left: var(--ds-spacing-8); padding-right: var(--ds-spacing-8); }
+
+  .ds-py-lg-none { padding-top: 0; padding-bottom: 0; }
+  .ds-py-lg-xs { padding-top: var(--ds-spacing-1); padding-bottom: var(--ds-spacing-1); }
+  .ds-py-lg-sm { padding-top: var(--ds-spacing-2); padding-bottom: var(--ds-spacing-2); }
+  .ds-py-lg-md { padding-top: var(--ds-spacing-4); padding-bottom: var(--ds-spacing-4); }
+  .ds-py-lg-lg { padding-top: var(--ds-spacing-6); padding-bottom: var(--ds-spacing-6); }
+  .ds-py-lg-xl { padding-top: var(--ds-spacing-8); padding-bottom: var(--ds-spacing-8); }
+}
+
+/* xl breakpoint padding (1280px) */
+@media (min-width: 1280px) {
+  .ds-p-xl-none { padding: 0; }
+  .ds-p-xl-xs { padding: var(--ds-spacing-1); }
+  .ds-p-xl-sm { padding: var(--ds-spacing-2); }
+  .ds-p-xl-md { padding: var(--ds-spacing-4); }
+  .ds-p-xl-lg { padding: var(--ds-spacing-6); }
+  .ds-p-xl-xl { padding: var(--ds-spacing-8); }
+
+  .ds-px-xl-none { padding-left: 0; padding-right: 0; }
+  .ds-px-xl-xs { padding-left: var(--ds-spacing-1); padding-right: var(--ds-spacing-1); }
+  .ds-px-xl-sm { padding-left: var(--ds-spacing-2); padding-right: var(--ds-spacing-2); }
+  .ds-px-xl-md { padding-left: var(--ds-spacing-4); padding-right: var(--ds-spacing-4); }
+  .ds-px-xl-lg { padding-left: var(--ds-spacing-6); padding-right: var(--ds-spacing-6); }
+  .ds-px-xl-xl { padding-left: var(--ds-spacing-8); padding-right: var(--ds-spacing-8); }
+
+  .ds-py-xl-none { padding-top: 0; padding-bottom: 0; }
+  .ds-py-xl-xs { padding-top: var(--ds-spacing-1); padding-bottom: var(--ds-spacing-1); }
+  .ds-py-xl-sm { padding-top: var(--ds-spacing-2); padding-bottom: var(--ds-spacing-2); }
+  .ds-py-xl-md { padding-top: var(--ds-spacing-4); padding-bottom: var(--ds-spacing-4); }
+  .ds-py-xl-lg { padding-top: var(--ds-spacing-6); padding-bottom: var(--ds-spacing-6); }
+  .ds-py-xl-xl { padding-top: var(--ds-spacing-8); padding-bottom: var(--ds-spacing-8); }
+}
+
+/* ==========================================================================
+ * HORIZONTAL LAYOUT RESPONSIVE STACKING
+ *
+ * Classes for HorizontalLayout to stack on mobile.
+ * ========================================================================== */
+
+.ds-horizontal-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Stack on mobile (base = column, md+ = row) */
+.ds-horizontal-layout--stack-md {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .ds-horizontal-layout--stack-md {
+    flex-direction: row;
+  }
+}
+
+/* Stack on small mobile (base = column, sm+ = row) */
+.ds-horizontal-layout--stack-sm {
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .ds-horizontal-layout--stack-sm {
+    flex-direction: row;
+  }
+}
+
+/* Stack on tablets (base = column, lg+ = row) */
+.ds-horizontal-layout--stack-lg {
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .ds-horizontal-layout--stack-lg {
+    flex-direction: row;
   }
 }
 
@@ -518,12 +885,48 @@
   }
 }
 
-/* Container size variants */
+/* Container size variants (base) */
 .ds-container-sm { max-width: var(--ds-size-container-sm); }
 .ds-container-md { max-width: var(--ds-size-container-md); }
 .ds-container-lg { max-width: var(--ds-size-container-lg); }
+.ds-container-max { max-width: var(--ds-size-container-max); }
 .ds-container-full { max-width: 100%; }
 .ds-container-fluid { max-width: none; padding: 0; }
+
+/* Responsive container size (sm breakpoint - 640px) */
+@media (min-width: 640px) {
+  .ds-container-sm-sm { max-width: var(--ds-size-container-sm); }
+  .ds-container-sm-md { max-width: var(--ds-size-container-md); }
+  .ds-container-sm-lg { max-width: var(--ds-size-container-lg); }
+  .ds-container-sm-max { max-width: var(--ds-size-container-max); }
+  .ds-container-sm-full { max-width: 100%; }
+}
+
+/* Responsive container size (md breakpoint - 768px) */
+@media (min-width: 768px) {
+  .ds-container-md-sm { max-width: var(--ds-size-container-sm); }
+  .ds-container-md-md { max-width: var(--ds-size-container-md); }
+  .ds-container-md-lg { max-width: var(--ds-size-container-lg); }
+  .ds-container-md-max { max-width: var(--ds-size-container-max); }
+  .ds-container-md-full { max-width: 100%; }
+}
+
+/* Responsive container size (lg breakpoint - 1024px) */
+@media (min-width: 1024px) {
+  .ds-container-lg-sm { max-width: var(--ds-size-container-sm); }
+  .ds-container-lg-md { max-width: var(--ds-size-container-md); }
+  .ds-container-lg-lg { max-width: var(--ds-size-container-lg); }
+  .ds-container-lg-max { max-width: var(--ds-size-container-max); }
+  .ds-container-lg-full { max-width: 100%; }
+}
+
+/* Responsive container size (xl breakpoint - 1280px) */
+@media (min-width: 1280px) {
+  .ds-container-xl-sm { max-width: var(--ds-size-container-sm); }
+  .ds-container-xl-md { max-width: var(--ds-size-container-md); }
+  .ds-container-xl-lg { max-width: var(--ds-size-container-lg); }
+  .ds-container-xl-max { max-width: var(--ds-size-container-max); }
+  .ds-container-xl-full { max-width: 100%; }
 
 /* ==========================================================================
  * LISTING GRID - RESPONSIVE COLUMNS (Legacy)
