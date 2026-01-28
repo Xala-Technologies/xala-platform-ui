@@ -5,7 +5,7 @@
         "outDir": "./dist",
         "declaration": true,
         "declarationDir": "./dist",
-        "composite": true,
+        "composite": false,
         "jsx": "react-jsx",
         "paths": {
             "@xala-technologies/platform-ui": [

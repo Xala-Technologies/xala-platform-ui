@@ -42,3 +42,34 @@ export {
     type WidgetComponentProps,
     type ShellComponentProps,
 } from './composer'
+
+// Spec Loader & Cache
+export {
+    // Cache
+    SpecCache,
+    getRouteCache,
+    getPageCache,
+    getFlowCache,
+    getActionCache,
+    clearAllCaches,
+    resetAllCaches,
+    type SpecCacheConfig,
+    type CacheStats,
+    // Loader
+    SpecLoader,
+    getSpecLoader,
+    resetSpecLoader,
+    registerRoute,
+    registerPage,
+    registerFlow,
+    registerAction,
+    registerSpecs,
+    clearRegistry,
+    type SpecType,
+    type SpecTypeMap,
+    type SpecLoaderConfig,
+    type SpecResolver,
+    type SpecLoadResult,
+    type BatchLoadResult,
+} from './loader'
+

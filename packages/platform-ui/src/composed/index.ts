@@ -673,3 +673,6 @@ export type {
   CatalogItem,
   CatalogFilterOption,
 } from './CatalogSidebar';
+
+// ErrorSummary is provided by @digdir/designsystemet-react
+// Re-exported from primitives/components.ts with compound sub-components

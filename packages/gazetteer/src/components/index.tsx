@@ -6,7 +6,7 @@
 
 import * as React from 'react'
 import type { PageSpec, WidgetSpec, ShellType } from '../types'
-import { PageComposer, WIDGET_COMPONENT_MAP, SHELL_COMPONENT_MAP } from '../runtime/composer'
+import { PageComposer } from '../runtime/composer'
 import type { BindingContext } from '../runtime/binding-resolver'
 
 // =============================================================================
@@ -76,10 +76,10 @@ export function GazetteerProvider({
     }), [widgetComponents, shellComponents, actionHandlers, bindingContext])
 
     return (
-        <GazetteerComponentsContext.Provider value= { value } >
-        { children }
+        <GazetteerComponentsContext.Provider value={value}>
+            {children}
         </GazetteerComponentsContext.Provider>
-  )
+    )
 }
 
 function useGazetteerComponents(): GazetteerComponentsContextValue {
@@ -120,12 +120,11 @@ export function Widget({ widget, composer, onAction }: WidgetProps): React.React
 
     return (
         <Component
-      spec= { widget }
-    bindings = {{ ...widget.props, ...bindings }
-}
-onAction = { onAction }
-    />
-  )
+            spec={widget}
+            bindings={{ ...widget.props, ...bindings }}
+            onAction={onAction}
+        />
+    )
 }
 
 // =============================================================================
@@ -141,16 +140,14 @@ interface RegionProps {
 function Region({ widgets, composer, onAction }: RegionProps): React.ReactElement {
     return (
         <>
-        {
-            widgets.map((widget) => (
+            {widgets.map((widget) => (
                 <Widget
-          key= { widget.widgetId }
-          widget = { widget }
-          composer = { composer }
-          onAction = { onAction }
+                    key={widget.widgetId}
+                    widget={widget}
+                    composer={composer}
+                    onAction={onAction}
                 />
-      ))
-        }
+            ))}
         </>
     )
 }
@@ -160,7 +157,7 @@ function Region({ widgets, composer, onAction }: RegionProps): React.ReactElemen
 // =============================================================================
 
 export function GazetteerPage({ spec, className }: GazetteerPageProps): React.ReactElement {
-    const { shells, actionHandlers, bindingContext } = useGazetteerComponents()
+    const { shells, bindingContext } = useGazetteerComponents()
 
     // Create composer
     const composer = React.useMemo(() => new PageComposer({
@@ -172,14 +169,13 @@ export function GazetteerPage({ spec, className }: GazetteerPageProps): React.Re
     // Action handler
     const handleAction = React.useCallback((actionId: string, context?: Record<string, unknown>) => {
         console.log('Action:', actionId, context)
-        // Delegate to actionHandlers
     }, [])
 
     // Get shell component
     const ShellComponent = shells[spec.shellType]
     if (!ShellComponent) {
         console.warn(`Unknown shell type: ${spec.shellType}`)
-        return <div className={ className }> Unknown shell: { spec.shellType } </div>
+        return <div className={className}>Unknown shell: {spec.shellType}</div>
     }
 
     // Render regions
@@ -189,22 +185,14 @@ export function GazetteerPage({ spec, className }: GazetteerPageProps): React.Re
 
     return (
         <ShellComponent
-      header= {
-        headerWidgets.length > 0 ? (
-            <Region widgets= { headerWidgets } composer={ composer } onAction={ handleAction } />
-      ) : undefined
-    }
-    sidebar = {
-        sidebarWidgets.length > 0 ? (
-            <Region widgets= { sidebarWidgets } composer={ composer } onAction={ handleAction } />
-      ) : undefined
-    }
+            header={headerWidgets.length > 0 ? <Region widgets={headerWidgets} composer={composer} onAction={handleAction} /> : undefined}
+            sidebar={sidebarWidgets.length > 0 ? <Region widgets={sidebarWidgets} composer={composer} onAction={handleAction} /> : undefined}
         >
-        <div className={ className }>
-            <Region widgets={ contentWidgets } composer = { composer } onAction = { handleAction } />
-                </div>
-                </ShellComponent>
-  )
+            <div className={className}>
+                <Region widgets={contentWidgets} composer={composer} onAction={handleAction} />
+            </div>
+        </ShellComponent>
+    )
 }
 
 // =============================================================================
@@ -216,9 +204,9 @@ export function GazetteerLoading(): React.ReactElement {
 }
 
 export function GazetteerError({ message }: { message: string }): React.ReactElement {
-    return <div>Error: { message } </div>
+    return <div>Error: {message}</div>
 }
 
 export function GazetteerNotFound({ pageId }: { pageId: string }): React.ReactElement {
-    return <div>Page not found: { pageId } </div>
+    return <div>Page not found: {pageId}</div>
 }

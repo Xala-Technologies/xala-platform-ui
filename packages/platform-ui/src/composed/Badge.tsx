@@ -4,7 +4,11 @@
  * Status badges, notification counts, and tags.
  * SSR-safe with 'use client' directive.
  *
- * @module @xala-technologies/platform/ui/composed/Badge
+ * NOTE: The Badge component is now provided by primitives/Badge.
+ * This file re-exports it for backwards compatibility and provides
+ * additional composed components (Tag, NotificationBadge).
+ *
+ * @module @xala-technologies/platform-ui/composed/Badge
  */
 
 'use client';
@@ -12,29 +16,25 @@
 import React, { type ReactNode } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 
+// Re-export Badge from primitives for backwards compatibility
+export {
+  Badge,
+  type BadgeProps,
+  type BadgeVariant,
+  type BadgeSize,
+} from '../primitives/badge';
+
 // =============================================================================
-// Types
+// Additional Types for Composed Components
 // =============================================================================
 
-export type BadgeVariant = 'default' | 'success' | 'warning' | 'danger' | 'info' | 'accent';
-export type BadgeSize = 'sm' | 'md' | 'lg';
-
-export interface BadgeProps {
-  children?: ReactNode;
-  variant?: BadgeVariant;
-  size?: BadgeSize;
-  dot?: boolean;
-  pill?: boolean;
-  outline?: boolean;
-  icon?: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}
+/** @deprecated Use BadgeVariant from primitives/badge instead */
+export type ComposedBadgeVariant = 'default' | 'success' | 'warning' | 'danger' | 'info' | 'accent';
 
 export interface TagProps {
   children: ReactNode;
-  variant?: BadgeVariant;
-  size?: BadgeSize;
+  variant?: ComposedBadgeVariant;
+  size?: 'sm' | 'md' | 'lg';
   removable?: boolean;
   onRemove?: () => void;
   icon?: ReactNode;
@@ -53,10 +53,10 @@ export interface NotificationBadgeProps {
 }
 
 // =============================================================================
-// Variant Styles
+// Variant Styles (for Tag and NotificationBadge)
 // =============================================================================
 
-const variantStyles: Record<BadgeVariant, { bg: string; text: string; border: string }> = {
+const variantStyles: Record<ComposedBadgeVariant, { bg: string; text: string; border: string }> = {
   default: {
     bg: 'var(--ds-color-neutral-surface-default)',
     text: 'var(--ds-color-neutral-text-default)',
@@ -89,7 +89,7 @@ const variantStyles: Record<BadgeVariant, { bg: string; text: string; border: st
   },
 };
 
-const sizeStyles: Record<BadgeSize, { padding: string; font: string; height: string }> = {
+const sizeStyles: Record<'sm' | 'md' | 'lg', { padding: string; font: string; height: string }> = {
   sm: {
     padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
     font: 'var(--ds-font-size-xs)',
@@ -106,68 +106,6 @@ const sizeStyles: Record<BadgeSize, { padding: string; font: string; height: str
     height: 'var(--ds-sizing-8)',
   },
 };
-
-// =============================================================================
-// Badge Component
-// =============================================================================
-
-export function Badge({
-  children,
-  variant = 'default',
-  size = 'md',
-  dot = false,
-  pill = false,
-  outline = false,
-  icon,
-  className,
-  style,
-}: BadgeProps): React.ReactElement {
-  const colors = variantStyles[variant];
-  const sizes = sizeStyles[size];
-
-  if (dot) {
-    return (
-      <span
-        className={className}
-        style={{
-          display: 'inline-block',
-          width: 'var(--ds-sizing-2)',
-          height: 'var(--ds-sizing-2)',
-          borderRadius: 'var(--ds-border-radius-full)',
-          backgroundColor: colors.text,
-          ...style,
-        }}
-      />
-    );
-  }
-
-  return (
-    <span
-      className={className}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 'var(--ds-spacing-1)',
-        padding: sizes.padding,
-        fontSize: sizes.font,
-        fontWeight: 'var(--ds-font-weight-medium)',
-        lineHeight: 1,
-        backgroundColor: outline ? 'transparent' : colors.bg,
-        color: colors.text,
-        borderWidth: 'var(--ds-border-width-default)',
-        borderStyle: 'solid',
-        borderColor: colors.border,
-        borderRadius: pill ? 'var(--ds-border-radius-full)' : 'var(--ds-border-radius-sm)',
-        whiteSpace: 'nowrap',
-        ...style,
-      }}
-    >
-      {icon}
-      {children}
-    </span>
-  );
-}
 
 // =============================================================================
 // Tag Component
@@ -298,4 +236,6 @@ export function NotificationBadge({
   );
 }
 
-export default { Badge, Tag, NotificationBadge };
+// Re-export Badge from primitives for default export
+import { Badge as PrimitiveBadge } from '../primitives/badge';
+export default { Badge: PrimitiveBadge, Tag, NotificationBadge };

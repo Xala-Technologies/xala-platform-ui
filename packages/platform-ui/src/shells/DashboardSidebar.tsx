@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { forwardRef, useState, useEffect, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Paragraph, List } from '@digdir/designsystemet-react';
+import { List } from '@digdir/designsystemet-react';
 import { Drawer } from '../composed/Drawer';
 import { ChevronRightIcon } from '../primitives/icons';
 import { Stack } from '../primitives/stack';
@@ -126,30 +126,27 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
 
       {/* Text content */}
       <Stack style={{ flex: 1, minWidth: 0 }}>
-        <Paragraph
-          data-size="sm"
+        <Text
+          size="sm"
+          weight={isActive ? 'semibold' : 'medium'}
           style={{
-            margin: 0,
-            fontWeight: isActive
-              ? 'var(--ds-font-weight-semibold)'
-              : 'var(--ds-font-weight-medium)',
             color: isActive
               ? 'var(--ds-color-accent-text-default)'
               : 'var(--ds-color-neutral-text-default)',
           }}
         >
           {item.name}
-        </Paragraph>
-        <Paragraph
-          data-size="xs"
+        </Text>
+        <Text
+          variant="caption"
+          size="xs"
           style={{
-            margin: 0,
             marginTop: 'var(--ds-border-width-medium)',
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
           {item.description}
-        </Paragraph>
+        </Text>
       </Stack>
 
       {/* Badge or Arrow */}
@@ -233,9 +230,9 @@ function SidebarContent({
           {title && (
             <Stack>
               <Text
+                size="md"
+                weight="bold"
                 style={{
-                  fontSize: 'var(--ds-font-size-md)',
-                  fontWeight: 'var(--ds-font-weight-bold)',
                   color: 'var(--ds-color-accent-text-default)',
                   lineHeight: 'var(--ds-font-line-height-heading)',
                   letterSpacing: 'var(--ds-font-letter-spacing-wide)',
@@ -245,8 +242,9 @@ function SidebarContent({
               </Text>
               {subtitle && (
                 <Text
+                  variant="overline"
+                  size="xs"
                   style={{
-                    fontSize: 'var(--ds-font-size-2xs)',
                     color: 'var(--ds-color-neutral-text-subtle)',
                     letterSpacing: 'var(--ds-font-letter-spacing-wide)',
                     marginTop: 'var(--ds-border-width-medium)',
@@ -268,11 +266,11 @@ function SidebarContent({
         {sections.map((section, sectionIndex) => (
           <Stack key={sectionIndex} style={{ marginBottom: 'var(--ds-spacing-6)' }}>
             {section.title && (
-              <Paragraph
-                data-size="xs"
+              <Text
+                variant="overline"
+                size="xs"
+                weight="semibold"
                 style={{
-                  margin: 0,
-                  fontWeight: 'var(--ds-font-weight-semibold)',
                   color: 'var(--ds-color-neutral-text-subtle)',
                   textTransform: 'uppercase',
                   letterSpacing: 'var(--ds-font-letter-spacing-wide)',
@@ -281,7 +279,7 @@ function SidebarContent({
                 }}
               >
                 {section.title}
-              </Paragraph>
+              </Text>
             )}
             <List.Unordered
               style={{
@@ -334,28 +332,27 @@ function SidebarContent({
               {user.name.charAt(0).toUpperCase()}
             </Stack>
             <Stack style={{ flex: 1, minWidth: 0 }}>
-              <Paragraph
-                data-size="sm"
+              <Text
+                size="sm"
+                weight="semibold"
                 style={{
-                  fontWeight: 'var(--ds-font-weight-semibold)',
-                  margin: 0,
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
                 }}
               >
                 {user.name}
-              </Paragraph>
-              <Paragraph
-                data-size="xs"
+              </Text>
+              <Text
+                variant="caption"
+                size="xs"
                 style={{
                   color: 'var(--ds-color-neutral-text-subtle)',
-                  margin: 0,
                   marginTop: 'var(--ds-border-width-medium)',
                 }}
               >
                 {user.email}
-              </Paragraph>
+              </Text>
             </Stack>
           </Stack>
         </Stack>

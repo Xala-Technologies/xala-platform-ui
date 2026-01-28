@@ -4,15 +4,19 @@
  * Reusable status badge components for various entity types.
  * Norwegian labels with consistent color coding.
  *
- * Uses custom styled tags instead of Digdir Badge (which is designed for numeric counts).
+ * Built on top of the primitive Badge component for consistency.
+ *
+ * @module @xala-technologies/platform-ui/blocks/StatusBadges
  */
 import * as React from 'react';
+import { Badge, type BadgeVariant, type BadgeSize } from '../primitives/badge';
 import { cn } from '../utils';
 
 // =============================================================================
 // Types
 // =============================================================================
 
+/** Color mapping for status badges */
 export type BadgeColor = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
 export interface StatusBadgeConfig {
@@ -20,47 +24,18 @@ export interface StatusBadgeConfig {
   label: string;
 }
 
+// Map BadgeColor to BadgeVariant
+const colorToVariant: Record<BadgeColor, BadgeVariant> = {
+  success: 'success',
+  warning: 'warning',
+  danger: 'danger',
+  info: 'info',
+  neutral: 'neutral',
+};
+
 // =============================================================================
 // Base StatusTag Component
 // =============================================================================
-
-const colorStyles: Record<BadgeColor, { bg: string; text: string }> = {
-  success: {
-    bg: 'var(--ds-color-success-surface-default)',
-    text: 'var(--ds-color-success-text-default)',
-  },
-  warning: {
-    bg: 'var(--ds-color-warning-surface-default)',
-    text: 'var(--ds-color-warning-text-default)',
-  },
-  danger: {
-    bg: 'var(--ds-color-danger-surface-default)',
-    text: 'var(--ds-color-danger-text-default)',
-  },
-  info: {
-    bg: 'var(--ds-color-info-surface-default)',
-    text: 'var(--ds-color-info-text-default)',
-  },
-  neutral: {
-    bg: 'var(--ds-color-neutral-surface-hover)',
-    text: 'var(--ds-color-neutral-text-subtle)',
-  },
-};
-
-const sizeStyles: Record<'sm' | 'md' | 'lg', { padding: string; fontSize: string }> = {
-  sm: {
-    padding: 'var(--ds-spacing-1) var(--ds-spacing-2)',
-    fontSize: 'var(--ds-font-size-xs)',
-  },
-  md: {
-    padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
-    fontSize: 'var(--ds-font-size-sm)',
-  },
-  lg: {
-    padding: 'var(--ds-spacing-2) var(--ds-spacing-4)',
-    fontSize: 'var(--ds-font-size-md)',
-  },
-};
 
 export interface StatusTagProps {
   /** The label text to display */
@@ -75,7 +50,7 @@ export interface StatusTagProps {
 
 /**
  * Base StatusTag component for displaying status labels.
- * Use this for custom status displays or when you need more control.
+ * Uses the unified Badge primitive with pill styling.
  */
 export function StatusTag({
   children,
@@ -83,27 +58,15 @@ export function StatusTag({
   size = 'sm',
   className,
 }: StatusTagProps): React.ReactElement {
-  const colorStyle = colorStyles[color];
-  const sizeStyle = sizeStyles[size];
-
   return (
-    <span
+    <Badge
+      variant={colorToVariant[color]}
+      size={size as BadgeSize}
+      pill
       className={cn('status-tag', className)}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        borderRadius: 'var(--ds-border-radius-full)',
-        backgroundColor: colorStyle.bg,
-        color: colorStyle.text,
-        padding: sizeStyle.padding,
-        fontSize: sizeStyle.fontSize,
-        fontWeight: 'var(--ds-font-weight-medium)',
-        lineHeight: 'var(--ds-line-height-sm)',
-        whiteSpace: 'nowrap',
-      }}
     >
       {children}
-    </span>
+    </Badge>
   );
 }
 
