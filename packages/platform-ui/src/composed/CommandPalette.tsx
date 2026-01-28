@@ -10,6 +10,7 @@
 'use client';
 
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
+import { Textfield } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -262,13 +263,14 @@ export function CommandPalette({
           <div style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
             <SearchIcon />
           </div>
-          <input
+          <Textfield
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
+            aria-label="Command search"
             style={{
               flex: 1,
               border: 'none',

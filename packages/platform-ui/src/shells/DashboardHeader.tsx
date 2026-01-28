@@ -384,12 +384,12 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
         >
           <Stack
             direction="horizontal"
+            px="lg"
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               height: `${height}px`,
-              padding: '0 var(--ds-spacing-6)',
               position: 'relative',
             }}
           >

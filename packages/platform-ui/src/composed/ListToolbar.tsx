@@ -20,6 +20,7 @@
  */
 
 import * as React from 'react';
+import { NativeSelect } from '../primitives/NativeSelect';
 import { forwardRef, useState, useCallback, useRef, useEffect } from 'react';
 import { Button, Textfield } from '@digdir/designsystemet-react';
 import { SearchIcon } from '../primitives/icons';
@@ -321,7 +322,7 @@ export const ListToolbar = forwardRef<HTMLDivElement, ListToolbarProps>(
                 >
                   Sort:
                 </span>
-                <select
+                <NativeSelect
                   value={sortValue ?? ''}
                   onChange={(e) => onSortChange(e.target.value)}
                   data-testid={`${testId}-sort`}
@@ -339,7 +340,7 @@ export const ListToolbar = forwardRef<HTMLDivElement, ListToolbarProps>(
                       {opt.label}
                     </option>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
             )}
           </div>

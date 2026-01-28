@@ -14,6 +14,7 @@
 
 import * as React from 'react';
 import { useState, useCallback } from 'react';
+import { Table, Spinner } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -148,7 +149,7 @@ function TableHeaderCell({
   };
 
   return (
-    <th
+    <Table.HeaderCell
       scope="col"
       style={{
         padding: 'var(--ds-spacing-4)',
@@ -176,7 +177,7 @@ function TableHeaderCell({
       }
       className={column.hideOnMobile ? 'hide-on-mobile' : undefined}
     >
-      <div
+      <span
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -191,8 +192,8 @@ function TableHeaderCell({
       >
         {column.header}
         {getSortIndicator()}
-      </div>
-    </th>
+      </span>
+    </Table.HeaderCell>
   );
 }
 
@@ -297,18 +298,7 @@ export function DataTable<T>({
           minHeight: '200px',
         }}
       >
-        <div
-          style={{
-            width: '40px',
-            height: '40px',
-            border: '3px solid var(--ds-color-neutral-border-default)',
-            borderTopColor: 'var(--ds-color-accent-base-default)',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-          }}
-          role="status"
-          aria-label="Laster..."
-        />
+        <Spinner data-size="md" aria-label="Laster..." />
       </div>
     );
   }
@@ -352,15 +342,15 @@ export function DataTable<T>({
           overflow: 'auto',
         }}
       >
-        <table
+        <Table
           style={{
             width: '100%',
             borderCollapse: 'collapse',
             fontSize: 'var(--ds-font-size-sm)',
           }}
         >
-          <thead>
-            <tr
+          <Table.Head>
+            <Table.Row
               style={
                 stickyHeader
                   ? {
@@ -380,9 +370,9 @@ export function DataTable<T>({
                   onSort={onSort}
                 />
               ))}
-            </tr>
-          </thead>
-          <tbody>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
             {data.map((row, index) => {
               const rowKey = getRowKey(row);
               const isHovered = hoveredRow === rowKey;
@@ -390,7 +380,7 @@ export function DataTable<T>({
               const customClass = rowClassName?.(row);
 
               return (
-                <tr
+                <Table.Row
                   key={rowKey}
                   data-row-index={index}
                   tabIndex={onRowClick ? 0 : undefined}
@@ -415,7 +405,7 @@ export function DataTable<T>({
                   }}
                 >
                   {columns.map((column) => (
-                    <td
+                    <Table.Cell
                       key={column.id}
                       style={{
                         padding: 'var(--ds-spacing-4)',
@@ -425,45 +415,41 @@ export function DataTable<T>({
                       className={column.hideOnMobile ? 'hide-on-mobile' : undefined}
                     >
                       {renderCell(row, column)}
-                    </td>
+                    </Table.Cell>
                   ))}
-                </tr>
+                </Table.Row>
               );
             })}
-          </tbody>
-        </table>
+          </Table.Body>
+        </Table>
       </div>
 
       {/* Responsive and accessibility styles */}
       <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-
         @media (max-width: var(--ds-sizing-192)) {
           .hide-on-mobile {
             display: none;
           }
         }
 
-        tr[role="button"]:focus {
+        [data-row-index][role="button"]:focus {
           outline: var(--ds-border-width-medium) solid var(--ds-color-focus-outer);
           outline-offset: -3px;
         }
 
-        tr[role="button"]:focus-visible {
+        [data-row-index][role="button"]:focus-visible {
           outline: var(--ds-border-width-medium) solid var(--ds-color-focus-outer);
           outline-offset: -3px;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          tr {
+          [data-row-index] {
             transition: none !important;
           }
         }
 
         @media (prefers-contrast: high) {
-          tr[role="button"]:focus {
+          [data-row-index][role="button"]:focus {
             outline-width: var(--ds-border-width-thick);
           }
         }

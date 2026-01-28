@@ -16,7 +16,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Paragraph, Spinner, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -178,7 +178,7 @@ export function BookingContextSelector({
         <legend className="sr-only">{t('booking.context.selectLabel')}</legend>
 
         {/* Private Option */}
-        <button
+        <Button
           type="button"
           onClick={() => handleSelect('PRIVATE')}
           disabled={disabled}
@@ -259,7 +259,7 @@ export function BookingContextSelector({
               <CheckIcon />
             </div>
           )}
-        </button>
+        </Button>
 
         {/* Organization Options */}
         {isLoadingMemberships ? (
@@ -296,7 +296,7 @@ export function BookingContextSelector({
                 value.type === 'ORGANIZATION' && value.organizationId === org.organizationId;
 
               return (
-                <button
+                <Button
                   key={org.organizationId}
                   type="button"
                   onClick={() => handleSelect('ORGANIZATION', org)}
@@ -378,7 +378,7 @@ export function BookingContextSelector({
                       <CheckIcon />
                     </div>
                   )}
-                </button>
+                </Button>
               );
             })}
           </>

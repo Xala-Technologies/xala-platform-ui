@@ -374,8 +374,10 @@ export function OrganizationWizard({
                   alignItems: 'flex-start',
                 }}
               >
-                <button
+                <Button
                   type="button"
+                  variant="tertiary"
+                  data-color="neutral"
                   onClick={() => goToStep(index)}
                   style={{
                     display: 'flex',
@@ -456,7 +458,7 @@ export function OrganizationWizard({
                       *{labels.required}
                     </Paragraph>
                   )}
-                </button>
+                </Button>
 
                 {!isLast && (
                   <div

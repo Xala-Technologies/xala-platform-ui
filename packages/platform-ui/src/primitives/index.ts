@@ -181,12 +181,7 @@ export type { BidiSafeInputProps, BidiSafeInputType } from './BidiSafeInput';
 
 // Divider - visual separator
 export { Divider } from './Divider';
-export type {
-  DividerProps,
-  DividerOrientation,
-  DividerVariant,
-  DividerSpacing,
-} from './Divider';
+export type { DividerProps, DividerOrientation, DividerVariant, DividerSpacing } from './Divider';
 
 // Spinner is provided by @digdir/designsystemet-react
 // Re-exported from primitives/components.ts

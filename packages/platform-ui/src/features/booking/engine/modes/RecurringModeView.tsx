@@ -4,6 +4,7 @@
  * Recurring Mode View - Set up seasonal/recurring bookings with weekday selection
  */
 import * as React from 'react';
+import { NativeSelect } from '../../../../primitives/NativeSelect';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
 import { CalendarIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
 import { cn } from '@xala-technologies/platform-ui';
@@ -130,7 +131,7 @@ export function RecurringModeView({
           <div className="time-selector">
             <div className="time-input">
               <label>Fra</label>
-              <select
+              <NativeSelect
                 value={startTime}
                 onChange={(e) => {
                   setStartTime(e.target.value);
@@ -142,12 +143,12 @@ export function RecurringModeView({
                     {t}
                   </option>
                 ))}
-              </select>
+              </NativeSelect>
             </div>
             <span className="time-separator">-</span>
             <div className="time-input">
               <label>Til</label>
-              <select
+              <NativeSelect
                 value={endTime}
                 onChange={(e) => {
                   setEndTime(e.target.value);
@@ -159,7 +160,7 @@ export function RecurringModeView({
                     {t}
                   </option>
                 ))}
-              </select>
+              </NativeSelect>
             </div>
           </div>
         </div>

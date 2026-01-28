@@ -188,10 +188,12 @@ export function ProjectSelector({
       </div>
       <div style={styles.list}>
         {projects.map((project) => (
-          <button
+          <Button
             key={project.id}
             type="button"
+            variant="tertiary"
             onClick={() => handleSelect(project)}
+            data-color="neutral"
             style={{
               ...styles.option,
               ...(selectedId === project.id ? styles.optionSelected : {}),
@@ -211,7 +213,7 @@ export function ProjectSelector({
               )}
             </div>
             {selectedId === project.id && <CheckIcon size={16} style={styles.check} />}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

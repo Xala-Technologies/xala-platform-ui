@@ -5,6 +5,7 @@
  * Shown after user selects time slots from the calendar.
  */
 import * as React from 'react';
+import { NativeSelect } from '../../../primitives/NativeSelect';
 import {
   Dialog,
   Heading,
@@ -326,7 +327,7 @@ export function BookingFormModal({
             {rentalObjectName}
           </Paragraph>
         </div>
-        <button
+        <Button
           type="button"
           onClick={onClose}
           aria-label="Lukk"
@@ -345,7 +346,7 @@ export function BookingFormModal({
           }}
         >
           <XIcon size={20} />
-        </button>
+        </Button>
       </div>
 
       {/* Booking Summary */}
@@ -530,7 +531,7 @@ export function BookingFormModal({
                 >
                   Type aktivitet
                 </label>
-                <select
+                <NativeSelect
                   value={'meeting'}
                   onChange={() => {}}
                   style={{
@@ -547,7 +548,7 @@ export function BookingFormModal({
                       {opt.label}
                     </option>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
             </div>
 

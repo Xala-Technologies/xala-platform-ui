@@ -1,11 +1,11 @@
-/* eslint-disable no-restricted-syntax */
+ 
 /**
  * ToggleMatrix
  *
  * A domain-neutral matrix component for managing multiple toggle settings.
  * Useful for notification preferences, permissions, feature flags, etc.
  *
- * NOTE: This component uses raw <button> elements for compact inline actions.
+ * NOTE: This component uses raw <Button> elements for compact inline actions.
  *
  * All text content is pre-localized - this component does not handle i18n internally.
  *
@@ -33,7 +33,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Heading, Paragraph, Switch } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Switch, Button, Table } from '@digdir/designsystemet-react';
 
 // ============================================================================
 // Types
@@ -261,17 +261,17 @@ export function ToggleMatrix({
             : {}),
         }}
       >
-        <table
+        <Table
           style={{
             width: '100%',
             borderCollapse: 'collapse',
           }}
         >
           {/* Header row */}
-          <thead>
-            <tr>
+          <Table.Head>
+            <Table.Row>
               {/* Empty cell for row labels */}
-              <th
+              <Table.HeaderCell
                 style={{
                   padding: isSmall ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)',
                   textAlign: 'left',
@@ -282,7 +282,7 @@ export function ToggleMatrix({
 
               {/* Column headers */}
               {columns.map((column) => (
-                <th
+                <Table.HeaderCell
                   key={column.id}
                   style={{
                     padding: isSmall ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)',
@@ -330,7 +330,7 @@ export function ToggleMatrix({
 
                     {/* Column select all */}
                     {showColumnSelectAll && onColumnChange && (
-                      <button
+                      <Button
                         type="button"
                         onClick={() => handleColumnSelectAll(column.id)}
                         disabled={disabled || loading || column.disabled}
@@ -353,21 +353,21 @@ export function ToggleMatrix({
                         {isColumnAllSelected(column.id, values, rows)
                           ? mergedLabels.deselectAll
                           : mergedLabels.selectAll}
-                      </button>
+                      </Button>
                     )}
                   </div>
-                </th>
+                </Table.HeaderCell>
               ))}
 
               {/* Row select all header */}
-              {showRowSelectAll && onRowChange && <th style={{ width: '80px' }} />}
-            </tr>
-          </thead>
+              {showRowSelectAll && onRowChange && <Table.HeaderCell style={{ width: '80px' }} />}
+            </Table.Row>
+          </Table.Head>
 
           {/* Body rows */}
-          <tbody>
+          <Table.Body>
             {rows.map((row, rowIndex) => (
-              <tr
+              <Table.Row
                 key={row.id}
                 style={{
                   backgroundColor:
@@ -377,7 +377,7 @@ export function ToggleMatrix({
                 }}
               >
                 {/* Row label */}
-                <td
+                <Table.Cell
                   style={{
                     padding: isSmall ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)',
                     borderBottom:
@@ -431,7 +431,7 @@ export function ToggleMatrix({
                       )}
                     </div>
                   </div>
-                </td>
+                </Table.Cell>
 
                 {/* Toggle cells */}
                 {columns.map((column) => {
@@ -439,7 +439,7 @@ export function ToggleMatrix({
                   const cellDisabled = disabled || loading || row.disabled || column.disabled;
 
                   return (
-                    <td
+                    <Table.Cell
                       key={column.id}
                       style={{
                         padding: isSmall ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)',
@@ -464,13 +464,13 @@ export function ToggleMatrix({
                           aria-label={`${row.label} - ${column.label}`}
                         />
                       </div>
-                    </td>
+                    </Table.Cell>
                   );
                 })}
 
                 {/* Row select all button */}
                 {showRowSelectAll && onRowChange && (
-                  <td
+                  <Table.Cell
                     style={{
                       padding: isSmall ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)',
                       textAlign: 'center',
@@ -480,7 +480,7 @@ export function ToggleMatrix({
                           : 'none',
                     }}
                   >
-                    <button
+                    <Button
                       type="button"
                       onClick={() => handleRowSelectAll(row.id)}
                       disabled={disabled || loading || row.disabled}
@@ -500,13 +500,13 @@ export function ToggleMatrix({
                       {isRowAllSelected(row.id, values, columns)
                         ? mergedLabels.deselectAll
                         : mergedLabels.selectAll}
-                    </button>
-                  </td>
+                    </Button>
+                  </Table.Cell>
                 )}
-              </tr>
+              </Table.Row>
             ))}
-          </tbody>
-        </table>
+          </Table.Body>
+        </Table>
       </div>
     </div>
   );

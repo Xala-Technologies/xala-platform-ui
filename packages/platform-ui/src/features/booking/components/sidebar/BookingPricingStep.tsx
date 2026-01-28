@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Alert, Card, Checkbox } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Alert, Card, Checkbox, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Icons
@@ -195,7 +195,7 @@ export function BookingPricingStep({
           {priceGroups.map((group) => {
             const selected = isSelected(group.id);
             return (
-              <button
+              <Button
                 key={group.id}
                 type="button"
                 onClick={() => handlePriceGroupClick(group.id)}
@@ -275,7 +275,7 @@ export function BookingPricingStep({
                     </div>
                   )}
                 </div>
-              </button>
+              </Button>
             );
           })}
         </div>

@@ -301,27 +301,24 @@ export function CatalogSidebar({
             style={{ paddingLeft: 'var(--ds-spacing-9)' }}
           />
           {query && (
-            <button
+            <Button
               type="button"
+              variant="tertiary"
+              data-size="sm"
               onClick={() => setQuery('')}
               style={{
                 position: 'absolute',
                 right: 'var(--ds-spacing-2)',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
                 padding: 'var(--ds-spacing-1)',
-                cursor: 'pointer',
-                color: 'var(--ds-color-neutral-text-subtle)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                minHeight: 'unset',
+                minWidth: 'unset',
               }}
               aria-label={labels.clearSearch}
             >
               <XIcon size={iconSize} />
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -468,8 +465,10 @@ export function CatalogSidebar({
                     {renderItem ? (
                       renderItem(item, isSelected)
                     ) : (
-                      <button
+                      <Button
                         type="button"
+                        variant="tertiary"
+                        data-size={size}
                         onClick={() => onSelect?.(item)}
                         disabled={item.disabled}
                         style={{
@@ -479,10 +478,8 @@ export function CatalogSidebar({
                           width: '100%',
                           padding: 'var(--ds-spacing-3) var(--ds-spacing-4)',
                           borderRadius: 'var(--ds-border-radius-md)',
-                          border: 'none',
-                          background: 'none',
+                          justifyContent: 'flex-start',
                           textAlign: 'left',
-                          cursor: item.disabled ? 'not-allowed' : 'pointer',
                           opacity: item.disabled ? 0.5 : 1,
                           color: isSelected
                             ? 'var(--ds-color-accent-text-default)'
@@ -493,22 +490,11 @@ export function CatalogSidebar({
                           borderLeft: isSelected
                             ? '3px solid var(--ds-color-accent-base-default)'
                             : '3px solid transparent',
-                          transition: 'all 0.15s ease',
                         }}
-                        onMouseEnter={(e) => {
-                          if (!isSelected && !item.disabled) {
-                            e.currentTarget.style.backgroundColor =
-                              'var(--ds-color-neutral-surface-hover)';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!isSelected && !item.disabled) {
-                            e.currentTarget.style.backgroundColor = 'transparent';
-                          }
-                        }}
+                        data-color={isSelected ? 'accent' : 'neutral'}
                       >
                         {getItemIcon(item, iconSize)}
-                        <div style={{ flex: 1, minWidth: 0 }}>
+                        <span style={{ flex: 1, minWidth: 0 }}>
                           <Paragraph
                             data-size={size}
                             style={{
@@ -537,8 +523,8 @@ export function CatalogSidebar({
                               {item.subtitle}
                             </Paragraph>
                           )}
-                        </div>
-                      </button>
+                        </span>
+                      </Button>
                     )}
                   </li>
                 );

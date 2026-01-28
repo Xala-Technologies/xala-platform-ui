@@ -14,9 +14,17 @@
  * @module @xala-technologies/platform/ui/composed/FilterPanel
  */
 
-import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+  type ReactNode,
+  type ChangeEvent,
+} from 'react';
 import { createPortal } from 'react-dom';
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Textfield } from '@digdir/designsystemet-react';
+import { NativeSelect } from '../primitives/NativeSelect';
 
 // =============================================================================
 // Types
@@ -347,7 +355,7 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
             Where
           </span>
         ) : (
-          <select
+          <NativeSelect
             value={condition.logic}
             onChange={(e) => onChange({ ...condition, logic: e.target.value as FilterLogic })}
             style={{
@@ -358,7 +366,7 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
           >
             <option value="and">AND</option>
             <option value="or">OR</option>
-          </select>
+          </NativeSelect>
         )}
       </div>
 
@@ -381,9 +389,9 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
             {field.icon || getFieldIcon(field.type)}
           </span>
         )}
-        <select
+        <NativeSelect
           value={condition.fieldId}
-          onChange={(e) => {
+          onChange={(e: ChangeEvent<HTMLSelectElement>) => {
             const selectedField = fields.find((f) => f.id === e.target.value);
             const ops = getOperatorsForType(selectedField?.type || 'text');
             onChange({
@@ -394,6 +402,7 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
             });
           }}
           style={selectStyle}
+          aria-label="Select field"
         >
           <option value="">Select...</option>
           {fields.map((f) => (
@@ -401,27 +410,33 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
               {f.label}
             </option>
           ))}
-        </select>
+        </NativeSelect>
       </div>
 
-      <select
+      <NativeSelect
         value={condition.operator}
-        onChange={(e) => onChange({ ...condition, operator: e.target.value as FilterOperator })}
+        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+          onChange({ ...condition, operator: e.target.value as FilterOperator })
+        }
         style={{ ...selectStyle, minWidth: 'var(--ds-sizing-27)' }}
+        aria-label="Select operator"
       >
         {operators.map((op) => (
           <option key={op.value} value={op.value}>
             {op.label}
           </option>
         ))}
-      </select>
+      </NativeSelect>
 
       {needsValue &&
         (field?.type === 'select' && field.options ? (
-          <select
+          <NativeSelect
             value={condition.value}
-            onChange={(e) => onChange({ ...condition, value: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+              onChange({ ...condition, value: e.target.value })
+            }
             style={{ ...selectStyle, flex: 1 }}
+            aria-label="Select value"
           >
             <option value="">Select...</option>
             {field.options.map((opt) => (
@@ -429,14 +444,15 @@ function ConditionRow({ condition, fields, isFirst, onChange, onRemove }: Condit
                 {opt.label}
               </option>
             ))}
-          </select>
+          </NativeSelect>
         ) : (
-          <input
+          <Textfield
             type={field?.type === 'number' ? 'number' : 'text'}
             value={condition.value}
             onChange={(e) => onChange({ ...condition, value: e.target.value })}
             placeholder="Value..."
             style={inputStyle}
+            aria-label="Filter value"
           />
         ))}
 

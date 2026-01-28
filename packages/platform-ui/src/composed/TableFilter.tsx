@@ -13,6 +13,7 @@
  */
 
 import * as React from 'react';
+import { NativeSelect } from '../primitives/NativeSelect';
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -153,7 +154,7 @@ function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputP
 
   if (config.type === 'select') {
     return (
-      <select
+      <NativeSelect
         value={(value as string) || ''}
         onChange={(e) => onChange(e.target.value || undefined)}
         aria-label={config.label}
@@ -181,7 +182,7 @@ function FilterInput({ config, value, onChange, debounceMs = 300 }: FilterInputP
             {opt.count !== undefined ? ` (${opt.count})` : ''}
           </option>
         ))}
-      </select>
+      </NativeSelect>
     );
   }
 

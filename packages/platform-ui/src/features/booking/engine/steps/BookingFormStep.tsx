@@ -4,6 +4,7 @@
  * Booking Form Step - Collect user details and additional services
  */
 import * as React from 'react';
+import { NativeSelect } from '../../../../primitives/NativeSelect';
 import {
   Heading,
   Button,
@@ -150,7 +151,7 @@ export function BookingFormStep({
             {config.activityTypes && config.activityTypes.length > 0 && (
               <div className="form-group">
                 <label htmlFor="activityType">Aktivitetstype</label>
-                <select
+                <NativeSelect
                   id="activityType"
                   value={formData.activityType || ''}
                   onChange={(e) => onFormChange('activityType', e.target.value)}
@@ -161,7 +162,7 @@ export function BookingFormStep({
                       {type}
                     </option>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
             )}
           </div>

@@ -125,7 +125,7 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
       </Stack>
 
       {/* Text content */}
-      <Stack style={{ flex: 1, minWidth: 0 }}>
+      <Stack direction="vertical" gap="xs" style={{ flex: 1, minWidth: 0 }}>
         <Text
           size="sm"
           weight={isActive ? 'semibold' : 'medium'}
@@ -141,7 +141,6 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
           variant="caption"
           size="xs"
           style={{
-            marginTop: 'var(--ds-border-width-medium)',
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
@@ -228,7 +227,7 @@ function SidebarContent({
         >
           {logo && <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>}
           {title && (
-            <Stack>
+            <Stack direction="vertical" gap="xs">
               <Text
                 size="md"
                 weight="bold"
@@ -247,7 +246,6 @@ function SidebarContent({
                   style={{
                     color: 'var(--ds-color-neutral-text-subtle)',
                     letterSpacing: 'var(--ds-font-letter-spacing-wide)',
-                    marginTop: 'var(--ds-border-width-medium)',
                     textTransform: 'uppercase',
                   }}
                 >
@@ -331,7 +329,7 @@ function SidebarContent({
             >
               {user.name.charAt(0).toUpperCase()}
             </Stack>
-            <Stack style={{ flex: 1, minWidth: 0 }}>
+            <Stack direction="vertical" gap="xs" style={{ flex: 1, minWidth: 0 }}>
               <Text
                 size="sm"
                 weight="semibold"
@@ -348,7 +346,6 @@ function SidebarContent({
                 size="xs"
                 style={{
                   color: 'var(--ds-color-neutral-text-subtle)',
-                  marginTop: 'var(--ds-border-width-medium)',
                 }}
               >
                 {user.email}

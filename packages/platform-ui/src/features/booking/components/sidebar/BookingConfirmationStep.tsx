@@ -9,6 +9,7 @@
  */
 
 import * as React from 'react';
+import { NativeSelect } from '../../../../primitives/NativeSelect';
 import { Heading, Paragraph, Button, Card, Alert, Divider } from '@digdir/designsystemet-react';
 import { Stack } from '../../../../primitives/stack';
 import { BookingVisibilitySelector, type BookingVisibility } from './BookingVisibilitySelector';
@@ -836,7 +837,7 @@ export function BookingConfirmationStep({
             {/* Organization selector if organization is selected */}
             {bookingAccountType === 'organization' && organizations.length > 0 && (
               <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
-                <select
+                <NativeSelect
                   value={selectedOrganizationId || ''}
                   onChange={(e) =>
                     onAccountTypeSelect?.('organization', e.target.value || undefined)
@@ -856,7 +857,7 @@ export function BookingConfirmationStep({
                       {org.name}
                     </option>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
             )}
           </div>

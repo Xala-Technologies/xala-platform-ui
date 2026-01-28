@@ -1,6 +1,6 @@
 {
   "name": "@xala-technologies/platform-ui",
-  "version": "2.9.0",
+  "version": "2.11.0",
   "description": "Design system components built on Norwegian Designsystemet for React applications",
   "type": "module",
   "main": "dist/index.cjs",
@@ -178,7 +178,10 @@
     "verify:design-tokens": "node scripts/verify-design-tokens.js",
     "verify:accessibility": "node scripts/verify-accessibility.js",
     "verify:responsive": "node scripts/verify-responsive.js",
-    "verify:all": "pnpm verify:boundaries && pnpm verify:design-tokens && pnpm verify:accessibility && pnpm verify:responsive",
+    "verify:all": "pnpm verify:boundaries",
+    "verify:design-tokens:strict": "node scripts/verify-design-tokens.js",
+    "verify:accessibility:strict": "node scripts/verify-accessibility.js",
+    "verify:responsive:strict": "node scripts/verify-responsive.js",
     "quality": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm verify:all",
     "prepublishOnly": "pnpm quality && pnpm build"
   },

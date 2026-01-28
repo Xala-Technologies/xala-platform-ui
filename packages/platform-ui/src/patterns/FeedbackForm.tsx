@@ -1,11 +1,11 @@
-/* eslint-disable no-restricted-syntax */
+ 
 /**
  * FeedbackForm
  *
  * A domain-neutral form component for collecting user feedback and reviews.
  * Includes star rating input, text fields, and optional file upload.
  *
- * NOTE: Uses raw <button> elements for interactive star rating input.
+ * NOTE: Uses raw <Button> elements for interactive star rating input.
  *
  * @example
  * ```tsx
@@ -213,7 +213,7 @@ function StarRatingInput({
           const isFilled = starValue <= displayRating;
 
           return (
-            <button
+            <Button
               key={starValue}
               type="button"
               role="radio"
@@ -237,7 +237,7 @@ function StarRatingInput({
               }}
             >
               <StarIcon filled={isFilled} size={size} />
-            </button>
+            </Button>
           );
         })}
       </div>

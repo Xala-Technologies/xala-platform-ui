@@ -17,12 +17,7 @@ import React, { type ReactNode } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 
 // Re-export Badge from primitives for backwards compatibility
-export {
-  Badge,
-  type BadgeProps,
-  type BadgeVariant,
-  type BadgeSize,
-} from '../primitives/badge';
+export { Badge, type BadgeProps, type BadgeVariant, type BadgeSize } from '../primitives/badge';
 
 // =============================================================================
 // Additional Types for Composed Components

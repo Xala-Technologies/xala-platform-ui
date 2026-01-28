@@ -6,7 +6,8 @@
  */
 
 import React, { forwardRef } from 'react';
-import { Select, Button } from '@digdir/designsystemet-react';
+import { NativeSelect } from '../primitives/NativeSelect';
+import { Button } from '@digdir/designsystemet-react';
 import { Grid, Stack } from '../primitives';
 import { GridIcon, ListIcon, MapIcon } from '../primitives/icons';
 import type { FilterConfig, ResourceType } from '../types/filters';
@@ -132,7 +133,7 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                   ))}
                 </div>
               ) : (
-                <Select
+                <NativeSelect
                   value={primaryFilter.value}
                   onChange={(e) => primaryFilter.onChange(e.target.value as ResourceType | 'ALL')}
                   style={{ width: '100%', maxWidth: '300px' }}
@@ -143,7 +144,7 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                       {option.count !== undefined ? ` (${option.count})` : ''}
                     </option>
                   ))}
-                </Select>
+                </NativeSelect>
               )}
             </div>
           )}
@@ -168,7 +169,7 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                     {filter.label}
                   </div>
                   {filter.type === 'select' && filter.options && (
-                    <Select
+                    <NativeSelect
                       value={typeof filter.value === 'string' ? filter.value : ''}
                       onChange={(e) => filter.onChange(e.target.value)}
                       style={{ width: '100%' }}
@@ -179,10 +180,10 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                           {option.count !== undefined ? ` (${option.count})` : ''}
                         </option>
                       ))}
-                    </Select>
+                    </NativeSelect>
                   )}
                   {filter.type === 'multiselect' && filter.options && (
-                    <select
+                    <NativeSelect
                       multiple
                       value={Array.isArray(filter.value) ? filter.value.map(String) : []}
                       onChange={(e) => {
@@ -208,7 +209,7 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                           {option.count !== undefined ? ` (${option.count})` : ''}
                         </option>
                       ))}
-                    </select>
+                    </NativeSelect>
                   )}
                   {filter.helpText && (
                     <div

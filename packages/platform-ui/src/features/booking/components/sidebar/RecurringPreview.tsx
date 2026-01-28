@@ -16,7 +16,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Tag, Card, Spinner } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Tag, Card, Spinner, Button } from '@digdir/designsystemet-react';
 import { Stack } from '../../../../primitives/stack';
 
 // =============================================================================
@@ -327,7 +327,7 @@ export function RecurringPreview({
             marginBottom: 'var(--ds-spacing-3)',
           }}
         >
-          <button
+          <Button
             type="button"
             onClick={handleSelectAllAvailable}
             style={{
@@ -341,8 +341,8 @@ export function RecurringPreview({
             }}
           >
             {t('recurringPreview.selectAllAvailable')}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             onClick={handleDeselectAll}
             style={{
@@ -356,7 +356,7 @@ export function RecurringPreview({
             }}
           >
             {t('recurringPreview.deselectAll')}
-          </button>
+          </Button>
           {selectedIndices && (
             <Paragraph
               data-size="xs"

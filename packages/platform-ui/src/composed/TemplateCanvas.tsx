@@ -12,7 +12,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef, type ReactNode, type DragEvent } from 'react';
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph, Table } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -546,17 +546,17 @@ function BlockRenderer({
         const cols = (block.content.cols as number) || 3;
         return (
           <div style={{ overflowX: 'auto', width: '100%' }}>
-            <table
+            <Table
               style={{
                 width: '100%',
                 borderCollapse: 'collapse',
               }}
             >
-              <tbody>
+              <Table.Body>
                 {Array.from({ length: rows }).map((_, rowIndex) => (
-                  <tr key={rowIndex}>
+                  <Table.Row key={rowIndex}>
                     {Array.from({ length: cols }).map((_, colIndex) => (
-                      <td
+                      <Table.Cell
                         key={colIndex}
                         style={{
                           padding: 'var(--ds-spacing-2)',
@@ -569,12 +569,12 @@ function BlockRenderer({
                         {rowIndex === 0
                           ? `Header ${colIndex + 1}`
                           : `Cell ${rowIndex}-${colIndex + 1}`}
-                      </td>
+                      </Table.Cell>
                     ))}
-                  </tr>
+                  </Table.Row>
                 ))}
-              </tbody>
-            </table>
+              </Table.Body>
+            </Table>
           </div>
         );
       case 'footer':

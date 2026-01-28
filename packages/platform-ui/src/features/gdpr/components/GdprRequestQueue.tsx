@@ -7,6 +7,7 @@
  * @module @xala-technologies/platform-ui/features/gdpr
  */
 import * as React from 'react';
+import { NativeSelect } from '../../../primitives/NativeSelect';
 import { Card, Paragraph, Button, Table, Spinner, Textfield } from '@digdir/designsystemet-react';
 import { StatusTag } from '../../../blocks/StatusBadges';
 import type { BadgeColor } from '../../../blocks/StatusBadges';
@@ -341,7 +342,7 @@ export function GdprRequestQueue({
           {/* Sort dropdown */}
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
             <FilterIcon size={20} />
-            <select
+            <NativeSelect
               value={selectedSort}
               onChange={(e) => onSortChange(e.target.value)}
               aria-label={labels.sortButtonLabel}
@@ -360,7 +361,7 @@ export function GdprRequestQueue({
                   {option.label}
                 </option>
               ))}
-            </select>
+            </NativeSelect>
           </div>
         </div>
 

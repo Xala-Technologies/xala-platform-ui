@@ -16,7 +16,7 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Checkbox, Tag } from '@digdir/designsystemet-react';
+import { Paragraph, Checkbox, Tag, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Types
@@ -390,7 +390,7 @@ export function BookingAddOnsSelector({
                             gap: 'var(--ds-spacing-1)',
                           }}
                         >
-                          <button
+                          <Button
                             type="button"
                             onClick={() => updateQuantity(addOn.id, -1)}
                             disabled={disabled || quantity <= 1}
@@ -408,7 +408,7 @@ export function BookingAddOnsSelector({
                             }}
                           >
                             <MinusIcon />
-                          </button>
+                          </Button>
                           <span
                             style={{
                               minWidth: '30px',
@@ -418,7 +418,7 @@ export function BookingAddOnsSelector({
                           >
                             {quantity}
                           </span>
-                          <button
+                          <Button
                             type="button"
                             onClick={() => updateQuantity(addOn.id, 1)}
                             disabled={disabled || quantity >= (addOn.maxQuantity ?? 99)}
@@ -439,7 +439,7 @@ export function BookingAddOnsSelector({
                             }}
                           >
                             <PlusIcon />
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     )}

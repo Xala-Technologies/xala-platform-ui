@@ -34,7 +34,7 @@
  */
 
 import * as React from 'react';
-import { Tabs, Paragraph } from '@digdir/designsystemet-react';
+import { Tabs, Paragraph, Button } from '@digdir/designsystemet-react';
 import { Stack } from '../../../primitives/stack';
 import { Badge } from '../../../composed/Badge';
 import { CalendarIcon, ClockIcon, RepeatIcon, SunIcon } from 'lucide-react';
@@ -391,7 +391,7 @@ export function BookingModeSelector({
         const description = modeOption.description;
 
         return (
-          <button
+          <Button
             key={modeOption.mode}
             type="button"
             onClick={() => !disabled && handleModeChange(modeOption.mode)}
@@ -439,7 +439,7 @@ export function BookingModeSelector({
                 {String(recurringConstraints.maxOccurrences)}
               </Badge>
             )}
-          </button>
+          </Button>
         );
       })}
     </Stack>

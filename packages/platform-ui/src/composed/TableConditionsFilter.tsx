@@ -11,6 +11,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { NativeSelect } from '../primitives/NativeSelect';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
@@ -282,7 +283,7 @@ function ConditionRow({
 
     if (field?.type === 'select' && field.options) {
       return (
-        <select
+        <NativeSelect
           value={condition.value}
           onChange={(e) => onChange({ ...condition, value: e.target.value })}
           style={selectStyle}
@@ -293,13 +294,13 @@ function ConditionRow({
               {opt.label}
             </option>
           ))}
-        </select>
+        </NativeSelect>
       );
     }
 
     if (field?.type === 'date') {
       return (
-        <select
+        <NativeSelect
           value={condition.value}
           onChange={(e) => onChange({ ...condition, value: e.target.value })}
           style={selectStyle}
@@ -310,20 +311,20 @@ function ConditionRow({
               {preset.label}
             </option>
           ))}
-        </select>
+        </NativeSelect>
       );
     }
 
     if (field?.type === 'boolean') {
       return (
-        <select
+        <NativeSelect
           value={condition.value}
           onChange={(e) => onChange({ ...condition, value: e.target.value })}
           style={selectStyle}
         >
           <option value="true">True</option>
           <option value="false">False</option>
-        </select>
+        </NativeSelect>
       );
     }
 
@@ -391,19 +392,19 @@ function ConditionRow({
               Where
             </span>
           ) : (
-            <select
+            <NativeSelect
               value={condition.logic}
               onChange={(e) => onChange({ ...condition, logic: e.target.value as LogicOperator })}
               style={{ ...selectStyle, width: '70px', minWidth: '70px' }}
             >
               <option value="and">and</option>
               <option value="or">or</option>
-            </select>
+            </NativeSelect>
           )}
         </div>
       )}
 
-      <select
+      <NativeSelect
         value={condition.fieldId}
         onChange={(e) => {
           const selectedField = fields.find((f) => f.id === e.target.value);
@@ -424,9 +425,9 @@ function ConditionRow({
             {f.label}
           </option>
         ))}
-      </select>
+      </NativeSelect>
 
-      <select
+      <NativeSelect
         value={condition.operator}
         onChange={(e) => onChange({ ...condition, operator: e.target.value as ConditionOperator })}
         style={selectStyle}
@@ -436,7 +437,7 @@ function ConditionRow({
             {op.label}
           </option>
         ))}
-      </select>
+      </NativeSelect>
 
       {renderValueInput()}
 

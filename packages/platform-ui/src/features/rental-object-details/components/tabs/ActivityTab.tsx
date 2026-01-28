@@ -12,7 +12,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Card } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { RentalObjectType } from '../../../../types/rental-object-detail';
 import type { ActivityData } from '../../types';
 

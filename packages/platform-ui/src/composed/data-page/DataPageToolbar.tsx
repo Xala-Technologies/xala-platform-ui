@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import { NativeSelect } from '../../primitives/NativeSelect';
 import { GridIcon, ListIcon, MapIcon, TableIcon } from '../../primitives';
 import { Button } from '@digdir/designsystemet-react';
 import { HeaderSearch } from '../header-parts';
@@ -91,7 +92,7 @@ export function DataPageToolbar({
 
       {/* Filters */}
       {filters?.map((filter, index) => (
-        <select
+        <NativeSelect
           key={index}
           value={filter.value}
           onChange={(e) => filter.onChange(e.target.value)}
@@ -110,7 +111,7 @@ export function DataPageToolbar({
               {option.label}
             </option>
           ))}
-        </select>
+        </NativeSelect>
       ))}
 
       {/* Spacer */}

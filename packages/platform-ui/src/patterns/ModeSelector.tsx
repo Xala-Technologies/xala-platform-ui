@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-syntax */
+ 
 /**
  * ModeSelector
  *
@@ -7,7 +7,7 @@
  *
  * All text content is pre-localized - this component does not handle i18n internally.
  *
- * NOTE: This component uses raw <button> elements intentionally for custom styling
+ * NOTE: This component uses raw <Button> elements intentionally for custom styling
  * that cannot be achieved with the standard Designsystemet Button component.
  * The styling uses design tokens from xala-extensions.css (compact button tokens).
  *
@@ -27,7 +27,7 @@
  */
 import * as React from 'react';
 import type { ReactNode } from 'react';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, Button } from '@digdir/designsystemet-react';
 
 // ============================================================================
 // Types
@@ -146,7 +146,7 @@ function TabsVariant({ options, value, onChange, size, fullWidth }: TabsVariantP
       {options.map((option) => {
         const isSelected = option.id === value;
         return (
-          <button
+          <Button
             key={option.id}
             role="tab"
             type="button"
@@ -183,7 +183,7 @@ function TabsVariant({ options, value, onChange, size, fullWidth }: TabsVariantP
               <span style={{ display: 'flex', alignItems: 'center' }}>{option.icon}</span>
             )}
             <span>{option.label}</span>
-          </button>
+          </Button>
         );
       })}
     </div>
@@ -215,7 +215,7 @@ function ButtonsVariant({ options, value, onChange, size, fullWidth }: ButtonsVa
       {options.map((option) => {
         const isSelected = option.id === value;
         return (
-          <button
+          <Button
             key={option.id}
             type="button"
             aria-pressed={isSelected}
@@ -250,7 +250,7 @@ function ButtonsVariant({ options, value, onChange, size, fullWidth }: ButtonsVa
               <span style={{ display: 'flex', alignItems: 'center' }}>{option.icon}</span>
             )}
             <span>{option.label}</span>
-          </button>
+          </Button>
         );
       })}
     </div>
@@ -284,7 +284,7 @@ function CardsVariant({ options, value, onChange, size, direction, fullWidth }: 
       {options.map((option) => {
         const isSelected = option.id === value;
         return (
-          <button
+          <Button
             key={option.id}
             type="button"
             aria-pressed={isSelected}
@@ -358,7 +358,7 @@ function CardsVariant({ options, value, onChange, size, direction, fullWidth }: 
                 </span>
               )}
             </div>
-          </button>
+          </Button>
         );
       })}
     </div>
@@ -400,7 +400,7 @@ function IconsVariant({ options, value, onChange, size, fullWidth }: IconsVarian
       {options.map((option) => {
         const isSelected = option.id === value;
         return (
-          <button
+          <Button
             key={option.id}
             type="button"
             aria-label={option.label}
@@ -440,7 +440,7 @@ function IconsVariant({ options, value, onChange, size, fullWidth }: IconsVarian
                 {option.icon}
               </span>
             )}
-          </button>
+          </Button>
         );
       })}
     </div>

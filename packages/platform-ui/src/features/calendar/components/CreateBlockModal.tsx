@@ -10,6 +10,8 @@
 /* eslint-disable no-restricted-imports -- Calendar components bridge domain and UI packages */
 
 import * as React from 'react';
+import { NativeSelect } from '../../../primitives/NativeSelect';
+import { Button } from '@digdir/designsystemet-react';
 import { useState, useEffect, useMemo } from 'react';
 import {
   Dialog,
@@ -252,7 +254,7 @@ export function CreateBlockModal({
             >
               {t('backoffice.calendar.listing')} *
             </label>
-            <select
+            <NativeSelect
               id="listing-select"
               value={formData.listingId}
               onChange={(e) => updateField('listingId', e.target.value)}
@@ -271,7 +273,7 @@ export function CreateBlockModal({
                   {rentalObject.name}
                 </option>
               ))}
-            </select>
+            </NativeSelect>
           </div>
 
           {/* Block type */}
@@ -544,7 +546,7 @@ export function CreateBlockModal({
                       >
                         {t('backoffice.calendar.frequency')}
                       </label>
-                      <select
+                      <NativeSelect
                         id="recurrence-frequency"
                         value={recurrence.frequency}
                         onChange={(e) =>
@@ -564,7 +566,7 @@ export function CreateBlockModal({
                         <option value="daily">{t('backoffice.calendar.daily')}</option>
                         <option value="weekly">{t('backoffice.calendar.weekly')}</option>
                         <option value="monthly">{t('backoffice.calendar.monthly')}</option>
-                      </select>
+                      </NativeSelect>
                     </div>
                     <div style={{ flex: 1 }}>
                       <label
@@ -613,7 +615,7 @@ export function CreateBlockModal({
                         style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}
                       >
                         {WEEKDAY_LABELS.map((label, index) => (
-                          <button
+                          <Button
                             key={index}
                             type="button"
                             onClick={() => toggleWeekday(index)}
@@ -632,7 +634,7 @@ export function CreateBlockModal({
                             }}
                           >
                             {label}
-                          </button>
+                          </Button>
                         ))}
                       </div>
                     </div>
