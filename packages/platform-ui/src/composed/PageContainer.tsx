@@ -366,16 +366,35 @@ export const PageContainer = forwardRef<HTMLElement, PageContainerProps>(
       return maxWidth as string;
     }, [maxWidth]);
 
-    const containerStyle = useMemo<React.CSSProperties>(() => ({
-      display: 'flex',
-      flexDirection: 'column',
-      gap: useInlineGap ? (gapTokenMap[normalizedGap as GapSize] ?? normalizedGap) : undefined,
-      maxWidth: useInlineMaxWidth ? resolvedMaxWidth : (isLegacyMaxWidth(maxWidth) ? legacyMaxWidthMap[maxWidth] : undefined),
-      width: '100%',
-      margin: centered ? '0 auto' : undefined,
-      padding: useInlinePadding ? (spacingTokenMap[normalizedPadding as PaddingSize] ?? normalizedPadding) : undefined,
-      ...style,
-    }), [normalizedGap, useInlineGap, useInlineMaxWidth, resolvedMaxWidth, maxWidth, centered, normalizedPadding, useInlinePadding, style]);
+    const containerStyle = useMemo<React.CSSProperties>(
+      () => ({
+        display: 'flex',
+        flexDirection: 'column',
+        gap: useInlineGap ? (gapTokenMap[normalizedGap as GapSize] ?? normalizedGap) : undefined,
+        maxWidth: useInlineMaxWidth
+          ? resolvedMaxWidth
+          : isLegacyMaxWidth(maxWidth)
+            ? legacyMaxWidthMap[maxWidth]
+            : undefined,
+        width: '100%',
+        margin: centered ? '0 auto' : undefined,
+        padding: useInlinePadding
+          ? (spacingTokenMap[normalizedPadding as PaddingSize] ?? normalizedPadding)
+          : undefined,
+        ...style,
+      }),
+      [
+        normalizedGap,
+        useInlineGap,
+        useInlineMaxWidth,
+        resolvedMaxWidth,
+        maxWidth,
+        centered,
+        normalizedPadding,
+        useInlinePadding,
+        style,
+      ]
+    );
 
     const containerClassName = cn(
       'ds-page-container',

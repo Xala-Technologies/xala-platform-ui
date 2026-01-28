@@ -1243,8 +1243,8 @@ export const MOBILE_BREAKPOINT = breakpointValues.md;
 export const layout = {
   // Container max-widths (map to --ds-size-container-*)
   container: {
-    sm: '600px',  // --ds-size-container-sm
-    md: '960px',  // --ds-size-container-md
+    sm: '600px', // --ds-size-container-sm
+    md: '960px', // --ds-size-container-md
     lg: '1200px', // --ds-size-container-lg
     max: '1440px', // --ds-size-container-max
     full: '100%',

@@ -4,20 +4,20 @@
  * A minimal building block for layouts. Supports the `as` prop
  * for rendering as any HTML element.
  */
-import React, { forwardRef } from 'react'
+import React, { forwardRef } from 'react';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
-    as?: React.ElementType
-    children?: React.ReactNode
+  as?: React.ElementType;
+  children?: React.ReactNode;
 }
 
 export const Box = forwardRef<HTMLDivElement, BoxProps>(function Box(
-    { as: Component = 'div', children, ...rest },
-    ref
+  { as: Component = 'div', children, ...rest },
+  ref
 ) {
-    return (
-        <Component ref={ref} {...rest}>
-            {children}
-        </Component>
-    )
-})
+  return (
+    <Component ref={ref} {...rest}>
+      {children}
+    </Component>
+  );
+});

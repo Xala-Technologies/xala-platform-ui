@@ -474,9 +474,7 @@ export function DetailPageShell({
 
   // Determine if we should use inline styles
   const useInlineMaxWidth =
-    maxWidth !== undefined &&
-    !isResponsive(maxWidth) &&
-    !isContainerSize(maxWidth);
+    maxWidth !== undefined && !isResponsive(maxWidth) && !isContainerSize(maxWidth);
 
   // Build class name
   const shellClassName = cn(
@@ -585,9 +583,7 @@ export function FormPageShell({
 
   // Determine if we should use inline styles
   const useInlineMaxWidth =
-    maxWidth !== undefined &&
-    !isResponsive(maxWidth) &&
-    !isContainerSize(maxWidth);
+    maxWidth !== undefined && !isResponsive(maxWidth) && !isContainerSize(maxWidth);
 
   // Build class name
   const shellClassName = cn(

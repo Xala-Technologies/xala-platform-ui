@@ -219,10 +219,7 @@ export function AppLayout({
   const hasBottomNav = isMobile && bottomNavItems && bottomNavItems.length > 0;
 
   // Build content class name
-  const contentClassName = cn(
-    'ds-app-layout-content',
-    paddingClasses.join(' ')
-  );
+  const contentClassName = cn('ds-app-layout-content', paddingClasses.join(' '));
 
   return (
     <div

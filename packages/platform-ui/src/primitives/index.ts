@@ -10,10 +10,10 @@
 export * from './components';
 
 export { Container } from './container';
-export type { ContainerProps, ContainerSize } from './container';
+export type { ContainerProps } from './container';
 
 export { Grid } from './grid';
-export type { GridProps, GridGapSize, GridColCount, ResponsiveCols } from './grid';
+export type { GridProps, GridGapSize, GridColCount } from './grid';
 
 export { Stack } from './stack';
 export type { StackProps } from './stack';
@@ -178,3 +178,32 @@ export type { DirectionalIconProps, DirectionalIconPresetProps } from './Directi
 
 export { BidiSafeInput } from './BidiSafeInput';
 export type { BidiSafeInputProps, BidiSafeInputType } from './BidiSafeInput';
+
+// Responsive types and utilities
+export {
+  isResponsive,
+  getResponsiveClasses,
+  getValueAtBreakpoint,
+  resolveBaseValue,
+  spacingTokenMap,
+  gapTokenMap,
+  containerSizeMap,
+} from './responsive-types';
+export type {
+  Breakpoint,
+  Responsive,
+  SpacingSize,
+  GapSize,
+  PaddingSize,
+  ContainerSize,
+  ColCount,
+  StackDirection,
+  FlexDirection,
+  ResponsiveSpacing,
+  ResponsiveGap,
+  ResponsivePadding,
+  ResponsiveContainerSize,
+  ResponsiveCols,
+  ResponsiveStackDirection,
+  ResponsiveFlexDirection,
+} from './responsive-types';

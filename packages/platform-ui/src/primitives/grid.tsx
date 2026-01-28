@@ -216,7 +216,9 @@ function resolveGap(gap: GridGapSize | string | number | undefined): string | un
 }
 
 /** Resolve padding value to CSS */
-function resolvePadding(padding: GridPaddingSize | string | number | undefined): string | undefined {
+function resolvePadding(
+  padding: GridPaddingSize | string | number | undefined
+): string | undefined {
   if (padding === undefined) return undefined;
   if (typeof padding === 'number') return `${padding}px`;
   if (padding in paddingTokenMap) return paddingTokenMap[padding as GridPaddingSize];
@@ -326,7 +328,8 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
     // Build style object
     const gridStyle = useMemo<React.CSSProperties>(() => {
       // Only use inline styles for padding if it's a custom value (not a token or responsive)
-      const useInlinePadding = padding !== undefined &&
+      const useInlinePadding =
+        padding !== undefined &&
         !isResponsivePadding(padding) &&
         (typeof padding === 'number' || !(padding in paddingTokenMap));
 

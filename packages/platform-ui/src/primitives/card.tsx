@@ -26,9 +26,9 @@ export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
 /** Padding size to CSS value mapping */
 const paddingMap: Record<CardPadding, string> = {
   none: '0',
-  sm: 'var(--ds-spacing-3)',  // 12px
-  md: 'var(--ds-spacing-4)',  // 16px (default - minimum standard)
-  lg: 'var(--ds-spacing-5)',  // 20px
+  sm: 'var(--ds-spacing-3)', // 12px
+  md: 'var(--ds-spacing-4)', // 16px (default - minimum standard)
+  lg: 'var(--ds-spacing-5)', // 20px
 };
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {

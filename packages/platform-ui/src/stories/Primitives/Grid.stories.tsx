@@ -141,7 +141,8 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Fully responsive grid: 1 column on mobile, 2 on sm, 3 on md. Padding also scales with viewport.',
+        story:
+          'Fully responsive grid: 1 column on mobile, 2 on sm, 3 on md. Padding also scales with viewport.',
       },
     },
   },
@@ -166,7 +167,8 @@ export const Responsive: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Resize the viewport to see the grid adapt: 1 column on mobile, 2 on sm, 3 on md, 4 on lg.',
+        story:
+          'Resize the viewport to see the grid adapt: 1 column on mobile, 2 on sm, 3 on md, 4 on lg.',
       },
     },
   },
@@ -192,7 +194,8 @@ export const AutoFit: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Uses CSS auto-fit to create responsive columns without breakpoints. Each column is at least 280px wide.',
+        story:
+          'Uses CSS auto-fit to create responsive columns without breakpoints. Each column is at least 280px wide.',
       },
     },
   },
@@ -235,7 +238,11 @@ export const PaddingVariants: Story = {
     <Grid cols={{ base: 1 }} gap="lg">
       {(['none', 'xs', 'sm', 'md', 'lg', 'xl'] as const).map((paddingSize) => (
         <div key={paddingSize}>
-          <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', paddingLeft: 'var(--ds-spacing-4)' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{ marginBottom: 'var(--ds-spacing-2)', paddingLeft: 'var(--ds-spacing-4)' }}
+          >
             Padding: {paddingSize}
           </Heading>
           <Grid
@@ -255,7 +262,8 @@ export const PaddingVariants: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows all available padding token sizes. Background color highlights the grid bounds. Columns are responsive.',
+        story:
+          'Shows all available padding token sizes. Background color highlights the grid bounds. Columns are responsive.',
       },
     },
   },
@@ -280,7 +288,8 @@ export const ResponsivePadding: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Padding scales from xs on mobile to xl on extra-large screens. Resize to see the effect.',
+        story:
+          'Padding scales from xs on mobile to xl on extra-large screens. Resize to see the effect.',
       },
     },
   },
@@ -306,7 +315,8 @@ export const AsymmetricGaps: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Different horizontal and vertical gaps using gapX and gapY props. Responsive columns.',
+        story:
+          'Different horizontal and vertical gaps using gapX and gapY props. Responsive columns.',
       },
     },
   },
@@ -350,29 +360,42 @@ export const TwelveColumn: Story = {
   render: (args) => (
     <Grid {...args}>
       <Card data-color="accent" style={{ gridColumn: 'span 12', minHeight: '80px' }}>
-        <Card.Block><Paragraph data-size="sm">Full width header (12 cols)</Paragraph></Card.Block>
+        <Card.Block>
+          <Paragraph data-size="sm">Full width header (12 cols)</Paragraph>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 8', minHeight: '80px' }}>
-        <Card.Block><Paragraph data-size="sm">Main content (8 cols)</Paragraph></Card.Block>
+        <Card.Block>
+          <Paragraph data-size="sm">Main content (8 cols)</Paragraph>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '80px' }}>
-        <Card.Block><Paragraph data-size="sm">Sidebar (4 cols)</Paragraph></Card.Block>
+        <Card.Block>
+          <Paragraph data-size="sm">Sidebar (4 cols)</Paragraph>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '60px' }}>
-        <Card.Block><Paragraph data-size="sm">Card 1 (4 cols)</Paragraph></Card.Block>
+        <Card.Block>
+          <Paragraph data-size="sm">Card 1 (4 cols)</Paragraph>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '60px' }}>
-        <Card.Block><Paragraph data-size="sm">Card 2 (4 cols)</Paragraph></Card.Block>
+        <Card.Block>
+          <Paragraph data-size="sm">Card 2 (4 cols)</Paragraph>
+        </Card.Block>
       </Card>
       <Card data-color="neutral" style={{ gridColumn: 'span 4', minHeight: '60px' }}>
-        <Card.Block><Paragraph data-size="sm">Card 3 (4 cols)</Paragraph></Card.Block>
+        <Card.Block>
+          <Paragraph data-size="sm">Card 3 (4 cols)</Paragraph>
+        </Card.Block>
       </Card>
     </Grid>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Use a 12-column grid with gridColumn styles for complex layouts. Note: This is a fixed 12-col grid for precise control.',
+        story:
+          'Use a 12-column grid with gridColumn styles for complex layouts. Note: This is a fixed 12-col grid for precise control.',
       },
     },
   },
@@ -397,7 +420,8 @@ export const MobileFirst: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Mobile-first pattern: starts with 1 column and small padding, progressively enhances for larger screens.',
+        story:
+          'Mobile-first pattern: starts with 1 column and small padding, progressively enhances for larger screens.',
       },
     },
   },

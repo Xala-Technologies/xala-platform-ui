@@ -1,16 +1,45 @@
 /**
  * FormLayout Components
  *
- * Form sections, actions, and layout helpers.
+ * Form sections, actions, and layout helpers with responsive support.
  * SSR-safe with 'use client' directive.
+ *
+ * @example
+ * ```tsx
+ * // Responsive columns - 1 on mobile, 2 on md, 3 on lg
+ * <FormRow columns={{ base: 1, md: 2, lg: 3 }}>
+ *   <Field /><Field /><Field />
+ * </FormRow>
+ *
+ * // Responsive gap
+ * <FormRow gap={{ base: 'sm', md: 'md' }}>
+ *   <Field /><Field />
+ * </FormRow>
+ *
+ * // Form actions with mobile stacking
+ * <FormActions stackOn="md">
+ *   <Button>Cancel</Button>
+ *   <Button>Save</Button>
+ * </FormActions>
+ * ```
  *
  * @module @xala-technologies/platform/ui/composed/FormLayout
  */
 
 'use client';
 
-import React, { type ReactNode } from 'react';
+import React, { type ReactNode, useMemo } from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { cn } from '../utils';
+import {
+  type GapSize,
+  type ResponsiveGap,
+  type ColCount,
+  type ResponsiveCols,
+  type Breakpoint,
+  isResponsive,
+  gapTokenMap,
+} from '../primitives/responsive-types';
 
 // =============================================================================
 // Types
@@ -30,14 +59,35 @@ export interface FormActionsProps {
   children: ReactNode;
   align?: 'left' | 'center' | 'right' | 'between';
   sticky?: boolean;
+  /**
+   * Stack buttons vertically on mobile. Specifies breakpoint where horizontal layout begins.
+   * - 'sm': Stack until 640px, row at 640px+
+   * - 'md': Stack until 768px, row at 768px+
+   * - 'lg': Stack until 1024px, row at 1024px+
+   */
+  stackOn?: 'sm' | 'md' | 'lg';
   className?: string;
   style?: React.CSSProperties;
 }
 
 export interface FormRowProps {
   children: ReactNode;
-  columns?: 1 | 2 | 3 | 4;
-  gap?: 'sm' | 'md' | 'lg';
+  /**
+   * Number of columns. Can be a simple value or responsive object.
+   *
+   * @example columns={2}
+   * @example columns={{ base: 1, md: 2, lg: 3 }}
+   * @default 1
+   */
+  columns?: ColCount | ResponsiveCols;
+  /**
+   * Gap between items. Can be a token name or responsive object.
+   *
+   * @example gap="md"
+   * @example gap={{ base: 'sm', md: 'md' }}
+   * @default 'md'
+   */
+  gap?: GapSize | ResponsiveGap;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -63,7 +113,7 @@ export interface FormDividerProps {
 // Icons
 // =============================================================================
 
-function ChevronDownIcon() {
+function ChevronDownIcon(): React.ReactElement {
   return (
     <svg
       width="20"
@@ -76,6 +126,37 @@ function ChevronDownIcon() {
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
+}
+
+// =============================================================================
+// Helpers
+// =============================================================================
+
+/**
+ * Check if a gap value is a token size
+ */
+function isGapToken(value: unknown): value is GapSize {
+  return typeof value === 'string' && value in gapTokenMap;
+}
+
+/**
+ * Get CSS class for column count at breakpoint
+ */
+function getColClass(breakpoint: Breakpoint, cols: ColCount): string {
+  if (breakpoint === 'base') {
+    return `ds-grid-cols-${cols}`;
+  }
+  return `ds-grid-cols-${breakpoint}-${cols}`;
+}
+
+/**
+ * Get CSS class for gap at breakpoint
+ */
+function getGapClass(breakpoint: Breakpoint, size: GapSize): string {
+  if (breakpoint === 'base') {
+    return `ds-grid-gap-${size}`;
+  }
+  return `ds-gap-${breakpoint}-${size}`;
 }
 
 // =============================================================================
@@ -171,6 +252,7 @@ export function FormActions({
   children,
   align = 'right',
   sticky = false,
+  stackOn,
   className,
   style,
 }: FormActionsProps): React.ReactElement {
@@ -181,11 +263,19 @@ export function FormActions({
     between: { justifyContent: 'space-between' },
   };
 
+  // Build class name with stacking support
+  const actionsClassName = cn(
+    'ds-form-actions',
+    stackOn && `ds-horizontal-layout--stack-${stackOn}`,
+    className
+  );
+
   return (
     <div
-      className={className}
+      className={actionsClassName}
       style={{
         display: 'flex',
+        flexDirection: stackOn ? undefined : 'row', // Let CSS handle direction when stacking
         alignItems: 'center',
         gap: 'var(--ds-spacing-3)',
         padding: 'var(--ds-spacing-4) 0',
@@ -201,7 +291,7 @@ export function FormActions({
           margin: 'var(--ds-spacing-4) calc(-1 * var(--ds-spacing-4)) 0',
           boxShadow: 'var(--ds-shadow-sm)',
         }),
-        ...alignStyles[align],
+        ...(!stackOn && alignStyles[align]),
         ...style,
       }}
     >
@@ -221,22 +311,78 @@ export function FormRow({
   className,
   style,
 }: FormRowProps): React.ReactElement {
-  const gapStyles = {
-    sm: 'var(--ds-spacing-2)',
-    md: 'var(--ds-spacing-4)',
-    lg: 'var(--ds-spacing-6)',
-  };
+  // Build responsive column classes
+  const colClasses = useMemo(() => {
+    // Simple number - fixed columns
+    if (typeof columns === 'number') {
+      return [`ds-grid-cols-${columns}`];
+    }
+
+    // Responsive object
+    const classes: string[] = [];
+    const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+    for (const bp of breakpoints) {
+      const bpCols = columns[bp];
+      if (bpCols) {
+        classes.push(getColClass(bp, bpCols));
+      }
+    }
+
+    return classes;
+  }, [columns]);
+
+  // Build responsive gap classes
+  const gapClasses = useMemo(() => {
+    // Responsive gap object - use CSS classes
+    if (isResponsive(gap)) {
+      const classes: string[] = [];
+      const breakpoints: Breakpoint[] = ['base', 'sm', 'md', 'lg', 'xl'];
+
+      for (const bp of breakpoints) {
+        const bpGap = gap[bp];
+        if (bpGap) {
+          classes.push(getGapClass(bp, bpGap));
+        }
+      }
+
+      return classes;
+    }
+
+    // Token gap - use CSS class
+    if (isGapToken(gap)) {
+      return [`ds-grid-gap-${gap}`];
+    }
+
+    return [];
+  }, [gap]);
+
+  // Determine if we should use inline styles for gap
+  const useInlineGap = !isResponsive(gap) && !isGapToken(gap);
+
+  // Build style object
+  const rowStyle = useMemo<React.CSSProperties>(
+    () => ({
+      display: 'grid',
+      // Don't set gridTemplateColumns inline if using responsive classes
+      gridTemplateColumns: typeof columns === 'number' ? `repeat(${columns}, 1fr)` : undefined,
+      gap: useInlineGap ? (typeof gap === 'string' ? gap : undefined) : undefined,
+      ...style,
+    }),
+    [columns, useInlineGap, gap, style]
+  );
+
+  // Build class name
+  const rowClassName = cn(
+    'ds-grid',
+    'ds-form-row',
+    colClasses.join(' '),
+    gapClasses.join(' '),
+    className
+  );
 
   return (
-    <div
-      className={className}
-      style={{
-        display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gap: gapStyles[gap],
-        ...style,
-      }}
-    >
+    <div className={rowClassName} style={rowStyle}>
       {children}
     </div>
   );

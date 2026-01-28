@@ -97,18 +97,22 @@ export const Default: Story = {
     <PageContainer {...args}>
       <Card data-color="neutral" data-size="md">
         <Card.Header>
-          <Heading level={1} data-size="lg">Page Title</Heading>
+          <Heading level={1} data-size="lg">
+            Page Title
+          </Heading>
         </Card.Header>
         <Card.Block>
           <Paragraph>
-            This is a semantic page container that renders as a &lt;main&gt; element.
-            It provides consistent spacing and max-width constraints for page content.
+            This is a semantic page container that renders as a &lt;main&gt; element. It provides
+            consistent spacing and max-width constraints for page content.
           </Paragraph>
         </Card.Block>
       </Card>
       <Card data-color="neutral" data-size="md">
         <Card.Header>
-          <Heading level={2} data-size="md">Section One</Heading>
+          <Heading level={2} data-size="md">
+            Section One
+          </Heading>
         </Card.Header>
         <Card.Block>
           <Paragraph>
@@ -118,7 +122,9 @@ export const Default: Story = {
       </Card>
       <Card data-color="neutral" data-size="md">
         <Card.Header>
-          <Heading level={2} data-size="md">Section Two</Heading>
+          <Heading level={2} data-size="md">
+            Section Two
+          </Heading>
         </Card.Header>
         <Card.Block>
           <Paragraph>
@@ -165,20 +171,26 @@ export const WithSkipLink: Story = {
       </a>
 
       {/* Simulated header */}
-      <header style={{
-        padding: 'var(--ds-spacing-4)',
-        backgroundColor: 'var(--ds-color-neutral-surface-default)',
-        borderBottom: '1px solid var(--ds-color-neutral-border-default)',
-      }}>
-        <Heading level={2} data-size="sm">Site Header (Tab here to see skip link)</Heading>
+      <header
+        style={{
+          padding: 'var(--ds-spacing-4)',
+          backgroundColor: 'var(--ds-color-neutral-surface-default)',
+          borderBottom: '1px solid var(--ds-color-neutral-border-default)',
+        }}
+      >
+        <Heading level={2} data-size="sm">
+          Site Header (Tab here to see skip link)
+        </Heading>
       </header>
 
       {/* Main content */}
       <PageContainer {...args}>
-        <Heading level={1} data-size="lg">Main Content</Heading>
+        <Heading level={1} data-size="lg">
+          Main Content
+        </Heading>
         <Paragraph>
-          Press Tab when focused on the header area to reveal the skip link.
-          The skip link targets the main-content ID which this container provides.
+          Press Tab when focused on the header area to reveal the skip link. The skip link targets
+          the main-content ID which this container provides.
         </Paragraph>
         <Button data-color="accent">Focusable Button</Button>
       </PageContainer>
@@ -187,7 +199,8 @@ export const WithSkipLink: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Demonstrates skip-link accessibility. Focus on the header and press Tab to see the skip link appear.',
+        story:
+          'Demonstrates skip-link accessibility. Focus on the header and press Tab to see the skip link appear.',
       },
     },
   },
@@ -201,7 +214,11 @@ export const MaxWidthVariants: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       {(['sm', 'md', 'lg', 'xl', 'full'] as const).map((width) => (
         <div key={width}>
-          <Heading level={3} data-size="xs" style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-2)' }}
+          >
             maxWidth: {width}
           </Heading>
           <PageContainer
@@ -224,7 +241,8 @@ export const MaxWidthVariants: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows all available max-width presets. The colored background indicates the container bounds.',
+        story:
+          'Shows all available max-width presets. The colored background indicates the container bounds.',
       },
     },
   },
@@ -238,7 +256,11 @@ export const GapVariants: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       {([2, 4, 6, 8] as const).map((gapValue) => (
         <div key={gapValue}>
-          <Heading level={3} data-size="xs" style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-2)' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-2)' }}
+          >
             gap: {gapValue}
           </Heading>
           <PageContainer
@@ -249,13 +271,19 @@ export const GapVariants: Story = {
             style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}
           >
             <Card data-color="neutral" data-size="sm">
-              <Card.Block><Paragraph data-size="sm">Card 1</Paragraph></Card.Block>
+              <Card.Block>
+                <Paragraph data-size="sm">Card 1</Paragraph>
+              </Card.Block>
             </Card>
             <Card data-color="neutral" data-size="sm">
-              <Card.Block><Paragraph data-size="sm">Card 2</Paragraph></Card.Block>
+              <Card.Block>
+                <Paragraph data-size="sm">Card 2</Paragraph>
+              </Card.Block>
             </Card>
             <Card data-color="neutral" data-size="sm">
-              <Card.Block><Paragraph data-size="sm">Card 3</Paragraph></Card.Block>
+              <Card.Block>
+                <Paragraph data-size="sm">Card 3</Paragraph>
+              </Card.Block>
             </Card>
           </PageContainer>
         </div>
@@ -286,11 +314,16 @@ export const AsDiv: Story = {
       <Heading level={1} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
         Page with Existing Main Element
       </Heading>
-      <PageContainer {...args} style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}>
-        <Heading level={2} data-size="md">Nested Section</Heading>
+      <PageContainer
+        {...args}
+        style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}
+      >
+        <Heading level={2} data-size="md">
+          Nested Section
+        </Heading>
         <Paragraph>
-          When there&apos;s already a &lt;main&gt; element in the page structure,
-          use asMain=false to render as a &lt;div&gt; instead.
+          When there&apos;s already a &lt;main&gt; element in the page structure, use asMain=false
+          to render as a &lt;div&gt; instead.
         </Paragraph>
         <Card data-color="neutral" data-size="sm">
           <Card.Block>
@@ -303,7 +336,8 @@ export const AsDiv: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Use asMain={false} when the PageContainer is nested within an existing <main> element.',
+        story:
+          'Use asMain={false} when the PageContainer is nested within an existing <main> element.',
       },
     },
   },
@@ -319,21 +353,30 @@ export const DashboardLayout: Story = {
     padding: 6,
   },
   render: (args) => (
-    <PageContainer {...args} style={{ backgroundColor: 'var(--ds-color-neutral-background-default)' }}>
+    <PageContainer
+      {...args}
+      style={{ backgroundColor: 'var(--ds-color-neutral-background-default)' }}
+    >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Heading level={1} data-size="lg">Dashboard</Heading>
+        <Heading level={1} data-size="lg">
+          Dashboard
+        </Heading>
         <Button data-color="accent">New Item</Button>
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: 'var(--ds-spacing-4)',
-      }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 'var(--ds-spacing-4)',
+        }}
+      >
         {['Revenue', 'Users', 'Orders', 'Conversion'].map((stat) => (
           <Card key={stat} data-color="neutral" data-size="sm">
             <Card.Header>
-              <Heading level={3} data-size="sm">{stat}</Heading>
+              <Heading level={3} data-size="sm">
+                {stat}
+              </Heading>
             </Card.Header>
             <Card.Block>
               <Paragraph data-size="lg" style={{ fontWeight: 'bold' }}>
@@ -346,7 +389,9 @@ export const DashboardLayout: Story = {
 
       <Card data-color="neutral" data-size="md">
         <Card.Header>
-          <Heading level={2} data-size="md">Recent Activity</Heading>
+          <Heading level={2} data-size="md">
+            Recent Activity
+          </Heading>
         </Card.Header>
         <Card.Block>
           <Paragraph>Activity list would go here...</Paragraph>

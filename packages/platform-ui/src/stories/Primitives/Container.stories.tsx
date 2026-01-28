@@ -76,9 +76,8 @@ function ContentBlock() {
     <Card data-color="neutral" data-size="sm">
       <Card.Block>
         <Paragraph data-size="sm">
-          This is sample content inside the container. The container provides consistent
-          max-width constraints and responsive padding. Resize the viewport to see how
-          the container adapts.
+          This is sample content inside the container. The container provides consistent max-width
+          constraints and responsive padding. Resize the viewport to see how the container adapts.
         </Paragraph>
       </Card.Block>
     </Card>
@@ -87,16 +86,16 @@ function ContentBlock() {
 
 function WidthIndicator() {
   return (
-    <div style={{
-      padding: 'var(--ds-spacing-2)',
-      backgroundColor: 'var(--ds-color-accent-surface-default)',
-      borderRadius: 'var(--ds-border-radius-md)',
-      marginBottom: 'var(--ds-spacing-4)',
-      textAlign: 'center',
-    }}>
-      <Paragraph data-size="sm">
-        Container area (background shows full width)
-      </Paragraph>
+    <div
+      style={{
+        padding: 'var(--ds-spacing-2)',
+        backgroundColor: 'var(--ds-color-accent-surface-default)',
+        borderRadius: 'var(--ds-border-radius-md)',
+        marginBottom: 'var(--ds-spacing-4)',
+        textAlign: 'center',
+      }}
+    >
+      <Paragraph data-size="sm">Container area (background shows full width)</Paragraph>
     </div>
   );
 }
@@ -113,7 +112,12 @@ export const Default: Story = {
     size: 'max',
   },
   render: (args) => (
-    <div style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)', padding: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
       <Container {...args}>
         <WidthIndicator />
         <ContentBlock />
@@ -127,19 +131,28 @@ export const Default: Story = {
  */
 export const SizePresets: Story = {
   render: () => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 'var(--ds-spacing-8)',
-      backgroundColor: 'var(--ds-color-neutral-surface-default)',
-      padding: 'var(--ds-spacing-4)',
-    }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-8)',
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
       {(['sm', 'md', 'lg', 'max', 'full'] as const).map((size) => (
         <div key={size}>
-          <Heading level={3} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)', textAlign: 'center' }}>
+          <Heading
+            level={3}
+            data-size="xs"
+            style={{ marginBottom: 'var(--ds-spacing-2)', textAlign: 'center' }}
+          >
             Size: {size}
           </Heading>
-          <Container size={size} style={{ backgroundColor: 'var(--ds-color-accent-surface-default)' }}>
+          <Container
+            size={size}
+            style={{ backgroundColor: 'var(--ds-color-accent-surface-default)' }}
+          >
             <Card data-color="neutral" data-size="sm">
               <Card.Block>
                 <Paragraph data-size="sm">Container with size=&quot;{size}&quot;</Paragraph>
@@ -153,7 +166,8 @@ export const SizePresets: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Comparison of all container size presets. The colored background shows the actual container width.',
+        story:
+          'Comparison of all container size presets. The colored background shows the actual container width.',
       },
     },
   },
@@ -172,7 +186,9 @@ export const Fluid: Story = {
       <Container {...args}>
         <Card data-color="neutral" data-size="sm">
           <Card.Block>
-            <Heading level={3} data-size="sm">Fluid Container</Heading>
+            <Heading level={3} data-size="sm">
+              Fluid Container
+            </Heading>
             <Paragraph data-size="sm">
               This container has no max-width constraint and spans the full width of its parent.
               Useful for full-bleed sections or edge-to-edge layouts.
@@ -193,11 +209,18 @@ export const CustomWidth: Story = {
     padding: 'var(--ds-spacing-4)',
   },
   render: (args) => (
-    <div style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)', padding: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
       <Container {...args}>
         <Card data-color="accent" data-size="sm">
           <Card.Block>
-            <Heading level={3} data-size="sm">Custom Width: 800px</Heading>
+            <Heading level={3} data-size="sm">
+              Custom Width: 800px
+            </Heading>
             <Paragraph data-size="sm">
               Use the maxWidth prop for custom widths that don&apos;t match the presets.
             </Paragraph>
@@ -218,11 +241,18 @@ export const NotCentered: Story = {
     padding: 'var(--ds-spacing-4)',
   },
   render: (args) => (
-    <div style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)', padding: 'var(--ds-spacing-4)' }}>
+    <div
+      style={{
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+        padding: 'var(--ds-spacing-4)',
+      }}
+    >
       <Container {...args}>
         <Card data-color="neutral" data-size="sm">
           <Card.Block>
-            <Heading level={3} data-size="sm">Left-aligned Container</Heading>
+            <Heading level={3} data-size="sm">
+              Left-aligned Container
+            </Heading>
             <Paragraph data-size="sm">
               Set centered=false to align the container to the left instead of centering it.
             </Paragraph>
@@ -238,25 +268,45 @@ export const NotCentered: Story = {
  */
 export const PaddingVariants: Story = {
   render: () => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 'var(--ds-spacing-4)',
-      backgroundColor: 'var(--ds-color-neutral-surface-default)',
-    }}>
-      <Container size="lg" padding="var(--ds-spacing-2)" style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-spacing-4)',
+        backgroundColor: 'var(--ds-color-neutral-surface-default)',
+      }}
+    >
+      <Container
+        size="lg"
+        padding="var(--ds-spacing-2)"
+        style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}
+      >
         <Card data-color="neutral" data-size="sm">
-          <Card.Block><Paragraph data-size="sm">Padding: spacing-2</Paragraph></Card.Block>
+          <Card.Block>
+            <Paragraph data-size="sm">Padding: spacing-2</Paragraph>
+          </Card.Block>
         </Card>
       </Container>
-      <Container size="lg" padding="var(--ds-spacing-4)" style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}>
+      <Container
+        size="lg"
+        padding="var(--ds-spacing-4)"
+        style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}
+      >
         <Card data-color="neutral" data-size="sm">
-          <Card.Block><Paragraph data-size="sm">Padding: spacing-4</Paragraph></Card.Block>
+          <Card.Block>
+            <Paragraph data-size="sm">Padding: spacing-4</Paragraph>
+          </Card.Block>
         </Card>
       </Container>
-      <Container size="lg" padding="var(--ds-spacing-8)" style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}>
+      <Container
+        size="lg"
+        padding="var(--ds-spacing-8)"
+        style={{ backgroundColor: 'var(--ds-color-info-surface-default)' }}
+      >
         <Card data-color="neutral" data-size="sm">
-          <Card.Block><Paragraph data-size="sm">Padding: spacing-8 (default)</Paragraph></Card.Block>
+          <Card.Block>
+            <Paragraph data-size="sm">Padding: spacing-8 (default)</Paragraph>
+          </Card.Block>
         </Card>
       </Container>
     </div>

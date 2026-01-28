@@ -241,9 +241,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
 
       // Determine if we should use inline styles for padding
       const useInlinePadding =
-        padding !== undefined &&
-        !isResponsive(padding) &&
-        !isPaddingToken(padding);
+        padding !== undefined && !isResponsive(padding) && !isPaddingToken(padding);
 
       // Resolve px and py
       const resolvedPx = resolvePadding(px);

@@ -219,10 +219,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
 
     // Determine if we should use inline styles
     const useInlineMaxWidth =
-      !fluid &&
-      maxWidth !== undefined &&
-      !isResponsive(maxWidth) &&
-      !isContainerSize(maxWidth);
+      !fluid && maxWidth !== undefined && !isResponsive(maxWidth) && !isContainerSize(maxWidth);
 
     // Build shell style
     const shellStyle: React.CSSProperties = {
@@ -236,17 +233,10 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     };
 
     // Build class name
-    const shellClassName = cn(
-      'ds-app-shell',
-      maxWidthClasses.join(' '),
-      className
-    );
+    const shellClassName = cn('ds-app-shell', maxWidthClasses.join(' '), className);
 
     // Build main content class name
-    const mainClassName = cn(
-      'ds-app-shell-main',
-      paddingClasses.join(' ')
-    );
+    const mainClassName = cn('ds-app-shell-main', paddingClasses.join(' '));
 
     return (
       <div ref={ref} className={shellClassName} style={shellStyle} {...props}>
