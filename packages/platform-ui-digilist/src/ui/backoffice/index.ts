@@ -13,6 +13,9 @@ export * from './providers';
 // Lib utilities
 export * from './lib';
 
+// Components
+export * from './components';
+
 // Feature modules
 export * from './calendar';
 export * from './notification-reports';

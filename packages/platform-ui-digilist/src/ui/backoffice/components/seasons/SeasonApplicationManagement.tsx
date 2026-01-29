@@ -1,0 +1,317 @@
+/**
+ * Season Application Management Component
+ * Review and process season applications (soknader)
+ */
+
+import { useState, useMemo } from 'react';
+import {
+  Button,
+  Table,
+  Badge,
+  Heading,
+  Paragraph,
+  Dropdown,
+  Spinner,
+  Card,
+  FilterIcon,
+  MoreVerticalIcon,
+  CheckCircleIcon,
+  XCircleIcon,
+  ClockIcon,
+  EyeIcon,
+  MessageSquareIcon,
+} from '@xala-technologies/platform-ui';
+import {
+  useSeasonApplications,
+  useApproveSeasonApplication,
+  useRejectSeasonApplication,
+  type SeasonApplication,
+} from '@digilist/client-sdk';
+import { useT } from '@xala-technologies/platform/runtime';
+
+type ApplicationStatus = 'pending' | 'approved' | 'rejected' | 'allocated';
+
+interface SeasonApplicationManagementProps {
+  seasonId: string;
+  canProcess: boolean; // Only allow in 'closed' status
+}
+
+// Moved inside component to access t hook
+const statusVariants: Record<ApplicationStatus, 'warning' | 'success' | 'danger' | 'info'> = {
+  pending: 'warning',
+  approved: 'success',
+  rejected: 'danger',
+  allocated: 'info',
+};
+
+export function SeasonApplicationManagement({ seasonId, canProcess }: SeasonApplicationManagementProps) {
+  const t = useT();
+  const [filterStatus, setFilterStatus] = useState<ApplicationStatus | 'all'>('all');
+  const [filterVenue, setFilterVenue] = useState<string | 'all'>('all');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedApplication, setSelectedApplication] = useState<SeasonApplication | null>(null);
+
+  const statusLabels: Record<ApplicationStatus, string> = {
+    pending: t("status.pending"),
+    approved: 'Godkjent',
+    rejected: 'Avslaatt',
+    allocated: 'Tildelt',
+  };
+
+  // Queries
+  const { data: applicationsData, isLoading } = useSeasonApplications(seasonId);
+  const applications = applicationsData?.data ?? [];
+
+  // Mutations
+  const approveMutation = useApproveSeasonApplication();
+  const rejectMutation = useRejectSeasonApplication();
+
+  // Filtered applications
+  const filteredApplications = useMemo(() => {
+    return applications.filter(app => {
+      if (filterStatus !== 'all' && app.status !== filterStatus) return false;
+      if (filterVenue !== 'all' && app.rentalObjectId !== filterVenue) return false;
+      return true;
+    });
+  }, [applications, filterStatus, filterVenue]);
+
+  // Group by venue for conflict detection
+  const applicationsByVenue = useMemo(() => {
+    const groups: Record<string, SeasonApplication[]> = {};
+    applications.forEach(app => {
+      if (!groups[app.rentalObjectId]) {
+        groups[app.rentalObjectId] = [];
+      }
+      groups[app.rentalObjectId].push(app);
+    });
+    return groups;
+  }, [applications]);
+
+  // Get unique venues
+  const venues = useMemo(() => {
+    const venueMap = new Map<string, string>();
+    applications.forEach(app => {
+      venueMap.set(app.rentalObjectId, app.rentalObjectName);
+    });
+    return Array.from(venueMap.entries());
+  }, [applications]);
+
+  // Handlers
+  const handleApprove = async (applicationId: string) => {
+    if (confirm(t('common.godkjenn_denne_soknaden'))) {
+      await approveMutation.mutateAsync(applicationId);
+    }
+  };
+
+  const handleReject = async (applicationId: string) => {
+    const reason = prompt('Aarsak til avslag (valgfritt):');
+    await rejectMutation.mutateAsync({ id: applicationId, reason: reason || undefined });
+  };
+
+  const formatTime = (time: string) => {
+    return time.substring(0, 5); // HH:MM
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('nb-NO', {
+      day: '2-digit',
+      month: 'short',
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ds-spacing-8)' }}>
+        <Spinner data-size="lg" aria-label={t("state.loading")} />
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
+      {/* Header with stats */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--ds-spacing-3)' }}>
+        <Card style={{ padding: 'var(--ds-spacing-3)' }}>
+          <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            Totalt
+          </div>
+          <div style={{ fontSize: 'var(--ds-font-size-2xl)', fontWeight: 'var(--ds-font-weight-semibold)' }}>
+            {applications.length}
+          </div>
+        </Card>
+        <Card style={{ padding: 'var(--ds-spacing-3)' }}>
+          <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>{t("status.pending")}</div>
+          <div style={{ fontSize: 'var(--ds-font-size-2xl)', fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-warning-text-default)' }}>
+            {applications.filter(a => a.status === 'pending').length}
+          </div>
+        </Card>
+        <Card style={{ padding: 'var(--ds-spacing-3)' }}>
+          <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>{t('seasons.text.godkjent')}</div>
+          <div style={{ fontSize: 'var(--ds-font-size-2xl)', fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-success-text-default)' }}>
+            {applications.filter(a => a.status === 'approved').length}
+          </div>
+        </Card>
+        <Card style={{ padding: 'var(--ds-spacing-3)' }}>
+          <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+            Avslaatt
+          </div>
+          <div style={{ fontSize: 'var(--ds-font-size-2xl)', fontWeight: 'var(--ds-font-weight-semibold)', color: 'var(--ds-color-danger-text-default)' }}>
+            {applications.filter(a => a.status === 'rejected').length}
+          </div>
+        </Card>
+      </div>
+
+      {/* Filters */}
+      <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', alignItems: 'center' }}>
+        <Dropdown>
+          <Dropdown.Trigger asChild>
+            <Button variant="secondary" data-size="sm" type="button">
+              <FilterIcon />
+              Status: {filterStatus === 'all' ? 'Alle' : statusLabels[filterStatus]}
+            </Button>
+          </Dropdown.Trigger>
+          <Dropdown.Content>
+            <Dropdown.Item onClick={() => setFilterStatus('all')}>{t('seasons.text.alle')}</Dropdown.Item>
+            <Dropdown.Item onClick={() => setFilterStatus('pending')}>{t('seasons.text.pending')}</Dropdown.Item>
+            <Dropdown.Item onClick={() => setFilterStatus('approved')}>{t('seasons.text.godkjent')}</Dropdown.Item>
+            <Dropdown.Item onClick={() => setFilterStatus('rejected')}>{t('common.avslaatt')}</Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown>
+
+        <Dropdown>
+          <Dropdown.Trigger asChild>
+            <Button variant="secondary" data-size="sm" type="button">
+              <FilterIcon />
+              Lokale: {filterVenue === 'all' ? 'Alle' : venues.find(v => v[0] === filterVenue)?.[1] || 'Alle'}
+            </Button>
+          </Dropdown.Trigger>
+          <Dropdown.Content>
+            <Dropdown.Item onClick={() => setFilterVenue('all')}>{t('common.alle_lokaler')}</Dropdown.Item>
+            {venues.map(([id, name]) => (
+              <Dropdown.Item key={id} onClick={() => setFilterVenue(id)}>
+                {name}
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Content>
+        </Dropdown>
+      </div>
+
+      {/* Applications list */}
+      {filteredApplications.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: 'var(--ds-spacing-8)' }}>
+          <ClockIcon style={{ fontSize: 'var(--ds-font-size-heading-lg)', color: 'var(--ds-color-neutral-text-subtle)', marginBottom: 'var(--ds-spacing-3)' }} />
+          <Heading level={4} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
+            Ingen soknader funnet
+          </Heading>
+          <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
+            {applications.length === 0
+              ? t('common.ingen_soknader_er_mottatt')
+              : 'Ingen soknader matcher valgte filtre'}
+          </Paragraph>
+        </div>
+      ) : (
+        <Table>
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell>{t('seasons.text.organization')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('seasons.text.lokale')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('seasons.text.ukedag')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('seasons.text.time')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('seasons.text.status')}</Table.HeaderCell>
+              <Table.HeaderCell>{t('seasons.text.innsendt')}</Table.HeaderCell>
+              {canProcess && <Table.HeaderCell style={{ width: '100px' }}>{t('seasons.text.handlinger')}</Table.HeaderCell>}
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            {filteredApplications.map(application => {
+              // Check for conflicts
+              const conflicts = applicationsByVenue[application.rentalObjectId]?.filter(
+                other =>
+                  other.id !== application.id &&
+                  other.weekday === application.weekday &&
+                  other.startTime === application.startTime &&
+                  other.status === 'pending'
+              ) ?? [];
+
+              return (
+                <Table.Row
+                  key={application.id}
+                  style={{
+                    backgroundColor: conflicts.length > 0 ? 'var(--ds-color-warning-surface-subtle)' : undefined,
+                  }}
+                >
+                  <Table.Cell>
+                    <div style={{ fontWeight: 'var(--ds-font-weight-medium)' }}>{application.organizationName}</div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <div style={{ fontSize: 'var(--ds-font-size-sm)' }}>
+                      {application.rentalObjectName}
+                      {conflicts.length > 0 && (
+                        <Badge color="warning" size="sm" style={{ marginLeft: 'var(--ds-spacing-1)' }}>
+                          {conflicts.length} konflikt{conflicts.length > 1 ? 'er' : ''}
+                        </Badge>
+                      )}
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <div style={{ fontSize: 'var(--ds-font-size-sm)' }}>
+                      {['Sondag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lordag'][application.weekday]}
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <div style={{ fontSize: 'var(--ds-font-size-sm)', fontFamily: 'var(--ds-font-family-monospace)' }}>
+                      {formatTime(application.startTime)} - {formatTime(application.endTime)}
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Badge color={statusVariants[application.status]}>
+                      {statusLabels[application.status]}
+                    </Badge>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <div style={{ fontSize: 'var(--ds-font-size-sm)', color: 'var(--ds-color-neutral-text-subtle)' }}>
+                      {formatDate(application.createdAt)}
+                    </div>
+                  </Table.Cell>
+                  {canProcess && (
+                    <Table.Cell>
+                      <Dropdown>
+                        <Dropdown.Trigger asChild>
+                          <Button variant="tertiary" data-size="sm" type="button" aria-label={t('ui.moreOptions')}>
+                            <MoreVerticalIcon />
+                          </Button>
+                        </Dropdown.Trigger>
+                        <Dropdown.Content>
+                          <Dropdown.Item onClick={() => setSelectedApplication(application)}>
+                            <EyeIcon />
+                            Se detaljer
+                          </Dropdown.Item>
+                          {application.status === 'pending' && (
+                            <>
+                              <Dropdown.Item onClick={() => handleApprove(application.id)}>
+                                <CheckCircleIcon />
+                                Godkjenn
+                              </Dropdown.Item>
+                              <Dropdown.Item onClick={() => handleReject(application.id)} color="danger">
+                                <XCircleIcon />
+                                Avsla
+                              </Dropdown.Item>
+                            </>
+                          )}
+                          <Dropdown.Item onClick={() => {}}>
+                            <MessageSquareIcon />
+                            Send melding
+                          </Dropdown.Item>
+                        </Dropdown.Content>
+                      </Dropdown>
+                    </Table.Cell>
+                  )}
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table>
+      )}
+    </div>
+  );
+}

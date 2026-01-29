@@ -43,13 +43,32 @@ export default defineConfig({
     treeshake: true,
     minify: false,
     external: [
+        // React
         'react',
         'react-dom',
         'react-router-dom',
+        // UI packages
         '@digdir/designsystemet-react',
         '@xala-technologies/platform-ui-core',
+        '@xala-technologies/platform-ui',
         'lucide-react',
+        // Platform packages
+        '@xala-technologies/platform',
+        '@xalatechnologies/platform',
+        // Domain SDK
+        '@digilist/client-sdk',
+        // Data/query
+        '@tanstack/react-query',
         'zod',
+        // Date handling
+        'date-fns',
+        // Maps
+        'mapbox-gl',
+        'react-map-gl',
+        // Other common deps
+        '@sentry/react',
+        'i18next',
+        'react-i18next',
     ],
     esbuildOptions(options) {
         options.jsx = 'automatic';
