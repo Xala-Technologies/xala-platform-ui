@@ -275,6 +275,3 @@ export function AppLayout({
     </Stack>
   );
 }
-
-
-
