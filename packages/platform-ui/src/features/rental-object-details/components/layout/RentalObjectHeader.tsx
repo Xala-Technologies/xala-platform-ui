@@ -1,4 +1,5 @@
 /** RentalObjectHeader - Refactored Pure UI */
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
@@ -20,7 +21,7 @@ export interface RentalObjectHeaderProps {
 export function RentalObjectHeader({
   name,
   category,
-  labels,
+  labels: _labels,
   className,
 }: RentalObjectHeaderProps): React.ReactElement {
   return (

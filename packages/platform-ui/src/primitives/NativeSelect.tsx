@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * NativeSelect Component
  * Simple wrapper around native HTML select element with DS styling

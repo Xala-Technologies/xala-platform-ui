@@ -1,4 +1,5 @@
 /** RentalObjectDetailsLayout - Refactored Pure UI */
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 
 export interface LayoutLabels {

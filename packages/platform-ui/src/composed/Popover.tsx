@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/Popover
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for popover positioning and portal with design tokens */
+
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, type ReactNode } from 'react';

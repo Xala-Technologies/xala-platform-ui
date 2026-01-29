@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/Stepper
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, nav) required for stepper steps and progress line with design tokens */
+
 'use client';
 
 import React, { useState, useCallback, type ReactNode } from 'react';

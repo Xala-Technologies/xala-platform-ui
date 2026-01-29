@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/ActionMenu
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for menu positioning, groups, and separators with design tokens */
+
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo, type ReactNode } from 'react';

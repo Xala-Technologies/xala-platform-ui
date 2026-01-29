@@ -192,15 +192,6 @@ export function WizardStatusSidebar({
     gap: 'var(--ds-spacing-2)',
   };
 
-  const listStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 'var(--ds-spacing-1)',
-    padding: 0,
-    margin: 0,
-    listStyle: 'none',
-  };
-
   const itemBaseStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'flex-start',

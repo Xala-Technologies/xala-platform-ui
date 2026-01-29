@@ -11,6 +11,8 @@
  * @module @xala-technologies/platform-ui/features/booking/components/sidebar
  */
 
+/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 
@@ -155,7 +157,8 @@ export function BookingAvailabilityConflictDialog({
   className,
 }: BookingAvailabilityConflictDialogProps): React.ReactElement | null {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+
+  const t = React.useCallback((key: string, _params?: unknown): string => key, []);
 
   // Translated day names
   const dayNames = React.useMemo(

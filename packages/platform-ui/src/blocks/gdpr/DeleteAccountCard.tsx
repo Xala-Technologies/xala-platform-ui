@@ -337,7 +337,7 @@ export function DeleteAccountCard({
                 }}
               >
                 {labels.warningItems.map((item, index) => (
-                  <li key={index}>
+                  <li key={index} style={{ marginBottom: 'var(--ds-spacing-1)' }}>
                     <Paragraph data-size="sm" style={{ margin: 0 }}>
                       {item}
                     </Paragraph>

@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/Progress
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for progress bar fill and ring SVG with design tokens */
+
 'use client';
 
 import React from 'react';

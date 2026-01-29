@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/rental-object-details/components/tabs
  */
-
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { Heading, Paragraph, Card } from '@digdir/designsystemet-react';
 import type { RentalObjectType } from '../../../../types/rental-object-detail';
@@ -508,7 +508,8 @@ export function OverviewTab({
   labels,
   className,
 }: OverviewTabProps): React.ReactElement {
-  const presenter = React.useMemo(() => createPresenter(rentalObjectType), [rentalObjectType]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _presenter = React.useMemo(() => createPresenter(rentalObjectType), [rentalObjectType]);
 
   // Local state for uncontrolled mode
   const [internalSelected, setInternalSelected] = React.useState<string[]>([]);

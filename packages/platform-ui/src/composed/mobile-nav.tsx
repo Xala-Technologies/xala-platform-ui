@@ -125,6 +125,7 @@ export const MobileNavToggle = forwardRef<HTMLButtonElement, MobileNavToggleProp
     const [isHovered, setIsHovered] = useState(false);
 
     // Filter out data-size to avoid type conflict with Button
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'data-size': _dataSize, ...buttonProps } = props as Record<string, unknown>;
 
     const buttonStyle: React.CSSProperties = {

@@ -5,16 +5,7 @@
  */
 import * as React from 'react';
 import { NativeSelect } from '../../../../primitives/NativeSelect';
-import {
-  Heading,
-  Button,
-  Stack,
-  Card,
-  Paragraph,
-  Textfield,
-  Textarea,
-  Checkbox,
-} from '@xala-technologies/platform-ui';
+import { Heading, Button } from '@xala-technologies/platform-ui';
 import { ChevronLeftIcon, ChevronRightIcon } from '@xala-technologies/platform-ui';
 import { formatPrice } from '@digilist/contracts';
 import type { BookingFormData, BookingConfig, AdditionalService } from '@digilist/contracts';

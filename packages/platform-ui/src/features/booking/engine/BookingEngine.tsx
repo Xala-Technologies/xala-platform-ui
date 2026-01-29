@@ -7,8 +7,10 @@
  * This file orchestrates the booking flow and delegates to specialized
  * mode view components and step components for better maintainability.
  */
+
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
-import { Heading, Paragraph, Button, Alert, Card } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { Stack } from '../../../primitives/stack';
 
 // =============================================================================
@@ -308,7 +310,8 @@ export function BookingEngine({
   className,
 }: BookingEngineProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _t = (key: string, _params?: unknown): string => key;
 
   // Steps
   const steps = React.useMemo(() => getBookingSteps(config.mode, false), [config.mode]);

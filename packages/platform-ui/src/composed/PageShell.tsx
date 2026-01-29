@@ -192,15 +192,6 @@ function isPaddingToken(value: unknown): value is PaddingSize {
 }
 
 /**
- * Resolve maxWidth to CSS value
- */
-function resolveMaxWidth(maxWidth: ContainerSize | string | undefined): string | undefined {
-  if (maxWidth === undefined) return undefined;
-  if (isContainerSize(maxWidth)) return containerSizeMap[maxWidth];
-  return maxWidth;
-}
-
-/**
  * Get CSS class for container size at breakpoint
  */
 function getContainerSizeClass(breakpoint: Breakpoint, size: ContainerSize): string {

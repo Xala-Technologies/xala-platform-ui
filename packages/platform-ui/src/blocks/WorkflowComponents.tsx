@@ -250,12 +250,6 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const ButtonGroup = forwardRef<HTMLElement, ButtonGroupProps>(
   ({ gap = 'var(--ds-spacing-2)', align = 'start', children, style, ...props }, ref) => {
-    const justifyMap = {
-      start: 'flex-start',
-      center: 'center',
-      end: 'flex-end',
-    };
-
     return (
       <Stack
         ref={ref}

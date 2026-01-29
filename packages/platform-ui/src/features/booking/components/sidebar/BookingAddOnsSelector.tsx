@@ -121,7 +121,7 @@ export function BookingAddOnsSelector({
   className,
 }: BookingAddOnsSelectorProps): React.ReactElement | null {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+  const t = (key: string, _params?: unknown): string => key;
 
   // Don't render if no add-ons available
   if (!addOns || addOns.length === 0) {

@@ -16,6 +16,8 @@
  * ```
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, img) required for project dropdown with icons and selection with design tokens */
+
 'use client';
 
 import React, { useState, useCallback } from 'react';

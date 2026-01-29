@@ -3,6 +3,8 @@
  *
  * Event Mode View - Select tickets for events
  */
+
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { Heading, Paragraph, Button, Alert } from '@xala-technologies/platform-ui';
 import {

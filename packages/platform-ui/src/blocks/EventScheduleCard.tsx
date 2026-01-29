@@ -211,28 +211,10 @@ export function EventScheduleCard({
     return `${labels.every} ${patternLabel}`;
   };
 
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: compact ? 'var(--ds-spacing-2)' : 'var(--ds-spacing-3)',
-  };
-
-  const rowStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: 'var(--ds-spacing-2)',
-  };
-
   const iconStyle: React.CSSProperties = {
     marginTop: 2,
     color: 'var(--ds-color-neutral-text-subtle)',
     flexShrink: 0,
-  };
-
-  const timeSlotsStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 'var(--ds-spacing-1)',
   };
 
   return (

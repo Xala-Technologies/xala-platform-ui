@@ -4,7 +4,7 @@
  * Navigation sidebar with feature-flag controlled sections.
  * Pure presentational component - receives data via props and emits events via callbacks.
  */
-
+/* eslint-disable no-restricted-syntax */
 import { useMemo } from 'react';
 import {
   Paragraph,

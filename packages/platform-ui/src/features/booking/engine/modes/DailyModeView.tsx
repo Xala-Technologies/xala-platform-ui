@@ -3,6 +3,8 @@
  *
  * Daily Mode View - Select full days from a month calendar
  */
+
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
 import {

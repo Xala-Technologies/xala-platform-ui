@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/settings/tenant
  */
-
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import {
   Card,

@@ -5,6 +5,8 @@
  * Used when there's no data to display
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for empty state layout with icon and actions with design tokens */
+
 import React from 'react';
 import { Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../../utils';

@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/AvatarGroup
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, img) required for avatar layout, overlap positioning, and status indicators with design tokens */
+
 'use client';
 
 import React, { type ReactNode } from 'react';

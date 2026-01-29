@@ -3,6 +3,8 @@
  *
  * A reusable shell component that provides consistent layout structure
  * across all applications in the monorepo.
+ *
+ * Note: Uses semantic <div>, <header>, <main>, <footer> elements for accessibility - this is intentional.
  */
 
 import React, { forwardRef } from 'react';

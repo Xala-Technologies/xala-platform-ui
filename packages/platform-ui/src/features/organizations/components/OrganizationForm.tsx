@@ -6,18 +6,10 @@
  *
  * @module @xala-technologies/platform-ui/features/organizations
  */
-
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import {
-  Textfield,
-  Select,
-  Heading,
-  Paragraph,
-  Button,
-  Spinner,
-  Card,
-} from '@digdir/designsystemet-react';
+import { Textfield, Select, Heading, Button, Spinner, Card } from '@digdir/designsystemet-react';
 import { Stack, FormField } from '@xala-technologies/platform-ui';
 import type { OrganizationFormData, ActorType, OrganizationVM } from '../types';
 

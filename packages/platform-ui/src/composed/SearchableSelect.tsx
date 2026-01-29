@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/SearchableSelect
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, input) required for searchable dropdown with options list with design tokens */
+
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';

@@ -4,6 +4,8 @@
  * Reusable sticky header for dashboard applications.
  * Features: search, notifications, theme toggle, user menu.
  *
+ * Note: Uses semantic <header>, <img> elements for accessibility - this is intentional.
+ *
  * @example
  * ```tsx
  * <DashboardHeader

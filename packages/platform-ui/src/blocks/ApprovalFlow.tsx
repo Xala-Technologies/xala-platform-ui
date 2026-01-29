@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { forwardRef, useState, useCallback } from 'react';
 import { Card, Heading, Paragraph, Button, Checkbox } from '@digdir/designsystemet-react';
+import { Stack } from '../primitives';
 import {
   CheckmarkCircleIcon,
   XMarkIcon,
@@ -90,6 +91,7 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
     const allChecked = checklistItems.every((item) => item.checked || !item.required);
 
     // Filter out data-size to avoid type conflict with Card
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
 
     return (
@@ -100,14 +102,11 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
         {...cardProps}
       >
         <Card.Block>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              cursor: 'pointer',
-            }}
+          <Stack
+            direction="horizontal"
+            align="center"
+            justify="between"
+            style={{ cursor: 'pointer' }}
             onClick={() => setExpanded(!expanded)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -123,7 +122,7 @@ export const ApprovalFlow = forwardRef<HTMLDivElement, ApprovalFlowProps>(
               {labels.checklist || 'Approval Checklist'}
             </Heading>
             {expanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
-          </div>
+          </Stack>
         </Card.Block>
 
         {expanded && (

@@ -5,6 +5,8 @@
  * with proper loading states, error handling, and accessibility.
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, iframe, a) required for iframe container, loading overlay, and header layout with design tokens */
+
 import { useState, useCallback, useEffect, type ReactNode } from 'react';
 import { Button, Paragraph, Spinner, Alert, Heading } from '@digdir/designsystemet-react';
 import {

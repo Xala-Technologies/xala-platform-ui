@@ -45,6 +45,7 @@ import { Outlet } from 'react-router-dom';
 import { ReactNode, useState, useEffect, useMemo } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../composed/bottom-navigation';
 import { DashboardContent } from './DashboardContent';
+import { Stack } from '../primitives/stack';
 import { MOBILE_BREAKPOINT } from '../tokens';
 import { cn } from '../utils';
 import {
@@ -222,10 +223,10 @@ export function AppLayout({
   const contentClassName = cn('ds-app-layout-content', paddingClasses.join(' '));
 
   return (
-    <div
+    <Stack
+      direction="horizontal"
       className={cn('ds-app-layout', className)}
       style={{
-        display: 'flex',
         height: '100vh',
         backgroundColor: 'var(--ds-color-neutral-background-default)',
         ...style,
@@ -234,11 +235,10 @@ export function AppLayout({
       {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
       {shouldShowSidebar && sidebar}
 
-      <div
+      <Stack
+        direction="vertical"
         style={{
           flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
           overflow: 'hidden',
         }}
       >
@@ -256,11 +256,11 @@ export function AppLayout({
             padding: useInlinePadding ? (contentPadding as string) : undefined,
           }}
         >
-          <div style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
+          <Stack style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
             <Outlet />
-          </div>
+          </Stack>
         </DashboardContent>
-      </div>
+      </Stack>
 
       {/* Bottom Navigation - Mobile only */}
       {hasBottomNav && (
@@ -272,6 +272,6 @@ export function AppLayout({
           safeArea={true}
         />
       )}
-    </div>
+    </Stack>
   );
 }

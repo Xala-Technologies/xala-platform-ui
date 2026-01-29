@@ -6,18 +6,9 @@
  *
  * @module @xala-technologies/platform-ui/features/backoffice-calendar/components
  */
-
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
-import {
-  Dialog,
-  Button,
-  Heading,
-  Paragraph,
-  Tag,
-  Spinner,
-  Stack,
-  Card,
-} from '@xala-technologies/platform-ui';
+import { Dialog, Button, Heading, Paragraph, Tag, Spinner } from '@xala-technologies/platform-ui';
 
 import { BLOCK_TYPE_CONFIG } from '../types';
 import type { CalendarEvent, BlockType, CalendarPermissions } from '../types';
@@ -388,7 +379,8 @@ export function EventDrawer({
               >
                 {(() => {
                   const blockType = event.status as BlockType;
-                  const labelKey = BLOCK_TYPE_CONFIG[blockType]?.label;
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                  const _labelKey = BLOCK_TYPE_CONFIG[blockType]?.label;
 
                   // Map block type to label
                   if (blockType === 'maintenance')

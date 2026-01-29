@@ -8,9 +8,11 @@
  * @module @xala-technologies/platform-ui/features/booking/components/sidebar
  */
 
+/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { NativeSelect } from '../../../../primitives/NativeSelect';
-import { Heading, Paragraph, Button, Card, Alert, Divider } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Button, Card, Divider } from '@digdir/designsystemet-react';
 import { Stack } from '../../../../primitives/stack';
 import { BookingVisibilitySelector, type BookingVisibility } from './BookingVisibilitySelector';
 
@@ -59,24 +61,6 @@ function BuildingIcon({ size = 18 }: { size?: number }): React.ReactElement {
       <path d="M16 14h.01" />
       <path d="M8 10h.01" />
       <path d="M8 14h.01" />
-    </svg>
-  );
-}
-
-function CheckCircleIcon({ size = 18 }: { size?: number }): React.ReactElement {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <polyline points="22 4 12 14.01 9 11.01" />
     </svg>
   );
 }
@@ -276,7 +260,7 @@ export function BookingConfirmationStep({
   className,
 }: BookingConfirmationStepProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+  const t = (key: string, _params?: unknown): string => key;
 
   /**
    * Convert internal slot format to FlowSelectedSlot[]

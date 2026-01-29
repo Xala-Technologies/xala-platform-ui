@@ -3,6 +3,8 @@
  *
  * Exact copy of MinSide sidebar styling, made reusable.
  * Preserves all visual characteristics using design tokens.
+ *
+ * Note: Uses semantic <aside>, <nav> elements for accessibility - this is intentional.
  */
 
 import * as React from 'react';

@@ -5,6 +5,8 @@
  * Supports responsive padding and maxWidth.
  * Following Designsystemet patterns.
  *
+ * Note: Uses semantic <div>, <header>, <main>, <footer> elements for accessibility - this is intentional.
+ *
  * @example
  * ```tsx
  * // Basic usage

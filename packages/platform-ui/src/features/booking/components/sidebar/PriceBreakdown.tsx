@@ -76,7 +76,7 @@ export function PriceBreakdown({
   className,
 }: PriceBreakdownProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+  const t = (key: string, _params?: unknown): string => key;
 
   if (isLoading) {
     return (

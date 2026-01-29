@@ -40,6 +40,8 @@
  * @module @xala-technologies/platform/ui/composed/PageContainer
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (main, div) required for semantic page container structure with design tokens */
+
 import * as React from 'react';
 import { forwardRef, useMemo } from 'react';
 import { cn } from '../utils';

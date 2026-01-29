@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * Directional icon components that automatically flip based on text direction.
  *

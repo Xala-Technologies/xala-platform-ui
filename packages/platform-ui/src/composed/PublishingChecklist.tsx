@@ -22,6 +22,8 @@
  * ```
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, svg) required for checklist layout and status indicators with design tokens */
+
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';

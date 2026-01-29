@@ -3,6 +3,8 @@
  *
  * Responsive content container for dashboard pages.
  * Full-width fluid layout with consistent left/right padding.
+ *
+ * Note: Uses semantic <main> element for accessibility - this is intentional.
  */
 
 import * as React from 'react';

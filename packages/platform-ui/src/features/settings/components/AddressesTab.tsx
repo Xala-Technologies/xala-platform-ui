@@ -9,7 +9,6 @@
  */
 
 import { AddressesTab as DSAddressesTab } from '../../../blocks/settings';
-import type { AddressData } from '../../../blocks/settings';
 
 // Re-export the pure presentational component
 export { AddressesTab } from '../../../blocks/settings';

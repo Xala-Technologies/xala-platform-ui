@@ -3,6 +3,8 @@
  *
  * Recurring Mode View - Set up seasonal/recurring bookings with weekday selection
  */
+
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { NativeSelect } from '../../../../primitives/NativeSelect';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';

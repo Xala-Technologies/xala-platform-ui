@@ -7,6 +7,8 @@
  * @module @xala-technologies/platform/ui/composed/DateRangePicker
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, label, svg) required for calendar grid, day cells, and dropdown positioning with design tokens */
+
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';

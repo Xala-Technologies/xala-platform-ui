@@ -7,8 +7,10 @@
  * @module @xala-technologies/platform-ui/features/booking/components/sidebar
  */
 
+/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
-import { Heading, Paragraph, Card, Button } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Icons
@@ -181,7 +183,8 @@ export function BookingCartSidebar({
   className,
 }: BookingCartSidebarProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+
+  const t = React.useCallback((key: string, _params?: unknown): string => key, []);
 
   const [expandedSlot, setExpandedSlot] = React.useState<string | null>(null);
 

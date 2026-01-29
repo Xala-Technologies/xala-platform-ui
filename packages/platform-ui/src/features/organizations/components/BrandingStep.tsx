@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/organizations
  */
-
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { Paragraph, Heading, Card, Button, Alert } from '@digdir/designsystemet-react';

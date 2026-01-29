@@ -4,6 +4,8 @@
  * Individual components for header sections using Digdir design system components
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, img, input) required for header logo, search, and action layouts with design tokens */
+
 import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 import { SunIcon, MoonIcon, UserIcon, SearchIcon, Stack, HorizontalLayout } from '../primitives';
@@ -1241,6 +1243,7 @@ export const HeaderIconButton = forwardRef<HTMLButtonElement, HeaderIconButtonPr
     const badgeText = badge && badge > maxBadge ? `${maxBadge}+` : badge?.toString();
 
     // Filter out data-size to avoid type conflict with Button
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'data-size': _dataSize, ...buttonProps } = props as Record<string, unknown>;
 
     return (

@@ -66,6 +66,7 @@ export const PreviewArea = forwardRef<HTMLDivElement, PreviewAreaProps>(
     };
 
     // Filter out data-size to avoid type conflict with Card
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
 
     return (

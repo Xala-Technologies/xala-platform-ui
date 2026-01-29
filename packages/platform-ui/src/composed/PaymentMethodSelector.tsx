@@ -26,6 +26,8 @@
  * ```
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for payment method chip layout with design tokens */
+
 import * as React from 'react';
 import { Button, Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../utils';

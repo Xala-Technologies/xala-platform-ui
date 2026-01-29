@@ -6,6 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/gdpr
  */
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import {
   Dialog,

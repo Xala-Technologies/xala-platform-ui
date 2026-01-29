@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { Heading, Paragraph, Alert, Card, Checkbox, Button } from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Alert, Button } from '@digdir/designsystemet-react';
 
 // =============================================================================
 // Icons
@@ -107,7 +107,7 @@ export function BookingPricingStep({
   className,
 }: BookingPricingStepProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+  const t = (key: string, _params?: unknown): string => key;
 
   const [internalSelectedGroups, setInternalSelectedGroups] = React.useState<Set<string>>(
     selectedPriceGroups ?? new Set(selectedPriceGroup ? [selectedPriceGroup] : [])

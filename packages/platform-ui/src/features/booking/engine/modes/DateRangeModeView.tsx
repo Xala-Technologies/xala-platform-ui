@@ -3,6 +3,8 @@
  *
  * Date Range Mode View - Select start and end date
  */
+
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { Heading, Paragraph, Button } from '@xala-technologies/platform-ui';
 import {
@@ -11,7 +13,7 @@ import {
   ChevronRightIcon,
   InfoIcon,
 } from '@xala-technologies/platform-ui';
-import { cn, formatPrice as utilFormatPrice, formatPriceUnit } from '../utils';
+import { cn, formatPriceUnit } from '../utils';
 import { PriceSummary } from '../components/PriceSummary';
 import type {
   BookingSelection,

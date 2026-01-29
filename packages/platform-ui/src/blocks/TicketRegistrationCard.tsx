@@ -318,16 +318,6 @@ export function TicketRegistrationCard({
     borderRadius: 'var(--ds-border-radius-sm)',
   };
 
-  const capacityBarStyle = (): React.CSSProperties => {
-    return {
-      height: 6,
-      borderRadius: 'var(--ds-border-radius-full)',
-      backgroundColor: 'var(--ds-color-neutral-surface-default)',
-      position: 'relative',
-      overflow: 'hidden',
-    };
-  };
-
   const capacityFillStyle = (available: number, total: number): React.CSSProperties => {
     const percent = Math.round((available / total) * 100);
     return {
@@ -446,7 +436,15 @@ export function TicketRegistrationCard({
                 av {registration.capacity.total}
               </Paragraph>
             </div>
-            <div style={capacityBarStyle()}>
+            <div
+              style={{
+                height: 6,
+                borderRadius: 'var(--ds-border-radius-full)',
+                backgroundColor: 'var(--ds-color-neutral-surface-default)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
               <div
                 style={capacityFillStyle(
                   registration.capacity.available,

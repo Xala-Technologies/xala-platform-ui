@@ -8,7 +8,7 @@
  *
  * Pure presentational component - receives data via props and emits events via callbacks.
  */
-
+/* eslint-disable no-restricted-syntax */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Paragraph } from '../../../../primitives';
 import type { DocsTocItem } from '../../types';

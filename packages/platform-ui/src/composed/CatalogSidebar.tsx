@@ -5,6 +5,8 @@
  * suitable for story explorers, file browsers, and navigation panels.
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, nav) required for sidebar layout, search, filters, and navigation structure with design tokens */
+
 import { useState, useMemo, useCallback, type ReactNode } from 'react';
 import { Textfield, Paragraph, Chip, Spinner, Button } from '@digdir/designsystemet-react';
 import { SearchIcon, XIcon, FolderIcon, FileTextIcon, BookOpenIcon } from 'lucide-react';

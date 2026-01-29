@@ -132,7 +132,7 @@ export function BookingContextSelector({
   className,
 }: BookingContextSelectorProps): React.ReactElement {
   // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, params?: any): string => key;
+  const t = (key: string, _params?: unknown): string => key;
 
   // Filter to orgs where user can book on behalf
   const bookableOrgs = memberships.filter((m) => m.canBookOnBehalf !== false);

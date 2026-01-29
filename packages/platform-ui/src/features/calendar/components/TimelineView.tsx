@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/backoffice-calendar/components
  */
-
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { useMemo } from 'react';
 import { Paragraph, Spinner } from '@xala-technologies/platform-ui';

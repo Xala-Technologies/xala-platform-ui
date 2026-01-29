@@ -52,6 +52,7 @@ export const ArtifactPreview = forwardRef<HTMLDivElement, ArtifactPreviewProps>(
     const selectedArtifact = allArtifacts.find((a) => a.id === selectedId) || allArtifacts[0];
 
     // Filter out data-size to avoid type conflict with Card
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
 
     if (allArtifacts.length === 0) {

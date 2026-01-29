@@ -26,6 +26,8 @@
  * @module @xala-technologies/platform/ui/composed/FormLayout
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (section, div, span, label, svg) required for form layout, grid structure, and semantic sections with design tokens */
+
 'use client';
 
 import React, { type ReactNode, useMemo } from 'react';

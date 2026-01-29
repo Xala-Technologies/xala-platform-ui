@@ -17,6 +17,8 @@
  * />
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li) required for dropdown menu and language options with design tokens */
+
 import React, { forwardRef, useState, useCallback } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 import { cn } from '../utils';

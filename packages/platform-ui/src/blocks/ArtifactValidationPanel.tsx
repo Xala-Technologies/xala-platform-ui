@@ -75,6 +75,7 @@ export const ArtifactValidationPanel = forwardRef<HTMLDivElement, ArtifactValida
     const failedCount = allResults.filter((r) => r.status === 'failed').length;
 
     // Filter out data-size to avoid type conflict with Card
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 'data-size': _dataSize, ...cardProps } = props as Record<string, unknown>;
 
     return (

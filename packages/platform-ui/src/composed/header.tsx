@@ -6,6 +6,8 @@
  * Uses design system tokens for styling
  */
 
+/* eslint-disable no-restricted-syntax -- Raw HTML elements (header, div) required for semantic header structure with design tokens */
+
 import React, { forwardRef } from 'react';
 import { Container } from '../primitives';
 

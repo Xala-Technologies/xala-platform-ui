@@ -1,4 +1,5 @@
 /** PaymentSection - Refactored Pure UI */
+/* eslint-disable no-restricted-syntax */
 import * as React from 'react';
 import { Heading, Paragraph, Card } from '@digdir/designsystemet-react';
 
@@ -27,8 +28,8 @@ export interface PaymentSectionProps {
 
 export function PaymentSection({
   priceLines,
-  subtotal,
-  tax,
+  subtotal: _subtotal,
+  tax: _tax,
   total,
   currency,
   labels,

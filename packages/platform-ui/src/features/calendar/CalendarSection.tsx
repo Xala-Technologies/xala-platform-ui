@@ -45,12 +45,9 @@
  */
 
 import * as React from 'react';
-import { Paragraph, Stack, Card, Heading, Spinner } from '@xala-technologies/platform-ui';
+import { Paragraph, Stack } from '@xala-technologies/platform-ui';
 import {
   RentalObjectAvailabilityCalendar,
-  buildCalendarLegend,
-  getCalendarSubtitle,
-  getDateRangeForMode,
   mapToCalendarCell,
   type CalendarMode,
   type CalendarCell,
@@ -313,7 +310,8 @@ export function CalendarSection({
   labels = DEFAULT_LABELS,
 }: CalendarSectionProps): React.ReactElement {
   // Merge provided labels with defaults
-  const effectiveLabels = { ...DEFAULT_LABELS, ...labels };
+
+  const effectiveLabels = React.useMemo(() => ({ ...DEFAULT_LABELS, ...labels }), [labels]);
 
   // Internal state for uncontrolled date
   const [internalDate, setInternalDate] = React.useState<Date>(new Date());
