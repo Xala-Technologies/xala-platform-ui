@@ -1,0 +1,154 @@
+# Lexicon Entry: BADGE
+
+> **Concept**: Status indicators and labels
+
+---
+
+## Semantic Role
+
+Badges display status, counts, or labels. They provide quick visual context without requiring user interaction.
+
+---
+
+## HTML Elements
+
+No direct HTML equivalent — typically `<span>` with styling.
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Badge` | `Tag`, `Chip` |
+
+---
+
+## Decision Guide
+
+| Question | Variant | Props |
+|----------|---------|-------|
+| Status indicator? | Status | `data-color="success|warning|danger|info"` |
+| Count/number? | Count | `data-size="sm"` |
+| Removable tag? | Tag | `Tag` with `onRemove` |
+| Category label? | Neutral | `data-color="neutral"` |
+
+---
+
+## Code Snippets
+
+### Status Badge
+```tsx
+import { Badge } from '@xala-technologies/platform-ui';
+
+<Badge data-color="success">{t('status.active')}</Badge>
+<Badge data-color="warning">{t('status.pending')}</Badge>
+<Badge data-color="danger">{t('status.error')}</Badge>
+<Badge data-color="info">{t('status.new')}</Badge>
+```
+
+### Neutral Badge
+```tsx
+<Badge data-color="neutral">{t('labels.draft')}</Badge>
+```
+
+### With Count
+```tsx
+<Badge data-color="accent" data-size="sm">
+  {notificationCount}
+</Badge>
+```
+
+### In Table Cell
+```tsx
+const columns = [
+  {
+    accessorKey: 'status',
+    header: t('table.status'),
+    cell: ({ row }) => (
+      <Badge data-color={getStatusColor(row.original.status)}>
+        {t(`status.${row.original.status}`)}
+      </Badge>
+    ),
+  },
+];
+```
+
+### Tag (Removable)
+```tsx
+import { Tag } from '@xala-technologies/platform-ui';
+
+<Tag onRemove={() => removeTag(tag.id)}>
+  {tag.name}
+</Tag>
+```
+
+### Tag Group
+```tsx
+import { Stack, Tag } from '@xala-technologies/platform-ui';
+
+<Stack direction="row" gap="2" wrap="wrap">
+  {tags.map(tag => (
+    <Tag key={tag.id} onRemove={() => removeTag(tag.id)}>
+      {tag.name}
+    </Tag>
+  ))}
+</Stack>
+```
+
+---
+
+## Color Mapping
+
+| Status | Color | Use Case |
+|--------|-------|----------|
+| Success | `data-color="success"` | Active, completed, approved |
+| Warning | `data-color="warning"` | Pending, review needed |
+| Danger | `data-color="danger"` | Error, failed, blocked |
+| Info | `data-color="info"` | New, updated, info |
+| Neutral | `data-color="neutral"` | Draft, default |
+| Accent | `data-color="accent"` | Primary brand, counts |
+
+---
+
+## Accessibility Rules
+
+- ✅ Don't rely on color alone — include text
+- ✅ Ensure sufficient color contrast
+- ✅ Removable tags need accessible name for remove button
+- ✅ Status badges should have `role="status"` for dynamic updates
+
+---
+
+## i18n Notes
+
+- Status text: `status.[statusKey]`
+- Labels: `labels.[labelKey]`
+- Remove button: `a11y.removeTag`
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<span className="badge badge-success">` | `<Badge data-color="success">` |
+| Color-only status (no text) | Include descriptive text |
+| `style={{ backgroundColor: 'green' }}` | `data-color="success"` |
+| Hardcoded status text | Use `t('status.xxx')` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_DATA_TABLE` — Status badges in tables
+- `PATTERN_FILTER_LAYOUT` — Filter tags
+
+---
+
+## Storybook
+
+- `badge--colors`
+- `badge--sizes`
+- `tag--removable`
+- `tag--group`

@@ -1,0 +1,169 @@
+# Lexicon Entry: MODAL
+
+> **Concept**: Overlay dialogs and panels
+
+---
+
+## Semantic Role
+
+Modals are overlays that require user attention or action. They block interaction with the underlying content until dismissed.
+
+---
+
+## HTML Elements
+
+`<dialog>`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Modal` | `ConfirmDialog`, `AlertDialog`, `Drawer` |
+
+---
+
+## Decision Guide
+
+| Question | Component | Use Case |
+|----------|-----------|----------|
+| Need confirmation for destructive action? | `ConfirmDialog` | Delete, cancel |
+| Alert with single action? | `AlertDialog` | Warnings, info |
+| Form or complex content? | `Modal` | Edit forms, details |
+| Side panel? | `Drawer` | Settings, filters |
+
+---
+
+## Code Snippets
+
+### Basic Modal
+```tsx
+import { Modal, Button, Stack, Heading } from '@xala-technologies/platform-ui';
+
+<Modal open={isOpen} onClose={() => setIsOpen(false)}>
+  <Modal.Header>
+    <Heading level={2} data-size="lg">{t('modal.editUser.title')}</Heading>
+  </Modal.Header>
+  <Modal.Content>
+    <Stack gap="4">
+      {/* Form fields */}
+    </Stack>
+  </Modal.Content>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={() => setIsOpen(false)}>
+      {t('actions.cancel')}
+    </Button>
+    <Button variant="primary" onClick={handleSave}>
+      {t('actions.save')}
+    </Button>
+  </Modal.Footer>
+</Modal>
+```
+
+### Confirm Dialog
+```tsx
+import { ConfirmDialog } from '@xala-technologies/platform-ui';
+
+<ConfirmDialog
+  open={isOpen}
+  onClose={() => setIsOpen(false)}
+  title={t('confirm.delete.title')}
+  description={t('confirm.delete.description', { name: item.name })}
+  confirmLabel={t('actions.delete')}
+  cancelLabel={t('actions.cancel')}
+  onConfirm={handleDelete}
+  variant="danger"
+/>
+```
+
+### Alert Dialog
+```tsx
+import { AlertDialog } from '@xala-technologies/platform-ui';
+
+<AlertDialog
+  open={isOpen}
+  onClose={() => setIsOpen(false)}
+  title={t('alert.unsavedChanges.title')}
+  description={t('alert.unsavedChanges.description')}
+  confirmLabel={t('actions.discard')}
+  onConfirm={handleDiscard}
+/>
+```
+
+### Drawer
+```tsx
+import { Drawer } from '@xala-technologies/platform-ui';
+
+<Drawer
+  open={isOpen}
+  onClose={() => setIsOpen(false)}
+  position="right"
+  size="md"
+>
+  <Drawer.Header>
+    <Heading level={2} data-size="lg">{t('drawer.filters.title')}</Heading>
+  </Drawer.Header>
+  <Drawer.Content>
+    {/* Filter form */}
+  </Drawer.Content>
+</Drawer>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Closed | Not rendered | `open={false}` |
+| Open | Overlay + content | `open={true}` |
+| Loading | Disabled buttons + spinner | Button `loading` prop |
+
+---
+
+## Accessibility Rules
+
+- ✅ Focus moves to modal when opened
+- ✅ Focus is trapped within modal
+- ✅ Escape key closes modal
+- ✅ Focus returns to trigger on close
+- ✅ Modal has `role="dialog"` and `aria-modal="true"`
+- ✅ Modal has accessible name (title)
+- ✅ Background content is inert
+
+---
+
+## i18n Notes
+
+- Titles: `modal.[modalName].title` or `confirm.[action].title`
+- Descriptions: `modal.[modalName].description`
+- Button labels: `actions.[verb]`
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<div className="modal-overlay">` | `<Modal open={...}>` |
+| Manual focus management | Use Modal built-in focus trap |
+| Click outside doesn't close | Use `onClose` prop |
+| No escape key handling | Built into Modal |
+
+---
+
+## Related Patterns
+
+- `PATTERN_FORM_LAYOUT` — Modal form layout
+- `FLOW_CREATE_EDIT_FORM` — Create/edit in modal
+
+---
+
+## Storybook
+
+- `modal--default`
+- `modal--with-form`
+- `confirmdialog--default`
+- `confirmdialog--danger`
+- `drawer--right`

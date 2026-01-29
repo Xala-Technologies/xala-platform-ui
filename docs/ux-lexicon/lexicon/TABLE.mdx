@@ -1,0 +1,182 @@
+# Lexicon Entry: TABLE
+
+> **Concept**: Tabular data display
+
+---
+
+## Semantic Role
+
+Tables display structured data in rows and columns. They must be sortable, accessible, and support pagination for large datasets.
+
+---
+
+## HTML Elements
+
+`<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `DataTable` | `Table` (simple), `List` (for cards) |
+
+---
+
+## Decision Guide
+
+| Question | Component | Use Case |
+|----------|-----------|----------|
+| Complex data with sorting/pagination? | `DataTable` | Admin lists |
+| Simple static table? | `Table` | Display-only data |
+| Card-based list? | `List` with `Card` | Mobile-friendly |
+| Editable rows? | `DataTable` with inline editing | Bulk operations |
+
+---
+
+## Code Snippets
+
+### Basic DataTable
+```tsx
+import { DataTable, type ColumnDef } from '@xala-technologies/platform-ui';
+
+const columns: ColumnDef<User>[] = [
+  {
+    accessorKey: 'name',
+    header: t('table.name'),
+    sortable: true,
+  },
+  {
+    accessorKey: 'email',
+    header: t('table.email'),
+  },
+  {
+    accessorKey: 'role',
+    header: t('table.role'),
+    cell: ({ row }) => <Badge>{row.original.role}</Badge>,
+  },
+  {
+    id: 'actions',
+    header: t('table.actions'),
+    cell: ({ row }) => (
+      <TableRowActions
+        actions={[
+          { label: t('actions.edit'), onClick: () => edit(row.original) },
+          { label: t('actions.delete'), onClick: () => del(row.original), variant: 'danger' },
+        ]}
+      />
+    ),
+  },
+];
+
+<DataTable
+  data={users}
+  columns={columns}
+  loading={isLoading}
+  pagination={{
+    page,
+    pageSize,
+    total,
+    onPageChange: setPage,
+  }}
+  emptyState={<EmptyState title={t('empty.users.title')} />}
+/>
+```
+
+### With Selection
+```tsx
+<DataTable
+  data={users}
+  columns={columns}
+  selection={{
+    selected,
+    onSelect: setSelected,
+    mode: 'multiple', // or 'single'
+  }}
+/>
+```
+
+### Simple Table
+```tsx
+import { Table } from '@xala-technologies/platform-ui';
+
+<Table data-size="sm">
+  <Table.Head>
+    <Table.Row>
+      <Table.HeaderCell>{t('table.name')}</Table.HeaderCell>
+      <Table.HeaderCell>{t('table.value')}</Table.HeaderCell>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    {items.map(item => (
+      <Table.Row key={item.id}>
+        <Table.Cell>{item.name}</Table.Cell>
+        <Table.Cell>{item.value}</Table.Cell>
+      </Table.Row>
+    ))}
+  </Table.Body>
+</Table>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Loading | Skeleton rows | `loading` prop |
+| Empty | EmptyState component | `emptyState` prop |
+| Error | Error message | Parent error handling |
+| Sorted | Sort indicator on header | Column `sortable` prop |
+| Selected | Checkbox + highlighted row | `selection` prop |
+
+---
+
+## Accessibility Rules
+
+- ✅ Use `<th>` for headers with `scope="col"` or `scope="row"`
+- ✅ Provide `aria-sort` on sortable columns
+- ✅ Use `aria-label` to describe the table purpose
+- ✅ Support keyboard navigation (arrow keys, Enter, Space)
+- ✅ Announce row selection changes to screen readers
+- ✅ Provide text alternatives for action icons
+
+---
+
+## i18n Notes
+
+- Column headers: `table.[columnKey]`
+- Empty states: `empty.[resource].title`, `empty.[resource].description`
+- Actions: `actions.[verb]`
+- Pagination: `pagination.showing`, `pagination.of`, `pagination.page`
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<table className="table-striped">` | `<DataTable data={...}>` |
+| `<div className="table-container">` | Use DataTable built-in scroll |
+| Manual pagination logic | Use `pagination` prop |
+| Inline row action buttons | Use `TableRowActions` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_DATA_TABLE` — Full table configuration
+- `PATTERN_BULK_ACTIONS` — Selection and bulk operations
+- `FLOW_ADMIN_LIST` — Complete list page implementation
+
+---
+
+## Storybook
+
+- `datatable--default`
+- `datatable--loading`
+- `datatable--empty`
+- `datatable--with-selection`
+- `datatable--sortable`
+- `datatable--paginated`

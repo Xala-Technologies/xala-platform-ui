@@ -1,0 +1,147 @@
+# Lexicon Entry: HEADING
+
+> **Concept**: Page and section titles
+
+---
+
+## Semantic Role
+
+Headings create document structure and hierarchy. Screen readers use them for navigation, so proper heading levels are critical for accessibility.
+
+---
+
+## HTML Elements
+
+`<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Heading` | `DashboardPageHeader`, `PageHeader` |
+
+---
+
+## Decision Guide
+
+| Question | Level | Use |
+|----------|-------|-----|
+| Main page title? | `level={1}` | One per page |
+| Major section? | `level={2}` | Card headers, sections |
+| Subsection? | `level={3}` | Nested sections |
+| Minor heading? | `level={4}` | Rarely needed |
+| Page with header component? | — | `DashboardPageHeader` |
+
+---
+
+## Code Snippets
+
+### Page Title
+```tsx
+import { Heading } from '@xala-technologies/platform-ui';
+
+<Heading level={1} data-size="2xl">
+  {t('pages.users.title')}
+</Heading>
+```
+
+### Section Heading
+```tsx
+<Heading level={2} data-size="lg">
+  {t('sections.details')}
+</Heading>
+```
+
+### Subsection Heading
+```tsx
+<Heading level={3} data-size="md">
+  {t('sections.permissions')}
+</Heading>
+```
+
+### With Dashboard Header
+```tsx
+import { DashboardPageHeader } from '@xala-technologies/platform-ui';
+
+<DashboardPageHeader
+  title={t('pages.users.title')}
+  description={t('pages.users.description')}
+  breadcrumbs={[
+    { label: t('nav.admin'), href: '/admin' },
+    { label: t('nav.users') },
+  ]}
+  actions={
+    <Button variant="primary" onClick={handleCreate}>
+      {t('actions.create')}
+    </Button>
+  }
+/>
+```
+
+### Visual Size Override
+```tsx
+{/* Semantic h2 but visually larger */}
+<Heading level={2} data-size="xl">
+  {t('sections.hero')}
+</Heading>
+```
+
+---
+
+## Size Scale
+
+| Size | Visual | Typical Use |
+|------|--------|-------------|
+| `2xl` | ~32px | Page titles (h1) |
+| `xl` | ~24px | Major sections |
+| `lg` | ~20px | Section headers (h2) |
+| `md` | ~18px | Subsections (h3) |
+| `sm` | ~16px | Minor headings (h4) |
+| `xs` | ~14px | Small labels |
+
+---
+
+## Accessibility Rules
+
+- ✅ Use exactly one `<h1>` per page
+- ✅ Don't skip heading levels (h1 → h3)
+- ✅ Use headings for structure, not styling
+- ✅ Headings should be descriptive
+- ✅ Use `data-size` to adjust visual size while keeping semantic level
+
+---
+
+## i18n Notes
+
+- Page titles: `pages.[pageName].title`
+- Section headers: `sections.[sectionName]`
+- Always use translation keys, never hardcode text
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<h1 className="text-2xl">Title</h1>` | `<Heading level={1} data-size="2xl">{t('title')}</Heading>` |
+| `<div className="heading">Title</div>` | `<Heading level={2}>{t('title')}</Heading>` |
+| Skip from h1 to h3 | Use h1 → h2 → h3 in order |
+| Multiple h1 on page | One h1 per page |
+| `style={{ fontSize: '24px' }}` | `data-size="xl"` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_PAGE_SHELL` — Page layout with header
+- `FLOW_DETAIL_PAGE` — Detail page headings
+
+---
+
+## Storybook
+
+- `heading--levels`
+- `heading--sizes`
+- `dashboard-page-header--default`

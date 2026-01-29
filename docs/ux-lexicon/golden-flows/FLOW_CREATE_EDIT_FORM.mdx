@@ -1,0 +1,285 @@
+# Golden Flow: Create/Edit Form
+
+> **ID**: `FLOW_CREATE_EDIT_FORM`
+> **Purpose**: Form for creating or editing resources
+
+---
+
+## Layout Contract
+
+- **Container**: `Modal` or `Drawer` or dedicated page
+- **Form**: `FormSection` with validation
+- **Actions**: Submit and Cancel buttons
+
+---
+
+## Composition Tree
+
+```
+Modal/Drawer/Page
+├── Header
+│   └── Title (Create/Edit + Resource)
+├── FormSection
+│   ├── FormField (required fields first)
+│   ├── FormField
+│   └── ...more fields
+├── FormSection (optional sections)
+│   └── FormField
+├── Alert (submission errors)
+└── Actions
+    ├── Button (secondary - cancel)
+    └── Button (primary - submit)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Props |
+|---------|-----------|-------|
+| Container | `Modal` / `Drawer` / `DashboardContent` | `open`, `onClose` |
+| Section | `FormSection` | `title`, `description` |
+| Field | `Textfield`, `NativeSelect`, etc. | Field-specific |
+| Error | `Alert data-color="danger"` | Submission errors |
+| Actions | `Stack direction="row"` | `justify="end"` |
+
+---
+
+## State Matrix
+
+| State | Behavior |
+|-------|----------|
+| **Pristine** | Form untouched, submit disabled |
+| **Dirty** | Form modified, submit enabled |
+| **Invalid** | Validation errors shown on blur/submit |
+| **Submitting** | Submit button loading, form disabled |
+| **Success** | Close container, show toast |
+| **Error** | Show error alert, keep form open |
+
+---
+
+## Scenarios
+
+### 1. Create New
+```
+1. User clicks "Create" button
+2. Modal/Drawer opens with empty form
+3. User fills required fields
+4. User submits
+5. Success: close + toast + refresh list
+6. Error: show error, keep form open
+```
+
+### 2. Edit Existing
+```
+1. User clicks "Edit" on item
+2. Modal/Drawer opens with prefilled form
+3. User modifies fields
+4. User submits
+5. Success: close + toast + refresh detail
+6. Error: show error, keep form open
+```
+
+### 3. Validation Error
+```
+1. User submits invalid form
+2. Focus moves to first error field
+3. Error messages shown below fields
+4. User fixes errors
+5. User resubmits
+```
+
+### 4. Unsaved Changes
+```
+1. User modifies form
+2. User tries to close without saving
+3. AlertDialog shown: "Discard changes?"
+4. User confirms: close without saving
+5. User cancels: keep form open
+```
+
+---
+
+## Code Example
+
+```tsx
+import {
+  Modal,
+  FormSection,
+  Textfield,
+  NativeSelect,
+  Textarea,
+  Checkbox,
+  Button,
+  Stack,
+  Alert,
+  Heading,
+} from '@xala-technologies/platform-ui';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const userSchema = z.object({
+  name: z.string().min(1, t('validation.required')),
+  email: z.string().email(t('validation.email')),
+  role: z.enum(['admin', 'user']),
+  bio: z.string().optional(),
+  newsletter: z.boolean().default(false),
+});
+
+export function UserFormModal({ open, onClose, user, onSuccess }) {
+  const isEdit = !!user;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isDirty },
+    reset,
+  } = useForm({
+    resolver: zodResolver(userSchema),
+    defaultValues: user || { name: '', email: '', role: 'user', bio: '', newsletter: false },
+  });
+
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const onSubmit = async (data) => {
+    try {
+      setSubmitError(null);
+      if (isEdit) {
+        await updateUser(user.id, data);
+      } else {
+        await createUser(data);
+      }
+      onSuccess();
+      onClose();
+      reset();
+    } catch (error) {
+      setSubmitError(error.message);
+    }
+  };
+
+  const handleClose = () => {
+    if (isDirty) {
+      // Show unsaved changes dialog
+      setShowDiscardDialog(true);
+    } else {
+      onClose();
+      reset();
+    }
+  };
+
+  return (
+    <Modal open={open} onClose={handleClose}>
+      <Modal.Header>
+        <Heading level={2} data-size="lg">
+          {isEdit ? t('modal.editUser.title') : t('modal.createUser.title')}
+        </Heading>
+      </Modal.Header>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Modal.Content>
+          <Stack gap="6">
+            <FormSection title={t('form.sections.basicInfo')}>
+              <Stack gap="4">
+                <Textfield
+                  label={t('form.name.label')}
+                  {...register('name')}
+                  error={errors.name?.message}
+                  aria-required="true"
+                  autoFocus
+                />
+
+                <Textfield
+                  label={t('form.email.label')}
+                  type="email"
+                  {...register('email')}
+                  error={errors.email?.message}
+                  aria-required="true"
+                />
+
+                <NativeSelect
+                  label={t('form.role.label')}
+                  {...register('role')}
+                  error={errors.role?.message}
+                >
+                  <option value="user">{t('roles.user')}</option>
+                  <option value="admin">{t('roles.admin')}</option>
+                </NativeSelect>
+              </Stack>
+            </FormSection>
+
+            <FormSection title={t('form.sections.additional')}>
+              <Stack gap="4">
+                <Textarea
+                  label={t('form.bio.label')}
+                  {...register('bio')}
+                  rows={3}
+                  description={t('form.bio.description')}
+                />
+
+                <Checkbox {...register('newsletter')}>
+                  {t('form.newsletter.label')}
+                </Checkbox>
+              </Stack>
+            </FormSection>
+
+            {submitError && (
+              <Alert data-color="danger">{submitError}</Alert>
+            )}
+          </Stack>
+        </Modal.Content>
+
+        <Modal.Footer>
+          <Stack direction="row" justify="end" gap="3">
+            <Button variant="secondary" type="button" onClick={handleClose}>
+              {t('actions.cancel')}
+            </Button>
+            <Button variant="primary" type="submit" loading={isSubmitting}>
+              {isEdit ? t('actions.save') : t('actions.create')}
+            </Button>
+          </Stack>
+        </Modal.Footer>
+      </form>
+    </Modal>
+  );
+}
+```
+
+---
+
+## Validation Rules
+
+| Rule | Display |
+|------|---------|
+| Required | `*` indicator + error on blur |
+| Format (email, URL) | Error on blur |
+| Min/max length | Error on blur |
+| Custom validation | Error on blur |
+| Server error | Alert at form level |
+
+---
+
+## UX Acceptance Criteria
+
+- [ ] Required fields marked with indicator
+- [ ] Validation errors shown on blur
+- [ ] Focus moves to first error on submit
+- [ ] Submit button shows loading state
+- [ ] Success closes form + shows toast
+- [ ] Error keeps form open with message
+- [ ] Unsaved changes prompt on close
+- [ ] All text is translated
+
+---
+
+## Related Patterns
+
+- `PATTERN_FORM_LAYOUT` — Form structure
+- `PATTERN_STATE_HANDLING` — Form states
+
+---
+
+## Storybook Coverage
+
+- `user-form--create`
+- `user-form--edit`
+- `user-form--validation-errors`
+- `user-form--submitting`

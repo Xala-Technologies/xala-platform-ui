@@ -1,0 +1,141 @@
+# Lexicon Entry: DIV
+
+> **Concept**: Layout container / grouping boundary
+
+---
+
+## Semantic Role
+
+The `<div>` element represents a generic container with no semantic meaning. In Platform UI, it maps to structured layout components that provide proper spacing, alignment, and responsive behavior.
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Stack` | `Box`, `Grid`, `Container`, `Card` |
+
+---
+
+## Decision Guide
+
+| Question | Answer | Use |
+|----------|--------|-----|
+| Need vertical stacking? | Yes | `Stack` (default) |
+| Need horizontal layout? | Yes | `Stack direction="row"` |
+| Need multi-column grid? | Yes | `Grid cols={2-12}` |
+| Need max-width container? | Yes | `Container` |
+| Need card styling? | Yes | `Card data-color="neutral"` |
+| Just need semantic wrapper? | Yes | `Box` |
+
+---
+
+## Code Snippets
+
+### Vertical Stack (Default)
+```tsx
+import { Stack } from '@xala-technologies/platform-ui';
+
+<Stack gap="4">
+  <ChildComponent />
+  <ChildComponent />
+</Stack>
+```
+
+### Horizontal Layout
+```tsx
+import { Stack } from '@xala-technologies/platform-ui';
+
+<Stack direction="row" gap="2" align="center">
+  <Icon />
+  <Paragraph>Label</Paragraph>
+</Stack>
+```
+
+### Grid Layout
+```tsx
+import { Grid, Card } from '@xala-technologies/platform-ui';
+
+<Grid cols={3} gap="4">
+  <Card data-color="neutral">Item 1</Card>
+  <Card data-color="neutral">Item 2</Card>
+  <Card data-color="neutral">Item 3</Card>
+</Grid>
+```
+
+### Responsive Grid
+```tsx
+<Grid cols={{ base: 1, md: 2, lg: 3 }} gap="4">
+  {items.map(item => <Card key={item.id} data-color="neutral">{item.name}</Card>)}
+</Grid>
+```
+
+---
+
+## Variants
+
+| Variant | Prop | Values |
+|---------|------|--------|
+| Direction | `direction` | `column` (default), `row` |
+| Gap | `gap` | `0`, `1`, `2`, `3`, `4`, `5`, `6` (spacing scale) |
+| Alignment | `align` | `start`, `center`, `end`, `stretch` |
+| Justify | `justify` | `start`, `center`, `end`, `between`, `around` |
+| Wrap | `wrap` | `nowrap`, `wrap`, `wrap-reverse` |
+
+---
+
+## State Behavior
+
+Not applicable — layout components don't have interactive states.
+
+---
+
+## Accessibility Rules
+
+- ✅ Use semantic elements when appropriate (e.g., `<nav>`, `<main>`, `<aside>`)
+- ✅ Don't use divs for interactive elements
+- ✅ Ensure proper heading hierarchy within containers
+- ✅ Add `role="region"` and `aria-label` for important sections
+
+---
+
+## i18n Notes
+
+- Layout components have no text content
+- Child components must use i18n keys via `t()` function
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<div className="flex flex-col gap-4">` | `<Stack gap="4">` |
+| `<div style={{ display: 'grid' }}>` | `<Grid cols={3}>` |
+| `<div className="container mx-auto">` | `<Container>` |
+| `<div className="card shadow-lg">` | `<Card data-color="neutral">` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_PAGE_SHELL` — Page layout structure
+- `PATTERN_FORM_LAYOUT` — Form field arrangement
+- `PATTERN_DATA_TABLE` — Table layout
+
+---
+
+## Golden Flows
+
+- `FLOW_ADMIN_LIST` — Uses Grid for cards
+- `FLOW_DETAIL_PAGE` — Uses Stack for sections
+
+---
+
+## Storybook
+
+- `stack--default`
+- `stack--horizontal`
+- `grid--responsive`
+- `container--variants`

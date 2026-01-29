@@ -1,0 +1,164 @@
+# Lexicon Entry: SELECT
+
+> **Concept**: Dropdown selection
+
+---
+
+## Semantic Role
+
+Select components allow users to choose from a list of options. Use when there are 5+ options; for fewer, consider radio buttons.
+
+---
+
+## HTML Elements
+
+`<select>`, `<option>`, `<optgroup>`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `NativeSelect` | `Select`, `Combobox`, `SearchableSelect` |
+
+---
+
+## Decision Guide
+
+| Question | Component | Use Case |
+|----------|-----------|----------|
+| Simple dropdown, < 10 options? | `NativeSelect` | Forms, filters |
+| Searchable dropdown? | `Combobox` | Large option lists |
+| Multi-select? | `SearchableSelect` | Tag selection |
+| Custom option rendering? | `Select` | Rich option content |
+
+---
+
+## Code Snippets
+
+### Native Select
+```tsx
+import { NativeSelect } from '@xala-technologies/platform-ui';
+
+<NativeSelect
+  label={t('form.country.label')}
+  value={country}
+  onChange={(e) => setCountry(e.target.value)}
+>
+  <option value="">{t('form.country.placeholder')}</option>
+  {countries.map(c => (
+    <option key={c.code} value={c.code}>{c.name}</option>
+  ))}
+</NativeSelect>
+```
+
+### Combobox (Searchable)
+```tsx
+import { Combobox } from '@xala-technologies/platform-ui';
+
+<Combobox
+  label={t('form.assignee.label')}
+  value={selectedUser}
+  onValueChange={setSelectedUser}
+  filter={(value, search) => value.toLowerCase().includes(search.toLowerCase())}
+>
+  <Combobox.Empty>{t('search.noResults')}</Combobox.Empty>
+  {users.map(user => (
+    <Combobox.Option key={user.id} value={user.id}>
+      {user.name}
+    </Combobox.Option>
+  ))}
+</Combobox>
+```
+
+### SearchableSelect (Multi-select)
+```tsx
+import { SearchableSelect } from '@xala-technologies/platform-ui';
+
+<SearchableSelect
+  label={t('form.tags.label')}
+  value={selectedTags}
+  onValueChange={setSelectedTags}
+  multiple
+  placeholder={t('form.tags.placeholder')}
+>
+  {tags.map(tag => (
+    <SearchableSelect.Option key={tag.id} value={tag.id}>
+      {tag.name}
+    </SearchableSelect.Option>
+  ))}
+</SearchableSelect>
+```
+
+### With Validation Error
+```tsx
+<NativeSelect
+  label={t('form.role.label')}
+  value={role}
+  onChange={(e) => setRole(e.target.value)}
+  error={errors.role}
+  aria-invalid={!!errors.role}
+>
+  {/* options */}
+</NativeSelect>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Default | Normal border | — |
+| Focus | Focus ring | CSS handled |
+| Open | Dropdown visible | Controlled by component |
+| Disabled | Muted, no interaction | `disabled` prop |
+| Error | Red border + message | `error` prop |
+| Loading | Spinner in dropdown | `loading` prop (Combobox) |
+
+---
+
+## Accessibility Rules
+
+- ✅ Always have a visible label
+- ✅ Use `aria-invalid` when validation fails
+- ✅ Support keyboard navigation (arrows, Enter, Escape)
+- ✅ Announce selected value to screen readers
+- ✅ Use `aria-required` for required fields
+
+---
+
+## i18n Notes
+
+- Labels: `form.[fieldName].label`
+- Placeholders: `form.[fieldName].placeholder`
+- Option text: `options.[optionKey]` or dynamic from data
+- Empty state: `search.noResults`
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<select className="form-select">` | `<NativeSelect label={...}>` |
+| Custom dropdown with divs | Use `Combobox` or `Select` |
+| No label on select | Always provide `label` prop |
+| Hardcoded option text | Use translation keys |
+
+---
+
+## Related Patterns
+
+- `PATTERN_FORM_LAYOUT` — Form field arrangement
+- `PATTERN_FILTER_LAYOUT` — Filter dropdowns
+
+---
+
+## Storybook
+
+- `nativeselect--default`
+- `combobox--searchable`
+- `searchableselect--multiselect`
+- `select--with-error`

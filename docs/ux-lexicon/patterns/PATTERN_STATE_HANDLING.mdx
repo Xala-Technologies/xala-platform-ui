@@ -1,0 +1,219 @@
+# Pattern: State Handling
+
+> **ID**: `PATTERN_STATE_HANDLING`
+> **Purpose**: Consistent handling of all component states
+
+---
+
+## Overview
+
+Every data-driven component must handle all possible states: loading, empty, error, success, and permission denied. The `StateWrapper` component standardizes this.
+
+---
+
+## State Matrix
+
+| State | Condition | Component |
+|-------|-----------|-----------|
+| **Loading** | `isLoading === true` | `LoadingFallback`, `Spinner`, `Skeleton` |
+| **Empty** | `data.length === 0` (no filters) | `EmptyState` |
+| **Empty (filtered)** | `data.length === 0` (with filters) | `ResultsEmptyState` |
+| **Error** | `error !== null` | `Alert data-color="danger"` |
+| **Success** | `data.length > 0` | Normal content |
+| **Permission Denied** | `hasPermission === false` | `AccessGate` |
+
+---
+
+## StateWrapper Usage
+
+```tsx
+import {
+  StateWrapper,
+  computeState,
+  useComputedState,
+  LoadingFallback,
+  EmptyState,
+  Alert,
+  AccessGate,
+} from '@xala-technologies/platform-ui';
+
+export function UserList() {
+  const { data, isLoading, error } = useUsers();
+  const { hasPermission } = usePermissions('users.read');
+
+  const state = useComputedState({
+    isLoading,
+    error,
+    isEmpty: data?.length === 0,
+    hasPermission,
+  });
+
+  return (
+    <StateWrapper
+      state={state}
+      loadingComponent={<LoadingFallback />}
+      emptyComponent={
+        <EmptyState
+          title={t('empty.users.title')}
+          description={t('empty.users.description')}
+          action={
+            <Button variant="primary" onClick={handleCreate}>
+              {t('actions.createFirst')}
+            </Button>
+          }
+        />
+      }
+      errorComponent={
+        <Alert data-color="danger">
+          {error?.message || t('errors.generic')}
+        </Alert>
+      }
+      permissionDeniedComponent={
+        <AccessGate
+          denied
+          title={t('access.denied.title')}
+          description={t('access.denied.description')}
+          requiredPermission="users.read"
+        />
+      }
+    >
+      <DataTable data={data} columns={columns} />
+    </StateWrapper>
+  );
+}
+```
+
+---
+
+## computeState Helper
+
+```tsx
+import { computeState, type ComponentState } from '@xala-technologies/platform-ui';
+
+// Returns: 'idle' | 'loading' | 'empty' | 'error' | 'success' | 'permissionDenied'
+const state: ComponentState = computeState({
+  isLoading: false,
+  error: null,
+  isEmpty: false,
+  isSuccess: true,
+  hasPermission: true,
+});
+```
+
+---
+
+## Priority Order
+
+States are evaluated in this order:
+1. **Permission Denied** (if `hasPermission === false`)
+2. **Loading** (if `isLoading === true`)
+3. **Error** (if `error` is truthy)
+4. **Empty** (if `isEmpty === true`)
+5. **Success** (if `isSuccess === true`)
+6. **Idle** (default)
+
+---
+
+## Loading Variants
+
+| Context | Component | Use |
+|---------|-----------|-----|
+| Full page | `LoadingFallback` | Initial page load |
+| Inline | `Spinner` | Button, small areas |
+| Table | `Skeleton` | Table rows |
+| Card | `Skeleton` | Card placeholders |
+
+---
+
+## Code Example: Full Page States
+
+```tsx
+export function ResourcePage({ id }: { id: string }) {
+  const { data, isLoading, error } = useResource(id);
+  const { hasPermission } = usePermissions('resources.read');
+
+  // Permission check first
+  if (!hasPermission) {
+    return (
+      <DashboardContent>
+        <AccessGate
+          denied
+          title={t('access.denied.title')}
+          description={t('access.denied.description')}
+          actions={[
+            {
+              label: t('actions.requestAccess'),
+              onClick: handleRequestAccess,
+              variant: 'primary',
+            },
+            {
+              label: t('actions.goBack'),
+              onClick: () => navigate(-1),
+              variant: 'secondary',
+            },
+          ]}
+        />
+      </DashboardContent>
+    );
+  }
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <DashboardContent>
+        <LoadingFallback />
+      </DashboardContent>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <DashboardContent>
+        <Alert data-color="danger">
+          <Heading level={3} data-size="md">{t('errors.title')}</Heading>
+          <Paragraph>{error.message}</Paragraph>
+          <Button variant="secondary" onClick={() => refetch()}>
+            {t('actions.retry')}
+          </Button>
+        </Alert>
+      </DashboardContent>
+    );
+  }
+
+  // Success state
+  return (
+    <DashboardContent>
+      <DashboardPageHeader title={data.name} />
+      {/* Content */}
+    </DashboardContent>
+  );
+}
+```
+
+---
+
+## Accessibility
+
+- ✅ Loading states announced to screen readers
+- ✅ Error messages associated with form fields
+- ✅ Focus management on state changes
+- ✅ Skeleton shows loading intent visually
+
+---
+
+## Related Patterns
+
+- `PATTERN_DATA_TABLE` — Table states
+- `PATTERN_FORM_LAYOUT` — Form validation states
+
+---
+
+## Storybook
+
+- `statewrapper--loading`
+- `statewrapper--empty`
+- `statewrapper--error`
+- `loadingfallback--default`
+- `emptystate--default`
+- `accessgate--denied`

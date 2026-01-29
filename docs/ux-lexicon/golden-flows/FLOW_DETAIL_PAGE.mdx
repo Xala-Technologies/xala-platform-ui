@@ -1,0 +1,292 @@
+# Golden Flow: Detail Page
+
+> **ID**: `FLOW_DETAIL_PAGE`
+> **Purpose**: Resource detail view with sections and actions
+
+---
+
+## Layout Contract
+
+- **Shell**: `AppShell` or `DashboardLayout`
+- **Header**: `DashboardPageHeader` with resource name
+- **Main**: `DashboardContent` with sections
+
+---
+
+## Composition Tree
+
+```
+AppShell
+├── DashboardSidebar
+├── DashboardContent
+│   ├── DashboardPageHeader
+│   │   ├── Breadcrumb
+│   │   ├── Title (resource name)
+│   │   ├── Status Badge
+│   │   └── Actions (Edit, Delete)
+│   ├── Card (Details Section)
+│   │   ├── Heading
+│   │   └── KeyValueList
+│   ├── Card (Related Section)
+│   │   ├── Heading
+│   │   └── DataTable (related items)
+│   └── Card (Activity Section)
+│       ├── Heading
+│       └── Timeline
+└── Drawer (Edit form)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Props |
+|---------|-----------|-------|
+| Page header | `DashboardPageHeader` | `title`, `breadcrumbs`, `actions` |
+| Details | `Card` + `KeyValueList` | `items` |
+| Related items | `Card` + `DataTable` | `data`, `columns` |
+| Activity log | `Card` + `Timeline` | `events` |
+| Edit form | `Drawer` + Form | `open`, `onClose` |
+
+---
+
+## State Matrix
+
+| State | Component | Behavior |
+|-------|-----------|----------|
+| **Loading** | `LoadingFallback` | Full page skeleton |
+| **Not Found** | `NotFoundScreen` | 404 with navigation |
+| **Success** | Detail cards | Normal display |
+| **Error** | `Alert data-color="danger"` | Error + retry |
+| **Permission Denied** | `AccessGate` | Request access |
+
+---
+
+## Scenarios
+
+### 1. View Details
+```
+1. User navigates to /users/123
+2. Loading state shown
+3. Data fetched
+4. Detail sections rendered
+```
+
+### 2. Edit via Drawer
+```
+1. User clicks Edit button
+2. Drawer opens with form
+3. User modifies fields
+4. User saves
+5. Drawer closes, page refreshes
+```
+
+### 3. Delete
+```
+1. User clicks Delete button
+2. ConfirmDialog shown
+3. On confirm: delete + navigate to list
+```
+
+### 4. Not Found
+```
+1. Resource doesn't exist (404)
+2. NotFoundScreen displayed
+3. User can navigate back to list
+```
+
+---
+
+## Code Example
+
+```tsx
+import {
+  AppShell,
+  DashboardSidebar,
+  DashboardContent,
+  DashboardPageHeader,
+  Card,
+  Stack,
+  Heading,
+  KeyValueList,
+  Badge,
+  Button,
+  Drawer,
+  ConfirmDialog,
+  LoadingFallback,
+  AccessGate,
+  Alert,
+} from '@xala-technologies/platform-ui';
+
+export function UserDetailPage({ id }: { id: string }) {
+  const { data: user, isLoading, error } = useUser(id);
+  const { hasPermission } = usePermissions('users.read');
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+
+  // Permission check
+  if (!hasPermission) {
+    return (
+      <DashboardContent>
+        <AccessGate
+          denied
+          title={t('access.users.title')}
+          description={t('access.users.description')}
+          requiredPermission="users.read"
+        />
+      </DashboardContent>
+    );
+  }
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <DashboardContent>
+        <LoadingFallback />
+      </DashboardContent>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <DashboardContent>
+        <Alert data-color="danger">{error.message}</Alert>
+      </DashboardContent>
+    );
+  }
+
+  // Not found
+  if (!user) {
+    return (
+      <DashboardContent>
+        <NotFoundScreen
+          title={t('notFound.user.title')}
+          description={t('notFound.user.description')}
+          action={
+            <Button variant="secondary" onClick={() => navigate('/users')}>
+              {t('actions.backToList')}
+            </Button>
+          }
+        />
+      </DashboardContent>
+    );
+  }
+
+  return (
+    <AppShell sidebar={<DashboardSidebar />}>
+      <DashboardContent>
+        <DashboardPageHeader
+          title={user.name}
+          breadcrumbs={[
+            { label: t('nav.admin'), href: '/admin' },
+            { label: t('nav.users'), href: '/users' },
+            { label: user.name },
+          ]}
+          actions={
+            <Stack direction="row" gap="2">
+              <Button variant="secondary" onClick={() => setEditOpen(true)}>
+                {t('actions.edit')}
+              </Button>
+              <Button
+                variant="secondary"
+                data-color="danger"
+                onClick={() => setDeleteOpen(true)}
+              >
+                {t('actions.delete')}
+              </Button>
+            </Stack>
+          }
+        >
+          <Badge data-color={getStatusColor(user.status)}>
+            {t(`status.${user.status}`)}
+          </Badge>
+        </DashboardPageHeader>
+
+        <Stack gap="6">
+          {/* Details Section */}
+          <Card data-color="neutral">
+            <Heading level={2} data-size="md">{t('sections.details')}</Heading>
+            <KeyValueList
+              items={[
+                { label: t('fields.email'), value: user.email },
+                { label: t('fields.role'), value: t(`roles.${user.role}`) },
+                { label: t('fields.createdAt'), value: formatDate(user.createdAt) },
+                { label: t('fields.lastLogin'), value: formatDate(user.lastLogin) },
+              ]}
+            />
+          </Card>
+
+          {/* Permissions Section */}
+          <Card data-color="neutral">
+            <Heading level={2} data-size="md">{t('sections.permissions')}</Heading>
+            <Stack gap="2">
+              {user.permissions.map(permission => (
+                <Badge key={permission} data-color="neutral">
+                  {permission}
+                </Badge>
+              ))}
+            </Stack>
+          </Card>
+
+          {/* Activity Section */}
+          <Card data-color="neutral">
+            <Heading level={2} data-size="md">{t('sections.activity')}</Heading>
+            <Timeline events={user.activityLog} />
+          </Card>
+        </Stack>
+
+        {/* Edit Drawer */}
+        <Drawer open={editOpen} onClose={() => setEditOpen(false)} position="right">
+          <Drawer.Header>
+            <Heading level={2} data-size="lg">{t('drawer.editUser.title')}</Heading>
+          </Drawer.Header>
+          <Drawer.Content>
+            <UserForm user={user} onSubmit={handleSave} onCancel={() => setEditOpen(false)} />
+          </Drawer.Content>
+        </Drawer>
+
+        {/* Delete Confirmation */}
+        <ConfirmDialog
+          open={deleteOpen}
+          onClose={() => setDeleteOpen(false)}
+          title={t('confirm.delete.title')}
+          description={t('confirm.delete.description', { name: user.name })}
+          confirmLabel={t('actions.delete')}
+          onConfirm={handleDelete}
+          variant="danger"
+        />
+      </DashboardContent>
+    </AppShell>
+  );
+}
+```
+
+---
+
+## UX Acceptance Criteria
+
+- [ ] Page title shows resource name
+- [ ] Breadcrumbs show full navigation path
+- [ ] Status badge reflects current state
+- [ ] Edit opens in drawer (not new page)
+- [ ] Delete requires confirmation
+- [ ] Loading shows skeleton
+- [ ] Not found shows helpful message
+- [ ] All text is translated
+
+---
+
+## Related Patterns
+
+- `PATTERN_PAGE_SHELL` — Page layout
+- `PATTERN_STATE_HANDLING` — State matrix
+
+---
+
+## Storybook Coverage
+
+- `detail-page--default`
+- `detail-page--loading`
+- `detail-page--not-found`
+- `detail-page--with-drawer`

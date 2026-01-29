@@ -1,0 +1,242 @@
+# Pattern: Data Table
+
+> **ID**: `PATTERN_DATA_TABLE`
+> **Purpose**: Standard table with sorting, pagination, and actions
+
+---
+
+## Overview
+
+Data tables display structured data with support for sorting, filtering, pagination, row selection, and row actions.
+
+---
+
+## Composition Tree
+
+```
+DataTable
+├── Table.Head
+│   └── Column headers (sortable)
+├── Table.Body
+│   ├── Row
+│   │   ├── Selection checkbox
+│   │   ├── Data cells
+│   │   └── TableRowActions
+│   └── ...more rows
+├── Pagination
+│   ├── Page size selector
+│   ├── Page info
+│   └── Page navigation
+└── EmptyState (when no data)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Props |
+|---------|-----------|-------|
+| Table | `DataTable` | `data`, `columns`, `loading` |
+| Column | `ColumnDef` | `accessorKey`, `header`, `cell` |
+| Selection | `DataTable` | `selection` prop |
+| Actions | `TableRowActions` | `actions` array |
+| Pagination | `DataTable` | `pagination` prop |
+| Empty | `EmptyState` | `emptyState` prop |
+
+---
+
+## Column Definition
+
+```tsx
+import { type ColumnDef, Badge, TableRowActions } from '@xala-technologies/platform-ui';
+
+const columns: ColumnDef<User>[] = [
+  {
+    accessorKey: 'name',
+    header: t('table.name'),
+    sortable: true,
+  },
+  {
+    accessorKey: 'email',
+    header: t('table.email'),
+  },
+  {
+    accessorKey: 'status',
+    header: t('table.status'),
+    cell: ({ row }) => (
+      <Badge data-color={getStatusColor(row.original.status)}>
+        {t(`status.${row.original.status}`)}
+      </Badge>
+    ),
+  },
+  {
+    accessorKey: 'createdAt',
+    header: t('table.createdAt'),
+    cell: ({ row }) => formatDate(row.original.createdAt),
+  },
+  {
+    id: 'actions',
+    header: '',
+    cell: ({ row }) => (
+      <TableRowActions
+        actions={[
+          {
+            label: t('actions.view'),
+            onClick: () => navigate(`/users/${row.original.id}`),
+          },
+          {
+            label: t('actions.edit'),
+            onClick: () => openEdit(row.original),
+          },
+          {
+            label: t('actions.delete'),
+            onClick: () => confirmDelete(row.original),
+            variant: 'danger',
+          },
+        ]}
+      />
+    ),
+  },
+];
+```
+
+---
+
+## Full Example
+
+```tsx
+import {
+  DataTable,
+  EmptyState,
+  ResultsEmptyState,
+  Button,
+  Badge,
+  TableRowActions,
+} from '@xala-technologies/platform-ui';
+
+export function UsersTable({ filters, search }) {
+  const { data, isLoading, error } = useUsers({ filters, search, page, pageSize });
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const hasFilters = search || Object.keys(filters).length > 0;
+
+  return (
+    <DataTable
+      data={data?.items ?? []}
+      columns={columns}
+      loading={isLoading}
+      selection={{
+        selected,
+        onSelect: setSelected,
+        mode: 'multiple',
+      }}
+      pagination={{
+        page,
+        pageSize,
+        total: data?.total ?? 0,
+        onPageChange: setPage,
+        onPageSizeChange: setPageSize,
+      }}
+      sorting={{
+        sortBy,
+        sortOrder,
+        onSort: handleSort,
+      }}
+      emptyState={
+        hasFilters ? (
+          <ResultsEmptyState
+            variant={search ? 'search' : 'filter'}
+            title={t('empty.results.title')}
+            description={t('empty.results.description')}
+            action={
+              <Button variant="secondary" onClick={clearFilters}>
+                {t('actions.clearFilters')}
+              </Button>
+            }
+          />
+        ) : (
+          <EmptyState
+            title={t('empty.users.title')}
+            description={t('empty.users.description')}
+            action={
+              <Button variant="primary" onClick={openCreate}>
+                {t('actions.createFirst')}
+              </Button>
+            }
+          />
+        )
+      }
+    />
+  );
+}
+```
+
+---
+
+## Row Actions Patterns
+
+### Dropdown Actions
+```tsx
+<TableRowActions
+  actions={[
+    { label: t('actions.edit'), onClick: edit },
+    { label: t('actions.duplicate'), onClick: duplicate },
+    { separator: true },
+    { label: t('actions.delete'), onClick: del, variant: 'danger' },
+  ]}
+/>
+```
+
+### Inline Actions
+```tsx
+<Stack direction="row" gap="1">
+  <Button variant="tertiary" data-size="sm" onClick={edit}>
+    <PencilIcon />
+  </Button>
+  <Button variant="tertiary" data-size="sm" data-color="danger" onClick={del}>
+    <TrashIcon />
+  </Button>
+</Stack>
+```
+
+---
+
+## State Handling
+
+| State | Display |
+|-------|---------|
+| Loading | Skeleton rows |
+| Empty (no data) | `EmptyState` with create CTA |
+| Empty (filtered) | `ResultsEmptyState` with clear CTA |
+| Data | Normal table rows |
+| Error | Alert above table |
+
+---
+
+## Accessibility
+
+- ✅ Table has accessible name
+- ✅ Sortable columns announce sort state
+- ✅ Row actions accessible via keyboard
+- ✅ Selection state announced
+- ✅ Pagination controls labeled
+
+---
+
+## Related Patterns
+
+- `PATTERN_BULK_ACTIONS` — Bulk operations on selection
+- `PATTERN_FILTER_LAYOUT` — Filter controls
+- `FLOW_ADMIN_LIST` — Full list page
+
+---
+
+## Storybook
+
+- `datatable--default`
+- `datatable--loading`
+- `datatable--empty`
+- `datatable--with-selection`
+- `datatable--sortable`
+- `datatable--paginated`
+- `tablerowactions--default`

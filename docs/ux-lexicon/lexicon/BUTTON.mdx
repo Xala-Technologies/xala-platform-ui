@@ -1,0 +1,148 @@
+# Lexicon Entry: BUTTON
+
+> **Concept**: Interactive action triggers
+
+---
+
+## Semantic Role
+
+Buttons trigger actions. They must be clearly labeled, keyboard accessible, and communicate their purpose visually.
+
+---
+
+## HTML Elements
+
+`<button>`, `<input type="submit">`, `<input type="button">`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Button` | `Link` (for navigation) |
+
+---
+
+## Decision Guide
+
+| Question | Variant | Props |
+|----------|---------|-------|
+| Primary action (submit, save)? | Primary | `variant="primary"` |
+| Secondary action (cancel, back)? | Secondary | `variant="secondary"` |
+| Tertiary action (less important)? | Tertiary | `variant="tertiary"` |
+| Destructive action (delete)? | Danger | `data-color="danger"` |
+| Icon only? | Icon | Add `aria-label` |
+| Link styled as button? | Link | `<Link>` component with button styling |
+
+---
+
+## Code Snippets
+
+### Primary Button
+```tsx
+import { Button } from '@xala-technologies/platform-ui';
+
+<Button variant="primary" onClick={handleSave}>
+  {t('actions.save')}
+</Button>
+```
+
+### Secondary Button
+```tsx
+<Button variant="secondary" onClick={handleCancel}>
+  {t('actions.cancel')}
+</Button>
+```
+
+### Destructive Button
+```tsx
+<Button variant="secondary" data-color="danger" onClick={handleDelete}>
+  {t('actions.delete')}
+</Button>
+```
+
+### Loading State
+```tsx
+<Button variant="primary" loading={isSubmitting} disabled={isSubmitting}>
+  {t('actions.save')}
+</Button>
+```
+
+### Icon Button
+```tsx
+import { Button } from '@xala-technologies/platform-ui';
+import { PencilIcon } from '@navikt/aksel-icons';
+
+<Button variant="tertiary" aria-label={t('actions.edit')}>
+  <PencilIcon />
+</Button>
+```
+
+### Button Sizes
+```tsx
+<Button variant="primary" data-size="sm">{t('actions.small')}</Button>
+<Button variant="primary" data-size="md">{t('actions.medium')}</Button>
+<Button variant="primary" data-size="lg">{t('actions.large')}</Button>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Default | Normal styling | — |
+| Hover | Darkened/highlighted | CSS handled |
+| Focus | Focus ring | CSS handled (`--ds-color-accent-border-default`) |
+| Active | Pressed appearance | CSS handled |
+| Disabled | Muted, no interaction | `disabled` prop |
+| Loading | Spinner, no interaction | `loading` prop |
+
+---
+
+## Accessibility Rules
+
+- ✅ Always have accessible text (visible or `aria-label`)
+- ✅ Use `type="button"` for non-submit buttons in forms
+- ✅ Use `type="submit"` for form submissions
+- ✅ Don't use divs/spans as buttons
+- ✅ Ensure sufficient color contrast (WCAG 2.2 AA)
+- ✅ Focus indicators must be visible
+
+---
+
+## i18n Notes
+
+- All button labels must use translation keys
+- Keys follow pattern: `actions.[verb]` (e.g., `actions.save`, `actions.delete`)
+- Test with long translations for button width
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<button className="btn-primary">Save</button>` | `<Button variant="primary">{t('actions.save')}</Button>` |
+| `<div onClick={...}>Click me</div>` | `<Button onClick={...}>{t('label')}</Button>` |
+| Hardcoded button text | Use `t('actions.xxx')` |
+| Icon button without aria-label | Add `aria-label` |
+| `style={{ color: '#ff0000' }}` | `data-color="danger"` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_FORM_LAYOUT` — Submit/cancel button groups
+- `PATTERN_DATA_TABLE` — Row action buttons
+- `PATTERN_BULK_ACTIONS` — Bulk action buttons
+
+---
+
+## Storybook
+
+- `button--variants`
+- `button--sizes`
+- `button--loading`
+- `button--with-icon`

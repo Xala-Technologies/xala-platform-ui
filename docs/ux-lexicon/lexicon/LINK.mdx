@@ -1,0 +1,149 @@
+# Lexicon Entry: LINK
+
+> **Concept**: Navigation anchors
+
+---
+
+## Semantic Role
+
+Links navigate to different pages or sections. They should be visually distinct from regular text and clearly indicate where they lead.
+
+---
+
+## HTML Elements
+
+`<a href="...">`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Link` | `Button` (for actions styled as links) |
+
+---
+
+## Decision Guide
+
+| Question | Component | Use |
+|----------|-----------|-----|
+| Navigation to another page? | `Link` | Standard links |
+| External link? | `Link` with icon | Opens in new tab |
+| Trigger action, not navigation? | `Button variant="tertiary"` | Not a link |
+| Within table row? | `Link` | Clickable cell |
+| Breadcrumb item? | `Link` inside `Breadcrumb` | Navigation path |
+
+---
+
+## Code Snippets
+
+### Basic Link
+```tsx
+import { Link } from '@xala-technologies/platform-ui';
+
+<Link href="/users">{t('nav.users')}</Link>
+```
+
+### External Link
+```tsx
+<Link href="https://example.com" target="_blank" rel="noopener noreferrer">
+  {t('links.documentation')}
+  <ExternalLinkIcon aria-hidden />
+</Link>
+```
+
+### Link with React Router
+```tsx
+import { Link } from '@xala-technologies/platform-ui';
+import { Link as RouterLink } from 'react-router-dom';
+
+<Link asChild>
+  <RouterLink to="/users">{t('nav.users')}</RouterLink>
+</Link>
+```
+
+### In Breadcrumb
+```tsx
+import { Breadcrumb, Link } from '@xala-technologies/platform-ui';
+
+<Breadcrumb>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Link href="/admin">{t('nav.admin')}</Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <Link href="/admin/users">{t('nav.users')}</Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <Paragraph>{currentUser.name}</Paragraph>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb>
+```
+
+### Skip Link (Accessibility)
+```tsx
+<Link
+  href="#main-content"
+  className="sr-only focus:not-sr-only"
+>
+  {t('a11y.skipToContent')}
+</Link>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Default | Underline + color | CSS handled |
+| Hover | Darker/highlighted | CSS handled |
+| Focus | Focus ring | CSS handled |
+| Visited | Different color | CSS handled |
+| Active | Pressed appearance | CSS handled |
+
+---
+
+## Accessibility Rules
+
+- ✅ Link text should be descriptive (avoid "click here")
+- ✅ External links should indicate they open in new tab
+- ✅ Use `aria-current="page"` for current page links
+- ✅ Ensure sufficient color contrast
+- ✅ Don't disable links; hide them or use disabled button
+
+---
+
+## i18n Notes
+
+- Navigation links: `nav.[section]`
+- Action links: `links.[action]`
+- External links: Include `(opens in new tab)` for screen readers
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<a className="text-blue-500">` | `<Link href={...}>` |
+| `<a onClick={...}>` (no href) | `<Button variant="tertiary">` |
+| "Click here" | Descriptive link text |
+| `<span onClick={...}>` styled as link | `<Link href={...}>` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_PAGE_SHELL` — Navigation links
+- `FLOW_ADMIN_LIST` — Table cell links
+
+---
+
+## Storybook
+
+- `link--default`
+- `link--external`
+- `breadcrumb--default`

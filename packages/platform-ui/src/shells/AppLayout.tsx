@@ -224,7 +224,7 @@ export function AppLayout({
 
   return (
     <Stack
-      direction="horizontal"
+      direction="vertical"
       className={cn('ds-app-layout', className)}
       style={{
         height: '100vh',
@@ -232,21 +232,22 @@ export function AppLayout({
         ...style,
       }}
     >
-      {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
-      {shouldShowSidebar && sidebar}
+      {/* Unified Header - Full width at top */}
+      {header}
 
+      {/* Top content (alerts, banners, etc.) */}
+      {topContent}
+
+      {/* Main area: Sidebar + Content side by side */}
       <Stack
-        direction="vertical"
+        direction="horizontal"
         style={{
           flex: 1,
           overflow: 'hidden',
         }}
       >
-        {/* Header */}
-        {header}
-
-        {/* Top content (alerts, banners, etc.) */}
-        {topContent}
+        {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
+        {shouldShowSidebar && sidebar}
 
         {/* Main content area */}
         <DashboardContent
@@ -275,3 +276,5 @@ export function AppLayout({
     </Stack>
   );
 }
+
+

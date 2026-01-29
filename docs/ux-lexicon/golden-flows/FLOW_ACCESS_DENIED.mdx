@@ -1,0 +1,217 @@
+# Golden Flow: Access Denied
+
+> **ID**: `FLOW_ACCESS_DENIED`
+> **Purpose**: Permission denied state with request access option
+
+---
+
+## Layout Contract
+
+- **Container**: `DashboardContent` or `AccessGate` inline
+- **Component**: `AccessGate` or `AccessDeniedScreen`
+
+---
+
+## Composition Tree
+
+```
+DashboardContent
+└── AccessGate
+    ├── Icon (shield/lock)
+    ├── Heading (title)
+    ├── Paragraph (description)
+    ├── Required permission badge
+    └── Actions
+        ├── Button (primary - request access)
+        └── Button (secondary - go back)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Props |
+|---------|-----------|-------|
+| Container | `AccessGate` | `denied`, `title`, `description` |
+| Permission | `Badge` | `requiredPermission` |
+| Actions | `AccessGateAction[]` | `label`, `onClick`, `variant` |
+
+---
+
+## Scenarios
+
+### 1. Inline Permission Check
+```tsx
+// Permission check wraps content
+<AccessGate
+  denied={!hasPermission('users.edit')}
+  title={t('access.denied.title')}
+  requiredPermission="users.edit"
+>
+  <EditButton onClick={edit} />
+</AccessGate>
+```
+
+### 2. Full Page Access Denied
+```tsx
+// Entire page requires permission
+if (!hasPermission('admin.access')) {
+  return (
+    <DashboardContent>
+      <AccessGate
+        denied
+        title={t('access.admin.title')}
+        description={t('access.admin.description')}
+        requiredPermission="admin.access"
+        actions={[
+          { label: t('actions.requestAccess'), onClick: requestAccess, variant: 'primary' },
+          { label: t('actions.goBack'), onClick: () => navigate(-1), variant: 'secondary' },
+        ]}
+      />
+    </DashboardContent>
+  );
+}
+```
+
+### 3. Request Access Flow
+```
+1. User navigates to protected page
+2. AccessGate shown with "Request Access" button
+3. User clicks "Request Access"
+4. Request sent to admin
+5. Toast shown: "Access requested"
+6. User can navigate away
+```
+
+---
+
+## Code Example
+
+```tsx
+import {
+  AccessGate,
+  DashboardContent,
+  DashboardPageHeader,
+  usePermissions,
+} from '@xala-technologies/platform-ui';
+import { useNavigate } from 'react-router-dom';
+
+export function ProtectedPage() {
+  const navigate = useNavigate();
+  const { hasPermission, requestAccess, isPending } = usePermissions('admin.users');
+
+  // Check permission first
+  if (!hasPermission) {
+    return (
+      <DashboardContent>
+        <DashboardPageHeader title={t('pages.users.title')} />
+
+        <AccessGate
+          denied
+          title={t('access.denied.title')}
+          description={t('access.denied.description')}
+          requiredPermission="admin.users"
+          actions={[
+            {
+              label: isPending ? t('access.requestPending') : t('actions.requestAccess'),
+              onClick: async () => {
+                await requestAccess('admin.users');
+                toast.success(t('access.requested'));
+              },
+              variant: 'primary',
+              disabled: isPending,
+            },
+            {
+              label: t('actions.goBack'),
+              onClick: () => navigate(-1),
+              variant: 'secondary',
+            },
+          ]}
+        />
+      </DashboardContent>
+    );
+  }
+
+  // Render protected content
+  return (
+    <DashboardContent>
+      {/* Protected content */}
+    </DashboardContent>
+  );
+}
+```
+
+---
+
+## AccessGate Variants
+
+### Minimal (Inline)
+```tsx
+<AccessGate denied={!canEdit} requiredPermission="items.edit">
+  <Button onClick={edit}>{t('actions.edit')}</Button>
+</AccessGate>
+```
+
+### Standard
+```tsx
+<AccessGate
+  denied
+  title={t('access.denied.title')}
+  description={t('access.denied.description')}
+  requiredPermission="feature.access"
+/>
+```
+
+### Full (With Actions)
+```tsx
+<AccessGate
+  denied
+  title={t('access.denied.title')}
+  description={t('access.denied.description')}
+  requiredPermission="admin.access"
+  icon={<ShieldIcon />}
+  size="lg"
+  bordered
+  actions={[
+    { label: t('actions.requestAccess'), onClick: request, variant: 'primary' },
+    { label: t('actions.contactAdmin'), onClick: contact, variant: 'secondary' },
+    { label: t('actions.goBack'), onClick: back, variant: 'tertiary' },
+  ]}
+/>
+```
+
+---
+
+## UX Acceptance Criteria
+
+- [ ] Clear title explaining access denial
+- [ ] Description explains why access is needed
+- [ ] Required permission shown (for debugging)
+- [ ] Request access action available
+- [ ] Go back action available
+- [ ] Loading state for request action
+- [ ] Success toast on request sent
+- [ ] All text is translated
+
+---
+
+## Accessibility
+
+- ✅ Icon has accessible name
+- ✅ Actions are keyboard accessible
+- ✅ Focus management on render
+
+---
+
+## Related Patterns
+
+- `PATTERN_STATE_HANDLING` — State matrix
+
+---
+
+## Storybook Coverage
+
+- `accessgate--denied`
+- `accessgate--with-actions`
+- `accessgate--minimal`
+- `accessgate--full-page`

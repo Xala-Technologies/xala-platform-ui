@@ -1,0 +1,263 @@
+{
+  "version": "2026.1",
+  "generatedAt": "2026-01-29T12:00:00Z",
+  "description": "Compact registry mapping HTML elements to Platform UI components",
+  "entries": [
+    {
+      "id": "DIV",
+      "htmlElements": ["div"],
+      "semanticRole": "layout container",
+      "preferred": "Stack",
+      "alternates": ["Box", "Grid", "Container", "Card"],
+      "docPath": "lexicon/DIV.mdx"
+    },
+    {
+      "id": "SPAN",
+      "htmlElements": ["span"],
+      "semanticRole": "inline text",
+      "preferred": "Paragraph",
+      "alternates": ["Badge"],
+      "docPath": "lexicon/SPAN.mdx"
+    },
+    {
+      "id": "P",
+      "htmlElements": ["p"],
+      "semanticRole": "body text",
+      "preferred": "Paragraph",
+      "alternates": [],
+      "docPath": "lexicon/PARAGRAPH.mdx"
+    },
+    {
+      "id": "H1",
+      "htmlElements": ["h1"],
+      "semanticRole": "page title",
+      "preferred": "Heading level={1} data-size=\"2xl\"",
+      "alternates": ["DashboardPageHeader"],
+      "docPath": "lexicon/HEADING.mdx"
+    },
+    {
+      "id": "H2",
+      "htmlElements": ["h2"],
+      "semanticRole": "section title",
+      "preferred": "Heading level={2} data-size=\"lg\"",
+      "alternates": [],
+      "docPath": "lexicon/HEADING.mdx"
+    },
+    {
+      "id": "H3",
+      "htmlElements": ["h3"],
+      "semanticRole": "subsection title",
+      "preferred": "Heading level={3} data-size=\"md\"",
+      "alternates": [],
+      "docPath": "lexicon/HEADING.mdx"
+    },
+    {
+      "id": "BUTTON",
+      "htmlElements": ["button", "input[type=submit]", "input[type=button]"],
+      "semanticRole": "action trigger",
+      "preferred": "Button",
+      "alternates": ["Link"],
+      "docPath": "lexicon/BUTTON.mdx"
+    },
+    {
+      "id": "LINK",
+      "htmlElements": ["a"],
+      "semanticRole": "navigation",
+      "preferred": "Link",
+      "alternates": ["Breadcrumb"],
+      "docPath": "lexicon/LINK.mdx"
+    },
+    {
+      "id": "INPUT",
+      "htmlElements": ["input[type=text]", "input[type=email]", "input[type=password]", "input[type=number]"],
+      "semanticRole": "text input",
+      "preferred": "Textfield",
+      "alternates": ["Textarea", "Search"],
+      "docPath": "lexicon/INPUT.mdx"
+    },
+    {
+      "id": "SELECT",
+      "htmlElements": ["select"],
+      "semanticRole": "dropdown selection",
+      "preferred": "NativeSelect",
+      "alternates": ["Select", "Combobox", "SearchableSelect"],
+      "docPath": "lexicon/SELECT.mdx"
+    },
+    {
+      "id": "CHECKBOX",
+      "htmlElements": ["input[type=checkbox]"],
+      "semanticRole": "boolean selection",
+      "preferred": "Checkbox",
+      "alternates": ["Switch"],
+      "docPath": "lexicon/CHECKBOX.mdx"
+    },
+    {
+      "id": "RADIO",
+      "htmlElements": ["input[type=radio]"],
+      "semanticRole": "single selection",
+      "preferred": "Radio",
+      "alternates": ["RadioGroup"],
+      "docPath": "lexicon/RADIO.mdx"
+    },
+    {
+      "id": "TEXTAREA",
+      "htmlElements": ["textarea"],
+      "semanticRole": "multiline input",
+      "preferred": "Textarea",
+      "alternates": [],
+      "docPath": "lexicon/INPUT.mdx"
+    },
+    {
+      "id": "TABLE",
+      "htmlElements": ["table", "thead", "tbody", "tr", "th", "td"],
+      "semanticRole": "tabular data",
+      "preferred": "DataTable",
+      "alternates": ["Table"],
+      "docPath": "lexicon/TABLE.mdx"
+    },
+    {
+      "id": "FORM",
+      "htmlElements": ["form", "fieldset"],
+      "semanticRole": "input collection",
+      "preferred": "FormSection",
+      "alternates": ["FormField", "Fieldset"],
+      "docPath": "lexicon/FORM.mdx"
+    },
+    {
+      "id": "MODAL",
+      "htmlElements": ["dialog"],
+      "semanticRole": "overlay dialog",
+      "preferred": "Modal",
+      "alternates": ["ConfirmDialog", "AlertDialog", "Drawer"],
+      "docPath": "lexicon/MODAL.mdx"
+    },
+    {
+      "id": "LIST",
+      "htmlElements": ["ul", "ol", "li"],
+      "semanticRole": "collection",
+      "preferred": "List",
+      "alternates": ["Stack"],
+      "docPath": "lexicon/LIST.mdx"
+    },
+    {
+      "id": "NAV",
+      "htmlElements": ["nav"],
+      "semanticRole": "navigation region",
+      "preferred": "Navigation",
+      "alternates": ["DashboardSidebar", "BottomNavigation"],
+      "docPath": "lexicon/NAV.mdx"
+    },
+    {
+      "id": "HEADER",
+      "htmlElements": ["header"],
+      "semanticRole": "page header",
+      "preferred": "DashboardHeader",
+      "alternates": ["AppHeader"],
+      "docPath": "lexicon/HEADER.mdx"
+    },
+    {
+      "id": "SECTION",
+      "htmlElements": ["section", "article"],
+      "semanticRole": "content section",
+      "preferred": "Card",
+      "alternates": ["ContentSection"],
+      "docPath": "lexicon/SECTION.mdx"
+    },
+    {
+      "id": "FOOTER",
+      "htmlElements": ["footer"],
+      "semanticRole": "page footer",
+      "preferred": "Shell footer slot",
+      "alternates": [],
+      "docPath": "lexicon/FOOTER.mdx"
+    },
+    {
+      "id": "BADGE",
+      "htmlElements": [],
+      "semanticRole": "status indicator",
+      "preferred": "Badge",
+      "alternates": ["Tag"],
+      "docPath": "lexicon/BADGE.mdx"
+    },
+    {
+      "id": "EMPTY_STATE",
+      "htmlElements": [],
+      "semanticRole": "no data state",
+      "preferred": "EmptyState",
+      "alternates": ["ResultsEmptyState"],
+      "docPath": "lexicon/EMPTY_STATE.mdx"
+    },
+    {
+      "id": "TOAST",
+      "htmlElements": [],
+      "semanticRole": "transient feedback",
+      "preferred": "Toast",
+      "alternates": ["Alert"],
+      "docPath": "lexicon/TOAST.mdx"
+    },
+    {
+      "id": "TOOLTIP",
+      "htmlElements": [],
+      "semanticRole": "helper text",
+      "preferred": "Tooltip",
+      "alternates": [],
+      "docPath": "lexicon/TOOLTIP.mdx"
+    },
+    {
+      "id": "TABS",
+      "htmlElements": [],
+      "semanticRole": "content switching",
+      "preferred": "Tabs",
+      "alternates": [],
+      "docPath": "lexicon/TABS.mdx"
+    },
+    {
+      "id": "PROGRESS",
+      "htmlElements": ["progress"],
+      "semanticRole": "loading indicator",
+      "preferred": "Spinner",
+      "alternates": ["Progress", "Skeleton"],
+      "docPath": "lexicon/PROGRESS.mdx"
+    },
+    {
+      "id": "DRAWER",
+      "htmlElements": [],
+      "semanticRole": "side panel",
+      "preferred": "Drawer",
+      "alternates": [],
+      "docPath": "lexicon/DRAWER.mdx"
+    },
+    {
+      "id": "BREADCRUMB",
+      "htmlElements": [],
+      "semanticRole": "navigation path",
+      "preferred": "Breadcrumb",
+      "alternates": [],
+      "docPath": "lexicon/BREADCRUMB.mdx"
+    },
+    {
+      "id": "ALERT",
+      "htmlElements": [],
+      "semanticRole": "status message",
+      "preferred": "Alert",
+      "alternates": ["Toast"],
+      "docPath": "lexicon/ALERT.mdx"
+    },
+    {
+      "id": "ACCESS_GATE",
+      "htmlElements": [],
+      "semanticRole": "permission denied",
+      "preferred": "AccessGate",
+      "alternates": ["AccessDeniedScreen"],
+      "docPath": "lexicon/ACCESS_GATE.mdx"
+    },
+    {
+      "id": "STATE_WRAPPER",
+      "htmlElements": [],
+      "semanticRole": "state matrix handler",
+      "preferred": "StateWrapper",
+      "alternates": ["useComputedState"],
+      "docPath": "lexicon/STATE_WRAPPER.mdx"
+    }
+  ]
+}

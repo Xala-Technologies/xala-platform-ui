@@ -1,0 +1,277 @@
+# Golden Flow: Admin List Page
+
+> **ID**: `FLOW_ADMIN_LIST`
+> **Purpose**: Master list page with filters, sorting, pagination, and bulk actions
+
+---
+
+## Layout Contract
+
+- **Shell**: `AppShell` or `DashboardLayout`
+- **Sidebar**: `DashboardSidebar`
+- **Header**: `DashboardPageHeader`
+- **Main**: `DashboardContent`
+
+---
+
+## Composition Tree
+
+```
+AppShell
+├── DashboardSidebar
+│   └── Navigation items
+├── DashboardContent
+│   ├── DashboardPageHeader
+│   │   ├── Breadcrumb
+│   │   ├── Title
+│   │   └── Actions (Create button)
+│   ├── DataPageToolbar
+│   │   ├── Search
+│   │   ├── FilterChips
+│   │   └── ViewModeToggle
+│   ├── BulkActionsBar (when items selected)
+│   └── DataTable
+│       ├── Column headers (sortable)
+│       ├── Rows with data
+│       ├── TableRowActions
+│       └── Pagination
+└── Modals/Drawers (contextual)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Props |
+|---------|-----------|-------|
+| Page header | `DashboardPageHeader` | `title`, `breadcrumbs`, `actions` |
+| Toolbar | `DataPageToolbar` | `onSearch`, `filters`, `viewMode` |
+| Filters | `FilterChips` | `filters`, `onRemove`, `onClear` |
+| Selection bar | `BulkActionsBar` | `count`, `actions`, `onClear` |
+| Data display | `DataTable` | `data`, `columns`, `pagination` |
+| Row actions | `TableRowActions` | `actions`: view, edit, delete |
+| Empty | `EmptyState` | `title`, `action` |
+| Loading | Built-in skeleton | — |
+
+---
+
+## State Matrix
+
+| State | Component | Behavior |
+|-------|-----------|----------|
+| **Loading** | `DataTable loading` | Skeleton rows |
+| **Empty** | `EmptyState` | "No items yet" + Create CTA |
+| **Empty (filtered)** | `ResultsEmptyState variant="search"` | "No results" + Clear filters |
+| **Success** | `DataTable` | Normal data display |
+| **Error** | `Alert data-color="danger"` | Error message + Retry |
+| **Permission Denied** | `AccessGate` | Request access CTA |
+
+---
+
+## Scenarios
+
+### 1. First Load
+```
+1. User navigates to /admin/users
+2. Loading state shown (skeleton)
+3. Data fetched
+4. Table rendered with pagination
+```
+
+### 2. Search
+```
+1. User types in search field
+2. Debounced API call (300ms)
+3. Results filtered
+4. FilterChip added for search term
+```
+
+### 3. Bulk Delete
+```
+1. User selects multiple rows
+2. BulkActionsBar appears
+3. User clicks "Delete selected"
+4. ConfirmDialog shown
+5. On confirm: delete + toast notification
+```
+
+### 4. Empty State
+```
+1. No data exists
+2. EmptyState with illustration
+3. "Create first item" CTA
+4. Clicking opens create form
+```
+
+### 5. Permission Denied
+```
+1. User lacks permission
+2. AccessGate shown instead of table
+3. "Request access" CTA available
+```
+
+---
+
+## Code Example
+
+```tsx
+import {
+  AppShell,
+  DashboardSidebar,
+  DashboardContent,
+  DashboardPageHeader,
+  DataPageToolbar,
+  DataTable,
+  EmptyState,
+  ResultsEmptyState,
+  BulkActionsBar,
+  Button,
+  Alert,
+  AccessGate,
+  useComputedState,
+  StateWrapper,
+} from '@xala-technologies/platform-ui';
+
+export function UsersListPage() {
+  const { data, isLoading, error, refetch } = useUsers({ page, pageSize, search, filters });
+  const { hasPermission } = usePermissions('users.read');
+  const [selected, setSelected] = useState<string[]>([]);
+  const [search, setSearch] = useState('');
+  const [filters, setFilters] = useState({});
+
+  const hasFilters = search || Object.keys(filters).length > 0;
+
+  const state = useComputedState({
+    isLoading,
+    error,
+    isEmpty: !data?.items?.length,
+    hasPermission,
+  });
+
+  return (
+    <AppShell sidebar={<DashboardSidebar />}>
+      <DashboardContent>
+        <DashboardPageHeader
+          title={t('pages.users.title')}
+          breadcrumbs={[
+            { label: t('nav.admin'), href: '/admin' },
+            { label: t('nav.users') },
+          ]}
+          actions={
+            <Button variant="primary" onClick={openCreate}>
+              {t('actions.create')}
+            </Button>
+          }
+        />
+
+        <StateWrapper
+          state={state}
+          permissionDeniedComponent={
+            <AccessGate
+              denied
+              title={t('access.users.title')}
+              description={t('access.users.description')}
+              requiredPermission="users.read"
+            />
+          }
+          errorComponent={
+            <Alert data-color="danger">
+              {error?.message}
+              <Button variant="secondary" onClick={() => refetch()}>
+                {t('actions.retry')}
+              </Button>
+            </Alert>
+          }
+        >
+          <DataPageToolbar
+            search={search}
+            onSearchChange={setSearch}
+            filters={filters}
+            onFiltersChange={setFilters}
+          />
+
+          {selected.length > 0 && (
+            <BulkActionsBar
+              count={selected.length}
+              actions={[
+                { label: t('actions.delete'), onClick: handleBulkDelete, variant: 'danger' },
+              ]}
+              onClear={() => setSelected([])}
+            />
+          )}
+
+          <DataTable
+            data={data?.items ?? []}
+            columns={columns}
+            loading={isLoading}
+            selection={{ selected, onSelect: setSelected }}
+            pagination={{
+              page,
+              pageSize,
+              total: data?.total ?? 0,
+              onPageChange: setPage,
+            }}
+            emptyState={
+              hasFilters ? (
+                <ResultsEmptyState
+                  variant="search"
+                  title={t('empty.results.title')}
+                  action={
+                    <Button variant="secondary" onClick={clearFilters}>
+                      {t('actions.clearFilters')}
+                    </Button>
+                  }
+                />
+              ) : (
+                <EmptyState
+                  title={t('empty.users.title')}
+                  description={t('empty.users.description')}
+                  action={
+                    <Button variant="primary" onClick={openCreate}>
+                      {t('actions.createFirst')}
+                    </Button>
+                  }
+                />
+              )
+            }
+          />
+        </StateWrapper>
+      </DashboardContent>
+    </AppShell>
+  );
+}
+```
+
+---
+
+## UX Acceptance Criteria
+
+- [ ] Page title in heading + browser tab
+- [ ] Breadcrumbs show navigation path
+- [ ] Search debounced (300ms)
+- [ ] Filters persist in URL
+- [ ] Selection persists across pagination
+- [ ] Bulk actions require confirmation
+- [ ] Empty state has clear CTA
+- [ ] Loading shows skeleton (not spinner)
+- [ ] Keyboard navigation works
+- [ ] All text is translated
+
+---
+
+## Related Patterns
+
+- `PATTERN_DATA_TABLE` — Table with sorting/pagination
+- `PATTERN_BULK_ACTIONS` — Selection and bulk operations
+- `PATTERN_FILTER_LAYOUT` — Filter and search UI
+
+---
+
+## Storybook Coverage
+
+- `admin-list-page--default`
+- `admin-list-page--loading`
+- `admin-list-page--empty`
+- `admin-list-page--with-selection`
+- `admin-list-page--filtered`
+- `admin-list-page--permission-denied`

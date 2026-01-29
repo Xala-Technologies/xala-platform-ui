@@ -1,0 +1,149 @@
+# Lexicon Entry: NAV
+
+> **Concept**: Navigation regions
+
+---
+
+## Semantic Role
+
+Navigation landmarks help users understand the page structure and move between sections. They must be clearly labeled for screen readers.
+
+---
+
+## HTML Elements
+
+`<nav>`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Navigation` | `DashboardSidebar`, `BottomNavigation`, `Tabs` |
+
+---
+
+## Decision Guide
+
+| Question | Component | Use Case |
+|----------|-----------|----------|
+| Main app navigation? | `DashboardSidebar` | Admin layouts |
+| Top navigation bar? | `Navigation` | Public sites |
+| Mobile bottom nav? | `BottomNavigation` | Mobile-first apps |
+| Content tabs? | `Tabs` | In-page navigation |
+
+---
+
+## Code Snippets
+
+### Dashboard Sidebar
+```tsx
+import { DashboardSidebar, SidebarNavItem, SidebarNavGroup } from '@xala-technologies/platform-ui';
+import { HomeIcon, UsersIcon, SettingsIcon } from '@navikt/aksel-icons';
+
+<DashboardSidebar>
+  <SidebarNavGroup>
+    <SidebarNavItem href="/" icon={<HomeIcon />} active={pathname === '/'}>
+      {t('nav.home')}
+    </SidebarNavItem>
+    <SidebarNavItem href="/users" icon={<UsersIcon />} active={pathname.startsWith('/users')}>
+      {t('nav.users')}
+    </SidebarNavItem>
+  </SidebarNavGroup>
+
+  <SidebarNavGroup title={t('nav.settings')}>
+    <SidebarNavItem href="/settings" icon={<SettingsIcon />}>
+      {t('nav.settings')}
+    </SidebarNavItem>
+  </SidebarNavGroup>
+</DashboardSidebar>
+```
+
+### Top Navigation
+```tsx
+import { Navigation, NavItem, NavGroup } from '@xala-technologies/platform-ui';
+
+<Navigation aria-label={t('a11y.mainNavigation')}>
+  <NavGroup>
+    <NavItem href="/" active={pathname === '/'}>
+      {t('nav.home')}
+    </NavItem>
+    <NavItem href="/products" active={pathname.startsWith('/products')}>
+      {t('nav.products')}
+    </NavItem>
+  </NavGroup>
+</Navigation>
+```
+
+### Bottom Navigation (Mobile)
+```tsx
+import { BottomNavigation, BottomNavItem } from '@xala-technologies/platform-ui';
+
+<BottomNavigation>
+  <BottomNavItem href="/" icon={<HomeIcon />} label={t('nav.home')} active={pathname === '/'} />
+  <BottomNavItem href="/search" icon={<SearchIcon />} label={t('nav.search')} />
+  <BottomNavItem href="/profile" icon={<UserIcon />} label={t('nav.profile')} />
+</BottomNavigation>
+```
+
+### Tabs (In-Page)
+```tsx
+import { Tabs } from '@xala-technologies/platform-ui';
+
+<Tabs defaultValue="details" onValueChange={setActiveTab}>
+  <Tabs.List>
+    <Tabs.Tab value="details">{t('tabs.details')}</Tabs.Tab>
+    <Tabs.Tab value="history">{t('tabs.history')}</Tabs.Tab>
+    <Tabs.Tab value="settings">{t('tabs.settings')}</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Content value="details">{/* ... */}</Tabs.Content>
+  <Tabs.Content value="history">{/* ... */}</Tabs.Content>
+  <Tabs.Content value="settings">{/* ... */}</Tabs.Content>
+</Tabs>
+```
+
+---
+
+## Accessibility Rules
+
+- ✅ Use `<nav>` element with `aria-label`
+- ✅ Use `aria-current="page"` for current page
+- ✅ Support keyboard navigation (arrows, Enter)
+- ✅ Don't use multiple unlabeled nav elements
+- ✅ Ensure visible focus indicators
+
+---
+
+## i18n Notes
+
+- Navigation labels: `nav.[section]`
+- Aria labels: `a11y.mainNavigation`, `a11y.footerNavigation`
+- Group titles: `nav.groups.[groupName]`
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<div className="nav">` | `<Navigation aria-label={...}>` |
+| Multiple unlabeled nav elements | Each nav has unique `aria-label` |
+| No active state indication | Use `active` prop or `aria-current` |
+| `<ul className="nav-list">` | Use Navigation component |
+
+---
+
+## Related Patterns
+
+- `PATTERN_PAGE_SHELL` — Overall layout structure
+- `FLOW_ADMIN_LIST` — Sidebar navigation context
+
+---
+
+## Storybook
+
+- `dashboardsidebar--default`
+- `navigation--horizontal`
+- `bottomnavigation--mobile`
+- `tabs--default`

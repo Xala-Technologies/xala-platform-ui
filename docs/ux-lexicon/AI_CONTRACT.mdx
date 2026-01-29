@@ -1,0 +1,268 @@
+# AI Contract — How AI Must Use the UX Lexicon
+
+> **Purpose**: Enforces AI agents to use the lexicon before generating UI code.
+
+---
+
+## Core Requirements
+
+### 1. ALWAYS Retrieve Before Composing
+
+Before generating ANY UI code, AI agents MUST:
+
+1. **Identify the HTML intent** (e.g., "I need a container", "I need a heading")
+2. **Query the lexicon registry** at `registry/dictionary/*.json`
+3. **Retrieve the corresponding entry** for the Platform UI mapping
+4. **Follow the decision guide** to select the correct variant
+
+### 2. NEVER Use Raw HTML
+
+AI agents MUST NOT generate:
+
+- Raw HTML elements (`<div>`, `<span>`, `<p>`, etc.) in application pages
+- Inline styles with raw values (`style={{ color: '#ff0000' }}`)
+- Custom CSS classes (`className="my-custom-class"`)
+
+### 3. State Matrix Required
+
+For any interactive component, AI agents MUST implement:
+
+| State | Required | Component |
+|-------|----------|-----------|
+| Loading | ✅ | `LoadingFallback`, `Spinner`, `Skeleton` |
+| Empty | ✅ | `EmptyState`, `ResultsEmptyState` |
+| Error | ✅ | `Alert data-color="danger"`, `ErrorScreen` |
+| Success | ✅ | Normal render + optional `Alert data-color="success"` |
+| Permission Denied | ⚠️ If RBAC | `AccessGate`, `AccessDeniedScreen` |
+
+---
+
+## Retrieval Protocol
+
+### Step 1: Identify Intent
+
+```
+User wants: "A page with a list of users"
+
+Intent decomposition:
+- Page shell → FLOW_ADMIN_LIST (list-page.json)
+- Header → DashboardPageHeader
+- Data display → DataTable
+- Empty state → EmptyState
+- Actions → Button, TableRowActions
+```
+
+### Step 2: Query Registry
+
+```json
+// Read registry/dictionary/layout.json
+{
+  "entries": [
+    {
+      "id": "div-container",
+      "platformConstruct": {
+        "component": "Stack",
+        "layer": "primitives"
+      }
+    }
+  ]
+}
+```
+
+### Step 3: Compose Using Blocks
+
+```tsx
+import {
+  DashboardLayout,
+  DashboardContent,
+  DashboardPageHeader,
+  DataTable,
+  EmptyState,
+  TableRowActions,
+  StateWrapper
+} from '@xala-technologies/platform-ui';
+
+export function UsersPage() {
+  const { data, isLoading, error } = useUsers();
+
+  return (
+    <DashboardLayout>
+      <DashboardContent>
+        <DashboardPageHeader title={t('pages.users.title')} />
+
+        <StateWrapper
+          state={computeState({ isLoading, error, isEmpty: !data?.length })}
+          loadingComponent={<LoadingFallback />}
+          emptyComponent={<EmptyState title={t('empty.users.title')} />}
+          errorComponent={<Alert data-color="danger">{error?.message}</Alert>}
+        >
+          <DataTable data={data} columns={columns} />
+        </StateWrapper>
+      </DashboardContent>
+    </DashboardLayout>
+  );
+}
+```
+
+---
+
+## Validation Checklist
+
+Before returning code, AI agents MUST verify:
+
+- [ ] No raw HTML elements in the output
+- [ ] All imports from `@xala-technologies/platform-ui` or `@digdir/designsystemet-react`
+- [ ] State matrix implemented (loading, empty, error, success)
+- [ ] i18n keys used for all user-facing strings (via `t()` function)
+- [ ] Accessibility attributes present (aria-label, role, etc.)
+- [ ] Token-based styling only (no inline px/hex values)
+- [ ] Uses `data-color` and `data-size` attributes for Designsystemet components
+
+---
+
+## Agent Types
+
+### Lexicon Retriever Agent
+- Retrieves dictionary entries by intent
+- Returns Platform UI component recommendations
+- See: `agents/LEXICON_RETRIEVER.prompt.md`
+
+### UX Composer Agent
+- Builds page composition trees
+- Outputs component hierarchy + state matrix
+- See: `agents/UX_COMPOSER.prompt.md`
+
+### Block Builder Agent
+- Implements missing blocks
+- Creates Storybook stories
+- See: `agents/BLOCK_BUILDER.prompt.md`
+
+### Storybook + A11y Validator Agent
+- Ensures state coverage
+- Runs axe accessibility checks
+- See: `agents/STORYBOOK_A11Y_VALIDATOR.prompt.md`
+
+### Token Extension Agent
+- Adds new design tokens by policy
+- Ensures Designsystemet compliance
+- See: `agents/TOKEN_EXTENSION_AGENT.prompt.md`
+
+---
+
+## Import Patterns
+
+### Preferred Import Structure
+
+```tsx
+// 1. Designsystemet primitives (when needed)
+import { Heading, Paragraph, Button, Alert } from '@digdir/designsystemet-react';
+
+// 2. Platform UI composed components
+import {
+  DataTable,
+  EmptyState,
+  StateWrapper,
+  LoadingFallback,
+} from '@xala-technologies/platform-ui/composed';
+
+// 3. Platform UI blocks
+import {
+  AccessGate,
+  ResultsEmptyState,
+} from '@xala-technologies/platform-ui/blocks';
+
+// 4. Platform UI shells
+import {
+  DashboardLayout,
+  DashboardContent,
+} from '@xala-technologies/platform-ui/shells';
+```
+
+---
+
+## Component Layer Rules
+
+| Layer | Can Import From |
+|-------|----------------|
+| primitives | external packages only |
+| composed | primitives |
+| blocks | primitives, composed |
+| patterns | primitives, composed, blocks |
+| shells | primitives, composed, blocks, patterns |
+| pages | all layers |
+
+---
+
+## Styling Rules
+
+### ✅ Allowed
+
+```tsx
+// Designsystemet data attributes
+<Card data-color="neutral" data-size="medium">
+
+// Component props
+<Stack gap="4">
+<Heading level={2} data-size="md">
+
+// Token-based inline styles (only when necessary)
+style={{ backgroundColor: 'var(--ds-color-neutral-surface-default)' }}
+```
+
+### ❌ Forbidden
+
+```tsx
+// Raw values
+style={{ padding: '16px' }}
+style={{ color: '#1a1a1a' }}
+
+// Custom classes
+className="my-custom-class"
+className="container header"
+
+// Raw HTML in pages
+<div className="wrapper">
+<span className="text">
+```
+
+---
+
+## Enforcement
+
+Violations are detected by:
+
+1. **ESLint rules** (`verify:boundaries`)
+2. **verify-design-tokens.ts** scanner (`verify:design-tokens`)
+3. **CI pipeline** checks
+
+Violations result in:
+- Build failures
+- Blocked PR merges
+- Design system compliance score deductions
+
+---
+
+## Quick Reference
+
+### State Component Mapping
+
+| State | Component | Import |
+|-------|-----------|--------|
+| Loading (full) | `LoadingFallback` | `composed` |
+| Loading (inline) | `Spinner` | `primitives` |
+| Loading (skeleton) | `Skeleton` | `composed` |
+| Empty (list) | `EmptyState` | `composed` |
+| Empty (search) | `ResultsEmptyState` | `blocks` |
+| Error | `Alert data-color="danger"` | `@digdir` |
+| Success | `Alert data-color="success"` | `@digdir` |
+| Permission Denied | `AccessGate` | `blocks` |
+| Not Found | `NotFoundScreen` | `blocks` |
+
+### Common Compositions
+
+| Intent | Flow | Components |
+|--------|------|------------|
+| List page | `list-page.json` | DashboardLayout, DataPageHeader, DataTable, EmptyState |
+| Detail page | `detail-page.json` | DashboardLayout, PageHeader, Card, Drawer |
+| Form page | `form-page.json` | DashboardLayout, FormLayout, FormSection, Button |
+| Settings | `settings-page.json` | DashboardLayout, Tabs, FormSection |

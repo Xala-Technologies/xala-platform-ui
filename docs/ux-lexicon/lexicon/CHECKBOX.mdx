@@ -1,0 +1,161 @@
+# Lexicon Entry: CHECKBOX
+
+> **Concept**: Boolean selection
+
+---
+
+## Semantic Role
+
+Checkboxes allow users to select one or more items from a set, or toggle a single option on/off.
+
+---
+
+## HTML Elements
+
+`<input type="checkbox">`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Checkbox` | `Switch` (for on/off settings) |
+
+---
+
+## Decision Guide
+
+| Question | Component | Use |
+|----------|-----------|-----|
+| Toggle setting on/off? | `Switch` | Settings, preferences |
+| Select from multiple options? | `Checkbox` (group) | Multi-select list |
+| Accept terms/agreement? | `Checkbox` | Forms |
+| Select table row? | `Checkbox` | Data tables |
+
+---
+
+## Code Snippets
+
+### Single Checkbox
+```tsx
+import { Checkbox } from '@xala-technologies/platform-ui';
+
+<Checkbox
+  checked={accepted}
+  onChange={(e) => setAccepted(e.target.checked)}
+>
+  {t('form.terms.label')}
+</Checkbox>
+```
+
+### Checkbox Group
+```tsx
+import { Checkbox, Fieldset, Stack } from '@xala-technologies/platform-ui';
+
+<Fieldset>
+  <Fieldset.Legend>{t('form.interests.label')}</Fieldset.Legend>
+  <Stack gap="2">
+    {options.map(option => (
+      <Checkbox
+        key={option.value}
+        checked={selected.includes(option.value)}
+        onChange={(e) => handleChange(option.value, e.target.checked)}
+      >
+        {option.label}
+      </Checkbox>
+    ))}
+  </Stack>
+</Fieldset>
+```
+
+### Indeterminate State (Select All)
+```tsx
+<Checkbox
+  checked={allSelected}
+  indeterminate={someSelected && !allSelected}
+  onChange={toggleAll}
+>
+  {t('actions.selectAll')}
+</Checkbox>
+```
+
+### With Description
+```tsx
+<Checkbox
+  checked={newsletter}
+  onChange={(e) => setNewsletter(e.target.checked)}
+  description={t('form.newsletter.description')}
+>
+  {t('form.newsletter.label')}
+</Checkbox>
+```
+
+### Switch (Toggle)
+```tsx
+import { Switch } from '@xala-technologies/platform-ui';
+
+<Switch
+  checked={darkMode}
+  onChange={(e) => setDarkMode(e.target.checked)}
+>
+  {t('settings.darkMode')}
+</Switch>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Unchecked | Empty box | `checked={false}` |
+| Checked | Checkmark | `checked={true}` |
+| Indeterminate | Dash | `indeterminate={true}` |
+| Disabled | Muted, no interaction | `disabled` prop |
+| Error | Red border + message | `error` prop |
+
+---
+
+## Accessibility Rules
+
+- ✅ Always have a visible label
+- ✅ Group related checkboxes with `Fieldset`
+- ✅ Use `aria-invalid` for validation errors
+- ✅ Ensure label is clickable (expands hit area)
+- ✅ Support keyboard (Space to toggle)
+
+---
+
+## i18n Notes
+
+- Labels: `form.[fieldName].label`
+- Descriptions: `form.[fieldName].description`
+- Group legend: `form.[groupName].legend`
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<input type="checkbox" className="...">` | `<Checkbox>` |
+| Checkbox without visible label | Always provide label text |
+| Using checkbox for settings toggle | Use `Switch` for on/off settings |
+| `<label><input type="checkbox" />Text</label>` | `<Checkbox>Text</Checkbox>` |
+
+---
+
+## Related Patterns
+
+- `PATTERN_FORM_LAYOUT` — Form field arrangement
+- `PATTERN_DATA_TABLE` — Row selection checkboxes
+
+---
+
+## Storybook
+
+- `checkbox--default`
+- `checkbox--group`
+- `checkbox--indeterminate`
+- `switch--default`

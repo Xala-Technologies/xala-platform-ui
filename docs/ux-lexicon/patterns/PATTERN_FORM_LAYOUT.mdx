@@ -1,0 +1,183 @@
+# Pattern: Form Layout
+
+> **ID**: `PATTERN_FORM_LAYOUT`
+> **Purpose**: Standard form structure with validation and actions
+
+---
+
+## Overview
+
+Forms collect user input. This pattern ensures consistent layout, validation display, and action button placement.
+
+---
+
+## Composition Tree
+
+```
+FormSection
+├── FormField
+│   ├── Label
+│   ├── Input (Textfield/Select/etc.)
+│   ├── Description (help text)
+│   └── Error (validation message)
+├── FormField
+│   └── ...
+└── FormActions
+    ├── Button (secondary - cancel)
+    └── Button (primary - submit)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Props |
+|---------|-----------|-------|
+| Container | `FormSection` | `title`, `description` |
+| Field wrapper | `FormField` | `label`, `error`, `required` |
+| Text input | `Textfield` | `type`, `value`, `onChange` |
+| Multi-line | `Textarea` | `rows` |
+| Dropdown | `NativeSelect` / `Combobox` | `options` |
+| Checkbox | `Checkbox` | `checked` |
+| Actions | `Stack direction="row"` | `justify="end"` |
+
+---
+
+## Code Example
+
+```tsx
+import {
+  FormSection,
+  Textfield,
+  Textarea,
+  NativeSelect,
+  Checkbox,
+  Button,
+  Stack,
+  Alert,
+} from '@xala-technologies/platform-ui';
+
+export function UserForm({ user, onSubmit, onCancel }) {
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    defaultValues: user,
+  });
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Stack gap="6">
+        <FormSection title={t('form.sections.basicInfo')}>
+          <Stack gap="4">
+            <Textfield
+              label={t('form.name.label')}
+              {...register('name', { required: t('validation.required') })}
+              error={errors.name?.message}
+              aria-required="true"
+            />
+
+            <Textfield
+              label={t('form.email.label')}
+              type="email"
+              {...register('email', {
+                required: t('validation.required'),
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: t('validation.email'),
+                },
+              })}
+              error={errors.email?.message}
+              aria-required="true"
+            />
+
+            <NativeSelect
+              label={t('form.role.label')}
+              {...register('role', { required: t('validation.required') })}
+              error={errors.role?.message}
+            >
+              <option value="">{t('form.role.placeholder')}</option>
+              <option value="admin">{t('roles.admin')}</option>
+              <option value="user">{t('roles.user')}</option>
+            </NativeSelect>
+
+            <Textarea
+              label={t('form.bio.label')}
+              {...register('bio')}
+              rows={4}
+              description={t('form.bio.description')}
+            />
+          </Stack>
+        </FormSection>
+
+        <FormSection title={t('form.sections.preferences')}>
+          <Stack gap="3">
+            <Checkbox {...register('newsletter')}>
+              {t('form.newsletter.label')}
+            </Checkbox>
+            <Checkbox {...register('notifications')}>
+              {t('form.notifications.label')}
+            </Checkbox>
+          </Stack>
+        </FormSection>
+
+        {errors.root && (
+          <Alert data-color="danger">{errors.root.message}</Alert>
+        )}
+
+        <Stack direction="row" justify="end" gap="3">
+          <Button variant="secondary" type="button" onClick={onCancel}>
+            {t('actions.cancel')}
+          </Button>
+          <Button variant="primary" type="submit" loading={isSubmitting}>
+            {t('actions.save')}
+          </Button>
+        </Stack>
+      </Stack>
+    </form>
+  );
+}
+```
+
+---
+
+## Validation Display
+
+| State | Visual |
+|-------|--------|
+| Valid | Normal styling |
+| Invalid (touched) | Red border + error message below field |
+| Submitting | Primary button shows loading state |
+| Submission error | Alert at form level |
+
+---
+
+## Accessibility
+
+- ✅ All fields have visible labels
+- ✅ Required fields marked with `aria-required`
+- ✅ Errors linked via `aria-describedby`
+- ✅ Focus moves to first error on submit
+- ✅ Submit button has loading state
+
+---
+
+## i18n Notes
+
+- Labels: `form.[field].label`
+- Placeholders: `form.[field].placeholder`
+- Help text: `form.[field].description`
+- Errors: `validation.[rule]`
+- Sections: `form.sections.[sectionName]`
+
+---
+
+## Related Patterns
+
+- `FLOW_CREATE_EDIT_FORM` — Form in modal/page
+- `PATTERN_STATE_HANDLING` — Form states
+
+---
+
+## Storybook
+
+- `formsection--default`
+- `textfield--with-error`
+- `form--complete-example`

@@ -1,0 +1,164 @@
+# Lexicon Entry: INPUT
+
+> **Concept**: Text and data input fields
+
+---
+
+## Semantic Role
+
+Input fields collect user data. They must have proper labels, validation states, and accessible error messaging.
+
+---
+
+## HTML Elements
+
+`<input type="text">`, `<input type="email">`, `<input type="password">`, `<input type="number">`, `<textarea>`
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `Textfield` | `Textarea`, `NumberInput`, `Search` |
+
+---
+
+## Decision Guide
+
+| Question | Component | Props |
+|----------|-----------|-------|
+| Single line text? | `Textfield` | `type="text"` |
+| Email address? | `Textfield` | `type="email"` |
+| Password? | `Textfield` | `type="password"` |
+| Multi-line text? | `Textarea` | `rows={n}` |
+| Number input? | `Textfield` | `type="number"` |
+| Search field? | `Search` | Built-in icon |
+
+---
+
+## Code Snippets
+
+### Basic Textfield
+```tsx
+import { Textfield, Label } from '@xala-technologies/platform-ui';
+
+<Textfield
+  label={t('form.email.label')}
+  type="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  description={t('form.email.description')}
+/>
+```
+
+### With Validation Error
+```tsx
+<Textfield
+  label={t('form.email.label')}
+  type="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  error={errors.email}
+  aria-invalid={!!errors.email}
+/>
+```
+
+### Password Field
+```tsx
+<Textfield
+  label={t('form.password.label')}
+  type="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  autoComplete="current-password"
+/>
+```
+
+### Textarea
+```tsx
+import { Textarea } from '@xala-technologies/platform-ui';
+
+<Textarea
+  label={t('form.description.label')}
+  value={description}
+  onChange={(e) => setDescription(e.target.value)}
+  rows={4}
+  maxLength={500}
+  description={t('form.description.hint', { remaining: 500 - description.length })}
+/>
+```
+
+### Search Field
+```tsx
+import { Search } from '@xala-technologies/platform-ui';
+
+<Search
+  label={t('search.label')}
+  placeholder={t('search.placeholder')}
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  onClear={() => setQuery('')}
+/>
+```
+
+---
+
+## State Behavior
+
+| State | Visual | Implementation |
+|-------|--------|----------------|
+| Default | Normal border | — |
+| Focus | Focus ring + accent border | CSS handled |
+| Disabled | Muted, no interaction | `disabled` prop |
+| Read-only | No editing cursor | `readOnly` prop |
+| Error | Red border + error message | `error` prop |
+| Success | Green border (optional) | `data-color="success"` |
+
+---
+
+## Accessibility Rules
+
+- ✅ Always have a visible label (use `Label` component)
+- ✅ Use `aria-describedby` for help text and errors
+- ✅ Use `aria-invalid="true"` when validation fails
+- ✅ Use `aria-required="true"` for required fields
+- ✅ Never use placeholder as the only label
+- ✅ Group related fields with `fieldset` and `legend`
+
+---
+
+## i18n Notes
+
+- Labels: `form.[fieldName].label`
+- Placeholders: `form.[fieldName].placeholder`
+- Help text: `form.[fieldName].description`
+- Errors: `validation.[rule]` (e.g., `validation.required`, `validation.email`)
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| `<input type="text" className="form-control">` | `<Textfield label={...}>` |
+| `<input placeholder="Email">` (no label) | `<Textfield label={t('form.email.label')}>` |
+| `<input style={{ borderColor: 'red' }}>` | `<Textfield error={errorMessage}>` |
+| Inline validation styles | Use `error` prop with message |
+
+---
+
+## Related Patterns
+
+- `PATTERN_FORM_LAYOUT` — Form field arrangement
+- `PATTERN_FORM_VALIDATION` — Validation display
+
+---
+
+## Storybook
+
+- `textfield--default`
+- `textfield--with-error`
+- `textfield--disabled`
+- `textarea--default`
+- `search--default`

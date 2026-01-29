@@ -1,0 +1,173 @@
+# Lexicon Entry: EMPTY_STATE
+
+> **Concept**: No data / no results state
+
+---
+
+## Semantic Role
+
+Empty states communicate when there's no data to display. They should guide users on what to do next.
+
+---
+
+## HTML Elements
+
+No direct HTML equivalent — this is a UX pattern.
+
+---
+
+## Platform Equivalents
+
+| Preferred | Alternates |
+|-----------|------------|
+| `EmptyState` | `ResultsEmptyState`, custom composition |
+
+---
+
+## Decision Guide
+
+| Scenario | Component | Props |
+|----------|-----------|-------|
+| No data exists yet | `EmptyState` | `title`, `description`, `action` |
+| Search returned no results | `ResultsEmptyState` | `variant="search"` |
+| Filter returned no results | `ResultsEmptyState` | `variant="filter"` |
+| Error fetching data | Different pattern | Use `Alert data-color="danger"` |
+
+---
+
+## Code Snippets
+
+### First-Time Empty State
+```tsx
+import { EmptyState, Button } from '@xala-technologies/platform-ui';
+import { PlusIcon } from '@navikt/aksel-icons';
+
+<EmptyState
+  icon={<DocumentIcon />}
+  title={t('empty.users.title')}
+  description={t('empty.users.description')}
+  action={
+    <Button variant="primary" onClick={handleCreate}>
+      <PlusIcon />
+      {t('actions.createFirst')}
+    </Button>
+  }
+/>
+```
+
+### Search Empty State
+```tsx
+import { ResultsEmptyState } from '@xala-technologies/platform-ui';
+
+<ResultsEmptyState
+  variant="search"
+  title={t('empty.search.title')}
+  description={t('empty.search.description', { query })}
+  action={
+    <Button variant="secondary" onClick={() => setQuery('')}>
+      {t('actions.clearSearch')}
+    </Button>
+  }
+/>
+```
+
+### Filter Empty State
+```tsx
+<ResultsEmptyState
+  variant="filter"
+  title={t('empty.filter.title')}
+  description={t('empty.filter.description')}
+  action={
+    <Button variant="secondary" onClick={clearFilters}>
+      {t('actions.clearFilters')}
+    </Button>
+  }
+/>
+```
+
+### In DataTable
+```tsx
+<DataTable
+  data={data}
+  columns={columns}
+  emptyState={
+    query || hasFilters ? (
+      <ResultsEmptyState
+        variant={query ? 'search' : 'filter'}
+        title={t('empty.results.title')}
+        action={
+          <Button variant="secondary" onClick={clearAll}>
+            {t('actions.clearAll')}
+          </Button>
+        }
+      />
+    ) : (
+      <EmptyState
+        title={t('empty.items.title')}
+        description={t('empty.items.description')}
+        action={
+          <Button variant="primary" onClick={handleCreate}>
+            {t('actions.createFirst')}
+          </Button>
+        }
+      />
+    )
+  }
+/>
+```
+
+---
+
+## Content Guidelines
+
+| Element | Guideline |
+|---------|-----------|
+| **Title** | Clear, specific (e.g., "No users yet" not "Nothing here") |
+| **Description** | Explain why + what user can do |
+| **Action** | Single clear CTA |
+| **Icon** | Optional, relates to content type |
+
+---
+
+## Accessibility Rules
+
+- ✅ Use heading for title (semantically correct)
+- ✅ Ensure action button is focusable
+- ✅ Description should be helpful, not just decorative
+
+---
+
+## i18n Notes
+
+- Titles: `empty.[resource].title`
+- Descriptions: `empty.[resource].description`
+- Actions: `actions.[verb]`
+- Search context: `empty.search.description` with `{{ query }}` placeholder
+
+---
+
+## Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|------|
+| "Nothing here" | Specific context: "No users yet" |
+| No action provided | Always give user a clear next step |
+| `<div>No data</div>` | `<EmptyState title={...}>` |
+| Same empty state for all scenarios | Different messages for no-data vs. no-results |
+
+---
+
+## Related Patterns
+
+- `PATTERN_STATE_HANDLING` — All UI states
+- `FLOW_ADMIN_LIST` — List page empty state
+- `FLOW_EMPTY_ONBOARDING` — First-time user experience
+
+---
+
+## Storybook
+
+- `emptystate--default`
+- `emptystate--with-action`
+- `resultsemptystate--search`
+- `resultsemptystate--filter`

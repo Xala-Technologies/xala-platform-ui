@@ -1,0 +1,158 @@
+# Pattern: Page Shell
+
+> **ID**: `PATTERN_PAGE_SHELL`
+> **Purpose**: Standard page layout structure for all application pages
+
+---
+
+## Overview
+
+Every page in the application must follow the Page Shell pattern to ensure consistent layout, navigation, and responsive behavior.
+
+---
+
+## Composition Tree
+
+```
+AppShell
+├── DashboardSidebar (desktop)
+│   └── Navigation items
+├── MobileHeader (mobile)
+│   └── Menu trigger
+├── DashboardContent
+│   ├── DashboardPageHeader
+│   │   ├── Breadcrumb
+│   │   ├── Title
+│   │   ├── Description (optional)
+│   │   └── Actions
+│   └── Page content
+└── BottomNavigation (mobile, optional)
+```
+
+---
+
+## Component Mapping
+
+| Section | Component | Required |
+|---------|-----------|----------|
+| Shell | `AppShell` or `DashboardLayout` | ✅ |
+| Sidebar | `DashboardSidebar` | ✅ |
+| Header | `DashboardPageHeader` | ✅ |
+| Content area | `DashboardContent` | ✅ |
+| Mobile nav | `BottomNavigation` | ⚠️ Mobile |
+
+---
+
+## Code Example
+
+```tsx
+import {
+  AppShell,
+  DashboardSidebar,
+  DashboardContent,
+  DashboardPageHeader,
+  SidebarNavItem,
+  SidebarNavGroup,
+  Button,
+} from '@xala-technologies/platform-ui';
+import { HomeIcon, UsersIcon, SettingsIcon } from '@navikt/aksel-icons';
+
+export function PageShell({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+
+  return (
+    <AppShell
+      sidebar={
+        <DashboardSidebar>
+          <SidebarNavGroup>
+            <SidebarNavItem
+              href="/"
+              icon={<HomeIcon />}
+              active={pathname === '/'}
+            >
+              {t('nav.home')}
+            </SidebarNavItem>
+            <SidebarNavItem
+              href="/users"
+              icon={<UsersIcon />}
+              active={pathname.startsWith('/users')}
+            >
+              {t('nav.users')}
+            </SidebarNavItem>
+          </SidebarNavGroup>
+          <SidebarNavGroup title={t('nav.settings')}>
+            <SidebarNavItem
+              href="/settings"
+              icon={<SettingsIcon />}
+              active={pathname === '/settings'}
+            >
+              {t('nav.settings')}
+            </SidebarNavItem>
+          </SidebarNavGroup>
+        </DashboardSidebar>
+      }
+    >
+      {children}
+    </AppShell>
+  );
+}
+
+// Usage in a page:
+export function UsersPage() {
+  return (
+    <PageShell>
+      <DashboardContent>
+        <DashboardPageHeader
+          title={t('pages.users.title')}
+          description={t('pages.users.description')}
+          breadcrumbs={[
+            { label: t('nav.admin'), href: '/admin' },
+            { label: t('nav.users') },
+          ]}
+          actions={
+            <Button variant="primary" onClick={handleCreate}>
+              {t('actions.create')}
+            </Button>
+          }
+        />
+        {/* Page content */}
+      </DashboardContent>
+    </PageShell>
+  );
+}
+```
+
+---
+
+## Responsive Behavior
+
+| Breakpoint | Sidebar | Header | Bottom Nav |
+|------------|---------|--------|------------|
+| Desktop (≥1024px) | Visible | Visible | Hidden |
+| Tablet (768-1023px) | Collapsed | Visible | Hidden |
+| Mobile (<768px) | Hidden (drawer) | Mobile header | Visible |
+
+---
+
+## Accessibility
+
+- ✅ Sidebar has `role="navigation"` with `aria-label`
+- ✅ Main content has `role="main"`
+- ✅ Skip link targets main content
+- ✅ Focus management on navigation
+
+---
+
+## Related Flows
+
+- `FLOW_ADMIN_LIST` — List page in shell
+- `FLOW_DETAIL_PAGE` — Detail page in shell
+- `FLOW_FORM_PAGE` — Form page in shell
+
+---
+
+## Storybook
+
+- `appshell--default`
+- `dashboardsidebar--default`
+- `dashboardcontent--default`

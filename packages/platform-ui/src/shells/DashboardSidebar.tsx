@@ -210,54 +210,59 @@ function SidebarContent({
   user,
   onItemClick,
 }: SidebarContentProps) {
+  // Only show logo section if logo, title, or subtitle is provided
+  const showLogoSection = logo || title || subtitle;
+
   return (
     <>
-      {/* Logo Section - var(--ds-spacing-18) height, exact match */}
-      <Stack
-        direction="horizontal"
-        style={{
-          height: 'var(--ds-spacing-18)',
-          padding: '0 var(--ds-spacing-6)',
-          borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
+      {/* Logo Section - only shown if logo/title/subtitle provided */}
+      {showLogoSection && (
         <Stack
           direction="horizontal"
-          style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}
+          style={{
+            height: '80px',
+            padding: '0 var(--ds-spacing-6)',
+            borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
+            display: 'flex',
+            alignItems: 'center',
+          }}
         >
-          {logo && <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>}
-          {title && (
-            <Stack direction="vertical" gap="xs">
-              <Text
-                size="md"
-                weight="bold"
-                style={{
-                  color: 'var(--ds-color-accent-text-default)',
-                  lineHeight: 'var(--ds-font-line-height-heading)',
-                  letterSpacing: 'var(--ds-font-letter-spacing-wide)',
-                }}
-              >
-                {title}
-              </Text>
-              {subtitle && (
+          <Stack
+            direction="horizontal"
+            style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}
+          >
+            {logo && <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>}
+            {title && (
+              <Stack direction="vertical" gap="xs">
                 <Text
-                  variant="overline"
-                  size="xs"
+                  size="md"
+                  weight="bold"
                   style={{
-                    color: 'var(--ds-color-neutral-text-subtle)',
+                    color: 'var(--ds-color-accent-text-default)',
+                    lineHeight: 'var(--ds-font-line-height-heading)',
                     letterSpacing: 'var(--ds-font-letter-spacing-wide)',
-                    textTransform: 'uppercase',
                   }}
                 >
-                  {subtitle}
+                  {title}
                 </Text>
-              )}
-            </Stack>
-          )}
+                {subtitle && (
+                  <Text
+                    variant="overline"
+                    size="xs"
+                    style={{
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                      letterSpacing: 'var(--ds-font-letter-spacing-wide)',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {subtitle}
+                  </Text>
+                )}
+              </Stack>
+            )}
+          </Stack>
         </Stack>
-      </Stack>
+      )}
 
       {/* Navigation */}
       <nav
@@ -450,7 +455,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
         {isMobile && (
           <Drawer
             isOpen={isMobileOpen}
-            onClose={onMobileClose || (() => {})}
+            onClose={onMobileClose || (() => { })}
             position="left"
             size="lg"
             overlay={true}
