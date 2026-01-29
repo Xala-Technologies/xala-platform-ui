@@ -195,7 +195,8 @@ export function AccessGate({
 
   const sizeStyle = sizeStyles[size];
   const displayTitle = title || labels.defaultTitle || defaultLabels.defaultTitle;
-  const displayDescription = description || labels.defaultDescription || defaultLabels.defaultDescription;
+  const displayDescription =
+    description || labels.defaultDescription || defaultLabels.defaultDescription;
 
   return (
     <div

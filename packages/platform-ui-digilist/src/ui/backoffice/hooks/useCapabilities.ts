@@ -19,11 +19,10 @@ import {
 import { useT } from '@xala-technologies/platform/runtime';
 
 // =============================================================================
-// Re-exports for convenience
+// Type imports (not re-exported - use lib directly for types)
 // =============================================================================
 
-export type { Capability, EffectiveBackofficeRole } from '../lib';
-export { ROLE_CAPABILITIES } from '../lib';
+import type { Capability, EffectiveBackofficeRole } from '../lib';
 
 // =============================================================================
 // Hook Return Type
@@ -164,27 +163,5 @@ export function useCapabilities(): UseCapabilitiesReturn {
   };
 }
 
-/**
- * Convenience hook to check a single capability.
- * Returns true if the current role has the specified capability.
- */
-export function useHasCapability(capability: Capability): boolean {
-  const { hasCapability } = useCapabilities();
-  return hasCapability(capability);
-}
-
-/**
- * Convenience hook to check if the current role has all specified capabilities.
- */
-export function useHasAllCapabilities(capabilities: Capability[]): boolean {
-  const { hasAllCapabilities } = useCapabilities();
-  return hasAllCapabilities(capabilities);
-}
-
-/**
- * Convenience hook to check if the current role has any of the specified capabilities.
- */
-export function useHasAnyCapability(capabilities: Capability[]): boolean {
-  const { hasAnyCapability } = useCapabilities();
-  return hasAnyCapability(capabilities);
-}
+// Note: useHasCapability, useHasAllCapabilities, useHasAnyCapability are
+// defined in providers/CapabilityProvider.tsx to avoid duplicate exports

@@ -226,7 +226,9 @@ export const PermissionDeniedState: Story = {
               title={t('platform.errors.accessDenied')}
               description={t('platform.errors.noPermission')}
               requiredPermission="admin:users:read"
-              actions={[{ label: t('platform.common.submit'), onClick: () => {}, variant: 'primary' }]}
+              actions={[
+                { label: t('platform.common.submit'), onClick: () => {}, variant: 'primary' },
+              ]}
             >
               <div />
             </AccessGate>
@@ -336,7 +338,10 @@ export const WithComputedState: Story = {
 
     return (
       <div style={{ width: '500px' }}>
-        <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-4)', marginBottom: 'var(--ds-spacing-4)' }}>
+        <Card
+          data-color="neutral"
+          style={{ padding: 'var(--ds-spacing-4)', marginBottom: 'var(--ds-spacing-4)' }}
+        >
           <Heading level={4} data-size="xs">
             Control Panel
           </Heading>

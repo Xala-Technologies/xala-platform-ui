@@ -15,7 +15,7 @@ export default defineConfig({
         'features/calendar': 'src/features/calendar/index.ts',
         'features/seasons': 'src/features/seasons/index.ts',
         'features/rental-objects': 'src/features/rental-objects/index.ts',
-        'features/rental-object-details': 'src/features/rental-object-details/index.ts',
+        // 'features/rental-object-details': 'src/features/rental-object-details/index.ts', // TODO: Fix missing component files
         'features/reviews': 'src/features/reviews/index.ts',
         'features/gdpr': 'src/features/gdpr/index.ts',
         'features/settings': 'src/features/settings/index.ts',
@@ -52,11 +52,20 @@ export default defineConfig({
         '@xala-technologies/platform-ui-core',
         '@xala-technologies/platform-ui',
         'lucide-react',
-        // Platform packages
+        // Platform packages (all subpaths)
         '@xala-technologies/platform',
+        '@xala-technologies/platform/auth',
+        '@xala-technologies/platform/runtime',
         '@xalatechnologies/platform',
-        // Domain SDK
+        '@xalatechnologies/platform/auth',
+        '@xalatechnologies/platform/runtime',
+        // Domain packages (all subpaths)
         '@digilist/client-sdk',
+        '@digilist/client-sdk/hooks',
+        '@digilist/client-sdk/types',
+        '@digilist/runtime',
+        '@digilist/platform-bridge',
+        '@digilist/platform-bridge/hooks',
         // Data/query
         '@tanstack/react-query',
         'zod',

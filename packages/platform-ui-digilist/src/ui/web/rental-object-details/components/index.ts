@@ -12,8 +12,8 @@ export { ActivityTab, type ActivityTabProps } from './ActivityTab';
 export { RulesTab, type RulesTabProps } from './RulesTab';
 export { FaqTab, type FaqTabProps } from './FaqTab';
 
-// Calendar
-export { CalendarSection, type CalendarSectionProps } from './CalendarSection';
+// Calendar - re-export from shared
+export { CalendarSection, type CalendarSectionProps } from '../../../shared/components/CalendarSection';
 
 // Sidebar components
 export { ContactWidget, type ContactWidgetProps } from './Sidebar/ContactWidget';
