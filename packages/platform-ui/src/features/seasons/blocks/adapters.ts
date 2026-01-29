@@ -12,14 +12,8 @@
  * @module @xala-technologies/platform-ui/blocks/seasons
  */
 
-// Re-export platform-ui PeriodCard for new code
-export {
-  PeriodCard,
-  type PeriodCardProps,
-  type PeriodStatusDisplay,
-  type PeriodDeadline,
-  type PeriodCardImage,
-} from '@xala-technologies/platform-ui-digilist';
+// Note: PeriodCard is available in @xala-technologies/platform-ui-digilist
+// Import directly: import { PeriodCard } from '@xala-technologies/platform-ui-digilist/blocks';
 
 // =============================================================================
 // Status Mapping Utilities
