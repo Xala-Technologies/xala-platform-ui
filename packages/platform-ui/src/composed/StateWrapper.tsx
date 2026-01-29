@@ -382,11 +382,9 @@ export function computeState(options: ComputedStateOptions): ComponentState {
  * Hook version of computeState for use in components
  */
 export function useComputedState(options: ComputedStateOptions): ComponentState {
-  return React.useMemo(() => computeState(options), [
-    options.isLoading,
-    options.error,
-    options.isEmpty,
-    options.isSuccess,
-    options.hasPermission,
-  ]);
+  const { isLoading, error, isEmpty, isSuccess, hasPermission } = options;
+  return React.useMemo(
+    () => computeState({ isLoading, error, isEmpty, isSuccess, hasPermission }),
+    [isLoading, error, isEmpty, isSuccess, hasPermission]
+  );
 }
