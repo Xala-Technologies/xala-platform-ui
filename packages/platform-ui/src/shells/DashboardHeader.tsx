@@ -380,8 +380,6 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
             zIndex: 100,
             width: '100%',
             backgroundColor: 'var(--ds-color-neutral-surface-default)',
-            borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
-            boxShadow: 'var(--ds-shadow-xs)',
           }}
           {...props}
         >
