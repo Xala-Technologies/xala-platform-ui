@@ -194,24 +194,12 @@
         "typescript": "^5.3.3"
     },
     "peerDependencies": {
-        "@digilist/client-sdk": "*",
-        "@xala-technologies/platform": "*",
-        "@xala-technologies/platform-ui": "*",
         "lucide-react": ">=0.400.0",
         "react": ">=18.0.0",
         "react-dom": ">=18.0.0",
         "react-router-dom": ">=6.0.0"
     },
     "peerDependenciesMeta": {
-        "@digilist/client-sdk": {
-            "optional": false
-        },
-        "@xala-technologies/platform": {
-            "optional": false
-        },
-        "@xala-technologies/platform-ui": {
-            "optional": false
-        },
         "react": {
             "optional": false
         },
