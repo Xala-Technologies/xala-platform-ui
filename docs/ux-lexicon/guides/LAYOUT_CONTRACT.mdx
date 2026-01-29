@@ -1,0 +1,332 @@
+# Layout Contract
+
+Standard layout structures and zone contracts for Platform UI shells.
+
+## Shell Architecture
+
+Platform UI uses a **shell + zone** architecture for layouts:
+
+```
+┌─────────────────────────────────────────────────┐
+│                    HEADER                        │
+├──────────┬──────────────────────────────────────┤
+│          │                                       │
+│  SIDEBAR │              MAIN                     │
+│          │                                       │
+│          │                                       │
+├──────────┴──────────────────────────────────────┤
+│                    FOOTER                        │
+└─────────────────────────────────────────────────┘
+```
+
+## DashboardLayout Zones
+
+### Zone Definitions
+
+| Zone | Component | Required | Purpose |
+|------|-----------|----------|---------|
+| `header` | DashboardHeader | Yes | Top navigation bar |
+| `sidebar` | DashboardSidebar | No | Side navigation |
+| `main` | DashboardContent | Yes | Primary content area |
+| `footer` | Footer slot | No | Page footer |
+
+### Usage
+
+```tsx
+<DashboardLayout
+  header={<DashboardHeader />}
+  sidebar={<DashboardSidebar />}
+  footer={<Footer />}
+>
+  <DashboardContent>
+    {/* Main content */}
+  </DashboardContent>
+</DashboardLayout>
+```
+
+## Zone Contracts
+
+### Header Zone
+
+**Component:** `DashboardHeader`
+
+**Required slots:**
+- Logo/brand
+- Primary navigation (optional)
+- User actions (notifications, user menu)
+
+**Contract:**
+```tsx
+interface HeaderProps {
+  logo?: ReactNode;
+  navigation?: ReactNode;
+  actions?: ReactNode;
+  sticky?: boolean;
+}
+```
+
+**Example:**
+```tsx
+<DashboardHeader
+  logo={<Logo />}
+  navigation={<TopNavigation items={navItems} />}
+  actions={
+    <Stack direction="horizontal" gap="2">
+      <NotificationBell count={3} />
+      <UserMenu user={currentUser} />
+    </Stack>
+  }
+  sticky
+/>
+```
+
+### Sidebar Zone
+
+**Component:** `DashboardSidebar`
+
+**Required slots:**
+- Navigation
+- Optional footer (user info, settings)
+
+**Contract:**
+```tsx
+interface SidebarProps {
+  navigation: ReactNode;
+  header?: ReactNode;
+  footer?: ReactNode;
+  collapsed?: boolean;
+  onCollapsedChange?: (collapsed: boolean) => void;
+  width?: 'narrow' | 'medium' | 'wide';
+}
+```
+
+**Example:**
+```tsx
+<DashboardSidebar
+  header={<WorkspaceSwitcher />}
+  navigation={
+    <Navigation
+      items={navItems}
+      activeHref={pathname}
+    />
+  }
+  footer={<UserMenu user={currentUser} variant="compact" />}
+  collapsed={sidebarCollapsed}
+  onCollapsedChange={setSidebarCollapsed}
+/>
+```
+
+### Main Zone
+
+**Component:** `DashboardContent`
+
+**Purpose:** Primary content container with proper padding and scrolling.
+
+**Contract:**
+```tsx
+interface ContentProps {
+  children: ReactNode;
+  maxWidth?: 'narrow' | 'medium' | 'wide' | 'full';
+  padding?: 'none' | 'small' | 'medium' | 'large';
+}
+```
+
+**Example:**
+```tsx
+<DashboardContent maxWidth="wide" padding="medium">
+  <PageHeader title="Dashboard" />
+  <Grid columns={3} gap="4">
+    <StatCard />
+    <StatCard />
+    <StatCard />
+  </Grid>
+</DashboardContent>
+```
+
+### Footer Zone
+
+**Purpose:** Page footer with links, copyright, etc.
+
+**Contract:**
+```tsx
+interface FooterProps {
+  children: ReactNode;
+  sticky?: boolean;
+}
+```
+
+**Example:**
+```tsx
+<DashboardLayout
+  footer={
+    <Footer>
+      <Stack direction="horizontal" justify="space-between">
+        <Paragraph data-size="small">© 2025 Company</Paragraph>
+        <Stack direction="horizontal" gap="4">
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+        </Stack>
+      </Stack>
+    </Footer>
+  }
+>
+```
+
+## Overlay Zones
+
+### Drawer Zone
+
+**Purpose:** Side panel for editing or details without leaving context.
+
+**Contract:**
+```tsx
+interface DrawerProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  title: string;
+  position?: 'left' | 'right';
+  size?: 'narrow' | 'medium' | 'wide';
+  children: ReactNode;
+  footer?: ReactNode;
+}
+```
+
+**Example:**
+```tsx
+<Drawer
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  title="Edit User"
+  position="right"
+  size="medium"
+  footer={
+    <Stack direction="horizontal" gap="2">
+      <Button onClick={handleSave}>Save</Button>
+      <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+    </Stack>
+  }
+>
+  <UserForm user={user} />
+</Drawer>
+```
+
+### Modal Zone
+
+**Purpose:** Focused interaction requiring user attention.
+
+**Contract:**
+```tsx
+// Uses Designsystemet Modal
+<Modal.Root open={isOpen} onOpenChange={setIsOpen}>
+  <Modal.Dialog>
+    <Modal.Header>{title}</Modal.Header>
+    <Modal.Content>{content}</Modal.Content>
+    <Modal.Footer>{actions}</Modal.Footer>
+  </Modal.Dialog>
+</Modal.Root>
+```
+
+## Content Structure
+
+### Page Header Pattern
+
+Every main content area should start with a PageHeader:
+
+```tsx
+<DashboardContent>
+  <PageHeader
+    title="Users"
+    subtitle="Manage user accounts"
+    breadcrumbs={[
+      { label: 'Dashboard', href: '/' },
+      { label: 'Users', current: true },
+    ]}
+    actions={
+      <Button onClick={handleCreate}>Add User</Button>
+    }
+  />
+
+  {/* Main content */}
+</DashboardContent>
+```
+
+### Content Sections
+
+Group related content in Cards:
+
+```tsx
+<Stack direction="vertical" gap="4">
+  <Card data-color="neutral">
+    <Heading level={2} data-size="small">Basic Information</Heading>
+    <DefinitionList items={basicInfo} />
+  </Card>
+
+  <Card data-color="neutral">
+    <Heading level={2} data-size="small">Permissions</Heading>
+    <PermissionsList permissions={permissions} />
+  </Card>
+</Stack>
+```
+
+## Responsive Behavior
+
+### Breakpoints
+
+| Breakpoint | Width | Sidebar | Layout |
+|------------|-------|---------|--------|
+| `sm` | < 640px | Hidden | Single column |
+| `md` | 640-1024px | Collapsed | Two column |
+| `lg` | > 1024px | Expanded | Full layout |
+
+### Responsive Example
+
+```tsx
+<DashboardLayout
+  sidebar={
+    <DashboardSidebar
+      collapsed={isMobile}
+      onCollapsedChange={setCollapsed}
+    />
+  }
+>
+  <DashboardContent>
+    <Grid
+      columns={{ sm: 1, md: 2, lg: 3 }}
+      gap={{ sm: '2', md: '4' }}
+    >
+      {items.map(item => <Card key={item.id}>{item.content}</Card>)}
+    </Grid>
+  </DashboardContent>
+</DashboardLayout>
+```
+
+## Accessibility
+
+### Skip Links
+
+DashboardLayout includes skip links:
+
+```tsx
+// Automatic skip link to main content
+<a href="#main-content" className="ds-skip-link">
+  Skip to main content
+</a>
+```
+
+### Landmarks
+
+Each zone maps to ARIA landmarks:
+
+| Zone | ARIA Role |
+|------|-----------|
+| Header | `banner` |
+| Sidebar | `complementary` |
+| Main | `main` |
+| Footer | `contentinfo` |
+| Navigation | `navigation` |
+
+## See Also
+
+- [Golden Flows](../registry/flows/) - Page-level compositions
+- [State Matrix](./state-matrix.mdx) - Content state handling
+- [Accessibility Patterns](./accessibility-patterns.mdx) - Landmark guidance

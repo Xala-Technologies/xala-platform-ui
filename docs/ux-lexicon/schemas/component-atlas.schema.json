@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.no/ux-lexicon/schemas/component-atlas.schema.json",
+  "title": "UX Lexicon Component Atlas",
+  "description": "Schema for the complete component inventory",
+  "type": "object",
+  "required": ["version", "generated", "layers", "components"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Atlas version"
+    },
+    "generated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Generation timestamp"
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "level": { "type": "integer" },
+          "canImportFrom": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "layer", "path", "lexiconStatus"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Component name"
+          },
+          "layer": {
+            "type": "string",
+            "enum": ["@digdir", "primitives", "composed", "blocks", "patterns", "shells", "pages"]
+          },
+          "path": {
+            "type": "string",
+            "description": "File path relative to src/"
+          },
+          "exportPath": {
+            "type": "string",
+            "description": "Public export path"
+          },
+          "lexiconStatus": {
+            "type": "string",
+            "enum": ["complete", "partial", "missing"],
+            "description": "Lexicon documentation status"
+          },
+          "dictionaryEntryId": {
+            "type": "string",
+            "description": "Reference to dictionary entry"
+          },
+          "storybook": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "stories": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          },
+          "stateSupport": {
+            "type": "object",
+            "properties": {
+              "idle": { "type": "boolean" },
+              "loading": { "type": "boolean" },
+              "empty": { "type": "boolean" },
+              "error": { "type": "boolean" },
+              "success": { "type": "boolean" },
+              "permissionDenied": { "type": "boolean" }
+            }
+          },
+          "accessibility": {
+            "type": "object",
+            "properties": {
+              "wcagCompliant": { "type": "boolean" },
+              "testedWith": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          },
+          "dependencies": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "usedBy": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "totalComponents": { "type": "integer" },
+        "byLayer": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "lexiconCoverage": {
+          "type": "object",
+          "properties": {
+            "complete": { "type": "integer" },
+            "partial": { "type": "integer" },
+            "missing": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
+}

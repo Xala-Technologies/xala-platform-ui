@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "wizard-flow",
+  "name": "Multi-Step Wizard Flow",
+  "description": "Guided multi-step wizard for complex data entry with progress tracking",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells"
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "children": [
+        { "component": "Stepper", "layer": "composed", "props": { "purpose": "Progress indicator" } },
+        { "component": "Card", "layer": "@digdir", "props": { "purpose": "Step content container" } },
+        { "component": "FormSection", "layer": "composed", "props": { "purpose": "Step form fields" } }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Current step displayed and editable",
+      "activeZones": ["header", "main"]
+    },
+    "validating": {
+      "description": "Validating current step before navigation",
+      "activeZones": ["header", "main"],
+      "composition": "Next button shows loading"
+    },
+    "error": {
+      "description": "Current step has validation errors",
+      "activeZones": ["header", "main"],
+      "composition": "Field-level errors displayed"
+    },
+    "submitting": {
+      "description": "Final submission in progress",
+      "activeZones": ["header", "main"],
+      "composition": "All fields disabled, submit loading"
+    },
+    "success": {
+      "description": "Wizard completed successfully",
+      "activeZones": ["header", "main"],
+      "composition": "Success summary with next steps"
+    }
+  },
+  "userActions": [
+    { "action": "Next step", "component": "Button", "callback": "onNext", "resultingState": "validating then next step idle" },
+    { "action": "Previous step", "component": "Button", "callback": "onPrevious", "resultingState": "previous step idle" },
+    { "action": "Jump to step", "component": "Stepper", "callback": "onStepClick", "resultingState": "target step idle" },
+    { "action": "Submit", "component": "Button", "callback": "onSubmit", "resultingState": "submitting" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "steps", "type": "StepDefinition[]", "required": true, "description": "Step definitions with titles and validation" },
+      { "name": "currentStep", "type": "number", "required": true, "description": "Current step index" },
+      { "name": "formData", "type": "Record<string, any>", "required": true, "description": "Accumulated form data across steps" }
+    ],
+    "callbacks": [
+      { "name": "onNext", "signature": "(stepData: any) => Promise<void>", "description": "Validate and move to next step" },
+      { "name": "onPrevious", "signature": "() => void", "description": "Return to previous step" },
+      { "name": "onStepClick", "signature": "(stepIndex: number) => void", "description": "Jump to specific step" },
+      { "name": "onSubmit", "signature": "(allData: any) => Promise<void>", "description": "Submit all wizard data" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout header={<DashboardHeader />}>\n  <DashboardContent>\n    <Container data-size=\"medium\">\n      <Stepper\n        steps={[\n          { title: 'Personal Info', completed: currentStep > 0 },\n          { title: 'Address', completed: currentStep > 1 },\n          { title: 'Payment', completed: currentStep > 2 },\n          { title: 'Review', completed: currentStep > 3 },\n        ]}\n        currentStep={currentStep}\n        onStepClick={handleStepClick}\n      />\n      \n      <Card data-color=\"neutral\">\n        {currentStep === 0 && (\n          <FormSection title=\"Personal Information\">\n            <Textfield label=\"Name\" name=\"name\" value={formData.name} />\n            <Textfield label=\"Email\" name=\"email\" type=\"email\" value={formData.email} />\n          </FormSection>\n        )}\n        \n        {currentStep === 1 && (\n          <FormSection title=\"Address\">\n            <Textfield label=\"Street\" name=\"street\" value={formData.street} />\n            <Grid columns={2} gap=\"4\">\n              <Textfield label=\"City\" name=\"city\" value={formData.city} />\n              <Textfield label=\"Postal Code\" name=\"postalCode\" value={formData.postalCode} />\n            </Grid>\n          </FormSection>\n        )}\n        \n        {currentStep === 2 && (\n          <FormSection title=\"Payment\">\n            <Textfield label=\"Card Number\" name=\"cardNumber\" />\n            <Grid columns={2} gap=\"4\">\n              <Textfield label=\"Expiry\" name=\"expiry\" placeholder=\"MM/YY\" />\n              <Textfield label=\"CVC\" name=\"cvc\" />\n            </Grid>\n          </FormSection>\n        )}\n        \n        {currentStep === 3 && (\n          <FormSection title=\"Review Your Order\">\n            <DefinitionList items={Object.entries(formData).map(([k, v]) => ({ term: k, description: v }))} />\n          </FormSection>\n        )}\n      </Card>\n      \n      <Stack direction=\"horizontal\" justify=\"space-between\">\n        <Button variant=\"secondary\" onClick={handlePrevious} disabled={currentStep === 0}>\n          Previous\n        </Button>\n        \n        {currentStep < 3 ? (\n          <Button onClick={handleNext} loading={isValidating}>Next</Button>\n        ) : (\n          <Button onClick={handleSubmit} loading={isSubmitting}>Complete Order</Button>\n        )}\n      </Stack>\n    </Container>\n  </DashboardContent>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { FormSection, DefinitionList, Stepper } from '@xala-technologies/platform-ui/composed';",
+      "import { Container, Grid, Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Card, Textfield, Button } from '@digdir/designsystemet-react';"
+    ]
+  },
+  "relatedFlows": ["form-page"],
+  "tags": ["wizard", "stepper", "multi-step", "onboarding"]
+}

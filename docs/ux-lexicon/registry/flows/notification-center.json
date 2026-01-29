@@ -1,0 +1,70 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "notification-center",
+  "name": "Notification Center",
+  "description": "Notifications panel with filtering, marking read, and bulk actions",
+  "shell": {
+    "component": "Popover or Drawer",
+    "importPath": "@digdir/designsystemet-react"
+  },
+  "zones": {
+    "trigger": {
+      "component": "NotificationBell",
+      "layer": "blocks"
+    },
+    "main": {
+      "component": "Popover.Content or Drawer",
+      "layer": "@digdir",
+      "children": [
+        { "component": "Tabs", "layer": "@digdir", "props": { "purpose": "All/Unread filter" } },
+        { "component": "Stack", "layer": "primitives", "props": { "purpose": "Notification list" } }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Notifications list displayed",
+      "activeZones": ["trigger", "main"]
+    },
+    "loading": {
+      "description": "Loading notifications",
+      "activeZones": ["trigger", "main"],
+      "composition": "Skeleton notifications"
+    },
+    "empty": {
+      "description": "No notifications",
+      "activeZones": ["trigger", "main"],
+      "composition": "EmptyState"
+    }
+  },
+  "userActions": [
+    { "action": "Open", "component": "NotificationBell", "callback": "onOpen", "resultingState": "loading then idle" },
+    { "action": "Mark read", "component": "Button", "callback": "onMarkRead", "resultingState": "idle" },
+    { "action": "Mark all read", "component": "Button", "callback": "onMarkAllRead", "resultingState": "idle" },
+    { "action": "Delete", "component": "Button", "callback": "onDelete", "resultingState": "idle" },
+    { "action": "Filter", "component": "Tabs", "callback": "onFilterChange", "resultingState": "idle" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "notifications", "type": "Notification[]", "required": true, "description": "Notification items" },
+      { "name": "unreadCount", "type": "number", "required": true, "description": "Count of unread" }
+    ],
+    "callbacks": [
+      { "name": "onMarkRead", "signature": "(id: string) => void", "description": "Mark single read" },
+      { "name": "onMarkAllRead", "signature": "() => void", "description": "Mark all read" },
+      { "name": "onDelete", "signature": "(id: string) => void", "description": "Delete notification" }
+    ]
+  },
+  "example": {
+    "jsx": "<Popover.Root>\n  <Popover.Trigger asChild>\n    <NotificationBell count={unreadCount} />\n  </Popover.Trigger>\n  <Popover.Content data-size=\"large\">\n    <Stack direction=\"vertical\" gap=\"3\">\n      <Stack direction=\"horizontal\" justify=\"space-between\" align=\"center\">\n        <Heading level={2} data-size=\"small\">Notifications</Heading>\n        {unreadCount > 0 && (\n          <Button variant=\"tertiary\" data-size=\"small\" onClick={handleMarkAllRead}>\n            Mark all read\n          </Button>\n        )}\n      </Stack>\n      \n      <Tabs defaultValue=\"all\">\n        <Tabs.List>\n          <Tabs.Tab value=\"all\">All</Tabs.Tab>\n          <Tabs.Tab value=\"unread\">Unread ({unreadCount})</Tabs.Tab>\n        </Tabs.List>\n        \n        <Tabs.Panel value=\"all\">\n          <StateWrapper\n            state={isLoading ? 'loading' : notifications.length === 0 ? 'empty' : 'idle'}\n            loadingComponent={<NotificationSkeleton count={3} />}\n            emptyComponent={\n              <EmptyState\n                icon={<BellIcon />}\n                title=\"No notifications\"\n                description=\"You're all caught up!\"\n              />\n            }\n          >\n            <Stack direction=\"vertical\" gap=\"0\">\n              {notifications.map(notification => (\n                <NotificationItem\n                  key={notification.id}\n                  notification={notification}\n                  onMarkRead={() => handleMarkRead(notification.id)}\n                  onDelete={() => handleDelete(notification.id)}\n                />\n              ))}\n            </Stack>\n          </StateWrapper>\n        </Tabs.Panel>\n      </Tabs>\n      \n      <Link href=\"/notifications\" data-size=\"small\">\n        View all notifications\n      </Link>\n    </Stack>\n  </Popover.Content>\n</Popover.Root>",
+    "imports": [
+      "import { StateWrapper } from '@xala-technologies/platform-ui/composed';",
+      "import { NotificationBell, EmptyState } from '@xala-technologies/platform-ui/blocks';",
+      "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Popover, Heading, Tabs, Button, Link } from '@digdir/designsystemet-react';",
+      "import { BellIcon } from 'lucide-react';"
+    ]
+  },
+  "relatedFlows": ["list-page"],
+  "tags": ["notifications", "alerts", "messages", "popover"]
+}

@@ -1,0 +1,118 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "detail-page",
+  "name": "Resource Detail Page",
+  "description": "Detail view for a single resource with sections and drawer editing",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells",
+    "props": {}
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells",
+      "children": [
+        { "component": "Breadcrumb", "layer": "composed" },
+        { "component": "PageHeader", "layer": "composed", "props": { "title": "Resource name", "actions": "Edit, Delete buttons" } },
+        { "component": "Card sections", "layer": "@digdir", "props": { "purpose": "Detail sections" } },
+        { "component": "Tabs", "layer": "@digdir", "props": { "purpose": "Related content tabs" } }
+      ]
+    },
+    "drawer": {
+      "component": "Drawer",
+      "layer": "composed",
+      "importPath": "@xala-technologies/platform-ui/composed",
+      "children": [
+        { "component": "FormLayout", "layer": "composed", "props": { "purpose": "Edit resource" } }
+      ]
+    },
+    "modal": {
+      "component": "Modal",
+      "layer": "@digdir",
+      "importPath": "@digdir/designsystemet-react",
+      "props": { "purpose": "Delete confirmation" }
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Resource details displayed",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "loading": {
+      "description": "Resource data loading",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Skeleton placeholders for all sections"
+    },
+    "error": {
+      "description": "Failed to load resource",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Alert with retry action"
+    },
+    "editing": {
+      "description": "Edit drawer open",
+      "activeZones": ["header", "sidebar", "main", "drawer"]
+    },
+    "deleting": {
+      "description": "Delete confirmation modal open",
+      "activeZones": ["header", "sidebar", "main", "modal"]
+    },
+    "permissionDenied": {
+      "description": "User lacks permission to view",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "AccessGate component"
+    }
+  },
+  "transitions": [
+    { "from": "loading", "to": "idle", "trigger": "Data loaded" },
+    { "from": "loading", "to": "error", "trigger": "Fetch failed" },
+    { "from": "idle", "to": "editing", "trigger": "Edit clicked" },
+    { "from": "editing", "to": "idle", "trigger": "Save or cancel" },
+    { "from": "idle", "to": "deleting", "trigger": "Delete clicked" },
+    { "from": "deleting", "to": "redirect", "trigger": "Confirm delete" }
+  ],
+  "userActions": [
+    { "action": "Edit", "component": "Button", "callback": "onEditClick", "resultingState": "editing" },
+    { "action": "Delete", "component": "Button", "callback": "onDeleteClick", "resultingState": "deleting" },
+    { "action": "Go back", "component": "Breadcrumb", "callback": "navigate(-1)", "resultingState": "previous page" },
+    { "action": "Switch tab", "component": "Tabs", "callback": "onTabChange", "resultingState": "idle (different tab)" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "resource", "type": "T", "required": true, "description": "The resource to display" },
+      { "name": "isLoading", "type": "boolean", "required": false, "description": "Loading state" },
+      { "name": "error", "type": "Error | null", "required": false, "description": "Error if fetch failed" },
+      { "name": "breadcrumbs", "type": "BreadcrumbItem[]", "required": true, "description": "Navigation breadcrumbs" }
+    ],
+    "callbacks": [
+      { "name": "onEditClick", "signature": "() => void", "description": "Open edit drawer" },
+      { "name": "onDeleteClick", "signature": "() => void", "description": "Open delete confirmation" },
+      { "name": "onDeleteConfirm", "signature": "() => Promise<void>", "description": "Confirm deletion" },
+      { "name": "onSave", "signature": "(data: Partial<T>) => Promise<void>", "description": "Save edited resource" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout\n  header={<DashboardHeader />}\n  sidebar={<DashboardSidebar />}\n>\n  <DashboardContent>\n    <Breadcrumb items={breadcrumbs} />\n    \n    <StateWrapper\n      state={getState()}\n      loadingComponent={<DetailPageSkeleton />}\n      errorComponent={\n        <Alert data-color=\"danger\">\n          <Alert.Heading>Failed to load user</Alert.Heading>\n          <Button onClick={handleRetry}>Retry</Button>\n        </Alert>\n      }\n      permissionDeniedComponent={\n        <AccessGate denied title=\"Access Restricted\" />\n      }\n    >\n      <PageHeader\n        title={user.name}\n        subtitle={user.email}\n        actions={\n          <Stack direction=\"horizontal\" gap=\"2\">\n            <Button variant=\"secondary\" onClick={handleEdit}>\n              Edit\n            </Button>\n            <Button variant=\"secondary\" data-color=\"danger\" onClick={handleDeleteClick}>\n              Delete\n            </Button>\n          </Stack>\n        }\n      />\n      \n      <Grid columns={2} gap=\"4\">\n        <Card data-color=\"neutral\">\n          <Heading level={2} data-size=\"small\">Basic Information</Heading>\n          <DefinitionList\n            items={[\n              { term: 'Name', description: user.name },\n              { term: 'Email', description: user.email },\n              { term: 'Role', description: user.role },\n              { term: 'Created', description: formatDate(user.createdAt) },\n            ]}\n          />\n        </Card>\n        \n        <Card data-color=\"neutral\">\n          <Heading level={2} data-size=\"small\">Activity</Heading>\n          <Paragraph>Last login: {formatDate(user.lastLogin)}</Paragraph>\n        </Card>\n      </Grid>\n      \n      <Tabs defaultValue=\"activity\">\n        <Tabs.List>\n          <Tabs.Tab value=\"activity\">Activity</Tabs.Tab>\n          <Tabs.Tab value=\"permissions\">Permissions</Tabs.Tab>\n        </Tabs.List>\n        <Tabs.Panel value=\"activity\">\n          <ActivityTimeline activities={user.activities} />\n        </Tabs.Panel>\n        <Tabs.Panel value=\"permissions\">\n          <PermissionsList permissions={user.permissions} />\n        </Tabs.Panel>\n      </Tabs>\n    </StateWrapper>\n  </DashboardContent>\n  \n  <Drawer open={isEditOpen} onOpenChange={setIsEditOpen} title=\"Edit User\">\n    <UserForm user={user} onSubmit={handleSave} />\n  </Drawer>\n  \n  <Modal.Root open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>\n    <Modal.Dialog>\n      <Modal.Header>Delete User</Modal.Header>\n      <Modal.Content>\n        <Paragraph>Are you sure you want to delete {user.name}?</Paragraph>\n      </Modal.Content>\n      <Modal.Footer>\n        <Button data-color=\"danger\" onClick={handleDeleteConfirm} loading={isDeleting}>\n          Delete\n        </Button>\n        <Modal.Close asChild>\n          <Button variant=\"secondary\">Cancel</Button>\n        </Modal.Close>\n      </Modal.Footer>\n    </Modal.Dialog>\n  </Modal.Root>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { PageHeader, Breadcrumb, DefinitionList, StateWrapper, Drawer } from '@xala-technologies/platform-ui/composed';",
+      "import { AccessGate } from '@xala-technologies/platform-ui/blocks';",
+      "import { Grid, Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Card, Heading, Paragraph, Button, Alert, Tabs, Modal } from '@digdir/designsystemet-react';"
+    ],
+    "storybookPath": "?path=/story/flows-detail-page"
+  },
+  "relatedFlows": ["list-page", "form-page"],
+  "tags": ["detail", "view", "resource", "crud"]
+}

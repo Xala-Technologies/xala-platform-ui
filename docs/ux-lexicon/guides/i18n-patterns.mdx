@@ -1,0 +1,270 @@
+# Internationalization (i18n) Patterns
+
+Platform UI components are **UI-only** - they receive translated strings via props. This guide documents the patterns for handling translations.
+
+## Core Principle
+
+**Components do NOT contain i18n logic.** They receive pre-translated strings as props.
+
+```tsx
+// ✅ Good - String passed as prop
+<Button>{t('common.submit')}</Button>
+
+// ❌ Bad - Component handling translation
+<Button translationKey="common.submit" />
+```
+
+## i18n Pattern Types
+
+### 1. Children Pattern
+
+Most text content uses the `children` prop:
+
+```tsx
+<Heading level={1}>{t('page.title')}</Heading>
+<Paragraph>{t('page.description')}</Paragraph>
+<Button>{t('actions.submit')}</Button>
+```
+
+### 2. Props Pattern
+
+Specific text props receive translations:
+
+```tsx
+<Textfield
+  label={t('form.email.label')}
+  placeholder={t('form.email.placeholder')}
+  description={t('form.email.description')}
+  error={errors.email && t(errors.email)}
+/>
+
+<EmptyState
+  title={t('empty.title')}
+  description={t('empty.description')}
+/>
+```
+
+### 3. Render Prop Pattern
+
+For complex content with embedded components:
+
+```tsx
+<Alert>
+  {t.rich('messages.terms', {
+    link: (chunks) => <Link href="/terms">{chunks}</Link>,
+  })}
+</Alert>
+```
+
+## Component i18n Reference
+
+### Typography
+
+| Component | Translatable | Pattern |
+|-----------|--------------|---------|
+| `Heading` | content | children |
+| `Paragraph` | content | children |
+| `Label` | content | children |
+
+### Forms
+
+| Component | Translatable Props | Pattern |
+|-----------|-------------------|---------|
+| `Textfield` | label, placeholder, description, error | props |
+| `Textarea` | label, placeholder, description, error | props |
+| `Select` | label, placeholder, error, options | props |
+| `Checkbox` | label, description, error | children + props |
+| `Radio.Group` | legend, error | props |
+| `Button` | content, aria-label | children + props |
+
+### Feedback
+
+| Component | Translatable Props | Pattern |
+|-----------|-------------------|---------|
+| `Alert` | heading, content | children |
+| `EmptyState` | title, description | props |
+| `AccessGate` | title, description | props |
+| `Toast` | message | props |
+
+### Navigation
+
+| Component | Translatable Props | Pattern |
+|-----------|-------------------|---------|
+| `Link` | content | children |
+| `Navigation` | items[].label | props |
+| `Breadcrumb` | items[].label | props |
+
+## Integration Example
+
+```tsx
+// Page component integrating with i18n
+import { useTranslations } from '@xala-technologies/i18n';
+import { PageHeader, FormLayout, FormSection } from '@xala-technologies/platform-ui/composed';
+import { EmptyState, AccessGate } from '@xala-technologies/platform-ui/blocks';
+import { Textfield, Button, Alert } from '@digdir/designsystemet-react';
+
+function UserEditPage({ user, hasPermission, onSubmit }) {
+  const t = useTranslations('users.edit');
+
+  if (!hasPermission) {
+    return (
+      <AccessGate
+        denied
+        title={t('access.title')}
+        description={t('access.description')}
+      />
+    );
+  }
+
+  return (
+    <FormLayout onSubmit={onSubmit}>
+      <PageHeader title={t('title', { name: user.name })} />
+
+      {error && (
+        <Alert data-color="danger">
+          {t('errors.saveFailed')}
+        </Alert>
+      )}
+
+      <FormSection title={t('sections.personal')}>
+        <Textfield
+          label={t('fields.name.label')}
+          placeholder={t('fields.name.placeholder')}
+          error={errors.name && t(`errors.${errors.name}`)}
+          defaultValue={user.name}
+        />
+        <Textfield
+          label={t('fields.email.label')}
+          placeholder={t('fields.email.placeholder')}
+          description={t('fields.email.description')}
+          error={errors.email && t(`errors.${errors.email}`)}
+          defaultValue={user.email}
+        />
+      </FormSection>
+
+      <FormLayout.Actions>
+        <Button type="submit" loading={isSubmitting}>
+          {t('actions.save')}
+        </Button>
+        <Button variant="secondary" onClick={onCancel}>
+          {t('actions.cancel')}
+        </Button>
+      </FormLayout.Actions>
+    </FormLayout>
+  );
+}
+```
+
+## Translation File Structure
+
+```json
+{
+  "users": {
+    "edit": {
+      "title": "Edit {name}",
+      "access": {
+        "title": "Access Restricted",
+        "description": "You don't have permission to edit users."
+      },
+      "sections": {
+        "personal": "Personal Information"
+      },
+      "fields": {
+        "name": {
+          "label": "Full Name",
+          "placeholder": "Enter full name"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "user@example.com",
+          "description": "We'll use this for notifications"
+        }
+      },
+      "actions": {
+        "save": "Save Changes",
+        "cancel": "Cancel"
+      },
+      "errors": {
+        "saveFailed": "Failed to save changes. Please try again.",
+        "required": "This field is required",
+        "invalidEmail": "Please enter a valid email address"
+      }
+    }
+  }
+}
+```
+
+## Accessibility & i18n
+
+### Labels for Screen Readers
+
+```tsx
+// Icon-only button needs aria-label
+<Button variant="tertiary" aria-label={t('actions.delete')}>
+  <TrashIcon />
+</Button>
+
+// Complex content with aria-describedby
+<Textfield
+  label={t('form.password.label')}
+  aria-describedby="password-requirements"
+/>
+<Paragraph id="password-requirements" data-size="small">
+  {t('form.password.requirements')}
+</Paragraph>
+```
+
+### Live Regions
+
+```tsx
+// Announce changes to screen readers
+<div role="status" aria-live="polite">
+  {isLoading ? t('status.loading') : t('status.loaded', { count })}
+</div>
+
+// Announce errors
+<Alert role="alert">
+  {t('errors.validationFailed')}
+</Alert>
+```
+
+## Pluralization
+
+Handle via the i18n library, pass result to component:
+
+```tsx
+const message = t('items.count', { count: items.length });
+// "No items" | "1 item" | "5 items"
+
+<Paragraph>{message}</Paragraph>
+```
+
+## Date/Time Formatting
+
+Format outside components, pass formatted string:
+
+```tsx
+const formattedDate = formatDate(user.createdAt, locale);
+
+<DefinitionList
+  items={[
+    { term: t('fields.created'), description: formattedDate },
+  ]}
+/>
+```
+
+## RTL Support
+
+Components should work with RTL automatically via CSS logical properties:
+
+```css
+/* Platform UI uses logical properties */
+padding-inline-start: var(--ds-spacing-4);  /* Not padding-left */
+margin-block-end: var(--ds-spacing-2);      /* Not margin-bottom */
+```
+
+## See Also
+
+- [@xala-technologies/i18n Documentation](https://github.com/Xala-Technologies/i18n)
+- [Accessibility Patterns](./accessibility-patterns.mdx)
+- [State Matrix](./state-matrix.mdx)

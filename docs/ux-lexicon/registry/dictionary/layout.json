@@ -1,0 +1,278 @@
+{
+  "$schema": "../../schemas/dictionary-entry.schema.json",
+  "category": "layout",
+  "entries": [
+    {
+      "id": "div-container",
+      "category": "layout",
+      "htmlIntent": {
+        "element": "<div class=\"container\">",
+        "attributes": {
+          "class": "container",
+          "style": "max-width: ...; margin: 0 auto;"
+        },
+        "description": "A centered container with max-width for page content"
+      },
+      "platformConstruct": {
+        "component": "Container",
+        "importPath": "@xala-technologies/platform-ui/primitives",
+        "defaultProps": {
+          "data-size": "medium"
+        },
+        "alternatives": [
+          {
+            "component": "Box",
+            "importPath": "@xala-technologies/platform-ui/primitives",
+            "useCase": "When custom max-width or margins are needed"
+          }
+        ]
+      },
+      "layer": "primitives",
+      "states": {
+        "idle": {
+          "component": "Container",
+          "props": {}
+        },
+        "loading": {
+          "component": "Container",
+          "props": { "children": "Skeleton" }
+        }
+      },
+      "accessibility": {
+        "role": "none",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": []
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Container data-size=\"medium\">\n  <Heading level={1}>Page Title</Heading>\n  <Paragraph>Content goes here</Paragraph>\n</Container>",
+        "imports": [
+          "import { Container } from '@xala-technologies/platform-ui/primitives';",
+          "import { Heading, Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/primitives-container"
+      },
+      "tags": ["container", "layout", "wrapper", "centered"]
+    },
+    {
+      "id": "div-flex",
+      "category": "layout",
+      "htmlIntent": {
+        "element": "<div style=\"display: flex\">",
+        "attributes": {
+          "style": "display: flex; flex-direction: row|column; gap: ...; align-items: ...; justify-content: ..."
+        },
+        "description": "A flex container for horizontal or vertical layouts"
+      },
+      "platformConstruct": {
+        "component": "Stack",
+        "importPath": "@xala-technologies/platform-ui/primitives",
+        "defaultProps": {
+          "direction": "vertical",
+          "gap": "4"
+        },
+        "alternatives": [
+          {
+            "component": "Box",
+            "importPath": "@xala-technologies/platform-ui/primitives",
+            "useCase": "When more complex flex properties are needed"
+          }
+        ]
+      },
+      "layer": "primitives",
+      "states": {
+        "idle": {
+          "component": "Stack",
+          "props": {}
+        },
+        "loading": {
+          "component": "Stack",
+          "props": { "children": "Skeleton" }
+        }
+      },
+      "accessibility": {
+        "role": "none",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": []
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Stack direction=\"horizontal\" gap=\"4\" align=\"center\">\n  <Button>Action 1</Button>\n  <Button variant=\"secondary\">Action 2</Button>\n</Stack>",
+        "imports": [
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Button } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/primitives-stack"
+      },
+      "tags": ["flex", "flexbox", "stack", "horizontal", "vertical", "layout"]
+    },
+    {
+      "id": "div-grid",
+      "category": "layout",
+      "htmlIntent": {
+        "element": "<div style=\"display: grid\">",
+        "attributes": {
+          "style": "display: grid; grid-template-columns: ...; gap: ..."
+        },
+        "description": "A CSS grid container for two-dimensional layouts"
+      },
+      "platformConstruct": {
+        "component": "Grid",
+        "importPath": "@xala-technologies/platform-ui/primitives",
+        "defaultProps": {
+          "columns": 12,
+          "gap": "4"
+        }
+      },
+      "layer": "primitives",
+      "states": {
+        "idle": {
+          "component": "Grid",
+          "props": {}
+        },
+        "loading": {
+          "component": "Grid",
+          "props": { "children": "Skeleton" }
+        }
+      },
+      "accessibility": {
+        "role": "none",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": []
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Grid columns={3} gap=\"4\">\n  <Card>Item 1</Card>\n  <Card>Item 2</Card>\n  <Card>Item 3</Card>\n</Grid>",
+        "imports": [
+          "import { Grid } from '@xala-technologies/platform-ui/primitives';",
+          "import { Card } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/primitives-grid"
+      },
+      "tags": ["grid", "columns", "layout", "responsive"]
+    },
+    {
+      "id": "section-semantic",
+      "category": "layout",
+      "htmlIntent": {
+        "element": "<section>",
+        "attributes": {
+          "aria-labelledby": "section-heading"
+        },
+        "description": "A semantic section element for grouping related content"
+      },
+      "platformConstruct": {
+        "component": "Card",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-color": "neutral",
+          "role": "region"
+        },
+        "alternatives": [
+          {
+            "component": "Box",
+            "importPath": "@xala-technologies/platform-ui/primitives",
+            "useCase": "When Card styling is not desired"
+          }
+        ]
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "Card",
+          "props": { "role": "region" }
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "200px" }
+        },
+        "error": {
+          "component": "Alert",
+          "props": { "data-color": "danger" }
+        }
+      },
+      "accessibility": {
+        "role": "region",
+        "ariaAttributes": {
+          "aria-labelledby": "Reference to section heading ID"
+        },
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Card data-color=\"neutral\" role=\"region\" aria-labelledby=\"section-title\">\n  <Heading id=\"section-title\" level={2} data-size=\"medium\">Section Title</Heading>\n  <Paragraph>Section content goes here.</Paragraph>\n</Card>",
+        "imports": [
+          "import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/composed-section"
+      },
+      "tags": ["section", "region", "semantic", "grouping"]
+    },
+    {
+      "id": "article-semantic",
+      "category": "layout",
+      "htmlIntent": {
+        "element": "<article>",
+        "attributes": {},
+        "description": "A semantic article element for self-contained content"
+      },
+      "platformConstruct": {
+        "component": "Card",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-color": "neutral",
+          "role": "article"
+        }
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "Card",
+          "props": { "role": "article" }
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "300px" }
+        },
+        "error": {
+          "component": "Alert",
+          "props": { "data-color": "danger" }
+        }
+      },
+      "accessibility": {
+        "role": "article",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Card data-color=\"neutral\" role=\"article\">\n  <Heading level={2} data-size=\"medium\">Article Title</Heading>\n  <Paragraph data-size=\"small\">Published: January 29, 2025</Paragraph>\n  <Paragraph>Article content goes here.</Paragraph>\n</Card>",
+        "imports": [
+          "import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/composed-article"
+      },
+      "tags": ["article", "semantic", "content", "self-contained"]
+    }
+  ]
+}

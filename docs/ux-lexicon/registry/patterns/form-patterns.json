@@ -1,0 +1,255 @@
+{
+  "$schema": "../../schemas/pattern-catalog.schema.json",
+  "category": "form",
+  "patterns": [
+    {
+      "id": "form-with-validation",
+      "name": "Form with Validation",
+      "description": "Standard form pattern with inline validation and error display",
+      "category": "form",
+      "components": [
+        {
+          "role": "container",
+          "component": "FormLayout",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        },
+        {
+          "role": "section",
+          "component": "FormSection",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": false
+        },
+        {
+          "role": "field",
+          "component": "Textfield",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "submit",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "error-summary",
+          "component": "Alert",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Form ready for input",
+          "composition": "FormLayout with empty fields"
+        },
+        "loading": {
+          "description": "Form is submitting",
+          "composition": "FormLayout with disabled fields and loading button"
+        },
+        "error": {
+          "description": "Form has validation errors",
+          "composition": "FormLayout with error Alert and field-level errors"
+        },
+        "success": {
+          "description": "Form submitted successfully",
+          "composition": "Success Alert or redirect"
+        }
+      },
+      "accessibility": {
+        "landmarks": ["form"],
+        "focusManagement": "Focus moves to first error on validation failure",
+        "announcements": ["Error count on validation failure", "Success message on submit"]
+      },
+      "example": {
+        "jsx": "<FormLayout\n  onSubmit={handleSubmit}\n  isSubmitting={isSubmitting}\n>\n  {errors.length > 0 && (\n    <Alert data-color=\"danger\">\n      Please fix {errors.length} error(s) below\n    </Alert>\n  )}\n  \n  <FormSection title=\"Personal Information\">\n    <Textfield\n      label=\"Full Name\"\n      name=\"name\"\n      error={fieldErrors.name}\n      required\n    />\n    <Textfield\n      label=\"Email\"\n      name=\"email\"\n      type=\"email\"\n      error={fieldErrors.email}\n      required\n    />\n  </FormSection>\n  \n  <FormLayout.Actions>\n    <Button type=\"submit\" loading={isSubmitting}>\n      Submit\n    </Button>\n    <Button type=\"reset\" variant=\"secondary\">\n      Reset\n    </Button>\n  </FormLayout.Actions>\n</FormLayout>",
+        "imports": [
+          "import { FormLayout, FormSection } from '@xala-technologies/platform-ui/composed';",
+          "import { Textfield, Button, Alert } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-form-validation"
+      },
+      "antiPatterns": [
+        {
+          "description": "Showing all errors at once without field context",
+          "badExample": "<Alert>Name is required. Email is invalid.</Alert>",
+          "reason": "Users can't easily identify which field has the error"
+        },
+        {
+          "description": "Validating on every keystroke",
+          "badExample": "onChange={() => validate()}",
+          "reason": "Premature validation is frustrating; validate on blur or submit"
+        }
+      ],
+      "relatedPatterns": ["wizard-form", "inline-edit"],
+      "tags": ["form", "validation", "input", "submit"]
+    },
+    {
+      "id": "wizard-form",
+      "name": "Multi-Step Wizard Form",
+      "description": "Form split across multiple steps with progress indication",
+      "category": "form",
+      "components": [
+        {
+          "role": "container",
+          "component": "FormLayout",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        },
+        {
+          "role": "progress",
+          "component": "Stepper",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        },
+        {
+          "role": "step-content",
+          "component": "Card",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "navigation",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Current step displayed and editable",
+          "composition": "Stepper with active step + FormSection content"
+        },
+        "loading": {
+          "description": "Step is validating or saving",
+          "composition": "Current step with loading indicator"
+        },
+        "error": {
+          "description": "Current step has validation errors",
+          "composition": "Current step with error indicators"
+        },
+        "success": {
+          "description": "All steps complete",
+          "composition": "Success summary or confirmation"
+        }
+      },
+      "accessibility": {
+        "landmarks": ["form", "navigation"],
+        "focusManagement": "Focus moves to step content on navigation",
+        "announcements": ["Step change announced", "Completion status"]
+      },
+      "example": {
+        "jsx": "<FormLayout onSubmit={handleFinalSubmit}>\n  <Stepper\n    steps={steps}\n    currentStep={currentStep}\n    onStepClick={handleStepClick}\n  />\n  \n  <Card data-color=\"neutral\">\n    {currentStep === 0 && (\n      <FormSection title=\"Personal Details\">\n        <Textfield label=\"Name\" name=\"name\" />\n        <Textfield label=\"Email\" name=\"email\" type=\"email\" />\n      </FormSection>\n    )}\n    \n    {currentStep === 1 && (\n      <FormSection title=\"Address\">\n        <Textfield label=\"Street\" name=\"street\" />\n        <Textfield label=\"City\" name=\"city\" />\n      </FormSection>\n    )}\n    \n    {currentStep === 2 && (\n      <FormSection title=\"Review\">\n        <DefinitionList items={formSummary} />\n      </FormSection>\n    )}\n  </Card>\n  \n  <Stack direction=\"horizontal\" justify=\"space-between\">\n    <Button\n      variant=\"secondary\"\n      onClick={handlePrevious}\n      disabled={currentStep === 0}\n    >\n      Previous\n    </Button>\n    \n    {currentStep < steps.length - 1 ? (\n      <Button onClick={handleNext}>Next</Button>\n    ) : (\n      <Button type=\"submit\">Submit</Button>\n    )}\n  </Stack>\n</FormLayout>",
+        "imports": [
+          "import { FormLayout, FormSection, Stepper, DefinitionList } from '@xala-technologies/platform-ui/composed';",
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Textfield, Button, Card } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-wizard-form"
+      },
+      "antiPatterns": [
+        {
+          "description": "Losing data when navigating between steps",
+          "badExample": "State not persisted between step renders",
+          "reason": "User loses progress; always preserve step data"
+        },
+        {
+          "description": "Not allowing back navigation",
+          "badExample": "Previous button disabled after validation",
+          "reason": "Users need to review and correct previous entries"
+        }
+      ],
+      "relatedPatterns": ["form-with-validation"],
+      "tags": ["wizard", "stepper", "multi-step", "form", "progress"]
+    },
+    {
+      "id": "inline-edit",
+      "name": "Inline Edit Pattern",
+      "description": "Click-to-edit pattern for in-place field modification",
+      "category": "form",
+      "components": [
+        {
+          "role": "display",
+          "component": "Paragraph",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "edit-trigger",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "edit-field",
+          "component": "Textfield",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Displaying value with edit affordance",
+          "composition": "Value text with edit icon/button"
+        },
+        "editing": {
+          "description": "Field is editable",
+          "composition": "Input field with save/cancel buttons"
+        },
+        "loading": {
+          "description": "Saving changes",
+          "composition": "Input disabled with loading indicator"
+        },
+        "error": {
+          "description": "Save failed",
+          "composition": "Input with error message"
+        },
+        "success": {
+          "description": "Changes saved",
+          "composition": "Brief success indicator, then return to idle"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus moves to input on edit, returns to trigger on cancel/save",
+        "announcements": ["Edit mode entered", "Changes saved/cancelled"]
+      },
+      "example": {
+        "jsx": "<Stack direction=\"horizontal\" align=\"center\" gap=\"2\">\n  {isEditing ? (\n    <>\n      <Textfield\n        value={editValue}\n        onChange={(e) => setEditValue(e.target.value)}\n        autoFocus\n        data-size=\"small\"\n      />\n      <Button\n        variant=\"primary\"\n        data-size=\"small\"\n        onClick={handleSave}\n        loading={isSaving}\n      >\n        Save\n      </Button>\n      <Button\n        variant=\"secondary\"\n        data-size=\"small\"\n        onClick={handleCancel}\n      >\n        Cancel\n      </Button>\n    </>\n  ) : (\n    <>\n      <Paragraph>{value}</Paragraph>\n      <Button\n        variant=\"tertiary\"\n        data-size=\"small\"\n        onClick={() => setIsEditing(true)}\n        aria-label=\"Edit value\"\n      >\n        <PencilIcon />\n      </Button>\n    </>\n  )}\n</Stack>",
+        "imports": [
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Textfield, Button, Paragraph } from '@digdir/designsystemet-react';",
+          "import { PencilIcon } from 'lucide-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-inline-edit"
+      },
+      "antiPatterns": [
+        {
+          "description": "No visual edit affordance",
+          "badExample": "Plain text with no indication it's editable",
+          "reason": "Users won't discover the edit functionality"
+        },
+        {
+          "description": "No way to cancel edit",
+          "badExample": "Only save button, no cancel",
+          "reason": "Users need escape hatch for accidental edits"
+        }
+      ],
+      "relatedPatterns": ["form-with-validation"],
+      "tags": ["inline", "edit", "click-to-edit", "form"]
+    }
+  ]
+}

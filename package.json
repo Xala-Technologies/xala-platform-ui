@@ -20,6 +20,8 @@
     "verify:accessibility": "pnpm --filter @xala-technologies/platform-ui verify:accessibility",
     "verify:responsive": "pnpm --filter @xala-technologies/platform-ui verify:responsive",
     "verify:all": "pnpm --filter @xala-technologies/platform-ui verify:all",
+    "verify:ux-lexicon": "node docs/ux-lexicon/scripts/verify-ux-lexicon.js",
+    "generate:atlas": "node docs/ux-lexicon/scripts/generate-atlas.js",
     "verify:specs": "npx design-workflow validate",
     "quality": "pnpm --filter @xala-technologies/platform-ui quality",
     "storybook": "storybook dev -p 6006",

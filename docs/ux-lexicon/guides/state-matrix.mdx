@@ -1,0 +1,248 @@
+# State Matrix Guide
+
+Every component should handle these standard states for consistent UX.
+
+## Standard States
+
+| State | Description | Default Component |
+|-------|-------------|-------------------|
+| `idle` | Normal interactive state | The component itself |
+| `loading` | Data is being fetched | `Skeleton` or `Spinner` |
+| `empty` | No data to display | `EmptyState` |
+| `error` | An error occurred | `Alert data-color="danger"` |
+| `success` | Operation succeeded | `Alert data-color="success"` or `Toast` |
+| `permissionDenied` | User lacks permission | `AccessGate` |
+
+## TypeScript Type
+
+```typescript
+type ComponentState =
+  | 'idle'
+  | 'loading'
+  | 'empty'
+  | 'error'
+  | 'success'
+  | 'permissionDenied';
+```
+
+## Using StateWrapper
+
+The `StateWrapper` composed component handles state switching:
+
+```tsx
+import { StateWrapper } from '@xala-technologies/platform-ui/composed';
+import { EmptyState, AccessGate } from '@xala-technologies/platform-ui/blocks';
+import { Alert, Skeleton } from '@digdir/designsystemet-react';
+
+function UserList({ users, isLoading, error, hasPermission }) {
+  const getState = () => {
+    if (!hasPermission) return 'permissionDenied';
+    if (isLoading) return 'loading';
+    if (error) return 'error';
+    if (users.length === 0) return 'empty';
+    return 'idle';
+  };
+
+  return (
+    <StateWrapper
+      state={getState()}
+      loadingComponent={<Skeleton count={5} height="3rem" />}
+      emptyComponent={
+        <EmptyState
+          title="No users found"
+          description="Add your first user to get started"
+          action={<Button>Add User</Button>}
+        />
+      }
+      errorComponent={
+        <Alert data-color="danger">
+          {error.message}
+          <Button onClick={retry}>Retry</Button>
+        </Alert>
+      }
+      permissionDeniedComponent={
+        <AccessGate
+          denied
+          title="Access Restricted"
+          description="You don't have permission to view users"
+        />
+      }
+    >
+      <DataTable data={users} columns={columns} />
+    </StateWrapper>
+  );
+}
+```
+
+## State-Specific Components
+
+### Loading State
+
+```tsx
+// Skeleton for known shapes (preferred)
+<Skeleton height="2rem" width="60%" />
+<Skeleton count={5} height="3rem" />
+
+// Spinner for unknown duration
+<Stack align="center" justify="center" padding="8">
+  <Spinner data-size="large" />
+  <Paragraph>Loading...</Paragraph>
+</Stack>
+
+// Component-specific loading
+<DataTable.Skeleton rows={10} columns={columns} />
+```
+
+### Empty State
+
+```tsx
+<EmptyState
+  icon={<FolderIcon size={48} />}
+  title="No files yet"
+  description="Upload your first file to get started"
+  action={
+    <Button variant="primary" onClick={handleUpload}>
+      Upload File
+    </Button>
+  }
+/>
+
+// Search results empty
+<ResultsEmptyState
+  query={searchQuery}
+  suggestions={[
+    'Try different keywords',
+    'Check for typos',
+    'Remove some filters'
+  ]}
+/>
+```
+
+### Error State
+
+```tsx
+// Inline error
+<Alert data-color="danger">
+  <Alert.Heading>Failed to load data</Alert.Heading>
+  <Alert.Description>
+    There was a problem connecting to the server.
+  </Alert.Description>
+  <Stack direction="horizontal" gap="2">
+    <Button variant="secondary" onClick={handleRetry}>
+      Try Again
+    </Button>
+    <Button variant="tertiary" onClick={handleReport}>
+      Report Issue
+    </Button>
+  </Stack>
+</Alert>
+
+// Full page error
+<ErrorPage
+  code={500}
+  title="Something went wrong"
+  description="We're working on fixing this"
+  action={<Button onClick={() => window.location.reload()}>Refresh</Button>}
+/>
+```
+
+### Success State
+
+```tsx
+// Inline success
+<Alert data-color="success">
+  <Alert.Heading>Changes saved</Alert.Heading>
+  <Alert.Description>
+    Your profile has been updated successfully.
+  </Alert.Description>
+</Alert>
+
+// Toast notification (auto-dismiss)
+<Toast
+  variant="success"
+  message="Item added to cart"
+  duration={3000}
+/>
+```
+
+### Permission Denied State
+
+```tsx
+<AccessGate
+  denied
+  icon={<ShieldIcon />}
+  title="Access Restricted"
+  description="You don't have permission to view this resource"
+  requiredPermission="users:read"
+  actions={
+    <Stack direction="horizontal" gap="2">
+      <Button onClick={handleRequestAccess}>
+        Request Access
+      </Button>
+      <Button variant="secondary" onClick={handleGoBack}>
+        Go Back
+      </Button>
+    </Stack>
+  }
+/>
+```
+
+## State Priority
+
+When multiple states apply, use this priority order:
+
+1. `permissionDenied` - Check first, don't reveal existence of protected data
+2. `loading` - Show while fetching
+3. `error` - Show if fetch failed
+4. `empty` - Show if no data after successful fetch
+5. `success` - Brief feedback after action
+6. `idle` - Normal display
+
+```typescript
+function getState(hasPermission, isLoading, error, data, showSuccess) {
+  if (!hasPermission) return 'permissionDenied';
+  if (isLoading) return 'loading';
+  if (error) return 'error';
+  if (showSuccess) return 'success';
+  if (!data || data.length === 0) return 'empty';
+  return 'idle';
+}
+```
+
+## Storybook Stories
+
+Every component should have stories for all applicable states:
+
+```tsx
+// Component.stories.tsx
+export default {
+  title: 'Components/UserList',
+  component: UserList,
+};
+
+export const Default: Story = {
+  args: { users: mockUsers },
+};
+
+export const Loading: Story = {
+  args: { isLoading: true },
+};
+
+export const Empty: Story = {
+  args: { users: [] },
+};
+
+export const Error: Story = {
+  args: { error: new Error('Failed to fetch users') },
+};
+
+export const PermissionDenied: Story = {
+  args: { hasPermission: false },
+};
+```
+
+## See Also
+
+- [HTML Translation Table](./HTML_TRANSLATION_TABLE.mdx)
+- [Accessibility Patterns](./accessibility-patterns.mdx)
+- [State Patterns Registry](/docs/ux-lexicon/registry/patterns/state-patterns.json)

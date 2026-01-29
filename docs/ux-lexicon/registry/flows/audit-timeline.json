@@ -1,0 +1,76 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "audit-timeline",
+  "name": "Audit/Activity Timeline",
+  "description": "Chronological activity log with filtering and details expansion",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells"
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "children": [
+        { "component": "PageHeader", "layer": "composed" },
+        { "component": "FilterBar", "layer": "composed" },
+        { "component": "Timeline", "layer": "composed" }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Timeline displaying activities",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "loading": {
+      "description": "Loading activities",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Skeleton timeline items"
+    },
+    "empty": {
+      "description": "No activities",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "error": {
+      "description": "Failed to load",
+      "activeZones": ["header", "sidebar", "main"]
+    }
+  },
+  "userActions": [
+    { "action": "Filter by type", "component": "Select", "callback": "onTypeFilter", "resultingState": "loading" },
+    { "action": "Filter by date", "component": "DatePicker", "callback": "onDateFilter", "resultingState": "loading" },
+    { "action": "Expand details", "component": "Timeline item", "callback": "onExpand", "resultingState": "idle (expanded)" },
+    { "action": "Load more", "component": "Button", "callback": "onLoadMore", "resultingState": "loading" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "activities", "type": "Activity[]", "required": true, "description": "Activity items" },
+      { "name": "hasMore", "type": "boolean", "required": false, "description": "Has more to load" }
+    ],
+    "callbacks": [
+      { "name": "onLoadMore", "signature": "() => void", "description": "Load more activities" },
+      { "name": "onFilter", "signature": "(filters: FilterState) => void", "description": "Filter activities" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout header={<DashboardHeader />} sidebar={<DashboardSidebar />}>\n  <DashboardContent>\n    <PageHeader title=\"Activity Log\" />\n    \n    <Stack direction=\"horizontal\" gap=\"4\">\n      <Select label=\"Activity Type\" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>\n        <Select.Option value=\"\">All Types</Select.Option>\n        <Select.Option value=\"create\">Created</Select.Option>\n        <Select.Option value=\"update\">Updated</Select.Option>\n        <Select.Option value=\"delete\">Deleted</Select.Option>\n        <Select.Option value=\"login\">Login</Select.Option>\n      </Select>\n      \n      <DatePicker label=\"Date Range\" value={dateRange} onChange={setDateRange} />\n    </Stack>\n    \n    <StateWrapper\n      state={isLoading ? 'loading' : activities.length === 0 ? 'empty' : 'idle'}\n      loadingComponent={<TimelineSkeleton count={5} />}\n      emptyComponent={<EmptyState title=\"No activities\" description=\"No activities match your filters\" />}\n    >\n      <Stack direction=\"vertical\" gap=\"0\">\n        {activities.map((activity, index) => (\n          <Stack key={activity.id} direction=\"horizontal\" gap=\"3\">\n            <Box>\n              <Badge data-color={getActivityColor(activity.type)}>\n                {getActivityIcon(activity.type)}\n              </Badge>\n              {index < activities.length - 1 && <Divider orientation=\"vertical\" />}\n            </Box>\n            \n            <Card data-color=\"neutral\" onClick={() => toggleExpand(activity.id)}>\n              <Stack direction=\"horizontal\" justify=\"space-between\">\n                <Stack direction=\"vertical\" gap=\"1\">\n                  <Paragraph data-size=\"medium\">\n                    <strong>{activity.user}</strong> {activity.action} <strong>{activity.target}</strong>\n                  </Paragraph>\n                  <Paragraph data-size=\"small\" data-color=\"subtle\">\n                    {formatRelativeTime(activity.timestamp)}\n                  </Paragraph>\n                </Stack>\n                <ChevronIcon direction={expanded.includes(activity.id) ? 'up' : 'down'} />\n              </Stack>\n              \n              {expanded.includes(activity.id) && (\n                <Box padding=\"3\">\n                  <DefinitionList items={[\n                    { term: 'IP Address', description: activity.ipAddress },\n                    { term: 'User Agent', description: activity.userAgent },\n                    { term: 'Changes', description: JSON.stringify(activity.changes, null, 2) },\n                  ]} />\n                </Box>\n              )}\n            </Card>\n          </Stack>\n        ))}\n      </Stack>\n      \n      {hasMore && (\n        <Button variant=\"tertiary\" onClick={handleLoadMore} loading={isLoadingMore}>\n          Load More\n        </Button>\n      )}\n    </StateWrapper>\n  </DashboardContent>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { PageHeader, DefinitionList, StateWrapper, DatePicker } from '@xala-technologies/platform-ui/composed';",
+      "import { EmptyState } from '@xala-technologies/platform-ui/blocks';",
+      "import { Stack, Box } from '@xala-technologies/platform-ui/primitives';",
+      "import { Select, Card, Paragraph, Badge, Button, Divider } from '@digdir/designsystemet-react';"
+    ]
+  },
+  "relatedFlows": ["list-page", "detail-page"],
+  "tags": ["audit", "activity", "timeline", "log", "history"]
+}

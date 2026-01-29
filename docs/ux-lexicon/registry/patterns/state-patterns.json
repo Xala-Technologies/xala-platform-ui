@@ -1,0 +1,294 @@
+{
+  "$schema": "../../schemas/pattern-catalog.schema.json",
+  "category": "state",
+  "patterns": [
+    {
+      "id": "loading-skeleton",
+      "name": "Loading Skeleton Pattern",
+      "description": "Placeholder content during data loading",
+      "category": "state",
+      "components": [
+        {
+          "role": "skeleton",
+          "component": "Skeleton",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "spinner",
+          "component": "Spinner",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "loading": {
+          "description": "Content is loading",
+          "composition": "Skeleton shapes matching expected content"
+        },
+        "idle": {
+          "description": "Content loaded, skeleton hidden",
+          "composition": "Actual content"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus moves to content when loaded",
+        "announcements": ["Loading state announced via aria-busy"]
+      },
+      "example": {
+        "jsx": "<Card data-color=\"neutral\">\n  {isLoading ? (\n    <Stack direction=\"vertical\" gap=\"2\">\n      <Skeleton height=\"1.5rem\" width=\"60%\" />\n      <Skeleton height=\"1rem\" width=\"100%\" />\n      <Skeleton height=\"1rem\" width=\"80%\" />\n    </Stack>\n  ) : (\n    <Stack direction=\"vertical\" gap=\"2\">\n      <Heading level={2} data-size=\"small\">{title}</Heading>\n      <Paragraph>{description}</Paragraph>\n    </Stack>\n  )}\n</Card>",
+        "imports": [
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Card, Heading, Paragraph, Skeleton } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-loading-skeleton"
+      },
+      "antiPatterns": [
+        {
+          "description": "Skeleton doesn't match content shape",
+          "badExample": "Single rectangle for card with title, image, and text",
+          "reason": "Causes layout shift when content loads"
+        },
+        {
+          "description": "Using spinner for known content shapes",
+          "badExample": "<Card><Spinner /></Card>",
+          "reason": "Skeletons reduce perceived load time better than spinners"
+        }
+      ],
+      "relatedPatterns": ["empty-state", "error-state"],
+      "tags": ["loading", "skeleton", "placeholder", "shimmer"]
+    },
+    {
+      "id": "empty-state",
+      "name": "Empty State Pattern",
+      "description": "Helpful message when no content exists",
+      "category": "state",
+      "components": [
+        {
+          "role": "container",
+          "component": "EmptyState",
+          "layer": "blocks",
+          "importPath": "@xala-technologies/platform-ui/blocks",
+          "required": true
+        },
+        {
+          "role": "icon",
+          "component": "Icon",
+          "layer": "external",
+          "importPath": "lucide-react",
+          "required": false
+        },
+        {
+          "role": "action",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "empty": {
+          "description": "No content to display",
+          "composition": "EmptyState with message and optional action"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus moves to action if present",
+        "announcements": ["Empty state announced to screen readers"]
+      },
+      "example": {
+        "jsx": "<EmptyState\n  icon={<InboxIcon size={48} />}\n  title=\"No messages\"\n  description=\"You don't have any messages yet. Start a conversation!\"\n  action={\n    <Button variant=\"primary\">\n      Compose Message\n    </Button>\n  }\n/>",
+        "imports": [
+          "import { EmptyState } from '@xala-technologies/platform-ui/blocks';",
+          "import { Button } from '@digdir/designsystemet-react';",
+          "import { InboxIcon } from 'lucide-react';"
+        ],
+        "storybookPath": "?path=/story/blocks-emptystate"
+      },
+      "antiPatterns": [
+        {
+          "description": "Generic \"no data\" message",
+          "badExample": "<EmptyState title=\"No data\" />",
+          "reason": "Not helpful; explain what's missing and how to fix it"
+        },
+        {
+          "description": "No call-to-action",
+          "badExample": "Just showing \"No items found\"",
+          "reason": "Users need guidance on what to do next"
+        }
+      ],
+      "relatedPatterns": ["loading-skeleton", "error-state"],
+      "tags": ["empty", "no-data", "placeholder", "onboarding"]
+    },
+    {
+      "id": "error-state",
+      "name": "Error State Pattern",
+      "description": "Error display with recovery options",
+      "category": "state",
+      "components": [
+        {
+          "role": "alert",
+          "component": "Alert",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "retry",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "error": {
+          "description": "An error has occurred",
+          "composition": "Alert with error message and retry action"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus moves to error message",
+        "announcements": ["Error announced via role=\"alert\""]
+      },
+      "example": {
+        "jsx": "<Alert data-color=\"danger\">\n  <Alert.Heading>Failed to load users</Alert.Heading>\n  <Alert.Description>\n    There was a problem connecting to the server. Please check your connection and try again.\n  </Alert.Description>\n  <Stack direction=\"horizontal\" gap=\"2\">\n    <Button variant=\"secondary\" data-size=\"small\" onClick={handleRetry}>\n      Try Again\n    </Button>\n    <Button variant=\"tertiary\" data-size=\"small\" onClick={handleReport}>\n      Report Issue\n    </Button>\n  </Stack>\n</Alert>",
+        "imports": [
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Alert, Button } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-error-state"
+      },
+      "antiPatterns": [
+        {
+          "description": "Technical error messages",
+          "badExample": "Error: ECONNREFUSED 127.0.0.1:5432",
+          "reason": "Users don't understand technical details; provide human-readable message"
+        },
+        {
+          "description": "No recovery option",
+          "badExample": "Just showing \"An error occurred\"",
+          "reason": "Users need a way to recover or get help"
+        }
+      ],
+      "relatedPatterns": ["loading-skeleton", "empty-state"],
+      "tags": ["error", "failure", "alert", "recovery"]
+    },
+    {
+      "id": "permission-denied",
+      "name": "Permission Denied Pattern",
+      "description": "Access denied message with appropriate actions",
+      "category": "state",
+      "components": [
+        {
+          "role": "container",
+          "component": "AccessGate",
+          "layer": "blocks",
+          "importPath": "@xala-technologies/platform-ui/blocks",
+          "required": true
+        },
+        {
+          "role": "request-access",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "permissionDenied": {
+          "description": "User lacks permission",
+          "composition": "AccessGate with explanation and request option"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus on main message",
+        "announcements": ["Permission status announced"]
+      },
+      "example": {
+        "jsx": "<AccessGate\n  denied\n  title=\"Access Restricted\"\n  description=\"You don't have permission to view this page. Contact your administrator for access.\"\n  actions={\n    <Stack direction=\"horizontal\" gap=\"2\">\n      <Button variant=\"primary\" onClick={handleRequestAccess}>\n        Request Access\n      </Button>\n      <Button variant=\"secondary\" onClick={() => navigate(-1)}>\n        Go Back\n      </Button>\n    </Stack>\n  }\n/>",
+        "imports": [
+          "import { AccessGate } from '@xala-technologies/platform-ui/blocks';",
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Button } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/blocks-accessgate"
+      },
+      "antiPatterns": [
+        {
+          "description": "Revealing existence of restricted content",
+          "badExample": "You can't see John's salary",
+          "reason": "May reveal sensitive information; use generic message"
+        },
+        {
+          "description": "No way to request access",
+          "badExample": "Just showing 403 Forbidden",
+          "reason": "Users need a path forward"
+        }
+      ],
+      "relatedPatterns": ["error-state"],
+      "tags": ["permission", "access", "denied", "403", "rbac"]
+    },
+    {
+      "id": "success-feedback",
+      "name": "Success Feedback Pattern",
+      "description": "Confirmation of successful action",
+      "category": "state",
+      "components": [
+        {
+          "role": "alert",
+          "component": "Alert",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "toast",
+          "component": "Toast",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": false
+        }
+      ],
+      "states": {
+        "success": {
+          "description": "Action completed successfully",
+          "composition": "Alert or Toast with success message"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus may move to success message for important actions",
+        "announcements": ["Success announced via role=\"status\""]
+      },
+      "example": {
+        "jsx": "// Inline success\n<Alert data-color=\"success\">\n  <Alert.Heading>Changes saved</Alert.Heading>\n  <Alert.Description>\n    Your profile has been updated successfully.\n  </Alert.Description>\n</Alert>\n\n// Toast notification (auto-dismiss)\n<Toast\n  variant=\"success\"\n  message=\"Item added to cart\"\n  duration={3000}\n/>",
+        "imports": [
+          "import { Toast } from '@xala-technologies/platform-ui/composed';",
+          "import { Alert } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-success-feedback"
+      },
+      "antiPatterns": [
+        {
+          "description": "No feedback after action",
+          "badExample": "Form submits with no confirmation",
+          "reason": "Users need confirmation that action succeeded"
+        },
+        {
+          "description": "Blocking success message",
+          "badExample": "Modal that requires dismissal for minor actions",
+          "reason": "Interrupts flow; use non-blocking toast for minor successes"
+        }
+      ],
+      "relatedPatterns": ["error-state"],
+      "tags": ["success", "confirmation", "toast", "feedback"]
+    }
+  ]
+}

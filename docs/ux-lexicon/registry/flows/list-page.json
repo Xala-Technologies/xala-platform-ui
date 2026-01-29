@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "list-page",
+  "name": "Admin List Page",
+  "description": "Standard admin list page with filters, bulk actions, and data table",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells",
+    "props": {}
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells",
+      "children": [
+        { "component": "Logo", "layer": "primitives" },
+        { "component": "NotificationBell", "layer": "blocks" },
+        { "component": "UserMenu", "layer": "blocks" }
+      ]
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells",
+      "children": [
+        { "component": "Navigation", "layer": "composed" }
+      ]
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells",
+      "children": [
+        { "component": "PageHeader", "layer": "composed", "props": { "title": "Resource Name", "actions": "Create button" } },
+        { "component": "FilterBar", "layer": "composed" },
+        { "component": "DataTable", "layer": "composed" },
+        { "component": "Pagination", "layer": "composed" }
+      ]
+    },
+    "drawer": {
+      "component": "Drawer",
+      "layer": "composed",
+      "importPath": "@xala-technologies/platform-ui/composed",
+      "children": [
+        { "component": "FormLayout", "layer": "composed", "props": { "purpose": "Edit resource" } }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Table displaying paginated data",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "loading": {
+      "description": "Initial data fetch in progress",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "DataTable shows skeleton rows"
+    },
+    "empty": {
+      "description": "No resources exist yet",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "EmptyState with create CTA replaces DataTable"
+    },
+    "error": {
+      "description": "Failed to load resources",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Alert with retry action replaces DataTable"
+    },
+    "editing": {
+      "description": "Editing a resource in drawer",
+      "activeZones": ["header", "sidebar", "main", "drawer"]
+    },
+    "permissionDenied": {
+      "description": "User lacks permission to view list",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "AccessGate replaces DataTable"
+    }
+  },
+  "transitions": [
+    { "from": "loading", "to": "idle", "trigger": "Data loaded" },
+    { "from": "loading", "to": "empty", "trigger": "No data" },
+    { "from": "loading", "to": "error", "trigger": "Fetch failed" },
+    { "from": "idle", "to": "editing", "trigger": "Row action clicked" },
+    { "from": "editing", "to": "idle", "trigger": "Drawer closed" }
+  ],
+  "userActions": [
+    { "action": "Create new", "component": "Button", "callback": "onCreateClick", "resultingState": "editing" },
+    { "action": "Edit row", "component": "Dropdown.Item", "callback": "onEditClick", "resultingState": "editing" },
+    { "action": "Delete row", "component": "Dropdown.Item", "callback": "onDeleteClick", "resultingState": "confirmation modal" },
+    { "action": "Bulk delete", "component": "Button", "callback": "onBulkDeleteClick", "resultingState": "confirmation modal" },
+    { "action": "Filter", "component": "FilterBar", "callback": "onFilterChange", "resultingState": "loading then idle" },
+    { "action": "Sort", "component": "DataTable column header", "callback": "onSortChange", "resultingState": "loading then idle" },
+    { "action": "Paginate", "component": "Pagination", "callback": "onPageChange", "resultingState": "loading then idle" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "data", "type": "T[]", "required": true, "description": "Array of resources to display" },
+      { "name": "columns", "type": "ColumnDef[]", "required": true, "description": "Table column definitions" },
+      { "name": "isLoading", "type": "boolean", "required": false, "description": "Loading state" },
+      { "name": "error", "type": "Error | null", "required": false, "description": "Error object if fetch failed" },
+      { "name": "pagination", "type": "PaginationState", "required": false, "description": "Current page, total pages" },
+      { "name": "filters", "type": "FilterState", "required": false, "description": "Active filters" }
+    ],
+    "callbacks": [
+      { "name": "onCreateClick", "signature": "() => void", "description": "Open create form" },
+      { "name": "onEditClick", "signature": "(item: T) => void", "description": "Open edit form for item" },
+      { "name": "onDeleteClick", "signature": "(item: T) => Promise<void>", "description": "Delete item" },
+      { "name": "onBulkDeleteClick", "signature": "(items: T[]) => Promise<void>", "description": "Delete multiple items" },
+      { "name": "onFilterChange", "signature": "(filters: FilterState) => void", "description": "Update filters" },
+      { "name": "onSortChange", "signature": "(sort: SortState) => void", "description": "Update sort" },
+      { "name": "onPageChange", "signature": "(page: number) => void", "description": "Navigate to page" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout\n  header={<DashboardHeader />}\n  sidebar={<DashboardSidebar navigation={<Navigation items={navItems} />} />}\n>\n  <DashboardContent>\n    <PageHeader\n      title=\"Users\"\n      actions={\n        <Button variant=\"primary\" onClick={handleCreateClick}>\n          Add User\n        </Button>\n      }\n    />\n    \n    <Stack direction=\"vertical\" gap=\"4\">\n      <FilterBar\n        filters={filterDefinitions}\n        value={filters}\n        onChange={handleFilterChange}\n      />\n      \n      {selectedRows.length > 0 && (\n        <Stack direction=\"horizontal\" gap=\"2\" align=\"center\">\n          <Paragraph data-size=\"small\">{selectedRows.length} selected</Paragraph>\n          <Button variant=\"secondary\" data-size=\"small\" onClick={handleBulkDelete}>\n            Delete Selected\n          </Button>\n        </Stack>\n      )}\n      \n      <StateWrapper\n        state={getState()}\n        loadingComponent={<DataTable.Skeleton rows={10} columns={columns} />}\n        emptyComponent={\n          <EmptyState\n            icon={<UsersIcon />}\n            title=\"No users yet\"\n            description=\"Get started by adding your first user\"\n            action={<Button onClick={handleCreateClick}>Add User</Button>}\n          />\n        }\n        errorComponent={\n          <Alert data-color=\"danger\">\n            <Alert.Heading>Failed to load users</Alert.Heading>\n            <Button variant=\"secondary\" onClick={handleRetry}>Retry</Button>\n          </Alert>\n        }\n        permissionDeniedComponent={\n          <AccessGate\n            denied\n            title=\"Access Restricted\"\n            description=\"You don't have permission to view users\"\n          />\n        }\n      >\n        <DataTable\n          columns={columns}\n          data={users}\n          sortable\n          selectable\n          selectedRows={selectedRows}\n          onSelectionChange={setSelectedRows}\n          onSort={handleSort}\n          rowActions={(row) => (\n            <Dropdown>\n              <Dropdown.Item onClick={() => handleEdit(row)}>Edit</Dropdown.Item>\n              <Dropdown.Item onClick={() => handleDelete(row)} data-color=\"danger\">Delete</Dropdown.Item>\n            </Dropdown>\n          )}\n        />\n      </StateWrapper>\n      \n      <Pagination\n        currentPage={page}\n        totalPages={totalPages}\n        onPageChange={handlePageChange}\n      />\n    </Stack>\n  </DashboardContent>\n  \n  <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} title={editingUser ? 'Edit User' : 'Add User'}>\n    <UserForm user={editingUser} onSubmit={handleFormSubmit} />\n  </Drawer>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { PageHeader, Navigation, FilterBar, DataTable, Pagination, StateWrapper, Drawer } from '@xala-technologies/platform-ui/composed';",
+      "import { EmptyState, AccessGate } from '@xala-technologies/platform-ui/blocks';",
+      "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Button, Alert, Paragraph, Dropdown } from '@digdir/designsystemet-react';",
+      "import { UsersIcon } from 'lucide-react';"
+    ],
+    "storybookPath": "?path=/story/flows-list-page"
+  },
+  "relatedFlows": ["detail-page", "form-page"],
+  "tags": ["list", "admin", "crud", "table", "filters"]
+}

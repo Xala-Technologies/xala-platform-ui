@@ -1,0 +1,260 @@
+# Token Extension Policy
+
+Design token governance for Platform UI components.
+
+## Core Rule
+
+**Only use Designsystemet tokens. Never create arbitrary values.**
+
+```tsx
+// ✅ Good - Designsystemet token
+<Stack gap="4">  {/* Uses --ds-spacing-4 */}
+
+// ❌ Bad - Arbitrary value
+<div style={{ gap: '16px' }}>
+```
+
+## Allowed Token Sources
+
+### 1. Designsystemet Official Tokens
+
+Primary source for all design values:
+
+```css
+/* Spacing */
+var(--ds-spacing-0)   /* 0 */
+var(--ds-spacing-1)   /* 0.25rem */
+var(--ds-spacing-2)   /* 0.5rem */
+var(--ds-spacing-3)   /* 0.75rem */
+var(--ds-spacing-4)   /* 1rem */
+var(--ds-spacing-5)   /* 1.25rem */
+var(--ds-spacing-6)   /* 1.5rem */
+
+/* Colors via data attributes */
+data-color="neutral"
+data-color="accent"
+data-color="brand1"
+data-color="brand2"
+data-color="brand3"
+data-color="success"
+data-color="warning"
+data-color="danger"
+data-color="info"
+
+/* Sizes via data attributes */
+data-size="small"
+data-size="medium"
+data-size="large"
+```
+
+### 2. Component-Specific Extensions
+
+When Designsystemet doesn't provide a needed token:
+
+```css
+/* Naming convention */
+--ds-{category}-{component}-{property}-{variant}
+
+/* Examples */
+--ds-spacing-card-header-padding: var(--ds-spacing-4);
+--ds-size-avatar-default: 2.5rem;
+--ds-radius-input-focus: var(--ds-radius-medium);
+```
+
+## Token Extension Request Process
+
+### Step 1: Verify No Existing Token
+
+Check Designsystemet documentation first:
+- [Designsystemet Tokens](https://designsystemet.no/)
+- `@digdir/designsystemet-css` package
+
+### Step 2: Submit Request
+
+Create a request in the format:
+
+```markdown
+## Token Extension Request
+
+**Token Name:** `--ds-spacing-card-actions-gap`
+
+**Purpose:** Gap between action buttons in Card footer
+
+**Base Value:** `var(--ds-spacing-2)` (0.5rem)
+
+**Scope:** Card component only
+
+**Justification:**
+Designsystemet Card doesn't specify footer button spacing.
+Using --ds-spacing-2 maintains consistency with other button groups.
+
+**Usage Example:**
+```css
+.card-actions {
+  gap: var(--ds-spacing-card-actions-gap);
+}
+```
+```
+
+### Step 3: Review Criteria
+
+Extensions are approved if they:
+
+1. ✅ Don't duplicate existing Designsystemet tokens
+2. ✅ Follow naming convention exactly
+3. ✅ Use Designsystemet primitive as base value
+4. ✅ Are scoped to specific component
+5. ✅ Have clear documentation
+
+### Step 4: Implementation
+
+Approved tokens go in `src/tokens/extensions.css`:
+
+```css
+:root {
+  /* Card extensions */
+  --ds-spacing-card-header-padding: var(--ds-spacing-4);
+  --ds-spacing-card-actions-gap: var(--ds-spacing-2);
+
+  /* Avatar extensions */
+  --ds-size-avatar-small: 1.5rem;
+  --ds-size-avatar-medium: 2.5rem;
+  --ds-size-avatar-large: 4rem;
+}
+```
+
+## Prohibited Patterns
+
+### Arbitrary Values
+
+```tsx
+// ❌ Never use arbitrary values
+<div style={{ padding: '16px' }}>
+<div style={{ gap: '1rem' }}>
+<div style={{ margin: '20px' }}>
+```
+
+### Inline Colors
+
+```tsx
+// ❌ Never use color values directly
+<div style={{ color: '#1a1a1a' }}>
+<div style={{ backgroundColor: 'rgb(26, 26, 26)' }}>
+<div style={{ borderColor: 'blue' }}>
+
+// ✅ Use data-color attribute
+<Card data-color="neutral">
+<Alert data-color="danger">
+```
+
+### Custom Classes
+
+```tsx
+// ❌ Never use non-ds classes for styling
+<div className="my-card custom-padding">
+
+// ✅ Only ds- prefixed classes allowed
+<div className="ds-card">
+```
+
+### Overriding Designsystemet
+
+```css
+/* ❌ Never override core tokens */
+--ds-color-accent: #ff0000;
+--ds-spacing-4: 20px;
+```
+
+## Linter Enforcement
+
+The `verify:design-tokens` script checks:
+
+1. No inline styles with non-token values
+2. No custom CSS classes (only `ds-` prefix)
+3. All token extensions registered in lexicon
+4. No overridden Designsystemet tokens
+
+```bash
+# Run token verification
+pnpm verify:design-tokens
+
+# Expected output for violations
+ERROR: Inline style with arbitrary value at src/components/Card.tsx:42
+  Found: style={{ padding: '16px' }}
+  Use: data-padding="4" or component prop
+
+ERROR: Custom class at src/components/Header.tsx:15
+  Found: className="header-custom"
+  Use: Designsystemet components or ds- prefixed classes
+```
+
+## Token Registry
+
+All approved extensions are tracked in `docs/ux-lexicon/registry/tokens.json`:
+
+```json
+{
+  "extensions": [
+    {
+      "token": "--ds-spacing-card-header-padding",
+      "category": "spacing",
+      "value": "var(--ds-spacing-4)",
+      "scope": "Card",
+      "added": "2025-01-29",
+      "approvedBy": "TOKEN_EXTENSION_AGENT"
+    }
+  ],
+  "rejected": [
+    {
+      "token": "--ds-color-text-custom",
+      "reason": "Use data-color attribute instead",
+      "date": "2025-01-29"
+    }
+  ]
+}
+```
+
+## Common Patterns
+
+### Spacing
+
+```tsx
+// Component props
+<Stack gap="4">           {/* --ds-spacing-4 */}
+<Container padding="6">   {/* --ds-spacing-6 */}
+
+// Data attributes
+<Card data-spacing="large">
+```
+
+### Colors
+
+```tsx
+// Always via data-color
+<Card data-color="neutral">
+<Alert data-color="danger">
+<Button data-color="accent">
+```
+
+### Sizes
+
+```tsx
+// Via data-size
+<Button data-size="medium">
+<Textfield data-size="large">
+<Heading data-size="xlarge">
+```
+
+### Responsive
+
+```tsx
+// Via responsive props (not media queries in styles)
+<Grid columns={{ sm: 1, md: 2, lg: 3 }}>
+<Stack direction={{ base: 'vertical', md: 'horizontal' }}>
+```
+
+## See Also
+
+- [Designsystemet Documentation](https://designsystemet.no/)
+- [TOKEN_EXTENSION_AGENT Prompt](../agents/TOKEN_EXTENSION_AGENT.prompt.md)
+- [HTML Translation Table](./HTML_TRANSLATION_TABLE.mdx)

@@ -1,0 +1,234 @@
+{
+  "$schema": "../../schemas/dictionary-entry.schema.json",
+  "category": "lists",
+  "entries": [
+    {
+      "id": "ul-list",
+      "category": "lists",
+      "htmlIntent": {
+        "element": "<ul><li>",
+        "attributes": {},
+        "description": "Unordered list of items"
+      },
+      "platformConstruct": {
+        "component": "Stack",
+        "importPath": "@xala-technologies/platform-ui/primitives",
+        "defaultProps": {
+          "direction": "vertical",
+          "gap": "2",
+          "asChild": true
+        },
+        "alternatives": [
+          {
+            "component": "List.Unordered",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "When semantic list markup is needed"
+          }
+        ]
+      },
+      "layer": "primitives",
+      "states": {
+        "idle": {
+          "component": "Stack",
+          "props": { "direction": "vertical" }
+        },
+        "loading": {
+          "component": "Stack",
+          "props": { "children": "Array of Skeleton items" }
+        },
+        "empty": {
+          "component": "EmptyState",
+          "props": { "title": "No items", "variant": "no-data" }
+        }
+      },
+      "accessibility": {
+        "role": "list",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<List.Unordered data-size=\"medium\">\n  <List.Item>First item</List.Item>\n  <List.Item>Second item</List.Item>\n  <List.Item>Third item</List.Item>\n</List.Unordered>",
+        "imports": [
+          "import { List } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/lists-unordered"
+      },
+      "tags": ["list", "ul", "unordered", "items", "bullet"]
+    },
+    {
+      "id": "ol-list",
+      "category": "lists",
+      "htmlIntent": {
+        "element": "<ol><li>",
+        "attributes": {
+          "type": "1|a|A|i|I"
+        },
+        "description": "Ordered/numbered list of items"
+      },
+      "platformConstruct": {
+        "component": "List.Ordered",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "List.Ordered",
+          "props": {}
+        },
+        "loading": {
+          "component": "Stack",
+          "props": { "children": "Array of Skeleton items" }
+        },
+        "empty": {
+          "component": "EmptyState",
+          "props": { "title": "No items", "variant": "no-data" }
+        }
+      },
+      "accessibility": {
+        "role": "list",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<List.Ordered data-size=\"medium\">\n  <List.Item>Step one</List.Item>\n  <List.Item>Step two</List.Item>\n  <List.Item>Step three</List.Item>\n</List.Ordered>",
+        "imports": [
+          "import { List } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/lists-ordered"
+      },
+      "tags": ["list", "ol", "ordered", "numbered", "steps"]
+    },
+    {
+      "id": "table-data",
+      "category": "lists",
+      "htmlIntent": {
+        "element": "<table>",
+        "attributes": {},
+        "description": "Tabular data display with rows and columns"
+      },
+      "platformConstruct": {
+        "component": "DataTable",
+        "importPath": "@xala-technologies/platform-ui/composed",
+        "defaultProps": {
+          "data-size": "medium"
+        },
+        "alternatives": [
+          {
+            "component": "Table",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "For simple static tables without sorting/filtering"
+          }
+        ]
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "DataTable",
+          "props": {}
+        },
+        "loading": {
+          "component": "DataTable",
+          "props": { "isLoading": true }
+        },
+        "empty": {
+          "component": "ResultsEmptyState",
+          "props": { "title": "No data found" }
+        },
+        "error": {
+          "component": "Alert",
+          "props": { "data-color": "danger", "children": "Failed to load data" }
+        }
+      },
+      "accessibility": {
+        "role": "table",
+        "ariaAttributes": {
+          "aria-label": "Table description",
+          "aria-sort": "ascending/descending/none on sortable columns"
+        },
+        "keyboardInteraction": ["Tab through cells", "Arrow keys for navigation", "Enter for row actions"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "1.3.2 Meaningful Sequence"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["columns[].header", "emptyMessage", "loadingMessage"]
+      },
+      "example": {
+        "jsx": "<DataTable\n  columns={[\n    { key: 'name', header: 'Name', sortable: true },\n    { key: 'email', header: 'Email' },\n    { key: 'role', header: 'Role' },\n  ]}\n  data={users}\n  isLoading={isLoading}\n  onSort={handleSort}\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { DataTable } from '@xala-technologies/platform-ui/composed';"
+        ],
+        "storybookPath": "?path=/story/composed-datatable"
+      },
+      "tags": ["table", "data", "grid", "rows", "columns", "sortable"]
+    },
+    {
+      "id": "dl-definition",
+      "category": "lists",
+      "htmlIntent": {
+        "element": "<dl><dt><dd>",
+        "attributes": {},
+        "description": "Definition list with term-description pairs"
+      },
+      "platformConstruct": {
+        "component": "DefinitionList",
+        "importPath": "@xala-technologies/platform-ui/composed",
+        "defaultProps": {
+          "data-size": "medium"
+        },
+        "alternatives": [
+          {
+            "component": "KeyValueList",
+            "importPath": "@xala-technologies/platform-ui/composed",
+            "useCase": "For key-value metadata display"
+          }
+        ]
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "DefinitionList",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "count": 4, "height": "1.5rem" }
+        },
+        "empty": {
+          "component": "Paragraph",
+          "props": { "children": "No details available" }
+        }
+      },
+      "accessibility": {
+        "role": "definition",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["items[].term", "items[].description"]
+      },
+      "example": {
+        "jsx": "<DefinitionList\n  items={[\n    { term: 'Name', description: 'John Doe' },\n    { term: 'Email', description: 'john@example.com' },\n    { term: 'Role', description: 'Administrator' },\n  ]}\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { DefinitionList } from '@xala-technologies/platform-ui/composed';"
+        ],
+        "storybookPath": "?path=/story/composed-definitionlist"
+      },
+      "tags": ["definition", "dl", "dt", "dd", "key-value", "metadata"]
+    }
+  ]
+}

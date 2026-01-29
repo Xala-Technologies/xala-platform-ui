@@ -1,0 +1,270 @@
+{
+  "$schema": "../../schemas/pattern-catalog.schema.json",
+  "category": "modal",
+  "patterns": [
+    {
+      "id": "confirmation-dialog",
+      "name": "Confirmation Dialog",
+      "description": "Modal for confirming destructive or important actions",
+      "category": "modal",
+      "components": [
+        {
+          "role": "modal",
+          "component": "Modal",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "confirm-button",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "cancel-button",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Dialog displaying confirmation prompt",
+          "composition": "Modal with message and action buttons"
+        },
+        "loading": {
+          "description": "Action is processing",
+          "composition": "Modal with loading button"
+        },
+        "error": {
+          "description": "Action failed",
+          "composition": "Modal with error message and retry"
+        },
+        "success": {
+          "description": "Action completed, dialog closes",
+          "composition": "Dialog closes, success toast shown"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus trapped in modal, moves to cancel button by default",
+        "announcements": ["Dialog content announced on open"]
+      },
+      "example": {
+        "jsx": "<Modal.Root open={isOpen} onOpenChange={setIsOpen}>\n  <Modal.Dialog>\n    <Modal.Header>Delete User</Modal.Header>\n    <Modal.Content>\n      <Paragraph>\n        Are you sure you want to delete <strong>{user.name}</strong>?\n        This action cannot be undone.\n      </Paragraph>\n    </Modal.Content>\n    <Modal.Footer>\n      <Button\n        variant=\"primary\"\n        data-color=\"danger\"\n        onClick={handleDelete}\n        loading={isDeleting}\n      >\n        Delete\n      </Button>\n      <Modal.Close asChild>\n        <Button variant=\"secondary\">Cancel</Button>\n      </Modal.Close>\n    </Modal.Footer>\n  </Modal.Dialog>\n</Modal.Root>",
+        "imports": [
+          "import { Modal, Button, Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-confirmation-dialog"
+      },
+      "antiPatterns": [
+        {
+          "description": "Confirming non-destructive actions",
+          "badExample": "Modal to confirm saving a draft",
+          "reason": "Over-confirmation causes alert fatigue"
+        },
+        {
+          "description": "Generic confirmation message",
+          "badExample": "Are you sure you want to continue?",
+          "reason": "Be specific about what will happen"
+        },
+        {
+          "description": "Dangerous action as default focus",
+          "badExample": "Focus on 'Delete' button when modal opens",
+          "reason": "Accidental Enter key could trigger deletion"
+        }
+      ],
+      "relatedPatterns": ["form-modal"],
+      "tags": ["modal", "confirmation", "delete", "destructive"]
+    },
+    {
+      "id": "form-modal",
+      "name": "Form Modal",
+      "description": "Modal containing a form for quick data entry",
+      "category": "modal",
+      "components": [
+        {
+          "role": "modal",
+          "component": "Modal",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "form",
+          "component": "FormLayout",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        },
+        {
+          "role": "fields",
+          "component": "Textfield",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Form ready for input",
+          "composition": "Modal with form fields"
+        },
+        "loading": {
+          "description": "Form is submitting",
+          "composition": "Modal with disabled fields and loading submit"
+        },
+        "error": {
+          "description": "Validation or submission error",
+          "composition": "Modal with error indicators"
+        },
+        "success": {
+          "description": "Submission successful, modal closes",
+          "composition": "Modal closes, data refreshes"
+        }
+      },
+      "accessibility": {
+        "landmarks": ["form"],
+        "focusManagement": "Focus moves to first field on open, returns to trigger on close",
+        "announcements": ["Form errors announced", "Success announced"]
+      },
+      "example": {
+        "jsx": "<Modal.Root open={isOpen} onOpenChange={setIsOpen}>\n  <Modal.Dialog>\n    <Modal.Header>Add New User</Modal.Header>\n    <Modal.Content>\n      <FormLayout onSubmit={handleSubmit}>\n        <Textfield\n          label=\"Name\"\n          name=\"name\"\n          required\n          error={errors.name}\n        />\n        <Textfield\n          label=\"Email\"\n          name=\"email\"\n          type=\"email\"\n          required\n          error={errors.email}\n        />\n        <Select label=\"Role\" name=\"role\">\n          <Select.Option value=\"user\">User</Select.Option>\n          <Select.Option value=\"admin\">Admin</Select.Option>\n        </Select>\n      </FormLayout>\n    </Modal.Content>\n    <Modal.Footer>\n      <Button\n        variant=\"primary\"\n        type=\"submit\"\n        form=\"add-user-form\"\n        loading={isSubmitting}\n      >\n        Add User\n      </Button>\n      <Modal.Close asChild>\n        <Button variant=\"secondary\">Cancel</Button>\n      </Modal.Close>\n    </Modal.Footer>\n  </Modal.Dialog>\n</Modal.Root>",
+        "imports": [
+          "import { FormLayout } from '@xala-technologies/platform-ui/composed';",
+          "import { Modal, Button, Textfield, Select } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-form-modal"
+      },
+      "antiPatterns": [
+        {
+          "description": "Complex forms in modals",
+          "badExample": "Multi-step wizard in a modal",
+          "reason": "Use dedicated page for complex forms"
+        },
+        {
+          "description": "No keyboard dismissal",
+          "badExample": "Modal that can't be closed with Escape",
+          "reason": "Users expect Escape to close modals"
+        }
+      ],
+      "relatedPatterns": ["confirmation-dialog", "drawer-form"],
+      "tags": ["modal", "form", "create", "edit", "quick-entry"]
+    },
+    {
+      "id": "drawer-form",
+      "name": "Drawer Form",
+      "description": "Side drawer for editing without losing page context",
+      "category": "modal",
+      "components": [
+        {
+          "role": "drawer",
+          "component": "Drawer",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        },
+        {
+          "role": "form",
+          "component": "FormLayout",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Drawer open with form",
+          "composition": "Drawer sliding in from side with form content"
+        },
+        "loading": {
+          "description": "Form submitting",
+          "composition": "Drawer with loading form"
+        },
+        "error": {
+          "description": "Submission failed",
+          "composition": "Drawer with error state"
+        },
+        "success": {
+          "description": "Changes saved",
+          "composition": "Drawer may close or show success"
+        }
+      },
+      "accessibility": {
+        "landmarks": ["form", "complementary"],
+        "focusManagement": "Focus moves to drawer, returns on close",
+        "announcements": ["Drawer opened/closed"]
+      },
+      "example": {
+        "jsx": "<Drawer\n  open={isOpen}\n  onOpenChange={setIsOpen}\n  position=\"right\"\n  title={`Edit ${user.name}`}\n>\n  <FormLayout onSubmit={handleSubmit}>\n    <Textfield\n      label=\"Name\"\n      name=\"name\"\n      defaultValue={user.name}\n    />\n    <Textfield\n      label=\"Email\"\n      name=\"email\"\n      type=\"email\"\n      defaultValue={user.email}\n    />\n    <Textarea\n      label=\"Bio\"\n      name=\"bio\"\n      defaultValue={user.bio}\n    />\n  </FormLayout>\n  \n  <Drawer.Footer>\n    <Button variant=\"primary\" type=\"submit\" loading={isSubmitting}>\n      Save Changes\n    </Button>\n    <Button variant=\"secondary\" onClick={() => setIsOpen(false)}>\n      Cancel\n    </Button>\n  </Drawer.Footer>\n</Drawer>",
+        "imports": [
+          "import { Drawer, FormLayout } from '@xala-technologies/platform-ui/composed';",
+          "import { Textfield, Textarea, Button } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-drawer-form"
+      },
+      "antiPatterns": [
+        {
+          "description": "Drawer covering entire screen on mobile",
+          "badExample": "Drawer width: 100% without consideration",
+          "reason": "Consider using full modal on mobile"
+        }
+      ],
+      "relatedPatterns": ["form-modal"],
+      "tags": ["drawer", "form", "edit", "side-panel", "context"]
+    },
+    {
+      "id": "info-modal",
+      "name": "Information Modal",
+      "description": "Modal for displaying detailed information or help",
+      "category": "modal",
+      "components": [
+        {
+          "role": "modal",
+          "component": "Modal",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "content",
+          "component": "Stack",
+          "layer": "primitives",
+          "importPath": "@xala-technologies/platform-ui/primitives",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Modal displaying information",
+          "composition": "Modal with content and close button"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Focus on close button or first interactive element",
+        "announcements": ["Modal content announced"]
+      },
+      "example": {
+        "jsx": "<Modal.Root open={isOpen} onOpenChange={setIsOpen}>\n  <Modal.Dialog data-size=\"large\">\n    <Modal.Header>How Permissions Work</Modal.Header>\n    <Modal.Content>\n      <Stack direction=\"vertical\" gap=\"4\">\n        <Paragraph>\n          Permissions control what actions users can perform in the system.\n        </Paragraph>\n        \n        <Heading level={3} data-size=\"small\">Permission Levels</Heading>\n        <List.Unordered>\n          <List.Item><strong>Viewer:</strong> Can view but not modify</List.Item>\n          <List.Item><strong>Editor:</strong> Can view and modify</List.Item>\n          <List.Item><strong>Admin:</strong> Full access including user management</List.Item>\n        </List.Unordered>\n        \n        <Alert data-color=\"info\">\n          Contact your administrator to request additional permissions.\n        </Alert>\n      </Stack>\n    </Modal.Content>\n    <Modal.Footer>\n      <Modal.Close asChild>\n        <Button variant=\"primary\">Got it</Button>\n      </Modal.Close>\n    </Modal.Footer>\n  </Modal.Dialog>\n</Modal.Root>",
+        "imports": [
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Modal, Button, Heading, Paragraph, List, Alert } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-info-modal"
+      },
+      "antiPatterns": [
+        {
+          "description": "Using modal for brief tips",
+          "badExample": "Modal: 'Click the button to submit'",
+          "reason": "Use tooltip or inline help for brief information"
+        }
+      ],
+      "relatedPatterns": [],
+      "tags": ["modal", "information", "help", "documentation"]
+    }
+  ]
+}

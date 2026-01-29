@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.no/ux-lexicon/schemas/golden-flow.schema.json",
+  "title": "UX Lexicon Golden Flow",
+  "description": "Schema for page-level golden flow definitions",
+  "type": "object",
+  "required": ["id", "name", "description", "shell", "zones", "states"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique flow identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable flow name"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this flow accomplishes"
+    },
+    "shell": {
+      "type": "object",
+      "required": ["component", "importPath"],
+      "properties": {
+        "component": {
+          "type": "string",
+          "description": "Shell component to use"
+        },
+        "importPath": {
+          "type": "string"
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "zones": {
+      "type": "object",
+      "description": "Content zones within the shell",
+      "properties": {
+        "header": {
+          "$ref": "#/$defs/zone"
+        },
+        "sidebar": {
+          "$ref": "#/$defs/zone"
+        },
+        "main": {
+          "$ref": "#/$defs/zone"
+        },
+        "footer": {
+          "$ref": "#/$defs/zone"
+        },
+        "drawer": {
+          "$ref": "#/$defs/zone"
+        },
+        "modal": {
+          "$ref": "#/$defs/zone"
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "required": ["idle"],
+      "properties": {
+        "idle": {
+          "$ref": "#/$defs/flowState"
+        },
+        "loading": {
+          "$ref": "#/$defs/flowState"
+        },
+        "empty": {
+          "$ref": "#/$defs/flowState"
+        },
+        "error": {
+          "$ref": "#/$defs/flowState"
+        },
+        "success": {
+          "$ref": "#/$defs/flowState"
+        },
+        "permissionDenied": {
+          "$ref": "#/$defs/flowState"
+        }
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "trigger": { "type": "string" },
+          "animation": { "type": "string" }
+        }
+      }
+    },
+    "userActions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string" },
+          "component": { "type": "string" },
+          "callback": { "type": "string" },
+          "resultingState": { "type": "string" }
+        }
+      }
+    },
+    "dataRequirements": {
+      "type": "object",
+      "properties": {
+        "props": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "required": { "type": "boolean" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "callbacks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "signature": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "example": {
+      "type": "object",
+      "required": ["jsx"],
+      "properties": {
+        "jsx": { "type": "string" },
+        "imports": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "storybookPath": { "type": "string" }
+      }
+    },
+    "relatedFlows": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "zone": {
+      "type": "object",
+      "properties": {
+        "component": { "type": "string" },
+        "layer": {
+          "type": "string",
+          "enum": ["@digdir", "primitives", "composed", "blocks", "patterns", "shells"]
+        },
+        "importPath": { "type": "string" },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "component": { "type": "string" },
+              "layer": { "type": "string" },
+              "props": { "type": "object" }
+            }
+          }
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "flowState": {
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "composition": { "type": "string" },
+        "activeZones": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

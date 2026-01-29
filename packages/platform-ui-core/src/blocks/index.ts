@@ -154,6 +154,10 @@ export type {
   PermissionGateProps,
 } from './AuthComponents';
 
+// AccessGate - RBAC permission gating with rich UI
+export { AccessGate } from './AccessGate';
+export type { AccessGateProps, AccessGateAction, AccessGateLabels } from './AccessGate';
+
 // Messaging Components
 export {
   NotificationBell,

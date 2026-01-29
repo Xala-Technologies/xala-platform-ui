@@ -1,0 +1,308 @@
+# Accessibility Patterns
+
+WCAG 2.2 AA compliance patterns for Platform UI components.
+
+## Core Principles
+
+1. **Perceivable** - Content can be perceived through sight, sound, or touch
+2. **Operable** - Interface can be operated with keyboard, mouse, or assistive tech
+3. **Understandable** - Content and operation are understandable
+4. **Robust** - Content works with current and future assistive technologies
+
+## Landmark Regions
+
+Use semantic landmarks for navigation:
+
+```tsx
+// ✅ Good - Using shell components that provide landmarks
+<DashboardLayout>           {/* provides overall structure */}
+  <DashboardHeader />       {/* role="banner" */}
+  <DashboardSidebar />      {/* role="complementary" */}
+  <DashboardContent>        {/* role="main" */}
+    <Navigation />          {/* role="navigation" */}
+  </DashboardContent>
+</DashboardLayout>
+
+// ❌ Bad - Using generic divs
+<div className="header">...</div>
+<div className="sidebar">...</div>
+<div className="content">...</div>
+```
+
+## Heading Hierarchy
+
+Maintain proper heading levels:
+
+```tsx
+// ✅ Good - Logical hierarchy
+<Heading level={1}>Page Title</Heading>
+<Card>
+  <Heading level={2}>Section Title</Heading>
+  <Heading level={3}>Subsection</Heading>
+</Card>
+
+// ❌ Bad - Skipping levels
+<Heading level={1}>Page Title</Heading>
+<Heading level={4}>Section</Heading>  {/* Skipped h2 and h3 */}
+```
+
+## Focus Management
+
+### Focus Order
+
+```tsx
+// Modal focus trap
+<Modal.Root>
+  <Modal.Dialog>
+    {/* Focus trapped here */}
+    <Modal.Header>Title</Modal.Header>
+    <Modal.Content>
+      <Textfield label="Name" autoFocus />  {/* First focusable */}
+    </Modal.Content>
+    <Modal.Footer>
+      <Button>Save</Button>
+      <Modal.Close asChild>
+        <Button variant="secondary">Cancel</Button>
+      </Modal.Close>
+    </Modal.Footer>
+  </Modal.Dialog>
+</Modal.Root>
+```
+
+### Focus Return
+
+```tsx
+function EditDrawer({ open, onOpenChange, triggerId }) {
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open && triggerRef.current) {
+      triggerRef.current.focus();  // Return focus to trigger
+    }
+  }, [open]);
+
+  return (
+    <>
+      <Button ref={triggerRef} id={triggerId} onClick={() => onOpenChange(true)}>
+        Edit
+      </Button>
+      <Drawer open={open} onOpenChange={onOpenChange}>
+        {/* drawer content */}
+      </Drawer>
+    </>
+  );
+}
+```
+
+## Keyboard Navigation
+
+### Common Patterns
+
+| Component | Tab | Enter | Space | Escape | Arrow Keys |
+|-----------|-----|-------|-------|--------|------------|
+| Button | Focus | Activate | Activate | - | - |
+| Link | Focus | Navigate | - | - | - |
+| Checkbox | Focus | - | Toggle | - | - |
+| Radio Group | Focus first | - | Select | - | Navigate options |
+| Select | Focus | Open | Open | Close | Navigate options |
+| Modal | Into modal | - | - | Close | - |
+| Tabs | Tab list | Select tab | Select tab | - | Navigate tabs |
+| Menu | Focus first | Select | Select | Close | Navigate items |
+
+### Implementation
+
+```tsx
+// Custom keyboard handler
+function NavigationMenu({ items }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setActiveIndex(i => Math.min(i + 1, items.length - 1));
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setActiveIndex(i => Math.max(i - 1, 0));
+        break;
+      case 'Home':
+        e.preventDefault();
+        setActiveIndex(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        setActiveIndex(items.length - 1);
+        break;
+    }
+  };
+
+  return (
+    <Navigation
+      role="menu"
+      onKeyDown={handleKeyDown}
+      aria-activedescendant={`item-${activeIndex}`}
+    >
+      {items.map((item, index) => (
+        <Navigation.Item
+          key={item.id}
+          id={`item-${index}`}
+          role="menuitem"
+          tabIndex={index === activeIndex ? 0 : -1}
+        >
+          {item.label}
+        </Navigation.Item>
+      ))}
+    </Navigation>
+  );
+}
+```
+
+## ARIA Attributes
+
+### Live Regions
+
+```tsx
+// Announce loading completion
+<div aria-live="polite" aria-busy={isLoading}>
+  {isLoading ? 'Loading...' : `${count} results found`}
+</div>
+
+// Announce errors
+<Alert role="alert" data-color="danger">
+  {errorMessage}
+</Alert>
+```
+
+### Labels and Descriptions
+
+```tsx
+// Visible label
+<Textfield
+  label="Email address"
+  description="We'll never share your email"
+  error={errors.email}
+/>
+
+// Hidden label (icon button)
+<Button variant="tertiary" aria-label="Close dialog">
+  <XIcon />
+</Button>
+
+// Description reference
+<Textfield
+  aria-describedby="email-help email-error"
+/>
+<Paragraph id="email-help">Format: user@domain.com</Paragraph>
+{error && <Alert id="email-error">{error}</Alert>}
+```
+
+### States
+
+```tsx
+// Expanded/collapsed
+<Button
+  aria-expanded={isOpen}
+  aria-controls="menu-content"
+  onClick={toggle}
+>
+  Menu
+</Button>
+<div id="menu-content" hidden={!isOpen}>...</div>
+
+// Selected/pressed
+<Button
+  aria-pressed={isSelected}
+  onClick={toggle}
+>
+  {isSelected ? 'Selected' : 'Select'}
+</Button>
+
+// Invalid
+<Textfield
+  aria-invalid={!!error}
+  aria-errormessage="email-error"
+/>
+{error && <Alert id="email-error">{error}</Alert>}
+
+// Disabled
+<Button disabled aria-disabled="true">
+  Cannot submit
+</Button>
+```
+
+## Color and Contrast
+
+### Minimum Contrast Ratios
+
+- **Normal text**: 4.5:1 (WCAG AA)
+- **Large text** (18px+ or 14px bold): 3:1
+- **UI components**: 3:1
+
+### Don't Rely on Color Alone
+
+```tsx
+// ✅ Good - Color + icon + text
+<Alert data-color="danger">
+  <AlertCircleIcon />
+  Error: {message}
+</Alert>
+
+// ❌ Bad - Color only
+<Paragraph style={{ color: 'red' }}>{message}</Paragraph>
+```
+
+## Touch Targets
+
+Minimum touch target size: 44x44 pixels
+
+```tsx
+// ✅ Good - Large enough touch targets
+<Button data-size="medium">  {/* 44px min height */}
+  Submit
+</Button>
+
+// Icon buttons with adequate size
+<Button variant="tertiary" data-size="medium" aria-label="Delete">
+  <TrashIcon />
+</Button>
+```
+
+## Testing Checklist
+
+### Manual Testing
+
+- [ ] Navigate entire page with keyboard only (Tab, Enter, Escape, Arrows)
+- [ ] Verify visible focus indicator on all interactive elements
+- [ ] Test with screen reader (VoiceOver, NVDA)
+- [ ] Check heading hierarchy with browser devtools
+- [ ] Verify color contrast with contrast checker
+- [ ] Test with 200% zoom
+- [ ] Test with reduced motion preference
+
+### Automated Testing
+
+```bash
+# Run accessibility tests
+pnpm test:a11y
+
+# In Storybook
+pnpm storybook  # Check Accessibility panel in each story
+```
+
+### axe-core Rules
+
+The following rules are enforced:
+
+- `button-name` - Buttons must have accessible name
+- `color-contrast` - Elements must have sufficient contrast
+- `heading-order` - Headings must be in logical order
+- `label` - Form elements must have labels
+- `link-name` - Links must have accessible name
+- `region` - All content must be in landmark regions
+
+## See Also
+
+- [WCAG 2.2 Guidelines](https://www.w3.org/TR/WCAG22/)
+- [State Matrix](./state-matrix.mdx) - Accessibility in different states
+- [Norwegian Universal Design Regulations](https://www.uutilsynet.no/)

@@ -1,0 +1,268 @@
+{
+  "$schema": "../../schemas/dictionary-entry.schema.json",
+  "category": "semantic",
+  "entries": [
+    {
+      "id": "header-page",
+      "category": "semantic",
+      "htmlIntent": {
+        "element": "<header>",
+        "attributes": {
+          "role": "banner"
+        },
+        "description": "Page header with branding, navigation, and user actions"
+      },
+      "platformConstruct": {
+        "component": "DashboardHeader",
+        "importPath": "@xala-technologies/platform-ui/shells",
+        "defaultProps": {},
+        "alternatives": [
+          {
+            "component": "PageHeader",
+            "importPath": "@xala-technologies/platform-ui/composed",
+            "useCase": "For page-specific headers within content area"
+          }
+        ]
+      },
+      "layer": "shells",
+      "states": {
+        "idle": {
+          "component": "DashboardHeader",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "4rem", "width": "100%" }
+        }
+      },
+      "accessibility": {
+        "role": "banner",
+        "ariaAttributes": {},
+        "keyboardInteraction": ["Tab through interactive elements"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "2.4.1 Bypass Blocks"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["title", "subtitle"]
+      },
+      "example": {
+        "jsx": "<DashboardHeader\n  logo={<Logo />}\n  title=\"Application Name\"\n  actions={\n    <Stack direction=\"horizontal\" gap=\"2\">\n      <NotificationBell count={3} />\n      <UserMenu user={currentUser} />\n    </Stack>\n  }\n/>",
+        "imports": [
+          "import { DashboardHeader } from '@xala-technologies/platform-ui/shells';",
+          "import { NotificationBell, UserMenu } from '@xala-technologies/platform-ui/blocks';",
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';"
+        ],
+        "storybookPath": "?path=/story/shells-dashboardheader"
+      },
+      "tags": ["header", "banner", "navigation", "shell", "layout"]
+    },
+    {
+      "id": "footer-page",
+      "category": "semantic",
+      "htmlIntent": {
+        "element": "<footer>",
+        "attributes": {
+          "role": "contentinfo"
+        },
+        "description": "Page footer with copyright, links, and additional info"
+      },
+      "platformConstruct": {
+        "component": "DashboardLayout",
+        "importPath": "@xala-technologies/platform-ui/shells",
+        "defaultProps": {
+          "footer": "Footer content slot"
+        }
+      },
+      "layer": "shells",
+      "states": {
+        "idle": {
+          "component": "footer slot in shell",
+          "props": {}
+        }
+      },
+      "accessibility": {
+        "role": "contentinfo",
+        "ariaAttributes": {},
+        "keyboardInteraction": ["Tab through links"],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<DashboardLayout\n  footer={\n    <Stack direction=\"horizontal\" justify=\"space-between\" gap=\"4\">\n      <Paragraph data-size=\"small\">© 2025 Company Name</Paragraph>\n      <Stack direction=\"horizontal\" gap=\"4\">\n        <Link href=\"/privacy\">Privacy</Link>\n        <Link href=\"/terms\">Terms</Link>\n      </Stack>\n    </Stack>\n  }\n>\n  {children}\n</DashboardLayout>",
+        "imports": [
+          "import { DashboardLayout } from '@xala-technologies/platform-ui/shells';",
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Paragraph, Link } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/shells-dashboardlayout"
+      },
+      "tags": ["footer", "contentinfo", "copyright", "shell", "layout"]
+    },
+    {
+      "id": "main-content",
+      "category": "semantic",
+      "htmlIntent": {
+        "element": "<main>",
+        "attributes": {
+          "role": "main"
+        },
+        "description": "Main content area of the page"
+      },
+      "platformConstruct": {
+        "component": "DashboardContent",
+        "importPath": "@xala-technologies/platform-ui/shells",
+        "defaultProps": {}
+      },
+      "layer": "shells",
+      "states": {
+        "idle": {
+          "component": "DashboardContent",
+          "props": {}
+        },
+        "loading": {
+          "component": "LoadingFallback",
+          "props": {}
+        },
+        "error": {
+          "component": "ErrorPage",
+          "props": { "code": 500 }
+        },
+        "permissionDenied": {
+          "component": "AccessGate",
+          "props": { "denied": true }
+        }
+      },
+      "accessibility": {
+        "role": "main",
+        "ariaAttributes": {},
+        "keyboardInteraction": ["Skip link target"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "2.4.1 Bypass Blocks"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<DashboardLayout\n  header={<DashboardHeader />}\n  sidebar={<DashboardSidebar />}\n>\n  <DashboardContent>\n    <PageHeader title=\"Page Title\" />\n    <Card>\n      <Paragraph>Main content goes here</Paragraph>\n    </Card>\n  </DashboardContent>\n</DashboardLayout>",
+        "imports": [
+          "import { DashboardLayout, DashboardContent, DashboardHeader, DashboardSidebar } from '@xala-technologies/platform-ui/shells';",
+          "import { PageHeader } from '@xala-technologies/platform-ui/composed';",
+          "import { Card, Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/shells-dashboardcontent"
+      },
+      "tags": ["main", "content", "primary", "shell", "layout"]
+    },
+    {
+      "id": "aside-sidebar",
+      "category": "semantic",
+      "htmlIntent": {
+        "element": "<aside>",
+        "attributes": {
+          "role": "complementary"
+        },
+        "description": "Sidebar for navigation or complementary content"
+      },
+      "platformConstruct": {
+        "component": "DashboardSidebar",
+        "importPath": "@xala-technologies/platform-ui/shells",
+        "defaultProps": {}
+      },
+      "layer": "shells",
+      "states": {
+        "idle": {
+          "component": "DashboardSidebar",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "100%", "width": "100%" }
+        }
+      },
+      "accessibility": {
+        "role": "complementary",
+        "ariaAttributes": {
+          "aria-label": "Sidebar navigation"
+        },
+        "keyboardInteraction": ["Tab through navigation items"],
+        "wcagCriteria": ["1.3.1 Info and Relationships"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["aria-label"]
+      },
+      "example": {
+        "jsx": "<DashboardSidebar\n  aria-label=\"Main navigation\"\n  navigation={\n    <Navigation\n      items={[\n        { label: 'Dashboard', href: '/', icon: HomeIcon },\n        { label: 'Users', href: '/users', icon: UsersIcon },\n      ]}\n    />\n  }\n  footer={\n    <UserMenu user={currentUser} variant=\"compact\" />\n  }\n/>",
+        "imports": [
+          "import { DashboardSidebar } from '@xala-technologies/platform-ui/shells';",
+          "import { Navigation } from '@xala-technologies/platform-ui/composed';",
+          "import { UserMenu } from '@xala-technologies/platform-ui/blocks';",
+          "import { HomeIcon, UsersIcon } from 'lucide-react';"
+        ],
+        "storybookPath": "?path=/story/shells-dashboardsidebar"
+      },
+      "tags": ["aside", "sidebar", "navigation", "complementary", "shell"]
+    },
+    {
+      "id": "modal-dialog",
+      "category": "semantic",
+      "htmlIntent": {
+        "element": "dialog pattern",
+        "attributes": {
+          "role": "dialog",
+          "aria-modal": "true"
+        },
+        "description": "Modal dialog for focused user interaction"
+      },
+      "platformConstruct": {
+        "component": "Modal",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {}
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Modal",
+          "props": {}
+        },
+        "loading": {
+          "component": "Modal",
+          "props": { "children": "LoadingFallback" }
+        },
+        "error": {
+          "component": "Modal",
+          "props": { "children": "Alert with error" }
+        },
+        "success": {
+          "component": "Modal",
+          "props": { "children": "Success message" }
+        }
+      },
+      "accessibility": {
+        "role": "dialog",
+        "ariaAttributes": {
+          "aria-modal": "true",
+          "aria-labelledby": "Dialog title reference",
+          "aria-describedby": "Dialog description reference"
+        },
+        "keyboardInteraction": ["Escape to close", "Tab trapped within modal", "Focus returns on close"],
+        "wcagCriteria": ["2.1.2 No Keyboard Trap", "2.4.3 Focus Order"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["header", "closeLabel"]
+      },
+      "example": {
+        "jsx": "<Modal.Root>\n  <Modal.Trigger asChild>\n    <Button>Open Modal</Button>\n  </Modal.Trigger>\n  <Modal.Dialog>\n    <Modal.Header>Modal Title</Modal.Header>\n    <Modal.Content>\n      <Paragraph>Modal content goes here.</Paragraph>\n    </Modal.Content>\n    <Modal.Footer>\n      <Button variant=\"primary\">Confirm</Button>\n      <Modal.Close asChild>\n        <Button variant=\"secondary\">Cancel</Button>\n      </Modal.Close>\n    </Modal.Footer>\n  </Modal.Dialog>\n</Modal.Root>",
+        "imports": [
+          "import { Modal, Button, Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/composed-modal"
+      },
+      "tags": ["modal", "dialog", "overlay", "popup", "focus-trap"]
+    }
+  ]
+}

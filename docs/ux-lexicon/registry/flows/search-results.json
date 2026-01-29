@@ -1,0 +1,87 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "search-results",
+  "name": "Search Results Page",
+  "description": "Search interface with filters, refiners, and paginated results",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells"
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells",
+      "children": [
+        { "component": "FilterPanel", "layer": "composed", "props": { "purpose": "Refiners" } }
+      ]
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "children": [
+        { "component": "Textfield", "layer": "@digdir", "props": { "type": "search" } },
+        { "component": "ResultsList", "layer": "composed" },
+        { "component": "Pagination", "layer": "composed" }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Ready for search or showing previous results",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "searching": {
+      "description": "Search in progress",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Skeleton results"
+    },
+    "results": {
+      "description": "Results displayed",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "empty": {
+      "description": "No results found",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "ResultsEmptyState with suggestions"
+    },
+    "error": {
+      "description": "Search failed",
+      "activeZones": ["header", "sidebar", "main"]
+    }
+  },
+  "userActions": [
+    { "action": "Search", "component": "Textfield", "callback": "onSearch", "resultingState": "searching" },
+    { "action": "Refine", "component": "FilterPanel", "callback": "onFilterChange", "resultingState": "searching" },
+    { "action": "Clear filters", "component": "Button", "callback": "onClearFilters", "resultingState": "searching" },
+    { "action": "Paginate", "component": "Pagination", "callback": "onPageChange", "resultingState": "searching" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "query", "type": "string", "required": true, "description": "Search query" },
+      { "name": "results", "type": "T[]", "required": true, "description": "Search results" },
+      { "name": "filters", "type": "FilterState", "required": false, "description": "Active filters" },
+      { "name": "totalCount", "type": "number", "required": true, "description": "Total result count" }
+    ],
+    "callbacks": [
+      { "name": "onSearch", "signature": "(query: string) => void", "description": "Execute search" },
+      { "name": "onFilterChange", "signature": "(filters: FilterState) => void", "description": "Update filters" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout header={<DashboardHeader />}>\n  <Stack direction=\"horizontal\">\n    <Box width=\"250px\" padding=\"4\">\n      <Heading level={2} data-size=\"small\">Filters</Heading>\n      <Stack direction=\"vertical\" gap=\"4\">\n        <Checkbox.Group legend=\"Category\">\n          {categories.map(cat => (\n            <Checkbox key={cat.id} value={cat.id} checked={filters.categories.includes(cat.id)}>\n              {cat.name} ({cat.count})\n            </Checkbox>\n          ))}\n        </Checkbox.Group>\n        <Checkbox.Group legend=\"Price Range\">\n          <Checkbox value=\"0-50\">Under $50</Checkbox>\n          <Checkbox value=\"50-100\">$50 - $100</Checkbox>\n          <Checkbox value=\"100+\">$100+</Checkbox>\n        </Checkbox.Group>\n        {hasActiveFilters && (\n          <Button variant=\"tertiary\" onClick={clearFilters}>Clear All</Button>\n        )}\n      </Stack>\n    </Box>\n    \n    <DashboardContent>\n      <Textfield\n        type=\"search\"\n        label=\"Search\"\n        value={query}\n        onChange={(e) => setQuery(e.target.value)}\n        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}\n        prefix={<SearchIcon />}\n      />\n      \n      <Paragraph data-size=\"small\">{totalCount} results for \"{query}\"</Paragraph>\n      \n      <StateWrapper\n        state={getState()}\n        loadingComponent={<ResultsSkeleton count={10} />}\n        emptyComponent={\n          <ResultsEmptyState\n            query={query}\n            suggestions={['Try different keywords', 'Remove some filters']}\n          />\n        }\n      >\n        <Stack direction=\"vertical\" gap=\"2\">\n          {results.map(result => (\n            <Card key={result.id}>\n              <Heading level={3} data-size=\"small\">{result.title}</Heading>\n              <Paragraph>{result.excerpt}</Paragraph>\n            </Card>\n          ))}\n        </Stack>\n      </StateWrapper>\n      \n      <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />\n    </DashboardContent>\n  </Stack>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { StateWrapper, Pagination } from '@xala-technologies/platform-ui/composed';",
+      "import { ResultsEmptyState } from '@xala-technologies/platform-ui/blocks';",
+      "import { Stack, Box } from '@xala-technologies/platform-ui/primitives';",
+      "import { Textfield, Heading, Paragraph, Card, Checkbox, Button } from '@digdir/designsystemet-react';",
+      "import { SearchIcon } from 'lucide-react';"
+    ]
+  },
+  "relatedFlows": ["list-page"],
+  "tags": ["search", "results", "filter", "query", "refiners"]
+}

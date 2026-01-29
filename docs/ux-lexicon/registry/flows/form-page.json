@@ -1,0 +1,104 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "form-page",
+  "name": "Create/Edit Form Page",
+  "description": "Full-page form for creating or editing a resource with validation",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells",
+    "props": {}
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "importPath": "@xala-technologies/platform-ui/shells",
+      "children": [
+        { "component": "Breadcrumb", "layer": "composed" },
+        { "component": "PageHeader", "layer": "composed" },
+        { "component": "FormLayout", "layer": "composed" },
+        { "component": "FormSection", "layer": "composed" }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Form ready for input (create mode) or pre-populated (edit mode)",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "loading": {
+      "description": "Loading existing data for edit mode",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Form fields show skeleton"
+    },
+    "submitting": {
+      "description": "Form is being submitted",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Fields disabled, submit button loading"
+    },
+    "error": {
+      "description": "Validation or submission error",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Error summary + field-level errors"
+    },
+    "success": {
+      "description": "Form submitted successfully",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Success message, then redirect"
+    },
+    "permissionDenied": {
+      "description": "User lacks permission to create/edit",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "AccessGate replaces form"
+    }
+  },
+  "transitions": [
+    { "from": "loading", "to": "idle", "trigger": "Data loaded" },
+    { "from": "idle", "to": "submitting", "trigger": "Submit clicked" },
+    { "from": "submitting", "to": "error", "trigger": "Validation failed" },
+    { "from": "submitting", "to": "success", "trigger": "Save successful" },
+    { "from": "error", "to": "submitting", "trigger": "Re-submit after fixing errors" },
+    { "from": "success", "to": "redirect", "trigger": "Auto-redirect after delay" }
+  ],
+  "userActions": [
+    { "action": "Fill field", "component": "Textfield/Select/etc", "callback": "onChange", "resultingState": "idle" },
+    { "action": "Submit", "component": "Button", "callback": "onSubmit", "resultingState": "submitting" },
+    { "action": "Reset", "component": "Button", "callback": "onReset", "resultingState": "idle" },
+    { "action": "Cancel", "component": "Button", "callback": "onCancel", "resultingState": "redirect back" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "resource", "type": "T | null", "required": false, "description": "Existing resource for edit mode, null for create" },
+      { "name": "isLoading", "type": "boolean", "required": false, "description": "Loading existing data" },
+      { "name": "mode", "type": "'create' | 'edit'", "required": true, "description": "Form mode" }
+    ],
+    "callbacks": [
+      { "name": "onSubmit", "signature": "(data: T) => Promise<void>", "description": "Submit form data" },
+      { "name": "onCancel", "signature": "() => void", "description": "Cancel and go back" },
+      { "name": "onReset", "signature": "() => void", "description": "Reset form to initial state" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout\n  header={<DashboardHeader />}\n  sidebar={<DashboardSidebar />}\n>\n  <DashboardContent>\n    <Breadcrumb\n      items={[\n        { label: 'Users', href: '/users' },\n        { label: isEditMode ? 'Edit User' : 'New User', current: true },\n      ]}\n    />\n    \n    <PageHeader\n      title={isEditMode ? `Edit ${user?.name}` : 'Create New User'}\n    />\n    \n    <StateWrapper\n      state={getState()}\n      loadingComponent={<FormPageSkeleton />}\n      permissionDeniedComponent={\n        <AccessGate\n          denied\n          title=\"Cannot Edit User\"\n          description=\"You don't have permission to edit users\"\n        />\n      }\n    >\n      <FormLayout onSubmit={handleSubmit}>\n        {errors.length > 0 && (\n          <Alert data-color=\"danger\">\n            <Alert.Heading>Please fix the following errors:</Alert.Heading>\n            <List.Unordered>\n              {errors.map((error, i) => (\n                <List.Item key={i}>{error.message}</List.Item>\n              ))}\n            </List.Unordered>\n          </Alert>\n        )}\n        \n        <FormSection title=\"Basic Information\">\n          <Grid columns={2} gap=\"4\">\n            <Textfield\n              label=\"First Name\"\n              name=\"firstName\"\n              defaultValue={user?.firstName}\n              error={fieldErrors.firstName}\n              required\n            />\n            <Textfield\n              label=\"Last Name\"\n              name=\"lastName\"\n              defaultValue={user?.lastName}\n              error={fieldErrors.lastName}\n              required\n            />\n          </Grid>\n          <Textfield\n            label=\"Email\"\n            name=\"email\"\n            type=\"email\"\n            defaultValue={user?.email}\n            error={fieldErrors.email}\n            required\n          />\n        </FormSection>\n        \n        <FormSection title=\"Role & Permissions\">\n          <Select\n            label=\"Role\"\n            name=\"role\"\n            defaultValue={user?.role}\n            error={fieldErrors.role}\n            required\n          >\n            <Select.Option value=\"user\">User</Select.Option>\n            <Select.Option value=\"editor\">Editor</Select.Option>\n            <Select.Option value=\"admin\">Admin</Select.Option>\n          </Select>\n          \n          <Checkbox.Group legend=\"Permissions\">\n            <Checkbox name=\"permissions\" value=\"read\" defaultChecked={user?.permissions?.includes('read')}>\n              Read\n            </Checkbox>\n            <Checkbox name=\"permissions\" value=\"write\" defaultChecked={user?.permissions?.includes('write')}>\n              Write\n            </Checkbox>\n            <Checkbox name=\"permissions\" value=\"delete\" defaultChecked={user?.permissions?.includes('delete')}>\n              Delete\n            </Checkbox>\n          </Checkbox.Group>\n        </FormSection>\n        \n        <FormLayout.Actions>\n          <Button type=\"submit\" loading={isSubmitting}>\n            {isEditMode ? 'Save Changes' : 'Create User'}\n          </Button>\n          <Button type=\"reset\" variant=\"secondary\" onClick={handleReset}>\n            Reset\n          </Button>\n          <Button variant=\"tertiary\" onClick={handleCancel}>\n            Cancel\n          </Button>\n        </FormLayout.Actions>\n      </FormLayout>\n    </StateWrapper>\n  </DashboardContent>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { PageHeader, Breadcrumb, FormLayout, FormSection, StateWrapper } from '@xala-technologies/platform-ui/composed';",
+      "import { AccessGate } from '@xala-technologies/platform-ui/blocks';",
+      "import { Grid } from '@xala-technologies/platform-ui/primitives';",
+      "import { Button, Textfield, Select, Checkbox, Alert, List } from '@digdir/designsystemet-react';"
+    ],
+    "storybookPath": "?path=/story/flows-form-page"
+  },
+  "relatedFlows": ["list-page", "detail-page", "wizard-flow"],
+  "tags": ["form", "create", "edit", "validation", "crud"]
+}

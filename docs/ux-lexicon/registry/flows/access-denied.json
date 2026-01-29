@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "access-denied",
+  "name": "Access Denied Page",
+  "description": "Permission denied view with request access option",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells"
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "children": [
+        { "component": "AccessGate", "layer": "blocks" }
+      ]
+    }
+  },
+  "states": {
+    "permissionDenied": {
+      "description": "User lacks required permission",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "AccessGate with explanation and actions"
+    },
+    "requestSent": {
+      "description": "Access request submitted",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Confirmation message"
+    }
+  },
+  "userActions": [
+    { "action": "Request access", "component": "Button", "callback": "onRequestAccess", "resultingState": "requestSent" },
+    { "action": "Go back", "component": "Button", "callback": "onGoBack", "resultingState": "previous page" },
+    { "action": "Contact admin", "component": "Link", "callback": "onContactAdmin", "resultingState": "external" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "requiredPermission", "type": "string", "required": true, "description": "Permission that is missing" },
+      { "name": "resourceType", "type": "string", "required": false, "description": "Type of resource being accessed" },
+      { "name": "canRequestAccess", "type": "boolean", "required": false, "description": "Whether request access is available" }
+    ],
+    "callbacks": [
+      { "name": "onRequestAccess", "signature": "() => Promise<void>", "description": "Submit access request" },
+      { "name": "onGoBack", "signature": "() => void", "description": "Navigate back" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout header={<DashboardHeader />} sidebar={<DashboardSidebar />}>\n  <DashboardContent>\n    <Container data-size=\"small\">\n      {!requestSent ? (\n        <AccessGate\n          denied\n          icon={<ShieldXIcon size={64} />}\n          title=\"Access Restricted\"\n          description=\"You don't have permission to view this resource. This area requires elevated privileges.\"\n          requiredPermission={requiredPermission}\n          actions={\n            <Stack direction=\"vertical\" gap=\"3\" align=\"center\">\n              {canRequestAccess && (\n                <Button variant=\"primary\" onClick={handleRequestAccess} loading={isRequesting}>\n                  Request Access\n                </Button>\n              )}\n              <Stack direction=\"horizontal\" gap=\"2\">\n                <Button variant=\"secondary\" onClick={handleGoBack}>\n                  Go Back\n                </Button>\n                <Button variant=\"tertiary\" asChild>\n                  <Link href=\"mailto:admin@company.com\">Contact Admin</Link>\n                </Button>\n              </Stack>\n            </Stack>\n          }\n        />\n      ) : (\n        <Card data-color=\"success\">\n          <Stack direction=\"vertical\" gap=\"3\" align=\"center\">\n            <CheckCircleIcon size={48} />\n            <Heading level={2} data-size=\"medium\">Request Submitted</Heading>\n            <Paragraph>\n              Your access request has been sent to the administrator.\n              You'll receive an email when it's been reviewed.\n            </Paragraph>\n            <Button variant=\"primary\" onClick={handleGoBack}>\n              Return to Dashboard\n            </Button>\n          </Stack>\n        </Card>\n      )}\n    </Container>\n  </DashboardContent>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { AccessGate } from '@xala-technologies/platform-ui/blocks';",
+      "import { Container, Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Card, Heading, Paragraph, Button, Link } from '@digdir/designsystemet-react';",
+      "import { ShieldXIcon, CheckCircleIcon } from 'lucide-react';"
+    ]
+  },
+  "relatedFlows": ["list-page", "detail-page"],
+  "tags": ["403", "forbidden", "permission", "access", "rbac"]
+}

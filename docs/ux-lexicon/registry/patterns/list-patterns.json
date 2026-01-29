@@ -1,0 +1,248 @@
+{
+  "$schema": "../../schemas/pattern-catalog.schema.json",
+  "category": "list",
+  "patterns": [
+    {
+      "id": "data-table-with-actions",
+      "name": "Data Table with Actions",
+      "description": "Sortable, filterable table with row actions and bulk operations",
+      "category": "list",
+      "components": [
+        {
+          "role": "table",
+          "component": "DataTable",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": true
+        },
+        {
+          "role": "filters",
+          "component": "FilterBar",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": false
+        },
+        {
+          "role": "pagination",
+          "component": "Pagination",
+          "layer": "composed",
+          "importPath": "@xala-technologies/platform-ui/composed",
+          "required": false
+        },
+        {
+          "role": "bulk-actions",
+          "component": "Button",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        },
+        {
+          "role": "row-actions",
+          "component": "Dropdown",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Table displaying data",
+          "composition": "DataTable with rows and optional filters"
+        },
+        "loading": {
+          "description": "Data is being fetched",
+          "composition": "DataTable with skeleton rows"
+        },
+        "empty": {
+          "description": "No data matches filters or no data exists",
+          "composition": "EmptyState with call-to-action"
+        },
+        "error": {
+          "description": "Failed to load data",
+          "composition": "Alert with retry action"
+        }
+      },
+      "accessibility": {
+        "landmarks": ["region"],
+        "focusManagement": "Focus on table after filter/sort changes",
+        "announcements": ["Row count changes", "Sort order changes", "Selection changes"]
+      },
+      "example": {
+        "jsx": "<Stack direction=\"vertical\" gap=\"4\">\n  <Stack direction=\"horizontal\" justify=\"space-between\" align=\"center\">\n    <FilterBar\n      filters={[\n        { key: 'status', label: 'Status', options: statusOptions },\n        { key: 'role', label: 'Role', options: roleOptions },\n      ]}\n      value={filters}\n      onChange={setFilters}\n    />\n    \n    {selectedRows.length > 0 && (\n      <Stack direction=\"horizontal\" gap=\"2\">\n        <Paragraph data-size=\"small\">\n          {selectedRows.length} selected\n        </Paragraph>\n        <Button variant=\"secondary\" data-size=\"small\" onClick={handleBulkDelete}>\n          Delete Selected\n        </Button>\n      </Stack>\n    )}\n  </Stack>\n  \n  <StateWrapper\n    state={isLoading ? 'loading' : error ? 'error' : data.length === 0 ? 'empty' : 'idle'}\n    loadingComponent={<DataTable.Skeleton rows={5} />}\n    emptyComponent={<EmptyState title=\"No users found\" action={<Button>Add User</Button>} />}\n    errorComponent={<Alert data-color=\"danger\">{error.message}</Alert>}\n  >\n    <DataTable\n      columns={columns}\n      data={data}\n      sortable\n      selectable\n      selectedRows={selectedRows}\n      onSelectionChange={setSelectedRows}\n      onSort={handleSort}\n      rowActions={(row) => (\n        <Dropdown>\n          <Dropdown.Item onClick={() => handleEdit(row)}>Edit</Dropdown.Item>\n          <Dropdown.Item onClick={() => handleDelete(row)} data-color=\"danger\">Delete</Dropdown.Item>\n        </Dropdown>\n      )}\n    />\n  </StateWrapper>\n  \n  <Pagination\n    currentPage={page}\n    totalPages={totalPages}\n    onPageChange={setPage}\n  />\n</Stack>",
+        "imports": [
+          "import { DataTable, FilterBar, Pagination, StateWrapper } from '@xala-technologies/platform-ui/composed';",
+          "import { EmptyState } from '@xala-technologies/platform-ui/blocks';",
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Button, Alert, Paragraph, Dropdown } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-data-table"
+      },
+      "antiPatterns": [
+        {
+          "description": "No indication of current sort",
+          "badExample": "Sortable columns without visual sort indicator",
+          "reason": "Users can't tell how data is currently ordered"
+        },
+        {
+          "description": "Clearing selection on page change",
+          "badExample": "selectedRows = [] on pagination",
+          "reason": "Users lose their selection context"
+        }
+      ],
+      "relatedPatterns": ["search-results-list", "card-grid"],
+      "tags": ["table", "data", "sortable", "filterable", "actions", "bulk"]
+    },
+    {
+      "id": "search-results-list",
+      "name": "Search Results List",
+      "description": "Search interface with refiners and result display",
+      "category": "list",
+      "components": [
+        {
+          "role": "search-input",
+          "component": "Textfield",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "results",
+          "component": "Stack",
+          "layer": "primitives",
+          "importPath": "@xala-technologies/platform-ui/primitives",
+          "required": true
+        },
+        {
+          "role": "result-item",
+          "component": "Card",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        },
+        {
+          "role": "refiners",
+          "component": "Checkbox",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": false
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Ready for search input",
+          "composition": "Search field with optional recent searches"
+        },
+        "loading": {
+          "description": "Search in progress",
+          "composition": "Search field with skeleton results"
+        },
+        "empty": {
+          "description": "No results found",
+          "composition": "ResultsEmptyState with search suggestions"
+        },
+        "error": {
+          "description": "Search failed",
+          "composition": "Alert with retry action"
+        },
+        "success": {
+          "description": "Results displayed",
+          "composition": "Result count + result cards"
+        }
+      },
+      "accessibility": {
+        "landmarks": ["search", "main"],
+        "focusManagement": "Focus stays in search field, results announced",
+        "announcements": ["Result count on search complete"]
+      },
+      "example": {
+        "jsx": "<Stack direction=\"vertical\" gap=\"4\">\n  <Textfield\n    type=\"search\"\n    label=\"Search\"\n    placeholder=\"Search users...\"\n    value={query}\n    onChange={(e) => setQuery(e.target.value)}\n    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}\n    prefix={<SearchIcon />}\n  />\n  \n  {query && (\n    <Paragraph data-size=\"small\">\n      {results.length} results for \"{query}\"\n    </Paragraph>\n  )}\n  \n  <StateWrapper\n    state={isSearching ? 'loading' : results.length === 0 && query ? 'empty' : 'idle'}\n    loadingComponent={<Stack gap=\"2\">{[1,2,3].map(i => <Skeleton key={i} height=\"4rem\" />)}</Stack>}\n    emptyComponent={\n      <ResultsEmptyState\n        title=\"No results found\"\n        description={`No users match \"${query}\"`}\n        suggestions={[\"Try different keywords\", \"Check spelling\"]}\n      />\n    }\n  >\n    <Stack direction=\"vertical\" gap=\"2\">\n      {results.map((result) => (\n        <Card key={result.id} asChild>\n          <Link href={`/users/${result.id}`}>\n            <Heading level={3} data-size=\"small\">{result.name}</Heading>\n            <Paragraph data-size=\"small\">{result.email}</Paragraph>\n          </Link>\n        </Card>\n      ))}\n    </Stack>\n  </StateWrapper>\n</Stack>",
+        "imports": [
+          "import { StateWrapper } from '@xala-technologies/platform-ui/composed';",
+          "import { ResultsEmptyState } from '@xala-technologies/platform-ui/blocks';",
+          "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+          "import { Textfield, Card, Heading, Paragraph, Link, Skeleton } from '@digdir/designsystemet-react';",
+          "import { SearchIcon } from 'lucide-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-search-results"
+      },
+      "antiPatterns": [
+        {
+          "description": "No result count",
+          "badExample": "Showing results without \"X results found\"",
+          "reason": "Users need context on search effectiveness"
+        },
+        {
+          "description": "Searching on every keystroke",
+          "badExample": "onChange={handleSearch}",
+          "reason": "Excessive API calls; use debounce or search-on-enter"
+        }
+      ],
+      "relatedPatterns": ["data-table-with-actions"],
+      "tags": ["search", "results", "filter", "query"]
+    },
+    {
+      "id": "card-grid",
+      "name": "Card Grid Layout",
+      "description": "Responsive grid of cards for visual content display",
+      "category": "list",
+      "components": [
+        {
+          "role": "grid",
+          "component": "Grid",
+          "layer": "primitives",
+          "importPath": "@xala-technologies/platform-ui/primitives",
+          "required": true
+        },
+        {
+          "role": "card",
+          "component": "Card",
+          "layer": "@digdir",
+          "importPath": "@digdir/designsystemet-react",
+          "required": true
+        }
+      ],
+      "states": {
+        "idle": {
+          "description": "Cards displayed in grid",
+          "composition": "Grid with Card children"
+        },
+        "loading": {
+          "description": "Loading cards",
+          "composition": "Grid with Skeleton cards"
+        },
+        "empty": {
+          "description": "No items to display",
+          "composition": "EmptyState centered in grid area"
+        },
+        "error": {
+          "description": "Failed to load items",
+          "composition": "Alert with retry"
+        }
+      },
+      "accessibility": {
+        "landmarks": [],
+        "focusManagement": "Tab through cards",
+        "announcements": []
+      },
+      "example": {
+        "jsx": "<StateWrapper\n  state={isLoading ? 'loading' : items.length === 0 ? 'empty' : 'idle'}\n  loadingComponent={\n    <Grid columns={{ sm: 1, md: 2, lg: 3 }} gap=\"4\">\n      {[1,2,3,4,5,6].map(i => <Skeleton key={i} height=\"12rem\" />)}\n    </Grid>\n  }\n  emptyComponent={<EmptyState title=\"No items\" action={<Button>Create Item</Button>} />}\n>\n  <Grid columns={{ sm: 1, md: 2, lg: 3 }} gap=\"4\">\n    {items.map((item) => (\n      <Card key={item.id} data-color=\"neutral\">\n        {item.image && <Card.Media><img src={item.image} alt=\"\" /></Card.Media>}\n        <Card.Header>\n          <Heading level={3} data-size=\"small\">{item.title}</Heading>\n        </Card.Header>\n        <Card.Content>\n          <Paragraph data-size=\"small\">{item.description}</Paragraph>\n        </Card.Content>\n        <Card.Footer>\n          <Button variant=\"tertiary\" asChild>\n            <Link href={`/items/${item.id}`}>View Details</Link>\n          </Button>\n        </Card.Footer>\n      </Card>\n    ))}\n  </Grid>\n</StateWrapper>",
+        "imports": [
+          "import { StateWrapper } from '@xala-technologies/platform-ui/composed';",
+          "import { EmptyState } from '@xala-technologies/platform-ui/blocks';",
+          "import { Grid } from '@xala-technologies/platform-ui/primitives';",
+          "import { Card, Heading, Paragraph, Button, Link, Skeleton } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/patterns-card-grid"
+      },
+      "antiPatterns": [
+        {
+          "description": "Fixed column count on all screens",
+          "badExample": "<Grid columns={4}>",
+          "reason": "Causes overflow on small screens; use responsive columns"
+        }
+      ],
+      "relatedPatterns": ["data-table-with-actions"],
+      "tags": ["grid", "cards", "responsive", "gallery"]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "empty-onboarding",
+  "name": "Empty State Onboarding",
+  "description": "First-use experience with helpful empty states and getting started guidance",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells"
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "children": [
+        { "component": "EmptyState", "layer": "blocks", "props": { "variant": "onboarding" } },
+        { "component": "Card", "layer": "@digdir", "props": { "purpose": "Getting started steps" } }
+      ]
+    }
+  },
+  "states": {
+    "empty": {
+      "description": "No resources yet, show onboarding",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "EmptyState with onboarding steps"
+    },
+    "creating": {
+      "description": "User is creating first resource",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Form or wizard for first resource"
+    },
+    "idle": {
+      "description": "Has at least one resource",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Normal list/dashboard view"
+    }
+  },
+  "userActions": [
+    { "action": "Create first", "component": "Button", "callback": "onCreateFirst", "resultingState": "creating" },
+    { "action": "Skip intro", "component": "Link", "callback": "onSkip", "resultingState": "idle (empty list)" },
+    { "action": "View tutorial", "component": "Button", "callback": "onTutorial", "resultingState": "tutorial modal" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "hasResources", "type": "boolean", "required": true, "description": "Whether user has any resources" },
+      { "name": "onboardingSteps", "type": "OnboardingStep[]", "required": false, "description": "Getting started steps" }
+    ],
+    "callbacks": [
+      { "name": "onCreateFirst", "signature": "() => void", "description": "Start creating first resource" },
+      { "name": "onSkip", "signature": "() => void", "description": "Skip onboarding" },
+      { "name": "onCompleteStep", "signature": "(stepId: string) => void", "description": "Mark step complete" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout header={<DashboardHeader />} sidebar={<DashboardSidebar />}>\n  <DashboardContent>\n    {!hasResources ? (\n      <Container data-size=\"small\">\n        <EmptyState\n          icon={<RocketIcon size={64} />}\n          title=\"Welcome to Your Dashboard\"\n          description=\"Let's get you started with your first project. It only takes a few minutes.\"\n          action={\n            <Stack direction=\"vertical\" gap=\"2\" align=\"center\">\n              <Button variant=\"primary\" onClick={handleCreateFirst}>\n                Create Your First Project\n              </Button>\n              <Link href=\"#\" onClick={handleSkip}>\n                I'll explore first\n              </Link>\n            </Stack>\n          }\n        />\n        \n        <Card data-color=\"neutral\">\n          <Heading level={2} data-size=\"small\">Getting Started</Heading>\n          <Stack direction=\"vertical\" gap=\"3\">\n            {onboardingSteps.map((step, index) => (\n              <Stack key={step.id} direction=\"horizontal\" gap=\"3\" align=\"center\">\n                <Badge data-color={step.completed ? 'success' : 'neutral'}>\n                  {step.completed ? <CheckIcon /> : index + 1}\n                </Badge>\n                <Stack direction=\"vertical\" gap=\"0\">\n                  <Paragraph data-size=\"medium\" style={{ fontWeight: step.completed ? 'normal' : 'bold' }}>\n                    {step.title}\n                  </Paragraph>\n                  <Paragraph data-size=\"small\">{step.description}</Paragraph>\n                </Stack>\n                {!step.completed && (\n                  <Button variant=\"tertiary\" data-size=\"small\" onClick={() => handleStepAction(step)}>\n                    {step.actionLabel}\n                  </Button>\n                )}\n              </Stack>\n            ))}\n          </Stack>\n        </Card>\n      </Container>\n    ) : (\n      <NormalDashboardContent />\n    )}\n  </DashboardContent>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { EmptyState } from '@xala-technologies/platform-ui/blocks';",
+      "import { Container, Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Card, Heading, Paragraph, Button, Link, Badge } from '@digdir/designsystemet-react';",
+      "import { RocketIcon, CheckIcon } from 'lucide-react';"
+    ]
+  },
+  "relatedFlows": ["list-page"],
+  "tags": ["empty", "onboarding", "first-use", "getting-started"]
+}

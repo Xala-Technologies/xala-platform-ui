@@ -347,6 +347,15 @@ export type {
 export { LoadingFallback } from './LoadingFallback';
 export type { LoadingFallbackProps } from './LoadingFallback';
 
+// StateWrapper (Component state matrix handler)
+export { StateWrapper, computeState, useComputedState } from './StateWrapper';
+export type {
+  StateWrapperProps,
+  ComponentState,
+  StateConfig,
+  ComputedStateOptions,
+} from './StateWrapper';
+
 // Table Row Actions (dropdown menu for table actions)
 export {
   TableRowActions,

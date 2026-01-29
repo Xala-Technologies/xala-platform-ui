@@ -1,0 +1,116 @@
+# HTML to Platform UI Translation Table
+
+Quick reference for translating HTML intents to Platform UI components.
+
+## Layout Elements
+
+| HTML Intent | Platform UI Component | Import |
+|-------------|----------------------|--------|
+| `<div class="container">` | `Container` | `@xala-technologies/platform-ui/primitives` |
+| `<div style="display:flex">` | `Stack direction="horizontal"` | `@xala-technologies/platform-ui/primitives` |
+| `<div style="display:flex; flex-direction:column">` | `Stack direction="vertical"` | `@xala-technologies/platform-ui/primitives` |
+| `<div style="display:grid">` | `Grid` | `@xala-technologies/platform-ui/primitives` |
+| `<section>` | `Card` with `role="region"` | `@digdir/designsystemet-react` |
+| `<article>` | `Card` with `role="article"` | `@digdir/designsystemet-react` |
+
+## Typography Elements
+
+| HTML Intent | Platform UI Component | Import |
+|-------------|----------------------|--------|
+| `<h1>` | `Heading level={1}` | `@digdir/designsystemet-react` |
+| `<h2>` | `Heading level={2}` | `@digdir/designsystemet-react` |
+| `<h3>` | `Heading level={3}` | `@digdir/designsystemet-react` |
+| `<p>` | `Paragraph` | `@digdir/designsystemet-react` |
+| `<span>` | `Paragraph asChild` or `Tag` | `@digdir/designsystemet-react` |
+| `<label>` | `Label` | `@digdir/designsystemet-react` |
+
+## Form Elements
+
+| HTML Intent | Platform UI Component | Import |
+|-------------|----------------------|--------|
+| `<input type="text">` | `Textfield` | `@digdir/designsystemet-react` |
+| `<input type="password">` | `Textfield type="password"` | `@digdir/designsystemet-react` |
+| `<input type="email">` | `Textfield type="email"` | `@digdir/designsystemet-react` |
+| `<input type="number">` | `NumberInput` | `@xala-technologies/platform-ui/composed` |
+| `<select>` | `Select` | `@digdir/designsystemet-react` |
+| `<textarea>` | `Textarea` | `@digdir/designsystemet-react` |
+| `<input type="checkbox">` | `Checkbox` | `@digdir/designsystemet-react` |
+| `<input type="radio">` | `Radio` / `Radio.Group` | `@digdir/designsystemet-react` |
+| `<button>` | `Button` | `@digdir/designsystemet-react` |
+| `<form>` | `FormLayout` | `@xala-technologies/platform-ui/composed` |
+
+## List & Table Elements
+
+| HTML Intent | Platform UI Component | Import |
+|-------------|----------------------|--------|
+| `<ul><li>` | `List.Unordered` | `@digdir/designsystemet-react` |
+| `<ol><li>` | `List.Ordered` | `@digdir/designsystemet-react` |
+| `<table>` | `DataTable` | `@xala-technologies/platform-ui/composed` |
+| `<dl><dt><dd>` | `DefinitionList` | `@xala-technologies/platform-ui/composed` |
+
+## Navigation Elements
+
+| HTML Intent | Platform UI Component | Import |
+|-------------|----------------------|--------|
+| `<nav>` | `Navigation` | `@xala-technologies/platform-ui/composed` |
+| `<a href>` | `Link` | `@digdir/designsystemet-react` |
+| breadcrumb pattern | `Breadcrumb` | `@xala-technologies/platform-ui/composed` |
+
+## Semantic/Structural Elements
+
+| HTML Intent | Platform UI Component | Import |
+|-------------|----------------------|--------|
+| `<header>` | `DashboardHeader` | `@xala-technologies/platform-ui/shells` |
+| `<footer>` | Shell footer slot | `@xala-technologies/platform-ui/shells` |
+| `<main>` | `DashboardContent` | `@xala-technologies/platform-ui/shells` |
+| `<aside>` | `DashboardSidebar` | `@xala-technologies/platform-ui/shells` |
+| dialog pattern | `Modal` | `@digdir/designsystemet-react` |
+
+## Forbidden Patterns
+
+**NEVER use these raw HTML elements. The linter will error:**
+
+```tsx
+// ❌ FORBIDDEN
+<div>Content</div>
+<span>Text</span>
+<p>Paragraph</p>
+<h1>Title</h1>
+<section>Section</section>
+<button>Click</button>
+
+// ✅ CORRECT
+<Stack>Content</Stack>
+<Paragraph>Text</Paragraph>
+<Paragraph>Paragraph</Paragraph>
+<Heading level={1}>Title</Heading>
+<Card role="region">Section</Card>
+<Button>Click</Button>
+```
+
+## Quick Reference Card
+
+```tsx
+// Common import pattern
+import { Heading, Paragraph, Button, Card } from '@digdir/designsystemet-react';
+import { Stack, Grid, Container } from '@xala-technologies/platform-ui/primitives';
+import { DataTable, FormLayout } from '@xala-technologies/platform-ui/composed';
+import { EmptyState, AccessGate } from '@xala-technologies/platform-ui/blocks';
+import { DashboardLayout } from '@xala-technologies/platform-ui/shells';
+
+// Common composition
+<DashboardLayout>
+  <Stack direction="vertical" gap="4">
+    <Heading level={1}>Page Title</Heading>
+    <Card>
+      <Paragraph>Content</Paragraph>
+    </Card>
+  </Stack>
+</DashboardLayout>
+```
+
+## See Also
+
+- [State Matrix](./state-matrix.mdx) - How to handle component states
+- [Accessibility Patterns](./accessibility-patterns.mdx) - ARIA and keyboard support
+- [Registry Dictionary](/docs/ux-lexicon/registry/dictionary/) - Full JSON definitions

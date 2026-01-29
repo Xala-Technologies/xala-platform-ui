@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.no/ux-lexicon/schemas/pattern-catalog.schema.json",
+  "title": "UX Lexicon Pattern Catalog",
+  "description": "Schema for reusable UI pattern definitions",
+  "type": "object",
+  "required": ["id", "name", "description", "category", "components", "states", "example"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique pattern identifier (kebab-case)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable pattern name"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this pattern solves"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["form", "list", "state", "modal", "navigation", "feedback", "layout"],
+      "description": "Pattern category"
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "component", "layer"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "description": "Role this component plays in the pattern"
+          },
+          "component": {
+            "type": "string",
+            "description": "Component name"
+          },
+          "layer": {
+            "type": "string",
+            "enum": ["@digdir", "primitives", "composed", "blocks", "patterns", "shells"]
+          },
+          "importPath": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "description": "Components that make up this pattern"
+    },
+    "states": {
+      "type": "object",
+      "required": ["idle"],
+      "properties": {
+        "idle": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "composition": { "type": "string" }
+          }
+        },
+        "loading": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "composition": { "type": "string" }
+          }
+        },
+        "empty": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "composition": { "type": "string" }
+          }
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "composition": { "type": "string" }
+          }
+        },
+        "success": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "composition": { "type": "string" }
+          }
+        },
+        "permissionDenied": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "composition": { "type": "string" }
+          }
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "landmarks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "focusManagement": {
+          "type": "string"
+        },
+        "announcements": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "example": {
+      "type": "object",
+      "required": ["jsx"],
+      "properties": {
+        "jsx": {
+          "type": "string",
+          "description": "Complete pattern example"
+        },
+        "imports": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "storybookPath": {
+          "type": "string"
+        }
+      }
+    },
+    "antiPatterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "badExample": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "relatedPatterns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of related patterns"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

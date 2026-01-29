@@ -1,0 +1,253 @@
+{
+  "$schema": "../../schemas/dictionary-entry.schema.json",
+  "category": "typography",
+  "entries": [
+    {
+      "id": "heading-page-title",
+      "category": "typography",
+      "htmlIntent": {
+        "element": "<h1>",
+        "attributes": {},
+        "description": "Primary page heading, typically one per page"
+      },
+      "platformConstruct": {
+        "component": "Heading",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "level": 1,
+          "data-size": "xlarge"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Heading",
+          "props": { "level": 1 }
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "width": "60%" }
+        }
+      },
+      "accessibility": {
+        "role": "heading",
+        "ariaAttributes": {
+          "aria-level": "1"
+        },
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "2.4.6 Headings and Labels"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Heading level={1} data-size=\"xlarge\">\n  Page Title\n</Heading>",
+        "imports": [
+          "import { Heading } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/typography-heading"
+      },
+      "tags": ["h1", "heading", "title", "page-title", "typography"]
+    },
+    {
+      "id": "heading-section",
+      "category": "typography",
+      "htmlIntent": {
+        "element": "<h2>, <h3>, <h4>, <h5>, <h6>",
+        "attributes": {},
+        "description": "Section headings for content hierarchy"
+      },
+      "platformConstruct": {
+        "component": "Heading",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "level": 2,
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Heading",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1.75rem", "width": "40%" }
+        }
+      },
+      "accessibility": {
+        "role": "heading",
+        "ariaAttributes": {
+          "aria-level": "2-6 depending on level prop"
+        },
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "2.4.6 Headings and Labels"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Heading level={2} data-size=\"medium\">\n  Section Title\n</Heading>\n\n<Heading level={3} data-size=\"small\">\n  Subsection Title\n</Heading>",
+        "imports": [
+          "import { Heading } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/typography-heading"
+      },
+      "tags": ["h2", "h3", "h4", "h5", "h6", "heading", "section", "typography"]
+    },
+    {
+      "id": "paragraph-body",
+      "category": "typography",
+      "htmlIntent": {
+        "element": "<p>",
+        "attributes": {},
+        "description": "Body text paragraph"
+      },
+      "platformConstruct": {
+        "component": "Paragraph",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Paragraph",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1rem", "width": "100%" }
+        }
+      },
+      "accessibility": {
+        "role": "none",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": ["1.4.8 Visual Presentation"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Paragraph data-size=\"medium\">\n  This is a body text paragraph with proper typography styling.\n</Paragraph>",
+        "imports": [
+          "import { Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/typography-paragraph"
+      },
+      "tags": ["p", "paragraph", "body", "text", "typography"]
+    },
+    {
+      "id": "span-inline",
+      "category": "typography",
+      "htmlIntent": {
+        "element": "<span>",
+        "attributes": {
+          "style": "font-weight: bold; color: ..."
+        },
+        "description": "Inline text styling without semantic meaning"
+      },
+      "platformConstruct": {
+        "component": "Paragraph",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "asChild": true
+        },
+        "alternatives": [
+          {
+            "component": "Tag",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "For labeled/categorized inline content"
+          },
+          {
+            "component": "Badge",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "For status indicators or counts"
+          }
+        ]
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Paragraph",
+          "props": { "asChild": true }
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1em", "width": "4rem", "display": "inline-block" }
+        }
+      },
+      "accessibility": {
+        "role": "none",
+        "ariaAttributes": {},
+        "keyboardInteraction": [],
+        "wcagCriteria": []
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Paragraph data-size=\"medium\">\n  Regular text with <Paragraph asChild><span data-color=\"accent\">highlighted</span></Paragraph> content.\n</Paragraph>",
+        "imports": [
+          "import { Paragraph } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/typography-inline"
+      },
+      "tags": ["span", "inline", "text", "highlight", "typography"]
+    },
+    {
+      "id": "label-form",
+      "category": "typography",
+      "htmlIntent": {
+        "element": "<label>",
+        "attributes": {
+          "for": "input-id"
+        },
+        "description": "Form field label"
+      },
+      "platformConstruct": {
+        "component": "Label",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Label",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1rem", "width": "30%" }
+        }
+      },
+      "accessibility": {
+        "role": "none",
+        "ariaAttributes": {},
+        "keyboardInteraction": ["Clicking label focuses associated input"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "3.3.2 Labels or Instructions"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": []
+      },
+      "example": {
+        "jsx": "<Label htmlFor=\"email-input\" data-size=\"medium\">\n  Email Address\n</Label>\n<Textfield id=\"email-input\" type=\"email\" />",
+        "imports": [
+          "import { Label, Textfield } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/typography-label"
+      },
+      "tags": ["label", "form", "input", "accessibility", "typography"]
+    }
+  ]
+}

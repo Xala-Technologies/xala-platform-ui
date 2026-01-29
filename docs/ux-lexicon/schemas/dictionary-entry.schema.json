@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.no/ux-lexicon/schemas/dictionary-entry.schema.json",
+  "title": "UX Lexicon Dictionary Entry",
+  "description": "Schema for HTML-to-Platform-UI translation entries",
+  "type": "object",
+  "required": ["id", "category", "htmlIntent", "platformConstruct", "layer", "states", "example"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique identifier for the entry (kebab-case)"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["layout", "typography", "forms", "lists", "navigation", "semantic"],
+      "description": "Category grouping for the entry"
+    },
+    "htmlIntent": {
+      "type": "object",
+      "required": ["element", "description"],
+      "properties": {
+        "element": {
+          "type": "string",
+          "description": "The raw HTML element or pattern being translated"
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Common HTML attributes associated with this intent"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the HTML intent"
+        }
+      }
+    },
+    "platformConstruct": {
+      "type": "object",
+      "required": ["component", "importPath"],
+      "properties": {
+        "component": {
+          "type": "string",
+          "description": "Platform UI component name"
+        },
+        "importPath": {
+          "type": "string",
+          "description": "Import path for the component"
+        },
+        "defaultProps": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Default props to apply"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "component": { "type": "string" },
+              "importPath": { "type": "string" },
+              "useCase": { "type": "string" }
+            }
+          },
+          "description": "Alternative components for specific use cases"
+        }
+      }
+    },
+    "layer": {
+      "type": "string",
+      "enum": ["@digdir", "primitives", "composed", "blocks", "patterns", "shells", "pages"],
+      "description": "Layer in the component hierarchy"
+    },
+    "states": {
+      "type": "object",
+      "properties": {
+        "idle": {
+          "type": "object",
+          "properties": {
+            "component": { "type": "string" },
+            "props": { "type": "object" }
+          }
+        },
+        "loading": {
+          "type": "object",
+          "properties": {
+            "component": { "type": "string" },
+            "props": { "type": "object" }
+          }
+        },
+        "empty": {
+          "type": "object",
+          "properties": {
+            "component": { "type": "string" },
+            "props": { "type": "object" }
+          }
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "component": { "type": "string" },
+            "props": { "type": "object" }
+          }
+        },
+        "success": {
+          "type": "object",
+          "properties": {
+            "component": { "type": "string" },
+            "props": { "type": "object" }
+          }
+        },
+        "permissionDenied": {
+          "type": "object",
+          "properties": {
+            "component": { "type": "string" },
+            "props": { "type": "object" }
+          }
+        }
+      },
+      "description": "State matrix mappings"
+    },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "ariaAttributes": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "keyboardInteraction": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "wcagCriteria": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "i18n": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "enum": ["props", "children", "render-prop"],
+          "description": "How translations are passed to the component"
+        },
+        "translatableProps": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Props that should receive translated strings"
+        }
+      }
+    },
+    "example": {
+      "type": "object",
+      "required": ["jsx"],
+      "properties": {
+        "jsx": {
+          "type": "string",
+          "description": "Copy-paste ready JSX example"
+        },
+        "imports": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Required import statements"
+        },
+        "storybookPath": {
+          "type": "string",
+          "description": "Path to Storybook story"
+        }
+      }
+    },
+    "responsive": {
+      "type": "object",
+      "properties": {
+        "breakpoints": {
+          "type": "object",
+          "additionalProperties": { "type": "object" }
+        },
+        "mobileFirst": { "type": "boolean" }
+      }
+    },
+    "deprecated": {
+      "type": "boolean",
+      "default": false
+    },
+    "deprecatedReason": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

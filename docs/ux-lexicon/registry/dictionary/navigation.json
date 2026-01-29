@@ -1,0 +1,165 @@
+{
+  "$schema": "../../schemas/dictionary-entry.schema.json",
+  "category": "navigation",
+  "entries": [
+    {
+      "id": "nav-menu",
+      "category": "navigation",
+      "htmlIntent": {
+        "element": "<nav>",
+        "attributes": {
+          "aria-label": "Main navigation"
+        },
+        "description": "Navigation landmark with menu items"
+      },
+      "platformConstruct": {
+        "component": "Navigation",
+        "importPath": "@xala-technologies/platform-ui/composed",
+        "defaultProps": {},
+        "alternatives": [
+          {
+            "component": "DashboardSidebar",
+            "importPath": "@xala-technologies/platform-ui/shells",
+            "useCase": "For dashboard sidebar navigation"
+          }
+        ]
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "Navigation",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "count": 5 }
+        },
+        "error": {
+          "component": "Alert",
+          "props": { "data-color": "warning", "children": "Navigation failed to load" }
+        }
+      },
+      "accessibility": {
+        "role": "navigation",
+        "ariaAttributes": {
+          "aria-label": "Describe the navigation purpose"
+        },
+        "keyboardInteraction": ["Tab through items", "Enter to navigate", "Arrow keys in dropdowns"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "2.4.1 Bypass Blocks"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["items[].label", "aria-label"]
+      },
+      "example": {
+        "jsx": "<Navigation\n  aria-label=\"Main navigation\"\n  items={[\n    { label: 'Dashboard', href: '/dashboard', icon: HomeIcon },\n    { label: 'Users', href: '/users', icon: UsersIcon },\n    { label: 'Settings', href: '/settings', icon: SettingsIcon },\n  ]}\n  activeHref={pathname}\n/>",
+        "imports": [
+          "import { Navigation } from '@xala-technologies/platform-ui/composed';",
+          "import { HomeIcon, UsersIcon, SettingsIcon } from 'lucide-react';"
+        ],
+        "storybookPath": "?path=/story/composed-navigation"
+      },
+      "tags": ["nav", "navigation", "menu", "sidebar", "landmark"]
+    },
+    {
+      "id": "a-link",
+      "category": "navigation",
+      "htmlIntent": {
+        "element": "<a href>",
+        "attributes": {
+          "href": "...",
+          "target": "_blank"
+        },
+        "description": "Hyperlink for navigation or external resources"
+      },
+      "platformConstruct": {
+        "component": "Link",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Link",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1em", "width": "8rem", "display": "inline-block" }
+        }
+      },
+      "accessibility": {
+        "role": "link",
+        "ariaAttributes": {
+          "aria-current": "page when link is current page",
+          "aria-describedby": "Additional context if needed"
+        },
+        "keyboardInteraction": ["Enter to follow link", "Tab to focus"],
+        "wcagCriteria": ["2.4.4 Link Purpose", "2.4.9 Link Purpose (Link Only)"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": ["aria-label"]
+      },
+      "example": {
+        "jsx": "<Link href=\"/about\" data-size=\"medium\">\n  Learn more about us\n</Link>\n\n<Link\n  href=\"https://example.com\"\n  target=\"_blank\"\n  rel=\"noopener noreferrer\"\n  data-size=\"medium\"\n>\n  External Link\n</Link>",
+        "imports": [
+          "import { Link } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/navigation-link"
+      },
+      "tags": ["link", "anchor", "href", "navigation", "external"]
+    },
+    {
+      "id": "breadcrumb-trail",
+      "category": "navigation",
+      "htmlIntent": {
+        "element": "breadcrumb pattern",
+        "attributes": {
+          "aria-label": "Breadcrumb"
+        },
+        "description": "Hierarchical navigation trail showing current location"
+      },
+      "platformConstruct": {
+        "component": "Breadcrumb",
+        "importPath": "@xala-technologies/platform-ui/composed",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "Breadcrumb",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1.25rem", "width": "60%" }
+        }
+      },
+      "accessibility": {
+        "role": "navigation",
+        "ariaAttributes": {
+          "aria-label": "Breadcrumb"
+        },
+        "keyboardInteraction": ["Tab through items", "Enter to navigate"],
+        "wcagCriteria": ["2.4.8 Location"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["items[].label", "aria-label"]
+      },
+      "example": {
+        "jsx": "<Breadcrumb\n  aria-label=\"Breadcrumb\"\n  items={[\n    { label: 'Home', href: '/' },\n    { label: 'Products', href: '/products' },\n    { label: 'Electronics', href: '/products/electronics' },\n    { label: 'Smartphones', current: true },\n  ]}\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { Breadcrumb } from '@xala-technologies/platform-ui/composed';"
+        ],
+        "storybookPath": "?path=/story/composed-breadcrumb"
+      },
+      "tags": ["breadcrumb", "trail", "hierarchy", "location", "navigation"]
+    }
+  ]
+}

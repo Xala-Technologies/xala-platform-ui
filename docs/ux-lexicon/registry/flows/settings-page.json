@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schemas/golden-flow.schema.json",
+  "id": "settings-page",
+  "name": "Settings Page",
+  "description": "User preferences and application settings management",
+  "shell": {
+    "component": "DashboardLayout",
+    "importPath": "@xala-technologies/platform-ui/shells"
+  },
+  "zones": {
+    "header": {
+      "component": "DashboardHeader",
+      "layer": "shells"
+    },
+    "sidebar": {
+      "component": "DashboardSidebar",
+      "layer": "shells"
+    },
+    "main": {
+      "component": "DashboardContent",
+      "layer": "shells",
+      "children": [
+        { "component": "PageHeader", "layer": "composed" },
+        { "component": "Tabs", "layer": "@digdir", "props": { "purpose": "Settings sections" } },
+        { "component": "Card", "layer": "@digdir", "props": { "purpose": "Settings group" } }
+      ]
+    }
+  },
+  "states": {
+    "idle": {
+      "description": "Settings displayed with current values",
+      "activeZones": ["header", "sidebar", "main"]
+    },
+    "saving": {
+      "description": "Settings being saved",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Save button loading"
+    },
+    "success": {
+      "description": "Settings saved successfully",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Success toast"
+    },
+    "error": {
+      "description": "Failed to save settings",
+      "activeZones": ["header", "sidebar", "main"],
+      "composition": "Error alert"
+    }
+  },
+  "userActions": [
+    { "action": "Change setting", "component": "Switch/Select/etc", "callback": "onChange", "resultingState": "idle (dirty)" },
+    { "action": "Save", "component": "Button", "callback": "onSave", "resultingState": "saving" },
+    { "action": "Reset", "component": "Button", "callback": "onReset", "resultingState": "idle" },
+    { "action": "Switch tab", "component": "Tabs", "callback": "onTabChange", "resultingState": "idle" }
+  ],
+  "dataRequirements": {
+    "props": [
+      { "name": "settings", "type": "SettingsState", "required": true, "description": "Current settings values" },
+      { "name": "isDirty", "type": "boolean", "required": false, "description": "Has unsaved changes" }
+    ],
+    "callbacks": [
+      { "name": "onSave", "signature": "(settings: SettingsState) => Promise<void>", "description": "Save settings" },
+      { "name": "onReset", "signature": "() => void", "description": "Reset to defaults" },
+      { "name": "onChange", "signature": "(key: string, value: any) => void", "description": "Update setting" }
+    ]
+  },
+  "example": {
+    "jsx": "<DashboardLayout header={<DashboardHeader />} sidebar={<DashboardSidebar />}>\n  <DashboardContent>\n    <PageHeader title=\"Settings\" />\n    \n    <Tabs defaultValue=\"profile\">\n      <Tabs.List>\n        <Tabs.Tab value=\"profile\">Profile</Tabs.Tab>\n        <Tabs.Tab value=\"notifications\">Notifications</Tabs.Tab>\n        <Tabs.Tab value=\"appearance\">Appearance</Tabs.Tab>\n        <Tabs.Tab value=\"security\">Security</Tabs.Tab>\n      </Tabs.List>\n      \n      <Tabs.Panel value=\"profile\">\n        <Card data-color=\"neutral\">\n          <Heading level={2} data-size=\"small\">Profile Settings</Heading>\n          <Stack direction=\"vertical\" gap=\"4\">\n            <Textfield label=\"Display Name\" value={settings.displayName} onChange={(e) => handleChange('displayName', e.target.value)} />\n            <Textfield label=\"Email\" type=\"email\" value={settings.email} onChange={(e) => handleChange('email', e.target.value)} />\n            <Textarea label=\"Bio\" value={settings.bio} onChange={(e) => handleChange('bio', e.target.value)} />\n          </Stack>\n        </Card>\n      </Tabs.Panel>\n      \n      <Tabs.Panel value=\"notifications\">\n        <Card data-color=\"neutral\">\n          <Heading level={2} data-size=\"small\">Notification Preferences</Heading>\n          <Stack direction=\"vertical\" gap=\"3\">\n            <Switch checked={settings.emailNotifications} onCheckedChange={(v) => handleChange('emailNotifications', v)}>\n              Email notifications\n            </Switch>\n            <Switch checked={settings.pushNotifications} onCheckedChange={(v) => handleChange('pushNotifications', v)}>\n              Push notifications\n            </Switch>\n            <Switch checked={settings.weeklyDigest} onCheckedChange={(v) => handleChange('weeklyDigest', v)}>\n              Weekly digest\n            </Switch>\n          </Stack>\n        </Card>\n      </Tabs.Panel>\n      \n      <Tabs.Panel value=\"appearance\">\n        <Card data-color=\"neutral\">\n          <Heading level={2} data-size=\"small\">Theme</Heading>\n          <Radio.Group legend=\"Color scheme\" value={settings.theme} onValueChange={(v) => handleChange('theme', v)}>\n            <Radio value=\"light\">Light</Radio>\n            <Radio value=\"dark\">Dark</Radio>\n            <Radio value=\"system\">System</Radio>\n          </Radio.Group>\n        </Card>\n      </Tabs.Panel>\n    </Tabs>\n    \n    <Stack direction=\"horizontal\" gap=\"2\" justify=\"flex-end\">\n      <Button variant=\"secondary\" onClick={handleReset} disabled={!isDirty}>Reset</Button>\n      <Button variant=\"primary\" onClick={handleSave} loading={isSaving} disabled={!isDirty}>Save Changes</Button>\n    </Stack>\n  </DashboardContent>\n</DashboardLayout>",
+    "imports": [
+      "import { DashboardLayout, DashboardHeader, DashboardSidebar, DashboardContent } from '@xala-technologies/platform-ui/shells';",
+      "import { PageHeader } from '@xala-technologies/platform-ui/composed';",
+      "import { Stack } from '@xala-technologies/platform-ui/primitives';",
+      "import { Tabs, Card, Heading, Textfield, Textarea, Switch, Radio, Button } from '@digdir/designsystemet-react';"
+    ]
+  },
+  "relatedFlows": ["form-page"],
+  "tags": ["settings", "preferences", "configuration", "profile"]
+}

@@ -1,0 +1,599 @@
+{
+  "$schema": "../../schemas/dictionary-entry.schema.json",
+  "category": "forms",
+  "entries": [
+    {
+      "id": "input-text",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<input type=\"text\">",
+        "attributes": {
+          "type": "text",
+          "placeholder": "...",
+          "required": "..."
+        },
+        "description": "Single-line text input field"
+      },
+      "platformConstruct": {
+        "component": "Textfield",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Textfield",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "width": "100%" }
+        },
+        "error": {
+          "component": "Textfield",
+          "props": { "error": "Error message" }
+        },
+        "success": {
+          "component": "Textfield",
+          "props": { "data-color": "success" }
+        }
+      },
+      "accessibility": {
+        "role": "textbox",
+        "ariaAttributes": {
+          "aria-label": "When no visible label",
+          "aria-describedby": "Reference to help text",
+          "aria-invalid": "true when validation fails"
+        },
+        "keyboardInteraction": ["Tab to focus", "Type to enter text"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "3.3.1 Error Identification", "3.3.2 Labels or Instructions"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["label", "placeholder", "error", "description"]
+      },
+      "example": {
+        "jsx": "<Textfield\n  label=\"Full Name\"\n  placeholder=\"Enter your name\"\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { Textfield } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-textfield"
+      },
+      "tags": ["input", "text", "textfield", "form", "string"]
+    },
+    {
+      "id": "input-password",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<input type=\"password\">",
+        "attributes": {
+          "type": "password",
+          "autocomplete": "current-password"
+        },
+        "description": "Password input field with masked characters"
+      },
+      "platformConstruct": {
+        "component": "Textfield",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "type": "password",
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Textfield",
+          "props": { "type": "password" }
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "width": "100%" }
+        },
+        "error": {
+          "component": "Textfield",
+          "props": { "type": "password", "error": "Error message" }
+        }
+      },
+      "accessibility": {
+        "role": "textbox",
+        "ariaAttributes": {
+          "aria-label": "Password field description"
+        },
+        "keyboardInteraction": ["Tab to focus", "Type to enter password"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "3.3.2 Labels or Instructions"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["label", "placeholder", "error", "description"]
+      },
+      "example": {
+        "jsx": "<Textfield\n  type=\"password\"\n  label=\"Password\"\n  autoComplete=\"current-password\"\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { Textfield } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-textfield--password"
+      },
+      "tags": ["input", "password", "form", "security", "auth"]
+    },
+    {
+      "id": "input-email",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<input type=\"email\">",
+        "attributes": {
+          "type": "email",
+          "autocomplete": "email"
+        },
+        "description": "Email input field with email validation"
+      },
+      "platformConstruct": {
+        "component": "Textfield",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "type": "email",
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Textfield",
+          "props": { "type": "email" }
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "width": "100%" }
+        },
+        "error": {
+          "component": "Textfield",
+          "props": { "type": "email", "error": "Invalid email address" }
+        }
+      },
+      "accessibility": {
+        "role": "textbox",
+        "ariaAttributes": {
+          "aria-invalid": "true when email format is invalid"
+        },
+        "keyboardInteraction": ["Tab to focus", "Type to enter email"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "3.3.1 Error Identification"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["label", "placeholder", "error", "description"]
+      },
+      "example": {
+        "jsx": "<Textfield\n  type=\"email\"\n  label=\"Email Address\"\n  placeholder=\"name@example.com\"\n  autoComplete=\"email\"\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { Textfield } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-textfield--email"
+      },
+      "tags": ["input", "email", "form", "validation"]
+    },
+    {
+      "id": "input-number",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<input type=\"number\">",
+        "attributes": {
+          "type": "number",
+          "min": "...",
+          "max": "...",
+          "step": "..."
+        },
+        "description": "Numeric input with increment/decrement controls"
+      },
+      "platformConstruct": {
+        "component": "NumberInput",
+        "importPath": "@xala-technologies/platform-ui/composed",
+        "defaultProps": {
+          "data-size": "medium"
+        },
+        "alternatives": [
+          {
+            "component": "Textfield",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "When simple number input without controls is needed"
+          }
+        ]
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "NumberInput",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "width": "8rem" }
+        },
+        "error": {
+          "component": "NumberInput",
+          "props": { "error": "Invalid number" }
+        }
+      },
+      "accessibility": {
+        "role": "spinbutton",
+        "ariaAttributes": {
+          "aria-valuemin": "Minimum value",
+          "aria-valuemax": "Maximum value",
+          "aria-valuenow": "Current value"
+        },
+        "keyboardInteraction": ["Arrow Up/Down to increment/decrement", "Tab to focus"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "4.1.2 Name, Role, Value"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["label", "error", "description"]
+      },
+      "example": {
+        "jsx": "<NumberInput\n  label=\"Quantity\"\n  min={0}\n  max={100}\n  step={1}\n  defaultValue={1}\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { NumberInput } from '@xala-technologies/platform-ui/composed';"
+        ],
+        "storybookPath": "?path=/story/composed-numberinput"
+      },
+      "tags": ["input", "number", "numeric", "spinbutton", "form"]
+    },
+    {
+      "id": "select-dropdown",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<select>",
+        "attributes": {
+          "multiple": "false"
+        },
+        "description": "Dropdown selection from predefined options"
+      },
+      "platformConstruct": {
+        "component": "Select",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        },
+        "alternatives": [
+          {
+            "component": "SearchableSelect",
+            "importPath": "@xala-technologies/platform-ui/composed",
+            "useCase": "When searching/filtering options is needed"
+          },
+          {
+            "component": "Combobox",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "When autocomplete functionality is needed"
+          }
+        ]
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Select",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "2.5rem", "width": "100%" }
+        },
+        "error": {
+          "component": "Select",
+          "props": { "error": "Please select an option" }
+        },
+        "empty": {
+          "component": "Select",
+          "props": { "disabled": true, "placeholder": "No options available" }
+        }
+      },
+      "accessibility": {
+        "role": "combobox",
+        "ariaAttributes": {
+          "aria-expanded": "true when open",
+          "aria-haspopup": "listbox"
+        },
+        "keyboardInteraction": ["Arrow Up/Down to navigate", "Enter to select", "Escape to close"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "4.1.2 Name, Role, Value"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["label", "placeholder", "error", "options[].label"]
+      },
+      "example": {
+        "jsx": "<Select\n  label=\"Country\"\n  data-size=\"medium\"\n>\n  <Select.Option value=\"no\">Norway</Select.Option>\n  <Select.Option value=\"se\">Sweden</Select.Option>\n  <Select.Option value=\"dk\">Denmark</Select.Option>\n</Select>",
+        "imports": [
+          "import { Select } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-select"
+      },
+      "tags": ["select", "dropdown", "options", "form", "choice"]
+    },
+    {
+      "id": "textarea-multiline",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<textarea>",
+        "attributes": {
+          "rows": "...",
+          "maxlength": "..."
+        },
+        "description": "Multi-line text input area"
+      },
+      "platformConstruct": {
+        "component": "Textarea",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Textarea",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "6rem", "width": "100%" }
+        },
+        "error": {
+          "component": "Textarea",
+          "props": { "error": "Error message" }
+        }
+      },
+      "accessibility": {
+        "role": "textbox",
+        "ariaAttributes": {
+          "aria-multiline": "true"
+        },
+        "keyboardInteraction": ["Tab to focus", "Enter for new line"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "3.3.2 Labels or Instructions"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["label", "placeholder", "error", "description"]
+      },
+      "example": {
+        "jsx": "<Textarea\n  label=\"Description\"\n  placeholder=\"Enter a detailed description...\"\n  rows={4}\n  data-size=\"medium\"\n/>",
+        "imports": [
+          "import { Textarea } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-textarea"
+      },
+      "tags": ["textarea", "multiline", "text", "form", "long-text"]
+    },
+    {
+      "id": "checkbox-toggle",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<input type=\"checkbox\">",
+        "attributes": {
+          "type": "checkbox",
+          "checked": "..."
+        },
+        "description": "Binary toggle for on/off states"
+      },
+      "platformConstruct": {
+        "component": "Checkbox",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        },
+        "alternatives": [
+          {
+            "component": "Switch",
+            "importPath": "@digdir/designsystemet-react",
+            "useCase": "For settings that take immediate effect"
+          }
+        ]
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Checkbox",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1.5rem", "width": "1.5rem" }
+        },
+        "error": {
+          "component": "Checkbox",
+          "props": { "error": "This field is required" }
+        }
+      },
+      "accessibility": {
+        "role": "checkbox",
+        "ariaAttributes": {
+          "aria-checked": "true/false/mixed"
+        },
+        "keyboardInteraction": ["Space to toggle", "Tab to focus"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "4.1.2 Name, Role, Value"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": ["error", "description"]
+      },
+      "example": {
+        "jsx": "<Checkbox data-size=\"medium\">\n  I agree to the terms and conditions\n</Checkbox>",
+        "imports": [
+          "import { Checkbox } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-checkbox"
+      },
+      "tags": ["checkbox", "toggle", "boolean", "form", "consent"]
+    },
+    {
+      "id": "radio-option",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<input type=\"radio\">",
+        "attributes": {
+          "type": "radio",
+          "name": "group-name"
+        },
+        "description": "Single selection from mutually exclusive options"
+      },
+      "platformConstruct": {
+        "component": "Radio.Group",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Radio.Group",
+          "props": {}
+        },
+        "loading": {
+          "component": "Skeleton",
+          "props": { "height": "1.5rem", "width": "100%" }
+        },
+        "error": {
+          "component": "Radio.Group",
+          "props": { "error": "Please select an option" }
+        }
+      },
+      "accessibility": {
+        "role": "radiogroup",
+        "ariaAttributes": {
+          "aria-labelledby": "Group label reference"
+        },
+        "keyboardInteraction": ["Arrow keys to navigate", "Space to select", "Tab to move out"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "4.1.2 Name, Role, Value"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["legend", "error", "children (Radio labels)"]
+      },
+      "example": {
+        "jsx": "<Radio.Group legend=\"Subscription Type\" data-size=\"medium\">\n  <Radio value=\"free\">Free</Radio>\n  <Radio value=\"pro\">Professional</Radio>\n  <Radio value=\"enterprise\">Enterprise</Radio>\n</Radio.Group>",
+        "imports": [
+          "import { Radio } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-radio"
+      },
+      "tags": ["radio", "radiogroup", "single-select", "form", "choice"]
+    },
+    {
+      "id": "button-action",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<button>",
+        "attributes": {
+          "type": "button|submit|reset"
+        },
+        "description": "Interactive button for actions"
+      },
+      "platformConstruct": {
+        "component": "Button",
+        "importPath": "@digdir/designsystemet-react",
+        "defaultProps": {
+          "data-size": "medium"
+        }
+      },
+      "layer": "@digdir",
+      "states": {
+        "idle": {
+          "component": "Button",
+          "props": {}
+        },
+        "loading": {
+          "component": "Button",
+          "props": { "loading": true }
+        },
+        "success": {
+          "component": "Button",
+          "props": { "data-color": "success" }
+        }
+      },
+      "accessibility": {
+        "role": "button",
+        "ariaAttributes": {
+          "aria-disabled": "true when disabled",
+          "aria-busy": "true when loading"
+        },
+        "keyboardInteraction": ["Enter/Space to activate", "Tab to focus"],
+        "wcagCriteria": ["2.1.1 Keyboard", "4.1.2 Name, Role, Value"]
+      },
+      "i18n": {
+        "pattern": "children",
+        "translatableProps": ["aria-label"]
+      },
+      "example": {
+        "jsx": "<Button variant=\"primary\" data-size=\"medium\">\n  Submit\n</Button>\n\n<Button variant=\"secondary\" data-size=\"medium\">\n  Cancel\n</Button>\n\n<Button variant=\"tertiary\" data-size=\"medium\">\n  Learn More\n</Button>",
+        "imports": [
+          "import { Button } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/forms-button"
+      },
+      "tags": ["button", "action", "submit", "form", "interactive"]
+    },
+    {
+      "id": "form-wrapper",
+      "category": "forms",
+      "htmlIntent": {
+        "element": "<form>",
+        "attributes": {
+          "onsubmit": "...",
+          "action": "..."
+        },
+        "description": "Form container with submit handling"
+      },
+      "platformConstruct": {
+        "component": "FormLayout",
+        "importPath": "@xala-technologies/platform-ui/composed",
+        "defaultProps": {},
+        "alternatives": [
+          {
+            "component": "FormSection",
+            "importPath": "@xala-technologies/platform-ui/composed",
+            "useCase": "For grouping related fields within a form"
+          }
+        ]
+      },
+      "layer": "composed",
+      "states": {
+        "idle": {
+          "component": "FormLayout",
+          "props": {}
+        },
+        "loading": {
+          "component": "FormLayout",
+          "props": { "isSubmitting": true }
+        },
+        "error": {
+          "component": "FormLayout",
+          "props": { "errors": "{ field: 'message' }" }
+        },
+        "success": {
+          "component": "FormLayout",
+          "props": { "successMessage": "Form submitted successfully" }
+        }
+      },
+      "accessibility": {
+        "role": "form",
+        "ariaAttributes": {
+          "aria-labelledby": "Form title reference"
+        },
+        "keyboardInteraction": ["Tab through fields", "Enter to submit"],
+        "wcagCriteria": ["1.3.1 Info and Relationships", "3.3.1 Error Identification"]
+      },
+      "i18n": {
+        "pattern": "props",
+        "translatableProps": ["title", "submitLabel", "cancelLabel", "successMessage"]
+      },
+      "example": {
+        "jsx": "<FormLayout\n  title=\"User Registration\"\n  onSubmit={handleSubmit}\n>\n  <FormSection title=\"Personal Information\">\n    <Textfield label=\"Name\" name=\"name\" />\n    <Textfield label=\"Email\" name=\"email\" type=\"email\" />\n  </FormSection>\n  <FormLayout.Actions>\n    <Button type=\"submit\">Register</Button>\n    <Button variant=\"secondary\" type=\"reset\">Reset</Button>\n  </FormLayout.Actions>\n</FormLayout>",
+        "imports": [
+          "import { FormLayout, FormSection } from '@xala-technologies/platform-ui/composed';",
+          "import { Textfield, Button } from '@digdir/designsystemet-react';"
+        ],
+        "storybookPath": "?path=/story/composed-formlayout"
+      },
+      "tags": ["form", "layout", "validation", "submit", "container"]
+    }
+  ]
+}

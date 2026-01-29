@@ -1,0 +1,102 @@
+{
+  "$schema": "../schemas/component-atlas.schema.json",
+  "version": "1.0.0",
+  "generated": "2025-01-29T00:00:00.000Z",
+  "description": "Master index for UX Lexicon registry",
+  "dictionary": {
+    "categories": [
+      {
+        "id": "layout",
+        "name": "Layout",
+        "description": "Container, flex, grid, and structural components",
+        "file": "dictionary/layout.json",
+        "entryCount": 5
+      },
+      {
+        "id": "typography",
+        "name": "Typography",
+        "description": "Headings, paragraphs, labels, and text components",
+        "file": "dictionary/typography.json",
+        "entryCount": 5
+      },
+      {
+        "id": "forms",
+        "name": "Forms",
+        "description": "Input, select, checkbox, button, and form components",
+        "file": "dictionary/forms.json",
+        "entryCount": 10
+      },
+      {
+        "id": "lists",
+        "name": "Lists & Tables",
+        "description": "Lists, tables, and data display components",
+        "file": "dictionary/lists.json",
+        "entryCount": 4
+      },
+      {
+        "id": "navigation",
+        "name": "Navigation",
+        "description": "Nav, links, breadcrumbs, and navigation components",
+        "file": "dictionary/navigation.json",
+        "entryCount": 3
+      },
+      {
+        "id": "semantic",
+        "name": "Semantic/Structural",
+        "description": "Header, footer, main, aside, and structural components",
+        "file": "dictionary/semantic.json",
+        "entryCount": 5
+      }
+    ],
+    "totalEntries": 32
+  },
+  "patterns": {
+    "categories": [
+      {
+        "id": "form-patterns",
+        "name": "Form Patterns",
+        "file": "patterns/form-patterns.json"
+      },
+      {
+        "id": "list-patterns",
+        "name": "List Patterns",
+        "file": "patterns/list-patterns.json"
+      },
+      {
+        "id": "state-patterns",
+        "name": "State Patterns",
+        "file": "patterns/state-patterns.json"
+      },
+      {
+        "id": "modal-patterns",
+        "name": "Modal Patterns",
+        "file": "patterns/modal-patterns.json"
+      }
+    ]
+  },
+  "flows": {
+    "items": [
+      { "id": "list-page", "file": "flows/list-page.json" },
+      { "id": "detail-page", "file": "flows/detail-page.json" },
+      { "id": "form-page", "file": "flows/form-page.json" },
+      { "id": "wizard-flow", "file": "flows/wizard-flow.json" },
+      { "id": "search-results", "file": "flows/search-results.json" },
+      { "id": "empty-onboarding", "file": "flows/empty-onboarding.json" },
+      { "id": "access-denied", "file": "flows/access-denied.json" },
+      { "id": "audit-timeline", "file": "flows/audit-timeline.json" },
+      { "id": "settings-page", "file": "flows/settings-page.json" },
+      { "id": "notification-center", "file": "flows/notification-center.json" }
+    ],
+    "totalFlows": 10
+  },
+  "stateMatrix": {
+    "states": ["idle", "loading", "empty", "error", "success", "permissionDenied"],
+    "defaultComponents": {
+      "loading": { "component": "Skeleton", "layer": "@digdir" },
+      "empty": { "component": "EmptyState", "layer": "blocks" },
+      "error": { "component": "Alert", "layer": "@digdir", "props": { "data-color": "danger" } },
+      "success": { "component": "Alert", "layer": "@digdir", "props": { "data-color": "success" } },
+      "permissionDenied": { "component": "AccessGate", "layer": "blocks" }
+    }
+  }
+}
