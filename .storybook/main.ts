@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { cspPlugin } from './middleware';
 
 const getAbsolutePath = (packageName: string): string => {
   // For Storybook 10 ES modules, use a simpler approach
@@ -52,6 +53,7 @@ const config: StorybookConfig = {
 
     return {
       ...config,
+      plugins: [...(config.plugins || []), cspPlugin()],
       resolve: {
         ...config.resolve,
         alias: {
