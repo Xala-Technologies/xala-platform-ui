@@ -138,3 +138,72 @@ export const Primary: Story = {
 - `@navikt/aksel-icons`, `lucide-react` - Icons
 - `zod` - Schema validation
 - React 18+, react-router-dom 6+ (optional)
+
+## Content Security Policy (CSP)
+
+This library is **CSP-compatible** and designed to work with strict Content Security Policy headers. When deploying applications that use `@xala-technologies/platform-ui`, configure CSP headers to allow required resources.
+
+### Recommended CSP Directives
+
+For applications consuming this library, use these CSP directives as a baseline:
+
+```
+Content-Security-Policy: default-src 'self';
+  script-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https:;
+  font-src 'self' data:;
+  connect-src 'self';
+  frame-ancestors 'none';
+  base-uri 'self';
+  form-action 'self'
+```
+
+### Why 'unsafe-inline' is Required
+
+This library depends on Designsystemet components that use:
+- **Inline styles** for design tokens and CSS variables
+- **Dynamic styling** via data attributes
+
+While `'unsafe-inline'` reduces CSP effectiveness, the risk is mitigated because:
+- No user-generated content is rendered inline
+- All styles come from trusted build artifacts
+- Components use data attributes, not arbitrary inline styles
+
+### Platform-Specific Configuration
+
+#### Nginx
+```nginx
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" always;
+```
+
+#### Netlify (`netlify.toml`)
+```toml
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+```
+
+#### Vercel (`vercel.json`)
+```json
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Additional Resources
+
+- For Storybook-specific CSP configuration, see [`docs/security/CSP_CONFIGURATION.md`](docs/security/CSP_CONFIGURATION.md)
+- For production deployments, consider using CSP reporting to detect violations
+- Test your CSP configuration in report-only mode before enforcing
