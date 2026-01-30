@@ -45,7 +45,8 @@ DashboardHeader provides a sticky header for dashboard applications.
 - Any app needing a persistent header with search
 
 ## data-testid
-- Header: \`data-testid="dashboard-header"\`
+- Header: \`data-testid="app-layout-header"\` (aligned with AppLayout header)
+- Logo (left zone): \`data-testid="app-layout-header-logo"\` when logo is shown
         `,
       },
     },
@@ -74,59 +75,6 @@ const SampleLogo = () => (
     D
   </div>
 );
-
-// Sample AccountSwitcher for left slot
-const SampleAccountSwitcher = () => {
-  const t = useT();
-  return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 'var(--ds-spacing-3)',
-        padding: 'var(--ds-spacing-2) var(--ds-spacing-3)',
-        borderRadius: 'var(--ds-border-radius-md)',
-        backgroundColor: 'var(--ds-color-neutral-surface-hover)',
-        cursor: 'pointer',
-      }}
-    >
-      <div
-        style={{
-          width: '32px',
-          height: '32px',
-          borderRadius: 'var(--ds-border-radius-md)',
-          backgroundColor: 'var(--ds-color-accent-base-default)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: 'var(--ds-font-size-sm)',
-          fontWeight: 'bold',
-        }}
-      >
-        A
-      </div>
-      <div>
-        <div
-          style={{
-            fontWeight: 'var(--ds-font-weight-semibold)',
-            fontSize: 'var(--ds-font-size-sm)',
-          }}
-        >
-          {t('storybook.header.acmeCorp')}
-        </div>
-        <div
-          style={{
-            fontSize: 'var(--ds-font-size-xs)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-          }}
-        >
-          {t('storybook.header.workspace')}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // Sample search results
 const useSampleSearchResults = (): SearchResultGroup[] => {
@@ -174,14 +122,14 @@ const useSampleUser = () => {
 };
 
 /**
- * Default header with all features
+ * Default header – logo, centralized search, user, theme toggle, notifications.
+ * Use this when passing DashboardHeader as AppLayout's header prop.
  */
 export const Default: Story = {
   render: function Render() {
     const t = useT();
     const [isDark, setIsDark] = useState(false);
     const [searchValue, setSearchValue] = useState('');
-    const searchResults = useSampleSearchResults();
     const user = useSampleUser();
 
     return (
@@ -193,22 +141,17 @@ export const Default: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          leftSlot={<SampleAccountSwitcher />}
           user={user}
           searchPlaceholder={t('storybook.header.searchPlaceholder')}
           searchValue={searchValue}
           onSearchChange={setSearchValue}
-          searchResults={searchResults}
-          onSearchResultSelect={(result) => console.log('Selected:', result)}
           showThemeToggle
           isDark={isDark}
           onThemeToggle={() => setIsDark(!isDark)}
           showNotifications
-          notificationCount={5}
+          notificationCount={3}
           onNotificationClick={() => console.log('Notifications clicked')}
           onLogout={() => console.log('Logout')}
-          onSettingsClick={() => console.log('Settings')}
-          onProfileClick={() => console.log('Profile')}
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
@@ -238,7 +181,6 @@ export const WithoutSearch: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          leftSlot={<SampleAccountSwitcher />}
           user={user}
           showThemeToggle
           isDark={isDark}
@@ -312,7 +254,6 @@ export const WithCustomActions: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          leftSlot={<SampleAccountSwitcher />}
           user={user}
           showThemeToggle
           isDark={isDark}
@@ -356,7 +297,6 @@ export const ManyNotifications: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          leftSlot={<SampleAccountSwitcher />}
           user={user}
           showThemeToggle
           isDark={isDark}
@@ -425,7 +365,6 @@ export const WithUserAvatar: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          leftSlot={<SampleAccountSwitcher />}
           user={{
             name: t('storybook.header.userName'),
             email: 'ola.nordmann@example.com',
@@ -469,7 +408,6 @@ export const CustomHeight: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          leftSlot={<SampleAccountSwitcher />}
           user={user}
           height={100}
           showThemeToggle

@@ -7,10 +7,6 @@
 export { AppShell } from './app-shell';
 export type { AppShellProps } from './app-shell';
 
-// Shell component (alternative AppShell implementation with title/subtitle)
-export { AppShell as Shell } from './shell';
-export type { AppShellProps as ShellProps } from './shell';
-
 export { AppLayout } from './AppLayout';
 export type { AppLayoutProps } from './AppLayout';
 

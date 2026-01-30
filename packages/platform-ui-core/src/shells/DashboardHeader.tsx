@@ -301,7 +301,7 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
       actions,
       height = 80,
       className,
-      'data-testid': testId = 'dashboard-header',
+      'data-testid': testId = 'app-layout-header',
       ...props
     },
     ref
@@ -351,23 +351,6 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
 
     return (
       <>
-        <style>{`
-          .ds-header-search-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-          }
-          @media (min-width: var(--ds-sizing-192)) and (max-width: 'var(--ds-sizing-225)') {
-            .ds-header-search-container { max-width: 'var(--ds-sizing-100)'; }
-          }
-          @media (min-width: 'var(--ds-sizing-225)') and (max-width: 'var(--ds-sizing-275)') {
-            .ds-header-search-container { max-width: 'var(--ds-sizing-125)'; }
-          }
-          @media (min-width: 'var(--ds-sizing-275)') {
-            .ds-header-search-container { max-width: 'var(--ds-sizing-162)'; }
-          }
-        `}</style>
-
         <header
           ref={ref as React.RefObject<HTMLElement>}
           className={cn('ds-dashboard-header', className)}
@@ -383,16 +366,17 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
           {...props}
         >
           <Stack
+            direction="horizontal"
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               height: `${height}px`,
               padding: '0 var(--ds-spacing-6)',
-              position: 'relative',
+              gap: 'var(--ds-spacing-4)',
             }}
           >
-            {/* Left zone - Logo/AccountSwitcher */}
+            {/* Left zone - Logo (same on mobile and desktop) + optional leftSlot on desktop */}
             <Stack
               direction="horizontal"
               style={{
@@ -400,41 +384,48 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                 alignItems: 'center',
                 gap: 'var(--ds-spacing-3)',
                 flexShrink: 0,
-                zIndex: 1,
               }}
             >
-              {isMobile && logo}
+              {logo && (
+                <Stack
+                  direction="horizontal"
+                  style={{ display: 'flex', alignItems: 'center' }}
+                  data-testid={testId ? `${testId}-logo` : undefined}
+                >
+                  {logo}
+                </Stack>
+              )}
               {!isMobile && leftSlot}
             </Stack>
 
-            {/* Center zone - Search (absolute center) */}
-            {!isMobile && onSearchChange && (
+            {/* Center zone - Search (takes remaining space, centered, with padding so it doesn't touch left/right) */}
+            {!isMobile && onSearchChange ? (
               <Stack
-                className="ds-header-search-container"
+                direction="horizontal"
                 style={{
-                  position: 'absolute',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '100%',
+                  flex: 1,
+                  minWidth: 0,
                   maxWidth: '500px',
+                  margin: '0 auto',
                   display: 'flex',
                   justifyContent: 'center',
-                  pointerEvents: 'none',
+                  alignItems: 'center',
                 }}
               >
-                <Stack style={{ width: '100%', pointerEvents: 'auto' }}>
-                  <HeaderSearch
-                    placeholder={searchPlaceholder}
-                    value={searchQuery}
-                    onSearchChange={handleSearchChange}
-                    onResultSelect={onSearchResultSelect}
-                    results={searchResults}
-                    showShortcut
-                    enableGlobalShortcut
-                    noResultsText={noSearchResultsText}
-                  />
-                </Stack>
+                <HeaderSearch
+                  placeholder={searchPlaceholder}
+                  value={searchQuery}
+                  onSearchChange={handleSearchChange}
+                  onResultSelect={onSearchResultSelect}
+                  results={searchResults}
+                  showShortcut
+                  enableGlobalShortcut
+                  noResultsText={noSearchResultsText}
+                />
               </Stack>
+            ) : (
+              /* Spacer when no search so right zone stays right */
+              !isMobile && <Stack style={{ flex: 1, minWidth: 0 }} />
             )}
 
             {/* Right zone - Actions, Icons & User Profile */}
@@ -445,7 +436,6 @@ export const DashboardHeader = forwardRef<HTMLElement, DashboardHeaderProps>(
                 alignItems: 'center',
                 gap: 'var(--ds-spacing-2)',
                 flexShrink: 0,
-                zIndex: 1,
               }}
             >
               {/* Custom actions */}
