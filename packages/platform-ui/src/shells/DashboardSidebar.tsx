@@ -202,7 +202,14 @@ interface SidebarContentProps {
   onItemClick?: () => void;
 }
 
-function SidebarContent({ logo, title, subtitle, sections, user, onItemClick }: SidebarContentProps) {
+function SidebarContent({
+  logo,
+  title,
+  subtitle,
+  sections,
+  user,
+  onItemClick,
+}: SidebarContentProps) {
   // Show logo section if logo OR title is provided
   const showLogoSection = logo || title;
 
@@ -446,7 +453,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
         {isMobile && (
           <Drawer
             isOpen={isMobileOpen}
-            onClose={onMobileClose || (() => { })}
+            onClose={onMobileClose || (() => {})}
             position="left"
             size="lg"
             overlay={true}

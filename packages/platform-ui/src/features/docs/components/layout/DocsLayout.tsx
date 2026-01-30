@@ -122,8 +122,7 @@ export function DocsLayout({
             padding: 'var(--ds-spacing-6)',
             ...(isMobile
               ? {
-                  paddingBottom:
-                    'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                  paddingBottom: 'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
                 }
               : {}),
           }}

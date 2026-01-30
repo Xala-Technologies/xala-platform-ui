@@ -265,8 +265,7 @@ export function AppLayout({
               padding: useInlinePadding ? (contentPadding as string) : undefined,
               ...(hasBottomNav
                 ? {
-                    paddingBottom:
-                      'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                    paddingBottom: 'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
                   }
                 : {}),
             }}
