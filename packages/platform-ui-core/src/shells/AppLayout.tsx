@@ -13,9 +13,14 @@
  */
 
 import { Outlet } from 'react-router-dom';
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, type ErrorInfo } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../composed/bottom-navigation';
 import { MOBILE_BREAKPOINT } from '../tokens';
+import {
+  ErrorBoundary,
+  type ErrorBoundaryLabels,
+  type EnhancedErrorContext,
+} from '../blocks/ErrorBoundary';
 
 export interface AppLayoutProps {
   /** Sidebar component (required) */
@@ -47,6 +52,33 @@ export interface AppLayoutProps {
 
   /** Whether to show sidebar on mobile (default: false) */
   showSidebarOnMobile?: boolean;
+
+  /** Enable error boundary around main content (default: false) */
+  enableErrorBoundary?: boolean;
+
+  /** Error boundary callback when an error is caught */
+  onError?: (error: Error, errorInfo: ErrorInfo, context?: EnhancedErrorContext) => void;
+
+  /** Enhanced error context for error tracking */
+  errorContext?: EnhancedErrorContext;
+
+  /** Error boundary labels for i18n */
+  errorBoundaryLabels?: Partial<ErrorBoundaryLabels>;
+
+  /** Custom error title */
+  errorTitle?: string;
+
+  /** Custom error description */
+  errorDescription?: string;
+
+  /** Show retry button in error screen (default: true) */
+  showErrorRetryButton?: boolean;
+
+  /** Custom retry button text */
+  errorRetryButtonText?: string;
+
+  /** Custom retry handler */
+  onErrorRetry?: () => void;
 }
 
 /**
@@ -63,6 +95,24 @@ export interface AppLayoutProps {
  *   ]}
  * />
  * ```
+ *
+ * @example With ErrorBoundary
+ * ```tsx
+ * <AppLayout
+ *   sidebar={<MySidebar />}
+ *   header={<MyHeader title="Dashboard" />}
+ *   enableErrorBoundary={true}
+ *   onError={(error, errorInfo, context) => {
+ *     // Error tracking integration (Sentry, etc.)
+ *     errorTracker.captureException(error, { errorInfo, context });
+ *   }}
+ *   errorBoundaryLabels={{
+ *     title: t('errors.somethingWentWrong'),
+ *     defaultDescription: t('errors.unexpectedError'),
+ *     retryButton: t('common.retry'),
+ *   }}
+ * />
+ * ```
  */
 export function AppLayout({
   sidebar,
@@ -75,6 +125,15 @@ export function AppLayout({
   mobileBreakpoint = MOBILE_BREAKPOINT,
   bottomNavItems,
   showSidebarOnMobile = false,
+  enableErrorBoundary = false,
+  onError,
+  errorContext,
+  errorBoundaryLabels,
+  errorTitle,
+  errorDescription,
+  showErrorRetryButton,
+  errorRetryButtonText,
+  onErrorRetry,
 }: AppLayoutProps) {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < mobileBreakpoint : false
@@ -94,6 +153,25 @@ export function AppLayout({
 
   const shouldShowSidebar = !isMobile || showSidebarOnMobile;
   const hasBottomNav = isMobile && bottomNavItems && bottomNavItems.length > 0;
+
+  // Wrap Outlet with ErrorBoundary if enabled
+  const outletContent = <Outlet />;
+  const mainContent = enableErrorBoundary ? (
+    <ErrorBoundary
+      onError={onError}
+      errorContext={errorContext}
+      labels={errorBoundaryLabels}
+      errorTitle={errorTitle}
+      errorDescription={errorDescription}
+      showRetryButton={showErrorRetryButton}
+      retryButtonText={errorRetryButtonText}
+      onRetry={onErrorRetry}
+    >
+      {outletContent}
+    </ErrorBoundary>
+  ) : (
+    outletContent
+  );
 
   return (
     <div
@@ -148,7 +226,7 @@ export function AppLayout({
             }}
           >
             <div style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
-              <Outlet />
+              {mainContent}
             </div>
           </main>
         </div>
