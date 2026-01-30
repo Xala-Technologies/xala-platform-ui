@@ -57,10 +57,10 @@ const meta: Meta<typeof DashboardSidebar> = {
     docs: {
       description: {
         component: `
-DashboardSidebar is a navigation sidebar component for dashboard applications.
+DashboardSidebar is a navigation sidebar component for dashboard applications. When used with AppLayout, the logo is in the header; the sidebar shows only navigation and user (no logo at top).
 
 ## Features
-- Logo and title header section
+- Optional logo/title at top (omit to match AppLayout sidebar)
 - Grouped navigation items with icons
 - Active state with accent highlight
 - Badge support for counts/notifications
@@ -85,27 +85,37 @@ DashboardSidebar is a navigation sidebar component for dashboard applications.
 export default meta;
 type Story = StoryObj<typeof DashboardSidebar>;
 
-// Sample logo
-const SampleLogo = () => (
-  <div
-    style={{
-      width: '40px',
-      height: '40px',
-      borderRadius: 'var(--ds-border-radius-md)',
-      backgroundColor: 'var(--ds-color-accent-base-default)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: 'white',
-      fontWeight: 'bold',
-    }}
-  >
-    D
-  </div>
-);
+// Same sections as AppLayout sidebar – one section, no title (no "Oversikt")
+const useAppLayoutSections = (): SidebarSection[] => {
+  const t = useT();
+  return [
+    {
+      items: [
+        {
+          name: t('storybook.sidebar.home'),
+          description: t('storybook.sidebar.yourStartPage'),
+          href: '/',
+          icon: <HomeIcon size={24} />,
+        },
+        {
+          name: t('storybook.sidebar.myBookings'),
+          description: t('storybook.sidebar.viewAndManageBookings'),
+          href: '/resourceRequests',
+          icon: <CalendarIcon size={24} />,
+        },
+        {
+          name: t('platform.common.settings'),
+          description: t('storybook.sidebar.systemSettings'),
+          href: '/settings',
+          icon: <SettingsIcon size={24} />,
+        },
+      ],
+    },
+  ];
+};
 
-// Sample navigation sections helper
-const useDefaultSections = (): SidebarSection[] => {
+// Sections with titles (for other stories that show section headings)
+const useSectionsWithTitles = (): SidebarSection[] => {
   const t = useT();
   return [
     {
@@ -186,21 +196,13 @@ const useSampleUser = () => {
 };
 
 /**
- * Default sidebar with all sections
+ * Default sidebar – matches AppLayout (no logo, no "Oversikt"; Hjem, Mine bestillinger, Innstillinger + user)
  */
 export const Default: Story = {
   render: function Render() {
-    const sections = useDefaultSections();
+    const sections = useAppLayoutSections();
     const user = useSampleUser();
-    return (
-      <DashboardSidebar
-        logo={<SampleLogo />}
-        title="Digilist"
-        subtitle={useT()('storybook.sidebar.myPage')}
-        sections={sections}
-        user={user}
-      />
-    );
+    return <DashboardSidebar sections={sections} user={user} />;
   },
 };
 
@@ -209,34 +211,24 @@ export const Default: Story = {
  */
 export const WithoutUser: Story = {
   render: function Render() {
-    const t = useT();
-    const sections = useDefaultSections();
-    return (
-      <DashboardSidebar
-        logo={<SampleLogo />}
-        title="Digilist"
-        subtitle={t('storybook.sidebar.admin')}
-        sections={sections}
-      />
-    );
+    const sections = useAppLayoutSections();
+    return <DashboardSidebar sections={sections} />;
   },
 };
 
 /**
- * Sidebar without subtitle
+ * Sidebar without subtitle (same as Default)
  */
 export const WithoutSubtitle: Story = {
   render: function Render() {
-    const sections = useDefaultSections();
+    const sections = useAppLayoutSections();
     const user = useSampleUser();
-    return (
-      <DashboardSidebar logo={<SampleLogo />} title="Digilist" sections={sections} user={user} />
-    );
+    return <DashboardSidebar sections={sections} user={user} />;
   },
 };
 
 /**
- * Minimal sidebar (no sections titles)
+ * Minimal sidebar (no section titles – same structure as AppLayout)
  */
 export const MinimalSections: Story = {
   render: function Render() {
@@ -244,8 +236,6 @@ export const MinimalSections: Story = {
     const user = useSampleUser();
     return (
       <DashboardSidebar
-        logo={<SampleLogo />}
-        title={t('storybook.sidebar.app')}
         sections={[
           {
             items: [
@@ -281,17 +271,9 @@ export const MinimalSections: Story = {
  */
 export const NarrowWidth: Story = {
   render: function Render() {
-    const sections = useDefaultSections();
+    const sections = useAppLayoutSections();
     const user = useSampleUser();
-    return (
-      <DashboardSidebar
-        logo={<SampleLogo />}
-        title="Digilist"
-        sections={sections}
-        user={user}
-        width={300}
-      />
-    );
+    return <DashboardSidebar sections={sections} user={user} width={300} />;
   },
 };
 
@@ -300,22 +282,14 @@ export const NarrowWidth: Story = {
  */
 export const WideWidth: Story = {
   render: function Render() {
-    const sections = useDefaultSections();
+    const sections = useAppLayoutSections();
     const user = useSampleUser();
-    return (
-      <DashboardSidebar
-        logo={<SampleLogo />}
-        title="Digilist"
-        sections={sections}
-        user={user}
-        width={500}
-      />
-    );
+    return <DashboardSidebar sections={sections} user={user} width={500} />;
   },
 };
 
 /**
- * With many badges
+ * With many badges (uses section titles)
  */
 export const WithBadges: Story = {
   render: function Render() {
@@ -323,9 +297,6 @@ export const WithBadges: Story = {
     const user = useSampleUser();
     return (
       <DashboardSidebar
-        logo={<SampleLogo />}
-        title="Digilist"
-        subtitle={t('storybook.sidebar.notificationsDemo')}
         sections={[
           {
             title: t('storybook.sidebar.navigation'),
@@ -361,16 +332,13 @@ export const WithBadges: Story = {
 };
 
 /**
- * Backoffice admin layout
+ * Backoffice admin layout (with section titles)
  */
 export const BackofficeLayout: Story = {
   render: function Render() {
     const t = useT();
     return (
       <DashboardSidebar
-        logo={<SampleLogo />}
-        title={t('storybook.sidebar.backoffice')}
-        subtitle={t('storybook.sidebar.administrator')}
         sections={[
           {
             title: t('platform.nav.dashboard'),

@@ -398,10 +398,7 @@ import {
 } from '@digdir/designsystemet-react';
 
 // 3. Platform UI shells
-import {
-  DashboardLayout, DashboardContent,
-  DashboardPageHeader,
-} from '@xala-technologies/platform-ui/shells';
+import { DashboardPageHeader } from '@xala-technologies/platform-ui/shells';
 \`\`\`
 
 ---
@@ -423,7 +420,7 @@ import {
 
 ### Page Template
 \`\`\`tsx
-import { DashboardLayout, DashboardContent, DashboardPageHeader } from '@xala-technologies/platform-ui/shells';
+import { DashboardPageHeader } from '@xala-technologies/platform-ui/shells';
 import { DataTable, EmptyState, LoadingFallback } from '@xala-technologies/platform-ui';
 import { Alert } from '@digdir/designsystemet-react';
 import { useT } from '@xala-technologies/i18n';
@@ -437,13 +434,12 @@ export function MyPage() {
   if (!data?.length) return <EmptyState title={t('empty.title')} />;
 
   return (
-    <DashboardLayout>
-      <DashboardContent>
-        <DashboardPageHeader title={t('page.title')} />
-        <DataTable data={data} columns={columns} />
-      </DashboardContent>
-    </DashboardLayout>
+    <>
+      <DashboardPageHeader title={t('page.title')} />
+      <DataTable data={data} columns={columns} />
+    </>
   );
+  // Page is rendered inside AppLayout via Router <Outlet />; AppLayout provides header, sidebar, and main wrapper.
 }
 \`\`\`
 

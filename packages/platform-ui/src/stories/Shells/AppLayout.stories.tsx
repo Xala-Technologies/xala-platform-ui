@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { useT } from '@xala-technologies/i18n';
 import { MemoryRouter } from 'react-router-dom';
 import { AppLayout } from '../../index';
 import { DashboardSidebar } from '../../index';
 import { DashboardHeader } from '../../index';
+import { Stack } from '../../index';
 import { Heading, Paragraph, Card, Button } from '@digdir/designsystemet-react';
 import { HomeIcon, CalendarIcon, SettingsIcon } from '../../index';
 
@@ -65,29 +67,11 @@ AppLayout provides a flexible application layout structure.
 export default meta;
 type Story = StoryObj<typeof AppLayout>;
 
-// Sample sidebar
+// Sample sidebar – no logo/title here; header has the single logo (Digilist)
 const SampleSidebar = () => {
   const t = useT();
   return (
     <DashboardSidebar
-      logo={
-        <div
-          style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: 'var(--ds-border-radius-md)',
-            backgroundColor: 'var(--ds-color-accent-base-default)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontWeight: 'bold',
-          }}
-        >
-          D
-        </div>
-      }
-      title="Digilist"
       sections={[
         {
           items: [
@@ -120,32 +104,57 @@ const SampleSidebar = () => {
   );
 };
 
-// Sample header
+// Logo with "Digilist" text (single logo for header left)
+const AppLayoutLogo = () => (
+  <Stack
+    direction="horizontal"
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'var(--ds-spacing-2)',
+    }}
+  >
+    <div
+      style={{
+        width: '40px',
+        height: '40px',
+        borderRadius: 'var(--ds-border-radius-md)',
+        backgroundColor: 'var(--ds-color-accent-base-default)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        fontWeight: 'bold',
+      }}
+    >
+      D
+    </div>
+    <span
+      style={{
+        fontWeight: 'var(--ds-font-weight-semibold)',
+        fontSize: 'var(--ds-font-size-lg)',
+        color: 'var(--ds-color-neutral-text-default)',
+      }}
+    >
+      Digilist
+    </span>
+  </Stack>
+);
+
+// Sample header – one logo (Digilist) left, centralized search, actions right
 const SampleHeader = () => {
   const t = useT();
+  const [searchValue, setSearchValue] = useState('');
   return (
     <DashboardHeader
-      logo={
-        <div
-          style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: 'var(--ds-border-radius-md)',
-            backgroundColor: 'var(--ds-color-accent-base-default)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontWeight: 'bold',
-          }}
-        >
-          D
-        </div>
-      }
+      logo={<AppLayoutLogo />}
       user={{
         name: t('storybook.sidebar.sampleUserName'),
         email: 'ola.nordmann@example.com',
       }}
+      searchPlaceholder={t('storybook.header.searchPlaceholder')}
+      searchValue={searchValue}
+      onSearchChange={setSearchValue}
       showThemeToggle
       isDark={false}
       onThemeToggle={() => console.log('Toggle theme')}

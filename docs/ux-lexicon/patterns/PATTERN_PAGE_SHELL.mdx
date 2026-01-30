@@ -14,7 +14,8 @@ Every page in the application must follow the Page Shell pattern to ensure consi
 ## Composition Tree
 
 ```
-AppShell
+AppLayout
+├── DashboardHeader (full width)
 ├── DashboardSidebar (desktop)
 │   └── Navigation items
 ├── MobileHeader (mobile)
@@ -35,7 +36,7 @@ AppShell
 
 | Section | Component | Required |
 |---------|-----------|----------|
-| Shell | `AppShell` or `DashboardLayout` | ✅ |
+| Shell | `AppLayout` | ✅ |
 | Sidebar | `DashboardSidebar` | ✅ |
 | Header | `DashboardPageHeader` | ✅ |
 | Content area | `DashboardContent` | ✅ |
@@ -47,7 +48,8 @@ AppShell
 
 ```tsx
 import {
-  AppShell,
+  AppLayout,
+  DashboardHeader,
   DashboardSidebar,
   DashboardContent,
   DashboardPageHeader,
@@ -61,7 +63,8 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
 
   return (
-    <AppShell
+    <AppLayout
+      header={<DashboardHeader logo={...} user={...} />}
       sidebar={
         <DashboardSidebar>
           <SidebarNavGroup>
@@ -93,7 +96,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       }
     >
       {children}
-    </AppShell>
+    </AppLayout>
   );
 }
 

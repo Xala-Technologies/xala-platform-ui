@@ -15,7 +15,6 @@
 import { Outlet } from 'react-router-dom';
 import { ReactNode, useState, useEffect } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../composed/bottom-navigation';
-import { DashboardContent } from './DashboardContent';
 import { MOBILE_BREAKPOINT } from '../tokens';
 
 export interface AppLayoutProps {
@@ -101,39 +100,58 @@ export function AppLayout({
       className={className}
       style={{
         display: 'flex',
+        flexDirection: 'column',
         height: '100vh',
         backgroundColor: 'var(--ds-color-neutral-background-default)',
         ...style,
       }}
     >
-      {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
-      {shouldShowSidebar && sidebar}
+      {/* Header - full width at top */}
+      {header}
 
+      {/* Sidebar + content row below header */}
       <div
         style={{
           flex: 1,
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           overflow: 'hidden',
         }}
       >
-        {/* Header */}
-        {header}
+        {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
+        {shouldShowSidebar && sidebar}
 
-        {/* Top content (alerts, banners, etc.) */}
-        {topContent}
-
-        {/* Main content area */}
-        <DashboardContent
-          hasBottomNav={hasBottomNav}
+        <div
           style={{
-            padding: contentPadding,
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
           }}
         >
-          <div style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
-            <Outlet />
-          </div>
-        </DashboardContent>
+          {/* Top content (alerts, banners, etc.) */}
+          {topContent}
+
+          {/* Main content area */}
+          <main
+            style={{
+              flex: 1,
+              overflow: 'auto',
+              minWidth: 0,
+              padding: contentPadding,
+              ...(hasBottomNav
+                ? {
+                    paddingBottom:
+                      'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                  }
+                : {}),
+            }}
+          >
+            <div style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
+              <Outlet />
+            </div>
+          </main>
+        </div>
       </div>
 
       {/* Bottom Navigation - Mobile only */}
