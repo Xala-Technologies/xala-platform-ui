@@ -30,9 +30,45 @@
  *   );
  * }
  * ```
+ *
+ * @example Multi-Tenant Theming
+ * ```tsx
+ * import { DesignsystemetProvider } from '@xala-technologies/platform-ui';
+ *
+ * const tenantTheme = {
+ *   tenantId: 'acme-corp',
+ *   name: 'Acme Corporation',
+ *   baseTheme: 'platform',
+ *   colors: {
+ *     light: {
+ *       accent: { base: '#FF6B35', hover: '#E55A2B', contrast: '#FFFFFF' },
+ *     },
+ *   },
+ *   typography: {
+ *     fontFamily: { base: 'Inter, system-ui, sans-serif' },
+ *   },
+ * };
+ *
+ * function App() {
+ *   return (
+ *     <DesignsystemetProvider tenantTheme={tenantTheme}>
+ *       <YourApp />
+ *     </DesignsystemetProvider>
+ *   );
+ * }
+ * ```
  */
 import React from 'react';
-import { DEFAULT_THEME, getThemeCSS, hasCustomCSS, type ThemeId } from './themes';
+import {
+  DEFAULT_THEME,
+  getThemeCSS,
+  getCustomThemeCSS,
+  hasCustomCSS,
+  registerCustomTheme,
+  type ThemeId,
+} from './themes';
+import type { TenantThemeConfig } from './types/theme-config';
+import { validateTheme } from './themes/validator';
 
 /**
  * Available color scheme options for the design system.
@@ -111,6 +147,27 @@ export type DesignsystemetProviderProps = {
   children: React.ReactNode;
   /** Theme identifier for tenant branding */
   theme?: ThemeId;
+  /**
+   * Custom tenant theme configuration.
+   * When provided, overrides the base theme with custom brand colors, typography, and component variants.
+   * The theme is validated for accessibility compliance before being applied.
+   *
+   * @example
+   * ```tsx
+   * const tenantTheme = {
+   *   tenantId: 'acme-corp',
+   *   name: 'Acme Corporation',
+   *   baseTheme: 'platform',
+   *   colors: {
+   *     light: {
+   *       accent: { base: '#FF6B35', hover: '#E55A2B', contrast: '#FFFFFF' },
+   *     },
+   *   },
+   * };
+   * <DesignsystemetProvider tenantTheme={tenantTheme}>...</DesignsystemetProvider>
+   * ```
+   */
+  tenantTheme?: TenantThemeConfig;
   /** Color scheme preference */
   colorScheme?: ColorScheme;
   /** Component size mode */
@@ -147,8 +204,9 @@ const THEME_STYLE_ID = 'xala-platform-theme';
  * Theme changes are applied instantly without network requests.
  *
  * @param themeId - Theme identifier to inject
+ * @param tenantTheme - Optional custom tenant theme configuration
  */
-function injectThemeCSS(themeId: ThemeId): void {
+function injectThemeCSS(themeId: ThemeId, tenantTheme?: TenantThemeConfig): void {
   if (typeof document === 'undefined') return;
 
   // Remove existing theme style
@@ -157,13 +215,19 @@ function injectThemeCSS(themeId: ThemeId): void {
     existingStyle.remove();
   }
 
-  // Only inject if theme has custom CSS
-  if (!hasCustomCSS(themeId)) {
-    return;
+  let css: string | undefined;
+
+  // If tenantTheme is provided, use custom theme CSS
+  if (tenantTheme) {
+    css = getCustomThemeCSS(tenantTheme.tenantId);
+  } else {
+    // Use standard theme CSS
+    if (hasCustomCSS(themeId)) {
+      css = getThemeCSS(themeId);
+    }
   }
 
-  // Create and inject new theme style
-  const css = getThemeCSS(themeId);
+  // Create and inject theme style
   if (css) {
     const style = document.createElement('style');
     style.id = THEME_STYLE_ID;
@@ -182,12 +246,17 @@ function injectThemeCSS(themeId: ThemeId): void {
  * Also manages text direction (LTR/RTL) and locale settings for
  * internationalization support.
  *
+ * Supports multi-tenant theming through the `tenantTheme` prop,
+ * which allows runtime customization of brand colors, typography,
+ * and component variants with automatic accessibility validation.
+ *
  * @param props - Provider configuration props
  * @returns JSX element with theme context
  */
 export function DesignsystemetProvider({
   children,
   theme = DEFAULT_THEME,
+  tenantTheme,
   colorScheme = 'auto',
   size = 'md',
   typography = 'primary',
@@ -195,13 +264,87 @@ export function DesignsystemetProvider({
   locale = 'nb',
   rootAs: Root = 'div',
 }: DesignsystemetProviderProps) {
+  // Track the previous tenant theme ID for cleanup during theme switching
+  const previousTenantIdRef = React.useRef<string | undefined>(undefined);
+
   // Resolve the actual direction (handle 'auto' mode)
   const resolvedDirection: DirectionContextValue =
     direction === 'auto' ? getAutoDirection(locale) : direction;
 
   React.useEffect(() => {
-    // Inject theme CSS inline
-    injectThemeCSS(theme);
+    const currentTenantId = tenantTheme?.tenantId;
+    const previousTenantId = previousTenantIdRef.current;
+
+    // Log runtime theme switching events
+    if (previousTenantId !== currentTenantId) {
+      if (previousTenantId && currentTenantId) {
+        // Switching from one tenant theme to another
+        // eslint-disable-next-line no-console
+        console.info(`[Theme] Switching from tenant "${previousTenantId}" to tenant "${currentTenantId}"`);
+      } else if (previousTenantId && !currentTenantId) {
+        // Switching from tenant theme to standard theme
+        // eslint-disable-next-line no-console
+        console.info(`[Theme] Switching from tenant theme "${previousTenantId}" to standard theme "${theme}"`);
+      } else if (!previousTenantId && currentTenantId) {
+        // Switching from standard theme to tenant theme (initial load with tenant theme)
+        // eslint-disable-next-line no-console
+        console.info(`[Theme] Applying tenant theme "${currentTenantId}" (base: ${tenantTheme?.baseTheme ?? theme})`);
+      }
+    }
+
+    // Validate and register tenant theme if provided
+    if (tenantTheme) {
+      try {
+        // Validate schema and accessibility compliance
+        const validationResult = validateTheme(tenantTheme);
+
+        // Log schema validation errors
+        if (!validationResult.schemaValid && validationResult.schemaErrors.length > 0) {
+          validationResult.schemaErrors.forEach((error) => {
+            // eslint-disable-next-line no-console
+            console.warn(
+              `[Theme Schema Error] ${error.path.join('.')}: ${error.message}`,
+            );
+          });
+        }
+
+        // Log accessibility validation errors (non-blocking warnings)
+        if (!validationResult.accessibilityValid && validationResult.accessibility.errors.length > 0) {
+          validationResult.accessibility.errors.forEach((error) => {
+            const suggestion = 'suggestion' in error && error.suggestion ? ` - ${error.suggestion}` : '';
+            // eslint-disable-next-line no-console
+            console.warn(
+              `[Theme Accessibility] ${error.path}: ${error.message}${suggestion}`,
+            );
+          });
+        }
+
+        // Log validation warnings
+        if (validationResult.accessibility.warnings.length > 0) {
+          validationResult.accessibility.warnings.forEach((warning) => {
+            // eslint-disable-next-line no-console
+            console.warn(`[Theme Warning] ${warning.path}: ${warning.message}`);
+          });
+        }
+
+        // Register the custom theme (will merge with base theme)
+        // Use override: true to allow re-registration when theme config changes
+        registerCustomTheme(tenantTheme, {
+          validate: true,
+          skipAccessibilityChecks: false,
+          override: true,
+        });
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('[Theme Registration Error]', error);
+      }
+    }
+
+    // Update the ref to track current tenant ID for next render
+    previousTenantIdRef.current = currentTenantId;
+
+    // Inject theme CSS inline (custom tenant theme or standard theme)
+    injectThemeCSS(theme, tenantTheme);
 
     // Set attributes on html element for CSS targeting
     document.documentElement.setAttribute('data-color-scheme', colorScheme);
@@ -211,7 +354,7 @@ export function DesignsystemetProvider({
     // Set direction and language attributes on document element
     document.documentElement.dir = resolvedDirection;
     document.documentElement.lang = locale;
-  }, [theme, colorScheme, size, typography, resolvedDirection, locale]);
+  }, [theme, tenantTheme, colorScheme, size, typography, resolvedDirection, locale]);
 
   return (
     <DirectionContext.Provider value={resolvedDirection}>

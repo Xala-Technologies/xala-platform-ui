@@ -4,6 +4,8 @@
  * This module provides:
  * 1. Theme CSS for inline injection by DesignsystemetProvider
  * 2. Theme color values for Storybook UI theming
+ * 3. Theme typography configuration for font families, sizes, and line heights
+ * 4. Multi-tenant theme configuration and validation utilities
  *
  * ## Architecture
  *
@@ -18,13 +20,25 @@
  *
  * @example
  * ```typescript
- * import { THEME_CSS, THEME_COLORS, DEFAULT_THEME, type ThemeId } from '@xala-technologies/platform-ui/themes';
+ * import { THEME_CSS, THEME_COLORS, THEME_TYPOGRAPHY, DEFAULT_THEME, type ThemeId } from '@xala-technologies/platform-ui/themes';
  *
  * // Get theme CSS for inline injection
  * const css = THEME_CSS[DEFAULT_THEME];
  *
  * // Get theme colors for Storybook/JS usage
  * const colors = THEME_COLORS[DEFAULT_THEME].light;
+ *
+ * // Get theme typography configuration
+ * const typography = THEME_TYPOGRAPHY[DEFAULT_THEME];
+ *
+ * // Multi-tenant theme configuration
+ * import { registerCustomTheme, validateThemeConfig, themeConfigSchema, type TenantThemeConfig } from '@xala-technologies/platform-ui/themes';
+ *
+ * const config: TenantThemeConfig = { tenantId: 'acme', name: 'ACME Corp', brandColors: {...} };
+ * const validation = validateThemeConfig(config);
+ * if (validation.success) {
+ *   registerCustomTheme(config);
+ * }
  * ```
  */
 
@@ -35,7 +49,72 @@ import digilistColors from './digilist-colors.css?raw';
 import xaheenColors from './xaheen-colors.css?raw';
 import platformColors from './platform-colors.css?raw';
 
+// Import types and validation for runtime custom themes
+import type { TenantThemeConfig, ThemeRegistrationOptions } from '../types/theme-config';
+import { themeConfigSchema, validateThemeConfig } from './schema';
+import { validateTheme } from './validator';
+
 export type ThemeId = 'digdir' | 'altinn' | 'brreg' | 'digilist' | 'xaheen' | 'platform';
+
+// =============================================================================
+// THEME CONFIGURATION & VALIDATION
+// =============================================================================
+// Re-export theme configuration types and validation utilities for multi-tenant theming
+
+/**
+ * Zod schema for validating tenant theme configurations.
+ * Use this to validate theme configs before registering them.
+ *
+ * @example
+ * ```typescript
+ * import { themeConfigSchema } from '@xala-technologies/platform-ui/themes';
+ *
+ * const result = themeConfigSchema.safeParse(config);
+ * if (!result.success) {
+ *   console.error('Invalid theme:', result.error);
+ * }
+ * ```
+ */
+export { themeConfigSchema };
+
+/**
+ * Validates a tenant theme configuration using Zod schema validation.
+ * Returns validation result with success boolean and any errors.
+ *
+ * @example
+ * ```typescript
+ * import { validateThemeConfig } from '@xala-technologies/platform-ui/themes';
+ *
+ * const result = validateThemeConfig(config);
+ * if (result.success) {
+ *   console.log('Valid config:', result.data);
+ * }
+ * ```
+ */
+export { validateThemeConfig };
+
+/**
+ * Type definition for tenant theme configuration.
+ * Defines the structure for custom theme overrides including brand colors,
+ * typography, and component variants.
+ *
+ * @example
+ * ```typescript
+ * import type { TenantThemeConfig } from '@xala-technologies/platform-ui/themes';
+ *
+ * const myTheme: TenantThemeConfig = {
+ *   tenantId: 'acme-corp',
+ *   name: 'ACME Corporation',
+ *   brandColors: {
+ *     light: {
+ *       accent: { base: '#FF6B35', hover: '#E55A2B', contrast: '#FFFFFF' },
+ *       neutral: { background: '#F8F9FA', surface: '#FFFFFF', text: '#212529' }
+ *     }
+ *   }
+ * };
+ * ```
+ */
+export type { TenantThemeConfig };
 
 // =============================================================================
 // THEME COLOR VALUES
@@ -246,6 +325,172 @@ export function getThemeColors(themeId: ThemeId, mode: 'light' | 'dark'): ThemeC
 }
 
 // =============================================================================
+// THEME TYPOGRAPHY
+// =============================================================================
+// Typography configuration for each theme.
+// Provides default font families, sizes, and line heights.
+// =============================================================================
+
+/**
+ * Re-export typography types for convenience
+ */
+export type { TypographyConfig, FontFamily, FontSize, LineHeight } from '../types/theme-config';
+
+/**
+ * Typography configuration for each theme.
+ * Uses Designsystemet defaults with theme-specific font family preferences.
+ */
+export const THEME_TYPOGRAPHY: Record<ThemeId, TypographyConfig> = {
+  // Digilist theme - Default system fonts
+  digilist: {
+    fontFamily: {
+      base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      mono: '"SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", monospace',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+    },
+    lineHeight: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+  },
+
+  // Xaheen theme - Default system fonts
+  xaheen: {
+    fontFamily: {
+      base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      mono: '"SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", monospace',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+    },
+    lineHeight: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+  },
+
+  // Digdir theme - Norwegian Design System defaults
+  digdir: {
+    fontFamily: {
+      base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      mono: '"SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", monospace',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+    },
+    lineHeight: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+  },
+
+  // Altinn theme - uses Digdir defaults
+  altinn: {
+    fontFamily: {
+      base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      mono: '"SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", monospace',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+    },
+    lineHeight: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+  },
+
+  // Brreg theme - uses Digdir defaults
+  brreg: {
+    fontFamily: {
+      base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      mono: '"SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", monospace',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+    },
+    lineHeight: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+  },
+
+  // Platform theme - Default system fonts
+  platform: {
+    fontFamily: {
+      base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      mono: '"SF Mono", "Monaco", "Inconsolata", "Fira Code", "Droid Sans Mono", monospace',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+    },
+    lineHeight: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+  },
+};
+
+/**
+ * Get typography configuration for a specific theme.
+ *
+ * @param themeId - Theme identifier
+ * @returns Typography configuration
+ *
+ * @example
+ * ```typescript
+ * const typography = getThemeTypography('digilist');
+ * console.log(typography.fontFamily.base); // System font stack
+ * ```
+ */
+export function getThemeTypography(themeId: ThemeId): TypographyConfig {
+  return THEME_TYPOGRAPHY[themeId] || THEME_TYPOGRAPHY.digilist;
+}
+
+// =============================================================================
 // THEME CSS (for component styling)
 // =============================================================================
 
@@ -317,4 +562,761 @@ export type LegacyThemeId = ThemeId | 'custom';
 /** @deprecated Map 'custom' to 'digilist' for backwards compatibility */
 export function normalizeThemeId(themeId: LegacyThemeId): ThemeId {
   return themeId === 'custom' ? 'digilist' : (themeId as ThemeId);
+}
+
+// =============================================================================
+// Runtime Custom Theme Support
+// =============================================================================
+
+/**
+ * Runtime theme registry for custom tenant themes.
+ * Maps tenantId to registered theme configuration.
+ */
+const customThemeRegistry = new Map<string, TenantThemeConfig>();
+
+/**
+ * Runtime CSS cache for generated custom theme CSS.
+ * Maps tenantId to generated CSS string.
+ */
+const customThemeCSSCache = new Map<string, string>();
+
+/**
+ * Register a custom tenant theme at runtime.
+ *
+ * Validates the theme configuration (schema + accessibility) and stores it in the registry.
+ * The theme can then be used by the DesignsystemetProvider.
+ *
+ * @param config - Tenant theme configuration
+ * @param options - Registration options (validation, override)
+ * @returns The registered theme's tenantId
+ * @throws {Error} If validation fails or theme already exists without override
+ *
+ * @example
+ * ```typescript
+ * import { registerCustomTheme } from '@xala-technologies/platform-ui/themes';
+ *
+ * const tenantId = registerCustomTheme({
+ *   tenantId: 'acme-corp',
+ *   name: 'Acme Corporation',
+ *   baseTheme: 'platform',
+ *   colors: {
+ *     light: {
+ *       accent: { base: '#FF6B35', hover: '#E55A2B', contrast: '#FFFFFF' },
+ *     },
+ *   },
+ * });
+ * ```
+ */
+export function registerCustomTheme(
+  config: TenantThemeConfig,
+  options: ThemeRegistrationOptions = {},
+): string {
+  const { validate = true, skipAccessibilityChecks = false, override = false } = options;
+
+  // Check if theme already exists
+  if (!override && customThemeRegistry.has(config.tenantId)) {
+    throw new Error(
+      `Theme with tenantId "${config.tenantId}" already registered. Use override: true to replace.`,
+    );
+  }
+
+  // Validate schema
+  if (validate) {
+    const schemaResult = validateThemeConfig(config);
+    if (!schemaResult.success) {
+      const errors = schemaResult.error.errors.map((e) => `${e.path.join('.')}: ${e.message}`);
+      throw new Error(`Theme validation failed:\n${errors.join('\n')}`);
+    }
+  }
+
+  // Validate accessibility
+  if (validate && !skipAccessibilityChecks) {
+    const accessibilityResult = validateTheme(config);
+    if (!accessibilityResult.isValid) {
+      const errors = accessibilityResult.errors.map((e) => `${e.path}: ${e.message}`);
+      throw new Error(`Theme accessibility validation failed:\n${errors.join('\n')}`);
+    }
+
+    // Log warnings (non-blocking)
+    if (accessibilityResult.warnings.length > 0) {
+      accessibilityResult.warnings.forEach((w) => {
+        // eslint-disable-next-line no-console
+        console.warn(`[Theme Warning] ${w.path}: ${w.message}`);
+      });
+    }
+  }
+
+  // Register theme
+  customThemeRegistry.set(config.tenantId, config);
+
+  // Clear CSS cache for this theme (will be regenerated on next use)
+  customThemeCSSCache.delete(config.tenantId);
+
+  return config.tenantId;
+}
+
+/**
+ * Get a registered custom theme by tenantId.
+ *
+ * @param tenantId - Tenant identifier
+ * @returns Theme configuration or undefined if not found
+ *
+ * @example
+ * ```typescript
+ * const theme = getCustomTheme('acme-corp');
+ * if (theme) {
+ *   console.log('Theme name:', theme.name);
+ * }
+ * ```
+ */
+export function getCustomTheme(tenantId: string): TenantThemeConfig | undefined {
+  return customThemeRegistry.get(tenantId);
+}
+
+/**
+ * Check if a custom theme is registered.
+ *
+ * @param tenantId - Tenant identifier
+ * @returns True if theme is registered
+ */
+export function hasCustomTheme(tenantId: string): boolean {
+  return customThemeRegistry.has(tenantId);
+}
+
+/**
+ * Unregister a custom theme.
+ *
+ * @param tenantId - Tenant identifier
+ * @returns True if theme was removed, false if not found
+ */
+export function unregisterCustomTheme(tenantId: string): boolean {
+  customThemeCSSCache.delete(tenantId);
+  return customThemeRegistry.delete(tenantId);
+}
+
+/**
+ * Get all registered custom theme IDs.
+ *
+ * @returns Array of tenant IDs
+ */
+export function getRegisteredThemes(): string[] {
+  return Array.from(customThemeRegistry.keys());
+}
+
+/**
+ * Merge a tenant theme configuration with its base theme.
+ *
+ * Takes the base theme colors from THEME_COLORS and deep-merges
+ * the custom configuration on top, giving precedence to custom values.
+ *
+ * @param config - Tenant theme configuration
+ * @returns Merged configuration with base theme defaults
+ *
+ * @example
+ * ```typescript
+ * const merged = mergeThemeConfig({
+ *   tenantId: 'acme',
+ *   name: 'Acme',
+ *   baseTheme: 'platform',
+ *   colors: { light: { accent: { base: '#FF6B35' } } },
+ * });
+ * // merged.colors.light.accent.hover will use platform's default
+ * // merged.colors.light.accent.base will be '#FF6B35'
+ * ```
+ */
+export function mergeThemeConfig(config: TenantThemeConfig): TenantThemeConfig {
+  const baseThemeColors = THEME_COLORS[config.baseTheme];
+
+  // Deep merge helper for color sets
+  const mergeColorSet = (
+    base: ThemeColorSet | undefined,
+    custom: {
+      accent?: { base?: string; hover?: string; contrast?: string };
+      neutral?: {
+        background?: string;
+        surface?: string;
+        surfaceHover?: string;
+        text?: string;
+        textSubtle?: string;
+        border?: string;
+      };
+    } | undefined,
+  ): ThemeColorSet => {
+    if (!base) {
+      base = {
+        accent: { base: '#0062BA', hover: '#004d92', contrast: '#FFFFFF' },
+        neutral: {
+          background: '#f5f7fa',
+          surface: '#FFFFFF',
+          surfaceHover: '#e8e9ec',
+          text: '#1e2b3c',
+          textSubtle: '#68707c',
+          border: '#c9c9c9',
+        },
+      };
+    }
+
+    return {
+      accent: {
+        base: custom?.accent?.base ?? base.accent.base,
+        hover: custom?.accent?.hover ?? base.accent.hover,
+        contrast: custom?.accent?.contrast ?? base.accent.contrast,
+      },
+      neutral: {
+        background: custom?.neutral?.background ?? base.neutral.background,
+        surface: custom?.neutral?.surface ?? base.neutral.surface,
+        surfaceHover: custom?.neutral?.surfaceHover ?? base.neutral.surfaceHover,
+        text: custom?.neutral?.text ?? base.neutral.text,
+        textSubtle: custom?.neutral?.textSubtle ?? base.neutral.textSubtle,
+        border: custom?.neutral?.border ?? base.neutral.border,
+      },
+    };
+  };
+
+  return {
+    ...config,
+    colors: {
+      light: mergeColorSet(baseThemeColors?.light, config.colors?.light),
+      dark: mergeColorSet(baseThemeColors?.dark, config.colors?.dark),
+    },
+  };
+}
+
+/**
+ * Parse hex color to RGB components.
+ * Supports both 3-digit and 6-digit hex colors.
+ *
+ * @param hex - Hex color string (e.g., '#FF6B35' or '#F00')
+ * @returns RGB object { r, g, b } with values 0-255
+ *
+ * @internal
+ */
+function parseHex(hex: string): { r: number; g: number; b: number } {
+  const cleaned = hex.replace('#', '');
+  const expanded = cleaned.length === 3 ? cleaned.split('').map((c) => c + c).join('') : cleaned;
+
+  return {
+    r: parseInt(expanded.substring(0, 2), 16),
+    g: parseInt(expanded.substring(2, 4), 16),
+    b: parseInt(expanded.substring(4, 6), 16),
+  };
+}
+
+/**
+ * Convert RGB to hex color string.
+ *
+ * @param r - Red component (0-255)
+ * @param g - Green component (0-255)
+ * @param b - Blue component (0-255)
+ * @returns Hex color string (e.g., '#FF6B35')
+ *
+ * @internal
+ */
+function rgbToHex(r: number, g: number, b: number): string {
+  const toHex = (n: number) => {
+    const clamped = Math.max(0, Math.min(255, Math.round(n)));
+    return clamped.toString(16).padStart(2, '0');
+  };
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+/**
+ * Lighten a hex color by a percentage.
+ * Mixes the color with white.
+ *
+ * @param hex - Hex color string (e.g., '#FF6B35')
+ * @param percent - Percentage to lighten (0-1, e.g., 0.2 = 20% lighter)
+ * @returns Lightened hex color string
+ *
+ * @internal
+ */
+function lighten(hex: string, percent: number): string {
+  const { r, g, b } = parseHex(hex);
+  const amount = percent;
+
+  return rgbToHex(
+    r + (255 - r) * amount,
+    g + (255 - g) * amount,
+    b + (255 - b) * amount,
+  );
+}
+
+/**
+ * Darken a hex color by a percentage.
+ * Mixes the color with black.
+ *
+ * @param hex - Hex color string (e.g., '#FF6B35')
+ * @param percent - Percentage to darken (0-1, e.g., 0.2 = 20% darker)
+ * @returns Darkened hex color string
+ *
+ * @internal
+ */
+function darken(hex: string, percent: number): string {
+  const { r, g, b } = parseHex(hex);
+  const amount = 1 - percent;
+
+  return rgbToHex(r * amount, g * amount, b * amount);
+}
+
+/**
+ * Generate CSS custom properties from a tenant theme configuration.
+ *
+ * Generates Designsystemet-compatible CSS variables for colors, typography,
+ * and component variants. The generated CSS can be injected at runtime.
+ *
+ * Automatically generates derived color tokens (tinted surfaces, borders, etc.)
+ * from the base accent and neutral colors following Designsystemet patterns.
+ *
+ * @param config - Tenant theme configuration
+ * @returns CSS string with custom properties
+ *
+ * @example
+ * ```typescript
+ * const css = generateThemeCSS({
+ *   tenantId: 'acme',
+ *   name: 'Acme',
+ *   baseTheme: 'platform',
+ *   colors: {
+ *     light: {
+ *       accent: { base: '#FF6B35', hover: '#E55A2B', contrast: '#FFFFFF' },
+ *     },
+ *   },
+ *   typography: {
+ *     fontFamily: { base: 'Inter, sans-serif' },
+ *   },
+ * });
+ * // Inject into DOM: style.textContent = css;
+ * ```
+ */
+export function generateThemeCSS(config: TenantThemeConfig): string {
+  // Check cache first
+  const cached = customThemeCSSCache.get(config.tenantId);
+  if (cached) {
+    return cached;
+  }
+
+  // Merge with base theme to get complete configuration
+  const merged = mergeThemeConfig(config);
+
+  const cssLines: string[] = [];
+
+  // CSS Header
+  cssLines.push('/**');
+  cssLines.push(` * Custom Theme: ${merged.name}`);
+  cssLines.push(` * Tenant ID: ${merged.tenantId}`);
+  cssLines.push(` * Base Theme: ${merged.baseTheme}`);
+  if (merged.metadata?.version) {
+    cssLines.push(` * Version: ${merged.metadata.version}`);
+  }
+  cssLines.push(' */');
+  cssLines.push('');
+
+  // ==========================================================================
+  // LIGHT MODE
+  // ==========================================================================
+  cssLines.push('/* Light Mode Colors */');
+  cssLines.push(':root, [data-color-scheme="light"] {');
+
+  if (merged.colors?.light) {
+    const { accent, neutral } = merged.colors.light;
+
+    // Neutral colors - backgrounds, surfaces, text, borders
+    if (neutral) {
+      cssLines.push('  /* Backgrounds */');
+      cssLines.push(`  --ds-color-neutral-background-default: ${neutral.background};`);
+      cssLines.push(
+        `  --ds-color-neutral-background-tinted: ${lighten(neutral.background, 0.02)};`,
+      );
+      cssLines.push(`  --ds-color-neutral-surface-default: ${neutral.surface};`);
+      cssLines.push(`  --ds-color-neutral-surface-tinted: ${neutral.background};`);
+      cssLines.push(`  --ds-color-neutral-surface-hover: ${neutral.surfaceHover};`);
+      cssLines.push(`  --ds-color-neutral-surface-active: ${darken(neutral.surfaceHover, 0.05)};`);
+      cssLines.push(`  --ds-color-neutral-surface-subtle: ${lighten(neutral.surface, 0.02)};`);
+      cssLines.push('');
+
+      cssLines.push('  /* Text */');
+      cssLines.push(`  --ds-color-neutral-text-default: ${neutral.text};`);
+      cssLines.push(`  --ds-color-neutral-text-subtle: ${neutral.textSubtle};`);
+      cssLines.push('');
+
+      cssLines.push('  /* Borders */');
+      cssLines.push(`  --ds-color-neutral-border-default: ${neutral.border};`);
+      cssLines.push(`  --ds-color-neutral-border-subtle: ${lighten(neutral.border, 0.1)};`);
+      cssLines.push(`  --ds-color-neutral-border-strong: ${darken(neutral.border, 0.1)};`);
+      cssLines.push('');
+    }
+
+    // Accent colors - primary brand color
+    if (accent) {
+      cssLines.push('  /* Accent - Primary Brand Color */');
+      cssLines.push(`  --ds-color-accent-base-default: ${accent.base};`);
+      cssLines.push(`  --ds-color-accent-base-hover: ${accent.hover};`);
+      cssLines.push(`  --ds-color-accent-base-active: ${darken(accent.hover, 0.05)};`);
+      cssLines.push(`  --ds-color-accent-text-default: ${neutral?.text || '#1a2238'};`);
+      cssLines.push(`  --ds-color-accent-text-subtle: ${accent.base};`);
+      cssLines.push(`  --ds-color-accent-surface-default: ${neutral?.surface || '#ffffff'};`);
+      cssLines.push(`  --ds-color-accent-surface-tinted: ${lighten(accent.base, 0.45)};`);
+      cssLines.push(`  --ds-color-accent-surface-hover: ${lighten(accent.base, 0.4)};`);
+      cssLines.push(`  --ds-color-accent-border-default: ${lighten(accent.base, 0.2)};`);
+      cssLines.push(`  --ds-color-accent-border-subtle: ${lighten(accent.base, 0.3)};`);
+      cssLines.push(`  --ds-color-accent-border-strong: ${accent.base};`);
+      cssLines.push(`  --ds-color-accent-base-contrast-default: ${accent.contrast};`);
+      cssLines.push(`  --ds-color-accent-base-contrast-subtle: ${lighten(accent.contrast, 0.02)};`);
+      cssLines.push(`  --ds-color-accent-contrast-default: ${accent.contrast};`);
+      cssLines.push('');
+
+      // Use accent colors for Info semantic color
+      cssLines.push('  /* Info - Uses Accent Color */');
+      cssLines.push(`  --ds-color-info-base-default: ${accent.base};`);
+      cssLines.push(`  --ds-color-info-base-hover: ${accent.hover};`);
+      cssLines.push(`  --ds-color-info-base-active: ${darken(accent.hover, 0.05)};`);
+      cssLines.push(`  --ds-color-info-text-default: ${darken(accent.base, 0.25)};`);
+      cssLines.push(`  --ds-color-info-text-subtle: ${accent.base};`);
+      cssLines.push(`  --ds-color-info-border-default: ${lighten(accent.base, 0.2)};`);
+      cssLines.push(`  --ds-color-info-border-strong: ${accent.base};`);
+      cssLines.push(`  --ds-color-info-border-subtle: ${lighten(accent.base, 0.3)};`);
+      cssLines.push(`  --ds-color-info-surface-tinted: ${lighten(accent.base, 0.45)};`);
+      cssLines.push(`  --ds-color-info-surface-hover: ${lighten(accent.base, 0.4)};`);
+      cssLines.push(`  --ds-color-info-surface-active: ${lighten(accent.base, 0.35)};`);
+      cssLines.push(`  --ds-color-info-background-tinted: ${lighten(accent.base, 0.47)};`);
+      cssLines.push(`  --ds-color-info-base-contrast-default: ${accent.contrast};`);
+      cssLines.push(`  --ds-color-info-base-contrast-subtle: ${lighten(accent.contrast, 0.02)};`);
+      cssLines.push('');
+    }
+
+    // Semantic colors - success, warning, danger with reasonable defaults
+    cssLines.push('  /* Success */');
+    cssLines.push('  --ds-color-success-base-default: #2e8b57;');
+    cssLines.push('  --ds-color-success-base-hover: #257a4a;');
+    cssLines.push('  --ds-color-success-base-active: #1c693d;');
+    cssLines.push('  --ds-color-success-text-default: #1a3d2a;');
+    cssLines.push('  --ds-color-success-text-subtle: #2e8b57;');
+    cssLines.push('  --ds-color-success-border-default: #4aa076;');
+    cssLines.push('  --ds-color-success-border-strong: #2e8b57;');
+    cssLines.push('  --ds-color-success-border-subtle: #8cc5a5;');
+    cssLines.push('  --ds-color-success-surface-tinted: #e8f5ed;');
+    cssLines.push('  --ds-color-success-base-contrast-default: #ffffff;');
+    cssLines.push('  --ds-color-success-base-contrast-subtle: #e8f5ed;');
+    cssLines.push('');
+
+    cssLines.push('  /* Warning */');
+    cssLines.push('  --ds-color-warning-base-default: #d4a84a;');
+    cssLines.push('  --ds-color-warning-base-hover: #c49a3d;');
+    cssLines.push('  --ds-color-warning-base-active: #b08c30;');
+    cssLines.push('  --ds-color-warning-text-default: #5a4520;');
+    cssLines.push('  --ds-color-warning-text-subtle: #8a6d35;');
+    cssLines.push('  --ds-color-warning-border-default: #f7c873;');
+    cssLines.push('  --ds-color-warning-border-strong: #d4a84a;');
+    cssLines.push('  --ds-color-warning-border-subtle: #f5dda8;');
+    cssLines.push('  --ds-color-warning-surface-tinted: #fef8e8;');
+    cssLines.push('  --ds-color-warning-base-contrast-default: #1a2238;');
+    cssLines.push('  --ds-color-warning-base-contrast-subtle: #2d3a52;');
+    cssLines.push('');
+
+    cssLines.push('  /* Danger */');
+    cssLines.push('  --ds-color-danger-base-default: #a04a6c;');
+    cssLines.push('  --ds-color-danger-base-hover: #8a3d5c;');
+    cssLines.push('  --ds-color-danger-base-active: #74304c;');
+    cssLines.push('  --ds-color-danger-text-default: #3d1a28;');
+    cssLines.push('  --ds-color-danger-text-subtle: #8a3d5c;');
+    cssLines.push('  --ds-color-danger-border-default: #c06a8c;');
+    cssLines.push('  --ds-color-danger-border-strong: #a04a6c;');
+    cssLines.push('  --ds-color-danger-border-subtle: #e0a0bc;');
+    cssLines.push('  --ds-color-danger-surface-tinted: #fce8f0;');
+    cssLines.push('  --ds-color-danger-base-contrast-default: #ffffff;');
+    cssLines.push('  --ds-color-danger-base-contrast-subtle: #fce8f0;');
+    cssLines.push('');
+
+    // Focus colors - use accent for outer ring
+    if (accent) {
+      cssLines.push('  /* Focus */');
+      cssLines.push(`  --ds-color-focus-inner: ${neutral?.surface || '#ffffff'};`);
+      cssLines.push(`  --ds-color-focus-outer: ${accent.base};`);
+      cssLines.push('');
+    }
+
+    // Sidebar tokens - use accent and neutral colors
+    if (accent && neutral) {
+      cssLines.push('  /* Sidebar */');
+      cssLines.push(`  --ds-sidebar-background: ${neutral.surfaceHover};`);
+      cssLines.push(`  --ds-sidebar-foreground: ${neutral.text};`);
+      cssLines.push(`  --ds-sidebar-primary: ${accent.base};`);
+      cssLines.push(`  --ds-sidebar-primary-foreground: ${accent.contrast};`);
+      cssLines.push(`  --ds-sidebar-accent: ${lighten(accent.base, 0.2)};`);
+      cssLines.push(`  --ds-sidebar-accent-foreground: ${neutral.text};`);
+      cssLines.push(`  --ds-sidebar-border: ${neutral.border};`);
+      cssLines.push(`  --ds-sidebar-ring: ${accent.base};`);
+      cssLines.push('');
+    }
+
+    // Chart colors - use accent as primary chart color
+    if (accent) {
+      cssLines.push('  /* Chart colors */');
+      cssLines.push(`  --ds-chart-1: ${accent.base};`);
+      cssLines.push(`  --ds-chart-2: ${lighten(accent.base, 0.2)};`);
+      cssLines.push(`  --ds-chart-3: ${darken(accent.base, 0.1)};`);
+      cssLines.push(`  --ds-chart-4: ${neutral?.border || '#b0b8c1'};`);
+      cssLines.push(`  --ds-chart-5: ${neutral?.textSubtle || '#4a5568'};`);
+      cssLines.push('');
+    }
+  }
+
+  // Typography (applies to both modes)
+  if (merged.typography) {
+    const { fontFamily, fontSize, lineHeight } = merged.typography;
+
+    if (fontFamily) {
+      cssLines.push('  /* Typography - Font Families */');
+      if (fontFamily.base) {
+        cssLines.push(`  --ds-font-family-base: ${fontFamily.base};`);
+      }
+      if (fontFamily.heading) {
+        cssLines.push(`  --ds-font-family-heading: ${fontFamily.heading};`);
+      }
+      if (fontFamily.mono) {
+        cssLines.push(`  --ds-font-family-mono: ${fontFamily.mono};`);
+      }
+      cssLines.push('');
+    }
+
+    if (fontSize) {
+      cssLines.push('  /* Typography - Font Sizes */');
+      if (fontSize.xs) cssLines.push(`  --ds-font-size-xs: ${fontSize.xs};`);
+      if (fontSize.sm) cssLines.push(`  --ds-font-size-sm: ${fontSize.sm};`);
+      if (fontSize.md) cssLines.push(`  --ds-font-size-md: ${fontSize.md};`);
+      if (fontSize.lg) cssLines.push(`  --ds-font-size-lg: ${fontSize.lg};`);
+      if (fontSize.xl) cssLines.push(`  --ds-font-size-xl: ${fontSize.xl};`);
+      if (fontSize['2xl']) cssLines.push(`  --ds-font-size-2xl: ${fontSize['2xl']};`);
+      cssLines.push('');
+    }
+
+    if (lineHeight) {
+      cssLines.push('  /* Typography - Line Heights */');
+      if (lineHeight.tight) cssLines.push(`  --ds-line-height-tight: ${lineHeight.tight};`);
+      if (lineHeight.normal) cssLines.push(`  --ds-line-height-normal: ${lineHeight.normal};`);
+      if (lineHeight.relaxed) cssLines.push(`  --ds-line-height-relaxed: ${lineHeight.relaxed};`);
+      cssLines.push('');
+    }
+  }
+
+  // Component variants
+  if (merged.components) {
+    const { button, card, input } = merged.components;
+
+    if (button) {
+      cssLines.push('  /* Component - Button */');
+      if (button.borderRadius) cssLines.push(`  --ds-button-border-radius: ${button.borderRadius};`);
+      if (button.padding) cssLines.push(`  --ds-button-padding: ${button.padding};`);
+      cssLines.push('');
+    }
+
+    if (card) {
+      cssLines.push('  /* Component - Card */');
+      if (card.borderRadius) cssLines.push(`  --ds-card-border-radius: ${card.borderRadius};`);
+      if (card.boxShadow) cssLines.push(`  --ds-card-box-shadow: ${card.boxShadow};`);
+      cssLines.push('');
+    }
+
+    if (input) {
+      cssLines.push('  /* Component - Input */');
+      if (input.borderRadius) cssLines.push(`  --ds-input-border-radius: ${input.borderRadius};`);
+      if (input.height) cssLines.push(`  --ds-input-height: ${input.height};`);
+      cssLines.push('');
+    }
+  }
+
+  cssLines.push('  color-scheme: light;');
+  cssLines.push('}');
+  cssLines.push('');
+
+  // ==========================================================================
+  // DARK MODE
+  // ==========================================================================
+  cssLines.push('/* Dark Mode Colors */');
+  cssLines.push('[data-color-scheme="dark"] {');
+
+  if (merged.colors?.dark) {
+    const { accent, neutral } = merged.colors.dark;
+
+    // Neutral colors - backgrounds, surfaces, text, borders
+    if (neutral) {
+      cssLines.push('  /* Backgrounds */');
+      cssLines.push(`  --ds-color-neutral-background-default: ${neutral.background};`);
+      cssLines.push(`  --ds-color-neutral-background-tinted: ${lighten(neutral.background, 0.03)};`);
+      cssLines.push(`  --ds-color-neutral-surface-default: ${neutral.surface};`);
+      cssLines.push(`  --ds-color-neutral-surface-tinted: ${lighten(neutral.surface, 0.02)};`);
+      cssLines.push(`  --ds-color-neutral-surface-hover: ${neutral.surfaceHover};`);
+      cssLines.push(`  --ds-color-neutral-surface-active: ${lighten(neutral.surfaceHover, 0.05)};`);
+      cssLines.push(`  --ds-color-neutral-surface-subtle: ${darken(neutral.surface, 0.02)};`);
+      cssLines.push('');
+
+      cssLines.push('  /* Text */');
+      cssLines.push(`  --ds-color-neutral-text-default: ${neutral.text};`);
+      cssLines.push(`  --ds-color-neutral-text-subtle: ${neutral.textSubtle};`);
+      cssLines.push('');
+
+      cssLines.push('  /* Borders */');
+      cssLines.push(`  --ds-color-neutral-border-default: ${neutral.border};`);
+      cssLines.push(`  --ds-color-neutral-border-subtle: ${darken(neutral.border, 0.1)};`);
+      cssLines.push(`  --ds-color-neutral-border-strong: ${lighten(neutral.border, 0.1)};`);
+      cssLines.push('');
+    }
+
+    // Accent colors - primary brand color
+    if (accent) {
+      cssLines.push('  /* Accent - Primary Brand Color */');
+      cssLines.push(`  --ds-color-accent-base-default: ${accent.base};`);
+      cssLines.push(`  --ds-color-accent-base-hover: ${accent.hover};`);
+      cssLines.push(`  --ds-color-accent-base-active: ${lighten(accent.hover, 0.05)};`);
+      cssLines.push(`  --ds-color-accent-text-default: ${neutral?.text || '#e6eaf3'};`);
+      cssLines.push(`  --ds-color-accent-text-subtle: ${accent.base};`);
+      cssLines.push(`  --ds-color-accent-surface-default: ${neutral?.surface || '#23243a'};`);
+      cssLines.push(`  --ds-color-accent-surface-tinted: ${darken(accent.base, 0.35)};`);
+      cssLines.push(`  --ds-color-accent-surface-hover: ${darken(accent.base, 0.3)};`);
+      cssLines.push(`  --ds-color-accent-border-default: ${darken(accent.base, 0.15)};`);
+      cssLines.push(`  --ds-color-accent-border-subtle: ${darken(accent.base, 0.25)};`);
+      cssLines.push(`  --ds-color-accent-border-strong: ${accent.base};`);
+      cssLines.push(`  --ds-color-accent-base-contrast-default: ${accent.contrast};`);
+      cssLines.push(`  --ds-color-accent-base-contrast-subtle: ${darken(accent.contrast, 0.02)};`);
+      cssLines.push(`  --ds-color-accent-contrast-default: ${accent.contrast};`);
+      cssLines.push('');
+
+      // Use accent colors for Info semantic color
+      cssLines.push('  /* Info - Uses Accent Color */');
+      cssLines.push(`  --ds-color-info-base-default: ${accent.base};`);
+      cssLines.push(`  --ds-color-info-base-hover: ${accent.hover};`);
+      cssLines.push(`  --ds-color-info-base-active: ${lighten(accent.hover, 0.05)};`);
+      cssLines.push(`  --ds-color-info-text-default: ${lighten(accent.base, 0.2)};`);
+      cssLines.push(`  --ds-color-info-text-subtle: ${accent.base};`);
+      cssLines.push(`  --ds-color-info-border-default: ${darken(accent.base, 0.15)};`);
+      cssLines.push(`  --ds-color-info-border-strong: ${accent.base};`);
+      cssLines.push(`  --ds-color-info-border-subtle: ${darken(accent.base, 0.25)};`);
+      cssLines.push(`  --ds-color-info-surface-tinted: ${darken(accent.base, 0.35)};`);
+      cssLines.push(`  --ds-color-info-surface-hover: ${darken(accent.base, 0.3)};`);
+      cssLines.push(`  --ds-color-info-surface-active: ${darken(accent.base, 0.25)};`);
+      cssLines.push(`  --ds-color-info-background-tinted: ${darken(accent.base, 0.37)};`);
+      cssLines.push(`  --ds-color-info-base-contrast-default: ${accent.contrast};`);
+      cssLines.push(`  --ds-color-info-base-contrast-subtle: ${darken(accent.contrast, 0.02)};`);
+      cssLines.push('');
+    }
+
+    // Semantic colors - success, warning, danger with dark mode values
+    cssLines.push('  /* Success */');
+    cssLines.push('  --ds-color-success-base-default: #4aa076;');
+    cssLines.push('  --ds-color-success-base-hover: #5cb088;');
+    cssLines.push('  --ds-color-success-base-active: #6ec09a;');
+    cssLines.push('  --ds-color-success-text-default: #a0d4c0;');
+    cssLines.push('  --ds-color-success-text-subtle: #4aa076;');
+    cssLines.push('  --ds-color-success-border-default: #2e6050;');
+    cssLines.push('  --ds-color-success-border-strong: #4aa076;');
+    cssLines.push('  --ds-color-success-border-subtle: #1e4035;');
+    cssLines.push('  --ds-color-success-surface-tinted: #1a3d2a;');
+    cssLines.push('  --ds-color-success-base-contrast-default: #0d1f15;');
+    cssLines.push('  --ds-color-success-base-contrast-subtle: #1a3d2a;');
+    cssLines.push('');
+
+    cssLines.push('  /* Warning */');
+    cssLines.push('  --ds-color-warning-base-default: #f7c873;');
+    cssLines.push('  --ds-color-warning-base-hover: #f9d591;');
+    cssLines.push('  --ds-color-warning-base-active: #fbe2af;');
+    cssLines.push('  --ds-color-warning-text-default: #f7c873;');
+    cssLines.push('  --ds-color-warning-text-subtle: #d4a84a;');
+    cssLines.push('  --ds-color-warning-border-default: #8a6d35;');
+    cssLines.push('  --ds-color-warning-border-strong: #f7c873;');
+    cssLines.push('  --ds-color-warning-border-subtle: #5a4520;');
+    cssLines.push('  --ds-color-warning-surface-tinted: #3a2d15;');
+    cssLines.push('  --ds-color-warning-base-contrast-default: #2d1e0f;');
+    cssLines.push('  --ds-color-warning-base-contrast-subtle: #3a2d15;');
+    cssLines.push('');
+
+    cssLines.push('  /* Danger */');
+    cssLines.push('  --ds-color-danger-base-default: #c06a8c;');
+    cssLines.push('  --ds-color-danger-base-hover: #d080a0;');
+    cssLines.push('  --ds-color-danger-base-active: #e096b4;');
+    cssLines.push('  --ds-color-danger-text-default: #e0a0bc;');
+    cssLines.push('  --ds-color-danger-text-subtle: #c06a8c;');
+    cssLines.push('  --ds-color-danger-border-default: #74304c;');
+    cssLines.push('  --ds-color-danger-border-strong: #c06a8c;');
+    cssLines.push('  --ds-color-danger-border-subtle: #4a2030;');
+    cssLines.push('  --ds-color-danger-surface-tinted: #3d1a28;');
+    cssLines.push('  --ds-color-danger-base-contrast-default: #2d1e2f;');
+    cssLines.push('  --ds-color-danger-base-contrast-subtle: #3d1a28;');
+    cssLines.push('');
+
+    // Focus colors - use accent for outer ring
+    if (accent) {
+      cssLines.push('  /* Focus */');
+      cssLines.push(`  --ds-color-focus-inner: ${neutral?.background || '#181a24'};`);
+      cssLines.push(`  --ds-color-focus-outer: ${accent.base};`);
+      cssLines.push('');
+    }
+
+    // Sidebar tokens - use accent and neutral colors
+    if (accent && neutral) {
+      cssLines.push('  /* Sidebar */');
+      cssLines.push(`  --ds-sidebar-background: ${neutral.surface};`);
+      cssLines.push(`  --ds-sidebar-foreground: ${neutral.text};`);
+      cssLines.push(`  --ds-sidebar-primary: ${accent.base};`);
+      cssLines.push(`  --ds-sidebar-primary-foreground: ${accent.contrast};`);
+      cssLines.push(`  --ds-sidebar-accent: ${accent.hover};`);
+      cssLines.push(`  --ds-sidebar-accent-foreground: ${accent.contrast};`);
+      cssLines.push(`  --ds-sidebar-border: ${neutral.border};`);
+      cssLines.push(`  --ds-sidebar-ring: ${accent.base};`);
+      cssLines.push('');
+    }
+
+    // Chart colors - use accent as primary chart color
+    if (accent) {
+      cssLines.push('  /* Chart colors */');
+      cssLines.push(`  --ds-chart-1: ${accent.base};`);
+      cssLines.push(`  --ds-chart-2: ${darken(accent.base, 0.15)};`);
+      cssLines.push(`  --ds-chart-3: ${lighten(accent.base, 0.1)};`);
+      cssLines.push(`  --ds-chart-4: ${neutral?.border || '#2d2e3e'};`);
+      cssLines.push(`  --ds-chart-5: ${neutral?.textSubtle || '#7a88a1'};`);
+      cssLines.push('');
+    }
+  }
+
+  cssLines.push('  color-scheme: dark;');
+  cssLines.push('}');
+
+  const css = cssLines.join('\n');
+
+  // Cache the generated CSS
+  customThemeCSSCache.set(config.tenantId, css);
+
+  return css;
+}
+
+/**
+ * Get the complete CSS for a custom theme (base + extensions + custom).
+ *
+ * @param tenantId - Tenant identifier
+ * @returns Complete CSS string or undefined if theme not registered
+ *
+ * @example
+ * ```typescript
+ * const css = getCustomThemeCSS('acme-corp');
+ * if (css) {
+ *   // Inject into DOM
+ *   const style = document.createElement('style');
+ *   style.textContent = css;
+ *   document.head.appendChild(style);
+ * }
+ * ```
+ */
+export function getCustomThemeCSS(tenantId: string): string | undefined {
+  const config = customThemeRegistry.get(tenantId);
+  if (!config) {
+    return undefined;
+  }
+
+  // Get base theme CSS
+  const baseCSS = getThemeCSS(config.baseTheme);
+
+  // Get custom CSS
+  const customCSS = generateThemeCSS(config);
+
+  // Combine: base + custom overrides
+  return `${baseCSS}\n\n/* Custom Theme Overrides */\n${customCSS}`;
 }
