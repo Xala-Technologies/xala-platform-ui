@@ -238,7 +238,7 @@ export type {
   ConditionField,
   ConditionFieldOption,
   ConditionOperator,
-  FieldType,
+  ConditionFieldType,
   LogicOperator,
   UseTableConditionsReturn,
 } from './TableConditionsFilter';
@@ -433,8 +433,6 @@ export { SearchableSelect } from './SearchableSelect';
 export type {
   SearchableSelectProps,
   SelectOption as SearchableSelectOption,
-  SelectOptionValue,
-  RenderOptionContext,
 } from './SearchableSelect';
 
 // Rich Notification Toast (with queue management)
@@ -485,6 +483,10 @@ export type {
   FormFieldProps,
   FormDividerProps,
 } from './FormLayout';
+
+// Schema Form (declarative form builder)
+export { SchemaForm } from './SchemaForm';
+export type { SchemaFormProps } from './SchemaForm';
 
 // Avatar Group (Rich version with status indicators)
 export { AvatarItem as RichAvatarItem, AvatarGroup as RichAvatarGroup } from './AvatarGroup';

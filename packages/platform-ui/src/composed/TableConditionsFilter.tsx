@@ -39,7 +39,7 @@ export type ConditionOperator =
   | 'after'
   | 'between';
 
-export type FieldType = 'text' | 'number' | 'date' | 'select' | 'boolean';
+export type ConditionFieldType = 'text' | 'number' | 'date' | 'select' | 'boolean';
 export type LogicOperator = 'and' | 'or';
 
 export interface ConditionFieldOption {
@@ -50,7 +50,7 @@ export interface ConditionFieldOption {
 export interface ConditionField {
   id: string;
   label: string;
-  type: FieldType;
+  type: ConditionFieldType;
   options?: ConditionFieldOption[];
 }
 
@@ -137,7 +137,7 @@ const DATE_PRESETS: { value: string; label: string }[] = [
   { value: 'this_year', label: 'This year' },
 ];
 
-function getOperatorsForType(type: FieldType) {
+function getOperatorsForType(type: ConditionFieldType) {
   switch (type) {
     case 'number':
       return NUMBER_OPERATORS;

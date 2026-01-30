@@ -49,10 +49,7 @@ export interface ProviderStatus {
 /**
  * Required providers that MUST be present for compliance
  */
-export const REQUIRED_PROVIDERS = [
-  'GlobalErrorHandler',
-  'ErrorBoundary',
-] as const;
+export const REQUIRED_PROVIDERS = ['GlobalErrorHandler', 'ErrorBoundary'] as const;
 
 /**
  * Providers that should be present (at least one theme provider)
@@ -67,9 +64,7 @@ export const THEME_PROVIDERS = [
 /**
  * Recommended providers (not required but warned if missing)
  */
-export const RECOMMENDED_PROVIDERS = [
-  'I18nProvider',
-] as const;
+export const RECOMMENDED_PROVIDERS = ['I18nProvider'] as const;
 
 /**
  * Pattern to find entry files
@@ -129,7 +124,10 @@ function findEntryFile(srcDir: string): string | null {
 /**
  * Check if a provider is imported in the file
  */
-function checkProviderImport(content: string, providerName: string): { imported: boolean; line?: number } {
+function checkProviderImport(
+  content: string,
+  providerName: string
+): { imported: boolean; line?: number } {
   const lines = content.split('\n');
 
   for (let i = 0; i < lines.length; i++) {
@@ -147,7 +145,10 @@ function checkProviderImport(content: string, providerName: string): { imported:
 /**
  * Check if a provider is used in JSX
  */
-function checkProviderUsage(content: string, providerName: string): { used: boolean; line?: number } {
+function checkProviderUsage(
+  content: string,
+  providerName: string
+): { used: boolean; line?: number } {
   const lines = content.split('\n');
 
   // Pattern for JSX usage: <ProviderName or </ProviderName
@@ -246,8 +247,10 @@ export function checkProviderConfiguration(srcDir: string): ProviderCheckResult 
   }
 
   // Check for platform-ui styles import
-  if (!content.includes("@xala-technologies/platform-ui/styles")) {
-    result.warnings.push("Missing '@xala-technologies/platform-ui/styles' import. Required for styling.");
+  if (!content.includes('@xala-technologies/platform-ui/styles')) {
+    result.warnings.push(
+      "Missing '@xala-technologies/platform-ui/styles' import. Required for styling."
+    );
   }
 
   // Determine if passed
@@ -277,14 +280,18 @@ export function formatProviderCheckResult(result: ProviderCheckResult): string {
 
   // GlobalErrorHandler
   const gh = result.providers.GlobalErrorHandler;
-  lines.push(`  ${gh.found ? '✅' : '❌'} GlobalErrorHandler ${gh.found ? '(configured)' : '(MISSING)'}`);
+  lines.push(
+    `  ${gh.found ? '✅' : '❌'} GlobalErrorHandler ${gh.found ? '(configured)' : '(MISSING)'}`
+  );
   if (gh.imported && !gh.used) {
     lines.push('      ⚠️  Imported but not used in JSX');
   }
 
   // ErrorBoundary
   const eb = result.providers.ErrorBoundary;
-  lines.push(`  ${eb.found ? '✅' : '❌'} ErrorBoundary ${eb.found ? '(configured)' : '(MISSING)'}`);
+  lines.push(
+    `  ${eb.found ? '✅' : '❌'} ErrorBoundary ${eb.found ? '(configured)' : '(MISSING)'}`
+  );
   if (eb.imported && !eb.used) {
     lines.push('      ⚠️  Imported but not used in JSX');
   }
@@ -302,7 +309,9 @@ export function formatProviderCheckResult(result: ProviderCheckResult): string {
 
   // DigilistProvider (wraps ThemeProvider + DesignsystemetProvider)
   const dlp = result.providers.DigilistProvider;
-  lines.push(`  ${dlp.found ? '✅' : '○'} DigilistProvider ${dlp.found ? '(configured - includes theme providers)' : ''}`);
+  lines.push(
+    `  ${dlp.found ? '✅' : '○'} DigilistProvider ${dlp.found ? '(configured - includes theme providers)' : ''}`
+  );
 
   const hasThemeProvider = tp.found || dp.found || dlp.found;
   if (!hasThemeProvider) {
@@ -314,7 +323,9 @@ export function formatProviderCheckResult(result: ProviderCheckResult): string {
 
   // I18nProvider
   const i18n = result.providers.I18nProvider;
-  lines.push(`  ${i18n.found ? '✅' : '○'} I18nProvider ${i18n.found ? '(configured)' : '(not found)'}`);
+  lines.push(
+    `  ${i18n.found ? '✅' : '○'} I18nProvider ${i18n.found ? '(configured)' : '(not found)'}`
+  );
 
   // Warnings
   if (result.warnings.length > 0) {

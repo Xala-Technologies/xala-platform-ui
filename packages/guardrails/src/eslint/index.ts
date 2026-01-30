@@ -35,11 +35,13 @@ export {
 export const forbiddenImports = [
   {
     name: '@digdir/designsystemet-react',
-    message: 'Import from @xala-technologies/platform-ui instead. Designsystemet components are re-exported with proper theming. See: docs/ux-lexicon/AI_CONTRACT.mdx',
+    message:
+      'Import from @xala-technologies/platform-ui instead. Designsystemet components are re-exported with proper theming. See: docs/ux-lexicon/AI_CONTRACT.mdx',
   },
   {
     name: '@digdir/designsystemet-css',
-    message: 'CSS is already included via @xala-technologies/platform-ui/styles. Remove this import.',
+    message:
+      'CSS is already included via @xala-technologies/platform-ui/styles. Remove this import.',
   },
 ];
 

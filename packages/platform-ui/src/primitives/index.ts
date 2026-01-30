@@ -183,6 +183,10 @@ export type { BidiSafeInputProps, BidiSafeInputType } from './BidiSafeInput';
 export { Divider } from './Divider';
 export type { DividerProps, DividerOrientation, DividerVariant, DividerSpacing } from './Divider';
 
+// FormBuilder - schema-driven form generation primitives
+export { FieldRenderer } from './FormBuilder';
+export type * from './FormBuilder/types';
+
 // Spinner is provided by @digdir/designsystemet-react
 // Re-exported from primitives/components.ts
 

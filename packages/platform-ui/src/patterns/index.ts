@@ -111,3 +111,19 @@ export type {
 // Key Facts
 export { KeyFacts } from './KeyFacts';
 export type { KeyFactsProps, KeyFactsLabels, KeyFactItem, KeyFactType } from './KeyFacts';
+
+// Dynamic Form
+export {
+  DynamicForm,
+  DynamicFormField,
+  createDependency,
+  DependencyTransforms,
+} from './DynamicForm';
+export type {
+  DynamicFormProps,
+  DynamicFormSchema,
+  DynamicFormSection,
+  DynamicFieldDefinition,
+  FieldDependency,
+  DynamicFormFieldProps,
+} from './DynamicForm';

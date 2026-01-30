@@ -149,9 +149,15 @@ export function analyzeProject(projectDir: string): ProjectAnalysis {
   analysis.hasTypeScript = existsSync(join(projectDir, 'tsconfig.json'));
 
   // Detect framework
-  if (existsSync(join(projectDir, 'vite.config.ts')) || existsSync(join(projectDir, 'vite.config.js'))) {
+  if (
+    existsSync(join(projectDir, 'vite.config.ts')) ||
+    existsSync(join(projectDir, 'vite.config.js'))
+  ) {
     analysis.framework = 'vite';
-  } else if (existsSync(join(projectDir, 'next.config.ts')) || existsSync(join(projectDir, 'next.config.js'))) {
+  } else if (
+    existsSync(join(projectDir, 'next.config.ts')) ||
+    existsSync(join(projectDir, 'next.config.js'))
+  ) {
     analysis.framework = 'nextjs';
   } else if (existsSync(join(projectDir, 'remix.config.js'))) {
     analysis.framework = 'remix';
@@ -222,11 +228,11 @@ export function generateMainTsx(config: InstallConfig, analysis: ProjectAnalysis
   const imports = [
     "import React from 'react';",
     "import ReactDOM from 'react-dom/client';",
-    "import {",
-    "  GlobalErrorHandler,",
-    "  ErrorBoundary,",
-    "  ThemeProvider,",
-    "  DesignsystemetProvider,",
+    'import {',
+    '  GlobalErrorHandler,',
+    '  ErrorBoundary,',
+    '  ThemeProvider,',
+    '  DesignsystemetProvider,',
     "} from '@xala-technologies/platform-ui';",
     "import '@xala-technologies/platform-ui/styles';",
   ];
@@ -642,7 +648,10 @@ async function confirm(question: string, defaultValue: boolean = true): Promise<
 // Main Installer
 // ============================================================================
 
-export async function runInteractiveInstall(projectDir: string, options: Partial<InstallConfig> = {}): Promise<InstallResult> {
+export async function runInteractiveInstall(
+  projectDir: string,
+  options: Partial<InstallConfig> = {}
+): Promise<InstallResult> {
   const result: InstallResult = {
     success: false,
     steps: [],
@@ -664,7 +673,9 @@ export async function runInteractiveInstall(projectDir: string, options: Partial
   const analysis = analyzeProject(projectDir);
 
   console.log(`   Framework:     ${analysis.framework}`);
-  console.log(`   Entry file:    ${analysis.entryFile ? relative(projectDir, analysis.entryFile) : 'Not found'}`);
+  console.log(
+    `   Entry file:    ${analysis.entryFile ? relative(projectDir, analysis.entryFile) : 'Not found'}`
+  );
   console.log(`   TypeScript:    ${analysis.hasTypeScript ? 'Yes' : 'No'}`);
   console.log(`   Platform UI:   ${analysis.hasPlatformUI ? 'Installed' : 'Not installed'}`);
   console.log(`   Guardrails:    ${analysis.hasGuardrails ? 'Installed' : 'Not installed'}`);
@@ -693,7 +704,10 @@ export async function runInteractiveInstall(projectDir: string, options: Partial
     // Interactive mode
     console.log('\n📝 Configuration\n');
 
-    const appName = await prompt(`App name [${analysis.packageJson?.name || 'my-app'}]: `) || analysis.packageJson?.name || 'my-app';
+    const appName =
+      (await prompt(`App name [${analysis.packageJson?.name || 'my-app'}]: `)) ||
+      analysis.packageJson?.name ||
+      'my-app';
 
     const theme = await selectOption<ThemeId>(
       'Select theme:',
@@ -763,16 +777,21 @@ export async function runInteractiveInstall(projectDir: string, options: Partial
   // DigilistProvider is a comprehensive wrapper that includes GlobalErrorHandler,
   // ErrorBoundary, ThemeProvider, and DesignsystemetProvider internally
   const hasDigilistProvider = analysis.existingProviders.includes('DigilistProvider');
-  const hasRequiredProviders = hasDigilistProvider || (
-    analysis.existingProviders.includes('GlobalErrorHandler') &&
-    analysis.existingProviders.includes('ErrorBoundary') &&
-    (analysis.existingProviders.includes('ThemeProvider') ||
-     analysis.existingProviders.includes('DesignsystemetProvider')));
+  const hasRequiredProviders =
+    hasDigilistProvider ||
+    (analysis.existingProviders.includes('GlobalErrorHandler') &&
+      analysis.existingProviders.includes('ErrorBoundary') &&
+      (analysis.existingProviders.includes('ThemeProvider') ||
+        analysis.existingProviders.includes('DesignsystemetProvider')));
 
   if (analysis.entryFile && hasRequiredProviders) {
     // Providers already configured - skip modification
-    console.log(`   ⏭️  Skipped: ${relative(projectDir, analysis.entryFile)} (providers already configured)`);
-    result.warnings.push('Entry file already has required providers. Skipped to preserve existing configuration.');
+    console.log(
+      `   ⏭️  Skipped: ${relative(projectDir, analysis.entryFile)} (providers already configured)`
+    );
+    result.warnings.push(
+      'Entry file already has required providers. Skipped to preserve existing configuration.'
+    );
   } else if (analysis.entryFile) {
     const mainContent = generateMainTsx(config, analysis);
 
@@ -908,7 +927,7 @@ Files modified: ${result.filesModified.length}
     'Review the generated files',
     'Merge eslint.config.platform-ui.js into your main ESLint config',
     'Run: pnpm guardrails check-compliance',
-    'Run: pnpm test:compliance',
+    'Run: pnpm test:compliance'
   );
 
   console.log('📋 Next Steps:');

@@ -63,12 +63,9 @@ export function detectFramework(projectDir: string): DetectedFramework {
     .find((f) => existsSync(f));
 
   if (viteConfig) {
-    const mainEntries = [
-      'src/main.tsx',
-      'src/main.ts',
-      'src/index.tsx',
-      'src/index.ts',
-    ].map((f) => join(projectDir, f));
+    const mainEntries = ['src/main.tsx', 'src/main.ts', 'src/index.tsx', 'src/index.ts'].map((f) =>
+      join(projectDir, f)
+    );
 
     const entryFile = mainEntries.find((f) => existsSync(f));
 
@@ -424,7 +421,9 @@ export async function install(options: InstallOptions): Promise<InstallResult> {
 
       if (hasProvidersConfigured(entryContent)) {
         log('Providers already configured.');
-        result.warnings.push('Provider configuration already detected. Skipping entry file modification.');
+        result.warnings.push(
+          'Provider configuration already detected. Skipping entry file modification.'
+        );
       } else {
         const { content, warnings } = injectProviders(entryContent, theme);
         result.warnings.push(...warnings);

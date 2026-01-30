@@ -10,10 +10,14 @@
  * // All components from single import
  * import { Button, Card, AppLayout } from '@xala-technologies/platform/ui';
  *
+ * // Form Builder components
+ * import { FieldRenderer, SchemaForm, DynamicForm } from '@xala-technologies/platform/ui';
+ *
  * // Or use subpath imports for smaller bundles
  * import { Button, Card } from '@xala-technologies/platform/ui/primitives';
- * import { PageHeader } from '@xala-technologies/platform/ui/composed';
+ * import { PageHeader, SchemaForm } from '@xala-technologies/platform/ui/composed';
  * import { AppLayout } from '@xala-technologies/platform/ui/shells';
+ * import { DynamicForm } from '@xala-technologies/platform/ui/patterns';
  * ```
  */
 
@@ -85,6 +89,16 @@ export * from './themes';
 // Utilities
 // =============================================================================
 export { cn } from './utils';
+
+// =============================================================================
+// Form Builder - Declarative schema-driven form generation
+// Components: FieldRenderer (primitives), SchemaForm (composed), DynamicForm (patterns)
+// All form builder components are available via the wildcard exports above:
+// - FieldRenderer: Field rendering from schema definitions (primitives layer)
+// - SchemaForm: Schema-driven forms with Zod validation (composed layer)
+// - DynamicForm: Advanced forms with conditional fields & dependencies (patterns layer)
+// - Types: FormSchema, FieldDefinition, DynamicFormSchema, etc. (from respective layers)
+// =============================================================================
 
 // =============================================================================
 // Domain-Specific Components
