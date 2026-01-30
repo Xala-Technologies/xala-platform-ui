@@ -43,6 +43,59 @@ import { ErrorScreen } from './AuthComponents';
 // Types
 // =============================================================================
 
+/**
+ * User context for error tracking services
+ * Compatible with Sentry, LogRocket, and other error tracking tools
+ */
+export interface ErrorUserContext {
+  /** User ID */
+  id?: string;
+  /** Username */
+  username?: string;
+  /** Email address */
+  email?: string;
+  /** IP address */
+  ipAddress?: string;
+  /** Additional custom user attributes */
+  [key: string]: string | number | boolean | undefined;
+}
+
+/**
+ * Breadcrumb severity levels
+ */
+export type BreadcrumbLevel = 'debug' | 'info' | 'warning' | 'error' | 'fatal';
+
+/**
+ * Breadcrumb for error tracking
+ * Represents a trail of events leading to an error
+ */
+export interface ErrorBreadcrumb {
+  /** Timestamp when the breadcrumb was created (ISO 8601 string or Unix timestamp) */
+  timestamp?: string | number;
+  /** Breadcrumb message */
+  message: string;
+  /** Category (e.g., "navigation", "console", "xhr", "ui.click", "user") */
+  category?: string;
+  /** Severity level */
+  level?: BreadcrumbLevel;
+  /** Additional custom data */
+  data?: Record<string, unknown>;
+}
+
+/**
+ * Enhanced error context passed to error tracking services
+ */
+export interface EnhancedErrorContext {
+  /** User information at the time of the error */
+  user?: ErrorUserContext;
+  /** Breadcrumb trail of events leading to the error */
+  breadcrumbs?: ErrorBreadcrumb[];
+  /** Additional tags for categorization */
+  tags?: Record<string, string>;
+  /** Additional context data */
+  extra?: Record<string, unknown>;
+}
+
 export interface ErrorBoundaryLabels {
   title: string;
   defaultDescription: string;
@@ -55,7 +108,9 @@ export interface ErrorBoundaryProps {
   /** Custom fallback UI to render when an error occurs */
   fallback?: ReactNode;
   /** Callback when an error is caught (for error tracking, audit logging, etc.) */
-  onError?: (error: Error, errorInfo: ErrorInfo) => void;
+  onError?: (error: Error, errorInfo: ErrorInfo, context?: EnhancedErrorContext) => void;
+  /** Enhanced error context (user info, breadcrumbs, tags, etc.) to pass to error tracking services */
+  errorContext?: EnhancedErrorContext;
   /** Custom title for the error screen (overrides labels.title) */
   errorTitle?: string;
   /** Custom description for the error screen */
@@ -107,7 +162,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     // Call the onError callback if provided
     // This is the integration point for Sentry, audit logging, etc.
     if (this.props.onError) {
-      this.props.onError(error, errorInfo);
+      this.props.onError(error, errorInfo, this.props.errorContext);
     }
   }
 
@@ -166,7 +221,9 @@ export interface WithErrorBoundaryOptions {
   /** Custom fallback UI to render when an error occurs */
   fallback?: ReactNode;
   /** Callback when an error is caught */
-  onError?: (error: Error, errorInfo: ErrorInfo) => void;
+  onError?: (error: Error, errorInfo: ErrorInfo, context?: EnhancedErrorContext) => void;
+  /** Enhanced error context (user info, breadcrumbs, tags, etc.) to pass to error tracking services */
+  errorContext?: EnhancedErrorContext;
   /** Custom title for the error screen */
   errorTitle?: string;
   /** Custom description for the error screen */
@@ -201,6 +258,9 @@ export function withErrorBoundary<P extends object>(
     }
     if (options.onError !== undefined) {
       boundaryProps.onError = options.onError;
+    }
+    if (options.errorContext !== undefined) {
+      boundaryProps.errorContext = options.errorContext;
     }
     if (options.errorTitle !== undefined) {
       boundaryProps.errorTitle = options.errorTitle;

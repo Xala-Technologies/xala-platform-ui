@@ -14,6 +14,7 @@
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { ErrorScreen } from './AuthComponents';
+import type { EnhancedErrorContext } from './ErrorBoundary';
 
 // =============================================================================
 // Types
@@ -40,7 +41,9 @@ export interface GlobalErrorHandlerProps {
   /** Custom fallback UI to render when an error occurs */
   fallback?: React.ReactNode;
   /** Callback when an error is caught (for error tracking services) */
-  onError?: (error: GlobalError) => void;
+  onError?: (error: GlobalError, context?: EnhancedErrorContext) => void;
+  /** Enhanced error context (user info, breadcrumbs, tags, etc.) to pass to error tracking services */
+  errorContext?: EnhancedErrorContext;
   /** Custom title for the error screen */
   errorTitle?: string;
   /** Custom description for the error screen */
@@ -97,6 +100,7 @@ export function GlobalErrorHandler({
   children,
   fallback,
   onError,
+  errorContext,
   errorTitle = 'Noe gikk galt',
   errorDescription,
   showRetryButton = true,
@@ -129,10 +133,10 @@ export function GlobalErrorHandler({
       // Call the onError callback if provided
       // TODO: Integrate with error tracking service (e.g., Sentry)
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     },
-    [onError]
+    [onError, errorContext]
   );
 
   /**
@@ -164,10 +168,10 @@ export function GlobalErrorHandler({
       // Call the onError callback if provided
       // TODO: Integrate with error tracking service (e.g., Sentry)
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     },
-    [onError]
+    [onError, errorContext]
   );
 
   /**
@@ -229,7 +233,9 @@ export function GlobalErrorHandler({
 
 export interface UseGlobalErrorOptions {
   /** Callback when an error is caught */
-  onError?: (error: GlobalError) => void;
+  onError?: (error: GlobalError, context?: EnhancedErrorContext) => void;
+  /** Enhanced error context (user info, breadcrumbs, tags, etc.) to pass to error tracking services */
+  errorContext?: EnhancedErrorContext;
 }
 
 /**
@@ -246,7 +252,7 @@ export interface UseGlobalErrorOptions {
  */
 export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError | null {
   const [error, setError] = useState<GlobalError | null>(null);
-  const { onError } = options;
+  const { onError, errorContext } = options;
 
   useEffect(() => {
     const handleError = (event: ErrorEvent): void => {
@@ -262,7 +268,7 @@ export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError
       setError(globalError);
 
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     };
 
@@ -284,7 +290,7 @@ export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError
       setError(globalError);
 
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     };
 
@@ -295,7 +301,7 @@ export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError
       window.removeEventListener('error', handleError);
       window.removeEventListener('unhandledrejection', handleRejection);
     };
-  }, [onError]);
+  }, [onError, errorContext]);
 
   return error;
 }
