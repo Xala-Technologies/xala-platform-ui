@@ -1,7 +1,9 @@
 /**
  * Gazetteer Runtime - Page Composer
- * 
+ *
  * Composes pages from specs using platform-ui components.
+ *
+ * Security: Enforces permission-based visibility and feature flags.
  */
 
 import type { PageSpec, WidgetSpec, ShellType } from '../types'
@@ -11,10 +13,74 @@ import { BindingResolver, type BindingContext } from './binding-resolver'
 // Types
 // =============================================================================
 
+/**
+ * Permission checker interface for RBAC enforcement.
+ * Implementations must verify user has ALL specified permissions.
+ */
+export interface PermissionChecker {
+    /**
+     * Check if user has all specified permissions
+     * @param permissionKeys Array of required permission keys (e.g., ['booking.read', 'booking.approve'])
+     * @returns true only if user has ALL permissions
+     */
+    hasPermissions(permissionKeys: string[]): boolean
+
+    /**
+     * Check if specified feature flags are enabled
+     * @param featureFlags Array of feature flag keys
+     * @returns true only if ALL feature flags are enabled
+     */
+    hasFeatureFlags(featureFlags: string[]): boolean
+}
+
+/**
+ * Audit logger for security-relevant events
+ */
+export interface AuditLogger {
+    /**
+     * Log permission denial
+     */
+    logPermissionDenied(widgetId: string, requiredPermissions: string[], userId?: string): void
+
+    /**
+     * Log feature flag denial
+     */
+    logFeatureFlagDenied(widgetId: string, requiredFlags: string[], userId?: string): void
+}
+
+/**
+ * Default no-op permission checker - DENY by default for security
+ */
+export const defaultPermissionChecker: PermissionChecker = {
+    hasPermissions: () => false, // DENY by default - must be overridden
+    hasFeatureFlags: () => false, // DENY by default - must be overridden
+}
+
+/**
+ * Default no-op audit logger
+ */
+export const defaultAuditLogger: AuditLogger = {
+    logPermissionDenied: () => {},
+    logFeatureFlagDenied: () => {},
+}
+
 export interface ComposerConfig {
     widgetRegistry: WidgetComponentRegistry
     shellRegistry: ShellComponentRegistry
     bindingContext: BindingContext
+    /**
+     * Permission checker for RBAC enforcement.
+     * If not provided, defaults to DENY all permissions.
+     */
+    permissionChecker?: PermissionChecker
+    /**
+     * Audit logger for security events.
+     */
+    auditLogger?: AuditLogger
+    /**
+     * User ID for audit logging context
+     */
+    userId?: string
 }
 
 export interface WidgetComponentRegistry {
@@ -75,10 +141,14 @@ export const WIDGET_COMPONENT_MAP: Record<string, string> = {
 export class PageComposer {
     private bindingResolver: BindingResolver
     private config: ComposerConfig
+    private permissionChecker: PermissionChecker
+    private auditLogger: AuditLogger
 
     constructor(config: ComposerConfig) {
         this.config = config
         this.bindingResolver = new BindingResolver(config.bindingContext)
+        this.permissionChecker = config.permissionChecker ?? defaultPermissionChecker
+        this.auditLogger = config.auditLogger ?? defaultAuditLogger
     }
 
     /**
@@ -97,15 +167,46 @@ export class PageComposer {
     }
 
     /**
-     * Check if a widget is visible based on conditions
+     * Check if a widget is visible based on conditions.
+     *
+     * Security: Enforces permission checks and feature flags.
+     * Order of checks (fail fast):
+     * 1. Permission keys - user must have ALL specified permissions
+     * 2. Feature flags - ALL specified flags must be enabled
+     * 3. Condition expression - binding expression must evaluate to truthy
+     *
+     * @param widget The widget spec to check visibility for
+     * @returns true only if ALL visibility conditions are satisfied
      */
     isWidgetVisible(widget: WidgetSpec): boolean {
         if (!widget.visibility) return true
 
-        // Check permission-based visibility
+        // Check permission-based visibility (SECURITY CRITICAL)
         if (widget.visibility.permissionKeys?.length) {
-            // Permission check delegated to context
-            // For now, assume visible
+            const hasPerms = this.permissionChecker.hasPermissions(widget.visibility.permissionKeys)
+            if (!hasPerms) {
+                // Log permission denial for security audit
+                this.auditLogger.logPermissionDenied(
+                    widget.widgetId,
+                    widget.visibility.permissionKeys,
+                    this.config.userId
+                )
+                return false
+            }
+        }
+
+        // Check feature flag visibility (SECURITY CRITICAL)
+        if (widget.visibility.featureFlags?.length) {
+            const hasFlags = this.permissionChecker.hasFeatureFlags(widget.visibility.featureFlags)
+            if (!hasFlags) {
+                // Log feature flag denial for security audit
+                this.auditLogger.logFeatureFlagDenied(
+                    widget.widgetId,
+                    widget.visibility.featureFlags,
+                    this.config.userId
+                )
+                return false
+            }
         }
 
         // Check condition-based visibility

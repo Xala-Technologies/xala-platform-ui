@@ -157,7 +157,7 @@ export function createMockUser(overrides?: Partial<any>) {
 /**
  * Create multiple mock items with an incrementing ID
  */
-export function createMockArray<T>(
+export function createMockArray<T extends { id?: string }>(
   factory: (overrides?: Partial<T>) => T,
   count: number,
   baseOverrides?: Partial<T>

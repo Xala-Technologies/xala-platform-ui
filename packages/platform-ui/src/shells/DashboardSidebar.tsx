@@ -195,16 +195,21 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
 
 interface SidebarContentProps {
   logo?: React.ReactNode;
+  title?: string;
+  subtitle?: string;
   sections: SidebarSection[];
   user?: SidebarUser | null;
   onItemClick?: () => void;
 }
 
-function SidebarContent({ logo, sections, user, onItemClick }: SidebarContentProps) {
+function SidebarContent({ logo, title, subtitle, sections, user, onItemClick }: SidebarContentProps) {
+  // Show logo section if logo OR title is provided
+  const showLogoSection = logo || title;
+
   return (
     <>
-      {/* Logo Section - only shown if logo provided (icon only) */}
-      {logo && (
+      {/* Logo Section - shows logo icon, title, and optional subtitle */}
+      {showLogoSection && (
         <Stack
           direction="horizontal"
           style={{
@@ -214,7 +219,40 @@ function SidebarContent({ logo, sections, user, onItemClick }: SidebarContentPro
             alignItems: 'center',
           }}
         >
-          <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>
+          <Stack
+            direction="horizontal"
+            style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-3)' }}
+          >
+            {logo && <Stack style={{ height: '40px', width: 'auto', flexShrink: 0 }}>{logo}</Stack>}
+            {title && (
+              <Stack direction="vertical" gap="xs">
+                <Text
+                  size="md"
+                  weight="bold"
+                  style={{
+                    color: 'var(--ds-color-accent-text-default)',
+                    lineHeight: 'var(--ds-font-line-height-heading)',
+                    letterSpacing: 'var(--ds-font-letter-spacing-wide)',
+                  }}
+                >
+                  {title}
+                </Text>
+                {subtitle && (
+                  <Text
+                    variant="overline"
+                    size="xs"
+                    style={{
+                      color: 'var(--ds-color-neutral-text-subtle)',
+                      letterSpacing: 'var(--ds-font-letter-spacing-wide)',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {subtitle}
+                  </Text>
+                )}
+              </Stack>
+            )}
+          </Stack>
         </Stack>
       )}
 
@@ -338,8 +376,8 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
   (
     {
       logo,
-      title: _title,
-      subtitle: _subtitle,
+      title,
+      subtitle,
       sections,
       user,
       width = 400,
@@ -395,6 +433,8 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
           >
             <SidebarContent
               logo={logo}
+              title={title}
+              subtitle={subtitle}
               sections={filteredSections}
               user={user}
               onItemClick={handleItemClick}
@@ -406,7 +446,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
         {isMobile && (
           <Drawer
             isOpen={isMobileOpen}
-            onClose={onMobileClose || (() => {})}
+            onClose={onMobileClose || (() => { })}
             position="left"
             size="lg"
             overlay={true}
@@ -423,6 +463,8 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
             >
               <SidebarContent
                 logo={logo}
+                title={title}
+                subtitle={subtitle}
                 sections={filteredSections}
                 user={user}
                 onItemClick={handleItemClick}

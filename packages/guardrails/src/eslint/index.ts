@@ -3,11 +3,31 @@
  *
  * MANDATORY: Apps using @xala-technologies/platform-ui MUST extend this config.
  * This ensures consistent code quality and design system compliance.
+ *
+ * ERROR MESSAGES reference the UX Lexicon for AI and developer guidance.
+ * See: docs/ux-lexicon/AI_CONTRACT.mdx
  */
+
+import {
+  ELEMENT_MAPPINGS,
+  FORBIDDEN_ELEMENTS,
+  generateErrorMessage,
+  getElementMapping,
+  type ElementMapping,
+} from './element-mappings.js';
 
 export interface ESLintRuleConfig {
   [key: string]: unknown;
 }
+
+// Re-export element mappings for programmatic use
+export {
+  ELEMENT_MAPPINGS,
+  FORBIDDEN_ELEMENTS,
+  getElementMapping,
+  generateErrorMessage,
+  type ElementMapping,
+};
 
 /**
  * Forbidden imports - apps should use platform-ui instead of direct @digdir imports
@@ -15,57 +35,34 @@ export interface ESLintRuleConfig {
 export const forbiddenImports = [
   {
     name: '@digdir/designsystemet-react',
-    message: 'Import from @xala-technologies/platform-ui instead',
+    message: 'Import from @xala-technologies/platform-ui instead. Designsystemet components are re-exported with proper theming. See: docs/ux-lexicon/AI_CONTRACT.mdx',
   },
   {
     name: '@digdir/designsystemet-css',
-    message: 'CSS is already included via @xala-technologies/platform-ui',
+    message: 'CSS is already included via @xala-technologies/platform-ui/styles. Remove this import.',
   },
 ];
 
 /**
  * Raw HTML elements forbidden in JSX
+ * @deprecated Use FORBIDDEN_ELEMENTS from element-mappings instead
  */
-export const forbiddenElements = [
-  'div',
-  'span',
-  'p',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'section',
-  'article',
-  'header',
-  'footer',
-  'nav',
-  'aside',
-  'main',
-  'button',
-  'a',
-  'input',
-  'select',
-  'textarea',
-  'label',
-  'ul',
-  'ol',
-  'li',
-  'table',
-  'tr',
-  'td',
-  'th',
-  'form',
-];
+export const forbiddenElements = FORBIDDEN_ELEMENTS;
 
 /**
  * Generate ESLint no-restricted-syntax rules for raw HTML elements
+ * Each rule includes:
+ * - Preferred Platform UI component
+ * - Alternative components
+ * - Import path
+ * - Example code
+ * - Decision guide
+ * - Lexicon reference
  */
 export function generateRawHtmlRules(): ESLintRuleConfig[] {
-  return forbiddenElements.map((element) => ({
-    selector: `JSXOpeningElement[name.name="${element}"]`,
-    message: `Raw <${element}> is forbidden. Use platform-ui components instead.`,
+  return ELEMENT_MAPPINGS.map((mapping) => ({
+    selector: `JSXOpeningElement[name.name="${mapping.element}"]`,
+    message: generateErrorMessage(mapping.element),
   }));
 }
 

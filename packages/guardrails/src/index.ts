@@ -5,17 +5,21 @@
  *
  * MANDATORY: Apps using @xala-technologies/platform-ui MUST:
  * 1. Install this package as devDependency
- * 2. Extend the ESLint configuration
- * 3. Include compliance tests
- * 4. Pass all compliance checks in CI
+ * 2. Configure required providers (GlobalErrorHandler, ErrorBoundary, ThemeProvider)
+ * 3. Extend the ESLint configuration
+ * 4. Include compliance tests
+ * 5. Pass all compliance checks in CI
  *
  * @example
  * ```bash
+ * # Install Platform UI with interactive wizard (RECOMMENDED)
+ * guardrails install
+ *
  * # Check compliance
  * guardrails check-compliance
  *
- * # Initialize compliance files
- * guardrails init
+ * # Check provider configuration
+ * guardrails verify:providers
  * ```
  */
 
@@ -54,6 +58,7 @@ export {
   checkCompliance,
   formatComplianceReport,
   checkDependency,
+  checkProviders,
   checkESLintConfig,
   checkViolationTests,
   checkSourceCompliance,
@@ -61,3 +66,29 @@ export {
   type ComplianceCheck,
   type ComplianceReport,
 } from './compliance/index.js';
+
+// Provider configuration check
+export {
+  checkProviderConfiguration,
+  formatProviderCheckResult,
+  REQUIRED_PROVIDERS,
+  THEME_PROVIDERS,
+  RECOMMENDED_PROVIDERS,
+  type ProviderCheckResult,
+  type ProviderStatus,
+} from './compliance/provider-check.js';
+
+// Installer
+export {
+  install,
+  detectFramework,
+  generateProviderCode,
+  generateESLintConfig,
+  generateComplianceTest,
+  hasProvidersConfigured,
+  injectProviders,
+  type InstallOptions,
+  type InstallResult,
+  type DetectedFramework,
+  type ThemeId,
+} from './install/index.js';

@@ -1,11 +1,31 @@
 /**
  * Gazetteer Runtime - Action Engine
- * 
+ *
  * Executes action behaviors (navigate, open drawer, call controller, etc.)
+ *
+ * Security:
+ * - URL encoding for interpolated values to prevent injection
+ * - Scheme validation to block javascript:/data: URLs
+ * - Controller validation against allowed registry
+ * - Audit logging for all action executions
  */
 
 import type { ActionSpec, ActionBehavior, ActionRef } from '../types'
 import { getRegistry } from './registry'
+
+// =============================================================================
+// Security Constants
+// =============================================================================
+
+/**
+ * Blocked URL schemes that could enable XSS or code injection
+ */
+const BLOCKED_URL_SCHEMES = ['javascript:', 'data:', 'vbscript:', 'file:']
+
+/**
+ * Maximum URL length to prevent DoS via extremely long URLs
+ */
+const MAX_URL_LENGTH = 8192
 
 // =============================================================================
 // Types
@@ -22,6 +42,67 @@ export interface ActionResult {
     data?: unknown
 }
 
+/**
+ * Controller registry for validating allowed controller+method combinations
+ */
+export interface ControllerRegistry {
+    /**
+     * Check if a controller+method combination is allowed
+     * @param controllerRef The controller reference (e.g., 'digilist.requests.list')
+     * @param method The method name (e.g., 'approve')
+     * @returns true if the combination is registered and allowed
+     */
+    isAllowed(controllerRef: string, method: string): boolean
+
+    /**
+     * Get all allowed methods for a controller
+     */
+    getAllowedMethods(controllerRef: string): string[]
+}
+
+/**
+ * Audit logger for action execution events
+ */
+export interface ActionAuditLogger {
+    /**
+     * Log action execution
+     */
+    logActionExecution(
+        actionId: string,
+        actionType: string,
+        context: ActionContext | undefined,
+        result: ActionResult,
+        userId?: string
+    ): void
+
+    /**
+     * Log blocked URL attempt
+     */
+    logBlockedUrl(url: string, reason: string, userId?: string): void
+
+    /**
+     * Log blocked controller call
+     */
+    logBlockedController(controllerRef: string, method: string, userId?: string): void
+}
+
+/**
+ * Default controller registry - DENY all by default
+ */
+export const defaultControllerRegistry: ControllerRegistry = {
+    isAllowed: () => false, // DENY by default - must be overridden
+    getAllowedMethods: () => [],
+}
+
+/**
+ * Default audit logger - no-op
+ */
+export const defaultActionAuditLogger: ActionAuditLogger = {
+    logActionExecution: () => {},
+    logBlockedUrl: () => {},
+    logBlockedController: () => {},
+}
+
 export interface ActionHandlers {
     navigate: (target: string, params?: Record<string, string>, replace?: boolean) => void
     openDrawer: (drawerId: string, context?: Record<string, string>) => void
@@ -34,15 +115,46 @@ export interface ActionHandlers {
     translate: (key: string) => string
 }
 
+export interface ActionEngineConfig {
+    handlers: ActionHandlers
+    /**
+     * Controller registry for validating allowed controller+method calls.
+     * If not provided, ALL controller calls are DENIED.
+     */
+    controllerRegistry?: ControllerRegistry
+    /**
+     * Audit logger for security events.
+     */
+    auditLogger?: ActionAuditLogger
+    /**
+     * User ID for audit logging context
+     */
+    userId?: string
+}
+
 // =============================================================================
 // Action Engine
 // =============================================================================
 
 export class ActionEngine {
     private handlers: ActionHandlers
+    private controllerRegistry: ControllerRegistry
+    private auditLogger: ActionAuditLogger
+    private userId?: string
 
-    constructor(handlers: ActionHandlers) {
-        this.handlers = handlers
+    constructor(config: ActionEngineConfig | ActionHandlers) {
+        // Support both old API (handlers only) and new API (config object)
+        if ('handlers' in config) {
+            this.handlers = config.handlers
+            this.controllerRegistry = config.controllerRegistry ?? defaultControllerRegistry
+            this.auditLogger = config.auditLogger ?? defaultActionAuditLogger
+            this.userId = config.userId
+        } else {
+            // Legacy support: direct handlers object
+            this.handlers = config
+            this.controllerRegistry = defaultControllerRegistry
+            this.auditLogger = defaultActionAuditLogger
+        }
     }
 
     /**
@@ -58,23 +170,38 @@ export class ActionEngine {
     }
 
     /**
-     * Execute an action behavior directly
+     * Execute an action behavior directly.
+     *
+     * Security:
+     * - NAVIGATE: Validates URL scheme, encodes interpolated values
+     * - CALL_CONTROLLER: Validates against controller registry
+     * - DOWNLOAD: Validates URL scheme and length
      */
     async executeBehavior(behavior: ActionBehavior, context?: ActionContext): Promise<ActionResult> {
         try {
             switch (behavior.type) {
-                case 'NAVIGATE':
+                case 'NAVIGATE': {
+                    const target = this.interpolateSafe(behavior.target, context)
+
+                    // Security: Validate URL scheme
+                    const validationError = this.validateUrl(target)
+                    if (validationError) {
+                        this.auditLogger.logBlockedUrl(target, validationError, this.userId)
+                        return { success: false, error: validationError }
+                    }
+
                     this.handlers.navigate(
-                        this.interpolate(behavior.target, context),
-                        this.interpolateRecord(behavior.params, context),
+                        target,
+                        this.interpolateRecordSafe(behavior.params, context),
                         behavior.replace
                     )
                     return { success: true }
+                }
 
                 case 'OPEN_DRAWER':
                     this.handlers.openDrawer(
                         behavior.drawerId,
-                        this.interpolateRecord(behavior.context, context)
+                        this.interpolateRecordSafe(behavior.context, context)
                     )
                     return { success: true }
 
@@ -85,7 +212,7 @@ export class ActionEngine {
                 case 'OPEN_MODAL':
                     this.handlers.openModal(
                         behavior.modalId,
-                        this.interpolateRecord(behavior.context, context)
+                        this.interpolateRecordSafe(behavior.context, context)
                     )
                     return { success: true }
 
@@ -93,18 +220,41 @@ export class ActionEngine {
                     this.handlers.closeModal(behavior.modalId)
                     return { success: true }
 
-                case 'CALL_CONTROLLER':
+                case 'CALL_CONTROLLER': {
+                    // Security: Validate controller+method against registry
+                    if (!this.controllerRegistry.isAllowed(behavior.controllerRef, behavior.method)) {
+                        this.auditLogger.logBlockedController(
+                            behavior.controllerRef,
+                            behavior.method,
+                            this.userId
+                        )
+                        return {
+                            success: false,
+                            error: `Unauthorized controller call: ${behavior.controllerRef}.${behavior.method}`,
+                        }
+                    }
+
                     const result = await this.handlers.callController(
                         behavior.controllerRef,
                         behavior.method,
-                        this.interpolateRecord(behavior.params, context) as Record<string, unknown>
+                        this.interpolateRecordSafe(behavior.params, context) as Record<string, unknown>
                     )
                     return { success: true, data: result }
+                }
 
-                case 'DOWNLOAD':
-                    const url = this.interpolate(behavior.urlBinding, context)
+                case 'DOWNLOAD': {
+                    const url = this.interpolateSafe(behavior.urlBinding, context)
+
+                    // Security: Validate download URL
+                    const validationError = this.validateUrl(url)
+                    if (validationError) {
+                        this.auditLogger.logBlockedUrl(url, validationError, this.userId)
+                        return { success: false, error: validationError }
+                    }
+
                     this.handlers.download(url, behavior.filename)
                     return { success: true }
+                }
 
                 case 'TOAST':
                     this.handlers.toast(
@@ -155,25 +305,48 @@ export class ActionEngine {
     }
 
     /**
-     * Interpolate a string with context values
+     * Validate a URL for security concerns
+     * @returns Error message if invalid, undefined if valid
      */
-    private interpolate(template: string, context?: ActionContext): string {
+    private validateUrl(url: string): string | undefined {
+        // Check URL length
+        if (url.length > MAX_URL_LENGTH) {
+            return `URL exceeds maximum length of ${MAX_URL_LENGTH} characters`
+        }
+
+        // Check for blocked schemes
+        const lowerUrl = url.toLowerCase().trim()
+        for (const scheme of BLOCKED_URL_SCHEMES) {
+            if (lowerUrl.startsWith(scheme)) {
+                return `Blocked URL scheme: ${scheme}`
+            }
+        }
+
+        return undefined
+    }
+
+    /**
+     * Interpolate a string with context values (URL-encoded for security)
+     */
+    private interpolateSafe(template: string, context?: ActionContext): string {
         if (!context) return template
 
         let result = template
 
-        // Replace :param with context.params values
+        // Replace :param with URL-encoded context.params values
         if (context.params) {
             for (const [key, value] of Object.entries(context.params)) {
-                result = result.replace(`:${key}`, value)
-                result = result.replace(`{${key}}`, value)
+                const encoded = encodeURIComponent(value)
+                result = result.replace(`:${key}`, encoded)
+                result = result.replace(`{${key}}`, encoded)
             }
         }
 
-        // Replace {row.field} with context.rowData values
+        // Replace {row.field} with URL-encoded context.rowData values
         if (context.rowData) {
             for (const [key, value] of Object.entries(context.rowData)) {
-                result = result.replace(`{row.${key}}`, String(value))
+                const encoded = encodeURIComponent(String(value))
+                result = result.replace(`{row.${key}}`, encoded)
             }
         }
 
@@ -181,9 +354,9 @@ export class ActionEngine {
     }
 
     /**
-     * Interpolate all values in a record
+     * Interpolate all values in a record (URL-encoded for security)
      */
-    private interpolateRecord(
+    private interpolateRecordSafe(
         record?: Record<string, string>,
         context?: ActionContext
     ): Record<string, string> | undefined {
@@ -191,9 +364,28 @@ export class ActionEngine {
 
         const result: Record<string, string> = {}
         for (const [key, value] of Object.entries(record)) {
-            result[key] = this.interpolate(value, context)
+            result[key] = this.interpolateSafe(value, context)
         }
         return result
+    }
+
+    /**
+     * Legacy interpolation method (kept for backward compatibility)
+     * @deprecated Use interpolateSafe for security
+     */
+    private interpolate(template: string, context?: ActionContext): string {
+        return this.interpolateSafe(template, context)
+    }
+
+    /**
+     * Legacy record interpolation method (kept for backward compatibility)
+     * @deprecated Use interpolateRecordSafe for security
+     */
+    private interpolateRecord(
+        record?: Record<string, string>,
+        context?: ActionContext
+    ): Record<string, string> | undefined {
+        return this.interpolateRecordSafe(record, context)
     }
 }
 
@@ -201,8 +393,16 @@ export class ActionEngine {
 // Factory
 // =============================================================================
 
-export function createActionEngine(handlers: ActionHandlers): ActionEngine {
-    return new ActionEngine(handlers)
+/**
+ * Create an action engine with full security configuration
+ */
+export function createActionEngine(config: ActionEngineConfig): ActionEngine
+/**
+ * @deprecated Use config object for security features
+ */
+export function createActionEngine(handlers: ActionHandlers): ActionEngine
+export function createActionEngine(configOrHandlers: ActionEngineConfig | ActionHandlers): ActionEngine {
+    return new ActionEngine(configOrHandlers)
 }
 
 // =============================================================================

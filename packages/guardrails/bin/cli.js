@@ -6,9 +6,11 @@
  * Command-line interface for Platform UI governance and compliance.
  *
  * COMMANDS:
+ *   guardrails install             Interactive Platform UI setup wizard
  *   guardrails verify              Run all verifications (boundaries + tokens)
  *   guardrails verify:boundaries   Run boundary checks
  *   guardrails verify:tokens       Run design token checks
+ *   guardrails verify:providers    Check provider configuration
  *   guardrails check-compliance    Check if app meets Platform UI requirements
  *   guardrails validate-spec <dir> Validate spec artifacts
  *   guardrails init                Initialize compliance files in current app
@@ -37,6 +39,43 @@ async function main() {
   );
 
   switch (command) {
+    case 'install': {
+      // Get options
+      const dryRun = args.includes('--dry-run');
+      const verbose = args.includes('--verbose') || args.includes('-v');
+      const themeArg = args.find((a) => a.startsWith('--theme='));
+      const localeArg = args.find((a) => a.startsWith('--locale='));
+      const noI18n = args.includes('--no-i18n');
+      const noClaudeMd = args.includes('--no-claude-md');
+
+      // Import and run interactive installer
+      const { runInteractiveInstall } = await import('../dist/install/cli-installer.js');
+
+      const result = await runInteractiveInstall(cwd, {
+        theme: themeArg ? themeArg.split('=')[1] : undefined,
+        locale: localeArg ? localeArg.split('=')[1] : undefined,
+        includeI18n: !noI18n,
+        generateClaudeMd: !noClaudeMd,
+        dryRun,
+        verbose,
+      });
+
+      process.exit(result.success ? 0 : 1);
+    }
+
+    case 'verify:providers': {
+      console.log('🔍 Checking provider configuration...\n');
+
+      const { checkProviderConfiguration, formatProviderCheckResult } = await import(
+        '../dist/compliance/provider-check.js'
+      );
+
+      const result = checkProviderConfiguration(srcDir);
+      console.log(formatProviderCheckResult(result));
+
+      process.exit(result.passed ? 0 : 1);
+    }
+
     case 'verify':
     case 'verify:all': {
       console.log('🔍 Running all verification checks...\n');
@@ -212,36 +251,49 @@ USAGE:
   guardrails <command> [options]
 
 COMMANDS:
-  verify              Run all verification checks (boundaries + tokens)
+  install             🚀 Interactive Platform UI setup wizard (RECOMMENDED)
+  verify              Run all verification checks (boundaries + tokens + providers)
   verify:boundaries   Run package boundary verification only
   verify:tokens       Run design token verification only
-  check-compliance    Check if current app meets Platform UI requirements
-  init                Initialize compliance files in current app
+  verify:providers    Check required provider configuration
+  check-compliance    Check if current app meets ALL Platform UI requirements
+  init                Initialize compliance files in current app (use 'install' instead)
   validate-spec <dir> Validate spec artifacts in a directory
 
 OPTIONS:
   --src=<path>        Source directory to scan (default: ./src)
   --root=<path>       Root directory for paths (default: current directory)
+  --theme=<id>        Theme to use: digdir | altinn | brreg | digilist | xaheen | platform
+  --dry-run           Preview changes without modifying files
+  --verbose, -v       Show detailed output
+  --skip-prompts      Skip interactive prompts (use defaults)
 
 EXAMPLES:
+  # 🚀 RECOMMENDED: Install Platform UI with interactive wizard
+  guardrails install
+
+  # Install with a specific theme
+  guardrails install --theme=altinn
+
   # Check if your app complies with Platform UI rules
   guardrails check-compliance
 
-  # Initialize compliance files in your app
-  guardrails init
+  # Check only provider configuration
+  guardrails verify:providers
 
   # Run all verification checks
   guardrails verify
 
-  # Run verification on a specific directory
-  guardrails verify:tokens --src=./app/src
+  # Preview installation without making changes
+  guardrails install --dry-run
 
-REQUIREMENTS:
+COMPLIANCE REQUIREMENTS:
   Apps using @xala-technologies/platform-ui MUST:
   1. Install @xala-technologies/guardrails as devDependency
-  2. Extend Platform UI ESLint rules
-  3. Include compliance tests
-  4. Pass all compliance checks in CI
+  2. Configure required providers (GlobalErrorHandler, ErrorBoundary, ThemeProvider)
+  3. Extend Platform UI ESLint rules (no raw HTML, no @digdir imports)
+  4. Include compliance tests
+  5. Pass all compliance checks in CI
 
 For more info: https://github.com/Xala-Technologies/xala-platform-ui
 `);

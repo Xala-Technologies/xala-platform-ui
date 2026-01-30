@@ -10,11 +10,25 @@
  * 3. No raw HTML elements in source files
  * 4. No inline styles without design tokens
  * 5. No direct @digdir imports
+ * 6. Required providers (GlobalErrorHandler, ErrorBoundary, ThemeProvider)
+ * 7. i18n configuration (recommended)
  */
+
+// Re-export provider check
+export {
+  checkProviderConfiguration,
+  formatProviderCheckResult,
+  REQUIRED_PROVIDERS,
+  THEME_PROVIDERS,
+  RECOMMENDED_PROVIDERS,
+  type ProviderCheckResult,
+  type ProviderStatus,
+} from './provider-check.js';
 
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { runViolationChecks, formatViolationReport } from '../testing/index.js';
+import { checkProviderConfiguration } from './provider-check.js';
 
 // ============================================================================
 // Types
@@ -248,6 +262,38 @@ export function checkSourceCompliance(appDir: string): ComplianceCheck {
 }
 
 /**
+ * Check if required providers are configured in the app
+ */
+export function checkProviders(appDir: string): ComplianceCheck {
+  const srcDir = join(appDir, 'src');
+  const result = checkProviderConfiguration(srcDir);
+
+  if (result.passed) {
+    return {
+      name: 'Provider Configuration',
+      passed: true,
+      message: 'All required providers are configured',
+    };
+  }
+
+  return {
+    name: 'Provider Configuration',
+    passed: false,
+    message: `Missing ${result.missingProviders.length} required providers`,
+    details: [
+      ...result.missingProviders.map((p) => `Missing: ${p}`),
+      '',
+      'Required providers:',
+      '  - GlobalErrorHandler (catches window errors)',
+      '  - ErrorBoundary (catches React errors)',
+      '  - ThemeProvider or DesignsystemetProvider (theming)',
+      '',
+      'Fix: Run "guardrails install" or manually add providers',
+    ],
+  };
+}
+
+/**
  * Check if CI workflow includes compliance checks
  */
 export function checkCIWorkflow(appDir: string): ComplianceCheck {
@@ -360,6 +406,7 @@ export function checkCompliance(appDir: string): ComplianceReport {
 
   const checks: ComplianceCheck[] = [
     checkDependency(appDir),
+    checkProviders(appDir),
     checkESLintConfig(appDir),
     checkViolationTests(appDir),
     checkSourceCompliance(appDir),
@@ -428,6 +475,7 @@ export default {
   checkCompliance,
   formatComplianceReport,
   checkDependency,
+  checkProviders,
   checkESLintConfig,
   checkViolationTests,
   checkSourceCompliance,

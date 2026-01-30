@@ -26,6 +26,10 @@
     "./compliance": {
       "types": "./dist/compliance/index.d.ts",
       "import": "./dist/compliance/index.js"
+    },
+    "./install": {
+      "types": "./dist/install/index.d.ts",
+      "import": "./dist/install/index.js"
     }
   },
   "bin": {
