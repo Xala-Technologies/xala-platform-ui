@@ -47,6 +47,7 @@
  * ```
  */
 import * as React from 'react';
+import { Stack } from '../primitives/stack';
 import { cn } from '../utils';
 
 /**
@@ -191,7 +192,7 @@ export function StateWrapper({
     case 'loading':
       if (loadingComponent) {
         return (
-          <div
+          <Stack
             role={config.defaultRole}
             aria-live={config.ariaLive}
             aria-busy="true"
@@ -199,12 +200,12 @@ export function StateWrapper({
             style={style}
           >
             {loadingComponent}
-          </div>
+          </Stack>
         );
       }
       // Default loading - just return children with loading state
       return (
-        <div
+        <Stack
           role={config.defaultRole}
           aria-live={config.ariaLive}
           aria-busy="true"
@@ -212,20 +213,20 @@ export function StateWrapper({
           style={style}
         >
           {children}
-        </div>
+        </Stack>
       );
 
     case 'empty':
       if (emptyComponent) {
         return (
-          <div
+          <Stack
             role={config.defaultRole}
             aria-live={config.ariaLive}
             className={cn('state-wrapper-empty', className)}
             style={style}
           >
             {emptyComponent}
-          </div>
+          </Stack>
         );
       }
       // Default empty - render children (component should handle empty state)
@@ -234,14 +235,14 @@ export function StateWrapper({
     case 'error':
       if (errorComponent) {
         return (
-          <div
+          <Stack
             role={config.defaultRole}
             aria-live={config.ariaLive}
             className={cn('state-wrapper-error', className)}
             style={style}
           >
             {errorComponent}
-          </div>
+          </Stack>
         );
       }
       // Default error - render children (component should handle error state)
@@ -250,14 +251,14 @@ export function StateWrapper({
     case 'success':
       if (successComponent) {
         return (
-          <div
+          <Stack
             role={config.defaultRole}
             aria-live={config.ariaLive}
             className={cn('state-wrapper-success', className)}
             style={style}
           >
             {successComponent}
-          </div>
+          </Stack>
         );
       }
       // Success state often shows children along with success message
@@ -266,19 +267,19 @@ export function StateWrapper({
     case 'permissionDenied':
       if (permissionDeniedComponent) {
         return (
-          <div
+          <Stack
             role={config.defaultRole}
             aria-live={config.ariaLive}
             className={cn('state-wrapper-permission-denied', className)}
             style={style}
           >
             {permissionDeniedComponent}
-          </div>
+          </Stack>
         );
       }
       // Default permission denied - show nothing
       return (
-        <div
+        <Stack
           role={config.defaultRole}
           aria-live={config.ariaLive}
           className={cn('state-wrapper-permission-denied', className)}
@@ -292,7 +293,7 @@ export function StateWrapper({
           }}
         >
           Access denied
-        </div>
+        </Stack>
       );
 
     case 'idle':

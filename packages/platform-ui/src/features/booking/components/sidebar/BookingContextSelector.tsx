@@ -51,6 +51,8 @@ export interface BookingContextSelectorProps {
   disabled?: boolean;
   /** Custom class name */
   className?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
 }
 
 // =============================================================================
@@ -130,9 +132,12 @@ export function BookingContextSelector({
   isLoadingMemberships = false,
   disabled = false,
   className,
+  t: tProp,
 }: BookingContextSelectorProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => (tProp ? tProp(key, params) : key),
+    [tProp]
+  );
 
   // Filter to orgs where user can book on behalf
   const bookableOrgs = memberships.filter((m) => m.canBookOnBehalf !== false);

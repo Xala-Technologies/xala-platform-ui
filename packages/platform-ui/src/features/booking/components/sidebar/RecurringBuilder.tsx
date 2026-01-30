@@ -64,6 +64,8 @@ export interface RecurringBuilderProps {
   disabled?: boolean;
   /** Custom class name */
   className?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
 }
 
 // =============================================================================
@@ -100,9 +102,12 @@ export function RecurringBuilder({
   onChange,
   disabled = false,
   className,
+  t: tProp,
 }: RecurringBuilderProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => (tProp ? tProp(key, params) : key),
+    [tProp]
+  );
 
   // Get allowed frequencies from constraints, default to WEEKLY only
   const allowedFrequencies =

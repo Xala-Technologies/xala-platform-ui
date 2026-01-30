@@ -71,6 +71,8 @@ export interface BookingSelectedSlotsSidebarProps {
   currency?: string;
   /** Custom className */
   className?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
 }
 
 // =============================================================================
@@ -89,10 +91,12 @@ export function BookingSelectedSlotsSidebar({
   durationOptions = [60, 90, 120, 180, 240],
   currency = 'kr',
   className,
+  t: tProp,
 }: BookingSelectedSlotsSidebarProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-
-  const t = React.useCallback((key: string, _params?: unknown): string => key, []);
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => (tProp ? tProp(key, params) : key),
+    [tProp]
+  );
 
   // Translated day and month names
   const dayNames = React.useMemo(

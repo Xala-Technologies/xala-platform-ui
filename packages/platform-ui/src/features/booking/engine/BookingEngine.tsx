@@ -219,17 +219,17 @@ export interface BookingStep {
 }
 
 // Helper function to get booking steps based on config
-function getBookingSteps(config: BookingConfig): BookingStep[] {
+function getBookingSteps(config: BookingConfig, i18n?: BookingEngineI18n): BookingStep[] {
   const steps: BookingStep[] = [
-    { id: 'select', label: 'Select Time', icon: 'calendar' },
-    { id: 'form', label: 'Your Details', icon: 'form' },
+    { id: 'select', label: i18n?.steps.selectTime ?? 'Select Time', icon: 'calendar' },
+    { id: 'form', label: i18n?.steps.yourDetails ?? 'Your Details', icon: 'form' },
   ];
 
   if (config.requiresApproval) {
-    steps.push({ id: 'confirm', label: 'Review', icon: 'confirm' });
+    steps.push({ id: 'confirm', label: i18n?.steps.review ?? 'Review', icon: 'confirm' });
   }
 
-  steps.push({ id: 'success', label: 'Confirmation', icon: 'success' });
+  steps.push({ id: 'success', label: i18n?.steps.confirmation ?? 'Confirmation', icon: 'success' });
 
   return steps;
 }
@@ -260,6 +260,36 @@ import { BookingConfirmStep } from './steps/BookingConfirmStep';
 // Import styles
 import { bookingEngineStyles } from './styles';
 
+/**
+ * Internationalization strings for BookingEngine
+ */
+export interface BookingEngineI18n {
+  /** Step labels */
+  steps: {
+    /** Label for time/date selection step */
+    selectTime: string;
+    /** Label for user details form step */
+    yourDetails: string;
+    /** Label for review step (if approval required) */
+    review: string;
+    /** Label for confirmation/success step */
+    confirmation: string;
+  };
+  /** "from" text in price display (e.g., "from $50/hour") */
+  priceFrom: string;
+  /** Step progress format string - use {current} and {total} as placeholders */
+  stepProgress: string;
+  /** Navigation and action labels */
+  navigation: {
+    /** Previous week button label */
+    previousWeek: string;
+    /** Next week button label */
+    nextWeek: string;
+    /** Remove button label */
+    remove: string;
+  };
+}
+
 export interface BookingEngineProps {
   /** Booking configuration */
   config: BookingConfig;
@@ -281,6 +311,8 @@ export interface BookingEngineProps {
   onSubmit?: (selection: BookingSelection, formData: BookingFormData) => Promise<void>;
   /** Callback when selection changes */
   onSelectionChange?: (selection: BookingSelection) => void;
+  /** Internationalization strings */
+  i18n?: BookingEngineI18n;
   /** Custom class name */
   className?: string;
 }
@@ -307,14 +339,11 @@ export function BookingEngine({
   onStepChange,
   onSubmit,
   onSelectionChange,
+  i18n,
   className,
 }: BookingEngineProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _t = (key: string, _params?: unknown): string => key;
-
   // Steps
-  const steps = React.useMemo(() => getBookingSteps(config.mode, false), [config.mode]);
+  const steps = React.useMemo(() => getBookingSteps(config, i18n), [config, i18n]);
 
   // Internal step state
   const [internalStep, setInternalStep] = React.useState(0);
@@ -695,7 +724,7 @@ export function BookingEngine({
           </div>
           <Stack className="header-price" spacing="1">
             <Paragraph data-size="xs" data-color="subtle" className="price-from">
-              fra
+              {i18n?.priceFrom ?? 'fra'}
             </Paragraph>
             <Paragraph
               data-size="lg"
@@ -745,7 +774,9 @@ export function BookingEngine({
             })}
           </div>
           <Paragraph data-size="xs" data-color="subtle" className="stepper-progress">
-            Steg {currentStep + 1} av {steps.length}
+            {(i18n?.stepProgress ?? 'Steg {current} av {total}')
+              .replace('{current}', String(currentStep + 1))
+              .replace('{total}', String(steps.length))}
           </Paragraph>
         </div>
 

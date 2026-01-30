@@ -229,5 +229,6 @@
   },
   "project_dir": "/Volumes/Laravel/Xala-SAAS/tools/xala-platform-ui",
   "created_at": "2026-01-30T14:24:30.758231",
-  "project_hash": "dcf6e25129875244553f4f2fbe9486f6"
+  "project_hash": "dcf6e25129875244553f4f2fbe9486f6",
+  "inherited_from": "/Volumes/Laravel/Xala-SAAS/tools/xala-platform-ui"
 }

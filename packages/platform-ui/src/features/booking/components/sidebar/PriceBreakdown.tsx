@@ -47,6 +47,8 @@ export interface PriceBreakdownProps {
   error?: string;
   /** Whether to show detailed breakdown or just total */
   showDetails?: boolean;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
   /** Optional class name */
   className?: string;
 }
@@ -73,10 +75,13 @@ export function PriceBreakdown({
   isLoading = false,
   error,
   showDetails = true,
+  t: tProp,
   className,
 }: PriceBreakdownProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => tProp?.(key, params) ?? key,
+    [tProp]
+  );
 
   if (isLoading) {
     return (

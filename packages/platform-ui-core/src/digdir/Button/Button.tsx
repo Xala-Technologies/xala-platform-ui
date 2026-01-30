@@ -38,7 +38,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         if (iconOnly && !ariaLabel && typeof window !== 'undefined') {
             // Development warning - best effort, no build-time process check
             try {
-                // @ts-expect-error - process may not exist in browser
                 if (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development') {
                     console.warn(
                         '[Button] Icon-only buttons require an aria-label for accessibility.'

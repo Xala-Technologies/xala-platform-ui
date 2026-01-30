@@ -67,6 +67,8 @@ export interface RecurringPreviewProps {
   allowSelection?: boolean;
   /** Custom class name */
   className?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
 }
 
 // =============================================================================
@@ -164,9 +166,12 @@ export function RecurringPreview({
   onSelectionChange,
   allowSelection = false,
   className,
+  t: tProp,
 }: RecurringPreviewProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => (tProp ? tProp(key, params) : key),
+    [tProp]
+  );
 
   const handleToggleOccurrence = (index: number) => {
     if (!allowSelection || !onSelectionChange || !selectedIndices) return;

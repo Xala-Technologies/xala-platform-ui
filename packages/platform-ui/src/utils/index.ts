@@ -21,3 +21,6 @@ export * from './accessibility';
 
 // API Error
 export * from './api-error';
+
+// Animations
+export * from './animations';

@@ -83,6 +83,8 @@ export interface BookingPricingStepProps {
   onPriceGroupsChange?: (groupIds: Set<string>) => void;
   /** Currency code for display */
   currency?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
   /** Custom className */
   className?: string;
 }
@@ -104,10 +106,13 @@ export function BookingPricingStep({
   selectedPriceGroups,
   onPriceGroupsChange,
   currency = 'kr',
+  t: tProp,
   className,
 }: BookingPricingStepProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => tProp?.(key, params) ?? key,
+    [tProp]
+  );
 
   const [internalSelectedGroups, setInternalSelectedGroups] = React.useState<Set<string>>(
     selectedPriceGroups ?? new Set(selectedPriceGroup ? [selectedPriceGroup] : [])

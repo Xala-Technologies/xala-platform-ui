@@ -685,3 +685,23 @@ export type {
 
 // ErrorSummary is provided by @digdir/designsystemet-react
 // Re-exported from primitives/components.ts with compound sub-components
+
+// Transition (animation wrapper)
+export { Transition } from './Transition';
+export type { TransitionProps, TransitionState } from './Transition';
+
+// Fade (fade in/out animation)
+export { Fade } from './Fade';
+export type { FadeProps } from './Fade';
+
+// Slide (slide in/out animation)
+export { Slide } from './Slide';
+export type { SlideProps, SlideDirection } from './Slide';
+
+// Scale (scale in/out animation)
+export { Scale } from './Scale';
+export type { ScaleProps } from './Scale';
+
+// Collapse (height collapse/expand animation)
+export { Collapse } from './Collapse';
+export type { CollapseProps } from './Collapse';

@@ -221,6 +221,8 @@ export interface BookingConfirmationStepProps {
   onLogout?: () => void;
   /** Display mode */
   displayMode?: 'auto' | 'login-and-selection' | 'confirmation-only';
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
   /** Custom className */
   className?: string;
 }
@@ -257,10 +259,13 @@ export function BookingConfirmationStep({
   onVisibilityChange,
   onDemoLogin,
   onLogout: _onLogout,
+  t: tProp,
   className,
 }: BookingConfirmationStepProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => tProp?.(key, params) ?? key,
+    [tProp]
+  );
 
   /**
    * Convert internal slot format to FlowSelectedSlot[]

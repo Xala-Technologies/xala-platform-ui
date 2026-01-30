@@ -158,6 +158,8 @@ export interface BookingCartSidebarProps {
   currency?: string;
   /** VAT rate (default: 0.25 for 25%) */
   vatRate?: number;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
   /** Custom className */
   className?: string;
 }
@@ -180,11 +182,13 @@ export function BookingCartSidebar({
   onServiceToggle: _onServiceToggle,
   currency = 'kr',
   vatRate = 0.25,
+  t: tProp,
   className,
 }: BookingCartSidebarProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-
-  const t = React.useCallback((key: string, _params?: unknown): string => key, []);
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => tProp?.(key, params) ?? key,
+    [tProp]
+  );
 
   const [expandedSlot, setExpandedSlot] = React.useState<string | null>(null);
 

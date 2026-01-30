@@ -194,13 +194,25 @@ export type {
 // GDPR Components
 export {
   ConsentManager,
-  ConsentPopup,
-  ConsentSettings,
+  ConsentBanner,
+  ConsentPopup, // Backward compatibility alias for ConsentBanner
+  ConsentPreferences,
+  ConsentSettings, // Backward compatibility alias for ConsentPreferences
   ConsentSettings as GdprPrivacyConsentSettings,
+  DEFAULT_CONSENT_BANNER_LABELS,
+  DEFAULT_CONSENT_PREFERENCES_LABELS,
+  DEFAULT_CONSENT_OPTIONS,
   DataExportCard,
   DeleteAccountCard,
   DataSubjectRequestForm,
   // RequestStatusBadge exported from StatusBadges as GdprRequestStatusBadge
+} from './gdpr';
+export type {
+  ConsentBannerProps,
+  ConsentBannerLabels,
+  ConsentPreferencesProps,
+  ConsentPreferencesLabels,
+  ConsentOption,
 } from './gdpr';
 
 // Help System Components

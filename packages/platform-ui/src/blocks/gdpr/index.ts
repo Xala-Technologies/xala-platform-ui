@@ -6,8 +6,21 @@
 
 // Consent Management
 export { ConsentManager } from './ConsentManager';
-export { ConsentPopup } from './ConsentPopup';
-export { ConsentSettings } from './ConsentSettings';
+export { ConsentBanner, DEFAULT_CONSENT_BANNER_LABELS } from './ConsentPopup';
+export type { ConsentBannerProps, ConsentBannerLabels } from './ConsentPopup';
+// Backward compatibility alias
+export { ConsentBanner as ConsentPopup } from './ConsentPopup';
+export {
+  ConsentPreferences,
+  ConsentSettings,
+  DEFAULT_CONSENT_PREFERENCES_LABELS,
+  DEFAULT_CONSENT_OPTIONS,
+} from './ConsentSettings';
+export type {
+  ConsentPreferencesProps,
+  ConsentPreferencesLabels,
+  ConsentOption,
+} from './ConsentSettings';
 
 // Data Export
 export { DataExportCard } from './DataExportCard';

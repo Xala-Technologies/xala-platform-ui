@@ -19,7 +19,7 @@ import {
 } from '@digilist/client-sdk';
 import { useRentalObjectAvailability, useCreateBooking } from '@digilist/client-sdk/hooks';
 import type { BookingConfig, AdditionalService, BookingFormData } from '@digilist/contracts';
-import { BookingEngine } from './BookingEngine';
+import { BookingEngine, type BookingEngineI18n } from './BookingEngine';
 
 /**
  * Props for the BookingPage
@@ -39,6 +39,8 @@ export interface BookingPageProps {
   onBookingSuccess?: (bookingId: string) => void;
   /** Callback when booking is cancelled */
   onCancel?: () => void;
+  /** Internationalization strings */
+  i18n?: BookingEngineI18n;
   /** Custom class name */
   className?: string;
 }
@@ -61,10 +63,6 @@ export function BookingPage({
   onCancel: _onCancel,
   className,
 }: BookingPageProps) {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _t = (_key: string, _params?: unknown): string => _key;
-
   // Feature module provides state, selectors, and commands
   const { state, commands } = useFeature(bookingFeature);
 

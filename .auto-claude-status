@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "001-complete-i18n-injection-pattern",
+  "state": "building",
+  "subtasks": {
+    "completed": 12,
+    "total": 13,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "Quality Assurance",
+    "id": null,
+    "total": 3
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 14,
+    "started_at": "2026-01-30T14:35:08.166850"
+  },
+  "last_update": "2026-01-30T15:22:31.929185"
+}

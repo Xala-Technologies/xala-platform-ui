@@ -54,6 +54,8 @@ export interface BookingAddOnsSelectorProps {
   disabled?: boolean;
   /** Custom class name */
   className?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
 }
 
 // =============================================================================
@@ -119,9 +121,12 @@ export function BookingAddOnsSelector({
   bookingDurationHours = 1,
   disabled = false,
   className,
+  t: tProp,
 }: BookingAddOnsSelectorProps): React.ReactElement | null {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => (tProp ? tProp(key, params) : key),
+    [tProp]
+  );
 
   // Don't render if no add-ons available
   if (!addOns || addOns.length === 0) {

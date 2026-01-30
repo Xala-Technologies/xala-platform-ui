@@ -88,6 +88,8 @@ export interface ConflictResolverProps {
   onRequestAlternatives?: (occurrenceIndex: number) => void;
   /** Custom class name */
   className?: string;
+  /** Translation function for i18n */
+  t?: (key: string, params?: unknown) => string;
 }
 
 // =============================================================================
@@ -428,9 +430,12 @@ export function ConflictResolver({
   onResolutionsChange,
   onRequestAlternatives,
   className,
+  t: tProp,
 }: ConflictResolverProps): React.ReactElement {
-  // TODO: Inject t() via runtime/props instead of placeholder
-  const t = (key: string, _params?: unknown): string => key;
+  const t = React.useCallback(
+    (key: string, params?: unknown): string => (tProp ? tProp(key, params) : key),
+    [tProp]
+  );
 
   // Initialize resolutions if empty
   React.useEffect(() => {

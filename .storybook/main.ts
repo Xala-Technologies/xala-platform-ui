@@ -118,6 +118,13 @@ const config: StorybookConfig = {
         ...config.build,
         // Increase chunk size warning limit since Storybook naturally has larger chunks
         chunkSizeWarningLimit: 1500,
+        rollupOptions: {
+          external: [
+            '@digilist/contracts',
+            '@digilist/client-sdk',
+            '@xala-technologies/platform/runtime',
+          ],
+        },
       },
     };
   },

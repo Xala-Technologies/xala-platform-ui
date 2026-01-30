@@ -69,9 +69,15 @@ const ALLOWED_FILES = [
   'src/composed/SortableList.tsx', // Drag-and-drop list items
   'src/composed/Spotlight.tsx', // Text highlighting and spotlight overlay
   'src/composed/StatCard.tsx', // Stat card with trend indicators
+  'src/composed/StateWrapper.tsx', // State matrix wrapper with conditional rendering
   'src/composed/StatusBanner.tsx', // Status banner layout
   'src/composed/Stepper.tsx', // Stepper steps and progress line
   'src/composed/TableConditionsFilter.tsx', // Filter condition rows
+  'src/composed/Transition.tsx', // Generic transition wrapper with dynamic styles
+  'src/composed/Fade.tsx', // Fade transition wrapper with opacity animations
+  'src/composed/Slide.tsx', // Slide transition wrapper with transform animations
+  'src/composed/Scale.tsx', // Scale transition wrapper with transform animations
+  'src/composed/Collapse.tsx', // Collapse transition wrapper with height animations
   'src/composed/TableFilter.tsx', // Filter bar with search and chips
   'src/composed/content-section.tsx', // Semantic content sections
   'src/composed/data-page/EmptyState.tsx', // Empty state layout
