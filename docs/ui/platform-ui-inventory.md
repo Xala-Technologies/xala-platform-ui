@@ -291,14 +291,11 @@ Plus all `@digdir/designsystemet-react` exports (Button, Checkbox, Radio, Textfi
 
 ---
 
-## 5. Shells (7 exports)
+## 5. Shells (3 exports)
 
 | Component | Description |
 |-----------|-------------|
-| `AppShell` | Full app layout |
-| `Shell` | Base shell |
-| `AppLayout` | App layout container |
-| `DashboardContent` | Dashboard main area |
+| `AppLayout` | App layout (header full width, sidebar + content below) |
 | `DashboardHeader` | Dashboard header |
 | `DashboardSidebar` | Dashboard sidebar |
 

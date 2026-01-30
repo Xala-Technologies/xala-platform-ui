@@ -10,7 +10,7 @@
 
 import { Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { BottomNavigation, type BottomNavigationItem, DashboardContent, HomeIcon, SearchIcon, BookOpenIcon } from '@xala-technologies/platform-ui';
+import { BottomNavigation, type BottomNavigationItem, HomeIcon, SearchIcon, BookOpenIcon } from '@xala-technologies/platform-ui';
 import { useT } from '@xala-technologies/platform/runtime';
 import { DocsSidebar } from './DocsSidebar';
 import { DocsHeader } from './DocsHeader';
@@ -80,12 +80,23 @@ export function DocsLayout() {
       >
         <DocsHeader />
 
-        <DashboardContent
-          hasBottomNav={isMobile}
+        <main
           data-testid="docs-content"
+          style={{
+            flex: 1,
+            overflow: 'auto',
+            minWidth: 0,
+            padding: 'var(--ds-spacing-6)',
+            ...(isMobile
+              ? {
+                  paddingBottom:
+                    'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                }
+              : {}),
+          }}
         >
           <Outlet />
-        </DashboardContent>
+        </main>
       </div>
 
       {/* Bottom Navigation - Mobile only */}

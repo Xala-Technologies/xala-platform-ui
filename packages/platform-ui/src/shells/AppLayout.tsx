@@ -44,7 +44,6 @@
 import { Outlet } from 'react-router-dom';
 import { ReactNode, useState, useEffect, useMemo } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../composed/bottom-navigation';
-import { DashboardContent } from './DashboardContent';
 import { Stack } from '../primitives/stack';
 import { MOBILE_BREAKPOINT } from '../tokens';
 import { cn } from '../utils';
@@ -224,7 +223,7 @@ export function AppLayout({
 
   return (
     <Stack
-      direction="horizontal"
+      direction="vertical"
       className={cn('ds-app-layout', className)}
       style={{
         height: '100vh',
@@ -232,34 +231,51 @@ export function AppLayout({
         ...style,
       }}
     >
-      {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
-      {shouldShowSidebar && sidebar}
+      {/* Header - full width at top */}
+      {header}
 
+      {/* Sidebar + content row below header */}
       <Stack
-        direction="vertical"
+        direction="horizontal"
         style={{
           flex: 1,
           overflow: 'hidden',
         }}
       >
-        {/* Header */}
-        {header}
+        {/* Sidebar - Desktop only (or if showSidebarOnMobile is true) */}
+        {shouldShowSidebar && sidebar}
 
-        {/* Top content (alerts, banners, etc.) */}
-        {topContent}
-
-        {/* Main content area */}
-        <DashboardContent
-          hasBottomNav={hasBottomNav}
-          className={contentClassName}
+        <Stack
+          direction="vertical"
           style={{
-            padding: useInlinePadding ? (contentPadding as string) : undefined,
+            flex: 1,
+            overflow: 'hidden',
           }}
         >
-          <Stack style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
-            <Outlet />
-          </Stack>
-        </DashboardContent>
+          {/* Top content (alerts, banners, etc.) */}
+          {topContent}
+
+          {/* Main content area */}
+          <main
+            className={contentClassName}
+            style={{
+              flex: 1,
+              overflow: 'auto',
+              minWidth: 0,
+              padding: useInlinePadding ? (contentPadding as string) : undefined,
+              ...(hasBottomNav
+                ? {
+                    paddingBottom:
+                      'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                  }
+                : {}),
+            }}
+          >
+            <Stack style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
+              <Outlet />
+            </Stack>
+          </main>
+        </Stack>
       </Stack>
 
       {/* Bottom Navigation - Mobile only */}

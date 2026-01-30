@@ -7,7 +7,7 @@
 
 ## Layout Contract
 
-- **Shell**: `AppShell` or `DashboardLayout`
+- **Shell**: `AppLayout`
 - **Header**: `DashboardPageHeader` with resource name
 - **Main**: `DashboardContent` with sections
 
@@ -16,7 +16,7 @@
 ## Composition Tree
 
 ```
-AppShell
+AppLayout
 ├── DashboardSidebar
 ├── DashboardContent
 │   ├── DashboardPageHeader
@@ -101,7 +101,8 @@ AppShell
 
 ```tsx
 import {
-  AppShell,
+  AppLayout,
+  DashboardHeader,
   DashboardSidebar,
   DashboardContent,
   DashboardPageHeader,
@@ -174,7 +175,7 @@ export function UserDetailPage({ id }: { id: string }) {
   }
 
   return (
-    <AppShell sidebar={<DashboardSidebar />}>
+    <AppLayout header={<DashboardHeader />} sidebar={<DashboardSidebar />}>
       <DashboardContent>
         <DashboardPageHeader
           title={user.name}
@@ -257,7 +258,7 @@ export function UserDetailPage({ id }: { id: string }) {
           variant="danger"
         />
       </DashboardContent>
-    </AppShell>
+    </AppLayout>
   );
 }
 ```

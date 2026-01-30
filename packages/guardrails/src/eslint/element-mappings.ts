@@ -171,11 +171,11 @@ export const ELEMENT_MAPPINGS: ElementMapping[] = [
   },
   {
     element: 'main',
-    preferred: 'DashboardContent',
+    preferred: 'main (AppLayout content area)',
     alternatives: ['ContentLayout'],
-    decisionGuide: 'Use DashboardContent within DashboardLayout for main content area',
-    importFrom: "@xala-technologies/platform-ui/shells",
-    example: '<DashboardContent>...</DashboardContent>',
+    decisionGuide: 'Use semantic <main> within AppLayout for main content area',
+    importFrom: "native",
+    example: '<main style={{ flex: 1, overflow: "auto" }}>...</main>',
     lexiconRef: 'docs/ux-lexicon/patterns/PAGE_SHELL.mdx',
   },
 

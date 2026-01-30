@@ -12,7 +12,6 @@
 /* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../../../../composed';
-import { DashboardContent } from '../../../../shells';
 import { DocsSidebar, type DocsSidebarLabels } from './DocsSidebar';
 import { DocsHeader, type DocsHeaderLabels } from './DocsHeader';
 import type { DocsNavItem, DocsNavSection } from '../../types';
@@ -114,9 +113,23 @@ export function DocsLayout({
           initialSearchQuery={initialSearchQuery}
         />
 
-        <DashboardContent hasBottomNav={isMobile} data-testid="docs-content">
+        <main
+          data-testid="docs-content"
+          style={{
+            flex: 1,
+            overflow: 'auto',
+            minWidth: 0,
+            padding: 'var(--ds-spacing-6)',
+            ...(isMobile
+              ? {
+                  paddingBottom:
+                    'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                }
+              : {}),
+          }}
+        >
           {children}
-        </DashboardContent>
+        </main>
       </div>
 
       {/* Bottom Navigation - Mobile only */}

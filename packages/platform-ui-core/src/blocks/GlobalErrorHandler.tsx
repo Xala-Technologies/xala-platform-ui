@@ -6,14 +6,145 @@
  * React's ErrorBoundary (e.g., async errors, event handlers).
  *
  * @example
- * // Wrap your app with GlobalErrorHandler
+ * ```tsx
+ * // Basic usage
  * <GlobalErrorHandler>
  *   <App />
  * </GlobalErrorHandler>
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // With Sentry integration
+ * import * as Sentry from '@sentry/react';
+ *
+ * <GlobalErrorHandler
+ *   onError={(error, context) => {
+ *     Sentry.captureException(error.error || new Error(error.message), {
+ *       contexts: {
+ *         error: {
+ *           type: error.type,
+ *           source: error.source,
+ *           lineno: error.lineno,
+ *           colno: error.colno,
+ *         },
+ *       },
+ *       user: context?.user,
+ *       tags: context?.tags,
+ *       extra: context?.extra,
+ *     });
+ *   }}
+ * >
+ *   <App />
+ * </GlobalErrorHandler>
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Advanced usage with enhanced error context
+ * import * as Sentry from '@sentry/react';
+ * import { useAuth } from './auth';
+ *
+ * function AppWithGlobalErrorHandler() {
+ *   const { user, breadcrumbs } = useAuth();
+ *
+ *   return (
+ *     <GlobalErrorHandler
+ *       errorContext={{
+ *         user: {
+ *           id: user?.id,
+ *           username: user?.username,
+ *           email: user?.email,
+ *         },
+ *         breadcrumbs: breadcrumbs.map(b => ({
+ *           timestamp: b.timestamp,
+ *           message: b.message,
+ *           category: b.category,
+ *           level: b.level,
+ *           data: b.data,
+ *         })),
+ *         tags: {
+ *           environment: import.meta.env.MODE,
+ *           version: import.meta.env.VITE_APP_VERSION,
+ *         },
+ *         extra: {
+ *           userAgent: navigator.userAgent,
+ *           viewport: `${window.innerWidth}x${window.innerHeight}`,
+ *         },
+ *       }}
+ *       onError={(error, context) => {
+ *         // Handle chunk load failures differently
+ *         if (error.type === 'chunk-load-failure') {
+ *           console.info('Chunk load failure detected, reloading...');
+ *           window.location.reload();
+ *           return;
+ *         }
+ *
+ *         // Send to Sentry with full context
+ *         Sentry.captureException(error.error || new Error(error.message), {
+ *           contexts: {
+ *             error: {
+ *               type: error.type,
+ *               source: error.source,
+ *               lineno: error.lineno,
+ *               colno: error.colno,
+ *             },
+ *           },
+ *           user: context?.user,
+ *           tags: context?.tags,
+ *           extra: context?.extra,
+ *         });
+ *
+ *         // Add breadcrumbs to Sentry
+ *         context?.breadcrumbs?.forEach(breadcrumb => {
+ *           Sentry.addBreadcrumb({
+ *             message: breadcrumb.message,
+ *             category: breadcrumb.category,
+ *             level: breadcrumb.level,
+ *             data: breadcrumb.data,
+ *             timestamp: typeof breadcrumb.timestamp === 'string'
+ *               ? new Date(breadcrumb.timestamp).getTime() / 1000
+ *               : breadcrumb.timestamp,
+ *           });
+ *         });
+ *       }}
+ *     >
+ *       <App />
+ *     </GlobalErrorHandler>
+ *   );
+ * }
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Using the useGlobalError hook for passive error tracking
+ * function App() {
+ *   const { user } = useAuth();
+ *
+ *   useGlobalError({
+ *     errorContext: {
+ *       user: {
+ *         id: user?.id,
+ *         email: user?.email,
+ *       },
+ *       tags: {
+ *         environment: import.meta.env.MODE,
+ *       },
+ *     },
+ *     onError: (error, context) => {
+ *       // Log to analytics service without blocking UI
+ *       trackError(error, context);
+ *     },
+ *   });
+ *
+ *   return <MyApp />;
+ * }
+ * ```
  */
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { ErrorScreen } from './AuthComponents';
+import type { EnhancedErrorContext } from './ErrorBoundary';
 
 // =============================================================================
 // Types
@@ -40,7 +171,9 @@ export interface GlobalErrorHandlerProps {
   /** Custom fallback UI to render when an error occurs */
   fallback?: React.ReactNode;
   /** Callback when an error is caught (for error tracking services) */
-  onError?: (error: GlobalError) => void;
+  onError?: (error: GlobalError, context?: EnhancedErrorContext) => void;
+  /** Enhanced error context (user info, breadcrumbs, tags, etc.) to pass to error tracking services */
+  errorContext?: EnhancedErrorContext;
   /** Custom title for the error screen */
   errorTitle?: string;
   /** Custom description for the error screen */
@@ -97,6 +230,7 @@ export function GlobalErrorHandler({
   children,
   fallback,
   onError,
+  errorContext,
   errorTitle = 'Noe gikk galt',
   errorDescription,
   showRetryButton = true,
@@ -129,10 +263,10 @@ export function GlobalErrorHandler({
       // Call the onError callback if provided
       // TODO: Integrate with error tracking service (e.g., Sentry)
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     },
-    [onError]
+    [onError, errorContext]
   );
 
   /**
@@ -164,10 +298,10 @@ export function GlobalErrorHandler({
       // Call the onError callback if provided
       // TODO: Integrate with error tracking service (e.g., Sentry)
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     },
-    [onError]
+    [onError, errorContext]
   );
 
   /**
@@ -229,7 +363,9 @@ export function GlobalErrorHandler({
 
 export interface UseGlobalErrorOptions {
   /** Callback when an error is caught */
-  onError?: (error: GlobalError) => void;
+  onError?: (error: GlobalError, context?: EnhancedErrorContext) => void;
+  /** Enhanced error context (user info, breadcrumbs, tags, etc.) to pass to error tracking services */
+  errorContext?: EnhancedErrorContext;
 }
 
 /**
@@ -237,16 +373,46 @@ export interface UseGlobalErrorOptions {
  * Useful for logging/tracking errors while letting them bubble up.
  *
  * @example
+ * ```tsx
+ * // Basic usage
  * function App() {
  *   useGlobalError({
  *     onError: (error) => trackError(error),
  *   });
  *   return <MyApp />;
  * }
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // With enhanced error context
+ * function App() {
+ *   const { user } = useAuth();
+ *
+ *   useGlobalError({
+ *     errorContext: {
+ *       user: {
+ *         id: user?.id,
+ *         email: user?.email,
+ *       },
+ *       tags: {
+ *         environment: import.meta.env.MODE,
+ *         version: import.meta.env.VITE_APP_VERSION,
+ *       },
+ *     },
+ *     onError: (error, context) => {
+ *       // Send to error tracking service
+ *       trackError(error, context);
+ *     },
+ *   });
+ *
+ *   return <MyApp />;
+ * }
+ * ```
  */
 export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError | null {
   const [error, setError] = useState<GlobalError | null>(null);
-  const { onError } = options;
+  const { onError, errorContext } = options;
 
   useEffect(() => {
     const handleError = (event: ErrorEvent): void => {
@@ -262,7 +428,7 @@ export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError
       setError(globalError);
 
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     };
 
@@ -284,7 +450,7 @@ export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError
       setError(globalError);
 
       if (onError) {
-        onError(globalError);
+        onError(globalError, errorContext);
       }
     };
 
@@ -295,7 +461,7 @@ export function useGlobalError(options: UseGlobalErrorOptions = {}): GlobalError
       window.removeEventListener('error', handleError);
       window.removeEventListener('unhandledrejection', handleRejection);
     };
-  }, [onError]);
+  }, [onError, errorContext]);
 
   return error;
 }

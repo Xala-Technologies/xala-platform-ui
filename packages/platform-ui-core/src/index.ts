@@ -11,12 +11,12 @@
  *
  * ```tsx
  * // All components from single import
- * import { Button, Card, AppShell } from '@xala-technologies/platform-ui-core';
+ * import { Button, Card, AppLayout } from '@xala-technologies/platform-ui-core';
  *
  * // Or use subpath imports for smaller bundles
  * import { Button, Card } from '@xala-technologies/platform-ui-core/primitives';
  * import { PageHeader } from '@xala-technologies/platform-ui-core/composed';
- * import { AppShell } from '@xala-technologies/platform-ui-core/shells';
+ * import { AppLayout } from '@xala-technologies/platform-ui-core/shells';
  * ```
  */
 
