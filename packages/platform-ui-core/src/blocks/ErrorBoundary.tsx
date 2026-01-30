@@ -11,19 +11,23 @@
  *
  * @example
  * ```tsx
- * // In app with SDK
+ * // Basic usage with Sentry and audit logging
  * import { auditService } from '@xala-technologies/platform/sdk';
  * import * as Sentry from '@sentry/react';
  *
  * <ErrorBoundary
- *   onError={(error, errorInfo) => {
- *     // Sentry integration
+ *   onError={(error, errorInfo, context) => {
+ *     // Sentry integration with enhanced context
  *     Sentry.captureException(error, {
  *       contexts: { react: { componentStack: errorInfo.componentStack } },
+ *       user: context?.user,
+ *       tags: context?.tags,
+ *       extra: context?.extra,
  *     });
  *     // Audit logging
  *     auditService.logError('react_error_boundary', 'application', error, {
  *       componentStack: errorInfo.componentStack,
+ *       ...context?.extra,
  *     });
  *   }}
  *   labels={{
@@ -34,6 +38,68 @@
  * >
  *   <App />
  * </ErrorBoundary>
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Advanced usage with enhanced error context
+ * import * as Sentry from '@sentry/react';
+ * import { useAuth } from './auth';
+ *
+ * function AppWithErrorBoundary() {
+ *   const { user, breadcrumbs } = useAuth();
+ *
+ *   return (
+ *     <ErrorBoundary
+ *       errorContext={{
+ *         user: {
+ *           id: user?.id,
+ *           username: user?.username,
+ *           email: user?.email,
+ *         },
+ *         breadcrumbs: breadcrumbs.map(b => ({
+ *           timestamp: b.timestamp,
+ *           message: b.message,
+ *           category: b.category,
+ *           level: b.level,
+ *           data: b.data,
+ *         })),
+ *         tags: {
+ *           environment: import.meta.env.MODE,
+ *           version: import.meta.env.VITE_APP_VERSION,
+ *         },
+ *         extra: {
+ *           userAgent: navigator.userAgent,
+ *           viewport: `${window.innerWidth}x${window.innerHeight}`,
+ *         },
+ *       }}
+ *       onError={(error, errorInfo, context) => {
+ *         // Sentry will receive all enhanced context
+ *         Sentry.captureException(error, {
+ *           contexts: { react: { componentStack: errorInfo.componentStack } },
+ *           user: context?.user,
+ *           tags: context?.tags,
+ *           extra: context?.extra,
+ *         });
+ *
+ *         // Add breadcrumbs to Sentry
+ *         context?.breadcrumbs?.forEach(breadcrumb => {
+ *           Sentry.addBreadcrumb({
+ *             message: breadcrumb.message,
+ *             category: breadcrumb.category,
+ *             level: breadcrumb.level,
+ *             data: breadcrumb.data,
+ *             timestamp: typeof breadcrumb.timestamp === 'string'
+ *               ? new Date(breadcrumb.timestamp).getTime() / 1000
+ *               : breadcrumb.timestamp,
+ *           });
+ *         });
+ *       }}
+ *     >
+ *       <App />
+ *     </ErrorBoundary>
+ *   );
+ * }
  * ```
  */
 import { Component, type ErrorInfo, type ReactNode } from 'react';
