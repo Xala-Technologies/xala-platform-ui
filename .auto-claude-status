@@ -1,25 +1,25 @@
 {
   "active": true,
-  "spec": "001-complete-i18n-injection-pattern",
+  "spec": "008-advanced-select-combobox-component",
   "state": "building",
   "subtasks": {
-    "completed": 12,
-    "total": 13,
+    "completed": 4,
+    "total": 12,
     "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Quality Assurance",
+    "current": "Accessibility Enhancement",
     "id": null,
-    "total": 3
+    "total": 2
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 14,
-    "started_at": "2026-01-30T14:35:08.166850"
+    "number": 6,
+    "started_at": "2026-01-30T16:30:23.759636"
   },
-  "last_update": "2026-01-30T15:22:31.929185"
+  "last_update": "2026-01-30T16:47:12.593076"
 }
