@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 /**
  * FormField Component
  * A wrapper for form inputs with label, description, and error message

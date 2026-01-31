@@ -16,8 +16,6 @@
  * ```
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for input layout, status icons, and preview card with design tokens */
-
 import * as React from 'react';
 import { Button, Textfield, Fieldset, Paragraph, Alert } from '@digdir/designsystemet-react';
 import { cn } from '../utils';

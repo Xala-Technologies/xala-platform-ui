@@ -34,7 +34,7 @@ import {
   CloseIcon,
 } from '../../primitives/icons';
 import { Stack, HorizontalLayout } from '../../primitives';
-import { typography } from '../../tokens/extended';
+import { typography } from '../../tokens';
 
 export type HelpLevel = 1 | 2 | 3;
 

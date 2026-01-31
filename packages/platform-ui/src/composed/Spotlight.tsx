@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Spotlight
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for text highlighting and spotlight overlay with design tokens */
-
 'use client';
 
 import React, { useMemo, type ReactNode } from 'react';

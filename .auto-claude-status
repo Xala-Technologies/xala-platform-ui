@@ -1,25 +1,25 @@
 {
   "active": true,
-  "spec": "007-form-builder-pattern",
+  "spec": "010-add-content-security-policy-headers-configuration",
   "state": "building",
   "subtasks": {
-    "completed": 12,
-    "total": 13,
+    "completed": 3,
+    "total": 4,
     "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Quality Checks",
+    "current": "CSP Configuration Implementation",
     "id": null,
-    "total": 2
+    "total": 4
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 14,
-    "started_at": "2026-01-30T16:30:08.056666"
+    "number": 5,
+    "started_at": "2026-01-30T21:02:30.702212"
   },
-  "last_update": "2026-01-30T17:24:12.203353"
+  "last_update": "2026-01-30T21:14:16.973935"
 }

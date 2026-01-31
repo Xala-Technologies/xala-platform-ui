@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/StatCard
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for stat card layout and trend indicators with design tokens */
-
 import React, { type ReactNode } from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../utils';

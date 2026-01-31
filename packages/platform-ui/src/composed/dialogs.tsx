@@ -5,8 +5,6 @@
  * Uses native dialog element with design system styling.
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, dialog) required for dialog portal and native dialog element with design tokens */
-
 import {
   type ReactNode,
   useState,

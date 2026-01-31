@@ -10,8 +10,6 @@
  * @module @xala-technologies/platform/ui/composed/TableConditionsFilter
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for filter condition rows and logic connectors with design tokens */
-
 import React, { useState, useCallback } from 'react';
 import { NativeSelect } from '../primitives/NativeSelect';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
@@ -39,7 +37,7 @@ export type ConditionOperator =
   | 'after'
   | 'between';
 
-export type ConditionFieldType = 'text' | 'number' | 'date' | 'select' | 'boolean';
+export type FieldType = 'text' | 'number' | 'date' | 'select' | 'boolean';
 export type LogicOperator = 'and' | 'or';
 
 export interface ConditionFieldOption {
@@ -50,7 +48,7 @@ export interface ConditionFieldOption {
 export interface ConditionField {
   id: string;
   label: string;
-  type: ConditionFieldType;
+  type: FieldType;
   options?: ConditionFieldOption[];
 }
 
@@ -137,7 +135,7 @@ const DATE_PRESETS: { value: string; label: string }[] = [
   { value: 'this_year', label: 'This year' },
 ];
 
-function getOperatorsForType(type: ConditionFieldType) {
+function getOperatorsForType(type: FieldType) {
   switch (type) {
     case 'number':
       return NUMBER_OPERATORS;

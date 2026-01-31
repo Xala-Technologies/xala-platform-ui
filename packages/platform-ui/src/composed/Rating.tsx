@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Rating
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for star rating layout and custom icons with design tokens */
-
 'use client';
 
 import React, { useState, useCallback, type ReactNode } from 'react';

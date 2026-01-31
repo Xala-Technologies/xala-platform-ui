@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/NumberInput
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg, input) required for number input layout with stepper buttons with design tokens */
-
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';

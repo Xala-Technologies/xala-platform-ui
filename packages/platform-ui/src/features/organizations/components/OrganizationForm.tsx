@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/organizations
  */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Textfield, Select, Heading, Button, Spinner, Card } from '@digdir/designsystemet-react';

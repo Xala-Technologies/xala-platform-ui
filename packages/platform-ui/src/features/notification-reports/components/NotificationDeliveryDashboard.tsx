@@ -5,7 +5,7 @@
  * @pure - All data via props, all actions via callbacks. No SDK, no i18n.
  * @module @xala-technologies/platform-ui/features/notification-reports
  */
-/* eslint-disable no-restricted-syntax */
+
 import { useMemo } from 'react';
 import { Button, Paragraph, Spinner, Table } from '@digdir/designsystemet-react';
 import { HeaderSearch } from '../../../composed/header-parts';

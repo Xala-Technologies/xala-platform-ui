@@ -8,8 +8,6 @@
  * @see https://www.digdir.no/digitalisering-og-samordning/universell-utforming/1652
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements required for semantic document structure (article, section, address, ul, li, span, a) with design tokens */
-
 import React from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 

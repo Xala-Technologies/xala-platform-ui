@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Timeline
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li) required for timeline items and connectors with design tokens */
-
 'use client';
 
 import React, { type ReactNode } from 'react';

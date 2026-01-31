@@ -7,5 +7,5 @@
  * @module @xala-technologies/platform/ui/tokens
  */
 
-export * from './extended';
-export { extendedTokens as default } from './extended';
+export * from '@xala-technologies/platform-ui-core/tokens';
+export { default } from '@xala-technologies/platform-ui-core/tokens';

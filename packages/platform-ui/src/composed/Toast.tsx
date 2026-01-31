@@ -11,8 +11,6 @@
  * @module @xala-technologies/platform/ui/composed/Toast
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for toast portal, stacking, and icons with design tokens */
-
 import React, {
   createContext,
   useContext,

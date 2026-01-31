@@ -10,8 +10,6 @@
  * @module @xala-technologies/platform/ui/composed/TableRowActions
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, svg) required for dropdown menu and action items with design tokens */
-
 'use client';
 
 import React, { useState, useRef, useEffect, type ReactNode } from 'react';

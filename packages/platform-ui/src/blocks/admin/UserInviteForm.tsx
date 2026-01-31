@@ -31,7 +31,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { MailIcon, ShieldIcon, CheckIcon } from '../../primitives/icons';
 import { Stack, HorizontalLayout } from '../../primitives';
-import { typography } from '../../tokens/extended';
+import { typography } from '../../tokens';
 
 export interface InviteUserFormData {
   email: string;

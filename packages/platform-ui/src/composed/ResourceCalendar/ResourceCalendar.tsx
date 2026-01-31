@@ -11,8 +11,6 @@
  * Works identically in Web, Backoffice, and MinSide
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, table) required for calendar grid, time slots, and date navigation with design tokens */
-
 import * as React from 'react';
 import { Button, Heading } from '@digdir/designsystemet-react';
 import './ResourceCalendar.css';

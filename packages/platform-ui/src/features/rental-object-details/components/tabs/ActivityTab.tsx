@@ -10,7 +10,7 @@
  * - Changed to Designsystemet components only
  * - All text via labels prop
  */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { RentalObjectType } from '../../../../types/rental-object-detail';

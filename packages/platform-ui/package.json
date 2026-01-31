@@ -218,10 +218,12 @@
     "@xala-technologies/i18n": "1.1.0",
     "@xala-technologies/platform-ui-core": "^1.0.0",
     "@xala-technologies/platform-ui-digilist": "^1.0.1",
+    "dompurify": "^3.2.2",
     "lucide-react": "^0.562.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.2.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^9.0.0",

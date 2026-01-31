@@ -4,7 +4,7 @@
  * Top header with search bar and language switcher.
  * Pure presentational component - receives data via props and emits events via callbacks.
  */
-/* eslint-disable no-restricted-syntax */
+
 import { useState, useCallback } from 'react';
 import { Textfield, Button, SearchIcon } from '../../../../primitives';
 

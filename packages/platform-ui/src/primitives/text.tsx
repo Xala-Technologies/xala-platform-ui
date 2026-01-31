@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 /**
  * Text Component
  *

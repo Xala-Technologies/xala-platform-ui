@@ -45,8 +45,6 @@
  * @module @xala-technologies/platform/ui/composed/WizardStepper
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, nav, svg) required for wizard stepper layout, pills, and progress line with design tokens */
-
 import React from 'react';
 import { Button } from '@digdir/designsystemet-react';
 import { CheckIcon } from '../primitives/icons';

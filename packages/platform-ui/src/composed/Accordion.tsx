@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Accordion
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for accordion panel layout and animation with design tokens */
-
 'use client';
 
 import React, { useState, useCallback, createContext, useContext, type ReactNode } from 'react';

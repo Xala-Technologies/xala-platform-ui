@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/SortableList
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li) required for drag-and-drop list items with design tokens */
-
 'use client';
 
 import React, { useState, useCallback, useRef, type ReactNode } from 'react';

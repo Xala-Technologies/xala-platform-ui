@@ -1,5 +1,5 @@
 /** RecurringResultSummary - Refactored Pure UI */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
 

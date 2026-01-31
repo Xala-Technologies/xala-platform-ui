@@ -9,7 +9,7 @@
  *
  * Pure presentational component - receives data via props and emits events via callbacks.
  */
-/* eslint-disable no-restricted-syntax */
+
 import { useState, useEffect } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../../../../composed';
 import { DocsSidebar, type DocsSidebarLabels } from './DocsSidebar';

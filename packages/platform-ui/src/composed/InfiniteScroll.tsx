@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/InfiniteScroll
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for scroll container, virtual list, and loading indicators with design tokens */
-
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, type ReactNode } from 'react';

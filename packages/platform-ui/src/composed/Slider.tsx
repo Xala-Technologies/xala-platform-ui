@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Slider
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, input) required for slider track, thumb, and marks with design tokens */
-
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';

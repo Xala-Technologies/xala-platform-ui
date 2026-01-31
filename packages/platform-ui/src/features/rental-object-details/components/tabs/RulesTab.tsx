@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/rental-object-details/components/tabs
  */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { RentalObjectType } from '../../../../types/rental-object-detail';

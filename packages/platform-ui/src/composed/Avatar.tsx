@@ -8,11 +8,9 @@
  * @module @xala-technologies/platform/ui/composed/Avatar
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, img) required for avatar layout, status indicator, and image with design tokens */
-
 import React from 'react';
 import { Paragraph } from '@digdir/designsystemet-react';
-import { AVATAR_COLOR_PALETTE } from '../tokens/extended';
+import { AVATAR_COLOR_PALETTE } from '../tokens';
 
 // =============================================================================
 // Types

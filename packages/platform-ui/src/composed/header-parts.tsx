@@ -4,8 +4,6 @@
  * Individual components for header sections using Digdir design system components
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, img, input) required for header logo, search, and action layouts with design tokens */
-
 import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@digdir/designsystemet-react';
 import { SunIcon, MoonIcon, UserIcon, SearchIcon, Stack, HorizontalLayout } from '../primitives';

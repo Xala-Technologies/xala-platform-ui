@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 /**
  * Box - A simple polymorphic wrapper component
  *

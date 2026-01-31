@@ -1,5 +1,5 @@
 /** OpeningHoursWidget - Refactored Pure UI */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Card, Paragraph } from '@digdir/designsystemet-react';
 

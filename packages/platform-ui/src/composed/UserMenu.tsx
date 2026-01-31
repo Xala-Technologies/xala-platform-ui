@@ -18,8 +18,6 @@
  * ```
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, a, svg) required for user menu dropdown and navigation links with design tokens */
-
 import * as React from 'react';
 import { forwardRef, useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Button } from '@digdir/designsystemet-react';

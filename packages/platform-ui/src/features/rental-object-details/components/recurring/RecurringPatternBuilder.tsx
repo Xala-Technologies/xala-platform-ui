@@ -1,5 +1,5 @@
 /** RecurringPatternBuilder - Refactored Pure UI */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 

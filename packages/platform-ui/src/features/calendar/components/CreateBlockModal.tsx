@@ -8,7 +8,7 @@
  */
 
 /* eslint-disable no-restricted-imports -- Calendar components bridge domain and UI packages */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { NativeSelect } from '../../../primitives/NativeSelect';
 import { Button } from '@digdir/designsystemet-react';

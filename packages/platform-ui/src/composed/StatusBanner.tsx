@@ -10,8 +10,6 @@
  * @module @xala-technologies/platform/ui/composed/StatusBanner
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for status banner layout with icon and action with design tokens */
-
 'use client';
 
 import React, { type ReactNode } from 'react';

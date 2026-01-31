@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { cspPlugin } from './middleware';
 
 const getAbsolutePath = (packageName: string): string => {
   // For Storybook 10 ES modules, use a simpler approach
@@ -59,6 +60,7 @@ const config: StorybookConfig = {
 
     return {
       ...config,
+      plugins: [...(config.plugins || []), cspPlugin()],
       resolve: {
         ...config.resolve,
         alias: {
@@ -118,13 +120,6 @@ const config: StorybookConfig = {
         ...config.build,
         // Increase chunk size warning limit since Storybook naturally has larger chunks
         chunkSizeWarningLimit: 1500,
-        rollupOptions: {
-          external: [
-            '@digilist/contracts',
-            '@digilist/client-sdk',
-            '@xala-technologies/platform/runtime',
-          ],
-        },
       },
     };
   },

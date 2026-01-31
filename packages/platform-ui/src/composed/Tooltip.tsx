@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Tooltip
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span) required for tooltip positioning and portal with design tokens */
-
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, type ReactNode } from 'react';

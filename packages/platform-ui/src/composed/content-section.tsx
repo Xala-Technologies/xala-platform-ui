@@ -4,8 +4,6 @@
  * High-level section component for grouping related content
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, section) required for semantic content sections with design tokens */
-
 import React, { forwardRef } from 'react';
 import { Fieldset, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Stack } from '../primitives';

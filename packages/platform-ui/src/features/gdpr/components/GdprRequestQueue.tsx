@@ -6,7 +6,7 @@
  *
  * @module @xala-technologies/platform-ui/features/gdpr
  */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { NativeSelect } from '../../../primitives/NativeSelect';
 import { Card, Paragraph, Button, Table, Spinner, Textfield } from '@digdir/designsystemet-react';

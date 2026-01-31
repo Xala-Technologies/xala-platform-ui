@@ -10,7 +10,7 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon } from '../../primitives/icons';
 import { Stack, HorizontalLayout } from '../../primitives';
 import { cn } from '../../utils';
-import { typography, borders } from '../../tokens/extended';
+import { typography, borders } from '../../tokens';
 
 export interface WizardStep {
   /** Unique step identifier */

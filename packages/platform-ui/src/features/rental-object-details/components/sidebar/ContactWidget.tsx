@@ -2,7 +2,7 @@
  * ContactWidget - Pure UI Component (Refactored)
  * All text via labels prop, Designsystemet only
  */
-/* eslint-disable no-restricted-syntax */
+
 import * as React from 'react';
 import { Paragraph, Card } from '@digdir/designsystemet-react';
 import type { ContactInfo } from '../../../../types/rental-object-detail';

@@ -7,8 +7,6 @@
  * @see https://dribbble.com/shots/15250098-Page-Headers
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (header, div, span, nav, a, style) required for semantic page header structure, tabs, and responsive layout with design tokens */
-
 import * as React from 'react';
 import { forwardRef } from 'react';
 import { Heading, Paragraph, Button } from '@digdir/designsystemet-react';

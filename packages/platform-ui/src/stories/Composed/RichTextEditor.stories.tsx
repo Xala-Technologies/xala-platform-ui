@@ -240,3 +240,35 @@ export const CustomHeight: Story = {
     );
   },
 };
+
+/**
+ * Demonstrates XSS protection by sanitizing malicious scripts while preserving safe content.
+ * The editor should strip out script tags and event handlers but render safe HTML correctly.
+ */
+export const XSSProtection: Story = {
+  render: function Render() {
+    const t = useT();
+    const [value, setValue] = useState(
+      '<p>Safe content with <strong>bold</strong> text.</p>' +
+        '<script>alert("XSS Attack!")</script>' +
+        '<p>More safe content with <em>italic</em> text.</p>' +
+        '<img src="x" onerror="alert(\'XSS\')" />' +
+        '<p onclick="alert(\'XSS\')">Paragraph with onclick handler</p>' +
+        '<a href="javascript:alert(\'XSS\')">Malicious link</a>' +
+        '<p>Normal <a href="https://example.com">safe link</a></p>'
+    );
+    return (
+      <Stack
+        spacing="var(--ds-spacing-4)"
+        style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
+      >
+        <RichTextEditor
+          value={value}
+          onChange={setValue}
+          label="XSS Protection Test"
+          placeholder={t('storybook.richTextEditor.placeholder')}
+        />
+      </Stack>
+    );
+  },
+};

@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/Modal
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, svg) required for modal overlay, portal, and focus trap with design tokens */
-
 import React, { useEffect, useRef, useCallback, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { Heading, Button } from '@digdir/designsystemet-react';

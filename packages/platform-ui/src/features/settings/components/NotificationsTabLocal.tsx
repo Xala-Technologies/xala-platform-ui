@@ -4,7 +4,7 @@
  * Temporary local component until moved to platform-ui-extended.
  * Manages notification preferences including email, SMS, push notifications.
  */
-/* eslint-disable no-restricted-syntax */
+
 import {
   Card,
   Heading,

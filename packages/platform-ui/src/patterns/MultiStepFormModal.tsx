@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 /**
  * MultiStepFormModal
  *
@@ -69,7 +68,7 @@ import {
   opacity as opacityTokens,
   borders,
   components,
-} from '../tokens/extended';
+} from '../tokens';
 
 // ============================================================================
 // Types

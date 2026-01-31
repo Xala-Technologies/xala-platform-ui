@@ -5,8 +5,6 @@
  * file explorers, and story catalogs (Storybook-like).
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, ul, li, nav) required for tree structure and collapsible nodes with design tokens */
-
 import { useState, useCallback, useMemo, createContext, useContext, type ReactNode } from 'react';
 import { Paragraph, Button } from '@digdir/designsystemet-react';
 import {

@@ -16,6 +16,7 @@
 
 import React, { useRef, useState, useCallback, useEffect, type ReactNode } from 'react';
 import { Button, Paragraph, Label } from '@digdir/designsystemet-react';
+import { sanitizeHtml } from '../utils/sanitize';
 
 // =============================================================================
 // Types
@@ -458,7 +459,7 @@ export function RichTextEditor({
 
   useEffect(() => {
     if (editorRef.current && editorRef.current.innerHTML !== value) {
-      editorRef.current.innerHTML = value;
+      editorRef.current.innerHTML = sanitizeHtml(value);
     }
   }, [value]);
 
@@ -477,7 +478,7 @@ export function RichTextEditor({
 
   const handleInput = useCallback(() => {
     if (editorRef.current && onChange) {
-      onChange(editorRef.current.innerHTML);
+      onChange(sanitizeHtml(editorRef.current.innerHTML));
     }
     updateActiveFormats();
   }, [onChange, updateActiveFormats]);

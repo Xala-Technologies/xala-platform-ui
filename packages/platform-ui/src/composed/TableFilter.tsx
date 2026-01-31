@@ -12,8 +12,6 @@
  * - Responsive design
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, input) required for filter bar layout with search and chips with design tokens */
-
 import * as React from 'react';
 import { NativeSelect } from '../primitives/NativeSelect';
 import { useState, useCallback, useEffect, useMemo } from 'react';

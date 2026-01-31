@@ -7,8 +7,6 @@
  * @module @xala-technologies/platform/ui/composed/SectionCard
  */
 
-/* eslint-disable no-restricted-syntax -- Raw HTML elements (div, span, section) required for collapsible section card with animations with design tokens */
-
 import React, { type ReactNode } from 'react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { cn } from '../utils';
