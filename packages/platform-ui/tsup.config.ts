@@ -85,6 +85,9 @@ export default defineConfig({
     'tokens/index': 'src/tokens/index.ts',
     'types/index': 'src/types/index.ts',
     styles: 'src/styles.ts',
+    
+    // App scaffold for thin app architecture
+    'app-scaffold/index': 'src/app-scaffold/index.ts',
 
     // Feature modules (ALL WAVES REFACTORED - 100% pure presentational components)
     'features/gdpr': 'src/features/gdpr/index.ts', // ✅ Wave 2 - REFACTORED

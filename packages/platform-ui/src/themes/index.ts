@@ -336,6 +336,10 @@ export function getThemeColors(themeId: ThemeId, mode: 'light' | 'dark'): ThemeC
  */
 export type { TypographyConfig, FontFamily, FontSize, LineHeight } from '../types/theme-config';
 
+// Import TypographyConfig for use in const declarations (required for DTS build)
+import type { TypographyConfig } from '../types/theme-config';
+
+
 /**
  * Typography configuration for each theme.
  * Uses Designsystemet defaults with theme-specific font family preferences.
@@ -632,19 +636,20 @@ export function registerCustomTheme(
   // Validate accessibility
   if (validate && !skipAccessibilityChecks) {
     const accessibilityResult = validateTheme(config);
-    if (!accessibilityResult.isValid) {
-      const errors = accessibilityResult.errors.map((e) => `${e.path}: ${e.message}`);
+    if (!accessibilityResult.accessibility.isValid) {
+      const errors = accessibilityResult.accessibility.errors.map((e: { path: string; message: string }) => `${e.path}: ${e.message}`);
       throw new Error(`Theme accessibility validation failed:\n${errors.join('\n')}`);
     }
 
     // Log warnings (non-blocking)
-    if (accessibilityResult.warnings.length > 0) {
-      accessibilityResult.warnings.forEach((w) => {
+    if (accessibilityResult.accessibility.warnings.length > 0) {
+      accessibilityResult.accessibility.warnings.forEach((w: { path: string; message: string }) => {
         // eslint-disable-next-line no-console
         console.warn(`[Theme Warning] ${w.path}: ${w.message}`);
       });
     }
   }
+
 
   // Register theme
   customThemeRegistry.set(config.tenantId, config);

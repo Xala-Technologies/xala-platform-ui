@@ -214,7 +214,7 @@ export function ConsentBanner({
             >
               {labels.acceptButton}
             </Button>
-          </div>
+          </Stack>
         </Stack>
       </Card>
     </Stack>
