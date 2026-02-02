@@ -1,0 +1,231 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/design-tokens.catalog.json",
+    "title": "Design Tokens Reference",
+    "description": "Complete design token system from @digdir/designsystemet with Xala extensions",
+    "version": "1.0.0",
+    "source": {
+        "designSystem": "@digdir/designsystemet-react",
+        "css": "@digdir/designsystemet-css",
+        "fonts": "@fontsource/inter"
+    },
+    "spacing": {
+        "description": "Token-based spacing scale (4px base unit)",
+        "tokens": {
+            "1": {
+                "value": "4px",
+                "css": "var(--ds-spacing-1)",
+                "use": "Tight spacing, icon gaps"
+            },
+            "2": {
+                "value": "8px",
+                "css": "var(--ds-spacing-2)",
+                "use": "Small gaps, inline elements"
+            },
+            "3": {
+                "value": "12px",
+                "css": "var(--ds-spacing-3)",
+                "use": "List item padding"
+            },
+            "4": {
+                "value": "16px",
+                "css": "var(--ds-spacing-4)",
+                "use": "Default content gap, card padding"
+            },
+            "5": {
+                "value": "20px",
+                "css": "var(--ds-spacing-5)",
+                "use": "Medium spacing"
+            },
+            "6": {
+                "value": "24px",
+                "css": "var(--ds-spacing-6)",
+                "use": "Section gaps, large card padding"
+            },
+            "8": {
+                "value": "32px",
+                "css": "var(--ds-spacing-8)",
+                "use": "Section dividers"
+            },
+            "10": {
+                "value": "40px",
+                "css": "var(--ds-spacing-10)",
+                "use": "Page sections, hero spacing"
+            }
+        },
+        "aliases": {
+            "xs": "var(--ds-spacing-1)",
+            "sm": "var(--ds-spacing-2)",
+            "md": "var(--ds-spacing-4)",
+            "lg": "var(--ds-spacing-6)",
+            "xl": "var(--ds-spacing-8)",
+            "2xl": "var(--ds-spacing-10)"
+        }
+    },
+    "typography": {
+        "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        "headings": {
+            "xlarge": {
+                "css": "var(--ds-font-size-heading-xlarge)",
+                "use": "Page titles"
+            },
+            "large": {
+                "css": "var(--ds-font-size-heading-large)",
+                "use": "Section headings"
+            },
+            "medium": {
+                "css": "var(--ds-font-size-heading-medium)",
+                "use": "Card titles"
+            },
+            "small": {
+                "css": "var(--ds-font-size-heading-small)",
+                "use": "Subsections"
+            }
+        },
+        "body": {
+            "large": {
+                "css": "var(--ds-font-size-body-large)",
+                "use": "Lead paragraphs"
+            },
+            "medium": {
+                "css": "var(--ds-font-size-body-medium)",
+                "use": "Default body text"
+            },
+            "small": {
+                "css": "var(--ds-font-size-body-small)",
+                "use": "Captions, help text"
+            }
+        },
+        "lineHeight": {
+            "tight": "1.25",
+            "normal": "1.5",
+            "relaxed": "1.75"
+        }
+    },
+    "colors": {
+        "description": "Use data-color attribute, not CSS variables directly",
+        "semantic": {
+            "accent": {
+                "attribute": "data-color=\"accent\"",
+                "use": "Primary actions, links, focus states"
+            },
+            "neutral": {
+                "attribute": "data-color=\"neutral\"",
+                "use": "Default, secondary elements"
+            },
+            "success": {
+                "attribute": "data-color=\"success\"",
+                "use": "Positive feedback, confirmations"
+            },
+            "danger": {
+                "attribute": "data-color=\"danger\"",
+                "use": "Errors, destructive actions"
+            },
+            "warning": {
+                "attribute": "data-color=\"warning\"",
+                "use": "Cautions, pending states"
+            },
+            "info": {
+                "attribute": "data-color=\"info\"",
+                "use": "Informational messages"
+            }
+        },
+        "usage": "Always use data-color attribute on components, never hardcode colors"
+    },
+    "sizes": {
+        "description": "Component size variants",
+        "attribute": "data-size",
+        "values": {
+            "xsmall": {
+                "use": "Compact displays, dense tables"
+            },
+            "small": {
+                "use": "Secondary actions, tight layouts"
+            },
+            "medium": {
+                "use": "Default size for most components"
+            },
+            "large": {
+                "use": "Primary actions, hero elements"
+            },
+            "xlarge": {
+                "use": "Hero sections, splash screens"
+            }
+        }
+    },
+    "borderRadius": {
+        "tokens": {
+            "small": {
+                "css": "var(--ds-border-radius-small)",
+                "use": "Buttons, inputs"
+            },
+            "medium": {
+                "css": "var(--ds-border-radius-medium)",
+                "use": "Cards, modals"
+            },
+            "large": {
+                "css": "var(--ds-border-radius-large)",
+                "use": "Large panels"
+            },
+            "xlarge": {
+                "css": "var(--ds-border-radius-xlarge)",
+                "use": "Hero sections"
+            },
+            "full": {
+                "css": "var(--ds-border-radius-full)",
+                "use": "Avatars, pills"
+            }
+        }
+    },
+    "shadows": {
+        "tokens": {
+            "sm": {
+                "use": "Subtle elevation (buttons)"
+            },
+            "md": {
+                "use": "Cards, dropdowns"
+            },
+            "lg": {
+                "use": "Modals, dialogs"
+            },
+            "xl": {
+                "use": "Popovers, floating elements"
+            }
+        }
+    },
+    "xalaExtensions": {
+        "description": "Custom tokens extending Designsystemet",
+        "grid": {
+            "gapXs": "var(--ds-grid-gap-xs)",
+            "gapSm": "var(--ds-grid-gap-sm)",
+            "gapMd": "var(--ds-grid-gap-md)",
+            "gapLg": "var(--ds-grid-gap-lg)",
+            "gapXl": "var(--ds-grid-gap-xl)"
+        },
+        "layout": {
+            "sidebarWidth": "280px",
+            "sidebarCollapsed": "64px",
+            "headerHeight": "64px",
+            "drawerSm": "320px",
+            "drawerMd": "400px",
+            "drawerLg": "560px"
+        },
+        "maxWidth": {
+            "list": "1440px",
+            "detail": "960px",
+            "form": "720px",
+            "content": "800px",
+            "narrow": "560px"
+        }
+    },
+    "themes": {
+        "available": [
+            "xala",
+            "digilist",
+            "neutral"
+        ],
+        "default": "xala",
+        "switching": "Set data-theme attribute on root element",
+        "customization": "Override CSS variables in theme file"
+    }
+}

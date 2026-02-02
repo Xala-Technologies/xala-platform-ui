@@ -1,0 +1,250 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.common.catalog.json",
+    "title": "Common Components & Patterns",
+    "description": "Frequently used components: pagination, drawers, filters, modals, actions",
+    "version": "1.0.0",
+    "designTokens": {
+        "drawer": {
+            "widthSm": "320px",
+            "widthMd": "400px",
+            "widthLg": "560px",
+            "widthXl": "720px"
+        },
+        "modal": {
+            "widthSm": "400px",
+            "widthMd": "560px",
+            "widthLg": "720px",
+            "widthXl": "960px"
+        },
+        "pagination": {
+            "buttonSize": "36px",
+            "gap": "var(--ds-spacing-1)"
+        }
+    },
+    "types": [
+        {
+            "type": "RightDrawer",
+            "description": "Right-side slide-out panel",
+            "category": "layout",
+            "platformUi": "composed/Drawer",
+            "slots": [
+                "header",
+                "content",
+                "footer"
+            ],
+            "props": {
+                "width": "'sm' | 'md' | 'lg' | 'xl'",
+                "overlay": "boolean",
+                "closeOnEsc": "boolean",
+                "closeOnOverlay": "boolean"
+            },
+            "responsive": {
+                "mobile": "Full width overlay",
+                "desktop": "Fixed width, pushes content or overlay"
+            }
+        },
+        {
+            "type": "FilterDrawer",
+            "description": "Drawer with filter controls",
+            "category": "form",
+            "platformUi": "composed/FilterPanel",
+            "bindings": {
+                "filters": "vm.filters",
+                "applied": "vm.appliedFilters"
+            },
+            "props": {
+                "showApply": "boolean",
+                "showClear": "boolean",
+                "showSave": "boolean"
+            }
+        },
+        {
+            "type": "Pagination",
+            "description": "Page navigation with numbers and arrows",
+            "category": "navigation",
+            "platformUi": "composed/Pagination",
+            "bindings": {
+                "currentPage": "vm.page",
+                "totalPages": "vm.totalPages",
+                "pageSize": "vm.pageSize"
+            },
+            "props": {
+                "variant": "'numbers' | 'simple' | 'compact'",
+                "showPageSize": "boolean",
+                "pageSizes": "[10, 25, 50, 100]"
+            },
+            "responsive": {
+                "mobile": "Compact (prev/next + page indicator)",
+                "desktop": "Full with page numbers"
+            }
+        },
+        {
+            "type": "LoadMore",
+            "description": "Load more button for infinite lists",
+            "category": "navigation",
+            "platformUi": "composed/LoadMore",
+            "bindings": {
+                "hasMore": "vm.hasMore",
+                "loading": "vm.loadingMore"
+            },
+            "props": {
+                "variant": "'button' | 'auto'"
+            }
+        },
+        {
+            "type": "ActionMenu",
+            "description": "Dropdown menu with action items",
+            "category": "action",
+            "platformUi": "composed/ActionMenu",
+            "props": {
+                "items": "ActionItem[]",
+                "trigger": "'button' | 'icon' | 'custom'",
+                "position": "'bottom-start' | 'bottom-end'"
+            }
+        },
+        {
+            "type": "ActionButtonGroup",
+            "description": "Group of action buttons",
+            "category": "action",
+            "platformUi": "composed/ActionButtonGroup",
+            "props": {
+                "actions": "ActionDefinition[]",
+                "variant": "'default' | 'outline' | 'ghost'",
+                "size": "'sm' | 'md' | 'lg'"
+            }
+        },
+        {
+            "type": "QuickFilters",
+            "description": "Inline filter chips/tabs",
+            "category": "form",
+            "platformUi": "composed/FilterChipsBar",
+            "bindings": {
+                "filters": "vm.quickFilters",
+                "active": "vm.activeFilter"
+            },
+            "props": {
+                "variant": "'chips' | 'tabs' | 'toggle'"
+            }
+        },
+        {
+            "type": "SearchInput",
+            "description": "Search input with debounce",
+            "category": "form",
+            "platformUi": "composed/GlobalSearch",
+            "bindings": {
+                "value": "vm.searchQuery"
+            },
+            "props": {
+                "placeholder": "string",
+                "debounceMs": "300",
+                "clearable": "boolean"
+            }
+        },
+        {
+            "type": "DateFilter",
+            "description": "Date/date-range filter",
+            "category": "form",
+            "platformUi": "composed/DateRangePicker",
+            "bindings": {
+                "value": "vm.dateRange"
+            },
+            "props": {
+                "mode": "'single' | 'range'",
+                "presets": "('today' | 'week' | 'month' | 'quarter' | 'custom')[]"
+            }
+        },
+        {
+            "type": "StatusFilter",
+            "description": "Status/enum filter dropdown",
+            "category": "form",
+            "platformUi": "composed/SearchableSelect",
+            "bindings": {
+                "value": "vm.statusFilter",
+                "options": "vm.statusOptions"
+            },
+            "props": {
+                "multiple": "boolean",
+                "placeholder": "string"
+            }
+        },
+        {
+            "type": "SortDropdown",
+            "description": "Sort options dropdown",
+            "category": "form",
+            "platformUi": "composed/SortDropdown",
+            "bindings": {
+                "sortBy": "vm.sortBy",
+                "sortOrder": "vm.sortOrder"
+            },
+            "props": {
+                "options": "SortOption[]"
+            }
+        },
+        {
+            "type": "ViewToggle",
+            "description": "Toggle between grid/list/table views",
+            "category": "action",
+            "platformUi": "composed/ViewToggle",
+            "bindings": {
+                "view": "vm.currentView"
+            },
+            "props": {
+                "views": "('grid' | 'list' | 'table')[]"
+            }
+        },
+        {
+            "type": "BulkActions",
+            "description": "Actions bar for selected items",
+            "category": "action",
+            "platformUi": "patterns/SelectionActionsBar",
+            "bindings": {
+                "selectedCount": "vm.selectedCount",
+                "selectedIds": "vm.selectedIds"
+            },
+            "props": {
+                "actions": "ActionDefinition[]",
+                "variant": "'floating' | 'inline'"
+            }
+        },
+        {
+            "type": "RefreshButton",
+            "description": "Refresh data button with loading state",
+            "category": "action",
+            "platformUi": "composed/RefreshButton",
+            "bindings": {
+                "loading": "vm.refreshing"
+            },
+            "props": {
+                "autoRefresh": "boolean",
+                "interval": "number"
+            }
+        },
+        {
+            "type": "ExportButton",
+            "description": "Export data to CSV/Excel/PDF",
+            "category": "action",
+            "platformUi": "composed/ExportButton",
+            "props": {
+                "formats": "('csv' | 'excel' | 'pdf')[]"
+            }
+        }
+    ],
+    "enum": [
+        "RightDrawer",
+        "FilterDrawer",
+        "Pagination",
+        "LoadMore",
+        "ActionMenu",
+        "ActionButtonGroup",
+        "QuickFilters",
+        "SearchInput",
+        "DateFilter",
+        "StatusFilter",
+        "SortDropdown",
+        "ViewToggle",
+        "BulkActions",
+        "RefreshButton",
+        "ExportButton"
+    ]
+}

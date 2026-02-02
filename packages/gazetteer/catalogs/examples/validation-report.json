@@ -1,0 +1,405 @@
+{
+  "generatedAt": "2026-01-31T12:07:01.948Z",
+  "totalExamples": 1559,
+  "totalIssues": 376,
+  "invalidComponents": [
+    "Label",
+    "SaveIcon",
+    "Dialog",
+    "ConsentManager",
+    "DataExportCard",
+    "DeleteAccountCard",
+    "ConsentSettings",
+    "DataSubjectRequestForm",
+    "ConsentPopup",
+    "RequestStatusBadge",
+    "DirectionContext",
+    "React",
+    "ErrorBoundary",
+    "ErrorFallback",
+    "ThemeProvider",
+    "I18nProvider",
+    "RuntimeProvider",
+    "AuthProvider",
+    "TenantProvider",
+    "ApiProvider",
+    "GazetteerProvider",
+    "BrowserRouter",
+    "AppRoutes",
+    "LoadingSkeleton",
+    "ProjectList",
+    "TenantSwitcher",
+    "Breadcrumbs",
+    "PlusIcon",
+    "Pagination",
+    "SearchIcon",
+    "FolderIcon",
+    "FileIcon",
+    "CheckCircleIcon",
+    "AlertTriangleIcon",
+    "InfoIcon",
+    "InboxIcon",
+    "GridIcon",
+    "Dropdown",
+    "Search",
+    "Toast",
+    "Suspense",
+    "HeavyComponent",
+    "Routes",
+    "Route",
+    "DashboardPage",
+    "SettingsPage"
+  ],
+  "issues": [
+    {
+      "exampleId": 0,
+      "title": "Accessible Form Field",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"email-input\">Email Address</Label>\n  <Textfi",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 1,
+      "title": "Accessible Icon Button",
+      "invalidComponent": "SaveIcon",
+      "code": "<Button \n  data-color=\"accent\" \n  data-size=\"medium\"\n  aria-label=\"Save changes\"\n  onClick={handleSa",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 2,
+      "title": "Accessible Error Message",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"password-input\">Password</Label>\n  <Textfiel",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 4,
+      "title": "Accessible Modal Dialog",
+      "invalidComponent": "Dialog",
+      "code": "<Dialog \n  open={isOpen} \n  onClose={handleClose}\n  aria-labelledby=\"modal-title\"\n  aria-describedby",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 9,
+      "title": "Focus Management on Modal Open",
+      "invalidComponent": "Dialog",
+      "code": "function Modal({ open, onClose, children }) {\n  const modalRef = useRef(null);\n  \n  useEffect(() => ",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 12,
+      "title": "Accessible Text Input",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"textfield-field\">Field Label</Label>\n  <Text",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 13,
+      "title": "Accessible Textarea",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"textarea-field\">Field Label</Label>\n  <Texta",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 14,
+      "title": "Accessible Select",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"select-field\">Field Label</Label>\n  <Select ",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 15,
+      "title": "Accessible Checkbox",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"checkbox-field\">Field Label</Label>\n  <Check",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 16,
+      "title": "Accessible Radio",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"radio-field\">Field Label</Label>\n  <Radio \n ",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 17,
+      "title": "Accessible Switch",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"switch-field\">Field Label</Label>\n  <Switch ",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 29,
+      "title": "Keyboard Accessible Dialog",
+      "invalidComponent": "Dialog",
+      "code": "<Dialog\n  open={isOpen}\n  onClose={handleClose}\n  onKeyDown={(e) => {\n    if (e.key === 'Escape') ha",
+      "file": "accessibility.examples.json"
+    },
+    {
+      "exampleId": 8,
+      "title": "Button with Icon",
+      "invalidComponent": "SaveIcon",
+      "code": "<Button data-color=\"accent\" data-size=\"medium\">\n  <Stack direction=\"horizontal\" gap=\"xs\" align=\"cent",
+      "file": "components.examples.json"
+    },
+    {
+      "exampleId": 0,
+      "title": "Text Input",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 1,
+      "title": "Textarea",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 2,
+      "title": "Select",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 3,
+      "title": "Checkbox",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Checkbox id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 4,
+      "title": "Radio",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Radio id=\"fiel",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 5,
+      "title": "Switch",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Switch id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 6,
+      "title": "Text Input with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"email\">Email</Label>\n  <Textfield \n    id=\"e",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 7,
+      "title": "Form with 2-Column Grid",
+      "invalidComponent": "Label",
+      "code": "<Grid cols={{ base: 1, md: 2 }} gap=\"md\">\n  <Stack direction=\"vertical\" gap=\"xs\">\n    <Label htmlFor",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 9,
+      "title": "Textfield with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 10,
+      "title": "Textfield Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 11,
+      "title": "Textarea with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 12,
+      "title": "Textarea Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 13,
+      "title": "Select with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 14,
+      "title": "Select Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 15,
+      "title": "Checkbox with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Checkbox id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 16,
+      "title": "Checkbox Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Checkbox id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 17,
+      "title": "Radio with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Radio id=\"fiel",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 18,
+      "title": "Radio Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Radio id=\"fiel",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 19,
+      "title": "Switch with Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Switch id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 20,
+      "title": "Switch Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Switch id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 21,
+      "title": "Form with 3-Column Grid",
+      "invalidComponent": "Label",
+      "code": "<Grid cols={{ base: 1, md: 2, lg: 3 }} gap=\"md\">\n  <Stack direction=\"vertical\" gap=\"xs\">\n    <Label ",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 22,
+      "title": "Text Input Default",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 23,
+      "title": "Text Input Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 24,
+      "title": "Text Input Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 25,
+      "title": "Text Input Required",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textfield id=\"",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 26,
+      "title": "Textarea Default",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 27,
+      "title": "Textarea Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 28,
+      "title": "Textarea Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 29,
+      "title": "Textarea Required",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Textarea id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 30,
+      "title": "Select Default",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 31,
+      "title": "Select Error",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 32,
+      "title": "Select Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 33,
+      "title": "Select Required",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Select id=\"fie",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 34,
+      "title": "Checkbox Default",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Checkbox id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 35,
+      "title": "Checkbox Disabled",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Checkbox id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 36,
+      "title": "Checkbox Required",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Checkbox id=\"f",
+      "file": "forms.examples.json"
+    },
+    {
+      "exampleId": 37,
+      "title": "Radio Default",
+      "invalidComponent": "Label",
+      "code": "<Stack direction=\"vertical\" gap=\"xs\">\n  <Label htmlFor=\"field\">Field Label</Label>\n  <Radio id=\"fiel",
+      "file": "forms.examples.json"
+    }
+  ]
+}

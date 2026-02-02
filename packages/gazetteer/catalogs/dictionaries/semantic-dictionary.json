@@ -1,0 +1,195 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/semantic-dictionary.json",
+    "title": "Semantic Dictionary - Intent to Construct Mapping",
+    "description": "Maps semantic intents to platform constructs for AI-driven development",
+    "version": "1.0.0",
+    "intents": {
+        "page": {
+            "scaffold": "PageShell",
+            "catalog": "widgets.layout.catalog.json",
+            "defaultLayout": "list",
+            "requiredSlots": [
+                "content"
+            ]
+        },
+        "form": {
+            "scaffold": "FormScaffold",
+            "catalog": "widgets.crud.catalog.json",
+            "defaultLayout": "form",
+            "shellType": "authenticated",
+            "requiredSlots": [
+                "sections",
+                "actions"
+            ]
+        },
+        "create": {
+            "scaffold": "DrawerForm",
+            "catalog": "widgets.crud.catalog.json",
+            "defaultLayout": "form",
+            "shellType": "authenticated",
+            "position": "right"
+        },
+        "edit": {
+            "scaffold": "DrawerForm",
+            "catalog": "widgets.crud.catalog.json",
+            "defaultLayout": "form",
+            "shellType": "authenticated",
+            "position": "right"
+        },
+        "delete": {
+            "widget": "ConfirmDialog",
+            "catalog": "widgets.crud.catalog.json",
+            "variant": "danger"
+        },
+        "table": {
+            "scaffold": "DataTableBundle",
+            "catalog": "widgets.tables.catalog.json",
+            "defaultLayout": "list",
+            "shellType": "authenticated",
+            "requiredSlots": [
+                "toolbar",
+                "table",
+                "pagination"
+            ]
+        },
+        "list": {
+            "scaffold": "DataTableBundle",
+            "catalog": "widgets.tables.catalog.json",
+            "defaultLayout": "list",
+            "shellType": "authenticated"
+        },
+        "filter": {
+            "widget": "FilterBar",
+            "catalog": "widgets.tables.catalog.json",
+            "advancedWidget": "FilterPanel"
+        },
+        "detail": {
+            "scaffold": "DetailPageShell",
+            "catalog": "widgets.detail.catalog.json",
+            "defaultLayout": "detail",
+            "shellType": "authenticated",
+            "requiredSlots": [
+                "header",
+                "content"
+            ]
+        },
+        "view": {
+            "scaffold": "DetailPageShell",
+            "catalog": "widgets.detail.catalog.json",
+            "defaultLayout": "detail"
+        },
+        "dashboard": {
+            "scaffold": "DashboardShell",
+            "catalog": "widgets.dashboard.catalog.json",
+            "defaultLayout": "dashboard",
+            "shellType": "authenticated",
+            "requiredSlots": [
+                "header",
+                "stats",
+                "charts"
+            ]
+        },
+        "analytics": {
+            "scaffold": "DashboardShell",
+            "catalog": "widgets.dashboard.catalog.json",
+            "defaultLayout": "dashboard"
+        },
+        "wizard": {
+            "scaffold": "WizardScaffold",
+            "catalog": "widgets.wizard.catalog.json",
+            "defaultLayout": "wizard",
+            "shellType": "minimal",
+            "requiredSlots": [
+                "sidebar",
+                "content",
+                "footer"
+            ]
+        },
+        "onboarding": {
+            "scaffold": "WizardScaffold",
+            "catalog": "widgets.wizard.catalog.json",
+            "defaultLayout": "wizard",
+            "shellType": "minimal"
+        },
+        "empty": {
+            "widget": "EmptyState",
+            "catalog": "widgets.feedback.catalog.json"
+        },
+        "loading": {
+            "widget": "LoadingSkeleton",
+            "catalog": "widgets.feedback.catalog.json"
+        },
+        "error": {
+            "widget": "EmptyState",
+            "catalog": "widgets.feedback.catalog.json",
+            "illustration": "error"
+        },
+        "confirm": {
+            "widget": "ConfirmDialog",
+            "catalog": "widgets.crud.catalog.json"
+        },
+        "notify": {
+            "widget": "Toast",
+            "catalog": "widgets.feedback.catalog.json"
+        }
+    },
+    "layoutMapping": {
+        "list": {
+            "maxWidth": "1440px",
+            "grid": "Grid cols={{ base: 1 }}",
+            "spacing": "var(--ds-spacing-4)"
+        },
+        "detail": {
+            "maxWidth": "960px",
+            "grid": "Grid cols={{ base: 1, lg: '2fr 1fr' }}",
+            "spacing": "var(--ds-spacing-6)"
+        },
+        "form": {
+            "maxWidth": "720px",
+            "grid": "Grid cols={{ base: 1, md: 2 }}",
+            "spacing": "var(--ds-spacing-4)"
+        },
+        "dashboard": {
+            "maxWidth": "1440px",
+            "grid": "Grid autoFit minColWidth='320px'",
+            "spacing": "var(--ds-spacing-6)"
+        },
+        "wizard": {
+            "maxWidth": "640px",
+            "grid": "Stack gap='lg' direction='vertical'",
+            "spacing": "var(--ds-spacing-8)"
+        }
+    },
+    "shellMapping": {
+        "public": {
+            "auth": false,
+            "description": "No authentication required",
+            "useFor": [
+                "landing",
+                "marketing",
+                "login",
+                "signup"
+            ]
+        },
+        "authenticated": {
+            "auth": true,
+            "description": "Requires authentication",
+            "useFor": [
+                "dashboard",
+                "settings",
+                "admin",
+                "crud"
+            ]
+        },
+        "minimal": {
+            "auth": false,
+            "description": "Minimal chrome, focus on content",
+            "useFor": [
+                "wizard",
+                "onboarding",
+                "modals"
+            ]
+        }
+    }
+}

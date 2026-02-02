@@ -1,0 +1,263 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.navigation.catalog.json",
+    "title": "Navigation & Header Widgets",
+    "description": "Header, navigation, sidebar, user menu, and search components",
+    "version": "1.0.0",
+    "designTokens": {
+        "breakpoints": {
+            "mobile": "< 640px",
+            "sm": ">= 640px",
+            "md": ">= 768px",
+            "lg": ">= 1024px",
+            "xl": ">= 1280px"
+        },
+        "header": {
+            "height": "64px",
+            "mobileHeight": "56px",
+            "zIndex": "100"
+        },
+        "sidebar": {
+            "width": "280px",
+            "collapsedWidth": "64px",
+            "mobileWidth": "100%"
+        },
+        "spacing": {
+            "navGap": "var(--ds-spacing-2)",
+            "headerPadding": "var(--ds-spacing-4)",
+            "sidebarPadding": "var(--ds-spacing-3)"
+        }
+    },
+    "types": [
+        {
+            "type": "AppHeader",
+            "description": "Main application header with logo, search, user menu",
+            "category": "navigation",
+            "platformUi": "composed/header",
+            "slots": [
+                "logo",
+                "search",
+                "nav",
+                "actions",
+                "userMenu"
+            ],
+            "props": {
+                "sticky": "boolean",
+                "transparent": "boolean",
+                "variant": "'default' | 'compact' | 'minimal'"
+            },
+            "responsive": {
+                "mobile": "Hamburger menu, collapsible search",
+                "desktop": "Full nav, inline search"
+            }
+        },
+        {
+            "type": "LogoSection",
+            "description": "Logo with optional text and link",
+            "category": "navigation",
+            "platformUi": "primitives/Logo",
+            "props": {
+                "src": "string",
+                "alt": "string",
+                "href": "string",
+                "showText": "boolean"
+            }
+        },
+        {
+            "type": "GlobalSearch",
+            "description": "Global search input with suggestions",
+            "category": "search",
+            "platformUi": "composed/GlobalSearch",
+            "props": {
+                "placeholder": "string",
+                "shortcut": "'/' | 'Cmd+K'",
+                "variant": "'inline' | 'modal' | 'expandable'"
+            },
+            "bindings": {
+                "query": "vm.searchQuery",
+                "results": "vm.searchResults"
+            },
+            "responsive": {
+                "mobile": "Icon trigger, expands to full width",
+                "desktop": "Inline input with 280px width"
+            }
+        },
+        {
+            "type": "CommandPalette",
+            "description": "Keyboard-activated command palette (Cmd+K)",
+            "category": "search",
+            "platformUi": "composed/CommandPalette",
+            "bindings": {
+                "commands": "vm.commands",
+                "recentItems": "vm.recent"
+            },
+            "props": {
+                "shortcut": "string",
+                "placeholder": "string"
+            }
+        },
+        {
+            "type": "UserMenu",
+            "description": "User dropdown with avatar and actions",
+            "category": "navigation",
+            "platformUi": "composed/UserMenu",
+            "bindings": {
+                "user": "vm.currentUser"
+            },
+            "slots": [
+                "avatar",
+                "menuItems"
+            ],
+            "props": {
+                "showName": "boolean",
+                "showRole": "boolean"
+            },
+            "responsive": {
+                "mobile": "Avatar only",
+                "desktop": "Avatar + name"
+            }
+        },
+        {
+            "type": "NavLinks",
+            "description": "Horizontal navigation links",
+            "category": "navigation",
+            "platformUi": "composed/navigation",
+            "bindings": {
+                "items": "vm.navItems",
+                "active": "vm.activePath"
+            },
+            "props": {
+                "variant": "'default' | 'pills' | 'underline'"
+            },
+            "responsive": {
+                "mobile": "Hidden, moves to hamburger",
+                "desktop": "Visible inline"
+            }
+        },
+        {
+            "type": "Sidebar",
+            "description": "Left sidebar navigation",
+            "category": "navigation",
+            "platformUi": "primitives/Sidebar",
+            "slots": [
+                "header",
+                "nav",
+                "footer"
+            ],
+            "bindings": {
+                "items": "vm.sidebarItems",
+                "collapsed": "vm.sidebarCollapsed"
+            },
+            "props": {
+                "collapsible": "boolean",
+                "position": "'left' | 'right'",
+                "variant": "'default' | 'compact'"
+            },
+            "responsive": {
+                "mobile": "Overlay drawer, hidden by default",
+                "desktop": "Persistent, collapsible"
+            }
+        },
+        {
+            "type": "MobileNav",
+            "description": "Mobile hamburger menu overlay",
+            "category": "navigation",
+            "platformUi": "composed/mobile-nav",
+            "bindings": {
+                "items": "vm.navItems",
+                "open": "vm.mobileNavOpen"
+            },
+            "props": {
+                "position": "'left' | 'right' | 'bottom'"
+            }
+        },
+        {
+            "type": "BottomNav",
+            "description": "Mobile bottom navigation bar",
+            "category": "navigation",
+            "platformUi": "composed/bottom-navigation",
+            "bindings": {
+                "items": "vm.bottomNavItems",
+                "active": "vm.activeTab"
+            },
+            "props": {
+                "showLabels": "boolean",
+                "maxItems": "4 | 5"
+            },
+            "responsive": {
+                "mobile": "Visible",
+                "desktop": "Hidden"
+            }
+        },
+        {
+            "type": "Breadcrumbs",
+            "description": "Page breadcrumb trail",
+            "category": "navigation",
+            "platformUi": "composed/Breadcrumbs",
+            "bindings": {
+                "items": "vm.breadcrumbs"
+            },
+            "props": {
+                "separator": "'/' | '>' | 'chevron'",
+                "maxItems": "number"
+            },
+            "responsive": {
+                "mobile": "Collapsed with dropdown",
+                "desktop": "Full trail"
+            }
+        },
+        {
+            "type": "LanguageSwitcher",
+            "description": "Language/locale selector",
+            "category": "settings",
+            "platformUi": "composed/LanguageSwitcher",
+            "bindings": {
+                "current": "vm.locale",
+                "available": "vm.availableLocales"
+            },
+            "props": {
+                "variant": "'dropdown' | 'flags' | 'text'"
+            }
+        },
+        {
+            "type": "ProjectSelector",
+            "description": "Project/workspace switcher dropdown",
+            "category": "navigation",
+            "platformUi": "composed/ProjectSelector",
+            "bindings": {
+                "current": "vm.currentProject",
+                "projects": "vm.projects"
+            },
+            "props": {
+                "showCreate": "boolean"
+            }
+        },
+        {
+            "type": "NotificationBell",
+            "description": "Notification icon with badge",
+            "category": "feedback",
+            "platformUi": "blocks/NotificationBell",
+            "bindings": {
+                "count": "vm.unreadCount"
+            },
+            "props": {
+                "panelPosition": "'dropdown' | 'drawer'"
+            }
+        }
+    ],
+    "enum": [
+        "AppHeader",
+        "LogoSection",
+        "GlobalSearch",
+        "CommandPalette",
+        "UserMenu",
+        "NavLinks",
+        "Sidebar",
+        "MobileNav",
+        "BottomNav",
+        "Breadcrumbs",
+        "LanguageSwitcher",
+        "ProjectSelector",
+        "NotificationBell"
+    ]
+}

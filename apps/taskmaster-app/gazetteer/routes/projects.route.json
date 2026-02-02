@@ -1,0 +1,17 @@
+{
+  "$schema": "@xala-technologies/gazetteer/schemas/route.spec.schema.json",
+  "routeId": "projects",
+  "path": "/projects",
+  "titleKey": "projects.title",
+  "icon": "page",
+  "pageRef": "projects",
+  "access": {
+    "public": false,
+    "roles": []
+  },
+  "navigation": {
+    "labelKey": "nav.projects",
+    "group": "main",
+    "order": 3
+  }
+}

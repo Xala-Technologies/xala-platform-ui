@@ -238,10 +238,10 @@ export type {
   ConditionField,
   ConditionFieldOption,
   ConditionOperator,
-  ConditionFieldType,
   LogicOperator,
   UseTableConditionsReturn,
 } from './TableConditionsFilter';
+
 
 // Filter Chips Bar (active filters display)
 export { FilterChipsBar } from './FilterChipsBar';

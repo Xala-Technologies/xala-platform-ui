@@ -3,9 +3,20 @@
  *
  * Centralized login page that supports different app roles.
  * Pure presentational - auth logic is handled via callbacks.
+ *
+ * DESIGN SYSTEM COMPLIANT: Uses only Designsystemet components.
  */
 
 import React, { useState } from 'react';
+import {
+  Card,
+  Heading,
+  Paragraph,
+  Textfield,
+  Button,
+  Fieldset,
+} from '@digdir/designsystemet-react';
+import { Stack } from '../../primitives';
 import type { AppRole, AppFeatures } from '../types';
 
 export interface UniversalLoginPageProps {
@@ -26,7 +37,6 @@ export function UniversalLoginPage({
   role,
   features,
   onDemoLogin,
-  onLogin,
 }: UniversalLoginPageProps): React.ReactElement {
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
@@ -47,135 +57,79 @@ export function UniversalLoginPage({
   const isDemoEnabled = features.demoLogin !== false;
 
   return (
-    <div
+    <Stack
       data-testid="login-page"
+      direction="vertical"
+      align="center"
+      justify="center"
       style={{
-        display: 'flex',
         minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: 'var(--ds-color-neutral-background-default)',
         padding: 'var(--ds-spacing-6)',
       }}
     >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '400px',
-          padding: 'var(--ds-spacing-6)',
-          backgroundColor: 'var(--ds-color-neutral-surface-default)',
-          borderRadius: 'var(--ds-border-radius-lg)',
-          boxShadow: 'var(--ds-shadow-md)',
-        }}
-      >
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 'var(--ds-spacing-6)' }}>
-          <h1
+      <Card data-size="md" style={{ maxWidth: '400px', width: '100%' }}>
+        <Stack direction="vertical" spacing={24}>
+          {/* Header */}
+          <Stack direction="vertical" spacing={8} align="center">
+            <Heading level={1} data-size="lg">
+              {appName}
+            </Heading>
+            <Paragraph data-size="sm">Sign in to your account</Paragraph>
+          </Stack>
+
+          {/* Demo login form */}
+          {isDemoEnabled && (
+            <form onSubmit={handleDemoSubmit}>
+              <Fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
+                <Stack direction="vertical" spacing={16}>
+                  <Textfield
+                    data-testid="demo-name"
+                    label="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name"
+                    disabled={isLoading}
+                    style={{ width: '100%' }}
+                  />
+
+                  <Textfield
+                    data-testid="demo-email"
+                    label="Email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your.email@example.com"
+                    disabled={isLoading}
+                    style={{ width: '100%' }}
+                  />
+
+                  <Button
+                    data-testid="demo-submit"
+                    type="submit"
+                    variant="primary"
+                    disabled={isLoading}
+                    style={{ width: '100%' }}
+                  >
+                    {isLoading ? 'Signing in...' : 'Sign in (Demo)'}
+                  </Button>
+                </Stack>
+              </Fieldset>
+            </form>
+          )}
+
+          {/* Role indicator */}
+          <Paragraph
+            data-size="xs"
             style={{
-              fontSize: 'var(--ds-font-size-2xl)',
-              fontWeight: 'var(--ds-font-weight-semibold)',
-              marginBottom: 'var(--ds-spacing-2)',
+              textAlign: 'center',
+              color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {appName}
-          </h1>
-          <p style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            Sign in to your account
-          </p>
-        </div>
-
-        {/* Demo login form */}
-        {isDemoEnabled && (
-          <form onSubmit={handleDemoSubmit}>
-            <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              <label
-                htmlFor="demo-name"
-                style={{
-                  display: 'block',
-                  marginBottom: 'var(--ds-spacing-1)',
-                  fontSize: 'var(--ds-font-size-sm)',
-                  fontWeight: 'var(--ds-font-weight-medium)',
-                }}
-              >
-                Name
-              </label>
-              <input
-                id="demo-name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                style={{
-                  width: '100%',
-                  padding: 'var(--ds-spacing-3)',
-                  borderRadius: 'var(--ds-border-radius-md)',
-                  border: '1px solid var(--ds-color-neutral-border-default)',
-                  fontSize: 'var(--ds-font-size-md)',
-                }}
-              />
-            </div>
-
-            <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              <label
-                htmlFor="demo-email"
-                style={{
-                  display: 'block',
-                  marginBottom: 'var(--ds-spacing-1)',
-                  fontSize: 'var(--ds-font-size-sm)',
-                  fontWeight: 'var(--ds-font-weight-medium)',
-                }}
-              >
-                Email
-              </label>
-              <input
-                id="demo-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your.email@example.com"
-                style={{
-                  width: '100%',
-                  padding: 'var(--ds-spacing-3)',
-                  borderRadius: 'var(--ds-border-radius-md)',
-                  border: '1px solid var(--ds-color-neutral-border-default)',
-                  fontSize: 'var(--ds-font-size-md)',
-                }}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              style={{
-                width: '100%',
-                padding: 'var(--ds-spacing-3)',
-                borderRadius: 'var(--ds-border-radius-md)',
-                border: 'none',
-                backgroundColor: 'var(--ds-color-accent-base-default)',
-                color: 'var(--ds-color-accent-contrast-default)',
-                fontSize: 'var(--ds-font-size-md)',
-                fontWeight: 'var(--ds-font-weight-medium)',
-                cursor: isLoading ? 'wait' : 'pointer',
-                opacity: isLoading ? 0.7 : 1,
-              }}
-            >
-              {isLoading ? 'Signing in...' : 'Sign in (Demo)'}
-            </button>
-          </form>
-        )}
-
-        {/* Role indicator */}
-        <div
-          style={{
-            marginTop: 'var(--ds-spacing-4)',
-            textAlign: 'center',
-            fontSize: 'var(--ds-font-size-xs)',
-            color: 'var(--ds-color-neutral-text-subtle)',
-          }}
-        >
-          Mode: {role}
-        </div>
-      </div>
-    </div>
+            Mode: {role}
+          </Paragraph>
+        </Stack>
+      </Card>
+    </Stack>
   );
 }

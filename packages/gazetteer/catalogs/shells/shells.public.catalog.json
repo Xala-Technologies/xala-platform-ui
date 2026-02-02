@@ -1,0 +1,162 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/shells.public.catalog.json",
+    "title": "Public Website Shell Widgets",
+    "description": "Widgets for public-facing pages: landing, marketing, pricing",
+    "version": "1.0.0",
+    "shellType": "public",
+    "auth": false,
+    "designTokens": {
+        "grid": {
+            "hero": "Stack gap='xl' direction='vertical' align='center'",
+            "features": "Grid cols={{ base: 1, md: 2, lg: 3 }} gap='lg'",
+            "twoColumn": "Grid cols={{ base: 1, lg: 2 }} gap='xl'",
+            "pricing": "Grid cols={{ base: 1, md: 3 }} gap='md'"
+        },
+        "spacing": {
+            "sectionPadding": "var(--ds-spacing-10)",
+            "contentGap": "var(--ds-spacing-6)",
+            "heroGap": "var(--ds-spacing-8)"
+        },
+        "maxWidth": {
+            "content": "1280px",
+            "narrow": "720px",
+            "hero": "960px"
+        }
+    },
+    "types": [
+        {
+            "type": "PublicPageShell",
+            "description": "Public page layout with header, footer, no sidebar",
+            "category": "scaffold",
+            "platformUi": "shells/AppLayout",
+            "slots": [
+                "header",
+                "main",
+                "footer"
+            ],
+            "props": {
+                "navbar": "NavbarConfig",
+                "footer": "FooterConfig",
+                "transparent": "boolean"
+            }
+        },
+        {
+            "type": "HeroBanner",
+            "description": "Full-width hero section with headline, CTA",
+            "category": "layout",
+            "platformUi": "blocks/HeroBanner",
+            "props": {
+                "titleKey": "string",
+                "subtitleKey": "string",
+                "primaryAction": "ActionDefinition",
+                "secondaryAction": "ActionDefinition",
+                "backgroundImage": "string",
+                "variant": "'center' | 'left' | 'split'"
+            }
+        },
+        {
+            "type": "FeatureGrid",
+            "description": "Grid of feature cards with icons",
+            "category": "layout",
+            "platformUi": "blocks/FeatureGrid",
+            "bindings": {
+                "features": "vm.features"
+            },
+            "props": {
+                "columns": "2 | 3 | 4",
+                "variant": "'card' | 'icon' | 'minimal'"
+            }
+        },
+        {
+            "type": "PricingTable",
+            "description": "Pricing plans comparison",
+            "category": "data",
+            "platformUi": "blocks/PricingTable",
+            "bindings": {
+                "plans": "vm.pricingPlans"
+            },
+            "props": {
+                "highlighted": "string",
+                "toggleAnnual": "boolean"
+            }
+        },
+        {
+            "type": "TestimonialCarousel",
+            "description": "Customer testimonials carousel",
+            "category": "social",
+            "platformUi": "blocks/TestimonialCarousel",
+            "bindings": {
+                "testimonials": "vm.testimonials"
+            }
+        },
+        {
+            "type": "CTASection",
+            "description": "Call-to-action section with button",
+            "category": "layout",
+            "platformUi": "blocks/CTASection",
+            "props": {
+                "titleKey": "string",
+                "descriptionKey": "string",
+                "primaryAction": "ActionDefinition",
+                "variant": "'accent' | 'neutral' | 'gradient'"
+            }
+        },
+        {
+            "type": "PublicNavbar",
+            "description": "Top navigation bar for public pages",
+            "category": "navigation",
+            "platformUi": "composed/header",
+            "props": {
+                "logoSrc": "string",
+                "navItems": "NavItem[]",
+                "ctaAction": "ActionDefinition"
+            }
+        },
+        {
+            "type": "PublicFooter",
+            "description": "Site footer with links, social, legal",
+            "category": "navigation",
+            "platformUi": "blocks/Footer",
+            "props": {
+                "columns": "FooterColumn[]",
+                "social": "SocialLink[]",
+                "legal": "LegalLink[]"
+            }
+        },
+        {
+            "type": "ImageSlider",
+            "description": "Image carousel/slider",
+            "category": "media",
+            "platformUi": "blocks/ImageSlider",
+            "bindings": {
+                "images": "vm.images"
+            },
+            "props": {
+                "autoPlay": "boolean",
+                "interval": "number"
+            }
+        },
+        {
+            "type": "FAQAccordion",
+            "description": "FAQ section with expandable items",
+            "category": "content",
+            "platformUi": "composed/Accordion",
+            "bindings": {
+                "items": "vm.faqItems"
+            }
+        }
+    ],
+    "enum": [
+        "PublicPageShell",
+        "HeroBanner",
+        "FeatureGrid",
+        "PricingTable",
+        "TestimonialCarousel",
+        "CTASection",
+        "PublicNavbar",
+        "PublicFooter",
+        "ImageSlider",
+        "FAQAccordion"
+    ]
+}

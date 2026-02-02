@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.dev/catalogs/gazetteer/examples/i18n.examples.json",
+  "title": "I18n Examples",
+  "description": "28 i18n examples for @xala-technologies/platform-ui",
+  "version": "1.0.0",
+  "generatedAt": "2026-01-31T12:03:17.171Z",
+  "category": "i18n",
+  "totalExamples": 28,
+  "examples": [
+    {
+      "category": "i18n",
+      "subcategory": "text",
+      "title": "Internationalized Text",
+      "description": "Text component ready for i18n - receives translated text via props",
+      "code": "<Text variant=\"body\" size=\"md\">\n  {t('common.welcome')}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Translation handled by platform package, UI receives pre-translated text",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "buttons",
+      "title": "Internationalized Button",
+      "description": "Button with translated label passed via props",
+      "code": "<Button data-color=\"accent\" data-size=\"medium\" onClick={handleClick}>\n  {t('actions.save')}\n</Button>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation key resolved by platform package before rendering",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "forms",
+      "title": "Internationalized Form",
+      "description": "Form with all text content internationalized",
+      "code": "<Stack direction=\"vertical\" gap=\"md\">\n  <Stack direction=\"vertical\" gap=\"xs\">\n    <Label htmlFor=\"name\">{t('forms.name.label')}</Label>\n    <Textfield \n      id=\"name\"\n      data-size=\"medium\"\n      placeholder={t('forms.name.placeholder')}\n    />\n  </Stack>\n  <Stack direction=\"horizontal\" justify=\"end\" gap=\"sm\">\n    <Button data-variant=\"tertiary\">{t('actions.cancel')}</Button>\n    <Button data-color=\"accent\">{t('actions.save')}</Button>\n  </Stack>\n</Stack>",
+      "platformUi": "@digdir/designsystemet-react + primitives/Stack",
+      "note": "All user-facing text uses translation keys",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "rtl",
+      "title": "RTL-Aware Layout",
+      "description": "Layout that adapts to RTL languages using DirectionContext",
+      "code": "<DirectionContext.Provider value={direction}>\n  <Stack direction=\"horizontal\" gap=\"sm\">\n    <Button data-color=\"accent\">{t('actions.save')}</Button>\n    <Button data-variant=\"tertiary\">{t('actions.cancel')}</Button>\n  </Stack>\n</DirectionContext.Provider>",
+      "platformUi": "primitives/Stack + provider/DirectionContext",
+      "note": "DirectionContext automatically handles RTL layout adjustments",
+      "compliance": [
+        "i18n",
+        "RTL"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Date Display",
+      "description": "Date displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"sm\">\n  {new Intl.DateTimeFormat(locale, {\n    year: 'numeric',\n    month: 'long',\n    day: 'numeric'\n  }).format(date)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.DateTimeFormat for locale-aware date formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "pluralization",
+      "title": "Pluralized Text",
+      "description": "Text with proper pluralization handling",
+      "code": "<Text variant=\"body\" size=\"md\">\n  {t('messages.itemCount', { count: itemCount })}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Translation system handles pluralization rules per locale",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Number Formatting",
+      "description": "Number displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"md\">\n  {new Intl.NumberFormat(locale, {\n    style: 'currency',\n    currency: 'NOK'\n  }).format(amount)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.NumberFormat for locale-aware number/currency formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Time Display",
+      "description": "Time displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"sm\">\n  {new Intl.DateTimeFormat(locale, {\n    hour: '2-digit',\n    minute: '2-digit',\n    hour12: false\n  }).format(time)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.DateTimeFormat for locale-aware time formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "language-switcher",
+      "title": "Language Switcher",
+      "description": "Component for switching between available languages",
+      "code": "<LanguageSwitcher\n  currentLanguage={currentLanguage}\n  availableLanguages={availableLanguages}\n  onLanguageChange={handleLanguageChange}\n  labels={{\n    label: 'Language',\n    ariaLabel: 'Select language'\n  }}\n/>",
+      "platformUi": "composed/LanguageSwitcher",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "button",
+      "title": "Internationalized Button",
+      "description": "Button with translated content",
+      "code": "<Button {t('actions.save')}>\n  {t('actions.save')}\n</Button>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "text",
+      "title": "Internationalized Text",
+      "description": "Text with translated content",
+      "code": "<Text {t('common.welcome')}>\n  {t('common.welcome')}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "heading",
+      "title": "Internationalized Heading",
+      "description": "Heading with translated content",
+      "code": "<Heading {t('pages.dashboard.title')}>\n  {t('pages.dashboard.title')}\n</Heading>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "label",
+      "title": "Internationalized Label",
+      "description": "Label with translated content",
+      "code": "<Label {t('forms.name.label')}>\n  {t('forms.name.label')}\n</Label>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "paragraph",
+      "title": "Internationalized Paragraph",
+      "description": "Paragraph with translated content",
+      "code": "<Paragraph {t('common.description')}>\n  {t('common.description')}\n</Paragraph>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "button",
+      "title": "Internationalized Button",
+      "description": "Button with translated content",
+      "code": "<Button>\n  {t('actions.save')}\n</Button>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "text",
+      "title": "Internationalized Text",
+      "description": "Text with translated content",
+      "code": "<Text>\n  {t('common.welcome')}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "heading",
+      "title": "Internationalized Heading",
+      "description": "Heading with translated content",
+      "code": "<Heading>\n  {t('pages.dashboard.title')}\n</Heading>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "label",
+      "title": "Internationalized Label",
+      "description": "Label with translated content",
+      "code": "<Label>\n  {t('forms.name.label')}\n</Label>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "paragraph",
+      "title": "Internationalized Paragraph",
+      "description": "Paragraph with translated content",
+      "code": "<Paragraph>\n  {t('common.description')}\n</Paragraph>",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "badge",
+      "title": "Internationalized Badge",
+      "description": "Badge with translated content",
+      "code": "<Badge>\n  {t('status.new')}\n</Badge>",
+      "platformUi": "primitives/Badge",
+      "note": "Translation handled by platform package",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "rtl",
+      "title": "Layout LTR",
+      "description": "Layout configured for ltr direction",
+      "code": "<DirectionContext.Provider value=\"ltr\">\n  <Stack direction=\"horizontal\" gap=\"sm\">\n    <Button data-color=\"accent\">{t('actions.save')}</Button>\n    <Button data-variant=\"tertiary\">{t('actions.cancel')}</Button>\n  </Stack>\n</DirectionContext.Provider>",
+      "platformUi": "primitives/Stack + provider/DirectionContext",
+      "compliance": [
+        "i18n",
+        "RTL"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "rtl",
+      "title": "Layout RTL",
+      "description": "Layout configured for rtl direction",
+      "code": "<DirectionContext.Provider value=\"rtl\">\n  <Stack direction=\"horizontal\" gap=\"sm\">\n    <Button data-color=\"accent\">{t('actions.save')}</Button>\n    <Button data-variant=\"tertiary\">{t('actions.cancel')}</Button>\n  </Stack>\n</DirectionContext.Provider>",
+      "platformUi": "primitives/Stack + provider/DirectionContext",
+      "compliance": [
+        "i18n",
+        "RTL"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Date Formatting",
+      "description": "date displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"sm\">\n  {new Intl.DateTimeFormat(locale, {\n    year: 'numeric', month: 'long', day: 'numeric'\n  }).format(dateTime)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.DateTimeFormat for locale-aware formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Time Formatting",
+      "description": "time displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"sm\">\n  {new Intl.DateTimeFormat(locale, {\n    hour: '2-digit', minute: '2-digit'\n  }).format(dateTime)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.DateTimeFormat for locale-aware formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Datetime Formatting",
+      "description": "datetime displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"sm\">\n  {new Intl.DateTimeFormat(locale, {\n    year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'\n  }).format(dateTime)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.DateTimeFormat for locale-aware formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Decimal number Formatting",
+      "description": "Decimal number displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"md\">\n  {new Intl.NumberFormat(locale, {\n    style: 'decimal'\n  }).format(value)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.NumberFormat for locale-aware formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Currency Formatting",
+      "description": "Currency displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"md\">\n  {new Intl.NumberFormat(locale, {\n    style: 'currency', currency: 'NOK'\n  }).format(value)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.NumberFormat for locale-aware formatting",
+      "compliance": [
+        "i18n"
+      ]
+    },
+    {
+      "category": "i18n",
+      "subcategory": "formatting",
+      "title": "Locale-Aware Percentage Formatting",
+      "description": "Percentage displayed using locale-aware formatting",
+      "code": "<Text variant=\"body\" size=\"md\">\n  {new Intl.NumberFormat(locale, {\n    style: 'percent'\n  }).format(value)}\n</Text>",
+      "platformUi": "primitives/Text",
+      "note": "Uses Intl.NumberFormat for locale-aware formatting",
+      "compliance": [
+        "i18n"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.dev/catalogs/gazetteer/examples/index.json",
+  "title": "Examples Catalog Index",
+  "description": "Index of all category-based example files",
+  "version": "1.0.0",
+  "generatedAt": "2026-01-31T12:03:17.172Z",
+  "totalExamples": 1554,
+  "categories": {
+    "layout": {
+      "file": "layout.examples.json",
+      "count": 391
+    },
+    "components": {
+      "file": "components.examples.json",
+      "count": 178
+    },
+    "forms": {
+      "file": "forms.examples.json",
+      "count": 134
+    },
+    "accessibility": {
+      "file": "accessibility.examples.json",
+      "count": 32
+    },
+    "gdpr": {
+      "file": "gdpr.examples.json",
+      "count": 15
+    },
+    "i18n": {
+      "file": "i18n.examples.json",
+      "count": 28
+    },
+    "security": {
+      "file": "security.examples.json",
+      "count": 19
+    },
+    "performance": {
+      "file": "performance.examples.json",
+      "count": 22
+    },
+    "patterns": {
+      "file": "patterns.examples.json",
+      "count": 735
+    }
+  },
+  "files": [
+    "layout.examples.json",
+    "components.examples.json",
+    "forms.examples.json",
+    "accessibility.examples.json",
+    "gdpr.examples.json",
+    "i18n.examples.json",
+    "security.examples.json",
+    "performance.examples.json",
+    "patterns.examples.json"
+  ]
+}

@@ -2,6 +2,8 @@
  * Widget Renderer
  * 
  * Renders a widget from its WidgetSpec using platform-ui components.
+ * 
+ * DESIGN SYSTEM COMPLIANT: Uses only Designsystemet components.
  */
 
 import React, { type ReactNode, useCallback, useMemo } from 'react'
@@ -33,23 +35,14 @@ export interface WidgetWrapperProps {
 // Unknown Widget Fallback
 // =============================================================================
 
+/**
+ * Development-only warning for unknown widget types.
+ * Returns null in production - no visual output.
+ */
 function UnknownWidget({ type, widgetId }: { type: string; widgetId: string }) {
     if (process.env.NODE_ENV === 'development') {
-        return (
-            <div
-                style={{
-                    padding: '1rem',
-                    background: '#fef3c7',
-                    border: '1px dashed #f59e0b',
-                    borderRadius: '0.5rem',
-                    margin: '0.5rem 0',
-                }}
-            >
-                <strong>Unknown Widget:</strong> {type}
-                <br />
-                <small>ID: {widgetId}</small>
-            </div>
-        )
+        // In development, log to console instead of rendering raw HTML
+        console.warn(`[Gazetteer] Unknown widget type: "${type}" (id: ${widgetId})`)
     }
     return null
 }
@@ -93,7 +86,7 @@ export function WidgetRenderer({
     }
 
     // Get the component for this widget type
-    const Component = composer.config?.widgetRegistry?.get(spec.type)
+    const Component = composer.getWidgetComponent(spec.type)
 
     // Fallback for unknown types
     if (!Component) {
@@ -118,20 +111,24 @@ export function WidgetRenderer({
 export interface WidgetListRendererProps {
     widgets: WidgetSpec[]
     wrapper?: React.ComponentType<WidgetWrapperProps>
-    gap?: string
+    /** Gap token - uses design system spacing */
+    gap?: 'sm' | 'md' | 'lg'
 }
 
+/**
+ * Renders a list of widgets.
+ * Uses React.Fragment for layout - parent component should handle spacing.
+ */
 export function WidgetListRenderer({
     widgets,
     wrapper: Wrapper,
-    gap = '1rem',
 }: WidgetListRendererProps) {
     if (!widgets?.length) {
         return null
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap }}>
+        <>
             {widgets.map((widget) => {
                 const rendered = <WidgetRenderer key={widget.widgetId} spec={widget} />
 
@@ -149,6 +146,7 @@ export function WidgetListRenderer({
 
                 return rendered
             })}
-        </div>
+        </>
     )
 }
+

@@ -218,3 +218,12 @@ export type {
   ResponsiveStackDirection,
   ResponsiveFlexDirection,
 } from './responsive-types';
+
+// Global Error Boundary - TOP-MOST provider for catching all errors
+export {
+  GlobalErrorBoundary,
+  type ParsedError,
+  type ErrorCategory,
+  type ErrorResolution,
+  type GlobalErrorBoundaryProps,
+} from './GlobalErrorBoundary';

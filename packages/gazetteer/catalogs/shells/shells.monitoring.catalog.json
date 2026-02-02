@@ -1,0 +1,224 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/shells.monitoring.catalog.json",
+    "title": "Monitoring & Observability Shell Widgets",
+    "description": "Widgets for monitoring dashboards with charts, graphs, health checks",
+    "version": "1.0.0",
+    "shellType": "authenticated",
+    "auth": true,
+    "designTokens": {
+        "grid": {
+            "monitoringGrid": "Grid cols={{ base: 1, md: 2, xl: 4 }} gap='md'",
+            "chartRow": "Grid cols={{ base: 1, lg: 2 }} gap='lg'",
+            "fullWidthChart": "Grid cols={1} gap='md'"
+        },
+        "spacing": {
+            "cardGap": "var(--ds-spacing-4)",
+            "chartPadding": "var(--ds-spacing-4)",
+            "alertGap": "var(--ds-spacing-2)"
+        },
+        "colors": {
+            "healthy": "data-color='success'",
+            "warning": "data-color='warning'",
+            "critical": "data-color='danger'",
+            "unknown": "data-color='neutral'"
+        }
+    },
+    "types": [
+        {
+            "type": "MonitoringShell",
+            "description": "Monitoring dashboard layout with alerts, metrics, logs",
+            "category": "scaffold",
+            "platformUi": "shells/DashboardHeader",
+            "slots": [
+                "alerts",
+                "stats",
+                "charts",
+                "logs",
+                "sidebar"
+            ],
+            "props": {
+                "refreshInterval": "number",
+                "autoRefresh": "boolean",
+                "timeRangeEnabled": "boolean"
+            }
+        },
+        {
+            "type": "HealthStatusGrid",
+            "description": "Grid of service health indicators",
+            "category": "status",
+            "platformUi": "blocks/HealthStatusGrid",
+            "bindings": {
+                "services": "vm.services"
+            },
+            "props": {
+                "columns": "2 | 3 | 4",
+                "showUptime": "boolean"
+            }
+        },
+        {
+            "type": "HealthCheckCard",
+            "description": "Single service health status card",
+            "category": "status",
+            "platformUi": "blocks/HealthCheckCard",
+            "props": {
+                "serviceName": "string",
+                "status": "'healthy' | 'warning' | 'critical' | 'unknown'",
+                "latency": "number",
+                "uptime": "string"
+            }
+        },
+        {
+            "type": "MetricsChart",
+            "description": "Time-series line chart for metrics",
+            "category": "chart",
+            "platformUi": "blocks/MetricsChart",
+            "bindings": {
+                "data": "vm.metricsData"
+            },
+            "props": {
+                "title": "string",
+                "yAxisLabel": "string",
+                "series": "SeriesConfig[]",
+                "timeRange": "'1h' | '6h' | '24h' | '7d' | '30d'"
+            }
+        },
+        {
+            "type": "BarChart",
+            "description": "Bar chart for categorical data",
+            "category": "chart",
+            "platformUi": "blocks/BarChart",
+            "bindings": {
+                "data": "vm.chartData"
+            },
+            "props": {
+                "orientation": "'horizontal' | 'vertical'",
+                "stacked": "boolean"
+            }
+        },
+        {
+            "type": "HeatmapChart",
+            "description": "Heatmap for time-based patterns",
+            "category": "chart",
+            "platformUi": "blocks/HeatmapChart",
+            "bindings": {
+                "data": "vm.heatmapData"
+            },
+            "props": {
+                "xAxis": "'time' | 'day' | 'hour'",
+                "colorScale": "'green-red' | 'blue-red' | 'grayscale'"
+            }
+        },
+        {
+            "type": "GaugeChart",
+            "description": "Circular gauge for percentage/progress",
+            "category": "chart",
+            "platformUi": "blocks/GaugeChart",
+            "props": {
+                "value": "number",
+                "max": "number",
+                "thresholds": "{ warning: number, critical: number }",
+                "label": "string"
+            }
+        },
+        {
+            "type": "AlertsList",
+            "description": "Active alerts and incidents list",
+            "category": "alerts",
+            "platformUi": "blocks/AlertsList",
+            "bindings": {
+                "alerts": "vm.activeAlerts"
+            },
+            "props": {
+                "showAcknowledge": "boolean",
+                "groupByService": "boolean"
+            }
+        },
+        {
+            "type": "AlertBanner",
+            "description": "Critical alert banner at top",
+            "category": "alerts",
+            "platformUi": "blocks/AlertBanner",
+            "bindings": {
+                "alert": "vm.criticalAlert"
+            },
+            "props": {
+                "dismissible": "boolean"
+            }
+        },
+        {
+            "type": "LogViewer",
+            "description": "Real-time log stream viewer",
+            "category": "logs",
+            "platformUi": "blocks/LogViewer",
+            "bindings": {
+                "logs": "vm.logStream"
+            },
+            "props": {
+                "autoScroll": "boolean",
+                "showTimestamp": "boolean",
+                "levelFilter": "('debug' | 'info' | 'warn' | 'error')[]"
+            }
+        },
+        {
+            "type": "UptimeGraph",
+            "description": "Uptime status over time (GitHub-style)",
+            "category": "status",
+            "platformUi": "blocks/UptimeGraph",
+            "bindings": {
+                "history": "vm.uptimeHistory"
+            },
+            "props": {
+                "days": "30 | 60 | 90"
+            }
+        },
+        {
+            "type": "IncidentTimeline",
+            "description": "Incident history timeline",
+            "category": "logs",
+            "platformUi": "composed/Timeline",
+            "bindings": {
+                "incidents": "vm.incidents"
+            }
+        },
+        {
+            "type": "ResourceUsageCard",
+            "description": "CPU/Memory/Disk usage card",
+            "category": "status",
+            "platformUi": "blocks/ResourceUsageCard",
+            "props": {
+                "resource": "'cpu' | 'memory' | 'disk' | 'network'",
+                "value": "number",
+                "max": "number"
+            }
+        },
+        {
+            "type": "TimeRangeSelector",
+            "description": "Time range picker for charts",
+            "category": "input",
+            "platformUi": "blocks/TimeRangeSelector",
+            "bindings": {
+                "range": "vm.timeRange"
+            },
+            "props": {
+                "presets": "('1h' | '6h' | '24h' | '7d' | '30d' | 'custom')[]"
+            }
+        }
+    ],
+    "enum": [
+        "MonitoringShell",
+        "HealthStatusGrid",
+        "HealthCheckCard",
+        "MetricsChart",
+        "BarChart",
+        "HeatmapChart",
+        "GaugeChart",
+        "AlertsList",
+        "AlertBanner",
+        "LogViewer",
+        "UptimeGraph",
+        "IncidentTimeline",
+        "ResourceUsageCard",
+        "TimeRangeSelector"
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.feedback.catalog.json",
+    "title": "Feedback & States Widgets",
+    "description": "Widgets for loading, empty, error states, notifications, and user feedback",
+    "version": "1.0.0",
+    "designTokens": {
+        "spacing": {
+            "emptyStatePadding": "var(--ds-spacing-8)",
+            "alertPadding": "var(--ds-spacing-4)",
+            "toastGap": "var(--ds-spacing-3)"
+        }
+    },
+    "types": [
+        {
+            "type": "EmptyState",
+            "description": "Empty state with illustration, message, action",
+            "category": "feedback",
+            "platformUi": "composed/PageStates",
+            "props": {
+                "illustration": "'empty' | 'search' | 'error' | 'success' | string",
+                "titleKey": "string",
+                "descriptionKey": "string",
+                "primaryAction": "ActionDefinition",
+                "secondaryAction": "ActionDefinition"
+            }
+        },
+        {
+            "type": "LoadingSkeleton",
+            "description": "Loading placeholder skeleton",
+            "category": "feedback",
+            "platformUi": "composed/Skeleton",
+            "props": {
+                "variant": "'text' | 'card' | 'table' | 'form' | 'avatar'",
+                "lines": "number",
+                "width": "string",
+                "height": "string"
+            }
+        },
+        {
+            "type": "LoadingFallback",
+            "description": "Full-page loading spinner",
+            "category": "feedback",
+            "platformUi": "composed/LoadingFallback",
+            "props": {
+                "message": "string"
+            }
+        },
+        {
+            "type": "StateWrapper",
+            "description": "Wrapper that handles loading/error/empty/success states",
+            "category": "feedback",
+            "platformUi": "composed/StateWrapper",
+            "bindings": {
+                "loading": "vm.loading",
+                "error": "vm.error",
+                "empty": "vm.isEmpty",
+                "data": "vm.data"
+            },
+            "slots": [
+                "content",
+                "loading",
+                "error",
+                "empty"
+            ]
+        },
+        {
+            "type": "Alert",
+            "description": "Inline alert message",
+            "category": "feedback",
+            "platformUi": "composed/Alert",
+            "props": {
+                "variant": "'info' | 'success' | 'warning' | 'danger'",
+                "titleKey": "string",
+                "messageKey": "string",
+                "dismissible": "boolean"
+            }
+        },
+        {
+            "type": "Toast",
+            "description": "Toast notification popup",
+            "category": "feedback",
+            "platformUi": "composed/Toast",
+            "props": {
+                "variant": "'info' | 'success' | 'warning' | 'error'",
+                "messageKey": "string",
+                "duration": "number",
+                "action": "ActionDefinition"
+            }
+        },
+        {
+            "type": "StatusBanner",
+            "description": "Page-level status banner",
+            "category": "feedback",
+            "platformUi": "composed/StatusBanner",
+            "props": {
+                "variant": "'info' | 'warning' | 'error' | 'success'",
+                "messageKey": "string",
+                "dismissible": "boolean"
+            }
+        },
+        {
+            "type": "Badge",
+            "description": "Status badge/tag",
+            "category": "feedback",
+            "platformUi": "composed/Badge",
+            "props": {
+                "variant": "'default' | 'success' | 'warning' | 'danger' | 'info'",
+                "size": "'sm' | 'md' | 'lg'",
+                "labelKey": "string"
+            }
+        },
+        {
+            "type": "Tooltip",
+            "description": "Hover tooltip",
+            "category": "feedback",
+            "platformUi": "composed/Tooltip",
+            "props": {
+                "content": "string | ReactNode",
+                "position": "'top' | 'bottom' | 'left' | 'right'"
+            }
+        },
+        {
+            "type": "Popover",
+            "description": "Click-triggered popover",
+            "category": "feedback",
+            "platformUi": "composed/Popover",
+            "slots": [
+                "trigger",
+                "content"
+            ],
+            "props": {
+                "position": "'top' | 'bottom' | 'left' | 'right'"
+            }
+        },
+        {
+            "type": "ErrorBoundary",
+            "description": "Error boundary wrapper",
+            "category": "feedback",
+            "platformUi": "blocks/ErrorBoundary",
+            "slots": [
+                "fallback"
+            ],
+            "props": {
+                "onReset": "function"
+            }
+        },
+        {
+            "type": "GlobalErrorHandler",
+            "description": "Global error handler overlay",
+            "category": "feedback",
+            "platformUi": "blocks/GlobalErrorHandler"
+        }
+    ],
+    "enum": [
+        "EmptyState",
+        "LoadingSkeleton",
+        "LoadingFallback",
+        "StateWrapper",
+        "Alert",
+        "Toast",
+        "StatusBanner",
+        "Badge",
+        "Tooltip",
+        "Popover",
+        "ErrorBoundary",
+        "GlobalErrorHandler"
+    ]
+}

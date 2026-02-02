@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xala.dev/catalogs/gazetteer/examples/performance.examples.json",
+  "title": "Performance Examples",
+  "description": "22 performance examples for @xala-technologies/platform-ui",
+  "version": "1.0.0",
+  "generatedAt": "2026-01-31T12:03:17.171Z",
+  "category": "performance",
+  "totalExamples": 22,
+  "examples": [
+    {
+      "category": "performance",
+      "subcategory": "lazy-loading",
+      "title": "Lazy Loaded Component",
+      "description": "Component loaded only when needed using React.lazy",
+      "code": "import { lazy, Suspense } from 'react';\nimport { Spinner } from '@digdir/designsystemet-react';\n\nconst HeavyComponent = lazy(() => import('./HeavyComponent'));\n\nfunction App() {\n  return (\n    <Suspense fallback={<Spinner size=\"medium\" />}>\n      <HeavyComponent />\n    </Suspense>\n  );\n}",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Use React.lazy for code splitting and performance optimization",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "Memoized List Item",
+      "description": "List item component memoized to prevent unnecessary re-renders",
+      "code": "import { memo } from 'react';\n\nconst ListItem = memo(function ListItem({ item, onSelect }) {\n  return (\n    <Card data-color=\"neutral\" data-size=\"medium\" onClick={() => onSelect(item.id)}>\n      <Card.Header>\n        <Heading level={3} data-size=\"sm\">{item.title}</Heading>\n      </Card.Header>\n      <Card.Content>\n        <Paragraph data-size=\"sm\">{item.description}</Paragraph>\n      </Card.Content>\n    </Card>\n  );\n});",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Use React.memo for expensive components in lists",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "virtualization",
+      "title": "Virtualized Long List",
+      "description": "Virtual scrolling for long lists to improve performance",
+      "code": "import { useVirtualizer } from '@tanstack/react-virtual';\n\nfunction VirtualizedList({ items }) {\n  const parentRef = React.useRef();\n  const virtualizer = useVirtualizer({\n    count: items.length,\n    getScrollElement: () => parentRef.current,\n    estimateSize: () => 100,\n  });\n\n  return (\n    <div ref={parentRef} style={{ height: '400px', overflow: 'auto' }}>\n      <div style={{ height: `${virtualizer.getTotalSize()}px`, position: 'relative' }}>\n        {virtualizer.getVirtualItems().map(virtualRow => (\n          <div key={virtualRow.key} style={{\n            position: 'absolute',\n            top: 0,\n            left: 0,\n            width: '100%',\n            height: `${virtualRow.size}px`,\n            transform: `translateY(${virtualRow.start}px)`\n          }}>\n            <Card data-color=\"neutral\" data-size=\"medium\">\n              {items[virtualRow.index].title}\n            </Card>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Use virtualization for lists with 100+ items",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "images",
+      "title": "Lazy Loaded Image",
+      "description": "Image with native lazy loading for performance",
+      "code": "<img \n  src={imageSrc}\n  alt={imageAlt}\n  loading=\"lazy\"\n  style={{ width: '100%', height: 'auto' }}\n/>",
+      "platformUi": "Native HTML",
+      "note": "Use loading=\"lazy\" for images below the fold",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "Debounced Search Input",
+      "description": "Search input with debounce to reduce API calls",
+      "code": "import { useDebouncedCallback } from 'use-debounce';\n\nfunction SearchInput({ onSearch }) {\n  const [query, setQuery] = useState('');\n  const debouncedSearch = useDebouncedCallback(\n    (value) => onSearch(value),\n    300\n  );\n\n  return (\n    <Textfield\n      data-size=\"medium\"\n      placeholder=\"Search...\"\n      value={query}\n      onChange={(e) => {\n        setQuery(e.target.value);\n        debouncedSearch(e.target.value);\n      }}\n    />\n  );\n}",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Debounce search inputs to reduce unnecessary API calls",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "images",
+      "title": "Optimized Responsive Image",
+      "description": "Image with srcset for different screen sizes and formats",
+      "code": "<img\n  src={imageSrc}\n  srcSet={`${imageSrc}?w=400 400w, ${imageSrc}?w=800 800w, ${imageSrc}?w=1200 1200w`}\n  sizes=\"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw\"\n  alt={imageAlt}\n  loading=\"lazy\"\n  style={{ width: '100%', height: 'auto' }}\n/>",
+      "platformUi": "Native HTML",
+      "note": "Use srcset and sizes for responsive images, lazy loading for below-fold",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "code-splitting",
+      "title": "Route-Based Code Splitting",
+      "description": "Lazy load routes for better initial load performance",
+      "code": "import { lazy, Suspense } from 'react';\nimport { Spinner } from '@digdir/designsystemet-react';\n\nconst DashboardPage = lazy(() => import('./pages/DashboardPage'));\nconst SettingsPage = lazy(() => import('./pages/SettingsPage'));\n\nfunction App() {\n  return (\n    <Suspense fallback={<Spinner size=\"medium\" />}>\n      <Routes>\n        <Route path=\"/dashboard\" element={<DashboardPage />} />\n        <Route path=\"/settings\" element={<SettingsPage />} />\n      </Routes>\n    </Suspense>\n  );\n}",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Lazy load routes to reduce initial bundle size",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "Memoized Expensive Computation",
+      "description": "Using useMemo to cache expensive calculations",
+      "code": "function ExpensiveComponent({ items }) {\n  const sortedItems = useMemo(() => {\n    return [...items].sort((a, b) => a.name.localeCompare(b.name));\n  }, [items]);\n  \n  return (\n    <Grid cols={{ base: 1, md: 2 }} gap=\"md\">\n      {sortedItems.map(item => (\n        <Card key={item.id} data-color=\"neutral\" data-size=\"medium\">\n          {item.name}\n        </Card>\n      ))}\n    </Grid>\n  );\n}",
+      "platformUi": "primitives/Grid + @digdir/designsystemet-react",
+      "note": "Use useMemo for expensive computations that depend on props/state",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "Stable Callback with useCallback",
+      "description": "Using useCallback to prevent unnecessary re-renders",
+      "code": "function ListItem({ item, onSelect }) {\n  const handleClick = useCallback(() => {\n    onSelect(item.id);\n  }, [item.id, onSelect]);\n  \n  return (\n    <Card \n      data-color=\"neutral\" \n      data-size=\"medium\"\n      onClick={handleClick}\n    >\n      {item.title}\n    </Card>\n  );\n}",
+      "platformUi": "@digdir/designsystemet-react",
+      "note": "Use useCallback for callbacks passed to memoized children",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "React.memo for Expensive Components",
+      "description": "Memoize expensive components to prevent re-renders",
+      "code": "import { memo } from 'react';\n\nconst ExpensiveCard = memo(function ExpensiveCard({ item }) {\n  // Expensive rendering logic\n  return (\n    <Card data-color=\"neutral\" data-size=\"medium\">\n      <Card.Content>\n        <Paragraph>{item.content}</Paragraph>\n      </Card.Content>\n    </Card>\n  );\n});",
+      "platformUi": "primitives/Grid + @digdir/designsystemet-react",
+      "note": "Use React optimization hooks for expensive operations",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "useMemo for Expensive Calculations",
+      "description": "Cache expensive calculations",
+      "code": "function DataVisualization({ data }) {\n  const processedData = useMemo(() => {\n    return data.map(item => ({\n      ...item,\n      computed: expensiveCalculation(item)\n    }));\n  }, [data]);\n  \n  return (\n    <Grid cols={{ base: 1, md: 2 }} gap=\"md\">\n      {processedData.map(item => (\n        <Card key={item.id}>{item.computed}</Card>\n      ))}\n    </Grid>\n  );\n}",
+      "platformUi": "primitives/Grid + @digdir/designsystemet-react",
+      "note": "Use React optimization hooks for expensive operations",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "Component Lazy Loading",
+      "description": "Lazy load heavy components",
+      "code": "const HeavyComponent = lazy(() => import('./HeavyComponent'));\n\n<Suspense fallback={<Spinner />}>\n  <HeavyComponent />\n</Suspense>",
+      "platformUi": "Various",
+      "note": "Use performance optimization techniques for better UX",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "List Virtualization",
+      "description": "Virtualize long lists",
+      "code": "const virtualizer = useVirtualizer({\n  count: items.length,\n  getScrollElement: () => parentRef.current,\n  estimateSize: () => 100,\n});",
+      "platformUi": "Various",
+      "note": "Use performance optimization techniques for better UX",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "Debounced Input",
+      "description": "Debounce input to reduce API calls",
+      "code": "const debounced = useDebouncedCallback(\n  (value) => onSearch(value),\n  300\n);",
+      "platformUi": "Various",
+      "note": "Use performance optimization techniques for better UX",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "images",
+      "title": "Image Lazy Loading",
+      "description": "Image with loading=\"lazy\"",
+      "code": "<img\n  src={imageSrc}\n  alt={imageAlt}\n  loading=\"lazy\"\n  style={{ width: '100%', height: 'auto' }}\n/>",
+      "platformUi": "Native HTML",
+      "note": "Use loading=\"lazy\" for below-fold images",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "images",
+      "title": "Image Eager Loading",
+      "description": "Image with loading=\"eager\"",
+      "code": "<img\n  src={imageSrc}\n  alt={imageAlt}\n  loading=\"eager\"\n  style={{ width: '100%', height: 'auto' }}\n/>",
+      "platformUi": "Native HTML",
+      "note": "Use loading=\"eager\" for above-fold images",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "images",
+      "title": "Responsive Image with Srcset",
+      "description": "Image with srcset for different screen densities",
+      "code": "<img\n  src={imageSrc}\n  srcSet={`${imageSrc}?w=400 1x, ${imageSrc}?w=800 2x`}\n  alt={imageAlt}\n  loading=\"lazy\"\n  style={{ width: '100%', height: 'auto' }}\n/>",
+      "platformUi": "Native HTML",
+      "note": "Optimize images for performance",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "images",
+      "title": "Image with Aspect Ratio",
+      "description": "Image maintaining aspect ratio",
+      "code": "<img\n  src={imageSrc}\n  alt={imageAlt}\n  loading=\"lazy\"\n  style={{ \n    width: '100%',\n    aspectRatio: '16/9',\n    objectFit: 'cover'\n  }}\n/>",
+      "platformUi": "Native HTML",
+      "note": "Optimize images for performance",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "code-splitting",
+      "title": "Route-Based Code Splitting",
+      "description": "Lazy load routes",
+      "code": "const DashboardPage = lazy(() => import('./pages/DashboardPage'));\nconst SettingsPage = lazy(() => import('./pages/SettingsPage'));",
+      "platformUi": "React.lazy",
+      "note": "Use code splitting to reduce initial bundle size",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "code-splitting",
+      "title": "Component-Based Code Splitting",
+      "description": "Lazy load heavy components",
+      "code": "const HeavyChart = lazy(() => import('./components/HeavyChart'));\nconst DataTable = lazy(() => import('./components/DataTable'));",
+      "platformUi": "React.lazy",
+      "note": "Use code splitting to reduce initial bundle size",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "useMemo for Filtered List",
+      "description": "Memoize filtered list to prevent recalculation",
+      "code": "const filteredItems = useMemo(() => {\n  return items.filter(item => item.status === filterStatus);\n}, [items, filterStatus]);",
+      "platformUi": "React hooks",
+      "note": "Use React optimization hooks for better performance",
+      "compliance": [
+        "Performance"
+      ]
+    },
+    {
+      "category": "performance",
+      "subcategory": "optimization",
+      "title": "useCallback for Event Handlers",
+      "description": "Stable callback references",
+      "code": "const handleClick = useCallback((id) => {\n  onItemClick(id);\n}, [onItemClick]);",
+      "platformUi": "React hooks",
+      "note": "Use React optimization hooks for better performance",
+      "compliance": [
+        "Performance"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.detail.catalog.json",
+    "title": "Detail/View Page Widgets",
+    "description": "Widgets for entity detail and read-only view pages",
+    "version": "1.0.0",
+    "designTokens": {
+        "grid": {
+            "detailLayout": "Grid cols={{ base: 1, lg: '2fr 1fr' }} gap='lg'",
+            "metadataGrid": "Grid cols={{ base: 1, md: 2 }} gap='md'",
+            "sidebarLayout": "Grid cols={{ base: 1, lg: '1fr 320px' }} gap='lg'"
+        },
+        "spacing": {
+            "sectionGap": "var(--ds-spacing-8)",
+            "fieldGap": "var(--ds-spacing-3)",
+            "cardPadding": "var(--ds-spacing-4)"
+        },
+        "maxWidth": {
+            "detail": "960px",
+            "sidebar": "320px"
+        }
+    },
+    "types": [
+        {
+            "type": "DetailPageShell",
+            "description": "Detail page layout with header, content, sidebar",
+            "category": "scaffold",
+            "platformUi": "composed/PageShell",
+            "slots": [
+                "header",
+                "breadcrumbs",
+                "content",
+                "sidebar",
+                "actions"
+            ],
+            "props": {
+                "titleKey": "string",
+                "subtitleKey": "string",
+                "backEnabled": "boolean",
+                "editEnabled": "boolean",
+                "deleteEnabled": "boolean"
+            }
+        },
+        {
+            "type": "DetailPanel",
+            "description": "Single entity detail view with sections",
+            "category": "data",
+            "platformUi": "composed/SectionCard",
+            "bindings": {
+                "entity": "vm.entity"
+            },
+            "props": {
+                "titleKey": "string",
+                "sections": "DetailSection[]"
+            }
+        },
+        {
+            "type": "KeyValue",
+            "description": "Key-value pair display for metadata",
+            "category": "data",
+            "platformUi": "composed/KeyValue",
+            "props": {
+                "labelKey": "string",
+                "value": "string | ReactNode",
+                "copyable": "boolean",
+                "truncate": "boolean"
+            }
+        },
+        {
+            "type": "DetailField",
+            "description": "Single field display with label and value",
+            "category": "data",
+            "platformUi": "composed/DetailField",
+            "props": {
+                "labelKey": "string",
+                "value": "string",
+                "type": "'text' | 'date' | 'currency' | 'email' | 'phone' | 'link'"
+            }
+        },
+        {
+            "type": "MetadataRow",
+            "description": "Horizontal metadata display row",
+            "category": "data",
+            "platformUi": "patterns/MetadataRow",
+            "props": {
+                "items": "MetadataItem[]",
+                "divider": "boolean"
+            }
+        },
+        {
+            "type": "SectionCard",
+            "description": "Card with title, actions, and content area",
+            "category": "layout",
+            "platformUi": "composed/SectionCard",
+            "slots": [
+                "content",
+                "actions"
+            ],
+            "props": {
+                "titleKey": "string",
+                "collapsible": "boolean",
+                "defaultExpanded": "boolean"
+            }
+        },
+        {
+            "type": "Tabs",
+            "description": "Tabbed content container",
+            "category": "layout",
+            "platformUi": "composed/SimpleTabs",
+            "props": {
+                "tabs": "TabDefinition[]",
+                "defaultTab": "string",
+                "orientation": "'horizontal' | 'vertical'"
+            }
+        },
+        {
+            "type": "Accordion",
+            "description": "Collapsible content sections",
+            "category": "layout",
+            "platformUi": "composed/Accordion",
+            "props": {
+                "items": "AccordionItem[]",
+                "multiple": "boolean"
+            }
+        },
+        {
+            "type": "ImageGallery",
+            "description": "Image gallery with lightbox",
+            "category": "media",
+            "platformUi": "blocks/ImageGallery",
+            "bindings": {
+                "images": "vm.images"
+            },
+            "props": {
+                "columns": "2 | 3 | 4",
+                "aspectRatio": "'square' | '16:9' | '4:3'"
+            }
+        },
+        {
+            "type": "PDFPreview",
+            "description": "Embedded PDF viewer",
+            "category": "media",
+            "platformUi": "composed/PDFPreview",
+            "bindings": {
+                "url": "vm.documentUrl"
+            }
+        },
+        {
+            "type": "AuditLog",
+            "description": "Entity audit/history log",
+            "category": "data",
+            "platformUi": "composed/Timeline",
+            "bindings": {
+                "events": "vm.auditLog"
+            },
+            "props": {
+                "showUser": "boolean",
+                "showTimestamp": "boolean"
+            }
+        }
+    ],
+    "enum": [
+        "DetailPageShell",
+        "DetailPanel",
+        "KeyValue",
+        "DetailField",
+        "MetadataRow",
+        "SectionCard",
+        "Tabs",
+        "Accordion",
+        "ImageGallery",
+        "PDFPreview",
+        "AuditLog"
+    ]
+}

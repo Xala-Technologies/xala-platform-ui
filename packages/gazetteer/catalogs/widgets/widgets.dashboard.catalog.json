@@ -1,0 +1,138 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.dashboard.catalog.json",
+    "title": "Dashboard Flow Widgets",
+    "description": "Widgets for dashboard, overview, and analytics pages",
+    "version": "1.0.0",
+    "designTokens": {
+        "grid": {
+            "statsGrid": "Grid cols={{ base: 1, sm: 2, lg: 4 }} gap='md'",
+            "chartGrid": "Grid cols={{ base: 1, lg: 2 }} gap='lg'",
+            "cardGrid": "Grid autoFit minColWidth='320px' gap='md'"
+        },
+        "spacing": {
+            "dashboardPadding": "var(--ds-spacing-6)",
+            "cardGap": "var(--ds-spacing-4)",
+            "statGap": "var(--ds-spacing-2)"
+        },
+        "maxWidth": {
+            "dashboard": "1440px",
+            "chart": "100%",
+            "stat": "100%"
+        }
+    },
+    "types": [
+        {
+            "type": "DashboardShell",
+            "description": "Dashboard page layout with header, stats, content areas",
+            "category": "scaffold",
+            "platformUi": "shells/DashboardHeader",
+            "slots": [
+                "header",
+                "stats",
+                "charts",
+                "tables",
+                "rightDrawer"
+            ],
+            "props": {
+                "titleKey": "string",
+                "subtitleKey": "string",
+                "dateRangeEnabled": "boolean",
+                "refreshEnabled": "boolean"
+            }
+        },
+        {
+            "type": "DashboardPageHeader",
+            "description": "Dashboard header with title, subtitle, actions",
+            "category": "layout",
+            "platformUi": "composed/DashboardPageHeader",
+            "props": {
+                "titleKey": "string",
+                "subtitleKey": "string",
+                "actions": "ActionButton[]"
+            }
+        },
+        {
+            "type": "StatsGrid",
+            "description": "Grid of metric cards with trend indicators",
+            "category": "data",
+            "platformUi": "composed/StatsGrid",
+            "bindings": {
+                "stats": "vm.stats"
+            },
+            "props": {
+                "columns": "2 | 3 | 4",
+                "variant": "'default' | 'compact'"
+            }
+        },
+        {
+            "type": "StatCard",
+            "description": "Single metric display with label, value, trend",
+            "category": "data",
+            "platformUi": "composed/StatCard",
+            "props": {
+                "labelKey": "string",
+                "value": "string | number",
+                "trend": "'up' | 'down' | 'flat'",
+                "trendValue": "string",
+                "icon": "string"
+            }
+        },
+        {
+            "type": "Timeline",
+            "description": "Activity/event timeline",
+            "category": "data",
+            "platformUi": "composed/Timeline",
+            "bindings": {
+                "items": "vm.activities"
+            },
+            "props": {
+                "maxItems": "number",
+                "groupByDate": "boolean"
+            }
+        },
+        {
+            "type": "DateRangePicker",
+            "description": "Date range selector for filtering",
+            "category": "input",
+            "platformUi": "composed/DateRangePicker",
+            "bindings": {
+                "value": "vm.dateRange"
+            },
+            "props": {
+                "presets": "'today' | 'week' | 'month' | 'quarter' | 'year' | 'custom'"
+            }
+        },
+        {
+            "type": "Progress",
+            "description": "Progress indicator with percentage",
+            "category": "feedback",
+            "platformUi": "composed/Progress",
+            "props": {
+                "value": "number",
+                "max": "number",
+                "variant": "'linear' | 'circular'",
+                "showLabel": "boolean"
+            }
+        },
+        {
+            "type": "NotificationCenter",
+            "description": "System notifications panel",
+            "category": "feedback",
+            "platformUi": "blocks/NotificationCenter",
+            "bindings": {
+                "notifications": "vm.notifications"
+            }
+        }
+    ],
+    "enum": [
+        "DashboardShell",
+        "DashboardPageHeader",
+        "StatsGrid",
+        "StatCard",
+        "Timeline",
+        "DateRangePicker",
+        "Progress",
+        "NotificationCenter"
+    ]
+}

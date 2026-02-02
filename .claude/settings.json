@@ -1,5 +1,21 @@
 {
-  "enabledPlugins": {
-    "document-skills@anthropic-agent-skills": true
-  }
+    "name": "xala-platform",
+    "description": "Xala SaaS Platform Template with Design OS Skills",
+    "skills": [
+        "api-generation",
+        "feature-generation",
+        "frontend-design",
+        "gazetteer-specs",
+        "qa-verification",
+        "testing-patterns",
+        "ux-lexicon",
+        "zod-schemas"
+    ],
+    "commands": [
+        "design-os"
+    ],
+    "integrations": {
+        "platform-ui": "@xala-technologies/platform-ui",
+        "guardrails": "@xala/guardrails"
+    }
 }

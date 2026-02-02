@@ -1,0 +1,33 @@
+{
+  "$schema": "@xala-technologies/gazetteer/schemas/page.spec.schema.json",
+  "pageId": "projects",
+  "layoutType": "dashboard",
+  "shellType": "authenticated",
+  "controllerRefs": [],
+  "widgets": {
+    "header": [
+      {
+        "widgetId": "page-header",
+        "type": "PageHeader",
+        "props": {
+          "titleKey": "projects.title",
+          "subtitleKey": "projects.subtitle"
+        }
+      }
+    ],
+    "content": [
+      {
+        "widgetId": "main-content",
+        "type": "Card",
+        "props": {
+          "titleKey": "projects.content.title"
+        }
+      }
+    ]
+  },
+  "i18nRequiredKeys": [
+    "projects.title",
+    "projects.subtitle",
+    "projects.content.title"
+  ]
+}

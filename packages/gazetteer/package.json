@@ -4,40 +4,44 @@
     "description": "Monster Motor - Schema-Driven Page Execution Engine for Xala SaaS Solutions",
     "type": "module",
     "main": "dist/index.js",
-    "module": "dist/index.mjs",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts",
     "sideEffects": false,
+    "bin": {
+        "scaffold-app": "./dist/cli/scaffold-app.js"
+    },
     "exports": {
         ".": {
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.js",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs",
             "types": "./dist/index.d.ts"
         },
         "./runtime": {
-            "import": "./dist/runtime/index.mjs",
-            "require": "./dist/runtime/index.js",
+            "import": "./dist/runtime/index.js",
+            "require": "./dist/runtime/index.cjs",
             "types": "./dist/runtime/index.d.ts"
         },
         "./hooks": {
-            "import": "./dist/hooks/index.mjs",
-            "require": "./dist/hooks/index.js",
+            "import": "./dist/hooks/index.js",
+            "require": "./dist/hooks/index.cjs",
             "types": "./dist/hooks/index.d.ts"
         },
         "./builder": {
-            "import": "./dist/builder/index.mjs",
-            "require": "./dist/builder/index.js",
+            "import": "./dist/builder/index.js",
+            "require": "./dist/builder/index.cjs",
             "types": "./dist/builder/index.d.ts"
         },
         "./ai": {
-            "import": "./dist/ai/index.mjs",
-            "require": "./dist/ai/index.js",
+            "import": "./dist/ai/index.js",
+            "require": "./dist/ai/index.cjs",
             "types": "./dist/ai/index.d.ts"
         },
         "./governance": {
-            "import": "./dist/governance/index.mjs",
-            "require": "./dist/governance/index.js",
+            "import": "./dist/governance/index.js",
+            "require": "./dist/governance/index.cjs",
             "types": "./dist/governance/index.d.ts"
         },
+        "./cli/*": "./dist/cli/*.js",
         "./schema/*": "./schema/*",
         "./catalogs/*": "./catalogs/*"
     },
@@ -55,7 +59,7 @@
         "test:watch": "vitest"
     },
     "peerDependencies": {
-        "@xala-technologies/platform-ui": "^2.8.0",
+        "@xala-technologies/platform-ui": "workspace:*",
         "react": "^18.0.0",
         "react-dom": "^18.0.0"
     },
@@ -63,8 +67,11 @@
         "ajv": "^8.12.0"
     },
     "devDependencies": {
+        "@testing-library/react": "^14.0.0",
         "@types/react": "^18.2.0",
         "@types/react-dom": "^18.2.0",
+        "@vitejs/plugin-react": "^4.2.0",
+        "jsdom": "^24.0.0",
         "tsup": "^8.0.0",
         "typescript": "^5.3.0",
         "vitest": "^1.0.0"

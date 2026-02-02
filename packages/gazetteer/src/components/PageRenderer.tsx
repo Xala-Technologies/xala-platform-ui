@@ -3,6 +3,9 @@
  * 
  * Renders a complete page from its PageSpec, including shell,
  * header, content, sidebar, and overlays.
+ * 
+ * DESIGN SYSTEM COMPLIANT: No raw HTML or inline styles.
+ * Default components return null - consuming apps must provide overrides.
  */
 
 import React, { type ReactNode, useMemo, Suspense } from 'react'
@@ -19,13 +22,13 @@ export interface PageRendererProps {
     /** Page ID to render */
     pageId: string
 
-    /** Loading component */
+    /** Loading component - REQUIRED for proper UX */
     loadingComponent?: ReactNode
 
-    /** Error component */
+    /** Error component - receives error message */
     errorComponent?: (error: string) => ReactNode
 
-    /** Custom shell component override */
+    /** Custom shell component override - REQUIRED for proper rendering */
     shellOverride?: React.ComponentType<ShellProps>
 
     /** Additional binding context for this page */
@@ -41,61 +44,40 @@ export interface ShellProps {
 }
 
 // =============================================================================
-// Default Components
+// Default Components (Minimal - No Styling)
 // =============================================================================
 
+/**
+ * Default loading state - returns null.
+ * Consuming apps should provide loadingComponent for proper UX.
+ */
 function DefaultLoading() {
-    return (
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
-            <div style={{
-                width: '2rem',
-                height: '2rem',
-                border: '3px solid #e5e7eb',
-                borderTopColor: '#3b82f6',
-                borderRadius: '50%',
-                animation: 'spin 1s linear infinite',
-                margin: '0 auto',
-            }} />
-            <p style={{ marginTop: '1rem', color: '#6b7280' }}>Loading page...</p>
-        </div>
-    )
+    if (process.env.NODE_ENV === 'development') {
+        console.warn('[Gazetteer] No loadingComponent provided to PageRenderer')
+    }
+    return null
 }
 
+/**
+ * Default error handler - logs to console in development.
+ * Consuming apps should provide errorComponent for proper UX.
+ */
 function DefaultError({ error }: { error: string }) {
-    return (
-        <div style={{
-            padding: '2rem',
-            background: '#fef2f2',
-            border: '1px solid #fecaca',
-            borderRadius: '0.5rem',
-            margin: '1rem',
-        }}>
-            <h3 style={{ color: '#dc2626', margin: 0 }}>Page Error</h3>
-            <p style={{ color: '#7f1d1d', marginTop: '0.5rem' }}>{error}</p>
-        </div>
-    )
+    if (process.env.NODE_ENV === 'development') {
+        console.error('[Gazetteer] Page error:', error)
+    }
+    return null
 }
 
-function DefaultShell({ children, header, sidebar }: ShellProps) {
-    return (
-        <div style={{ display: 'flex', minHeight: '100vh' }}>
-            {sidebar && (
-                <aside style={{ width: '256px', borderRight: '1px solid #e5e7eb' }}>
-                    {sidebar}
-                </aside>
-            )}
-            <main style={{ flex: 1 }}>
-                {header && (
-                    <header style={{ borderBottom: '1px solid #e5e7eb', padding: '1rem' }}>
-                        {header}
-                    </header>
-                )}
-                <div style={{ padding: '1.5rem' }}>
-                    {children}
-                </div>
-            </main>
-        </div>
-    )
+/**
+ * Default shell - renders children directly without layout.
+ * Consuming apps should provide shellOverride for proper shell rendering.
+ */
+function DefaultShell({ children }: ShellProps) {
+    if (process.env.NODE_ENV === 'development') {
+        console.warn('[Gazetteer] No shellOverride provided to PageRenderer - rendering without shell')
+    }
+    return <>{children}</>
 }
 
 // =============================================================================
@@ -110,7 +92,7 @@ export function PageRenderer({
     pageContext,
 }: PageRendererProps) {
     const { page, isLoading, error } = useGazetteerPage(pageId)
-    const { composer, updateContext } = useGazetteer()
+    const { updateContext } = useGazetteer()
 
     // Update context with page-specific data
     useMemo(() => {
@@ -135,12 +117,12 @@ export function PageRenderer({
 
     // Render header widgets
     const headerContent = page.widgets.header?.length ? (
-        <WidgetListRenderer widgets={page.widgets.header} gap="0.5rem" />
+        <WidgetListRenderer widgets={page.widgets.header} />
     ) : null
 
     // Render sidebar widgets
     const sidebarContent = page.widgets.sidebar?.length ? (
-        <WidgetListRenderer widgets={page.widgets.sidebar} gap="1rem" />
+        <WidgetListRenderer widgets={page.widgets.sidebar} />
     ) : null
 
     // Render overlay widgets (modals, drawers)
@@ -158,7 +140,7 @@ export function PageRenderer({
             overlays={overlaysContent}
         >
             {/* Main content */}
-            <WidgetListRenderer widgets={page.widgets.content} gap="1.5rem" />
+            <WidgetListRenderer widgets={page.widgets.content} />
 
             {/* Overlays rendered at end */}
             {overlaysContent}

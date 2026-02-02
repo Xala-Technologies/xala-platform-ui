@@ -1,0 +1,21 @@
+{
+  "$schema": "@xala-technologies/gazetteer/schemas/app.spec.schema.json",
+  "appId": "taskmaster-app",
+  "name": "Taskmaster-app",
+  "version": "1.0.0",
+  "description": "Authenticated application",
+  "defaultLocale": "nb",
+  "supportedLocales": [
+    "nb",
+    "en"
+  ],
+  "theme": {
+    "brandColor": "#0062BA",
+    "mode": "light"
+  },
+  "auth": {
+    "required": true,
+    "loginRoute": "/login",
+    "dashboardRoute": "/"
+  }
+}

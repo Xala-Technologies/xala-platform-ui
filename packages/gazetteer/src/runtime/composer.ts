@@ -253,6 +253,20 @@ export class PageComposer {
     }
 
     /**
+     * Get widget component from registry
+     */
+    getWidgetComponent(type: string): React.ComponentType<WidgetComponentProps> | undefined {
+        return this.config.widgetRegistry?.get(type)
+    }
+
+    /**
+     * Get shell component from registry
+     */
+    getShellComponent(type: ShellType): React.ComponentType<ShellComponentProps> | undefined {
+        return this.config.shellRegistry?.get(type)
+    }
+
+    /**
      * Update binding context
      */
     updateContext(context: Partial<BindingContext>): void {

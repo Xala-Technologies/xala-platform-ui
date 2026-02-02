@@ -1,0 +1,17 @@
+{
+  "$schema": "@xala-technologies/gazetteer/schemas/route.spec.schema.json",
+  "routeId": "home",
+  "path": "/",
+  "titleKey": "home.title",
+  "icon": "home",
+  "pageRef": "home",
+  "access": {
+    "public": false,
+    "roles": []
+  },
+  "navigation": {
+    "labelKey": "nav.home",
+    "group": "main",
+    "order": 1
+  }
+}

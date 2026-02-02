@@ -1,0 +1,195 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/widgets.layout.catalog.json",
+    "title": "Layout & Shell Widgets",
+    "description": "Core layout primitives, shells, and page structure components",
+    "version": "1.0.0",
+    "designTokens": {
+        "typography": {
+            "headingXL": "var(--ds-font-size-heading-xlarge)",
+            "headingL": "var(--ds-font-size-heading-large)",
+            "headingM": "var(--ds-font-size-heading-medium)",
+            "headingS": "var(--ds-font-size-heading-small)",
+            "bodyL": "var(--ds-font-size-body-large)",
+            "bodyM": "var(--ds-font-size-body-medium)",
+            "bodyS": "var(--ds-font-size-body-small)"
+        },
+        "colors": {
+            "accent": "data-color='accent'",
+            "neutral": "data-color='neutral'",
+            "success": "data-color='success'",
+            "danger": "data-color='danger'",
+            "warning": "data-color='warning'",
+            "info": "data-color='info'"
+        },
+        "sizes": {
+            "xsmall": "data-size='xsmall'",
+            "small": "data-size='small'",
+            "medium": "data-size='medium'",
+            "large": "data-size='large'",
+            "xlarge": "data-size='xlarge'"
+        },
+        "spacing": {
+            "xs": "var(--ds-spacing-1)",
+            "sm": "var(--ds-spacing-2)",
+            "md": "var(--ds-spacing-4)",
+            "lg": "var(--ds-spacing-6)",
+            "xl": "var(--ds-spacing-8)",
+            "2xl": "var(--ds-spacing-10)"
+        },
+        "borderRadius": {
+            "small": "var(--ds-border-radius-small)",
+            "medium": "var(--ds-border-radius-medium)",
+            "large": "var(--ds-border-radius-large)",
+            "xlarge": "var(--ds-border-radius-xlarge)",
+            "full": "var(--ds-border-radius-full)"
+        },
+        "grid": {
+            "responsive1to2to3": "Grid cols={{ base: 1, md: 2, lg: 3 }} gap='md'",
+            "responsive1to2": "Grid cols={{ base: 1, md: 2 }} gap='md'",
+            "autoFit": "Grid autoFit minColWidth='280px' gap='md'",
+            "fixed4": "Grid cols={4} gap='md'"
+        }
+    },
+    "types": [
+        {
+            "type": "PageShell",
+            "description": "Core page layout with header, content, drawer slots",
+            "category": "scaffold",
+            "platformUi": "composed/PageShell",
+            "slots": [
+                "header",
+                "breadcrumbs",
+                "toolbar",
+                "content",
+                "rightDrawer",
+                "footer"
+            ],
+            "props": {
+                "titleKey": "string",
+                "layoutVariant": "'list' | 'detail' | 'form' | 'dashboard' | 'wizard'",
+                "shellType": "'public' | 'authenticated' | 'minimal'",
+                "maxWidth": "string",
+                "stickyHeader": "boolean",
+                "rightDrawerEnabled": "boolean"
+            }
+        },
+        {
+            "type": "AppLayout",
+            "description": "Application shell with sidebar and main content",
+            "category": "scaffold",
+            "platformUi": "shells/AppLayout",
+            "slots": [
+                "sidebar",
+                "header",
+                "main"
+            ],
+            "props": {
+                "sidebarCollapsible": "boolean",
+                "sidebarWidth": "'sm' | 'md' | 'lg'"
+            }
+        },
+        {
+            "type": "PageContainer",
+            "description": "Responsive max-width container with padding",
+            "category": "layout",
+            "platformUi": "composed/PageContainer",
+            "props": {
+                "maxWidth": "'sm' | 'md' | 'lg' | 'xl' | 'full'",
+                "padding": "'sm' | 'md' | 'lg'"
+            }
+        },
+        {
+            "type": "Grid",
+            "description": "Responsive CSS Grid layout",
+            "category": "primitive",
+            "platformUi": "primitives/Grid",
+            "props": {
+                "cols": "number | ResponsiveCols",
+                "gap": "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+                "autoFit": "boolean",
+                "minColWidth": "string"
+            }
+        },
+        {
+            "type": "Stack",
+            "description": "Flexbox stack for vertical/horizontal layouts",
+            "category": "primitive",
+            "platformUi": "primitives/Stack",
+            "props": {
+                "direction": "'vertical' | 'horizontal' | ResponsiveDirection",
+                "gap": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | ResponsiveGap",
+                "align": "'start' | 'center' | 'end' | 'stretch'",
+                "justify": "'start' | 'center' | 'end' | 'between' | 'around'"
+            }
+        },
+        {
+            "type": "Sidebar",
+            "description": "Sidebar navigation container",
+            "category": "layout",
+            "platformUi": "primitives/Sidebar",
+            "props": {
+                "width": "string",
+                "collapsible": "boolean",
+                "position": "'left' | 'right'"
+            }
+        },
+        {
+            "type": "Drawer",
+            "description": "Slide-in drawer panel",
+            "category": "layout",
+            "platformUi": "composed/Drawer",
+            "props": {
+                "position": "'left' | 'right'",
+                "width": "'sm' | 'md' | 'lg' | 'xl'",
+                "overlay": "boolean"
+            }
+        },
+        {
+            "type": "Modal",
+            "description": "Modal dialog container",
+            "category": "layout",
+            "platformUi": "composed/Modal",
+            "slots": [
+                "header",
+                "content",
+                "footer"
+            ],
+            "props": {
+                "size": "'sm' | 'md' | 'lg' | 'xl' | 'full'",
+                "closable": "boolean"
+            }
+        },
+        {
+            "type": "Breadcrumbs",
+            "description": "Page breadcrumb navigation",
+            "category": "navigation",
+            "platformUi": "composed/Breadcrumbs",
+            "bindings": {
+                "items": "vm.breadcrumbs"
+            }
+        },
+        {
+            "type": "Divider",
+            "description": "Visual separator line",
+            "category": "primitive",
+            "platformUi": "primitives/Divider",
+            "props": {
+                "orientation": "'horizontal' | 'vertical'",
+                "variant": "'solid' | 'dashed'"
+            }
+        }
+    ],
+    "enum": [
+        "PageShell",
+        "AppLayout",
+        "PageContainer",
+        "Grid",
+        "Stack",
+        "Sidebar",
+        "Drawer",
+        "Modal",
+        "Breadcrumbs",
+        "Divider"
+    ]
+}

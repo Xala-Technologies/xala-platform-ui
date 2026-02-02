@@ -1,0 +1,481 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/html-to-platform.dictionary.json",
+    "title": "HTML to Platform UI Translation Dictionary",
+    "description": "Maps common HTML elements to Designsystemet/Platform UI components. AI MUST use platform components, NEVER raw HTML.",
+    "version": "1.0.0",
+    "critical_rule": "NEVER USE RAW HTML ELEMENTS. Always use the platform component.",
+    "elements": {
+        "div": {
+            "forbidden": true,
+            "translations": [
+                {
+                    "use": "Stack",
+                    "when": "Vertical or horizontal layout",
+                    "import": "@xala-technologies/platform-ui"
+                },
+                {
+                    "use": "Grid",
+                    "when": "Grid-based layout",
+                    "import": "@xala-technologies/platform-ui"
+                },
+                {
+                    "use": "Card",
+                    "when": "Container with border/shadow",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "Box",
+                    "when": "Generic container",
+                    "import": "@xala-technologies/platform-ui"
+                }
+            ],
+            "example": {
+                "wrong": "<div className=\"container\">content</div>",
+                "correct": "<Stack gap=\"md\" direction=\"vertical\">content</Stack>"
+            }
+        },
+        "span": {
+            "forbidden": true,
+            "translations": [
+                {
+                    "use": "Text",
+                    "when": "Inline text styling",
+                    "import": "@xala-technologies/platform-ui"
+                },
+                {
+                    "use": "Badge",
+                    "when": "Status indicators",
+                    "import": "@xala-technologies/platform-ui"
+                }
+            ],
+            "example": {
+                "wrong": "<span className=\"status\">Active</span>",
+                "correct": "<Badge variant=\"success\">Active</Badge>"
+            }
+        },
+        "h1": {
+            "forbidden": true,
+            "translation": {
+                "use": "Heading",
+                "props": "level={1}",
+                "import": "@digdir/designsystemet-react"
+            },
+            "example": {
+                "wrong": "<h1>Page Title</h1>",
+                "correct": "<Heading level={1} data-size=\"xlarge\">Page Title</Heading>"
+            }
+        },
+        "h2": {
+            "forbidden": true,
+            "translation": {
+                "use": "Heading",
+                "props": "level={2}",
+                "import": "@digdir/designsystemet-react"
+            },
+            "example": {
+                "wrong": "<h2>Section Title</h2>",
+                "correct": "<Heading level={2} data-size=\"large\">Section Title</Heading>"
+            }
+        },
+        "h3": {
+            "forbidden": true,
+            "translation": {
+                "use": "Heading",
+                "props": "level={3}",
+                "import": "@digdir/designsystemet-react"
+            },
+            "example": {
+                "wrong": "<h3>Subsection</h3>",
+                "correct": "<Heading level={3} data-size=\"medium\">Subsection</Heading>"
+            }
+        },
+        "h4": {
+            "forbidden": true,
+            "translation": {
+                "use": "Heading",
+                "props": "level={4}",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "h5": {
+            "forbidden": true,
+            "translation": {
+                "use": "Heading",
+                "props": "level={5}",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "h6": {
+            "forbidden": true,
+            "translation": {
+                "use": "Heading",
+                "props": "level={6}",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "p": {
+            "forbidden": true,
+            "translation": {
+                "use": "Paragraph",
+                "import": "@digdir/designsystemet-react"
+            },
+            "example": {
+                "wrong": "<p>Some text content</p>",
+                "correct": "<Paragraph data-size=\"medium\">Some text content</Paragraph>"
+            }
+        },
+        "button": {
+            "forbidden": true,
+            "translation": {
+                "use": "Button",
+                "import": "@digdir/designsystemet-react"
+            },
+            "example": {
+                "wrong": "<button onClick={handleClick}>Submit</button>",
+                "correct": "<Button data-color=\"accent\" onClick={handleClick}>Submit</Button>"
+            }
+        },
+        "a": {
+            "forbidden": true,
+            "translations": [
+                {
+                    "use": "Link",
+                    "when": "Navigation link",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "Button",
+                    "when": "Call-to-action",
+                    "props": "as=\"a\"",
+                    "import": "@digdir/designsystemet-react"
+                }
+            ],
+            "example": {
+                "wrong": "<a href=\"/about\">About</a>",
+                "correct": "<Link href=\"/about\">About</Link>"
+            }
+        },
+        "input": {
+            "forbidden": true,
+            "translations": [
+                {
+                    "use": "Textfield",
+                    "when": "Text input",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "Checkbox",
+                    "when": "type=\"checkbox\"",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "Radio",
+                    "when": "type=\"radio\"",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "NumberInput",
+                    "when": "type=\"number\"",
+                    "import": "@xala-technologies/platform-ui"
+                }
+            ],
+            "example": {
+                "wrong": "<input type=\"text\" placeholder=\"Name\" />",
+                "correct": "<Textfield data-size=\"medium\" placeholder=\"Name\" />"
+            }
+        },
+        "textarea": {
+            "forbidden": true,
+            "translation": {
+                "use": "Textarea",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "select": {
+            "forbidden": true,
+            "translations": [
+                {
+                    "use": "Select",
+                    "when": "Simple dropdown",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "SearchableSelect",
+                    "when": "Filterable options",
+                    "import": "@xala-technologies/platform-ui"
+                },
+                {
+                    "use": "NativeSelect",
+                    "when": "Native mobile select",
+                    "import": "@xala-technologies/platform-ui"
+                }
+            ]
+        },
+        "label": {
+            "forbidden": true,
+            "translation": {
+                "use": "Label",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "form": {
+            "allowed": true,
+            "note": "<form> is allowed for semantic HTML, but use FormLayout for structure"
+        },
+        "ul": {
+            "forbidden": true,
+            "translations": [
+                {
+                    "use": "List",
+                    "when": "Simple list",
+                    "import": "@digdir/designsystemet-react"
+                },
+                {
+                    "use": "Stack",
+                    "when": "Styled list items",
+                    "import": "@xala-technologies/platform-ui"
+                }
+            ]
+        },
+        "ol": {
+            "forbidden": true,
+            "translation": {
+                "use": "List",
+                "props": "as=\"ol\"",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "li": {
+            "forbidden": true,
+            "translation": {
+                "use": "List.Item",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "table": {
+            "forbidden": true,
+            "translation": {
+                "use": "Table",
+                "import": "@digdir/designsystemet-react"
+            },
+            "composed": {
+                "use": "DataTable",
+                "when": "Full-featured data table",
+                "import": "@xala-technologies/platform-ui"
+            }
+        },
+        "thead": {
+            "forbidden": true,
+            "translation": {
+                "use": "Table.Head",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "tbody": {
+            "forbidden": true,
+            "translation": {
+                "use": "Table.Body",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "tr": {
+            "forbidden": true,
+            "translation": {
+                "use": "Table.Row",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "th": {
+            "forbidden": true,
+            "translation": {
+                "use": "Table.HeaderCell",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "td": {
+            "forbidden": true,
+            "translation": {
+                "use": "Table.Cell",
+                "import": "@digdir/designsystemet-react"
+            }
+        },
+        "img": {
+            "allowed": true,
+            "note": "Use with proper alt text. For responsive, use ResponsiveImage from platform-ui"
+        },
+        "nav": {
+            "allowed": true,
+            "note": "Use for semantic navigation, but structure with Stack/NavLinks"
+        },
+        "header": {
+            "allowed": true,
+            "note": "Use for semantic header, but structure with AppHeader component"
+        },
+        "footer": {
+            "allowed": true,
+            "note": "Use for semantic footer, but structure with PublicFooter component"
+        },
+        "main": {
+            "allowed": true,
+            "note": "Use for semantic main content area"
+        },
+        "section": {
+            "allowed": true,
+            "note": "Use for semantic sections, but structure with SectionCard or Stack"
+        },
+        "article": {
+            "allowed": true,
+            "note": "Use for semantic articles"
+        },
+        "aside": {
+            "allowed": true,
+            "note": "Use for semantic sidebars, but structure with Sidebar component"
+        },
+        "hr": {
+            "forbidden": true,
+            "translation": {
+                "use": "Divider",
+                "import": "@xala-technologies/platform-ui"
+            }
+        },
+        "br": {
+            "forbidden": true,
+            "note": "Use spacing tokens instead of line breaks"
+        },
+        "strong": {
+            "allowed": true,
+            "alternative": {
+                "use": "Text",
+                "props": "weight=\"bold\""
+            }
+        },
+        "em": {
+            "allowed": true,
+            "alternative": {
+                "use": "Text",
+                "props": "fontStyle=\"italic\""
+            }
+        },
+        "code": {
+            "allowed": true,
+            "composed": {
+                "use": "CodeBlock",
+                "when": "Multi-line code",
+                "import": "@xala-technologies/platform-ui"
+            }
+        },
+        "pre": {
+            "forbidden": true,
+            "translation": {
+                "use": "CodeBlock",
+                "import": "@xala-technologies/platform-ui"
+            }
+        }
+    },
+    "primitives": {
+        "Stack": {
+            "import": "@xala-technologies/platform-ui",
+            "description": "Flexbox container for vertical/horizontal layouts",
+            "props": {
+                "direction": "'vertical' | 'horizontal' | ResponsiveDirection",
+                "gap": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | ResponsiveGap",
+                "align": "'start' | 'center' | 'end' | 'stretch'",
+                "justify": "'start' | 'center' | 'end' | 'between' | 'around'",
+                "wrap": "boolean",
+                "as": "'div' | 'section' | 'article' | 'nav' | 'header' | 'footer' | 'main'"
+            },
+            "useFor": [
+                "Layouts",
+                "Card content",
+                "Form fields",
+                "Button groups",
+                "List items"
+            ]
+        },
+        "Grid": {
+            "import": "@xala-technologies/platform-ui",
+            "description": "CSS Grid layout with responsive columns",
+            "props": {
+                "cols": "number | ResponsiveCols",
+                "gap": "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+                "autoFit": "boolean",
+                "minColWidth": "string"
+            },
+            "useFor": [
+                "Card grids",
+                "Stats grids",
+                "Gallery",
+                "Form layouts"
+            ]
+        },
+        "Container": {
+            "import": "@xala-technologies/platform-ui",
+            "description": "Max-width container with responsive padding",
+            "props": {
+                "maxWidth": "'sm' | 'md' | 'lg' | 'xl' | 'full'",
+                "centered": "boolean"
+            },
+            "useFor": [
+                "Page content wrapper",
+                "Centered layouts"
+            ]
+        },
+        "Card": {
+            "import": "@digdir/designsystemet-react",
+            "description": "Bordered container with optional header/footer",
+            "props": {
+                "data-color": "'accent' | 'neutral' | etc",
+                "data-size": "'sm' | 'md' | 'lg'"
+            },
+            "useFor": [
+                "Content panels",
+                "Info boxes",
+                "Feature cards"
+            ]
+        },
+        "Divider": {
+            "import": "@xala-technologies/platform-ui",
+            "description": "Visual separator line",
+            "props": {
+                "orientation": "'horizontal' | 'vertical'"
+            },
+            "useFor": [
+                "Section dividers",
+                "List separators"
+            ]
+        },
+        "Text": {
+            "import": "@xala-technologies/platform-ui",
+            "description": "Styled text with variants",
+            "props": {
+                "size": "'sm' | 'md' | 'lg'",
+                "weight": "'normal' | 'medium' | 'bold'",
+                "color": "'primary' | 'secondary' | 'muted'"
+            },
+            "useFor": [
+                "Inline text",
+                "Labels",
+                "Captions"
+            ]
+        },
+        "Box": {
+            "import": "@xala-technologies/platform-ui",
+            "description": "Generic container with styling props",
+            "props": {
+                "padding": "SpacingToken",
+                "margin": "SpacingToken"
+            },
+            "useFor": [
+                "Wrapper with spacing",
+                "Generic container"
+            ]
+        }
+    },
+    "stylingRules": {
+        "noInlineStyles": "Never use style={{}} with hardcoded values",
+        "useTokens": "Always use design tokens for spacing, colors, etc.",
+        "useDataAttributes": "Use data-color, data-size instead of className",
+        "noCustomCSS": "No custom CSS files, use token-based styling"
+    }
+}

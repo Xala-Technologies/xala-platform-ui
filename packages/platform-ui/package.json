@@ -125,6 +125,31 @@
       "types": "./dist/features/rental-object-details.d.ts",
       "import": "./dist/features/rental-object-details.js",
       "default": "./dist/features/rental-object-details.js"
+    },
+    "./app-scaffold": {
+      "types": "./dist/app-scaffold/index.d.ts",
+      "import": "./dist/app-scaffold/index.js",
+      "require": "./dist/app-scaffold/index.cjs"
+    },
+    "./gazetteer": {
+      "types": "./dist/gazetteer/index.d.ts",
+      "import": "./dist/gazetteer/index.js",
+      "require": "./dist/gazetteer/index.cjs"
+    },
+    "./gazetteer/provider": {
+      "types": "./dist/gazetteer/provider.d.ts",
+      "import": "./dist/gazetteer/provider.js",
+      "require": "./dist/gazetteer/provider.cjs"
+    },
+    "./gazetteer/router": {
+      "types": "./dist/gazetteer/router.d.ts",
+      "import": "./dist/gazetteer/router.js",
+      "require": "./dist/gazetteer/router.cjs"
+    },
+    "./gazetteer/renderer": {
+      "types": "./dist/gazetteer/renderer.d.ts",
+      "import": "./dist/gazetteer/renderer.js",
+      "require": "./dist/gazetteer/renderer.cjs"
     }
   },
   "typesVersions": {
@@ -215,6 +240,7 @@
     "@digdir/designsystemet-react": "^1.9.0",
     "@fontsource/inter": "^5.2.8",
     "@navikt/aksel-icons": "^8.0.1",
+    "@xala-technologies/gazetteer": "workspace:*",
     "@xala-technologies/i18n": "1.1.0",
     "@xala-technologies/platform-ui-core": "^1.0.0",
     "@xala-technologies/platform-ui-digilist": "^1.0.1",

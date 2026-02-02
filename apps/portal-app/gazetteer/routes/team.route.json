@@ -1,0 +1,17 @@
+{
+  "$schema": "@xala-technologies/gazetteer/schemas/route.spec.schema.json",
+  "routeId": "team",
+  "path": "/team",
+  "titleKey": "team.title",
+  "icon": "page",
+  "pageRef": "team",
+  "access": {
+    "public": true,
+    "roles": []
+  },
+  "navigation": {
+    "labelKey": "nav.team",
+    "group": "main",
+    "order": 3
+  }
+}

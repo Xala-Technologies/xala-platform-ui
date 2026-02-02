@@ -8,7 +8,7 @@
 import React, { createContext, useContext, useMemo, useEffect, type ReactNode } from 'react'
 import { getRegistry, resetRegistry, type GazetteerRegistry } from '../runtime/registry'
 import { PageComposer, createPageComposer, type ComposerConfig } from '../runtime/composer'
-import { ActionEngine, createActionEngine, type ActionHandlers } from '../runtime/action-engine'
+import { ActionEngine, createActionEngine, noopHandlers, type ActionHandlers } from '../runtime/action-engine'
 import { BindingResolver, type BindingContext } from '../runtime/binding-resolver'
 import type { RouteSpec, PageSpec, FlowSpec, ActionSpec } from '../types'
 
@@ -96,7 +96,7 @@ const defaultBindingContext: BindingContext = {
 export function GazetteerProvider({
     children,
     specs,
-    actionHandlers = {},
+    actionHandlers = noopHandlers,
     bindingContext = defaultBindingContext,
     widgetRegistry = defaultWidgetRegistry,
     shellRegistry = defaultShellRegistry,

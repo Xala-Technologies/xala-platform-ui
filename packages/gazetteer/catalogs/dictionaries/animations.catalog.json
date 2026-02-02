@@ -1,0 +1,481 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/animations.catalog.json",
+    "title": "Animations & Motion Design Catalog",
+    "description": "Complete animation presets, transitions, effects, and motion guidance for platform UI",
+    "version": "1.0.0",
+    "principles": {
+        "purpose": "Animations should enhance UX, not distract",
+        "performance": "Use CSS transforms and opacity for 60fps",
+        "accessibility": "Respect prefers-reduced-motion",
+        "consistency": "Use standard durations and easing"
+    },
+    "timing": {
+        "instant": {
+            "duration": 100,
+            "use": "Hover states, tiny interactions"
+        },
+        "fast": {
+            "duration": 150,
+            "use": "Button presses, micro-interactions"
+        },
+        "normal": {
+            "duration": 250,
+            "use": "Default transitions, toggles"
+        },
+        "smooth": {
+            "duration": 300,
+            "use": "Page transitions, drawers"
+        },
+        "slow": {
+            "duration": 500,
+            "use": "Loading indicators, emphasis"
+        },
+        "deliberate": {
+            "duration": 800,
+            "use": "Complex sequences, onboarding"
+        }
+    },
+    "easing": {
+        "easeOut": {
+            "curve": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+            "use": "Default for entering"
+        },
+        "easeIn": {
+            "curve": "cubic-bezier(0.4, 0.0, 1, 1)",
+            "use": "Default for exiting"
+        },
+        "easeInOut": {
+            "curve": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+            "use": "Moving between states"
+        },
+        "spring": {
+            "curve": "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+            "use": "Playful bouncy feel"
+        },
+        "sharp": {
+            "curve": "cubic-bezier(0.4, 0.0, 0.6, 1)",
+            "use": "Quick, decisive actions"
+        }
+    },
+    "enter": [
+        {
+            "type": "none",
+            "description": "No animation",
+            "duration": 0
+        },
+        {
+            "type": "fadeIn",
+            "description": "Fade in opacity from 0 to 1",
+            "duration": 250,
+            "easing": "easeOut",
+            "useFor": [
+                "Page content",
+                "Modal overlays",
+                "Lazy-loaded items"
+            ]
+        },
+        {
+            "type": "slideInRight",
+            "description": "Slide in from right edge",
+            "duration": 300,
+            "easing": "easeOut",
+            "useFor": [
+                "Right drawer",
+                "Side panels",
+                "Detail views"
+            ]
+        },
+        {
+            "type": "slideInLeft",
+            "description": "Slide in from left edge",
+            "duration": 300,
+            "easing": "easeOut",
+            "useFor": [
+                "Left sidebar",
+                "Navigation drawer"
+            ]
+        },
+        {
+            "type": "slideInUp",
+            "description": "Slide in from bottom",
+            "duration": 300,
+            "easing": "easeOut",
+            "useFor": [
+                "Bottom sheets",
+                "Mobile modals",
+                "Toasts"
+            ]
+        },
+        {
+            "type": "slideInDown",
+            "description": "Slide in from top",
+            "duration": 300,
+            "easing": "easeOut",
+            "useFor": [
+                "Dropdown menus",
+                "Notifications",
+                "Alerts"
+            ]
+        },
+        {
+            "type": "scaleIn",
+            "description": "Scale up from 0.95 to 1 with fade",
+            "duration": 200,
+            "easing": "easeOut",
+            "useFor": [
+                "Modals",
+                "Dialogs",
+                "Popovers",
+                "Tooltips"
+            ]
+        },
+        {
+            "type": "expandIn",
+            "description": "Expand height from 0 to auto",
+            "duration": 250,
+            "easing": "easeOut",
+            "useFor": [
+                "Accordions",
+                "Collapsible sections",
+                "Details"
+            ]
+        },
+        {
+            "type": "staggerIn",
+            "description": "Staggered fade-in for list items",
+            "duration": 300,
+            "staggerDelay": 50,
+            "easing": "easeOut",
+            "useFor": [
+                "Lists",
+                "Grids",
+                "Cards",
+                "Table rows"
+            ]
+        }
+    ],
+    "exit": [
+        {
+            "type": "none",
+            "description": "No animation",
+            "duration": 0
+        },
+        {
+            "type": "fadeOut",
+            "description": "Fade out opacity from 1 to 0",
+            "duration": 200,
+            "easing": "easeIn",
+            "useFor": [
+                "Closing modals",
+                "Removing items"
+            ]
+        },
+        {
+            "type": "slideOutLeft",
+            "description": "Slide out to left edge",
+            "duration": 250,
+            "easing": "easeIn",
+            "useFor": [
+                "Page navigation forward"
+            ]
+        },
+        {
+            "type": "slideOutRight",
+            "description": "Slide out to right edge",
+            "duration": 250,
+            "easing": "easeIn",
+            "useFor": [
+                "Page navigation back",
+                "Closing right drawer"
+            ]
+        },
+        {
+            "type": "slideOutDown",
+            "description": "Slide out to bottom",
+            "duration": 250,
+            "easing": "easeIn",
+            "useFor": [
+                "Closing bottom sheets",
+                "Dismissing toasts"
+            ]
+        },
+        {
+            "type": "slideOutUp",
+            "description": "Slide out to top",
+            "duration": 250,
+            "easing": "easeIn",
+            "useFor": [
+                "Closing dropdowns"
+            ]
+        },
+        {
+            "type": "scaleOut",
+            "description": "Scale down to 0.95 with fade",
+            "duration": 150,
+            "easing": "easeIn",
+            "useFor": [
+                "Closing modals",
+                "Dialogs"
+            ]
+        },
+        {
+            "type": "collapseOut",
+            "description": "Collapse height to 0",
+            "duration": 200,
+            "easing": "easeIn",
+            "useFor": [
+                "Closing accordions",
+                "Collapsible sections"
+            ]
+        }
+    ],
+    "effects": {
+        "hover": [
+            {
+                "type": "lift",
+                "description": "Raise with shadow on hover",
+                "transform": "translateY(-2px)",
+                "shadow": "increased",
+                "duration": 150,
+                "useFor": [
+                    "Cards",
+                    "Buttons",
+                    "Interactive items"
+                ]
+            },
+            {
+                "type": "glow",
+                "description": "Subtle glow effect on hover",
+                "duration": 200,
+                "useFor": [
+                    "Icons",
+                    "Links",
+                    "Badges"
+                ]
+            },
+            {
+                "type": "scale",
+                "description": "Slight scale up on hover",
+                "transform": "scale(1.02)",
+                "duration": 150,
+                "useFor": [
+                    "Thumbnails",
+                    "Gallery items"
+                ]
+            },
+            {
+                "type": "highlight",
+                "description": "Background highlight on hover",
+                "duration": 100,
+                "useFor": [
+                    "Table rows",
+                    "List items",
+                    "Menu items"
+                ]
+            }
+        ],
+        "focus": [
+            {
+                "type": "ring",
+                "description": "Focus ring outline",
+                "useFor": [
+                    "All interactive elements"
+                ],
+                "accessibility": "Required for keyboard navigation"
+            },
+            {
+                "type": "pulse",
+                "description": "Subtle pulse on focus",
+                "duration": 300,
+                "useFor": [
+                    "Primary actions",
+                    "Important fields"
+                ]
+            }
+        ],
+        "active": [
+            {
+                "type": "press",
+                "description": "Scale down slightly on press",
+                "transform": "scale(0.98)",
+                "duration": 100,
+                "useFor": [
+                    "Buttons",
+                    "Clickable cards"
+                ]
+            }
+        ],
+        "loading": [
+            {
+                "type": "shimmer",
+                "description": "Shimmer loading effect",
+                "duration": 1500,
+                "repeat": "infinite",
+                "useFor": [
+                    "Skeleton loaders",
+                    "Placeholder content"
+                ]
+            },
+            {
+                "type": "spinner",
+                "description": "Rotating spinner",
+                "duration": 1000,
+                "repeat": "infinite",
+                "useFor": [
+                    "Loading states",
+                    "Buttons loading"
+                ]
+            },
+            {
+                "type": "pulse",
+                "description": "Pulsing opacity animation",
+                "duration": 1000,
+                "repeat": "infinite",
+                "useFor": [
+                    "Live indicators",
+                    "Recording status"
+                ]
+            },
+            {
+                "type": "dots",
+                "description": "Three bouncing dots",
+                "duration": 1400,
+                "repeat": "infinite",
+                "useFor": [
+                    "Chat typing",
+                    "Processing"
+                ]
+            }
+        ],
+        "feedback": [
+            {
+                "type": "shake",
+                "description": "Horizontal shake for errors",
+                "duration": 400,
+                "useFor": [
+                    "Invalid input",
+                    "Error feedback"
+                ]
+            },
+            {
+                "type": "bounce",
+                "description": "Bounce animation for attention",
+                "duration": 500,
+                "useFor": [
+                    "Notifications",
+                    "Badges",
+                    "Alerts"
+                ]
+            },
+            {
+                "type": "flash",
+                "description": "Quick flash/highlight",
+                "duration": 300,
+                "useFor": [
+                    "Just-updated content",
+                    "New items"
+                ]
+            },
+            {
+                "type": "checkmark",
+                "description": "Animated checkmark draw",
+                "duration": 300,
+                "useFor": [
+                    "Success confirmation",
+                    "Completion"
+                ]
+            }
+        ]
+    },
+    "componentAnimations": {
+        "Modal": {
+            "enter": "scaleIn",
+            "exit": "scaleOut",
+            "overlay": "fadeIn / fadeOut"
+        },
+        "Drawer": {
+            "right": {
+                "enter": "slideInRight",
+                "exit": "slideOutRight"
+            },
+            "left": {
+                "enter": "slideInLeft",
+                "exit": "slideOutLeft"
+            },
+            "bottom": {
+                "enter": "slideInUp",
+                "exit": "slideOutDown"
+            }
+        },
+        "Toast": {
+            "enter": "slideInUp",
+            "exit": "slideOutUp",
+            "autoHide": true,
+            "duration": 5000
+        },
+        "Dropdown": {
+            "enter": "slideInDown + fadeIn",
+            "exit": "fadeOut",
+            "duration": 150
+        },
+        "Tooltip": {
+            "enter": "fadeIn + scaleIn",
+            "exit": "fadeOut",
+            "delay": 300,
+            "duration": 150
+        },
+        "Accordion": {
+            "enter": "expandIn",
+            "exit": "collapseOut"
+        },
+        "Tab": {
+            "enter": "fadeIn",
+            "exit": "fadeOut",
+            "indicator": "slideX"
+        },
+        "Skeleton": {
+            "loading": "shimmer"
+        },
+        "Button": {
+            "hover": "lift",
+            "active": "press",
+            "loading": "spinner"
+        },
+        "Card": {
+            "hover": "lift",
+            "enter": "fadeIn"
+        },
+        "ListItem": {
+            "hover": "highlight",
+            "enter": "staggerIn"
+        },
+        "Alert": {
+            "enter": "slideInDown",
+            "exit": "slideOutUp"
+        }
+    },
+    "pageTransitions": {
+        "forward": {
+            "outgoing": "slideOutLeft + fadeOut",
+            "incoming": "slideInRight + fadeIn"
+        },
+        "backward": {
+            "outgoing": "slideOutRight + fadeOut",
+            "incoming": "slideInLeft + fadeIn"
+        },
+        "push": {
+            "outgoing": "scaleOut + fadeOut",
+            "incoming": "scaleIn + fadeIn"
+        },
+        "fade": {
+            "outgoing": "fadeOut",
+            "incoming": "fadeIn"
+        }
+    },
+    "reducedMotion": {
+        "query": "@media (prefers-reduced-motion: reduce)",
+        "behavior": "Replace all animations with instant or fade-only",
+        "implementation": "Use CSS media query or useReducedMotion hook"
+    }
+}

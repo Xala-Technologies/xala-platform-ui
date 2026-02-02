@@ -104,6 +104,8 @@ const ALLOWED_FILES = [
 
 // Excluded patterns (domain-coupled components that bridge UI and platform)
 const EXCLUDED_PATTERNS = [
+  /\.test\.tsx?$/,  // Test files - allowed to use raw HTML for testing
+  /\.spec\.tsx?$/,  // Spec files - allowed to use raw HTML for testing
   /Connected\.tsx$/,  // *Connected.tsx files bridge domain and UI
   /\/stories\//,  // Storybook stories are documentation/examples, not production code
   /\/primitives\//,  // Primitives wrap raw HTML by design - that's their purpose

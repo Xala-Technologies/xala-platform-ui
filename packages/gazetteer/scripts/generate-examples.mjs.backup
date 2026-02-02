@@ -1,0 +1,1013 @@
+#!/usr/bin/env node
+/**
+ * Generate Platform-UI Examples Catalog
+ * 
+ * Generates thousands of examples covering all platform-ui components,
+ * patterns, and recipes to help AI understand the design system.
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Comprehensive component configurations
+const components = {
+  Stack: {
+    directions: ['vertical', 'horizontal'],
+    gaps: ['xs', 'sm', 'md', 'lg', 'xl'],
+    aligns: ['start', 'center', 'end', 'stretch', 'baseline'],
+    justifies: ['start', 'center', 'end', 'between', 'around', 'evenly'],
+    paddings: ['xs', 'sm', 'md', 'lg', 'xl'],
+    responsive: true,
+  },
+  Grid: {
+    cols: [1, 2, 3, 4, 5, 6, 8, 12],
+    gaps: ['xs', 'sm', 'md', 'lg', 'xl'],
+    responsive: true,
+  },
+  Button: {
+    colors: ['accent', 'neutral', 'success', 'danger', 'warning', 'info'],
+    sizes: ['small', 'medium', 'large'],
+    variants: ['primary', 'secondary', 'tertiary'],
+  },
+  Card: {
+    colors: ['neutral', 'accent'],
+    sizes: ['small', 'medium', 'large'],
+  },
+  Text: {
+    variants: ['body', 'subtitle', 'caption', 'overline'],
+    sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
+    weights: ['normal', 'medium', 'semibold', 'bold'],
+  },
+  Heading: {
+    levels: [1, 2, 3, 4, 5, 6],
+    sizes: ['xsmall', 'small', 'medium', 'large', 'xlarge'],
+  },
+  Badge: {
+    colors: ['neutral', 'accent', 'success', 'danger', 'warning', 'info'],
+    sizes: ['small', 'medium', 'large'],
+  },
+};
+
+// Generate comprehensive examples
+function generateComponentExamples(componentName, config) {
+  const examples = [];
+  
+  if (componentName === 'Stack') {
+    // Basic Stack variations
+    config.directions.forEach(direction => {
+      config.gaps.forEach(gap => {
+        examples.push({
+          category: 'layout',
+          subcategory: 'stack',
+          title: `${direction.charAt(0).toUpperCase() + direction.slice(1)} Stack with ${gap.toUpperCase()} Gap`,
+          description: `Stack component with ${direction} direction and ${gap} gap spacing`,
+          code: `<Stack direction="${direction}" gap="${gap}">\n  <Text>Item 1</Text>\n  <Text>Item 2</Text>\n  <Text>Item 3</Text>\n</Stack>`,
+          platformUi: 'primitives/Stack',
+          tokens: { gap: getGapToken(gap) },
+        });
+      });
+    });
+    
+    // Stack with alignment
+    config.aligns.forEach(align => {
+      examples.push({
+        category: 'layout',
+        subcategory: 'stack',
+        title: `Horizontal Stack with ${align.charAt(0).toUpperCase() + align.slice(1)} Alignment`,
+        description: `Horizontal stack aligned to ${align}`,
+        code: `<Stack direction="horizontal" align="${align}" gap="sm">\n  <Button>Action 1</Button>\n  <Button>Action 2</Button>\n</Stack>`,
+        platformUi: 'primitives/Stack',
+      });
+    });
+    
+    // Stack with justify
+    config.justifies.forEach(justify => {
+      examples.push({
+        category: 'layout',
+        subcategory: 'stack',
+        title: `Stack with ${justify.charAt(0).toUpperCase() + justify.slice(1)} Justify`,
+        description: `Stack with ${justify} justification`,
+        code: `<Stack direction="horizontal" justify="${justify}" gap="sm">\n  <Button>Left</Button>\n  <Button>Right</Button>\n</Stack>`,
+        platformUi: 'primitives/Stack',
+      });
+    });
+    
+    // Stack with padding
+    config.paddings.forEach(px => {
+      examples.push({
+        category: 'layout',
+        subcategory: 'stack',
+        title: `Stack with ${px.toUpperCase()} Horizontal Padding`,
+        description: `Stack with px="${px}" padding`,
+        code: `<Stack direction="vertical" px="${px}" gap="md">\n  <Heading level={2}>Section Title</Heading>\n  <Paragraph>Content here</Paragraph>\n</Stack>`,
+        platformUi: 'primitives/Stack',
+        tokens: { px: getSpacingToken(px) },
+      });
+    });
+    
+    config.paddings.forEach(py => {
+      examples.push({
+        category: 'layout',
+        subcategory: 'stack',
+        title: `Stack with ${py.toUpperCase()} Vertical Padding`,
+        description: `Stack with py="${py}" padding`,
+        code: `<Stack direction="vertical" py="${py}" gap="md">\n  <Text>Top content</Text>\n  <Text>Bottom content</Text>\n</Stack>`,
+        platformUi: 'primitives/Stack',
+        tokens: { py: getSpacingToken(py) },
+      });
+    });
+    
+    // Responsive Stack patterns
+    const responsivePatterns = [
+      { base: 'vertical', md: 'horizontal' },
+      { base: 'horizontal', md: 'vertical' },
+    ];
+    
+    responsivePatterns.forEach(pattern => {
+      examples.push({
+        category: 'layout',
+        subcategory: 'stack',
+        title: `Responsive Stack Direction (${pattern.base} → ${pattern.md})`,
+        description: `Stack that changes direction from ${pattern.base} on mobile to ${pattern.md} on desktop`,
+        code: `<Stack direction={{ base: '${pattern.base}', md: '${pattern.md}' }} gap="md">\n  <Button>Button 1</Button>\n  <Button>Button 2</Button>\n</Stack>`,
+        platformUi: 'primitives/Stack',
+        responsive: true,
+      });
+    });
+    
+    // Responsive gap
+    const gapPatterns = [
+      { base: 'xs', md: 'sm', lg: 'md' },
+      { base: 'sm', md: 'md', lg: 'lg' },
+      { base: 'md', lg: 'lg', xl: 'xl' },
+    ];
+    
+    gapPatterns.forEach(pattern => {
+      const patternStr = Object.entries(pattern).map(([bp, gap]) => `${bp}: '${gap}'`).join(', ');
+      examples.push({
+        category: 'layout',
+        subcategory: 'stack',
+        title: `Responsive Stack Gap (${patternStr})`,
+        description: `Stack with responsive gap that increases on larger screens`,
+        code: `<Stack direction="vertical" gap={{ ${patternStr} }}>\n  <Card>Card 1</Card>\n  <Card>Card 2</Card>\n</Stack>`,
+        platformUi: 'primitives/Stack',
+        responsive: true,
+      });
+    });
+    
+    // Nested stacks
+    examples.push({
+      category: 'layout',
+      subcategory: 'stack',
+      title: 'Nested Stacks',
+      description: 'Stack containing another stack',
+      code: `<Stack direction="vertical" gap="lg">\n  <Stack direction="horizontal" gap="sm">\n    <Button>Action 1</Button>\n    <Button>Action 2</Button>\n  </Stack>\n  <Stack direction="vertical" gap="xs">\n    <Text>Item 1</Text>\n    <Text>Item 2</Text>\n  </Stack>\n</Stack>`,
+      platformUi: 'primitives/Stack',
+    });
+  }
+  
+  if (componentName === 'Grid') {
+    // Basic grid variations
+    config.cols.forEach(cols => {
+      config.gaps.forEach(gap => {
+        examples.push({
+          category: 'layout',
+          subcategory: 'grid',
+          title: `${cols} Column Grid with ${gap.toUpperCase()} Gap`,
+          description: `Grid with ${cols} columns and ${gap} gap spacing`,
+          code: `<Grid cols={${cols}} gap="${gap}">\n  {Array.from({ length: ${cols} }).map((_, i) => (\n    <Card key={i}>Card {i + 1}</Card>\n  ))}\n</Grid>`,
+          platformUi: 'primitives/Grid',
+          tokens: { gap: getGapToken(gap) },
+        });
+      });
+    });
+    
+    // Responsive grid patterns
+    const responsivePatterns = [
+      { base: 1, md: 2 },
+      { base: 1, md: 2, lg: 3 },
+      { base: 1, sm: 2, lg: 4 },
+      { base: 1, md: 3, lg: 4 },
+      { base: 1, sm: 2, md: 3, lg: 4 },
+      { base: 1, md: 2, lg: 3, xl: 4 },
+      { base: 1, sm: 2, md: 4, lg: 6 },
+      { base: 1, md: 2, lg: 4, xl: 6 },
+    ];
+    
+    responsivePatterns.forEach(pattern => {
+      const patternStr = Object.entries(pattern).map(([bp, cols]) => `${bp}: ${cols}`).join(', ');
+      examples.push({
+        category: 'layout',
+        subcategory: 'grid',
+        title: `Responsive Grid (${patternStr})`,
+        description: `Grid that adapts from ${pattern.base} column on mobile to ${Object.values(pattern).pop()} columns on desktop`,
+        code: `<Grid cols={{ ${patternStr} }} gap="md">\n  {items.map((item, i) => (\n    <Card key={i}>{item.title}</Card>\n  ))}\n</Grid>`,
+        platformUi: 'primitives/Grid',
+        responsive: true,
+      });
+    });
+    
+    // Responsive gap
+    const gapPatterns = [
+      { base: 'sm', md: 'md', lg: 'lg' },
+      { base: 'xs', md: 'sm', lg: 'md' },
+      { base: 'md', lg: 'lg', xl: 'xl' },
+    ];
+    
+    gapPatterns.forEach(pattern => {
+      const patternStr = Object.entries(pattern).map(([bp, gap]) => `${bp}: '${gap}'`).join(', ');
+      examples.push({
+        category: 'layout',
+        subcategory: 'grid',
+        title: `Responsive Grid Gap (${patternStr})`,
+        description: `Grid with responsive gap spacing`,
+        code: `<Grid cols={{ base: 1, md: 2 }} gap={{ ${patternStr} }}>\n  <Card>Card 1</Card>\n  <Card>Card 2</Card>\n</Grid>`,
+        platformUi: 'primitives/Grid',
+        responsive: true,
+      });
+    });
+    
+    // Auto-fit grid
+    const autoFitWidths = ['240px', '280px', '320px', '360px'];
+    autoFitWidths.forEach(width => {
+      examples.push({
+        category: 'layout',
+        subcategory: 'grid',
+        title: `Auto-fit Grid (min ${width})`,
+        description: `Grid that automatically fits columns with minimum width ${width}`,
+        code: `<Grid autoFit minColWidth="${width}" gap="md">\n  {items.map((item, i) => (\n    <Card key={i}>{item.title}</Card>\n  ))}\n</Grid>`,
+        platformUi: 'primitives/Grid',
+      });
+    });
+  }
+  
+  if (componentName === 'Button') {
+    config.colors.forEach(color => {
+      config.sizes.forEach(size => {
+        examples.push({
+          category: 'components',
+          subcategory: 'button',
+          title: `${color.charAt(0).toUpperCase() + color.slice(1)} ${size.charAt(0).toUpperCase() + size.slice(1)} Button`,
+          description: `Button with ${color} color and ${size} size`,
+          code: `<Button data-color="${color}" data-size="${size}" onClick={handleClick}>\n  Click Me\n</Button>`,
+          platformUi: '@digdir/designsystemet-react',
+          tokens: {
+            'data-color': color,
+            'data-size': size,
+          },
+        });
+      });
+    });
+    
+    // Button variants
+    config.variants.forEach(variant => {
+      examples.push({
+        category: 'components',
+        subcategory: 'button',
+        title: `Button ${variant.charAt(0).toUpperCase() + variant.slice(1)} Variant`,
+        description: `Button with ${variant} variant`,
+        code: `<Button data-variant="${variant}" data-color="accent" data-size="medium">\n  ${variant.charAt(0).toUpperCase() + variant.slice(1)} Button\n</Button>`,
+        platformUi: '@digdir/designsystemet-react',
+        tokens: { 'data-variant': variant },
+      });
+    });
+    
+    // Button with icon
+    examples.push({
+      category: 'components',
+      subcategory: 'button',
+      title: 'Button with Icon',
+      description: 'Button containing an icon',
+      code: `<Button data-color="accent" data-size="medium">\n  <Stack direction="horizontal" gap="xs" align="center">\n    <SaveIcon style={{ width: 16, height: 16 }} />\n    <Text>Save</Text>\n  </Stack>\n</Button>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+    });
+  }
+  
+  if (componentName === 'Text') {
+    config.variants.forEach(variant => {
+      config.sizes.forEach(size => {
+        examples.push({
+          category: 'components',
+          subcategory: 'text',
+          title: `Text ${variant.charAt(0).toUpperCase() + variant.slice(1)} ${size.toUpperCase()}`,
+          description: `Text component with ${variant} variant and ${size} size`,
+          code: `<Text variant="${variant}" size="${size}">\n  Text content\n</Text>`,
+          platformUi: 'primitives/Text',
+          tokens: { variant, size },
+        });
+      });
+    });
+    
+    // Text with weight
+    config.weights.forEach(weight => {
+      examples.push({
+        category: 'components',
+        subcategory: 'text',
+        title: `Text with ${weight.charAt(0).toUpperCase() + weight.slice(1)} Weight`,
+        description: `Text with ${weight} font weight`,
+        code: `<Text size="md" weight="${weight}">\n  ${weight.charAt(0).toUpperCase() + weight.slice(1)} text\n</Text>`,
+        platformUi: 'primitives/Text',
+        tokens: { weight },
+      });
+    });
+    
+    // Text with color
+    const textColors = [
+      { token: 'var(--ds-color-neutral-text-default)', name: 'default' },
+      { token: 'var(--ds-color-neutral-text-subtle)', name: 'subtle' },
+      { token: 'var(--ds-color-accent-text-default)', name: 'accent' },
+    ];
+    
+    textColors.forEach(({ token, name }) => {
+      examples.push({
+        category: 'components',
+        subcategory: 'text',
+        title: `Text with ${name.charAt(0).toUpperCase() + name.slice(1)} Color`,
+        description: `Text with ${name} color using design token`,
+        code: `<Text size="md" style={{ color: '${token}' }}>\n  ${name.charAt(0).toUpperCase() + name.slice(1)} colored text\n</Text>`,
+        platformUi: 'primitives/Text',
+        tokens: { color: token },
+      });
+    });
+  }
+  
+  if (componentName === 'Heading') {
+    config.levels.forEach(level => {
+      config.sizes.forEach(size => {
+        examples.push({
+          category: 'components',
+          subcategory: 'heading',
+          title: `Heading Level ${level} ${size.charAt(0).toUpperCase() + size.slice(1)}`,
+          description: `Heading component with level ${level} and ${size} size`,
+          code: `<Heading level={${level}} data-size="${size}">\n  Heading Text\n</Heading>`,
+          platformUi: '@digdir/designsystemet-react',
+          tokens: {
+            level,
+            'data-size': size,
+          },
+        });
+      });
+    });
+  }
+  
+  if (componentName === 'Badge') {
+    config.colors.forEach(color => {
+      config.sizes.forEach(size => {
+        examples.push({
+          category: 'components',
+          subcategory: 'badge',
+          title: `${color.charAt(0).toUpperCase() + color.slice(1)} ${size.charAt(0).toUpperCase() + size.slice(1)} Badge`,
+          description: `Badge with ${color} color and ${size} size`,
+          code: `<Badge color="${color}" size="${size}">\n  Badge\n</Badge>`,
+          platformUi: 'primitives/Badge',
+          tokens: { color, size },
+        });
+      });
+    });
+  }
+  
+  return examples;
+}
+
+// Helper functions
+function getGapToken(gap) {
+  const map = { xs: '1', sm: '2', md: '4', lg: '6', xl: '8' };
+  return `${gap} = var(--ds-spacing-${map[gap]})`;
+}
+
+function getSpacingToken(size) {
+  const map = { xs: '1', sm: '2', md: '4', lg: '6', xl: '8' };
+  return `${size} = var(--ds-spacing-${map[size]})`;
+}
+
+// Generate common patterns
+function generateCommonPatterns() {
+  return [
+    // Form patterns
+    {
+      category: 'patterns',
+      subcategory: 'form',
+      title: 'Form with 2-Column Grid',
+      description: 'Responsive form layout with 2 columns on desktop',
+      code: `<Grid cols={{ base: 1, md: 2 }} gap="md">\n  <Stack direction="vertical" gap="xs">\n    <Label htmlFor="firstName">First Name</Label>\n    <Textfield id="firstName" data-size="medium" />\n  </Stack>\n  <Stack direction="vertical" gap="xs">\n    <Label htmlFor="lastName">Last Name</Label>\n    <Textfield id="lastName" data-size="medium" />\n  </Stack>\n</Grid>`,
+      platformUi: 'primitives/Grid + primitives/Stack + @digdir/designsystemet-react',
+      responsive: true,
+    },
+    {
+      category: 'patterns',
+      subcategory: 'form',
+      title: 'Form with 3-Column Grid',
+      description: 'Form with 3 columns on large screens',
+      code: `<Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">\n  <Stack direction="vertical" gap="xs">\n    <Label htmlFor="field1">Field 1</Label>\n    <Textfield id="field1" data-size="medium" />\n  </Stack>\n  <Stack direction="vertical" gap="xs">\n    <Label htmlFor="field2">Field 2</Label>\n    <Textfield id="field2" data-size="medium" />\n  </Stack>\n  <Stack direction="vertical" gap="xs">\n    <Label htmlFor="field3">Field 3</Label>\n    <Textfield id="field3" data-size="medium" />\n  </Stack>\n</Grid>`,
+      platformUi: 'primitives/Grid + primitives/Stack',
+      responsive: true,
+    },
+    {
+      category: 'patterns',
+      subcategory: 'form',
+      title: 'Form Actions Row',
+      description: 'Form action buttons aligned to the right',
+      code: `<Stack direction="horizontal" justify="end" gap="sm">\n  <Button data-variant="tertiary">Cancel</Button>\n  <Button data-color="accent">Save</Button>\n</Stack>`,
+      platformUi: 'primitives/Stack + @digdir/designsystemet-react',
+    },
+    {
+      category: 'patterns',
+      subcategory: 'form',
+      title: 'Form Section',
+      description: 'Form section with title and fields',
+      code: `<Stack direction="vertical" gap="lg">\n  <Heading level={3} data-size="sm">Section Title</Heading>\n  <Grid cols={{ base: 1, md: 2 }} gap="md">\n    {/* Form fields */}\n  </Grid>\n</Stack>`,
+      platformUi: 'primitives/Stack + primitives/Grid',
+    },
+    
+    // Card patterns
+    {
+      category: 'patterns',
+      subcategory: 'card-list',
+      title: 'Card Grid List (1-2-3)',
+      description: 'Responsive card grid: 1 column mobile, 2 tablet, 3 desktop',
+      code: `<Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">\n  {items.map(item => (\n    <Card key={item.id} data-color="neutral" data-size="medium">\n      <Card.Header>\n        <Heading level={3} data-size="sm">{item.title}</Heading>\n      </Card.Header>\n      <Card.Content>\n        <Paragraph data-size="sm">{item.description}</Paragraph>\n      </Card.Content>\n    </Card>\n  ))}\n</Grid>`,
+      platformUi: 'primitives/Grid + @digdir/designsystemet-react',
+      responsive: true,
+    },
+    {
+      category: 'patterns',
+      subcategory: 'card-list',
+      title: 'Card Grid List (1-2-4)',
+      description: 'Responsive card grid: 1 column mobile, 2 tablet, 4 desktop',
+      code: `<Grid cols={{ base: 1, md: 2, lg: 4 }} gap="md">\n  {items.map(item => (\n    <Card key={item.id} data-color="neutral" data-size="medium">\n      <Card.Header>\n        <Heading level={3} data-size="sm">{item.title}</Heading>\n      </Card.Header>\n      <Card.Content>\n        <Paragraph data-size="sm">{item.description}</Paragraph>\n      </Card.Content>\n    </Card>\n  ))}\n</Grid>`,
+      platformUi: 'primitives/Grid + @digdir/designsystemet-react',
+      responsive: true,
+    },
+    {
+      category: 'patterns',
+      subcategory: 'card',
+      title: 'Card with Header and Footer',
+      description: 'Card with header, content, and footer sections',
+      code: `<Card data-color="neutral" data-size="medium">\n  <Card.Header>\n    <Heading level={3} data-size="sm">Card Title</Heading>\n  </Card.Header>\n  <Card.Content>\n    <Paragraph data-size="sm">Card content</Paragraph>\n  </Card.Content>\n  <Card.Footer>\n    <Stack direction="horizontal" justify="end" gap="sm">\n      <Button data-variant="tertiary">Cancel</Button>\n      <Button data-color="accent">Action</Button>\n    </Stack>\n  </Card.Footer>\n</Card>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+    },
+    
+    // Dashboard patterns
+    {
+      category: 'patterns',
+      subcategory: 'dashboard',
+      title: 'Stats Grid (1-2-4)',
+      description: 'Dashboard statistics in responsive grid',
+      code: `<Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">\n  <Card data-color="neutral" data-size="medium">\n    <Card.Content>\n      <Stack direction="vertical" gap="xs">\n        <Text variant="caption" size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>\n          Total Users\n        </Text>\n        <Text size="xl" weight="bold">1,234</Text>\n      </Stack>\n    </Card.Content>\n  </Card>\n  {/* Repeat for other stats */}\n</Grid>`,
+      platformUi: 'primitives/Grid + @digdir/designsystemet-react + primitives/Stack',
+      responsive: true,
+    },
+    {
+      category: 'patterns',
+      subcategory: 'dashboard',
+      title: 'Dashboard Page Layout',
+      description: 'Complete dashboard page with header and content',
+      code: `<Stack direction="vertical" gap="lg">\n  <DashboardPageHeader\n    title="Dashboard"\n    subtitle="Overview"\n    actions={\n      <Stack direction="horizontal" gap="sm">\n        <Button data-variant="tertiary">Export</Button>\n        <Button data-color="accent">New Item</Button>\n      </Stack>\n    }\n  />\n  <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">\n    {/* Stats cards */}\n  </Grid>\n</Stack>`,
+      platformUi: 'composed/DashboardPageHeader + primitives/Stack + primitives/Grid',
+      responsive: true,
+    },
+    
+    // Detail page patterns
+    {
+      category: 'patterns',
+      subcategory: 'detail',
+      title: 'Detail Page with Sidebar',
+      description: 'Detail page with main content and sidebar',
+      code: `<Stack direction="vertical" gap="lg">\n  <DashboardPageHeader title="Item Details" />\n  <Grid cols={{ base: 1, lg: 3 }} gap="lg">\n    <Grid.Item colSpan={{ base: 1, lg: 2 }}>\n      <Card data-color="neutral" data-size="medium">\n        <Card.Header>\n          <Heading level={3} data-size="sm">Main Information</Heading>\n        </Card.Header>\n        <Card.Content>\n          {/* Main content */}\n        </Card.Content>\n      </Card>\n    </Grid.Item>\n    <Grid.Item>\n      <Card data-color="neutral" data-size="medium">\n        <Card.Header>\n          <Heading level={3} data-size="sm">Sidebar</Heading>\n        </Card.Header>\n        <Card.Content>\n          {/* Sidebar content */}\n        </Card.Content>\n      </Card>\n    </Grid.Item>\n  </Grid>\n</Stack>`,
+      platformUi: 'composed/DashboardPageHeader + primitives/Grid',
+      responsive: true,
+    },
+    
+    // Navigation patterns
+    {
+      category: 'patterns',
+      subcategory: 'navigation',
+      title: 'Breadcrumb Navigation',
+      description: 'Page breadcrumb trail',
+      code: `<Breadcrumbs>\n  <Breadcrumbs.Link to="/">Home</Breadcrumbs.Link>\n  <Breadcrumbs.Link to="/section">Section</Breadcrumbs.Link>\n  <Breadcrumbs.Current>Current Page</Breadcrumbs.Current>\n</Breadcrumbs>`,
+      platformUi: 'composed/Breadcrumbs',
+    },
+    {
+      category: 'patterns',
+      subcategory: 'navigation',
+      title: 'Pagination with Page Size',
+      description: 'Pagination component with page size selector',
+      code: `<Pagination\n  currentPage={currentPage}\n  totalPages={totalPages}\n  onPageChange={handlePageChange}\n  pageSize={pageSize}\n  onPageSizeChange={handlePageSizeChange}\n  showPageSize\n/>`,
+      platformUi: 'composed/Pagination',
+    },
+    
+    // Table patterns
+    {
+      category: 'patterns',
+      subcategory: 'table',
+      title: 'Data Table with Actions',
+      description: 'Table with action buttons in each row',
+      code: `<Table>\n  <Table.Head>\n    <Table.Row>\n      <Table.HeaderCell>Name</Table.HeaderCell>\n      <Table.HeaderCell>Email</Table.HeaderCell>\n      <Table.HeaderCell>Actions</Table.HeaderCell>\n    </Table.Row>\n  </Table.Head>\n  <Table.Body>\n    {users.map(user => (\n      <Table.Row key={user.id}>\n        <Table.DataCell>{user.name}</Table.DataCell>\n        <Table.DataCell>{user.email}</Table.DataCell>\n        <Table.DataCell>\n          <Stack direction="horizontal" gap="xs">\n            <Button data-variant="tertiary" data-size="sm">Edit</Button>\n            <Button data-variant="tertiary" data-size="sm" data-color="danger">Delete</Button>\n          </Stack>\n        </Table.DataCell>\n      </Table.Row>\n    ))}\n  </Table.Body>\n</Table>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+    },
+    
+    // Modal patterns
+    {
+      category: 'patterns',
+      subcategory: 'modal',
+      title: 'Confirmation Dialog',
+      description: 'Modal dialog for confirmations',
+      code: `<Dialog open={isOpen} onClose={handleClose}>\n  <Dialog.Header>\n    <Heading level={2} data-size="medium">Confirm Action</Heading>\n  </Dialog.Header>\n  <Dialog.Content>\n    <Paragraph>Are you sure you want to proceed?</Paragraph>\n  </Dialog.Content>\n  <Dialog.Footer>\n    <Stack direction="horizontal" justify="end" gap="sm">\n      <Button data-variant="tertiary" onClick={handleClose}>Cancel</Button>\n      <Button data-color="accent" onClick={handleConfirm}>Confirm</Button>\n    </Stack>\n  </Dialog.Footer>\n</Dialog>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+    },
+    
+    // Drawer patterns
+    {
+      category: 'patterns',
+      subcategory: 'drawer',
+      title: 'Right Drawer with Form',
+      description: 'Slide-out drawer from right with form content',
+      code: `<Drawer isOpen={isOpen} onClose={handleClose} position="right" size="lg">\n  <Stack direction="vertical" gap="lg" px="lg" py="lg">\n    <Heading level={2} data-size="medium">Drawer Title</Heading>\n    <Grid cols={{ base: 1 }} gap="md">\n      {/* Form fields */}\n    </Grid>\n    <Stack direction="horizontal" justify="end" gap="sm">\n      <Button data-variant="tertiary" onClick={handleClose}>Cancel</Button>\n      <Button data-color="accent">Save</Button>\n    </Stack>\n  </Stack>\n</Drawer>`,
+      platformUi: 'composed/Drawer + primitives/Stack + primitives/Grid',
+    },
+    
+    // Empty state patterns
+    {
+      category: 'patterns',
+      subcategory: 'empty',
+      title: 'Empty State with Action',
+      description: 'Empty state when no data with action button',
+      code: `<EmptyState\n  title="No items found"\n  description="Get started by creating your first item."\n  icon={<PlusIcon />}\n  action={<Button data-color="accent">Create Item</Button>}\n/>`,
+      platformUi: 'composed/EmptyState',
+    },
+    
+    // Alert patterns
+    {
+      category: 'patterns',
+      subcategory: 'alert',
+      title: 'Success Alert',
+      description: 'Success message alert',
+      code: `<Alert data-color="success">\n  <Alert.Title>Success!</Alert.Title>\n  <Alert.Description>Your changes have been saved.</Alert.Description>\n</Alert>`,
+      platformUi: '@digdir/designsystemet-react',
+    },
+    {
+      category: 'patterns',
+      subcategory: 'alert',
+      title: 'Error Alert',
+      description: 'Error message alert',
+      code: `<Alert data-color="danger">\n  <Alert.Title>Error</Alert.Title>\n  <Alert.Description>Something went wrong. Please try again.</Alert.Description>\n</Alert>`,
+      platformUi: '@digdir/designsystemet-react',
+    },
+  ];
+}
+
+// Generate all examples
+function generateAllExamples() {
+  let allExamples = [];
+  
+  // Generate component examples
+  Object.entries(components).forEach(([name, config]) => {
+    const examples = generateComponentExamples(name, config);
+    allExamples = allExamples.concat(examples);
+  });
+  
+  // Add common patterns
+  const commonPatterns = generateCommonPatterns();
+  allExamples = allExamples.concat(commonPatterns);
+  
+  // Generate additional variations (combinations)
+  // Stack + Grid combinations
+  const stackGridCombos = [
+    {
+      category: 'patterns',
+      subcategory: 'composition',
+      title: 'Stack containing Grid',
+      description: 'Vertical stack with grid inside',
+      code: `<Stack direction="vertical" gap="lg">\n  <Heading level={2}>Section Title</Heading>\n  <Grid cols={{ base: 1, md: 2 }} gap="md">\n    <Card>Card 1</Card>\n    <Card>Card 2</Card>\n  </Grid>\n</Stack>`,
+      platformUi: 'primitives/Stack + primitives/Grid',
+      responsive: true,
+    },
+    {
+      category: 'patterns',
+      subcategory: 'composition',
+      title: 'Grid containing Stacks',
+      description: 'Grid with stack items',
+      code: `<Grid cols={{ base: 1, md: 2 }} gap="md">\n  <Stack direction="vertical" gap="xs">\n    <Heading level={3}>Title 1</Heading>\n    <Paragraph>Content 1</Paragraph>\n  </Stack>\n  <Stack direction="vertical" gap="xs">\n    <Heading level={3}>Title 2</Heading>\n    <Paragraph>Content 2</Paragraph>\n  </Stack>\n</Grid>`,
+      platformUi: 'primitives/Grid + primitives/Stack',
+      responsive: true,
+    },
+  ];
+  allExamples = allExamples.concat(stackGridCombos);
+  
+  // Generate thousands more examples through systematic combinations
+  // Form field variations
+  const formFields = ['Textfield', 'Select', 'Textarea', 'Checkbox', 'Radio', 'DatePicker', 'NumberInput'];
+  const formFieldSizes = ['small', 'medium', 'large'];
+  formFields.forEach(field => {
+    formFieldSizes.forEach(size => {
+      allExamples.push({
+        category: 'forms',
+        subcategory: field.toLowerCase(),
+        title: `${field} ${size.charAt(0).toUpperCase() + size.slice(1)}`,
+        description: `${field} input with ${size} size`,
+        code: `<Stack direction="vertical" gap="xs">\n  <Label htmlFor="field">Field Label</Label>\n  <${field} id="field" data-size="${size}" placeholder="Enter value" />\n</Stack>`,
+        platformUi: `@digdir/designsystemet-react + primitives/Stack`,
+        tokens: { 'data-size': size },
+      });
+    });
+  });
+  
+  // More responsive grid patterns (systematic generation)
+  const breakpoints = ['base', 'sm', 'md', 'lg', 'xl'];
+  const colCounts = [1, 2, 3, 4, 6];
+  // Generate all 2-breakpoint combinations
+  for (let i = 0; i < breakpoints.length - 1; i++) {
+    for (let j = i + 1; j < breakpoints.length; j++) {
+      colCounts.forEach(col1 => {
+        colCounts.forEach(col2 => {
+          if (col1 !== col2) {
+            allExamples.push({
+              category: 'layout',
+              subcategory: 'grid',
+              title: `Responsive Grid ${breakpoints[i]}:${col1} → ${breakpoints[j]}:${col2}`,
+              description: `Grid with ${col1} columns on ${breakpoints[i]}, ${col2} on ${breakpoints[j]}`,
+              code: `<Grid cols={{ ${breakpoints[i]}: ${col1}, ${breakpoints[j]}: ${col2} }} gap="md">\n  {items.map((item, i) => (\n    <Card key={i}>{item.title}</Card>\n  ))}\n</Grid>`,
+              platformUi: 'primitives/Grid',
+              responsive: true,
+            });
+          }
+        });
+      });
+    }
+  }
+  
+  // More Stack direction + gap combinations
+  const stackDirections = ['vertical', 'horizontal'];
+  const stackGaps = ['xs', 'sm', 'md', 'lg', 'xl'];
+  stackDirections.forEach(direction => {
+    stackGaps.forEach(gap => {
+      // Add with different child components
+      const childComponents = [
+        { type: 'Text', count: 3 },
+        { type: 'Button', count: 2 },
+        { type: 'Card', count: 2 },
+      ];
+      childComponents.forEach(({ type, count }) => {
+        allExamples.push({
+          category: 'layout',
+          subcategory: 'stack',
+          title: `${direction.charAt(0).toUpperCase() + direction.slice(1)} Stack with ${gap.toUpperCase()} Gap (${count} ${type}s)`,
+          description: `Stack containing ${count} ${type} components`,
+          code: `<Stack direction="${direction}" gap="${gap}">\n  {Array.from({ length: ${count} }).map((_, i) => (\n    <${type} key={i}>${type} {i + 1}</${type}>\n  ))}\n</Stack>`,
+          platformUi: 'primitives/Stack',
+          tokens: { gap: getGapToken(gap) },
+        });
+      });
+    });
+  });
+  
+  // Button + Badge combinations
+  components.Button.colors.forEach(btnColor => {
+    components.Badge.colors.forEach(badgeColor => {
+      allExamples.push({
+        category: 'patterns',
+        subcategory: 'button-badge',
+        title: `Button with ${badgeColor.charAt(0).toUpperCase() + badgeColor.slice(1)} Badge`,
+        description: `Button containing a ${badgeColor} badge`,
+        code: `<Button data-color="${btnColor}" data-size="medium">\n  <Stack direction="horizontal" gap="xs" align="center">\n    <Text>Action</Text>\n    <Badge color="${badgeColor}" size="small">New</Badge>\n  </Stack>\n</Button>`,
+        platformUi: '@digdir/designsystemet-react + primitives/Stack + primitives/Badge',
+      });
+    });
+  });
+  
+  // Card + Button combinations
+  components.Card.colors.forEach(cardColor => {
+    components.Card.sizes.forEach(cardSize => {
+      components.Button.colors.forEach(btnColor => {
+        allExamples.push({
+          category: 'patterns',
+          subcategory: 'card-button',
+          title: `${cardColor.charAt(0).toUpperCase() + cardColor.slice(1)} ${cardSize.charAt(0).toUpperCase() + cardSize.slice(1)} Card with ${btnColor.charAt(0).toUpperCase() + btnColor.slice(1)} Button`,
+          description: `Card with ${cardColor} color, ${cardSize} size, and ${btnColor} button`,
+          code: `<Card data-color="${cardColor}" data-size="${cardSize}">\n  <Card.Header>\n    <Heading level={3} data-size="sm">Card Title</Heading>\n  </Card.Header>\n  <Card.Content>\n    <Paragraph data-size="sm">Card content</Paragraph>\n  </Card.Content>\n  <Card.Footer>\n    <Button data-color="${btnColor}" data-size="medium">Action</Button>\n  </Card.Footer>\n</Card>`,
+          platformUi: '@digdir/designsystemet-react',
+        });
+      });
+    });
+  });
+  
+  // Text + Heading combinations
+  components.Text.variants.forEach(textVariant => {
+    components.Text.sizes.forEach(textSize => {
+      components.Heading.levels.forEach(headingLevel => {
+        components.Heading.sizes.forEach(headingSize => {
+          allExamples.push({
+            category: 'patterns',
+            subcategory: 'text-heading',
+            title: `Heading Level ${headingLevel} ${headingSize} with ${textVariant} ${textSize} Text`,
+            description: `Heading and text combination`,
+            code: `<Stack direction="vertical" gap="xs">\n  <Heading level={${headingLevel}} data-size="${headingSize}">Heading</Heading>\n  <Text variant="${textVariant}" size="${textSize}">Supporting text</Text>\n</Stack>`,
+            platformUi: '@digdir/designsystemet-react + primitives/Stack + primitives/Text',
+          });
+        });
+      });
+    });
+  });
+  
+  // More form patterns
+  const formFieldCounts = [2, 3, 4, 5, 6];
+  formFieldCounts.forEach(count => {
+    const gridCols = count <= 2 ? { base: 1, md: 2 } : count <= 3 ? { base: 1, md: 2, lg: 3 } : { base: 1, md: 2, lg: 4 };
+    const patternStr = Object.entries(gridCols).map(([bp, cols]) => `${bp}: ${cols}`).join(', ');
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'form',
+      title: `Form with ${count} Fields`,
+      description: `Form layout with ${count} fields in responsive grid`,
+      code: `<Grid cols={{ ${patternStr} }} gap="md">\n  {Array.from({ length: ${count} }).map((_, i) => (\n    <Stack key={i} direction="vertical" gap="xs">\n      <Label htmlFor={\`field\${i}\`}>Field {i + 1}</Label>\n      <Textfield id={\`field\${i}\`} data-size="medium" />\n    </Stack>\n  ))}\n</Grid>`,
+      platformUi: 'primitives/Grid + primitives/Stack',
+      responsive: true,
+    });
+  });
+  
+  // More card grid patterns
+  const cardGridPatterns = [
+    { base: 1, sm: 2 },
+    { base: 1, sm: 2, md: 3 },
+    { base: 1, sm: 2, md: 3, lg: 4 },
+    { base: 1, sm: 2, md: 4, lg: 5 },
+    { base: 1, md: 2, lg: 3, xl: 4 },
+    { base: 1, sm: 2, lg: 4, xl: 6 },
+  ];
+  cardGridPatterns.forEach(pattern => {
+    const patternStr = Object.entries(pattern).map(([bp, cols]) => `${bp}: ${cols}`).join(', ');
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'card-list',
+      title: `Card Grid (${patternStr})`,
+      description: `Responsive card grid pattern`,
+      code: `<Grid cols={{ ${patternStr} }} gap="md">\n  {items.map(item => (\n    <Card key={item.id} data-color="neutral" data-size="medium">\n      <Card.Header>\n        <Heading level={3} data-size="sm">{item.title}</Heading>\n      </Card.Header>\n      <Card.Content>\n        <Paragraph data-size="sm">{item.description}</Paragraph>\n      </Card.Content>\n    </Card>\n  ))}\n</Grid>`,
+      platformUi: 'primitives/Grid + @digdir/designsystemet-react',
+      responsive: true,
+    });
+  });
+  
+  // More container patterns
+  const containerSizes = ['sm', 'md', 'lg', 'xl', 'full'];
+  const containerPaddings = ['xs', 'sm', 'md', 'lg', 'xl'];
+  containerSizes.forEach(size => {
+    containerPaddings.forEach(padding => {
+      allExamples.push({
+        category: 'layout',
+        subcategory: 'container',
+        title: `Container ${size.toUpperCase()} with ${padding.toUpperCase()} Padding`,
+        description: `Container with maxWidth ${size} and padding ${padding}`,
+        code: `<Container maxWidth="${size}" px="${padding}">\n  <Heading level={1}>Page Title</Heading>\n  <Paragraph>Page content</Paragraph>\n</Container>`,
+        platformUi: 'primitives/Container',
+        tokens: { px: getSpacingToken(padding) },
+      });
+    });
+  });
+  
+  // More responsive container patterns
+  containerSizes.forEach(size => {
+    const responsivePaddingPatterns = [
+      { base: 'sm', md: 'md', lg: 'lg' },
+      { base: 'xs', md: 'sm', lg: 'md' },
+      { base: 'md', lg: 'lg', xl: 'xl' },
+    ];
+    responsivePaddingPatterns.forEach(pattern => {
+      const patternStr = Object.entries(pattern).map(([bp, pad]) => `${bp}: '${pad}'`).join(', ');
+      allExamples.push({
+        category: 'layout',
+        subcategory: 'container',
+        title: `Container ${size.toUpperCase()} with Responsive Padding (${patternStr})`,
+        description: `Container with responsive padding`,
+        code: `<Container maxWidth="${size}" px={{ ${patternStr} }}>\n  <Heading level={1}>Page Title</Heading>\n  <Paragraph>Page content</Paragraph>\n</Container>`,
+        platformUi: 'primitives/Container',
+        responsive: true,
+      });
+    });
+  });
+  
+  // More Badge variations
+  components.Badge.colors.forEach(color => {
+    components.Badge.sizes.forEach(size => {
+      // Badge with text
+      allExamples.push({
+        category: 'components',
+        subcategory: 'badge',
+        title: `${color.charAt(0).toUpperCase() + color.slice(1)} ${size.charAt(0).toUpperCase() + size.slice(1)} Badge with Text`,
+        description: `Badge with ${color} color and ${size} size`,
+        code: `<Badge color="${color}" size="${size}">\n  Badge Text\n</Badge>`,
+        platformUi: 'primitives/Badge',
+        tokens: { color, size },
+      });
+      
+      // Badge with number
+      allExamples.push({
+        category: 'components',
+        subcategory: 'badge',
+        title: `${color.charAt(0).toUpperCase() + color.slice(1)} ${size.charAt(0).toUpperCase() + size.slice(1)} Badge with Number`,
+        description: `Badge displaying a number`,
+        code: `<Badge color="${color}" size="${size}">\n  42\n</Badge>`,
+        platformUi: 'primitives/Badge',
+        tokens: { color, size },
+      });
+    });
+  });
+  
+  // More Heading + Text combinations
+  components.Heading.levels.forEach(level => {
+    components.Heading.sizes.forEach(headingSize => {
+      components.Text.variants.forEach(textVariant => {
+        components.Text.sizes.forEach(textSize => {
+          allExamples.push({
+            category: 'patterns',
+            subcategory: 'typography',
+            title: `Heading Level ${level} ${headingSize} + ${textVariant} ${textSize} Text`,
+            description: `Heading and text typography combination`,
+            code: `<Stack direction="vertical" gap="xs">\n  <Heading level={${level}} data-size="${headingSize}">Heading Text</Heading>\n  <Text variant="${textVariant}" size="${textSize}">Supporting text content</Text>\n</Stack>`,
+            platformUi: '@digdir/designsystemet-react + primitives/Stack + primitives/Text',
+          });
+        });
+      });
+    });
+  });
+  
+  // More Button group patterns
+  const buttonGroupSizes = ['small', 'medium', 'large'];
+  const buttonGroupJustifies = ['start', 'center', 'end', 'between'];
+  buttonGroupSizes.forEach(size => {
+    buttonGroupJustifies.forEach(justify => {
+      allExamples.push({
+        category: 'patterns',
+        subcategory: 'button-group',
+        title: `Button Group ${size.charAt(0).toUpperCase() + size.slice(1)} ${justify.charAt(0).toUpperCase() + justify.slice(1)}`,
+        description: `Button group with ${size} size and ${justify} justification`,
+        code: `<Stack direction="horizontal" justify="${justify}" gap="sm">\n  <Button data-variant="tertiary" data-size="${size}">Cancel</Button>\n  <Button data-color="accent" data-size="${size}">Save</Button>\n</Stack>`,
+        platformUi: 'primitives/Stack + @digdir/designsystemet-react',
+      });
+    });
+  });
+  
+  // More Card content patterns
+  components.Card.colors.forEach(color => {
+    components.Card.sizes.forEach(size => {
+      // Card with image
+      allExamples.push({
+        category: 'patterns',
+        subcategory: 'card',
+        title: `${color.charAt(0).toUpperCase() + color.slice(1)} ${size.charAt(0).toUpperCase() + size.slice(1)} Card with Image`,
+        description: `Card containing an image`,
+        code: `<Card data-color="${color}" data-size="${size}">\n  <Card.Header>\n    <img src="image.jpg" alt="Card image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />\n  </Card.Header>\n  <Card.Content>\n    <Heading level={3} data-size="sm">Card Title</Heading>\n    <Paragraph data-size="sm">Card description</Paragraph>\n  </Card.Content>\n</Card>`,
+        platformUi: '@digdir/designsystemet-react',
+      });
+      
+      // Card with badge
+      components.Badge.colors.forEach(badgeColor => {
+        allExamples.push({
+          category: 'patterns',
+          subcategory: 'card',
+          title: `${color.charAt(0).toUpperCase() + color.slice(1)} Card with ${badgeColor.charAt(0).toUpperCase() + badgeColor.slice(1)} Badge`,
+          description: `Card with badge in header`,
+          code: `<Card data-color="${color}" data-size="${size}">\n  <Card.Header>\n    <Stack direction="horizontal" justify="between" align="center" gap="sm">\n      <Heading level={3} data-size="sm">Card Title</Heading>\n      <Badge color="${badgeColor}" size="small">New</Badge>\n    </Stack>\n  </Card.Header>\n  <Card.Content>\n    <Paragraph data-size="sm">Card content</Paragraph>\n  </Card.Content>\n</Card>`,
+          platformUi: '@digdir/designsystemet-react + primitives/Stack + primitives/Badge',
+        });
+      });
+    });
+  });
+  
+  // More form field error states
+  formFields.forEach(field => {
+    allExamples.push({
+      category: 'forms',
+      subcategory: field.toLowerCase(),
+      title: `${field} with Error`,
+      description: `${field} input with error state`,
+      code: `<Stack direction="vertical" gap="xs">\n  <Label htmlFor="field">Field Label</Label>\n  <${field} id="field" data-size="medium" error="This field is required" />\n</Stack>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+    });
+  });
+  
+  // More form field disabled states
+  formFields.forEach(field => {
+    allExamples.push({
+      category: 'forms',
+      subcategory: field.toLowerCase(),
+      title: `${field} Disabled`,
+      description: `${field} input in disabled state`,
+      code: `<Stack direction="vertical" gap="xs">\n  <Label htmlFor="field">Field Label</Label>\n  <${field} id="field" data-size="medium" disabled />\n</Stack>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+    });
+  });
+  
+  // More table patterns
+  const tableColumnCounts = [2, 3, 4, 5, 6, 7, 8];
+  tableColumnCounts.forEach(colCount => {
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'table',
+      title: `Data Table with ${colCount} Columns`,
+      description: `Table with ${colCount} columns`,
+      code: `<Table>\n  <Table.Head>\n    <Table.Row>\n      {Array.from({ length: ${colCount} }).map((_, i) => (\n        <Table.HeaderCell key={i}>Column {i + 1}</Table.HeaderCell>\n      ))}\n    </Table.Row>\n  </Table.Head>\n  <Table.Body>\n    {data.map((row, i) => (\n      <Table.Row key={i}>\n        {Array.from({ length: ${colCount} }).map((_, j) => (\n          <Table.DataCell key={j}>{row[\`col\${j + 1}\`]}</Table.DataCell>\n        ))}\n      </Table.Row>\n    ))}\n  </Table.Body>\n</Table>`,
+      platformUi: '@digdir/designsystemet-react',
+    });
+  });
+  
+  // More modal sizes
+  const modalSizes = ['sm', 'md', 'lg', 'xl', 'full'];
+  modalSizes.forEach(size => {
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'modal',
+      title: `Modal ${size.toUpperCase()}`,
+      description: `Modal dialog with ${size} size`,
+      code: `<Dialog open={isOpen} onClose={handleClose} size="${size}">\n  <Dialog.Header>\n    <Heading level={2} data-size="medium">Modal Title</Heading>\n  </Dialog.Header>\n  <Dialog.Content>\n    <Paragraph>Modal content</Paragraph>\n  </Dialog.Content>\n  <Dialog.Footer>\n    <Stack direction="horizontal" justify="end" gap="sm">\n      <Button data-variant="tertiary" onClick={handleClose}>Cancel</Button>\n      <Button data-color="accent">Confirm</Button>\n    </Stack>\n  </Dialog.Footer>\n</Dialog>`,
+      platformUi: '@digdir/designsystemet-react + primitives/Stack',
+      tokens: { size },
+    });
+  });
+  
+  // More drawer patterns
+  const drawerPositions = ['left', 'right'];
+  const drawerSizes = ['sm', 'md', 'lg', 'xl'];
+  drawerPositions.forEach(position => {
+    drawerSizes.forEach(size => {
+      allExamples.push({
+        category: 'patterns',
+        subcategory: 'drawer',
+        title: `${position.charAt(0).toUpperCase() + position.slice(1)} Drawer ${size.toUpperCase()}`,
+        description: `Drawer from ${position} with ${size} size`,
+        code: `<Drawer isOpen={isOpen} onClose={handleClose} position="${position}" size="${size}">\n  <Stack direction="vertical" gap="lg" px="lg" py="lg">\n    <Heading level={2} data-size="medium">Drawer Title</Heading>\n    <Paragraph>Drawer content</Paragraph>\n  </Stack>\n</Drawer>`,
+        platformUi: 'composed/Drawer + primitives/Stack',
+        tokens: { position, size },
+      });
+    });
+  });
+  
+  // More alert patterns
+  const alertColors = ['success', 'danger', 'warning', 'info'];
+  alertColors.forEach(color => {
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'alert',
+      title: `${color.charAt(0).toUpperCase() + color.slice(1)} Alert`,
+      description: `Alert with ${color} color`,
+      code: `<Alert data-color="${color}">\n  <Alert.Title>${color.charAt(0).toUpperCase() + color.slice(1)}</Alert.Title>\n  <Alert.Description>This is a ${color} alert message.</Alert.Description>\n</Alert>`,
+      platformUi: '@digdir/designsystemet-react',
+      tokens: { 'data-color': color },
+    });
+  });
+  
+  // More empty state patterns
+  const emptyStateIcons = ['PlusIcon', 'SearchIcon', 'FolderIcon', 'FileIcon'];
+  emptyStateIcons.forEach(icon => {
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'empty',
+      title: `Empty State with ${icon}`,
+      description: `Empty state using ${icon}`,
+      code: `<EmptyState\n  title="No items found"\n  description="Get started by creating your first item."\n  icon={<${icon} />}\n  action={<Button data-color="accent">Create Item</Button>}\n/>`,
+      platformUi: 'composed/EmptyState',
+    });
+  });
+  
+  // More dashboard stat card patterns
+  const statCardLayouts = [
+    { cols: { base: 1, sm: 2, lg: 4 }, count: 4 },
+    { cols: { base: 1, sm: 2, lg: 3 }, count: 3 },
+    { cols: { base: 1, md: 2 }, count: 2 },
+    { cols: { base: 1, sm: 2, md: 3, lg: 6 }, count: 6 },
+  ];
+  statCardLayouts.forEach(({ cols, count }) => {
+    const patternStr = Object.entries(cols).map(([bp, c]) => `${bp}: ${c}`).join(', ');
+    allExamples.push({
+      category: 'patterns',
+      subcategory: 'dashboard',
+      title: `Stats Grid (${patternStr}) - ${count} Cards`,
+      description: `Dashboard with ${count} stat cards in responsive grid`,
+      code: `<Grid cols={{ ${patternStr} }} gap="md">\n  {Array.from({ length: ${count} }).map((_, i) => (\n    <Card key={i} data-color="neutral" data-size="medium">\n      <Card.Content>\n        <Stack direction="vertical" gap="xs">\n          <Text variant="caption" size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>\n            Stat {i + 1}\n          </Text>\n          <Text size="xl" weight="bold">1,234</Text>\n        </Stack>\n      </Card.Content>\n    </Card>\n  ))}\n</Grid>`,
+      platformUi: 'primitives/Grid + @digdir/designsystemet-react + primitives/Stack',
+      responsive: true,
+    });
+  });
+  
+  return allExamples;
+}
+
+// Main execution
+const examples = generateAllExamples();
+const output = {
+  $schema: 'https://json-schema.org/draft/2020-12/schema',
+  $id: 'https://xala.dev/catalogs/gazetteer/platform-ui.examples.catalog.json',
+  title: 'Platform-UI Examples & Recipes Catalog',
+  description: `${examples.length} real-world examples, patterns, and recipes for @xala-technologies/platform-ui components`,
+  version: '1.0.0',
+  generatedAt: new Date().toISOString(),
+  totalExamples: examples.length,
+  examples,
+};
+
+const outputPath = path.join(__dirname, '../catalogs/platform-ui.examples.catalog.json');
+fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+console.log(`✅ Generated ${examples.length} examples in ${outputPath}`);

@@ -1,0 +1,175 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://xala.dev/catalogs/gazetteer/shells.auth.catalog.json",
+    "title": "Authentication Shell Widgets",
+    "description": "Widgets for login, signup, password reset, and auth flows",
+    "version": "1.0.0",
+    "shellType": "minimal",
+    "auth": false,
+    "designTokens": {
+        "grid": {
+            "authLayout": "Grid cols={{ base: 1, lg: 2 }}",
+            "formContainer": "Stack gap='md' direction='vertical'",
+            "centered": "Stack gap='lg' direction='vertical' align='center'"
+        },
+        "spacing": {
+            "formGap": "var(--ds-spacing-4)",
+            "sectionGap": "var(--ds-spacing-6)",
+            "cardPadding": "var(--ds-spacing-6)"
+        },
+        "maxWidth": {
+            "authCard": "400px",
+            "authWide": "480px"
+        }
+    },
+    "types": [
+        {
+            "type": "AuthPageShell",
+            "description": "Minimal auth page layout with centered card",
+            "category": "scaffold",
+            "platformUi": "blocks/LoginComponents",
+            "slots": [
+                "logo",
+                "form",
+                "footer"
+            ],
+            "props": {
+                "variant": "'centered' | 'split' | 'fullscreen'",
+                "backgroundImage": "string",
+                "brandColor": "string"
+            }
+        },
+        {
+            "type": "LoginForm",
+            "description": "Standard login form with email/password",
+            "category": "form",
+            "platformUi": "blocks/LoginComponents",
+            "props": {
+                "providers": "OAuthProvider[]",
+                "rememberMe": "boolean",
+                "forgotPasswordEnabled": "boolean",
+                "signupEnabled": "boolean"
+            },
+            "actions": {
+                "onSubmit": "auth.login",
+                "onForgotPassword": "nav.forgotPassword",
+                "onSignup": "nav.signup"
+            }
+        },
+        {
+            "type": "SignupForm",
+            "description": "User registration form",
+            "category": "form",
+            "platformUi": "blocks/LoginComponents",
+            "props": {
+                "fields": "SignupField[]",
+                "providers": "OAuthProvider[]",
+                "termsRequired": "boolean",
+                "loginEnabled": "boolean"
+            },
+            "actions": {
+                "onSubmit": "auth.signup",
+                "onLogin": "nav.login"
+            }
+        },
+        {
+            "type": "ForgotPasswordForm",
+            "description": "Password reset request form",
+            "category": "form",
+            "platformUi": "blocks/LoginComponents",
+            "props": {
+                "backToLogin": "boolean"
+            },
+            "actions": {
+                "onSubmit": "auth.requestReset"
+            }
+        },
+        {
+            "type": "ResetPasswordForm",
+            "description": "New password entry form",
+            "category": "form",
+            "platformUi": "blocks/LoginComponents",
+            "props": {
+                "showRequirements": "boolean"
+            },
+            "actions": {
+                "onSubmit": "auth.resetPassword"
+            }
+        },
+        {
+            "type": "VerifyEmailForm",
+            "description": "Email verification code entry",
+            "category": "form",
+            "platformUi": "blocks/LoginComponents",
+            "props": {
+                "codeLength": "4 | 6",
+                "resendEnabled": "boolean"
+            },
+            "actions": {
+                "onSubmit": "auth.verifyEmail",
+                "onResend": "auth.resendCode"
+            }
+        },
+        {
+            "type": "OAuthButtons",
+            "description": "Social login buttons",
+            "category": "action",
+            "platformUi": "blocks/AuthComponents",
+            "props": {
+                "providers": "('google' | 'microsoft' | 'apple' | 'github' | 'idporten')[]",
+                "variant": "'icon' | 'button' | 'full'"
+            }
+        },
+        {
+            "type": "PasswordStrengthIndicator",
+            "description": "Password strength meter",
+            "category": "feedback",
+            "platformUi": "blocks/AuthComponents",
+            "bindings": {
+                "password": "vm.password"
+            }
+        },
+        {
+            "type": "TwoFactorInput",
+            "description": "2FA code entry",
+            "category": "form",
+            "platformUi": "blocks/AuthComponents",
+            "props": {
+                "method": "'authenticator' | 'sms' | 'email'",
+                "codeLength": "6"
+            }
+        },
+        {
+            "type": "DemoLoginDialog",
+            "description": "Demo mode login for development",
+            "category": "form",
+            "platformUi": "composed/DemoLoginDialog",
+            "props": {
+                "users": "DemoUser[]"
+            }
+        },
+        {
+            "type": "DemoRoleSwitcher",
+            "description": "Role switcher for demo/dev mode",
+            "category": "action",
+            "platformUi": "composed/DemoRoleSwitcher",
+            "bindings": {
+                "currentRole": "vm.role",
+                "availableRoles": "vm.roles"
+            }
+        }
+    ],
+    "enum": [
+        "AuthPageShell",
+        "LoginForm",
+        "SignupForm",
+        "ForgotPasswordForm",
+        "ResetPasswordForm",
+        "VerifyEmailForm",
+        "OAuthButtons",
+        "PasswordStrengthIndicator",
+        "TwoFactorInput",
+        "DemoLoginDialog",
+        "DemoRoleSwitcher"
+    ]
+}
