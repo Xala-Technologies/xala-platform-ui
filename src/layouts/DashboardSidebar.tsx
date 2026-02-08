@@ -8,7 +8,7 @@
  */
 
 import * as React from 'react';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useState, useEffect, useCallback } from 'react';
 import { List } from '@digdir/designsystemet-react';
 import { Drawer } from '../components/Drawer';
 import { ChevronRightIcon } from '../primitives/icons';
@@ -76,14 +76,14 @@ interface NavItemProps {
 }
 
 function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
-  const location = useLocation();
+  // Use window.location instead of react-router's useLocation
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
   const isActive =
-    item.href === '/' ? location.pathname === '/' : location.pathname.startsWith(item.href);
+    item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
 
   return (
-    <NavLink
-      to={item.href}
-      end={item.href === '/'}
+    <a
+      href={item.href}
       onClick={onClick}
       className="ds-sidebar-nav-item"
       style={{
@@ -184,7 +184,7 @@ function SidebarNavItemComponent({ item, onClick }: NavItemProps) {
           <ChevronRightIcon size={20} />
         </Text>
       </Stack>
-    </NavLink>
+    </a>
   );
 }
 
