@@ -1,11 +1,14 @@
 /**
- * Layouts - Application Shells and Page Layouts
+ * Shells
  *
- * All layouts were removed during standalone package conversion.
- * They had dependencies on removed packages (i18n, platform-ui-core).
- *
- * @module @xala-technologies/platform-ui/layouts
+ * Application shell components for complete layouts
  */
 
-// Empty module
-export { };
+export { AppLayout } from './AppLayout';
+export type { AppLayoutProps } from './AppLayout';
+
+export { DashboardSidebar } from './DashboardSidebar';
+export type { DashboardSidebarProps, SidebarNavItem, SidebarSection } from './DashboardSidebar';
+
+export { DashboardHeader } from './DashboardHeader';
+export type { DashboardHeaderProps, DashboardHeaderUser } from './DashboardHeader';

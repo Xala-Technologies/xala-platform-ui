@@ -14,17 +14,14 @@ const config: StorybookConfig = {
     },
   },
   stories: [
-    // Monorepo: only use packages/platform-ui stories
-    // Note: No MDX files currently exist - pattern removed to eliminate build warnings
-    '../packages/platform-ui/src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    // Standalone package: stories in src/stories
+    '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  // Static directories - reference source packages to avoid duplicates
-  // '/themes' path maps to platform-ui-core themes (single source of truth)
-  // '/vendor' path for designsystemet.css and other vendor files
+  // Static directories for standalone package
   staticDirs: [
     { from: './public/vendor', to: '/vendor' },
     { from: './public', to: '/' },
-    { from: '../packages/platform-ui-core/src/themes', to: '/themes' },
+    { from: '../src/themes', to: '/themes' },
   ],
   addons: [
     '@storybook/addon-essentials',
