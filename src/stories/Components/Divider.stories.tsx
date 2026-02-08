@@ -165,7 +165,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Paragraph>"Eksempel Tekst"</Paragraph>
@@ -178,7 +177,6 @@ export const Default: Story = {
 
 export const WithSpacing: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Heading level={3} data-size="sm">
@@ -197,7 +195,6 @@ export const WithSpacing: Story = {
 
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div>
@@ -215,7 +212,6 @@ export const Colors: Story = {
 
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

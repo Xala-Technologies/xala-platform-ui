@@ -22,7 +22,6 @@ type AnyStory = StoryObj<any>;
 
 export const StatusTagDefault: Story = {
   render: function Render() {
-    const t = useT();
     return <StatusTag color="success">{t('platform.status.active')}</StatusTag>;
   },
 };

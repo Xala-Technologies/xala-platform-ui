@@ -61,7 +61,6 @@ type Story = StoryObj<typeof MobileNav>;
 
 // Sample navigation items
 const useSampleItems = (): MobileNavItem[] => {
-  const t = useT();
   return [
     {
       id: 'home',
@@ -103,7 +102,6 @@ const useSampleItems = (): MobileNavItem[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     const items = useSampleItems();
     return (
@@ -129,7 +127,6 @@ export const Default: Story = {
  */
 export const WithSections: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -190,7 +187,6 @@ export const WithSections: Story = {
  */
 export const WithHeader: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     const items = useSampleItems();
     return (
@@ -231,7 +227,6 @@ export const WithHeader: Story = {
  */
 export const WithFooter: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     const items = useSampleItems();
     return (

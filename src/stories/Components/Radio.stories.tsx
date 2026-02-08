@@ -189,7 +189,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -203,7 +202,6 @@ export const Default: Story = {
 
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -232,7 +230,6 @@ export const WithDescription: Story = {
 
 export const Horizontal: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -248,7 +245,6 @@ export const Horizontal: Story = {
 
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>{t('platform.common.status')}</Fieldset.Legend>
@@ -266,7 +262,6 @@ export const Disabled: Story = {
 
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -293,7 +288,6 @@ export const WithError: Story = {
  */
 export const InteractiveGroup: Story = {
   render: function Render() {
-    const t = useT();
     const [selected, setSelected] = useState('email');
 
     return (
@@ -344,7 +338,6 @@ export const InteractiveGroup: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Radio label="Eksempel Tekst" name="size-demo" value="sm" data-size="sm" />
@@ -360,7 +353,6 @@ export const Sizes: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

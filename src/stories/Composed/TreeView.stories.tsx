@@ -54,7 +54,6 @@ type Story = StoryObj<typeof TreeView>;
 
 // Sample tree data
 const useSampleTree = (): TreeNode[] => {
-  const t = useT();
   return [
     {
       id: 'components',
@@ -96,7 +95,6 @@ const useSampleTree = (): TreeNode[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const nodes = useSampleTree();
     return (
@@ -120,7 +118,6 @@ export const Default: Story = {
  */
 export const InitiallyExpanded: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const nodes = useSampleTree();
     return (
@@ -145,7 +142,6 @@ export const InitiallyExpanded: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const nodes = useSampleTree();
     return (
@@ -170,7 +166,6 @@ export const Small: Story = {
  */
 export const Large: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const nodes = useSampleTree();
     return (
@@ -195,7 +190,6 @@ export const Large: Story = {
  */
 export const WithoutIcons: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const nodes = useSampleTree();
     return (
@@ -220,7 +214,6 @@ export const WithoutIcons: Story = {
  */
 export const DeepNesting: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const deepNodes: TreeNode[] = [
       {
@@ -271,7 +264,6 @@ export const DeepNesting: Story = {
  */
 export const WithDisabledNodes: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const nodes: TreeNode[] = [
       {

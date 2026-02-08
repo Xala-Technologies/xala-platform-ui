@@ -69,7 +69,6 @@ type Story = StoryObj<typeof meta>;
 // Default - Access Denied
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AccessGate
@@ -89,7 +88,6 @@ export const Default: Story = {
 // Access Granted
 export const AccessGranted: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AccessGate
@@ -114,7 +112,6 @@ export const AccessGranted: Story = {
 // With Actions
 export const WithActions: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AccessGate

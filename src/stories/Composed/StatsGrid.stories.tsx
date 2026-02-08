@@ -61,7 +61,6 @@ type Story = StoryObj<typeof meta>;
 
 // Sample stats helper
 const useSampleStats = () => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -128,7 +127,6 @@ const ThreeColumnsDemo = () => {
 };
 
 const AllTrendsDemo = () => {
-  const t = useT();
   const stats = [
     {
       id: '1',
@@ -162,7 +160,6 @@ const AllTrendsDemo = () => {
 };
 
 const EnhancedCardDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '300px' }}>
       <StatCardEnhanced
@@ -181,7 +178,6 @@ const EnhancedCardDemo = () => {
 };
 
 const MiniStatDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

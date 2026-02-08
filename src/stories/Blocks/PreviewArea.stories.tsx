@@ -33,7 +33,6 @@ type Story = StoryObj<typeof PreviewArea>;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PreviewArea>
         <Stack spacing="var(--ds-spacing-2)" align="center">
@@ -47,7 +46,6 @@ export const Default: Story = {
 
 export const SubtleBackground: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PreviewArea background="subtle">
         <Button variant="secondary">{t('platform.common.cancel')}</Button>
@@ -58,7 +56,6 @@ export const SubtleBackground: Story = {
 
 export const TransparentBackground: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PreviewArea background="transparent">
         <Button variant="tertiary">{t('platform.common.back')}</Button>
@@ -69,7 +66,6 @@ export const TransparentBackground: Story = {
 
 export const CheckerboardBackground: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PreviewArea background="checkerboard">
         <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
@@ -80,7 +76,6 @@ export const CheckerboardBackground: Story = {
 
 export const NotCentered: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PreviewArea centered={false}>
         <Stack spacing="var(--ds-spacing-2)">
@@ -101,7 +96,6 @@ export const NotCentered: Story = {
 
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PreviewArea minHeight="500px">
         <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>

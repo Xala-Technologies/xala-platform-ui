@@ -172,35 +172,30 @@ type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return <Pagination aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     return <Pagination data-size="sm" aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Medium: Story = {
   render: function Render() {
-    const t = useT();
     return <Pagination data-size="md" aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Large: Story = {
   render: function Render() {
-    const t = useT();
     return <Pagination data-size="lg" aria-label="Eksempel Tekst" />;
   },
 };
 
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

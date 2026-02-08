@@ -155,7 +155,6 @@ export const UploadingAvatar: Story = {
 // Custom labels
 export const CustomLabels: Story = {
   render: function Render() {
-    const t = useT();
     const [profileData, setProfileData] = useState<ProfileData>(sampleProfileData);
     return (
       <div style={{ width: '700px' }}>

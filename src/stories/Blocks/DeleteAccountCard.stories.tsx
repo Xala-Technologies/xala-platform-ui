@@ -62,7 +62,6 @@ export const NoRequest: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -88,7 +87,6 @@ export const Pending: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -114,7 +112,6 @@ export const Processing: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -140,7 +137,6 @@ export const Completed: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -169,7 +165,6 @@ export const Rejected: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -191,7 +186,6 @@ export const Loading: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -213,7 +207,6 @@ export const Deleting: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -239,7 +232,6 @@ export const Cancelling: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />
@@ -261,7 +253,6 @@ export const Error: Story = {
     labels: DEFAULT_DELETE_ACCOUNT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DeleteAccountCard {...args} />

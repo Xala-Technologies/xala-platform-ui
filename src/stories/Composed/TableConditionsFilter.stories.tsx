@@ -33,7 +33,6 @@ type Story = StoryObj<typeof TableConditionsFilter>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [conditions, setConditions] = useState([]);
     return (
       <Stack
@@ -73,7 +72,6 @@ export const Default: Story = {
  */
 export const WithInitialConditions: Story = {
   render: function Render() {
-    const t = useT();
     const [conditions, setConditions] = useState([
       {
         id: '1',
@@ -128,7 +126,6 @@ export const WithInitialConditions: Story = {
  */
 export const WithDateFields: Story = {
   render: function Render() {
-    const t = useT();
     const [conditions, setConditions] = useState([]);
     return (
       <Stack
@@ -159,7 +156,6 @@ export const WithDateFields: Story = {
  */
 export const WithBooleanFields: Story = {
   render: function Render() {
-    const t = useT();
     const [conditions, setConditions] = useState([]);
     return (
       <Stack

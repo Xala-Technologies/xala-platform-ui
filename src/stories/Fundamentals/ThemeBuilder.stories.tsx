@@ -38,7 +38,6 @@ type Story = StoryObj;
  */
 export const ColorContexts: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -149,7 +148,6 @@ export const ColorContexts: Story = {
  */
 export const SizeModes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -212,7 +210,6 @@ export const SizeModes: Story = {
  */
 export const ThemeTokensInUse: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card
         style={{
@@ -295,7 +292,6 @@ export const ThemeTokensInUse: Story = {
  */
 export const CreatingCustomThemes: Story = {
   render: function Render() {
-    const t = useT();
     const steps = [
       {
         step: 1,
@@ -383,7 +379,6 @@ export const CreatingCustomThemes: Story = {
  */
 export const ThemeBestPractices: Story = {
   render: function Render() {
-    const t = useT();
     const doItems = [
       'storybook.theme.doSemanticTokens',
       'storybook.theme.doTestModes',

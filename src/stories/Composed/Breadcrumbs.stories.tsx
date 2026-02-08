@@ -54,7 +54,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[
@@ -76,7 +75,6 @@ export const Default: Story = {
 
 // Wrapper for home icon story
 const WithHomeIconDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[
@@ -99,7 +97,6 @@ export const WithHomeIcon: Story = {
 
 // Wrapper for icons story
 const WithIconsDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[
@@ -121,7 +118,6 @@ export const WithIcons: Story = {
 
 // Wrapper for long trail story
 const LongTrailDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[
@@ -145,7 +141,6 @@ export const LongTrail: Story = {
 
 // Wrapper for max items story
 const WithMaxItemsDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[
@@ -171,7 +166,6 @@ export const WithMaxItems: Story = {
 
 // Wrapper for custom separator story
 const CustomSeparatorDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[
@@ -194,7 +188,6 @@ export const CustomSeparator: Story = {
 
 // Wrapper for single item story
 const SingleItemDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs items={[{ label: t('platform.nav.home'), current: true }]} onNavigate={fn()} />
   );
@@ -209,7 +202,6 @@ export const SingleItem: Story = {
 
 // Wrapper for two items story
 const TwoItemsDemo = () => {
-  const t = useT();
   return (
     <Breadcrumbs
       items={[

@@ -401,7 +401,6 @@ export const RentalObjectHistory: Story = {
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: function Render() {
-    const t = useT();
     const [selectedItem, setSelectedItem] = React.useState<ActivityTimelineItem | null>(null);
 
     const items: ActivityTimelineItem[] = [

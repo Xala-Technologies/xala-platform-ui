@@ -58,7 +58,6 @@ type Story = StoryObj<typeof ToastProvider>;
 
 // Helper component to trigger toasts
 function ToastTrigger() {
-  const t = useT();
   const { addToast } = useToast();
   return (
     <Stack
@@ -136,7 +135,6 @@ export const Default: Story = {
  */
 export const WithAction: Story = {
   render: function Render() {
-    const t = useT();
     const { addToast } = useToast();
     return (
       <>
@@ -169,7 +167,6 @@ export const WithAction: Story = {
  */
 export const CustomDuration: Story = {
   render: function Render() {
-    const t = useT();
     const { addToast } = useToast();
     return (
       <>
@@ -199,7 +196,6 @@ export const CustomDuration: Story = {
  */
 export const Multiple: Story = {
   render: function Render() {
-    const t = useT();
     const { addToast } = useToast();
     return (
       <>

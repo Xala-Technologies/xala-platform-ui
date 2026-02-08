@@ -80,7 +80,6 @@ export const Default: Story = {
     showPrices: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />
@@ -97,7 +96,6 @@ export const WithSelected: Story = {
     showPrices: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />
@@ -113,7 +111,6 @@ export const WithoutPrices: Story = {
     showPrices: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />
@@ -130,7 +127,6 @@ export const CustomTitle: Story = {
     showPrices: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />
@@ -147,7 +143,6 @@ export const NoTitle: Story = {
     showPrices: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />
@@ -189,7 +184,6 @@ export const ManyServices: Story = {
     showPrices: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />
@@ -205,7 +199,6 @@ export const Empty: Story = {
     showPrices: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AdditionalServicesList {...args} />

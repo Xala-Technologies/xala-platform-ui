@@ -42,7 +42,6 @@ type Story = StoryObj<typeof LoginOption>;
  */
 export const LoginOptionExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -69,7 +68,6 @@ export const LoginOptionExample: Story = {
  */
 export const MultipleLoginOptions: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -110,7 +108,6 @@ export const MultipleLoginOptions: Story = {
  */
 export const FeatureItemExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -135,7 +132,6 @@ export const FeatureItemExample: Story = {
  */
 export const IntegrationBadgeExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

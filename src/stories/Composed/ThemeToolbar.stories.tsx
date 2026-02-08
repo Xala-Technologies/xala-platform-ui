@@ -51,7 +51,6 @@ type Story = StoryObj<typeof ThemeToolbar>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light');
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -70,7 +69,6 @@ export const Default: Story = {
  */
 export const WithLocale: Story = {
   render: function Render() {
-    const t = useT();
     const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light');
     const [locale, setLocale] = useState('nb');
     return (
@@ -98,7 +96,6 @@ export const WithLocale: Story = {
  */
 export const WithBrandThemes: Story = {
   render: function Render() {
-    const t = useT();
     const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light');
     const [brandTheme, setBrandTheme] = useState('digilist');
     return (
@@ -126,7 +123,6 @@ export const WithBrandThemes: Story = {
  */
 export const AllOptions: Story = {
   render: function Render() {
-    const t = useT();
     const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light');
     const [locale, setLocale] = useState('nb');
     const [brandTheme, setBrandTheme] = useState('digilist');
@@ -163,7 +159,6 @@ export const AllOptions: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light');
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>

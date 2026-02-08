@@ -32,7 +32,6 @@ type Story = StoryObj<typeof PageHeader>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -57,7 +56,6 @@ export const Default: Story = {
  */
 export const WithActions: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -88,7 +86,6 @@ export const WithActions: Story = {
  */
 export const WithBorder: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

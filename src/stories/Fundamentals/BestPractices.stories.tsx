@@ -38,7 +38,6 @@ type Story = StoryObj;
  */
 export const DesignTokens: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
@@ -110,7 +109,6 @@ export const DesignTokens: Story = {
  */
 export const ComponentComposition: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
@@ -182,7 +180,6 @@ export const ComponentComposition: Story = {
  */
 export const Internationalization: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
@@ -252,7 +249,6 @@ export const Internationalization: Story = {
  */
 export const SDKFirst: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
@@ -320,7 +316,6 @@ const users = await sdk.users.list();`}
  */
 export const ErrorHandling: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
@@ -387,7 +382,6 @@ setUsers(data);`}
  */
 export const Summary: Story = {
   render: function Render() {
-    const t = useT();
 
     const practices = [
       {

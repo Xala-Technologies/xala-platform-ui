@@ -42,7 +42,6 @@ type Story = StoryObj<typeof DirectionalIcon>;
  */
 export const ChevronForward: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -66,7 +65,6 @@ export const ChevronForward: Story = {
  */
 export const ChevronBack: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -90,7 +88,6 @@ export const ChevronBack: Story = {
  */
 export const ArrowForward: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -114,7 +111,6 @@ export const ArrowForward: Story = {
  */
 export const ArrowBack: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

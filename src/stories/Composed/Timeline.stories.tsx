@@ -54,7 +54,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <Timeline
       items={[
@@ -94,7 +93,6 @@ export const Default: Story = {
 
 // Wrapper for icons story
 const WithIconsDemo = () => {
-  const t = useT();
   return (
     <Timeline
       items={[
@@ -137,7 +135,6 @@ export const WithIcons: Story = {
 
 // Wrapper for actors story
 const WithActorsDemo = () => {
-  const t = useT();
   return (
     <Timeline
       items={[
@@ -188,7 +185,6 @@ export const WithActors: Story = {
 
 // Wrapper for all types story
 const AllTypesDemo = () => {
-  const t = useT();
   return (
     <Timeline
       items={[
@@ -237,7 +233,6 @@ export const AllTypes: Story = {
 
 // Wrapper for without connector story
 const WithoutConnectorDemo = () => {
-  const t = useT();
   return (
     <Timeline
       items={[
@@ -274,7 +269,6 @@ export const WithoutConnector: Story = {
 
 // Wrapper for metadata story
 const WithMetadataDemo = () => {
-  const t = useT();
   return (
     <Timeline
       items={[
@@ -314,7 +308,6 @@ export const WithMetadata: Story = {
 
 // Wrapper for empty story
 const EmptyDemo = () => {
-  const t = useT();
   return (
     <Timeline items={[]} emptyMessage="Eksempel Tekst" showConnector={true} />
   );

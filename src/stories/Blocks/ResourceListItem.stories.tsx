@@ -56,7 +56,6 @@ type Story = StoryObj<typeof meta>;
 // Basic resource list item
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"
@@ -95,7 +94,6 @@ export const Default: Story = {
 // Favorited
 export const Favorited: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"
@@ -134,7 +132,6 @@ export const Favorited: Story = {
 // Without map
 export const WithoutMap: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"
@@ -171,7 +168,6 @@ export const WithoutMap: Story = {
 // Without amenities
 export const WithoutAmenities: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"
@@ -207,7 +203,6 @@ export const WithoutAmenities: Story = {
 // Without price
 export const WithoutPrice: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"
@@ -243,7 +238,6 @@ export const WithoutPrice: Story = {
 // Many amenities
 export const ManyAmenities: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"
@@ -293,7 +287,6 @@ export const ManyAmenities: Story = {
 // Different category
 export const EventCategory: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceListItem
         id="1"

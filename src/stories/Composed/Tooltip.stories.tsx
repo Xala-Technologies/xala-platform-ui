@@ -50,7 +50,6 @@ type Story = StoryObj<typeof Tooltip>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-20)" style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst">
@@ -66,7 +65,6 @@ export const Default: Story = {
  */
 export const Bottom: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst" position="bottom">
@@ -82,7 +80,6 @@ export const Bottom: Story = {
  */
 export const Left: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst" position="left">
@@ -98,7 +95,6 @@ export const Left: Story = {
  */
 export const Right: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst" position="right">
@@ -114,7 +110,6 @@ export const Right: Story = {
  */
 export const WithDelay: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst" delay={500}>
@@ -130,7 +125,6 @@ export const WithDelay: Story = {
  */
 export const LongContent: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst">
@@ -146,7 +140,6 @@ export const LongContent: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
         <Tooltip content="Eksempel Tekst" disabled>

@@ -46,7 +46,6 @@ type Story = StoryObj<typeof meta>;
 
 // Default loading fallback
 const DefaultLoadingFallback = () => {
-  const t = useT();
   return <LoadingFallback message={t('platform.common.loading')} />;
 };
 
@@ -58,7 +57,6 @@ export const Default: Story = {
 
 // Custom message
 const CustomMessageLoadingFallback = () => {
-  const t = useT();
   return <LoadingFallback message="Eksempel Tekst" />;
 };
 

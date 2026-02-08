@@ -45,7 +45,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for full conformance story
 const FullConformanceDemo = () => {
-  const t = useT();
   return (
     <AccessibilityStatement
       organizationName="Eksempel Tekst"
@@ -74,7 +73,6 @@ export const FullConformance: Story = {
 
 // Wrapper for partial conformance story
 const PartialConformanceDemo = () => {
-  const t = useT();
   return (
     <AccessibilityStatement
       organizationName="Eksempel Tekst"
@@ -116,7 +114,6 @@ export const PartialConformance: Story = {
 
 // Wrapper for non-conformant story
 const NonConformantDemo = () => {
-  const t = useT();
   return (
     <AccessibilityStatement
       organizationName="Eksempel Tekst"
@@ -148,7 +145,6 @@ export const NonConformant: Story = {
 
 // Wrapper for with additional info story
 const WithAdditionalInfoDemo = () => {
-  const t = useT();
   return (
     <AccessibilityStatement
       organizationName="Eksempel Tekst"
@@ -178,7 +174,6 @@ export const WithAdditionalInfo: Story = {
 
 // Wrapper for WCAG AAA story
 const WCAGAAADemo = () => {
-  const t = useT();
   return (
     <AccessibilityStatement
       organizationName="Eksempel Tekst"
@@ -205,7 +200,6 @@ export const WCAGAAA: Story = {
 
 // Wrapper for minimal story
 const MinimalDemo = () => {
-  const t = useT();
   return (
     <AccessibilityStatement
       organizationName="Eksempel Tekst"

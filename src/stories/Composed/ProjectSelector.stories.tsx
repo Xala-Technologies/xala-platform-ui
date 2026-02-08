@@ -48,7 +48,6 @@ type Story = StoryObj<typeof ProjectSelector>;
 
 // Sample projects
 const useSampleProjects = (): ProjectItem[] => {
-  const t = useT();
   return [
     { id: '1', name: t('storybook.projectSelector.project1'), path: '/projects/project1' },
     { id: '2', name: t('storybook.projectSelector.project2'), path: '/projects/project2' },
@@ -61,7 +60,6 @@ const useSampleProjects = (): ProjectItem[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string>('1');
     const projects = useSampleProjects();
     return (
@@ -85,7 +83,6 @@ export const Default: Story = {
  */
 export const WithoutLabel: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string>('1');
     const projects = useSampleProjects();
     return (
@@ -108,7 +105,6 @@ export const WithoutLabel: Story = {
  */
 export const ManyProjects: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string>('1');
     const projects: ProjectItem[] = Array.from({ length: 10 }, (_, i) => ({
       id: String(i + 1),
@@ -136,7 +132,6 @@ export const ManyProjects: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string>('1');
     const projects = useSampleProjects();
     return (
@@ -160,7 +155,6 @@ export const Small: Story = {
  */
 export const Large: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string>('1');
     const projects = useSampleProjects();
     return (

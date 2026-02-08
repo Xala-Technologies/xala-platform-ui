@@ -36,7 +36,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <div>
       <SkipLinks />
@@ -59,7 +58,6 @@ const DefaultDemo = () => {
 };
 
 const CustomLinksDemo = () => {
-  const t = useT();
   return (
     <div>
       <SkipLinks
@@ -103,7 +101,6 @@ const CustomLinksDemo = () => {
 };
 
 const EnglishLabelsDemo = () => {
-  const t = useT();
   return (
     <div>
       <SkipLinks
@@ -128,7 +125,6 @@ const EnglishLabelsDemo = () => {
 };
 
 const MultipleLinksDemo = () => {
-  const t = useT();
   return (
     <div>
       <SkipLinks

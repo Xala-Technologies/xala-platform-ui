@@ -44,7 +44,6 @@ type Story = StoryObj;
  */
 export const KeyboardNavigation: Story = {
   render: function Render() {
-    const t = useT();
 
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
@@ -109,7 +108,6 @@ export const KeyboardNavigation: Story = {
  */
 export const ARIALabels: Story = {
   render: function Render() {
-    const t = useT();
 
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -168,7 +166,6 @@ export const ARIALabels: Story = {
  */
 export const ColorContrast: Story = {
   render: function Render() {
-    const t = useT();
 
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -231,7 +228,6 @@ export const ColorContrast: Story = {
  */
 export const FocusIndicators: Story = {
   render: function Render() {
-    const t = useT();
 
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
@@ -294,7 +290,6 @@ export const FocusIndicators: Story = {
  */
 export const FormAccessibility: Story = {
   render: function Render() {
-    const t = useT();
     const [formData, setFormData] = useState({ name: '', email: '', subscribe: false });
     const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -397,7 +392,6 @@ export const FormAccessibility: Story = {
  */
 export const ScreenReaderText: Story = {
   render: function Render() {
-    const t = useT();
 
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
@@ -458,7 +452,6 @@ export const ScreenReaderText: Story = {
  */
 export const Checklist: Story = {
   render: function Render() {
-    const t = useT();
 
     const checklistData = [
       {

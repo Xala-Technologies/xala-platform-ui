@@ -56,7 +56,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return <DetailField label={t('platform.common.name')} value="John Doe" copyable={false} />;
 };
 
@@ -69,7 +68,6 @@ export const Default: Story = {
 
 // Wrapper for with icon story
 const WithIconDemo = () => {
-  const t = useT();
   return (
     <DetailField
       label={t('platform.auth.email')}
@@ -89,7 +87,6 @@ export const WithIcon: Story = {
 
 // Wrapper for copyable story
 const CopyableDemo = () => {
-  const t = useT();
   return (
     <DetailField
       label="Eksempel Tekst"
@@ -110,7 +107,6 @@ export const Copyable: Story = {
 
 // Wrapper for with react node story
 const WithReactNodeDemo = () => {
-  const t = useT();
   return (
     <DetailField
       label={t('platform.status.label')}
@@ -129,7 +125,6 @@ export const WithReactNode: Story = {
 
 // Wrapper for group single column story
 const GroupSingleColumnDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <DetailFieldGroup title="Eksempel Tekst" columns={1}>
@@ -162,7 +157,6 @@ export const GroupSingleColumn: Story = {
 
 // Wrapper for group two columns story
 const GroupTwoColumnsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <DetailFieldGroup title="Eksempel Tekst" columns={2}>
@@ -187,7 +181,6 @@ export const GroupTwoColumns: Story = {
 
 // Wrapper for group three columns story
 const GroupThreeColumnsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '800px' }}>
       <DetailFieldGroup title="Eksempel Tekst" columns={3}>
@@ -208,7 +201,6 @@ export const GroupThreeColumns: Story = {
 
 // Wrapper for card story
 const CardDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '500px' }}>
       <DetailCard
@@ -239,7 +231,6 @@ export const Card: Story = {
 
 // Wrapper for mono field story
 const MonoFieldExampleDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <MonoField
@@ -262,7 +253,6 @@ export const MonoFieldExample: Story = {
 
 // Wrapper for link field story
 const LinkFieldExampleDemo = () => {
-  const t = useT();
   return (
     <div
       style={{
@@ -309,7 +299,6 @@ export const LinkFieldExample: Story = {
 
 // Wrapper for complete example story
 const CompleteExampleDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

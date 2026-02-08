@@ -33,7 +33,6 @@ type Story = StoryObj<typeof ResourceRequestStepper>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     return (
       <Stack
@@ -67,7 +66,6 @@ export const Default: Story = {
  */
 export const FiveSteps: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(2);
     return (
       <Stack
@@ -101,7 +99,6 @@ export const FiveSteps: Story = {
  */
 export const WithoutStepCounter: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(1);
     return (
       <Stack
@@ -136,7 +133,6 @@ export const WithoutStepCounter: Story = {
  */
 export const Completed: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

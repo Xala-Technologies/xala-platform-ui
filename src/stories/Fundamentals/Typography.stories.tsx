@@ -32,7 +32,6 @@ type Story = StoryObj;
  */
 export const FontFamilies: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
@@ -118,7 +117,6 @@ export const FontFamilies: Story = {
  */
 export const FontWeights: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         {[
@@ -168,7 +166,6 @@ export const FontWeights: Story = {
  */
 export const Headings: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Heading level={1} data-size="2xl">
@@ -202,7 +199,6 @@ export const Headings: Story = {
  */
 export const BodyText: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -244,7 +240,6 @@ export const BodyText: Story = {
  */
 export const ParagraphVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -276,7 +271,6 @@ export const ParagraphVariants: Story = {
  */
 export const FormTypography: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -322,7 +316,6 @@ export const FormTypography: Story = {
  */
 export const ResponsiveSizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div
@@ -374,7 +367,6 @@ export const ResponsiveSizes: Story = {
  */
 export const SemanticColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         <Paragraph style={{ color: 'var(--ds-color-neutral-text-default)' }}>
@@ -405,7 +397,6 @@ export const SemanticColors: Story = {
  */
 export const ArticleExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <article style={{ maxWidth: 'var(--ds-size-175)' }}>
         <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-4)' }}>

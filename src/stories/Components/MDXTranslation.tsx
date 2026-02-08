@@ -33,7 +33,6 @@ export interface TProps {
  * ```
  */
 export function T({ tKey, children, values }: TProps): React.ReactElement {
-  const t = useT();
 
   try {
     const translated = t(tKey, values);
@@ -58,7 +57,6 @@ export function T({ tKey, children, values }: TProps): React.ReactElement {
  * ```mdx
  *
  * <script>
- *   const t = useT();
  *   const saveText = t('platform.common.save');
  * </script>
  * ```

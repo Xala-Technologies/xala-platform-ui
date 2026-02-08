@@ -126,7 +126,6 @@ export const Sizes: Story = {
 
 export const WithButton: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
         <Button variant="secondary" type="button">
@@ -155,7 +154,6 @@ export const WithButton: Story = {
 
 export const StatusDots: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -184,7 +182,6 @@ export const StatusDots: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

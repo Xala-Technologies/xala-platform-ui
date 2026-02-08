@@ -54,7 +54,6 @@ type Story = StoryObj;
  */
 export const PlatformOverview: Story = {
   render: function Render() {
-    const t = useT();
 
     const features = [
       {
@@ -147,7 +146,6 @@ export const PlatformOverview: Story = {
  */
 export const ArchitecturePrinciples: Story = {
   render: function Render() {
-    const t = useT();
 
     const principles = [
       {
@@ -221,7 +219,6 @@ export const ArchitecturePrinciples: Story = {
  */
 export const ComponentCategories: Story = {
   render: function Render() {
-    const t = useT();
 
     const categories = [
       {
@@ -295,7 +292,6 @@ export const ComponentCategories: Story = {
  */
 export const InteractiveLiveDemo: Story = {
   render: function Render() {
-    const t = useT();
     const [name, setName] = useState('');
     const [agreed, setAgreed] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -491,7 +487,6 @@ export function WelcomeForm() {
  */
 export const ComponentShowcase: Story = {
   render: function Render() {
-    const t = useT();
     const [activeTab, setActiveTab] = useState(0);
 
     const showcases = [
@@ -612,7 +607,6 @@ export const ComponentShowcase: Story = {
  */
 export const ResourcesAndLinks: Story = {
   render: function Render() {
-    const t = useT();
 
     const resources = [
       {

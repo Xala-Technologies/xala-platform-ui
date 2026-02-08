@@ -48,7 +48,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for search story
 const WithSearchDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   return (
     <div style={{ width: '800px' }}>
@@ -73,7 +72,6 @@ export const WithSearch: Story = {
 
 // Wrapper for filters story
 const WithFiltersDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState<string | undefined>('active');
   return (
@@ -115,7 +113,6 @@ export const WithFilters: Story = {
 
 // Wrapper for sort story
 const WithSortDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('name');
   return (
@@ -148,7 +145,6 @@ export const WithSort: Story = {
 
 // Wrapper for primary action story
 const WithPrimaryActionDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   return (
     <div style={{ width: '800px' }}>
@@ -178,7 +174,6 @@ export const WithPrimaryAction: Story = {
 
 // Wrapper for complete story
 const CompleteDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState<string | undefined>('active');
   const [type, setType] = useState<string | undefined>();
@@ -246,7 +241,6 @@ export const Complete: Story = {
 
 // Wrapper for compact story
 const CompactDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   return (
     <div style={{ width: '800px' }}>
@@ -272,7 +266,6 @@ export const Compact: Story = {
 
 // Wrapper for without counts story
 const WithoutFilterCountsDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState<string | undefined>('active');
   return (
@@ -315,7 +308,6 @@ export const WithoutFilterCounts: Story = {
 
 // Wrapper for custom results label story
 const CustomResultsLabelDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   return (
     <div style={{ width: '800px' }}>
@@ -341,7 +333,6 @@ export const CustomResultsLabel: Story = {
 
 // Wrapper for no results story
 const NoResultsDemo = () => {
-  const t = useT();
   const [query, setQuery] = useState('');
   return (
     <div style={{ width: '800px' }}>

@@ -253,7 +253,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Search>
         <Search.Input
@@ -269,7 +268,6 @@ export const Default: Story = {
 
 export const WithPlaceholder: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Search>
         <Search.Input
@@ -285,7 +283,6 @@ export const WithPlaceholder: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Search data-size="sm">
@@ -319,7 +316,6 @@ export const Sizes: Story = {
 
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Search data-color="neutral">

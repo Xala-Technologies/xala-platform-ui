@@ -44,7 +44,6 @@ type Story = StoryObj;
  */
 export const DesignPrinciples: Story = {
   render: function Render() {
-    const t = useT();
 
     const principles = [
       {
@@ -227,7 +226,6 @@ export const DesignPrinciples: Story = {
  */
 export const ComponentArchitecture: Story = {
   render: function Render() {
-    const t = useT();
 
     const layers = [
       {
@@ -413,7 +411,6 @@ export const ComponentArchitecture: Story = {
  */
 export const ComponentCreationWizard: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
@@ -710,7 +707,6 @@ describe('MyComponent', () => {
  */
 export const QualityChecklist: Story = {
   render: function Render() {
-    const t = useT();
     const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
     const checklistItems = [
@@ -876,7 +872,6 @@ export const QualityChecklist: Story = {
  */
 export const TestingBestPractices: Story = {
   render: function Render() {
-    const t = useT();
 
     const testingTypes = [
       {
@@ -1049,7 +1044,6 @@ it('is keyboard accessible', async () => {
  */
 export const CommonPitfalls: Story = {
   render: function Render() {
-    const t = useT();
 
     const pitfalls = [
       {

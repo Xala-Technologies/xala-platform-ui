@@ -55,7 +55,6 @@ type Story = StoryObj<typeof Drawer>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -77,7 +76,6 @@ export const Default: Story = {
  */
 export const Left: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -100,7 +98,6 @@ export const Left: Story = {
  */
 export const Bottom: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -123,7 +120,6 @@ export const Bottom: Story = {
  */
 export const WithFooter: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -155,7 +151,6 @@ export const WithFooter: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -178,7 +173,6 @@ export const Small: Story = {
  */
 export const Large: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -201,7 +195,6 @@ export const Large: Story = {
  */
 export const WithoutOverlay: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(false);
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>

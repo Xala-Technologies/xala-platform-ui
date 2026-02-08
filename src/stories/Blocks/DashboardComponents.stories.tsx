@@ -40,7 +40,6 @@ type Story = StoryObj<typeof StatCard>;
  */
 export const StatCardExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -68,7 +67,6 @@ export const StatCardExample: Story = {
  */
 export const ActivityItemExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -95,7 +93,6 @@ export const ActivityItemExample: Story = {
  */
 export const ActivityFeedExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -134,7 +131,6 @@ export const ActivityFeedExample: Story = {
  */
 export const QuickActionCardExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

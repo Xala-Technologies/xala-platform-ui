@@ -179,21 +179,18 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return <Spinner aria-label={t('platform.common.loading')} />;
   },
 };
 
 export const WithLabel: Story = {
   render: function Render() {
-    const t = useT();
     return <Spinner aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
         <Spinner data-size="sm" aria-label={t('platform.common.loading')} />
@@ -206,7 +203,6 @@ export const Sizes: Story = {
 
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
         <Spinner data-color="neutral" aria-label={t('platform.common.loading')} />
@@ -218,7 +214,6 @@ export const Colors: Story = {
 
 export const InButton: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Button loading disabled type="button">
         {t('platform.common.loading')}...
@@ -229,7 +224,6 @@ export const InButton: Story = {
 
 export const LoadingState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -257,7 +251,6 @@ export const LoadingState: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

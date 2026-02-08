@@ -54,7 +54,6 @@ type Story = StoryObj<typeof TaskCard>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -76,7 +75,6 @@ export const Default: Story = {
  */
 export const WithAllDetails: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -102,7 +100,6 @@ export const WithAllDetails: Story = {
  */
 export const Done: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -125,7 +122,6 @@ export const Done: Story = {
  */
 export const Blocked: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -147,7 +143,6 @@ export const Blocked: Story = {
  */
 export const InReview: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -170,7 +165,6 @@ export const InReview: Story = {
  */
 export const Backlog: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -192,7 +186,6 @@ export const Backlog: Story = {
  */
 export const Selected: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
@@ -215,7 +208,6 @@ export const Selected: Story = {
  */
 export const Minimal: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard title="Eksempel Tekst" status="todo" priority="low" />

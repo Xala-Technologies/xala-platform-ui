@@ -42,7 +42,6 @@ type Story = StoryObj<typeof LoadingScreen>;
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     return <LoadingScreen message="Eksempel Tekst" height="400px" />;
   },
 };
@@ -52,7 +51,6 @@ export const Loading: Story = {
  */
 export const AccessDenied: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
@@ -77,7 +75,6 @@ export const AccessDenied: Story = {
  */
 export const NotFound: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
@@ -102,7 +99,6 @@ export const NotFound: Story = {
  */
 export const Error: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
@@ -127,7 +123,6 @@ export const Error: Story = {
  */
 export const PermissionGateExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

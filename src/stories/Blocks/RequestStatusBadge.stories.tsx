@@ -117,7 +117,6 @@ export const AllStatuses: Story = {
 // StatusTag component - all colors
 export const StatusTagColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -140,7 +139,6 @@ export const StatusTagColors: Story = {
 // StatusTag component - all sizes
 export const StatusTagSizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -167,7 +165,6 @@ export const StatusTagSizes: Story = {
 // Custom status config
 export const CustomConfig: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <RequestStatusBadge

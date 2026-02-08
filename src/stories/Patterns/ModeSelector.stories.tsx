@@ -304,7 +304,6 @@ export const ViewToggle: Story = {
 export const VariantComparison: Story = {
   name: 'Variant Comparison',
   render: function Render() {
-    const t = useT();
     const [value, setValue] = React.useState('single');
 
     return (
@@ -351,7 +350,6 @@ export const VariantComparison: Story = {
 export const SizeComparison: Story = {
   name: 'Size Comparison',
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
@@ -380,7 +378,6 @@ export const SizeComparison: Story = {
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: function Render() {
-    const t = useT();
     const [mode, setMode] = React.useState('single');
 
     return (

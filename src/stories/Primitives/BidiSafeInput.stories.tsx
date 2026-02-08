@@ -35,7 +35,6 @@ type Story = StoryObj<typeof BidiSafeInput>;
  */
 export const Email: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -64,7 +63,6 @@ export const Email: Story = {
  */
 export const Url: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -93,7 +91,6 @@ export const Url: Story = {
  */
 export const Phone: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -122,7 +119,6 @@ export const Phone: Story = {
  */
 export const Code: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack

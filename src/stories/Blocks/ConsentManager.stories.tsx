@@ -52,7 +52,6 @@ type Story = StoryObj<typeof meta>;
 // Basic consent manager
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [consents, setConsents] = useState({
       marketing: false,
       analytics: true,
@@ -90,7 +89,6 @@ export const Default: Story = {
 // Loading state
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     const [consents] = useState({
       marketing: false,
       analytics: true,
@@ -119,7 +117,6 @@ export const Loading: Story = {
 // Saving state
 export const Saving: Story = {
   render: function Render() {
-    const t = useT();
     const [consents] = useState({
       marketing: true,
       analytics: true,
@@ -148,7 +145,6 @@ export const Saving: Story = {
 // Success state
 export const Success: Story = {
   render: function Render() {
-    const t = useT();
     const [consents] = useState({
       marketing: true,
       analytics: true,
@@ -177,7 +173,6 @@ export const Success: Story = {
 // Error state
 export const Error: Story = {
   render: function Render() {
-    const t = useT();
     const [consents] = useState({
       marketing: true,
       analytics: true,
@@ -206,7 +201,6 @@ export const Error: Story = {
 // Custom consent settings
 export const CustomSettings: Story = {
   render: function Render() {
-    const t = useT();
     const [consents, setConsents] = useState({
       newsletter: false,
       sms: false,
@@ -252,7 +246,6 @@ export const CustomSettings: Story = {
 // With last updated
 export const WithLastUpdated: Story = {
   render: function Render() {
-    const t = useT();
     const [consents] = useState({
       marketing: true,
       analytics: true,

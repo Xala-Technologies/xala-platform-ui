@@ -51,7 +51,6 @@ type Story = StoryObj<typeof meta>;
 export const NoError: Story = {
   args: {},
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -72,7 +71,6 @@ export const CustomTitle: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     // Simulate error by throwing
     React.useEffect(() => {
       // This would normally be caught by GlobalErrorHandler
@@ -97,7 +95,6 @@ export const CustomDescription: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -116,7 +113,6 @@ export const WithoutRetryButton: Story = {
     showRetryButton: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -136,7 +132,6 @@ export const CustomRetryText: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -167,7 +162,6 @@ export const CustomFallback: Story = {
     ),
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -203,7 +197,6 @@ export const WithErrorTracking: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -245,7 +238,6 @@ export const TrackingErrorTypes: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
@@ -306,7 +298,6 @@ export const WithEnrichedData: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>

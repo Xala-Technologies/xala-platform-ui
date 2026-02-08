@@ -375,7 +375,6 @@ export const LoadingAction: Story = {
 export const Interactive: Story = {
   name: 'Interactive Example',
   render: function Render() {
-    const t = useT();
     const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
 
     const items = [

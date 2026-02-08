@@ -194,7 +194,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Details>
         <Details.Summary>"Eksempel Tekst"</Details.Summary>
@@ -208,7 +207,6 @@ export const Default: Story = {
 
 export const Multiple: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
         <Details>
@@ -236,7 +234,6 @@ export const Multiple: Story = {
 
 export const OpenByDefault: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = React.useState(true);
     return (
       <Details open={open} onToggle={() => setOpen(!open)}>
@@ -251,7 +248,6 @@ export const OpenByDefault: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Details data-size="sm">
@@ -279,7 +275,6 @@ export const Sizes: Story = {
 
 export const FAQ: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
         <Details>

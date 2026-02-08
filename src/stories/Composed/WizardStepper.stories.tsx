@@ -49,7 +49,6 @@ type Story = StoryObj<typeof WizardStepper>;
 
 // Sample steps
 const useSampleSteps = () => {
-  const t = useT();
   return [
     { id: 'select', label: t('storybook.wizardStepper.select'), icon: <UserIcon size={16} /> },
     {
@@ -70,7 +69,6 @@ const useSampleSteps = () => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -93,7 +91,6 @@ export const Default: Story = {
  */
 export const WithProgress: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -117,7 +114,6 @@ export const WithProgress: Story = {
  */
 export const WithErrors: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -143,7 +139,6 @@ export const WithErrors: Story = {
  */
 export const FirstStep: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -166,7 +161,6 @@ export const FirstStep: Story = {
  */
 export const LastStep: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -189,7 +183,6 @@ export const LastStep: Story = {
  */
 export const WithOptionalStep: Story = {
   render: function Render() {
-    const t = useT();
     const steps = [
       { id: 'required', label: t('storybook.wizardStepper.required') },
       { id: 'optional', label: t('storybook.wizardStepper.optionalStep'), optional: true },
@@ -216,7 +209,6 @@ export const WithOptionalStep: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -240,7 +232,6 @@ export const Small: Story = {
  */
 export const Large: Story = {
   render: function Render() {
-    const t = useT();
     const steps = useSampleSteps();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>

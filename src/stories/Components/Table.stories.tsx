@@ -332,7 +332,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Table>
         <Table.Head>
@@ -366,7 +365,6 @@ export const Default: Story = {
 
 export const WithCaption: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Table>
         <caption>"Eksempel Tekst"</caption>
@@ -396,7 +394,6 @@ export const WithCaption: Story = {
 
 export const Zebra: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Table zebra>
         <Table.Head>
@@ -435,7 +432,6 @@ export const Zebra: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <Table data-size="sm">

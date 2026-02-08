@@ -166,7 +166,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Breadcrumbs>
         <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
@@ -179,7 +178,6 @@ export const Default: Story = {
 
 export const ThreeLevels: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Breadcrumbs>
         <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
@@ -195,7 +193,6 @@ export const ThreeLevels: Story = {
 
 export const TwoLevels: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Breadcrumbs>
         <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
@@ -207,7 +204,6 @@ export const TwoLevels: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Breadcrumbs data-size="sm">
@@ -229,7 +225,6 @@ export const Sizes: Story = {
 
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

@@ -43,7 +43,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <Breadcrumb
       items={[
@@ -64,7 +63,6 @@ export const Default: Story = {
 
 // Wrapper for onClick story
 const WithOnClickDemo = () => {
-  const t = useT();
   return (
     <Breadcrumb
       items={[
@@ -85,7 +83,6 @@ export const WithOnClick: Story = {
 
 // Wrapper for custom separator story
 const CustomSeparatorDemo = () => {
-  const t = useT();
   return (
     <Breadcrumb
       items={[
@@ -107,7 +104,6 @@ export const CustomSeparator: Story = {
 
 // Wrapper for long trail story
 const LongTrailDemo = () => {
-  const t = useT();
   return (
     <Breadcrumb
       items={[
@@ -130,7 +126,6 @@ export const LongTrail: Story = {
 
 // Wrapper for single item story
 const SingleItemDemo = () => {
-  const t = useT();
   return <Breadcrumb items={[{ label: t('platform.nav.home') }]} />;
 };
 
@@ -143,7 +138,6 @@ export const SingleItem: Story = {
 
 // Wrapper for two items story
 const TwoItemsDemo = () => {
-  const t = useT();
   return (
     <Breadcrumb
       items={[

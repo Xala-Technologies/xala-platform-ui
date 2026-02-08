@@ -56,7 +56,6 @@ type Story = StoryObj<typeof meta>;
 
 // Sample accordion items component
 const AccordionWithItems = (args: any) => {
-  const t = useT();
 
   const sampleItems = [
     {
@@ -132,7 +131,6 @@ export const DefaultExpanded: Story = {
 
 // With disabled item
 const AccordionWithDisabled = (args: any) => {
-  const t = useT();
 
   const items = [
     {
@@ -171,7 +169,6 @@ export const WithDisabled: Story = {
 
 // Collapsible component
 const CollapsibleExample = () => {
-  const t = useT();
   return (
     <Collapsible title="Eksempel Tekst" defaultOpen={false}>
       <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
@@ -188,7 +185,6 @@ export const CollapsibleExampleStory: Story = {
 
 // Collapsible with icon
 const CollapsibleWithIconExample = () => {
-  const t = useT();
   return (
     <Collapsible
       title={t('platform.nav.settings')}

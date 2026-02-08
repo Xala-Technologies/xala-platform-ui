@@ -40,7 +40,6 @@ type Story = StoryObj;
 
 export const Headings: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Heading level={1}>"Eksempel Tekst" 1</Heading>
@@ -56,7 +55,6 @@ export const Headings: Story = {
 
 export const HeadingSizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Heading level={2} data-size="2xs">
@@ -87,7 +85,6 @@ export const HeadingSizes: Story = {
 
 export const Paragraphs: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Paragraph data-size="sm">
@@ -106,7 +103,6 @@ export const Paragraphs: Story = {
 
 export const LeadParagraph: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Heading level={1}>"Eksempel Tekst"</Heading>
@@ -119,7 +115,6 @@ export const LeadParagraph: Story = {
 
 export const Labels: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Label data-size="sm">"Eksempel Tekst"</Label>
@@ -132,7 +127,6 @@ export const Labels: Story = {
 
 export const InlineLink: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Paragraph>
         "Eksempel Tekst"{' '}
@@ -146,7 +140,6 @@ export const InlineLink: Story = {
 
 export const CombinedExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <article>
         <Heading level={1} data-size="xl">
@@ -175,7 +168,6 @@ export const CombinedExample: Story = {
 
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

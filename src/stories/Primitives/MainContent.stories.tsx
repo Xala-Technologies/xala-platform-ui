@@ -31,7 +31,6 @@ type Story = StoryObj<typeof MainContent>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -63,7 +62,6 @@ export const Default: Story = {
  */
 export const PaddingSizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -116,7 +114,6 @@ export const PaddingSizes: Story = {
  */
 export const NonScrollable: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

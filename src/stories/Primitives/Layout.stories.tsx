@@ -48,7 +48,6 @@ const Box = ({ children, color = 'accent' }: { children: React.ReactNode; color?
 export const ContainerDefault: Story = {
   name: 'Container',
   render: function Render() {
-    const t = useT();
     return (
       <Container style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
         <Box>"Eksempel Tekst"</Box>
@@ -63,7 +62,6 @@ export const ContainerDefault: Story = {
 export const ContainerFluid: Story = {
   name: 'Container Fluid',
   render: function Render() {
-    const t = useT();
     return (
       <Container fluid style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
         <Box>"Eksempel Tekst"</Box>
@@ -78,7 +76,6 @@ export const ContainerFluid: Story = {
 export const GridBasic: Story = {
   name: 'Grid',
   render: function Render() {
-    const t = useT();
     return (
       <Grid columns="repeat(3, 1fr)" gap="var(--ds-spacing-4)">
         <Box>"Eksempel Tekst" 1</Box>
@@ -98,7 +95,6 @@ export const GridBasic: Story = {
 export const GridMixed: Story = {
   name: 'Grid Mixed Columns',
   render: function Render() {
-    const t = useT();
     return (
       <Grid columns="1fr 2fr 1fr" gap="var(--ds-spacing-4)">
         <Box>"Eksempel Tekst"</Box>
@@ -115,7 +111,6 @@ export const GridMixed: Story = {
 export const GridAutoFit: Story = {
   name: 'Grid Auto-fit',
   render: function Render() {
-    const t = useT();
     return (
       <Grid columns="repeat(auto-fit, minmax(var(--ds-spacing-48), 1fr))" gap="var(--ds-spacing-4)">
         <Box>"Eksempel Tekst" 1</Box>
@@ -133,7 +128,6 @@ export const GridAutoFit: Story = {
 export const StackVertical: Story = {
   name: 'Stack Vertical',
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)">
         <Box>"Eksempel Tekst" 1</Box>
@@ -150,7 +144,6 @@ export const StackVertical: Story = {
 export const StackHorizontal: Story = {
   name: 'Stack Horizontal',
   render: function Render() {
-    const t = useT();
     return (
       <Stack direction="horizontal" spacing="var(--ds-spacing-4)">
         <Box>"Eksempel Tekst" 1</Box>
@@ -167,7 +160,6 @@ export const StackHorizontal: Story = {
 export const StackAligned: Story = {
   name: 'Stack Aligned',
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         direction="horizontal"
@@ -194,7 +186,6 @@ export const StackAligned: Story = {
 export const CombinedLayout: Story = {
   name: 'Combined Example',
   render: function Render() {
-    const t = useT();
     return (
       <Container>
         <Stack spacing="var(--ds-spacing-6)">

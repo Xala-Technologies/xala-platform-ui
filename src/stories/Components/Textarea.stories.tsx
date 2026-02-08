@@ -39,7 +39,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>{t('platform.common.description')}</Label>
@@ -51,7 +50,6 @@ export const Default: Story = {
 
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -64,7 +62,6 @@ export const WithDescription: Story = {
 
 export const WithCharacterCount: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -78,7 +75,6 @@ export const WithCharacterCount: Story = {
 
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -91,7 +87,6 @@ export const WithError: Story = {
 
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -103,7 +98,6 @@ export const Disabled: Story = {
 
 export const ReadOnly: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -115,7 +109,6 @@ export const ReadOnly: Story = {
 
 export const Rows: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Field>
@@ -137,7 +130,6 @@ export const Rows: Story = {
 
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

@@ -67,7 +67,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const WithLabelDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -84,7 +83,6 @@ const WithLabelDemo = () => {
 };
 
 const WithValueDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -102,7 +100,6 @@ const WithValueDemo = () => {
 };
 
 const WithTooltipDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -120,7 +117,6 @@ const WithTooltipDemo = () => {
 };
 
 const TooltipAlwaysDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -138,7 +134,6 @@ const TooltipAlwaysDemo = () => {
 };
 
 const WithMarksDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -162,7 +157,6 @@ const WithMarksDemo = () => {
 };
 
 const CustomFormatDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -181,7 +175,6 @@ const CustomFormatDemo = () => {
 };
 
 const SmallDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider label="Eksempel Tekst" defaultValue={50} size="sm" onChange={fn()} />
@@ -190,7 +183,6 @@ const SmallDemo = () => {
 };
 
 const MediumDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider label="Eksempel Tekst" defaultValue={50} size="md" onChange={fn()} />
@@ -199,7 +191,6 @@ const MediumDemo = () => {
 };
 
 const LargeDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider label="Eksempel Tekst" defaultValue={50} size="lg" onChange={fn()} />
@@ -208,7 +199,6 @@ const LargeDemo = () => {
 };
 
 const SuccessDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -223,7 +213,6 @@ const SuccessDemo = () => {
 };
 
 const WarningDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -238,7 +227,6 @@ const WarningDemo = () => {
 };
 
 const DangerDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -253,7 +241,6 @@ const DangerDemo = () => {
 };
 
 const DisabledDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -268,7 +255,6 @@ const DisabledDemo = () => {
 };
 
 const WithStepDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Slider
@@ -300,7 +286,6 @@ const RangeSliderDemo = () => {
 };
 
 const RangeSliderWithLabelDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <RangeSlider
@@ -317,7 +302,6 @@ const RangeSliderWithLabelDemo = () => {
 };
 
 const RangeSliderWithMarksDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <RangeSlider
@@ -341,7 +325,6 @@ const RangeSliderWithMarksDemo = () => {
 };
 
 const AllSizesDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

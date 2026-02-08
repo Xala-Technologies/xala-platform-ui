@@ -53,7 +53,6 @@ type Story = StoryObj<typeof ClarificationPanel>;
 
 // Sample questions
 const useSampleQuestions = (): ClarificationQuestion[] => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -88,7 +87,6 @@ const useSampleQuestions = (): ClarificationQuestion[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [answers, setAnswers] = useState<ClarificationAnswer[]>([]);
     const questions = useSampleQuestions();
     return (
@@ -118,7 +116,6 @@ export const Default: Story = {
  */
 export const WithAnswers: Story = {
   render: function Render() {
-    const t = useT();
     const [answers, setAnswers] = useState<ClarificationAnswer[]>([
       { questionId: '1', value: t('storybook.clarificationPanel.sampleAnswer') },
       { questionId: '2', value: t('storybook.clarificationPanel.sampleDetails') },
@@ -151,7 +148,6 @@ export const WithAnswers: Story = {
  */
 export const WithBoolean: Story = {
   render: function Render() {
-    const t = useT();
     const [answers, setAnswers] = useState<ClarificationAnswer[]>([]);
     const questions: ClarificationQuestion[] = [
       {
@@ -188,7 +184,6 @@ export const WithBoolean: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     const [answers, setAnswers] = useState<ClarificationAnswer[]>([]);
     const questions = useSampleQuestions();
     return (

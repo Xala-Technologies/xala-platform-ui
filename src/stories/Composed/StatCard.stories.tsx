@@ -65,7 +65,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -86,7 +85,6 @@ export const Default: Story = {
 
 // Wrapper for with icon story
 const WithIconDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -108,7 +106,6 @@ export const WithIcon: Story = {
 
 // Wrapper for trend up story
 const TrendUpDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -135,7 +132,6 @@ export const TrendUp: Story = {
 
 // Wrapper for trend down story
 const TrendDownDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -162,7 +158,6 @@ export const TrendDown: Story = {
 
 // Wrapper for trend neutral story
 const TrendNeutralDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -189,7 +184,6 @@ export const TrendNeutral: Story = {
 
 // Wrapper for small size story
 const SmallDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -211,7 +205,6 @@ export const Small: Story = {
 
 // Wrapper for large size story
 const LargeDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -232,7 +225,6 @@ export const Large: Story = {
 
 // Wrapper for success variant
 const SuccessDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -254,7 +246,6 @@ export const Success: Story = {
 
 // Wrapper for warning variant
 const WarningDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -275,7 +266,6 @@ export const Warning: Story = {
 
 // Wrapper for danger variant
 const DangerDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -296,7 +286,6 @@ export const Danger: Story = {
 
 // Wrapper for info variant
 const InfoDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -317,7 +306,6 @@ export const Info: Story = {
 
 // Wrapper for loading state
 const LoadingDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -338,7 +326,6 @@ export const Loading: Story = {
 
 // Wrapper for clickable story
 const ClickableDemo = () => {
-  const t = useT();
   return (
     <StatCard
       label="Eksempel Tekst"
@@ -361,7 +348,6 @@ export const Clickable: Story = {
 
 // Wrapper for grid story
 const GridDemo = () => {
-  const t = useT();
   return (
     <StatCardGrid columns={4} gap="md">
       <StatCard

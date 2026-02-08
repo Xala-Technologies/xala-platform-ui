@@ -40,7 +40,6 @@ type Story = StoryObj<typeof HeaderLogo>;
  */
 export const Logo: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -65,7 +64,6 @@ export const Logo: Story = {
  */
 export const Search: Story = {
   render: function Render() {
-    const t = useT();
     const [searchValue, setSearchValue] = useState('');
     return (
       <Stack
@@ -93,7 +91,6 @@ export const Search: Story = {
  */
 export const Actions: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

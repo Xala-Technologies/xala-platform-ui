@@ -107,7 +107,6 @@ export const Default: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -128,7 +127,6 @@ export const WithoutSource: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -149,7 +147,6 @@ export const WithoutCategoryGrouping: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -170,7 +167,6 @@ export const WithoutRiskIndicators: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -191,7 +187,6 @@ export const ExpandAll: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -212,7 +207,6 @@ export const Loading: Story = {
     loading: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -233,7 +227,6 @@ export const Empty: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />
@@ -283,7 +276,6 @@ export const ManyPermissions: Story = {
     loading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <EffectivePermissionsView {...args} />

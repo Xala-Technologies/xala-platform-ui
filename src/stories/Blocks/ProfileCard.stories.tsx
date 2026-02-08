@@ -162,7 +162,6 @@ export const WithoutPhone: Story = {
 // Quick stats
 export const QuickStats: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <div
@@ -184,7 +183,6 @@ export const QuickStats: Story = {
 // Profile card with quick stats
 export const WithQuickStats: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ProfileCard

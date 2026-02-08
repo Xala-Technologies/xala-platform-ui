@@ -34,7 +34,6 @@ type Story = StoryObj<typeof StatusTabs>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [activeTab, setActiveTab] = useState('all');
     return (
       <Stack
@@ -81,7 +80,6 @@ export const Default: Story = {
  */
 export const WithIcons: Story = {
   render: function Render() {
-    const t = useT();
     const [activeTab, setActiveTab] = useState('active');
     return (
       <Stack
@@ -131,7 +129,6 @@ export const WithIcons: Story = {
  */
 export const WithoutCounts: Story = {
   render: function Render() {
-    const t = useT();
     const [activeTab, setActiveTab] = useState('all');
     return (
       <Stack

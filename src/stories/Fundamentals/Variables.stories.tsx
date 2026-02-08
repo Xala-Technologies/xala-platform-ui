@@ -89,7 +89,6 @@ const SpacingSwatch = ({ variable, size }: { variable: string; size: string }) =
  */
 export const AccentColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -161,7 +160,6 @@ export const AccentColors: Story = {
  */
 export const NeutralColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -225,7 +223,6 @@ export const NeutralColors: Story = {
  */
 export const SemanticColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -345,7 +342,6 @@ export const SemanticColors: Story = {
  */
 export const Spacing: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -378,7 +374,6 @@ export const Spacing: Story = {
  */
 export const BorderRadius: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -462,7 +457,6 @@ export const BorderRadius: Story = {
  */
 export const Shadows: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -518,7 +512,6 @@ export const Shadows: Story = {
  */
 export const FontSizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         {[
@@ -558,7 +551,6 @@ export const FontSizes: Story = {
  */
 export const UsageExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>

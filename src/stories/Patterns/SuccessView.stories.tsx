@@ -33,7 +33,6 @@ type Story = StoryObj<typeof SuccessView>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -62,7 +61,6 @@ export const Default: Story = {
  */
 export const WithDetails: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -102,7 +100,6 @@ export const WithDetails: Story = {
  */
 export const WithCustomIcon: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

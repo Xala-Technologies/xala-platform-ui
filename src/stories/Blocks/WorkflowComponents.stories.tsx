@@ -96,7 +96,6 @@ const cardMeta: Meta<typeof WorkflowCard> = {
 
 export const AvailableWorkflow: StoryObj<typeof WorkflowCard> = {
   render: function Render() {
-    const t = useT();
     return (
       <WorkflowCard
         name="Eksempel Tekst"
@@ -112,7 +111,6 @@ export const AvailableWorkflow: StoryObj<typeof WorkflowCard> = {
 
 export const ComingSoonWorkflow: StoryObj<typeof WorkflowCard> = {
   render: function Render() {
-    const t = useT();
     return (
       <WorkflowCard
         name="Eksempel Tekst"
@@ -127,7 +125,6 @@ export const ComingSoonWorkflow: StoryObj<typeof WorkflowCard> = {
 
 export const DeprecatedWorkflow: StoryObj<typeof WorkflowCard> = {
   render: function Render() {
-    const t = useT();
     return (
       <WorkflowCard
         name="Eksempel Tekst"
@@ -154,7 +151,6 @@ const cardGridMeta: Meta<typeof CardGrid> = {
 
 export const WorkflowCardGrid: StoryObj<typeof CardGrid> = {
   render: function Render() {
-    const t = useT();
     return (
       <CardGrid>
         <WorkflowCard
@@ -195,7 +191,6 @@ const buttonGroupMeta: Meta<typeof ButtonGroup> = {
 
 export const DefaultButtonGroup: StoryObj<typeof ButtonGroup> = {
   render: function Render() {
-    const t = useT();
     return (
       <ButtonGroup>
         <Button variant="primary" data-size="sm">
@@ -211,7 +206,6 @@ export const DefaultButtonGroup: StoryObj<typeof ButtonGroup> = {
 
 export const CenteredButtonGroup: StoryObj<typeof ButtonGroup> = {
   render: function Render() {
-    const t = useT();
     return (
       <ButtonGroup align="center">
         <Button variant="secondary" data-size="sm">
@@ -227,7 +221,6 @@ export const CenteredButtonGroup: StoryObj<typeof ButtonGroup> = {
 
 export const EndAlignedButtonGroup: StoryObj<typeof ButtonGroup> = {
   render: function Render() {
-    const t = useT();
     return (
       <ButtonGroup align="end">
         <Button variant="tertiary" data-size="sm">
@@ -259,7 +252,6 @@ const formGridMeta: Meta<typeof FormGrid> = {
 
 export const TwoColumnForm: StoryObj<typeof FormGrid> = {
   render: function Render() {
-    const t = useT();
     return (
       <FormGrid columns={2}>
         <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
@@ -276,7 +268,6 @@ export const TwoColumnForm: StoryObj<typeof FormGrid> = {
 
 export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
   render: function Render() {
-    const t = useT();
     return (
       <FormGrid columns={3}>
         <Textfield
@@ -302,7 +293,6 @@ export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
 
 export const SingleColumnForm: StoryObj<typeof FormGrid> = {
   render: function Render() {
-    const t = useT();
     return (
       <FormGrid columns={1}>
         <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />

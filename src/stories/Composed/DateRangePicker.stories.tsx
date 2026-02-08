@@ -53,7 +53,6 @@ type Story = StoryObj<typeof DateRangePicker>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange | undefined>(undefined);
     return (
       <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
@@ -72,7 +71,6 @@ export const Default: Story = {
  */
 export const WithValue: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange>({
       start: new Date(2026, 0, 1),
       end: new Date(2026, 0, 31),
@@ -94,7 +92,6 @@ export const WithValue: Story = {
  */
 export const WithLabel: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange | undefined>(undefined);
     return (
       <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
@@ -114,7 +111,6 @@ export const WithLabel: Story = {
  */
 export const WithCustomPresets: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange | undefined>(undefined);
     const presets = [
       {
@@ -155,7 +151,6 @@ export const WithCustomPresets: Story = {
  */
 export const WithConstraints: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange | undefined>(undefined);
     const minDate = new Date();
     minDate.setMonth(minDate.getMonth() - 3);
@@ -180,7 +175,6 @@ export const WithConstraints: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange | undefined>(undefined);
     return (
       <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
@@ -200,7 +194,6 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<DateRange>({
       start: new Date(2026, 0, 1),
       end: new Date(2026, 0, 31),

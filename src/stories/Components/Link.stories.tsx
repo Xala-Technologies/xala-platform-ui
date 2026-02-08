@@ -179,14 +179,12 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return <Link href="#">"Eksempel Tekst"</Link>;
   },
 };
 
 export const InText: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Paragraph>
         "Eksempel Tekst"{' '}
@@ -200,7 +198,6 @@ export const InText: Story = {
 
 export const External: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
         "Eksempel Tekst" ↗
@@ -214,7 +211,6 @@ export const External: Story = {
  */
 export const WithIcon: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         <Link href="https://designsystemet.no/slack">
@@ -239,7 +235,6 @@ export const WithIcon: Story = {
  */
 export const Neutral: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Link href="#" data-color="neutral">
         "Eksempel Tekst"
@@ -253,7 +248,6 @@ export const Neutral: Story = {
  */
 export const Inverted: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -275,7 +269,6 @@ export const Inverted: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

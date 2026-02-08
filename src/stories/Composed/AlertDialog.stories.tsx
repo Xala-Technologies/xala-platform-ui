@@ -33,7 +33,6 @@ type Story = StoryObj<typeof AlertDialog>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     return (
       <Stack
@@ -63,7 +62,6 @@ export const Default: Story = {
  */
 export const Info: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     return (
       <Stack
@@ -94,7 +92,6 @@ export const Info: Story = {
  */
 export const Success: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     return (
       <Stack
@@ -125,7 +122,6 @@ export const Success: Story = {
  */
 export const Warning: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     return (
       <Stack
@@ -156,7 +152,6 @@ export const Warning: Story = {
  */
 export const Danger: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     return (
       <Stack

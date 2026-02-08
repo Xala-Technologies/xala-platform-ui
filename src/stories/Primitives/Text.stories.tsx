@@ -32,7 +32,6 @@ type Story = StoryObj<typeof Text>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -54,7 +53,6 @@ export const Default: Story = {
  */
 export const Variants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -81,7 +79,6 @@ export const Variants: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -109,7 +106,6 @@ export const Sizes: Story = {
  */
 export const Weights: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

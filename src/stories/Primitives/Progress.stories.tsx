@@ -32,7 +32,6 @@ type Story = StoryObj<typeof Progress>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -54,7 +53,6 @@ export const Default: Story = {
  */
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -93,7 +91,6 @@ export const Colors: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -119,7 +116,6 @@ export const Sizes: Story = {
  */
 export const Values: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

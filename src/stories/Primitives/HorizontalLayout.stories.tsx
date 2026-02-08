@@ -34,7 +34,6 @@ type Story = StoryObj<typeof HorizontalLayout>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -60,7 +59,6 @@ export const Default: Story = {
  */
 export const WithAlignment: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -94,7 +92,6 @@ export const WithAlignment: Story = {
  */
 export const FullHeight: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

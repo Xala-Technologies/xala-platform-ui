@@ -66,7 +66,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const ClickTriggerDemo = () => {
-  const t = useT();
   return (
     <Popover
       content={
@@ -85,7 +84,6 @@ const ClickTriggerDemo = () => {
 };
 
 const HoverTriggerDemo = () => {
-  const t = useT();
   return (
     <Popover
       content={
@@ -104,7 +102,6 @@ const HoverTriggerDemo = () => {
 };
 
 const FocusTriggerDemo = () => {
-  const t = useT();
   return (
     <Popover
       content={
@@ -123,7 +120,6 @@ const FocusTriggerDemo = () => {
 };
 
 const TopPositionDemo = () => {
-  const t = useT();
   return (
     <div style={{ marginTop: '100px' }}>
       <Popover
@@ -144,7 +140,6 @@ const TopPositionDemo = () => {
 };
 
 const BottomPositionDemo = () => {
-  const t = useT();
   return (
     <Popover
       content={
@@ -163,7 +158,6 @@ const BottomPositionDemo = () => {
 };
 
 const LeftPositionDemo = () => {
-  const t = useT();
   return (
     <div style={{ marginLeft: '200px' }}>
       <Popover
@@ -184,7 +178,6 @@ const LeftPositionDemo = () => {
 };
 
 const RightPositionDemo = () => {
-  const t = useT();
   return (
     <Popover
       content={
@@ -203,7 +196,6 @@ const RightPositionDemo = () => {
 };
 
 const RichContentDemo = () => {
-  const t = useT();
   return (
     <Popover
       content={
@@ -234,7 +226,6 @@ const RichContentDemo = () => {
 };
 
 const ControlledDemo = () => {
-  const t = useT();
   const [open, setOpen] = useState(false);
   return (
     <>

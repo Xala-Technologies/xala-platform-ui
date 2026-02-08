@@ -45,7 +45,6 @@ type Story = StoryObj;
  */
 export const ButtonBasic: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
         <Button data-variant="primary" data-size="md">
@@ -92,7 +91,6 @@ export const ButtonBasic: Story = {
  */
 export const ButtonWithIcons: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
         <Button data-variant="primary">
@@ -121,7 +119,6 @@ export const ButtonWithIcons: Story = {
  */
 export const ButtonLoadingState: Story = {
   render: function Render() {
-    const t = useT();
     const [loading, setLoading] = useState(false);
 
     const handleClick = () => {
@@ -174,7 +171,6 @@ return (
  */
 export const FormComplete: Story = {
   render: function Render() {
-    const t = useT();
     const [formData, setFormData] = useState({ name: '', email: '', terms: false });
     const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -278,7 +274,6 @@ export const FormComplete: Story = {
  */
 export const CardContentLayout: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
         {[1, 2, 3].map((i) => (
@@ -348,7 +343,6 @@ export const CardContentLayout: Story = {
  */
 export const ListInteractive: Story = {
   render: function Render() {
-    const t = useT();
     const [selected, setSelected] = useState<number | null>(null);
     const items = [
       t('platform.nav.dashboard'),
@@ -408,7 +402,6 @@ export const ListInteractive: Story = {
  */
 export const EmptyState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card
         style={{
@@ -450,7 +443,6 @@ export const EmptyState: Story = {
  */
 export const ErrorState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card
         style={{
@@ -500,7 +492,6 @@ export const ErrorState: Story = {
  */
 export const SuccessState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card
         style={{
@@ -541,7 +532,6 @@ export const SuccessState: Story = {
  */
 export const LoadingState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card
         style={{

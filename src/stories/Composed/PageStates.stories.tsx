@@ -50,7 +50,6 @@ type Story = StoryObj<typeof meta>;
 
 // LoadingState - Small
 const LoadingSmallExample = () => {
-  const t = useT();
   return <LoadingState label={t('platform.common.loading')} size="sm" />;
 };
 
@@ -62,7 +61,6 @@ export const LoadingSmall: Story = {
 
 // LoadingState - Medium
 const LoadingMediumExample = () => {
-  const t = useT();
   return <LoadingState label={t('platform.common.loading')} size="md" />;
 };
 
@@ -74,7 +72,6 @@ export const LoadingMedium: Story = {
 
 // LoadingState - Large
 const LoadingLargeExample = () => {
-  const t = useT();
   return <LoadingState label={t('platform.common.loading')} size="lg" />;
 };
 
@@ -86,7 +83,6 @@ export const LoadingLarge: Story = {
 
 // LoadingState - Custom label
 const LoadingCustomLabelExample = () => {
-  const t = useT();
   return <LoadingState label="Eksempel Tekst" size="md" />;
 };
 
@@ -98,7 +94,6 @@ export const LoadingCustomLabel: Story = {
 
 // EmptyState - Default
 const EmptyDefaultExample = () => {
-  const t = useT();
   return (
     <EmptyState
       title="Eksempel Tekst"
@@ -120,7 +115,6 @@ export const EmptyDefault: Story = {
 
 // EmptyState - Compact
 const EmptyCompactExample = () => {
-  const t = useT();
   return (
     <EmptyState
       title="Eksempel Tekst"
@@ -138,7 +132,6 @@ export const EmptyCompact: Story = {
 
 // EmptyState - With custom icon
 const EmptyWithIconExample = () => {
-  const t = useT();
   return (
     <EmptyState
       icon={<FileText size={48} />}
@@ -162,7 +155,6 @@ export const EmptyWithIcon: Story = {
 
 // EmptyState - Without action
 const EmptyNoActionExample = () => {
-  const t = useT();
   return (
     <EmptyState
       title="Eksempel Tekst"
@@ -179,7 +171,6 @@ export const EmptyNoAction: Story = {
 
 // NotFoundState - Default
 const NotFoundDefaultExample = () => {
-  const t = useT();
   return (
     <NotFoundState
       title={t('platform.errors.notFound')}
@@ -201,7 +192,6 @@ export const NotFoundDefault: Story = {
 
 // NotFoundState - Without back link
 const NotFoundNoBackLinkExample = () => {
-  const t = useT();
   return (
     <NotFoundState
       title="Eksempel Tekst"
@@ -218,7 +208,6 @@ export const NotFoundNoBackLink: Story = {
 
 // NotFoundState - Custom title and description
 const NotFoundCustomExample = () => {
-  const t = useT();
   return (
     <NotFoundState
       title="404"
@@ -239,7 +228,6 @@ export const NotFoundCustom: Story = {
 
 // ErrorState - Default
 const ErrorDefaultExample = () => {
-  const t = useT();
   return (
     <ErrorState
       title={t('platform.errors.serverError')}
@@ -258,7 +246,6 @@ export const ErrorDefault: Story = {
 
 // ErrorState - Custom title
 const ErrorCustomExample = () => {
-  const t = useT();
   return (
     <ErrorState
       title="Eksempel Tekst"
@@ -277,7 +264,6 @@ export const ErrorCustom: Story = {
 
 // ErrorState - Without retry
 const ErrorNoRetryExample = () => {
-  const t = useT();
   return (
     <ErrorState
       title={t('platform.errors.serverError')}
@@ -294,7 +280,6 @@ export const ErrorNoRetry: Story = {
 
 // All states showcase
 const AllStatesExample = () => {
-  const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
       <div

@@ -178,14 +178,12 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return <Checkbox label="Eksempel Tekst" value="accept" />;
   },
 };
 
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Checkbox
         label="Eksempel Tekst"
@@ -198,7 +196,6 @@ export const WithDescription: Story = {
 
 export const CheckboxGroup: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -213,7 +210,6 @@ export const CheckboxGroup: Story = {
 
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
         <Checkbox label="Eksempel Tekst" value="disabled1" disabled />
@@ -230,7 +226,6 @@ export const Disabled: Story = {
 
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -246,7 +241,6 @@ export const WithError: Story = {
  */
 export const SingleConfirmation: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -262,7 +256,6 @@ export const SingleConfirmation: Story = {
  */
 export const InteractiveGroup: Story = {
   render: function Render() {
-    const t = useT();
     const [selected, setSelected] = useState<string[]>(['email']);
 
     const handleChange = (value: string, checked: boolean) => {
@@ -316,7 +309,6 @@ export const InteractiveGroup: Story = {
  */
 export const WithValidation: Story = {
   render: function Render() {
-    const t = useT();
     const [selected, setSelected] = useState<string[]>(['email']);
     const [error, setError] = useState('');
 
@@ -372,7 +364,6 @@ export const WithValidation: Story = {
  */
 export const ReadOnly: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -392,7 +383,6 @@ export const ReadOnly: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Checkbox label="Eksempel Tekst" value="sm" data-size="sm" />
@@ -408,7 +398,6 @@ export const Sizes: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

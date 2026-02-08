@@ -32,7 +32,6 @@ type Story = StoryObj<typeof SelectOption>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack

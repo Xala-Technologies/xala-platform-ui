@@ -43,7 +43,6 @@ type Story = StoryObj<typeof AppHeader>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
@@ -75,7 +74,6 @@ export const Default: Story = {
  */
 export const LogoOnly: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
@@ -94,7 +92,6 @@ export const LogoOnly: Story = {
  */
 export const NonSticky: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">

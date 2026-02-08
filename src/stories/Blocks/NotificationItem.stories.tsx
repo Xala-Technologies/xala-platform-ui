@@ -32,7 +32,6 @@ type Story = StoryObj<typeof NotificationItem>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -66,7 +65,6 @@ export const Default: Story = {
  */
 export const Unread: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -99,7 +97,6 @@ export const Unread: Story = {
  */
 export const HighPriority: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

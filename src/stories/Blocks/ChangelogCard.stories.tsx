@@ -49,7 +49,6 @@ type Story = StoryObj<typeof ChangelogCard>;
 
 // Sample changes
 const useSampleChanges = (): ChangeItem[] => {
-  const t = useT();
   return [
     {
       type: 'added',
@@ -74,7 +73,6 @@ const useSampleChanges = (): ChangeItem[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const changes = useSampleChanges();
     return (
       <Stack
@@ -97,7 +95,6 @@ export const Default: Story = {
  */
 export const Latest: Story = {
   render: function Render() {
-    const t = useT();
     const changes = useSampleChanges();
     return (
       <Stack
@@ -121,7 +118,6 @@ export const Latest: Story = {
  */
 export const Prerelease: Story = {
   render: function Render() {
-    const t = useT();
     const changes = useSampleChanges();
     return (
       <Stack
@@ -145,7 +141,6 @@ export const Prerelease: Story = {
  */
 export const AllChangeTypes: Story = {
   render: function Render() {
-    const t = useT();
     const changes: ChangeItem[] = [
       { type: 'added', description: t('storybook.changelogCard.addedFeature') },
       { type: 'changed', description: t('storybook.changelogCard.changedBehavior') },
@@ -175,7 +170,6 @@ export const AllChangeTypes: Story = {
  */
 export const WithTitle: Story = {
   render: function Render() {
-    const t = useT();
     const changes = useSampleChanges();
     return (
       <Stack

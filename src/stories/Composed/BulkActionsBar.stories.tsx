@@ -34,7 +34,6 @@ type Story = StoryObj<typeof BulkActionsBar>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedCount, setSelectedCount] = useState(5);
     return (
       <Stack
@@ -80,7 +79,6 @@ export const Default: Story = {
  */
 export const Inline: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedCount, setSelectedCount] = useState(3);
     return (
       <Stack
@@ -121,7 +119,6 @@ export const Inline: Story = {
  */
 export const MultipleActions: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedCount, setSelectedCount] = useState(10);
     return (
       <Stack

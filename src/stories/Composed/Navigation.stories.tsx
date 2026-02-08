@@ -48,7 +48,6 @@ type Story = StoryObj<typeof Navigation>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Navigation>
@@ -69,7 +68,6 @@ export const Default: Story = {
  */
 export const CustomSpacing: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Navigation spacing={48}>
@@ -89,7 +87,6 @@ export const CustomSpacing: Story = {
  */
 export const ManyItems: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Navigation>

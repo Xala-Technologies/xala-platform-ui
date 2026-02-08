@@ -93,7 +93,6 @@ export const Default: Story = {
     activities: sampleActivities,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <ActivityFeed {...args} />
@@ -109,7 +108,6 @@ export const WithClickHandler: Story = {
     onClick: fn(),
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <ActivityFeed {...args} />
@@ -125,7 +123,6 @@ export const LimitedItems: Story = {
     maxItems: 3,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <ActivityFeed {...args} />
@@ -153,7 +150,6 @@ export const ManyActivities: Story = {
     maxItems: 10,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <ActivityFeed {...args} />
@@ -168,7 +164,6 @@ export const Empty: Story = {
     activities: [],
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <ActivityFeed {...args} emptyMessage="Eksempel Tekst" />
@@ -223,7 +218,6 @@ export const AllTypes: Story = {
     ],
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <ActivityFeed {...args} />

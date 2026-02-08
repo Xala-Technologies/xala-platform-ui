@@ -59,7 +59,6 @@ type Story = StoryObj<typeof RichTextEditor>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -81,7 +80,6 @@ export const Default: Story = {
  */
 export const WithLabel: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -104,7 +102,6 @@ export const WithLabel: Story = {
  */
 export const WithValue: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState(
       '<p>This is <strong>bold</strong> and <em>italic</em> text.</p>'
     );
@@ -128,7 +125,6 @@ export const WithValue: Story = {
  */
 export const CustomToolbar: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -151,7 +147,6 @@ export const CustomToolbar: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack
@@ -175,7 +170,6 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('<p>This is disabled content.</p>');
     return (
       <Stack
@@ -198,7 +192,6 @@ export const Disabled: Story = {
  */
 export const ReadOnly: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('<p>This is read-only content.</p>');
     return (
       <Stack
@@ -221,7 +214,6 @@ export const ReadOnly: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState('');
     return (
       <Stack

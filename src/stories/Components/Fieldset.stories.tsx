@@ -219,7 +219,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -233,7 +232,6 @@ export const Default: Story = {
 
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -248,7 +246,6 @@ export const WithDescription: Story = {
 
 export const RadioGroup: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -262,7 +259,6 @@ export const RadioGroup: Story = {
 
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -275,7 +271,6 @@ export const WithError: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Fieldset data-size="sm">

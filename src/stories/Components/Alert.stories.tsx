@@ -67,7 +67,6 @@ type Story = StoryObj;
  */
 export const Information: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert data-color="info">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -84,7 +83,6 @@ export const Information: Story = {
  */
 export const Success: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert data-color="success">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -101,7 +99,6 @@ export const Success: Story = {
  */
 export const Warning: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert data-color="warning">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -118,7 +115,6 @@ export const Warning: Story = {
  */
 export const Danger: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert data-color="danger">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -135,7 +131,6 @@ export const Danger: Story = {
  */
 export const WithHeading: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert>
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -152,7 +147,6 @@ export const WithHeading: Story = {
  */
 export const WithoutHeading: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert data-color="warning">
         <Paragraph>"Eksempel Tekst"</Paragraph>
@@ -167,7 +161,6 @@ export const WithoutHeading: Story = {
  */
 export const WithLink: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Alert data-color="warning">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
@@ -186,7 +179,6 @@ export const WithLink: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

@@ -49,7 +49,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const InfoBannerDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="info"
@@ -60,7 +59,6 @@ const InfoBannerDemo = () => {
 };
 
 const SuccessBannerDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="success"
@@ -71,7 +69,6 @@ const SuccessBannerDemo = () => {
 };
 
 const WarningBannerDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="warning"
@@ -82,7 +79,6 @@ const WarningBannerDemo = () => {
 };
 
 const DangerBannerDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="danger"
@@ -93,7 +89,6 @@ const DangerBannerDemo = () => {
 };
 
 const NeutralBannerDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="neutral"
@@ -104,12 +99,10 @@ const NeutralBannerDemo = () => {
 };
 
 const WithoutDescriptionDemo = () => {
-  const t = useT();
   return <StatusBanner variant="success" title="Eksempel Tekst" />;
 };
 
 const CustomIconDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="info"
@@ -121,7 +114,6 @@ const CustomIconDemo = () => {
 };
 
 const WithActionDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="warning"
@@ -137,7 +129,6 @@ const WithActionDemo = () => {
 };
 
 const LongContentDemo = () => {
-  const t = useT();
   return (
     <StatusBanner
       variant="info"
@@ -148,7 +139,6 @@ const LongContentDemo = () => {
 };
 
 const AllVariantsDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

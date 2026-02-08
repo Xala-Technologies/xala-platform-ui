@@ -34,7 +34,6 @@ type Story = StoryObj<typeof NotificationsTab>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [notificationData, setNotificationData] = useState({
       emailEnabled: true,
       smsEnabled: false,

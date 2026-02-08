@@ -32,7 +32,6 @@ type Story = StoryObj<typeof Center>;
  */
 export const BothAxes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -63,7 +62,6 @@ export const BothAxes: Story = {
  */
 export const Horizontal: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -94,7 +92,6 @@ export const Horizontal: Story = {
  */
 export const Vertical: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

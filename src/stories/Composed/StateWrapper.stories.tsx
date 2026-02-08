@@ -98,7 +98,6 @@ export const IdleState: Story = {
 // Loading State
 export const LoadingState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px', height: '300px' }}>
         <StateWrapper
@@ -131,7 +130,6 @@ export const LoadingState: Story = {
 // Empty State
 export const EmptyStateExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <StateWrapper
@@ -158,7 +156,6 @@ export const EmptyStateExample: Story = {
 // Error State
 export const ErrorState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <StateWrapper
@@ -190,7 +187,6 @@ export const ErrorState: Story = {
 // Success State
 export const SuccessState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px' }}>
         <StateWrapper
@@ -214,7 +210,6 @@ export const SuccessState: Story = {
 // Permission Denied State
 export const PermissionDeniedState: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <StateWrapper
@@ -244,7 +239,6 @@ export const PermissionDeniedState: Story = {
 export const InteractiveDemo: Story = {
   render: function Render() {
     const [state, setState] = React.useState<ComponentState>('idle');
-    const t = useT();
 
     return (
       <div style={{ width: '500px' }}>
@@ -326,7 +320,6 @@ export const WithComputedState: Story = {
     const [error, setError] = React.useState<string | null>(null);
     const [data, setData] = React.useState<string[]>(['Item 1', 'Item 2']);
     const [hasPermission, setHasPermission] = React.useState(true);
-    const t = useT();
 
     const state = useComputedState({
       isLoading,
@@ -444,7 +437,6 @@ export const WithComputedState: Story = {
 // All States Showcase
 export const AllStates: Story = {
   render: function Render() {
-    const t = useT();
     const states: ComponentState[] = [
       'idle',
       'loading',

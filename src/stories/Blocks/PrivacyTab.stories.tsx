@@ -33,7 +33,6 @@ type Story = StoryObj<typeof PrivacyTab>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [consentSettings, setConsentSettings] = useState({
       marketing: false,
       analytics: true,

@@ -73,7 +73,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -91,7 +90,6 @@ const DefaultDemo = () => {
 };
 
 const WithIconDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -110,7 +108,6 @@ const WithIconDemo = () => {
 };
 
 const WithActionsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -134,7 +131,6 @@ const WithActionsDemo = () => {
 };
 
 const WithFooterDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -163,7 +159,6 @@ const WithFooterDemo = () => {
 };
 
 const CollapsibleDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -182,7 +177,6 @@ const CollapsibleDemo = () => {
 };
 
 const OutlinedDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -200,7 +194,6 @@ const OutlinedDemo = () => {
 };
 
 const ElevatedDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -218,7 +211,6 @@ const ElevatedDemo = () => {
 };
 
 const SmallDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -236,7 +228,6 @@ const SmallDemo = () => {
 };
 
 const LargeDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -254,7 +245,6 @@ const LargeDemo = () => {
 };
 
 const LoadingDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
@@ -272,7 +262,6 @@ const LoadingDemo = () => {
 };
 
 const WithSubComponentsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SectionCard variant="default" size="md">

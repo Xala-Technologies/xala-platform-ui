@@ -82,7 +82,6 @@ export const Default: Story = {
 
 // Wrapper for with label story
 const WithLabelDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -105,7 +104,6 @@ export const WithLabel: Story = {
 
 // Wrapper for min max story
 const WithMinMaxDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -128,7 +126,6 @@ export const WithMinMax: Story = {
 
 // Wrapper for step story
 const WithStepDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -151,7 +148,6 @@ export const WithStep: Story = {
 
 // Wrapper for decimal story
 const DecimalPrecisionDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label={t('platform.common.price')}
@@ -176,7 +172,6 @@ export const DecimalPrecision: Story = {
 
 // Wrapper for prefix story
 const WithPrefixDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label={t('platform.common.price')}
@@ -200,7 +195,6 @@ export const WithPrefix: Story = {
 
 // Wrapper for suffix story
 const WithSuffixDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -224,7 +218,6 @@ export const WithSuffix: Story = {
 
 // Wrapper for prefix and suffix story
 const WithPrefixAndSuffixDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -284,7 +277,6 @@ export const WithoutControls: Story = {
 
 // Wrapper for error story
 const WithErrorDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -308,7 +300,6 @@ export const WithError: Story = {
 
 // Wrapper for helper text story
 const WithHelperTextDemo = () => {
-  const t = useT();
   return (
     <NumberInput
       label="Eksempel Tekst"
@@ -374,7 +365,6 @@ export const PositiveOnly: Story = {
 
 // Wrapper for all sizes story
 const AllSizesDemo = () => {
-  const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <NumberInput label="Eksempel Tekst" defaultValue={10} size="sm" onChange={fn()} />

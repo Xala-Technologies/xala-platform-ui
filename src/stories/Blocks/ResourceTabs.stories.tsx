@@ -58,7 +58,6 @@ type Story = StoryObj<typeof meta>;
 // Basic tabs
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -88,7 +87,6 @@ export const Default: Story = {
 // With icons
 export const WithIcons: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -121,7 +119,6 @@ export const WithIcons: Story = {
 // With badges
 export const WithBadges: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -154,7 +151,6 @@ export const WithBadges: Story = {
 // With icons and badges
 export const WithIconsAndBadges: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -190,7 +186,6 @@ export const WithIconsAndBadges: Story = {
 // Secondary variant
 export const SecondaryVariant: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -216,7 +211,6 @@ export const SecondaryVariant: Story = {
 // Subtle variant
 export const SubtleVariant: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -242,7 +236,6 @@ export const SubtleVariant: Story = {
 // With hidden tabs
 export const WithHiddenTabs: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[
@@ -275,7 +268,6 @@ export const WithHiddenTabs: Story = {
 // Rich content
 export const RichContent: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceTabs
         tabs={[

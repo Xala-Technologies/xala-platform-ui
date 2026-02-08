@@ -50,7 +50,6 @@ type Story = StoryObj<typeof TableFilter>;
 
 // Sample filter configs
 const useSampleFilters = (): FilterConfig[] => {
-  const t = useT();
   return [
     {
       id: 'search',
@@ -98,7 +97,6 @@ const useSampleFilters = (): FilterConfig[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [values, setValues] = useState<FilterValues>({});
     const filters = useSampleFilters();
     return (
@@ -114,7 +112,6 @@ export const Default: Story = {
  */
 export const WithValues: Story = {
   render: function Render() {
-    const t = useT();
     const [values, setValues] = useState<FilterValues>({
       search: 'test',
       status: 'active',
@@ -134,7 +131,6 @@ export const WithValues: Story = {
  */
 export const WithClearAll: Story = {
   render: function Render() {
-    const t = useT();
     const [values, setValues] = useState<FilterValues>({
       search: 'test',
       status: 'active',
@@ -153,7 +149,6 @@ export const WithClearAll: Story = {
  */
 export const CustomDebounce: Story = {
   render: function Render() {
-    const t = useT();
     const [values, setValues] = useState<FilterValues>({});
     const filters = useSampleFilters();
     return (
@@ -169,7 +164,6 @@ export const CustomDebounce: Story = {
  */
 export const SearchOnly: Story = {
   render: function Render() {
-    const t = useT();
     const [values, setValues] = useState<FilterValues>({});
     const filters: FilterConfig[] = [
       {

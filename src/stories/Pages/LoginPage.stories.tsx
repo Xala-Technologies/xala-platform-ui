@@ -121,7 +121,6 @@ function LoginOptionDemo({ icon, title, description, onClick, disabled }: LoginO
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -372,7 +371,6 @@ export const Default: Story = {
  */
 export const DemoLoginDialog: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -526,7 +524,6 @@ export const DemoLoginDialog: Story = {
  */
 export const MobileView: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -599,7 +596,6 @@ export const MobileView: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -638,7 +634,6 @@ export const WithError: Story = {
  */
 export const PublicWebLogin: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{

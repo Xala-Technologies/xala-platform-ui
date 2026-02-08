@@ -39,7 +39,6 @@ type Story = StoryObj;
 
 export const Unordered: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <List.Unordered>
         <List.Item>"Eksempel Tekst"</List.Item>
@@ -53,7 +52,6 @@ export const Unordered: Story = {
 
 export const Ordered: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <List.Ordered>
         <List.Item>"Eksempel Tekst"</List.Item>
@@ -68,7 +66,6 @@ export const Ordered: Story = {
 
 export const Nested: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <List.Unordered>
         <List.Item>
@@ -94,7 +91,6 @@ export const Nested: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <List.Unordered data-size="sm">
@@ -116,7 +112,6 @@ export const Sizes: Story = {
 
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

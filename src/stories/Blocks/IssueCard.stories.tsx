@@ -52,7 +52,6 @@ type Story = StoryObj<typeof IssueCard>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
@@ -76,7 +75,6 @@ export const Default: Story = {
  */
 export const PullRequest: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
@@ -104,7 +102,6 @@ export const PullRequest: Story = {
  */
 export const Merged: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
@@ -128,7 +125,6 @@ export const Merged: Story = {
  */
 export const Closed: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
@@ -152,7 +148,6 @@ export const Closed: Story = {
  */
 export const Draft: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
@@ -176,7 +171,6 @@ export const Draft: Story = {
  */
 export const Selected: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
@@ -201,7 +195,6 @@ export const Selected: Story = {
  */
 export const GitLab: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard

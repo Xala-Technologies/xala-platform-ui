@@ -32,7 +32,6 @@ type Story = StoryObj<typeof XTerminal>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -54,7 +53,6 @@ export const Default: Story = {
  */
 export const WithInitialCommand: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -82,7 +80,6 @@ export const WithInitialCommand: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -104,7 +101,6 @@ export const CustomHeight: Story = {
  */
 export const Inactive: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

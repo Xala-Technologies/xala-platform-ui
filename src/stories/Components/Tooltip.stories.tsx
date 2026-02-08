@@ -236,7 +236,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Tooltip content="Eksempel Tekst">
         <Button type="button">"Eksempel Tekst"</Button>
@@ -247,7 +246,6 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -292,7 +290,6 @@ export const Placements: Story = {
 
 export const OnIcon: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Tooltip content="Eksempel Tekst">
         <Button

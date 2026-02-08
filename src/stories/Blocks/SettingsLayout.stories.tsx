@@ -47,7 +47,6 @@ type Story = StoryObj<typeof meta>;
 // Basic layout
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
@@ -75,7 +74,6 @@ export const Default: Story = {
 // Without description
 export const WithoutDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout title={t('platform.nav.settings')}>
@@ -94,7 +92,6 @@ export const WithoutDescription: Story = {
 // With sections
 export const WithSections: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
@@ -138,7 +135,6 @@ export const WithSections: Story = {
 // Multiple sections
 export const MultipleSections: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
@@ -187,7 +183,6 @@ export const MultipleSections: Story = {
 // Field without description
 export const FieldWithoutDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout title={t('platform.nav.settings')}>

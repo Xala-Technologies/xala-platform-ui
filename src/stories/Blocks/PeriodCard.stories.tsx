@@ -68,7 +68,6 @@ type Story = StoryObj<typeof meta>;
 // Default story
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-1"
@@ -95,7 +94,6 @@ export const Default: Story = {
 // Compact variant
 export const CompactVariant: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-2"
@@ -120,7 +118,6 @@ export const CompactVariant: Story = {
 // With image
 export const WithImage: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-3"
@@ -150,7 +147,6 @@ export const WithImage: Story = {
 // With deadline
 export const WithDeadline: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-4"
@@ -180,7 +176,6 @@ export const WithDeadline: Story = {
 // With action button
 export const WithActionButton: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-5"
@@ -206,7 +201,6 @@ export const WithActionButton: Story = {
 // Disabled action
 export const DisabledAction: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-6"
@@ -233,7 +227,6 @@ export const DisabledAction: Story = {
 // Full featured
 export const FullFeatured: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="season-7"
@@ -268,7 +261,6 @@ export const FullFeatured: Story = {
 // Status: Active
 export const StatusActive: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="active-1"
@@ -285,7 +277,6 @@ export const StatusActive: Story = {
 // Status: Ending Soon
 export const StatusEndingSoon: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="ending-1"
@@ -302,7 +293,6 @@ export const StatusEndingSoon: Story = {
 // Status: Ended
 export const StatusEnded: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="ended-1"
@@ -319,7 +309,6 @@ export const StatusEnded: Story = {
 // Status: Draft
 export const StatusDraft: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="draft-1"
@@ -336,7 +325,6 @@ export const StatusDraft: Story = {
 // Status: Cancelled
 export const StatusCancelled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <PeriodCard
         id="cancelled-1"

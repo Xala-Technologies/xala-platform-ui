@@ -80,7 +80,6 @@ const useSampleCells = (): CalendarCell[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [currentDate, setCurrentDate] = useState(new Date(2026, 0, 26));
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const cells = useSampleCells();
@@ -110,7 +109,6 @@ export const Default: Story = {
  */
 export const AllDay: Story = {
   render: function Render() {
-    const t = useT();
     const [currentDate, setCurrentDate] = useState(new Date(2026, 0, 26));
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const cells: CalendarCell[] = Array.from({ length: 30 }, (_, i) => {
@@ -148,7 +146,6 @@ export const AllDay: Story = {
  */
 export const MultiDay: Story = {
   render: function Render() {
-    const t = useT();
     const [currentDate, setCurrentDate] = useState(new Date(2026, 0, 26));
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const cells: CalendarCell[] = Array.from({ length: 30 }, (_, i) => {
@@ -186,7 +183,6 @@ export const MultiDay: Story = {
  */
 export const WithLegend: Story = {
   render: function Render() {
-    const t = useT();
     const [currentDate, setCurrentDate] = useState(new Date(2026, 0, 26));
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const cells = useSampleCells();

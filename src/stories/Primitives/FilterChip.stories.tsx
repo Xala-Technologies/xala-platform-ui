@@ -50,7 +50,6 @@ type Story = StoryObj<typeof FilterChip>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
@@ -75,7 +74,6 @@ export const Default: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
@@ -98,7 +96,6 @@ export const Small: Story = {
  */
 export const Accent: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
@@ -121,7 +118,6 @@ export const Accent: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
@@ -144,7 +140,6 @@ export const Disabled: Story = {
  */
 export const Multiple: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip

@@ -34,7 +34,6 @@ type Story = StoryObj<typeof Wizard>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({ name: '', email: '', confirm: false });
     return (
@@ -103,7 +102,6 @@ export const Default: Story = {
  */
 export const WithOptionalStep: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     return (
       <Stack
@@ -142,7 +140,6 @@ export const WithOptionalStep: Story = {
  */
 export const WithErrors: Story = {
   render: function Render() {
-    const t = useT();
     const [currentStep, setCurrentStep] = useState(0);
     return (
       <Stack

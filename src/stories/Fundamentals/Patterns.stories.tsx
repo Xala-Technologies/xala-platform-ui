@@ -38,7 +38,6 @@ type Story = StoryObj;
  */
 export const RequiredOptionalFields: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         <Card style={{ flex: 1, minWidth: '300px', padding: 'var(--ds-spacing-6)' }}>
@@ -109,7 +108,6 @@ export const RequiredOptionalFields: Story = {
  */
 export const UserTriggeredValidation: Story = {
   render: function Render() {
-    const t = useT();
     const [email, setEmail] = useState('');
     const [touched, setTouched] = useState(false);
 
@@ -164,7 +162,6 @@ export const UserTriggeredValidation: Story = {
  */
 export const MultiStepWizard: Story = {
   render: function Render() {
-    const t = useT();
     const [step, setStep] = useState(1);
     const totalSteps = 3;
 
@@ -268,7 +265,6 @@ export const MultiStepWizard: Story = {
  */
 export const EmptyStatePattern: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
         {/* No Data */}
@@ -354,7 +350,6 @@ export const EmptyStatePattern: Story = {
  */
 export const NotificationTypes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         {/* Success */}
@@ -464,7 +459,6 @@ export const NotificationTypes: Story = {
  */
 export const LoadingStates: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
         {/* Button Loading */}
@@ -528,7 +522,6 @@ export const LoadingStates: Story = {
  */
 export const Summary: Story = {
   render: function Render() {
-    const t = useT();
 
     const patternCategories = [
       {

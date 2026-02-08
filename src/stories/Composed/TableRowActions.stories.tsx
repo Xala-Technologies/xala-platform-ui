@@ -33,7 +33,6 @@ type Story = StoryObj<typeof TableRowActions>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -77,7 +76,6 @@ export const Default: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -125,7 +123,6 @@ export const AllVariants: Story = {
  */
 export const WithDisabledActions: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -171,7 +168,6 @@ export const WithDisabledActions: Story = {
  */
 export const WithCopyAction: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

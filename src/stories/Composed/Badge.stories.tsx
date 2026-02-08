@@ -69,7 +69,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const AllVariantsDemo = () => {
-  const t = useT();
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-2)' }}>
       <Badge variant="default">"Eksempel Tekst"</Badge>
@@ -83,7 +82,6 @@ const AllVariantsDemo = () => {
 };
 
 const TagDefaultDemo = () => {
-  const t = useT();
   return (
     <Tag variant="default" size="md">
       "Eksempel Tekst"
@@ -92,7 +90,6 @@ const TagDefaultDemo = () => {
 };
 
 const TagRemovableDemo = () => {
-  const t = useT();
   return (
     <Tag variant="info" size="md" removable onRemove={fn()}>
       "Eksempel Tekst"
@@ -101,7 +98,6 @@ const TagRemovableDemo = () => {
 };
 
 const TagWithIconDemo = () => {
-  const t = useT();
   return (
     <Tag variant="success" size="md" icon={<CheckCircle size={14} />}>
       "Eksempel Tekst"
@@ -110,7 +106,6 @@ const TagWithIconDemo = () => {
 };
 
 const NotificationBadgeDemo = () => {
-  const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <NotificationBadge count={5}>

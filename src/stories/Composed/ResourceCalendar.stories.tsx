@@ -86,7 +86,6 @@ const useSampleSlots = (): CalendarSlot[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [selection, setSelection] = useState<CalendarSelection | undefined>(undefined);
     const slots = useSampleSlots();
     return (
@@ -109,7 +108,6 @@ export const Default: Story = {
  */
 export const WithSelection: Story = {
   render: function Render() {
-    const t = useT();
     const slots = useSampleSlots();
     const [selection, setSelection] = useState<CalendarSelection>({
       startTime: slots[0]?.startTime,
@@ -135,7 +133,6 @@ export const WithSelection: Story = {
  */
 export const MultipleStatuses: Story = {
   render: function Render() {
-    const t = useT();
     const baseDate = new Date(2026, 0, 26);
     const slots: CalendarSlot[] = [
       {

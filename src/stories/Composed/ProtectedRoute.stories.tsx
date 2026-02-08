@@ -34,7 +34,6 @@ type Story = StoryObj<typeof ProtectedRoute>;
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -56,7 +55,6 @@ export const Loading: Story = {
  */
 export const Authenticated: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -78,7 +76,6 @@ export const Authenticated: Story = {
  */
 export const AccessDenied: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

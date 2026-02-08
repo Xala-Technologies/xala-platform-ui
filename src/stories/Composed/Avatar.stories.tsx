@@ -162,7 +162,6 @@ export const AllSizes: Story = {
 
 // UserInfo component
 const UserInfoExample = () => {
-  const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <UserInfo
@@ -195,7 +194,6 @@ export const UserInfoExampleStory: Story = {
 
 // UserInfo clickable
 const UserInfoClickableExample = () => {
-  const t = useT();
   return (
     <UserInfo
       name="Eksempel Tekst"

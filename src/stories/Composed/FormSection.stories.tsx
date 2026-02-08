@@ -48,7 +48,6 @@ type Story = StoryObj<typeof FormSection>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -80,7 +79,6 @@ export const Default: Story = {
  */
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <FormSection
@@ -112,7 +110,6 @@ export const WithDescription: Story = {
  */
 export const Multiple: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <FormSection title="Eksempel Tekst">

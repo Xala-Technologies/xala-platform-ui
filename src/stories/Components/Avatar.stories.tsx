@@ -196,7 +196,6 @@ export const Initials: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
         <Avatar data-size="sm" aria-label="Small avatar">
@@ -267,7 +266,6 @@ export const AvatarGroup: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

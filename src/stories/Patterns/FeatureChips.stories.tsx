@@ -245,7 +245,6 @@ export const SingleFeature: Story = {
 export const AllSizes: Story = {
   name: 'Size Comparison',
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
@@ -274,7 +273,6 @@ export const AllSizes: Story = {
 export const AllLayouts: Story = {
   name: 'Layout Comparison',
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>

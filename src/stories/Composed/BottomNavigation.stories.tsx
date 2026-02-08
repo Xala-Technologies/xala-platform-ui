@@ -58,7 +58,6 @@ type Story = StoryObj<typeof BottomNavigation>;
 
 // Sample navigation items
 const useSampleItems = () => {
-  const t = useT();
   return [
     {
       id: 'home',
@@ -128,7 +127,6 @@ export const WithoutLabels: Story = {
  */
 export const ManyItems: Story = {
   render: function Render() {
-    const t = useT();
     const items = [
       {
         id: 'home',

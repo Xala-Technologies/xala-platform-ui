@@ -148,7 +148,6 @@ export const FullWidth: Story = {
 
 // With footer
 const ModalWithFooter = (args: any) => {
-  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -212,7 +211,6 @@ export const WithoutTitle: Story = {
 
 // Long content
 const ModalWithLongContent = (args: any) => {
-  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -245,7 +243,6 @@ export const LongContent: Story = {
 
 // Using sub-components
 const ModalWithSubComponents = (args: any) => {
-  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>

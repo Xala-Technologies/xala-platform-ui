@@ -33,7 +33,6 @@ type Story = StoryObj<typeof FilterChips>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [chips, setChips] = useState([
       { key: 'status', label: t('storybook.filterChips.statusActive'), onRemove: () => {} },
       { key: 'category', label: t('storybook.filterChips.categoryTech'), onRemove: () => {} },
@@ -64,7 +63,6 @@ export const Default: Story = {
  */
 export const ManyFilters: Story = {
   render: function Render() {
-    const t = useT();
     const [chips, setChips] = useState([
       { key: 'status', label: t('storybook.filterChips.statusActive'), onRemove: () => {} },
       { key: 'category', label: t('storybook.filterChips.categoryTech'), onRemove: () => {} },
@@ -97,7 +95,6 @@ export const ManyFilters: Story = {
  */
 export const WithoutLabel: Story = {
   render: function Render() {
-    const t = useT();
     const [chips, setChips] = useState([
       { key: 'status', label: t('storybook.filterChips.statusActive'), onRemove: () => {} },
       { key: 'category', label: t('storybook.filterChips.categoryTech'), onRemove: () => {} },

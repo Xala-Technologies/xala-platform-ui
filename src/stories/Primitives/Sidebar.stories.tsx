@@ -40,7 +40,6 @@ type Story = StoryObj<typeof SimpleSidebar>;
  */
 export const Simple: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -102,7 +101,6 @@ export const Simple: Story = {
  */
 export const WithPanel: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

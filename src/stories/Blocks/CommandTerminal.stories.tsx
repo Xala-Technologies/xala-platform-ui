@@ -32,7 +32,6 @@ type Story = StoryObj<typeof CommandTerminal>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -59,7 +58,6 @@ export const Default: Story = {
  */
 export const Running: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -91,7 +89,6 @@ export const Running: Story = {
  */
 export const Completed: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -124,7 +121,6 @@ export const Completed: Story = {
  */
 export const Failed: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -156,7 +152,6 @@ export const Failed: Story = {
  */
 export const ManyLogs: Story = {
   render: function Render() {
-    const t = useT();
     const logs = Array.from(
       { length: 50 },
       (_, i) => `Log line ${i + 1}: Processing item ${i + 1}`

@@ -192,14 +192,12 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return <Tag>"Eksempel Tekst"</Tag>;
   },
 };
 
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Tag data-color="neutral">"Eksempel Tekst"</Tag>
@@ -214,7 +212,6 @@ export const Colors: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
         <Tag data-size="sm">"Eksempel Tekst"</Tag>
@@ -227,7 +224,6 @@ export const Sizes: Story = {
 
 export const StatusTags: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Tag data-color="success">{t('platform.status.active')}</Tag>
@@ -242,7 +238,6 @@ export const StatusTags: Story = {
 
 export const CategoryTags: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Tag>"Eksempel Tekst"</Tag>
@@ -259,7 +254,6 @@ export const CategoryTags: Story = {
  */
 export const WithIcons: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Tag
@@ -316,7 +310,6 @@ export const WithIcons: Story = {
  */
 export const Variants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div>
@@ -373,7 +366,6 @@ export const Variants: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

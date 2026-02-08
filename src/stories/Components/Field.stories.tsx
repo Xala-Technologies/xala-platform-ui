@@ -199,7 +199,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -211,7 +210,6 @@ export const Default: Story = {
 
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -224,7 +222,6 @@ export const WithDescription: Story = {
 
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>"Eksempel Tekst"</Label>
@@ -237,7 +234,6 @@ export const WithError: Story = {
 
 export const WithTextarea: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>{t('platform.common.description')}</Label>
@@ -251,7 +247,6 @@ export const WithTextarea: Story = {
 
 export const WithSelect: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>{t('platform.common.country')}</Label>
@@ -268,7 +263,6 @@ export const WithSelect: Story = {
 
 export const Required: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Field>
         <Label>
@@ -282,7 +276,6 @@ export const Required: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Field data-size="sm">

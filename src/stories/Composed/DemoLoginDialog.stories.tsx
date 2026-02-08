@@ -34,7 +34,6 @@ type Story = StoryObj<typeof DemoLoginDialog>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     return (
       <Stack
@@ -89,7 +88,6 @@ export const Default: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(true);
     return (
       <Stack

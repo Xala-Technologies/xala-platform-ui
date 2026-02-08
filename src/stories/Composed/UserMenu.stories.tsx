@@ -49,7 +49,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -66,7 +65,6 @@ const DefaultDemo = () => {
 };
 
 const WithAvatarDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -84,7 +82,6 @@ const WithAvatarDemo = () => {
 };
 
 const WithIconsDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -117,7 +114,6 @@ const WithIconsDemo = () => {
 };
 
 const WithDangerItemDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -135,7 +131,6 @@ const WithDangerItemDemo = () => {
 };
 
 const WithDisabledItemsDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -153,7 +148,6 @@ const WithDisabledItemsDemo = () => {
 };
 
 const WithoutEmailDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -169,7 +163,6 @@ const WithoutEmailDemo = () => {
 };
 
 const ManyItemsDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -190,7 +183,6 @@ const ManyItemsDemo = () => {
 };
 
 const WithOnClickDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{
@@ -208,7 +200,6 @@ const WithOnClickDemo = () => {
 };
 
 const CompleteExampleDemo = () => {
-  const t = useT();
   return (
     <UserMenu
       user={{

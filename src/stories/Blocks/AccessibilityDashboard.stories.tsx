@@ -164,7 +164,6 @@ export const ExcellentCompliance: Story = {
     isLoading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '900px' }}>
         <AccessibilityDashboard {...args} />
@@ -180,7 +179,6 @@ export const GoodCompliance: Story = {
     isLoading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '900px' }}>
         <AccessibilityDashboard {...args} />
@@ -196,7 +194,6 @@ export const NeedsImprovement: Story = {
     isLoading: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '900px' }}>
         <AccessibilityDashboard {...args} />
@@ -212,7 +209,6 @@ export const Loading: Story = {
     isLoading: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '900px' }}>
         <AccessibilityDashboard {...args} />
@@ -229,7 +225,6 @@ export const WithoutRefresh: Story = {
     onRefresh: undefined,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '900px' }}>
         <AccessibilityDashboard {...args} />

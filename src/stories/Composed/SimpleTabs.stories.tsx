@@ -56,7 +56,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const SimpleAPIDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs defaultValue="tab1">
@@ -75,7 +74,6 @@ const SimpleAPIDemo = () => {
 };
 
 const AutoValuesDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs>
@@ -94,7 +92,6 @@ const AutoValuesDemo = () => {
 };
 
 const SmallDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs size="sm">
@@ -106,7 +103,6 @@ const SmallDemo = () => {
 };
 
 const MediumDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs size="md">
@@ -118,7 +114,6 @@ const MediumDemo = () => {
 };
 
 const LargeDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs size="lg">
@@ -130,7 +125,6 @@ const LargeDemo = () => {
 };
 
 const ControlledDemo = () => {
-  const t = useT();
   const [value, setValue] = React.useState('tab1');
   return (
     <div style={{ width: '600px' }}>
@@ -151,7 +145,6 @@ const ControlledDemo = () => {
 };
 
 const RichContentDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs>

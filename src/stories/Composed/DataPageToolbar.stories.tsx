@@ -33,7 +33,6 @@ type Story = StoryObj<typeof DataPageToolbar>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [searchValue, setSearchValue] = useState('');
     return (
       <Stack
@@ -60,7 +59,6 @@ export const Default: Story = {
  */
 export const WithViewMode: Story = {
   render: function Render() {
-    const t = useT();
     const [searchValue, setSearchValue] = useState('');
     const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map' | 'table'>('grid');
     return (
@@ -91,7 +89,6 @@ export const WithViewMode: Story = {
  */
 export const WithFilters: Story = {
   render: function Render() {
-    const t = useT();
     const [searchValue, setSearchValue] = useState('');
     const [statusFilter, setStatusFilter] = useState('all');
     const [categoryFilter, setCategoryFilter] = useState('all');

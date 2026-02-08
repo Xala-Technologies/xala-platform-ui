@@ -55,7 +55,6 @@ type Story = StoryObj<typeof FileUploader>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -77,7 +76,6 @@ export const Default: Story = {
  */
 export const Multiple: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -101,7 +99,6 @@ export const Multiple: Story = {
  */
 export const WithFileTypeRestriction: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -124,7 +121,6 @@ export const WithFileTypeRestriction: Story = {
  */
 export const WithSizeLimit: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -148,7 +144,6 @@ export const WithSizeLimit: Story = {
  */
 export const WithPreviewList: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -172,7 +167,6 @@ export const WithPreviewList: Story = {
  */
 export const WithPreviewGrid: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -197,7 +191,6 @@ export const WithPreviewGrid: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -220,7 +213,6 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     const [files, setFiles] = useState<UploadedFile[]>([]);
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>

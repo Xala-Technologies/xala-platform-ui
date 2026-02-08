@@ -34,7 +34,6 @@ type Story = StoryObj<typeof EmptyState>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -60,7 +59,6 @@ export const Default: Story = {
  */
 export const WithAction: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -90,7 +88,6 @@ export const WithAction: Story = {
  */
 export const Success: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -117,7 +114,6 @@ export const Success: Story = {
  */
 export const Warning: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -144,7 +140,6 @@ export const Warning: Story = {
  */
 export const Info: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -171,7 +166,6 @@ export const Info: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

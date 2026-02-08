@@ -154,7 +154,6 @@ export const WithoutViewToggle: Story = {
 // Custom count label
 export const CustomCountLabel: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ResourceToolbar
         count={15}

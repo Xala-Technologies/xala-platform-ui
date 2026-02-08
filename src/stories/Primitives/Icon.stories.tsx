@@ -31,7 +31,6 @@ type Story = StoryObj<typeof Icon>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -57,7 +56,6 @@ export const Default: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -95,7 +93,6 @@ export const Sizes: Story = {
  */
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

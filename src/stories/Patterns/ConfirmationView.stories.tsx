@@ -60,7 +60,6 @@ type Story = StoryObj<typeof ConfirmationView>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -81,7 +80,6 @@ export const Default: Story = {
  */
 export const WithDetails: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -110,7 +108,6 @@ export const WithDetails: Story = {
  */
 export const Warning: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -139,7 +136,6 @@ export const Warning: Story = {
  */
 export const Danger: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -168,7 +164,6 @@ export const Danger: Story = {
  */
 export const WithCustomIcon: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -201,7 +196,6 @@ export const WithCustomIcon: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -230,7 +224,6 @@ export const Loading: Story = {
  */
 export const WithoutCancel: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
@@ -249,7 +242,6 @@ export const WithoutCancel: Story = {
  */
 export const WithAdditionalContent: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView

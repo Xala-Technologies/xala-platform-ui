@@ -73,7 +73,6 @@ type Story = StoryObj;
  */
 export const ColorTokens: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         {/* Accent Colors */}
@@ -346,7 +345,6 @@ export const ColorTokens: Story = {
  */
 export const SpacingTokens: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
@@ -423,7 +421,6 @@ export const SpacingTokens: Story = {
  */
 export const TypographyTokens: Story = {
   render: function Render() {
-    const t = useT();
     const sampleText = t('storybook.tokens.sampleText');
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
@@ -545,7 +542,6 @@ export const TypographyTokens: Story = {
  */
 export const BorderAndShadowTokens: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         {/* Border Radius */}
@@ -654,7 +650,6 @@ export const BorderAndShadowTokens: Story = {
  */
 export const InteractiveExplorer: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedColor, setSelectedColor] = useState('accent');
     const [selectedSpacing, setSelectedSpacing] = useState('4');
     const [selectedRadius, setSelectedRadius] = useState('md');
@@ -860,7 +855,6 @@ color: var(--ds-color-${selectedColor}-text-default);`}
  */
 export const TokenUsageExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px' }}>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>

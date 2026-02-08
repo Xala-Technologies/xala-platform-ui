@@ -32,7 +32,6 @@ type Story = StoryObj<typeof ArtifactValidationPanel>;
  */
 export const SinglePassed: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -62,7 +61,6 @@ export const SinglePassed: Story = {
  */
 export const SingleFailed: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -96,7 +94,6 @@ export const SingleFailed: Story = {
  */
 export const MultipleResults: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -150,7 +147,6 @@ export const MultipleResults: Story = {
  */
 export const WithWarning: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

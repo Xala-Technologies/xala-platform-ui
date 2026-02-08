@@ -25,7 +25,6 @@ type Story = StoryObj<typeof ConsentPopup>;
  */
 export const Placeholder: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

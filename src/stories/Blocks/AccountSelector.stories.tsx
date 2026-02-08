@@ -63,7 +63,6 @@ export const Default: Story = {
     rememberChoice: false,
   },
   render: function Render(args) {
-    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -86,7 +85,6 @@ export const Loading: Story = {
     rememberChoice: false,
   },
   render: function Render(args) {
-    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -109,7 +107,6 @@ export const NoOrganizations: Story = {
     rememberChoice: false,
   },
   render: function Render(args) {
-    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -131,7 +128,6 @@ export const WithoutRememberChoice: Story = {
     showRememberChoice: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <AccountSelector {...args} />
@@ -153,7 +149,6 @@ export const ManyOrganizations: Story = {
     rememberChoice: false,
   },
   render: function Render(args) {
-    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>
@@ -183,7 +178,6 @@ export const CustomLabels: Story = {
     },
   },
   render: function Render(args) {
-    const t = useT();
     const [rememberChoice, setRememberChoice] = useState(false);
     return (
       <div style={{ width: '500px' }}>

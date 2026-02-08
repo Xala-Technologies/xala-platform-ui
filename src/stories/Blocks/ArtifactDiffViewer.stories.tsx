@@ -32,7 +32,6 @@ type Story = StoryObj<typeof ArtifactDiffViewer>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -73,7 +72,6 @@ export const Default: Story = {
  */
 export const WithStructuredChanges: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -115,7 +113,6 @@ export const WithStructuredChanges: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -146,7 +143,6 @@ export const CustomHeight: Story = {
  */
 export const LargeDiff: Story = {
   render: function Render() {
-    const t = useT();
     const oldContent = Array.from({ length: 100 }, (_, i) => `Line ${i + 1}: Old content`).join(
       '\n'
     );

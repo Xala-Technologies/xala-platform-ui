@@ -48,7 +48,6 @@ type Story = StoryObj<typeof Logo>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Logo alt="Platform Logo" />
@@ -62,7 +61,6 @@ export const Default: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Logo height={60} alt="Platform Logo" />
@@ -76,7 +74,6 @@ export const CustomHeight: Story = {
  */
 export const Small: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Logo height={24} alt="Platform Logo" />
@@ -90,7 +87,6 @@ export const Small: Story = {
  */
 export const Large: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Logo height={80} alt="Platform Logo" />
@@ -104,7 +100,6 @@ export const Large: Story = {
  */
 export const CustomSource: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Logo src="/custom-logo.svg" alt="Tilpasset Logo" />

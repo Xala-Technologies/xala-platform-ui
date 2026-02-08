@@ -55,7 +55,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <KeyValue
       label={t('platform.common.name')}
@@ -76,7 +75,6 @@ export const Default: Story = {
 
 // Wrapper for horizontal story
 const HorizontalDemo = () => {
-  const t = useT();
   return (
     <KeyValue
       label={t('platform.auth.email')}
@@ -97,7 +95,6 @@ export const Horizontal: Story = {
 
 // Wrapper for copyable story
 const CopyableDemo = () => {
-  const t = useT();
   return (
     <KeyValue
       label="Eksempel Tekst"
@@ -118,7 +115,6 @@ export const Copyable: Story = {
 
 // Wrapper for monospace story
 const MonospaceDemo = () => {
-  const t = useT();
   return (
     <KeyValue
       label="Eksempel Tekst"
@@ -139,7 +135,6 @@ export const Monospace: Story = {
 
 // Wrapper for react node story
 const WithReactNodeDemo = () => {
-  const t = useT();
   return (
     <KeyValue
       label={t('platform.status.label')}
@@ -160,7 +155,6 @@ export const WithReactNode: Story = {
 
 // Wrapper for single column list
 const ListSingleColumnDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <KeyValueList
@@ -190,7 +184,6 @@ export const ListSingleColumn: Story = {
 
 // Wrapper for two columns list
 const ListTwoColumnsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <KeyValueList
@@ -220,7 +213,6 @@ export const ListTwoColumns: Story = {
 
 // Wrapper for striped list
 const ListStripedDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <KeyValueList
@@ -250,7 +242,6 @@ export const ListStriped: Story = {
 
 // Wrapper for bordered list
 const ListBorderedDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <KeyValueList
@@ -280,7 +271,6 @@ export const ListBordered: Story = {
 
 // Wrapper for copyable list
 const ListWithCopyableDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <KeyValueList
@@ -320,7 +310,6 @@ export const ListWithCopyable: Story = {
 
 // Wrapper for links list
 const ListWithLinksDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <KeyValueList
@@ -358,7 +347,6 @@ export const ListWithLinks: Story = {
 
 // Wrapper for definition list
 const DefinitionListExampleDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '500px' }}>
       <DefinitionList

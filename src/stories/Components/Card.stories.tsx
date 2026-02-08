@@ -205,7 +205,6 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card>
         <Heading level={3} data-size="sm">
@@ -222,7 +221,6 @@ export const Default: Story = {
  */
 export const WithActions: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card>
         <Heading level={3} data-size="sm">
@@ -249,7 +247,6 @@ export const WithActions: Story = {
  */
 export const AsClickable: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card style={{ cursor: 'pointer' }} onClick={() => {}}>
         <Heading level={3} data-size="sm">
@@ -266,7 +263,6 @@ export const AsClickable: Story = {
  */
 export const WithImage: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card style={{ overflow: 'hidden' }}>
         <div
@@ -324,7 +320,6 @@ export const Colors: Story = {
  */
 export const WithSections: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card data-color="neutral" style={{ maxWidth: '380px' }}>
         <Card.Block>
@@ -358,7 +353,6 @@ export const WithSections: Story = {
  */
 export const LinkCard: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card data-color="neutral">
         <Card.Block>
@@ -382,7 +376,6 @@ export const LinkCard: Story = {
  */
 export const AsButton: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card asChild data-color="neutral">
         <button type="button" onClick={() => {}}>
@@ -405,7 +398,6 @@ export const AsButton: Story = {
  */
 export const Horizontal: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card
         data-color="neutral"
@@ -433,7 +425,6 @@ export const Horizontal: Story = {
  */
 export const CardGrid: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -472,7 +463,6 @@ export const CardGrid: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

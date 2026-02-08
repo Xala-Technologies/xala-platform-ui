@@ -41,7 +41,6 @@ The StoryProvider integrates translations via \`@xala-technologies/i18n\` and \`
 \`\`\`tsx
 // Container translates, passes string to UI component
 function MyContainer() {
-  const t = useT();
   return <MyButton label={t('platform.common.save')} />;
 }
 \`\`\`
@@ -50,7 +49,6 @@ function MyContainer() {
 \`\`\`tsx
 // Component translates internally
 function StatusBadge({ status }: { status: string }) {
-  const t = useT();
   return <Badge>{t(\`platform.status.\${status}\`)}</Badge>;
 }
 \`\`\`
@@ -82,7 +80,6 @@ type Story = StoryObj;
 export const LocaleDisplay: Story = {
   render: function Render() {
     const { locale } = useLocale();
-    const t = useT();
 
     // Test translations
     const saveTranslation = t('platform.common.save');
@@ -147,7 +144,6 @@ export const LocaleDisplay: Story = {
  */
 export const TranslatedButtons: Story = {
   render: function Render() {
-    const t = useT();
 
     return (
       <Card data-color="neutral">
@@ -179,7 +175,6 @@ export const TranslatedButtons: Story = {
  */
 export const StatusTranslations: Story = {
   render: function Render() {
-    const t = useT();
 
     const statuses = ['active', 'pending', 'completed', 'cancelled'] as const;
 
@@ -216,7 +211,6 @@ export const StatusTranslations: Story = {
  */
 export const NavigationLabels: Story = {
   render: function Render() {
-    const t = useT();
 
     const navItems = ['home', 'dashboard', 'settings', 'profile'] as const;
 
@@ -249,7 +243,6 @@ export const NavigationLabels: Story = {
  */
 export const ValidationMessages: Story = {
   render: function Render() {
-    const t = useT();
 
     const validations = ['required', 'email', 'minLength', 'maxLength'] as const;
 
@@ -276,7 +269,6 @@ export const ValidationMessages: Story = {
  */
 export const PropsBasedPattern: Story = {
   render: function Render() {
-    const t = useT();
 
     // This simulates a "container" that translates
     // In real apps, this would be a parent component or page
@@ -342,7 +334,6 @@ export const PropsBasedPattern: Story = {
  */
 export const ErrorMessages: Story = {
   render: function Render() {
-    const t = useT();
 
     const errors = ['notFound', 'forbidden', 'serverError', 'networkError'] as const;
 
@@ -372,7 +363,6 @@ export const ErrorMessages: Story = {
 export const CompleteExample: Story = {
   render: function Render() {
     const { locale } = useLocale();
-    const t = useT();
 
     return (
       <Stack gap="4">

@@ -41,7 +41,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for list page story
 const ListPageDemo = () => {
-  const t = useT();
   return (
     <ListPageShell
       title="Eksempel Tekst"
@@ -95,7 +94,6 @@ export const ListPage: Story = {
 
 // Wrapper for detail page story
 const DetailPageDemo = () => {
-  const t = useT();
   return (
     <DetailPageShell
       title="Eksempel Tekst"
@@ -168,7 +166,6 @@ export const DetailPage: Story = {
 
 // Wrapper for form page story
 const FormPageDemo = () => {
-  const t = useT();
   return (
     <FormPageShell
       title="Eksempel Tekst"
@@ -215,7 +212,6 @@ export const FormPage: Story = {
 
 // Wrapper for list page no filters story
 const ListPageNoFiltersDemo = () => {
-  const t = useT();
   return (
     <ListPageShell
       title="Eksempel Tekst"
@@ -243,7 +239,6 @@ export const ListPageNoFilters: Story = {
 
 // Wrapper for detail page minimal story
 const DetailPageMinimalDemo = () => {
-  const t = useT();
   return (
     <DetailPageShell
       title="Eksempel Tekst"
@@ -270,7 +265,6 @@ export const DetailPageMinimal: Story = {
 
 // Wrapper for form page no back link story
 const FormPageNoBackLinkDemo = () => {
-  const t = useT();
   return (
     <FormPageShell
       title="Eksempel Tekst"

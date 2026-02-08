@@ -179,7 +179,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Tabs defaultValue="overview">
         <Tabs.List>
@@ -203,7 +202,6 @@ export const Default: Story = {
 
 export const WithIcons: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Tabs defaultValue="bookings">
         <Tabs.List>
@@ -227,7 +225,6 @@ export const WithIcons: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Tabs defaultValue="tab1" data-size="sm">

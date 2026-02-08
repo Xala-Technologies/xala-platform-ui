@@ -240,7 +240,6 @@ export const Default: Story = {
  */
 export const EmphasisLevels: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -269,7 +268,6 @@ export const EmphasisLevels: Story = {
  */
 export const Colors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
@@ -302,7 +300,6 @@ export const Colors: Story = {
  */
 export const CombinedColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -331,7 +328,6 @@ export const CombinedColors: Story = {
  */
 export const WithIcons: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
@@ -386,7 +382,6 @@ export const Disabled: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -430,7 +425,6 @@ export const AsLink: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -465,7 +459,6 @@ export const Sizes: Story = {
  */
 export const IconOnly: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{
@@ -500,7 +493,6 @@ export const IconOnly: Story = {
  */
 export const BestPractices: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <div>
@@ -627,7 +619,6 @@ export const BestPractices: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

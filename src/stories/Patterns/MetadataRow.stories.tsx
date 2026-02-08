@@ -228,7 +228,6 @@ export const EmptyState: Story = {
 export const AllSizes: Story = {
   name: 'Size Comparison',
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
@@ -297,7 +296,6 @@ export const InlineWithOverflow: Story = {
 export const VariantComparison: Story = {
   name: 'Variant Comparison (Chip vs Inline)',
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>

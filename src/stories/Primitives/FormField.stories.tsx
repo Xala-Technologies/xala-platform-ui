@@ -51,7 +51,6 @@ type Story = StoryObj<typeof FormField>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField label="Eksempel Tekst">
@@ -67,7 +66,6 @@ export const Default: Story = {
  */
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField
@@ -86,7 +84,6 @@ export const WithDescription: Story = {
  */
 export const Required: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField label="Eksempel Tekst" required>
@@ -102,7 +99,6 @@ export const Required: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField
@@ -121,7 +117,6 @@ export const WithError: Story = {
  */
 export const WithDescriptionAndError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField
@@ -142,7 +137,6 @@ export const WithDescriptionAndError: Story = {
  */
 export const WithoutLabel: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField>

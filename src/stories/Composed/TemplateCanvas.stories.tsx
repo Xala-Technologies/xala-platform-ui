@@ -35,7 +35,6 @@ type Story = StoryObj<typeof TemplateCanvas>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [blocks, setBlocks] = useState<TemplateBlock[]>([]);
     return (
       <Stack
@@ -69,7 +68,6 @@ export const Default: Story = {
  */
 export const WithBlocks: Story = {
   render: function Render() {
-    const t = useT();
     const [blocks, setBlocks] = useState<TemplateBlock[]>([
       {
         id: '1',
@@ -119,7 +117,6 @@ export const WithBlocks: Story = {
  */
 export const PreviewMode: Story = {
   render: function Render() {
-    const t = useT();
     const [previewMode, setPreviewMode] = useState(true);
     const [blocks] = useState<TemplateBlock[]>([
       {
@@ -185,7 +182,6 @@ export const PreviewMode: Story = {
  */
 export const BlockPaletteStandalone: Story = {
   render: function Render() {
-    const t = useT();
     const [draggedType, setDraggedType] = useState<string | null>(null);
     return (
       <Stack

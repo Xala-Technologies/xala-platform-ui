@@ -60,7 +60,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for info story
 const InfoDemo = () => {
-  const t = useT();
   return (
     <Alert variant="info" title="Eksempel Tekst" dismissible={false}>
       "Eksempel Tekst"
@@ -77,7 +76,6 @@ export const Info: Story = {
 
 // Wrapper for success story
 const SuccessDemo = () => {
-  const t = useT();
   return (
     <Alert variant="success" title="Eksempel Tekst" dismissible={false}>
       "Eksempel Tekst"
@@ -94,7 +92,6 @@ export const Success: Story = {
 
 // Wrapper for warning story
 const WarningDemo = () => {
-  const t = useT();
   return (
     <Alert variant="warning" title="Eksempel Tekst" dismissible={false}>
       "Eksempel Tekst"
@@ -111,7 +108,6 @@ export const Warning: Story = {
 
 // Wrapper for error story
 const ErrorDemo = () => {
-  const t = useT();
   return (
     <Alert variant="error" title="Eksempel Tekst" dismissible={false}>
       "Eksempel Tekst"
@@ -128,7 +124,6 @@ export const Error: Story = {
 
 // Wrapper for without title story
 const WithoutTitleDemo = () => {
-  const t = useT();
   return (
     <Alert variant="info" dismissible={false}>
       "Eksempel Tekst"
@@ -145,7 +140,6 @@ export const WithoutTitle: Story = {
 
 // Wrapper for dismissible story
 const DismissibleDemo = () => {
-  const t = useT();
   return (
     <Alert
       variant="info"
@@ -167,7 +161,6 @@ export const Dismissible: Story = {
 
 // Wrapper for action story
 const WithActionDemo = () => {
-  const t = useT();
   return (
     <Alert
       variant="warning"
@@ -192,7 +185,6 @@ export const WithAction: Story = {
 
 // Wrapper for custom icon story
 const WithCustomIconDemo = () => {
-  const t = useT();
   return (
     <Alert
       variant="info"
@@ -227,7 +219,6 @@ export const WithCustomIcon: Story = {
 
 // Wrapper for long content story
 const LongContentDemo = () => {
-  const t = useT();
   return (
     <Alert
       variant="info"
@@ -249,7 +240,6 @@ export const LongContent: Story = {
 
 // Wrapper for all variants story
 const AllVariantsDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

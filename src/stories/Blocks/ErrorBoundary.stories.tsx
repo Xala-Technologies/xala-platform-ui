@@ -65,7 +65,6 @@ export const Default: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -83,7 +82,6 @@ export const CustomTitle: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -101,7 +99,6 @@ export const CustomDescription: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -118,7 +115,6 @@ export const WithoutRetryButton: Story = {
     showRetryButton: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -136,7 +132,6 @@ export const CustomRetryText: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -158,7 +153,6 @@ export const CustomLabels: Story = {
     showRetryButton: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -187,7 +181,6 @@ export const CustomFallback: Story = {
     ),
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
@@ -202,7 +195,6 @@ export const CustomFallback: Story = {
 export const NoError: Story = {
   args: {},
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>

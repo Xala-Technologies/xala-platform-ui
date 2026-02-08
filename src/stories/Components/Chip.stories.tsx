@@ -210,7 +210,6 @@ type Story = StoryObj;
 
 export const RadioChips: Story = {
   render: function Render() {
-    const t = useT();
     const [selected, setSelected] = useState('option1');
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
@@ -245,7 +244,6 @@ export const RadioChips: Story = {
 
 export const CheckboxChips: Story = {
   render: function Render() {
-    const t = useT();
     const [selected, setSelected] = useState<string[]>(['tag1']);
     const toggle = (tag: string) => {
       setSelected((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
@@ -298,7 +296,6 @@ export const RemovableChips: Story = {
 
 export const ButtonChips: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
@@ -314,7 +311,6 @@ export const ButtonChips: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
@@ -332,7 +328,6 @@ export const Sizes: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     const [radioSelected, setRadioSelected] = useState('all');
     const [checkboxSelected, setCheckboxSelected] = useState<string[]>(['indoor']);
     const [removableChips, setRemovableChips] = useState(['Oslo', 'Bergen']);

@@ -50,7 +50,6 @@ type Story = StoryObj<typeof ArtifactPreview>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const artifact: Artifact = {
       id: '1',
       name: t('storybook.artifactPreview.component'),
@@ -76,7 +75,6 @@ export const Default: Story = {
  */
 export const JSON: Story = {
   render: function Render() {
-    const t = useT();
     const artifact: Artifact = {
       id: '1',
       name: t('storybook.artifactPreview.config'),
@@ -100,7 +98,6 @@ export const JSON: Story = {
  */
 export const Markdown: Story = {
   render: function Render() {
-    const t = useT();
     const artifact: Artifact = {
       id: '1',
       name: t('storybook.artifactPreview.readme'),
@@ -124,7 +121,6 @@ export const Markdown: Story = {
  */
 export const Multiple: Story = {
   render: function Render() {
-    const t = useT();
     const artifacts: Artifact[] = [
       {
         id: '1',
@@ -176,7 +172,6 @@ export const Empty: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     const artifact: Artifact = {
       id: '1',
       name: t('storybook.artifactPreview.component'),

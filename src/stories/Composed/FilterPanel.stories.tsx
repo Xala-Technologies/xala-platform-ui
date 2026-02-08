@@ -51,7 +51,6 @@ type Story = StoryObj<typeof FilterPanel>;
 
 // Sample fields
 const useSampleFields = (): FilterField[] => {
-  const t = useT();
   return [
     {
       id: 'name',
@@ -86,7 +85,6 @@ const useSampleFields = (): FilterField[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [conditions, setConditions] = useState<FilterCondition[]>([]);
     const fields = useSampleFields();
@@ -113,7 +111,6 @@ export const Default: Story = {
  */
 export const WithConditions: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [conditions, setConditions] = useState<FilterCondition[]>([
       {
@@ -155,7 +152,6 @@ export const WithConditions: Story = {
  */
 export const WithLoading: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [conditions, setConditions] = useState<FilterCondition[]>([
       {
@@ -193,7 +189,6 @@ export const WithLoading: Story = {
  */
 export const WithApplyButton: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const [conditions, setConditions] = useState<FilterCondition[]>([]);
     const fields = useSampleFields();

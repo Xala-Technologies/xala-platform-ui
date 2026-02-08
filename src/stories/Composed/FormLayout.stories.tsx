@@ -50,7 +50,6 @@ type Story = StoryObj<typeof meta>;
 
 // Basic form section
 const BasicSectionExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection
@@ -76,7 +75,6 @@ export const BasicSection: Story = {
 
 // Collapsible section
 const CollapsibleSectionExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection
@@ -104,7 +102,6 @@ export const CollapsibleSection: Story = {
 
 // Form row with multiple columns
 const FormRowTwoColumnsExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
@@ -137,7 +134,6 @@ export const FormRowTwoColumns: Story = {
 
 // Form row with three columns
 const FormRowThreeColumnsExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '800px' }}>
       <FormSection title={t('platform.common.address')}>
@@ -165,7 +161,6 @@ export const FormRowThreeColumns: Story = {
 
 // Form field with error
 const FormFieldWithErrorExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
@@ -196,7 +191,6 @@ export const FormFieldWithError: Story = {
 
 // Form actions - right aligned
 const FormActionsRightExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
@@ -224,7 +218,6 @@ export const FormActionsRight: Story = {
 
 // Form actions - left aligned
 const FormActionsLeftExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
@@ -252,7 +245,6 @@ export const FormActionsLeft: Story = {
 
 // Form actions - between
 const FormActionsBetweenExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
@@ -285,7 +277,6 @@ export const FormActionsBetween: Story = {
 
 // Form actions - sticky
 const FormActionsStickyExample = () => {
-  const t = useT();
   return (
     <div
       style={{
@@ -322,7 +313,6 @@ export const FormActionsSticky: Story = {
 
 // Form divider
 const FormDividerExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
@@ -347,7 +337,6 @@ export const FormDividerExampleStory: Story = {
 
 // Complete form example
 const CompleteFormExample = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FormSection

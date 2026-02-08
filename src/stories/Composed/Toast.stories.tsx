@@ -69,7 +69,6 @@ type Story = StoryObj<typeof meta>;
 
 // Toast trigger component
 const ToastDemo = () => {
-  const t = useT();
   const { toast, success, error, warning, info } = useToast();
 
   return (

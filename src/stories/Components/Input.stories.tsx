@@ -217,7 +217,6 @@ type Story = StoryObj;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield
         label={t('platform.common.name')}
@@ -244,7 +243,6 @@ export const Default: Story = {
  */
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield
         label={t('platform.auth.email')}
@@ -261,7 +259,6 @@ export const WithDescription: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield
         label={t('platform.auth.email')}
@@ -278,7 +275,6 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return <Textfield label="Eksempel Tekst" defaultValue="john_doe" disabled />;
   },
 };
@@ -288,7 +284,6 @@ export const Disabled: Story = {
  */
 export const ReadOnly: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield label="Eksempel Tekst" defaultValue="ACC-12345-XYZ" readOnly />
     );
@@ -300,7 +295,6 @@ export const ReadOnly: Story = {
  */
 export const Password: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield
         label={t('platform.auth.password')}
@@ -316,7 +310,6 @@ export const Password: Story = {
  */
 export const Multiline: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield
         label="Eksempel Tekst"
@@ -333,7 +326,6 @@ export const Multiline: Story = {
  */
 export const WithPrefixSuffix: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
@@ -353,7 +345,6 @@ export const WithPrefixSuffix: Story = {
  */
 export const WithCounter: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Textfield
         counter={50}
@@ -369,7 +360,6 @@ export const WithCounter: Story = {
  */
 export const RequiredOptional: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
@@ -403,7 +393,6 @@ export const RequiredOptional: Story = {
  */
 export const InputTypes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
@@ -435,7 +424,6 @@ export const InputTypes: Story = {
  */
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
@@ -463,7 +451,6 @@ export const Sizes: Story = {
  */
 export const FormExample: Story = {
   render: function Render() {
-    const t = useT();
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
 
@@ -524,7 +511,6 @@ export const FormExample: Story = {
  */
 export const BestPractices: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <div>
@@ -633,7 +619,6 @@ export const BestPractices: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

@@ -32,7 +32,6 @@ const meta: Meta<typeof DashboardSidebar> = {
   component: DashboardSidebar,
   decorators: [
     (Story) => {
-      const t = useT();
       return (
         <MemoryRouter initialEntries={['/']}>
           <div style={{ height: '600px', display: 'flex' }}>
@@ -86,7 +85,6 @@ type Story = StoryObj<typeof DashboardSidebar>;
 
 // Same sections as AppLayout sidebar – one section, no title (no "Oversikt")
 const useAppLayoutSections = (): SidebarSection[] => {
-  const t = useT();
   return [
     {
       items: [
@@ -115,7 +113,6 @@ const useAppLayoutSections = (): SidebarSection[] => {
 
 // Sections with titles (for other stories that show section headings)
 const useSectionsWithTitles = (): SidebarSection[] => {
-  const t = useT();
   return [
     {
       title: t('storybook.sidebar.overview'),
@@ -187,7 +184,6 @@ const useSectionsWithTitles = (): SidebarSection[] => {
 };
 
 const useSampleUser = () => {
-  const t = useT();
   return {
     name: t('storybook.sidebar.sampleUserName'),
     email: 'ola.nordmann@example.com',
@@ -231,7 +227,6 @@ export const WithoutSubtitle: Story = {
  */
 export const MinimalSections: Story = {
   render: function Render() {
-    const t = useT();
     const user = useSampleUser();
     return (
       <DashboardSidebar
@@ -292,7 +287,6 @@ export const WideWidth: Story = {
  */
 export const WithBadges: Story = {
   render: function Render() {
-    const t = useT();
     const user = useSampleUser();
     return (
       <DashboardSidebar
@@ -335,7 +329,6 @@ export const WithBadges: Story = {
  */
 export const BackofficeLayout: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <DashboardSidebar
         sections={[

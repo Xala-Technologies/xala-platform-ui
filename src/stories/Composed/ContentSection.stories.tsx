@@ -32,7 +32,6 @@ type Story = StoryObj<typeof ContentSection>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -59,7 +58,6 @@ export const Default: Story = {
  */
 export const WithoutFieldset: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -87,7 +85,6 @@ export const WithoutFieldset: Story = {
  */
 export const Horizontal: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

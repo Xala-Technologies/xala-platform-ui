@@ -62,7 +62,6 @@ export const Level1Tooltip: Story = {
     closeable: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
         <HelpPanel {...args} />
@@ -104,7 +103,6 @@ export const Level2Guide: Story = {
     closeable: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
         <HelpPanel {...args} />
@@ -145,7 +143,6 @@ export const Level3FAQ: Story = {
     closeable: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
         <HelpPanel {...args} />
@@ -164,7 +161,6 @@ export const NotCloseable: Story = {
     closeable: false,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '400px', padding: 'var(--ds-spacing-4)' }}>
         <HelpPanel {...args} />
@@ -196,7 +192,6 @@ export const DifferentCategories: Story = {
     closeable: true,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
         <HelpPanel {...args} />

@@ -50,7 +50,6 @@ type Story = StoryObj<typeof SearchableSelect>;
 
 // Sample options
 const useSampleOptions = (): SelectOption[] => {
-  const t = useT();
   return [
     { value: 'no', label: t('storybook.searchableSelect.norway') },
     { value: 'se', label: t('storybook.searchableSelect.sweden') },
@@ -65,7 +64,6 @@ const useSampleOptions = (): SelectOption[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
@@ -89,7 +87,6 @@ export const Default: Story = {
  */
 export const WithLabel: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
@@ -114,7 +111,6 @@ export const WithLabel: Story = {
  */
 export const MultiSelect: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string[]>([]);
     const options = useSampleOptions();
     return (
@@ -139,7 +135,6 @@ export const MultiSelect: Story = {
  */
 export const Clearable: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string>('no');
     const options = useSampleOptions();
     return (
@@ -164,7 +159,6 @@ export const Clearable: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
@@ -189,7 +183,6 @@ export const Loading: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string | undefined>(undefined);
     const options = useSampleOptions();
     return (
@@ -214,7 +207,6 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     const [value, setValue] = useState<string>('no');
     const options = useSampleOptions();
     return (

@@ -55,7 +55,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -83,7 +82,6 @@ const DefaultDemo = () => {
 };
 
 const SingleFilterDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -104,7 +102,6 @@ const SingleFilterDemo = () => {
 };
 
 const ManyFiltersDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -153,7 +150,6 @@ const ManyFiltersDemo = () => {
 };
 
 const WithAddFilterDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -183,7 +179,6 @@ const WithAddFilterDemo = () => {
 };
 
 const WithoutClearAllDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -211,7 +206,6 @@ const WithoutClearAllDemo = () => {
 };
 
 const CustomLabelsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -235,7 +229,6 @@ const CustomLabelsDemo = () => {
 };
 
 const WithMaxVisibleDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar
@@ -285,7 +278,6 @@ const WithMaxVisibleDemo = () => {
 };
 
 const DifferentOperatorsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <FilterChipsBar

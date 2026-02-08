@@ -51,7 +51,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const DefaultDemo = () => {
-  const t = useT();
   const [items, setItems] = useState(Array.from({ length: 10 }, (_, i) => i + 1));
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -93,7 +92,6 @@ const DefaultDemo = () => {
 };
 
 const CustomLoaderDemo = () => {
-  const t = useT();
   const [items, setItems] = useState(Array.from({ length: 5 }, (_, i) => i + 1));
   const [hasMore, setHasMore] = useState(true);
 
@@ -146,7 +144,6 @@ const CustomLoaderDemo = () => {
 };
 
 const WithEndMessageDemo = () => {
-  const t = useT();
   const [items] = useState(Array.from({ length: 5 }, (_, i) => i + 1));
 
   return (
@@ -191,7 +188,6 @@ const WithEndMessageDemo = () => {
 };
 
 const WithErrorDemo = () => {
-  const t = useT();
   const [items] = useState(Array.from({ length: 5 }, (_, i) => i + 1));
   const [error, setError] = useState(true);
 
@@ -223,7 +219,6 @@ const WithErrorDemo = () => {
 };
 
 const VirtualListDemo = () => {
-  const t = useT();
   const items = Array.from({ length: 1000 }, (_, i) => ({
     id: i + 1,
     name: `$"Eksempel Tekst" ${i + 1}`,

@@ -35,7 +35,6 @@ type Story = StoryObj;
  */
 export const SizeModes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <div data-size="sm">
@@ -125,7 +124,6 @@ export const SizeModes: Story = {
  */
 export const SpacingScale: Story = {
   render: function Render() {
-    const t = useT();
     const spacings = [
       { token: '0', value: '0' },
       { token: '1', value: '4px / 0.25rem' },
@@ -207,7 +205,6 @@ export const SpacingScale: Story = {
  */
 export const SpacingInPractice: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
@@ -283,7 +280,6 @@ export const SpacingInPractice: Story = {
  */
 export const ComponentSizing: Story = {
   render: function Render() {
-    const t = useT();
     const sizings = [
       { token: '0', value: '0' },
       { token: '1', value: '4px' },
@@ -355,7 +351,6 @@ export const ComponentSizing: Story = {
  */
 export const SemanticUsage: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -490,7 +485,6 @@ export const SemanticUsage: Story = {
  */
 export const CardLayoutExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card>
         <div

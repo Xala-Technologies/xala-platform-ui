@@ -79,7 +79,6 @@ export const English: Story = {
 // Custom labels
 export const CustomLabels: Story = {
   render: function Render() {
-    const t = useT();
     const [locale, setLocale] = useState<'nb' | 'nn' | 'en'>('nb');
     return (
       <div style={{ width: '700px' }}>

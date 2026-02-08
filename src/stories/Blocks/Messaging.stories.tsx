@@ -42,7 +42,6 @@ type Story = StoryObj<typeof NotificationBell>;
  */
 export const NotificationBellExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -64,7 +63,6 @@ export const NotificationBellExample: Story = {
  */
 export const ConversationListItemExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -97,7 +95,6 @@ export const ConversationListItemExample: Story = {
  */
 export const ConversationListExample: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | undefined>();
     return (
       <Stack
@@ -148,7 +145,6 @@ export const ConversationListExample: Story = {
  */
 export const MessageBubbleExample: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

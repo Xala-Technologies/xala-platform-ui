@@ -33,7 +33,6 @@ type Story = StoryObj<typeof DemoRoleSwitcher>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(false);
     const [loadingRole, setLoadingRole] = useState<
       null | 'admin' | 'case_handler' | 'org_admin' | 'org_member'
@@ -76,7 +75,6 @@ export const Default: Story = {
  */
 export const CustomOptions: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(true);
     const [loadingRole, setLoadingRole] = useState<
       null | 'admin' | 'case_handler' | 'org_admin' | 'org_member'
@@ -127,7 +125,6 @@ export const CustomOptions: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     const [open, setOpen] = useState(true);
     return (
       <Stack

@@ -54,7 +54,6 @@ type Story = StoryObj<typeof IframeViewer>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -77,7 +76,6 @@ export const Default: Story = {
  */
 export const WithCustomHeader: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -110,7 +108,6 @@ export const WithCustomHeader: Story = {
  */
 export const WithExternalUrl: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -133,7 +130,6 @@ export const WithExternalUrl: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <IframeViewer

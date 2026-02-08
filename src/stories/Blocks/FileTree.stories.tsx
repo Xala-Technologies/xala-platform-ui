@@ -50,7 +50,6 @@ type Story = StoryObj<typeof FileTree>;
 
 // Sample file tree data
 const useSampleTree = (): FileNode[] => {
-  const t = useT();
   return [
     {
       id: 'src',
@@ -98,7 +97,6 @@ const useSampleTree = (): FileNode[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
     const nodes = useSampleTree();
     return (
@@ -121,7 +119,6 @@ export const Default: Story = {
  */
 export const InitiallyExpanded: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
     const nodes: FileNode[] = [
       {
@@ -163,7 +160,6 @@ export const InitiallyExpanded: Story = {
  */
 export const WithoutIcons: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
     const nodes = useSampleTree();
     return (
@@ -187,7 +183,6 @@ export const WithoutIcons: Story = {
  */
 export const CustomIndent: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
     const nodes = useSampleTree();
     return (
@@ -211,7 +206,6 @@ export const CustomIndent: Story = {
  */
 export const WithContextMenu: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
     const nodes = useSampleTree();
     return (

@@ -56,7 +56,6 @@ export const NoRequest: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -82,7 +81,6 @@ export const Pending: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -108,7 +106,6 @@ export const Processing: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -137,7 +134,6 @@ export const Completed: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -166,7 +162,6 @@ export const Rejected: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -187,7 +182,6 @@ export const Loading: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -208,7 +202,6 @@ export const Requesting: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -229,7 +222,6 @@ export const Error: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />
@@ -258,7 +250,6 @@ export const ExpiringSoon: Story = {
     labels: DEFAULT_DATA_EXPORT_LABELS,
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '600px' }}>
         <DataExportCard {...args} />

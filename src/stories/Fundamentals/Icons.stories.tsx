@@ -69,7 +69,6 @@ type Story = StoryObj;
  */
 export const IconLibraryPriority: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
@@ -256,7 +255,6 @@ export const IconLibraryPriority: Story = {
  */
 export const IconSizingGuide: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Card style={{ padding: 'var(--ds-spacing-8)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
@@ -326,7 +324,6 @@ export const IconSizingGuide: Story = {
  */
 export const AccessibilityGuidelines: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
@@ -552,7 +549,6 @@ export const AccessibilityGuidelines: Story = {
  */
 export const InteractiveIconBrowser: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedLibrary, setSelectedLibrary] = useState<'aksel' | 'lucide'>('aksel');
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -769,7 +765,6 @@ export const InteractiveIconBrowser: Story = {
  */
 export const UsagePatterns: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
@@ -970,7 +965,6 @@ export const UsagePatterns: Story = {
  */
 export const DosAndDonts: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>

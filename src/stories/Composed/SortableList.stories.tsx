@@ -62,7 +62,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const DefaultDemo = () => {
-  const t = useT();
   const [items, setItems] = useState([
     { id: '1', content: `$"Eksempel Tekst" 1` },
     { id: '2', content: `$"Eksempel Tekst" 2` },
@@ -78,7 +77,6 @@ const DefaultDemo = () => {
 };
 
 const WithoutHandleDemo = () => {
-  const t = useT();
   const [items, setItems] = useState([
     { id: '1', content: `$"Eksempel Tekst" 1` },
     { id: '2', content: `$"Eksempel Tekst" 2` },
@@ -93,7 +91,6 @@ const WithoutHandleDemo = () => {
 };
 
 const CustomRenderingDemo = () => {
-  const t = useT();
   const [items, setItems] = useState([
     { id: '1', content: t('storybook.demo.firstItem') },
     { id: '2', content: t('storybook.demo.secondItem') },
@@ -142,7 +139,6 @@ const HorizontalDemo = () => {
 };
 
 const WithDisabledItemsDemo = () => {
-  const t = useT();
   const [items, setItems] = useState([
     { id: '1', content: `$"Eksempel Tekst" 1` },
     {
@@ -166,7 +162,6 @@ const WithDisabledItemsDemo = () => {
 };
 
 const DisabledDemo = () => {
-  const t = useT();
   const [items] = useState([
     { id: '1', content: `$"Eksempel Tekst" 1` },
     { id: '2', content: `$"Eksempel Tekst" 2` },
@@ -187,7 +182,6 @@ const DisabledDemo = () => {
 };
 
 const ManyItemsDemo = () => {
-  const t = useT();
   const [items, setItems] = useState(
     Array.from({ length: 10 }, (_, i) => ({
       id: `${i + 1}`,

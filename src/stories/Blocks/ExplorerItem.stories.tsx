@@ -60,7 +60,6 @@ export const WithIconSelected: Story = {
 
 export const ExplorerList: Story = {
   render: function ExplorerListExample() {
-    const t = useT();
     const [selected, setSelected] = useState<string | null>('button');
 
     const items = [

@@ -51,7 +51,6 @@ type Story = StoryObj<typeof FormActions>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -81,7 +80,6 @@ export const Default: Story = {
  */
 export const CustomCancelText: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <form
@@ -109,7 +107,6 @@ export const CustomCancelText: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     const [isSubmitting, setIsSubmitting] = useState(false);
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -140,7 +137,6 @@ export const Loading: Story = {
  */
 export const CustomSubmittingText: Story = {
   render: function Render() {
-    const t = useT();
     const [isSubmitting, setIsSubmitting] = useState(false);
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>

@@ -32,7 +32,6 @@ export interface LocalizedDocsDescriptionProps {
  * Default Introduction page content
  */
 export function IntroductionDocsDescription() {
-  const t = useT();
 
   return (
     <div>
@@ -88,7 +87,6 @@ export function IntroductionDocsDescription() {
  * Default Getting Started page content
  */
 export function GettingStartedDocsDescription() {
-  const t = useT();
 
   return (
     <div>

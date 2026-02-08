@@ -188,14 +188,12 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return <Switch label="Eksempel Tekst" />;
   },
 };
 
 export const WithDescription: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Switch
         label="Eksempel Tekst"
@@ -207,14 +205,12 @@ export const WithDescription: Story = {
 
 export const Checked: Story = {
   render: function Render() {
-    const t = useT();
     return <Switch label="Eksempel Tekst" defaultChecked />;
   },
 };
 
 export const Disabled: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Switch label="Eksempel Tekst" disabled />
@@ -226,7 +222,6 @@ export const Disabled: Story = {
 
 export const ReadOnly: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Switch label="Eksempel Tekst" readOnly />
@@ -238,7 +233,6 @@ export const ReadOnly: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Switch label="Eksempel Tekst" data-size="sm" />
@@ -251,7 +245,6 @@ export const Sizes: Story = {
 
 export const SwitchGroup: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
@@ -273,7 +266,6 @@ export const SwitchGroup: Story = {
  */
 export const Interactive: Story = {
   render: function Render() {
-    const t = useT();
     const [notifications, setNotifications] = useState({
       email: true,
       sms: false,
@@ -323,7 +315,6 @@ export const Interactive: Story = {
  */
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>

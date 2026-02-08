@@ -68,7 +68,6 @@ type Story = StoryObj<typeof AppLayout>;
 
 // Sample sidebar – no logo/title here; header has the single logo (Digilist)
 const SampleSidebar = () => {
-  const t = useT();
   return (
     <DashboardSidebar
       sections={[
@@ -142,7 +141,6 @@ const AppLayoutLogo = () => (
 
 // Sample header – one logo (Digilist) left, centralized search, actions right
 const SampleHeader = () => {
-  const t = useT();
   const [searchValue, setSearchValue] = useState('');
   return (
     <DashboardHeader
@@ -170,7 +168,6 @@ const SampleHeader = () => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <AppLayout sidebar={<SampleSidebar />} header={<SampleHeader />}>
         <div>
@@ -198,7 +195,6 @@ export const Default: Story = {
  */
 export const CustomMaxWidth: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <AppLayout
         sidebar={<SampleSidebar />}
@@ -221,7 +217,6 @@ export const CustomMaxWidth: Story = {
  */
 export const WithTopContent: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <AppLayout
         sidebar={<SampleSidebar />}
@@ -259,7 +254,6 @@ export const WithTopContent: Story = {
  */
 export const WithBottomNavigation: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <AppLayout
         sidebar={<SampleSidebar />}
@@ -302,7 +296,6 @@ export const WithBottomNavigation: Story = {
  */
 export const CustomPadding: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <AppLayout
         sidebar={<SampleSidebar />}

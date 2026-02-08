@@ -47,7 +47,6 @@ type Story = StoryObj<typeof meta>;
 
 // Hook to get sample items with translations
 const useSampleItems = () => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -107,7 +106,6 @@ export const Default: Story = {
 
 // Wrapper for groups story
 const WithGroupsDemo = () => {
-  const t = useT();
   return (
     <ActionMenu
       trigger={
@@ -174,7 +172,6 @@ export const WithGroups: Story = {
 
 // Wrapper for disabled items story
 const WithDisabledDemo = () => {
-  const t = useT();
   return (
     <ActionMenu
       trigger={
@@ -212,7 +209,6 @@ export const WithDisabled: Story = {
 
 // Wrapper for shortcuts story
 const WithShortcutsDemo = () => {
-  const t = useT();
   return (
     <ActionMenu
       trigger={
@@ -257,7 +253,6 @@ export const WithShortcuts: Story = {
 
 // Wrapper for bottom start story
 const BottomStartDemo = () => {
-  const t = useT();
   const sampleItems = useSampleItems();
   return (
     <ActionMenu
@@ -282,7 +277,6 @@ export const BottomStart: Story = {
 
 // Wrapper for bottom end story
 const BottomEndDemo = () => {
-  const t = useT();
   const sampleItems = useSampleItems();
   return (
     <ActionMenu
@@ -306,7 +300,6 @@ export const BottomEnd: Story = {
 
 // Wrapper for top start story
 const TopStartDemo = () => {
-  const t = useT();
   const sampleItems = useSampleItems();
   return (
     <div style={{ marginTop: '200px' }}>
@@ -332,7 +325,6 @@ export const TopStart: Story = {
 
 // Wrapper for disabled story
 const DisabledDemo = () => {
-  const t = useT();
   const sampleItems = useSampleItems();
   return (
     <ActionMenu
@@ -356,7 +348,6 @@ export const Disabled: Story = {
 
 // Wrapper for context menu story
 const ContextMenuExampleDemo = () => {
-  const t = useT();
   const sampleItems = useSampleItems();
   return (
     <ContextMenu items={sampleItems}>

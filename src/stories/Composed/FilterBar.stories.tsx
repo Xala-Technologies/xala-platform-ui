@@ -33,7 +33,6 @@ type Story = StoryObj<typeof FilterBar>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [primaryValue, setPrimaryValue] = useState<'SPACE' | 'EQUIPMENT' | 'ALL'>('ALL');
     return (
       <Stack
@@ -68,7 +67,6 @@ export const Default: Story = {
  */
 export const WithViewMode: Story = {
   render: function Render() {
-    const t = useT();
     const [primaryValue, setPrimaryValue] = useState<'SPACE' | 'EQUIPMENT' | 'ALL'>('ALL');
     const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map'>('grid');
     return (

@@ -38,7 +38,6 @@ type Story = StoryObj;
  */
 export const HardcodedColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         {/* Bad Example */}
@@ -128,7 +127,6 @@ export const HardcodedColors: Story = {
  */
 export const HardcodedSpacing: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         {/* Bad Example */}
@@ -224,7 +222,6 @@ export const HardcodedSpacing: Story = {
  */
 export const MissingAccessibility: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         {/* Bad Example */}
@@ -342,7 +339,6 @@ export const MissingAccessibility: Story = {
  */
 export const HardcodedText: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         {/* Bad Example */}
@@ -433,7 +429,6 @@ export const HardcodedText: Story = {
  */
 export const CustomComponents: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
         {/* Bad Example */}
@@ -540,7 +535,6 @@ import { Button } from '../../index';
  */
 export const Summary: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div
         style={{

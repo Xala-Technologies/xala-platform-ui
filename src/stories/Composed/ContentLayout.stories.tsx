@@ -33,7 +33,6 @@ type Story = StoryObj<typeof ContentLayout>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ContentLayout>
         <Card data-color="neutral" data-size="medium">
@@ -52,7 +51,6 @@ export const Default: Story = {
  */
 export const Fluid: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ContentLayout fluid>
         <Card data-color="neutral" data-size="medium">
@@ -71,7 +69,6 @@ export const Fluid: Story = {
  */
 export const WithGrid: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ContentLayout
         grid={{

@@ -77,7 +77,6 @@ const SampleLogo = () => (
 
 // Sample search results
 const useSampleSearchResults = (): SearchResultGroup[] => {
-  const t = useT();
   return [
     {
       title: t('storybook.header.recentSearches'),
@@ -113,7 +112,6 @@ const useSampleSearchResults = (): SearchResultGroup[] => {
 };
 
 const useSampleUser = () => {
-  const t = useT();
   return {
     name: t('storybook.header.userName'),
     email: 'ola.nordmann@example.com',
@@ -126,7 +124,6 @@ const useSampleUser = () => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const user = useSampleUser();
@@ -167,7 +164,6 @@ export const Default: Story = {
  */
 export const WithoutSearch: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
     const user = useSampleUser();
 
@@ -204,7 +200,6 @@ export const WithoutSearch: Story = {
  */
 export const WithoutUser: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
     const [searchValue, setSearchValue] = useState('');
 
@@ -240,7 +235,6 @@ export const WithoutUser: Story = {
  */
 export const WithCustomActions: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
     const user = useSampleUser();
 
@@ -283,7 +277,6 @@ export const WithCustomActions: Story = {
  */
 export const ManyNotifications: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
     const user = useSampleUser();
 
@@ -320,7 +313,6 @@ export const ManyNotifications: Story = {
  */
 export const Minimal: Story = {
   render: function Render() {
-    const t = useT();
     const user = useSampleUser();
 
     return (
@@ -352,7 +344,6 @@ export const Minimal: Story = {
  */
 export const WithUserAvatar: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
 
     return (
@@ -394,7 +385,6 @@ export const WithUserAvatar: Story = {
  */
 export const CustomHeight: Story = {
   render: function Render() {
-    const t = useT();
     const [isDark, setIsDark] = useState(false);
     const user = useSampleUser();
 

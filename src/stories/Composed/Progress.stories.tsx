@@ -72,7 +72,6 @@ const RingDemo = () => {
 };
 
 const StepsDemo = () => {
-  const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <ProgressSteps

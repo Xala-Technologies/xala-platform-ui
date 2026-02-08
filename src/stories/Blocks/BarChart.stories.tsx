@@ -133,7 +133,6 @@ export const ShortBars: Story = {
 // Vertical bar chart
 export const Vertical: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px', height: '300px' }}>
         <VerticalBarChart
@@ -151,7 +150,6 @@ export const Vertical: Story = {
 // Vertical without values
 export const VerticalWithoutValues: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px', height: '300px' }}>
         <VerticalBarChart
@@ -169,7 +167,6 @@ export const VerticalWithoutValues: Story = {
 // Vertical custom colors
 export const VerticalCustomColors: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ width: '400px', height: '300px' }}>
         <VerticalBarChart

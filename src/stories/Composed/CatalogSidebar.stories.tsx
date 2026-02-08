@@ -50,7 +50,6 @@ type Story = StoryObj<typeof CatalogSidebar>;
 
 // Sample catalog items
 const useSampleItems = (): CatalogItem[] => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -88,7 +87,6 @@ const useSampleItems = (): CatalogItem[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const items = useSampleItems();
     return (
@@ -114,7 +112,6 @@ export const Default: Story = {
  */
 export const WithFilters: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const items = useSampleItems();
     return (
@@ -150,7 +147,6 @@ export const WithFilters: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -167,7 +163,6 @@ export const Loading: Story = {
  */
 export const WithError: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -184,7 +179,6 @@ export const WithError: Story = {
  */
 export const ManyItems: Story = {
   render: function Render() {
-    const t = useT();
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const items: CatalogItem[] = Array.from({ length: 20 }, (_, i) => ({
       id: String(i + 1),

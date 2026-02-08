@@ -171,7 +171,6 @@ export const WithOptionalStep: Story = {
 
 // Interactive stepper
 const InteractiveStepper = () => {
-  const t = useT();
   const [currentStep, setCurrentStep] = useState(1);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -213,7 +212,6 @@ export const Interactive: Story = {
 
 // Wizard component
 const WizardExample = () => {
-  const t = useT();
   const steps = [
     { id: '1', title: 'Step 1', description: 'First step' },
     { id: '2', title: 'Step 2', description: 'Second step' },

@@ -240,7 +240,6 @@ export const Disabled: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>

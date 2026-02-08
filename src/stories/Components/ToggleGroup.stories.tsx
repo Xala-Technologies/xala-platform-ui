@@ -211,7 +211,6 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ToggleGroup defaultValue="list" name="view">
         <ToggleGroup.Item value="list">"Eksempel Tekst"</ToggleGroup.Item>
@@ -224,7 +223,6 @@ export const Default: Story = {
 
 export const WithIcons: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ToggleGroup defaultValue="list" name="view-icons">
         <ToggleGroup.Item value="list">"Eksempel Tekst"</ToggleGroup.Item>
@@ -237,7 +235,6 @@ export const WithIcons: Story = {
 
 export const Sizes: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <ToggleGroup defaultValue="a" name="size-sm" data-size="sm">
@@ -259,7 +256,6 @@ export const Sizes: Story = {
 
 export const TimeFilter: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <ToggleGroup defaultValue="week" name="time-filter">
         <ToggleGroup.Item value="day">"Eksempel Tekst"</ToggleGroup.Item>

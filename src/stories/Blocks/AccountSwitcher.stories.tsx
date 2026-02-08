@@ -69,7 +69,6 @@ export const PersonalAccount: Story = {
     },
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '300px' }}>
         <AccountSwitcher {...args} />
@@ -92,7 +91,6 @@ export const OrganizationAccount: Story = {
     },
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '300px' }}>
         <AccountSwitcher {...args} />
@@ -115,7 +113,6 @@ export const NoOrganizations: Story = {
     },
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '300px' }}>
         <AccountSwitcher {...args} />
@@ -142,7 +139,6 @@ export const ManyOrganizations: Story = {
     },
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '300px' }}>
         <AccountSwitcher {...args} />
@@ -170,7 +166,6 @@ export const CustomLabels: Story = {
     },
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '300px' }}>
         <AccountSwitcher {...args} />
@@ -195,7 +190,6 @@ export const CustomWidth: Story = {
     dropdownWidth: '400px',
   },
   render: function Render(args) {
-    const t = useT();
     return (
       <div style={{ width: '350px' }}>
         <AccountSwitcher {...args} />

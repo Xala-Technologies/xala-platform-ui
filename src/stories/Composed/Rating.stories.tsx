@@ -196,7 +196,6 @@ export const CustomIcon: Story = {
 
 // Wrapper for label story
 const WithLabelDemo = () => {
-  const t = useT();
   return (
     <Rating
       defaultValue={0}

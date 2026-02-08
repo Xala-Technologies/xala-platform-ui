@@ -73,7 +73,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -97,7 +96,6 @@ export const Default: Story = {
 
 // Wrapper for with title story
 const WithTitleDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -120,7 +118,6 @@ export const WithTitle: Story = {
 
 // Wrapper for minimal toolbar story
 const MinimalToolbarDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -143,7 +140,6 @@ export const MinimalToolbar: Story = {
 
 // Wrapper for download only story
 const DownloadOnlyDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -166,7 +162,6 @@ export const DownloadOnly: Story = {
 
 // Wrapper for print only story
 const PrintOnlyDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -189,7 +184,6 @@ export const PrintOnly: Story = {
 
 // Wrapper for custom size story
 const CustomSizeDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -214,7 +208,6 @@ export const CustomSize: Story = {
 
 // Wrapper for without toolbar story
 const WithoutToolbarDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
@@ -235,7 +228,6 @@ export const WithoutToolbar: Story = {
 
 // Wrapper for full featured story
 const FullFeaturedDemo = () => {
-  const t = useT();
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"

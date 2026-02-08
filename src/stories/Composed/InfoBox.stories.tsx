@@ -44,7 +44,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const InfoDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="info" title="Eksempel Tekst">
@@ -55,7 +54,6 @@ const InfoDemo = () => {
 };
 
 const SuccessDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="success" title="Eksempel Tekst">
@@ -66,7 +64,6 @@ const SuccessDemo = () => {
 };
 
 const WarningDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="warning" title="Eksempel Tekst">
@@ -77,7 +74,6 @@ const WarningDemo = () => {
 };
 
 const DangerDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="danger" title="Eksempel Tekst">
@@ -88,7 +84,6 @@ const DangerDemo = () => {
 };
 
 const NeutralDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="neutral" title="Eksempel Tekst">
@@ -99,7 +94,6 @@ const NeutralDemo = () => {
 };
 
 const WithoutTitleDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="info">"Eksempel Tekst"</InfoBox>
@@ -108,7 +102,6 @@ const WithoutTitleDemo = () => {
 };
 
 const LongContentDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '600px' }}>
       <InfoBox variant="info" title="Eksempel Tekst">
@@ -119,7 +112,6 @@ const LongContentDemo = () => {
 };
 
 const AllVariantsDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

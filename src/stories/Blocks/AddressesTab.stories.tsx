@@ -33,7 +33,6 @@ type Story = StoryObj<typeof AddressesTab>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [addressData, setAddressData] = useState({
       invoiceAddress: {
         street: '',

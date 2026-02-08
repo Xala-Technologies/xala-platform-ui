@@ -40,7 +40,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper components for stories that need translations
 const HighlightSingleTermDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
@@ -54,7 +53,6 @@ const HighlightSingleTermDemo = () => {
 };
 
 const HighlightMultipleTermsDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
@@ -68,7 +66,6 @@ const HighlightMultipleTermsDemo = () => {
 };
 
 const HighlightCaseSensitiveDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
@@ -83,7 +80,6 @@ const HighlightCaseSensitiveDemo = () => {
 };
 
 const HighlightCustomStyleDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
@@ -102,7 +98,6 @@ const HighlightCustomStyleDemo = () => {
 };
 
 const SpotlightActiveDemo = () => {
-  const t = useT();
   return (
     <Spotlight active={true}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -113,7 +108,6 @@ const SpotlightActiveDemo = () => {
 };
 
 const SpotlightInactiveDemo = () => {
-  const t = useT();
   return (
     <Spotlight active={false}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -124,7 +118,6 @@ const SpotlightInactiveDemo = () => {
 };
 
 const SpotlightWithButtonDemo = () => {
-  const t = useT();
   return (
     <Spotlight active={true}>
       <Button data-color="accent" data-size="medium">
@@ -135,7 +128,6 @@ const SpotlightWithButtonDemo = () => {
 };
 
 const SpotlightCustomPaddingDemo = () => {
-  const t = useT();
   return (
     <Spotlight active={true} padding={16}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
@@ -146,7 +138,6 @@ const SpotlightCustomPaddingDemo = () => {
 };
 
 const SearchHighlightBasicDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
@@ -158,7 +149,6 @@ const SearchHighlightBasicDemo = () => {
 };
 
 const SearchHighlightWithContextDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
@@ -171,7 +161,6 @@ const SearchHighlightWithContextDemo = () => {
 };
 
 const SearchHighlightMaxLengthDemo = () => {
-  const t = useT();
   return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
@@ -184,7 +173,6 @@ const SearchHighlightMaxLengthDemo = () => {
 };
 
 const CombinedExampleDemo = () => {
-  const t = useT();
   return (
     <div
       style={{

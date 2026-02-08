@@ -51,7 +51,6 @@ type Story = StoryObj<typeof CommandPalette>;
 
 // Sample commands
 const useSampleCommands = (): CommandItem[] => {
-  const t = useT();
   return [
     {
       id: 'home',
@@ -97,7 +96,6 @@ const useSampleCommands = (): CommandItem[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const commands = useSampleCommands();
     return (
@@ -119,7 +117,6 @@ export const Default: Story = {
  */
 export const WithGroups: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const commands = useSampleCommands();
     return (
@@ -145,7 +142,6 @@ export const WithGroups: Story = {
  */
 export const WithRecent: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const commands = useSampleCommands();
     return (
@@ -169,7 +165,6 @@ export const WithRecent: Story = {
  */
 export const WithSearch: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const commands = useSampleCommands();
     return (
@@ -192,7 +187,6 @@ export const WithSearch: Story = {
  */
 export const ManyCommands: Story = {
   render: function Render() {
-    const t = useT();
     const [isOpen, setIsOpen] = useState(true);
     const manyCommands: CommandItem[] = Array.from({ length: 20 }, (_, i) => ({
       id: `command-${i}`,

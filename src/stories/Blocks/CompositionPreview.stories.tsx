@@ -50,7 +50,6 @@ type Story = StoryObj<typeof CompositionPreview>;
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -77,7 +76,6 @@ export const Default: Story = {
  */
 export const CustomRender: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -108,7 +106,6 @@ export const CustomRender: Story = {
  */
 export const PrimitivesLayer: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"
@@ -137,7 +134,6 @@ export const PrimitivesLayer: Story = {
  */
 export const BlocksLayer: Story = {
   render: function Render() {
-    const t = useT();
     return (
       <Stack
         spacing="var(--ds-spacing-4)"

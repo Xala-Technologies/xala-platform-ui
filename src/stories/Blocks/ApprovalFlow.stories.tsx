@@ -48,7 +48,6 @@ type Story = StoryObj<typeof ApprovalFlow>;
 
 // Sample approval items
 const useSampleItems = (): ApprovalItem[] => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -67,7 +66,6 @@ const useSampleItems = (): ApprovalItem[] => {
 
 // Sample checklist items
 const useSampleChecklist = (): ChecklistItem[] => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -95,7 +93,6 @@ const useSampleChecklist = (): ChecklistItem[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [checklist, setChecklist] = useState(useSampleChecklist());
     const items = useSampleItems();
     return (
@@ -128,7 +125,6 @@ export const Default: Story = {
  */
 export const WithoutChecklist: Story = {
   render: function Render() {
-    const t = useT();
     const items = useSampleItems();
     return (
       <Stack
@@ -154,7 +150,6 @@ export const WithoutChecklist: Story = {
  */
 export const Loading: Story = {
   render: function Render() {
-    const t = useT();
     const [checklist, setChecklist] = useState(useSampleChecklist());
     const items = useSampleItems();
     return (
@@ -187,7 +182,6 @@ export const Loading: Story = {
  */
 export const ManyItems: Story = {
   render: function Render() {
-    const t = useT();
     const [checklist, setChecklist] = useState(useSampleChecklist());
     const items: ApprovalItem[] = Array.from({ length: 10 }, (_, i) => ({
       id: String(i + 1),

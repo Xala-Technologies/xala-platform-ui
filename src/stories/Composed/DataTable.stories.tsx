@@ -57,7 +57,6 @@ interface SampleRow {
 
 // Hook for translated sample data
 const useSampleData = () => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -88,7 +87,6 @@ const useSampleData = () => {
 
 // Hook for translated columns
 const useColumns = () => {
-  const t = useT();
   return [
     {
       id: 'name',
@@ -130,7 +128,6 @@ const useColumns = () => {
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const sampleData = useSampleData();
   return (
@@ -154,7 +151,6 @@ export const Default: Story = {
 
 // Wrapper for sorting story
 const WithSortingDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const sampleData = useSampleData();
   const [sortColumn, setSortColumn] = React.useState<string | undefined>('name');
@@ -189,7 +185,6 @@ export const WithSorting: Story = {
 
 // Wrapper for row click story
 const WithRowClickDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const sampleData = useSampleData();
   return (
@@ -214,7 +209,6 @@ export const WithRowClick: Story = {
 
 // Wrapper for loading story
 const LoadingDemo = () => {
-  const t = useT();
   const columns = useColumns();
   return (
     <div style={{ width: '800px' }}>
@@ -238,7 +232,6 @@ export const Loading: Story = {
 
 // Wrapper for empty story
 const EmptyDemo = () => {
-  const t = useT();
   const columns = useColumns();
   return (
     <div style={{ width: '800px' }}>
@@ -262,7 +255,6 @@ export const Empty: Story = {
 
 // Wrapper for sticky header story
 const StickyHeaderDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const sampleData = useSampleData();
   return (
@@ -287,7 +279,6 @@ export const StickyHeader: Story = {
 
 // Wrapper for custom height story
 const CustomHeightDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const sampleData = useSampleData();
   return (
@@ -312,7 +303,6 @@ export const CustomHeight: Story = {
 
 // Wrapper for filtering story
 const WithFilteringDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const sampleData = useSampleData();
   const [filterValues, setFilterValues] = React.useState<FilterValues>({});
@@ -409,7 +399,6 @@ export const WithFiltering: Story = {
 
 // Hook for paginated sample data (larger dataset)
 const usePaginatedSampleData = () => {
-  const t = useT();
   return [
     {
       id: '1',
@@ -536,7 +525,6 @@ const usePaginatedSampleData = () => {
 
 // Wrapper for pagination story
 const WithPaginationDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const allData = usePaginatedSampleData();
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -597,7 +585,6 @@ export const WithPagination: Story = {
 
 // Wrapper for complete example story
 const CompleteExampleDemo = () => {
-  const t = useT();
   const columns = useColumns();
   const allData = usePaginatedSampleData();
   const [filterValues, setFilterValues] = React.useState<FilterValues>({});

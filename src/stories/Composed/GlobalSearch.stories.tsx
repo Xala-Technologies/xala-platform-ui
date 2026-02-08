@@ -50,7 +50,6 @@ type Story = StoryObj<typeof GlobalSearch>;
 
 // Sample search results
 const useSampleResults = (query: string): SearchResultGroup[] => {
-  const t = useT();
   if (!query) {
     return [
       {
@@ -94,7 +93,6 @@ const useSampleResults = (query: string): SearchResultGroup[] => {
  */
 export const Default: Story = {
   render: function Render() {
-    const t = useT();
     const [query, setQuery] = useState('');
     const results = useSampleResults(query);
     return (
@@ -117,7 +115,6 @@ export const Default: Story = {
  */
 export const WithShortcut: Story = {
   render: function Render() {
-    const t = useT();
     const [query, setQuery] = useState('');
     const results = useSampleResults(query);
     return (
@@ -142,7 +139,6 @@ export const WithShortcut: Story = {
  */
 export const NoResults: Story = {
   render: function Render() {
-    const t = useT();
     const [query, setQuery] = useState('nonexistent');
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -165,7 +161,6 @@ export const NoResults: Story = {
  */
 export const EmptyState: Story = {
   render: function Render() {
-    const t = useT();
     const [query, setQuery] = useState('');
     return (
       <div style={{ width: '600px', padding: 'var(--ds-spacing-4)' }}>
@@ -188,7 +183,6 @@ export const EmptyState: Story = {
  */
 export const MultipleGroups: Story = {
   render: function Render() {
-    const t = useT();
     const [query, setQuery] = useState('test');
     const results: SearchResultGroup[] = [
       {

@@ -47,7 +47,6 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title={t('platform.nav.dashboard')}
@@ -65,7 +64,6 @@ export const Default: Story = {
 
 // Wrapper for with badge story
 const WithBadgeDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -84,7 +82,6 @@ export const WithBadge: Story = {
 
 // Wrapper for with breadcrumbs story
 const WithBreadcrumbsDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -120,7 +117,6 @@ export const WithBreadcrumbs: Story = {
 
 // Wrapper for with metadata story
 const WithMetadataDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -143,7 +139,6 @@ export const WithMetadata: Story = {
 
 // Wrapper for with actions story
 const WithActionsDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -171,7 +166,6 @@ export const WithActions: Story = {
 
 // Wrapper for with tabs story
 const WithTabsDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -196,7 +190,6 @@ export const WithTabs: Story = {
 
 // Wrapper for with tabs pill story
 const WithTabsPillDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -222,7 +215,6 @@ export const WithTabsPill: Story = {
 
 // Wrapper for complete story
 const CompleteDemo = () => {
-  const t = useT();
   return (
     <DashboardPageHeader
       title="Eksempel Tekst"
@@ -277,7 +269,6 @@ export const Complete: Story = {
 
 // Wrapper for minimal story
 const MinimalDemo = () => {
-  const t = useT();
   return <DashboardPageHeader title="Eksempel Tekst" />;
 };
 
