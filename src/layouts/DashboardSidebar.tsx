@@ -8,8 +8,7 @@
  */
 
 import * as React from 'react';
-import { forwardRef, useState, useEffect, useCallback } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { forwardRef, useState } from 'react';
 import { List } from '@digdir/designsystemet-react';
 import { Drawer } from '../components/Drawer';
 import { ChevronRightIcon } from '../primitives/icons';
@@ -453,7 +452,7 @@ export const DashboardSidebar = forwardRef<HTMLElement, DashboardSidebarProps>(
         {isMobile && (
           <Drawer
             isOpen={isMobileOpen}
-            onClose={onMobileClose || (() => {})}
+            onClose={onMobileClose || (() => { })}
             position="left"
             size="lg"
             overlay={true}

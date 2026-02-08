@@ -41,8 +41,8 @@
  * ```
  */
 
-import { Outlet } from 'react-router-dom';
-import { ReactNode, useState, useEffect, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { BottomNavigation, type BottomNavigationItem } from '../components/bottom-navigation';
 import { Stack } from '../primitives/stack';
 import { MOBILE_BREAKPOINT } from '../tokens';
@@ -101,6 +101,9 @@ export interface AppLayoutProps {
 
   /** Whether to show sidebar on mobile (default: false) */
   showSidebarOnMobile?: boolean;
+
+  /** Content to render in main area (e.g., react-router's <Outlet /> or page component) */
+  children?: ReactNode;
 }
 
 // =============================================================================
@@ -163,6 +166,7 @@ export function AppLayout({
   mobileBreakpoint = MOBILE_BREAKPOINT,
   bottomNavItems,
   showSidebarOnMobile = false,
+  children,
 }: AppLayoutProps): React.ReactElement {
   const resolvedBreakpoint = resolveBreakpoint(mobileBreakpoint);
 
@@ -265,13 +269,13 @@ export function AppLayout({
               padding: useInlinePadding ? (contentPadding as string) : undefined,
               ...(hasBottomNav
                 ? {
-                    paddingBottom: 'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
-                  }
+                  paddingBottom: 'calc(64px + var(--ds-spacing-4) + env(safe-area-inset-bottom))',
+                }
                 : {}),
             }}
           >
             <Stack style={{ maxWidth: maxContentWidth, margin: '0 auto', width: '100%' }}>
-              <Outlet />
+              {children}
             </Stack>
           </main>
         </Stack>
