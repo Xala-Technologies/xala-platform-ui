@@ -4,7 +4,6 @@
  * Horizontal row of key-value metadata items with icons and separators.
  */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { MetadataRow, MetadataRowInline, type MetadataRowProps } from '../../patterns/MetadataRow';
 import type { MetadataItem } from '../../patterns/types';
 
@@ -234,19 +233,19 @@ export const AllSizes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeSmall')}
+            "Eksempel Tekst"
           </p>
           <MetadataRow items={basicMetadata} size="sm" />
         </div>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeMedium')}
+            "Eksempel Tekst"
           </p>
           <MetadataRow items={basicMetadata} size="md" />
         </div>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeLarge')}
+            "Eksempel Tekst"
           </p>
           <MetadataRow items={basicMetadata} size="lg" />
         </div>
@@ -303,13 +302,13 @@ export const VariantComparison: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.variantChip')}
+            "Eksempel Tekst"
           </p>
           <MetadataRow items={basicMetadata} size="sm" />
         </div>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.variantInline')}
+            "Eksempel Tekst"
           </p>
           <MetadataRowInline items={basicMetadata} size="sm" separator="•" />
         </div>

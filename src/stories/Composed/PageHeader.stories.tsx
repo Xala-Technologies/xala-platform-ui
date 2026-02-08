@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { PageHeader, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -41,10 +40,10 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.pageHeader.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <PageHeader
-              title={t('storybook.pageHeader.title')}
-              subtitle={t('storybook.pageHeader.subtitle')}
+              title="Eksempel Tekst"
+              subtitle="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -66,14 +65,14 @@ export const WithActions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.pageHeader.withActions')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <PageHeader
-              title={t('storybook.pageHeader.title')}
-              subtitle={t('storybook.pageHeader.subtitle')}
+              title="Eksempel Tekst"
+              subtitle="Eksempel Tekst"
               actions={
                 <Stack spacing="var(--ds-spacing-2)" style={{ flexDirection: 'row' }}>
-                  <Button>{t('storybook.pageHeader.edit')}</Button>
-                  <Button>{t('storybook.pageHeader.save')}</Button>
+                  <Button>"Eksempel Tekst"</Button>
+                  <Button>"Eksempel Tekst"</Button>
                 </Stack>
               }
             />
@@ -97,10 +96,10 @@ export const WithBorder: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.pageHeader.withBorder')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <PageHeader
-              title={t('storybook.pageHeader.title')}
-              subtitle={t('storybook.pageHeader.subtitle')}
+              title="Eksempel Tekst"
+              subtitle="Eksempel Tekst"
               bordered
             />
           </Stack>

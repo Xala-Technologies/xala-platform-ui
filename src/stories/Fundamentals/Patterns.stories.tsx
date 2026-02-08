@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph, Textfield } from '../../index';
 import { useState } from 'react';
 import { Inbox, Search, AlertCircle } from 'lucide-react';
@@ -51,12 +50,12 @@ export const RequiredOptionalFields: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.dont')} {t('storybook.patterns.wrongPattern')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             <Textfield label={`${t('platform.common.name')} *`} required />
             <Textfield label={`${t('platform.common.email')} *`} type="email" required />
-            <Textfield label={t('storybook.demo.phone')} type="tel" />
+            <Textfield label="Eksempel Tekst" type="tel" />
           </div>
           <Paragraph
             data-size="sm"
@@ -65,7 +64,7 @@ export const RequiredOptionalFields: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.patterns.asterisksClutter')}
+            "Eksempel Tekst"
           </Paragraph>
         </Card>
 
@@ -78,13 +77,13 @@ export const RequiredOptionalFields: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.do')} {t('storybook.patterns.correctPattern')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             <Textfield label={t('platform.common.name')} required />
             <Textfield label={t('platform.common.email')} type="email" required />
             <Textfield
-              label={`${t('storybook.demo.phone')} (${t('storybook.patterns.optional')})`}
+              label={`$"Eksempel Tekst" ($"Eksempel Tekst")`}
               type="tel"
             />
           </div>
@@ -95,7 +94,7 @@ export const RequiredOptionalFields: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.patterns.markOptional')}
+            "Eksempel Tekst"
           </Paragraph>
         </Card>
       </div>
@@ -120,7 +119,7 @@ export const UserTriggeredValidation: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.patterns.userTriggeredValidation')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           style={{
@@ -128,7 +127,7 @@ export const UserTriggeredValidation: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.patterns.errorOnBlur')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <Textfield
@@ -149,8 +148,8 @@ export const UserTriggeredValidation: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-            <strong>{t('storybook.patterns.pattern')}:</strong>{' '}
-            {t('storybook.patterns.validateOnBlur')}
+            <strong>"Eksempel Tekst":</strong>{' '}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </Card>
@@ -172,7 +171,7 @@ export const MultiStepWizard: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.patterns.multiStepWizard')}
+          "Eksempel Tekst"
         </Heading>
 
         {/* Progress Indicator */}
@@ -206,7 +205,7 @@ export const MultiStepWizard: Story = {
                       : 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                {t('storybook.patterns.step')} {num}
+                "Eksempel Tekst" {num}
               </Paragraph>
             </div>
           ))}
@@ -217,7 +216,7 @@ export const MultiStepWizard: Story = {
           {step === 1 && (
             <div>
               <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                {t('storybook.patterns.step')} 1: {t('storybook.patterns.basicInfo')}
+                "Eksempel Tekst" 1: "Eksempel Tekst"
               </Heading>
               <Textfield label={t('platform.common.name')} />
             </div>
@@ -225,7 +224,7 @@ export const MultiStepWizard: Story = {
           {step === 2 && (
             <div>
               <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                {t('storybook.patterns.step')} 2: {t('storybook.patterns.contactDetails')}
+                "Eksempel Tekst" 2: "Eksempel Tekst"
               </Heading>
               <Textfield label={t('platform.common.email')} type="email" />
             </div>
@@ -233,9 +232,9 @@ export const MultiStepWizard: Story = {
           {step === 3 && (
             <div>
               <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                {t('storybook.patterns.step')} 3: {t('storybook.patterns.confirmation')}
+                "Eksempel Tekst" 3: "Eksempel Tekst"
               </Heading>
-              <Paragraph>{t('storybook.patterns.reviewConfirm')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </div>
           )}
         </div>
@@ -247,7 +246,7 @@ export const MultiStepWizard: Story = {
             onClick={() => setStep(Math.max(1, step - 1))}
             disabled={step === 1}
           >
-            {t('storybook.patterns.previous')}
+            "Eksempel Tekst"
           </Button>
           <Button
             data-variant="primary"
@@ -283,7 +282,7 @@ export const EmptyStatePattern: Story = {
             }}
           />
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.patterns.noItemsYet')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             style={{
@@ -291,9 +290,9 @@ export const EmptyStatePattern: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.patterns.getStarted')}
+            "Eksempel Tekst"
           </Paragraph>
-          <Button data-variant="primary">{t('storybook.patterns.createItem')}</Button>
+          <Button data-variant="primary">"Eksempel Tekst"</Button>
         </Card>
 
         {/* No Results */}
@@ -307,7 +306,7 @@ export const EmptyStatePattern: Story = {
             }}
           />
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.patterns.noResultsFound')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             style={{
@@ -315,9 +314,9 @@ export const EmptyStatePattern: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.patterns.adjustSearch')}
+            "Eksempel Tekst"
           </Paragraph>
-          <Button data-variant="secondary">{t('storybook.patterns.clearFilters')}</Button>
+          <Button data-variant="secondary">"Eksempel Tekst"</Button>
         </Card>
 
         {/* Error State */}
@@ -331,7 +330,7 @@ export const EmptyStatePattern: Story = {
             }}
           />
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.patterns.somethingWentWrong')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             style={{
@@ -339,9 +338,9 @@ export const EmptyStatePattern: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.patterns.couldntLoadContent')}
+            "Eksempel Tekst"
           </Paragraph>
-          <Button data-variant="secondary">{t('storybook.patterns.tryAgain')}</Button>
+          <Button data-variant="secondary">"Eksempel Tekst"</Button>
         </Card>
       </div>
     );
@@ -375,10 +374,10 @@ export const NotificationTypes: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.notifications.success')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
-            {t('storybook.notifications.changesSaved')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
 
@@ -399,10 +398,10 @@ export const NotificationTypes: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.notifications.warning')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph style={{ color: 'var(--ds-color-warning-text-default)' }}>
-            {t('storybook.notifications.sessionExpiring')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
 
@@ -423,10 +422,10 @@ export const NotificationTypes: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.notifications.error')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph style={{ color: 'var(--ds-color-danger-text-default)' }}>
-            {t('storybook.notifications.saveFailed')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
 
@@ -447,10 +446,10 @@ export const NotificationTypes: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.notifications.information')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph style={{ color: 'var(--ds-color-info-text-default)' }}>
-            {t('storybook.notifications.scheduledMaintenance')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </div>
@@ -471,18 +470,18 @@ export const LoadingStates: Story = {
         {/* Button Loading */}
         <Card style={{ padding: 'var(--ds-spacing-6)' }}>
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            {t('storybook.loading.buttonLoading')}
+            "Eksempel Tekst"
           </Heading>
           <Button data-variant="primary" disabled>
             <span style={{ marginRight: 'var(--ds-spacing-2)' }}>...</span>
-            {t('storybook.loading.saving')}
+            "Eksempel Tekst"
           </Button>
         </Card>
 
         {/* Spinner */}
         <Card style={{ padding: 'var(--ds-spacing-6)', textAlign: 'center' }}>
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            {t('storybook.loading.spinner')}
+            "Eksempel Tekst"
           </Heading>
           <div
             style={{
@@ -501,7 +500,7 @@ export const LoadingStates: Story = {
         {/* Skeleton */}
         <Card style={{ padding: 'var(--ds-spacing-6)' }}>
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            {t('storybook.loading.skeleton')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
             {[100, 80, 90].map((width, i) => (
@@ -564,7 +563,7 @@ export const Summary: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-8)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.patterns.summary')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>

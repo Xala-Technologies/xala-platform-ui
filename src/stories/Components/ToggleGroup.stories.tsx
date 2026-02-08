@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { ToggleGroup } from '../../index';
 
 const meta: Meta = {
@@ -215,9 +214,9 @@ export const Default: Story = {
     const t = useT();
     return (
       <ToggleGroup defaultValue="list" name="view">
-        <ToggleGroup.Item value="list">{t('storybook.demo.list')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="grid">{t('storybook.demo.grid')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="calendar">{t('storybook.demo.calendar')}</ToggleGroup.Item>
+        <ToggleGroup.Item value="list">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="grid">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="calendar">"Eksempel Tekst"</ToggleGroup.Item>
       </ToggleGroup>
     );
   },
@@ -228,9 +227,9 @@ export const WithIcons: Story = {
     const t = useT();
     return (
       <ToggleGroup defaultValue="list" name="view-icons">
-        <ToggleGroup.Item value="list">{t('storybook.demo.list')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="grid">{t('storybook.demo.grid')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="calendar">{t('storybook.demo.calendar')}</ToggleGroup.Item>
+        <ToggleGroup.Item value="list">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="grid">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="calendar">"Eksempel Tekst"</ToggleGroup.Item>
       </ToggleGroup>
     );
   },
@@ -242,16 +241,16 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <ToggleGroup defaultValue="a" name="size-sm" data-size="sm">
-          <ToggleGroup.Item value="a">{t('storybook.demo.small')} A</ToggleGroup.Item>
-          <ToggleGroup.Item value="b">{t('storybook.demo.small')} B</ToggleGroup.Item>
+          <ToggleGroup.Item value="a">"Eksempel Tekst" A</ToggleGroup.Item>
+          <ToggleGroup.Item value="b">"Eksempel Tekst" B</ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup defaultValue="a" name="size-md" data-size="md">
-          <ToggleGroup.Item value="a">{t('storybook.demo.medium')} A</ToggleGroup.Item>
-          <ToggleGroup.Item value="b">{t('storybook.demo.medium')} B</ToggleGroup.Item>
+          <ToggleGroup.Item value="a">"Eksempel Tekst" A</ToggleGroup.Item>
+          <ToggleGroup.Item value="b">"Eksempel Tekst" B</ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup defaultValue="a" name="size-lg" data-size="lg">
-          <ToggleGroup.Item value="a">{t('storybook.demo.large')} A</ToggleGroup.Item>
-          <ToggleGroup.Item value="b">{t('storybook.demo.large')} B</ToggleGroup.Item>
+          <ToggleGroup.Item value="a">"Eksempel Tekst" A</ToggleGroup.Item>
+          <ToggleGroup.Item value="b">"Eksempel Tekst" B</ToggleGroup.Item>
         </ToggleGroup>
       </div>
     );
@@ -263,10 +262,10 @@ export const TimeFilter: Story = {
     const t = useT();
     return (
       <ToggleGroup defaultValue="week" name="time-filter">
-        <ToggleGroup.Item value="day">{t('storybook.demo.today')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="week">{t('storybook.demo.thisWeek')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="month">{t('storybook.demo.thisMonth')}</ToggleGroup.Item>
-        <ToggleGroup.Item value="all">{t('storybook.demo.allTime')}</ToggleGroup.Item>
+        <ToggleGroup.Item value="day">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="week">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="month">"Eksempel Tekst"</ToggleGroup.Item>
+        <ToggleGroup.Item value="all">"Eksempel Tekst"</ToggleGroup.Item>
       </ToggleGroup>
     );
   },

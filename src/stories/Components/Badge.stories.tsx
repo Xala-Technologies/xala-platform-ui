@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Badge, Button, Heading } from '../../index';
-import { useT } from '@xala-technologies/i18n';
 
 /**
  * Badge component from Digdir Designsystemet.
@@ -190,7 +189,7 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.variants')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Badge count={5} data-color="neutral" />
@@ -203,7 +202,7 @@ export const AllVariants: Story = {
         </div>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
             <Badge count={5} data-size="sm" />
@@ -213,7 +212,7 @@ export const AllVariants: Story = {
         </div>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.interactive')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
             <Button variant="secondary" type="button">
@@ -239,7 +238,7 @@ export const AllVariants: Story = {
         </div>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -252,7 +251,7 @@ export const AllVariants: Story = {
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-              {t('storybook.story.error')}
+              "Eksempel Tekst"
             </div>
           </div>
         </div>

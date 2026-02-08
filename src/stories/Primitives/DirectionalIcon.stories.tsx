@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   DirectionalIcon,
   ChevronForwardIcon,
@@ -51,9 +50,9 @@ export const ChevronForward: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.directionalIcon.chevronForward')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button>
-              {t('storybook.directionalIcon.next')} <ChevronForwardIcon />
+              "Eksempel Tekst" <ChevronForwardIcon />
             </Button>
           </Stack>
         </Card>
@@ -75,9 +74,9 @@ export const ChevronBack: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.directionalIcon.chevronBack')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button>
-              <ChevronBackIcon /> {t('storybook.directionalIcon.back')}
+              <ChevronBackIcon /> "Eksempel Tekst"
             </Button>
           </Stack>
         </Card>
@@ -99,9 +98,9 @@ export const ArrowForward: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.directionalIcon.arrowForward')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button>
-              {t('storybook.directionalIcon.next')} <ArrowForwardIcon />
+              "Eksempel Tekst" <ArrowForwardIcon />
             </Button>
           </Stack>
         </Card>
@@ -123,9 +122,9 @@ export const ArrowBack: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.directionalIcon.arrowBack')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button>
-              <ArrowBackIcon /> {t('storybook.directionalIcon.back')}
+              <ArrowBackIcon /> "Eksempel Tekst"
             </Button>
           </Stack>
         </Card>

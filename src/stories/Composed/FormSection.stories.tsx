@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { FormSection, Textfield, Label, Stack } from '../../index';
 
 /**
@@ -55,18 +54,18 @@ export const Default: Story = {
         spacing="var(--ds-spacing-4)"
         style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
       >
-        <FormSection title={t('storybook.formSection.personalInfo')}>
+        <FormSection title="Eksempel Tekst">
           <Stack spacing="var(--ds-spacing-3)" direction="vertical">
             <Stack spacing="var(--ds-spacing-2)" direction="vertical">
-              <Label htmlFor="name">{t('storybook.formSection.name')}</Label>
-              <Textfield id="name" placeholder={t('storybook.formSection.enterName')} />
+              <Label htmlFor="name">"Eksempel Tekst"</Label>
+              <Textfield id="name" placeholder="Eksempel Tekst" />
             </Stack>
             <Stack spacing="var(--ds-spacing-2)" direction="vertical">
-              <Label htmlFor="email">{t('storybook.formSection.email')}</Label>
+              <Label htmlFor="email">"Eksempel Tekst"</Label>
               <Textfield
                 id="email"
                 type="email"
-                placeholder={t('storybook.formSection.enterEmail')}
+                placeholder="Eksempel Tekst"
               />
             </Stack>
           </Stack>
@@ -85,20 +84,20 @@ export const WithDescription: Story = {
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <FormSection
-          title={t('storybook.formSection.personalInfo')}
-          description={t('storybook.formSection.personalInfoDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <div>
-              <Label htmlFor="name">{t('storybook.formSection.name')}</Label>
-              <Textfield id="name" placeholder={t('storybook.formSection.enterName')} />
+              <Label htmlFor="name">"Eksempel Tekst"</Label>
+              <Textfield id="name" placeholder="Eksempel Tekst" />
             </div>
             <div>
-              <Label htmlFor="email">{t('storybook.formSection.email')}</Label>
+              <Label htmlFor="email">"Eksempel Tekst"</Label>
               <Textfield
                 id="email"
                 type="email"
-                placeholder={t('storybook.formSection.enterEmail')}
+                placeholder="Eksempel Tekst"
               />
             </div>
           </div>
@@ -116,32 +115,32 @@ export const Multiple: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
-        <FormSection title={t('storybook.formSection.personalInfo')}>
+        <FormSection title="Eksempel Tekst">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <div>
-              <Label htmlFor="name">{t('storybook.formSection.name')}</Label>
-              <Textfield id="name" placeholder={t('storybook.formSection.enterName')} />
+              <Label htmlFor="name">"Eksempel Tekst"</Label>
+              <Textfield id="name" placeholder="Eksempel Tekst" />
             </div>
             <div>
-              <Label htmlFor="email">{t('storybook.formSection.email')}</Label>
+              <Label htmlFor="email">"Eksempel Tekst"</Label>
               <Textfield
                 id="email"
                 type="email"
-                placeholder={t('storybook.formSection.enterEmail')}
+                placeholder="Eksempel Tekst"
               />
             </div>
           </div>
         </FormSection>
         <Stack spacing="var(--ds-spacing-6)" style={{ marginTop: 'var(--ds-spacing-6)' }}>
-          <FormSection title={t('storybook.formSection.address')}>
+          <FormSection title="Eksempel Tekst">
             <Stack spacing="var(--ds-spacing-3)" direction="vertical">
               <Stack spacing="var(--ds-spacing-2)" direction="vertical">
-                <Label htmlFor="street">{t('storybook.formSection.street')}</Label>
-                <Textfield id="street" placeholder={t('storybook.formSection.enterStreet')} />
+                <Label htmlFor="street">"Eksempel Tekst"</Label>
+                <Textfield id="street" placeholder="Eksempel Tekst" />
               </Stack>
               <Stack spacing="var(--ds-spacing-2)" direction="vertical">
-                <Label htmlFor="city">{t('storybook.formSection.city')}</Label>
-                <Textfield id="city" placeholder={t('storybook.formSection.enterCity')} />
+                <Label htmlFor="city">"Eksempel Tekst"</Label>
+                <Textfield id="city" placeholder="Eksempel Tekst" />
               </Stack>
             </Stack>
           </FormSection>

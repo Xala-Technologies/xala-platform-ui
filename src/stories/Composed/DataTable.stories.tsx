@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { DataTable } from '../../composed/DataTable';
 import { Badge } from '../../composed/Badge';
 import { TableFilter, type FilterConfig, type FilterValues, Stack, Pagination } from '../../index';
@@ -140,7 +139,7 @@ const DefaultDemo = () => {
         data={sampleData}
         columns={columns}
         getRowKey={(row) => row.id}
-        ariaLabel={t('storybook.demo.userTable')}
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -175,7 +174,7 @@ const WithSortingDemo = () => {
         sortColumn={sortColumn}
         sortDirection={sortDirection}
         onSort={handleSort}
-        ariaLabel={t('storybook.demo.sortableUserTable')}
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -200,7 +199,7 @@ const WithRowClickDemo = () => {
         columns={columns}
         getRowKey={(row) => row.id}
         onRowClick={fn()}
-        ariaLabel={t('storybook.demo.clickableUserTable')}
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -224,7 +223,7 @@ const LoadingDemo = () => {
         columns={columns}
         getRowKey={(row) => row.id}
         isLoading={true}
-        ariaLabel={t('storybook.demo.loadingTable')}
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -247,8 +246,8 @@ const EmptyDemo = () => {
         data={[]}
         columns={columns}
         getRowKey={(row) => row.id}
-        emptyMessage={t('storybook.demo.noUsersFound')}
-        ariaLabel={t('storybook.demo.emptyTable')}
+        emptyMessage="Eksempel Tekst"
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -273,7 +272,7 @@ const StickyHeaderDemo = () => {
         columns={columns}
         getRowKey={(row) => row.id}
         stickyHeader={true}
-        ariaLabel={t('storybook.demo.stickyHeaderTable')}
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -298,7 +297,7 @@ const CustomHeightDemo = () => {
         columns={columns}
         getRowKey={(row) => row.id}
         height="300px"
-        ariaLabel={t('storybook.demo.customHeightTable')}
+        ariaLabel="Eksempel Tekst"
       />
     </div>
   );
@@ -394,8 +393,8 @@ const WithFilteringDemo = () => {
         data={filteredData}
         columns={columns}
         getRowKey={(row) => row.id}
-        emptyMessage={t('storybook.demo.noUsersFound')}
-        ariaLabel={t('storybook.demo.userTable')}
+        emptyMessage="Eksempel Tekst"
+        ariaLabel="Eksempel Tekst"
       />
     </Stack>
   );
@@ -559,7 +558,7 @@ const WithPaginationDemo = () => {
         data={paginatedData}
         columns={columns}
         getRowKey={(row) => row.id}
-        ariaLabel={t('storybook.demo.userTable')}
+        ariaLabel="Eksempel Tekst"
       />
       <div
         style={{
@@ -725,8 +724,8 @@ const CompleteExampleDemo = () => {
         sortColumn={sortColumn}
         sortDirection={sortDirection}
         onSort={handleSort}
-        emptyMessage={t('storybook.demo.noUsersFound')}
-        ariaLabel={t('storybook.demo.userTable')}
+        emptyMessage="Eksempel Tekst"
+        ariaLabel="Eksempel Tekst"
       />
       <div
         style={{

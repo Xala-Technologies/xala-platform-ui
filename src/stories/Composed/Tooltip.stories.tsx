@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Tooltip, Button, Stack } from '../../index';
 
 /**
@@ -54,8 +53,8 @@ export const Default: Story = {
     const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-20)" style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.defaultContent')}>
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst">
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </Stack>
     );
@@ -70,8 +69,8 @@ export const Bottom: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.bottomContent')} position="bottom">
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst" position="bottom">
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </div>
     );
@@ -86,8 +85,8 @@ export const Left: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.leftContent')} position="left">
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst" position="left">
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </div>
     );
@@ -102,8 +101,8 @@ export const Right: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.rightContent')} position="right">
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst" position="right">
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </div>
     );
@@ -118,8 +117,8 @@ export const WithDelay: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.delayedContent')} delay={500}>
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst" delay={500}>
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </div>
     );
@@ -134,8 +133,8 @@ export const LongContent: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.longContent')}>
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst">
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </div>
     );
@@ -150,8 +149,8 @@ export const Disabled: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-20)' }}>
-        <Tooltip content={t('storybook.tooltip.defaultContent')} disabled>
-          <Button data-color="accent">{t('storybook.tooltip.hoverMe')}</Button>
+        <Tooltip content="Eksempel Tekst" disabled>
+          <Button data-color="accent">"Eksempel Tekst"</Button>
         </Tooltip>
       </div>
     );

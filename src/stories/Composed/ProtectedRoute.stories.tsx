@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ProtectedRoute, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -43,8 +42,8 @@ export const Loading: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.protectedRoute.loading')}</Paragraph>
-            <Paragraph data-size="sm">{t('storybook.protectedRoute.loadingNote')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </Stack>
@@ -65,8 +64,8 @@ export const Authenticated: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.protectedRoute.authenticated')}</Paragraph>
-            <Paragraph data-size="sm">{t('storybook.protectedRoute.authenticatedNote')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </Stack>
@@ -87,8 +86,8 @@ export const AccessDenied: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.protectedRoute.accessDenied')}</Paragraph>
-            <Paragraph data-size="sm">{t('storybook.protectedRoute.accessDeniedNote')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </Stack>

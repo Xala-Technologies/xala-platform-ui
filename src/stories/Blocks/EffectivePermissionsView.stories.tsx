@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { EffectivePermissionsView } from '../../blocks/admin/EffectivePermissionsView';
 import type { EffectivePermission } from '../../blocks/admin/EffectivePermissionsView';
 

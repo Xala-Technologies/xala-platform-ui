@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Spinner } from '../../index';
 
 /**
@@ -188,7 +187,7 @@ export const Default: Story = {
 export const WithLabel: Story = {
   render: function Render() {
     const t = useT();
-    return <Spinner aria-label={t('storybook.demo.loadingContent')} />;
+    return <Spinner aria-label="Eksempel Tekst" />;
   },
 };
 
@@ -244,9 +243,9 @@ export const LoadingState: Story = {
           borderRadius: 'var(--ds-border-radius-lg)',
         }}
       >
-        <Spinner data-size="lg" aria-label={t('storybook.demo.loadingData')} />
+        <Spinner data-size="lg" aria-label="Eksempel Tekst" />
         <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          {t('storybook.demo.loadingData')}...
+          "Eksempel Tekst"...
         </span>
       </div>
     );
@@ -263,26 +262,26 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-            <Spinner data-size="sm" aria-label={t('storybook.demo.smallSpinner')} />
-            <Spinner data-size="md" aria-label={t('storybook.demo.mediumSpinner')} />
-            <Spinner data-size="lg" aria-label={t('storybook.demo.largeSpinner')} />
+            <Spinner data-size="sm" aria-label="Eksempel Tekst" />
+            <Spinner data-size="md" aria-label="Eksempel Tekst" />
+            <Spinner data-size="lg" aria-label="Eksempel Tekst" />
           </div>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.colors')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-            <Spinner data-color="neutral" aria-label={t('storybook.demo.neutralSpinner')} />
-            <Spinner data-color="accent" aria-label={t('storybook.demo.accentSpinner')} />
+            <Spinner data-color="neutral" aria-label="Eksempel Tekst" />
+            <Spinner data-color="accent" aria-label="Eksempel Tekst" />
           </div>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.inButton')}
+            "Eksempel Tekst"
           </h3>
           <Button loading disabled type="button">
             {t('platform.common.loading')}...

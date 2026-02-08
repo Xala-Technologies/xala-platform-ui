@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Center, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -41,7 +40,7 @@ export const BothAxes: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.center.bothAxes')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Center
               axis="both"
               style={{
@@ -50,7 +49,7 @@ export const BothAxes: Story = {
                 borderRadius: 'var(--ds-border-radius-md)',
               }}
             >
-              <Button>{t('storybook.center.centered')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </Center>
           </Stack>
         </Card>
@@ -72,7 +71,7 @@ export const Horizontal: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.center.horizontal')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Center
               axis="horizontal"
               style={{
@@ -81,7 +80,7 @@ export const Horizontal: Story = {
                 padding: 'var(--ds-spacing-4)',
               }}
             >
-              <Button>{t('storybook.center.centered')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </Center>
           </Stack>
         </Card>
@@ -103,7 +102,7 @@ export const Vertical: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.center.vertical')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Center
               axis="vertical"
               style={{
@@ -112,7 +111,7 @@ export const Vertical: Story = {
                 borderRadius: 'var(--ds-border-radius-md)',
               }}
             >
-              <Button>{t('storybook.center.centered')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </Center>
           </Stack>
         </Card>

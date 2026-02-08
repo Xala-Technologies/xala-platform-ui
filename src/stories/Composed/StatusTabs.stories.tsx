@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { StatusTabs, Stack, Paragraph, Card } from '../../index';
 import { CheckCircleIcon, ClockIcon, XCircleIcon } from '../../index';
 
@@ -44,7 +43,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.statusTabs.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <StatusTabs
               tabs={[
                 { id: 'all', label: t('storybook.statusTabs.all'), count: 42 },
@@ -91,7 +90,7 @@ export const WithIcons: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.statusTabs.withIcons')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <StatusTabs
               tabs={[
                 { id: 'all', label: t('storybook.statusTabs.all'), count: 42 },
@@ -141,7 +140,7 @@ export const WithoutCounts: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.statusTabs.withoutCounts')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <StatusTabs
               tabs={[
                 { id: 'all', label: t('storybook.statusTabs.all') },

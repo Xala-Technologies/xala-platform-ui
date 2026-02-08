@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { DateRangePicker, type DateRange } from '../../index';
 
 /**
@@ -61,7 +60,7 @@ export const Default: Story = {
         <DateRangePicker
           value={value}
           onChange={setValue}
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -83,7 +82,7 @@ export const WithValue: Story = {
         <DateRangePicker
           value={value}
           onChange={setValue}
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -102,8 +101,8 @@ export const WithLabel: Story = {
         <DateRangePicker
           value={value}
           onChange={setValue}
-          label={t('storybook.dateRangePicker.dateRange')}
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          label="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -144,7 +143,7 @@ export const WithCustomPresets: Story = {
           value={value}
           onChange={setValue}
           presets={presets}
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -169,7 +168,7 @@ export const WithConstraints: Story = {
           onChange={setValue}
           minDate={minDate}
           maxDate={maxDate}
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -188,8 +187,8 @@ export const WithError: Story = {
         <DateRangePicker
           value={value}
           onChange={setValue}
-          error={t('storybook.dateRangePicker.errorMessage')}
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          error="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -212,7 +211,7 @@ export const Disabled: Story = {
           value={value}
           onChange={setValue}
           disabled
-          placeholder={t('storybook.dateRangePicker.selectDateRange')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );

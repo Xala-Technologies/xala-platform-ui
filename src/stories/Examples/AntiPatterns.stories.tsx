@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Examples/Anti-Patterns',
@@ -50,7 +49,7 @@ export const HardcodedColors: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.dont')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -60,7 +59,7 @@ export const HardcodedColors: Story = {
               borderRadius: '8px',
             }}
           >
-            {t('storybook.antiPatterns.hardcodedHexColors')}
+            "Eksempel Tekst"
           </div>
           <pre
             style={{
@@ -89,7 +88,7 @@ export const HardcodedColors: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.do')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -99,7 +98,7 @@ export const HardcodedColors: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            {t('storybook.antiPatterns.designTokenColors')}
+            "Eksempel Tekst"
           </div>
           <pre
             style={{
@@ -140,7 +139,7 @@ export const HardcodedSpacing: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.dont')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -152,7 +151,7 @@ export const HardcodedSpacing: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            {t('storybook.antiPatterns.hardcodedPixelValues')}
+            "Eksempel Tekst"
           </div>
           <pre
             style={{
@@ -182,7 +181,7 @@ export const HardcodedSpacing: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.do')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -194,7 +193,7 @@ export const HardcodedSpacing: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            {t('storybook.antiPatterns.designTokenSpacing')}
+            "Eksempel Tekst"
           </div>
           <pre
             style={{
@@ -236,7 +235,7 @@ export const MissingAccessibility: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.dont')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -246,12 +245,12 @@ export const MissingAccessibility: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            <input type="text" placeholder={t('storybook.antiPatterns.enterName')} />
+            <input type="text" placeholder="Eksempel Tekst" />
             <div
               onClick={() => alert('clicked')}
               style={{ cursor: 'pointer', marginTop: 'var(--ds-spacing-2)' }}
             >
-              {t('storybook.antiPatterns.clickMe')}
+              "Eksempel Tekst"
             </div>
           </div>
           <pre
@@ -280,7 +279,7 @@ export const MissingAccessibility: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.do')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -295,7 +294,7 @@ export const MissingAccessibility: Story = {
               <input
                 id="name-input"
                 type="text"
-                aria-label={t('storybook.antiPatterns.enterYourName')}
+                aria-label="Eksempel Tekst"
                 style={{ display: 'block', marginTop: 'var(--ds-spacing-1)' }}
               />
             </label>
@@ -304,7 +303,7 @@ export const MissingAccessibility: Story = {
               onClick={() => alert('clicked')}
               style={{ marginTop: 'var(--ds-spacing-2)' }}
             >
-              {t('storybook.antiPatterns.clickMe')}
+              "Eksempel Tekst"
             </button>
           </div>
           <pre
@@ -354,7 +353,7 @@ export const HardcodedText: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.dont')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -393,7 +392,7 @@ export const HardcodedText: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.do')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -403,8 +402,8 @@ export const HardcodedText: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            <h3>{t('storybook.demo.welcome')} (from t())</h3>
-            <p>{t('storybook.demo.clickToContinue')} (from t())</p>
+            <h3>"Eksempel Tekst" (from t())</h3>
+            <p>"Eksempel Tekst" (from t())</p>
             <button type="button">{t('platform.common.continue')} (from t())</button>
           </div>
           <pre
@@ -418,7 +417,6 @@ export const HardcodedText: Story = {
             }}
           >
             {`// Using i18n translation function
-const { t } = useTranslation();
 
 <h3>{t('welcome.title')}</h3>
 <p>{t('welcome.description')}</p>
@@ -446,7 +444,7 @@ export const CustomComponents: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.dont')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -466,7 +464,7 @@ export const CustomComponents: Story = {
                 display: 'inline-block',
               }}
             >
-              {t('storybook.antiPatterns.customButton')}
+              "Eksempel Tekst"
             </div>
           </div>
           <pre
@@ -500,7 +498,7 @@ export const CustomComponents: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.bestPractices.do')}
+            "Eksempel Tekst"
           </h4>
           <div
             style={{
@@ -511,7 +509,7 @@ export const CustomComponents: Story = {
             }}
           >
             <button className="ds-button" data-variant="primary" data-size="md" type="button">
-              {t('storybook.antiPatterns.platformButton')}
+              "Eksempel Tekst"
             </button>
           </div>
           <pre
@@ -558,33 +556,33 @@ export const Summary: Story = {
             marginBottom: 'var(--ds-spacing-4)',
           }}
         >
-          {t('storybook.antiPatterns.checklist')}
+          "Eksempel Tekst"
         </h3>
         <div style={{ color: 'var(--ds-color-info-text-default)' }}>
           <p style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            <strong>{t('storybook.antiPatterns.alwaysAvoid')}:</strong>
+            <strong>"Eksempel Tekst":</strong>
           </p>
           <ul style={{ marginLeft: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-4)' }}>
-            <li>{t('storybook.antiPatterns.avoidHardcodedColors')}</li>
-            <li>{t('storybook.antiPatterns.avoidHardcodedSpacing')}</li>
-            <li>{t('storybook.antiPatterns.avoidMissingA11y')}</li>
-            <li>{t('storybook.antiPatterns.avoidHardcodedText')}</li>
-            <li>{t('storybook.antiPatterns.avoidCustomComponents')}</li>
-            <li>{t('storybook.antiPatterns.avoidDirectFetch')}</li>
-            <li>{t('storybook.antiPatterns.avoidDomainLogic')}</li>
-            <li>{t('storybook.antiPatterns.avoidInlineStyles')}</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
           </ul>
           <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            <strong>{t('storybook.antiPatterns.alwaysUse')}:</strong>
+            <strong>"Eksempel Tekst":</strong>
           </p>
           <ul style={{ marginLeft: 'var(--ds-spacing-6)' }}>
-            <li>{t('storybook.antiPatterns.useDesignTokens')}</li>
-            <li>{t('storybook.antiPatterns.usePlatformUI')}</li>
-            <li>{t('storybook.antiPatterns.useA11yAttributes')}</li>
-            <li>{t('storybook.antiPatterns.useI18n')}</li>
-            <li>{t('storybook.antiPatterns.useSdk')}</li>
-            <li>{t('storybook.antiPatterns.useSemanticHtml')}</li>
-            <li>{t('storybook.antiPatterns.useFeatureFlags')}</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
+            <li>"Eksempel Tekst"</li>
           </ul>
         </div>
       </div>

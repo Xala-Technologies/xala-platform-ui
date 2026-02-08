@@ -25,7 +25,6 @@ import {
   ArrowRightIcon,
   PlayIcon,
 } from '@navikt/aksel-icons';
-import { useT } from '@xala-technologies/i18n';
 
 // Docs description is localized via the PlatformOverview story component
 // The meta description is minimal since the actual content is in the story components
@@ -93,7 +92,7 @@ export const PlatformOverview: Story = {
     return (
       <div>
         <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.overview.welcome')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           data-size="lg"
@@ -102,7 +101,7 @@ export const PlatformOverview: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.overview.subtitle')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <div
@@ -181,7 +180,7 @@ export const ArchitecturePrinciples: Story = {
     return (
       <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-8)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.architecture.title')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -250,7 +249,7 @@ export const ComponentCategories: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.resources.components')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
@@ -318,7 +317,7 @@ export const InteractiveLiveDemo: Story = {
               aria-hidden
             />
             <Heading level={2} data-size="lg">
-              {t('storybook.demo.tryItLive')}
+              "Eksempel Tekst"
             </Heading>
           </div>
           <Paragraph
@@ -327,7 +326,7 @@ export const InteractiveLiveDemo: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.demo.tryItLiveDesc')}
+            "Eksempel Tekst"
           </Paragraph>
 
           <Card
@@ -337,15 +336,15 @@ export const InteractiveLiveDemo: Story = {
             }}
           >
             <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              {t('storybook.form.welcomeForm')}
+              "Eksempel Tekst"
             </Heading>
 
             <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
               <Textfield
-                label={t('storybook.form.yourName')}
+                label="Eksempel Tekst"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t('storybook.form.enterName')}
+                placeholder="Eksempel Tekst"
                 data-size="md"
               />
             </div>
@@ -354,9 +353,9 @@ export const InteractiveLiveDemo: Story = {
               <Checkbox
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                aria-label={t('storybook.form.agreeTerms')}
+                aria-label="Eksempel Tekst"
               >
-                {t('storybook.form.agreeTerms')}
+                "Eksempel Tekst"
               </Checkbox>
             </div>
 
@@ -367,7 +366,7 @@ export const InteractiveLiveDemo: Story = {
               onClick={() => setSubmitted(true)}
               style={{ width: '100%' }}
             >
-              {t('storybook.form.getStarted')}
+              "Eksempel Tekst"
             </Button>
 
             {submitted && name && (
@@ -410,7 +409,7 @@ export const InteractiveLiveDemo: Story = {
               aria-hidden
             />
             <Heading level={2} data-size="lg">
-              {t('storybook.demo.theCode')}
+              "Eksempel Tekst"
             </Heading>
           </div>
           <Paragraph
@@ -419,7 +418,7 @@ export const InteractiveLiveDemo: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.demo.theCodeDesc')}
+            "Eksempel Tekst"
           </Paragraph>
 
           <pre
@@ -474,11 +473,11 @@ export function WelcomeForm() {
             }}
           >
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-              <strong>{t('storybook.demo.keyFeatures')}:</strong>
-              <br />• {t('storybook.demo.designTokensSpacing')}
-              <br />• {t('storybook.demo.accessibleFormControls')}
-              <br />• {t('storybook.demo.properStateManagement')}
-              <br />• {t('storybook.demo.responsiveLayout')}
+              <strong>"Eksempel Tekst":</strong>
+              <br />• "Eksempel Tekst"
+              <br />• "Eksempel Tekst"
+              <br />• "Eksempel Tekst"
+              <br />• "Eksempel Tekst"
             </Paragraph>
           </div>
         </div>
@@ -502,16 +501,16 @@ export const ComponentShowcase: Story = {
         demo: (
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button data-variant="primary" data-size="sm">
-              {t('storybook.demo.primary')}
+              "Eksempel Tekst"
             </Button>
             <Button data-variant="secondary" data-size="sm">
-              {t('storybook.demo.secondary')}
+              "Eksempel Tekst"
             </Button>
             <Button data-variant="tertiary" data-size="sm">
-              {t('storybook.demo.tertiary')}
+              "Eksempel Tekst"
             </Button>
             <Button data-variant="danger" data-size="sm">
-              {t('storybook.demo.danger')}
+              "Eksempel Tekst"
             </Button>
           </div>
         ),
@@ -522,10 +521,10 @@ export const ComponentShowcase: Story = {
         demo: (
           <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-5)' }}>
             <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              {t('storybook.demo.cardTitle')}
+              "Eksempel Tekst"
             </Heading>
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-              {t('storybook.demo.cardDescription')}
+              "Eksempel Tekst"
             </Paragraph>
           </Card>
         ),
@@ -544,7 +543,7 @@ export const ComponentShowcase: Story = {
             <Heading level={3} data-size="md">
               Heading MD
             </Heading>
-            <Paragraph data-size="md">{t('storybook.demo.bodyText')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
           </div>
         ),
       },
@@ -566,7 +565,7 @@ export const ComponentShowcase: Story = {
             aria-hidden
           />
           <Heading level={2} data-size="lg">
-            {t('storybook.demo.componentShowcase')}
+            "Eksempel Tekst"
           </Heading>
         </div>
 
@@ -647,7 +646,7 @@ export const ResourcesAndLinks: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.resources.title')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>

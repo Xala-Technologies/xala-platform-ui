@@ -4,7 +4,6 @@
  * Displays feature/attribute chips with optional icons and availability states.
  */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { FeatureChips, type FeatureChipsProps } from '../../patterns/FeatureChips';
 import type { PatternFeatureItem } from '../../patterns/types';
 
@@ -251,19 +250,19 @@ export const AllSizes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeSmall')}
+            "Eksempel Tekst"
           </p>
           <FeatureChips features={basicFeatures.slice(0, 3)} size="sm" layout="wrap" />
         </div>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeMedium')}
+            "Eksempel Tekst"
           </p>
           <FeatureChips features={basicFeatures.slice(0, 3)} size="md" layout="wrap" />
         </div>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeLarge')}
+            "Eksempel Tekst"
           </p>
           <FeatureChips features={basicFeatures.slice(0, 3)} size="lg" layout="wrap" />
         </div>
@@ -280,19 +279,19 @@ export const AllLayouts: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.layoutWrap')}
+            "Eksempel Tekst"
           </p>
           <FeatureChips features={basicFeatures} layout="wrap" size="sm" />
         </div>
         <div style={{ maxWidth: '600px', overflowX: 'auto' }}>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.layoutHorizontal')}
+            "Eksempel Tekst"
           </p>
           <FeatureChips features={basicFeatures} layout="horizontal" size="sm" />
         </div>
         <div style={{ maxWidth: '200px' }}>
           <p style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.layoutVertical')}
+            "Eksempel Tekst"
           </p>
           <FeatureChips features={basicFeatures} layout="vertical" size="sm" />
         </div>

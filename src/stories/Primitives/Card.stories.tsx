@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Card, Stack, Paragraph, Heading } from '../../index';
 
 /**
@@ -40,9 +39,9 @@ export const Default: Story = {
         <Card>
           <Stack spacing="var(--ds-spacing-4)">
             <Heading level={3} data-size="md">
-              {t('storybook.card.title')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.card.description')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </Stack>
@@ -64,9 +63,9 @@ export const Outlined: Story = {
         <Card variant="outlined">
           <Stack spacing="var(--ds-spacing-4)">
             <Heading level={3} data-size="md">
-              {t('storybook.card.outlined')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.card.description')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </Stack>
@@ -88,9 +87,9 @@ export const Elevated: Story = {
         <Card variant="elevated">
           <Stack spacing="var(--ds-spacing-4)">
             <Heading level={3} data-size="md">
-              {t('storybook.card.elevated')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.card.description')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </Stack>

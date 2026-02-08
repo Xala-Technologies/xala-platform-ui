@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { XTerminal, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,7 +40,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.xTerminal.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <XTerminal sessionId="session-1" cwd="~/projects/my-app" height={300} isActive={true} />
           </Stack>
         </Card>
@@ -63,7 +62,7 @@ export const WithInitialCommand: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.xTerminal.withCommand')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <XTerminal
               sessionId="session-2"
               cwd="~/projects/my-app"
@@ -91,7 +90,7 @@ export const CustomHeight: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.xTerminal.customHeight')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <XTerminal sessionId="session-3" cwd="~/projects/my-app" height={500} isActive={true} />
           </Stack>
         </Card>
@@ -113,7 +112,7 @@ export const Inactive: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.xTerminal.inactive')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <XTerminal
               sessionId="session-4"
               cwd="~/projects/my-app"

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { BidiSafeInput, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -45,13 +44,13 @@ export const Email: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bidiSafeInput.email')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <BidiSafeInput
               type="email"
-              label={t('storybook.bidiSafeInput.emailLabel')}
+              label="Eksempel Tekst"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={t('storybook.bidiSafeInput.emailPlaceholder')}
+              placeholder="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -74,13 +73,13 @@ export const Url: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bidiSafeInput.url')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <BidiSafeInput
               type="url"
-              label={t('storybook.bidiSafeInput.urlLabel')}
+              label="Eksempel Tekst"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={t('storybook.bidiSafeInput.urlPlaceholder')}
+              placeholder="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -103,13 +102,13 @@ export const Phone: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bidiSafeInput.phone')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <BidiSafeInput
               type="tel"
-              label={t('storybook.bidiSafeInput.phoneLabel')}
+              label="Eksempel Tekst"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={t('storybook.bidiSafeInput.phonePlaceholder')}
+              placeholder="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -132,13 +131,13 @@ export const Code: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bidiSafeInput.code')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <BidiSafeInput
               type="code"
-              label={t('storybook.bidiSafeInput.codeLabel')}
+              label="Eksempel Tekst"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={t('storybook.bidiSafeInput.codePlaceholder')}
+              placeholder="Eksempel Tekst"
             />
           </Stack>
         </Card>

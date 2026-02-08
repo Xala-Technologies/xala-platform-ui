@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Tag, Heading } from '../../index';
 import {
   SparklesIcon,
@@ -194,7 +193,7 @@ type Story = StoryObj;
 export const Default: Story = {
   render: function Render() {
     const t = useT();
-    return <Tag>{t('storybook.demo.defaultTag')}</Tag>;
+    return <Tag>"Eksempel Tekst"</Tag>;
   },
 };
 
@@ -203,11 +202,11 @@ export const Colors: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Tag data-color="neutral">{t('storybook.demo.neutral')}</Tag>
-        <Tag data-color="success">{t('storybook.demo.success')}</Tag>
-        <Tag data-color="warning">{t('storybook.demo.warning')}</Tag>
-        <Tag data-color="danger">{t('storybook.demo.danger')}</Tag>
-        <Tag data-color="info">{t('storybook.demo.info')}</Tag>
+        <Tag data-color="neutral">"Eksempel Tekst"</Tag>
+        <Tag data-color="success">"Eksempel Tekst"</Tag>
+        <Tag data-color="warning">"Eksempel Tekst"</Tag>
+        <Tag data-color="danger">"Eksempel Tekst"</Tag>
+        <Tag data-color="info">"Eksempel Tekst"</Tag>
       </div>
     );
   },
@@ -218,9 +217,9 @@ export const Sizes: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-        <Tag data-size="sm">{t('storybook.demo.small')}</Tag>
-        <Tag data-size="md">{t('storybook.demo.medium')}</Tag>
-        <Tag data-size="lg">{t('storybook.demo.large')}</Tag>
+        <Tag data-size="sm">"Eksempel Tekst"</Tag>
+        <Tag data-size="md">"Eksempel Tekst"</Tag>
+        <Tag data-size="lg">"Eksempel Tekst"</Tag>
       </div>
     );
   },
@@ -234,8 +233,8 @@ export const StatusTags: Story = {
         <Tag data-color="success">{t('platform.status.active')}</Tag>
         <Tag data-color="warning">{t('platform.status.pending')}</Tag>
         <Tag data-color="danger">{t('platform.status.cancelled')}</Tag>
-        <Tag data-color="neutral">{t('storybook.demo.draft')}</Tag>
-        <Tag data-color="info">{t('storybook.demo.processing')}</Tag>
+        <Tag data-color="neutral">"Eksempel Tekst"</Tag>
+        <Tag data-color="info">"Eksempel Tekst"</Tag>
       </div>
     );
   },
@@ -246,10 +245,10 @@ export const CategoryTags: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Tag>{t('storybook.demo.meetingRoom')}</Tag>
-        <Tag>{t('storybook.demo.sportsHall')}</Tag>
-        <Tag>{t('storybook.demo.outdoor')}</Tag>
-        <Tag>{t('storybook.demo.equipment')}</Tag>
+        <Tag>"Eksempel Tekst"</Tag>
+        <Tag>"Eksempel Tekst"</Tag>
+        <Tag>"Eksempel Tekst"</Tag>
+        <Tag>"Eksempel Tekst"</Tag>
       </div>
     );
   },
@@ -273,7 +272,7 @@ export const WithIcons: Story = {
             aria-hidden
             style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
           />
-          {t('storybook.demo.aiGenerated')}
+          "Eksempel Tekst"
         </Tag>
         <Tag
           data-color="success"
@@ -285,7 +284,7 @@ export const WithIcons: Story = {
             aria-hidden
             style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
           />
-          {t('storybook.demo.verified')}
+          "Eksempel Tekst"
         </Tag>
         <Tag
           data-color="warning"
@@ -297,7 +296,7 @@ export const WithIcons: Story = {
             aria-hidden
             style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
           />
-          {t('storybook.demo.reviewNeeded')}
+          "Eksempel Tekst"
         </Tag>
         <Tag data-color="info" data-size="md" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
           <InformationSquareIcon
@@ -305,7 +304,7 @@ export const WithIcons: Story = {
             aria-hidden
             style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
           />
-          {t('storybook.demo.new')}
+          "Eksempel Tekst"
         </Tag>
       </div>
     );
@@ -322,7 +321,7 @@ export const Variants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div>
           <h4 style={{ marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)' }}>
-            {t('storybook.demo.defaultFilled')}
+            "Eksempel Tekst"
           </h4>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             {[
@@ -344,7 +343,7 @@ export const Variants: Story = {
         </div>
         <div>
           <h4 style={{ marginBottom: 'var(--ds-spacing-2)', fontSize: 'var(--ds-font-size-sm)' }}>
-            {t('storybook.demo.outline')}
+            "Eksempel Tekst"
           </h4>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             {[
@@ -379,42 +378,42 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.colors')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Tag data-color="neutral">{t('storybook.demo.neutral')}</Tag>
-            <Tag data-color="success">{t('storybook.demo.success')}</Tag>
-            <Tag data-color="warning">{t('storybook.demo.warning')}</Tag>
-            <Tag data-color="danger">{t('storybook.demo.danger')}</Tag>
-            <Tag data-color="info">{t('storybook.demo.info')}</Tag>
-            <Tag data-color="accent">{t('storybook.demo.accent')}</Tag>
+            <Tag data-color="neutral">"Eksempel Tekst"</Tag>
+            <Tag data-color="success">"Eksempel Tekst"</Tag>
+            <Tag data-color="warning">"Eksempel Tekst"</Tag>
+            <Tag data-color="danger">"Eksempel Tekst"</Tag>
+            <Tag data-color="info">"Eksempel Tekst"</Tag>
+            <Tag data-color="accent">"Eksempel Tekst"</Tag>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
-            <Tag data-size="sm">{t('storybook.demo.small')}</Tag>
-            <Tag data-size="md">{t('storybook.demo.medium')}</Tag>
-            <Tag data-size="lg">{t('storybook.demo.large')}</Tag>
+            <Tag data-size="sm">"Eksempel Tekst"</Tag>
+            <Tag data-size="md">"Eksempel Tekst"</Tag>
+            <Tag data-size="lg">"Eksempel Tekst"</Tag>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.variants')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
-            <Tag variant="default">{t('storybook.story.default')}</Tag>
-            <Tag variant="outline">{t('storybook.demo.outline')}</Tag>
+            <Tag variant="default">"Eksempel Tekst"</Tag>
+            <Tag variant="outline">"Eksempel Tekst"</Tag>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.withIcons')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Tag data-color="success" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
@@ -423,7 +422,7 @@ export const AllVariants: Story = {
                 aria-hidden
                 style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
               />
-              {t('storybook.demo.verified')}
+              "Eksempel Tekst"
             </Tag>
             <Tag data-color="neutral" style={{ paddingInlineStart: 'var(--ds-spacing-1)' }}>
               <SparklesIcon
@@ -431,21 +430,21 @@ export const AllVariants: Story = {
                 aria-hidden
                 style={{ marginInlineEnd: 'var(--ds-spacing-1)' }}
               />
-              {t('storybook.demo.aiGenerated')}
+              "Eksempel Tekst"
             </Tag>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.statusExamples')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Tag data-color="success">{t('platform.status.active')}</Tag>
             <Tag data-color="warning">{t('platform.status.pending')}</Tag>
             <Tag data-color="danger">{t('platform.status.cancelled')}</Tag>
-            <Tag data-color="neutral">{t('storybook.demo.draft')}</Tag>
-            <Tag data-color="info">{t('storybook.demo.processing')}</Tag>
+            <Tag data-color="neutral">"Eksempel Tekst"</Tag>
+            <Tag data-color="info">"Eksempel Tekst"</Tag>
           </div>
         </div>
       </div>

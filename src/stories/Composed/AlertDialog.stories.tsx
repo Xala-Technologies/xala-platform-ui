@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { AlertDialog, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -43,14 +42,14 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.alertDialog.description')}</Paragraph>
-            <Button onClick={() => setOpen(true)}>{t('storybook.alertDialog.openDialog')}</Button>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Button onClick={() => setOpen(true)}>"Eksempel Tekst"</Button>
             <AlertDialog
               open={open}
               onClose={() => setOpen(false)}
-              title={t('storybook.alertDialog.title')}
-              description={t('storybook.alertDialog.descriptionText')}
-              closeText={t('storybook.alertDialog.close')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              closeText="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -73,14 +72,14 @@ export const Info: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.alertDialog.info')}</Paragraph>
-            <Button onClick={() => setOpen(true)}>{t('storybook.alertDialog.openDialog')}</Button>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Button onClick={() => setOpen(true)}>"Eksempel Tekst"</Button>
             <AlertDialog
               open={open}
               onClose={() => setOpen(false)}
-              title={t('storybook.alertDialog.infoTitle')}
-              description={t('storybook.alertDialog.infoDescription')}
-              closeText={t('storybook.alertDialog.close')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              closeText="Eksempel Tekst"
               variant="info"
             />
           </Stack>
@@ -104,14 +103,14 @@ export const Success: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.alertDialog.success')}</Paragraph>
-            <Button onClick={() => setOpen(true)}>{t('storybook.alertDialog.openDialog')}</Button>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Button onClick={() => setOpen(true)}>"Eksempel Tekst"</Button>
             <AlertDialog
               open={open}
               onClose={() => setOpen(false)}
-              title={t('storybook.alertDialog.successTitle')}
-              description={t('storybook.alertDialog.successDescription')}
-              closeText={t('storybook.alertDialog.close')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              closeText="Eksempel Tekst"
               variant="success"
             />
           </Stack>
@@ -135,14 +134,14 @@ export const Warning: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.alertDialog.warning')}</Paragraph>
-            <Button onClick={() => setOpen(true)}>{t('storybook.alertDialog.openDialog')}</Button>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Button onClick={() => setOpen(true)}>"Eksempel Tekst"</Button>
             <AlertDialog
               open={open}
               onClose={() => setOpen(false)}
-              title={t('storybook.alertDialog.warningTitle')}
-              description={t('storybook.alertDialog.warningDescription')}
-              closeText={t('storybook.alertDialog.close')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              closeText="Eksempel Tekst"
               variant="warning"
             />
           </Stack>
@@ -166,14 +165,14 @@ export const Danger: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.alertDialog.danger')}</Paragraph>
-            <Button onClick={() => setOpen(true)}>{t('storybook.alertDialog.openDialog')}</Button>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Button onClick={() => setOpen(true)}>"Eksempel Tekst"</Button>
             <AlertDialog
               open={open}
               onClose={() => setOpen(false)}
-              title={t('storybook.alertDialog.dangerTitle')}
-              description={t('storybook.alertDialog.dangerDescription')}
-              closeText={t('storybook.alertDialog.close')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              closeText="Eksempel Tekst"
               variant="danger"
             />
           </Stack>

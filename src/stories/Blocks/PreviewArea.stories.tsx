@@ -5,7 +5,6 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { PreviewArea, Button, Stack, Paragraph } from '../../index';
 
 const meta: Meta<typeof PreviewArea> = {
@@ -38,7 +37,7 @@ export const Default: Story = {
     return (
       <PreviewArea>
         <Stack spacing="var(--ds-spacing-2)" align="center">
-          <Paragraph data-size="md">{t('storybook.demo.sampleText')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
           <Button variant="primary">{t('platform.common.submit')}</Button>
         </Stack>
       </PreviewArea>
@@ -73,7 +72,7 @@ export const CheckerboardBackground: Story = {
     const t = useT();
     return (
       <PreviewArea background="checkerboard">
-        <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </PreviewArea>
     );
   },
@@ -105,7 +104,7 @@ export const CustomHeight: Story = {
     const t = useT();
     return (
       <PreviewArea minHeight="500px">
-        <Paragraph data-size="md">{t('storybook.demo.sampleText')}</Paragraph>
+        <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
       </PreviewArea>
     );
   },

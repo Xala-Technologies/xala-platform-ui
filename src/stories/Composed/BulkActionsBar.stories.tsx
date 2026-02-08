@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { BulkActionsBar, Stack, Paragraph, Card, Button } from '../../index';
 import { TrashIcon, EditIcon, CopyIcon } from '../../index';
 
@@ -44,7 +43,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bulkActionsBar.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button onClick={() => setSelectedCount(selectedCount > 0 ? 0 : 5)}>
               {selectedCount > 0
                 ? t('storybook.bulkActionsBar.clearSelection')
@@ -53,7 +52,7 @@ export const Default: Story = {
             <BulkActionsBar
               selectedCount={selectedCount}
               selectedLabel={t('storybook.bulkActionsBar.selectedLabel', { count: selectedCount })}
-              clearLabel={t('storybook.bulkActionsBar.clear')}
+              clearLabel="Eksempel Tekst"
               onClear={() => setSelectedCount(0)}
               actions={[
                 {
@@ -90,11 +89,11 @@ export const Inline: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bulkActionsBar.inline')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <BulkActionsBar
               selectedCount={selectedCount}
               selectedLabel={t('storybook.bulkActionsBar.selectedLabel', { count: selectedCount })}
-              clearLabel={t('storybook.bulkActionsBar.clear')}
+              clearLabel="Eksempel Tekst"
               onClear={() => setSelectedCount(0)}
               position="inline"
               actions={[
@@ -131,11 +130,11 @@ export const MultipleActions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.bulkActionsBar.multipleActions')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <BulkActionsBar
               selectedCount={selectedCount}
               selectedLabel={t('storybook.bulkActionsBar.selectedLabel', { count: selectedCount })}
-              clearLabel={t('storybook.bulkActionsBar.clear')}
+              clearLabel="Eksempel Tekst"
               onClear={() => setSelectedCount(0)}
               actions={[
                 {

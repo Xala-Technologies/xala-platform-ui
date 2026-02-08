@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   SettingsTabLayout,
   SettingsField,
@@ -53,17 +52,17 @@ export const Default: Story = {
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
           title={t('platform.nav.settings')}
-          description={t('storybook.demo.cardDescription')}
+          description="Eksempel Tekst"
         >
           <SettingsField
             label={t('platform.auth.email')}
-            description={t('storybook.demo.sampleText')}
+            description="Eksempel Tekst"
           >
             <Textfield defaultValue="user@example.com" />
           </SettingsField>
           <SettingsField
             label={t('platform.nav.profile')}
-            description={t('storybook.demo.sampleText')}
+            description="Eksempel Tekst"
           >
             <Textfield defaultValue="John Doe" />
           </SettingsField>
@@ -100,18 +99,18 @@ export const WithSections: Story = {
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
           title={t('platform.nav.settings')}
-          description={t('storybook.demo.cardDescription')}
+          description="Eksempel Tekst"
         >
           <SettingsSection title={t('platform.common.details')}>
             <SettingsField
               label={t('platform.auth.email')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Textfield defaultValue="user@example.com" />
             </SettingsField>
             <SettingsField
               label={t('platform.nav.profile')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Textfield defaultValue="John Doe" />
             </SettingsField>
@@ -119,13 +118,13 @@ export const WithSections: Story = {
           <SettingsSection title={t('platform.auth.password')}>
             <SettingsField
               label={t('platform.auth.password')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Button>{t('platform.common.edit')}</Button>
             </SettingsField>
             <SettingsField
               label={t('platform.common.details')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Button>{t('platform.common.edit')}</Button>
             </SettingsField>
@@ -144,7 +143,7 @@ export const MultipleSections: Story = {
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
           title={t('platform.nav.settings')}
-          description={t('storybook.demo.cardDescription')}
+          description="Eksempel Tekst"
         >
           <SettingsSection title={t('platform.nav.profile')}>
             <SettingsField label={t('platform.nav.profile')}>
@@ -152,7 +151,7 @@ export const MultipleSections: Story = {
             </SettingsField>
             <SettingsField
               label={t('platform.common.details')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Textfield defaultValue="Software developer" />
             </SettingsField>
@@ -160,13 +159,13 @@ export const MultipleSections: Story = {
           <SettingsSection title={t('platform.common.notifications')}>
             <SettingsField
               label={t('platform.common.notifications')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Button>{t('platform.common.edit')}</Button>
             </SettingsField>
             <SettingsField
               label={t('platform.common.notifications')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Button>{t('platform.common.edit')}</Button>
             </SettingsField>
@@ -174,7 +173,7 @@ export const MultipleSections: Story = {
           <SettingsSection title={t('platform.common.details')}>
             <SettingsField
               label={t('platform.common.view')}
-              description={t('storybook.demo.sampleText')}
+              description="Eksempel Tekst"
             >
               <Button>{t('platform.common.edit')}</Button>
             </SettingsField>
@@ -200,7 +199,7 @@ export const FieldWithoutDescription: Story = {
           </SettingsField>
           <SettingsField
             label={t('platform.common.details')}
-            description={t('storybook.demo.sampleText')}
+            description="Eksempel Tekst"
           >
             <Textfield defaultValue="+47 123 45 678" />
           </SettingsField>

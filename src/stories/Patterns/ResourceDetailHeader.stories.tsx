@@ -4,7 +4,6 @@
  * Header component for resource detail pages.
  */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   ResourceDetailHeader,
   type ResourceDetailHeaderProps,

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { AccessibilityStatement } from '../../composed/AccessibilityStatement';
 
 const meta: Meta<typeof AccessibilityStatement> = {
@@ -49,14 +48,14 @@ const FullConformanceDemo = () => {
   const t = useT();
   return (
     <AccessibilityStatement
-      organizationName={t('storybook.demo.exampleOrganization')}
-      websiteName={t('storybook.demo.exampleWebsite')}
+      organizationName="Eksempel Tekst"
+      websiteName="Eksempel Tekst"
       websiteUrl="https://example.com"
       conformanceLevel="full"
       wcagLevel="AA"
       lastUpdated="2024-01-15"
       lastTested="2024-01-10"
-      testingMethod={t('storybook.demo.automatedManualTesting')}
+      testingMethod="Eksempel Tekst"
       contact={{
         email: 'accessibility@example.com',
         phone: '+47 12 34 56 78',
@@ -78,14 +77,14 @@ const PartialConformanceDemo = () => {
   const t = useT();
   return (
     <AccessibilityStatement
-      organizationName={t('storybook.demo.exampleOrganization')}
-      websiteName={t('storybook.demo.exampleWebsite')}
+      organizationName="Eksempel Tekst"
+      websiteName="Eksempel Tekst"
       websiteUrl="https://example.com"
       conformanceLevel="partial"
       wcagLevel="AA"
       lastUpdated="2024-01-15"
       lastTested="2024-01-10"
-      testingMethod={t('storybook.demo.automatedManualTesting')}
+      testingMethod="Eksempel Tekst"
       knownIssues={[
         {
           description: t('storybook.demo.imagesLackAltText'),
@@ -120,8 +119,8 @@ const NonConformantDemo = () => {
   const t = useT();
   return (
     <AccessibilityStatement
-      organizationName={t('storybook.demo.exampleOrganization')}
-      websiteName={t('storybook.demo.exampleWebsite')}
+      organizationName="Eksempel Tekst"
+      websiteName="Eksempel Tekst"
       websiteUrl="https://example.com"
       conformanceLevel="non-conformant"
       wcagLevel="AA"
@@ -152,20 +151,20 @@ const WithAdditionalInfoDemo = () => {
   const t = useT();
   return (
     <AccessibilityStatement
-      organizationName={t('storybook.demo.exampleOrganization')}
-      websiteName={t('storybook.demo.exampleWebsite')}
+      organizationName="Eksempel Tekst"
+      websiteName="Eksempel Tekst"
       websiteUrl="https://example.com"
       conformanceLevel="full"
       wcagLevel="AA"
       lastUpdated="2024-01-15"
       lastTested="2024-01-10"
-      testingMethod={t('storybook.demo.automatedManualTesting')}
+      testingMethod="Eksempel Tekst"
       contact={{
         email: 'accessibility@example.com',
         phone: '+47 12 34 56 78',
         address: 'Storgata 1, 0155 Oslo',
       }}
-      additionalInfo={t('storybook.demo.commitmentToAccessibility')}
+      additionalInfo="Eksempel Tekst"
     />
   );
 };
@@ -182,14 +181,14 @@ const WCAGAAADemo = () => {
   const t = useT();
   return (
     <AccessibilityStatement
-      organizationName={t('storybook.demo.exampleOrganization')}
-      websiteName={t('storybook.demo.exampleWebsite')}
+      organizationName="Eksempel Tekst"
+      websiteName="Eksempel Tekst"
       websiteUrl="https://example.com"
       conformanceLevel="full"
       wcagLevel="AAA"
       lastUpdated="2024-01-15"
       lastTested="2024-01-10"
-      testingMethod={t('storybook.demo.comprehensiveTesting')}
+      testingMethod="Eksempel Tekst"
       contact={{
         email: 'accessibility@example.com',
       }}
@@ -209,8 +208,8 @@ const MinimalDemo = () => {
   const t = useT();
   return (
     <AccessibilityStatement
-      organizationName={t('storybook.demo.exampleOrganization')}
-      websiteName={t('storybook.demo.exampleWebsite')}
+      organizationName="Eksempel Tekst"
+      websiteName="Eksempel Tekst"
       websiteUrl="https://example.com"
       conformanceLevel="full"
       wcagLevel="AA"

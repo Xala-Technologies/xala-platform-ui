@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Select, Label, Field, ValidationMessage } from '../../index';
 
 /**
@@ -205,12 +204,12 @@ export const Default: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.selectCountry')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Select>
-          <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
-          <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
-          <Select.Option value="se">{t('storybook.demo.sweden')}</Select.Option>
-          <Select.Option value="dk">{t('storybook.demo.denmark')}</Select.Option>
+          <Select.Option value="">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="no">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="se">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="dk">"Eksempel Tekst"</Select.Option>
         </Select>
       </Field>
     );
@@ -222,13 +221,13 @@ export const WithDescription: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.preferredLanguage')}</Label>
-        <Field.Description>{t('storybook.demo.languageDescription')}</Field.Description>
+        <Label>"Eksempel Tekst"</Label>
+        <Field.Description>"Eksempel Tekst"</Field.Description>
         <Select>
-          <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
-          <Select.Option value="nb">{t('storybook.demo.norwegianBokmal')}</Select.Option>
-          <Select.Option value="nn">{t('storybook.demo.norwegianNynorsk')}</Select.Option>
-          <Select.Option value="en">{t('storybook.demo.english')}</Select.Option>
+          <Select.Option value="">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="nb">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="nn">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="en">"Eksempel Tekst"</Select.Option>
         </Select>
       </Field>
     );
@@ -240,13 +239,13 @@ export const WithError: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.category')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Select aria-invalid="true">
-          <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
-          <Select.Option value="lokaler">{t('storybook.demo.venuesAndCourts')}</Select.Option>
-          <Select.Option value="utstyr">{t('storybook.demo.equipmentAndInventory')}</Select.Option>
+          <Select.Option value="">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="lokaler">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="utstyr">"Eksempel Tekst"</Select.Option>
         </Select>
-        <ValidationMessage>{t('storybook.demo.pleaseSelectCategory')}</ValidationMessage>
+        <ValidationMessage>"Eksempel Tekst"</ValidationMessage>
       </Field>
     );
   },
@@ -272,24 +271,24 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Field>
-          <Label>{t('storybook.demo.small')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Select data-size="sm">
-            <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
-            <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+            <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
+            <Select.Option value="2">"Eksempel Tekst" 2</Select.Option>
           </Select>
         </Field>
         <Field>
-          <Label>{t('storybook.demo.medium')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Select data-size="md">
-            <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
-            <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+            <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
+            <Select.Option value="2">"Eksempel Tekst" 2</Select.Option>
           </Select>
         </Field>
         <Field>
-          <Label>{t('storybook.demo.large')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Select data-size="lg">
-            <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
-            <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+            <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
+            <Select.Option value="2">"Eksempel Tekst" 2</Select.Option>
           </Select>
         </Field>
       </div>
@@ -307,7 +306,7 @@ export const ReadOnly: Story = {
       <Field>
         <Label>{t('platform.common.country')}</Label>
         <Select readOnly value="no">
-          <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
+          <Select.Option value="no">"Eksempel Tekst"</Select.Option>
         </Select>
       </Field>
     );
@@ -322,24 +321,24 @@ export const OptionGroups: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.selectPark')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Select>
-          <Select.Optgroup label={t('storybook.demo.grunerlokka')}>
+          <Select.Optgroup label="Eksempel Tekst">
             <Select.Option value="sofienbergparken">
-              {t('storybook.demo.sofienbergPark')}
+              "Eksempel Tekst"
             </Select.Option>
-            <Select.Option value="birkelunden">{t('storybook.demo.birkelunden')}</Select.Option>
-            <Select.Option value="olafryesplass">{t('storybook.demo.olafRyesPlass')}</Select.Option>
+            <Select.Option value="birkelunden">"Eksempel Tekst"</Select.Option>
+            <Select.Option value="olafryesplass">"Eksempel Tekst"</Select.Option>
           </Select.Optgroup>
-          <Select.Optgroup label={t('storybook.demo.cityCentre')}>
-            <Select.Option value="slottsparken">{t('storybook.demo.palacePark')}</Select.Option>
+          <Select.Optgroup label="Eksempel Tekst">
+            <Select.Option value="slottsparken">"Eksempel Tekst"</Select.Option>
             <Select.Option value="studenterlunden">
-              {t('storybook.demo.studenterlunden')}
+              "Eksempel Tekst"
             </Select.Option>
           </Select.Optgroup>
-          <Select.Optgroup label={t('storybook.demo.oldOslo')}>
-            <Select.Option value="botsparken">{t('storybook.demo.botsparken')}</Select.Option>
-            <Select.Option value="klosterenga">{t('storybook.demo.klosterengaPark')}</Select.Option>
+          <Select.Optgroup label="Eksempel Tekst">
+            <Select.Option value="botsparken">"Eksempel Tekst"</Select.Option>
+            <Select.Option value="klosterenga">"Eksempel Tekst"</Select.Option>
           </Select.Optgroup>
         </Select>
       </Field>
@@ -367,36 +366,36 @@ export const FormExample: Story = {
       >
         <Field>
           <Label>{t('platform.common.country')}</Label>
-          <Field.Description>{t('storybook.demo.selectCountryOfResidence')}</Field.Description>
+          <Field.Description>"Eksempel Tekst"</Field.Description>
           <Select value={country} onChange={(e) => setCountry(e.target.value)}>
-            <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
-            <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
-            <Select.Option value="se">{t('storybook.demo.sweden')}</Select.Option>
-            <Select.Option value="dk">{t('storybook.demo.denmark')}</Select.Option>
-            <Select.Option value="fi">{t('storybook.demo.finland')}</Select.Option>
+            <Select.Option value="">"Eksempel Tekst"</Select.Option>
+            <Select.Option value="no">"Eksempel Tekst"</Select.Option>
+            <Select.Option value="se">"Eksempel Tekst"</Select.Option>
+            <Select.Option value="dk">"Eksempel Tekst"</Select.Option>
+            <Select.Option value="fi">"Eksempel Tekst"</Select.Option>
           </Select>
         </Field>
 
         <Field>
           <Label>{t('platform.common.city')}</Label>
           <Select value={city} onChange={(e) => setCity(e.target.value)} disabled={!country}>
-            <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
+            <Select.Option value="">"Eksempel Tekst"</Select.Option>
             {country === 'no' && (
               <>
-                <Select.Option value="oslo">{t('storybook.demo.oslo')}</Select.Option>
-                <Select.Option value="bergen">{t('storybook.demo.bergen')}</Select.Option>
-                <Select.Option value="trondheim">{t('storybook.demo.trondheim')}</Select.Option>
+                <Select.Option value="oslo">"Eksempel Tekst"</Select.Option>
+                <Select.Option value="bergen">"Eksempel Tekst"</Select.Option>
+                <Select.Option value="trondheim">"Eksempel Tekst"</Select.Option>
               </>
             )}
             {country === 'se' && (
               <>
-                <Select.Option value="stockholm">{t('storybook.demo.stockholm')}</Select.Option>
-                <Select.Option value="gothenburg">{t('storybook.demo.gothenburg')}</Select.Option>
+                <Select.Option value="stockholm">"Eksempel Tekst"</Select.Option>
+                <Select.Option value="gothenburg">"Eksempel Tekst"</Select.Option>
               </>
             )}
           </Select>
           {!country && (
-            <Field.Description>{t('storybook.demo.selectCountryFirst')}</Field.Description>
+            <Field.Description>"Eksempel Tekst"</Field.Description>
           )}
         </Field>
       </form>
@@ -414,35 +413,35 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Field>
-              <Label>{t('storybook.story.default')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select>
-                <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
-                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
-                <Select.Option value="2">{t('storybook.demo.option')} 2</Select.Option>
+                <Select.Option value="">"Eksempel Tekst"</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
+                <Select.Option value="2">"Eksempel Tekst" 2</Select.Option>
               </Select>
             </Field>
             <Field>
-              <Label>{t('storybook.story.withError')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select aria-invalid="true">
-                <Select.Option value="">{t('storybook.demo.choose')}</Select.Option>
-                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+                <Select.Option value="">"Eksempel Tekst"</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
               </Select>
-              <ValidationMessage>{t('storybook.demo.pleaseSelectOption')}</ValidationMessage>
+              <ValidationMessage>"Eksempel Tekst"</ValidationMessage>
             </Field>
             <Field>
-              <Label>{t('storybook.story.disabled')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select disabled>
-                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
               </Select>
             </Field>
             <Field>
-              <Label>{t('storybook.story.readOnly')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select readOnly value="1">
-                <Select.Option value="1">{t('storybook.demo.selectedOption')}</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst"</Select.Option>
               </Select>
             </Field>
           </div>
@@ -450,25 +449,25 @@ export const AllVariants: Story = {
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Field>
-              <Label>{t('storybook.demo.small')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select data-size="sm">
-                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
               </Select>
             </Field>
             <Field>
-              <Label>{t('storybook.demo.medium')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select data-size="md">
-                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
               </Select>
             </Field>
             <Field>
-              <Label>{t('storybook.demo.large')}</Label>
+              <Label>"Eksempel Tekst"</Label>
               <Select data-size="lg">
-                <Select.Option value="1">{t('storybook.demo.option')} 1</Select.Option>
+                <Select.Option value="1">"Eksempel Tekst" 1</Select.Option>
               </Select>
             </Field>
           </div>

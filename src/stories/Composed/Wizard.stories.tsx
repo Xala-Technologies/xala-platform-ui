@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Wizard, Stack, Paragraph, Card, Button, Textfield } from '../../index';
 
 /**
@@ -45,7 +44,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.wizard.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Wizard
               steps={[
                 { id: 'step1', label: t('storybook.wizard.step1') },
@@ -61,9 +60,9 @@ export const Default: Story = {
                 if (stepIndex === 0) {
                   return (
                     <Stack spacing="var(--ds-spacing-4)">
-                      <Paragraph data-size="md">{t('storybook.wizard.step1Content')}</Paragraph>
+                      <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
                       <Textfield
-                        label={t('storybook.wizard.name')}
+                        label="Eksempel Tekst"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       />
@@ -73,9 +72,9 @@ export const Default: Story = {
                 if (stepIndex === 1) {
                   return (
                     <Stack spacing="var(--ds-spacing-4)">
-                      <Paragraph data-size="md">{t('storybook.wizard.step2Content')}</Paragraph>
+                      <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
                       <Textfield
-                        label={t('storybook.wizard.email')}
+                        label="Eksempel Tekst"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
@@ -84,9 +83,9 @@ export const Default: Story = {
                 }
                 return (
                   <Stack spacing="var(--ds-spacing-4)">
-                    <Paragraph data-size="md">{t('storybook.wizard.step3Content')}</Paragraph>
+                    <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
                     <Button onClick={() => console.log('Submit')}>
-                      {t('storybook.wizard.submit')}
+                      "Eksempel Tekst"
                     </Button>
                   </Stack>
                 );
@@ -113,7 +112,7 @@ export const WithOptionalStep: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.wizard.withOptional')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Wizard
               steps={[
                 { id: 'step1', label: t('storybook.wizard.step1') },
@@ -152,7 +151,7 @@ export const WithErrors: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.wizard.withErrors')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Wizard
               steps={[
                 { id: 'step1', label: t('storybook.wizard.step1') },

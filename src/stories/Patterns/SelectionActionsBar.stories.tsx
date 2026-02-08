@@ -5,7 +5,6 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   SelectionActionsBar,
   type SelectionActionsBarProps,
@@ -399,7 +398,7 @@ export const Interactive: Story = {
     return (
       <div style={{ paddingBottom: '100px' }}>
         <Paragraph data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.patterns.selectItems')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <div

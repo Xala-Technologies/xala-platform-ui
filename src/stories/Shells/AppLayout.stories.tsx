@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { MemoryRouter } from 'react-router-dom';
 import { AppLayout } from '../../index';
 import { DashboardSidebar } from '../../index';
@@ -152,7 +151,7 @@ const SampleHeader = () => {
         name: t('storybook.sidebar.sampleUserName'),
         email: 'ola.nordmann@example.com',
       }}
-      searchPlaceholder={t('storybook.header.searchPlaceholder')}
+      searchPlaceholder="Eksempel Tekst"
       searchValue={searchValue}
       onSearchChange={setSearchValue}
       showThemeToggle
@@ -176,16 +175,16 @@ export const Default: Story = {
       <AppLayout sidebar={<SampleSidebar />} header={<SampleHeader />}>
         <div>
           <Heading level={1} data-size="lg">
-            {t('storybook.appLayout.dashboard')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph data-size="md">{t('storybook.appLayout.welcomeMessage')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
           <Card
             data-color="neutral"
             data-size="medium"
             style={{ marginTop: 'var(--ds-spacing-4)' }}
           >
             <Card.Block>
-              <Paragraph data-size="sm">{t('storybook.appLayout.contentArea')}</Paragraph>
+              <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             </Card.Block>
           </Card>
         </div>
@@ -208,9 +207,9 @@ export const CustomMaxWidth: Story = {
       >
         <div>
           <Heading level={1} data-size="lg">
-            {t('storybook.appLayout.dashboard')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph data-size="md">{t('storybook.appLayout.narrowerContent')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
         </div>
       </AppLayout>
     );
@@ -239,16 +238,16 @@ export const WithTopContent: Story = {
               data-size="sm"
               style={{ margin: 0, color: 'var(--ds-color-warning-text-default)' }}
             >
-              {t('storybook.appLayout.maintenanceNotice')}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
         }
       >
         <div>
           <Heading level={1} data-size="lg">
-            {t('storybook.appLayout.dashboard')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph data-size="md">{t('storybook.appLayout.contentArea')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
         </div>
       </AppLayout>
     );
@@ -289,9 +288,9 @@ export const WithBottomNavigation: Story = {
       >
         <div>
           <Heading level={1} data-size="lg">
-            {t('storybook.appLayout.dashboard')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph data-size="md">{t('storybook.appLayout.mobileView')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
         </div>
       </AppLayout>
     );
@@ -312,9 +311,9 @@ export const CustomPadding: Story = {
       >
         <div>
           <Heading level={1} data-size="lg">
-            {t('storybook.appLayout.dashboard')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph data-size="md">{t('storybook.appLayout.customPadding')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
         </div>
       </AppLayout>
     );

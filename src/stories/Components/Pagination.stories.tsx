@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Pagination, Heading } from '../../index';
 
 const meta: Meta<typeof Pagination> = {
@@ -174,28 +173,28 @@ type Story = StoryObj<typeof Pagination>;
 export const Default: Story = {
   render: function Render() {
     const t = useT();
-    return <Pagination aria-label={t('storybook.demo.paginationNavigation')} />;
+    return <Pagination aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Small: Story = {
   render: function Render() {
     const t = useT();
-    return <Pagination data-size="sm" aria-label={t('storybook.demo.smallPagination')} />;
+    return <Pagination data-size="sm" aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Medium: Story = {
   render: function Render() {
     const t = useT();
-    return <Pagination data-size="md" aria-label={t('storybook.demo.mediumPagination')} />;
+    return <Pagination data-size="md" aria-label="Eksempel Tekst" />;
   },
 };
 
 export const Large: Story = {
   render: function Render() {
     const t = useT();
-    return <Pagination data-size="lg" aria-label={t('storybook.demo.largePagination')} />;
+    return <Pagination data-size="lg" aria-label="Eksempel Tekst" />;
   },
 };
 
@@ -206,12 +205,12 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            <Pagination data-size="sm" aria-label={t('storybook.demo.smallPagination')} />
-            <Pagination data-size="md" aria-label={t('storybook.demo.mediumPagination')} />
-            <Pagination data-size="lg" aria-label={t('storybook.demo.largePagination')} />
+            <Pagination data-size="sm" aria-label="Eksempel Tekst" />
+            <Pagination data-size="md" aria-label="Eksempel Tekst" />
+            <Pagination data-size="lg" aria-label="Eksempel Tekst" />
           </div>
         </div>
       </div>

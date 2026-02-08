@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   AppHeader,
   HeaderLogo,
@@ -49,16 +48,16 @@ export const Default: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.appHeader.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <AppHeader
-              logo={<HeaderLogo title={t('storybook.appHeader.appName')} />}
-              search={<HeaderSearch placeholder={t('storybook.appHeader.searchPlaceholder')} />}
+              logo={<HeaderLogo title="Eksempel Tekst" />}
+              search={<HeaderSearch placeholder="Eksempel Tekst" />}
               actions={
                 <HeaderActions>
-                  <Button data-color="neutral" aria-label={t('storybook.appHeader.notifications')}>
+                  <Button data-color="neutral" aria-label="Eksempel Tekst">
                     <BellIcon />
                   </Button>
-                  <Button data-color="neutral" aria-label={t('storybook.appHeader.profile')}>
+                  <Button data-color="neutral" aria-label="Eksempel Tekst">
                     <UserIcon />
                   </Button>
                 </HeaderActions>
@@ -81,8 +80,8 @@ export const LogoOnly: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.appHeader.logoOnly')}</Paragraph>
-            <AppHeader logo={<HeaderLogo title={t('storybook.appHeader.appName')} />} />
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <AppHeader logo={<HeaderLogo title="Eksempel Tekst" />} />
           </Stack>
         </Card>
       </Stack>
@@ -100,11 +99,11 @@ export const NonSticky: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.appHeader.nonSticky')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <AppHeader
               sticky={false}
-              logo={<HeaderLogo title={t('storybook.appHeader.appName')} />}
-              search={<HeaderSearch placeholder={t('storybook.appHeader.searchPlaceholder')} />}
+              logo={<HeaderLogo title="Eksempel Tekst" />}
+              search={<HeaderSearch placeholder="Eksempel Tekst" />}
             />
           </Stack>
         </Card>

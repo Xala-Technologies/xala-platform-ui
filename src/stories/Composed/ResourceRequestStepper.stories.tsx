@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { ResourceRequestStepper, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -44,7 +43,7 @@ export const Default: Story = {
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">
-              {t('storybook.resourceRequestStepper.description')}
+              "Eksempel Tekst"
             </Paragraph>
             <ResourceRequestStepper
               steps={[
@@ -54,7 +53,7 @@ export const Default: Story = {
               ]}
               currentStep={currentStep}
               onStepClick={(index) => setCurrentStep(index)}
-              title={t('storybook.resourceRequestStepper.title')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -77,7 +76,7 @@ export const FiveSteps: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.resourceRequestStepper.fiveSteps')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ResourceRequestStepper
               steps={[
                 { id: 'step1', label: t('storybook.resourceRequestStepper.step1') },
@@ -88,7 +87,7 @@ export const FiveSteps: Story = {
               ]}
               currentStep={currentStep}
               onStepClick={(index) => setCurrentStep(index)}
-              title={t('storybook.resourceRequestStepper.title')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -112,7 +111,7 @@ export const WithoutStepCounter: Story = {
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
             <Paragraph data-size="md">
-              {t('storybook.resourceRequestStepper.withoutCounter')}
+              "Eksempel Tekst"
             </Paragraph>
             <ResourceRequestStepper
               steps={[
@@ -122,7 +121,7 @@ export const WithoutStepCounter: Story = {
               ]}
               currentStep={currentStep}
               onStepClick={(index) => setCurrentStep(index)}
-              title={t('storybook.resourceRequestStepper.title')}
+              title="Eksempel Tekst"
               showStepCounter={false}
             />
           </Stack>
@@ -145,7 +144,7 @@ export const Completed: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.resourceRequestStepper.completed')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ResourceRequestStepper
               steps={[
                 { id: 'select', label: t('storybook.resourceRequestStepper.select') },
@@ -153,7 +152,7 @@ export const Completed: Story = {
                 { id: 'confirm', label: t('storybook.resourceRequestStepper.confirm') },
               ]}
               currentStep={3}
-              title={t('storybook.resourceRequestStepper.title')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>

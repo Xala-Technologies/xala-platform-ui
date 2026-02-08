@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { expect, userEvent, within } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Textfield, Tag, Heading } from '../../index';
 
 /**
@@ -222,7 +221,7 @@ export const Default: Story = {
     return (
       <Textfield
         label={t('platform.common.name')}
-        placeholder={t('storybook.demo.enterYourName')}
+        placeholder="Eksempel Tekst"
       />
     );
   },
@@ -249,7 +248,7 @@ export const WithDescription: Story = {
     return (
       <Textfield
         label={t('platform.auth.email')}
-        description={t('storybook.demo.neverShareEmail')}
+        description="Eksempel Tekst"
         placeholder="name@example.com"
         type="email"
       />
@@ -280,7 +279,7 @@ export const WithError: Story = {
 export const Disabled: Story = {
   render: function Render() {
     const t = useT();
-    return <Textfield label={t('storybook.demo.username')} defaultValue="john_doe" disabled />;
+    return <Textfield label="Eksempel Tekst" defaultValue="john_doe" disabled />;
   },
 };
 
@@ -291,7 +290,7 @@ export const ReadOnly: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Textfield label={t('storybook.demo.accountId')} defaultValue="ACC-12345-XYZ" readOnly />
+      <Textfield label="Eksempel Tekst" defaultValue="ACC-12345-XYZ" readOnly />
     );
   },
 };
@@ -306,7 +305,7 @@ export const Password: Story = {
       <Textfield
         label={t('platform.auth.password')}
         type="password"
-        placeholder={t('storybook.demo.enterYourPassword')}
+        placeholder="Eksempel Tekst"
       />
     );
   },
@@ -320,10 +319,10 @@ export const Multiline: Story = {
     const t = useT();
     return (
       <Textfield
-        label={t('storybook.demo.comments')}
+        label="Eksempel Tekst"
         multiline
         rows={4}
-        placeholder={t('storybook.demo.enterYourComments')}
+        placeholder="Eksempel Tekst"
       />
     );
   },
@@ -339,11 +338,11 @@ export const WithPrefixSuffix: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
           prefix="GBP"
-          suffix={t('storybook.demo.perMonth')}
-          label={t('storybook.demo.howMuchPerMonth')}
+          suffix="Eksempel Tekst"
+          label="Eksempel Tekst"
         />
         <Textfield prefix="$" label={t('platform.common.price')} type="number" />
-        <Textfield suffix="kg" label={t('storybook.demo.weight')} type="number" />
+        <Textfield suffix="kg" label="Eksempel Tekst" type="number" />
       </div>
     );
   },
@@ -358,7 +357,7 @@ export const WithCounter: Story = {
     return (
       <Textfield
         counter={50}
-        label={t('storybook.demo.shortDescription')}
+        label="Eksempel Tekst"
         placeholder={t('storybook.demo.maxNCharacters', { count: 50 })}
       />
     );
@@ -376,7 +375,7 @@ export const RequiredOptional: Story = {
         <Textfield
           label={
             <>
-              {t('storybook.demo.whereDoYouLive')}
+              "Eksempel Tekst"
               <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
                 {t('platform.validation.required')}
               </Tag>
@@ -387,7 +386,7 @@ export const RequiredOptional: Story = {
         <Textfield
           label={
             <>
-              {t('storybook.demo.middleName')}
+              "Eksempel Tekst"
               <Tag data-color="neutral" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
                 {t('platform.common.optional')}
               </Tag>
@@ -408,19 +407,19 @@ export const InputTypes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
-          label={t('storybook.demo.text')}
+          label="Eksempel Tekst"
           type="text"
-          placeholder={t('storybook.demo.generalText')}
+          placeholder="Eksempel Tekst"
         />
         <Textfield label={t('platform.auth.email')} type="email" placeholder="name@example.com" />
         <Textfield
           label={t('platform.auth.password')}
           type="password"
-          placeholder={t('storybook.demo.enterPassword')}
+          placeholder="Eksempel Tekst"
         />
-        <Textfield label={t('storybook.demo.phone')} type="tel" placeholder="+47 XXX XX XXX" />
-        <Textfield label={t('storybook.demo.number')} type="number" placeholder="0" />
-        <Textfield label={t('storybook.demo.url')} type="url" placeholder="https://example.com" />
+        <Textfield label="Eksempel Tekst" type="tel" placeholder="+47 XXX XX XXX" />
+        <Textfield label="Eksempel Tekst" type="number" placeholder="0" />
+        <Textfield label="Eksempel Tekst" type="url" placeholder="https://example.com" />
         <Textfield
           label={t('platform.common.search')}
           type="search"
@@ -440,19 +439,19 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Textfield
-          label={t('storybook.story.small')}
+          label="Eksempel Tekst"
           data-size="sm"
-          placeholder={t('storybook.demo.smallInput')}
+          placeholder="Eksempel Tekst"
         />
         <Textfield
-          label={t('storybook.story.medium')}
+          label="Eksempel Tekst"
           data-size="md"
-          placeholder={t('storybook.demo.mediumInput')}
+          placeholder="Eksempel Tekst"
         />
         <Textfield
-          label={t('storybook.story.large')}
+          label="Eksempel Tekst"
           data-size="lg"
-          placeholder={t('storybook.demo.largeInput')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -488,13 +487,13 @@ export const FormExample: Story = {
         }}
       >
         <Textfield
-          label={t('storybook.demo.firstName')}
-          placeholder={t('storybook.demo.enterFirstName')}
+          label="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
           required
         />
         <Textfield
-          label={t('storybook.demo.lastName')}
-          placeholder={t('storybook.demo.enterLastName')}
+          label="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
           required
         />
         <Textfield
@@ -510,10 +509,10 @@ export const FormExample: Story = {
           required
         />
         <Textfield
-          label={t('storybook.demo.phone')}
+          label="Eksempel Tekst"
           type="tel"
           placeholder="+47 XXX XX XXX"
-          description={t('storybook.demo.onlyForOrderUpdates')}
+          description="Eksempel Tekst"
         />
       </form>
     );
@@ -537,10 +536,10 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.story.doProvideVisibleLabels')}
+            "Eksempel Tekst"
           </Heading>
           <Textfield
-            label={t('storybook.demo.emailAddress')}
+            label="Eksempel Tekst"
             type="email"
             placeholder="name@example.com"
           />
@@ -555,7 +554,7 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.story.doUseAppropriateInputTypes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
@@ -563,7 +562,7 @@ export const BestPractices: Story = {
               type="email"
               placeholder="name@example.com"
             />
-            <Textfield label={t('storybook.demo.phone')} type="tel" placeholder="+47 XXX XX XXX" />
+            <Textfield label="Eksempel Tekst" type="tel" placeholder="+47 XXX XX XXX" />
           </div>
         </div>
 
@@ -576,12 +575,12 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.story.doProvideClearErrorMessages')}
+            "Eksempel Tekst"
           </Heading>
           <Textfield
             label={t('platform.auth.email')}
             type="email"
-            error={t('storybook.demo.pleaseEnterValidEmailExample')}
+            error="Eksempel Tekst"
             defaultValue="invalid"
           />
         </div>
@@ -595,12 +594,12 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-danger-text-default)',
             }}
           >
-            {t('storybook.story.dontUsePlaceholderAsLabel')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ opacity: 0.6 }}>
             <Textfield
-              aria-label={t('storybook.demo.emailAddressBadExample')}
-              placeholder={t('storybook.demo.enterYourEmailAddress')}
+              aria-label="Eksempel Tekst"
+              placeholder="Eksempel Tekst"
             />
           </div>
         </div>
@@ -614,12 +613,12 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-danger-text-default)',
             }}
           >
-            {t('storybook.story.dontUseGenericErrorMessages')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ opacity: 0.6 }}>
             <Textfield
               label={t('platform.auth.email')}
-              error={t('storybook.demo.invalidInput')}
+              error="Eksempel Tekst"
               defaultValue="test"
             />
           </div>
@@ -639,29 +638,29 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
-              label={t('storybook.story.default')}
-              placeholder={t('storybook.demo.enterText')}
+              label="Eksempel Tekst"
+              placeholder="Eksempel Tekst"
             />
             <Textfield
-              label={t('storybook.demo.withValue')}
-              defaultValue={t('storybook.demo.someText')}
+              label="Eksempel Tekst"
+              defaultValue="Eksempel Tekst"
             />
             <Textfield
-              label={t('storybook.story.withError')}
+              label="Eksempel Tekst"
               error={t('platform.validation.required')}
             />
             <Textfield
-              label={t('storybook.story.disabled')}
-              defaultValue={t('storybook.demo.cannotEdit')}
+              label="Eksempel Tekst"
+              defaultValue="Eksempel Tekst"
               disabled
             />
             <Textfield
-              label={t('storybook.demo.readOnly')}
-              defaultValue={t('storybook.demo.canReadOnly')}
+              label="Eksempel Tekst"
+              defaultValue="Eksempel Tekst"
               readOnly
             />
           </div>
@@ -669,36 +668,36 @@ export const AllVariants: Story = {
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
-              label={t('storybook.story.small')}
+              label="Eksempel Tekst"
               data-size="sm"
-              placeholder={t('storybook.story.small')}
+              placeholder="Eksempel Tekst"
             />
             <Textfield
-              label={t('storybook.story.medium')}
+              label="Eksempel Tekst"
               data-size="md"
-              placeholder={t('storybook.story.medium')}
+              placeholder="Eksempel Tekst"
             />
             <Textfield
-              label={t('storybook.story.large')}
+              label="Eksempel Tekst"
               data-size="lg"
-              placeholder={t('storybook.story.large')}
+              placeholder="Eksempel Tekst"
             />
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.inputTypes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
-              label={t('storybook.demo.text')}
+              label="Eksempel Tekst"
               type="text"
-              placeholder={t('storybook.demo.generalText')}
+              placeholder="Eksempel Tekst"
             />
             <Textfield
               label={t('platform.auth.email')}
@@ -708,51 +707,51 @@ export const AllVariants: Story = {
             <Textfield
               label={t('platform.auth.password')}
               type="password"
-              placeholder={t('storybook.demo.enterPassword')}
+              placeholder="Eksempel Tekst"
             />
-            <Textfield label={t('storybook.demo.phone')} type="tel" placeholder="+47 XXX XX XXX" />
-            <Textfield label={t('storybook.demo.number')} type="number" placeholder="0" />
+            <Textfield label="Eksempel Tekst" type="tel" placeholder="+47 XXX XX XXX" />
+            <Textfield label="Eksempel Tekst" type="number" placeholder="0" />
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.withAffixes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield prefix="$" label={t('platform.common.price')} type="number" />
-            <Textfield suffix="kg" label={t('storybook.demo.weight')} type="number" />
-            <Textfield prefix="https://" suffix=".com" label={t('storybook.demo.website')} />
+            <Textfield suffix="kg" label="Eksempel Tekst" type="number" />
+            <Textfield prefix="https://" suffix=".com" label="Eksempel Tekst" />
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.withDescriptionAndCounter')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
-              label={t('storybook.demo.username')}
-              description={t('storybook.demo.chooseUniqueUsername')}
+              label="Eksempel Tekst"
+              description="Eksempel Tekst"
               placeholder="johndoe"
             />
             <Textfield
-              label={t('storybook.demo.bio')}
+              label="Eksempel Tekst"
               counter={50}
               maxLength={50}
-              placeholder={t('storybook.demo.shortBio')}
+              placeholder="Eksempel Tekst"
             />
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.requiredFields')}
+            "Eksempel Tekst"
           </Heading>
           <Textfield
             label={
               <>
-                {t('storybook.demo.emailAddress')}
+                "Eksempel Tekst"
                 <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
                   {t('platform.validation.required')}
                 </Tag>

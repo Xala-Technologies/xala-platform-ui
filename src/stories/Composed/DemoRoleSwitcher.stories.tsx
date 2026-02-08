@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { DemoRoleSwitcher, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -46,9 +45,9 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.demoRoleSwitcher.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button onClick={() => setOpen(true)}>
-              {t('storybook.demoRoleSwitcher.openDialog')}
+              "Eksempel Tekst"
             </Button>
             <DemoRoleSwitcher
               open={open}
@@ -60,9 +59,9 @@ export const Default: Story = {
                 setOpen(false);
                 console.log('Selected role:', key);
               }}
-              title={t('storybook.demoRoleSwitcher.title')}
-              description={t('storybook.demoRoleSwitcher.descriptionText')}
-              cancelText={t('storybook.demoRoleSwitcher.cancel')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              cancelText="Eksempel Tekst"
               loadingRole={loadingRole}
             />
           </Stack>
@@ -89,7 +88,7 @@ export const CustomOptions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.demoRoleSwitcher.customOptions')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DemoRoleSwitcher
               open={open}
               onClose={() => setOpen(false)}
@@ -99,9 +98,9 @@ export const CustomOptions: Story = {
                 setLoadingRole(null);
                 setOpen(false);
               }}
-              title={t('storybook.demoRoleSwitcher.customTitle')}
-              description={t('storybook.demoRoleSwitcher.customDescription')}
-              cancelText={t('storybook.demoRoleSwitcher.cancel')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              cancelText="Eksempel Tekst"
               options={[
                 {
                   key: 'admin',
@@ -137,17 +136,17 @@ export const WithError: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.demoRoleSwitcher.withError')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DemoRoleSwitcher
               open={open}
               onClose={() => setOpen(false)}
               onRoleSelect={async () => {
                 throw new Error('Role selection failed');
               }}
-              title={t('storybook.demoRoleSwitcher.title')}
-              description={t('storybook.demoRoleSwitcher.descriptionText')}
-              cancelText={t('storybook.demoRoleSwitcher.cancel')}
-              error={t('storybook.demoRoleSwitcher.errorMessage')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              cancelText="Eksempel Tekst"
+              error="Eksempel Tekst"
             />
           </Stack>
         </Card>

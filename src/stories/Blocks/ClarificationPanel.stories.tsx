@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   ClarificationPanel,
   type ClarificationQuestion,
@@ -98,7 +97,7 @@ export const Default: Story = {
         style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
       >
         <ClarificationPanel
-          intro={t('storybook.clarificationPanel.intro')}
+          intro="Eksempel Tekst"
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
@@ -107,7 +106,7 @@ export const Default: Story = {
             );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
-          submitLabel={t('storybook.clarificationPanel.submit')}
+          submitLabel="Eksempel Tekst"
         />
       </Stack>
     );
@@ -131,7 +130,7 @@ export const WithAnswers: Story = {
         style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
       >
         <ClarificationPanel
-          intro={t('storybook.clarificationPanel.intro')}
+          intro="Eksempel Tekst"
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
@@ -140,7 +139,7 @@ export const WithAnswers: Story = {
             );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
-          submitLabel={t('storybook.clarificationPanel.submit')}
+          submitLabel="Eksempel Tekst"
         />
       </Stack>
     );
@@ -168,7 +167,7 @@ export const WithBoolean: Story = {
         style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
       >
         <ClarificationPanel
-          intro={t('storybook.clarificationPanel.intro')}
+          intro="Eksempel Tekst"
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
@@ -177,7 +176,7 @@ export const WithBoolean: Story = {
             );
           }}
           onSubmit={() => console.log('Submitted:', answers)}
-          submitLabel={t('storybook.clarificationPanel.submit')}
+          submitLabel="Eksempel Tekst"
         />
       </Stack>
     );
@@ -198,7 +197,7 @@ export const Loading: Story = {
         style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}
       >
         <ClarificationPanel
-          intro={t('storybook.clarificationPanel.intro')}
+          intro="Eksempel Tekst"
           questions={questions}
           answers={answers}
           onAnswerChange={(questionId, value) => {
@@ -208,7 +207,7 @@ export const Loading: Story = {
           }}
           onSubmit={() => console.log('Submitted:', answers)}
           isSubmitting
-          submitLabel={t('storybook.clarificationPanel.submit')}
+          submitLabel="Eksempel Tekst"
         />
       </Stack>
     );

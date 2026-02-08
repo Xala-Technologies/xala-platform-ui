@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { AddressesTab, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -56,7 +55,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.addressesTab.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <AddressesTab
               addressData={addressData}
               onAddressDataChange={(partial) => setAddressData({ ...addressData, ...partial })}

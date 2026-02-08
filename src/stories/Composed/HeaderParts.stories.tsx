@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   HeaderLogo,
   HeaderSearch,
@@ -49,10 +48,10 @@ export const Logo: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.headerParts.logo')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <HeaderLogo
-              title={t('storybook.headerParts.appName')}
-              subtitle={t('storybook.headerParts.subtitle')}
+              title="Eksempel Tekst"
+              subtitle="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -75,9 +74,9 @@ export const Search: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.headerParts.search')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <HeaderSearch
-              placeholder={t('storybook.headerParts.searchPlaceholder')}
+              placeholder="Eksempel Tekst"
               value={searchValue}
               onSearchChange={setSearchValue}
               onSearch={(value) => console.log('Search:', value)}
@@ -102,15 +101,15 @@ export const Actions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.headerParts.actions')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <HeaderActions>
-              <Button data-color="neutral" aria-label={t('storybook.headerParts.notifications')}>
+              <Button data-color="neutral" aria-label="Eksempel Tekst">
                 <BellIcon />
               </Button>
-              <Button data-color="neutral" aria-label={t('storybook.headerParts.settings')}>
+              <Button data-color="neutral" aria-label="Eksempel Tekst">
                 <SettingsIcon />
               </Button>
-              <Button data-color="neutral" aria-label={t('storybook.headerParts.profile')}>
+              <Button data-color="neutral" aria-label="Eksempel Tekst">
                 <UserIcon />
               </Button>
             </HeaderActions>

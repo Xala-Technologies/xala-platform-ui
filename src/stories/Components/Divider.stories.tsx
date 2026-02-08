@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Divider, Paragraph, Heading } from '../../index';
 
 const meta: Meta<typeof Divider> = {
@@ -169,9 +168,9 @@ export const Default: Story = {
     const t = useT();
     return (
       <div>
-        <Paragraph>{t('storybook.demo.contentAboveDivider')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
         <Divider />
-        <Paragraph>{t('storybook.demo.contentBelowDivider')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </div>
     );
   },
@@ -183,14 +182,14 @@ export const WithSpacing: Story = {
     return (
       <div>
         <Heading level={3} data-size="sm">
-          {t('storybook.demo.section')} 1
+          "Eksempel Tekst" 1
         </Heading>
-        <Paragraph>{t('storybook.demo.firstSectionContent')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
         <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
         <Heading level={3} data-size="sm">
-          {t('storybook.demo.section')} 2
+          "Eksempel Tekst" 2
         </Heading>
-        <Paragraph>{t('storybook.demo.secondSectionContent')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </div>
     );
   },
@@ -202,11 +201,11 @@ export const Colors: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div>
-          <Paragraph>{t('storybook.demo.defaultDivider')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
           <Divider />
         </div>
         <div>
-          <Paragraph>{t('storybook.demo.subtleDivider')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
           <Divider data-color="subtle" />
         </div>
       </div>
@@ -221,25 +220,25 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.basicUsage')}
+            "Eksempel Tekst"
           </h3>
-          <Paragraph>{t('storybook.demo.contentAbove')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
           <Divider />
-          <Paragraph>{t('storybook.demo.contentBelow')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.withSpacing')}
+            "Eksempel Tekst"
           </h3>
           <Heading level={4} data-size="sm">
-            {t('storybook.demo.section')} 1
+            "Eksempel Tekst" 1
           </Heading>
-          <Paragraph>{t('storybook.demo.firstSection')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
           <Divider style={{ margin: 'var(--ds-spacing-6) 0' }} />
           <Heading level={4} data-size="sm">
-            {t('storybook.demo.section')} 2
+            "Eksempel Tekst" 2
           </Heading>
-          <Paragraph>{t('storybook.demo.secondSection')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </div>
       </div>
     );

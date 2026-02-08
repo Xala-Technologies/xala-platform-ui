@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Field, Label, Input, Textarea, Select, ValidationMessage } from '../../index';
 
 const meta: Meta = {
@@ -203,8 +202,8 @@ export const Default: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.fullName')}</Label>
-        <Input aria-label={t('storybook.demo.fullName')} />
+        <Label>"Eksempel Tekst"</Label>
+        <Input aria-label="Eksempel Tekst" />
       </Field>
     );
   },
@@ -215,9 +214,9 @@ export const WithDescription: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.emailAddress')}</Label>
-        <Field.Description>{t('storybook.demo.neverShareEmail')}</Field.Description>
-        <Input type="email" aria-label={t('storybook.demo.emailAddress')} />
+        <Label>"Eksempel Tekst"</Label>
+        <Field.Description>"Eksempel Tekst"</Field.Description>
+        <Input type="email" aria-label="Eksempel Tekst" />
       </Field>
     );
   },
@@ -228,9 +227,9 @@ export const WithError: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.phoneNumber')}</Label>
-        <Input aria-invalid="true" aria-label={t('storybook.demo.phoneNumber')} />
-        <ValidationMessage>{t('storybook.demo.phoneMustBe8Digits')}</ValidationMessage>
+        <Label>"Eksempel Tekst"</Label>
+        <Input aria-invalid="true" aria-label="Eksempel Tekst" />
+        <ValidationMessage>"Eksempel Tekst"</ValidationMessage>
       </Field>
     );
   },
@@ -257,10 +256,10 @@ export const WithSelect: Story = {
       <Field>
         <Label>{t('platform.common.country')}</Label>
         <Select>
-          <Select.Option value="">{t('storybook.demo.chooseCountry')}</Select.Option>
-          <Select.Option value="no">{t('storybook.demo.norway')}</Select.Option>
-          <Select.Option value="se">{t('storybook.demo.sweden')}</Select.Option>
-          <Select.Option value="dk">{t('storybook.demo.denmark')}</Select.Option>
+          <Select.Option value="">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="no">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="se">"Eksempel Tekst"</Select.Option>
+          <Select.Option value="dk">"Eksempel Tekst"</Select.Option>
         </Select>
       </Field>
     );
@@ -287,16 +286,16 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Field data-size="sm">
-          <Label>{t('storybook.demo.smallField')}</Label>
-          <Input aria-label={t('storybook.demo.smallFieldInput')} />
+          <Label>"Eksempel Tekst"</Label>
+          <Input aria-label="Eksempel Tekst" />
         </Field>
         <Field data-size="md">
-          <Label>{t('storybook.demo.mediumField')}</Label>
-          <Input aria-label={t('storybook.demo.mediumFieldInput')} />
+          <Label>"Eksempel Tekst"</Label>
+          <Input aria-label="Eksempel Tekst" />
         </Field>
         <Field data-size="lg">
-          <Label>{t('storybook.demo.largeField')}</Label>
-          <Input aria-label={t('storybook.demo.largeFieldInput')} />
+          <Label>"Eksempel Tekst"</Label>
+          <Input aria-label="Eksempel Tekst" />
         </Field>
       </div>
     );

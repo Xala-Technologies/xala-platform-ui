@@ -5,7 +5,6 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { ModeSelector, type ModeSelectorProps, type ModeOption } from '../../patterns/ModeSelector';
 import { Paragraph } from '@digdir/designsystemet-react';
 
@@ -312,7 +311,7 @@ export const VariantComparison: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
         <div>
           <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-            {t('storybook.patterns.variantTabs')}
+            "Eksempel Tekst"
           </Paragraph>
           <ModeSelector
             options={optionsWithIcons}
@@ -323,7 +322,7 @@ export const VariantComparison: Story = {
         </div>
         <div>
           <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-            {t('storybook.patterns.variantButtons')}
+            "Eksempel Tekst"
           </Paragraph>
           <ModeSelector
             options={optionsWithIcons}
@@ -334,7 +333,7 @@ export const VariantComparison: Story = {
         </div>
         <div>
           <Paragraph data-size="md" style={{ marginBottom: '1rem', fontWeight: 600 }}>
-            {t('storybook.patterns.variantCards')}
+            "Eksempel Tekst"
           </Paragraph>
           <ModeSelector
             options={optionsWithDescriptions}
@@ -357,19 +356,19 @@ export const SizeComparison: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <div>
           <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeSmall')}
+            "Eksempel Tekst"
           </Paragraph>
           <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="sm" />
         </div>
         <div>
           <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeMedium')}
+            "Eksempel Tekst"
           </Paragraph>
           <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="md" />
         </div>
         <div>
           <Paragraph data-size="sm" style={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-            {t('storybook.patterns.sizeLarge')}
+            "Eksempel Tekst"
           </Paragraph>
           <ModeSelector options={optionsWithIcons} value="single" onChange={() => {}} size="lg" />
         </div>
@@ -401,7 +400,7 @@ export const Interactive: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ margin: 0 }}>
-            {t('storybook.patterns.selectedMode')}: <strong>{mode}</strong>
+            "Eksempel Tekst": <strong>{mode}</strong>
           </Paragraph>
         </div>
       </div>

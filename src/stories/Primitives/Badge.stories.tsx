@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Badge, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -40,8 +39,8 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.badge.description')}</Paragraph>
-            <Badge>{t('storybook.badge.default')}</Badge>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Badge>"Eksempel Tekst"</Badge>
           </Stack>
         </Card>
       </Stack>
@@ -62,13 +61,13 @@ export const Variants: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.badge.variants')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)" style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-              <Badge variant="neutral">{t('storybook.badge.neutral')}</Badge>
-              <Badge variant="info">{t('storybook.badge.info')}</Badge>
-              <Badge variant="success">{t('storybook.badge.success')}</Badge>
-              <Badge variant="warning">{t('storybook.badge.warning')}</Badge>
-              <Badge variant="danger">{t('storybook.badge.danger')}</Badge>
+              <Badge variant="neutral">"Eksempel Tekst"</Badge>
+              <Badge variant="info">"Eksempel Tekst"</Badge>
+              <Badge variant="success">"Eksempel Tekst"</Badge>
+              <Badge variant="warning">"Eksempel Tekst"</Badge>
+              <Badge variant="danger">"Eksempel Tekst"</Badge>
             </Stack>
           </Stack>
         </Card>
@@ -90,14 +89,14 @@ export const Sizes: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.badge.sizes')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack
               spacing="var(--ds-spacing-2)"
               style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}
             >
-              <Badge size="sm">{t('storybook.badge.small')}</Badge>
-              <Badge size="md">{t('storybook.badge.medium')}</Badge>
-              <Badge size="lg">{t('storybook.badge.large')}</Badge>
+              <Badge size="sm">"Eksempel Tekst"</Badge>
+              <Badge size="md">"Eksempel Tekst"</Badge>
+              <Badge size="lg">"Eksempel Tekst"</Badge>
             </Stack>
           </Stack>
         </Card>

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Avatar } from '../../index';
-import { useT } from '@xala-technologies/i18n';
 
 /**
  * Avatar component from Digdir Designsystemet.
@@ -273,7 +272,7 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
             <Avatar data-size="sm" aria-label="Small">
@@ -289,7 +288,7 @@ export const AllVariants: Story = {
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.variants')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
             <Avatar variant="circle" aria-label="Circle">
@@ -302,7 +301,7 @@ export const AllVariants: Story = {
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
             <Avatar data-color="neutral" aria-label="Neutral">
@@ -315,7 +314,7 @@ export const AllVariants: Story = {
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.interactive')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex' }}>
             <Avatar aria-label="Alice">AB</Avatar>

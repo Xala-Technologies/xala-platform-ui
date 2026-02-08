@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { SimpleTabs, TabItem } from '../../composed/SimpleTabs';
 import { Paragraph, Heading } from '@digdir/designsystemet-react';
 
@@ -61,14 +60,14 @@ const SimpleAPIDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs defaultValue="tab1">
-        <TabItem label={t('storybook.demo.overview')} value="tab1">
-          <Paragraph data-size="sm">{t('storybook.demo.overviewTabContent')}</Paragraph>
+        <TabItem label="Eksempel Tekst" value="tab1">
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
-        <TabItem label={t('storybook.demo.details')} value="tab2">
-          <Paragraph data-size="sm">{t('storybook.demo.detailsTabContent')}</Paragraph>
+        <TabItem label="Eksempel Tekst" value="tab2">
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
         <TabItem label={t('platform.nav.settings')} value="tab3">
-          <Paragraph data-size="sm">{t('storybook.demo.settingsTabContent')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
       </SimpleTabs>
     </div>
@@ -80,14 +79,14 @@ const AutoValuesDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs>
-        <TabItem label={t('storybook.demo.firstTab')}>
-          <Paragraph data-size="sm">{t('storybook.demo.firstTabContentAuto')}</Paragraph>
+        <TabItem label="Eksempel Tekst">
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
-        <TabItem label={t('storybook.demo.secondTab')}>
-          <Paragraph data-size="sm">{t('storybook.demo.secondTabContent')}</Paragraph>
+        <TabItem label="Eksempel Tekst">
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
-        <TabItem label={t('storybook.demo.thirdTab')}>
-          <Paragraph data-size="sm">{t('storybook.demo.thirdTabContent')}</Paragraph>
+        <TabItem label="Eksempel Tekst">
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
       </SimpleTabs>
     </div>
@@ -99,8 +98,8 @@ const SmallDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs size="sm">
-        <TabItem label={t('storybook.demo.tab1')}>{t('storybook.demo.content1')}</TabItem>
-        <TabItem label={t('storybook.demo.tab2')}>{t('storybook.demo.content2')}</TabItem>
+        <TabItem label="Eksempel Tekst">"Eksempel Tekst"</TabItem>
+        <TabItem label="Eksempel Tekst">"Eksempel Tekst"</TabItem>
       </SimpleTabs>
     </div>
   );
@@ -111,8 +110,8 @@ const MediumDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs size="md">
-        <TabItem label={t('storybook.demo.tab1')}>{t('storybook.demo.content1')}</TabItem>
-        <TabItem label={t('storybook.demo.tab2')}>{t('storybook.demo.content2')}</TabItem>
+        <TabItem label="Eksempel Tekst">"Eksempel Tekst"</TabItem>
+        <TabItem label="Eksempel Tekst">"Eksempel Tekst"</TabItem>
       </SimpleTabs>
     </div>
   );
@@ -123,8 +122,8 @@ const LargeDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs size="lg">
-        <TabItem label={t('storybook.demo.tab1')}>{t('storybook.demo.content1')}</TabItem>
-        <TabItem label={t('storybook.demo.tab2')}>{t('storybook.demo.content2')}</TabItem>
+        <TabItem label="Eksempel Tekst">"Eksempel Tekst"</TabItem>
+        <TabItem label="Eksempel Tekst">"Eksempel Tekst"</TabItem>
       </SimpleTabs>
     </div>
   );
@@ -136,14 +135,14 @@ const ControlledDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs value={value} onChange={setValue}>
-        <TabItem label={t('storybook.demo.tab1')} value="tab1">
+        <TabItem label="Eksempel Tekst" value="tab1">
           <Paragraph data-size="sm">
-            {t('storybook.demo.controlledTab1')} {value}
+            "Eksempel Tekst" {value}
           </Paragraph>
         </TabItem>
-        <TabItem label={t('storybook.demo.tab2')} value="tab2">
+        <TabItem label="Eksempel Tekst" value="tab2">
           <Paragraph data-size="sm">
-            {t('storybook.demo.controlledTab2')} {value}
+            "Eksempel Tekst" {value}
           </Paragraph>
         </TabItem>
       </SimpleTabs>
@@ -156,20 +155,20 @@ const RichContentDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SimpleTabs>
-        <TabItem label={t('storybook.demo.overview')}>
+        <TabItem label="Eksempel Tekst">
           <div>
             <Heading level={3} data-size="sm">
-              {t('storybook.demo.overviewSection')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.demo.richContentDescription')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </div>
         </TabItem>
-        <TabItem label={t('storybook.demo.details')}>
+        <TabItem label="Eksempel Tekst">
           <div>
             <Heading level={3} data-size="sm">
-              {t('storybook.demo.detailsSection')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.demo.detailedInfoHere')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </div>
         </TabItem>
       </SimpleTabs>

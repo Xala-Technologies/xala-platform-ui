@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Search } from '../../index';
 
 const meta: Meta = {
@@ -259,7 +258,7 @@ export const Default: Story = {
       <Search>
         <Search.Input
           aria-label={t('platform.common.search')}
-          placeholder={t('storybook.demo.searchPlaceholder')}
+          placeholder="Eksempel Tekst"
         />
         <Search.Clear />
         <Search.Button />
@@ -274,8 +273,8 @@ export const WithPlaceholder: Story = {
     return (
       <Search>
         <Search.Input
-          aria-label={t('storybook.demo.searchListings')}
-          placeholder={t('storybook.demo.searchForListings')}
+          aria-label="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
         <Search.Clear />
         <Search.Button />
@@ -291,7 +290,7 @@ export const Sizes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Search data-size="sm">
           <Search.Input
-            aria-label={t('storybook.demo.smallSearch')}
+            aria-label="Eksempel Tekst"
             placeholder={t('storybook.demo.small') + '...'}
           />
           <Search.Clear />
@@ -299,7 +298,7 @@ export const Sizes: Story = {
         </Search>
         <Search data-size="md">
           <Search.Input
-            aria-label={t('storybook.demo.mediumSearch')}
+            aria-label="Eksempel Tekst"
             placeholder={t('storybook.demo.medium') + '...'}
           />
           <Search.Clear />
@@ -307,7 +306,7 @@ export const Sizes: Story = {
         </Search>
         <Search data-size="lg">
           <Search.Input
-            aria-label={t('storybook.demo.largeSearch')}
+            aria-label="Eksempel Tekst"
             placeholder={t('storybook.demo.large') + '...'}
           />
           <Search.Clear />
@@ -325,7 +324,7 @@ export const Colors: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Search data-color="neutral">
           <Search.Input
-            aria-label={t('storybook.demo.neutralSearch')}
+            aria-label="Eksempel Tekst"
             placeholder={t('storybook.demo.neutralColor') + '...'}
           />
           <Search.Clear />
@@ -333,7 +332,7 @@ export const Colors: Story = {
         </Search>
         <Search data-color="accent">
           <Search.Input
-            aria-label={t('storybook.demo.accentSearch')}
+            aria-label="Eksempel Tekst"
             placeholder={t('storybook.demo.accentColor') + '...'}
           />
           <Search.Clear />

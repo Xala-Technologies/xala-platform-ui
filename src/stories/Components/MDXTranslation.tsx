@@ -12,7 +12,6 @@
  * ```
  */
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 
 export interface TProps {
   /** Translation key (e.g., 'platform.common.save' or 'storybook.demo.buttonDescription') */
@@ -57,7 +56,6 @@ export function T({ tKey, children, values }: TProps): React.ReactElement {
  *
  * @example
  * ```mdx
- * import { useT } from '@xala-technologies/i18n';
  *
  * <script>
  *   const t = useT();

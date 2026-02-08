@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Slider, RangeSlider } from '../../composed/Slider';
 
 const meta: Meta<typeof Slider> = {
@@ -72,7 +71,7 @@ const WithLabelDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.volume')}
+        label="Eksempel Tekst"
         defaultValue={50}
         min={0}
         max={100}
@@ -89,7 +88,7 @@ const WithValueDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.progress')}
+        label="Eksempel Tekst"
         defaultValue={75}
         min={0}
         max={100}
@@ -125,7 +124,7 @@ const TooltipAlwaysDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.value')}
+        label="Eksempel Tekst"
         defaultValue={50}
         min={0}
         max={100}
@@ -143,7 +142,7 @@ const WithMarksDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.temperature')}
+        label="Eksempel Tekst"
         defaultValue={20}
         min={0}
         max={100}
@@ -185,7 +184,7 @@ const SmallDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '400px' }}>
-      <Slider label={t('storybook.demo.small')} defaultValue={50} size="sm" onChange={fn()} />
+      <Slider label="Eksempel Tekst" defaultValue={50} size="sm" onChange={fn()} />
     </div>
   );
 };
@@ -194,7 +193,7 @@ const MediumDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '400px' }}>
-      <Slider label={t('storybook.demo.medium')} defaultValue={50} size="md" onChange={fn()} />
+      <Slider label="Eksempel Tekst" defaultValue={50} size="md" onChange={fn()} />
     </div>
   );
 };
@@ -203,7 +202,7 @@ const LargeDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '400px' }}>
-      <Slider label={t('storybook.demo.large')} defaultValue={50} size="lg" onChange={fn()} />
+      <Slider label="Eksempel Tekst" defaultValue={50} size="lg" onChange={fn()} />
     </div>
   );
 };
@@ -213,7 +212,7 @@ const SuccessDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.story.success')}
+        label="Eksempel Tekst"
         defaultValue={75}
         color="success"
         size="md"
@@ -228,7 +227,7 @@ const WarningDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.warning')}
+        label="Eksempel Tekst"
         defaultValue={50}
         color="warning"
         size="md"
@@ -243,7 +242,7 @@ const DangerDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.danger')}
+        label="Eksempel Tekst"
         defaultValue={25}
         color="danger"
         size="md"
@@ -258,7 +257,7 @@ const DisabledDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.disabled')}
+        label="Eksempel Tekst"
         defaultValue={50}
         disabled
         size="md"
@@ -273,7 +272,7 @@ const WithStepDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <Slider
-        label={t('storybook.demo.stepBy10')}
+        label="Eksempel Tekst"
         defaultValue={50}
         min={0}
         max={100}
@@ -305,7 +304,7 @@ const RangeSliderWithLabelDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <RangeSlider
-        label={t('storybook.demo.priceRange')}
+        label="Eksempel Tekst"
         defaultValue={[25, 75]}
         min={0}
         max={100}
@@ -322,7 +321,7 @@ const RangeSliderWithMarksDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <RangeSlider
-        label={t('storybook.demo.ageRange')}
+        label="Eksempel Tekst"
         defaultValue={[25, 65]}
         min={0}
         max={100}
@@ -352,9 +351,9 @@ const AllSizesDemo = () => {
         width: '400px',
       }}
     >
-      <Slider label={t('storybook.demo.small')} defaultValue={50} size="sm" onChange={fn()} />
-      <Slider label={t('storybook.demo.medium')} defaultValue={50} size="md" onChange={fn()} />
-      <Slider label={t('storybook.demo.large')} defaultValue={50} size="lg" onChange={fn()} />
+      <Slider label="Eksempel Tekst" defaultValue={50} size="sm" onChange={fn()} />
+      <Slider label="Eksempel Tekst" defaultValue={50} size="md" onChange={fn()} />
+      <Slider label="Eksempel Tekst" defaultValue={50} size="lg" onChange={fn()} />
     </div>
   );
 };

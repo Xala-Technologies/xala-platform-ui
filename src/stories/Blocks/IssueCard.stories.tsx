@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { IssueCard, Stack } from '../../index';
 
 /**
@@ -58,12 +57,12 @@ export const Default: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={123}
-          title={t('storybook.issueCard.fixLoginBug')}
-          body={t('storybook.issueCard.fixLoginBugDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="open"
           type="issue"
           platform="github"
-          author={t('storybook.issueCard.johnDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 20)}
           commentCount={5}
         />
@@ -82,12 +81,12 @@ export const PullRequest: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={456}
-          title={t('storybook.issueCard.addNewFeature')}
-          body={t('storybook.issueCard.addNewFeatureDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="open"
           type="pull_request"
           platform="github"
-          author={t('storybook.issueCard.janeDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 22)}
           commentCount={12}
           labels={[
@@ -110,12 +109,12 @@ export const Merged: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={789}
-          title={t('storybook.issueCard.improvePerformance')}
-          body={t('storybook.issueCard.improvePerformanceDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="merged"
           type="pull_request"
           platform="github"
-          author={t('storybook.issueCard.johnDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 15)}
           commentCount={8}
         />
@@ -134,12 +133,12 @@ export const Closed: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={321}
-          title={t('storybook.issueCard.duplicateIssue')}
-          body={t('storybook.issueCard.duplicateIssueDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="closed"
           type="issue"
           platform="github"
-          author={t('storybook.issueCard.janeDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 10)}
           commentCount={2}
         />
@@ -158,12 +157,12 @@ export const Draft: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={654}
-          title={t('storybook.issueCard.wipFeature')}
-          body={t('storybook.issueCard.wipFeatureDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="draft"
           type="pull_request"
           platform="github"
-          author={t('storybook.issueCard.johnDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 25)}
           commentCount={0}
         />
@@ -182,12 +181,12 @@ export const Selected: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={123}
-          title={t('storybook.issueCard.fixLoginBug')}
-          body={t('storybook.issueCard.fixLoginBugDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="open"
           type="issue"
           platform="github"
-          author={t('storybook.issueCard.johnDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 20)}
           commentCount={5}
           selected
@@ -207,12 +206,12 @@ export const GitLab: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <IssueCard
           number={999}
-          title={t('storybook.issueCard.updateDocumentation')}
-          body={t('storybook.issueCard.updateDocumentationDescription')}
+          title="Eksempel Tekst"
+          body="Eksempel Tekst"
           state="open"
           type="merge_request"
           platform="gitlab"
-          author={t('storybook.issueCard.janeDoe')}
+          author="Eksempel Tekst"
           createdAt={new Date(2026, 0, 24)}
           commentCount={3}
         />

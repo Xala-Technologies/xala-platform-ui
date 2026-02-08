@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { TreeView, type TreeNode } from '../../index';
 import { FolderIcon, FileIcon, HomeIcon, SettingsIcon } from '../../index';
 
@@ -109,7 +108,7 @@ export const Default: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );
@@ -134,7 +133,7 @@ export const InitiallyExpanded: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );
@@ -159,7 +158,7 @@ export const Small: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );
@@ -184,7 +183,7 @@ export const Large: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );
@@ -209,7 +208,7 @@ export const WithoutIcons: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );
@@ -260,7 +259,7 @@ export const DeepNesting: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );
@@ -313,7 +312,7 @@ export const WithDisabledNodes: Story = {
             setSelectedId(id);
             console.log('Selected:', id);
           }}
-          ariaLabel={t('storybook.treeView.navigationTree')}
+          ariaLabel="Eksempel Tekst"
         />
       </div>
     );

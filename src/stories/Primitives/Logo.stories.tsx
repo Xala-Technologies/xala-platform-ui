@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Logo } from '../../index';
 
 /**
@@ -52,7 +51,7 @@ export const Default: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Logo alt={t('storybook.logo.platformLogo')} />
+        <Logo alt="Platform Logo" />
       </div>
     );
   },
@@ -66,7 +65,7 @@ export const CustomHeight: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Logo height={60} alt={t('storybook.logo.platformLogo')} />
+        <Logo height={60} alt="Platform Logo" />
       </div>
     );
   },
@@ -80,7 +79,7 @@ export const Small: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Logo height={24} alt={t('storybook.logo.platformLogo')} />
+        <Logo height={24} alt="Platform Logo" />
       </div>
     );
   },
@@ -94,7 +93,7 @@ export const Large: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Logo height={80} alt={t('storybook.logo.platformLogo')} />
+        <Logo height={80} alt="Platform Logo" />
       </div>
     );
   },
@@ -108,7 +107,7 @@ export const CustomSource: Story = {
     const t = useT();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Logo src="/custom-logo.svg" alt={t('storybook.logo.customLogo')} />
+        <Logo src="/custom-logo.svg" alt="Tilpasset Logo" />
       </div>
     );
   },

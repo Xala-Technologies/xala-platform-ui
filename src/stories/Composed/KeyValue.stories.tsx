@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { KeyValue, KeyValueList, DefinitionList } from '../../composed/KeyValue';
 import { Badge } from '../../composed/Badge';
 
@@ -101,7 +100,7 @@ const CopyableDemo = () => {
   const t = useT();
   return (
     <KeyValue
-      label={t('storybook.demo.apiKey')}
+      label="Eksempel Tekst"
       value="sk_live_1234567890abcdef"
       direction="vertical"
       copyable={true}
@@ -122,7 +121,7 @@ const MonospaceDemo = () => {
   const t = useT();
   return (
     <KeyValue
-      label={t('storybook.demo.transactionId')}
+      label="Eksempel Tekst"
       value="txn_1234567890abcdef"
       direction="vertical"
       copyable={false}

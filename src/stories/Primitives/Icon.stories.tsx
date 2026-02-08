@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Icon, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -40,7 +39,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.icon.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Icon>
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
@@ -66,7 +65,7 @@ export const Sizes: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.icon.sizes')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack
               spacing="var(--ds-spacing-2)"
               style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}
@@ -104,7 +103,7 @@ export const Colors: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.icon.colors')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack
               spacing="var(--ds-spacing-2)"
               style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}

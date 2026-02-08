@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { DashboardPageHeader } from '../../composed/DashboardPageHeader';
 import { Button, Badge } from '@digdir/designsystemet-react';
 import { MapPin, Calendar, User } from 'lucide-react';
@@ -52,7 +51,7 @@ const DefaultDemo = () => {
   return (
     <DashboardPageHeader
       title={t('platform.nav.dashboard')}
-      subtitle={t('storybook.demo.overviewOfResources')}
+      subtitle="Eksempel Tekst"
     />
   );
 };
@@ -69,8 +68,8 @@ const WithBadgeDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.projectAlpha')}
-      subtitle={t('storybook.demo.activeDevelopmentProject')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       badge={<Badge variant="success">{t('platform.status.active')}</Badge>}
     />
   );
@@ -88,8 +87,8 @@ const WithBreadcrumbsDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.resourceDetails')}
-      subtitle={t('storybook.demo.viewAndManageResource')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       breadcrumb={
         <nav
           style={{
@@ -102,10 +101,10 @@ const WithBreadcrumbsDemo = () => {
           </a>
           {' / '}
           <a href="/resources" style={{ textDecoration: 'none', color: 'inherit' }}>
-            {t('storybook.demo.resources')}
+            "Eksempel Tekst"
           </a>
           {' / '}
-          <span>{t('storybook.demo.details')}</span>
+          <span>"Eksempel Tekst"</span>
         </nav>
       }
     />
@@ -124,12 +123,12 @@ const WithMetadataDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.meetingRoom101')}
-      subtitle={t('storybook.demo.conferenceRoomFirstFloor')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       meta={[
         { icon: <MapPin size={16} />, label: 'Storgata 1, Oslo' },
         { icon: <Calendar size={16} />, label: t('storybook.demo.availableToday') },
-        { icon: <User size={16} />, label: `${t('storybook.demo.capacity')}: 20` },
+        { icon: <User size={16} />, label: `$"Eksempel Tekst": 20` },
       ]}
     />
   );
@@ -147,11 +146,11 @@ const WithActionsDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.documentEditor')}
-      subtitle={t('storybook.demo.editYourDocument')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       secondaryAction={
         <Button onClick={fn()} data-color="neutral" data-size="medium">
-          {t('storybook.demo.share')}
+          "Eksempel Tekst"
         </Button>
       }
       primaryAction={
@@ -175,8 +174,8 @@ const WithTabsDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.userProfile')}
-      subtitle={t('storybook.demo.manageAccountSettings')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       tabs={[
         { id: 'overview', label: t('storybook.demo.overview'), active: true },
         { id: 'settings', label: t('platform.nav.settings'), count: 3 },
@@ -200,8 +199,8 @@ const WithTabsPillDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.projectDashboard')}
-      subtitle={t('storybook.demo.trackProjectProgress')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       tabs={[
         { id: 'overview', label: t('storybook.demo.overview'), active: true },
         { id: 'tasks', label: t('storybook.demo.tasks'), count: 12 },
@@ -226,8 +225,8 @@ const CompleteDemo = () => {
   const t = useT();
   return (
     <DashboardPageHeader
-      title={t('storybook.demo.resourceManagement')}
-      subtitle={t('storybook.demo.manageAndOrganizeResources')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       badge={<Badge variant="info">Beta</Badge>}
       breadcrumb={
         <nav
@@ -240,22 +239,22 @@ const CompleteDemo = () => {
             {t('platform.nav.home')}
           </a>
           {' / '}
-          {t('storybook.demo.resources')}
+          "Eksempel Tekst"
         </nav>
       }
       meta={[
         { icon: <MapPin size={16} />, label: 'Oslo, Norway' },
         { icon: <Calendar size={16} />, label: t('storybook.demo.updated2HoursAgo') },
       ]}
-      lastUpdated={t('storybook.demo.lastUpdated2HoursAgo')}
+      lastUpdated="Eksempel Tekst"
       secondaryAction={
         <Button onClick={fn()} data-color="neutral" data-size="medium">
-          {t('storybook.demo.export')}
+          "Eksempel Tekst"
         </Button>
       }
       primaryAction={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          {t('storybook.demo.createNew')}
+          "Eksempel Tekst"
         </Button>
       }
       tabs={[
@@ -279,7 +278,7 @@ export const Complete: Story = {
 // Wrapper for minimal story
 const MinimalDemo = () => {
   const t = useT();
-  return <DashboardPageHeader title={t('storybook.demo.simplePage')} />;
+  return <DashboardPageHeader title="Eksempel Tekst" />;
 };
 
 // Minimal

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Tooltip, Button } from '../../index';
 
 const meta: Meta = {
@@ -239,8 +238,8 @@ export const Default: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Tooltip content={t('storybook.demo.thisIsATooltip')}>
-        <Button type="button">{t('storybook.demo.hoverMe')}</Button>
+      <Tooltip content="Eksempel Tekst">
+        <Button type="button">"Eksempel Tekst"</Button>
       </Tooltip>
     );
   },
@@ -260,29 +259,29 @@ export const Placements: Story = {
         }}
       >
         <div />
-        <Tooltip content={t('storybook.demo.topTooltip')} placement="top">
+        <Tooltip content="Eksempel Tekst" placement="top">
           <Button variant="secondary" type="button">
-            {t('storybook.demo.top')}
+            "Eksempel Tekst"
           </Button>
         </Tooltip>
         <div />
 
-        <Tooltip content={t('storybook.demo.leftTooltip')} placement="left">
+        <Tooltip content="Eksempel Tekst" placement="left">
           <Button variant="secondary" type="button">
-            {t('storybook.demo.left')}
+            "Eksempel Tekst"
           </Button>
         </Tooltip>
         <div />
-        <Tooltip content={t('storybook.demo.rightTooltip')} placement="right">
+        <Tooltip content="Eksempel Tekst" placement="right">
           <Button variant="secondary" type="button">
-            {t('storybook.demo.right')}
+            "Eksempel Tekst"
           </Button>
         </Tooltip>
 
         <div />
-        <Tooltip content={t('storybook.demo.bottomTooltip')} placement="bottom">
+        <Tooltip content="Eksempel Tekst" placement="bottom">
           <Button variant="secondary" type="button">
-            {t('storybook.demo.bottom')}
+            "Eksempel Tekst"
           </Button>
         </Tooltip>
         <div />
@@ -295,14 +294,14 @@ export const OnIcon: Story = {
   render: function Render() {
     const t = useT();
     return (
-      <Tooltip content={t('storybook.demo.moreInformationAboutFeature')}>
+      <Tooltip content="Eksempel Tekst">
         <Button
           variant="tertiary"
           data-size="sm"
-          aria-label={t('storybook.demo.information')}
+          aria-label="Eksempel Tekst"
           type="button"
         >
-          {t('storybook.demo.info')}
+          "Eksempel Tekst"
         </Button>
       </Tooltip>
     );

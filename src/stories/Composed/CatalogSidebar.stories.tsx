@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { CatalogSidebar, type CatalogItem, Stack } from '../../index';
 
 /**
@@ -174,7 +173,7 @@ export const WithError: Story = {
         spacing="var(--ds-spacing-4)"
         style={{ width: '300px', height: '600px', padding: 'var(--ds-spacing-4)' }}
       >
-        <CatalogSidebar items={[]} error={t('storybook.catalogSidebar.errorMessage')} />
+        <CatalogSidebar items={[]} error="Eksempel Tekst" />
       </Stack>
     );
   },

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { EmptyState, Stack, Paragraph, Card } from '../../index';
 import { InboxIcon, CheckCircleIcon, AlertTriangleIcon, InfoIcon } from '../../index';
 
@@ -43,11 +42,11 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.emptyState.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <EmptyState
               icon={<InboxIcon />}
-              title={t('storybook.emptyState.title')}
-              description={t('storybook.emptyState.descriptionText')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -69,11 +68,11 @@ export const WithAction: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.emptyState.withAction')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <EmptyState
               icon={<InboxIcon />}
-              title={t('storybook.emptyState.title')}
-              description={t('storybook.emptyState.descriptionText')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               action={{
                 label: t('storybook.emptyState.create'),
                 onClick: () => console.log('Create clicked'),
@@ -99,11 +98,11 @@ export const Success: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.emptyState.success')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <EmptyState
               icon={<CheckCircleIcon />}
-              title={t('storybook.emptyState.successTitle')}
-              description={t('storybook.emptyState.successDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               variant="success"
             />
           </Stack>
@@ -126,11 +125,11 @@ export const Warning: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.emptyState.warning')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <EmptyState
               icon={<AlertTriangleIcon />}
-              title={t('storybook.emptyState.warningTitle')}
-              description={t('storybook.emptyState.warningDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               variant="warning"
             />
           </Stack>
@@ -153,11 +152,11 @@ export const Info: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.emptyState.info')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <EmptyState
               icon={<InfoIcon />}
-              title={t('storybook.emptyState.infoTitle')}
-              description={t('storybook.emptyState.infoDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               variant="info"
             />
           </Stack>
@@ -180,8 +179,8 @@ export const Small: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.emptyState.small')}</Paragraph>
-            <EmptyState icon={<InboxIcon />} title={t('storybook.emptyState.title')} size="sm" />
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <EmptyState icon={<InboxIcon />} title="Eksempel Tekst" size="sm" />
           </Stack>
         </Card>
       </Stack>

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ResourceToolbar } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof ResourceToolbar> = {
@@ -159,7 +158,7 @@ export const CustomCountLabel: Story = {
     return (
       <ResourceToolbar
         count={15}
-        countLabel={t('storybook.demo.cardTitle')}
+        countLabel="Eksempel Tekst"
         activeFilterCount={0}
         viewMode="grid"
         showViewToggle={true}

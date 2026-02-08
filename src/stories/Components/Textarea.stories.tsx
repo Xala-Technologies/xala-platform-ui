@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Textarea, Label, Field, ValidationMessage } from '../../index';
 
 const meta: Meta<typeof Textarea> = {
@@ -44,7 +43,7 @@ export const Default: Story = {
     return (
       <Field>
         <Label>{t('platform.common.description')}</Label>
-        <Textarea placeholder={t('storybook.demo.enterDescription')} />
+        <Textarea placeholder="Eksempel Tekst" />
       </Field>
     );
   },
@@ -55,9 +54,9 @@ export const WithDescription: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.additionalNotes')}</Label>
-        <Field.Description>{t('storybook.demo.includeSpecialRequirements')}</Field.Description>
-        <Textarea placeholder={t('storybook.demo.enterNotes')} />
+        <Label>"Eksempel Tekst"</Label>
+        <Field.Description>"Eksempel Tekst"</Field.Description>
+        <Textarea placeholder="Eksempel Tekst" />
       </Field>
     );
   },
@@ -68,9 +67,9 @@ export const WithCharacterCount: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.bio')}</Label>
-        <Field.Description>{t('storybook.demo.tellUsAboutYourself')}</Field.Description>
-        <Textarea placeholder={t('storybook.demo.writeShortBio')} maxLength={200} />
+        <Label>"Eksempel Tekst"</Label>
+        <Field.Description>"Eksempel Tekst"</Field.Description>
+        <Textarea placeholder="Eksempel Tekst" maxLength={200} />
         <Field.Counter limit={200} />
       </Field>
     );
@@ -82,9 +81,9 @@ export const WithError: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.message')}</Label>
-        <Textarea placeholder={t('storybook.demo.enterYourMessage')} aria-invalid="true" />
-        <ValidationMessage>{t('storybook.demo.messageIsRequired')}</ValidationMessage>
+        <Label>"Eksempel Tekst"</Label>
+        <Textarea placeholder="Eksempel Tekst" aria-invalid="true" />
+        <ValidationMessage>"Eksempel Tekst"</ValidationMessage>
       </Field>
     );
   },
@@ -95,8 +94,8 @@ export const Disabled: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.lockedContent')}</Label>
-        <Textarea defaultValue={t('storybook.demo.cannotBeEdited')} disabled />
+        <Label>"Eksempel Tekst"</Label>
+        <Textarea defaultValue="Eksempel Tekst" disabled />
       </Field>
     );
   },
@@ -107,8 +106,8 @@ export const ReadOnly: Story = {
     const t = useT();
     return (
       <Field>
-        <Label>{t('storybook.demo.termsAndConditions')}</Label>
-        <Textarea defaultValue={t('storybook.demo.loremIpsum')} readOnly />
+        <Label>"Eksempel Tekst"</Label>
+        <Textarea defaultValue="Eksempel Tekst" readOnly />
       </Field>
     );
   },
@@ -120,16 +119,16 @@ export const Rows: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Field>
-          <Label>{t('storybook.demo.small3Rows')}</Label>
-          <Textarea rows={3} placeholder={t('storybook.demo.threeRows')} />
+          <Label>"Eksempel Tekst"</Label>
+          <Textarea rows={3} placeholder="Eksempel Tekst" />
         </Field>
         <Field>
-          <Label>{t('storybook.demo.medium5Rows')}</Label>
-          <Textarea rows={5} placeholder={t('storybook.demo.fiveRows')} />
+          <Label>"Eksempel Tekst"</Label>
+          <Textarea rows={5} placeholder="Eksempel Tekst" />
         </Field>
         <Field>
-          <Label>{t('storybook.demo.large8Rows')}</Label>
-          <Textarea rows={8} placeholder={t('storybook.demo.eightRows')} />
+          <Label>"Eksempel Tekst"</Label>
+          <Textarea rows={8} placeholder="Eksempel Tekst" />
         </Field>
       </div>
     );
@@ -143,24 +142,24 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             <Field>
-              <Label>{t('storybook.story.default')}</Label>
-              <Textarea placeholder={t('storybook.demo.enterText')} />
+              <Label>"Eksempel Tekst"</Label>
+              <Textarea placeholder="Eksempel Tekst" />
             </Field>
             <Field>
-              <Label>{t('storybook.demo.withValue')}</Label>
-              <Textarea defaultValue={t('storybook.demo.someExistingContent')} />
+              <Label>"Eksempel Tekst"</Label>
+              <Textarea defaultValue="Eksempel Tekst" />
             </Field>
             <Field>
-              <Label>{t('storybook.story.disabled')}</Label>
-              <Textarea disabled defaultValue={t('storybook.demo.cannotEdit')} />
+              <Label>"Eksempel Tekst"</Label>
+              <Textarea disabled defaultValue="Eksempel Tekst" />
             </Field>
             <Field>
-              <Label>{t('storybook.story.readOnly')}</Label>
-              <Textarea readOnly defaultValue={t('storybook.demo.readOnlyContent')} />
+              <Label>"Eksempel Tekst"</Label>
+              <Textarea readOnly defaultValue="Eksempel Tekst" />
             </Field>
           </div>
         </div>

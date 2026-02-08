@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { RichTextEditor, Stack } from '../../index';
 
 /**
@@ -70,7 +69,7 @@ export const Default: Story = {
         <RichTextEditor
           value={value}
           onChange={setValue}
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -92,8 +91,8 @@ export const WithLabel: Story = {
         <RichTextEditor
           value={value}
           onChange={setValue}
-          label={t('storybook.richTextEditor.description')}
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          label="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -117,7 +116,7 @@ export const WithValue: Story = {
         <RichTextEditor
           value={value}
           onChange={setValue}
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -140,7 +139,7 @@ export const CustomToolbar: Story = {
           value={value}
           onChange={setValue}
           toolbar={['bold', 'italic', 'bulletList', 'numberedList', 'link']}
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -162,9 +161,9 @@ export const WithError: Story = {
         <RichTextEditor
           value={value}
           onChange={setValue}
-          label={t('storybook.richTextEditor.description')}
-          error={t('storybook.richTextEditor.errorMessage')}
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          label="Eksempel Tekst"
+          error="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -187,7 +186,7 @@ export const Disabled: Story = {
           value={value}
           onChange={setValue}
           disabled
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -210,7 +209,7 @@ export const ReadOnly: Story = {
           value={value}
           onChange={setValue}
           readOnly
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -234,7 +233,7 @@ export const CustomHeight: Story = {
           onChange={setValue}
           minHeight="200px"
           maxHeight="400px"
-          placeholder={t('storybook.richTextEditor.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );

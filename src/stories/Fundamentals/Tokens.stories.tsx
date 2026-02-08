@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 
 /**
  * Design Tokens from Digdir Designsystemet.
@@ -80,7 +79,7 @@ export const ColorTokens: Story = {
         {/* Accent Colors */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.accentColors')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
             {[
@@ -153,7 +152,7 @@ export const ColorTokens: Story = {
         {/* Neutral Colors */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.neutralColors')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-3)' }}>
             {[
@@ -229,7 +228,7 @@ export const ColorTokens: Story = {
         {/* Semantic Colors */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.semanticColors')}
+            "Eksempel Tekst"
           </h3>
           <div
             style={{
@@ -351,7 +350,7 @@ export const SpacingTokens: Story = {
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          {t('storybook.tokens.spacingScale')}
+          "Eksempel Tekst"
         </h3>
         <p
           style={{
@@ -359,7 +358,7 @@ export const SpacingTokens: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.tokens.spacingDescription')}
+          "Eksempel Tekst"
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
           {[
@@ -431,7 +430,7 @@ export const TypographyTokens: Story = {
         {/* Font Sizes */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.fontSizeTokens')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             {[
@@ -483,7 +482,7 @@ export const TypographyTokens: Story = {
         {/* Font Weights */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.fontWeightTokens')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             {[
@@ -552,7 +551,7 @@ export const BorderAndShadowTokens: Story = {
         {/* Border Radius */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.borderRadiusTokens')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-4)' }}>
             {[
@@ -602,7 +601,7 @@ export const BorderAndShadowTokens: Story = {
         {/* Shadows */}
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.shadowTokens')}
+            "Eksempel Tekst"
           </h3>
           <div
             style={{
@@ -665,7 +664,7 @@ export const InteractiveExplorer: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-            {t('storybook.tokens.interactiveExplorer')}
+            "Eksempel Tekst"
           </h3>
           <p
             style={{
@@ -673,7 +672,7 @@ export const InteractiveExplorer: Story = {
               marginBottom: 'var(--ds-spacing-6)',
             }}
           >
-            {t('storybook.tokens.experimentWithTokens')}
+            "Eksempel Tekst"
           </p>
         </div>
 
@@ -687,7 +686,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              {t('storybook.tokens.color')}
+              "Eksempel Tekst"
             </label>
             <select
               value={selectedColor}
@@ -699,12 +698,12 @@ export const InteractiveExplorer: Story = {
                 border: '1px solid var(--ds-color-neutral-border-default)',
               }}
             >
-              <option value="accent">{t('storybook.tokens.accent')}</option>
-              <option value="neutral">{t('storybook.tokens.neutral')}</option>
-              <option value="success">{t('storybook.notifications.success')}</option>
-              <option value="warning">{t('storybook.notifications.warning')}</option>
-              <option value="danger">{t('storybook.tokens.danger')}</option>
-              <option value="info">{t('storybook.tokens.info')}</option>
+              <option value="accent">"Eksempel Tekst"</option>
+              <option value="neutral">"Eksempel Tekst"</option>
+              <option value="success">"Eksempel Tekst"</option>
+              <option value="warning">"Eksempel Tekst"</option>
+              <option value="danger">"Eksempel Tekst"</option>
+              <option value="info">"Eksempel Tekst"</option>
             </select>
           </div>
 
@@ -717,7 +716,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              {t('storybook.tokens.spacing')}
+              "Eksempel Tekst"
             </label>
             <select
               value={selectedSpacing}
@@ -745,7 +744,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              {t('storybook.tokens.borderRadius')}
+              "Eksempel Tekst"
             </label>
             <select
               value={selectedRadius}
@@ -757,10 +756,10 @@ export const InteractiveExplorer: Story = {
                 border: '1px solid var(--ds-color-neutral-border-default)',
               }}
             >
-              <option value="sm">{t('storybook.sizes.small')}</option>
-              <option value="md">{t('storybook.sizes.medium')}</option>
-              <option value="lg">{t('storybook.sizes.large')}</option>
-              <option value="xl">{t('storybook.tokens.extraLarge')}</option>
+              <option value="sm">"Eksempel Tekst"</option>
+              <option value="md">"Eksempel Tekst"</option>
+              <option value="lg">"Eksempel Tekst"</option>
+              <option value="xl">"Eksempel Tekst"</option>
             </select>
           </div>
 
@@ -773,7 +772,7 @@ export const InteractiveExplorer: Story = {
                 fontWeight: 600,
               }}
             >
-              {t('storybook.tokens.shadow')}
+              "Eksempel Tekst"
             </label>
             <select
               value={selectedShadow}
@@ -785,11 +784,11 @@ export const InteractiveExplorer: Story = {
                 border: '1px solid var(--ds-color-neutral-border-default)',
               }}
             >
-              <option value="xs">{t('storybook.tokens.extraSmall')}</option>
-              <option value="sm">{t('storybook.sizes.small')}</option>
-              <option value="md">{t('storybook.sizes.medium')}</option>
-              <option value="lg">{t('storybook.sizes.large')}</option>
-              <option value="xl">{t('storybook.tokens.extraLarge')}</option>
+              <option value="xs">"Eksempel Tekst"</option>
+              <option value="sm">"Eksempel Tekst"</option>
+              <option value="md">"Eksempel Tekst"</option>
+              <option value="lg">"Eksempel Tekst"</option>
+              <option value="xl">"Eksempel Tekst"</option>
             </select>
           </div>
         </div>
@@ -811,10 +810,10 @@ export const InteractiveExplorer: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.tokens.previewCard')}
+            "Eksempel Tekst"
           </h4>
           <p style={{ fontSize: 'var(--ds-font-size-sm)' }}>
-            {t('storybook.tokens.previewDescription')}
+            "Eksempel Tekst"
           </p>
         </div>
 
@@ -833,7 +832,7 @@ export const InteractiveExplorer: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.tokens.generatedCSS')}:
+            "Eksempel Tekst":
           </h4>
           <pre
             style={{
@@ -865,7 +864,7 @@ export const TokenUsageExample: Story = {
     return (
       <div style={{ maxWidth: '600px' }}>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)', fontSize: 'var(--ds-font-size-5)' }}>
-          {t('storybook.tokens.tokenUsageExample')}
+          "Eksempel Tekst"
         </h3>
         <p
           style={{
@@ -873,7 +872,7 @@ export const TokenUsageExample: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.tokens.tokenUsageDescription')}
+          "Eksempel Tekst"
         </p>
 
         <div
@@ -899,7 +898,7 @@ export const TokenUsageExample: Story = {
                 marginBottom: 'var(--ds-spacing-2)',
               }}
             >
-              {t('storybook.sizes.cardTitle')}
+              "Eksempel Tekst"
             </h4>
             <p
               style={{
@@ -907,7 +906,7 @@ export const TokenUsageExample: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.tokens.cardTokensOnly')}
+              "Eksempel Tekst"
             </p>
           </div>
 
@@ -929,7 +928,7 @@ export const TokenUsageExample: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                {t('storybook.sizes.tag')} 1
+                "Eksempel Tekst" 1
               </span>
               <span
                 style={{
@@ -941,7 +940,7 @@ export const TokenUsageExample: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                {t('storybook.sizes.tag')} 2
+                "Eksempel Tekst" 2
               </span>
             </div>
 
@@ -958,7 +957,7 @@ export const TokenUsageExample: Story = {
               }}
               type="button"
             >
-              {t('storybook.tokens.actionButton')}
+              "Eksempel Tekst"
             </button>
           </div>
         </div>
@@ -979,8 +978,8 @@ export const TokenUsageExample: Story = {
               margin: 0,
             }}
           >
-            <strong>{t('storybook.tokens.tokensUsed')}:</strong>{' '}
-            {t('storybook.tokens.tokensUsedList')}
+            <strong>"Eksempel Tekst":</strong>{' '}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>

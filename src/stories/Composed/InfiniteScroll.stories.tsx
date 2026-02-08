@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { InfiniteScroll, VirtualList } from '../../composed/InfiniteScroll';
 import { Card, Paragraph } from '@digdir/designsystemet-react';
 
@@ -84,7 +83,7 @@ const DefaultDemo = () => {
             style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             <Paragraph data-size="sm">
-              {t('storybook.demo.item')} {item}
+              "Eksempel Tekst" {item}
             </Paragraph>
           </Card>
         ))}
@@ -125,7 +124,7 @@ const CustomLoaderDemo = () => {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.demo.loadingMoreItems')}
+            "Eksempel Tekst"
           </div>
         }
       >
@@ -137,7 +136,7 @@ const CustomLoaderDemo = () => {
             style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             <Paragraph data-size="sm">
-              {t('storybook.demo.item')} {item}
+              "Eksempel Tekst" {item}
             </Paragraph>
           </Card>
         ))}
@@ -170,7 +169,7 @@ const WithEndMessageDemo = () => {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.demo.allItemsLoaded')}
+            "Eksempel Tekst"
           </div>
         }
       >
@@ -182,7 +181,7 @@ const WithEndMessageDemo = () => {
             style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             <Paragraph data-size="sm">
-              {t('storybook.demo.item')} {item}
+              "Eksempel Tekst" {item}
             </Paragraph>
           </Card>
         ))}
@@ -214,7 +213,7 @@ const WithErrorDemo = () => {
             style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             <Paragraph data-size="sm">
-              {t('storybook.demo.item')} {item}
+              "Eksempel Tekst" {item}
             </Paragraph>
           </Card>
         ))}
@@ -227,7 +226,7 @@ const VirtualListDemo = () => {
   const t = useT();
   const items = Array.from({ length: 1000 }, (_, i) => ({
     id: i + 1,
-    name: `${t('storybook.demo.item')} ${i + 1}`,
+    name: `$"Eksempel Tekst" ${i + 1}`,
   }));
 
   return (

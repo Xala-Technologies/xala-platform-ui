@@ -5,7 +5,6 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   WorkflowStep,
   WorkflowPipeline,
@@ -100,8 +99,8 @@ export const AvailableWorkflow: StoryObj<typeof WorkflowCard> = {
     const t = useT();
     return (
       <WorkflowCard
-        name={t('storybook.demo.cardTitle')}
-        description={t('storybook.demo.cardDescription')}
+        name="Eksempel Tekst"
+        description="Eksempel Tekst"
         command="/product-vision"
         status="available"
         onCopyCommand={() => alert('Copied!')}
@@ -116,8 +115,8 @@ export const ComingSoonWorkflow: StoryObj<typeof WorkflowCard> = {
     const t = useT();
     return (
       <WorkflowCard
-        name={t('storybook.demo.cardTitle')}
-        description={t('storybook.demo.cardDescription')}
+        name="Eksempel Tekst"
+        description="Eksempel Tekst"
         command="/export --advanced"
         status="coming_soon"
         prerequisites={['product-vision', 'section-spec']}
@@ -131,8 +130,8 @@ export const DeprecatedWorkflow: StoryObj<typeof WorkflowCard> = {
     const t = useT();
     return (
       <WorkflowCard
-        name={t('storybook.demo.cardTitle')}
-        description={t('storybook.demo.cardDescription')}
+        name="Eksempel Tekst"
+        description="Eksempel Tekst"
         command="/export-v1"
         status="deprecated"
       />
@@ -159,20 +158,20 @@ export const WorkflowCardGrid: StoryObj<typeof CardGrid> = {
     return (
       <CardGrid>
         <WorkflowCard
-          name={t('storybook.demo.cardTitle')}
-          description={t('storybook.demo.cardDescription')}
+          name="Eksempel Tekst"
+          description="Eksempel Tekst"
           command="/product-vision"
           status="available"
         />
         <WorkflowCard
-          name={t('storybook.demo.cardTitle')}
-          description={t('storybook.demo.cardDescription')}
+          name="Eksempel Tekst"
+          description="Eksempel Tekst"
           command="/product-roadmap"
           status="available"
         />
         <WorkflowCard
-          name={t('storybook.demo.cardTitle')}
-          description={t('storybook.demo.cardDescription')}
+          name="Eksempel Tekst"
+          description="Eksempel Tekst"
           command="/data-model"
           status="available"
         />
@@ -263,12 +262,12 @@ export const TwoColumnForm: StoryObj<typeof FormGrid> = {
     const t = useT();
     return (
       <FormGrid columns={2}>
-        <Textfield label={t('platform.nav.profile')} placeholder={t('storybook.demo.sampleText')} />
-        <Textfield label={t('platform.nav.profile')} placeholder={t('storybook.demo.sampleText')} />
-        <Textfield label={t('platform.auth.email')} placeholder={t('storybook.demo.sampleText')} />
+        <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
+        <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
+        <Textfield label={t('platform.auth.email')} placeholder="Eksempel Tekst" />
         <Textfield
           label={t('platform.common.details')}
-          placeholder={t('storybook.demo.sampleText')}
+          placeholder="Eksempel Tekst"
         />
       </FormGrid>
     );
@@ -282,7 +281,7 @@ export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
       <FormGrid columns={3}>
         <Textfield
           label={t('platform.common.details')}
-          placeholder={t('storybook.demo.sampleText')}
+          placeholder="Eksempel Tekst"
         />
         <Field>
           <Label>{t('platform.common.details')}</Label>
@@ -294,7 +293,7 @@ export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
         </Field>
         <Textfield
           label={t('platform.common.details')}
-          placeholder={t('storybook.demo.sampleText')}
+          placeholder="Eksempel Tekst"
         />
       </FormGrid>
     );
@@ -306,10 +305,10 @@ export const SingleColumnForm: StoryObj<typeof FormGrid> = {
     const t = useT();
     return (
       <FormGrid columns={1}>
-        <Textfield label={t('platform.nav.profile')} placeholder={t('storybook.demo.sampleText')} />
+        <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
         <Textfield
           label={t('platform.common.details')}
-          placeholder={t('storybook.demo.sampleText')}
+          placeholder="Eksempel Tekst"
         />
       </FormGrid>
     );

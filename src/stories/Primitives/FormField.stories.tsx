@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { FormField } from '../../index';
 import { Textfield } from '@digdir/designsystemet-react';
 
@@ -55,8 +54,8 @@ export const Default: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <FormField label={t('storybook.formField.name')}>
-          <Textfield placeholder={t('storybook.formField.enterName')} />
+        <FormField label="Eksempel Tekst">
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
       </div>
     );
@@ -72,10 +71,10 @@ export const WithDescription: Story = {
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField
-          label={t('storybook.formField.email')}
-          description={t('storybook.formField.emailDescription')}
+          label="Eksempel Tekst"
+          description="Eksempel Tekst"
         >
-          <Textfield type="email" placeholder={t('storybook.formField.enterEmail')} />
+          <Textfield type="email" placeholder="Eksempel Tekst" />
         </FormField>
       </div>
     );
@@ -90,8 +89,8 @@ export const Required: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <FormField label={t('storybook.formField.name')} required>
-          <Textfield placeholder={t('storybook.formField.enterName')} />
+        <FormField label="Eksempel Tekst" required>
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
       </div>
     );
@@ -107,10 +106,10 @@ export const WithError: Story = {
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField
-          label={t('storybook.formField.email')}
-          error={t('storybook.formField.emailError')}
+          label="Eksempel Tekst"
+          error="Eksempel Tekst"
         >
-          <Textfield type="email" placeholder={t('storybook.formField.enterEmail')} />
+          <Textfield type="email" placeholder="Eksempel Tekst" />
         </FormField>
       </div>
     );
@@ -126,12 +125,12 @@ export const WithDescriptionAndError: Story = {
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField
-          label={t('storybook.formField.password')}
-          description={t('storybook.formField.passwordDescription')}
-          error={t('storybook.formField.passwordError')}
+          label="Eksempel Tekst"
+          description="Eksempel Tekst"
+          error="Eksempel Tekst"
           required
         >
-          <Textfield type="password" placeholder={t('storybook.formField.enterPassword')} />
+          <Textfield type="password" placeholder="Eksempel Tekst" />
         </FormField>
       </div>
     );
@@ -147,7 +146,7 @@ export const WithoutLabel: Story = {
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <FormField>
-          <Textfield placeholder={t('storybook.formField.enterName')} />
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
       </div>
     );

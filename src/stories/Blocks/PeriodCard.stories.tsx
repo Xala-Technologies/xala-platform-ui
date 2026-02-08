@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { PeriodCard } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof PeriodCard> = {
@@ -73,9 +72,9 @@ export const Default: Story = {
     return (
       <PeriodCard
         id="season-1"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         subtitle="Basketball League"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         period={{
           startDate: 'March 1, 2026',
           endDate: 'June 30, 2026',
@@ -100,7 +99,7 @@ export const CompactVariant: Story = {
     return (
       <PeriodCard
         id="season-2"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         period={{
           startDate: 'July 1, 2026',
           endDate: 'August 31, 2026',
@@ -127,7 +126,7 @@ export const WithImage: Story = {
         id="season-3"
         title="Indoor Soccer League"
         subtitle="Recreational"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         period={{
           startDate: 'April 1, 2026',
           endDate: 'July 31, 2026',
@@ -157,7 +156,7 @@ export const WithDeadline: Story = {
         id="season-4"
         title="Tennis Championship"
         subtitle="Singles & Doubles"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         period={{
           startDate: 'May 15, 2026',
           endDate: 'June 15, 2026',
@@ -187,7 +186,7 @@ export const WithActionButton: Story = {
         id="season-5"
         title="Swimming Program"
         subtitle="Beginner to Advanced"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         period={{
           startDate: 'June 1, 2026',
           endDate: 'August 15, 2026',
@@ -213,7 +212,7 @@ export const DisabledAction: Story = {
         id="season-6"
         title="Sold Out Event"
         subtitle="Workshop Series"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         period={{
           startDate: 'March 10, 2026',
           endDate: 'March 20, 2026',
@@ -240,7 +239,7 @@ export const FullFeatured: Story = {
         id="season-7"
         title="Youth Basketball Camp"
         subtitle="Ages 8-14"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         period={{
           startDate: 'July 15, 2026',
           endDate: 'July 22, 2026',
@@ -273,7 +272,7 @@ export const StatusActive: Story = {
     return (
       <PeriodCard
         id="active-1"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         period={{ startDate: 'Jan 1', endDate: 'Mar 31' }}
         status={{ type: 'active', label: t('platform.status.active') }}
         onClick={fn()}
@@ -290,7 +289,7 @@ export const StatusEndingSoon: Story = {
     return (
       <PeriodCard
         id="ending-1"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         period={{ startDate: 'Jan 1', endDate: 'Jan 31' }}
         status={{ type: 'ending_soon', label: t('platform.status.pending') }}
         onClick={fn()}
@@ -307,7 +306,7 @@ export const StatusEnded: Story = {
     return (
       <PeriodCard
         id="ended-1"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         period={{ startDate: 'Sep 1', endDate: 'Dec 31' }}
         status={{ type: 'ended', label: t('platform.status.completed') }}
         onClick={fn()}
@@ -324,7 +323,7 @@ export const StatusDraft: Story = {
     return (
       <PeriodCard
         id="draft-1"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         period={{ startDate: 'TBD', endDate: 'TBD' }}
         status={{ type: 'draft', label: t('platform.status.pending') }}
         onClick={fn()}
@@ -341,7 +340,7 @@ export const StatusCancelled: Story = {
     return (
       <PeriodCard
         id="cancelled-1"
-        title={t('storybook.demo.cardTitle')}
+        title="Eksempel Tekst"
         period={{ startDate: 'Feb 15', endDate: 'Feb 20' }}
         status={{ type: 'cancelled', label: t('platform.status.cancelled') }}
         onClick={fn()}

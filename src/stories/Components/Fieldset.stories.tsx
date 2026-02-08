@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Fieldset, Checkbox, Radio, ValidationMessage } from '../../index';
 
 const meta: Meta = {
@@ -223,10 +222,10 @@ export const Default: Story = {
     const t = useT();
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('storybook.demo.selectYourInterests')}</Fieldset.Legend>
-        <Checkbox label={t('storybook.demo.sports')} value="sports" />
-        <Checkbox label={t('storybook.demo.music')} value="music" />
-        <Checkbox label={t('storybook.demo.technology')} value="tech" />
+        <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+        <Checkbox label="Eksempel Tekst" value="sports" />
+        <Checkbox label="Eksempel Tekst" value="music" />
+        <Checkbox label="Eksempel Tekst" value="tech" />
       </Fieldset>
     );
   },
@@ -237,11 +236,11 @@ export const WithDescription: Story = {
     const t = useT();
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('storybook.demo.contactPreferences')}</Fieldset.Legend>
-        <Fieldset.Description>{t('storybook.demo.chooseHowToBeContacted')}</Fieldset.Description>
+        <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+        <Fieldset.Description>"Eksempel Tekst"</Fieldset.Description>
         <Checkbox label={t('platform.auth.email')} value="email" />
-        <Checkbox label={t('storybook.demo.sms')} value="sms" />
-        <Checkbox label={t('storybook.demo.phone')} value="phone" />
+        <Checkbox label="Eksempel Tekst" value="sms" />
+        <Checkbox label="Eksempel Tekst" value="phone" />
       </Fieldset>
     );
   },
@@ -252,10 +251,10 @@ export const RadioGroup: Story = {
     const t = useT();
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('storybook.demo.selectTimeSlot')}</Fieldset.Legend>
-        <Radio label={t('storybook.demo.morning')} name="time" value="morning" />
-        <Radio label={t('storybook.demo.afternoon')} name="time" value="afternoon" />
-        <Radio label={t('storybook.demo.evening')} name="time" value="evening" />
+        <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+        <Radio label="Eksempel Tekst" name="time" value="morning" />
+        <Radio label="Eksempel Tekst" name="time" value="afternoon" />
+        <Radio label="Eksempel Tekst" name="time" value="evening" />
       </Fieldset>
     );
   },
@@ -266,9 +265,9 @@ export const WithError: Story = {
     const t = useT();
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('storybook.demo.acceptTerms')}</Fieldset.Legend>
-        <Checkbox label={t('storybook.demo.iAcceptTheTerms')} value="terms" aria-invalid="true" />
-        <ValidationMessage>{t('storybook.demo.mustAcceptTermsToContinue')}</ValidationMessage>
+        <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+        <Checkbox label="Eksempel Tekst" value="terms" aria-invalid="true" />
+        <ValidationMessage>"Eksempel Tekst"</ValidationMessage>
       </Fieldset>
     );
   },
@@ -280,19 +279,19 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Fieldset data-size="sm">
-          <Fieldset.Legend>{t('storybook.demo.smallFieldset')}</Fieldset.Legend>
-          <Checkbox label={t('storybook.demo.option')} value="1" />
-          <Checkbox label={t('storybook.demo.option')} value="2" />
+          <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+          <Checkbox label="Eksempel Tekst" value="1" />
+          <Checkbox label="Eksempel Tekst" value="2" />
         </Fieldset>
         <Fieldset data-size="md">
-          <Fieldset.Legend>{t('storybook.demo.mediumFieldset')}</Fieldset.Legend>
-          <Checkbox label={t('storybook.demo.option')} value="1" />
-          <Checkbox label={t('storybook.demo.option')} value="2" />
+          <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+          <Checkbox label="Eksempel Tekst" value="1" />
+          <Checkbox label="Eksempel Tekst" value="2" />
         </Fieldset>
         <Fieldset data-size="lg">
-          <Fieldset.Legend>{t('storybook.demo.largeFieldset')}</Fieldset.Legend>
-          <Checkbox label={t('storybook.demo.option')} value="1" />
-          <Checkbox label={t('storybook.demo.option')} value="2" />
+          <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+          <Checkbox label="Eksempel Tekst" value="1" />
+          <Checkbox label="Eksempel Tekst" value="2" />
         </Fieldset>
       </div>
     );

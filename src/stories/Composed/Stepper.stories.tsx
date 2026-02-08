@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Stepper, Wizard } from '../../composed/Stepper';
 import { useState } from 'react';
 import { Button, Paragraph, Heading } from '@digdir/designsystemet-react';

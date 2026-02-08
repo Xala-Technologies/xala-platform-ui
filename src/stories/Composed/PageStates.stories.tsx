@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { LoadingState, EmptyState, NotFoundState, ErrorState } from '../../composed/PageStates';
 import { Button } from '@digdir/designsystemet-react';
 import { Plus, FileText } from 'lucide-react';
@@ -88,7 +87,7 @@ export const LoadingLarge: Story = {
 // LoadingState - Custom label
 const LoadingCustomLabelExample = () => {
   const t = useT();
-  return <LoadingState label={t('storybook.demo.fetchingData')} size="md" />;
+  return <LoadingState label="Eksempel Tekst" size="md" />;
 };
 
 export const LoadingCustomLabel: Story = {
@@ -102,11 +101,11 @@ const EmptyDefaultExample = () => {
   const t = useT();
   return (
     <EmptyState
-      title={t('storybook.demo.noItemsFound')}
-      description={t('storybook.demo.getStartedByCreating')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
       action={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          {t('storybook.demo.createItem')}
+          "Eksempel Tekst"
         </Button>
       }
     />
@@ -124,8 +123,8 @@ const EmptyCompactExample = () => {
   const t = useT();
   return (
     <EmptyState
-      title={t('storybook.demo.noResults')}
-      description={t('storybook.demo.tryAdjustingSearch')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
       variant="compact"
     />
   );
@@ -143,12 +142,12 @@ const EmptyWithIconExample = () => {
   return (
     <EmptyState
       icon={<FileText size={48} />}
-      title={t('storybook.demo.noDocuments')}
-      description={t('storybook.demo.uploadFirstDocument')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
       action={
         <Button onClick={fn()} data-color="accent" data-size="medium">
           <Plus size={16} style={{ marginRight: 'var(--ds-spacing-1)' }} />
-          {t('storybook.demo.uploadDocument')}
+          "Eksempel Tekst"
         </Button>
       }
     />
@@ -166,8 +165,8 @@ const EmptyNoActionExample = () => {
   const t = useT();
   return (
     <EmptyState
-      title={t('storybook.demo.noItems')}
-      description={t('storybook.demo.noItemsToDisplay')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -184,7 +183,7 @@ const NotFoundDefaultExample = () => {
   return (
     <NotFoundState
       title={t('platform.errors.notFound')}
-      description={t('storybook.demo.pageNotFoundDescription')}
+      description="Eksempel Tekst"
       backLink={{
         label: t('platform.common.back'),
         href: '/',
@@ -205,8 +204,8 @@ const NotFoundNoBackLinkExample = () => {
   const t = useT();
   return (
     <NotFoundState
-      title={t('storybook.demo.resourceNotFound')}
-      description={t('storybook.demo.resourceNotFoundDescription')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -223,7 +222,7 @@ const NotFoundCustomExample = () => {
   return (
     <NotFoundState
       title="404"
-      description={t('storybook.demo.couldNotFind')}
+      description="Eksempel Tekst"
       backLink={{
         label: t('storybook.demo.returnHome'),
         href: '/',
@@ -244,9 +243,9 @@ const ErrorDefaultExample = () => {
   return (
     <ErrorState
       title={t('platform.errors.serverError')}
-      description={t('storybook.demo.errorWhileLoading')}
+      description="Eksempel Tekst"
       onRetry={fn()}
-      retryLabel={t('storybook.demo.tryAgain')}
+      retryLabel="Eksempel Tekst"
     />
   );
 };
@@ -262,10 +261,10 @@ const ErrorCustomExample = () => {
   const t = useT();
   return (
     <ErrorState
-      title={t('storybook.demo.failedToLoad')}
-      description={t('storybook.demo.checkConnectionAndRetry')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
       onRetry={fn()}
-      retryLabel={t('storybook.demo.retry')}
+      retryLabel="Eksempel Tekst"
     />
   );
 };
@@ -282,7 +281,7 @@ const ErrorNoRetryExample = () => {
   return (
     <ErrorState
       title={t('platform.errors.serverError')}
-      description={t('storybook.demo.unexpectedErrorContactSupport')}
+      description="Eksempel Tekst"
     />
   );
 };
@@ -304,7 +303,7 @@ const AllStatesExample = () => {
           borderRadius: 'var(--ds-border-radius-md)',
         }}
       >
-        <LoadingState label={t('storybook.demo.loadingContent')} size="md" />
+        <LoadingState label="Eksempel Tekst" size="md" />
       </div>
       <div
         style={{
@@ -313,11 +312,11 @@ const AllStatesExample = () => {
         }}
       >
         <EmptyState
-          title={t('storybook.demo.noItems')}
-          description={t('storybook.demo.createFirstToGetStarted')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           action={
             <Button onClick={fn()} data-color="accent" data-size="medium">
-              {t('storybook.demo.createItem')}
+              "Eksempel Tekst"
             </Button>
           }
         />
@@ -330,7 +329,7 @@ const AllStatesExample = () => {
       >
         <NotFoundState
           title={t('platform.errors.notFound')}
-          description={t('storybook.demo.resourceNotFoundDescription')}
+          description="Eksempel Tekst"
           backLink={{ label: t('platform.common.back'), href: '/' }}
         />
       </div>
@@ -342,7 +341,7 @@ const AllStatesExample = () => {
       >
         <ErrorState
           title={t('platform.errors.serverError')}
-          description={t('storybook.demo.somethingWentWrongTryAgain')}
+          description="Eksempel Tekst"
           onRetry={fn()}
         />
       </div>

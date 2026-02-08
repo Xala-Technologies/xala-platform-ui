@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { RequestStatusBadge, StatusTag } from '../../blocks/gdpr/RequestStatusBadge';
 import type { StatusBadgeConfig } from '../../blocks/gdpr/RequestStatusBadge';
 

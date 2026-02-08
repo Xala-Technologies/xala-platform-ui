@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { DataExportCard, DEFAULT_DATA_EXPORT_LABELS } from '../../blocks/gdpr/DataExportCard';
 import type { GdprExportRequest } from '../../blocks/gdpr/DataExportCard';
 

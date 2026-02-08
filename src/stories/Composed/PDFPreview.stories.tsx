@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { PDFPreview } from '../../composed/PDFPreview';
 
 const meta: Meta<typeof PDFPreview> = {
@@ -78,7 +77,7 @@ const DefaultDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.documentPreview')}
+      title="Eksempel Tekst"
       showToolbar={true}
       showDownload={true}
       showPrint={true}
@@ -102,7 +101,7 @@ const WithTitleDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={`${t('storybook.demo.invoice')} #12345`}
+      title={`$"Eksempel Tekst" #12345`}
       showToolbar={true}
       showDownload={true}
       showPrint={true}
@@ -125,7 +124,7 @@ const MinimalToolbarDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.document')}
+      title="Eksempel Tekst"
       showToolbar={true}
       showDownload={false}
       showPrint={false}
@@ -148,7 +147,7 @@ const DownloadOnlyDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.downloadableDocument')}
+      title="Eksempel Tekst"
       showToolbar={true}
       showDownload={true}
       showPrint={false}
@@ -171,7 +170,7 @@ const PrintOnlyDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.printableDocument')}
+      title="Eksempel Tekst"
       showToolbar={true}
       showDownload={false}
       showPrint={true}
@@ -194,7 +193,7 @@ const CustomSizeDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.customSize')}
+      title="Eksempel Tekst"
       width="800px"
       height="600px"
       showToolbar={true}
@@ -219,7 +218,7 @@ const WithoutToolbarDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.noToolbar')}
+      title="Eksempel Tekst"
       showToolbar={false}
       width="600px"
       height="800px"
@@ -240,7 +239,7 @@ const FullFeaturedDemo = () => {
   return (
     <PDFPreview
       src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      title={t('storybook.demo.fullFeaturedPreview')}
+      title="Eksempel Tekst"
       showToolbar={true}
       showDownload={true}
       showPrint={true}

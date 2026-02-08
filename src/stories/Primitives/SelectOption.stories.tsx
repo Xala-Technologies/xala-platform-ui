@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { SelectOption, Select, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -42,17 +41,17 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.selectOption.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Select
-              label={t('storybook.selectOption.label')}
+              label="Eksempel Tekst"
               value={value}
               onChange={(e) => setValue(e.target.value)}
             >
-              <SelectOption value="">{t('storybook.selectOption.select')}</SelectOption>
-              <SelectOption value="option1">{t('storybook.selectOption.option1')}</SelectOption>
-              <SelectOption value="option2">{t('storybook.selectOption.option2')}</SelectOption>
+              <SelectOption value="">"Eksempel Tekst"</SelectOption>
+              <SelectOption value="option1">"Eksempel Tekst"</SelectOption>
+              <SelectOption value="option2">"Eksempel Tekst"</SelectOption>
               <SelectOption value="option3" disabled>
-                {t('storybook.selectOption.option3')}
+                "Eksempel Tekst"
               </SelectOption>
             </Select>
           </Stack>

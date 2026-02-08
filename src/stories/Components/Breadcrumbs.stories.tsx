@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Breadcrumbs, Heading } from '../../index';
 
 const meta: Meta<typeof Breadcrumbs> = {
@@ -171,8 +170,8 @@ export const Default: Story = {
     return (
       <Breadcrumbs>
         <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-        <Breadcrumbs.Link href="/listings">{t('storybook.demo.listings')}</Breadcrumbs.Link>
-        <span>{t('storybook.demo.currentPage')}</span>
+        <Breadcrumbs.Link href="/listings">"Eksempel Tekst"</Breadcrumbs.Link>
+        <span>"Eksempel Tekst"</span>
       </Breadcrumbs>
     );
   },
@@ -185,10 +184,10 @@ export const ThreeLevels: Story = {
       <Breadcrumbs>
         <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
         <Breadcrumbs.Link href="/resourceRequests">
-          {t('storybook.demo.resourceRequests')}
+          "Eksempel Tekst"
         </Breadcrumbs.Link>
         <Breadcrumbs.Link href="/resourceRequests/2024">2024</Breadcrumbs.Link>
-        <span>{t('storybook.demo.january')}</span>
+        <span>"Eksempel Tekst"</span>
       </Breadcrumbs>
     );
   },
@@ -213,15 +212,15 @@ export const Sizes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Breadcrumbs data-size="sm">
           <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-          <span>{t('storybook.story.small')}</span>
+          <span>"Eksempel Tekst"</span>
         </Breadcrumbs>
         <Breadcrumbs data-size="md">
           <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-          <span>{t('storybook.story.medium')}</span>
+          <span>"Eksempel Tekst"</span>
         </Breadcrumbs>
         <Breadcrumbs data-size="lg">
           <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-          <span>{t('storybook.story.large')}</span>
+          <span>"Eksempel Tekst"</span>
         </Breadcrumbs>
       </div>
     );
@@ -235,7 +234,7 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.twoLevels')}
+            "Eksempel Tekst"
           </Heading>
           <Breadcrumbs>
             <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
@@ -244,23 +243,23 @@ export const AllVariants: Story = {
         </div>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.threeLevels')}
+            "Eksempel Tekst"
           </Heading>
           <Breadcrumbs>
             <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-            <Breadcrumbs.Link href="/products">{t('storybook.demo.products')}</Breadcrumbs.Link>
-            <span>{t('storybook.demo.details')}</span>
+            <Breadcrumbs.Link href="/products">"Eksempel Tekst"</Breadcrumbs.Link>
+            <span>"Eksempel Tekst"</span>
           </Breadcrumbs>
         </div>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.fourLevels')}
+            "Eksempel Tekst"
           </Heading>
           <Breadcrumbs>
             <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
-            <Breadcrumbs.Link href="/bookings">{t('storybook.demo.bookings')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/bookings">"Eksempel Tekst"</Breadcrumbs.Link>
             <Breadcrumbs.Link href="/bookings/2024">2024</Breadcrumbs.Link>
-            <span>{t('storybook.demo.january')}</span>
+            <span>"Eksempel Tekst"</span>
           </Breadcrumbs>
         </div>
       </div>

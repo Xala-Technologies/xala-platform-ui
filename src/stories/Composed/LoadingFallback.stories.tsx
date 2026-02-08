@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { LoadingFallback } from '../../composed/LoadingFallback';
 
 const meta: Meta<typeof LoadingFallback> = {
@@ -60,7 +59,7 @@ export const Default: Story = {
 // Custom message
 const CustomMessageLoadingFallback = () => {
   const t = useT();
-  return <LoadingFallback message={t('storybook.demo.loadingContent')} />;
+  return <LoadingFallback message="Eksempel Tekst" />;
 };
 
 export const CustomMessage: Story = {

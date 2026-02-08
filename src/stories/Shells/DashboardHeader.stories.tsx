@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { DashboardHeader, type SearchResultGroup } from '../../index';
 import { Button } from '@digdir/designsystemet-react';
 import { PlusIcon } from '../../index';
@@ -142,7 +141,7 @@ export const Default: Story = {
         <DashboardHeader
           logo={<SampleLogo />}
           user={user}
-          searchPlaceholder={t('storybook.header.searchPlaceholder')}
+          searchPlaceholder="Eksempel Tekst"
           searchValue={searchValue}
           onSearchChange={setSearchValue}
           showThemeToggle
@@ -155,7 +154,7 @@ export const Default: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.mainContentBelow')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -192,7 +191,7 @@ export const WithoutSearch: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.headerWithoutSearch')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -218,7 +217,7 @@ export const WithoutUser: Story = {
       >
         <DashboardHeader
           logo={<SampleLogo />}
-          searchPlaceholder={t('storybook.header.searchPlaceholder')}
+          searchPlaceholder="Eksempel Tekst"
           searchValue={searchValue}
           onSearchChange={setSearchValue}
           showThemeToggle
@@ -228,7 +227,7 @@ export const WithoutUser: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.headerWithoutUser')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -265,13 +264,13 @@ export const WithCustomActions: Story = {
           actions={
             <Button data-size="sm" data-color="accent">
               <PlusIcon size={16} />
-              {t('storybook.header.newItem')}
+              "Eksempel Tekst"
             </Button>
           }
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.headerWithCustomAction')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -308,7 +307,7 @@ export const ManyNotifications: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.headerWithManyNotifications')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -340,7 +339,7 @@ export const Minimal: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.minimalHeader')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -382,7 +381,7 @@ export const WithUserAvatar: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.headerWithAvatar')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>
@@ -420,7 +419,7 @@ export const CustomHeight: Story = {
         />
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <p style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-            {t('storybook.header.headerWithCustomHeight')}
+            "Eksempel Tekst"
           </p>
         </div>
       </div>

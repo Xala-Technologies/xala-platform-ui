@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Spotlight, HighlightText, SearchHighlight } from '../../composed/Spotlight';
 import { Card, Paragraph, Button } from '@digdir/designsystemet-react';
 
@@ -46,8 +45,8 @@ const HighlightSingleTermDemo = () => {
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text={t('storybook.demo.sampleTextWithHighlightedWords')}
-          highlight={t('storybook.demo.highlighted')}
+          text="Eksempel Tekst"
+          highlight="Eksempel Tekst"
         />
       </Paragraph>
     </div>
@@ -60,7 +59,7 @@ const HighlightMultipleTermsDemo = () => {
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text={t('storybook.demo.searchForKeywordsInText')}
+          text="Eksempel Tekst"
           highlight={[t('platform.common.search'), t('storybook.demo.keywords')]}
         />
       </Paragraph>
@@ -74,7 +73,7 @@ const HighlightCaseSensitiveDemo = () => {
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text={t('storybook.demo.caseSensitiveSearchText')}
+          text="Eksempel Tekst"
           highlight={t('platform.common.search')}
           caseSensitive={true}
         />
@@ -89,8 +88,8 @@ const HighlightCustomStyleDemo = () => {
     <div style={{ width: '400px' }}>
       <Paragraph data-size="sm">
         <HighlightText
-          text={t('storybook.demo.customStyledHighlight')}
-          highlight={t('storybook.demo.highlight')}
+          text="Eksempel Tekst"
+          highlight="Eksempel Tekst"
           highlightStyle={{
             backgroundColor: 'var(--ds-color-success-surface-subtle)',
             color: 'var(--ds-color-success-text-default)',
@@ -107,7 +106,7 @@ const SpotlightActiveDemo = () => {
   return (
     <Spotlight active={true}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Paragraph data-size="sm">{t('storybook.demo.cardWithSpotlightEffect')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </Card>
     </Spotlight>
   );
@@ -118,7 +117,7 @@ const SpotlightInactiveDemo = () => {
   return (
     <Spotlight active={false}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Paragraph data-size="sm">{t('storybook.demo.cardWithoutSpotlightEffect')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </Card>
     </Spotlight>
   );
@@ -129,7 +128,7 @@ const SpotlightWithButtonDemo = () => {
   return (
     <Spotlight active={true}>
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.focusedButton')}
+        "Eksempel Tekst"
       </Button>
     </Spotlight>
   );
@@ -140,7 +139,7 @@ const SpotlightCustomPaddingDemo = () => {
   return (
     <Spotlight active={true} padding={16}>
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-        <Paragraph data-size="sm">{t('storybook.demo.customPaddingSpotlight')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </Card>
     </Spotlight>
   );
@@ -151,8 +150,8 @@ const SearchHighlightBasicDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
-        text={t('storybook.demo.longTextWithSearchQuery')}
-        query={t('storybook.demo.searchQuery')}
+        text="Eksempel Tekst"
+        query="Eksempel Tekst"
       />
     </div>
   );
@@ -163,8 +162,8 @@ const SearchHighlightWithContextDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
-        text={t('storybook.demo.veryLongTextWithMultipleInstances')}
-        query={t('storybook.demo.searchTerm')}
+        text="Eksempel Tekst"
+        query="Eksempel Tekst"
         contextLength={20}
       />
     </div>
@@ -176,8 +175,8 @@ const SearchHighlightMaxLengthDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <SearchHighlight
-        text={t('storybook.demo.longTextWithSearchQueryContinued')}
-        query={t('storybook.demo.searchQuery')}
+        text="Eksempel Tekst"
+        query="Eksempel Tekst"
         maxLength={50}
       />
     </div>
@@ -198,14 +197,14 @@ const CombinedExampleDemo = () => {
       <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Paragraph data-size="sm">
           <HighlightText
-            text={t('storybook.demo.searchResultsWithHighlightedTerms')}
+            text="Eksempel Tekst"
             highlight={[t('platform.common.search'), t('storybook.demo.highlighted')]}
           />
         </Paragraph>
       </Card>
       <Spotlight active={true}>
         <Card data-color="accent" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">{t('storybook.demo.resultHighlightedWithSpotlight')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </Spotlight>
     </div>

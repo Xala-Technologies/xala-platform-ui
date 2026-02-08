@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   RentalObjectAvailabilityCalendar,
   type CalendarCell,
@@ -98,8 +97,8 @@ export const Default: Story = {
           onDateChange={setCurrentDate}
           onCellClick={(cell) => console.log('Cell clicked:', cell)}
           onSelectionChange={setSelection}
-          title={t('storybook.rentalCalendar.selectTime')}
-          subtitle={t('storybook.rentalCalendar.chooseTimeSlot')}
+          title="Eksempel Tekst"
+          subtitle="Eksempel Tekst"
         />
       </Stack>
     );
@@ -137,7 +136,7 @@ export const AllDay: Story = {
           onDateChange={setCurrentDate}
           onCellClick={(cell) => console.log('Cell clicked:', cell)}
           onSelectionChange={setSelection}
-          title={t('storybook.rentalCalendar.selectDate')}
+          title="Eksempel Tekst"
         />
       </Stack>
     );
@@ -175,7 +174,7 @@ export const MultiDay: Story = {
           onDateChange={setCurrentDate}
           onCellClick={(cell) => console.log('Cell clicked:', cell)}
           onSelectionChange={setSelection}
-          title={t('storybook.rentalCalendar.selectDateRange')}
+          title="Eksempel Tekst"
         />
       </Stack>
     );
@@ -208,7 +207,7 @@ export const WithLegend: Story = {
             { status: 'available', label: t('storybook.rentalCalendar.available') },
             { status: 'unavailable', label: t('storybook.rentalCalendar.unavailable') },
           ]}
-          title={t('storybook.rentalCalendar.selectTime')}
+          title="Eksempel Tekst"
         />
       </Stack>
     );

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { DemoLoginDialog, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -44,9 +43,9 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.demoLoginDialog.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Button onClick={() => setOpen(true)}>
-              {t('storybook.demoLoginDialog.openDialog')}
+              "Eksempel Tekst"
             </Button>
             <DemoLoginDialog
               open={open}
@@ -56,11 +55,11 @@ export const Default: Story = {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 setOpen(false);
               }}
-              title={t('storybook.demoLoginDialog.title')}
-              description={t('storybook.demoLoginDialog.descriptionText')}
-              cancelText={t('storybook.demoLoginDialog.cancel')}
-              submitText={t('storybook.demoLoginDialog.submit')}
-              loadingText={t('storybook.demoLoginDialog.loading')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              cancelText="Eksempel Tekst"
+              submitText="Eksempel Tekst"
+              loadingText="Eksempel Tekst"
               validationMessages={{
                 nameRequired: t('storybook.demoLoginDialog.nameRequired'),
                 emailRequired: t('storybook.demoLoginDialog.emailRequired'),
@@ -99,18 +98,18 @@ export const WithError: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.demoLoginDialog.withError')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DemoLoginDialog
               open={open}
               onClose={() => setOpen(false)}
               onSubmit={async () => {
                 throw new Error('Login failed');
               }}
-              title={t('storybook.demoLoginDialog.title')}
-              description={t('storybook.demoLoginDialog.descriptionText')}
-              cancelText={t('storybook.demoLoginDialog.cancel')}
-              submitText={t('storybook.demoLoginDialog.submit')}
-              loadingText={t('storybook.demoLoginDialog.loading')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
+              cancelText="Eksempel Tekst"
+              submitText="Eksempel Tekst"
+              loadingText="Eksempel Tekst"
               validationMessages={{
                 nameRequired: t('storybook.demoLoginDialog.nameRequired'),
                 emailRequired: t('storybook.demoLoginDialog.emailRequired'),

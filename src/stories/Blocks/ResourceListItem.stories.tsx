@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ResourceListItem } from '@xala-technologies/platform-ui-digilist';
 
 const meta: Meta<typeof ResourceListItem> = {
@@ -65,7 +64,7 @@ export const Default: Story = {
         type="Meeting Room"
         category="SPACE"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=1"
         amenities={['WiFi', 'Projector', 'Whiteboard', 'Video Conference']}
         capacity={25}
@@ -104,7 +103,7 @@ export const Favorited: Story = {
         type="Conference Hall"
         category="SPACE"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=2"
         amenities={['WiFi', 'Projector', 'Sound System', 'Stage']}
         capacity={100}
@@ -143,7 +142,7 @@ export const WithoutMap: Story = {
         type="Workspace"
         category="RESOURCE"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=3"
         amenities={['WiFi', 'Monitor', 'Keyboard']}
         capacity={1}
@@ -180,7 +179,7 @@ export const WithoutAmenities: Story = {
         type="Room"
         category="SPACE"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=4"
         amenities={[]}
         capacity={10}
@@ -216,7 +215,7 @@ export const WithoutPrice: Story = {
         type="Resource"
         category="RESOURCE"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=5"
         amenities={['WiFi']}
         capacity={5}
@@ -252,7 +251,7 @@ export const ManyAmenities: Story = {
         type="Meeting Room"
         category="SPACE"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=6"
         amenities={[
           'WiFi',
@@ -302,7 +301,7 @@ export const EventCategory: Story = {
         type="Workshop"
         category="EVENT"
         location="Storgata 1, 0155 Oslo"
-        description={t('storybook.demo.cardDescription')}
+        description="Eksempel Tekst"
         image="https://picsum.photos/800/600?random=7"
         amenities={['WiFi', 'Materials']}
         capacity={20}

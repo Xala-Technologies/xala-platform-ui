@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   LoginOption,
   FeatureItem,
@@ -51,11 +50,11 @@ export const LoginOptionExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.loginComponents.loginOption')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <LoginOption
               icon={<IdPortenIcon />}
-              title={t('storybook.loginComponents.idPorten')}
-              description={t('storybook.loginComponents.idPortenDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               onClick={() => console.log('ID-porten clicked')}
             />
           </Stack>
@@ -78,24 +77,24 @@ export const MultipleLoginOptions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.loginComponents.multipleOptions')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
               <LoginOption
                 icon={<IdPortenIcon />}
-                title={t('storybook.loginComponents.idPorten')}
-                description={t('storybook.loginComponents.idPortenDescription')}
+                title="Eksempel Tekst"
+                description="Eksempel Tekst"
                 onClick={() => console.log('ID-porten clicked')}
               />
               <LoginOption
                 icon={<MicrosoftIcon />}
-                title={t('storybook.loginComponents.microsoft')}
-                description={t('storybook.loginComponents.microsoftDescription')}
+                title="Eksempel Tekst"
+                description="Eksempel Tekst"
                 onClick={() => console.log('Microsoft clicked')}
               />
               <LoginOption
                 icon={<GoogleIcon />}
-                title={t('storybook.loginComponents.google')}
-                description={t('storybook.loginComponents.googleDescription')}
+                title="Eksempel Tekst"
+                description="Eksempel Tekst"
                 onClick={() => console.log('Google clicked')}
               />
             </Stack>
@@ -119,10 +118,10 @@ export const FeatureItemExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.loginComponents.featureItem')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <FeatureItem
-              title={t('storybook.loginComponents.feature1')}
-              description={t('storybook.loginComponents.feature1Description')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -144,10 +143,10 @@ export const IntegrationBadgeExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.loginComponents.integrationBadge')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <IntegrationBadge
-              name={t('storybook.loginComponents.integrationName')}
-              description={t('storybook.loginComponents.integrationDescription')}
+              name="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
           </Stack>
         </Card>

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { LayoutGrid, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,16 +40,16 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.layoutGrid.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <LayoutGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={16}>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item1')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item2')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item3')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
             </LayoutGrid>
           </Stack>
@@ -73,19 +72,19 @@ export const AutoFit: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.layoutGrid.autoFit')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <LayoutGrid autoFit minColumnWidth="200px" gap={16}>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item1')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item2')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item3')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
               <Card data-color="neutral" data-size="medium">
-                <Paragraph data-size="sm">{t('storybook.layoutGrid.item4')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </Card>
             </LayoutGrid>
           </Stack>

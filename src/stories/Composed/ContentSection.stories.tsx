@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ContentSection, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -41,12 +40,12 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.contentSection.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ContentSection
-              title={t('storybook.contentSection.title')}
-              subtitle={t('storybook.contentSection.subtitle')}
+              title="Eksempel Tekst"
+              subtitle="Eksempel Tekst"
             >
-              <Paragraph data-size="sm">{t('storybook.contentSection.content')}</Paragraph>
+              <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             </ContentSection>
           </Stack>
         </Card>
@@ -68,13 +67,13 @@ export const WithoutFieldset: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.contentSection.withoutFieldset')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ContentSection
-              title={t('storybook.contentSection.title')}
-              subtitle={t('storybook.contentSection.subtitle')}
+              title="Eksempel Tekst"
+              subtitle="Eksempel Tekst"
               fieldset={false}
             >
-              <Paragraph data-size="sm">{t('storybook.contentSection.content')}</Paragraph>
+              <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             </ContentSection>
           </Stack>
         </Card>
@@ -96,10 +95,10 @@ export const Horizontal: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.contentSection.horizontal')}</Paragraph>
-            <ContentSection title={t('storybook.contentSection.title')} direction="horizontal">
-              <Button>{t('storybook.contentSection.button1')}</Button>
-              <Button>{t('storybook.contentSection.button2')}</Button>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <ContentSection title="Eksempel Tekst" direction="horizontal">
+              <Button>"Eksempel Tekst"</Button>
+              <Button>"Eksempel Tekst"</Button>
             </ContentSection>
           </Stack>
         </Card>

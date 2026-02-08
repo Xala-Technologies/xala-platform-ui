@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Heading, Paragraph, Label } from '../../index';
 
 const meta: Meta = {
@@ -38,7 +37,7 @@ export const FontFamilies: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.typography.defaultFont')} (Inter)
+            "Eksempel Tekst" (Inter)
           </Label>
           <div
             style={{
@@ -52,7 +51,7 @@ export const FontFamilies: Story = {
             <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
             <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>abcdefghijklmnopqrstuvwxyz</p>
             <p style={{ marginBottom: 'var(--ds-spacing-2)' }}>0123456789</p>
-            <p>{t('storybook.typography.samplePhrase')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
           <code
             style={{
@@ -68,7 +67,7 @@ export const FontFamilies: Story = {
 
         <div>
           <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.typography.monospaceFont')} ({t('storybook.typography.code')})
+            "Eksempel Tekst" ("Eksempel Tekst")
           </Label>
           <div
             style={{
@@ -105,8 +104,8 @@ export const FontFamilies: Story = {
           }}
         >
           <Paragraph data-size="sm">
-            <strong>{t('storybook.typography.note')}:</strong>{' '}
-            {t('storybook.typography.fontFallbackNote')}
+            <strong>"Eksempel Tekst":</strong>{' '}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </div>
@@ -173,25 +172,25 @@ export const Headings: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Heading level={1} data-size="2xl">
-          {t('storybook.typography.heading')} 2XL (h1)
+          "Eksempel Tekst" 2XL (h1)
         </Heading>
         <Heading level={1} data-size="xl">
-          {t('storybook.typography.heading')} XL (h1)
+          "Eksempel Tekst" XL (h1)
         </Heading>
         <Heading level={2} data-size="lg">
-          {t('storybook.typography.heading')} LG (h2)
+          "Eksempel Tekst" LG (h2)
         </Heading>
         <Heading level={2} data-size="md">
-          {t('storybook.typography.heading')} MD (h2)
+          "Eksempel Tekst" MD (h2)
         </Heading>
         <Heading level={3} data-size="sm">
-          {t('storybook.typography.heading')} SM (h3)
+          "Eksempel Tekst" SM (h3)
         </Heading>
         <Heading level={3} data-size="xs">
-          {t('storybook.typography.heading')} XS (h3)
+          "Eksempel Tekst" XS (h3)
         </Heading>
         <Heading level={4} data-size="2xs">
-          {t('storybook.typography.heading')} 2XS (h4)
+          "Eksempel Tekst" 2XS (h4)
         </Heading>
       </div>
     );
@@ -214,26 +213,26 @@ export const BodyText: Story = {
         }}
       >
         <div>
-          <Label>{t('storybook.typography.bodyXL')}</Label>
-          <Paragraph data-size="xl">{t('storybook.typography.bodyXLDescription')}</Paragraph>
+          <Label>"Eksempel Tekst"</Label>
+          <Paragraph data-size="xl">"Eksempel Tekst"</Paragraph>
         </div>
         <div>
-          <Label>{t('storybook.typography.bodyLG')}</Label>
-          <Paragraph data-size="lg">{t('storybook.typography.bodyLGDescription')}</Paragraph>
+          <Label>"Eksempel Tekst"</Label>
+          <Paragraph data-size="lg">"Eksempel Tekst"</Paragraph>
         </div>
         <div>
           <Label>
-            {t('storybook.typography.bodyMD')} ({t('storybook.sizes.default')})
+            "Eksempel Tekst" ("Eksempel Tekst")
           </Label>
-          <Paragraph data-size="md">{t('storybook.typography.bodyMDDescription')}</Paragraph>
+          <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
         </div>
         <div>
-          <Label>{t('storybook.typography.bodySM')}</Label>
-          <Paragraph data-size="sm">{t('storybook.typography.bodySMDescription')}</Paragraph>
+          <Label>"Eksempel Tekst"</Label>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </div>
         <div>
-          <Label>{t('storybook.typography.bodyXS')}</Label>
-          <Paragraph data-size="xs">{t('storybook.typography.bodyXSDescription')}</Paragraph>
+          <Label>"Eksempel Tekst"</Label>
+          <Paragraph data-size="xs">"Eksempel Tekst"</Paragraph>
         </div>
       </div>
     );
@@ -257,15 +256,15 @@ export const ParagraphVariants: Story = {
       >
         <div>
           <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.typography.short')} ({t('storybook.typography.compactLineHeight')})
+            "Eksempel Tekst" ("Eksempel Tekst")
           </Label>
-          <Paragraph variant="short">{t('storybook.typography.shortVariantDescription')}</Paragraph>
+          <Paragraph variant="short">"Eksempel Tekst"</Paragraph>
         </div>
         <div>
           <Label style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.typography.long')} ({t('storybook.typography.relaxedLineHeight')})
+            "Eksempel Tekst" ("Eksempel Tekst")
           </Label>
-          <Paragraph variant="long">{t('storybook.typography.longVariantDescription')}</Paragraph>
+          <Paragraph variant="long">"Eksempel Tekst"</Paragraph>
         </div>
       </div>
     );
@@ -288,29 +287,29 @@ export const FormTypography: Story = {
         }}
       >
         <div>
-          <Label data-size="lg">{t('storybook.typography.largeLabel')}</Label>
+          <Label data-size="lg">"Eksempel Tekst"</Label>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.typography.descriptionText')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
         <div>
           <Label data-size="md">
-            {t('storybook.typography.mediumLabel')} ({t('storybook.sizes.default')})
+            "Eksempel Tekst" ("Eksempel Tekst")
           </Label>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.typography.helperText')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
         <div>
-          <Label data-size="sm">{t('storybook.typography.smallLabel')}</Label>
+          <Label data-size="sm">"Eksempel Tekst"</Label>
           <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.typography.compactHelperText')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
         <div>
-          <Label>{t('storybook.typography.fieldWithError')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-            {t('storybook.patterns.requiredField')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </div>
@@ -335,9 +334,9 @@ export const ResponsiveSizes: Story = {
           }}
         >
           <Heading level={3} data-size="sm">
-            {t('storybook.typography.smallSizeContext')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph>{t('storybook.typography.smallSizeDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </div>
         <div
           data-size="md"
@@ -348,9 +347,9 @@ export const ResponsiveSizes: Story = {
           }}
         >
           <Heading level={3} data-size="sm">
-            {t('storybook.typography.mediumSizeContext')} ({t('storybook.sizes.default')})
+            "Eksempel Tekst" ("Eksempel Tekst")
           </Heading>
-          <Paragraph>{t('storybook.typography.mediumSizeDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </div>
         <div
           data-size="lg"
@@ -361,9 +360,9 @@ export const ResponsiveSizes: Story = {
           }}
         >
           <Heading level={3} data-size="sm">
-            {t('storybook.typography.largeSizeContext')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph>{t('storybook.typography.largeSizeDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </div>
       </div>
     );
@@ -379,22 +378,22 @@ export const SemanticColors: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         <Paragraph style={{ color: 'var(--ds-color-neutral-text-default)' }}>
-          {t('storybook.typography.defaultTextColor')}
+          "Eksempel Tekst"
         </Paragraph>
         <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          {t('storybook.typography.subtleTextColor')}
+          "Eksempel Tekst"
         </Paragraph>
         <Paragraph style={{ color: 'var(--ds-color-accent-text-default)' }}>
-          {t('storybook.typography.accentTextColor')}
+          "Eksempel Tekst"
         </Paragraph>
         <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
-          {t('storybook.typography.successTextColor')}
+          "Eksempel Tekst"
         </Paragraph>
         <Paragraph style={{ color: 'var(--ds-color-warning-text-default)' }}>
-          {t('storybook.typography.warningTextColor')}
+          "Eksempel Tekst"
         </Paragraph>
         <Paragraph style={{ color: 'var(--ds-color-danger-text-default)' }}>
-          {t('storybook.typography.dangerTextColor')}
+          "Eksempel Tekst"
         </Paragraph>
       </div>
     );
@@ -410,7 +409,7 @@ export const ArticleExample: Story = {
     return (
       <article style={{ maxWidth: 'var(--ds-size-175)' }}>
         <Heading level={1} data-size="xl" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.typography.articleTitle')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           data-size="lg"
@@ -420,25 +419,25 @@ export const ArticleExample: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.typography.articleSubtitle')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-          {t('storybook.typography.howItWorks')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph variant="long" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.typography.howItWorksDescription')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.typography.forRenters')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.typography.forRentersDescription')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <Paragraph data-size="xs" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          {t('storybook.typography.lastUpdated')}: {t('storybook.typography.january2026')}
+          "Eksempel Tekst": "Eksempel Tekst"
         </Paragraph>
       </article>
     );

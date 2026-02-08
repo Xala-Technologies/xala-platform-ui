@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ContentLayout, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -39,8 +38,8 @@ export const Default: Story = {
       <ContentLayout>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.contentLayout.description')}</Paragraph>
-            <Paragraph data-size="sm">{t('storybook.contentLayout.content')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </ContentLayout>
@@ -58,8 +57,8 @@ export const Fluid: Story = {
       <ContentLayout fluid>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.contentLayout.fluid')}</Paragraph>
-            <Paragraph data-size="sm">{t('storybook.contentLayout.content')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Card>
       </ContentLayout>
@@ -81,13 +80,13 @@ export const WithGrid: Story = {
         }}
       >
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.contentLayout.column1')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.contentLayout.column2')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.contentLayout.column3')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </ContentLayout>
     );

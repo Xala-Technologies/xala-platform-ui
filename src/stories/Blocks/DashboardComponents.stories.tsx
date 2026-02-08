@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   StatCard,
   ActivityItem,
@@ -49,11 +48,11 @@ export const StatCardExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dashboardComponents.statCard')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <StatCard
-              title={t('storybook.dashboardComponents.totalUsers')}
+              title="Eksempel Tekst"
               value="1,234"
-              description={t('storybook.dashboardComponents.activeUsers')}
+              description="Eksempel Tekst"
               icon={<UsersIcon />}
               trend={{ value: 12, isPositive: true }}
             />
@@ -77,10 +76,10 @@ export const ActivityItemExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dashboardComponents.activityItem')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ActivityItem
-              title={t('storybook.dashboardComponents.activityTitle')}
-              description={t('storybook.dashboardComponents.activityDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               timestamp={new Date().toISOString()}
               status="completed"
             />
@@ -104,7 +103,7 @@ export const ActivityFeedExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dashboardComponents.activityFeed')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ActivityFeed
               activities={[
                 {
@@ -143,10 +142,10 @@ export const QuickActionCardExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dashboardComponents.quickAction')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <QuickActionCard
-              title={t('storybook.dashboardComponents.createNew')}
-              description={t('storybook.dashboardComponents.createNewDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               icon={<CalendarIcon />}
               onClick={() => console.log('Quick action clicked')}
             />

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ProgressBar, ProgressRing, ProgressSteps } from '../../composed/Progress';
 
 const meta: Meta<typeof ProgressBar> = {
@@ -78,10 +77,10 @@ const StepsDemo = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <ProgressSteps
         steps={[
-          `${t('storybook.demo.step')} 1`,
-          `${t('storybook.demo.step')} 2`,
-          `${t('storybook.demo.step')} 3`,
-          `${t('storybook.demo.step')} 4`,
+          `$"Eksempel Tekst" 1`,
+          `$"Eksempel Tekst" 2`,
+          `$"Eksempel Tekst" 3`,
+          `$"Eksempel Tekst" 4`,
         ]}
         currentStep={1}
         variant="default"

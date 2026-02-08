@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph } from '../../index';
 import {
   EnvelopeClosedIcon,
@@ -74,7 +73,7 @@ export const IconLibraryPriority: Story = {
     return (
       <div>
         <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.icons.libraryStrategy')}
+          "Eksempel Tekst"
         </Heading>
 
         <div
@@ -101,7 +100,7 @@ export const IconLibraryPriority: Story = {
             >
               <CheckCircle size={32} style={{ color: 'var(--ds-color-success-base-default)' }} />
               <Heading level={2} data-size="lg">
-                {t('storybook.icons.akselPrimary')}
+                "Eksempel Tekst"
               </Heading>
             </div>
 
@@ -111,7 +110,7 @@ export const IconLibraryPriority: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.icons.akselDescription')}
+              "Eksempel Tekst"
             </Paragraph>
 
             <div
@@ -158,9 +157,9 @@ export const IconLibraryPriority: Story = {
               }}
             >
               <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-                <strong>{t('storybook.icons.whenToUse')}:</strong>
+                <strong>"Eksempel Tekst":</strong>
                 <br />
-                {t('storybook.icons.akselUseCases')}
+                "Eksempel Tekst"
               </Paragraph>
             </div>
           </Card>
@@ -181,7 +180,7 @@ export const IconLibraryPriority: Story = {
             >
               <Info size={32} style={{ color: 'var(--ds-color-warning-base-default)' }} />
               <Heading level={2} data-size="lg">
-                {t('storybook.icons.lucideFallback')}
+                "Eksempel Tekst"
               </Heading>
             </div>
 
@@ -191,7 +190,7 @@ export const IconLibraryPriority: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.icons.lucideDescription')}
+              "Eksempel Tekst"
             </Paragraph>
 
             <div
@@ -238,9 +237,9 @@ export const IconLibraryPriority: Story = {
               }}
             >
               <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
-                <strong>{t('storybook.icons.whenToUse')}:</strong>
+                <strong>"Eksempel Tekst":</strong>
                 <br />
-                {t('storybook.icons.lucideUseCases')}
+                "Eksempel Tekst"
               </Paragraph>
             </div>
           </Card>
@@ -261,14 +260,14 @@ export const IconSizingGuide: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-8)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.icons.sizing')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
           <div style={{ textAlign: 'center', flexBasis: '200px' }}>
             <EnvelopeClosedIcon fontSize="1rem" title="Small icon" />
             <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-              <strong>{t('storybook.icons.small')} (1rem)</strong>
+              <strong>"Eksempel Tekst" (1rem)</strong>
               <br />
               <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="1rem"</code>
             </Paragraph>
@@ -277,7 +276,7 @@ export const IconSizingGuide: Story = {
           <div style={{ textAlign: 'center', flexBasis: '200px' }}>
             <EnvelopeClosedIcon fontSize="1.5rem" title="Medium icon" />
             <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-              <strong>{t('storybook.icons.medium')} (1.5rem)</strong>
+              <strong>"Eksempel Tekst" (1.5rem)</strong>
               <br />
               <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="1.5rem"</code>
             </Paragraph>
@@ -286,7 +285,7 @@ export const IconSizingGuide: Story = {
           <div style={{ textAlign: 'center', flexBasis: '200px' }}>
             <EnvelopeClosedIcon fontSize="2rem" title="Large icon" />
             <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-              <strong>{t('storybook.icons.large')} (2rem)</strong>
+              <strong>"Eksempel Tekst" (2rem)</strong>
               <br />
               <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="2rem"</code>
             </Paragraph>
@@ -295,7 +294,7 @@ export const IconSizingGuide: Story = {
           <div style={{ textAlign: 'center', flexBasis: '200px' }}>
             <EnvelopeClosedIcon fontSize="3rem" title="Extra large icon" />
             <Paragraph data-size="sm" style={{ marginTop: 'var(--ds-spacing-2)' }}>
-              <strong>{t('storybook.icons.xl')} (3rem)</strong>
+              <strong>"Eksempel Tekst" (3rem)</strong>
               <br />
               <code style={{ fontSize: 'var(--ds-font-size-xs)' }}>fontSize="3rem"</code>
             </Paragraph>
@@ -311,8 +310,8 @@ export const IconSizingGuide: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-            <strong>{t('storybook.bestPractices.title')}:</strong>{' '}
-            {t('storybook.icons.sizingBestPractice')}
+            <strong>"Eksempel Tekst":</strong>{' '}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </Card>
@@ -331,7 +330,7 @@ export const AccessibilityGuidelines: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.icons.accessibility')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -351,7 +350,7 @@ export const AccessibilityGuidelines: Story = {
             >
               <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
               <Heading level={3} data-size="md">
-                {t('storybook.icons.decorativeIcons')}
+                "Eksempel Tekst"
               </Heading>
             </div>
 
@@ -361,7 +360,7 @@ export const AccessibilityGuidelines: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.icons.decorativeDescription')}
+              "Eksempel Tekst"
             </Paragraph>
 
             <div
@@ -410,7 +409,7 @@ export const AccessibilityGuidelines: Story = {
             >
               <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
               <Heading level={3} data-size="md">
-                {t('storybook.icons.meaningfulIcons')}
+                "Eksempel Tekst"
               </Heading>
             </div>
 
@@ -420,7 +419,7 @@ export const AccessibilityGuidelines: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.icons.meaningfulDescription')}
+              "Eksempel Tekst"
             </Paragraph>
 
             <div
@@ -486,7 +485,7 @@ export const AccessibilityGuidelines: Story = {
             >
               <X size={24} style={{ color: 'var(--ds-color-danger-base-default)' }} />
               <Heading level={3} data-size="md">
-                {t('storybook.icons.commonMistakes')}
+                "Eksempel Tekst"
               </Heading>
             </div>
 
@@ -499,7 +498,7 @@ export const AccessibilityGuidelines: Story = {
                 }}
               >
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                  {t('storybook.icons.iconOnlyNoLabel')}
+                  "Eksempel Tekst"
                   <br />
                   <code
                     style={{ fontSize: 'var(--ds-font-size-xs)' }}
@@ -515,7 +514,7 @@ export const AccessibilityGuidelines: Story = {
                 }}
               >
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                  {t('storybook.icons.emojiInsteadOfIcon')}
+                  "Eksempel Tekst"
                   <br />
                   <code
                     style={{ fontSize: 'var(--ds-font-size-xs)' }}
@@ -531,7 +530,7 @@ export const AccessibilityGuidelines: Story = {
                 }}
               >
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-danger-text-default)' }}>
-                  {t('storybook.icons.hardcodedColors')}
+                  "Eksempel Tekst"
                   <br />
                   <code
                     style={{ fontSize: 'var(--ds-font-size-xs)' }}
@@ -605,7 +604,7 @@ export const InteractiveIconBrowser: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.icons.browser')}
+          "Eksempel Tekst"
         </Heading>
 
         <Card style={{ padding: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-6)' }}>
@@ -733,9 +732,9 @@ export const InteractiveIconBrowser: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-            <strong>{t('storybook.icons.fullLibraries')}:</strong>
+            <strong>"Eksempel Tekst":</strong>
             <br />
-            {t('storybook.icons.akselLink')}:{' '}
+            "Eksempel Tekst":{' '}
             <a
               href="https://aksel.nav.no/ikoner"
               target="_blank"
@@ -746,7 +745,7 @@ export const InteractiveIconBrowser: Story = {
             </a>{' '}
             (900+ icons)
             <br />
-            {t('storybook.icons.lucideLink')}:{' '}
+            "Eksempel Tekst":{' '}
             <a
               href="https://lucide.dev"
               target="_blank"
@@ -774,13 +773,13 @@ export const UsagePatterns: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.icons.usagePatterns')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
           <Card style={{ padding: 'var(--ds-spacing-6)' }}>
             <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              {t('storybook.icons.iconsInButtons')}
+              "Eksempel Tekst"
             </Heading>
 
             <div
@@ -833,7 +832,7 @@ export const UsagePatterns: Story = {
 
           <Card style={{ padding: 'var(--ds-spacing-6)' }}>
             <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              {t('storybook.icons.statusIndicators')}
+              "Eksempel Tekst"
             </Heading>
 
             <div
@@ -849,7 +848,7 @@ export const UsagePatterns: Story = {
                   fontSize="1.25rem"
                   style={{ color: 'var(--ds-color-success-base-default)' }}
                 />
-                <span>{t('storybook.demo.taskCompleted')}</span>
+                <span>"Eksempel Tekst"</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
@@ -857,7 +856,7 @@ export const UsagePatterns: Story = {
                   fontSize="1.25rem"
                   style={{ color: 'var(--ds-color-warning-base-default)' }}
                 />
-                <span>{t('storybook.demo.reviewRequired')}</span>
+                <span>"Eksempel Tekst"</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
@@ -865,7 +864,7 @@ export const UsagePatterns: Story = {
                   fontSize="1.25rem"
                   style={{ color: 'var(--ds-color-danger-base-default)' }}
                 />
-                <span>{t('storybook.demo.actionFailed')}</span>
+                <span>"Eksempel Tekst"</span>
               </div>
             </div>
 
@@ -890,7 +889,7 @@ export const UsagePatterns: Story = {
 
           <Card style={{ padding: 'var(--ds-spacing-6)' }}>
             <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              {t('storybook.icons.navigationLinks')}
+              "Eksempel Tekst"
             </Heading>
 
             <div
@@ -975,7 +974,7 @@ export const DosAndDonts: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.icons.dosAndDonts')}
+          "Eksempel Tekst"
         </Heading>
 
         <div
@@ -990,7 +989,7 @@ export const DosAndDonts: Story = {
                 color: 'var(--ds-color-success-base-default)',
               }}
             >
-              {t('storybook.bestPractices.do')}
+              "Eksempel Tekst"
             </Heading>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -1004,7 +1003,7 @@ export const DosAndDonts: Story = {
                   data-size="sm"
                   style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
                 >
-                  {t('storybook.icons.useTokenColors')}
+                  "Eksempel Tekst"
                 </Paragraph>
                 <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                   <EnvelopeClosedIcon
@@ -1027,7 +1026,7 @@ export const DosAndDonts: Story = {
                   data-size="sm"
                   style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
                 >
-                  {t('storybook.icons.provideA11yLabels')}
+                  "Eksempel Tekst"
                 </Paragraph>
                 <Button data-variant="tertiary" aria-label={t('platform.common.delete')}>
                   <TrashIcon fontSize="1.25rem" />
@@ -1046,7 +1045,7 @@ export const DosAndDonts: Story = {
                   data-size="sm"
                   style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
                 >
-                  {t('storybook.icons.useAkselFirst')}
+                  "Eksempel Tekst"
                 </Paragraph>
                 <EnvelopeClosedIcon fontSize="1.5rem" title="Email" />
                 <br />
@@ -1066,7 +1065,7 @@ export const DosAndDonts: Story = {
                 color: 'var(--ds-color-danger-base-default)',
               }}
             >
-              {t('storybook.bestPractices.dont')}
+              "Eksempel Tekst"
             </Heading>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -1081,7 +1080,7 @@ export const DosAndDonts: Story = {
                   data-size="sm"
                   style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
                 >
-                  {t('storybook.icons.hardcodeColors')}
+                  "Eksempel Tekst"
                 </Paragraph>
                 <div style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                   <Mail size={24} color="#0066CC" />
@@ -1107,7 +1106,7 @@ export const DosAndDonts: Story = {
                   data-size="sm"
                   style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
                 >
-                  {t('storybook.icons.iconOnlyNoLabel')}
+                  "Eksempel Tekst"
                 </Paragraph>
                 <Button data-variant="tertiary">
                   <TrashIcon fontSize="1.25rem" />
@@ -1134,7 +1133,7 @@ export const DosAndDonts: Story = {
                   data-size="sm"
                   style={{ marginBottom: 'var(--ds-spacing-3)', fontWeight: 600 }}
                 >
-                  {t('storybook.icons.emojiInsteadOfIcon')}
+                  "Eksempel Tekst"
                 </Paragraph>
                 <span style={{ fontSize: '1.5rem' }}>📧</span>
                 <br />
@@ -1144,7 +1143,7 @@ export const DosAndDonts: Story = {
                     color: 'var(--ds-color-danger-text-default)',
                   }}
                 >
-                  {t('storybook.icons.emojiForbidden')}
+                  "Eksempel Tekst"
                 </code>
               </Card>
             </div>

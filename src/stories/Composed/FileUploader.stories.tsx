@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { FileUploader, type UploadedFile } from '../../index';
 
 /**
@@ -205,7 +204,7 @@ export const WithError: Story = {
         <FileUploader
           value={files}
           onChange={setFiles}
-          error={t('storybook.fileUploader.errorMessage')}
+          error="Eksempel Tekst"
           placeholder={{
             title: t('storybook.fileUploader.dragAndDrop'),
             description: t('storybook.fileUploader.orClickToSelect'),

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { AccessibilityDashboard } from '../../blocks/AccessibilityDashboard';
 import type { AccessibilityReport } from '../../blocks/AccessibilityDashboard';
 

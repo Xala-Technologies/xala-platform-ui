@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   LoadingScreen,
   AccessDeniedScreen,
@@ -44,7 +43,7 @@ type Story = StoryObj<typeof LoadingScreen>;
 export const Loading: Story = {
   render: function Render() {
     const t = useT();
-    return <LoadingScreen message={t('storybook.authComponents.loading')} height="400px" />;
+    return <LoadingScreen message="Eksempel Tekst" height="400px" />;
   },
 };
 
@@ -58,12 +57,12 @@ export const AccessDenied: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.authComponents.accessDenied')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <AccessDeniedScreen
-              title={t('storybook.authComponents.accessDeniedTitle')}
-              description={t('storybook.authComponents.accessDeniedDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               showBackButton
-              backButtonText={t('storybook.authComponents.goBack')}
+              backButtonText="Eksempel Tekst"
               onBack={() => console.log('Back clicked')}
             />
           </Stack>
@@ -83,12 +82,12 @@ export const NotFound: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.authComponents.notFound')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <NotFoundScreen
-              title={t('storybook.authComponents.notFoundTitle')}
-              description={t('storybook.authComponents.notFoundDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               showBackButton
-              backButtonText={t('storybook.authComponents.goBack')}
+              backButtonText="Eksempel Tekst"
               onBack={() => console.log('Back clicked')}
             />
           </Stack>
@@ -108,12 +107,12 @@ export const Error: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.authComponents.error')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ErrorScreen
-              title={t('storybook.authComponents.errorTitle')}
-              description={t('storybook.authComponents.errorDescription')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               showRetry
-              retryButtonText={t('storybook.authComponents.retry')}
+              retryButtonText="Eksempel Tekst"
               onRetry={() => console.log('Retry clicked')}
             />
           </Stack>
@@ -136,14 +135,14 @@ export const PermissionGateExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.authComponents.permissionGate')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <PermissionGate
               hasPermission={true}
               fallback={
-                <Paragraph data-size="sm">{t('storybook.authComponents.noPermission')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               }
             >
-              <Paragraph data-size="sm">{t('storybook.authComponents.hasPermission')}</Paragraph>
+              <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             </PermissionGate>
           </Stack>
         </Card>

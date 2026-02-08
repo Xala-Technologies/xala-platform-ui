@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { HorizontalLayout, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -43,11 +42,11 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.horizontalLayout.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <HorizontalLayout gap="var(--ds-spacing-4)">
-              <Button>{t('storybook.horizontalLayout.button1')}</Button>
-              <Button>{t('storybook.horizontalLayout.button2')}</Button>
-              <Button>{t('storybook.horizontalLayout.button3')}</Button>
+              <Button>"Eksempel Tekst"</Button>
+              <Button>"Eksempel Tekst"</Button>
+              <Button>"Eksempel Tekst"</Button>
             </HorizontalLayout>
           </Stack>
         </Card>
@@ -69,7 +68,7 @@ export const WithAlignment: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.horizontalLayout.withAlignment')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <HorizontalLayout
               gap="var(--ds-spacing-4)"
               align="center"
@@ -80,8 +79,8 @@ export const WithAlignment: Story = {
                 padding: 'var(--ds-spacing-4)',
               }}
             >
-              <Button>{t('storybook.horizontalLayout.left')}</Button>
-              <Button>{t('storybook.horizontalLayout.right')}</Button>
+              <Button>"Eksempel Tekst"</Button>
+              <Button>"Eksempel Tekst"</Button>
             </HorizontalLayout>
           </Stack>
         </Card>
@@ -103,7 +102,7 @@ export const FullHeight: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.horizontalLayout.fullHeight')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <HorizontalLayout
               fullHeight
               gap="var(--ds-spacing-4)"
@@ -114,8 +113,8 @@ export const FullHeight: Story = {
                 padding: 'var(--ds-spacing-4)',
               }}
             >
-              <Button>{t('storybook.horizontalLayout.button1')}</Button>
-              <Button>{t('storybook.horizontalLayout.button2')}</Button>
+              <Button>"Eksempel Tekst"</Button>
+              <Button>"Eksempel Tekst"</Button>
             </HorizontalLayout>
           </Stack>
         </Card>

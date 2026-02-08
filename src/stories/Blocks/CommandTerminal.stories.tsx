@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { CommandTerminal, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,12 +40,12 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.commandTerminal.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <CommandTerminal
               command="npm run build"
               logs={[]}
               status="idle"
-              title={t('storybook.commandTerminal.buildCommand')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -68,7 +67,7 @@ export const Running: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.commandTerminal.running')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <CommandTerminal
               command="npm run build"
               logs={[
@@ -78,7 +77,7 @@ export const Running: Story = {
                 '✓ Build completed',
               ]}
               status="running"
-              title={t('storybook.commandTerminal.buildCommand')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -100,7 +99,7 @@ export const Completed: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.commandTerminal.completed')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <CommandTerminal
               command="npm run build"
               logs={[
@@ -111,7 +110,7 @@ export const Completed: Story = {
                 '✓ All bundles optimized',
               ]}
               status="completed"
-              title={t('storybook.commandTerminal.buildCommand')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -133,7 +132,7 @@ export const Failed: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.commandTerminal.failed')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <CommandTerminal
               command="npm run build"
               logs={[
@@ -143,7 +142,7 @@ export const Failed: Story = {
                 '  at ./src/index.ts:5:10',
               ]}
               status="failed"
-              title={t('storybook.commandTerminal.buildCommand')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -169,12 +168,12 @@ export const ManyLogs: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.commandTerminal.manyLogs')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <CommandTerminal
               command="npm run test"
               logs={logs}
               status="running"
-              title={t('storybook.commandTerminal.testCommand')}
+              title="Eksempel Tekst"
               maxHeight="400px"
             />
           </Stack>

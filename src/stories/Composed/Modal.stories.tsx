@@ -153,7 +153,7 @@ const ModalWithFooter = (args: any) => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-        {t('storybook.demo.openModalWithFooter')}
+        "Eksempel Tekst"
       </Button>
       <Modal
         {...args}
@@ -170,7 +170,7 @@ const ModalWithFooter = (args: any) => {
           </div>
         }
       >
-        <Paragraph data-size="sm">{t('storybook.demo.modalFooterDescription')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </Modal>
     </>
   );
@@ -217,7 +217,7 @@ const ModalWithLongContent = (args: any) => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-        {t('storybook.demo.openModalWithLongContent')}
+        "Eksempel Tekst"
       </Button>
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
         {Array(20)
@@ -250,16 +250,16 @@ const ModalWithSubComponents = (args: any) => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)} data-color="accent" data-size="medium">
-        {t('storybook.demo.openModalWithSubcomponents')}
+        "Eksempel Tekst"
       </Button>
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <ModalHeader>
           <Heading level={3} data-size="sm">
-            {t('storybook.demo.sectionHeader')}
+            "Eksempel Tekst"
           </Heading>
         </ModalHeader>
         <ModalBody>
-          <Paragraph data-size="sm">{t('storybook.demo.subcomponentsDescription')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </ModalBody>
         <ModalFooter align="right">
           <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">

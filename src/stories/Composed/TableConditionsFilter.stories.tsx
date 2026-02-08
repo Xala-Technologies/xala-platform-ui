@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { TableConditionsFilter, Stack, Paragraph, Card, Button } from '../../index';
 
 /**
@@ -43,7 +42,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableConditions.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableConditionsFilter
               fields={[
                 { id: 'name', label: t('storybook.tableConditions.name'), type: 'text' },
@@ -98,7 +97,7 @@ export const WithInitialConditions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableConditions.withInitial')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableConditionsFilter
               fields={[
                 { id: 'name', label: t('storybook.tableConditions.name'), type: 'text' },
@@ -138,7 +137,7 @@ export const WithDateFields: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableConditions.withDates')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableConditionsFilter
               fields={[
                 { id: 'created', label: t('storybook.tableConditions.created'), type: 'date' },
@@ -169,7 +168,7 @@ export const WithBooleanFields: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableConditions.withBooleans')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableConditionsFilter
               fields={[
                 { id: 'isActive', label: t('storybook.tableConditions.isActive'), type: 'boolean' },

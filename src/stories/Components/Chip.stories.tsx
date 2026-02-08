@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Chip } from '@digdir/designsystemet-react';
 
 /**
@@ -258,21 +257,21 @@ export const CheckboxChips: Story = {
           checked={selected.includes('tag1')}
           onChange={() => toggle('tag1')}
         >
-          {t('storybook.demo.indoor')}
+          "Eksempel Tekst"
         </Chip.Checkbox>
         <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag2')}
           onChange={() => toggle('tag2')}
         >
-          {t('storybook.demo.outdoor')}
+          "Eksempel Tekst"
         </Chip.Checkbox>
         <Chip.Checkbox
           name="tags"
           checked={selected.includes('tag3')}
           onChange={() => toggle('tag3')}
         >
-          {t('storybook.demo.accessible')}
+          "Eksempel Tekst"
         </Chip.Checkbox>
       </div>
     );
@@ -303,7 +302,7 @@ export const ButtonChips: Story = {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
-        <Chip.Button onClick={() => {}}>{t('storybook.demo.apply')}</Chip.Button>
+        <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
         <Chip.Button onClick={() => {}}>{t('platform.common.reset')}</Chip.Button>
       </div>
     );
@@ -319,9 +318,9 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-          <Chip.Checkbox data-size="sm">{t('storybook.story.small')}</Chip.Checkbox>
-          <Chip.Checkbox data-size="md">{t('storybook.story.medium')}</Chip.Checkbox>
-          <Chip.Checkbox data-size="lg">{t('storybook.story.large')}</Chip.Checkbox>
+          <Chip.Checkbox data-size="sm">"Eksempel Tekst"</Chip.Checkbox>
+          <Chip.Checkbox data-size="md">"Eksempel Tekst"</Chip.Checkbox>
+          <Chip.Checkbox data-size="lg">"Eksempel Tekst"</Chip.Checkbox>
         </div>
       </div>
     );
@@ -348,7 +347,7 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.radioChips')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Chip.Radio
@@ -380,7 +379,7 @@ export const AllVariants: Story = {
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.checkboxChips')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Chip.Checkbox
@@ -388,28 +387,28 @@ export const AllVariants: Story = {
               checked={checkboxSelected.includes('indoor')}
               onChange={() => toggleCheckbox('indoor')}
             >
-              {t('storybook.demo.indoor')}
+              "Eksempel Tekst"
             </Chip.Checkbox>
             <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('outdoor')}
               onChange={() => toggleCheckbox('outdoor')}
             >
-              {t('storybook.demo.outdoor')}
+              "Eksempel Tekst"
             </Chip.Checkbox>
             <Chip.Checkbox
               name="features"
               checked={checkboxSelected.includes('accessible')}
               onChange={() => toggleCheckbox('accessible')}
             >
-              {t('storybook.demo.accessible')}
+              "Eksempel Tekst"
             </Chip.Checkbox>
           </div>
         </div>
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.removableChips')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             {removableChips.map((chip) => (
@@ -423,7 +422,7 @@ export const AllVariants: Story = {
             ))}
             {removableChips.length === 0 && (
               <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                {t('storybook.demo.noActiveFilters')}
+                "Eksempel Tekst"
               </span>
             )}
           </div>
@@ -431,11 +430,11 @@ export const AllVariants: Story = {
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.buttonChips')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
             <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
-            <Chip.Button onClick={() => {}}>{t('storybook.demo.apply')}</Chip.Button>
+            <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
           </div>
         </div>
       </div>

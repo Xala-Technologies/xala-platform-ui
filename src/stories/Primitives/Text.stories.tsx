@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Text, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,8 +40,8 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.text.description')}</Paragraph>
-            <Text>{t('storybook.text.default')}</Text>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Text>"Eksempel Tekst"</Text>
           </Stack>
         </Card>
       </Stack>
@@ -63,12 +62,12 @@ export const Variants: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.text.variants')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
-              <Text variant="body">{t('storybook.text.body')}</Text>
-              <Text variant="subtitle">{t('storybook.text.subtitle')}</Text>
-              <Text variant="caption">{t('storybook.text.caption')}</Text>
-              <Text variant="overline">{t('storybook.text.overline')}</Text>
+              <Text variant="body">"Eksempel Tekst"</Text>
+              <Text variant="subtitle">"Eksempel Tekst"</Text>
+              <Text variant="caption">"Eksempel Tekst"</Text>
+              <Text variant="overline">"Eksempel Tekst"</Text>
             </Stack>
           </Stack>
         </Card>
@@ -90,13 +89,13 @@ export const Sizes: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.text.sizes')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
-              <Text size="xs">{t('storybook.text.extraSmall')}</Text>
-              <Text size="sm">{t('storybook.text.small')}</Text>
-              <Text size="md">{t('storybook.text.medium')}</Text>
-              <Text size="lg">{t('storybook.text.large')}</Text>
-              <Text size="xl">{t('storybook.text.extraLarge')}</Text>
+              <Text size="xs">"Eksempel Tekst"</Text>
+              <Text size="sm">"Eksempel Tekst"</Text>
+              <Text size="md">"Eksempel Tekst"</Text>
+              <Text size="lg">"Eksempel Tekst"</Text>
+              <Text size="xl">"Eksempel Tekst"</Text>
             </Stack>
           </Stack>
         </Card>
@@ -118,12 +117,12 @@ export const Weights: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.text.weights')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
-              <Text weight="normal">{t('storybook.text.weightNormal')}</Text>
-              <Text weight="medium">{t('storybook.text.weightMedium')}</Text>
-              <Text weight="semibold">{t('storybook.text.weightSemibold')}</Text>
-              <Text weight="bold">{t('storybook.text.weightBold')}</Text>
+              <Text weight="normal">"Eksempel Tekst"</Text>
+              <Text weight="medium">"Eksempel Tekst"</Text>
+              <Text weight="semibold">"Eksempel Tekst"</Text>
+              <Text weight="bold">"Eksempel Tekst"</Text>
             </Stack>
           </Stack>
         </Card>

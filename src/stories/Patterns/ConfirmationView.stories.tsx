@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ConfirmationView } from '../../index';
 import { Card } from '@digdir/designsystemet-react';
 
@@ -65,10 +64,10 @@ export const Default: Story = {
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
-          title={t('storybook.confirmation.defaultTitle')}
-          message={t('storybook.confirmation.defaultMessage')}
-          confirmLabel={t('storybook.confirmation.confirm')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         />
@@ -86,8 +85,8 @@ export const WithDetails: Story = {
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
-          title={t('storybook.confirmation.withDetailsTitle')}
-          message={t('storybook.confirmation.withDetailsMessage')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
           details={[
             {
               label: t('storybook.confirmation.item'),
@@ -96,8 +95,8 @@ export const WithDetails: Story = {
             { label: t('storybook.confirmation.date'), value: '2026-01-26' },
             { label: t('storybook.confirmation.price'), value: 'NOK 1,500' },
           ]}
-          confirmLabel={t('storybook.confirmation.confirm')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         />
@@ -116,8 +115,8 @@ export const Warning: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
           variant="warning"
-          title={t('storybook.confirmation.warningTitle')}
-          message={t('storybook.confirmation.warningMessage')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
           details={[
             {
               label: t('storybook.confirmation.action'),
@@ -125,8 +124,8 @@ export const Warning: Story = {
             },
             { label: t('storybook.confirmation.affectedItems'), value: '5' },
           ]}
-          confirmLabel={t('storybook.confirmation.proceed')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         />
@@ -145,8 +144,8 @@ export const Danger: Story = {
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
           variant="danger"
-          title={t('storybook.confirmation.dangerTitle')}
-          message={t('storybook.confirmation.dangerMessage')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
           details={[
             {
               label: t('storybook.confirmation.action'),
@@ -154,8 +153,8 @@ export const Danger: Story = {
             },
             { label: t('storybook.confirmation.email'), value: 'user@example.com' },
           ]}
-          confirmLabel={t('storybook.confirmation.delete')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         />
@@ -185,10 +184,10 @@ export const WithCustomIcon: Story = {
               <path d="M12 2v20M2 12h20" />
             </svg>
           }
-          title={t('storybook.confirmation.customIconTitle')}
-          message={t('storybook.confirmation.customIconMessage')}
-          confirmLabel={t('storybook.confirmation.confirm')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         />
@@ -206,8 +205,8 @@ export const Loading: Story = {
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
-          title={t('storybook.confirmation.loadingTitle')}
-          message={t('storybook.confirmation.loadingMessage')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
           details={[
             {
               label: t('storybook.confirmation.item'),
@@ -215,8 +214,8 @@ export const Loading: Story = {
             },
             { label: t('storybook.confirmation.date'), value: '2026-01-26' },
           ]}
-          confirmLabel={t('storybook.confirmation.confirm')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           isConfirming
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
@@ -235,9 +234,9 @@ export const WithoutCancel: Story = {
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
-          title={t('storybook.confirmation.noCancelTitle')}
-          message={t('storybook.confirmation.noCancelMessage')}
-          confirmLabel={t('storybook.confirmation.ok')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
+          confirmLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
         />
       </div>
@@ -254,16 +253,16 @@ export const WithAdditionalContent: Story = {
     return (
       <div style={{ maxWidth: '600px', padding: 'var(--ds-spacing-4)' }}>
         <ConfirmationView
-          title={t('storybook.confirmation.additionalContentTitle')}
-          message={t('storybook.confirmation.additionalContentMessage')}
+          title="Eksempel Tekst"
+          message="Eksempel Tekst"
           details={[
             {
               label: t('storybook.confirmation.item'),
               value: t('storybook.confirmation.premiumPackage'),
             },
           ]}
-          confirmLabel={t('storybook.confirmation.confirm')}
-          cancelLabel={t('storybook.confirmation.cancel')}
+          confirmLabel="Eksempel Tekst"
+          cancelLabel="Eksempel Tekst"
           onConfirm={() => console.log('Confirmed')}
           onCancel={() => console.log('Cancelled')}
         >
@@ -274,7 +273,7 @@ export const WithAdditionalContent: Story = {
           >
             <Card.Block>
               <p style={{ margin: 0, fontSize: 'var(--ds-font-size-sm)' }}>
-                {t('storybook.confirmation.additionalInfo')}
+                "Eksempel Tekst"
               </p>
             </Card.Block>
           </Card>

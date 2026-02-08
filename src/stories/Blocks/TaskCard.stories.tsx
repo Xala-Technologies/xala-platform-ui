@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { TaskCard } from '../../index';
 
 /**
@@ -59,8 +58,8 @@ export const Default: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.implementUserAuth')}
-          description={t('storybook.taskCard.implementUserAuthDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="in_progress"
           priority="high"
           complexity="moderate"
@@ -81,14 +80,14 @@ export const WithAllDetails: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.fixLoginBug')}
-          description={t('storybook.taskCard.fixLoginBugDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="todo"
           priority="critical"
           complexity="simple"
           phase="testing"
           category="bug"
-          assignee={t('storybook.taskCard.johnDoe')}
+          assignee="Eksempel Tekst"
           dueDate={new Date(2026, 1, 15)}
           progress={75}
           tags={[t('storybook.taskCard.frontend'), t('storybook.taskCard.authentication')]}
@@ -107,8 +106,8 @@ export const Done: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.updateDocumentation')}
-          description={t('storybook.taskCard.updateDocumentationDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="done"
           priority="low"
           complexity="simple"
@@ -130,8 +129,8 @@ export const Blocked: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.refactorApi')}
-          description={t('storybook.taskCard.refactorApiDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="blocked"
           priority="high"
           complexity="complex"
@@ -152,8 +151,8 @@ export const InReview: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.addNewFeature')}
-          description={t('storybook.taskCard.addNewFeatureDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="review"
           priority="medium"
           complexity="moderate"
@@ -175,8 +174,8 @@ export const Backlog: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.improvePerformance')}
-          description={t('storybook.taskCard.improvePerformanceDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="backlog"
           priority="low"
           complexity="epic"
@@ -197,8 +196,8 @@ export const Selected: Story = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <TaskCard
-          title={t('storybook.taskCard.implementUserAuth')}
-          description={t('storybook.taskCard.implementUserAuthDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           status="in_progress"
           priority="high"
           complexity="moderate"
@@ -219,7 +218,7 @@ export const Minimal: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px' }}>
-        <TaskCard title={t('storybook.taskCard.simpleTask')} status="todo" priority="low" />
+        <TaskCard title="Eksempel Tekst" status="todo" priority="low" />
       </div>
     );
   },

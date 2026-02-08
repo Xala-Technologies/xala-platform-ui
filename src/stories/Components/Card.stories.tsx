@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Card, Heading, Paragraph, Button, Link } from '../../index';
 
 /**
@@ -210,9 +209,9 @@ export const Default: Story = {
     return (
       <Card>
         <Heading level={3} data-size="sm">
-          {t('storybook.demo.cardTitle')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Card>
     );
   },
@@ -227,17 +226,17 @@ export const WithActions: Story = {
     return (
       <Card>
         <Heading level={3} data-size="sm">
-          {t('storybook.demo.resourceRequest')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.bookingRequestDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
         <div
           style={{ display: 'flex', gap: 'var(--ds-spacing-2)', marginTop: 'var(--ds-spacing-4)' }}
         >
           <Button variant="secondary" type="button">
-            {t('storybook.demo.decline')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="primary" type="button">
-            {t('storybook.demo.approve')}
+            "Eksempel Tekst"
           </Button>
         </div>
       </Card>
@@ -254,9 +253,9 @@ export const AsClickable: Story = {
     return (
       <Card style={{ cursor: 'pointer' }} onClick={() => {}}>
         <Heading level={3} data-size="sm">
-          {t('storybook.demo.clickToViewDetails')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.clickableCardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Card>
     );
   },
@@ -280,14 +279,14 @@ export const WithImage: Story = {
           }}
         >
           <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.demo.imagePlaceholder')}
+            "Eksempel Tekst"
           </span>
         </div>
         <div style={{ padding: 'var(--ds-spacing-4)' }}>
           <Heading level={3} data-size="sm">
-            {t('storybook.demo.featuredResource')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph>{t('storybook.demo.meetingSpaceDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </div>
       </Card>
     );
@@ -339,15 +338,15 @@ export const WithSections: Story = {
             }}
           >
             <span style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-              {t('storybook.demo.videoImagePlaceholder')}
+              "Eksempel Tekst"
             </span>
           </div>
         </Card.Block>
         <Card.Block>
           <Heading level={3} data-size="md">
-            {t('storybook.demo.aboutDesignsystemet')}
+            "Eksempel Tekst"
           </Heading>
-          <Paragraph>{t('storybook.demo.cardBlockDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Card.Block>
       </Card>
     );
@@ -365,12 +364,12 @@ export const LinkCard: Story = {
         <Card.Block>
           <Heading level={3} data-size="md">
             <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
-              {t('storybook.demo.visitDesignsystemet')}
+              "Eksempel Tekst"
             </Link>
           </Heading>
-          <Paragraph>{t('storybook.demo.designsystemetDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.demo.norwegianDigitalisationAgency')}
+            "Eksempel Tekst"
           </Paragraph>
         </Card.Block>
       </Card>
@@ -389,11 +388,11 @@ export const AsButton: Story = {
         <button type="button" onClick={() => {}}>
           <Card.Block>
             <Heading level={3} data-size="md">
-              {t('storybook.demo.settingsAndPrivacy')}
+              "Eksempel Tekst"
             </Heading>
           </Card.Block>
           <Card.Block>
-            <Paragraph>{t('storybook.demo.settingsDialogDescription')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Card.Block>
         </button>
       </Card>
@@ -418,11 +417,11 @@ export const Horizontal: Story = {
       >
         <Card.Block>
           <Heading level={3} data-size="md">
-            {t('storybook.demo.wanderlust')}
+            "Eksempel Tekst"
           </Heading>
         </Card.Block>
         <Card.Block>
-          <Paragraph>{t('storybook.demo.wanderlustDescription')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Card.Block>
       </Card>
     );
@@ -447,18 +446,18 @@ export const CardGrid: Story = {
           <Card key={i} data-color="neutral">
             <Card.Block>
               <Heading level={3} data-size="sm">
-                {t('storybook.demo.card')} {i}
+                "Eksempel Tekst" {i}
               </Heading>
               <Paragraph>
-                {t('storybook.demo.cardContentFor')} {i}.{' '}
-                {t('storybook.demo.eachCardCanContainDifferentInfo')}
+                "Eksempel Tekst" {i}.{' '}
+                "Eksempel Tekst"
               </Paragraph>
               <Button
                 variant="secondary"
                 type="button"
                 style={{ marginTop: 'var(--ds-spacing-3)' }}
               >
-                {t('storybook.demo.learnMore')}
+                "Eksempel Tekst"
               </Button>
             </Card.Block>
           </Card>
@@ -478,23 +477,23 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.defaultVsTinted')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
             <Card data-variant="default" style={{ flex: 1 }}>
               <Card.Block>
                 <Heading level={4} data-size="sm">
-                  {t('storybook.story.default')}
+                  "Eksempel Tekst"
                 </Heading>
-                <Paragraph>{t('storybook.demo.whiteBackground')}</Paragraph>
+                <Paragraph>"Eksempel Tekst"</Paragraph>
               </Card.Block>
             </Card>
             <Card data-variant="tinted" data-color="accent" style={{ flex: 1 }}>
               <Card.Block>
                 <Heading level={4} data-size="sm">
-                  {t('storybook.demo.tinted')}
+                  "Eksempel Tekst"
                 </Heading>
-                <Paragraph>{t('storybook.demo.coloredBackground')}</Paragraph>
+                <Paragraph>"Eksempel Tekst"</Paragraph>
               </Card.Block>
             </Card>
           </div>
@@ -502,40 +501,40 @@ export const AllVariants: Story = {
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.withSections')}
+            "Eksempel Tekst"
           </Heading>
           <Card data-color="neutral" style={{ maxWidth: '300px' }}>
             <Card.Block>
               <Heading level={4} data-size="sm">
-                {t('storybook.demo.section')} 1
+                "Eksempel Tekst" 1
               </Heading>
             </Card.Block>
             <Card.Block>
-              <Paragraph>{t('storybook.demo.sectionWithDivider')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Card.Block>
           </Card>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.interactiveCards')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)' }}>
             <Card style={{ cursor: 'pointer', flex: 1 }} onClick={() => {}}>
               <Card.Block>
                 <Heading level={4} data-size="sm">
-                  {t('storybook.demo.clickable')}
+                  "Eksempel Tekst"
                 </Heading>
-                <Paragraph>{t('storybook.demo.withOnClick')}</Paragraph>
+                <Paragraph>"Eksempel Tekst"</Paragraph>
               </Card.Block>
             </Card>
             <Card asChild style={{ flex: 1 }}>
               <button type="button">
                 <Card.Block>
                   <Heading level={4} data-size="sm">
-                    {t('storybook.demo.asButton')}
+                    "Eksempel Tekst"
                   </Heading>
-                  <Paragraph>{t('storybook.demo.semanticButton')}</Paragraph>
+                  <Paragraph>"Eksempel Tekst"</Paragraph>
                 </Card.Block>
               </button>
             </Card>

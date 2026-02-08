@@ -5,7 +5,6 @@
  * ResourceCard is a domain-neutral card for displaying any type of resource.
  */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ResourceCard, type ResourceCardProps } from '@xala-technologies/platform-ui-digilist';
 import type {
   ResourceBadge,

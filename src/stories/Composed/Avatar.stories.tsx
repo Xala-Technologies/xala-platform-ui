@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Avatar, UserInfo } from '../../composed/Avatar';
 
 const meta: Meta<typeof Avatar> = {
@@ -167,20 +166,20 @@ const UserInfoExample = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
       <UserInfo
-        name={t('storybook.demo.userName.johnDoe')}
-        subtitle={t('storybook.demo.administrator')}
+        name="Eksempel Tekst"
+        subtitle="Eksempel Tekst"
         size="md"
       />
       <UserInfo
-        name={t('storybook.demo.userName.janeSmith')}
-        subtitle={t('storybook.demo.email.jane')}
+        name="Eksempel Tekst"
+        subtitle="Eksempel Tekst"
         size="md"
         showStatus
         isOnline
       />
       <UserInfo
-        name={t('storybook.demo.userName.bobJohnson')}
-        subtitle={t('storybook.demo.developer')}
+        name="Eksempel Tekst"
+        subtitle="Eksempel Tekst"
         size="lg"
       />
     </div>
@@ -199,8 +198,8 @@ const UserInfoClickableExample = () => {
   const t = useT();
   return (
     <UserInfo
-      name={t('storybook.demo.clickableUser')}
-      subtitle={t('storybook.demo.clickToViewProfile')}
+      name="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       size="md"
       onClick={() => alert('Clicked!')}
     />

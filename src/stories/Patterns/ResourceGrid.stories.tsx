@@ -4,7 +4,6 @@
  * Responsive grid component for displaying resource cards.
  */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ResourceGrid, type ResourceGridProps } from '@xala-technologies/platform-ui-digilist';
 import { Card, Heading, Paragraph, Tag } from '@digdir/designsystemet-react';
 

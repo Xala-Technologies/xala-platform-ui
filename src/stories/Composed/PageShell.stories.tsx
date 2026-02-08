@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ListPageShell, DetailPageShell, FormPageShell } from '../../composed/PageShell';
 import { Button, Card, Paragraph } from '@digdir/designsystemet-react';
 import { Badge } from '../../composed/Badge';
@@ -45,11 +44,11 @@ const ListPageDemo = () => {
   const t = useT();
   return (
     <ListPageShell
-      title={t('storybook.demo.resources')}
-      subtitle={t('storybook.demo.manageYourResources')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       actions={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          {t('storybook.demo.createResource')}
+          "Eksempel Tekst"
         </Button>
       }
       filters={
@@ -60,7 +59,7 @@ const ListPageDemo = () => {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <Paragraph data-size="sm">{t('storybook.demo.filterControlsHere')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </div>
       }
     >
@@ -70,17 +69,17 @@ const ListPageDemo = () => {
           data-size="medium"
           style={{ marginBottom: 'var(--ds-spacing-2)' }}
         >
-          <Paragraph data-size="sm">{t('storybook.demo.resource')} 1</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst" 1</Paragraph>
         </Card>
         <Card
           data-color="neutral"
           data-size="medium"
           style={{ marginBottom: 'var(--ds-spacing-2)' }}
         >
-          <Paragraph data-size="sm">{t('storybook.demo.resource')} 2</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst" 2</Paragraph>
         </Card>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.demo.resource')} 3</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst" 3</Paragraph>
         </Card>
       </div>
     </ListPageShell>
@@ -99,7 +98,7 @@ const DetailPageDemo = () => {
   const t = useT();
   return (
     <DetailPageShell
-      title={t('storybook.demo.resourceDetails')}
+      title="Eksempel Tekst"
       subtitle={<Badge variant="success">{t('platform.status.active')}</Badge>}
       backLink={{
         label: t('storybook.demo.backToResources'),
@@ -116,7 +115,7 @@ const DetailPageDemo = () => {
           </Button>
         </div>
       }
-      badges={<Badge variant="info">{t('storybook.demo.featured')}</Badge>}
+      badges={<Badge variant="info">"Eksempel Tekst"</Badge>}
       statusBanner={
         <div
           style={{
@@ -140,20 +139,20 @@ const DetailPageDemo = () => {
           }}
         >
           <Button data-color="accent" data-size="sm">
-            {t('storybook.demo.overview')}
+            "Eksempel Tekst"
           </Button>
           <Button data-color="neutral" data-size="sm">
-            {t('storybook.demo.details')}
+            "Eksempel Tekst"
           </Button>
           <Button data-color="neutral" data-size="sm">
-            {t('storybook.demo.history')}
+            "Eksempel Tekst"
           </Button>
         </div>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.demo.detailContentHere')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </div>
     </DetailPageShell>
@@ -172,8 +171,8 @@ const FormPageDemo = () => {
   const t = useT();
   return (
     <FormPageShell
-      title={t('storybook.demo.createResource')}
-      subtitle={t('storybook.demo.fillFormToCreate')}
+      title="Eksempel Tekst"
+      subtitle="Eksempel Tekst"
       backLink={{
         label: t('platform.common.back'),
         href: '/resources',
@@ -193,14 +192,14 @@ const FormPageDemo = () => {
             {t('platform.common.cancel')}
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('storybook.demo.createResource')}
+            "Eksempel Tekst"
           </Button>
         </div>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.demo.formFieldsHere')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </div>
     </FormPageShell>
@@ -219,16 +218,16 @@ const ListPageNoFiltersDemo = () => {
   const t = useT();
   return (
     <ListPageShell
-      title={t('storybook.demo.simpleList')}
+      title="Eksempel Tekst"
       actions={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          {t('storybook.demo.addItem')}
+          "Eksempel Tekst"
         </Button>
       }
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.demo.listContent')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </div>
     </ListPageShell>
@@ -247,7 +246,7 @@ const DetailPageMinimalDemo = () => {
   const t = useT();
   return (
     <DetailPageShell
-      title={t('storybook.demo.simpleDetail')}
+      title="Eksempel Tekst"
       backLink={{
         label: t('platform.common.back'),
         href: '/',
@@ -255,7 +254,7 @@ const DetailPageMinimalDemo = () => {
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.demo.detailContent')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </div>
     </DetailPageShell>
@@ -274,7 +273,7 @@ const FormPageNoBackLinkDemo = () => {
   const t = useT();
   return (
     <FormPageShell
-      title={t('storybook.demo.editResource')}
+      title="Eksempel Tekst"
       footer={
         <div
           style={{
@@ -292,7 +291,7 @@ const FormPageNoBackLinkDemo = () => {
     >
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Card data-color="neutral" data-size="medium">
-          <Paragraph data-size="sm">{t('storybook.demo.formContent')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       </div>
     </FormPageShell>

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { AccessGate } from '../../blocks/AccessGate';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { LockClosedIcon, ShieldIcon, UserIcon } from '@navikt/aksel-icons';

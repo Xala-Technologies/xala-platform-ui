@@ -13,7 +13,6 @@ import {
   AlertTriangle,
   BookOpen,
 } from 'lucide-react';
-import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Overview/Contributing',
@@ -82,7 +81,7 @@ export const DesignPrinciples: Story = {
     return (
       <div>
         <Heading level={1} data-size="2xl" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.contributing.designPrinciples')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
@@ -144,7 +143,7 @@ export const DesignPrinciples: Story = {
                           color: 'var(--ds-color-danger-text-default)',
                         }}
                       >
-                        {t('storybook.contributing.bad')}
+                        "Eksempel Tekst"
                       </strong>
                     </div>
                     <code
@@ -182,7 +181,7 @@ export const DesignPrinciples: Story = {
                           color: 'var(--ds-color-success-text-default)',
                         }}
                       >
-                        {t('storybook.contributing.good')}
+                        "Eksempel Tekst"
                       </strong>
                     </div>
                     <code
@@ -278,7 +277,7 @@ export const ComponentArchitecture: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.contributing.componentArchitecture')}
+          "Eksempel Tekst"
         </Heading>
 
         <Card style={{ padding: 'var(--ds-spacing-8)' }}>
@@ -288,7 +287,7 @@ export const ComponentArchitecture: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.contributing.architectureDesc')}
+            "Eksempel Tekst"
           </Paragraph>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -357,7 +356,7 @@ export const ComponentArchitecture: Story = {
                         color: 'var(--ds-color-accent-text-default)',
                       }}
                     >
-                      {t('storybook.contributing.canImport')}:
+                      "Eksempel Tekst":
                     </strong>
                     <span
                       style={{
@@ -399,8 +398,8 @@ export const ComponentArchitecture: Story = {
             }}
           >
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-warning-text-default)' }}>
-              <strong>{t('storybook.contributing.criticalRule')}:</strong>{' '}
-              {t('storybook.contributing.criticalRuleDesc')}
+              <strong>"Eksempel Tekst":</strong>{' '}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
         </Card>
@@ -547,7 +546,7 @@ describe('MyComponent', () => {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.contributing.componentCreationGuide')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-6)', flexWrap: 'wrap' }}>
@@ -555,7 +554,7 @@ describe('MyComponent', () => {
           <div>
             <Card style={{ padding: 'var(--ds-spacing-4)' }}>
               <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                {t('storybook.contributing.steps')}
+                "Eksempel Tekst"
               </Heading>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
                 {steps.map((step, index) => {
@@ -621,9 +620,9 @@ describe('MyComponent', () => {
               >
                 <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
                   <strong>
-                    {completedSteps.length} {t('storybook.contributing.of')} {steps.length}
+                    {completedSteps.length} "Eksempel Tekst" {steps.length}
                   </strong>{' '}
-                  {t('storybook.contributing.stepsCompleted')}
+                  "Eksempel Tekst"
                 </Paragraph>
               </div>
             </Card>
@@ -644,7 +643,7 @@ describe('MyComponent', () => {
                 style: { color: 'var(--ds-color-accent-base-default)' },
               })}
               <Heading level={3} data-size="md">
-                {t('storybook.contributing.step')} {currentStep + 1}:{' '}
+                "Eksempel Tekst" {currentStep + 1}:{' '}
                 {t(steps[currentStep].titleKey)}
               </Heading>
             </div>
@@ -674,9 +673,9 @@ describe('MyComponent', () => {
                 <Checkbox
                   checked={completedSteps.includes(currentStep)}
                   onChange={() => toggleStep(currentStep)}
-                  aria-label={t('storybook.contributing.markCompleted')}
+                  aria-label="Eksempel Tekst"
                 >
-                  {t('storybook.contributing.markCompleted')}
+                  "Eksempel Tekst"
                 </Checkbox>
               </div>
 
@@ -687,7 +686,7 @@ describe('MyComponent', () => {
                   disabled={currentStep === 0}
                   onClick={() => setCurrentStep(currentStep - 1)}
                 >
-                  ← {t('storybook.contributing.previous')}
+                  ← "Eksempel Tekst"
                 </Button>
                 <Button
                   data-variant="primary"
@@ -695,7 +694,7 @@ describe('MyComponent', () => {
                   disabled={currentStep === steps.length - 1}
                   onClick={() => setCurrentStep(currentStep + 1)}
                 >
-                  {t('storybook.contributing.next')} →
+                  "Eksempel Tekst" →
                 </Button>
               </div>
             </div>
@@ -767,7 +766,7 @@ export const QualityChecklist: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.contributing.qualityChecklist')}
+          "Eksempel Tekst"
         </Heading>
 
         <Card style={{ padding: 'var(--ds-spacing-6)', marginBottom: 'var(--ds-spacing-6)' }}>
@@ -780,7 +779,7 @@ export const QualityChecklist: Story = {
               }}
             >
               <Paragraph data-size="sm" style={{ fontWeight: 600 }}>
-                {t('storybook.contributing.overallProgress')}
+                "Eksempel Tekst"
               </Paragraph>
               <Paragraph
                 data-size="sm"
@@ -824,8 +823,8 @@ export const QualityChecklist: Story = {
             >
               <CheckCircle size={24} style={{ color: 'var(--ds-color-success-base-default)' }} />
               <Paragraph style={{ color: 'var(--ds-color-success-text-default)' }}>
-                <strong>{t('storybook.contributing.readyToSubmit')}</strong>{' '}
-                {t('storybook.contributing.meetsQualityStandards')}
+                <strong>"Eksempel Tekst"</strong>{' '}
+                "Eksempel Tekst"
               </Paragraph>
             </div>
           )}
@@ -845,7 +844,7 @@ export const QualityChecklist: Story = {
                     data-size="xs"
                     style={{ color: 'var(--ds-color-accent-text-default)' }}
                   >
-                    {categoryCompleted} / {items.length} {t('storybook.contributing.completed')}
+                    {categoryCompleted} / {items.length} "Eksempel Tekst"
                   </Paragraph>
                 </div>
 
@@ -959,7 +958,7 @@ it('is keyboard accessible', async () => {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.contributing.testingBestPractices')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -989,7 +988,7 @@ it('is keyboard accessible', async () => {
 
               <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
                 <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                  {t('storybook.contributing.commands')}
+                  "Eksempel Tekst"
                 </Heading>
                 <div
                   style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}
@@ -1022,7 +1021,7 @@ it('is keyboard accessible', async () => {
 
               <div>
                 <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                  {t('storybook.contributing.example')}
+                  "Eksempel Tekst"
                 </Heading>
                 <pre
                   style={{
@@ -1094,7 +1093,7 @@ export const CommonPitfalls: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.contributing.commonPitfalls')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -1154,7 +1153,7 @@ export const CommonPitfalls: Story = {
                         color: 'var(--ds-color-danger-text-default)',
                       }}
                     >
-                      {t('storybook.contributing.bad')}
+                      "Eksempel Tekst"
                     </strong>
                   </div>
                   <code
@@ -1192,7 +1191,7 @@ export const CommonPitfalls: Story = {
                         color: 'var(--ds-color-success-text-default)',
                       }}
                     >
-                      {t('storybook.contributing.good')}
+                      "Eksempel Tekst"
                     </strong>
                   </div>
                   <code
@@ -1207,7 +1206,7 @@ export const CommonPitfalls: Story = {
               </div>
 
               <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                <strong>{t('storybook.contributing.why')}:</strong> {t(whyKey)}
+                <strong>"Eksempel Tekst":</strong> {t(whyKey)}
               </Paragraph>
             </Card>
           ))}

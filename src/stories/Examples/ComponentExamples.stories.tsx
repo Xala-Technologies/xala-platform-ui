@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph, Textfield, Checkbox } from '../../index';
 import { useState } from 'react';
 import { Inbox, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
@@ -50,13 +49,13 @@ export const ButtonBasic: Story = {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
         <Button data-variant="primary" data-size="md">
-          {t('storybook.examples.primaryAction')}
+          "Eksempel Tekst"
         </Button>
         <Button data-variant="secondary" data-size="md">
-          {t('storybook.examples.secondaryAction')}
+          "Eksempel Tekst"
         </Button>
         <Button data-variant="tertiary" data-size="md">
-          {t('storybook.examples.tertiaryAction')}
+          "Eksempel Tekst"
         </Button>
       </div>
     );
@@ -199,7 +198,7 @@ export const FormComplete: Story = {
       <Card style={{ maxWidth: '400px', padding: 'var(--ds-spacing-6)' }}>
         <form onSubmit={handleSubmit}>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            {t('storybook.examples.signUp')}
+            "Eksempel Tekst"
           </Heading>
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
@@ -226,7 +225,7 @@ export const FormComplete: Story = {
               checked={formData.terms}
               onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
             >
-              {t('storybook.examples.acceptTerms')}
+              "Eksempel Tekst"
             </Checkbox>
             {errors.terms && (
               <Paragraph
@@ -242,7 +241,7 @@ export const FormComplete: Story = {
           </div>
 
           <Button data-variant="primary" type="submit" style={{ width: '100%' }}>
-            {t('storybook.examples.createAccount')}
+            "Eksempel Tekst"
           </Button>
         </form>
       </Card>
@@ -285,7 +284,7 @@ export const CardContentLayout: Story = {
         {[1, 2, 3].map((i) => (
           <Card key={i} style={{ padding: 'var(--ds-spacing-6)' }}>
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              {t('storybook.examples.cardTitle')} {i}
+              "Eksempel Tekst" {i}
             </Heading>
             <Paragraph
               data-size="sm"
@@ -294,11 +293,11 @@ export const CardContentLayout: Story = {
                 marginBottom: 'var(--ds-spacing-4)',
               }}
             >
-              {t('storybook.examples.cardDescription')}
+              "Eksempel Tekst"
             </Paragraph>
             <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
               <Button data-variant="primary" data-size="sm">
-                {t('storybook.examples.action')}
+                "Eksempel Tekst"
               </Button>
               <Button data-variant="tertiary" data-size="sm">
                 {t('platform.common.cancel')}
@@ -365,7 +364,7 @@ export const ListInteractive: Story = {
           data-size="sm"
           style={{ marginBottom: 'var(--ds-spacing-3)', paddingLeft: 'var(--ds-spacing-3)' }}
         >
-          {t('storybook.examples.navigation')}
+          "Eksempel Tekst"
         </Heading>
         <div role="list">
           {items.map((item, index) => (
@@ -426,7 +425,7 @@ export const EmptyState: Story = {
           }}
         />
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.patterns.noItemsYet')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           style={{
@@ -434,9 +433,9 @@ export const EmptyState: Story = {
             marginBottom: 'var(--ds-spacing-6)',
           }}
         >
-          {t('storybook.patterns.getStarted')}
+          "Eksempel Tekst"
         </Paragraph>
-        <Button data-variant="primary">{t('storybook.patterns.createItem')}</Button>
+        <Button data-variant="primary">"Eksempel Tekst"</Button>
       </Card>
     );
   },
@@ -469,7 +468,7 @@ export const ErrorState: Story = {
             marginBottom: 'var(--ds-spacing-2)',
           }}
         >
-          {t('storybook.notifications.error')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           style={{
@@ -477,11 +476,11 @@ export const ErrorState: Story = {
             marginBottom: 'var(--ds-spacing-4)',
           }}
         >
-          {t('storybook.examples.failedToLoadData')}
+          "Eksempel Tekst"
         </Paragraph>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
           <Button data-variant="primary" data-size="sm">
-            {t('storybook.examples.retry')}
+            "Eksempel Tekst"
           </Button>
           <Button data-variant="tertiary" data-size="sm">
             {t('platform.common.cancel')}
@@ -521,10 +520,10 @@ export const SuccessState: Story = {
                 marginBottom: 'var(--ds-spacing-1)',
               }}
             >
-              {t('storybook.notifications.success')}
+              "Eksempel Tekst"
             </Heading>
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-              {t('storybook.notifications.changesSaved')}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
         </div>
@@ -559,7 +558,7 @@ export const LoadingState: Story = {
           }}
         />
         <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-          {t('storybook.loading.loading')}
+          "Eksempel Tekst"
         </Paragraph>
         <style>{`
           @keyframes spin {

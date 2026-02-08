@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { ErrorBoundary } from '../../blocks/ErrorBoundary';
 
 const meta: Meta<typeof ErrorBoundary> = {
@@ -208,8 +207,8 @@ export const NoError: Story = {
       <div style={{ width: '500px' }}>
         <ErrorBoundary {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <h3>{t('storybook.demo.cardTitle')}</h3>
-            <p>{t('storybook.demo.cardDescription')}</p>
+            <h3>"Eksempel Tekst"</h3>
+            <p>"Eksempel Tekst"</p>
           </div>
         </ErrorBoundary>
       </div>

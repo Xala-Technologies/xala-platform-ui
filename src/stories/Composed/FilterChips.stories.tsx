@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { FilterChips, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -46,12 +45,12 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.filterChips.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <FilterChips
               chips={chips}
               onResetAll={() => setChips([])}
-              resetLabel={t('storybook.filterChips.resetAll')}
-              activeFiltersLabel={t('storybook.filterChips.activeFilters')}
+              resetLabel="Eksempel Tekst"
+              activeFiltersLabel="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -79,12 +78,12 @@ export const ManyFilters: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.filterChips.manyFilters')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <FilterChips
               chips={chips}
               onResetAll={() => setChips([])}
-              resetLabel={t('storybook.filterChips.resetAll')}
-              activeFiltersLabel={t('storybook.filterChips.activeFilters')}
+              resetLabel="Eksempel Tekst"
+              activeFiltersLabel="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -110,11 +109,11 @@ export const WithoutLabel: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.filterChips.withoutLabel')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <FilterChips
               chips={chips}
               onResetAll={() => setChips([])}
-              resetLabel={t('storybook.filterChips.resetAll')}
+              resetLabel="Eksempel Tekst"
             />
           </Stack>
         </Card>

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ActionMenu, ContextMenu } from '../../composed/ActionMenu';
 import { Button } from '@digdir/designsystemet-react';
 import { MoreVertical, Edit, Trash2, Copy, Download, Share2 } from 'lucide-react';
@@ -113,7 +112,7 @@ const WithGroupsDemo = () => {
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          {t('storybook.demo.actions')}
+          "Eksempel Tekst"
         </Button>
       }
       groups={[
@@ -180,7 +179,7 @@ const WithDisabledDemo = () => {
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          {t('storybook.demo.actions')}
+          "Eksempel Tekst"
         </Button>
       }
       items={[
@@ -218,7 +217,7 @@ const WithShortcutsDemo = () => {
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          {t('storybook.demo.actions')}
+          "Eksempel Tekst"
         </Button>
       }
       items={[
@@ -264,7 +263,7 @@ const BottomStartDemo = () => {
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          {t('storybook.demo.bottomStart')}
+          "Eksempel Tekst"
         </Button>
       }
       items={sampleItems}
@@ -289,7 +288,7 @@ const BottomEndDemo = () => {
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium">
-          {t('storybook.demo.bottomEnd')}
+          "Eksempel Tekst"
         </Button>
       }
       items={sampleItems}
@@ -314,7 +313,7 @@ const TopStartDemo = () => {
       <ActionMenu
         trigger={
           <Button data-color="neutral" data-size="medium">
-            {t('storybook.demo.topStart')}
+            "Eksempel Tekst"
           </Button>
         }
         items={sampleItems}
@@ -339,7 +338,7 @@ const DisabledDemo = () => {
     <ActionMenu
       trigger={
         <Button data-color="neutral" data-size="medium" disabled>
-          {t('storybook.story.disabled')}
+          "Eksempel Tekst"
         </Button>
       }
       items={sampleItems}
@@ -370,7 +369,7 @@ const ContextMenuExampleDemo = () => {
           color: 'var(--ds-color-neutral-text-subtle)',
         }}
       >
-        {t('storybook.demo.rightClickHere')}
+        "Eksempel Tekst"
       </div>
     </ContextMenu>
   );

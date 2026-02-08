@@ -5,7 +5,6 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   ActivityTimeline,
   type ActivityTimelineProps,
@@ -467,7 +466,7 @@ export const Interactive: Story = {
             }}
           >
             <Paragraph data-size="sm" style={{ margin: 0 }}>
-              <strong>{t('storybook.patterns.selected')}:</strong> {selectedItem.title}
+              <strong>"Eksempel Tekst":</strong> {selectedItem.title}
             </Paragraph>
             <Paragraph data-size="xs" style={{ margin: 0, marginTop: 'var(--ds-spacing-1)' }}>
               ID: {selectedItem.id}

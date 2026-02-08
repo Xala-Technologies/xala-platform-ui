@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { IframeViewer, Stack, Paragraph } from '../../index';
 
 /**
@@ -63,10 +62,10 @@ export const Default: Story = {
       >
         <IframeViewer
           src="https://example.com"
-          title={t('storybook.iframeViewer.exampleTitle')}
+          title="Eksempel Tekst"
           showHeader
-          headerTitle={t('storybook.iframeViewer.preview')}
-          headerSubtitle={t('storybook.iframeViewer.componentDemo')}
+          headerTitle="Eksempel Tekst"
+          headerSubtitle="Eksempel Tekst"
         />
       </Stack>
     );
@@ -86,7 +85,7 @@ export const WithCustomHeader: Story = {
       >
         <IframeViewer
           src="https://example.com"
-          title={t('storybook.iframeViewer.exampleTitle')}
+          title="Eksempel Tekst"
           header={
             <Stack
               spacing="var(--ds-spacing-4)"
@@ -96,7 +95,7 @@ export const WithCustomHeader: Story = {
               }}
             >
               <Paragraph data-size="md" style={{ margin: 0 }}>
-                {t('storybook.iframeViewer.customHeader')}
+                "Eksempel Tekst"
               </Paragraph>
             </Stack>
           }
@@ -119,9 +118,9 @@ export const WithExternalUrl: Story = {
       >
         <IframeViewer
           src="https://example.com"
-          title={t('storybook.iframeViewer.exampleTitle')}
+          title="Eksempel Tekst"
           showHeader
-          headerTitle={t('storybook.iframeViewer.preview')}
+          headerTitle="Eksempel Tekst"
           externalUrl="https://example.com/full"
         />
       </Stack>
@@ -139,10 +138,10 @@ export const CustomHeight: Story = {
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <IframeViewer
           src="https://example.com"
-          title={t('storybook.iframeViewer.exampleTitle')}
+          title="Eksempel Tekst"
           height="400px"
           showHeader
-          headerTitle={t('storybook.iframeViewer.preview')}
+          headerTitle="Eksempel Tekst"
         />
       </div>
     );

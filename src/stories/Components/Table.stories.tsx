@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Table } from '../../index';
 
 const meta: Meta = {
@@ -339,24 +338,24 @@ export const Default: Story = {
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>{t('platform.common.name')}</Table.HeaderCell>
-            <Table.HeaderCell>{t('storybook.demo.location')}</Table.HeaderCell>
-            <Table.HeaderCell>{t('storybook.demo.capacity')}</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <Table.Row>
-            <Table.Cell>{t('storybook.demo.tennisCourt')} A</Table.Cell>
-            <Table.Cell>{t('storybook.demo.building')} 1</Table.Cell>
+            <Table.Cell>"Eksempel Tekst" A</Table.Cell>
+            <Table.Cell>"Eksempel Tekst" 1</Table.Cell>
             <Table.Cell>4</Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell>{t('storybook.demo.footballField')}</Table.Cell>
-            <Table.Cell>{t('storybook.demo.outdoor')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>22</Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell>{t('storybook.demo.swimmingPool')}</Table.Cell>
-            <Table.Cell>{t('storybook.demo.building')} 2</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
+            <Table.Cell>"Eksempel Tekst" 2</Table.Cell>
             <Table.Cell>30</Table.Cell>
           </Table.Row>
         </Table.Body>
@@ -370,22 +369,22 @@ export const WithCaption: Story = {
     const t = useT();
     return (
       <Table>
-        <caption>{t('storybook.demo.availableResources')}</caption>
+        <caption>"Eksempel Tekst"</caption>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>{t('storybook.demo.resource')}</Table.HeaderCell>
-            <Table.HeaderCell>{t('storybook.demo.pricePerHour')}</Table.HeaderCell>
-            <Table.HeaderCell>{t('storybook.demo.available')}</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <Table.Row>
-            <Table.Cell>{t('storybook.demo.tennisCourt')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>200 kr</Table.Cell>
             <Table.Cell>{t('platform.common.yes')}</Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell>{t('storybook.demo.basketballCourt')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>300 kr</Table.Cell>
             <Table.Cell>{t('platform.common.no')}</Table.Cell>
           </Table.Row>
@@ -402,30 +401,30 @@ export const Zebra: Story = {
       <Table zebra>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>{t('storybook.demo.date')}</Table.HeaderCell>
-            <Table.HeaderCell>{t('storybook.demo.booking')}</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             <Table.HeaderCell>{t('platform.common.status')}</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <Table.Row>
             <Table.Cell>2024-01-15</Table.Cell>
-            <Table.Cell>{t('storybook.demo.tennisCourt')} A</Table.Cell>
-            <Table.Cell>{t('storybook.demo.confirmed')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst" A</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>2024-01-16</Table.Cell>
-            <Table.Cell>{t('storybook.demo.swimmingPool')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>{t('platform.status.pending')}</Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>2024-01-17</Table.Cell>
-            <Table.Cell>{t('storybook.demo.footballField')}</Table.Cell>
-            <Table.Cell>{t('storybook.demo.confirmed')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>2024-01-18</Table.Cell>
-            <Table.Cell>{t('storybook.demo.gym')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>{t('platform.status.cancelled')}</Table.Cell>
           </Table.Row>
         </Table.Body>
@@ -442,42 +441,42 @@ export const Sizes: Story = {
         <Table data-size="sm">
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell>{t('storybook.demo.small')}</Table.HeaderCell>
-              <Table.HeaderCell>{t('storybook.demo.table')}</Table.HeaderCell>
+              <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+              <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
             <Table.Row>
-              <Table.Cell>{t('storybook.demo.data')} 1</Table.Cell>
-              <Table.Cell>{t('storybook.demo.data')} 2</Table.Cell>
+              <Table.Cell>"Eksempel Tekst" 1</Table.Cell>
+              <Table.Cell>"Eksempel Tekst" 2</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
         <Table data-size="md">
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell>{t('storybook.demo.medium')}</Table.HeaderCell>
-              <Table.HeaderCell>{t('storybook.demo.table')}</Table.HeaderCell>
+              <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+              <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
             <Table.Row>
-              <Table.Cell>{t('storybook.demo.data')} 1</Table.Cell>
-              <Table.Cell>{t('storybook.demo.data')} 2</Table.Cell>
+              <Table.Cell>"Eksempel Tekst" 1</Table.Cell>
+              <Table.Cell>"Eksempel Tekst" 2</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
         <Table data-size="lg">
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell>{t('storybook.demo.large')}</Table.HeaderCell>
-              <Table.HeaderCell>{t('storybook.demo.table')}</Table.HeaderCell>
+              <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
+              <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
             <Table.Row>
-              <Table.Cell>{t('storybook.demo.data')} 1</Table.Cell>
-              <Table.Cell>{t('storybook.demo.data')} 2</Table.Cell>
+              <Table.Cell>"Eksempel Tekst" 1</Table.Cell>
+              <Table.Cell>"Eksempel Tekst" 2</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>

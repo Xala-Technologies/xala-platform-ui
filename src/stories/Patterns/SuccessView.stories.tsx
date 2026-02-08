@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { SuccessView, Stack, Paragraph, Card } from '../../index';
 import { CheckCircleIcon } from '../../index';
 
@@ -42,10 +41,10 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.successView.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <SuccessView
-              title={t('storybook.successView.title')}
-              message={t('storybook.successView.message')}
+              title="Eksempel Tekst"
+              message="Eksempel Tekst"
               primaryAction={{
                 label: t('storybook.successView.continue'),
                 onClick: () => console.log('Continue clicked'),
@@ -71,10 +70,10 @@ export const WithDetails: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.successView.withDetails')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <SuccessView
-              title={t('storybook.successView.title')}
-              message={t('storybook.successView.message')}
+              title="Eksempel Tekst"
+              message="Eksempel Tekst"
               details={[
                 { label: t('storybook.successView.reference'), value: 'REF-12345' },
                 {
@@ -111,11 +110,11 @@ export const WithCustomIcon: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.successView.withCustomIcon')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <SuccessView
               icon={<CheckCircleIcon />}
-              title={t('storybook.successView.title')}
-              message={t('storybook.successView.message')}
+              title="Eksempel Tekst"
+              message="Eksempel Tekst"
               primaryAction={{
                 label: t('storybook.successView.continue'),
                 onClick: () => console.log('Continue clicked'),

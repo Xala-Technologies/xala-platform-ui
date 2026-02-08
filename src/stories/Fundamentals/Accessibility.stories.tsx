@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Textfield, Checkbox, Heading, Paragraph, Card } from '../../index';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Fundamentals/Accessibility',
@@ -50,7 +49,7 @@ export const KeyboardNavigation: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.a11y.keyboardNavigation')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           style={{
@@ -58,22 +57,22 @@ export const KeyboardNavigation: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.a11y.keyboardNavigationDescription')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
           <Button data-variant="primary" tabIndex={0}>
-            {t('storybook.a11y.firstButton')}
+            "Eksempel Tekst"
           </Button>
           <Button data-variant="secondary" tabIndex={0}>
-            {t('storybook.a11y.secondButton')}
+            "Eksempel Tekst"
           </Button>
           <Textfield
-            label={t('storybook.a11y.textInput')}
-            placeholder={t('storybook.a11y.typeHere')}
+            label="Eksempel Tekst"
+            placeholder="Eksempel Tekst"
             tabIndex={0}
           />
-          <Checkbox tabIndex={0}>{t('storybook.a11y.checkboxSpaceToggle')}</Checkbox>
+          <Checkbox tabIndex={0}>"Eksempel Tekst"</Checkbox>
           <a
             href="#"
             style={{
@@ -82,7 +81,7 @@ export const KeyboardNavigation: Story = {
             }}
             tabIndex={0}
           >
-            {t('storybook.a11y.linkEnterActivate')}
+            "Eksempel Tekst"
           </a>
         </div>
 
@@ -95,7 +94,7 @@ export const KeyboardNavigation: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-            <strong>{t('storybook.a11y.good')}:</strong> {t('storybook.a11y.allElementsTabIndex')}
+            <strong>"Eksempel Tekst":</strong> "Eksempel Tekst"
           </Paragraph>
         </div>
       </Card>
@@ -124,13 +123,13 @@ export const ARIALabels: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.a11y.missingAria')}
+            "Eksempel Tekst"
           </Heading>
           <button type="button" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
             ✓
           </button>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.a11y.iconOnlyNoLabel')}
+            "Eksempel Tekst"
           </Paragraph>
         </Card>
 
@@ -144,17 +143,17 @@ export const ARIALabels: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.a11y.properAria')}
+            "Eksempel Tekst"
           </Heading>
           <button
             type="button"
-            aria-label={t('storybook.a11y.markAsComplete')}
+            aria-label="Eksempel Tekst"
             style={{ marginBottom: 'var(--ds-spacing-2)' }}
           >
             ✓
           </button>
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-            {t('storybook.a11y.iconWithAriaLabel')}
+            "Eksempel Tekst"
           </Paragraph>
         </Card>
       </div>
@@ -183,7 +182,7 @@ export const ColorContrast: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.a11y.poorContrast')}
+            "Eksempel Tekst"
           </Heading>
           <div
             style={{
@@ -193,7 +192,7 @@ export const ColorContrast: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            {t('storybook.a11y.hardToRead')}
+            "Eksempel Tekst"
           </div>
         </Card>
 
@@ -207,7 +206,7 @@ export const ColorContrast: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.a11y.goodContrast')}
+            "Eksempel Tekst"
           </Heading>
           <div
             style={{
@@ -217,7 +216,7 @@ export const ColorContrast: Story = {
               borderRadius: 'var(--ds-border-radius-md)',
             }}
           >
-            {t('storybook.a11y.easyToRead')}
+            "Eksempel Tekst"
           </div>
         </Card>
       </div>
@@ -237,7 +236,7 @@ export const FocusIndicators: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.a11y.focusIndicators')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph
           style={{
@@ -245,7 +244,7 @@ export const FocusIndicators: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.a11y.tabThroughElements')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -262,12 +261,12 @@ export const FocusIndicators: Story = {
               e.currentTarget.style.outline = '2px solid transparent';
             }}
           >
-            {t('storybook.a11y.buttonWithFocusRing')}
+            "Eksempel Tekst"
           </Button>
 
           <Textfield
-            label={t('storybook.a11y.inputField')}
-            placeholder={t('storybook.a11y.focusToSeeOutline')}
+            label="Eksempel Tekst"
+            placeholder="Eksempel Tekst"
           />
 
           <div
@@ -278,8 +277,8 @@ export const FocusIndicators: Story = {
             }}
           >
             <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-              <strong>{t('storybook.a11y.good')}:</strong>{' '}
-              {t('storybook.a11y.clearVisualIndicator')}
+              <strong>"Eksempel Tekst":</strong>{' '}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
         </div>
@@ -301,14 +300,14 @@ export const FormAccessibility: Story = {
 
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '500px' }}>
-        <form aria-label={t('storybook.a11y.contactForm')}>
+        <form aria-label="Eksempel Tekst">
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-            {t('storybook.a11y.accessibleForm')}
+            "Eksempel Tekst"
           </Heading>
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label={t('storybook.a11y.name')}
+              label="Eksempel Tekst"
               id="name-input"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -350,7 +349,7 @@ export const FormAccessibility: Story = {
                 marginTop: 'var(--ds-spacing-1)',
               }}
             >
-              {t('storybook.a11y.emailNeverShare')}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
 
@@ -358,9 +357,9 @@ export const FormAccessibility: Story = {
             <Checkbox
               checked={formData.subscribe}
               onChange={(e) => setFormData({ ...formData, subscribe: e.target.checked })}
-              aria-label={t('storybook.a11y.subscribeNewsletter')}
+              aria-label="Eksempel Tekst"
             >
-              {t('storybook.a11y.subscribeNewsletter')}
+              "Eksempel Tekst"
             </Checkbox>
           </div>
 
@@ -378,12 +377,12 @@ export const FormAccessibility: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-            <strong>{t('storybook.a11y.accessibleFeatures')}:</strong>
-            <br />• {t('storybook.a11y.properLabelsHtmlFor')}
-            <br />• {t('storybook.a11y.ariaRequiredFields')}
-            <br />• {t('storybook.a11y.ariaInvalidValidation')}
-            <br />• {t('storybook.a11y.ariaDescribedbyHelp')}
-            <br />• {t('storybook.a11y.roleAlertErrors')}
+            <strong>"Eksempel Tekst":</strong>
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
           </Paragraph>
         </div>
       </Card>
@@ -403,7 +402,7 @@ export const ScreenReaderText: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)', maxWidth: '600px' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.a11y.screenReaderOnlyText')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
@@ -431,7 +430,7 @@ export const ScreenReaderText: Story = {
                 border: 0,
               }}
             >
-              {t('storybook.a11y.closeDialog')}
+              "Eksempel Tekst"
             </span>
             ✕
           </button>
@@ -445,8 +444,8 @@ export const ScreenReaderText: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-info-text-default)' }}>
-            <strong>{t('storybook.a11y.pattern')}:</strong>{' '}
-            {t('storybook.a11y.screenReaderPattern')}
+            <strong>"Eksempel Tekst":</strong>{' '}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </Card>
@@ -503,7 +502,7 @@ export const Checklist: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-6)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.a11y.accessibilityChecklist')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>

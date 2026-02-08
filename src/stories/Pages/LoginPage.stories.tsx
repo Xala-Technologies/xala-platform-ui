@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Card, Heading, Paragraph, Button, Input, Alert } from '../../index';
 import { IdPortenIcon, VippsIcon, BankIdIcon } from '../../index';
 
@@ -157,7 +156,7 @@ export const Default: Story = {
                 letterSpacing: '0.1em',
               }}
             >
-              {t('storybook.login.simpleBooking')}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
 
@@ -181,26 +180,26 @@ export const Default: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.login.chooseLoginMethod')}
+              "Eksempel Tekst"
             </Paragraph>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
               <LoginOptionDemo
                 icon={<BankIdIcon size={32} />}
                 title="BankID"
-                description={t('storybook.login.bankIdDescription')}
+                description="Eksempel Tekst"
                 onClick={() => console.log('BankID login')}
               />
               <LoginOptionDemo
                 icon={<VippsIcon size={32} />}
                 title="Vipps"
-                description={t('storybook.login.vippsDescription')}
+                description="Eksempel Tekst"
                 onClick={() => console.log('Vipps login')}
               />
               <LoginOptionDemo
                 icon={<IdPortenIcon size={32} />}
                 title="ID-porten"
-                description={t('storybook.login.idPortenDescription')}
+                description="Eksempel Tekst"
                 onClick={() => console.log('ID-porten login')}
               />
             </div>
@@ -221,7 +220,7 @@ export const Default: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.login.privacy')}
+              "Eksempel Tekst"
             </a>
             <a
               href="#"
@@ -230,7 +229,7 @@ export const Default: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.login.terms')}
+              "Eksempel Tekst"
             </a>
             <a
               href="#"
@@ -239,7 +238,7 @@ export const Default: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.login.help')}
+              "Eksempel Tekst"
             </a>
           </div>
         </div>
@@ -263,7 +262,7 @@ export const Default: Story = {
                 color: 'var(--ds-color-accent-text-default)',
               }}
             >
-              {t('storybook.login.backoffice')}
+              "Eksempel Tekst"
             </Heading>
             <Paragraph
               data-size="md"
@@ -272,7 +271,7 @@ export const Default: Story = {
                 color: 'var(--ds-color-accent-text-default)',
               }}
             >
-              {t('storybook.login.manageBookingsAndRentals')}
+              "Eksempel Tekst"
             </Paragraph>
 
             {/* Features List */}
@@ -342,7 +341,7 @@ export const Default: Story = {
                   letterSpacing: '0.1em',
                 }}
               >
-                {t('storybook.login.integrations')}
+                "Eksempel Tekst"
               </Paragraph>
               <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
                 {['FEIDE', 'BankID', 'Vipps', 'ID-porten'].map((name) => (
@@ -393,11 +392,11 @@ export const DemoLoginDialog: Story = {
         <div style={{ padding: 'var(--ds-spacing-6)', textAlign: 'center' }}>
           <Alert data-color="success">
             <Paragraph style={{ margin: 0 }}>
-              {t('storybook.login.demoLoginCompleted')} <strong>{name}</strong>
+              "Eksempel Tekst" <strong>{name}</strong>
             </Paragraph>
           </Alert>
           <Button style={{ marginTop: 'var(--ds-spacing-4)' }} onClick={() => setIsOpen(true)}>
-            {t('storybook.login.showDialogAgain')}
+            "Eksempel Tekst"
           </Button>
         </div>
       );
@@ -421,7 +420,7 @@ export const DemoLoginDialog: Story = {
           }}
         >
           <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
-            {t('storybook.login.demoLogin')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             data-size="sm"
@@ -430,7 +429,7 @@ export const DemoLoginDialog: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.login.demoLoginDescription')}
+            "Eksempel Tekst"
           </Paragraph>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -448,7 +447,7 @@ export const DemoLoginDialog: Story = {
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t('storybook.login.namePlaceholder')}
+                placeholder="Eksempel Tekst"
               />
             </div>
             <div>
@@ -466,7 +465,7 @@ export const DemoLoginDialog: Story = {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={t('storybook.login.emailPlaceholder')}
+                placeholder="Eksempel Tekst"
               />
             </div>
             <div>
@@ -478,12 +477,12 @@ export const DemoLoginDialog: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                {t('storybook.login.demoToken')}
+                "Eksempel Tekst"
               </label>
               <Input
                 value={token}
                 onChange={(e) => setToken(e.target.value)}
-                placeholder={t('storybook.login.demoTokenPlaceholder')}
+                placeholder="Eksempel Tekst"
               />
               <Paragraph
                 data-size="xs"
@@ -492,7 +491,7 @@ export const DemoLoginDialog: Story = {
                   color: 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                {t('storybook.login.demoTokenHint')}
+                "Eksempel Tekst"
               </Paragraph>
             </div>
           </div>
@@ -560,7 +559,7 @@ export const MobileView: Story = {
               letterSpacing: '0.1em',
             }}
           >
-            {t('storybook.login.simpleBooking')}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
 
@@ -574,13 +573,13 @@ export const MobileView: Story = {
             <LoginOptionDemo
               icon={<BankIdIcon size={28} />}
               title="BankID"
-              description={t('storybook.login.mobileOrCodeDevice')}
+              description="Eksempel Tekst"
               onClick={() => console.log('BankID')}
             />
             <LoginOptionDemo
               icon={<VippsIcon size={28} />}
               title="Vipps"
-              description={t('storybook.login.loginWithVipps')}
+              description="Eksempel Tekst"
               onClick={() => console.log('Vipps')}
             />
           </div>
@@ -615,9 +614,9 @@ export const WithError: Story = {
 
         <Alert data-color="danger" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
           <Paragraph style={{ margin: 0 }}>
-            <strong>{t('storybook.login.loginFailed')}</strong>
+            <strong>"Eksempel Tekst"</strong>
             <br />
-            {t('storybook.login.sessionExpired')}
+            "Eksempel Tekst"
           </Paragraph>
         </Alert>
 
@@ -625,7 +624,7 @@ export const WithError: Story = {
           <LoginOptionDemo
             icon={<BankIdIcon size={28} />}
             title="BankID"
-            description={t('storybook.login.tryAgainWithBankId')}
+            description="Eksempel Tekst"
             onClick={() => console.log('Retry BankID')}
           />
         </div>
@@ -675,18 +674,18 @@ export const PublicWebLogin: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.login.loginToBook')}
+              "Eksempel Tekst"
             </Paragraph>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Button variant="primary" data-size="lg" style={{ width: '100%' }}>
               <BankIdIcon size={20} />
-              {t('storybook.login.loginWithBankId')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="secondary" data-size="lg" style={{ width: '100%' }}>
               <VippsIcon size={20} />
-              {t('storybook.login.loginWithVipps')}
+              "Eksempel Tekst"
             </Button>
           </div>
 
@@ -697,7 +696,7 @@ export const PublicWebLogin: Story = {
               color: 'var(--ds-color-neutral-text-subtle)',
             }}
           >
-            {t('storybook.login.termsAgreement')}
+            "Eksempel Tekst"
           </Paragraph>
         </Card>
       </div>

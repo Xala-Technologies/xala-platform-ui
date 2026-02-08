@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   MobileNav,
   MobileNavToggle,
@@ -112,13 +111,13 @@ export const Default: Story = {
         <MobileNavToggle
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={t('storybook.mobileNav.toggleMenu')}
+          aria-label="Eksempel Tekst"
         />
         <MobileNav
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           items={items}
-          title={t('storybook.mobileNav.navigation')}
+          title="Eksempel Tekst"
         />
       </Stack>
     );
@@ -137,7 +136,7 @@ export const WithSections: Story = {
         <MobileNavToggle
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={t('storybook.mobileNav.toggleMenu')}
+          aria-label="Eksempel Tekst"
         />
         <MobileNav
           isOpen={isOpen}
@@ -179,7 +178,7 @@ export const WithSections: Story = {
               ],
             },
           ]}
-          title={t('storybook.mobileNav.navigation')}
+          title="Eksempel Tekst"
         />
       </div>
     );
@@ -199,7 +198,7 @@ export const WithHeader: Story = {
         <MobileNavToggle
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={t('storybook.mobileNav.toggleMenu')}
+          aria-label="Eksempel Tekst"
         />
         <MobileNav
           isOpen={isOpen}
@@ -217,7 +216,7 @@ export const WithHeader: Story = {
                 data-size="md"
                 style={{ margin: 0, fontWeight: 'var(--ds-font-weight-semibold)' }}
               >
-                {t('storybook.mobileNav.appName')}
+                "Eksempel Tekst"
               </Paragraph>
             </Stack>
           }
@@ -240,7 +239,7 @@ export const WithFooter: Story = {
         <MobileNavToggle
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={t('storybook.mobileNav.toggleMenu')}
+          aria-label="Eksempel Tekst"
         />
         <MobileNav
           isOpen={isOpen}
@@ -258,7 +257,7 @@ export const WithFooter: Story = {
                 data-size="sm"
                 style={{ margin: 0, color: 'var(--ds-color-neutral-text-subtle)' }}
               >
-                {t('storybook.mobileNav.footerText')}
+                "Eksempel Tekst"
               </Paragraph>
             </Stack>
           }

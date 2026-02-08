@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { StatsGrid, StatCardEnhanced, MiniStat } from '../../composed/StatsGrid';
 import { Users, DollarSign, TrendingUp, Activity, ShoppingCart } from 'lucide-react';
 
@@ -193,21 +192,21 @@ const MiniStatDemo = () => {
       }}
     >
       <MiniStat
-        label={t('storybook.demo.users')}
+        label="Eksempel Tekst"
         value={1250}
         icon={<Users size={16} />}
         trend="up"
         change={12}
       />
       <MiniStat
-        label={t('storybook.demo.revenue')}
+        label="Eksempel Tekst"
         value="$45,230"
         icon={<DollarSign size={16} />}
         trend="up"
         change={8}
       />
       <MiniStat
-        label={t('storybook.demo.orders')}
+        label="Eksempel Tekst"
         value={892}
         icon={<ShoppingCart size={16} />}
         trend="down"

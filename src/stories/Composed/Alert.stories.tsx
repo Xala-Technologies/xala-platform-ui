@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Alert } from '../../composed/Alert';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -63,8 +62,8 @@ type Story = StoryObj<typeof meta>;
 const InfoDemo = () => {
   const t = useT();
   return (
-    <Alert variant="info" title={t('storybook.demo.information')} dismissible={false}>
-      {t('storybook.demo.informationalMessage')}
+    <Alert variant="info" title="Eksempel Tekst" dismissible={false}>
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -80,8 +79,8 @@ export const Info: Story = {
 const SuccessDemo = () => {
   const t = useT();
   return (
-    <Alert variant="success" title={t('storybook.story.success')} dismissible={false}>
-      {t('storybook.demo.changesSavedSuccessfully')}
+    <Alert variant="success" title="Eksempel Tekst" dismissible={false}>
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -97,8 +96,8 @@ export const Success: Story = {
 const WarningDemo = () => {
   const t = useT();
   return (
-    <Alert variant="warning" title={t('storybook.demo.warning')} dismissible={false}>
-      {t('storybook.demo.reviewChangesBeforeProceeding')}
+    <Alert variant="warning" title="Eksempel Tekst" dismissible={false}>
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -114,8 +113,8 @@ export const Warning: Story = {
 const ErrorDemo = () => {
   const t = useT();
   return (
-    <Alert variant="error" title={t('storybook.story.error')} dismissible={false}>
-      {t('storybook.demo.errorProcessingRequest')}
+    <Alert variant="error" title="Eksempel Tekst" dismissible={false}>
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -132,7 +131,7 @@ const WithoutTitleDemo = () => {
   const t = useT();
   return (
     <Alert variant="info" dismissible={false}>
-      {t('storybook.demo.alertWithoutTitle')}
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -150,11 +149,11 @@ const DismissibleDemo = () => {
   return (
     <Alert
       variant="info"
-      title={t('storybook.demo.dismissibleAlert')}
+      title="Eksempel Tekst"
       dismissible={true}
       onDismiss={fn()}
     >
-      {t('storybook.demo.alertCanBeDismissed')}
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -172,14 +171,14 @@ const WithActionDemo = () => {
   return (
     <Alert
       variant="warning"
-      title={t('storybook.demo.actionRequired')}
+      title="Eksempel Tekst"
       dismissible={false}
       action={{
         label: t('storybook.demo.extendSession'),
         onClick: fn(),
       }}
     >
-      {t('storybook.demo.sessionExpireSoon')}
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -197,7 +196,7 @@ const WithCustomIconDemo = () => {
   return (
     <Alert
       variant="info"
-      title={t('storybook.demo.customIcon')}
+      title="Eksempel Tekst"
       dismissible={false}
       icon={
         <svg
@@ -214,7 +213,7 @@ const WithCustomIconDemo = () => {
         </svg>
       }
     >
-      {t('storybook.demo.alertCustomIcon')}
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -232,11 +231,11 @@ const LongContentDemo = () => {
   return (
     <Alert
       variant="info"
-      title={t('storybook.demo.detailedInformation')}
+      title="Eksempel Tekst"
       dismissible={true}
       onDismiss={fn()}
     >
-      {t('storybook.demo.longAlertContent')}
+      "Eksempel Tekst"
     </Alert>
   );
 };
@@ -260,16 +259,16 @@ const AllVariantsDemo = () => {
         width: '600px',
       }}
     >
-      <Alert variant="info" title={t('storybook.demo.info')}>
-        {t('storybook.demo.informationalAlert')}
+      <Alert variant="info" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </Alert>
-      <Alert variant="success" title={t('storybook.story.success')}>
-        {t('storybook.demo.operationSuccessful')}
+      <Alert variant="success" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </Alert>
-      <Alert variant="warning" title={t('storybook.demo.warning')}>
-        {t('storybook.demo.pleaseReview')}
+      <Alert variant="warning" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </Alert>
-      <Alert variant="error" title={t('storybook.story.error')}>
+      <Alert variant="error" title="Eksempel Tekst">
         {t('platform.errors.serverError')}
       </Alert>
     </div>

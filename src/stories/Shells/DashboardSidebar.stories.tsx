@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { MemoryRouter } from 'react-router-dom';
 import { DashboardSidebar, type SidebarSection } from '../../index';
 import {
@@ -45,7 +44,7 @@ const meta: Meta<typeof DashboardSidebar> = {
                 backgroundColor: 'var(--ds-color-neutral-background-default)',
               }}
             >
-              <p>{t('storybook.layout.mainContentArea')}</p>
+              <p>"Eksempel Tekst"</p>
             </div>
           </div>
         </MemoryRouter>

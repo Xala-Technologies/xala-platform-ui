@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { AccountSelector } from '../../blocks/account/AccountSelector';
 import type { BaseOrganization } from '../../blocks/account/AccountSelector';
 

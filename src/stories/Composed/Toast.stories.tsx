@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ToastProvider, useToast } from '../../composed/Toast';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -80,7 +79,7 @@ const ToastDemo = () => {
         data-color="info"
         data-size="medium"
       >
-        {t('storybook.demo.showInfo')}
+        "Eksempel Tekst"
       </Button>
       <Button
         onClick={() =>
@@ -89,21 +88,21 @@ const ToastDemo = () => {
         data-color="success"
         data-size="medium"
       >
-        {t('storybook.demo.showSuccess')}
+        "Eksempel Tekst"
       </Button>
       <Button
         onClick={() => warning(t('storybook.demo.warning'), t('storybook.demo.reviewAction'))}
         data-color="warning"
         data-size="medium"
       >
-        {t('storybook.demo.showWarning')}
+        "Eksempel Tekst"
       </Button>
       <Button
         onClick={() => error(t('storybook.story.error'), t('storybook.demo.somethingWentWrong'))}
         data-color="danger"
         data-size="medium"
       >
-        {t('storybook.demo.showError')}
+        "Eksempel Tekst"
       </Button>
       <Button
         onClick={() =>
@@ -117,7 +116,7 @@ const ToastDemo = () => {
         data-color="accent"
         data-size="medium"
       >
-        {t('storybook.demo.showWithAction')}
+        "Eksempel Tekst"
       </Button>
       <Button
         onClick={() =>
@@ -131,7 +130,7 @@ const ToastDemo = () => {
         data-color="neutral"
         data-size="medium"
       >
-        {t('storybook.demo.showPersistent')}
+        "Eksempel Tekst"
       </Button>
     </div>
   );

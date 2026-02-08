@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { GlobalErrorHandler } from '../../blocks/GlobalErrorHandler';
 
 const meta: Meta<typeof GlobalErrorHandler> = {
@@ -57,8 +56,8 @@ export const NoError: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <h3>{t('storybook.demo.cardTitle')}</h3>
-            <p>{t('storybook.demo.cardDescription')}</p>
+            <h3>"Eksempel Tekst"</h3>
+            <p>"Eksempel Tekst"</p>
           </div>
         </GlobalErrorHandler>
       </div>
@@ -83,7 +82,7 @@ export const CustomTitle: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.demo.sampleText')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
         </GlobalErrorHandler>
       </div>
@@ -103,7 +102,7 @@ export const CustomDescription: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.demo.sampleText')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
         </GlobalErrorHandler>
       </div>
@@ -122,7 +121,7 @@ export const WithoutRetryButton: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.demo.sampleText')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
         </GlobalErrorHandler>
       </div>
@@ -142,7 +141,7 @@ export const CustomRetryText: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.demo.sampleText')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
         </GlobalErrorHandler>
       </div>
@@ -173,7 +172,7 @@ export const CustomFallback: Story = {
       <div style={{ width: '500px' }}>
         <GlobalErrorHandler {...args}>
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.demo.sampleText')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
         </GlobalErrorHandler>
       </div>

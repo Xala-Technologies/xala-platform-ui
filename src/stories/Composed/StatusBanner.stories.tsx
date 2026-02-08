@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { StatusBanner } from '../../composed/StatusBanner';
 import { Button } from '@digdir/designsystemet-react';
 import { CheckCircle, AlertCircle, Info, XCircle } from 'lucide-react';
@@ -54,8 +53,8 @@ const InfoBannerDemo = () => {
   return (
     <StatusBanner
       variant="info"
-      title={t('storybook.demo.information')}
-      description={t('storybook.demo.informationalBannerDescription')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -65,8 +64,8 @@ const SuccessBannerDemo = () => {
   return (
     <StatusBanner
       variant="success"
-      title={t('storybook.story.success')}
-      description={t('storybook.demo.changesSavedSuccessfully')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -76,8 +75,8 @@ const WarningBannerDemo = () => {
   return (
     <StatusBanner
       variant="warning"
-      title={t('storybook.demo.warning')}
-      description={t('storybook.demo.reviewChangesBeforeProceeding')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -87,8 +86,8 @@ const DangerBannerDemo = () => {
   return (
     <StatusBanner
       variant="danger"
-      title={t('storybook.story.error')}
-      description={t('storybook.demo.errorProcessingRequest')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -98,15 +97,15 @@ const NeutralBannerDemo = () => {
   return (
     <StatusBanner
       variant="neutral"
-      title={t('storybook.demo.notice')}
-      description={t('storybook.demo.neutralBannerDescription')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
 
 const WithoutDescriptionDemo = () => {
   const t = useT();
-  return <StatusBanner variant="success" title={t('storybook.demo.operationCompleted')} />;
+  return <StatusBanner variant="success" title="Eksempel Tekst" />;
 };
 
 const CustomIconDemo = () => {
@@ -114,8 +113,8 @@ const CustomIconDemo = () => {
   return (
     <StatusBanner
       variant="info"
-      title={t('storybook.demo.customIcon')}
-      description={t('storybook.demo.customIconDescription')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
       icon={<Info size={24} />}
     />
   );
@@ -126,11 +125,11 @@ const WithActionDemo = () => {
   return (
     <StatusBanner
       variant="warning"
-      title={t('storybook.demo.actionRequired')}
-      description={t('storybook.demo.sessionExpiringSoon')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
       action={
         <Button onClick={() => alert('Action clicked')} data-color="accent" data-size="sm">
-          {t('storybook.demo.extendSession')}
+          "Eksempel Tekst"
         </Button>
       }
     />
@@ -142,8 +141,8 @@ const LongContentDemo = () => {
   return (
     <StatusBanner
       variant="info"
-      title={t('storybook.demo.detailedInformation')}
-      description={t('storybook.demo.longContentDescription')}
+      title="Eksempel Tekst"
+      description="Eksempel Tekst"
     />
   );
 };
@@ -161,28 +160,28 @@ const AllVariantsDemo = () => {
     >
       <StatusBanner
         variant="info"
-        title={t('storybook.demo.info')}
-        description={t('storybook.demo.informationalBanner')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
       />
       <StatusBanner
         variant="success"
-        title={t('storybook.story.success')}
-        description={t('storybook.demo.operationSuccessful')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
       />
       <StatusBanner
         variant="warning"
-        title={t('storybook.demo.warning')}
-        description={t('storybook.demo.pleaseReview')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
       />
       <StatusBanner
         variant="danger"
-        title={t('storybook.story.error')}
+        title="Eksempel Tekst"
         description={t('platform.errors.serverError')}
       />
       <StatusBanner
         variant="neutral"
-        title={t('storybook.demo.notice')}
-        description={t('storybook.demo.neutralBanner')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
       />
     </div>
   );

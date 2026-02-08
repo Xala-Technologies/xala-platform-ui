@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { NativeSelect } from '../../index';
 
 /**
@@ -54,11 +53,11 @@ export const Default: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <NativeSelect label={t('storybook.nativeSelect.country')}>
-          <option value="">{t('storybook.nativeSelect.selectCountry')}</option>
-          <option value="no">{t('storybook.nativeSelect.norway')}</option>
-          <option value="se">{t('storybook.nativeSelect.sweden')}</option>
-          <option value="dk">{t('storybook.nativeSelect.denmark')}</option>
+        <NativeSelect label="Eksempel Tekst">
+          <option value="">"Eksempel Tekst"</option>
+          <option value="no">"Eksempel Tekst"</option>
+          <option value="se">"Eksempel Tekst"</option>
+          <option value="dk">"Eksempel Tekst"</option>
         </NativeSelect>
       </div>
     );
@@ -74,13 +73,13 @@ export const WithDescription: Story = {
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <NativeSelect
-          label={t('storybook.nativeSelect.language')}
-          description={t('storybook.nativeSelect.languageDescription')}
+          label="Eksempel Tekst"
+          description="Eksempel Tekst"
         >
-          <option value="">{t('storybook.nativeSelect.selectLanguage')}</option>
-          <option value="nb">{t('storybook.nativeSelect.norwegian')}</option>
-          <option value="en">{t('storybook.nativeSelect.english')}</option>
-          <option value="ar">{t('storybook.nativeSelect.arabic')}</option>
+          <option value="">"Eksempel Tekst"</option>
+          <option value="nb">"Eksempel Tekst"</option>
+          <option value="en">"Eksempel Tekst"</option>
+          <option value="ar">"Eksempel Tekst"</option>
         </NativeSelect>
       </div>
     );
@@ -95,11 +94,11 @@ export const Required: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <NativeSelect label={t('storybook.nativeSelect.country')} required>
-          <option value="">{t('storybook.nativeSelect.selectCountry')}</option>
-          <option value="no">{t('storybook.nativeSelect.norway')}</option>
-          <option value="se">{t('storybook.nativeSelect.sweden')}</option>
-          <option value="dk">{t('storybook.nativeSelect.denmark')}</option>
+        <NativeSelect label="Eksempel Tekst" required>
+          <option value="">"Eksempel Tekst"</option>
+          <option value="no">"Eksempel Tekst"</option>
+          <option value="se">"Eksempel Tekst"</option>
+          <option value="dk">"Eksempel Tekst"</option>
         </NativeSelect>
       </div>
     );
@@ -115,13 +114,13 @@ export const WithError: Story = {
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
         <NativeSelect
-          label={t('storybook.nativeSelect.country')}
-          error={t('storybook.nativeSelect.countryError')}
+          label="Eksempel Tekst"
+          error="Eksempel Tekst"
         >
-          <option value="">{t('storybook.nativeSelect.selectCountry')}</option>
-          <option value="no">{t('storybook.nativeSelect.norway')}</option>
-          <option value="se">{t('storybook.nativeSelect.sweden')}</option>
-          <option value="dk">{t('storybook.nativeSelect.denmark')}</option>
+          <option value="">"Eksempel Tekst"</option>
+          <option value="no">"Eksempel Tekst"</option>
+          <option value="se">"Eksempel Tekst"</option>
+          <option value="dk">"Eksempel Tekst"</option>
         </NativeSelect>
       </div>
     );
@@ -136,11 +135,11 @@ export const Disabled: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <NativeSelect label={t('storybook.nativeSelect.country')} disabled>
-          <option value="">{t('storybook.nativeSelect.selectCountry')}</option>
-          <option value="no">{t('storybook.nativeSelect.norway')}</option>
-          <option value="se">{t('storybook.nativeSelect.sweden')}</option>
-          <option value="dk">{t('storybook.nativeSelect.denmark')}</option>
+        <NativeSelect label="Eksempel Tekst" disabled>
+          <option value="">"Eksempel Tekst"</option>
+          <option value="no">"Eksempel Tekst"</option>
+          <option value="se">"Eksempel Tekst"</option>
+          <option value="dk">"Eksempel Tekst"</option>
         </NativeSelect>
       </div>
     );
@@ -155,14 +154,14 @@ export const ManyOptions: Story = {
     const t = useT();
     return (
       <div style={{ maxWidth: '400px', padding: 'var(--ds-spacing-4)' }}>
-        <NativeSelect label={t('storybook.nativeSelect.city')}>
-          <option value="">{t('storybook.nativeSelect.selectCity')}</option>
-          <option value="oslo">{t('storybook.nativeSelect.oslo')}</option>
-          <option value="bergen">{t('storybook.nativeSelect.bergen')}</option>
-          <option value="trondheim">{t('storybook.nativeSelect.trondheim')}</option>
-          <option value="stavanger">{t('storybook.nativeSelect.stavanger')}</option>
-          <option value="bodo">{t('storybook.nativeSelect.bodo')}</option>
-          <option value="tromso">{t('storybook.nativeSelect.tromso')}</option>
+        <NativeSelect label="Eksempel Tekst">
+          <option value="">"Eksempel Tekst"</option>
+          <option value="oslo">"Eksempel Tekst"</option>
+          <option value="bergen">"Eksempel Tekst"</option>
+          <option value="trondheim">"Eksempel Tekst"</option>
+          <option value="stavanger">"Eksempel Tekst"</option>
+          <option value="bodo">"Eksempel Tekst"</option>
+          <option value="tromso">"Eksempel Tekst"</option>
         </NativeSelect>
       </div>
     );

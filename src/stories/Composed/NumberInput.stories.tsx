@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { NumberInput } from '../../composed/NumberInput';
 
 const meta: Meta<typeof NumberInput> = {
@@ -86,7 +85,7 @@ const WithLabelDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.quantity')}
+      label="Eksempel Tekst"
       defaultValue={5}
       min={0}
       max={100}
@@ -109,7 +108,7 @@ const WithMinMaxDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.age')}
+      label="Eksempel Tekst"
       defaultValue={25}
       min={0}
       max={120}
@@ -132,7 +131,7 @@ const WithStepDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.stepBy5')}
+      label="Eksempel Tekst"
       defaultValue={10}
       min={0}
       max={100}
@@ -204,7 +203,7 @@ const WithSuffixDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.weight')}
+      label="Eksempel Tekst"
       defaultValue={50}
       suffix="kg"
       min={0}
@@ -228,7 +227,7 @@ const WithPrefixAndSuffixDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.amount')}
+      label="Eksempel Tekst"
       defaultValue={1000}
       prefix="NOK"
       suffix="kr"
@@ -288,12 +287,12 @@ const WithErrorDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.quantity')}
+      label="Eksempel Tekst"
       defaultValue={150}
       min={0}
       max={100}
       step={1}
-      error={t('storybook.demo.valueMustBeBetween')}
+      error="Eksempel Tekst"
       size="md"
       onChange={fn()}
     />
@@ -312,12 +311,12 @@ const WithHelperTextDemo = () => {
   const t = useT();
   return (
     <NumberInput
-      label={t('storybook.demo.quantity')}
+      label="Eksempel Tekst"
       defaultValue={10}
       min={0}
       max={100}
       step={1}
-      helperText={t('storybook.demo.enterValueBetween')}
+      helperText="Eksempel Tekst"
       size="md"
       onChange={fn()}
     />
@@ -378,9 +377,9 @@ const AllSizesDemo = () => {
   const t = useT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-      <NumberInput label={t('storybook.demo.small')} defaultValue={10} size="sm" onChange={fn()} />
-      <NumberInput label={t('storybook.demo.medium')} defaultValue={10} size="md" onChange={fn()} />
-      <NumberInput label={t('storybook.demo.large')} defaultValue={10} size="lg" onChange={fn()} />
+      <NumberInput label="Eksempel Tekst" defaultValue={10} size="sm" onChange={fn()} />
+      <NumberInput label="Eksempel Tekst" defaultValue={10} size="md" onChange={fn()} />
+      <NumberInput label="Eksempel Tekst" defaultValue={10} size="lg" onChange={fn()} />
     </div>
   );
 };

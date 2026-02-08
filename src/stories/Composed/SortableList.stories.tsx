@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { SortableList } from '../../composed/SortableList';
 import { Card, Paragraph } from '@digdir/designsystemet-react';
 
@@ -65,10 +64,10 @@ type Story = StoryObj<typeof meta>;
 const DefaultDemo = () => {
   const t = useT();
   const [items, setItems] = useState([
-    { id: '1', content: `${t('storybook.demo.item')} 1` },
-    { id: '2', content: `${t('storybook.demo.item')} 2` },
-    { id: '3', content: `${t('storybook.demo.item')} 3` },
-    { id: '4', content: `${t('storybook.demo.item')} 4` },
+    { id: '1', content: `$"Eksempel Tekst" 1` },
+    { id: '2', content: `$"Eksempel Tekst" 2` },
+    { id: '3', content: `$"Eksempel Tekst" 3` },
+    { id: '4', content: `$"Eksempel Tekst" 4` },
   ]);
 
   return (
@@ -81,9 +80,9 @@ const DefaultDemo = () => {
 const WithoutHandleDemo = () => {
   const t = useT();
   const [items, setItems] = useState([
-    { id: '1', content: `${t('storybook.demo.item')} 1` },
-    { id: '2', content: `${t('storybook.demo.item')} 2` },
-    { id: '3', content: `${t('storybook.demo.item')} 3` },
+    { id: '1', content: `$"Eksempel Tekst" 1` },
+    { id: '2', content: `$"Eksempel Tekst" 2` },
+    { id: '3', content: `$"Eksempel Tekst" 3` },
   ]);
 
   return (
@@ -118,7 +117,7 @@ const CustomRenderingDemo = () => {
             }}
           >
             <Paragraph data-size="sm">
-              {item.content} ({t('storybook.demo.position')}: {index + 1})
+              {item.content} ("Eksempel Tekst": {index + 1})
             </Paragraph>
           </Card>
         )}
@@ -145,16 +144,16 @@ const HorizontalDemo = () => {
 const WithDisabledItemsDemo = () => {
   const t = useT();
   const [items, setItems] = useState([
-    { id: '1', content: `${t('storybook.demo.item')} 1` },
+    { id: '1', content: `$"Eksempel Tekst" 1` },
     {
       id: '2',
-      content: `${t('storybook.demo.item')} 2 (${t('storybook.demo.disabled')})`,
+      content: `$"Eksempel Tekst" 2 ($"Eksempel Tekst")`,
       disabled: true,
     },
-    { id: '3', content: `${t('storybook.demo.item')} 3` },
+    { id: '3', content: `$"Eksempel Tekst" 3` },
     {
       id: '4',
-      content: `${t('storybook.demo.item')} 4 (${t('storybook.demo.disabled')})`,
+      content: `$"Eksempel Tekst" 4 ($"Eksempel Tekst")`,
       disabled: true,
     },
   ]);
@@ -169,9 +168,9 @@ const WithDisabledItemsDemo = () => {
 const DisabledDemo = () => {
   const t = useT();
   const [items] = useState([
-    { id: '1', content: `${t('storybook.demo.item')} 1` },
-    { id: '2', content: `${t('storybook.demo.item')} 2` },
-    { id: '3', content: `${t('storybook.demo.item')} 3` },
+    { id: '1', content: `$"Eksempel Tekst" 1` },
+    { id: '2', content: `$"Eksempel Tekst" 2` },
+    { id: '3', content: `$"Eksempel Tekst" 3` },
   ]);
 
   return (
@@ -192,7 +191,7 @@ const ManyItemsDemo = () => {
   const [items, setItems] = useState(
     Array.from({ length: 10 }, (_, i) => ({
       id: `${i + 1}`,
-      content: `${t('storybook.demo.item')} ${i + 1}`,
+      content: `$"Eksempel Tekst" ${i + 1}`,
     }))
   );
 

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Timeline } from '../../composed/Timeline';
 import { CheckCircle, AlertCircle, Info, XCircle } from 'lucide-react';
 
@@ -244,19 +243,19 @@ const WithoutConnectorDemo = () => {
       items={[
         {
           id: '1',
-          title: `${t('storybook.demo.item')} 1`,
+          title: `$"Eksempel Tekst" 1`,
           timestamp: new Date(),
           type: 'success',
         },
         {
           id: '2',
-          title: `${t('storybook.demo.item')} 2`,
+          title: `$"Eksempel Tekst" 2`,
           timestamp: new Date(Date.now() - 1000 * 60 * 30),
           type: 'info',
         },
         {
           id: '3',
-          title: `${t('storybook.demo.item')} 3`,
+          title: `$"Eksempel Tekst" 3`,
           timestamp: new Date(Date.now() - 1000 * 60 * 60),
           type: 'warning',
         },
@@ -317,7 +316,7 @@ export const WithMetadata: Story = {
 const EmptyDemo = () => {
   const t = useT();
   return (
-    <Timeline items={[]} emptyMessage={t('storybook.demo.noActivityYet')} showConnector={true} />
+    <Timeline items={[]} emptyMessage="Eksempel Tekst" showConnector={true} />
   );
 };
 

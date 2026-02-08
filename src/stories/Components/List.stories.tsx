@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { List } from '../../index';
 
 const meta: Meta<typeof List> = {
@@ -43,10 +42,10 @@ export const Unordered: Story = {
     const t = useT();
     return (
       <List.Unordered>
-        <List.Item>{t('storybook.demo.freeCancellation24Hours')}</List.Item>
-        <List.Item>{t('storybook.demo.equipmentIncluded')}</List.Item>
-        <List.Item>{t('storybook.demo.changingRoomsAvailable')}</List.Item>
-        <List.Item>{t('storybook.demo.parkingOnSite')}</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
       </List.Unordered>
     );
   },
@@ -57,11 +56,11 @@ export const Ordered: Story = {
     const t = useT();
     return (
       <List.Ordered>
-        <List.Item>{t('storybook.demo.createAccount')}</List.Item>
-        <List.Item>{t('storybook.demo.browseResources')}</List.Item>
-        <List.Item>{t('storybook.demo.selectDateTime')}</List.Item>
-        <List.Item>{t('storybook.demo.completeBooking')}</List.Item>
-        <List.Item>{t('storybook.demo.receiveConfirmation')}</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
+        <List.Item>"Eksempel Tekst"</List.Item>
       </List.Ordered>
     );
   },
@@ -73,19 +72,19 @@ export const Nested: Story = {
     return (
       <List.Unordered>
         <List.Item>
-          {t('storybook.demo.indoorAmenities')}
+          "Eksempel Tekst"
           <List.Unordered>
-            <List.Item>{t('storybook.demo.basketballCourt')}</List.Item>
-            <List.Item>{t('storybook.demo.swimmingPool')}</List.Item>
-            <List.Item>{t('storybook.demo.gym')}</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
           </List.Unordered>
         </List.Item>
         <List.Item>
-          {t('storybook.demo.outdoorAmenities')}
+          "Eksempel Tekst"
           <List.Unordered>
-            <List.Item>{t('storybook.demo.footballField')}</List.Item>
-            <List.Item>{t('storybook.demo.tennisCourt')}</List.Item>
-            <List.Item>{t('storybook.demo.runningTrack')}</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
           </List.Unordered>
         </List.Item>
       </List.Unordered>
@@ -99,16 +98,16 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <List.Unordered data-size="sm">
-          <List.Item>{t('storybook.demo.smallListItem')} 1</List.Item>
-          <List.Item>{t('storybook.demo.smallListItem')} 2</List.Item>
+          <List.Item>"Eksempel Tekst" 1</List.Item>
+          <List.Item>"Eksempel Tekst" 2</List.Item>
         </List.Unordered>
         <List.Unordered data-size="md">
-          <List.Item>{t('storybook.demo.mediumListItem')} 1</List.Item>
-          <List.Item>{t('storybook.demo.mediumListItem')} 2</List.Item>
+          <List.Item>"Eksempel Tekst" 1</List.Item>
+          <List.Item>"Eksempel Tekst" 2</List.Item>
         </List.Unordered>
         <List.Unordered data-size="lg">
-          <List.Item>{t('storybook.demo.largeListItem')} 1</List.Item>
-          <List.Item>{t('storybook.demo.largeListItem')} 2</List.Item>
+          <List.Item>"Eksempel Tekst" 1</List.Item>
+          <List.Item>"Eksempel Tekst" 2</List.Item>
         </List.Unordered>
       </div>
     );
@@ -122,34 +121,34 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.unorderedList')}
+            "Eksempel Tekst"
           </h3>
           <List.Unordered>
-            <List.Item>{t('storybook.demo.firstItem')}</List.Item>
-            <List.Item>{t('storybook.demo.secondItem')}</List.Item>
-            <List.Item>{t('storybook.demo.thirdItem')}</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
           </List.Unordered>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.orderedList')}
+            "Eksempel Tekst"
           </h3>
           <List.Ordered>
-            <List.Item>{t('storybook.demo.stepOne')}</List.Item>
-            <List.Item>{t('storybook.demo.stepTwo')}</List.Item>
-            <List.Item>{t('storybook.demo.stepThree')}</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
+            <List.Item>"Eksempel Tekst"</List.Item>
           </List.Ordered>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.nestedList')}
+            "Eksempel Tekst"
           </h3>
           <List.Unordered>
             <List.Item>
-              {t('storybook.demo.parentItem')}
+              "Eksempel Tekst"
               <List.Unordered>
-                <List.Item>{t('storybook.demo.childItem')} 1</List.Item>
-                <List.Item>{t('storybook.demo.childItem')} 2</List.Item>
+                <List.Item>"Eksempel Tekst" 1</List.Item>
+                <List.Item>"Eksempel Tekst" 2</List.Item>
               </List.Unordered>
             </List.Item>
           </List.Unordered>

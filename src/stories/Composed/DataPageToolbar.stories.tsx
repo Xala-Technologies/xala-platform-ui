@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { DataPageToolbar, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -43,11 +42,11 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dataPageToolbar.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DataPageToolbar
               searchValue={searchValue}
               onSearchChange={setSearchValue}
-              searchPlaceholder={t('storybook.dataPageToolbar.searchPlaceholder')}
+              searchPlaceholder="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -71,11 +70,11 @@ export const WithViewMode: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dataPageToolbar.withViewMode')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DataPageToolbar
               searchValue={searchValue}
               onSearchChange={setSearchValue}
-              searchPlaceholder={t('storybook.dataPageToolbar.searchPlaceholder')}
+              searchPlaceholder="Eksempel Tekst"
               viewMode={viewMode}
               onViewModeChange={setViewMode}
               availableViews={['grid', 'list', 'map', 'table']}
@@ -103,11 +102,11 @@ export const WithFilters: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dataPageToolbar.withFilters')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DataPageToolbar
               searchValue={searchValue}
               onSearchChange={setSearchValue}
-              searchPlaceholder={t('storybook.dataPageToolbar.searchPlaceholder')}
+              searchPlaceholder="Eksempel Tekst"
               filters={[
                 {
                   label: t('storybook.dataPageToolbar.status'),

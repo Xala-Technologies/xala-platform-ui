@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Navigation, NavigationLink, Stack } from '../../index';
 
 /**
@@ -54,11 +53,11 @@ export const Default: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Navigation>
           <NavigationLink href="/" active>
-            {t('storybook.navigation.home')}
+            "Eksempel Tekst"
           </NavigationLink>
-          <NavigationLink href="/about">{t('storybook.navigation.about')}</NavigationLink>
-          <NavigationLink href="/services">{t('storybook.navigation.services')}</NavigationLink>
-          <NavigationLink href="/contact">{t('storybook.navigation.contact')}</NavigationLink>
+          <NavigationLink href="/about">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/services">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/contact">"Eksempel Tekst"</NavigationLink>
         </Navigation>
       </Stack>
     );
@@ -75,10 +74,10 @@ export const CustomSpacing: Story = {
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
         <Navigation spacing={48}>
           <NavigationLink href="/" active>
-            {t('storybook.navigation.home')}
+            "Eksempel Tekst"
           </NavigationLink>
-          <NavigationLink href="/about">{t('storybook.navigation.about')}</NavigationLink>
-          <NavigationLink href="/services">{t('storybook.navigation.services')}</NavigationLink>
+          <NavigationLink href="/about">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/services">"Eksempel Tekst"</NavigationLink>
         </Navigation>
       </div>
     );
@@ -95,13 +94,13 @@ export const ManyItems: Story = {
       <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
         <Navigation>
           <NavigationLink href="/" active>
-            {t('storybook.navigation.home')}
+            "Eksempel Tekst"
           </NavigationLink>
-          <NavigationLink href="/products">{t('storybook.navigation.products')}</NavigationLink>
-          <NavigationLink href="/services">{t('storybook.navigation.services')}</NavigationLink>
-          <NavigationLink href="/about">{t('storybook.navigation.about')}</NavigationLink>
-          <NavigationLink href="/blog">{t('storybook.navigation.blog')}</NavigationLink>
-          <NavigationLink href="/contact">{t('storybook.navigation.contact')}</NavigationLink>
+          <NavigationLink href="/products">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/services">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/about">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/blog">"Eksempel Tekst"</NavigationLink>
+          <NavigationLink href="/contact">"Eksempel Tekst"</NavigationLink>
         </Navigation>
       </Stack>
     );

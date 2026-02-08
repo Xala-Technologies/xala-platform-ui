@@ -18,7 +18,6 @@
  * ```
  */
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 
 export interface LocalizedDocsDescriptionProps {
   /** Translation keys for the content sections */
@@ -37,37 +36,37 @@ export function IntroductionDocsDescription() {
 
   return (
     <div>
-      <h1>{t('storybook.overview.welcome')}</h1>
-      <p>{t('storybook.overview.subtitle')}</p>
+      <h1>"Eksempel Tekst"</h1>
+      <p>"Eksempel Tekst"</p>
 
       <h2>{t('storybook.demo.whatIsThis', 'What is This?')}</h2>
-      <p>{t('storybook.overview.subtitle')}</p>
+      <p>"Eksempel Tekst"</p>
 
       <h2>{t('storybook.demo.keyFeatures', 'Key Features')}</h2>
       <ul>
         <li>
-          <strong>{t('storybook.overview.accessibilityFirst')}</strong>:{' '}
-          {t('storybook.overview.accessibilityFirstDesc')}
+          <strong>"Eksempel Tekst"</strong>:{' '}
+          "Eksempel Tekst"
         </li>
         <li>
-          <strong>{t('storybook.overview.designTokens')}</strong>:{' '}
-          {t('storybook.overview.designTokensDesc')}
+          <strong>"Eksempel Tekst"</strong>:{' '}
+          "Eksempel Tekst"
         </li>
         <li>
-          <strong>{t('storybook.overview.components')}</strong>:{' '}
-          {t('storybook.overview.componentsDesc')}
+          <strong>"Eksempel Tekst"</strong>:{' '}
+          "Eksempel Tekst"
         </li>
         <li>
-          <strong>{t('storybook.overview.multiTenancy')}</strong>:{' '}
-          {t('storybook.overview.multiTenancyDesc')}
+          <strong>"Eksempel Tekst"</strong>:{' '}
+          "Eksempel Tekst"
         </li>
         <li>
-          <strong>{t('storybook.overview.internationalization')}</strong>:{' '}
-          {t('storybook.overview.i18nDesc')}
+          <strong>"Eksempel Tekst"</strong>:{' '}
+          "Eksempel Tekst"
         </li>
         <li>
-          <strong>{t('storybook.overview.themeSupport')}</strong>:{' '}
-          {t('storybook.overview.themeSupportDesc')}
+          <strong>"Eksempel Tekst"</strong>:{' '}
+          "Eksempel Tekst"
         </li>
       </ul>
 
@@ -93,7 +92,7 @@ export function GettingStartedDocsDescription() {
 
   return (
     <div>
-      <h1>{t('storybook.gettingStarted.title')}</h1>
+      <h1>"Eksempel Tekst"</h1>
       <p>
         {t(
           'storybook.gettingStarted.quickGuide',
@@ -101,16 +100,16 @@ export function GettingStartedDocsDescription() {
         )}
       </p>
 
-      <h2>{t('storybook.gettingStarted.installation')}</h2>
+      <h2>"Eksempel Tekst"</h2>
       <pre>
         <code>pnpm add @xala-technologies/platform</code>
       </pre>
 
-      <h2>{t('storybook.gettingStarted.setup')}</h2>
+      <h2>"Eksempel Tekst"</h2>
       <ol>
         <li>{t('storybook.gettingStarted.importComponents', 'Import components')}</li>
-        <li>{t('storybook.gettingStarted.configureTheme')}</li>
-        <li>{t('storybook.gettingStarted.setupI18n')}</li>
+        <li>"Eksempel Tekst"</li>
+        <li>"Eksempel Tekst"</li>
         <li>{t('storybook.gettingStarted.startBuilding', 'Start building')}</li>
       </ol>
 

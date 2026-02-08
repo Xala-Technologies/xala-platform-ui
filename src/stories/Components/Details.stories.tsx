@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Details, Paragraph } from '../../index';
 import React from 'react';
 
@@ -198,9 +197,9 @@ export const Default: Story = {
     const t = useT();
     return (
       <Details>
-        <Details.Summary>{t('storybook.demo.clickToExpand')}</Details.Summary>
+        <Details.Summary>"Eksempel Tekst"</Details.Summary>
         <Details.Content>
-          <Paragraph>{t('storybook.demo.hiddenContentExpanded')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Details.Content>
       </Details>
     );
@@ -213,21 +212,21 @@ export const Multiple: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
         <Details>
-          <Details.Summary>{t('storybook.demo.section1GettingStarted')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.learnSetupAccount')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
         <Details>
-          <Details.Summary>{t('storybook.demo.section2ManagingRequests')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.learnManageRequests')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
         <Details>
-          <Details.Summary>{t('storybook.demo.section3PaymentOptions')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.paymentMethodsAccepted')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
       </div>
@@ -241,9 +240,9 @@ export const OpenByDefault: Story = {
     const [open, setOpen] = React.useState(true);
     return (
       <Details open={open} onToggle={() => setOpen(!open)}>
-        <Details.Summary>{t('storybook.demo.alreadyExpanded')}</Details.Summary>
+        <Details.Summary>"Eksempel Tekst"</Details.Summary>
         <Details.Content>
-          <Paragraph>{t('storybook.demo.visibleByDefault')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Details.Content>
       </Details>
     );
@@ -256,21 +255,21 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Details data-size="sm">
-          <Details.Summary>{t('storybook.story.smallSize')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.contentForSmallDetails')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
         <Details data-size="md">
-          <Details.Summary>{t('storybook.story.mediumSizeDefault')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.contentForMediumDetails')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
         <Details data-size="lg">
-          <Details.Summary>{t('storybook.story.largeSize')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.contentForLargeDetails')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
       </div>
@@ -284,21 +283,21 @@ export const FAQ: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
         <Details>
-          <Details.Summary>{t('storybook.demo.howToCancelBooking')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.cancelBookingAnswer')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
         <Details>
-          <Details.Summary>{t('storybook.demo.whatIsRefundPolicy')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.refundPolicyAnswer')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
         <Details>
-          <Details.Summary>{t('storybook.demo.canIModifyBooking')}</Details.Summary>
+          <Details.Summary>"Eksempel Tekst"</Details.Summary>
           <Details.Content>
-            <Paragraph>{t('storybook.demo.modifyBookingAnswer')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Details.Content>
         </Details>
       </div>

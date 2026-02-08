@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Alert, Heading, Paragraph, Link } from '../../index';
-import { useT } from '@xala-technologies/i18n';
 
 /**
  * Alert component from Digdir Designsystemet.
@@ -72,9 +71,9 @@ export const Information: Story = {
     return (
       <Alert data-color="info">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.demo.cardTitle')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Alert>
     );
   },
@@ -89,9 +88,9 @@ export const Success: Story = {
     return (
       <Alert data-color="success">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.story.success')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Alert>
     );
   },
@@ -106,9 +105,9 @@ export const Warning: Story = {
     return (
       <Alert data-color="warning">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.demo.cardTitle')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Alert>
     );
   },
@@ -123,9 +122,9 @@ export const Danger: Story = {
     return (
       <Alert data-color="danger">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.story.error')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Alert>
     );
   },
@@ -140,9 +139,9 @@ export const WithHeading: Story = {
     return (
       <Alert>
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.demo.cardTitle')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Alert>
     );
   },
@@ -156,7 +155,7 @@ export const WithoutHeading: Story = {
     const t = useT();
     return (
       <Alert data-color="warning">
-        <Paragraph>{t('storybook.demo.sampleText')}</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </Alert>
     );
   },
@@ -172,10 +171,10 @@ export const WithLink: Story = {
     return (
       <Alert data-color="warning">
         <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-          {t('storybook.demo.cardTitle')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph>
-          {t('storybook.demo.sampleText')} <Link href="#">{t('platform.common.next')}</Link>
+          "Eksempel Tekst" <Link href="#">{t('platform.common.next')}</Link>
         </Paragraph>
       </Alert>
     );
@@ -192,67 +191,67 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.variants')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             <Alert data-color="info">
               <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                 Info
               </Heading>
-              <Paragraph>{t('storybook.demo.sampleText')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
 
             <Alert data-color="success">
               <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                {t('storybook.story.success')}
+                "Eksempel Tekst"
               </Heading>
-              <Paragraph>{t('storybook.demo.sampleText')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
 
             <Alert data-color="warning">
               <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
                 Warning
               </Heading>
-              <Paragraph>{t('storybook.demo.sampleText')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
 
             <Alert data-color="danger">
               <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                {t('storybook.story.error')}
+                "Eksempel Tekst"
               </Heading>
-              <Paragraph>{t('storybook.demo.sampleText')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
           </div>
         </div>
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             <Alert data-color="info">
               <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                {t('storybook.demo.cardTitle')}
+                "Eksempel Tekst"
               </Heading>
-              <Paragraph>{t('storybook.demo.cardDescription')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
 
             <Alert data-color="warning">
-              <Paragraph>{t('storybook.demo.sampleText')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
           </div>
         </div>
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.withIcons')}
+            "Eksempel Tekst"
           </h3>
           <Alert data-color="warning">
             <Heading level={2} data-size="xs" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-              {t('storybook.demo.cardTitle')}
+              "Eksempel Tekst"
             </Heading>
             <Paragraph>
-              {t('storybook.demo.sampleText')} <Link href="#">{t('platform.common.next')}</Link>
+              "Eksempel Tekst" <Link href="#">{t('platform.common.next')}</Link>
             </Paragraph>
           </Alert>
         </div>

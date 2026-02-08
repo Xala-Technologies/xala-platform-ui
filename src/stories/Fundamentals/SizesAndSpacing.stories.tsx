@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Textfield, Heading, Paragraph, Card } from '../../index';
 
 const meta: Meta = {
@@ -41,14 +40,14 @@ export const SizeModes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <div data-size="sm">
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.sizes.small')} (data-size="sm")
+            "Eksempel Tekst" (data-size="sm")
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
             <Button data-variant="primary" data-size="sm">
-              {t('storybook.sizes.button')}
+              "Eksempel Tekst"
             </Button>
             <Textfield
-              placeholder={t('storybook.sizes.inputField')}
+              placeholder="Eksempel Tekst"
               data-size="sm"
               style={{ flex: 1 }}
             />
@@ -60,21 +59,21 @@ export const SizeModes: Story = {
                 fontSize: 'var(--ds-font-size-sm)',
               }}
             >
-              {t('storybook.sizes.tag')}
+              "Eksempel Tekst"
             </span>
           </div>
         </div>
 
         <div data-size="md">
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.sizes.medium')} (data-size="md") - {t('storybook.sizes.default')}
+            "Eksempel Tekst" (data-size="md") - "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
             <Button data-variant="primary" data-size="md">
-              {t('storybook.sizes.button')}
+              "Eksempel Tekst"
             </Button>
             <Textfield
-              placeholder={t('storybook.sizes.inputField')}
+              placeholder="Eksempel Tekst"
               data-size="md"
               style={{ flex: 1 }}
             />
@@ -86,21 +85,21 @@ export const SizeModes: Story = {
                 fontSize: 'var(--ds-font-size-sm)',
               }}
             >
-              {t('storybook.sizes.tag')}
+              "Eksempel Tekst"
             </span>
           </div>
         </div>
 
         <div data-size="lg">
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.sizes.large')} (data-size="lg")
+            "Eksempel Tekst" (data-size="lg")
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', alignItems: 'center' }}>
             <Button data-variant="primary" data-size="lg">
-              {t('storybook.sizes.button')}
+              "Eksempel Tekst"
             </Button>
             <Textfield
-              placeholder={t('storybook.sizes.inputField')}
+              placeholder="Eksempel Tekst"
               data-size="lg"
               style={{ flex: 1 }}
             />
@@ -112,7 +111,7 @@ export const SizeModes: Story = {
                 fontSize: 'var(--ds-font-size-sm)',
               }}
             >
-              {t('storybook.sizes.tag')}
+              "Eksempel Tekst"
             </span>
           </div>
         </div>
@@ -161,9 +160,9 @@ export const SpacingScale: Story = {
             fontSize: 'var(--ds-font-size-sm)',
           }}
         >
-          <span>{t('storybook.sizes.token')}</span>
-          <span>{t('storybook.sizes.visual')}</span>
-          <span>{t('storybook.sizes.value')}</span>
+          <span>"Eksempel Tekst"</span>
+          <span>"Eksempel Tekst"</span>
+          <span>"Eksempel Tekst"</span>
         </div>
         {spacings.map(({ token, value }) => (
           <div
@@ -213,7 +212,7 @@ export const SpacingInPractice: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.sizes.paddingExamples')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
             {['2', '4', '6', '8'].map((size) => (
@@ -243,7 +242,7 @@ export const SpacingInPractice: Story = {
 
         <div>
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            {t('storybook.sizes.gapExamples')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
             {['2', '4', '6'].map((size) => (
@@ -304,7 +303,7 @@ export const ComponentSizing: Story = {
     return (
       <div>
         <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.sizes.sizeTokens')} (--ds-size-*)
+          "Eksempel Tekst" (--ds-size-*)
         </Heading>
         <Paragraph
           data-size="sm"
@@ -313,7 +312,7 @@ export const ComponentSizing: Story = {
             color: 'var(--ds-color-neutral-text-subtle)',
           }}
         >
-          {t('storybook.sizes.sizeTokensDescription')}
+          "Eksempel Tekst"
         </Paragraph>
         <div
           style={{
@@ -360,7 +359,7 @@ export const SemanticUsage: Story = {
     return (
       <div>
         <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.sizes.whenToUseWhichSpacing')}
+          "Eksempel Tekst"
         </Heading>
 
         <table
@@ -375,7 +374,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-default)',
                 }}
               >
-                {t('storybook.sizes.useCase')}
+                "Eksempel Tekst"
               </th>
               <th
                 style={{
@@ -384,7 +383,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-default)',
                 }}
               >
-                {t('storybook.sizes.token')}
+                "Eksempel Tekst"
               </th>
             </tr>
           </thead>
@@ -396,7 +395,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
               >
-                {t('storybook.sizes.inlineElements')}
+                "Eksempel Tekst"
               </td>
               <td
                 style={{
@@ -414,7 +413,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
               >
-                {t('storybook.sizes.formFieldGaps')}
+                "Eksempel Tekst"
               </td>
               <td
                 style={{
@@ -432,7 +431,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
               >
-                {t('storybook.sizes.cardPadding')}
+                "Eksempel Tekst"
               </td>
               <td
                 style={{
@@ -450,7 +449,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
               >
-                {t('storybook.sizes.pageSections')}
+                "Eksempel Tekst"
               </td>
               <td
                 style={{
@@ -468,7 +467,7 @@ export const SemanticUsage: Story = {
                   borderBottom: '1px solid var(--ds-color-neutral-border-subtle)',
                 }}
               >
-                {t('storybook.sizes.majorDivisions')}
+                "Eksempel Tekst"
               </td>
               <td
                 style={{
@@ -512,7 +511,7 @@ export const CardLayoutExample: Story = {
               color: 'var(--ds-color-accent-text-default)',
             }}
           >
-            {t('storybook.sizes.imageArea')}
+            "Eksempel Tekst"
           </div>
 
           <div style={{ padding: 'var(--ds-spacing-6)' }}>
@@ -523,7 +522,7 @@ export const CardLayoutExample: Story = {
                 marginBottom: 'var(--ds-spacing-2)',
               }}
             >
-              {t('storybook.sizes.cardTitle')}
+              "Eksempel Tekst"
             </Heading>
 
             <Paragraph
@@ -533,7 +532,7 @@ export const CardLayoutExample: Story = {
                 marginBottom: 'var(--ds-spacing-4)',
               }}
             >
-              {t('storybook.sizes.descriptionText')}
+              "Eksempel Tekst"
             </Paragraph>
 
             <div
@@ -551,7 +550,7 @@ export const CardLayoutExample: Story = {
                   fontSize: 'var(--ds-font-size-2)',
                 }}
               >
-                {t('storybook.sizes.tag')} 1
+                "Eksempel Tekst" 1
               </span>
               <span
                 style={{
@@ -561,7 +560,7 @@ export const CardLayoutExample: Story = {
                   fontSize: 'var(--ds-font-size-2)',
                 }}
               >
-                {t('storybook.sizes.tag')} 2
+                "Eksempel Tekst" 2
               </span>
             </div>
           </div>
@@ -582,10 +581,10 @@ export const CardLayoutExample: Story = {
                 color: 'var(--ds-color-neutral-text-subtle)',
               }}
             >
-              {t('storybook.sizes.metaInfo')}
+              "Eksempel Tekst"
             </span>
             <Button data-variant="primary" data-size="sm">
-              {t('storybook.examples.action')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
@@ -594,10 +593,10 @@ export const CardLayoutExample: Story = {
           data-size="xs"
           style={{ marginTop: 'var(--ds-spacing-4)', color: 'var(--ds-color-neutral-text-subtle)' }}
         >
-          <strong>{t('storybook.sizes.spacingUsed')}:</strong> spacing-1 (
-          {t('storybook.sizes.tags')}
-          ), spacing-2 ({t('storybook.sizes.gaps')}), spacing-4 ({t('storybook.sizes.sections')}),
-          spacing-6 ({t('storybook.sizes.cardPaddingLabel')})
+          <strong>"Eksempel Tekst":</strong> spacing-1 (
+          "Eksempel Tekst"
+          ), spacing-2 ("Eksempel Tekst"), spacing-4 ("Eksempel Tekst"),
+          spacing-6 ("Eksempel Tekst")
         </Paragraph>
       </Card>
     );

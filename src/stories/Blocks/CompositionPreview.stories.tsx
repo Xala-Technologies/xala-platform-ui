@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { CompositionPreview, Button, Stack, Paragraph, Textfield } from '../../index';
 
 /**
@@ -58,14 +57,14 @@ export const Default: Story = {
         style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
       >
         <CompositionPreview
-          componentName={t('storybook.compositionPreview.button')}
+          componentName="Eksempel Tekst"
           composeData={{
             componentName: t('storybook.compositionPreview.button'),
             layer: t('storybook.compositionPreview.primitives'),
             description: t('storybook.compositionPreview.buttonDescription'),
           }}
           renderPreview={() => (
-            <Button data-color="accent">{t('storybook.compositionPreview.clickMe')}</Button>
+            <Button data-color="accent">"Eksempel Tekst"</Button>
           )}
         />
       </Stack>
@@ -85,7 +84,7 @@ export const CustomRender: Story = {
         style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
       >
         <CompositionPreview
-          componentName={t('storybook.compositionPreview.card')}
+          componentName="Eksempel Tekst"
           composeData={{
             componentName: t('storybook.compositionPreview.card'),
             layer: t('storybook.compositionPreview.composed'),
@@ -94,7 +93,7 @@ export const CustomRender: Story = {
           renderPreview={() => (
             <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
               <Paragraph data-size="md">
-                {t('storybook.compositionPreview.customPreview')}
+                "Eksempel Tekst"
               </Paragraph>
             </Stack>
           )}
@@ -116,7 +115,7 @@ export const PrimitivesLayer: Story = {
         style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
       >
         <CompositionPreview
-          componentName={t('storybook.compositionPreview.input')}
+          componentName="Eksempel Tekst"
           composeData={{
             componentName: t('storybook.compositionPreview.input'),
             layer: t('storybook.compositionPreview.primitives'),
@@ -124,7 +123,7 @@ export const PrimitivesLayer: Story = {
           }}
           renderPreview={() => (
             <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
-              <Textfield placeholder={t('storybook.compositionPreview.enterText')} />
+              <Textfield placeholder="Eksempel Tekst" />
             </Stack>
           )}
         />
@@ -145,7 +144,7 @@ export const BlocksLayer: Story = {
         style={{ maxWidth: '800px', padding: 'var(--ds-spacing-4)' }}
       >
         <CompositionPreview
-          componentName={t('storybook.compositionPreview.notificationBell')}
+          componentName="Eksempel Tekst"
           composeData={{
             componentName: t('storybook.compositionPreview.notificationBell'),
             layer: t('storybook.compositionPreview.blocks'),
@@ -154,7 +153,7 @@ export const BlocksLayer: Story = {
           renderPreview={() => (
             <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
               <Paragraph data-size="md">
-                {t('storybook.compositionPreview.notificationBellPreview')}
+                "Eksempel Tekst"
               </Paragraph>
             </Stack>
           )}

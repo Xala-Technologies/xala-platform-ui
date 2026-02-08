@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 
 const meta: Meta = {
   title: 'Fundamentals/Variables',
@@ -94,63 +93,63 @@ export const AccentColors: Story = {
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.tokens.accentColors')}
+          "Eksempel Tekst"
         </h3>
         <ColorSwatch
           variable="--ds-color-accent-background-default"
-          label={t('storybook.tokens.backgroundDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-background-tinted"
-          label={t('storybook.variables.backgroundTinted')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-surface-default"
-          label={t('storybook.tokens.surfaceDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-surface-hover"
-          label={t('storybook.tokens.surfaceHover')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-surface-active"
-          label={t('storybook.variables.surfaceActive')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-border-subtle"
-          label={t('storybook.variables.borderSubtle')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-border-default"
-          label={t('storybook.tokens.borderDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-border-strong"
-          label={t('storybook.variables.borderStrong')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-base-default"
-          label={t('storybook.tokens.baseDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-base-hover"
-          label={t('storybook.variables.baseHover')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-base-active"
-          label={t('storybook.variables.baseActive')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-text-subtle"
-          label={t('storybook.tokens.textSubtle')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-text-default"
-          label={t('storybook.tokens.textDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-accent-contrast-default"
-          label={t('storybook.variables.contrastDefault')}
+          label="Eksempel Tekst"
         />
       </div>
     );
@@ -166,55 +165,55 @@ export const NeutralColors: Story = {
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.tokens.neutralColors')}
+          "Eksempel Tekst"
         </h3>
         <ColorSwatch
           variable="--ds-color-neutral-background-default"
-          label={t('storybook.tokens.backgroundDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-background-tinted"
-          label={t('storybook.variables.backgroundTinted')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-surface-default"
-          label={t('storybook.tokens.surfaceDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-surface-hover"
-          label={t('storybook.tokens.surfaceHover')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-surface-active"
-          label={t('storybook.variables.surfaceActive')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-border-subtle"
-          label={t('storybook.variables.borderSubtle')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-border-default"
-          label={t('storybook.tokens.borderDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-border-strong"
-          label={t('storybook.variables.borderStrong')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-base-default"
-          label={t('storybook.tokens.baseDefault')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-base-hover"
-          label={t('storybook.variables.baseHover')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-text-subtle"
-          label={t('storybook.tokens.textSubtle')}
+          label="Eksempel Tekst"
         />
         <ColorSwatch
           variable="--ds-color-neutral-text-default"
-          label={t('storybook.tokens.textDefault')}
+          label="Eksempel Tekst"
         />
       </div>
     );
@@ -242,23 +241,23 @@ export const SemanticColors: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.notifications.success')}
+            "Eksempel Tekst"
           </h4>
           <ColorSwatch
             variable="--ds-color-success-surface-default"
-            label={t('storybook.tokens.surface')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-success-border-default"
-            label={t('storybook.tokens.border')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-success-base-default"
-            label={t('storybook.variables.base')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-success-text-default"
-            label={t('storybook.tokens.text')}
+            label="Eksempel Tekst"
           />
         </div>
         <div>
@@ -268,23 +267,23 @@ export const SemanticColors: Story = {
               color: 'var(--ds-color-warning-text-default)',
             }}
           >
-            {t('storybook.notifications.warning')}
+            "Eksempel Tekst"
           </h4>
           <ColorSwatch
             variable="--ds-color-warning-surface-default"
-            label={t('storybook.tokens.surface')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-warning-border-default"
-            label={t('storybook.tokens.border')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-warning-base-default"
-            label={t('storybook.variables.base')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-warning-text-default"
-            label={t('storybook.tokens.text')}
+            label="Eksempel Tekst"
           />
         </div>
         <div>
@@ -294,23 +293,23 @@ export const SemanticColors: Story = {
               color: 'var(--ds-color-danger-text-default)',
             }}
           >
-            {t('storybook.tokens.danger')}
+            "Eksempel Tekst"
           </h4>
           <ColorSwatch
             variable="--ds-color-danger-surface-default"
-            label={t('storybook.tokens.surface')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-danger-border-default"
-            label={t('storybook.tokens.border')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-danger-base-default"
-            label={t('storybook.variables.base')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-danger-text-default"
-            label={t('storybook.tokens.text')}
+            label="Eksempel Tekst"
           />
         </div>
         <div>
@@ -320,21 +319,21 @@ export const SemanticColors: Story = {
               color: 'var(--ds-color-info-text-default)',
             }}
           >
-            {t('storybook.tokens.info')}
+            "Eksempel Tekst"
           </h4>
           <ColorSwatch
             variable="--ds-color-info-surface-default"
-            label={t('storybook.tokens.surface')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-info-border-default"
-            label={t('storybook.tokens.border')}
+            label="Eksempel Tekst"
           />
           <ColorSwatch
             variable="--ds-color-info-base-default"
-            label={t('storybook.variables.base')}
+            label="Eksempel Tekst"
           />
-          <ColorSwatch variable="--ds-color-info-text-default" label={t('storybook.tokens.text')} />
+          <ColorSwatch variable="--ds-color-info-text-default" label="Eksempel Tekst" />
         </div>
       </div>
     );
@@ -350,7 +349,7 @@ export const Spacing: Story = {
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.tokens.spacingScale')}
+          "Eksempel Tekst"
         </h3>
         <SpacingSwatch variable="--ds-spacing-0" size="0" />
         <SpacingSwatch variable="--ds-spacing-1" size="4px / 0.25rem" />
@@ -563,7 +562,7 @@ export const UsageExample: Story = {
     return (
       <div>
         <h3 style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.variables.usageExample')}
+          "Eksempel Tekst"
         </h3>
         <div
           style={{
@@ -581,7 +580,7 @@ export const UsageExample: Story = {
               marginBottom: 'var(--ds-spacing-2)',
             }}
           >
-            {t('storybook.sizes.cardTitle')}
+            "Eksempel Tekst"
           </h4>
           <p
             style={{
@@ -590,7 +589,7 @@ export const UsageExample: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.variables.cardDescription')}
+            "Eksempel Tekst"
           </p>
           <button
             style={{
@@ -604,7 +603,7 @@ export const UsageExample: Story = {
             }}
             type="button"
           >
-            {t('storybook.examples.action')}
+            "Eksempel Tekst"
           </button>
         </div>
 
@@ -618,7 +617,7 @@ export const UsageExample: Story = {
             overflow: 'auto',
           }}
         >
-          {`// ${t('storybook.variables.alwaysUseCSSVariables')}
+          {`// $"Eksempel Tekst"
 <div style={{
   padding: 'var(--ds-spacing-6)',
   backgroundColor: 'var(--ds-color-neutral-surface-default)',

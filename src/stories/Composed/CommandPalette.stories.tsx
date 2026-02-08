@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { CommandPalette, type CommandItem } from '../../index';
 import { HomeIcon, SettingsIcon, SearchIcon, FileIcon } from '../../index';
 
@@ -103,12 +102,12 @@ export const Default: Story = {
     const commands = useSampleCommands();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <button onClick={() => setIsOpen(true)}>{t('storybook.commandPalette.openPalette')}</button>
+        <button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</button>
         <CommandPalette
           commands={commands}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          placeholder={t('storybook.commandPalette.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -125,7 +124,7 @@ export const WithGroups: Story = {
     const commands = useSampleCommands();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <button onClick={() => setIsOpen(true)}>{t('storybook.commandPalette.openPalette')}</button>
+        <button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</button>
         <CommandPalette
           commands={commands}
           groups={[
@@ -134,7 +133,7 @@ export const WithGroups: Story = {
           ]}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          placeholder={t('storybook.commandPalette.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -151,14 +150,14 @@ export const WithRecent: Story = {
     const commands = useSampleCommands();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <button onClick={() => setIsOpen(true)}>{t('storybook.commandPalette.openPalette')}</button>
+        <button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</button>
         <CommandPalette
           commands={commands}
           recentIds={['home', 'settings']}
           maxRecent={3}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          placeholder={t('storybook.commandPalette.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -175,13 +174,13 @@ export const WithSearch: Story = {
     const commands = useSampleCommands();
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <button onClick={() => setIsOpen(true)}>{t('storybook.commandPalette.openPalette')}</button>
+        <button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</button>
         <CommandPalette
           commands={commands}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          placeholder={t('storybook.commandPalette.searchPlaceholder')}
-          emptyMessage={t('storybook.commandPalette.noCommandsFound')}
+          placeholder="Eksempel Tekst"
+          emptyMessage="Eksempel Tekst"
         />
       </div>
     );
@@ -205,7 +204,7 @@ export const ManyCommands: Story = {
     }));
     return (
       <div style={{ padding: 'var(--ds-spacing-4)' }}>
-        <button onClick={() => setIsOpen(true)}>{t('storybook.commandPalette.openPalette')}</button>
+        <button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</button>
         <CommandPalette
           commands={manyCommands}
           groups={[
@@ -214,7 +213,7 @@ export const ManyCommands: Story = {
           ]}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          placeholder={t('storybook.commandPalette.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );

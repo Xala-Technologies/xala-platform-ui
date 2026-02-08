@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ConsentPopup, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -34,8 +33,8 @@ export const Placeholder: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.consentPopup.description')}</Paragraph>
-            <Paragraph data-size="sm">{t('storybook.consentPopup.placeholderNote')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             <ConsentPopup />
           </Stack>
         </Card>

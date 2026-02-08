@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ChangelogCard, type ChangeItem, Stack } from '../../index';
 
 /**
@@ -185,7 +184,7 @@ export const WithTitle: Story = {
       >
         <ChangelogCard
           version="1.2.0"
-          title={t('storybook.changelogCard.majorRelease')}
+          title="Eksempel Tekst"
           date={new Date(2026, 0, 26)}
           changes={changes}
           releaseUrl="https://github.com/example/releases/tag/v1.2.0"

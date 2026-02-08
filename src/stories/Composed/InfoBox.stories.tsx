@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { InfoBox } from '../../index';
 
 const meta: Meta<typeof InfoBox> = {
@@ -48,8 +47,8 @@ const InfoDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="info" title={t('storybook.demo.information')}>
-        {t('storybook.demo.informationalMessage')}
+      <InfoBox variant="info" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );
@@ -59,8 +58,8 @@ const SuccessDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="success" title={t('storybook.story.success')}>
-        {t('storybook.demo.changesSavedSuccessfully')}
+      <InfoBox variant="success" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );
@@ -70,8 +69,8 @@ const WarningDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="warning" title={t('storybook.demo.warning')}>
-        {t('storybook.demo.reviewChangesBeforeProceeding')}
+      <InfoBox variant="warning" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );
@@ -81,8 +80,8 @@ const DangerDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="danger" title={t('storybook.story.error')}>
-        {t('storybook.demo.errorProcessingRequest')}
+      <InfoBox variant="danger" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );
@@ -92,8 +91,8 @@ const NeutralDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="neutral" title={t('storybook.demo.note')}>
-        {t('storybook.demo.neutralInfoBoxDescription')}
+      <InfoBox variant="neutral" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );
@@ -103,7 +102,7 @@ const WithoutTitleDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="info">{t('storybook.demo.infoBoxWithoutTitle')}</InfoBox>
+      <InfoBox variant="info">"Eksempel Tekst"</InfoBox>
     </div>
   );
 };
@@ -112,8 +111,8 @@ const LongContentDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <InfoBox variant="info" title={t('storybook.demo.detailedInformation')}>
-        {t('storybook.demo.longInfoBoxContent')}
+      <InfoBox variant="info" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );
@@ -130,20 +129,20 @@ const AllVariantsDemo = () => {
         width: '600px',
       }}
     >
-      <InfoBox variant="info" title={t('storybook.demo.info')}>
-        {t('storybook.demo.informationalMessage')}
+      <InfoBox variant="info" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
-      <InfoBox variant="success" title={t('storybook.story.success')}>
-        {t('storybook.demo.operationSuccessful')}
+      <InfoBox variant="success" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
-      <InfoBox variant="warning" title={t('storybook.demo.warning')}>
-        {t('storybook.demo.pleaseReview')}
+      <InfoBox variant="warning" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
-      <InfoBox variant="danger" title={t('storybook.story.error')}>
+      <InfoBox variant="danger" title="Eksempel Tekst">
         {t('platform.errors.serverError')}
       </InfoBox>
-      <InfoBox variant="neutral" title={t('storybook.demo.note')}>
-        {t('storybook.demo.neutralInfoBox')}
+      <InfoBox variant="neutral" title="Eksempel Tekst">
+        "Eksempel Tekst"
       </InfoBox>
     </div>
   );

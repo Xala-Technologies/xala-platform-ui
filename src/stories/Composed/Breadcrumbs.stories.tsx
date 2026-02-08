@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Breadcrumbs } from '../../composed/Breadcrumbs';
 import { Home } from 'lucide-react';
 
@@ -151,10 +150,10 @@ const WithMaxItemsDemo = () => {
     <Breadcrumbs
       items={[
         { label: t('platform.nav.home'), href: '/' },
-        { label: `${t('storybook.demo.level')} 1`, href: '/level1' },
-        { label: `${t('storybook.demo.level')} 2`, href: '/level1/level2' },
-        { label: `${t('storybook.demo.level')} 3`, href: '/level1/level2/level3' },
-        { label: `${t('storybook.demo.level')} 4`, href: '/level1/level2/level3/level4' },
+        { label: `$"Eksempel Tekst" 1`, href: '/level1' },
+        { label: `$"Eksempel Tekst" 2`, href: '/level1/level2' },
+        { label: `$"Eksempel Tekst" 3`, href: '/level1/level2/level3' },
+        { label: `$"Eksempel Tekst" 4`, href: '/level1/level2/level3/level4' },
         { label: t('storybook.demo.currentPage'), current: true },
       ]}
       maxItems={3}

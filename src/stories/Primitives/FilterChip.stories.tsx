@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { FilterChip } from '../../index';
 
 /**
@@ -55,15 +54,15 @@ export const Default: Story = {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
-          label={t('storybook.filterChip.oslo')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Oslo')}
         />
         <FilterChip
-          label={t('storybook.filterChip.active')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Active')}
         />
         <FilterChip
-          label={t('storybook.filterChip.premium')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Premium')}
         />
       </div>
@@ -81,12 +80,12 @@ export const Small: Story = {
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
           size="sm"
-          label={t('storybook.filterChip.oslo')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Oslo')}
         />
         <FilterChip
           size="sm"
-          label={t('storybook.filterChip.active')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Active')}
         />
       </div>
@@ -104,12 +103,12 @@ export const Accent: Story = {
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
           variant="accent"
-          label={t('storybook.filterChip.oslo')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Oslo')}
         />
         <FilterChip
           variant="accent"
-          label={t('storybook.filterChip.active')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Active')}
         />
       </div>
@@ -127,12 +126,12 @@ export const Disabled: Story = {
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
           disabled
-          label={t('storybook.filterChip.oslo')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Oslo')}
         />
         <FilterChip
           disabled
-          label={t('storybook.filterChip.active')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Active')}
         />
       </div>
@@ -149,23 +148,23 @@ export const Multiple: Story = {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
         <FilterChip
-          label={t('storybook.filterChip.oslo')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Oslo')}
         />
         <FilterChip
-          label={t('storybook.filterChip.bergen')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Bergen')}
         />
         <FilterChip
-          label={t('storybook.filterChip.active')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Active')}
         />
         <FilterChip
-          label={t('storybook.filterChip.premium')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Premium')}
         />
         <FilterChip
-          label={t('storybook.filterChip.verified')}
+          label="Eksempel Tekst"
           onRemove={() => console.log('Remove Verified')}
         />
       </div>

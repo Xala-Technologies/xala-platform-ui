@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import {
   FormSection,
   FormActions,
@@ -55,10 +54,10 @@ const BasicSectionExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection
-        title={t('storybook.demo.personalInformation')}
-        description={t('storybook.demo.enterPersonalDetails')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
       >
-        <FormField label={t('storybook.demo.fullName')} required>
+        <FormField label="Eksempel Tekst" required>
           <Textfield placeholder="John Doe" />
         </FormField>
         <FormField label={t('platform.auth.email')} required>
@@ -81,15 +80,15 @@ const CollapsibleSectionExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection
-        title={t('storybook.demo.advancedSettings')}
-        description={t('storybook.demo.optionalAdvancedConfig')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         collapsible
         defaultCollapsed={true}
       >
-        <FormField label={t('storybook.demo.apiKey')}>
-          <Textfield placeholder={t('storybook.demo.enterApiKey')} />
+        <FormField label="Eksempel Tekst">
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
-        <FormField label={t('storybook.demo.webhookUrl')}>
+        <FormField label="Eksempel Tekst">
           <Textfield placeholder="https://example.com/webhook" />
         </FormField>
       </FormSection>
@@ -108,17 +107,17 @@ const FormRowTwoColumnsExample = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <FormSection title={t('storybook.demo.contactInformation')}>
+      <FormSection title="Eksempel Tekst">
         <FormRow columns={2}>
-          <FormField label={t('storybook.demo.firstName')} required>
+          <FormField label="Eksempel Tekst" required>
             <Textfield placeholder="John" />
           </FormField>
-          <FormField label={t('storybook.demo.lastName')} required>
+          <FormField label="Eksempel Tekst" required>
             <Textfield placeholder="Doe" />
           </FormField>
         </FormRow>
         <FormRow columns={2}>
-          <FormField label={t('storybook.demo.phone')}>
+          <FormField label="Eksempel Tekst">
             <Textfield type="tel" placeholder="+47 12 34 56 78" />
           </FormField>
           <FormField label={t('platform.auth.email')} required>
@@ -143,10 +142,10 @@ const FormRowThreeColumnsExample = () => {
     <div style={{ width: '800px' }}>
       <FormSection title={t('platform.common.address')}>
         <FormRow columns={3}>
-          <FormField label={t('storybook.demo.street')}>
+          <FormField label="Eksempel Tekst">
             <Textfield placeholder="Storgata 1" />
           </FormField>
-          <FormField label={t('storybook.demo.postalCode')}>
+          <FormField label="Eksempel Tekst">
             <Textfield placeholder="0155" />
           </FormField>
           <FormField label={t('platform.common.city')}>
@@ -169,18 +168,18 @@ const FormFieldWithErrorExample = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <FormSection title={t('storybook.demo.validationExample')}>
+      <FormSection title="Eksempel Tekst">
         <FormField
           label={t('platform.auth.email')}
           required
-          error={t('storybook.demo.invalidEmailError')}
+          error="Eksempel Tekst"
         >
           <Textfield type="email" placeholder="invalid-email" />
         </FormField>
         <FormField
           label={t('platform.auth.password')}
           required
-          helperText={t('storybook.demo.passwordRequirements')}
+          helperText="Eksempel Tekst"
         >
           <Textfield type="password" />
         </FormField>
@@ -200,9 +199,9 @@ const FormActionsRightExample = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <FormSection title={t('storybook.demo.formWithActions')}>
+      <FormSection title="Eksempel Tekst">
         <FormField label={t('platform.common.name')}>
-          <Textfield placeholder={t('storybook.demo.enterName')} />
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
         <FormActions align="right">
           <Button onClick={fn()} data-color="neutral" data-size="medium">
@@ -228,9 +227,9 @@ const FormActionsLeftExample = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <FormSection title={t('storybook.demo.formWithLeftActions')}>
+      <FormSection title="Eksempel Tekst">
         <FormField label={t('platform.common.name')}>
-          <Textfield placeholder={t('storybook.demo.enterName')} />
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
         <FormActions align="left">
           <Button onClick={fn()} data-color="accent" data-size="medium">
@@ -256,9 +255,9 @@ const FormActionsBetweenExample = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <FormSection title={t('storybook.demo.formWithBetweenActions')}>
+      <FormSection title="Eksempel Tekst">
         <FormField label={t('platform.common.name')}>
-          <Textfield placeholder={t('storybook.demo.enterName')} />
+          <Textfield placeholder="Eksempel Tekst" />
         </FormField>
         <FormActions align="between">
           <Button onClick={fn()} data-color="neutral" data-size="medium">
@@ -296,10 +295,10 @@ const FormActionsStickyExample = () => {
         border: '1px solid var(--ds-color-neutral-border-subtle)',
       }}
     >
-      <FormSection title={t('storybook.demo.longForm')}>
+      <FormSection title="Eksempel Tekst">
         {Array.from({ length: 10 }, (_, i) => (
-          <FormField key={i} label={`${t('storybook.demo.field')} ${i + 1}`}>
-            <Textfield placeholder={`${t('storybook.demo.enterValue')} ${i + 1}`} />
+          <FormField key={i} label={`$"Eksempel Tekst" ${i + 1}`}>
+            <Textfield placeholder={`$"Eksempel Tekst" ${i + 1}`} />
           </FormField>
         ))}
         <FormActions align="right" sticky>
@@ -326,12 +325,12 @@ const FormDividerExample = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <FormSection title={t('storybook.demo.formSections')}>
-        <FormField label={t('storybook.demo.firstSectionField')}>
+      <FormSection title="Eksempel Tekst">
+        <FormField label="Eksempel Tekst">
           <Textfield placeholder={t('storybook.demo.value', { number: 1 })} />
         </FormField>
-        <FormDivider label={t('storybook.demo.or')} />
-        <FormField label={t('storybook.demo.secondSectionField')}>
+        <FormDivider label="Eksempel Tekst" />
+        <FormField label="Eksempel Tekst">
           <Textfield placeholder={t('storybook.demo.value', { number: 2 })} />
         </FormField>
       </FormSection>
@@ -352,43 +351,43 @@ const CompleteFormExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection
-        title={t('storybook.demo.personalInformation')}
-        description={t('storybook.demo.tellUsAboutYourself')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
       >
         <FormRow columns={2}>
-          <FormField label={t('storybook.demo.firstName')} required>
+          <FormField label="Eksempel Tekst" required>
             <Textfield placeholder="John" />
           </FormField>
-          <FormField label={t('storybook.demo.lastName')} required>
+          <FormField label="Eksempel Tekst" required>
             <Textfield placeholder="Doe" />
           </FormField>
         </FormRow>
         <FormField
           label={t('platform.auth.email')}
           required
-          helperText={t('storybook.demo.neverShareEmail')}
+          helperText="Eksempel Tekst"
         >
           <Textfield type="email" placeholder="john@example.com" />
         </FormField>
-        <FormField label={t('storybook.demo.bio')}>
-          <Textarea placeholder={t('storybook.demo.tellUsAboutYourself')} rows={4} />
+        <FormField label="Eksempel Tekst">
+          <Textarea placeholder="Eksempel Tekst" rows={4} />
         </FormField>
       </FormSection>
 
       <FormDivider />
 
-      <FormSection title={t('storybook.demo.preferences')} collapsible defaultCollapsed={true}>
-        <FormField label={t('storybook.demo.language')}>
+      <FormSection title="Eksempel Tekst" collapsible defaultCollapsed={true}>
+        <FormField label="Eksempel Tekst">
           <Select>
             <option value="en">English</option>
             <option value="no">Norwegian</option>
           </Select>
         </FormField>
-        <FormField label={t('storybook.demo.theme')}>
+        <FormField label="Eksempel Tekst">
           <Select>
-            <option value="light">{t('storybook.demo.light')}</option>
-            <option value="dark">{t('storybook.demo.dark')}</option>
-            <option value="auto">{t('storybook.demo.auto')}</option>
+            <option value="light">"Eksempel Tekst"</option>
+            <option value="dark">"Eksempel Tekst"</option>
+            <option value="auto">"Eksempel Tekst"</option>
           </Select>
         </FormField>
       </FormSection>
@@ -398,7 +397,7 @@ const CompleteFormExample = () => {
           {t('platform.common.cancel')}
         </Button>
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          {t('storybook.demo.saveChanges')}
+          "Eksempel Tekst"
         </Button>
       </FormActions>
     </div>

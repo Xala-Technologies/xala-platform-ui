@@ -5,7 +5,6 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   StepperHeader,
   type StepperHeaderProps,
@@ -342,7 +341,7 @@ export const Interactive: Story = {
           }}
         >
           <p style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-            {t('storybook.patterns.currentStep')}: <strong>{steps[currentStep].label}</strong>
+            "Eksempel Tekst": <strong>{steps[currentStep].label}</strong>
           </p>
 
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'center' }}>

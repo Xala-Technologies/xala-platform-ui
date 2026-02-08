@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn, expect, userEvent, within } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Heading } from '../../index';
 import {
   PlusIcon,
@@ -252,13 +251,13 @@ export const EmphasisLevels: Story = {
         }}
       >
         <Button variant="primary" type="button">
-          {t('storybook.demo.primary')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="secondary" type="button">
-          {t('storybook.demo.secondary')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="tertiary" type="button">
-          {t('storybook.demo.tertiary')}
+          "Eksempel Tekst"
         </Button>
       </div>
     );
@@ -275,22 +274,22 @@ export const Colors: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
           <Button variant="primary" data-color="accent" type="button">
-            {t('storybook.demo.accent')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="primary" data-color="brand1" type="button">
-            {t('storybook.demo.brand1')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="primary" data-color="brand2" type="button">
-            {t('storybook.demo.brand2')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="primary" data-color="brand3" type="button">
-            {t('storybook.demo.brand3')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="primary" data-color="neutral" type="button">
-            {t('storybook.demo.neutral')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="primary" data-color="danger" type="button">
-            {t('storybook.demo.danger')}
+            "Eksempel Tekst"
           </Button>
         </div>
       </div>
@@ -314,10 +313,10 @@ export const CombinedColors: Story = {
         }}
       >
         <Button variant="primary" data-color="neutral" type="button">
-          {t('storybook.demo.publish')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="secondary" data-color="neutral" type="button">
-          {t('storybook.demo.saveDraft')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="tertiary" data-color="danger" type="button">
           {t('platform.common.delete')}
@@ -345,7 +344,7 @@ export const WithIcons: Story = {
             {t('platform.common.save')}
           </Button>
           <Button variant="tertiary" type="button">
-            {t('storybook.demo.start')}
+            "Eksempel Tekst"
             <ArrowRightIcon aria-hidden fontSize="1.25rem" />
           </Button>
         </div>
@@ -442,13 +441,13 @@ export const Sizes: Story = {
         }}
       >
         <Button data-size="sm" type="button">
-          {t('storybook.story.small')}
+          "Eksempel Tekst"
         </Button>
         <Button data-size="md" type="button">
-          {t('storybook.story.medium')}
+          "Eksempel Tekst"
         </Button>
         <Button data-size="lg" type="button">
-          {t('storybook.story.large')}
+          "Eksempel Tekst"
         </Button>
       </div>
     );
@@ -513,11 +512,11 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.story.doOnePrimaryButton')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button variant="primary" type="button">
-              {t('storybook.demo.saveChanges')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="secondary" type="button">
               {t('platform.common.cancel')}
@@ -534,14 +533,14 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.story.doSameColorExceptDanger')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button variant="primary" data-color="neutral" type="button">
-              {t('storybook.demo.publish')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="secondary" data-color="neutral" type="button">
-              {t('storybook.demo.saveDraft')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="tertiary" data-color="danger" type="button">
               {t('platform.common.delete')}
@@ -558,14 +557,14 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-success-text-default)',
             }}
           >
-            {t('storybook.story.doClearLabels')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button variant="primary" type="button">
-              {t('storybook.demo.saveChanges')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="secondary" type="button">
-              {t('storybook.demo.discardChanges')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
@@ -579,7 +578,7 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-danger-text-default)',
             }}
           >
-            {t('storybook.story.dontMultiplePrimary')}
+            "Eksempel Tekst"
           </Heading>
           <div
             style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
@@ -591,7 +590,7 @@ export const BestPractices: Story = {
               {t('platform.common.submit')}
             </Button>
             <Button variant="primary" type="button">
-              {t('storybook.demo.publish')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
@@ -605,7 +604,7 @@ export const BestPractices: Story = {
               color: 'var(--ds-color-danger-text-default)',
             }}
           >
-            {t('storybook.story.dontUnclearLabels')}
+            "Eksempel Tekst"
           </Heading>
           <div
             style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
@@ -633,50 +632,50 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.emphasisLevels')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button variant="primary" type="button">
-              {t('storybook.demo.primary')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="secondary" type="button">
-              {t('storybook.demo.secondary')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="tertiary" type="button">
-              {t('storybook.demo.tertiary')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.allColors')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button data-color="accent" type="button">
-              {t('storybook.demo.accent')}
+              "Eksempel Tekst"
             </Button>
             <Button data-color="brand1" type="button">
-              {t('storybook.demo.brand1')}
+              "Eksempel Tekst"
             </Button>
             <Button data-color="brand2" type="button">
-              {t('storybook.demo.brand2')}
+              "Eksempel Tekst"
             </Button>
             <Button data-color="brand3" type="button">
-              {t('storybook.demo.brand3')}
+              "Eksempel Tekst"
             </Button>
             <Button data-color="neutral" type="button">
-              {t('storybook.demo.neutral')}
+              "Eksempel Tekst"
             </Button>
             <Button data-color="danger" type="button">
-              {t('storybook.demo.danger')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </Heading>
           <div
             style={{
@@ -687,20 +686,20 @@ export const AllVariants: Story = {
             }}
           >
             <Button data-size="sm" type="button">
-              {t('storybook.story.small')}
+              "Eksempel Tekst"
             </Button>
             <Button data-size="md" type="button">
-              {t('storybook.story.medium')}
+              "Eksempel Tekst"
             </Button>
             <Button data-size="lg" type="button">
-              {t('storybook.story.large')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.withIcons')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button type="button">
@@ -712,7 +711,7 @@ export const AllVariants: Story = {
               {t('platform.common.save')}
             </Button>
             <Button type="button">
-              {t('storybook.demo.start')}
+              "Eksempel Tekst"
               <ArrowRightIcon aria-hidden fontSize="1.25rem" />
             </Button>
             <Button icon aria-label={t('platform.common.edit')} type="button">
@@ -723,29 +722,29 @@ export const AllVariants: Story = {
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-            <Button type="button">{t('storybook.story.default')}</Button>
+            <Button type="button">"Eksempel Tekst"</Button>
             <Button loading type="button">
-              {t('storybook.story.loading')}
+              "Eksempel Tekst"
             </Button>
             <Button disabled type="button">
-              {t('storybook.story.disabled')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.combinedExample')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button variant="primary" data-color="neutral" type="button">
-              {t('storybook.demo.publish')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="secondary" data-color="neutral" type="button">
-              {t('storybook.demo.saveDraft')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="tertiary" data-color="danger" type="button">
               {t('platform.common.delete')}

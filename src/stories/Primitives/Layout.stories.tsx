@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Container, Grid, Stack } from '../../primitives';
 
 const meta: Meta = {
@@ -52,7 +51,7 @@ export const ContainerDefault: Story = {
     const t = useT();
     return (
       <Container style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
-        <Box>{t('storybook.layout.contentInsideContainer')}</Box>
+        <Box>"Eksempel Tekst"</Box>
       </Container>
     );
   },
@@ -67,7 +66,7 @@ export const ContainerFluid: Story = {
     const t = useT();
     return (
       <Container fluid style={{ backgroundColor: 'var(--ds-color-neutral-surface-hover)' }}>
-        <Box>{t('storybook.layout.fullWidthFluidContainer')}</Box>
+        <Box>"Eksempel Tekst"</Box>
       </Container>
     );
   },
@@ -82,12 +81,12 @@ export const GridBasic: Story = {
     const t = useT();
     return (
       <Grid columns="repeat(3, 1fr)" gap="var(--ds-spacing-4)">
-        <Box>{t('storybook.layout.column')} 1</Box>
-        <Box>{t('storybook.layout.column')} 2</Box>
-        <Box>{t('storybook.layout.column')} 3</Box>
-        <Box>{t('storybook.layout.column')} 4</Box>
-        <Box>{t('storybook.layout.column')} 5</Box>
-        <Box>{t('storybook.layout.column')} 6</Box>
+        <Box>"Eksempel Tekst" 1</Box>
+        <Box>"Eksempel Tekst" 2</Box>
+        <Box>"Eksempel Tekst" 3</Box>
+        <Box>"Eksempel Tekst" 4</Box>
+        <Box>"Eksempel Tekst" 5</Box>
+        <Box>"Eksempel Tekst" 6</Box>
       </Grid>
     );
   },
@@ -102,9 +101,9 @@ export const GridMixed: Story = {
     const t = useT();
     return (
       <Grid columns="1fr 2fr 1fr" gap="var(--ds-spacing-4)">
-        <Box>{t('storybook.layout.sidebar')}</Box>
-        <Box>{t('storybook.layout.mainContent')} (2fr)</Box>
-        <Box>{t('storybook.layout.sidebar')}</Box>
+        <Box>"Eksempel Tekst"</Box>
+        <Box>"Eksempel Tekst" (2fr)</Box>
+        <Box>"Eksempel Tekst"</Box>
       </Grid>
     );
   },
@@ -119,10 +118,10 @@ export const GridAutoFit: Story = {
     const t = useT();
     return (
       <Grid columns="repeat(auto-fit, minmax(var(--ds-spacing-48), 1fr))" gap="var(--ds-spacing-4)">
-        <Box>{t('storybook.layout.card')} 1</Box>
-        <Box>{t('storybook.layout.card')} 2</Box>
-        <Box>{t('storybook.layout.card')} 3</Box>
-        <Box>{t('storybook.layout.card')} 4</Box>
+        <Box>"Eksempel Tekst" 1</Box>
+        <Box>"Eksempel Tekst" 2</Box>
+        <Box>"Eksempel Tekst" 3</Box>
+        <Box>"Eksempel Tekst" 4</Box>
       </Grid>
     );
   },
@@ -137,9 +136,9 @@ export const StackVertical: Story = {
     const t = useT();
     return (
       <Stack spacing="var(--ds-spacing-4)">
-        <Box>{t('storybook.layout.item')} 1</Box>
-        <Box>{t('storybook.layout.item')} 2</Box>
-        <Box>{t('storybook.layout.item')} 3</Box>
+        <Box>"Eksempel Tekst" 1</Box>
+        <Box>"Eksempel Tekst" 2</Box>
+        <Box>"Eksempel Tekst" 3</Box>
       </Stack>
     );
   },
@@ -154,9 +153,9 @@ export const StackHorizontal: Story = {
     const t = useT();
     return (
       <Stack direction="horizontal" spacing="var(--ds-spacing-4)">
-        <Box>{t('storybook.layout.item')} 1</Box>
-        <Box>{t('storybook.layout.item')} 2</Box>
-        <Box>{t('storybook.layout.item')} 3</Box>
+        <Box>"Eksempel Tekst" 1</Box>
+        <Box>"Eksempel Tekst" 2</Box>
+        <Box>"Eksempel Tekst" 3</Box>
       </Stack>
     );
   },
@@ -181,9 +180,9 @@ export const StackAligned: Story = {
           padding: 'var(--ds-spacing-4)',
         }}
       >
-        <Box>{t('storybook.layout.left')}</Box>
-        <Box>{t('storybook.layout.center')}</Box>
-        <Box>{t('storybook.layout.right')}</Box>
+        <Box>"Eksempel Tekst"</Box>
+        <Box>"Eksempel Tekst"</Box>
+        <Box>"Eksempel Tekst"</Box>
       </Stack>
     );
   },
@@ -199,22 +198,22 @@ export const CombinedLayout: Story = {
     return (
       <Container>
         <Stack spacing="var(--ds-spacing-6)">
-          <Box color="info">{t('storybook.layout.header')}</Box>
+          <Box color="info">"Eksempel Tekst"</Box>
           <Grid columns="var(--ds-spacing-64) 1fr" gap="var(--ds-spacing-4)">
             <Stack spacing="var(--ds-spacing-2)">
-              <Box color="warning">{t('storybook.layout.navItem')} 1</Box>
-              <Box color="warning">{t('storybook.layout.navItem')} 2</Box>
-              <Box color="warning">{t('storybook.layout.navItem')} 3</Box>
+              <Box color="warning">"Eksempel Tekst" 1</Box>
+              <Box color="warning">"Eksempel Tekst" 2</Box>
+              <Box color="warning">"Eksempel Tekst" 3</Box>
             </Stack>
             <Stack spacing="var(--ds-spacing-4)">
-              <Box>{t('storybook.layout.mainContentArea')}</Box>
+              <Box>"Eksempel Tekst"</Box>
               <Grid columns="repeat(2, 1fr)" gap="var(--ds-spacing-4)">
-                <Box color="success">{t('storybook.layout.card')} 1</Box>
-                <Box color="success">{t('storybook.layout.card')} 2</Box>
+                <Box color="success">"Eksempel Tekst" 1</Box>
+                <Box color="success">"Eksempel Tekst" 2</Box>
               </Grid>
             </Stack>
           </Grid>
-          <Box color="neutral">{t('storybook.layout.footer')}</Box>
+          <Box color="neutral">"Eksempel Tekst"</Box>
         </Stack>
       </Container>
     );

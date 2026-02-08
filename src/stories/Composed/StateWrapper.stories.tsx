@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { StateWrapper, ComponentState, useComputedState } from '../../composed/StateWrapper';
 import { LoadingFallback } from '../../composed/LoadingFallback';
 import { EmptyState } from '../../composed/data-page';
@@ -140,7 +139,7 @@ export const EmptyStateExample: Story = {
           emptyComponent={
             <EmptyState
               title={t('platform.errors.notFound')}
-              description={t('storybook.demo.cardDescription')}
+              description="Eksempel Tekst"
               icon={<InboxIcon fontSize="48px" aria-hidden />}
               action={{
                 label: t('platform.common.submit'),
@@ -169,7 +168,7 @@ export const ErrorState: Story = {
               <Heading level={3} data-size="xs">
                 {t('platform.errors.serverError')}
               </Heading>
-              <Paragraph data-size="sm">{t('storybook.demo.cardDescription')}</Paragraph>
+              <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               <Button
                 variant="secondary"
                 data-size="sm"
@@ -201,7 +200,7 @@ export const SuccessState: Story = {
               <Heading level={3} data-size="xs">
                 {t('platform.common.success')}
               </Heading>
-              <Paragraph data-size="sm">{t('storybook.demo.cardDescription')}</Paragraph>
+              <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             </Alert>
           }
         >
@@ -289,7 +288,7 @@ export const InteractiveDemo: Story = {
           emptyComponent={
             <EmptyState
               title={t('platform.errors.notFound')}
-              description={t('storybook.demo.cardDescription')}
+              description="Eksempel Tekst"
               action={{ label: t('platform.common.submit'), onClick: () => setState('idle') }}
             />
           }
@@ -408,7 +407,7 @@ export const WithComputedState: Story = {
           emptyComponent={
             <EmptyState
               title={t('platform.errors.notFound')}
-              description={t('storybook.demo.cardDescription')}
+              description="Eksempel Tekst"
             />
           }
           errorComponent={
@@ -497,7 +496,7 @@ export const AllStates: Story = {
                   <EmptyState
                     size="sm"
                     title={t('platform.errors.notFound')}
-                    description={t('storybook.demo.cardDescription')}
+                    description="Eksempel Tekst"
                   />
                 }
                 errorComponent={

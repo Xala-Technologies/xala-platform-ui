@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ArtifactDiffViewer, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,7 +40,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactDiff.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactDiffViewer
               fileName="Button.tsx"
               oldContent={`export function Button({ children, onClick }) {
@@ -82,7 +81,7 @@ export const WithStructuredChanges: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactDiff.structured')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactDiffViewer
               fileName="config.json"
               changes={[
@@ -124,7 +123,7 @@ export const CustomHeight: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactDiff.customHeight')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactDiffViewer
               fileName="Component.tsx"
               oldContent={`export function Component() {
@@ -162,7 +161,7 @@ export const LargeDiff: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactDiff.large')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactDiffViewer
               fileName="LargeFile.tsx"
               oldContent={oldContent}

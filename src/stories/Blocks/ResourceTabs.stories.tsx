@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ResourceTabs } from '@xala-technologies/platform-ui-digilist';
 import { Paragraph, Heading } from '@digdir/designsystemet-react';
 import { Info, Settings, FileText, Calendar } from 'lucide-react';
@@ -66,17 +65,17 @@ export const Default: Story = {
           {
             id: 'overview',
             label: t('platform.common.view'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'settings',
             label: t('platform.nav.settings'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -97,19 +96,19 @@ export const WithIcons: Story = {
             id: 'overview',
             label: t('platform.common.view'),
             icon: <Info size={16} />,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
             icon: <FileText size={16} />,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'settings',
             label: t('platform.nav.settings'),
             icon: <Settings size={16} />,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -130,19 +129,19 @@ export const WithBadges: Story = {
             id: 'overview',
             label: t('platform.common.view'),
             badge: 3,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
             badge: 12,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'calendar',
             label: t('platform.nav.dashboard'),
             badge: 'New',
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -164,21 +163,21 @@ export const WithIconsAndBadges: Story = {
             label: t('platform.common.view'),
             icon: <Info size={16} />,
             badge: 3,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
             icon: <FileText size={16} />,
             badge: 12,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'calendar',
             label: t('platform.nav.dashboard'),
             icon: <Calendar size={16} />,
             badge: 'New',
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -198,12 +197,12 @@ export const SecondaryVariant: Story = {
           {
             id: 'overview',
             label: t('platform.common.view'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -224,12 +223,12 @@ export const SubtleVariant: Story = {
           {
             id: 'overview',
             label: t('platform.common.view'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -251,19 +250,19 @@ export const WithHiddenTabs: Story = {
             id: 'overview',
             label: t('platform.common.view'),
             visible: true,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'details',
             label: t('platform.common.details'),
             visible: true,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
           {
             id: 'hidden',
             label: 'Hidden',
             visible: false,
-            content: <Paragraph data-size="sm">{t('storybook.demo.sampleText')}</Paragraph>,
+            content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
           },
         ]}
         activeTab="overview"
@@ -286,9 +285,9 @@ export const RichContent: Story = {
             content: (
               <div>
                 <Heading level={3} data-size="sm">
-                  {t('storybook.demo.cardTitle')}
+                  "Eksempel Tekst"
                 </Heading>
-                <Paragraph data-size="sm">{t('storybook.demo.cardDescription')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </div>
             ),
           },
@@ -298,9 +297,9 @@ export const RichContent: Story = {
             content: (
               <div>
                 <Heading level={3} data-size="sm">
-                  {t('storybook.demo.cardTitle')}
+                  "Eksempel Tekst"
                 </Heading>
-                <Paragraph data-size="sm">{t('storybook.demo.cardDescription')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </div>
             ),
           },

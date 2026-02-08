@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import {
   DetailField,
   DetailFieldGroup,
@@ -93,7 +92,7 @@ const CopyableDemo = () => {
   const t = useT();
   return (
     <DetailField
-      label={t('storybook.demo.apiKey')}
+      label="Eksempel Tekst"
       value="sk_live_1234567890abcdef"
       copyable={true}
       onCopy={fn()}
@@ -133,7 +132,7 @@ const GroupSingleColumnDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '400px' }}>
-      <DetailFieldGroup title={t('storybook.demo.userInformation')} columns={1}>
+      <DetailFieldGroup title="Eksempel Tekst" columns={1}>
         <DetailField label={t('platform.common.name')} value="John Doe" />
         <DetailField
           label={t('platform.auth.email')}
@@ -141,7 +140,7 @@ const GroupSingleColumnDemo = () => {
           icon={<Mail size={16} />}
         />
         <DetailField
-          label={t('storybook.demo.phone')}
+          label="Eksempel Tekst"
           value="+47 12 34 56 78"
           icon={<Phone size={16} />}
         />
@@ -166,10 +165,10 @@ const GroupTwoColumnsDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '600px' }}>
-      <DetailFieldGroup title={t('storybook.demo.userInformation')} columns={2}>
+      <DetailFieldGroup title="Eksempel Tekst" columns={2}>
         <DetailField label={t('platform.common.name')} value="John Doe" />
         <DetailField label={t('platform.auth.email')} value="john.doe@example.com" />
-        <DetailField label={t('storybook.demo.phone')} value="+47 12 34 56 78" />
+        <DetailField label="Eksempel Tekst" value="+47 12 34 56 78" />
         <DetailField
           label={t('platform.status.label')}
           value={<Badge variant="success">{t('platform.status.active')}</Badge>}
@@ -191,10 +190,10 @@ const GroupThreeColumnsDemo = () => {
   const t = useT();
   return (
     <div style={{ width: '800px' }}>
-      <DetailFieldGroup title={t('storybook.demo.quickInfo')} columns={3}>
+      <DetailFieldGroup title="Eksempel Tekst" columns={3}>
         <DetailField label={t('platform.common.name')} value="John Doe" />
         <DetailField label={t('platform.auth.email')} value="john@example.com" />
-        <DetailField label={t('storybook.demo.phone')} value="+47 12 34 56 78" />
+        <DetailField label="Eksempel Tekst" value="+47 12 34 56 78" />
       </DetailFieldGroup>
     </div>
   );
@@ -213,7 +212,7 @@ const CardDemo = () => {
   return (
     <div style={{ width: '500px' }}>
       <DetailCard
-        title={t('storybook.demo.userDetails')}
+        title="Eksempel Tekst"
         icon={<User size={20} />}
         actions={
           <Button onClick={fn()} data-color="accent" data-size="sm">
@@ -224,7 +223,7 @@ const CardDemo = () => {
         <DetailFieldGroup columns={1}>
           <DetailField label={t('platform.common.name')} value="John Doe" />
           <DetailField label={t('platform.auth.email')} value="john.doe@example.com" />
-          <DetailField label={t('storybook.demo.role')} value={t('storybook.demo.administrator')} />
+          <DetailField label="Eksempel Tekst" value="Eksempel Tekst" />
         </DetailFieldGroup>
       </DetailCard>
     </div>
@@ -244,7 +243,7 @@ const MonoFieldExampleDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <MonoField
-        label={t('storybook.demo.transactionId')}
+        label="Eksempel Tekst"
         value="txn_1234567890abcdef"
         copyable={true}
         onCopy={fn()}
@@ -282,7 +281,7 @@ const LinkFieldExampleDemo = () => {
         onCopy={fn()}
       />
       <LinkField
-        label={t('storybook.demo.phone')}
+        label="Eksempel Tekst"
         value="+47 12 34 56 78"
         href="tel:+4712345678"
         icon={<Phone size={16} />}
@@ -290,7 +289,7 @@ const LinkFieldExampleDemo = () => {
         onCopy={fn()}
       />
       <LinkField
-        label={t('storybook.demo.website')}
+        label="Eksempel Tekst"
         value="https://example.com"
         href="https://example.com"
         icon={<Globe size={16} />}
@@ -320,11 +319,11 @@ const CompleteExampleDemo = () => {
         gap: 'var(--ds-spacing-4)',
       }}
     >
-      <DetailCard title={t('storybook.demo.accountInformation')} icon={<User size={20} />}>
+      <DetailCard title="Eksempel Tekst" icon={<User size={20} />}>
         <DetailFieldGroup columns={2}>
-          <DetailField label={t('storybook.demo.accountId')} value="acc_1234567890" />
+          <DetailField label="Eksempel Tekst" value="acc_1234567890" />
           <MonoField
-            label={t('storybook.demo.apiKey')}
+            label="Eksempel Tekst"
             value="sk_live_abcdef123456"
             copyable
             onCopy={fn()}

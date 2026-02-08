@@ -5,7 +5,6 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   HorizontalLayout,
   SimpleSidebar,
@@ -44,9 +43,9 @@ export const CenterBoth: StoryObj<typeof Center> = {
         <Center>
           <Stack spacing="var(--ds-spacing-2)" align="center">
             <Heading level={2} data-size="md">
-              {t('storybook.layout.centeredContent')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.layout.centeredBothDescription')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </Center>
       </div>
@@ -60,7 +59,7 @@ export const CenterHorizontal: StoryObj<typeof Center> = {
     return (
       <div style={{ height: '200px', border: '1px dashed var(--ds-color-neutral-border-default)' }}>
         <Center axis="horizontal">
-          <Paragraph data-size="sm">{t('storybook.layout.centeredHorizontalOnly')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Center>
       </div>
     );
@@ -79,34 +78,34 @@ export const SidebarExample: StoryObj<typeof SimpleSidebar> = {
         <SimpleSidebar>
           <SidebarHeaderArea>
             <Heading level={1} data-size="md">
-              {t('storybook.layout.appName')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.layout.subtitleText')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </SidebarHeaderArea>
 
           <SidebarPanel bordered>
-            <Paragraph data-size="sm">{t('storybook.layout.controlsSection')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </SidebarPanel>
 
           <SidebarScrollArea>
             <ExplorerItem
               title={t('platform.nav.dashboard')}
-              description={t('storybook.layout.overview')}
+              description="Eksempel Tekst"
             />
             <ExplorerItem
               title={t('platform.common.settings')}
-              description={t('storybook.layout.configuration')}
+              description="Eksempel Tekst"
             />
             <ExplorerItem
-              title={t('storybook.layout.users')}
-              description={t('storybook.layout.userManagement')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
           </SidebarScrollArea>
         </SimpleSidebar>
 
         <MainContent>
           <Heading level={2} data-size="lg">
-            {t('storybook.layout.mainContentArea')}
+            "Eksempel Tekst"
           </Heading>
         </MainContent>
       </div>
@@ -129,30 +128,30 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
         <SimpleSidebar>
           <SidebarHeaderArea>
             <Heading level={1} data-size="md">
-              {t('storybook.layout.playground')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.layout.componentExplorer')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </SidebarHeaderArea>
 
           <SidebarPanel bordered>
             <Button variant="primary" data-size="sm" style={{ width: '100%' }}>
-              {t('storybook.layout.newComponent')}
+              "Eksempel Tekst"
             </Button>
           </SidebarPanel>
 
           <SidebarScrollArea>
             <ExplorerItem
-              title={t('storybook.layout.buttonComponent')}
-              description={t('storybook.layout.interactiveElement')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               selected
             />
             <ExplorerItem
-              title={t('storybook.layout.cardComponent')}
-              description={t('storybook.layout.contentContainer')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
             <ExplorerItem
-              title={t('storybook.layout.modalComponent')}
-              description={t('storybook.layout.dialogOverlay')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
           </SidebarScrollArea>
         </SimpleSidebar>
@@ -160,12 +159,12 @@ export const FullAppLayout: StoryObj<typeof HorizontalLayout> = {
         <MainContent>
           <Stack spacing="var(--ds-spacing-4)">
             <Heading level={2} data-size="lg">
-              {t('storybook.layout.buttonComponent')}
+              "Eksempel Tekst"
             </Heading>
             <Paragraph data-size="md">
-              {t('storybook.layout.interactiveButtonDescription')}
+              "Eksempel Tekst"
             </Paragraph>
-            <Button variant="primary">{t('storybook.layout.exampleButton')}</Button>
+            <Button variant="primary">"Eksempel Tekst"</Button>
           </Stack>
         </MainContent>
       </HorizontalLayout>
@@ -191,9 +190,9 @@ export const MainContentPadding: StoryObj<typeof MainContent> = {
         <MainContent padding="lg">
           <Stack spacing="var(--ds-spacing-2)">
             <Heading level={2} data-size="md">
-              {t('storybook.layout.largePadding')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.layout.largePaddingDescription')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </MainContent>
       </div>
@@ -215,9 +214,9 @@ export const MainContentSmallPadding: StoryObj<typeof MainContent> = {
         <MainContent padding="sm">
           <Stack spacing="var(--ds-spacing-2)">
             <Heading level={2} data-size="md">
-              {t('storybook.layout.smallPadding')}
+              "Eksempel Tekst"
             </Heading>
-            <Paragraph data-size="sm">{t('storybook.layout.smallPaddingDescription')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Stack>
         </MainContent>
       </div>

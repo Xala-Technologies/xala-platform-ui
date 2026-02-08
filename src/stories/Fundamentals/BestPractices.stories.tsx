@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph } from '../../index';
 
 const meta: Meta = {
@@ -51,7 +50,7 @@ export const DesignTokens: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.dont')} {t('storybook.bestPractices.hardcodedValues')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -81,7 +80,7 @@ export const DesignTokens: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.do')} {t('storybook.bestPractices.designTokens')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -123,7 +122,7 @@ export const ComponentComposition: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.dont')} {t('storybook.bestPractices.customImplementation')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -155,7 +154,7 @@ export const ComponentComposition: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.do')} {t('storybook.bestPractices.platformComponents')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -195,7 +194,7 @@ export const Internationalization: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.dont')} {t('storybook.bestPractices.hardcodedText')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -223,7 +222,7 @@ export const Internationalization: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.do')} {t('storybook.bestPractices.translatedText')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -265,7 +264,7 @@ export const SDKFirst: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.dont')} {t('storybook.bestPractices.directApiCalls')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -295,7 +294,7 @@ export const SDKFirst: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.do')} {t('storybook.bestPractices.sdkMethods')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -333,7 +332,7 @@ export const ErrorHandling: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.dont')} {t('storybook.bestPractices.noErrorHandling')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -358,7 +357,7 @@ setUsers(data);`}
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.bestPractices.do')} {t('storybook.bestPractices.properErrorHandling')}
+            "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -448,7 +447,7 @@ export const Summary: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-8)', maxWidth: '800px' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.bestPractices.summary')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
@@ -475,7 +474,7 @@ export const Summary: Story = {
                     color: 'var(--ds-color-success-text-default)',
                   }}
                 >
-                  {t('storybook.bestPractices.do')}:
+                  "Eksempel Tekst":
                 </Paragraph>
                 {dos.map((item, i) => (
                   <Paragraph
@@ -500,7 +499,7 @@ export const Summary: Story = {
                     color: 'var(--ds-color-danger-text-default)',
                   }}
                 >
-                  {t('storybook.bestPractices.dont')}:
+                  "Eksempel Tekst":
                 </Paragraph>
                 {donts.map((item, i) => (
                   <Paragraph

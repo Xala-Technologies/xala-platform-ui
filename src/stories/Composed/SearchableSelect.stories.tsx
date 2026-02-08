@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { SearchableSelect, type SelectOption } from '../../index';
 
 /**
@@ -78,7 +77,7 @@ export const Default: Story = {
           options={options}
           value={value}
           onChange={setValue}
-          placeholder={t('storybook.searchableSelect.selectCountry')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -102,8 +101,8 @@ export const WithLabel: Story = {
           options={options}
           value={value}
           onChange={setValue}
-          label={t('storybook.searchableSelect.country')}
-          placeholder={t('storybook.searchableSelect.selectCountry')}
+          label="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -128,7 +127,7 @@ export const MultiSelect: Story = {
           value={value}
           onChange={setValue}
           multiple
-          placeholder={t('storybook.searchableSelect.selectCountries')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -153,7 +152,7 @@ export const Clearable: Story = {
           value={value}
           onChange={setValue}
           clearable
-          placeholder={t('storybook.searchableSelect.selectCountry')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -178,7 +177,7 @@ export const Loading: Story = {
           value={value}
           onChange={setValue}
           loading
-          placeholder={t('storybook.searchableSelect.loading')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -202,8 +201,8 @@ export const WithError: Story = {
           options={options}
           value={value}
           onChange={setValue}
-          error={t('storybook.searchableSelect.countryRequired')}
-          placeholder={t('storybook.searchableSelect.selectCountry')}
+          error="Eksempel Tekst"
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );
@@ -228,7 +227,7 @@ export const Disabled: Story = {
           value={value}
           onChange={setValue}
           disabled
-          placeholder={t('storybook.searchableSelect.selectCountry')}
+          placeholder="Eksempel Tekst"
         />
       </Stack>
     );

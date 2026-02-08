@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Popover } from '../../composed/Popover';
 import { Button, Paragraph, Card } from '@digdir/designsystemet-react';
 import { useState } from 'react';
@@ -72,14 +71,14 @@ const ClickTriggerDemo = () => {
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">{t('storybook.demo.popoverTriggeredByClick')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       }
       trigger="click"
       position="bottom-start"
     >
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.clickMe')}
+        "Eksempel Tekst"
       </Button>
     </Popover>
   );
@@ -91,14 +90,14 @@ const HoverTriggerDemo = () => {
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">{t('storybook.demo.popoverAppearsOnHover')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       }
       trigger="hover"
       position="bottom"
     >
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.hoverMe')}
+        "Eksempel Tekst"
       </Button>
     </Popover>
   );
@@ -110,14 +109,14 @@ const FocusTriggerDemo = () => {
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">{t('storybook.demo.popoverAppearsOnFocus')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       }
       trigger="focus"
       position="top"
     >
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.focusMe')}
+        "Eksempel Tekst"
       </Button>
     </Popover>
   );
@@ -130,14 +129,14 @@ const TopPositionDemo = () => {
       <Popover
         content={
           <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-            <Paragraph data-size="sm">{t('storybook.demo.topPosition')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Card>
         }
         trigger="click"
         position="top"
       >
         <Button data-color="accent" data-size="medium">
-          {t('storybook.demo.top')}
+          "Eksempel Tekst"
         </Button>
       </Popover>
     </div>
@@ -150,14 +149,14 @@ const BottomPositionDemo = () => {
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">{t('storybook.demo.bottomPosition')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       }
       trigger="click"
       position="bottom"
     >
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.bottom')}
+        "Eksempel Tekst"
       </Button>
     </Popover>
   );
@@ -170,14 +169,14 @@ const LeftPositionDemo = () => {
       <Popover
         content={
           <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-            <Paragraph data-size="sm">{t('storybook.demo.leftPosition')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Card>
         }
         trigger="click"
         position="left"
       >
         <Button data-color="accent" data-size="medium">
-          {t('storybook.demo.left')}
+          "Eksempel Tekst"
         </Button>
       </Popover>
     </div>
@@ -190,14 +189,14 @@ const RightPositionDemo = () => {
     <Popover
       content={
         <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-          <Paragraph data-size="sm">{t('storybook.demo.rightPosition')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </Card>
       }
       trigger="click"
       position="right"
     >
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.right')}
+        "Eksempel Tekst"
       </Button>
     </Popover>
   );
@@ -214,12 +213,12 @@ const RichContentDemo = () => {
           style={{ padding: 'var(--ds-spacing-4)', maxWidth: '300px' }}
         >
           <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-            <strong>{t('storybook.demo.richContentPopover')}</strong>
+            <strong>"Eksempel Tekst"</strong>
           </Paragraph>
-          <Paragraph data-size="sm">{t('storybook.demo.richContentDescription')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           <div style={{ marginTop: 'var(--ds-spacing-3)' }}>
             <Button data-color="accent" data-size="sm">
-              {t('storybook.demo.actionButton')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </Card>
@@ -228,7 +227,7 @@ const RichContentDemo = () => {
       position="bottom-start"
     >
       <Button data-color="accent" data-size="medium">
-        {t('storybook.demo.richContent')}
+        "Eksempel Tekst"
       </Button>
     </Popover>
   );
@@ -240,12 +239,12 @@ const ControlledDemo = () => {
   return (
     <>
       <Button onClick={() => setOpen(!open)} data-color="accent" data-size="medium">
-        {open ? t('platform.common.close') : t('storybook.demo.open')} {t('storybook.demo.popover')}
+        {open ? t('platform.common.close') : t('storybook.demo.open')} "Eksempel Tekst"
       </Button>
       <Popover
         content={
           <Card data-color="neutral" data-size="medium" style={{ padding: 'var(--ds-spacing-4)' }}>
-            <Paragraph data-size="sm">{t('storybook.demo.controlledPopover')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
           </Card>
         }
         trigger="click"
@@ -255,7 +254,7 @@ const ControlledDemo = () => {
       >
         <div style={{ display: 'inline-block', marginLeft: 'var(--ds-spacing-4)' }}>
           <Button data-color="neutral" data-size="medium">
-            {t('storybook.demo.trigger')}
+            "Eksempel Tekst"
           </Button>
         </div>
       </Popover>

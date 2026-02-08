@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Switch, Fieldset, Heading } from '../../index';
 
 /**
@@ -190,7 +189,7 @@ type Story = StoryObj;
 export const Default: Story = {
   render: function Render() {
     const t = useT();
-    return <Switch label={t('storybook.demo.enableNotifications')} />;
+    return <Switch label="Eksempel Tekst" />;
   },
 };
 
@@ -199,8 +198,8 @@ export const WithDescription: Story = {
     const t = useT();
     return (
       <Switch
-        label={t('storybook.demo.darkMode')}
-        description={t('storybook.demo.darkModeDescription')}
+        label="Eksempel Tekst"
+        description="Eksempel Tekst"
       />
     );
   },
@@ -209,7 +208,7 @@ export const WithDescription: Story = {
 export const Checked: Story = {
   render: function Render() {
     const t = useT();
-    return <Switch label={t('storybook.demo.emailNotifications')} defaultChecked />;
+    return <Switch label="Eksempel Tekst" defaultChecked />;
   },
 };
 
@@ -218,8 +217,8 @@ export const Disabled: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Switch label={t('storybook.demo.disabledOff')} disabled />
-        <Switch label={t('storybook.demo.disabledOn')} disabled defaultChecked />
+        <Switch label="Eksempel Tekst" disabled />
+        <Switch label="Eksempel Tekst" disabled defaultChecked />
       </div>
     );
   },
@@ -230,8 +229,8 @@ export const ReadOnly: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Switch label={t('storybook.demo.readOnlyOff')} readOnly />
-        <Switch label={t('storybook.demo.readOnlyOn')} readOnly defaultChecked />
+        <Switch label="Eksempel Tekst" readOnly />
+        <Switch label="Eksempel Tekst" readOnly defaultChecked />
       </div>
     );
   },
@@ -242,9 +241,9 @@ export const Sizes: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Switch label={t('storybook.demo.smallSwitch')} data-size="sm" />
-        <Switch label={t('storybook.demo.mediumSwitch')} data-size="md" />
-        <Switch label={t('storybook.demo.largeSwitch')} data-size="lg" />
+        <Switch label="Eksempel Tekst" data-size="sm" />
+        <Switch label="Eksempel Tekst" data-size="md" />
+        <Switch label="Eksempel Tekst" data-size="lg" />
       </div>
     );
   },
@@ -255,13 +254,13 @@ export const SwitchGroup: Story = {
     const t = useT();
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('storybook.demo.turnLightsOnOff')}</Fieldset.Legend>
-        <Switch label={t('storybook.demo.livingRoom')} defaultChecked />
-        <Switch label={t('storybook.demo.kitchen')} />
-        <Switch label={t('storybook.demo.bathroom')} />
+        <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+        <Switch label="Eksempel Tekst" defaultChecked />
+        <Switch label="Eksempel Tekst" />
+        <Switch label="Eksempel Tekst" />
         <Switch
-          label={t('storybook.demo.bedroom')}
-          description={t('storybook.demo.unableToConnectToLightBulbs')}
+          label="Eksempel Tekst"
+          description="Eksempel Tekst"
           readOnly
         />
       </Fieldset>
@@ -284,19 +283,19 @@ export const Interactive: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Fieldset>
-          <Fieldset.Legend>{t('storybook.demo.notificationPreferences')}</Fieldset.Legend>
+          <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
           <Switch
-            label={t('storybook.demo.emailNotifications')}
+            label="Eksempel Tekst"
             checked={notifications.email}
             onChange={(e) => setNotifications({ ...notifications, email: e.target.checked })}
           />
           <Switch
-            label={t('storybook.demo.smsNotifications')}
+            label="Eksempel Tekst"
             checked={notifications.sms}
             onChange={(e) => setNotifications({ ...notifications, sms: e.target.checked })}
           />
           <Switch
-            label={t('storybook.demo.pushNotifications')}
+            label="Eksempel Tekst"
             checked={notifications.push}
             onChange={(e) => setNotifications({ ...notifications, push: e.target.checked })}
           />
@@ -308,7 +307,7 @@ export const Interactive: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>{t('storybook.demo.activeNotifications')}:</strong>{' '}
+          <strong>"Eksempel Tekst":</strong>{' '}
           {Object.entries(notifications)
             .filter(([, v]) => v)
             .map(([k]) => k)
@@ -329,36 +328,36 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.states')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <Switch label={t('storybook.demo.defaultOff')} />
-            <Switch label={t('storybook.demo.checkedOn')} defaultChecked />
+            <Switch label="Eksempel Tekst" />
+            <Switch label="Eksempel Tekst" defaultChecked />
             <Switch
-              label={t('storybook.demo.withDescription')}
-              description={t('storybook.demo.additionalContextForSetting')}
+              label="Eksempel Tekst"
+              description="Eksempel Tekst"
             />
-            <Switch label={t('storybook.demo.disabledOff')} disabled />
-            <Switch label={t('storybook.demo.disabledOn')} disabled defaultChecked />
-            <Switch label={t('storybook.demo.readOnlyOff')} readOnly />
-            <Switch label={t('storybook.demo.readOnlyOn')} readOnly defaultChecked />
+            <Switch label="Eksempel Tekst" disabled />
+            <Switch label="Eksempel Tekst" disabled defaultChecked />
+            <Switch label="Eksempel Tekst" readOnly />
+            <Switch label="Eksempel Tekst" readOnly defaultChecked />
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.sizes')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <Switch label={t('storybook.demo.small')} data-size="sm" />
-            <Switch label={t('storybook.demo.medium')} data-size="md" />
-            <Switch label={t('storybook.demo.large')} data-size="lg" />
+            <Switch label="Eksempel Tekst" data-size="sm" />
+            <Switch label="Eksempel Tekst" data-size="md" />
+            <Switch label="Eksempel Tekst" data-size="lg" />
           </div>
         </div>
 
         <div>
           <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.story.grouped')}
+            "Eksempel Tekst"
           </Heading>
           <Fieldset>
             <Fieldset.Legend>{t('platform.nav.settings')}</Fieldset.Legend>

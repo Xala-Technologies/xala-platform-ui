@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Accordion, Collapsible } from '../../composed/Accordion';
 import { Paragraph } from '@digdir/designsystemet-react';
 import { Info, Settings, User } from 'lucide-react';
@@ -64,20 +63,20 @@ const AccordionWithItems = (args: any) => {
       id: '1',
       title: t('storybook.demo.gettingStarted'),
       content: (
-        <Paragraph data-size="sm">{t('storybook.demo.gettingStartedDescription')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       ),
       icon: <Info size={20} />,
     },
     {
       id: '2',
       title: t('platform.nav.settings'),
-      content: <Paragraph data-size="sm">{t('storybook.demo.settingsDescription')}</Paragraph>,
+      content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
       icon: <Settings size={20} />,
     },
     {
       id: '3',
       title: t('platform.nav.profile'),
-      content: <Paragraph data-size="sm">{t('storybook.demo.profileDescription')}</Paragraph>,
+      content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
       icon: <User size={20} />,
     },
   ];
@@ -140,20 +139,20 @@ const AccordionWithDisabled = (args: any) => {
       id: '1',
       title: t('storybook.demo.gettingStarted'),
       content: (
-        <Paragraph data-size="sm">{t('storybook.demo.gettingStartedDescription')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       ),
       icon: <Info size={20} />,
     },
     {
       id: '2',
       title: t('platform.nav.settings'),
-      content: <Paragraph data-size="sm">{t('storybook.demo.settingsDescription')}</Paragraph>,
+      content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
       icon: <Settings size={20} />,
     },
     {
       id: '3',
       title: t('platform.nav.profile'),
-      content: <Paragraph data-size="sm">{t('storybook.demo.profileDescription')}</Paragraph>,
+      content: <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>,
       icon: <User size={20} />,
       disabled: true,
     },
@@ -174,8 +173,8 @@ export const WithDisabled: Story = {
 const CollapsibleExample = () => {
   const t = useT();
   return (
-    <Collapsible title={t('storybook.demo.clickToExpand')} defaultOpen={false}>
-      <Paragraph data-size="sm">{t('storybook.demo.collapsibleDescription')}</Paragraph>
+    <Collapsible title="Eksempel Tekst" defaultOpen={false}>
+      <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
     </Collapsible>
   );
 };
@@ -196,7 +195,7 @@ const CollapsibleWithIconExample = () => {
       icon={<Settings size={20} />}
       defaultOpen={false}
     >
-      <Paragraph data-size="sm">{t('storybook.demo.collapsibleIconDescription')}</Paragraph>
+      <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
     </Collapsible>
   );
 };

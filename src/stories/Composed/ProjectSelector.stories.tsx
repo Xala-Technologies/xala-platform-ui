@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { ProjectSelector, type ProjectItem, Stack } from '../../index';
 
 /**
@@ -74,7 +73,7 @@ export const Default: Story = {
             setSelectedId(project.id);
             console.log('Selected:', project);
           }}
-          label={t('storybook.projectSelector.selectProject')}
+          label="Eksempel Tekst"
         />
       </Stack>
     );
@@ -125,7 +124,7 @@ export const ManyProjects: Story = {
             setSelectedId(project.id);
             console.log('Selected:', project);
           }}
-          label={t('storybook.projectSelector.selectProject')}
+          label="Eksempel Tekst"
         />
       </Stack>
     );

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { MainContent, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -40,7 +39,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.mainContent.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <div
               style={{
                 height: '300px',
@@ -49,7 +48,7 @@ export const Default: Story = {
               }}
             >
               <MainContent>
-                <Paragraph data-size="sm">{t('storybook.mainContent.content')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </MainContent>
             </div>
           </Stack>
@@ -72,7 +71,7 @@ export const PaddingSizes: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.mainContent.paddingSizes')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
               <div
                 style={{
@@ -81,7 +80,7 @@ export const PaddingSizes: Story = {
                 }}
               >
                 <MainContent padding="sm">
-                  <Paragraph data-size="sm">{t('storybook.mainContent.smallPadding')}</Paragraph>
+                  <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
                 </MainContent>
               </div>
               <div
@@ -91,7 +90,7 @@ export const PaddingSizes: Story = {
                 }}
               >
                 <MainContent padding="default">
-                  <Paragraph data-size="sm">{t('storybook.mainContent.defaultPadding')}</Paragraph>
+                  <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
                 </MainContent>
               </div>
               <div
@@ -101,7 +100,7 @@ export const PaddingSizes: Story = {
                 }}
               >
                 <MainContent padding="lg">
-                  <Paragraph data-size="sm">{t('storybook.mainContent.largePadding')}</Paragraph>
+                  <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
                 </MainContent>
               </div>
             </Stack>
@@ -125,7 +124,7 @@ export const NonScrollable: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.mainContent.nonScrollable')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <div
               style={{
                 height: '200px',
@@ -134,7 +133,7 @@ export const NonScrollable: Story = {
               }}
             >
               <MainContent scrollable={false}>
-                <Paragraph data-size="sm">{t('storybook.mainContent.content')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </MainContent>
             </div>
           </Stack>

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT, useLocale } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph, Tag, Alert, Stack } from '../../primitives';
 
 /**

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { TemplateCanvas, BlockPalette, Stack, Paragraph, Card, Button } from '../../index';
 import type { TemplateBlock } from '../../index';
 
@@ -45,7 +44,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.templateCanvas.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TemplateCanvas
               blocks={blocks}
               onChange={setBlocks}
@@ -95,7 +94,7 @@ export const WithBlocks: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.templateCanvas.withBlocks')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TemplateCanvas
               blocks={blocks}
               onChange={setBlocks}
@@ -150,7 +149,7 @@ export const PreviewMode: Story = {
               spacing="var(--ds-spacing-2)"
               style={{ flexDirection: 'row', alignItems: 'center' }}
             >
-              <Paragraph data-size="md">{t('storybook.templateCanvas.previewMode')}</Paragraph>
+              <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
               <Button onClick={() => setPreviewMode(!previewMode)}>
                 {previewMode
                   ? t('storybook.templateCanvas.edit')
@@ -195,10 +194,10 @@ export const BlockPaletteStandalone: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.templateCanvas.blockPalette')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             {draggedType && (
               <Paragraph data-size="sm">
-                {t('storybook.templateCanvas.dragged')}: {draggedType}
+                "Eksempel Tekst": {draggedType}
               </Paragraph>
             )}
             <BlockPalette

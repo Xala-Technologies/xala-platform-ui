@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import {
   SimpleSidebar,
   SidebarHeaderArea,
@@ -49,7 +48,7 @@ export const Simple: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.sidebar.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <div
               style={{
                 display: 'flex',
@@ -61,7 +60,7 @@ export const Simple: Story = {
               <SimpleSidebar>
                 <SidebarHeaderArea>
                   <Paragraph data-size="sm" style={{ margin: 0 }}>
-                    {t('storybook.sidebar.header')}
+                    "Eksempel Tekst"
                   </Paragraph>
                 </SidebarHeaderArea>
                 <SidebarScrollArea>
@@ -70,25 +69,25 @@ export const Simple: Story = {
                       data-color="neutral"
                       style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {t('storybook.sidebar.item1')}
+                      "Eksempel Tekst"
                     </Button>
                     <Button
                       data-color="neutral"
                       style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {t('storybook.sidebar.item2')}
+                      "Eksempel Tekst"
                     </Button>
                     <Button
                       data-color="neutral"
                       style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {t('storybook.sidebar.item3')}
+                      "Eksempel Tekst"
                     </Button>
                   </Stack>
                 </SidebarScrollArea>
               </SimpleSidebar>
               <div style={{ flex: 1, padding: 'var(--ds-spacing-4)' }}>
-                <Paragraph data-size="sm">{t('storybook.sidebar.content')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </div>
             </div>
           </Stack>
@@ -111,7 +110,7 @@ export const WithPanel: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.sidebar.withPanel')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <div
               style={{
                 display: 'flex',
@@ -123,7 +122,7 @@ export const WithPanel: Story = {
               <SimpleSidebar>
                 <SidebarHeaderArea>
                   <Paragraph data-size="sm" style={{ margin: 0 }}>
-                    {t('storybook.sidebar.header')}
+                    "Eksempel Tekst"
                   </Paragraph>
                 </SidebarHeaderArea>
                 <SidebarPanel>
@@ -132,25 +131,25 @@ export const WithPanel: Story = {
                       data-color="neutral"
                       style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {t('storybook.sidebar.item1')}
+                      "Eksempel Tekst"
                     </Button>
                     <Button
                       data-color="neutral"
                       style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {t('storybook.sidebar.item2')}
+                      "Eksempel Tekst"
                     </Button>
                     <Button
                       data-color="neutral"
                       style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {t('storybook.sidebar.item3')}
+                      "Eksempel Tekst"
                     </Button>
                   </Stack>
                 </SidebarPanel>
               </SimpleSidebar>
               <div style={{ flex: 1, padding: 'var(--ds-spacing-4)' }}>
-                <Paragraph data-size="sm">{t('storybook.sidebar.content')}</Paragraph>
+                <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               </div>
             </div>
           </Stack>

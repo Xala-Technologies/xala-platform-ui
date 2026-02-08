@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { GlobalSearch, type SearchResultGroup } from '../../index';
 
 /**
@@ -106,7 +105,7 @@ export const Default: Story = {
           results={results}
           onResultSelect={(result) => console.log('Selected:', result)}
           onSubmit={() => console.log('Submit:', query)}
-          placeholder={t('storybook.globalSearch.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -129,7 +128,7 @@ export const WithShortcut: Story = {
           results={results}
           onResultSelect={(result) => console.log('Selected:', result)}
           onSubmit={() => console.log('Submit:', query)}
-          placeholder={t('storybook.globalSearch.placeholder')}
+          placeholder="Eksempel Tekst"
           showShortcut
           enableGlobalShortcut
         />
@@ -153,8 +152,8 @@ export const NoResults: Story = {
           results={[]}
           onResultSelect={(result) => console.log('Selected:', result)}
           onSubmit={() => console.log('Submit:', query)}
-          placeholder={t('storybook.globalSearch.placeholder')}
-          noResultsText={t('storybook.globalSearch.noResults')}
+          placeholder="Eksempel Tekst"
+          noResultsText="Eksempel Tekst"
         />
       </div>
     );
@@ -176,8 +175,8 @@ export const EmptyState: Story = {
           results={[]}
           onResultSelect={(result) => console.log('Selected:', result)}
           onSubmit={() => console.log('Submit:', query)}
-          placeholder={t('storybook.globalSearch.placeholder')}
-          noResultsText={t('storybook.globalSearch.noRecentSearches')}
+          placeholder="Eksempel Tekst"
+          noResultsText="Eksempel Tekst"
         />
       </div>
     );
@@ -232,7 +231,7 @@ export const MultipleGroups: Story = {
           results={results}
           onResultSelect={(result) => console.log('Selected:', result)}
           onSubmit={() => console.log('Submit:', query)}
-          placeholder={t('storybook.globalSearch.placeholder')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );

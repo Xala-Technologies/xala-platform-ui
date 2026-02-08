@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { DataPageHeader, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -40,8 +39,8 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dataPageHeader.description')}</Paragraph>
-            <DataPageHeader title={t('storybook.dataPageHeader.title')} />
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <DataPageHeader title="Eksempel Tekst" />
           </Stack>
         </Card>
       </Stack>
@@ -62,9 +61,9 @@ export const WithCount: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dataPageHeader.withCount')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DataPageHeader
-              title={t('storybook.dataPageHeader.title')}
+              title="Eksempel Tekst"
               count={42}
               countLabel={t('storybook.dataPageHeader.countLabel', { count: 42 })}
             />
@@ -88,9 +87,9 @@ export const ZeroCount: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.dataPageHeader.zeroCount')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <DataPageHeader
-              title={t('storybook.dataPageHeader.title')}
+              title="Eksempel Tekst"
               count={0}
               countLabel={t('storybook.dataPageHeader.countLabel', { count: 0 })}
             />

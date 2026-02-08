@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { ListToolbar } from '../../composed/ListToolbar';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -162,7 +161,7 @@ const WithPrimaryActionDemo = () => {
         resultsCount={42}
         primaryAction={
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('storybook.demo.createNew')}
+            "Eksempel Tekst"
           </Button>
         }
       />
@@ -190,7 +189,7 @@ const CompleteDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('storybook.demo.searchItems')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         filters={[
           {
@@ -209,8 +208,8 @@ const CompleteDemo = () => {
             value: type,
             options: [
               { id: 'all', label: t('platform.common.all') },
-              { id: 'type1', label: `${t('storybook.demo.type')} 1`, count: 10 },
-              { id: 'type2', label: `${t('storybook.demo.type')} 2`, count: 15 },
+              { id: 'type1', label: `$"Eksempel Tekst" 1`, count: 10 },
+              { id: 'type2', label: `$"Eksempel Tekst" 2`, count: 15 },
             ],
           },
         ]}
@@ -227,10 +226,10 @@ const CompleteDemo = () => {
         sortValue={sort}
         onSortChange={setSort}
         resultsCount={42}
-        resultsLabel={t('storybook.demo.items')}
+        resultsLabel="Eksempel Tekst"
         primaryAction={
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('storybook.demo.createItem')}
+            "Eksempel Tekst"
           </Button>
         }
       />
@@ -327,7 +326,7 @@ const CustomResultsLabelDemo = () => {
           placeholder: `${t('platform.common.search')}...`,
         }}
         resultsCount={15}
-        resultsLabel={t('storybook.demo.resources')}
+        resultsLabel="Eksempel Tekst"
       />
     </div>
   );

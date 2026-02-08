@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { FilterChipsBar } from '../../composed/FilterChipsBar';
 
 const meta: Meta<typeof FilterChipsBar> = {
@@ -176,7 +175,7 @@ const WithAddFilterDemo = () => {
         ]}
         onRemove={fn()}
         onAddFilter={fn()}
-        addFilterLabel={t('storybook.demo.addFilter')}
+        addFilterLabel="Eksempel Tekst"
         showClearAll={true}
       />
     </div>
@@ -227,8 +226,8 @@ const CustomLabelsDemo = () => {
         ]}
         onRemove={fn()}
         onAddFilter={fn()}
-        addFilterLabel={t('storybook.demo.addFilter')}
-        clearAllLabel={t('storybook.demo.clearAll')}
+        addFilterLabel="Eksempel Tekst"
+        clearAllLabel="Eksempel Tekst"
         showClearAll={true}
       />
     </div>

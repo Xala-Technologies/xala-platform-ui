@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import {
   SectionCard,
   SectionCardHeader,
@@ -78,14 +77,14 @@ const DefaultDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.sectionTitle')}
-        description={t('storybook.demo.sectionDescription')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="default"
         size="md"
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.sectionContentArea')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -97,14 +96,14 @@ const WithIconDemo = () => {
     <div style={{ width: '600px' }}>
       <SectionCard
         title={t('platform.nav.settings')}
-        description={t('storybook.demo.manageAccountSettings')}
+        description="Eksempel Tekst"
         icon={<Settings size={20} />}
         variant="default"
         size="md"
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.settingsContentGoesHere')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -115,8 +114,8 @@ const WithActionsDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.userProfile')}
-        description={t('storybook.demo.viewEditProfile')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         icon={<User size={20} />}
         actions={
           <Button onClick={fn()} data-color="accent" data-size="sm">
@@ -128,7 +127,7 @@ const WithActionsDemo = () => {
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.profileContentGoesHere')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -139,8 +138,8 @@ const WithFooterDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.document')}
-        description={t('storybook.demo.documentDetails')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         icon={<FileText size={20} />}
         footer={
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}>
@@ -157,7 +156,7 @@ const WithFooterDemo = () => {
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.documentContentGoesHere')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -168,15 +167,15 @@ const CollapsibleDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.collapsibleSection')}
-        description={t('storybook.demo.clickToExpandOrCollapse')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="default"
         size="md"
         collapsible={true}
         defaultCollapsed={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.collapsibleContentDescription')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -187,14 +186,14 @@ const OutlinedDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.outlinedVariant')}
-        description={t('storybook.demo.outlinedVariantDescription')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="outlined"
         size="md"
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.outlinedVariantContent')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -205,14 +204,14 @@ const ElevatedDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.elevatedVariant')}
-        description={t('storybook.demo.elevatedVariantDescription')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="elevated"
         size="md"
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.elevatedVariantContent')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -223,14 +222,14 @@ const SmallDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.smallSize')}
-        description={t('storybook.demo.smallSectionCard')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="default"
         size="sm"
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.smallContent')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -241,14 +240,14 @@ const LargeDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.largeSize')}
-        description={t('storybook.demo.largeSectionCard')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="default"
         size="lg"
         collapsible={false}
         loading={false}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.largeContent')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -259,14 +258,14 @@ const LoadingDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('storybook.demo.loadingSection')}
-        description={t('storybook.demo.sectionIsLoading')}
+        title="Eksempel Tekst"
+        description="Eksempel Tekst"
         variant="default"
         size="md"
         collapsible={false}
         loading={true}
       >
-        <Paragraph data-size="sm">{t('storybook.demo.content')}</Paragraph>
+        <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
       </SectionCard>
     </div>
   );
@@ -278,8 +277,8 @@ const WithSubComponentsDemo = () => {
     <div style={{ width: '600px' }}>
       <SectionCard variant="default" size="md">
         <SectionCardHeader
-          title={t('storybook.demo.sectionTitle')}
-          description={t('storybook.demo.sectionDescription')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
           icon={<Settings size={20} />}
           actions={
             <Button onClick={fn()} data-color="accent" data-size="sm">
@@ -288,7 +287,7 @@ const WithSubComponentsDemo = () => {
           }
         />
         <SectionCardContent>
-          <Paragraph data-size="sm">{t('storybook.demo.subComponentsDescription')}</Paragraph>
+          <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </SectionCardContent>
         <SectionCardFooter alignment="right">
           <Button onClick={fn()} data-color="neutral" data-size="sm">

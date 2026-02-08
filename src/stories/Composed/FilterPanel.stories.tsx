@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { FilterPanel, type FilterField, type FilterCondition } from '../../index';
 import { Button } from '@digdir/designsystemet-react';
 
@@ -94,7 +93,7 @@ export const Default: Story = {
     const anchorRef = { current: null } as React.RefObject<HTMLElement>;
     return (
       <div style={{ padding: 'var(--ds-spacing-4)', minHeight: '400px' }}>
-        <Button onClick={() => setIsOpen(true)}>{t('storybook.filterPanel.openFilter')}</Button>
+        <Button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</Button>
         <FilterPanel
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -102,7 +101,7 @@ export const Default: Story = {
           conditions={conditions}
           onChange={setConditions}
           anchorRef={anchorRef}
-          title={t('storybook.filterPanel.filterData')}
+          title="Eksempel Tekst"
         />
       </div>
     );
@@ -136,7 +135,7 @@ export const WithConditions: Story = {
     const anchorRef = { current: null } as React.RefObject<HTMLElement>;
     return (
       <div style={{ padding: 'var(--ds-spacing-4)', minHeight: '400px' }}>
-        <Button onClick={() => setIsOpen(true)}>{t('storybook.filterPanel.openFilter')}</Button>
+        <Button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</Button>
         <FilterPanel
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -144,7 +143,7 @@ export const WithConditions: Story = {
           conditions={conditions}
           onChange={setConditions}
           anchorRef={anchorRef}
-          title={t('storybook.filterPanel.filterData')}
+          title="Eksempel Tekst"
         />
       </div>
     );
@@ -174,7 +173,7 @@ export const WithLoading: Story = {
     const anchorRef = { current: null } as React.RefObject<HTMLElement>;
     return (
       <div style={{ padding: 'var(--ds-spacing-4)', minHeight: '400px' }}>
-        <Button onClick={() => setIsOpen(true)}>{t('storybook.filterPanel.openFilter')}</Button>
+        <Button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</Button>
         <FilterPanel
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -182,7 +181,7 @@ export const WithLoading: Story = {
           conditions={conditions}
           onChange={setConditions}
           anchorRef={anchorRef}
-          title={t('storybook.filterPanel.filterData')}
+          title="Eksempel Tekst"
         />
       </div>
     );
@@ -201,7 +200,7 @@ export const WithApplyButton: Story = {
     const anchorRef = { current: null } as React.RefObject<HTMLElement>;
     return (
       <div style={{ padding: 'var(--ds-spacing-4)', minHeight: '400px' }}>
-        <Button onClick={() => setIsOpen(true)}>{t('storybook.filterPanel.openFilter')}</Button>
+        <Button onClick={() => setIsOpen(true)}>"Eksempel Tekst"</Button>
         <FilterPanel
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -213,9 +212,9 @@ export const WithApplyButton: Story = {
             setIsOpen(false);
           }}
           anchorRef={anchorRef}
-          title={t('storybook.filterPanel.filterData')}
+          title="Eksempel Tekst"
           showApplyButton
-          applyButtonText={t('storybook.filterPanel.apply')}
+          applyButtonText="Eksempel Tekst"
         />
       </div>
     );

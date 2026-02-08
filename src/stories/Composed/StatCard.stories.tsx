@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { StatCard, StatCardGrid } from '../../composed/StatCard';
 import { Users, DollarSign, TrendingUp, Activity } from 'lucide-react';
 
@@ -69,7 +68,7 @@ const DefaultDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.totalUsers')}
+      label="Eksempel Tekst"
       value={1250}
       variant="default"
       size="md"
@@ -90,7 +89,7 @@ const WithIconDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.totalUsers')}
+      label="Eksempel Tekst"
       value={1250}
       icon={<Users size={24} />}
       variant="default"
@@ -112,7 +111,7 @@ const TrendUpDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.revenue')}
+      label="Eksempel Tekst"
       value="$45,230"
       trend={{
         direction: 'up',
@@ -139,7 +138,7 @@ const TrendDownDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.activeUsers')}
+      label="Eksempel Tekst"
       value={892}
       trend={{
         direction: 'down',
@@ -166,7 +165,7 @@ const TrendNeutralDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.orders')}
+      label="Eksempel Tekst"
       value={1240}
       trend={{
         direction: 'neutral',
@@ -193,7 +192,7 @@ const SmallDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.smallCard')}
+      label="Eksempel Tekst"
       value={100}
       icon={<Users size={20} />}
       variant="default"
@@ -215,7 +214,7 @@ const LargeDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.largeCard')}
+      label="Eksempel Tekst"
       value={5000}
       icon={<Users size={32} />}
       variant="default"
@@ -236,7 +235,7 @@ const SuccessDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.story.success')}
+      label="Eksempel Tekst"
       value={100}
       icon={<Users size={24} />}
       variant="success"
@@ -258,7 +257,7 @@ const WarningDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.warning')}
+      label="Eksempel Tekst"
       value={50}
       icon={<Activity size={24} />}
       variant="warning"
@@ -279,7 +278,7 @@ const DangerDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.danger')}
+      label="Eksempel Tekst"
       value={25}
       icon={<TrendingUp size={24} />}
       variant="danger"
@@ -300,7 +299,7 @@ const InfoDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.info')}
+      label="Eksempel Tekst"
       value={75}
       icon={<DollarSign size={24} />}
       variant="info"
@@ -321,7 +320,7 @@ const LoadingDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.story.loading')}
+      label="Eksempel Tekst"
       value={0}
       variant="default"
       size="md"
@@ -342,7 +341,7 @@ const ClickableDemo = () => {
   const t = useT();
   return (
     <StatCard
-      label={t('storybook.demo.clickableCard')}
+      label="Eksempel Tekst"
       value={500}
       icon={<Users size={24} />}
       variant="default"
@@ -366,28 +365,28 @@ const GridDemo = () => {
   return (
     <StatCardGrid columns={4} gap="md">
       <StatCard
-        label={t('storybook.demo.users')}
+        label="Eksempel Tekst"
         value={1250}
         icon={<Users size={24} />}
         trend={{ direction: 'up', value: '12%' }}
         variant="success"
       />
       <StatCard
-        label={t('storybook.demo.revenue')}
+        label="Eksempel Tekst"
         value="$45,230"
         icon={<DollarSign size={24} />}
         trend={{ direction: 'up', value: '8%' }}
         variant="success"
       />
       <StatCard
-        label={t('storybook.demo.orders')}
+        label="Eksempel Tekst"
         value={892}
         icon={<Activity size={24} />}
         trend={{ direction: 'down', value: '3%' }}
         variant="danger"
       />
       <StatCard
-        label={t('storybook.demo.growth')}
+        label="Eksempel Tekst"
         value="24%"
         icon={<TrendingUp size={24} />}
         trend={{ direction: 'up', value: '5%' }}

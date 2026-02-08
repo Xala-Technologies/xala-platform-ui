@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { AdditionalServicesList } from '../../blocks/AdditionalServicesList';
 import type { AdditionalService } from '../../types';
 

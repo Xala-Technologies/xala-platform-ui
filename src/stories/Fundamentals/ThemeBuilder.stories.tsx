@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Button, Card, Heading, Paragraph } from '../../index';
 import { Palette, Settings, Download, Check } from 'lucide-react';
 
@@ -43,7 +42,7 @@ export const ColorContexts: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.theme.colorContexts')}
+          "Eksempel Tekst"
         </Heading>
 
         {/* Accent */}
@@ -64,7 +63,7 @@ export const ColorContexts: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.theme.accentContext')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             style={{
@@ -72,9 +71,9 @@ export const ColorContexts: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.theme.accentDescription')}
+            "Eksempel Tekst"
           </Paragraph>
-          <Button data-variant="primary">{t('storybook.examples.primaryAction')}</Button>
+          <Button data-variant="primary">"Eksempel Tekst"</Button>
         </div>
 
         {/* Success */}
@@ -95,7 +94,7 @@ export const ColorContexts: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.theme.successContext')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             style={{
@@ -103,9 +102,9 @@ export const ColorContexts: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.theme.successDescription')}
+            "Eksempel Tekst"
           </Paragraph>
-          <Button data-variant="primary">{t('storybook.theme.confirm')}</Button>
+          <Button data-variant="primary">"Eksempel Tekst"</Button>
         </div>
 
         {/* Danger */}
@@ -126,7 +125,7 @@ export const ColorContexts: Story = {
               marginBottom: 'var(--ds-spacing-3)',
             }}
           >
-            {t('storybook.theme.dangerContext')}
+            "Eksempel Tekst"
           </Heading>
           <Paragraph
             style={{
@@ -134,7 +133,7 @@ export const ColorContexts: Story = {
               marginBottom: 'var(--ds-spacing-4)',
             }}
           >
-            {t('storybook.theme.dangerDescription')}
+            "Eksempel Tekst"
           </Paragraph>
           <Button data-variant="primary">{t('platform.common.delete')}</Button>
         </div>
@@ -154,20 +153,20 @@ export const SizeModes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-8)' }}>
         <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-          {t('storybook.theme.sizeModes')}
+          "Eksempel Tekst"
         </Heading>
 
         {/* Small */}
         <div data-size="sm">
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.sizes.small')} (sm) - {t('storybook.theme.compact')}
+            "Eksempel Tekst" (sm) - "Eksempel Tekst"
           </Heading>
           <Card style={{ padding: 'var(--ds-spacing-4)' }}>
             <Paragraph data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-              {t('storybook.theme.compactUIDescription')}
+              "Eksempel Tekst"
             </Paragraph>
             <Button data-variant="primary" data-size="sm">
-              {t('storybook.theme.smallButton')}
+              "Eksempel Tekst"
             </Button>
           </Card>
         </div>
@@ -175,14 +174,14 @@ export const SizeModes: Story = {
         {/* Medium */}
         <div data-size="md">
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.sizes.medium')} (md) - {t('storybook.sizes.default')}
+            "Eksempel Tekst" (md) - "Eksempel Tekst"
           </Heading>
           <Card style={{ padding: 'var(--ds-spacing-6)' }}>
             <Paragraph style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-              {t('storybook.theme.defaultSizeDescription')}
+              "Eksempel Tekst"
             </Paragraph>
             <Button data-variant="primary" data-size="md">
-              {t('storybook.theme.mediumButton')}
+              "Eksempel Tekst"
             </Button>
           </Card>
         </div>
@@ -190,14 +189,14 @@ export const SizeModes: Story = {
         {/* Large */}
         <div data-size="lg">
           <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            {t('storybook.sizes.large')} (lg) - {t('storybook.theme.accessible')}
+            "Eksempel Tekst" (lg) - "Eksempel Tekst"
           </Heading>
           <Card style={{ padding: 'var(--ds-spacing-8)' }}>
             <Paragraph style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-              {t('storybook.theme.largeSizeDescription')}
+              "Eksempel Tekst"
             </Paragraph>
             <Button data-variant="primary" data-size="lg">
-              {t('storybook.theme.largeButton')}
+              "Eksempel Tekst"
             </Button>
           </Card>
         </div>
@@ -232,7 +231,7 @@ export const ThemeTokensInUse: Story = {
             marginBottom: 'var(--ds-spacing-4)',
           }}
         >
-          {t('storybook.theme.cardUsingTokens')}
+          "Eksempel Tekst"
         </Heading>
 
         <Paragraph
@@ -241,7 +240,7 @@ export const ThemeTokensInUse: Story = {
             marginBottom: 'var(--ds-spacing-6)',
           }}
         >
-          {t('storybook.theme.tokensDemonstration')}
+          "Eksempel Tekst"
         </Paragraph>
 
         <div
@@ -260,29 +259,29 @@ export const ThemeTokensInUse: Story = {
             }}
           >
             <li>
-              {t('storybook.theme.background')}: <code>--ds-color-neutral-surface-default</code>
+              "Eksempel Tekst": <code>--ds-color-neutral-surface-default</code>
             </li>
             <li>
-              {t('storybook.theme.border')}: <code>--ds-color-neutral-border-default</code>
+              "Eksempel Tekst": <code>--ds-color-neutral-border-default</code>
             </li>
             <li>
-              {t('storybook.theme.borderRadius')}: <code>--ds-border-radius-lg</code>
+              "Eksempel Tekst": <code>--ds-border-radius-lg</code>
             </li>
             <li>
-              {t('storybook.theme.shadow')}: <code>--ds-shadow-md</code>
+              "Eksempel Tekst": <code>--ds-shadow-md</code>
             </li>
             <li>
-              {t('storybook.theme.spacing')}: <code>--ds-spacing-*</code>
+              "Eksempel Tekst": <code>--ds-spacing-*</code>
             </li>
             <li>
-              {t('storybook.theme.textColor')}: <code>--ds-color-neutral-text-default</code>
+              "Eksempel Tekst": <code>--ds-color-neutral-text-default</code>
             </li>
           </ul>
         </div>
 
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)' }}>
-          <Button data-variant="primary">{t('storybook.theme.primary')}</Button>
-          <Button data-variant="secondary">{t('storybook.theme.secondary')}</Button>
+          <Button data-variant="primary">"Eksempel Tekst"</Button>
+          <Button data-variant="secondary">"Eksempel Tekst"</Button>
         </div>
       </Card>
     );
@@ -333,7 +332,7 @@ export const CreatingCustomThemes: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.theme.creatingCustomThemes')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -363,7 +362,7 @@ export const CreatingCustomThemes: Story = {
               </div>
               <div style={{ flex: 1 }}>
                 <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-2)' }}>
-                  {t('storybook.theme.step')} {step}: {t(titleKey)}
+                  "Eksempel Tekst" {step}: {t(titleKey)}
                 </Heading>
                 <Paragraph style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
                   {t(descriptionKey)}
@@ -406,7 +405,7 @@ export const ThemeBestPractices: Story = {
     return (
       <Card style={{ padding: 'var(--ds-spacing-8)' }}>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.theme.bestPractices')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -420,7 +419,7 @@ export const ThemeBestPractices: Story = {
                 marginBottom: 'var(--ds-spacing-3)',
               }}
             >
-              {t('storybook.bestPractices.do')}
+              "Eksempel Tekst"
             </Heading>
             <div
               style={{
@@ -460,7 +459,7 @@ export const ThemeBestPractices: Story = {
                 marginBottom: 'var(--ds-spacing-3)',
               }}
             >
-              {t('storybook.bestPractices.dont')}
+              "Eksempel Tekst"
             </Heading>
             <div
               style={{

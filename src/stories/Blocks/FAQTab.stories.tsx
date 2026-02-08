@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { FAQTab } from '../../blocks/FAQTab';
 import { Paragraph } from '@digdir/designsystemet-react';
 

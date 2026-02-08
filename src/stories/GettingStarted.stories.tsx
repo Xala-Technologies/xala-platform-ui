@@ -15,7 +15,6 @@ import {
   Terminal,
   Shield,
 } from 'lucide-react';
-import { useT } from '@xala-technologies/i18n';
 
 // Docs description is localized via the story components
 // The meta description is minimal since the actual content is in the story components
@@ -71,7 +70,7 @@ export const InstallationSteps: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.installation')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -141,12 +140,12 @@ export const BasicSetup: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.setup')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            1. {t('storybook.gettingStarted.configureTheme')}
+            1. "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -172,7 +171,7 @@ function App() {
 
         <div style={{ marginBottom: 'var(--ds-spacing-6)' }}>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            2. {t('storybook.gettingStarted.setupI18n')}
+            2. "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -198,7 +197,7 @@ function App() {
 
         <div>
           <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-            3. {t('storybook.gettingStarted.importComponents')}
+            3. "Eksempel Tekst"
           </Heading>
           <pre
             style={{
@@ -236,7 +235,7 @@ export const FirstComponent: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.yourFirstComponent')}
+          "Eksempel Tekst"
         </Heading>
 
         <div
@@ -245,7 +244,7 @@ export const FirstComponent: Story = {
           {/* Code */}
           <div>
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-              {t('storybook.gettingStarted.code')}
+              "Eksempel Tekst"
             </Heading>
             <pre
               style={{
@@ -262,7 +261,6 @@ export const FirstComponent: Story = {
   Heading,
   Paragraph
 } from '../index';
-import { useTranslation } from '@xala-technologies/platform/i18n';
 
 export function WelcomeCard() {
   const { t } = useTranslation();
@@ -302,11 +300,11 @@ export function WelcomeCard() {
           {/* Preview */}
           <div>
             <Heading level={3} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-              {t('storybook.gettingStarted.preview')}
+              "Eksempel Tekst"
             </Heading>
             <Card style={{ padding: 'var(--ds-spacing-6)' }}>
               <Heading level={2} data-size="md" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                {t('storybook.overview.welcome')}
+                "Eksempel Tekst"
               </Heading>
               <Paragraph
                 style={{
@@ -314,9 +312,9 @@ export function WelcomeCard() {
                   color: 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                {t('storybook.overview.subtitle')}
+                "Eksempel Tekst"
               </Paragraph>
-              <Button data-variant="primary">{t('storybook.form.getStarted')}</Button>
+              <Button data-variant="primary">"Eksempel Tekst"</Button>
             </Card>
           </div>
         </div>
@@ -330,12 +328,12 @@ export function WelcomeCard() {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-success-text-default)' }}>
-            <strong>{t('storybook.gettingStarted.bestPractices')}:</strong>
-            <br />• {t('storybook.gettingStarted.platformComponents')}
-            <br />• {t('storybook.gettingStarted.designTokens')}
-            <br />• {t('storybook.gettingStarted.i18nText')}
-            <br />• {t('storybook.gettingStarted.semanticHtml')}
-            <br />• {t('storybook.gettingStarted.accessibleProps')}
+            <strong>"Eksempel Tekst":</strong>
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
+            <br />• "Eksempel Tekst"
           </Paragraph>
         </div>
       </div>
@@ -390,7 +388,7 @@ export const CommonPatterns: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.commonPatterns')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-spacing-6)' }}>
@@ -491,7 +489,7 @@ export const DesignTokensInAction: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.designTokensInAction')}
+          "Eksempel Tekst"
         </Heading>
 
         <div
@@ -571,8 +569,8 @@ export const DesignTokensInAction: Story = {
           }}
         >
           <Paragraph data-size="sm" style={{ color: 'var(--ds-color-accent-text-default)' }}>
-            <strong>{t('storybook.gettingStarted.proTip')}:</strong>{' '}
-            {t('storybook.gettingStarted.proTipText')}
+            <strong>"Eksempel Tekst":</strong>{' '}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
       </div>
@@ -593,7 +591,6 @@ export const RealWorldPatterns: Story = {
         descriptionKey: 'storybook.gettingStarted.formValidationDesc',
         code: `import { Textfield, Button } from '../index';
 import { useForm } from 'react-hook-form';
-import { useTranslation } from '@xala-technologies/platform/i18n';
 
 export function ContactForm() {
   const { t } = useTranslation();
@@ -739,7 +736,7 @@ export function DashboardGrid() {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.realWorldPatterns')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
@@ -786,7 +783,7 @@ export const InteractiveQuickStart: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.interactiveQuickStart')}
+          "Eksempel Tekst"
         </Heading>
 
         <div
@@ -796,7 +793,7 @@ export const InteractiveQuickStart: Story = {
           <div>
             <Card style={{ padding: 'var(--ds-spacing-6)' }}>
               <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                {t('storybook.gettingStarted.buildFirstComponent')}
+                "Eksempel Tekst"
               </Heading>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
@@ -839,16 +836,16 @@ export const InteractiveQuickStart: Story = {
                     >
                       1
                     </div>
-                    <strong>{t('storybook.gettingStarted.enterYourName')}</strong>
+                    <strong>"Eksempel Tekst"</strong>
                   </div>
                   <Textfield
-                    label={t('storybook.form.yourName')}
+                    label="Eksempel Tekst"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
                       if (e.target.value && step === 1) setStep(2);
                     }}
-                    placeholder={t('storybook.form.enterName')}
+                    placeholder="Eksempel Tekst"
                     data-size="sm"
                   />
                 </div>
@@ -893,10 +890,10 @@ export const InteractiveQuickStart: Story = {
                     >
                       2
                     </div>
-                    <strong>{t('storybook.gettingStarted.seePreview')}</strong>
+                    <strong>"Eksempel Tekst"</strong>
                   </div>
                   <Paragraph data-size="sm">
-                    {t('storybook.gettingStarted.componentUpdatesRealtime')}
+                    "Eksempel Tekst"
                   </Paragraph>
                 </div>
 
@@ -923,7 +920,7 @@ export const InteractiveQuickStart: Story = {
                             : 'var(--ds-color-neutral-border-default)',
                       }}
                     />
-                    <strong>{t('storybook.gettingStarted.readyToBuild')}</strong>
+                    <strong>"Eksempel Tekst"</strong>
                   </div>
                 </div>
               </div>
@@ -934,7 +931,7 @@ export const InteractiveQuickStart: Story = {
                   style={{ width: '100%', marginTop: 'var(--ds-spacing-4)' }}
                   onClick={() => setStep(3)}
                 >
-                  {t('storybook.gettingStarted.completeTutorial')}
+                  "Eksempel Tekst"
                 </Button>
               )}
             </Card>
@@ -944,7 +941,7 @@ export const InteractiveQuickStart: Story = {
           <div>
             <Card style={{ padding: 'var(--ds-spacing-6)', minHeight: '400px' }}>
               <Heading level={3} data-size="md" style={{ marginBottom: 'var(--ds-spacing-4)' }}>
-                {t('storybook.gettingStarted.livePreview')}
+                "Eksempel Tekst"
               </Heading>
 
               {name ? (
@@ -963,9 +960,9 @@ export const InteractiveQuickStart: Story = {
                       color: 'var(--ds-color-neutral-text-subtle)',
                     }}
                   >
-                    {t('storybook.gettingStarted.buildingWith')}
+                    "Eksempel Tekst"
                   </Paragraph>
-                  <Button data-variant="primary">{t('storybook.form.getStarted')}</Button>
+                  <Button data-variant="primary">"Eksempel Tekst"</Button>
                 </Card>
               ) : (
                 <div
@@ -975,14 +972,14 @@ export const InteractiveQuickStart: Story = {
                     color: 'var(--ds-color-neutral-text-subtle)',
                   }}
                 >
-                  <Paragraph>{t('storybook.gettingStarted.enterNameToPreview')}</Paragraph>
+                  <Paragraph>"Eksempel Tekst"</Paragraph>
                 </div>
               )}
 
               {name && (
                 <div style={{ marginTop: 'var(--ds-spacing-6)' }}>
                   <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
-                    {t('storybook.gettingStarted.theCode')}
+                    "Eksempel Tekst"
                   </Heading>
                   <pre
                     style={{
@@ -1056,7 +1053,7 @@ export const NextSteps: Story = {
     return (
       <div>
         <Heading level={2} data-size="lg" style={{ marginBottom: 'var(--ds-spacing-6)' }}>
-          {t('storybook.gettingStarted.nextSteps')}
+          "Eksempel Tekst"
         </Heading>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-5)' }}>

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Heading, Paragraph, Label, Link } from '../../index';
 
 const meta: Meta = {
@@ -44,12 +43,12 @@ export const Headings: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Heading level={1}>{t('storybook.demo.headingLevel')} 1</Heading>
-        <Heading level={2}>{t('storybook.demo.headingLevel')} 2</Heading>
-        <Heading level={3}>{t('storybook.demo.headingLevel')} 3</Heading>
-        <Heading level={4}>{t('storybook.demo.headingLevel')} 4</Heading>
-        <Heading level={5}>{t('storybook.demo.headingLevel')} 5</Heading>
-        <Heading level={6}>{t('storybook.demo.headingLevel')} 6</Heading>
+        <Heading level={1}>"Eksempel Tekst" 1</Heading>
+        <Heading level={2}>"Eksempel Tekst" 2</Heading>
+        <Heading level={3}>"Eksempel Tekst" 3</Heading>
+        <Heading level={4}>"Eksempel Tekst" 4</Heading>
+        <Heading level={5}>"Eksempel Tekst" 5</Heading>
+        <Heading level={6}>"Eksempel Tekst" 6</Heading>
       </div>
     );
   },
@@ -61,25 +60,25 @@ export const HeadingSizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Heading level={2} data-size="2xs">
-          2XS {t('storybook.demo.heading')}
+          2XS "Eksempel Tekst"
         </Heading>
         <Heading level={2} data-size="xs">
-          XS {t('storybook.demo.heading')}
+          XS "Eksempel Tekst"
         </Heading>
         <Heading level={2} data-size="sm">
-          SM {t('storybook.demo.heading')}
+          SM "Eksempel Tekst"
         </Heading>
         <Heading level={2} data-size="md">
-          MD {t('storybook.demo.heading')}
+          MD "Eksempel Tekst"
         </Heading>
         <Heading level={2} data-size="lg">
-          LG {t('storybook.demo.heading')}
+          LG "Eksempel Tekst"
         </Heading>
         <Heading level={2} data-size="xl">
-          XL {t('storybook.demo.heading')}
+          XL "Eksempel Tekst"
         </Heading>
         <Heading level={2} data-size="2xl">
-          2XL {t('storybook.demo.heading')}
+          2XL "Eksempel Tekst"
         </Heading>
       </div>
     );
@@ -92,13 +91,13 @@ export const Paragraphs: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Paragraph data-size="sm">
-          {t('storybook.demo.smallParagraph')}. {t('storybook.demo.loremIpsum')}
+          "Eksempel Tekst". "Eksempel Tekst"
         </Paragraph>
         <Paragraph data-size="md">
-          {t('storybook.demo.mediumParagraphDefault')}. {t('storybook.demo.loremIpsum')}
+          "Eksempel Tekst". "Eksempel Tekst"
         </Paragraph>
         <Paragraph data-size="lg">
-          {t('storybook.demo.largeParagraph')}. {t('storybook.demo.loremIpsum')}
+          "Eksempel Tekst". "Eksempel Tekst"
         </Paragraph>
       </div>
     );
@@ -110,9 +109,9 @@ export const LeadParagraph: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Heading level={1}>{t('storybook.demo.articleTitle')}</Heading>
-        <Paragraph data-size="lg">{t('storybook.demo.leadParagraphText')}</Paragraph>
-        <Paragraph>{t('storybook.demo.regularParagraphText')}</Paragraph>
+        <Heading level={1}>"Eksempel Tekst"</Heading>
+        <Paragraph data-size="lg">"Eksempel Tekst"</Paragraph>
+        <Paragraph>"Eksempel Tekst"</Paragraph>
       </div>
     );
   },
@@ -123,9 +122,9 @@ export const Labels: Story = {
     const t = useT();
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-        <Label data-size="sm">{t('storybook.demo.smallLabel')}</Label>
-        <Label data-size="md">{t('storybook.demo.mediumLabel')}</Label>
-        <Label data-size="lg">{t('storybook.demo.largeLabel')}</Label>
+        <Label data-size="sm">"Eksempel Tekst"</Label>
+        <Label data-size="md">"Eksempel Tekst"</Label>
+        <Label data-size="lg">"Eksempel Tekst"</Label>
       </div>
     );
   },
@@ -136,10 +135,10 @@ export const InlineLink: Story = {
     const t = useT();
     return (
       <Paragraph>
-        {t('storybook.demo.readMoreAbout')}{' '}
-        <Link href="#">{t('storybook.demo.bookingPolicies')}</Link> {t('storybook.demo.and')}{' '}
-        <Link href="#">{t('storybook.demo.termsOfService')}</Link>{' '}
-        {t('storybook.demo.beforeMakingReservation')}
+        "Eksempel Tekst"{' '}
+        <Link href="#">"Eksempel Tekst"</Link> "Eksempel Tekst"{' '}
+        <Link href="#">"Eksempel Tekst"</Link>{' '}
+        "Eksempel Tekst"
       </Paragraph>
     );
   },
@@ -151,23 +150,23 @@ export const CombinedExample: Story = {
     return (
       <article>
         <Heading level={1} data-size="xl">
-          {t('storybook.demo.welcomeToThePlatform')}
+          "Eksempel Tekst"
         </Heading>
-        <Paragraph data-size="lg">{t('storybook.demo.platformDescription')}</Paragraph>
+        <Paragraph data-size="lg">"Eksempel Tekst"</Paragraph>
         <Heading level={2} data-size="md">
-          {t('storybook.demo.howItWorks')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph>
-          {t('storybook.demo.browseAvailable')} <Link href="#">{t('storybook.demo.listings')}</Link>
-          , {t('storybook.demo.selectPreferredDateAndTime')}.
+          "Eksempel Tekst" <Link href="#">"Eksempel Tekst"</Link>
+          , "Eksempel Tekst".
         </Paragraph>
         <Heading level={2} data-size="md">
-          {t('storybook.demo.getStarted')}
+          "Eksempel Tekst"
         </Heading>
         <Paragraph>
-          {t('storybook.demo.createAccountToStart')}. {t('storybook.demo.needHelp')}{' '}
-          <Link href="#">{t('storybook.demo.faq')}</Link> {t('storybook.demo.or')}{' '}
-          <Link href="#">{t('storybook.demo.contactUs')}</Link>.
+          "Eksempel Tekst". "Eksempel Tekst"{' '}
+          <Link href="#">"Eksempel Tekst"</Link> "Eksempel Tekst"{' '}
+          <Link href="#">"Eksempel Tekst"</Link>.
         </Paragraph>
       </article>
     );
@@ -181,38 +180,38 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.headingLevels')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
             <Heading level={1} data-size="lg">
-              H1 {t('storybook.demo.heading')}
+              H1 "Eksempel Tekst"
             </Heading>
             <Heading level={2} data-size="md">
-              H2 {t('storybook.demo.heading')}
+              H2 "Eksempel Tekst"
             </Heading>
             <Heading level={3} data-size="sm">
-              H3 {t('storybook.demo.heading')}
+              H3 "Eksempel Tekst"
             </Heading>
           </div>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.paragraphSizes')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <Paragraph data-size="sm">{t('storybook.demo.smallParagraphText')}</Paragraph>
-            <Paragraph data-size="md">{t('storybook.demo.mediumParagraphTextDefault')}</Paragraph>
-            <Paragraph data-size="lg">{t('storybook.demo.largeParagraphTextLead')}</Paragraph>
+            <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Paragraph data-size="lg">"Eksempel Tekst"</Paragraph>
           </div>
         </div>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.labels')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
-            <Label data-size="sm">{t('storybook.demo.smallLabel')}</Label>
-            <Label data-size="md">{t('storybook.demo.mediumLabel')}</Label>
-            <Label data-size="lg">{t('storybook.demo.largeLabel')}</Label>
+            <Label data-size="sm">"Eksempel Tekst"</Label>
+            <Label data-size="md">"Eksempel Tekst"</Label>
+            <Label data-size="lg">"Eksempel Tekst"</Label>
           </div>
         </div>
       </div>

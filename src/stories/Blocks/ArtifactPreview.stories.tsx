@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ArtifactPreview, type Artifact, Stack } from '../../index';
 
 /**
@@ -106,7 +105,7 @@ export const Markdown: Story = {
       id: '1',
       name: t('storybook.artifactPreview.readme'),
       type: 'markdown',
-      content: `# ${t('storybook.artifactPreview.readme')}\n\n${t('storybook.artifactPreview.readmeContent')}`,
+      content: `# $"Eksempel Tekst"\n\n$"Eksempel Tekst"`,
       path: '/README.md',
     };
     return (
@@ -147,7 +146,7 @@ export const Multiple: Story = {
         id: '3',
         name: t('storybook.artifactPreview.readme'),
         type: 'markdown',
-        content: `# ${t('storybook.artifactPreview.readme')}`,
+        content: `# $"Eksempel Tekst"`,
         path: '/README.md',
       },
     ];

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ToastProvider, useToast, Button, Stack } from '../../index';
 
 /**
@@ -77,7 +76,7 @@ function ToastTrigger() {
           })
         }
       >
-        {t('storybook.notificationToast.showSuccess')}
+        "Eksempel Tekst"
       </Button>
       <Button
         data-color="danger"
@@ -89,7 +88,7 @@ function ToastTrigger() {
           })
         }
       >
-        {t('storybook.notificationToast.showError')}
+        "Eksempel Tekst"
       </Button>
       <Button
         data-color="warning"
@@ -101,7 +100,7 @@ function ToastTrigger() {
           })
         }
       >
-        {t('storybook.notificationToast.showWarning')}
+        "Eksempel Tekst"
       </Button>
       <Button
         data-color="info"
@@ -113,7 +112,7 @@ function ToastTrigger() {
           })
         }
       >
-        {t('storybook.notificationToast.showInfo')}
+        "Eksempel Tekst"
       </Button>
     </Stack>
   );
@@ -156,7 +155,7 @@ export const WithAction: Story = {
               })
             }
           >
-            {t('storybook.notificationToast.showWithAction')}
+            "Eksempel Tekst"
           </Button>
         </Stack>
         <NotificationToast />
@@ -186,7 +185,7 @@ export const CustomDuration: Story = {
               })
             }
           >
-            {t('storybook.notificationToast.showCustomDuration')}
+            "Eksempel Tekst"
           </Button>
         </Stack>
         <NotificationToast />
@@ -219,7 +218,7 @@ export const Multiple: Story = {
               );
             }}
           >
-            {t('storybook.notificationToast.showMultiple')}
+            "Eksempel Tekst"
           </Button>
         </Stack>
         <NotificationToast />

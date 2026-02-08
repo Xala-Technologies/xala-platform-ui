@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { ArtifactValidationPanel, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,7 +40,7 @@ export const SinglePassed: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactValidation.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactValidationPanel
               validationResult={{
                 id: '1',
@@ -49,7 +48,7 @@ export const SinglePassed: Story = {
                 status: 'passed',
                 message: t('storybook.artifactValidation.syntaxValid'),
               }}
-              title={t('storybook.artifactValidation.validationResults')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -71,7 +70,7 @@ export const SingleFailed: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactValidation.failed')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactValidationPanel
               validationResult={{
                 id: '1',
@@ -83,7 +82,7 @@ export const SingleFailed: Story = {
                   t('storybook.artifactValidation.errorLine2'),
                 ],
               }}
-              title={t('storybook.artifactValidation.validationResults')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -105,7 +104,7 @@ export const MultipleResults: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactValidation.multiple')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactValidationPanel
               validationResults={[
                 {
@@ -137,7 +136,7 @@ export const MultipleResults: Story = {
                   message: t('storybook.artifactValidation.testsRunning'),
                 },
               ]}
-              title={t('storybook.artifactValidation.validationResults')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -159,7 +158,7 @@ export const WithWarning: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.artifactValidation.warning')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ArtifactValidationPanel
               validationResult={{
                 id: '1',
@@ -171,7 +170,7 @@ export const WithWarning: Story = {
                   t('storybook.artifactValidation.performanceDetail2'),
                 ],
               }}
-              title={t('storybook.artifactValidation.validationResults')}
+              title="Eksempel Tekst"
             />
           </Stack>
         </Card>

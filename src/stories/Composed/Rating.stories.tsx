@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { Rating, RatingDisplay } from '../../composed/Rating';
 import { Heart } from 'lucide-react';
 
@@ -206,7 +205,7 @@ const WithLabelDemo = () => {
       color="gold"
       readonly={false}
       showValue={false}
-      label={t('storybook.demo.rateThisProduct')}
+      label="Eksempel Tekst"
       onChange={fn()}
     />
   );

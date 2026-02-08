@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { TableRowActions, Stack, Paragraph, Card } from '../../index';
 import { EyeIcon, EditIcon, TrashIcon, CopyIcon } from '../../index';
 
@@ -42,7 +41,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableRowActions
               actions={[
                 {
@@ -86,7 +85,7 @@ export const AllVariants: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableRowActions
               actions={[
                 {
@@ -134,7 +133,7 @@ export const WithDisabledActions: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableRowActions
               actions={[
                 {
@@ -180,7 +179,7 @@ export const WithCopyAction: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.tableRowActions.exampleRow')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <TableRowActions
               actions={[
                 {

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useT } from '@xala-technologies/i18n';
 import { Progress, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -41,8 +40,8 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.progress.description')}</Paragraph>
-            <Progress value={50} aria-label={t('storybook.progress.progressLabel')} />
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
+            <Progress value={50} aria-label="Eksempel Tekst" />
           </Stack>
         </Card>
       </Stack>
@@ -63,23 +62,23 @@ export const Colors: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.progress.colors')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-3)">
               <Progress
                 value={75}
                 data-color="success"
-                aria-label={t('storybook.progress.success')}
+                aria-label="Eksempel Tekst"
               />
-              <Progress value={50} data-color="info" aria-label={t('storybook.progress.info')} />
+              <Progress value={50} data-color="info" aria-label="Eksempel Tekst" />
               <Progress
                 value={30}
                 data-color="warning"
-                aria-label={t('storybook.progress.warning')}
+                aria-label="Eksempel Tekst"
               />
               <Progress
                 value={10}
                 data-color="danger"
-                aria-label={t('storybook.progress.danger')}
+                aria-label="Eksempel Tekst"
               />
             </Stack>
           </Stack>
@@ -102,11 +101,11 @@ export const Sizes: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.progress.sizes')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-3)">
-              <Progress value={50} data-size="sm" aria-label={t('storybook.progress.small')} />
-              <Progress value={50} data-size="md" aria-label={t('storybook.progress.medium')} />
-              <Progress value={50} data-size="lg" aria-label={t('storybook.progress.large')} />
+              <Progress value={50} data-size="sm" aria-label="Eksempel Tekst" />
+              <Progress value={50} data-size="md" aria-label="Eksempel Tekst" />
+              <Progress value={50} data-size="lg" aria-label="Eksempel Tekst" />
             </Stack>
           </Stack>
         </Card>
@@ -128,13 +127,13 @@ export const Values: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.progress.values')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-3)">
-              <Progress value={0} aria-label={t('storybook.progress.zero')} />
-              <Progress value={25} aria-label={t('storybook.progress.twentyFive')} />
-              <Progress value={50} aria-label={t('storybook.progress.fifty')} />
-              <Progress value={75} aria-label={t('storybook.progress.seventyFive')} />
-              <Progress value={100} aria-label={t('storybook.progress.oneHundred')} />
+              <Progress value={0} aria-label="Eksempel Tekst" />
+              <Progress value={25} aria-label="Eksempel Tekst" />
+              <Progress value={50} aria-label="Eksempel Tekst" />
+              <Progress value={75} aria-label="Eksempel Tekst" />
+              <Progress value={100} aria-label="Eksempel Tekst" />
             </Stack>
           </Stack>
         </Card>

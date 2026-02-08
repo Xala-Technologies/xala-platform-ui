@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { FormActions, Stack, Paragraph } from '../../index';
 
 /**
@@ -65,10 +64,10 @@ export const Default: Story = {
           }}
         >
           <Stack spacing="var(--ds-spacing-4)" style={{ padding: 'var(--ds-spacing-4)' }}>
-            <Paragraph data-size="md">{t('storybook.formActions.formContent')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
           </Stack>
           <FormActions
-            submitText={t('storybook.formActions.save')}
+            submitText="Eksempel Tekst"
             onCancel={() => console.log('Cancelled')}
           />
         </form>
@@ -92,11 +91,11 @@ export const CustomCancelText: Story = {
           }}
         >
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.formActions.formContent')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
           <FormActions
-            submitText={t('storybook.formActions.submit')}
-            cancelText={t('storybook.formActions.close')}
+            submitText="Eksempel Tekst"
+            cancelText="Eksempel Tekst"
             onCancel={() => console.log('Closed')}
           />
         </form>
@@ -122,12 +121,12 @@ export const Loading: Story = {
           }}
         >
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.formActions.formContent')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
           <FormActions
-            submitText={t('storybook.formActions.save')}
+            submitText="Eksempel Tekst"
             isSubmitting={isSubmitting}
-            submittingText={t('storybook.formActions.saving')}
+            submittingText="Eksempel Tekst"
             onCancel={() => console.log('Cancelled')}
           />
         </form>
@@ -153,12 +152,12 @@ export const CustomSubmittingText: Story = {
           }}
         >
           <div style={{ padding: 'var(--ds-spacing-4)' }}>
-            <p>{t('storybook.formActions.formContent')}</p>
+            <p>"Eksempel Tekst"</p>
           </div>
           <FormActions
-            submitText={t('storybook.formActions.create')}
+            submitText="Eksempel Tekst"
             isSubmitting={isSubmitting}
-            submittingText={t('storybook.formActions.creating')}
+            submittingText="Eksempel Tekst"
             onCancel={() => console.log('Cancelled')}
           />
         </form>

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import {
   NotificationBell,
   ConversationListItem,
@@ -51,7 +50,7 @@ export const NotificationBellExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.messaging.notificationBell')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <NotificationBell count={5} onClick={() => console.log('Bell clicked')} />
           </Stack>
         </Card>
@@ -73,7 +72,7 @@ export const ConversationListItemExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.messaging.conversationItem')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <ConversationListItem
               conversation={{
                 id: '1',
@@ -107,7 +106,7 @@ export const ConversationListExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.messaging.conversationList')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <div
               style={{
                 height: '400px',
@@ -134,7 +133,7 @@ export const ConversationListExample: Story = {
                 ]}
                 selectedId={selectedId}
                 onSelect={setSelectedId}
-                emptyMessage={t('storybook.messaging.noConversations')}
+                emptyMessage="Eksempel Tekst"
               />
             </div>
           </Stack>
@@ -157,7 +156,7 @@ export const MessageBubbleExample: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.messaging.messageBubble')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <Stack spacing="var(--ds-spacing-2)">
               <MessageBubble
                 message={{

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Link, Paragraph } from '../../index';
 import { ExternalLinkIcon, ArrowRightIcon, DownloadIcon } from '@navikt/aksel-icons';
 
@@ -181,7 +180,7 @@ type Story = StoryObj;
 export const Default: Story = {
   render: function Render() {
     const t = useT();
-    return <Link href="#">{t('storybook.demo.defaultLink')}</Link>;
+    return <Link href="#">"Eksempel Tekst"</Link>;
   },
 };
 
@@ -190,10 +189,10 @@ export const InText: Story = {
     const t = useT();
     return (
       <Paragraph>
-        {t('storybook.demo.readMoreAbout')}{' '}
-        <Link href="#">{t('storybook.demo.bookingPolicies')}</Link> {t('storybook.demo.and')}{' '}
-        <Link href="#">{t('storybook.demo.termsOfService')}</Link>{' '}
-        {t('storybook.demo.beforeMakingReservation')}
+        "Eksempel Tekst"{' '}
+        <Link href="#">"Eksempel Tekst"</Link> "Eksempel Tekst"{' '}
+        <Link href="#">"Eksempel Tekst"</Link>{' '}
+        "Eksempel Tekst"
       </Paragraph>
     );
   },
@@ -204,7 +203,7 @@ export const External: Story = {
     const t = useT();
     return (
       <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
-        {t('storybook.demo.designsystemetDocumentation')} ↗
+        "Eksempel Tekst" ↗
       </Link>
     );
   },
@@ -220,14 +219,14 @@ export const WithIcon: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         <Link href="https://designsystemet.no/slack">
           <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
-          <span>{t('storybook.demo.talkToUsOnSlack')}</span>
+          <span>"Eksempel Tekst"</span>
         </Link>
         <Link href="#">
           <DownloadIcon fontSize="1.25rem" aria-hidden />
-          <span>{t('storybook.demo.downloadReport')}</span>
+          <span>"Eksempel Tekst"</span>
         </Link>
         <Link href="#">
-          <span>{t('storybook.demo.continueReading')}</span>
+          <span>"Eksempel Tekst"</span>
           <ArrowRightIcon fontSize="1.25rem" aria-hidden />
         </Link>
       </div>
@@ -243,7 +242,7 @@ export const Neutral: Story = {
     const t = useT();
     return (
       <Link href="#" data-color="neutral">
-        {t('storybook.demo.privacyPolicy')}
+        "Eksempel Tekst"
       </Link>
     );
   },
@@ -264,7 +263,7 @@ export const Inverted: Story = {
         }}
       >
         <Link href="#" data-color="inverted">
-          {t('storybook.demo.invertedLinkOnDarkBackground')}
+          "Eksempel Tekst"
         </Link>
       </div>
     );
@@ -281,12 +280,12 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.colors')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <Link href="#">{t('storybook.demo.defaultAccent')}</Link>
+            <Link href="#">"Eksempel Tekst"</Link>
             <Link href="#" data-color="neutral">
-              {t('storybook.demo.neutral')}
+              "Eksempel Tekst"
             </Link>
             <div
               style={{
@@ -296,7 +295,7 @@ export const AllVariants: Story = {
               }}
             >
               <Link href="#" data-color="inverted">
-                {t('storybook.demo.inverted')}
+                "Eksempel Tekst"
               </Link>
             </div>
           </div>
@@ -304,15 +303,15 @@ export const AllVariants: Story = {
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.withIcons')}
+            "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Link href="#">
               <ExternalLinkIcon fontSize="1.25rem" aria-hidden />
-              <span>{t('storybook.demo.iconOnLeft')}</span>
+              <span>"Eksempel Tekst"</span>
             </Link>
             <Link href="#">
-              <span>{t('storybook.demo.iconOnRight')}</span>
+              <span>"Eksempel Tekst"</span>
               <ArrowRightIcon fontSize="1.25rem" aria-hidden />
             </Link>
           </div>
@@ -320,23 +319,23 @@ export const AllVariants: Story = {
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.inText')}
+            "Eksempel Tekst"
           </h3>
           <Paragraph>
-            {t('storybook.demo.paragraphWithInlineLink')}{' '}
-            <Link href="#">{t('storybook.demo.inlineLink')}</Link>{' '}
-            {t('storybook.demo.thatDemonstratesLinks')}{' '}
-            <Link href="#">{t('storybook.demo.multipleLinks')}</Link>{' '}
-            {t('storybook.demo.inSameParagraph')}
+            "Eksempel Tekst"{' '}
+            <Link href="#">"Eksempel Tekst"</Link>{' '}
+            "Eksempel Tekst"{' '}
+            <Link href="#">"Eksempel Tekst"</Link>{' '}
+            "Eksempel Tekst"
           </Paragraph>
         </div>
 
         <div>
           <h3 style={{ marginBottom: 'var(--ds-spacing-3)', fontSize: 'var(--ds-font-size-4)' }}>
-            {t('storybook.story.externalLinks')}
+            "Eksempel Tekst"
           </h3>
           <Link href="https://designsystemet.no" target="_blank" rel="noopener noreferrer">
-            {t('storybook.demo.visitDesignsystemet')}
+            "Eksempel Tekst"
           </Link>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { FilterBar, Stack, Paragraph, Card } from '../../index';
 
 /**
@@ -43,7 +42,7 @@ export const Default: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.filterBar.description')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <FilterBar
               primaryFilter={{
                 value: primaryValue,
@@ -55,7 +54,7 @@ export const Default: Story = {
                 ],
               }}
               resultsCount={42}
-              resultsLabel={t('storybook.filterBar.results')}
+              resultsLabel="Eksempel Tekst"
             />
           </Stack>
         </Card>
@@ -79,7 +78,7 @@ export const WithViewMode: Story = {
       >
         <Card data-color="neutral" data-size="medium">
           <Stack spacing="var(--ds-spacing-4)">
-            <Paragraph data-size="md">{t('storybook.filterBar.withViewMode')}</Paragraph>
+            <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
             <FilterBar
               primaryFilter={{
                 value: primaryValue,
@@ -91,7 +90,7 @@ export const WithViewMode: Story = {
                 ],
               }}
               resultsCount={42}
-              resultsLabel={t('storybook.filterBar.results')}
+              resultsLabel="Eksempel Tekst"
               viewMode={viewMode}
               onViewModeChange={setViewMode}
             />

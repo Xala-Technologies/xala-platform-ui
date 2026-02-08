@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { useT } from '@xala-technologies/i18n';
 import { ProfileCard, QuickStat } from '../../blocks/profile/ProfileCard';
 
 const meta: Meta<typeof ProfileCard> = {
@@ -173,9 +172,9 @@ export const QuickStats: Story = {
             gap: 'var(--ds-spacing-4)',
           }}
         >
-          <QuickStat label={t('storybook.demo.cardTitle')} value={24} />
-          <QuickStat label={t('storybook.demo.cardTitle')} value={8} />
-          <QuickStat label={t('storybook.demo.cardTitle')} value={12} />
+          <QuickStat label="Eksempel Tekst" value={24} />
+          <QuickStat label="Eksempel Tekst" value={8} />
+          <QuickStat label="Eksempel Tekst" value={12} />
         </div>
       </div>
     );
@@ -207,9 +206,9 @@ export const WithQuickStats: Story = {
             gap: 'var(--ds-spacing-4)',
           }}
         >
-          <QuickStat label={t('storybook.demo.cardTitle')} value={24} />
-          <QuickStat label={t('storybook.demo.cardTitle')} value={8} />
-          <QuickStat label={t('storybook.demo.cardTitle')} value={12} />
+          <QuickStat label="Eksempel Tekst" value={24} />
+          <QuickStat label="Eksempel Tekst" value={8} />
+          <QuickStat label="Eksempel Tekst" value={12} />
         </div>
       </div>
     );

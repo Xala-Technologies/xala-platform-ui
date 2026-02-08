@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { useT } from '@xala-technologies/i18n';
 import { Tabs, Paragraph } from '../../index';
 
 const meta: Meta = {
@@ -184,18 +183,18 @@ export const Default: Story = {
     return (
       <Tabs defaultValue="overview">
         <Tabs.List>
-          <Tabs.Tab value="overview">{t('storybook.demo.overview')}</Tabs.Tab>
-          <Tabs.Tab value="details">{t('storybook.demo.details')}</Tabs.Tab>
+          <Tabs.Tab value="overview">"Eksempel Tekst"</Tabs.Tab>
+          <Tabs.Tab value="details">"Eksempel Tekst"</Tabs.Tab>
           <Tabs.Tab value="settings">{t('platform.nav.settings')}</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="overview">
-          <Paragraph>{t('storybook.demo.overviewContentGoesHere')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Tabs.Panel>
         <Tabs.Panel value="details">
-          <Paragraph>{t('storybook.demo.detailsContentGoesHere')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Tabs.Panel>
         <Tabs.Panel value="settings">
-          <Paragraph>{t('storybook.demo.settingsContentGoesHere')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Tabs.Panel>
       </Tabs>
     );
@@ -208,18 +207,18 @@ export const WithIcons: Story = {
     return (
       <Tabs defaultValue="bookings">
         <Tabs.List>
-          <Tabs.Tab value="bookings">{t('storybook.demo.bookings')}</Tabs.Tab>
-          <Tabs.Tab value="listings">{t('storybook.demo.listings')}</Tabs.Tab>
-          <Tabs.Tab value="users">{t('storybook.demo.users')}</Tabs.Tab>
+          <Tabs.Tab value="bookings">"Eksempel Tekst"</Tabs.Tab>
+          <Tabs.Tab value="listings">"Eksempel Tekst"</Tabs.Tab>
+          <Tabs.Tab value="users">"Eksempel Tekst"</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="bookings">
-          <Paragraph>{t('storybook.demo.manageBookingsHere')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Tabs.Panel>
         <Tabs.Panel value="listings">
-          <Paragraph>{t('storybook.demo.viewAndEditListings')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Tabs.Panel>
         <Tabs.Panel value="users">
-          <Paragraph>{t('storybook.demo.userManagementSection')}</Paragraph>
+          <Paragraph>"Eksempel Tekst"</Paragraph>
         </Tabs.Panel>
       </Tabs>
     );
@@ -233,40 +232,40 @@ export const Sizes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-6)' }}>
         <Tabs defaultValue="tab1" data-size="sm">
           <Tabs.List>
-            <Tabs.Tab value="tab1">{t('storybook.demo.small')}</Tabs.Tab>
-            <Tabs.Tab value="tab2">{t('storybook.demo.tabs')}</Tabs.Tab>
+            <Tabs.Tab value="tab1">"Eksempel Tekst"</Tabs.Tab>
+            <Tabs.Tab value="tab2">"Eksempel Tekst"</Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="tab1">
-            <Paragraph>{t('storybook.demo.smallTabsContent')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Tabs.Panel>
           <Tabs.Panel value="tab2">
-            <Paragraph>{t('storybook.demo.tab2Content')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Tabs.Panel>
         </Tabs>
 
         <Tabs defaultValue="tab1" data-size="md">
           <Tabs.List>
-            <Tabs.Tab value="tab1">{t('storybook.demo.medium')}</Tabs.Tab>
-            <Tabs.Tab value="tab2">{t('storybook.demo.tabs')}</Tabs.Tab>
+            <Tabs.Tab value="tab1">"Eksempel Tekst"</Tabs.Tab>
+            <Tabs.Tab value="tab2">"Eksempel Tekst"</Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="tab1">
-            <Paragraph>{t('storybook.demo.mediumTabsContent')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Tabs.Panel>
           <Tabs.Panel value="tab2">
-            <Paragraph>{t('storybook.demo.tab2Content')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Tabs.Panel>
         </Tabs>
 
         <Tabs defaultValue="tab1" data-size="lg">
           <Tabs.List>
-            <Tabs.Tab value="tab1">{t('storybook.demo.large')}</Tabs.Tab>
-            <Tabs.Tab value="tab2">{t('storybook.demo.tabs')}</Tabs.Tab>
+            <Tabs.Tab value="tab1">"Eksempel Tekst"</Tabs.Tab>
+            <Tabs.Tab value="tab2">"Eksempel Tekst"</Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="tab1">
-            <Paragraph>{t('storybook.demo.largeTabsContent')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Tabs.Panel>
           <Tabs.Panel value="tab2">
-            <Paragraph>{t('storybook.demo.tab2Content')}</Paragraph>
+            <Paragraph>"Eksempel Tekst"</Paragraph>
           </Tabs.Panel>
         </Tabs>
       </div>
