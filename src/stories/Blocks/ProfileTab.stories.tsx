@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { ProfileTab } from '../../blocks/settings/ProfileTab';
-import type { ProfileData } from '../../blocks/settings/ProfileTab';
+import { ProfileTab } from '../../components/settings/ProfileTab';
+import type { ProfileData } from '../../components/settings/ProfileTab';
 
 const meta: Meta<typeof ProfileTab> = {
   title: 'Blocks/ProfileTab',

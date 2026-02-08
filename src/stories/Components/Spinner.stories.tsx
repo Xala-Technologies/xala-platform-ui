@@ -179,7 +179,7 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: function Render() {
-    return <Spinner aria-label={t('platform.common.loading')} />;
+    return <Spinner aria-label="Eksempel Tekst" />;
   },
 };
 
@@ -193,9 +193,9 @@ export const Sizes: Story = {
   render: function Render() {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <Spinner data-size="sm" aria-label={t('platform.common.loading')} />
-        <Spinner data-size="md" aria-label={t('platform.common.loading')} />
-        <Spinner data-size="lg" aria-label={t('platform.common.loading')} />
+        <Spinner data-size="sm" aria-label="Eksempel Tekst" />
+        <Spinner data-size="md" aria-label="Eksempel Tekst" />
+        <Spinner data-size="lg" aria-label="Eksempel Tekst" />
       </div>
     );
   },
@@ -205,8 +205,8 @@ export const Colors: Story = {
   render: function Render() {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', alignItems: 'center' }}>
-        <Spinner data-color="neutral" aria-label={t('platform.common.loading')} />
-        <Spinner data-color="accent" aria-label={t('platform.common.loading')} />
+        <Spinner data-color="neutral" aria-label="Eksempel Tekst" />
+        <Spinner data-color="accent" aria-label="Eksempel Tekst" />
       </div>
     );
   },
@@ -216,7 +216,7 @@ export const InButton: Story = {
   render: function Render() {
     return (
       <Button loading disabled type="button">
-        {t('platform.common.loading')}...
+        "Eksempel Tekst"...
       </Button>
     );
   },
@@ -277,7 +277,7 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </h3>
           <Button loading disabled type="button">
-            {t('platform.common.loading')}...
+            "Eksempel Tekst"...
           </Button>
         </div>
       </div>

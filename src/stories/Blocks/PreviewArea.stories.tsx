@@ -37,7 +37,7 @@ export const Default: Story = {
       <PreviewArea>
         <Stack spacing="var(--ds-spacing-2)" align="center">
           <Paragraph data-size="md">"Eksempel Tekst"</Paragraph>
-          <Button variant="primary">{t('platform.common.submit')}</Button>
+          <Button variant="primary">"Eksempel Tekst"</Button>
         </Stack>
       </PreviewArea>
     );
@@ -48,7 +48,7 @@ export const SubtleBackground: Story = {
   render: function Render() {
     return (
       <PreviewArea background="subtle">
-        <Button variant="secondary">{t('platform.common.cancel')}</Button>
+        <Button variant="secondary">"Eksempel Tekst"</Button>
       </PreviewArea>
     );
   },
@@ -58,7 +58,7 @@ export const TransparentBackground: Story = {
   render: function Render() {
     return (
       <PreviewArea background="transparent">
-        <Button variant="tertiary">{t('platform.common.back')}</Button>
+        <Button variant="tertiary">"Eksempel Tekst"</Button>
       </PreviewArea>
     );
   },
@@ -80,13 +80,13 @@ export const NotCentered: Story = {
       <PreviewArea centered={false}>
         <Stack spacing="var(--ds-spacing-2)">
           <Button variant="primary" data-size="sm">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="secondary" data-size="sm">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="tertiary" data-size="sm">
-            {t('platform.common.delete')}
+            "Eksempel Tekst"
           </Button>
         </Stack>
       </PreviewArea>

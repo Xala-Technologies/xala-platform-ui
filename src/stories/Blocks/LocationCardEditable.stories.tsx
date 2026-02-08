@@ -5,7 +5,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { LocationCardEditable } from '../../blocks/LocationCardEditable';
+import { LocationCardEditable } from '../../components/LocationCardEditable';
 
 const meta: Meta<typeof LocationCardEditable> = {
   title: 'Blocks/LocationCardEditable',

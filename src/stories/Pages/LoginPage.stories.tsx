@@ -170,7 +170,7 @@ export const Default: Story = {
             }}
           >
             <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-2) 0' }}>
-              {t('platform.auth.login')}
+              "Eksempel Tekst"
             </Heading>
             <Paragraph
               data-size="sm"
@@ -440,7 +440,7 @@ export const DemoLoginDialog: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                {t('platform.common.name')}
+                "Eksempel Tekst"
               </label>
               <Input
                 value={name}
@@ -457,7 +457,7 @@ export const DemoLoginDialog: Story = {
                   fontWeight: 'var(--ds-font-weight-medium)',
                 }}
               >
-                {t('platform.common.email')}
+                "Eksempel Tekst"
               </label>
               <Input
                 type="email"
@@ -502,7 +502,7 @@ export const DemoLoginDialog: Story = {
             }}
           >
             <Button variant="secondary" onClick={() => setIsOpen(false)} style={{ flex: 1 }}>
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
             <Button
               variant="primary"
@@ -563,7 +563,7 @@ export const MobileView: Story = {
         {/* Login Options */}
         <div style={{ padding: 'var(--ds-spacing-6)' }}>
           <Heading level={2} data-size="sm" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
-            {t('platform.auth.login')}
+            "Eksempel Tekst"
           </Heading>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
@@ -605,7 +605,7 @@ export const WithError: Story = {
         }}
       >
         <Heading level={2} data-size="md" style={{ margin: '0 0 var(--ds-spacing-4) 0' }}>
-          {t('platform.auth.login')}
+          "Eksempel Tekst"
         </Heading>
 
         <Alert data-color="danger" style={{ marginBottom: 'var(--ds-spacing-4)' }}>

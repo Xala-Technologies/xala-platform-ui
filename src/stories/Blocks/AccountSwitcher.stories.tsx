@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { AccountSwitcher } from '../../blocks/account/AccountSwitcher';
-import type { BaseOrganization } from '../../blocks/account/AccountSwitcher';
+import { AccountSwitcher } from '../../components/account/AccountSwitcher';
+import type { BaseOrganization } from '../../components/account/AccountSwitcher';
 
 const meta: Meta<typeof AccountSwitcher> = {
   title: 'Blocks/AccountSwitcher',

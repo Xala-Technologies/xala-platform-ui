@@ -93,7 +93,7 @@ const WithIconDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <SectionCard
-        title={t('platform.nav.settings')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
         icon={<Settings size={20} />}
         variant="default"
@@ -116,7 +116,7 @@ const WithActionsDemo = () => {
         icon={<User size={20} />}
         actions={
           <Button onClick={fn()} data-color="accent" data-size="sm">
-            {t('platform.common.edit')}
+            "Eksempel Tekst"
           </Button>
         }
         variant="default"
@@ -140,10 +140,10 @@ const WithFooterDemo = () => {
         footer={
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}>
             <Button onClick={fn()} data-color="neutral" data-size="sm">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
             <Button onClick={fn()} data-color="accent" data-size="sm">
-              {t('platform.common.save')}
+              "Eksempel Tekst"
             </Button>
           </div>
         }
@@ -271,7 +271,7 @@ const WithSubComponentsDemo = () => {
           icon={<Settings size={20} />}
           actions={
             <Button onClick={fn()} data-color="accent" data-size="sm">
-              {t('platform.common.edit')}
+              "Eksempel Tekst"
             </Button>
           }
         />
@@ -280,10 +280,10 @@ const WithSubComponentsDemo = () => {
         </SectionCardContent>
         <SectionCardFooter alignment="right">
           <Button onClick={fn()} data-color="neutral" data-size="sm">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="sm">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
         </SectionCardFooter>
       </SectionCard>

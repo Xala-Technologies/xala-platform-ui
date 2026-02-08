@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { AccessibilityDashboard } from '../../blocks/AccessibilityDashboard';
-import type { AccessibilityReport } from '../../blocks/AccessibilityDashboard';
+import { AccessibilityDashboard } from '../../components/AccessibilityDashboard';
+import type { AccessibilityReport } from '../../components/AccessibilityDashboard';
 
 const meta: Meta<typeof AccessibilityDashboard> = {
   title: 'Blocks/AccessibilityDashboard',

@@ -236,7 +236,7 @@ export const WithTextarea: Story = {
   render: function Render() {
     return (
       <Field>
-        <Label>{t('platform.common.description')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Field.Description>{t('storybook.demo.maxNCharacters', { count: 500 })}</Field.Description>
         <Textarea rows={4} />
         <Field.Counter limit={500} />
@@ -249,7 +249,7 @@ export const WithSelect: Story = {
   render: function Render() {
     return (
       <Field>
-        <Label>{t('platform.common.country')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Select>
           <Select.Option value="">"Eksempel Tekst"</Select.Option>
           <Select.Option value="no">"Eksempel Tekst"</Select.Option>
@@ -266,9 +266,9 @@ export const Required: Story = {
     return (
       <Field>
         <Label>
-          {t('platform.common.name')} <span aria-hidden="true">*</span>
+          "Eksempel Tekst" <span aria-hidden="true">*</span>
         </Label>
-        <Input required aria-label={t('platform.common.name')} />
+        <Input required aria-label="Eksempel Tekst" />
       </Field>
     );
   },

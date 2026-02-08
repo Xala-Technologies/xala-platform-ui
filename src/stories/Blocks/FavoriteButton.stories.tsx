@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { FavoriteButton } from '../../blocks/FavoriteButton';
+import { FavoriteButton } from '../../components/FavoriteButton';
 
 const meta: Meta<typeof FavoriteButton> = {
   title: 'Blocks/FavoriteButton',

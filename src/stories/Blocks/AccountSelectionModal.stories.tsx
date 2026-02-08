@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
 import { Button } from '@digdir/designsystemet-react';
-import { AccountSelectionModal } from '../../blocks/account/AccountSelectionModal';
-import type { BaseOrganization } from '../../blocks/account/AccountSelectionModal';
+import { AccountSelectionModal } from '../../components/account/AccountSelectionModal';
+import type { BaseOrganization } from '../../components/account/AccountSelectionModal';
 
 const meta: Meta<typeof AccountSelectionModal> = {
   title: 'Blocks/AccountSelectionModal',

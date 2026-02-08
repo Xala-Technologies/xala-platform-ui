@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { EffectivePermissionsView } from '../../blocks/admin/EffectivePermissionsView';
-import type { EffectivePermission } from '../../blocks/admin/EffectivePermissionsView';
+import { EffectivePermissionsView } from '../../components/admin/EffectivePermissionsView';
+import type { EffectivePermission } from '../../components/admin/EffectivePermissionsView';
 
 const meta: Meta<typeof EffectivePermissionsView> = {
   title: 'Blocks/EffectivePermissionsView',

@@ -71,7 +71,7 @@ const HighlightCaseSensitiveDemo = () => {
       <Paragraph data-size="sm">
         <HighlightText
           text="Eksempel Tekst"
-          highlight={t('platform.common.search')}
+          highlight="Eksempel Tekst"
           caseSensitive={true}
         />
       </Paragraph>

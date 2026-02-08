@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { KeyFactsRow } from '../../blocks/KeyFactsRow';
+import { KeyFactsRow } from '../../components/KeyFactsRow';
 
 const meta: Meta<typeof KeyFactsRow> = {
   title: 'Blocks/KeyFactsRow',

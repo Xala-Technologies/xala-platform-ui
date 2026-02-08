@@ -55,7 +55,7 @@ const WithSearchDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         resultsCount={42}
       />
@@ -80,7 +80,7 @@ const WithFiltersDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         filters={[
           {
@@ -121,7 +121,7 @@ const WithSortDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         sortOptions={[
           { id: 'name', label: t('platform.common.name') },
@@ -152,7 +152,7 @@ const WithPrimaryActionDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         resultsCount={42}
         primaryAction={
@@ -249,7 +249,7 @@ const CompactDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         resultsCount={42}
       />
@@ -274,7 +274,7 @@ const WithoutFilterCountsDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         filters={[
           {
@@ -315,7 +315,7 @@ const CustomResultsLabelDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         resultsCount={15}
         resultsLabel="Eksempel Tekst"
@@ -340,7 +340,7 @@ const NoResultsDemo = () => {
         search={{
           value: query,
           onChange: setQuery,
-          placeholder: `${t('platform.common.search')}...`,
+          placeholder: `$"Eksempel Tekst"...`,
         }}
         resultsCount={0}
       />

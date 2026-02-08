@@ -29,7 +29,7 @@
  */
 import { Card, Heading, Paragraph, Button, Select } from '@digdir/designsystemet-react';
 import { Stack } from '../../primitives';
-import { FormField } from '../../composed';
+import { FormField } from '../../components';
 
 // =============================================================================
 // Types

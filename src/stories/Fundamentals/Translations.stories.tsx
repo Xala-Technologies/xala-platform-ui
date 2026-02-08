@@ -41,7 +41,7 @@ The StoryProvider integrates translations via \`@xala-technologies/i18n\` and \`
 \`\`\`tsx
 // Container translates, passes string to UI component
 function MyContainer() {
-  return <MyButton label={t('platform.common.save')} />;
+  return <MyButton label="Eksempel Tekst" />;
 }
 \`\`\`
 
@@ -151,18 +151,18 @@ export const TranslatedButtons: Story = {
           Common Actions
         </Heading>
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
-          <Button data-color="accent">{t('platform.common.save')}</Button>
+          <Button data-color="accent">"Eksempel Tekst"</Button>
           <Button data-color="neutral" variant="secondary">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button data-color="danger" variant="secondary">
-            {t('platform.common.delete')}
+            "Eksempel Tekst"
           </Button>
           <Button data-color="neutral" variant="secondary">
-            {t('platform.common.edit')}
+            "Eksempel Tekst"
           </Button>
           <Button data-color="neutral" variant="secondary">
-            {t('platform.common.search')}
+            "Eksempel Tekst"
           </Button>
         </div>
       </Card>
@@ -369,9 +369,9 @@ export const CompleteExample: Story = {
         <Card data-color="accent">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Heading level={2} data-size="sm">
-              {t('platform.nav.dashboard')}
+              "Eksempel Tekst"
             </Heading>
-            <Tag data-color="success">{t('platform.status.active')}</Tag>
+            <Tag data-color="success">"Eksempel Tekst"</Tag>
           </div>
           <Paragraph data-size="sm">
             Locale: <strong>{locale}</strong> | Direction:{' '}
@@ -381,22 +381,22 @@ export const CompleteExample: Story = {
 
         <Card data-color="neutral">
           <Heading level={3} data-size="xs">
-            {t('platform.common.actions')}
+            "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Button data-color="accent">{t('platform.common.save')}</Button>
+            <Button data-color="accent">"Eksempel Tekst"</Button>
             <Button data-color="neutral" variant="secondary">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
             <Button data-color="danger" variant="secondary">
-              {t('platform.common.delete')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </Card>
 
         <Alert data-color="success">
           <Paragraph data-size="sm">
-            {t('platform.common.loading')} - {t('platform.status.completed')}
+            "Eksempel Tekst" - "Eksempel Tekst"
           </Paragraph>
         </Alert>
       </Stack>

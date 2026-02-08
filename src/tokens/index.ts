@@ -197,6 +197,9 @@ export const components = {
     button: 'all 200ms cubic-bezier(0.4, 0, 0.2, 1)',
 } as const;
 
+// Responsive breakpoint constant (768px - tablet/mobile boundary)
+export const MOBILE_BREAKPOINT = 768;
+
 // Default export
 const tokens = {
     typography,

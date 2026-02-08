@@ -3,7 +3,7 @@ import {
   SettingsTabLayout,
   SettingsField,
   SettingsSection,
-} from '../../blocks/settings/SettingsLayout';
+} from '../../components/settings/SettingsLayout';
 import { Textfield, Button, Paragraph } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof SettingsTabLayout> = {
@@ -50,17 +50,17 @@ export const Default: Story = {
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
-          title={t('platform.nav.settings')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
         >
           <SettingsField
-            label={t('platform.auth.email')}
+            label="Eksempel Tekst"
             description="Eksempel Tekst"
           >
             <Textfield defaultValue="user@example.com" />
           </SettingsField>
           <SettingsField
-            label={t('platform.nav.profile')}
+            label="Eksempel Tekst"
             description="Eksempel Tekst"
           >
             <Textfield defaultValue="John Doe" />
@@ -76,11 +76,11 @@ export const WithoutDescription: Story = {
   render: function Render() {
     return (
       <div style={{ width: '700px' }}>
-        <SettingsTabLayout title={t('platform.nav.settings')}>
-          <SettingsField label={t('platform.auth.email')}>
+        <SettingsTabLayout title="Eksempel Tekst">
+          <SettingsField label="Eksempel Tekst">
             <Textfield defaultValue="user@example.com" />
           </SettingsField>
-          <SettingsField label={t('platform.nav.profile')}>
+          <SettingsField label="Eksempel Tekst">
             <Textfield defaultValue="John Doe" />
           </SettingsField>
         </SettingsTabLayout>
@@ -95,35 +95,35 @@ export const WithSections: Story = {
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
-          title={t('platform.nav.settings')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
         >
-          <SettingsSection title={t('platform.common.details')}>
+          <SettingsSection title="Eksempel Tekst">
             <SettingsField
-              label={t('platform.auth.email')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
               <Textfield defaultValue="user@example.com" />
             </SettingsField>
             <SettingsField
-              label={t('platform.nav.profile')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
               <Textfield defaultValue="John Doe" />
             </SettingsField>
           </SettingsSection>
-          <SettingsSection title={t('platform.auth.password')}>
+          <SettingsSection title="Eksempel Tekst">
             <SettingsField
-              label={t('platform.auth.password')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
-              <Button>{t('platform.common.edit')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </SettingsField>
             <SettingsField
-              label={t('platform.common.details')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
-              <Button>{t('platform.common.edit')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </SettingsField>
           </SettingsSection>
         </SettingsTabLayout>
@@ -138,40 +138,40 @@ export const MultipleSections: Story = {
     return (
       <div style={{ width: '700px' }}>
         <SettingsTabLayout
-          title={t('platform.nav.settings')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
         >
-          <SettingsSection title={t('platform.nav.profile')}>
-            <SettingsField label={t('platform.nav.profile')}>
+          <SettingsSection title="Eksempel Tekst">
+            <SettingsField label="Eksempel Tekst">
               <Textfield defaultValue="John Doe" />
             </SettingsField>
             <SettingsField
-              label={t('platform.common.details')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
               <Textfield defaultValue="Software developer" />
             </SettingsField>
           </SettingsSection>
-          <SettingsSection title={t('platform.common.notifications')}>
+          <SettingsSection title="Eksempel Tekst">
             <SettingsField
-              label={t('platform.common.notifications')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
-              <Button>{t('platform.common.edit')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </SettingsField>
             <SettingsField
-              label={t('platform.common.notifications')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
-              <Button>{t('platform.common.edit')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </SettingsField>
           </SettingsSection>
-          <SettingsSection title={t('platform.common.details')}>
+          <SettingsSection title="Eksempel Tekst">
             <SettingsField
-              label={t('platform.common.view')}
+              label="Eksempel Tekst"
               description="Eksempel Tekst"
             >
-              <Button>{t('platform.common.edit')}</Button>
+              <Button>"Eksempel Tekst"</Button>
             </SettingsField>
           </SettingsSection>
         </SettingsTabLayout>
@@ -185,15 +185,15 @@ export const FieldWithoutDescription: Story = {
   render: function Render() {
     return (
       <div style={{ width: '700px' }}>
-        <SettingsTabLayout title={t('platform.nav.settings')}>
-          <SettingsField label={t('platform.auth.email')}>
+        <SettingsTabLayout title="Eksempel Tekst">
+          <SettingsField label="Eksempel Tekst">
             <Textfield defaultValue="user@example.com" />
           </SettingsField>
-          <SettingsField label={t('platform.nav.profile')}>
+          <SettingsField label="Eksempel Tekst">
             <Textfield defaultValue="John Doe" />
           </SettingsField>
           <SettingsField
-            label={t('platform.common.details')}
+            label="Eksempel Tekst"
             description="Eksempel Tekst"
           >
             <Textfield defaultValue="+47 123 45 678" />

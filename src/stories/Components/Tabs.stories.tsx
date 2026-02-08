@@ -184,7 +184,7 @@ export const Default: Story = {
         <Tabs.List>
           <Tabs.Tab value="overview">"Eksempel Tekst"</Tabs.Tab>
           <Tabs.Tab value="details">"Eksempel Tekst"</Tabs.Tab>
-          <Tabs.Tab value="settings">{t('platform.nav.settings')}</Tabs.Tab>
+          <Tabs.Tab value="settings">"Eksempel Tekst"</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="overview">
           <Paragraph>"Eksempel Tekst"</Paragraph>

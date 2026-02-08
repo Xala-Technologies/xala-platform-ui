@@ -52,8 +52,8 @@ export const RequiredOptionalFields: Story = {
             "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            <Textfield label={`${t('platform.common.name')} *`} required />
-            <Textfield label={`${t('platform.common.email')} *`} type="email" required />
+            <Textfield label={`$"Eksempel Tekst" *`} required />
+            <Textfield label={`$"Eksempel Tekst" *`} type="email" required />
             <Textfield label="Eksempel Tekst" type="tel" />
           </div>
           <Paragraph
@@ -79,8 +79,8 @@ export const RequiredOptionalFields: Story = {
             "Eksempel Tekst" "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
-            <Textfield label={t('platform.common.name')} required />
-            <Textfield label={t('platform.common.email')} type="email" required />
+            <Textfield label="Eksempel Tekst" required />
+            <Textfield label="Eksempel Tekst" type="email" required />
             <Textfield
               label={`$"Eksempel Tekst" ($"Eksempel Tekst")`}
               type="tel"
@@ -129,7 +129,7 @@ export const UserTriggeredValidation: Story = {
         </Paragraph>
 
         <Textfield
-          label={t('platform.common.email')}
+          label="Eksempel Tekst"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -215,7 +215,7 @@ export const MultiStepWizard: Story = {
               <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
                 "Eksempel Tekst" 1: "Eksempel Tekst"
               </Heading>
-              <Textfield label={t('platform.common.name')} />
+              <Textfield label="Eksempel Tekst" />
             </div>
           )}
           {step === 2 && (
@@ -223,7 +223,7 @@ export const MultiStepWizard: Story = {
               <Heading level={4} data-size="sm" style={{ marginBottom: 'var(--ds-spacing-3)' }}>
                 "Eksempel Tekst" 2: "Eksempel Tekst"
               </Heading>
-              <Textfield label={t('platform.common.email')} type="email" />
+              <Textfield label="Eksempel Tekst" type="email" />
             </div>
           )}
           {step === 3 && (

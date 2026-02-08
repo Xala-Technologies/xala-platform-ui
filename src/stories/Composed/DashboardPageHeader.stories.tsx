@@ -49,7 +49,7 @@ type Story = StoryObj<typeof meta>;
 const DefaultDemo = () => {
   return (
     <DashboardPageHeader
-      title={t('platform.nav.dashboard')}
+      title="Eksempel Tekst"
       subtitle="Eksempel Tekst"
     />
   );
@@ -68,7 +68,7 @@ const WithBadgeDemo = () => {
     <DashboardPageHeader
       title="Eksempel Tekst"
       subtitle="Eksempel Tekst"
-      badge={<Badge variant="success">{t('platform.status.active')}</Badge>}
+      badge={<Badge variant="success">"Eksempel Tekst"</Badge>}
     />
   );
 };
@@ -94,7 +94,7 @@ const WithBreadcrumbsDemo = () => {
           }}
         >
           <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            {t('platform.nav.home')}
+            "Eksempel Tekst"
           </a>
           {' / '}
           <a href="/resources" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -150,7 +150,7 @@ const WithActionsDemo = () => {
       }
       primaryAction={
         <Button onClick={fn()} data-color="accent" data-size="medium">
-          {t('platform.common.saveChanges')}
+          "Eksempel Tekst"
         </Button>
       }
     />
@@ -228,7 +228,7 @@ const CompleteDemo = () => {
           }}
         >
           <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            {t('platform.nav.home')}
+            "Eksempel Tekst"
           </a>
           {' / '}
           "Eksempel Tekst"

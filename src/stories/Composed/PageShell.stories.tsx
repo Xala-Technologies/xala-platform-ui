@@ -97,7 +97,7 @@ const DetailPageDemo = () => {
   return (
     <DetailPageShell
       title="Eksempel Tekst"
-      subtitle={<Badge variant="success">{t('platform.status.active')}</Badge>}
+      subtitle={<Badge variant="success">"Eksempel Tekst"</Badge>}
       backLink={{
         label: t('storybook.demo.backToResources'),
         href: '/resources',
@@ -106,10 +106,10 @@ const DetailPageDemo = () => {
       actions={
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            {t('platform.common.edit')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
         </div>
       }
@@ -124,7 +124,7 @@ const DetailPageDemo = () => {
           }}
         >
           <Paragraph data-size="sm">
-            {t('platform.status.label')}: {t('platform.status.active')}
+            "Eksempel Tekst": "Eksempel Tekst"
           </Paragraph>
         </div>
       }
@@ -186,7 +186,7 @@ const FormPageDemo = () => {
           }}
         >
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
             "Eksempel Tekst"
@@ -278,7 +278,7 @@ const FormPageNoBackLinkDemo = () => {
           }}
         >
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('platform.common.saveChanges')}
+            "Eksempel Tekst"
           </Button>
         </div>
       }

@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import {
   DeleteAccountCard,
   DEFAULT_DELETE_ACCOUNT_LABELS,
-} from '../../blocks/gdpr/DeleteAccountCard';
-import type { GdprDeletionRequest } from '../../blocks/gdpr/DeleteAccountCard';
+} from '../../components/gdpr/DeleteAccountCard';
+import type { GdprDeletionRequest } from '../../components/gdpr/DeleteAccountCard';
 
 const meta: Meta<typeof DeleteAccountCard> = {
   title: 'Blocks/DeleteAccountCard',

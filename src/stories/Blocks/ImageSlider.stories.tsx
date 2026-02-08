@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { ImageSlider } from '../../blocks/ImageSlider';
+import { ImageSlider } from '../../components/ImageSlider';
 
 const meta: Meta<typeof ImageSlider> = {
   title: 'Blocks/ImageSlider',

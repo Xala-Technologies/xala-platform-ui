@@ -83,7 +83,7 @@ export const Default: Story = {
           type: 'upcoming',
           label: t('platform.status.pending'),
         }}
-        actionLabel={t('platform.common.submit')}
+        actionLabel="Eksempel Tekst"
         onClick={fn()}
         onAction={fn()}
       />
@@ -107,7 +107,7 @@ export const CompactVariant: Story = {
           label: t('platform.status.active'),
         }}
         variant="compact"
-        actionLabel={t('platform.common.view')}
+        actionLabel="Eksempel Tekst"
         onClick={fn()}
         onAction={fn()}
       />
@@ -136,7 +136,7 @@ export const WithImage: Story = {
           src: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400',
           alt: 'Soccer field',
         }}
-        actionLabel={t('platform.common.submit')}
+        actionLabel="Eksempel Tekst"
         onClick={fn()}
         onAction={fn()}
       />
@@ -165,7 +165,7 @@ export const WithDeadline: Story = {
           date: 'April 30, 2026',
           label: 'Registration deadline',
         }}
-        actionLabel={t('platform.common.submit')}
+        actionLabel="Eksempel Tekst"
         onClick={fn()}
         onAction={fn()}
       />
@@ -190,7 +190,7 @@ export const WithActionButton: Story = {
           type: 'upcoming',
           label: t('platform.status.pending'),
         }}
-        actionLabel={t('platform.common.submit')}
+        actionLabel="Eksempel Tekst"
         onClick={fn()}
         onAction={fn()}
       />
@@ -215,7 +215,7 @@ export const DisabledAction: Story = {
           type: 'active',
           label: t('platform.status.active'),
         }}
-        actionLabel={t('platform.common.submit')}
+        actionLabel="Eksempel Tekst"
         actionDisabled={true}
         onClick={fn()}
         onAction={fn()}
@@ -250,7 +250,7 @@ export const FullFeatured: Story = {
           src: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400',
           alt: 'Basketball court',
         }}
-        actionLabel={t('platform.common.submit')}
+        actionLabel="Eksempel Tekst"
         onClick={fn()}
         onAction={fn()}
       />

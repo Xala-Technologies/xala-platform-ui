@@ -168,7 +168,7 @@ export const Default: Story = {
   render: function Render() {
     return (
       <Breadcrumbs>
-        <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+        <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
         <Breadcrumbs.Link href="/listings">"Eksempel Tekst"</Breadcrumbs.Link>
         <span>"Eksempel Tekst"</span>
       </Breadcrumbs>
@@ -180,7 +180,7 @@ export const ThreeLevels: Story = {
   render: function Render() {
     return (
       <Breadcrumbs>
-        <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
+        <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
         <Breadcrumbs.Link href="/resourceRequests">
           "Eksempel Tekst"
         </Breadcrumbs.Link>
@@ -195,8 +195,8 @@ export const TwoLevels: Story = {
   render: function Render() {
     return (
       <Breadcrumbs>
-        <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-        <span>{t('platform.nav.settings')}</span>
+        <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
+        <span>"Eksempel Tekst"</span>
       </Breadcrumbs>
     );
   },
@@ -207,15 +207,15 @@ export const Sizes: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-4)' }}>
         <Breadcrumbs data-size="sm">
-          <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+          <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
           <span>"Eksempel Tekst"</span>
         </Breadcrumbs>
         <Breadcrumbs data-size="md">
-          <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+          <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
           <span>"Eksempel Tekst"</span>
         </Breadcrumbs>
         <Breadcrumbs data-size="lg">
-          <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+          <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
           <span>"Eksempel Tekst"</span>
         </Breadcrumbs>
       </div>
@@ -232,8 +232,8 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </Heading>
           <Breadcrumbs>
-            <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
-            <span>{t('platform.nav.settings')}</span>
+            <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
+            <span>"Eksempel Tekst"</span>
           </Breadcrumbs>
         </div>
         <div>
@@ -241,7 +241,7 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </Heading>
           <Breadcrumbs>
-            <Breadcrumbs.Link href="/">{t('platform.common.home')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
             <Breadcrumbs.Link href="/products">"Eksempel Tekst"</Breadcrumbs.Link>
             <span>"Eksempel Tekst"</span>
           </Breadcrumbs>
@@ -251,7 +251,7 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </Heading>
           <Breadcrumbs>
-            <Breadcrumbs.Link href="/">{t('platform.nav.dashboard')}</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/">"Eksempel Tekst"</Breadcrumbs.Link>
             <Breadcrumbs.Link href="/bookings">"Eksempel Tekst"</Breadcrumbs.Link>
             <Breadcrumbs.Link href="/bookings/2024">2024</Breadcrumbs.Link>
             <span>"Eksempel Tekst"</span>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { DataExportCard, DEFAULT_DATA_EXPORT_LABELS } from '../../blocks/gdpr/DataExportCard';
-import type { GdprExportRequest } from '../../blocks/gdpr/DataExportCard';
+import { DataExportCard, DEFAULT_DATA_EXPORT_LABELS } from '../../components/gdpr/DataExportCard';
+import type { GdprExportRequest } from '../../components/gdpr/DataExportCard';
 
 const meta: Meta<typeof DataExportCard> = {
   title: 'Blocks/DataExportCard',

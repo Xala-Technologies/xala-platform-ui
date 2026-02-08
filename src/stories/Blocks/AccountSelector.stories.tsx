@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { AccountSelector } from '../../blocks/account/AccountSelector';
-import type { BaseOrganization } from '../../blocks/account/AccountSelector';
+import { AccountSelector } from '../../components/account/AccountSelector';
+import type { BaseOrganization } from '../../components/account/AccountSelector';
 
 const meta: Meta<typeof AccountSelector> = {
   title: 'Blocks/AccountSelector',

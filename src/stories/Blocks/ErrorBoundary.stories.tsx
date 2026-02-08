@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { ErrorBoundary } from '../../blocks/ErrorBoundary';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
 
 const meta: Meta<typeof ErrorBoundary> = {
   title: 'Blocks/ErrorBoundary',

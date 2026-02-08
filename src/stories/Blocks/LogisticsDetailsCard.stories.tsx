@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LogisticsDetailsCard } from '../../blocks/LogisticsDetailsCard';
-import type { LogisticsInfo, DetailsInfo } from '../../blocks/LogisticsDetailsCard';
+import { LogisticsDetailsCard } from '../../components/LogisticsDetailsCard';
+import type { LogisticsInfo, DetailsInfo } from '../../components/LogisticsDetailsCard';
 
 const meta: Meta<typeof LogisticsDetailsCard> = {
   title: 'Blocks/LogisticsDetailsCard',

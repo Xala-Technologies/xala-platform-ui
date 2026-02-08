@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AccessGate } from '../../blocks/AccessGate';
+import { AccessGate } from '../../components/AccessGate';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { LockClosedIcon, ShieldIcon, UserIcon } from '@navikt/aksel-icons';
 
@@ -73,8 +73,8 @@ export const Default: Story = {
       <div style={{ width: '500px' }}>
         <AccessGate
           denied
-          title={t('platform.errors.accessDenied')}
-          description={t('platform.errors.noPermission')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
         >
           <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-4)' }}>
             <Paragraph>This content is protected</Paragraph>
@@ -92,8 +92,8 @@ export const AccessGranted: Story = {
       <div style={{ width: '500px' }}>
         <AccessGate
           denied={false}
-          title={t('platform.errors.accessDenied')}
-          description={t('platform.errors.noPermission')}
+          title="Eksempel Tekst"
+          description="Eksempel Tekst"
         >
           <Card data-color="neutral" style={{ padding: 'var(--ds-spacing-4)' }}>
             <Heading level={3} data-size="sm">

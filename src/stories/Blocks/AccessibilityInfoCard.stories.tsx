@@ -3,8 +3,8 @@ import {
   AccessibilityInfoCard,
   defaultAccessibilityFeatures,
   defaultAccessibilityFeaturesEn,
-} from '../../blocks/AccessibilityInfoCard';
-import type { AccessibilityFeature } from '../../blocks/AccessibilityInfoCard';
+} from '../../components/AccessibilityInfoCard';
+import type { AccessibilityFeature } from '../../components/AccessibilityInfoCard';
 
 const meta: Meta<typeof AccessibilityInfoCard> = {
   title: 'Blocks/AccessibilityInfoCard',

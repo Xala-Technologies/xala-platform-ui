@@ -3,7 +3,7 @@ import * as React from 'react';
 import { StateWrapper, ComponentState, useComputedState } from '../../composed/StateWrapper';
 import { LoadingFallback } from '../../composed/LoadingFallback';
 import { EmptyState } from '../../composed/data-page';
-import { AccessGate } from '../../blocks/AccessGate';
+import { AccessGate } from '../../components/AccessGate';
 import { Card, Heading, Paragraph, Button, Alert, Spinner } from '@digdir/designsystemet-react';
 import { PlusIcon, RefreshIcon, InboxIcon } from '@navikt/aksel-icons';
 
@@ -113,9 +113,9 @@ export const LoadingState: Story = {
                 gap: 'var(--ds-spacing-4)',
               }}
             >
-              <Spinner data-size="lg" aria-label={t('platform.common.loading')} />
+              <Spinner data-size="lg" aria-label="Eksempel Tekst" />
               <Paragraph data-size="sm" style={{ color: 'var(--ds-color-neutral-text-subtle)' }}>
-                {t('platform.common.loading')}
+                "Eksempel Tekst"
               </Paragraph>
             </div>
           }
@@ -136,7 +136,7 @@ export const EmptyStateExample: Story = {
           state="empty"
           emptyComponent={
             <EmptyState
-              title={t('platform.errors.notFound')}
+              title="Eksempel Tekst"
               description="Eksempel Tekst"
               icon={<InboxIcon fontSize="48px" aria-hidden />}
               action={{
@@ -163,7 +163,7 @@ export const ErrorState: Story = {
           errorComponent={
             <Alert data-color="danger" style={{ margin: 'var(--ds-spacing-4)' }}>
               <Heading level={3} data-size="xs">
-                {t('platform.errors.serverError')}
+                "Eksempel Tekst"
               </Heading>
               <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
               <Button
@@ -172,7 +172,7 @@ export const ErrorState: Story = {
                 onClick={() => alert('Retry')}
                 style={{ marginTop: 'var(--ds-spacing-2)' }}
               >
-                <RefreshIcon aria-hidden /> {t('platform.common.submit')}
+                <RefreshIcon aria-hidden /> "Eksempel Tekst"
               </Button>
             </Alert>
           }
@@ -194,7 +194,7 @@ export const SuccessState: Story = {
           successComponent={
             <Alert data-color="success" style={{ margin: 'var(--ds-spacing-4)' }}>
               <Heading level={3} data-size="xs">
-                {t('platform.common.success')}
+                "Eksempel Tekst"
               </Heading>
               <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
             </Alert>
@@ -217,8 +217,8 @@ export const PermissionDeniedState: Story = {
           permissionDeniedComponent={
             <AccessGate
               denied
-              title={t('platform.errors.accessDenied')}
-              description={t('platform.errors.noPermission')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
               requiredPermission="admin:users:read"
               actions={[
                 { label: t('platform.common.submit'), onClick: () => {}, variant: 'primary' },
@@ -276,31 +276,31 @@ export const InteractiveDemo: Story = {
                 padding: 'var(--ds-spacing-8)',
               }}
             >
-              <Spinner data-size="lg" aria-label={t('platform.common.loading')} />
+              <Spinner data-size="lg" aria-label="Eksempel Tekst" />
             </div>
           }
           emptyComponent={
             <EmptyState
-              title={t('platform.errors.notFound')}
+              title="Eksempel Tekst"
               description="Eksempel Tekst"
               action={{ label: t('platform.common.submit'), onClick: () => setState('idle') }}
             />
           }
           errorComponent={
             <Alert data-color="danger">
-              <Paragraph>{t('platform.errors.serverError')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
           }
           successComponent={
             <Alert data-color="success">
-              <Paragraph>{t('platform.common.success')}</Paragraph>
+              <Paragraph>"Eksempel Tekst"</Paragraph>
             </Alert>
           }
           permissionDeniedComponent={
             <AccessGate
               denied
-              title={t('platform.errors.accessDenied')}
-              description={t('platform.errors.noPermission')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             >
               <div />
             </AccessGate>
@@ -394,12 +394,12 @@ export const WithComputedState: Story = {
                 padding: 'var(--ds-spacing-8)',
               }}
             >
-              <Spinner data-size="lg" aria-label={t('platform.common.loading')} />
+              <Spinner data-size="lg" aria-label="Eksempel Tekst" />
             </div>
           }
           emptyComponent={
             <EmptyState
-              title={t('platform.errors.notFound')}
+              title="Eksempel Tekst"
               description="Eksempel Tekst"
             />
           }
@@ -411,8 +411,8 @@ export const WithComputedState: Story = {
           permissionDeniedComponent={
             <AccessGate
               denied
-              title={t('platform.errors.accessDenied')}
-              description={t('platform.errors.noPermission')}
+              title="Eksempel Tekst"
+              description="Eksempel Tekst"
             >
               <div />
             </AccessGate>
@@ -481,32 +481,32 @@ export const AllStates: Story = {
                       height: '150px',
                     }}
                   >
-                    <Spinner data-size="md" aria-label={t('platform.common.loading')} />
+                    <Spinner data-size="md" aria-label="Eksempel Tekst" />
                   </div>
                 }
                 emptyComponent={
                   <EmptyState
                     size="sm"
-                    title={t('platform.errors.notFound')}
+                    title="Eksempel Tekst"
                     description="Eksempel Tekst"
                   />
                 }
                 errorComponent={
                   <Alert data-color="danger">
-                    <Paragraph data-size="sm">{t('platform.errors.serverError')}</Paragraph>
+                    <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
                   </Alert>
                 }
                 successComponent={
                   <Alert data-color="success">
-                    <Paragraph data-size="sm">{t('platform.common.success')}</Paragraph>
+                    <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
                   </Alert>
                 }
                 permissionDeniedComponent={
                   <AccessGate
                     denied
                     size="sm"
-                    title={t('platform.errors.accessDenied')}
-                    description={t('platform.errors.noPermission')}
+                    title="Eksempel Tekst"
+                    description="Eksempel Tekst"
                   >
                     <div />
                   </AccessGate>

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { HelpPanel } from '../../blocks/help/HelpPanel';
-import type { TooltipContent, GuideContent, FAQItem } from '../../blocks/help/HelpPanel';
+import { HelpPanel } from '../../components/help/HelpPanel';
+import type { TooltipContent, GuideContent, FAQItem } from '../../components/help/HelpPanel';
 
 const meta: Meta<typeof HelpPanel> = {
   title: 'Blocks/HelpPanel',

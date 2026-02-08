@@ -350,14 +350,14 @@ export const Interactive: Story = {
               disabled={currentStep === 0}
               type="button"
             >
-              {t('platform.common.previous')}
+              "Eksempel Tekst"
             </Button>
             <Button
               onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
               disabled={currentStep === steps.length - 1}
               type="button"
             >
-              {t('platform.common.next')}
+              "Eksempel Tekst"
             </Button>
           </div>
 
@@ -368,7 +368,7 @@ export const Interactive: Story = {
               type="button"
               data-size="sm"
             >
-              {t('platform.common.reset')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>

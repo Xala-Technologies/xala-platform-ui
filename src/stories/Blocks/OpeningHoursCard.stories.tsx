@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { OpeningHoursCard } from '../../blocks/OpeningHoursCard';
+import { OpeningHoursCard } from '../../components/OpeningHoursCard';
 
 const meta: Meta<typeof OpeningHoursCard> = {
   title: 'Blocks/OpeningHoursCard',

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ContactInfoCard } from '../../blocks/ContactInfoCard';
+import { ContactInfoCard } from '../../components/ContactInfoCard';
 
 const meta: Meta<typeof ContactInfoCard> = {
   title: 'Blocks/ContactInfoCard',

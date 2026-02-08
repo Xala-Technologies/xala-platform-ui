@@ -134,7 +134,7 @@ export const ColorContexts: Story = {
           >
             "Eksempel Tekst"
           </Paragraph>
-          <Button data-variant="primary">{t('platform.common.delete')}</Button>
+          <Button data-variant="primary">"Eksempel Tekst"</Button>
         </div>
       </div>
     );

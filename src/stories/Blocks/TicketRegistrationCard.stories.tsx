@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TicketRegistrationCard } from '../../blocks/TicketRegistrationCard';
-import type { Registration } from '../../blocks/TicketRegistrationCard';
+import { TicketRegistrationCard } from '../../components/TicketRegistrationCard';
+import type { Registration } from '../../components/TicketRegistrationCard';
 
 const meta: Meta<typeof TicketRegistrationCard> = {
   title: 'Blocks/TicketRegistrationCard',

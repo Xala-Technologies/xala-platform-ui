@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ResultsSkeleton } from '../../blocks/ResultsSkeleton';
+import { ResultsSkeleton } from '../../components/ResultsSkeleton';
 
 const meta: Meta<typeof ResultsSkeleton> = {
   title: 'Blocks/ResultsSkeleton',

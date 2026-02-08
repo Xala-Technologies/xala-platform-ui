@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { ActivityFeed } from '../../blocks/activity/ActivityFeed';
-import type { ActivityItemData } from '../../blocks/activity/ActivityFeed';
+import { ActivityFeed } from '../../components/activity/ActivityFeed';
+import type { ActivityItemData } from '../../components/activity/ActivityFeed';
 
 const meta: Meta<typeof ActivityFeed> = {
   title: 'Blocks/ActivityFeed',

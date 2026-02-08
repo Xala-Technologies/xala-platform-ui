@@ -252,9 +252,9 @@ export const Disabled: Story = {
   render: function Render() {
     return (
       <Field>
-        <Label>{t('platform.common.status')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Select disabled>
-          <Select.Option value="active">{t('platform.status.active')}</Select.Option>
+          <Select.Option value="active">"Eksempel Tekst"</Select.Option>
         </Select>
       </Field>
     );
@@ -298,7 +298,7 @@ export const ReadOnly: Story = {
   render: function Render() {
     return (
       <Field>
-        <Label>{t('platform.common.country')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Select readOnly value="no">
           <Select.Option value="no">"Eksempel Tekst"</Select.Option>
         </Select>
@@ -357,7 +357,7 @@ export const FormExample: Story = {
         }}
       >
         <Field>
-          <Label>{t('platform.common.country')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Field.Description>"Eksempel Tekst"</Field.Description>
           <Select value={country} onChange={(e) => setCountry(e.target.value)}>
             <Select.Option value="">"Eksempel Tekst"</Select.Option>
@@ -369,7 +369,7 @@ export const FormExample: Story = {
         </Field>
 
         <Field>
-          <Label>{t('platform.common.city')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Select value={city} onChange={(e) => setCity(e.target.value)} disabled={!country}>
             <Select.Option value="">"Eksempel Tekst"</Select.Option>
             {country === 'no' && (

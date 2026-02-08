@@ -50,7 +50,7 @@ type Story = StoryObj<typeof meta>;
 
 // LoadingState - Small
 const LoadingSmallExample = () => {
-  return <LoadingState label={t('platform.common.loading')} size="sm" />;
+  return <LoadingState label="Eksempel Tekst" size="sm" />;
 };
 
 export const LoadingSmall: Story = {
@@ -61,7 +61,7 @@ export const LoadingSmall: Story = {
 
 // LoadingState - Medium
 const LoadingMediumExample = () => {
-  return <LoadingState label={t('platform.common.loading')} size="md" />;
+  return <LoadingState label="Eksempel Tekst" size="md" />;
 };
 
 export const LoadingMedium: Story = {
@@ -72,7 +72,7 @@ export const LoadingMedium: Story = {
 
 // LoadingState - Large
 const LoadingLargeExample = () => {
-  return <LoadingState label={t('platform.common.loading')} size="lg" />;
+  return <LoadingState label="Eksempel Tekst" size="lg" />;
 };
 
 export const LoadingLarge: Story = {
@@ -173,7 +173,7 @@ export const EmptyNoAction: Story = {
 const NotFoundDefaultExample = () => {
   return (
     <NotFoundState
-      title={t('platform.errors.notFound')}
+      title="Eksempel Tekst"
       description="Eksempel Tekst"
       backLink={{
         label: t('platform.common.back'),
@@ -230,7 +230,7 @@ export const NotFoundCustom: Story = {
 const ErrorDefaultExample = () => {
   return (
     <ErrorState
-      title={t('platform.errors.serverError')}
+      title="Eksempel Tekst"
       description="Eksempel Tekst"
       onRetry={fn()}
       retryLabel="Eksempel Tekst"
@@ -266,7 +266,7 @@ export const ErrorCustom: Story = {
 const ErrorNoRetryExample = () => {
   return (
     <ErrorState
-      title={t('platform.errors.serverError')}
+      title="Eksempel Tekst"
       description="Eksempel Tekst"
     />
   );
@@ -313,7 +313,7 @@ const AllStatesExample = () => {
         }}
       >
         <NotFoundState
-          title={t('platform.errors.notFound')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
           backLink={{ label: t('platform.common.back'), href: '/' }}
         />
@@ -325,7 +325,7 @@ const AllStatesExample = () => {
         }}
       >
         <ErrorState
-          title={t('platform.errors.serverError')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
           onRetry={fn()}
         />

@@ -59,7 +59,7 @@ const BasicSectionExample = () => {
         <FormField label="Eksempel Tekst" required>
           <Textfield placeholder="John Doe" />
         </FormField>
-        <FormField label={t('platform.auth.email')} required>
+        <FormField label="Eksempel Tekst" required>
           <Textfield type="email" placeholder="john@example.com" />
         </FormField>
       </FormSection>
@@ -117,7 +117,7 @@ const FormRowTwoColumnsExample = () => {
           <FormField label="Eksempel Tekst">
             <Textfield type="tel" placeholder="+47 12 34 56 78" />
           </FormField>
-          <FormField label={t('platform.auth.email')} required>
+          <FormField label="Eksempel Tekst" required>
             <Textfield type="email" placeholder="john@example.com" />
           </FormField>
         </FormRow>
@@ -136,7 +136,7 @@ export const FormRowTwoColumns: Story = {
 const FormRowThreeColumnsExample = () => {
   return (
     <div style={{ width: '800px' }}>
-      <FormSection title={t('platform.common.address')}>
+      <FormSection title="Eksempel Tekst">
         <FormRow columns={3}>
           <FormField label="Eksempel Tekst">
             <Textfield placeholder="Storgata 1" />
@@ -144,7 +144,7 @@ const FormRowThreeColumnsExample = () => {
           <FormField label="Eksempel Tekst">
             <Textfield placeholder="0155" />
           </FormField>
-          <FormField label={t('platform.common.city')}>
+          <FormField label="Eksempel Tekst">
             <Textfield placeholder="Oslo" />
           </FormField>
         </FormRow>
@@ -165,14 +165,14 @@ const FormFieldWithErrorExample = () => {
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
         <FormField
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           required
           error="Eksempel Tekst"
         >
           <Textfield type="email" placeholder="invalid-email" />
         </FormField>
         <FormField
-          label={t('platform.auth.password')}
+          label="Eksempel Tekst"
           required
           helperText="Eksempel Tekst"
         >
@@ -194,15 +194,15 @@ const FormActionsRightExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
-        <FormField label={t('platform.common.name')}>
+        <FormField label="Eksempel Tekst">
           <Textfield placeholder="Eksempel Tekst" />
         </FormField>
         <FormActions align="right">
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
         </FormActions>
       </FormSection>
@@ -221,15 +221,15 @@ const FormActionsLeftExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
-        <FormField label={t('platform.common.name')}>
+        <FormField label="Eksempel Tekst">
           <Textfield placeholder="Eksempel Tekst" />
         </FormField>
         <FormActions align="left">
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
         </FormActions>
       </FormSection>
@@ -248,19 +248,19 @@ const FormActionsBetweenExample = () => {
   return (
     <div style={{ width: '600px' }}>
       <FormSection title="Eksempel Tekst">
-        <FormField label={t('platform.common.name')}>
+        <FormField label="Eksempel Tekst">
           <Textfield placeholder="Eksempel Tekst" />
         </FormField>
         <FormActions align="between">
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            {t('platform.common.delete')}
+            "Eksempel Tekst"
           </Button>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)' }}>
             <Button onClick={fn()} data-color="neutral" data-size="medium">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
             <Button onClick={fn()} data-color="accent" data-size="medium">
-              {t('platform.common.save')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </FormActions>
@@ -294,10 +294,10 @@ const FormActionsStickyExample = () => {
         ))}
         <FormActions align="right" sticky>
           <Button onClick={fn()} data-color="neutral" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={fn()} data-color="accent" data-size="medium">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
         </FormActions>
       </FormSection>
@@ -352,7 +352,7 @@ const CompleteFormExample = () => {
           </FormField>
         </FormRow>
         <FormField
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           required
           helperText="Eksempel Tekst"
         >
@@ -383,7 +383,7 @@ const CompleteFormExample = () => {
 
       <FormActions align="right">
         <Button onClick={fn()} data-color="neutral" data-size="medium">
-          {t('platform.common.cancel')}
+          "Eksempel Tekst"
         </Button>
         <Button onClick={fn()} data-color="accent" data-size="medium">
           "Eksempel Tekst"

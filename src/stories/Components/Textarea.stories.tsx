@@ -41,7 +41,7 @@ export const Default: Story = {
   render: function Render() {
     return (
       <Field>
-        <Label>{t('platform.common.description')}</Label>
+        <Label>"Eksempel Tekst"</Label>
         <Textarea placeholder="Eksempel Tekst" />
       </Field>
     );

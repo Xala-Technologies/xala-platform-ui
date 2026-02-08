@@ -247,8 +247,8 @@ export const Disabled: Story = {
   render: function Render() {
     return (
       <Fieldset>
-        <Fieldset.Legend>{t('platform.common.status')}</Fieldset.Legend>
-        <Radio label={t('platform.status.active')} name="status" value="active" defaultChecked />
+        <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
+        <Radio label="Eksempel Tekst" name="status" value="active" defaultChecked />
         <Radio
           label="Eksempel Tekst"
           name="status"
@@ -295,7 +295,7 @@ export const InteractiveGroup: Story = {
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
         <Fieldset.Description>"Eksempel Tekst"</Fieldset.Description>
         <Radio
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           description="Eksempel Tekst"
           value="email"
           name="contact"
@@ -326,7 +326,7 @@ export const InteractiveGroup: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>{t('platform.common.selected')}:</strong> {selected}
+          <strong>"Eksempel Tekst":</strong> {selected}
         </div>
       </Fieldset>
     );
@@ -409,7 +409,7 @@ export const AllVariants: Story = {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Radio label="Eksempel Tekst" name="states" value="default" />
             <Radio
-              label={t('platform.common.selected')}
+              label="Eksempel Tekst"
               name="states"
               value="selected"
               defaultChecked

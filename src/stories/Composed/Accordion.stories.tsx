@@ -187,7 +187,7 @@ export const CollapsibleExampleStory: Story = {
 const CollapsibleWithIconExample = () => {
   return (
     <Collapsible
-      title={t('platform.nav.settings')}
+      title="Eksempel Tekst"
       icon={<Settings size={20} />}
       defaultOpen={false}
     >

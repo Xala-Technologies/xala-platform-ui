@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
 import { Button } from '@digdir/designsystemet-react';
-import { RequireAuthModal } from '../../blocks/RequireAuthModal';
+import { RequireAuthModal } from '../../components/RequireAuthModal';
 
 const meta: Meta<typeof RequireAuthModal> = {
   title: 'Blocks/RequireAuthModal',

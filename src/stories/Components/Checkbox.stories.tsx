@@ -271,7 +271,7 @@ export const InteractiveGroup: Story = {
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
         <Fieldset.Description>"Eksempel Tekst"</Fieldset.Description>
         <Checkbox
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}
@@ -296,7 +296,7 @@ export const InteractiveGroup: Story = {
             borderRadius: 'var(--ds-border-radius-md)',
           }}
         >
-          <strong>{t('platform.common.selected')}:</strong>{' '}
+          <strong>"Eksempel Tekst":</strong>{' '}
           {selected.length > 0 ? selected.join(', ') : t('platform.common.none')}
         </div>
       </Fieldset>
@@ -333,7 +333,7 @@ export const WithValidation: Story = {
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
         <Fieldset.Description>"Eksempel Tekst"</Fieldset.Description>
         <Checkbox
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           value="email"
           checked={selected.includes('email')}
           onChange={(e) => handleChange('email', e.target.checked)}

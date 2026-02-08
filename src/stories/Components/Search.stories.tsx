@@ -256,7 +256,7 @@ export const Default: Story = {
     return (
       <Search>
         <Search.Input
-          aria-label={t('platform.common.search')}
+          aria-label="Eksempel Tekst"
           placeholder="Eksempel Tekst"
         />
         <Search.Clear />

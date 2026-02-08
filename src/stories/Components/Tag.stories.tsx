@@ -226,9 +226,9 @@ export const StatusTags: Story = {
   render: function Render() {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Tag data-color="success">{t('platform.status.active')}</Tag>
-        <Tag data-color="warning">{t('platform.status.pending')}</Tag>
-        <Tag data-color="danger">{t('platform.status.cancelled')}</Tag>
+        <Tag data-color="success">"Eksempel Tekst"</Tag>
+        <Tag data-color="warning">"Eksempel Tekst"</Tag>
+        <Tag data-color="danger">"Eksempel Tekst"</Tag>
         <Tag data-color="neutral">"Eksempel Tekst"</Tag>
         <Tag data-color="info">"Eksempel Tekst"</Tag>
       </div>
@@ -432,9 +432,9 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Tag data-color="success">{t('platform.status.active')}</Tag>
-            <Tag data-color="warning">{t('platform.status.pending')}</Tag>
-            <Tag data-color="danger">{t('platform.status.cancelled')}</Tag>
+            <Tag data-color="success">"Eksempel Tekst"</Tag>
+            <Tag data-color="warning">"Eksempel Tekst"</Tag>
+            <Tag data-color="danger">"Eksempel Tekst"</Tag>
             <Tag data-color="neutral">"Eksempel Tekst"</Tag>
             <Tag data-color="info">"Eksempel Tekst"</Tag>
           </div>

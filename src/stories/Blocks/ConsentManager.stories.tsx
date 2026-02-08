@@ -5,8 +5,8 @@ import {
   ConsentManager,
   DEFAULT_CONSENT_MANAGER_LABELS,
   DEFAULT_CONSENT_SETTINGS,
-} from '../../blocks/gdpr/ConsentManager';
-import type { ConsentSetting } from '../../blocks/gdpr/ConsentManager';
+} from '../../components/gdpr/ConsentManager';
+import type { ConsentSetting } from '../../components/gdpr/ConsentManager';
 
 const meta: Meta<typeof ConsentManager> = {
   title: 'Blocks/ConsentManager',

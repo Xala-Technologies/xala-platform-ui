@@ -316,7 +316,7 @@ export const CombinedColors: Story = {
           "Eksempel Tekst"
         </Button>
         <Button variant="tertiary" data-color="danger" type="button">
-          {t('platform.common.delete')}
+          "Eksempel Tekst"
         </Button>
       </div>
     );
@@ -333,11 +333,11 @@ export const WithIcons: Story = {
         <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
           <Button variant="primary" type="button">
             <PencilIcon aria-hidden fontSize="1.25rem" />
-            {t('platform.common.edit')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="secondary" type="button">
             <FloppydiskIcon aria-hidden fontSize="1.25rem" />
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
           <Button variant="tertiary" type="button">
             "Eksempel Tekst"
@@ -392,13 +392,13 @@ export const Loading: Story = {
         }}
       >
         <Button variant="primary" loading type="button">
-          {t('platform.common.loading')}...
+          "Eksempel Tekst"...
         </Button>
         <Button variant="secondary" loading type="button">
-          {t('platform.common.loading')}...
+          "Eksempel Tekst"...
         </Button>
         <Button variant="tertiary" loading type="button">
-          {t('platform.common.loading')}...
+          "Eksempel Tekst"...
         </Button>
       </div>
     );
@@ -468,17 +468,17 @@ export const IconOnly: Story = {
           flexWrap: 'wrap',
         }}
       >
-        <Button icon aria-label={t('platform.common.add')} type="button">
+        <Button icon aria-label="Eksempel Tekst" type="button">
           <PlusIcon aria-hidden fontSize="1.25rem" />
         </Button>
-        <Button icon variant="secondary" aria-label={t('platform.common.save')} type="button">
+        <Button icon variant="secondary" aria-label="Eksempel Tekst" type="button">
           <FloppydiskIcon aria-hidden fontSize="1.25rem" />
         </Button>
         <Button
           icon
           variant="tertiary"
           data-color="danger"
-          aria-label={t('platform.common.delete')}
+          aria-label="Eksempel Tekst"
           type="button"
         >
           <TrashIcon aria-hidden fontSize="1.25rem" />
@@ -511,7 +511,7 @@ export const BestPractices: Story = {
               "Eksempel Tekst"
             </Button>
             <Button variant="secondary" type="button">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
@@ -535,7 +535,7 @@ export const BestPractices: Story = {
               "Eksempel Tekst"
             </Button>
             <Button variant="tertiary" data-color="danger" type="button">
-              {t('platform.common.delete')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
@@ -576,10 +576,10 @@ export const BestPractices: Story = {
             style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap', opacity: 0.6 }}
           >
             <Button variant="primary" type="button">
-              {t('platform.common.save')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="primary" type="button">
-              {t('platform.common.submit')}
+              "Eksempel Tekst"
             </Button>
             <Button variant="primary" type="button">
               "Eksempel Tekst"
@@ -605,7 +605,7 @@ export const BestPractices: Story = {
               OK
             </Button>
             <Button variant="secondary" type="button">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>
@@ -695,17 +695,17 @@ export const AllVariants: Story = {
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-3)', flexWrap: 'wrap' }}>
             <Button type="button">
               <PlusIcon aria-hidden fontSize="1.25rem" />
-              {t('platform.common.add')}
+              "Eksempel Tekst"
             </Button>
             <Button type="button">
               <FloppydiskIcon aria-hidden fontSize="1.25rem" />
-              {t('platform.common.save')}
+              "Eksempel Tekst"
             </Button>
             <Button type="button">
               "Eksempel Tekst"
               <ArrowRightIcon aria-hidden fontSize="1.25rem" />
             </Button>
-            <Button icon aria-label={t('platform.common.edit')} type="button">
+            <Button icon aria-label="Eksempel Tekst" type="button">
               <PencilIcon aria-hidden fontSize="1.25rem" />
             </Button>
           </div>
@@ -738,7 +738,7 @@ export const AllVariants: Story = {
               "Eksempel Tekst"
             </Button>
             <Button variant="tertiary" data-color="danger" type="button">
-              {t('platform.common.delete')}
+              "Eksempel Tekst"
             </Button>
           </div>
         </div>

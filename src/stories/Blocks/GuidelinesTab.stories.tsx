@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { GuidelinesTab } from '../../blocks/GuidelinesTab';
+import { GuidelinesTab } from '../../components/GuidelinesTab';
 import { Paragraph } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof GuidelinesTab> = {

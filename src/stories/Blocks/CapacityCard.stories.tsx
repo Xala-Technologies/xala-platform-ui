@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CapacityCard } from '../../blocks/CapacityCard';
+import { CapacityCard } from '../../components/CapacityCard';
 import { Users } from 'lucide-react';
 
 const meta: Meta<typeof CapacityCard> = {

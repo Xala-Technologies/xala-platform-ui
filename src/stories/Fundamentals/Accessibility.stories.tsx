@@ -327,7 +327,7 @@ export const FormAccessibility: Story = {
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label={t('platform.auth.email')}
+              label="Eksempel Tekst"
               type="email"
               id="email-input"
               value={formData.email}
@@ -359,7 +359,7 @@ export const FormAccessibility: Story = {
           </div>
 
           <Button data-variant="primary" type="submit">
-            {t('platform.common.submit')}
+            "Eksempel Tekst"
           </Button>
         </form>
 

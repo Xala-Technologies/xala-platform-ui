@@ -189,7 +189,7 @@ const InteractiveStepper = () => {
           data-color="neutral"
           data-size="medium"
         >
-          {t('platform.common.back')}
+          "Eksempel Tekst"
         </Button>
         <Button
           onClick={() => setCurrentStep(Math.min(sampleSteps.length - 1, currentStep + 1))}
@@ -197,7 +197,7 @@ const InteractiveStepper = () => {
           data-color="accent"
           data-size="medium"
         >
-          {t('platform.common.next')}
+          "Eksempel Tekst"
         </Button>
       </div>
     </div>
@@ -222,10 +222,10 @@ const WizardExample = () => {
     <Wizard
       steps={steps}
       showStepIndicator={true}
-      nextLabel={t('platform.common.next')}
-      prevLabel={t('platform.common.back')}
-      completeLabel={t('platform.common.confirm')}
-      cancelLabel={t('platform.common.cancel')}
+      nextLabel="Eksempel Tekst"
+      prevLabel="Eksempel Tekst"
+      completeLabel="Eksempel Tekst"
+      cancelLabel="Eksempel Tekst"
       onComplete={fn()}
       onCancel={fn()}
     >

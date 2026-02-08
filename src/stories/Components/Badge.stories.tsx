@@ -158,15 +158,15 @@ export const StatusDots: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-          {t('platform.status.active')}
+          "Eksempel Tekst"
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Badge data-color="warning" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-          {t('platform.status.pending')}
+          "Eksempel Tekst"
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-          {t('platform.status.cancelled')}
+          "Eksempel Tekst"
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Badge data-color="neutral" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
@@ -240,11 +240,11 @@ export const AllVariants: Story = {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-2)' }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Badge data-color="success" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-              {t('platform.status.active')}
+              "Eksempel Tekst"
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Badge data-color="warning" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />
-              {t('platform.status.pending')}
+              "Eksempel Tekst"
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Badge data-color="danger" style={{ marginInlineEnd: 'var(--ds-spacing-2)' }} />

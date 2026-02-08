@@ -161,10 +161,10 @@ const ModalWithFooter = (args: any) => {
         footer={
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', justifyContent: 'flex-end' }}>
             <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
             <Button onClick={() => setIsOpen(false)} data-color="accent" data-size="medium">
-              {t('platform.common.confirm')}
+              "Eksempel Tekst"
             </Button>
           </div>
         }
@@ -260,10 +260,10 @@ const ModalWithSubComponents = (args: any) => {
         </ModalBody>
         <ModalFooter align="right">
           <Button onClick={() => setIsOpen(false)} data-color="neutral" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
           <Button onClick={() => setIsOpen(false)} data-color="accent" data-size="medium">
-            {t('platform.common.save')}
+            "Eksempel Tekst"
           </Button>
         </ModalFooter>
       </Modal>

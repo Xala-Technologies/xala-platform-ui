@@ -29,7 +29,7 @@ import {
   type SearchResultGroup,
 } from '../components/header-parts';
 import { HeaderThemeToggle } from '../components/header-parts';
-import { NotificationBell } from '../blocks/NotificationBell';
+import { NotificationBell } from '../components/NotificationBell';
 import { UserIcon, SettingsIcon, LogOutIcon } from '../primitives/icons';
 import { Stack } from '../primitives/stack';
 import { Text } from '../primitives/text';

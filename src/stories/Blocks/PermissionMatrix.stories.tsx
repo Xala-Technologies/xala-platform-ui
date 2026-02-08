@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { PermissionMatrix } from '../../blocks/admin/PermissionMatrix';
-import type { Role, Permission } from '../../blocks/admin/PermissionMatrix';
+import { PermissionMatrix } from '../../components/admin/PermissionMatrix';
+import type { Role, Permission } from '../../components/admin/PermissionMatrix';
 
 const meta: Meta<typeof PermissionMatrix> = {
   title: 'Blocks/PermissionMatrix',

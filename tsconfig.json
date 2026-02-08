@@ -29,6 +29,27 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/primitives/*": [
+        "./src/primitives/*"
+      ],
+      "@/layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@/tokens": [
+        "./src/tokens/index.ts"
+      ],
+      "@/themes/*": [
+        "./src/themes/*"
+      ],
+      "@/utils": [
+        "./src/utils/index.ts"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
       ]
     }
   },

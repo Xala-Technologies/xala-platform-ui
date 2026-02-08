@@ -194,10 +194,10 @@ export const DefaultButtonGroup: StoryObj<typeof ButtonGroup> = {
     return (
       <ButtonGroup>
         <Button variant="primary" data-size="sm">
-          {t('platform.common.save')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="secondary" data-size="sm">
-          {t('platform.common.cancel')}
+          "Eksempel Tekst"
         </Button>
       </ButtonGroup>
     );
@@ -209,10 +209,10 @@ export const CenteredButtonGroup: StoryObj<typeof ButtonGroup> = {
     return (
       <ButtonGroup align="center">
         <Button variant="secondary" data-size="sm">
-          {t('platform.common.back')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="primary" data-size="sm">
-          {t('platform.common.next')}
+          "Eksempel Tekst"
         </Button>
       </ButtonGroup>
     );
@@ -224,13 +224,13 @@ export const EndAlignedButtonGroup: StoryObj<typeof ButtonGroup> = {
     return (
       <ButtonGroup align="end">
         <Button variant="tertiary" data-size="sm">
-          {t('platform.common.cancel')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="secondary" data-size="sm">
-          {t('platform.common.back')}
+          "Eksempel Tekst"
         </Button>
         <Button variant="primary" data-size="sm">
-          {t('platform.common.confirm')}
+          "Eksempel Tekst"
         </Button>
       </ButtonGroup>
     );
@@ -254,11 +254,11 @@ export const TwoColumnForm: StoryObj<typeof FormGrid> = {
   render: function Render() {
     return (
       <FormGrid columns={2}>
-        <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
-        <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
-        <Textfield label={t('platform.auth.email')} placeholder="Eksempel Tekst" />
+        <Textfield label="Eksempel Tekst" placeholder="Eksempel Tekst" />
+        <Textfield label="Eksempel Tekst" placeholder="Eksempel Tekst" />
+        <Textfield label="Eksempel Tekst" placeholder="Eksempel Tekst" />
         <Textfield
-          label={t('platform.common.details')}
+          label="Eksempel Tekst"
           placeholder="Eksempel Tekst"
         />
       </FormGrid>
@@ -271,11 +271,11 @@ export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
     return (
       <FormGrid columns={3}>
         <Textfield
-          label={t('platform.common.details')}
+          label="Eksempel Tekst"
           placeholder="Eksempel Tekst"
         />
         <Field>
-          <Label>{t('platform.common.details')}</Label>
+          <Label>"Eksempel Tekst"</Label>
           <Select>
             <Select.Option value="no">Norway</Select.Option>
             <Select.Option value="se">Sweden</Select.Option>
@@ -283,7 +283,7 @@ export const ThreeColumnForm: StoryObj<typeof FormGrid> = {
           </Select>
         </Field>
         <Textfield
-          label={t('platform.common.details')}
+          label="Eksempel Tekst"
           placeholder="Eksempel Tekst"
         />
       </FormGrid>
@@ -295,9 +295,9 @@ export const SingleColumnForm: StoryObj<typeof FormGrid> = {
   render: function Render() {
     return (
       <FormGrid columns={1}>
-        <Textfield label={t('platform.nav.profile')} placeholder="Eksempel Tekst" />
+        <Textfield label="Eksempel Tekst" placeholder="Eksempel Tekst" />
         <Textfield
-          label={t('platform.common.details')}
+          label="Eksempel Tekst"
           placeholder="Eksempel Tekst"
         />
       </FormGrid>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { GlobalErrorHandler } from '../../blocks/GlobalErrorHandler';
+import { GlobalErrorHandler } from '../../components/GlobalErrorHandler';
 
 const meta: Meta<typeof GlobalErrorHandler> = {
   title: 'Blocks/GlobalErrorHandler',

@@ -219,7 +219,7 @@ export const Default: Story = {
   render: function Render() {
     return (
       <Textfield
-        label={t('platform.common.name')}
+        label="Eksempel Tekst"
         placeholder="Eksempel Tekst"
       />
     );
@@ -245,7 +245,7 @@ export const WithDescription: Story = {
   render: function Render() {
     return (
       <Textfield
-        label={t('platform.auth.email')}
+        label="Eksempel Tekst"
         description="Eksempel Tekst"
         placeholder="name@example.com"
         type="email"
@@ -261,8 +261,8 @@ export const WithError: Story = {
   render: function Render() {
     return (
       <Textfield
-        label={t('platform.auth.email')}
-        error={t('platform.validation.email')}
+        label="Eksempel Tekst"
+        error="Eksempel Tekst"
         defaultValue="invalid-email"
         type="email"
       />
@@ -297,7 +297,7 @@ export const Password: Story = {
   render: function Render() {
     return (
       <Textfield
-        label={t('platform.auth.password')}
+        label="Eksempel Tekst"
         type="password"
         placeholder="Eksempel Tekst"
       />
@@ -333,7 +333,7 @@ export const WithPrefixSuffix: Story = {
           suffix="Eksempel Tekst"
           label="Eksempel Tekst"
         />
-        <Textfield prefix="$" label={t('platform.common.price')} type="number" />
+        <Textfield prefix="$" label="Eksempel Tekst" type="number" />
         <Textfield suffix="kg" label="Eksempel Tekst" type="number" />
       </div>
     );
@@ -367,7 +367,7 @@ export const RequiredOptional: Story = {
             <>
               "Eksempel Tekst"
               <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-                {t('platform.validation.required')}
+                "Eksempel Tekst"
               </Tag>
             </>
           }
@@ -378,7 +378,7 @@ export const RequiredOptional: Story = {
             <>
               "Eksempel Tekst"
               <Tag data-color="neutral" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-                {t('platform.common.optional')}
+                "Eksempel Tekst"
               </Tag>
             </>
           }
@@ -400,9 +400,9 @@ export const InputTypes: Story = {
           type="text"
           placeholder="Eksempel Tekst"
         />
-        <Textfield label={t('platform.auth.email')} type="email" placeholder="name@example.com" />
+        <Textfield label="Eksempel Tekst" type="email" placeholder="name@example.com" />
         <Textfield
-          label={t('platform.auth.password')}
+          label="Eksempel Tekst"
           type="password"
           placeholder="Eksempel Tekst"
         />
@@ -410,9 +410,9 @@ export const InputTypes: Story = {
         <Textfield label="Eksempel Tekst" type="number" placeholder="0" />
         <Textfield label="Eksempel Tekst" type="url" placeholder="https://example.com" />
         <Textfield
-          label={t('platform.common.search')}
+          label="Eksempel Tekst"
           type="search"
-          placeholder={t('platform.common.search')}
+          placeholder="Eksempel Tekst"
         />
       </div>
     );
@@ -484,7 +484,7 @@ export const FormExample: Story = {
           required
         />
         <Textfield
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           type="email"
           placeholder="name@example.com"
           value={email}
@@ -544,7 +544,7 @@ export const BestPractices: Story = {
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
             <Textfield
-              label={t('platform.auth.email')}
+              label="Eksempel Tekst"
               type="email"
               placeholder="name@example.com"
             />
@@ -564,7 +564,7 @@ export const BestPractices: Story = {
             "Eksempel Tekst"
           </Heading>
           <Textfield
-            label={t('platform.auth.email')}
+            label="Eksempel Tekst"
             type="email"
             error="Eksempel Tekst"
             defaultValue="invalid"
@@ -603,7 +603,7 @@ export const BestPractices: Story = {
           </Heading>
           <div style={{ opacity: 0.6 }}>
             <Textfield
-              label={t('platform.auth.email')}
+              label="Eksempel Tekst"
               error="Eksempel Tekst"
               defaultValue="test"
             />
@@ -636,7 +636,7 @@ export const AllVariants: Story = {
             />
             <Textfield
               label="Eksempel Tekst"
-              error={t('platform.validation.required')}
+              error="Eksempel Tekst"
             />
             <Textfield
               label="Eksempel Tekst"
@@ -685,12 +685,12 @@ export const AllVariants: Story = {
               placeholder="Eksempel Tekst"
             />
             <Textfield
-              label={t('platform.auth.email')}
+              label="Eksempel Tekst"
               type="email"
               placeholder="name@example.com"
             />
             <Textfield
-              label={t('platform.auth.password')}
+              label="Eksempel Tekst"
               type="password"
               placeholder="Eksempel Tekst"
             />
@@ -704,7 +704,7 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ds-spacing-3)' }}>
-            <Textfield prefix="$" label={t('platform.common.price')} type="number" />
+            <Textfield prefix="$" label="Eksempel Tekst" type="number" />
             <Textfield suffix="kg" label="Eksempel Tekst" type="number" />
             <Textfield prefix="https://" suffix=".com" label="Eksempel Tekst" />
           </div>
@@ -738,7 +738,7 @@ export const AllVariants: Story = {
               <>
                 "Eksempel Tekst"
                 <Tag data-color="warning" style={{ marginInlineStart: 'var(--ds-spacing-2)' }}>
-                  {t('platform.validation.required')}
+                  "Eksempel Tekst"
                 </Tag>
               </>
             }

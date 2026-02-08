@@ -273,7 +273,7 @@ export function WelcomeCard() {
           marginBottom: 'var(--ds-spacing-3)'
         }}
       >
-        {t('welcome.title')}
+        "Eksempel Tekst"
       </Heading>
 
       <Paragraph
@@ -282,11 +282,11 @@ export function WelcomeCard() {
           color: 'var(--ds-color-neutral-text-subtle)'
         }}
       >
-        {t('welcome.description')}
+        "Eksempel Tekst"
       </Paragraph>
 
       <Button data-variant="primary">
-        {t('common.getStarted')}
+        "Eksempel Tekst"
       </Button>
     </Card>
   );
@@ -602,7 +602,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Textfield
-        label={t('form.email')}
+        label="Eksempel Tekst"
         type="email"
         error={errors.email?.message}
         {...register('email', {
@@ -614,7 +614,7 @@ export function ContactForm() {
         data-variant="primary"
         type="submit"
       >
-        {t('common.submit')}
+        "Eksempel Tekst"
       </Button>
     </form>
   );
@@ -651,7 +651,7 @@ export function SaveButton() {
       {loading ? (
         <>
           <Spinner size="sm" />
-          {t('common.saving')}
+          "Eksempel Tekst"
         </>
       ) : (
         t('common.save')
@@ -679,7 +679,7 @@ export function UserList() {
   if (error) {
     return (
       <ErrorState
-        title={t('errors.loadFailed')}
+        title="Eksempel Tekst"
         onRetry={() => queryClient.invalidateQueries(['users'])}
       />
     );
@@ -688,8 +688,8 @@ export function UserList() {
   if (!data || data.length === 0) {
     return (
       <EmptyState
-        title={t('users.empty')}
-        action={<Button>{t('users.create')}</Button>}
+        title="Eksempel Tekst"
+        action={<Button>"Eksempel Tekst"</Button>}
       />
     );
   }

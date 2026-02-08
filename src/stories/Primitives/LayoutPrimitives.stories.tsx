@@ -86,11 +86,11 @@ export const SidebarExample: StoryObj<typeof SimpleSidebar> = {
 
           <SidebarScrollArea>
             <ExplorerItem
-              title={t('platform.nav.dashboard')}
+              title="Eksempel Tekst"
               description="Eksempel Tekst"
             />
             <ExplorerItem
-              title={t('platform.common.settings')}
+              title="Eksempel Tekst"
               description="Eksempel Tekst"
             />
             <ExplorerItem

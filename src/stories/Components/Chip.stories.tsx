@@ -219,7 +219,7 @@ export const RadioChips: Story = {
           checked={selected === 'option1'}
           onChange={() => setSelected('option1')}
         >
-          {t('platform.common.all')}
+          "Eksempel Tekst"
         </Chip.Radio>
         <Chip.Radio
           name="filter"
@@ -227,7 +227,7 @@ export const RadioChips: Story = {
           checked={selected === 'option2'}
           onChange={() => setSelected('option2')}
         >
-          {t('platform.status.active')}
+          "Eksempel Tekst"
         </Chip.Radio>
         <Chip.Radio
           name="filter"
@@ -235,7 +235,7 @@ export const RadioChips: Story = {
           checked={selected === 'option3'}
           onChange={() => setSelected('option3')}
         >
-          {t('platform.status.completed')}
+          "Eksempel Tekst"
         </Chip.Radio>
       </div>
     );
@@ -298,9 +298,9 @@ export const ButtonChips: Story = {
   render: function Render() {
     return (
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-        <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
         <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
-        <Chip.Button onClick={() => {}}>{t('platform.common.reset')}</Chip.Button>
+        <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
+        <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
       </div>
     );
   },
@@ -351,7 +351,7 @@ export const AllVariants: Story = {
               checked={radioSelected === 'all'}
               onChange={() => setRadioSelected('all')}
             >
-              {t('platform.common.all')}
+              "Eksempel Tekst"
             </Chip.Radio>
             <Chip.Radio
               name="status"
@@ -359,7 +359,7 @@ export const AllVariants: Story = {
               checked={radioSelected === 'active'}
               onChange={() => setRadioSelected('active')}
             >
-              {t('platform.status.active')}
+              "Eksempel Tekst"
             </Chip.Radio>
             <Chip.Radio
               name="status"
@@ -367,7 +367,7 @@ export const AllVariants: Story = {
               checked={radioSelected === 'completed'}
               onChange={() => setRadioSelected('completed')}
             >
-              {t('platform.status.completed')}
+              "Eksempel Tekst"
             </Chip.Radio>
           </div>
         </div>
@@ -409,7 +409,7 @@ export const AllVariants: Story = {
             {removableChips.map((chip) => (
               <Chip.Removable
                 key={chip}
-                aria-label={`${t('platform.common.remove')} ${chip}`}
+                aria-label={`$"Eksempel Tekst" ${chip}`}
                 onClick={() => setRemovableChips((prev) => prev.filter((c) => c !== chip))}
               >
                 {chip}
@@ -428,7 +428,7 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </h3>
           <div style={{ display: 'flex', gap: 'var(--ds-spacing-2)', flexWrap: 'wrap' }}>
-            <Chip.Button onClick={() => {}}>{t('platform.common.clearAll')}</Chip.Button>
+            <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
             <Chip.Button onClick={() => {}}>"Eksempel Tekst"</Chip.Button>
           </div>
         </div>

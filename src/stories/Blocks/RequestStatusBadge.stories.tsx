@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RequestStatusBadge, StatusTag } from '../../blocks/gdpr/RequestStatusBadge';
-import type { StatusBadgeConfig } from '../../blocks/gdpr/RequestStatusBadge';
+import { RequestStatusBadge, StatusTag } from '../../components/gdpr/RequestStatusBadge';
+import type { StatusBadgeConfig } from '../../components/gdpr/RequestStatusBadge';
 
 const meta: Meta<typeof RequestStatusBadge> = {
   title: 'Blocks/RequestStatusBadge',
@@ -126,11 +126,11 @@ export const StatusTagColors: Story = {
           padding: 'var(--ds-spacing-4)',
         }}
       >
-        <StatusTag color="success">{t('platform.status.completed')}</StatusTag>
-        <StatusTag color="warning">{t('platform.status.pending')}</StatusTag>
-        <StatusTag color="danger">{t('platform.status.rejected')}</StatusTag>
-        <StatusTag color="info">{t('platform.status.active')}</StatusTag>
-        <StatusTag color="neutral">{t('platform.status.cancelled')}</StatusTag>
+        <StatusTag color="success">"Eksempel Tekst"</StatusTag>
+        <StatusTag color="warning">"Eksempel Tekst"</StatusTag>
+        <StatusTag color="danger">"Eksempel Tekst"</StatusTag>
+        <StatusTag color="info">"Eksempel Tekst"</StatusTag>
+        <StatusTag color="neutral">"Eksempel Tekst"</StatusTag>
       </div>
     );
   },
@@ -149,13 +149,13 @@ export const StatusTagSizes: Story = {
         }}
       >
         <StatusTag color="success" size="sm">
-          {t('platform.status.active')}
+          "Eksempel Tekst"
         </StatusTag>
         <StatusTag color="success" size="md">
-          {t('platform.status.active')}
+          "Eksempel Tekst"
         </StatusTag>
         <StatusTag color="success" size="lg">
-          {t('platform.status.active')}
+          "Eksempel Tekst"
         </StatusTag>
       </div>
     );

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { UserInviteForm } from '../../blocks/admin/UserInviteForm';
-import type { InviteUserFormData } from '../../blocks/admin/UserInviteForm';
+import { UserInviteForm } from '../../components/admin/UserInviteForm';
+import type { InviteUserFormData } from '../../components/admin/UserInviteForm';
 
 const meta: Meta<typeof UserInviteForm> = {
   title: 'Blocks/UserInviteForm',

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
-import { ScopeSelector } from '../../blocks/admin/ScopeSelector';
-import type { ScopeAssignment, Resource, Organization } from '../../blocks/admin/ScopeSelector';
+import { ScopeSelector } from '../../components/admin/ScopeSelector';
+import type { ScopeAssignment, Resource, Organization } from '../../components/admin/ScopeSelector';
 
 const meta: Meta<typeof ScopeSelector> = {
   title: 'Blocks/ScopeSelector',

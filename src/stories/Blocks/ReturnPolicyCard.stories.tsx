@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReturnPolicyCard } from '../../blocks/ReturnPolicyCard';
-import type { ReturnPolicy } from '../../blocks/ReturnPolicyCard';
+import { ReturnPolicyCard } from '../../components/ReturnPolicyCard';
+import type { ReturnPolicy } from '../../components/ReturnPolicyCard';
 
 const meta: Meta<typeof ReturnPolicyCard> = {
   title: 'Blocks/ReturnPolicyCard',

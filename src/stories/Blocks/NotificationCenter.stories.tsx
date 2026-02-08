@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
 import { Button } from '@digdir/designsystemet-react';
-import { NotificationCenter } from '../../blocks/NotificationCenter';
-import type { NotificationItemData } from '../../blocks/NotificationItem';
+import { NotificationCenter } from '../../components/NotificationCenter';
+import type { NotificationItemData } from '../../components/NotificationItem';
 
 const meta: Meta<typeof NotificationCenter> = {
   title: 'Blocks/NotificationCenter',

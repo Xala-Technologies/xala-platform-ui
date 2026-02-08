@@ -150,7 +150,7 @@ export const WithStep: Story = {
 const DecimalPrecisionDemo = () => {
   return (
     <NumberInput
-      label={t('platform.common.price')}
+      label="Eksempel Tekst"
       defaultValue={9.99}
       min={0}
       max={1000}
@@ -174,7 +174,7 @@ export const DecimalPrecision: Story = {
 const WithPrefixDemo = () => {
   return (
     <NumberInput
-      label={t('platform.common.price')}
+      label="Eksempel Tekst"
       defaultValue={100}
       prefix="$"
       min={0}

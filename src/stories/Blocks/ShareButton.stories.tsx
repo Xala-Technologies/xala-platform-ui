@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { ShareButton } from '../../blocks/ShareButton';
+import { ShareButton } from '../../components/ShareButton';
 
 const meta: Meta<typeof ShareButton> = {
   title: 'Blocks/ShareButton',

@@ -167,7 +167,7 @@ export const WithLink: Story = {
           "Eksempel Tekst"
         </Heading>
         <Paragraph>
-          "Eksempel Tekst" <Link href="#">{t('platform.common.next')}</Link>
+          "Eksempel Tekst" <Link href="#">"Eksempel Tekst"</Link>
         </Paragraph>
       </Alert>
     );
@@ -243,7 +243,7 @@ export const AllVariants: Story = {
               "Eksempel Tekst"
             </Heading>
             <Paragraph>
-              "Eksempel Tekst" <Link href="#">{t('platform.common.next')}</Link>
+              "Eksempel Tekst" <Link href="#">"Eksempel Tekst"</Link>
             </Paragraph>
           </Alert>
         </div>

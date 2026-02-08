@@ -287,7 +287,7 @@ export const MissingAccessibility: Story = {
             }}
           >
             <label htmlFor="name-input">
-              {t('platform.common.name')}
+              "Eksempel Tekst"
               <input
                 id="name-input"
                 type="text"
@@ -400,7 +400,7 @@ export const HardcodedText: Story = {
           >
             <h3>"Eksempel Tekst" (from t())</h3>
             <p>"Eksempel Tekst" (from t())</p>
-            <button type="button">{t('platform.common.continue')} (from t())</button>
+            <button type="button">"Eksempel Tekst" (from t())</button>
           </div>
           <pre
             style={{
@@ -414,9 +414,9 @@ export const HardcodedText: Story = {
           >
             {`// Using i18n translation function
 
-<h3>{t('welcome.title')}</h3>
-<p>{t('welcome.description')}</p>
-<button>{t('common.continue')}</button>`}
+<h3>"Eksempel Tekst"</h3>
+<p>"Eksempel Tekst"</p>
+<button>"Eksempel Tekst"</button>`}
           </pre>
         </div>
       </div>

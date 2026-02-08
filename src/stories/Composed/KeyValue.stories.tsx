@@ -57,7 +57,7 @@ type Story = StoryObj<typeof meta>;
 const DefaultDemo = () => {
   return (
     <KeyValue
-      label={t('platform.common.name')}
+      label="Eksempel Tekst"
       value="John Doe"
       direction="vertical"
       copyable={false}
@@ -77,7 +77,7 @@ export const Default: Story = {
 const HorizontalDemo = () => {
   return (
     <KeyValue
-      label={t('platform.auth.email')}
+      label="Eksempel Tekst"
       value="john.doe@example.com"
       direction="horizontal"
       copyable={false}
@@ -137,8 +137,8 @@ export const Monospace: Story = {
 const WithReactNodeDemo = () => {
   return (
     <KeyValue
-      label={t('platform.status.label')}
-      value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+      label="Eksempel Tekst"
+      value={<Badge variant="success">"Eksempel Tekst"</Badge>}
       direction="vertical"
       copyable={false}
       mono={false}
@@ -164,7 +164,7 @@ const ListSingleColumnDemo = () => {
           { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
           {
             key: t('platform.status.label'),
-            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+            value: <Badge variant="success">"Eksempel Tekst"</Badge>,
           },
         ]}
         columns={1}
@@ -193,7 +193,7 @@ const ListTwoColumnsDemo = () => {
           { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
           {
             key: t('platform.status.label'),
-            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+            value: <Badge variant="success">"Eksempel Tekst"</Badge>,
           },
         ]}
         columns={2}
@@ -222,7 +222,7 @@ const ListStripedDemo = () => {
           { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
           {
             key: t('platform.status.label'),
-            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+            value: <Badge variant="success">"Eksempel Tekst"</Badge>,
           },
         ]}
         columns={1}
@@ -251,7 +251,7 @@ const ListBorderedDemo = () => {
           { key: t('storybook.demo.phone'), value: '+47 12 34 56 78' },
           {
             key: t('platform.status.label'),
-            value: <Badge variant="success">{t('platform.status.active')}</Badge>,
+            value: <Badge variant="success">"Eksempel Tekst"</Badge>,
           },
         ]}
         columns={1}
@@ -356,7 +356,7 @@ const DefinitionListExampleDemo = () => {
           { term: t('storybook.demo.role'), definition: t('storybook.demo.administrator') },
           {
             term: t('platform.status.label'),
-            definition: <Badge variant="success">{t('platform.status.active')}</Badge>,
+            definition: <Badge variant="success">"Eksempel Tekst"</Badge>,
           },
         ]}
       />

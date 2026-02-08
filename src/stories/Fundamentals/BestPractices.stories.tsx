@@ -233,10 +233,10 @@ export const Internationalization: Story = {
             {`const { t } = useTranslation();
 
 <Button>
-  {t('common.saveChanges')}
+  "Eksempel Tekst"
 </Button>
 
-<p>{t('welcome.message')}</p>`}
+<p>"Eksempel Tekst"</p>`}
           </pre>
         </Card>
       </div>

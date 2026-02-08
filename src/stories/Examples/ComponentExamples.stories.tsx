@@ -95,15 +95,15 @@ export const ButtonWithIcons: Story = {
       <div style={{ display: 'flex', gap: 'var(--ds-spacing-4)', flexWrap: 'wrap' }}>
         <Button data-variant="primary">
           <span style={{ marginRight: 'var(--ds-spacing-2)' }}>+</span>
-          {t('platform.common.add')}
+          "Eksempel Tekst"
         </Button>
         <Button data-variant="secondary">
           <span style={{ marginRight: 'var(--ds-spacing-2)' }}>💾</span>
-          {t('platform.common.save')}
+          "Eksempel Tekst"
         </Button>
         <Button data-variant="tertiary">
           <span style={{ marginRight: 'var(--ds-spacing-2)' }}>🗑️</span>
-          {t('platform.common.delete')}
+          "Eksempel Tekst"
         </Button>
       </div>
     );
@@ -199,7 +199,7 @@ export const FormComplete: Story = {
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label={t('platform.common.name')}
+              label="Eksempel Tekst"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               error={errors.name}
@@ -208,7 +208,7 @@ export const FormComplete: Story = {
 
           <div style={{ marginBottom: 'var(--ds-spacing-4)' }}>
             <Textfield
-              label={t('platform.common.email')}
+              label="Eksempel Tekst"
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -295,7 +295,7 @@ export const CardContentLayout: Story = {
                 "Eksempel Tekst"
               </Button>
               <Button data-variant="tertiary" data-size="sm">
-                {t('platform.common.cancel')}
+                "Eksempel Tekst"
               </Button>
             </div>
           </Card>
@@ -475,7 +475,7 @@ export const ErrorState: Story = {
             "Eksempel Tekst"
           </Button>
           <Button data-variant="tertiary" data-size="sm">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
         </div>
       </Card>

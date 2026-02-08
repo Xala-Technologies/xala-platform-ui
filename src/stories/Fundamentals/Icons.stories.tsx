@@ -370,7 +370,7 @@ export const AccessibilityGuidelines: Story = {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
                 <EnvelopeClosedIcon fontSize="1.25rem" aria-hidden="true" />
-                <span>{t('platform.common.email')}</span>
+                <span>"Eksempel Tekst"</span>
               </div>
             </div>
 
@@ -432,17 +432,17 @@ export const AccessibilityGuidelines: Story = {
               <Button
                 data-variant="tertiary"
                 data-size="sm"
-                aria-label={t('platform.common.delete')}
+                aria-label="Eksempel Tekst"
               >
                 <TrashIcon fontSize="1.25rem" />
               </Button>
-              <Button data-variant="tertiary" data-size="sm" aria-label={t('platform.common.edit')}>
+              <Button data-variant="tertiary" data-size="sm" aria-label="Eksempel Tekst">
                 <PencilIcon fontSize="1.25rem" />
               </Button>
               <Button
                 data-variant="tertiary"
                 data-size="sm"
-                aria-label={t('platform.common.settings')}
+                aria-label="Eksempel Tekst"
               >
                 <CogIcon fontSize="1.25rem" />
               </Button>
@@ -642,7 +642,7 @@ export const InteractiveIconBrowser: Story = {
               />
               <input
                 type="text"
-                placeholder={t('platform.common.search')}
+                placeholder="Eksempel Tekst"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
@@ -788,21 +788,21 @@ export const UsagePatterns: Story = {
               <Button data-variant="primary" data-size="md">
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
                   <PlusIcon fontSize="1.25rem" aria-hidden="true" />
-                  <span>{t('platform.common.add')}</span>
+                  <span>"Eksempel Tekst"</span>
                 </div>
               </Button>
 
               <Button data-variant="secondary" data-size="md">
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
                   <MagnifyingGlassIcon fontSize="1.25rem" aria-hidden="true" />
-                  <span>{t('platform.common.search')}</span>
+                  <span>"Eksempel Tekst"</span>
                 </div>
               </Button>
 
               <Button data-variant="danger" data-size="md">
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
                   <TrashIcon fontSize="1.25rem" aria-hidden="true" />
-                  <span>{t('platform.common.delete')}</span>
+                  <span>"Eksempel Tekst"</span>
                 </div>
               </Button>
             </div>
@@ -909,7 +909,7 @@ export const UsagePatterns: Story = {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
                   <PersonIcon fontSize="1.25rem" aria-hidden="true" />
-                  <span>{t('platform.nav.profile')}</span>
+                  <span>"Eksempel Tekst"</span>
                 </div>
                 <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
               </a>
@@ -928,7 +928,7 @@ export const UsagePatterns: Story = {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-spacing-2)' }}>
                   <CogIcon fontSize="1.25rem" aria-hidden="true" />
-                  <span>{t('platform.common.settings')}</span>
+                  <span>"Eksempel Tekst"</span>
                 </div>
                 <ArrowRightIcon fontSize="1rem" aria-hidden="true" />
               </a>
@@ -1022,7 +1022,7 @@ export const DosAndDonts: Story = {
                 >
                   "Eksempel Tekst"
                 </Paragraph>
-                <Button data-variant="tertiary" aria-label={t('platform.common.delete')}>
+                <Button data-variant="tertiary" aria-label="Eksempel Tekst">
                   <TrashIcon fontSize="1.25rem" />
                 </Button>
                 <br />

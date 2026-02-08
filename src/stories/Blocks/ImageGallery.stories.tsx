@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { ImageGallery } from '../../blocks/ImageGallery';
+import { ImageGallery } from '../../components/ImageGallery';
 
 const meta: Meta<typeof ImageGallery> = {
   title: 'Blocks/ImageGallery',

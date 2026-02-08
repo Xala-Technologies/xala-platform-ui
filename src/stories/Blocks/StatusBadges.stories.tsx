@@ -22,7 +22,7 @@ type AnyStory = StoryObj<any>;
 
 export const StatusTagDefault: Story = {
   render: function Render() {
-    return <StatusTag color="success">{t('platform.status.active')}</StatusTag>;
+    return <StatusTag color="success">"Eksempel Tekst"</StatusTag>;
   },
 };
 

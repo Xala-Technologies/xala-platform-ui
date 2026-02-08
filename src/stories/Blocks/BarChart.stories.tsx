@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BarChart, VerticalBarChart } from '../../blocks/BarChart';
+import { BarChart, VerticalBarChart } from '../../components/BarChart';
 
 const meta: Meta<typeof BarChart> = {
   title: 'Blocks/BarChart',

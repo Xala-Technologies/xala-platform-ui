@@ -65,7 +65,7 @@ const SimpleAPIDemo = () => {
         <TabItem label="Eksempel Tekst" value="tab2">
           <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
-        <TabItem label={t('platform.nav.settings')} value="tab3">
+        <TabItem label="Eksempel Tekst" value="tab3">
           <Paragraph data-size="sm">"Eksempel Tekst"</Paragraph>
         </TabItem>
       </SimpleTabs>

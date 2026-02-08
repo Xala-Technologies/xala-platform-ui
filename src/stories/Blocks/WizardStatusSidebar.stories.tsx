@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { WizardStatusSidebar } from '../../blocks/WizardStatusSidebar';
-import type { StatusSection, WizardStatus } from '../../blocks/WizardStatusSidebar';
+import { WizardStatusSidebar } from '../../components/WizardStatusSidebar';
+import type { StatusSection, WizardStatus } from '../../components/WizardStatusSidebar';
 
 const meta: Meta<typeof WizardStatusSidebar> = {
   title: 'Blocks/WizardStatusSidebar',

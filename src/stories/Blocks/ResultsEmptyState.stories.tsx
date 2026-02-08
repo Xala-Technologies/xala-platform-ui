@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ResultsEmptyState } from '../../blocks/ResultsEmptyState';
+import { ResultsEmptyState } from '../../components/ResultsEmptyState';
 import { Button } from '@digdir/designsystemet-react';
 
 const meta: Meta<typeof ResultsEmptyState> = {
@@ -53,7 +53,7 @@ export const NoResults: Story = {
     return (
       <ResultsEmptyState
         variant="no-results"
-        title={t('platform.errors.notFound')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
       />
     );
@@ -66,11 +66,11 @@ export const NoResultsWithAction: Story = {
     return (
       <ResultsEmptyState
         variant="no-results"
-        title={t('platform.errors.notFound')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
         action={
           <Button onClick={() => alert('Clear filters')} data-color="accent" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
         }
       />
@@ -84,7 +84,7 @@ export const NoData: Story = {
     return (
       <ResultsEmptyState
         variant="no-data"
-        title={t('platform.errors.notFound')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
       />
     );
@@ -97,11 +97,11 @@ export const Error: Story = {
     return (
       <ResultsEmptyState
         variant="error"
-        title={t('platform.errors.serverError')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
         action={
           <Button onClick={() => alert('Retry')} data-color="accent" data-size="medium">
-            {t('platform.common.submit')}
+            "Eksempel Tekst"
           </Button>
         }
       />
@@ -115,7 +115,7 @@ export const CustomIcon: Story = {
     return (
       <ResultsEmptyState
         variant="no-results"
-        title={t('platform.errors.notFound')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
         icon={
           <svg
@@ -139,7 +139,7 @@ export const CustomIcon: Story = {
 // Minimal
 export const Minimal: Story = {
   render: function Render() {
-    return <ResultsEmptyState variant="no-results" title={t('platform.errors.notFound')} />;
+    return <ResultsEmptyState variant="no-results" title="Eksempel Tekst" />;
   },
 };
 
@@ -149,11 +149,11 @@ export const LongDescription: Story = {
     return (
       <ResultsEmptyState
         variant="no-results"
-        title={t('platform.errors.notFound')}
+        title="Eksempel Tekst"
         description="Eksempel Tekst"
         action={
           <Button onClick={() => alert('Clear filters')} data-color="accent" data-size="medium">
-            {t('platform.common.cancel')}
+            "Eksempel Tekst"
           </Button>
         }
       />
@@ -175,26 +175,26 @@ export const AllVariants: Story = {
       >
         <ResultsEmptyState
           variant="no-results"
-          title={t('platform.errors.notFound')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
           action={
             <Button onClick={() => {}} data-color="accent" data-size="medium">
-              {t('platform.common.cancel')}
+              "Eksempel Tekst"
             </Button>
           }
         />
         <ResultsEmptyState
           variant="no-data"
-          title={t('platform.errors.notFound')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
         />
         <ResultsEmptyState
           variant="error"
-          title={t('platform.errors.serverError')}
+          title="Eksempel Tekst"
           description="Eksempel Tekst"
           action={
             <Button onClick={() => {}} data-color="accent" data-size="medium">
-              {t('platform.common.submit')}
+              "Eksempel Tekst"
             </Button>
           }
         />

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useState } from 'react';
 import { Button } from '@digdir/designsystemet-react';
-import { PushNotificationPrompt } from '../../blocks/PushNotificationPrompt';
+import { PushNotificationPrompt } from '../../components/PushNotificationPrompt';
 
 const meta: Meta<typeof PushNotificationPrompt> = {
   title: 'Blocks/PushNotificationPrompt',

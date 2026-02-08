@@ -336,7 +336,7 @@ export const Default: Story = {
       <Table>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>{t('platform.common.name')}</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
           </Table.Row>
@@ -379,12 +379,12 @@ export const WithCaption: Story = {
           <Table.Row>
             <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>200 kr</Table.Cell>
-            <Table.Cell>{t('platform.common.yes')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>"Eksempel Tekst"</Table.Cell>
             <Table.Cell>300 kr</Table.Cell>
-            <Table.Cell>{t('platform.common.no')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
@@ -400,7 +400,7 @@ export const Zebra: Story = {
           <Table.Row>
             <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
             <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
-            <Table.HeaderCell>{t('platform.common.status')}</Table.HeaderCell>
+            <Table.HeaderCell>"Eksempel Tekst"</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
@@ -412,7 +412,7 @@ export const Zebra: Story = {
           <Table.Row>
             <Table.Cell>2024-01-16</Table.Cell>
             <Table.Cell>"Eksempel Tekst"</Table.Cell>
-            <Table.Cell>{t('platform.status.pending')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>2024-01-17</Table.Cell>
@@ -422,7 +422,7 @@ export const Zebra: Story = {
           <Table.Row>
             <Table.Cell>2024-01-18</Table.Cell>
             <Table.Cell>"Eksempel Tekst"</Table.Cell>
-            <Table.Cell>{t('platform.status.cancelled')}</Table.Cell>
+            <Table.Cell>"Eksempel Tekst"</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>

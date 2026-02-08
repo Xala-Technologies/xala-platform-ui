@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { HeatmapChart } from '../../blocks/HeatmapChart';
+import { HeatmapChart } from '../../components/HeatmapChart';
 
 const meta: Meta<typeof HeatmapChart> = {
   title: 'Blocks/HeatmapChart',

@@ -131,7 +131,7 @@ const AllVariantsDemo = () => {
         "Eksempel Tekst"
       </InfoBox>
       <InfoBox variant="danger" title="Eksempel Tekst">
-        {t('platform.errors.serverError')}
+        "Eksempel Tekst"
       </InfoBox>
       <InfoBox variant="neutral" title="Eksempel Tekst">
         "Eksempel Tekst"

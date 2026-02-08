@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { ProfileCard, QuickStat } from '../../blocks/profile/ProfileCard';
+import { ProfileCard, QuickStat } from '../../components/profile/ProfileCard';
 
 const meta: Meta<typeof ProfileCard> = {
   title: 'Blocks/ProfileCard',

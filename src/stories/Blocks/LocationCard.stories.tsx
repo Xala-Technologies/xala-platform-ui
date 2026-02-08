@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { LocationCard } from '../../blocks/LocationCard';
+import { LocationCard } from '../../components/LocationCard';
 
 const meta: Meta<typeof LocationCard> = {
   title: 'Blocks/LocationCard',

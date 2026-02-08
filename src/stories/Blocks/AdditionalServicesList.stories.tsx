@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React from 'react';
-import { AdditionalServicesList } from '../../blocks/AdditionalServicesList';
+import { AdditionalServicesList } from '../../components/AdditionalServicesList';
 import type { AdditionalService } from '../../types';
 
 const meta: Meta<typeof AdditionalServicesList> = {

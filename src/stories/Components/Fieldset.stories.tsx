@@ -236,7 +236,7 @@ export const WithDescription: Story = {
       <Fieldset>
         <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
         <Fieldset.Description>"Eksempel Tekst"</Fieldset.Description>
-        <Checkbox label={t('platform.auth.email')} value="email" />
+        <Checkbox label="Eksempel Tekst" value="email" />
         <Checkbox label="Eksempel Tekst" value="sms" />
         <Checkbox label="Eksempel Tekst" value="phone" />
       </Fieldset>

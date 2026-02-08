@@ -351,7 +351,7 @@ export const AllVariants: Story = {
             "Eksempel Tekst"
           </Heading>
           <Fieldset>
-            <Fieldset.Legend>{t('platform.nav.settings')}</Fieldset.Legend>
+            <Fieldset.Legend>"Eksempel Tekst"</Fieldset.Legend>
             <Switch label={t('storybook.demo.option') + ' 1'} defaultChecked />
             <Switch label={t('storybook.demo.option') + ' 2'} />
             <Switch label={t('storybook.demo.option') + ' 3'} defaultChecked />

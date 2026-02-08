@@ -166,7 +166,7 @@ const AllVariantsDemo = () => {
       <StatusBanner
         variant="danger"
         title="Eksempel Tekst"
-        description={t('platform.errors.serverError')}
+        description="Eksempel Tekst"
       />
       <StatusBanner
         variant="neutral"

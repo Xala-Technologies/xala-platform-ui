@@ -852,7 +852,7 @@ export const QualityChecklist: Story = {
                       key={item.id}
                       checked={checkedItems.includes(item.id)}
                       onChange={() => toggleItem(item.id)}
-                      aria-label={t(item.labelKey)}
+                      aria-label="Send Inn"
                     >
                       {t(item.labelKey)}
                     </Checkbox>

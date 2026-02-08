@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { EventScheduleCard } from '../../blocks/EventScheduleCard';
-import type { EventSchedule } from '../../blocks/EventScheduleCard';
+import { EventScheduleCard } from '../../components/EventScheduleCard';
+import type { EventSchedule } from '../../components/EventScheduleCard';
 
 const meta: Meta<typeof EventScheduleCard> = {
   title: 'Blocks/EventScheduleCard',

@@ -56,7 +56,7 @@ type Story = StoryObj<typeof meta>;
 
 // Wrapper for default story
 const DefaultDemo = () => {
-  return <DetailField label={t('platform.common.name')} value="John Doe" copyable={false} />;
+  return <DetailField label="Eksempel Tekst" value="John Doe" copyable={false} />;
 };
 
 // Basic detail field
@@ -70,7 +70,7 @@ export const Default: Story = {
 const WithIconDemo = () => {
   return (
     <DetailField
-      label={t('platform.auth.email')}
+      label="Eksempel Tekst"
       value="john.doe@example.com"
       icon={<Mail size={16} />}
       copyable={false}
@@ -109,8 +109,8 @@ export const Copyable: Story = {
 const WithReactNodeDemo = () => {
   return (
     <DetailField
-      label={t('platform.status.label')}
-      value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+      label="Eksempel Tekst"
+      value={<Badge variant="success">"Eksempel Tekst"</Badge>}
       copyable={false}
     />
   );
@@ -128,9 +128,9 @@ const GroupSingleColumnDemo = () => {
   return (
     <div style={{ width: '400px' }}>
       <DetailFieldGroup title="Eksempel Tekst" columns={1}>
-        <DetailField label={t('platform.common.name')} value="John Doe" />
+        <DetailField label="Eksempel Tekst" value="John Doe" />
         <DetailField
-          label={t('platform.auth.email')}
+          label="Eksempel Tekst"
           value="john.doe@example.com"
           icon={<Mail size={16} />}
         />
@@ -140,8 +140,8 @@ const GroupSingleColumnDemo = () => {
           icon={<Phone size={16} />}
         />
         <DetailField
-          label={t('platform.status.label')}
-          value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+          label="Eksempel Tekst"
+          value={<Badge variant="success">"Eksempel Tekst"</Badge>}
         />
       </DetailFieldGroup>
     </div>
@@ -160,12 +160,12 @@ const GroupTwoColumnsDemo = () => {
   return (
     <div style={{ width: '600px' }}>
       <DetailFieldGroup title="Eksempel Tekst" columns={2}>
-        <DetailField label={t('platform.common.name')} value="John Doe" />
-        <DetailField label={t('platform.auth.email')} value="john.doe@example.com" />
+        <DetailField label="Eksempel Tekst" value="John Doe" />
+        <DetailField label="Eksempel Tekst" value="john.doe@example.com" />
         <DetailField label="Eksempel Tekst" value="+47 12 34 56 78" />
         <DetailField
-          label={t('platform.status.label')}
-          value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+          label="Eksempel Tekst"
+          value={<Badge variant="success">"Eksempel Tekst"</Badge>}
         />
       </DetailFieldGroup>
     </div>
@@ -184,8 +184,8 @@ const GroupThreeColumnsDemo = () => {
   return (
     <div style={{ width: '800px' }}>
       <DetailFieldGroup title="Eksempel Tekst" columns={3}>
-        <DetailField label={t('platform.common.name')} value="John Doe" />
-        <DetailField label={t('platform.auth.email')} value="john@example.com" />
+        <DetailField label="Eksempel Tekst" value="John Doe" />
+        <DetailField label="Eksempel Tekst" value="john@example.com" />
         <DetailField label="Eksempel Tekst" value="+47 12 34 56 78" />
       </DetailFieldGroup>
     </div>
@@ -208,13 +208,13 @@ const CardDemo = () => {
         icon={<User size={20} />}
         actions={
           <Button onClick={fn()} data-color="accent" data-size="sm">
-            {t('platform.common.edit')}
+            "Eksempel Tekst"
           </Button>
         }
       >
         <DetailFieldGroup columns={1}>
-          <DetailField label={t('platform.common.name')} value="John Doe" />
-          <DetailField label={t('platform.auth.email')} value="john.doe@example.com" />
+          <DetailField label="Eksempel Tekst" value="John Doe" />
+          <DetailField label="Eksempel Tekst" value="john.doe@example.com" />
           <DetailField label="Eksempel Tekst" value="Eksempel Tekst" />
         </DetailFieldGroup>
       </DetailCard>
@@ -263,7 +263,7 @@ const LinkFieldExampleDemo = () => {
       }}
     >
       <LinkField
-        label={t('platform.auth.email')}
+        label="Eksempel Tekst"
         value="john.doe@example.com"
         href="mailto:john.doe@example.com"
         icon={<Mail size={16} />}
@@ -318,7 +318,7 @@ const CompleteExampleDemo = () => {
             onCopy={fn()}
           />
           <LinkField
-            label={t('platform.auth.email')}
+            label="Eksempel Tekst"
             value="john.doe@example.com"
             href="mailto:john.doe@example.com"
             icon={<Mail size={16} />}
@@ -326,8 +326,8 @@ const CompleteExampleDemo = () => {
             onCopy={fn()}
           />
           <DetailField
-            label={t('platform.status.label')}
-            value={<Badge variant="success">{t('platform.status.active')}</Badge>}
+            label="Eksempel Tekst"
+            value={<Badge variant="success">"Eksempel Tekst"</Badge>}
           />
         </DetailFieldGroup>
       </DetailCard>

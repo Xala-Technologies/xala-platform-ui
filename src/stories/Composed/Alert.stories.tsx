@@ -259,7 +259,7 @@ const AllVariantsDemo = () => {
         "Eksempel Tekst"
       </Alert>
       <Alert variant="error" title="Eksempel Tekst">
-        {t('platform.errors.serverError')}
+        "Eksempel Tekst"
       </Alert>
     </div>
   );
