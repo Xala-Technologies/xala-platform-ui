@@ -6,8 +6,8 @@
  */
 
 import { forwardRef } from 'react';
-import { HeaderIconButton } from '../header-parts';
-import type { HeaderIconButtonProps } from '../header-parts';
+import { HeaderIconButton } from './header-parts';
+import type { HeaderIconButtonProps } from './header-parts';
 import { BellIcon } from '../primitives';
 
 // =============================================================================
