@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`@xala-technologies/platform-ui` is a standalone React component library built on [Norwegian Designsystemet](https://designsystemet.no/). This package is **UI-only** - no business logic, API calls, authentication, or i18n.
+`@xala-technologies/platform-ui` is a **standalone** React component library built on [Norwegian Designsystemet](https://designsystemet.no/). This package is **UI-only** - no business logic, API calls, authentication, or i18n.
+
+**Package Type:** Standalone (not a monorepo)  
+**Storybook:** Integrated at root (`.storybook/`)  
+**Themes:** Designsystemet-based theming in `src/themes/`
 
 ## Commands
 
@@ -33,20 +37,39 @@ pnpm test:a11y          # Accessibility tests
 
 ## Architecture
 
-### Component Layer Hierarchy
+### Simplified 3-Layer Structure
 
 Components are organized by complexity level. **Lower layers cannot import from higher layers.**
 
 | Level | Layer | Description |
 |-------|-------|-------------|
-| 0 | **primitives/** | Thin Designsystemet wrappers (Button, Card, Input) |
-| 1 | **composed/** | Multi-component compositions (DataTable, Modal, Tabs) |
-| 2 | **blocks/** | Feature-specific UI blocks (NotificationBell, UserMenu) |
-| 3 | **patterns/** | Reusable UI patterns (ResourceCard, SlotCalendar) |
-| 4 | **shells/** | Layout components (AppLayout, DashboardLayout) |
-| 5 | **pages/** | Page-level components |
+| 0 | **primitives/** | Direct Designsystemet wrappers (Button, Card, Textfield, Heading) |
+| 1 | **components/** | Composed components (DataTable, Modal, Forms, ImageGallery) |
+| 2 | **layouts/** | Application shells and page layouts (AppLayout, DashboardLayout) |
 
-Other directories: `themes/`, `tokens/`, `types/`, `utils/`
+**Other directories:**
+- `features/` - Domain-specific components (booking, calendar, etc.)
+- `themes/` - Designsystemet theme CSS files with `@layer` organization
+- `tokens/` - Design token exports
+- `types/` - TypeScript definitions
+- `utils/` - Helper functions
+
+### Theme Structure (Designsystemet-based)
+
+Themes follow Designsystemet's CSS layer architecture:
+
+```
+src/themes/
+├── xala.css                    # Base Designsystemet theme (@layer ds.theme.*)
+├── common-extensions.css       # Shared extensions (@layer ds.app)
+├── digilist-colors.css         # Digilist theme colors
+├── platform-colors.css         # Platform theme colors  
+├── xaheen-colors.css           # Xaheen theme colors
+├── xala-navy.css               # Xala Navy theme (@layer ds.app)
+├── index.ts                    # Theme TypeScript exports
+├── schema.ts                   # Theme configuration schema
+└── validator.ts                # Runtime theme validation
+```
 
 ## Critical Rules
 
@@ -77,12 +100,12 @@ import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 
 ### 3. Layer Import Rules
 
-primitives can only import from: external packages
-composed can import from: primitives
-blocks can import from: primitives, composed
-patterns can import from: primitives, composed, blocks
-shells can import from: primitives, composed, blocks, patterns
-pages can import from: all layers
+```
+primitives/  ← Can only import: external packages
+components/  ← Can import: primitives
+layouts/     ← Can import: primitives, components
+features/    ← Can import: primitives, components, layouts
+```
 
 ## Code Style
 
@@ -94,25 +117,52 @@ TypeScript: strict mode enabled, target ES2020
 
 ## Package Exports
 
-Tree-shakeable entry points:
+Tree-shakeable entry points for optimal bundle sizes:
+
 ```typescript
+// ✅ Recommended (tree-shakeable subpath imports)
+import { Button, Card } from '@xala-technologies/platform-ui/primitives';
+import { DataTable, Modal } from '@xala-technologies/platform-ui/components';
+import { AppLayout } from '@xala-technologies/platform-ui/layouts';
+import { BookingForm } from '@xala-technologies/platform-ui/features/booking';
+
+// ❌ Avoid (imports entire library)
 import { Button } from '@xala-technologies/platform-ui';
-import { Button } from '@xala-technologies/platform-ui/primitives';
-import { DataTable } from '@xala-technologies/platform-ui/composed';
-import { AppLayout } from '@xala-technologies/platform-ui/shells';
-import { NotificationBell } from '@xala-technologies/platform-ui/blocks';
-import { ResourceCard } from '@xala-technologies/platform-ui/patterns';
 ```
 
-## Storybook Stories
+**Available subpaths:**
+- `/primitives` - Designsystemet component wrappers
+- `/components` - Composed components
+- `/layouts` - Application layouts
+- `/features/*` - Domain-specific features
+- `/themes` - Theme configurations and CSS
+- `/tokens` - Design tokens
+- `/types` - TypeScript definitions
 
-All components require Storybook stories in `src/stories/`:
+## AI Agent Quick Start
+
+**For AI coding agents:**
+- 📖 **[Getting Started for AI](docs/GETTING_STARTED_AI.md)** - Quick rules and examples
+- 📚 **[AI Agent Playbook](docs/AI_AGENT_PLAYBOOK.md)** - Complete HTML translation table and decision trees
+
+**Golden Rules:**
+1. **Never use raw HTML** (`<div>`, `<h1>`, `<button>`, etc.) - Always use Designsystemet components
+2. **No custom CSS** - Use data attributes (`data-size`, `data-color`, etc.)
+3. **Import from subpaths** - `/primitives`, `/components`, `/layouts`
+
+## Storybook
+
+**Location:** `.storybook/` at package root  
+**Port:** 6006  
+**Stories:** Located in `src/stories/` directory
+
+All components require Storybook stories:
 ```typescript
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../../primitives/Button';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Primitives/Button',
   component: Button,
 };
 export default meta;
@@ -125,12 +175,12 @@ export const Primary: Story = {
 
 ## CI/CD
 
-**CI runs on every push/PR to main:**
+**CI runs on every push/PR:**
 1. Type check → Lint → Format check
 2. Verify boundaries → Verify design tokens
 3. Build → Storybook build
 
-**Publishing:** Tag with `v*` (e.g., `git tag v1.2.0`) triggers publish to GitHub Packages.
+**Publishing:** Tag with `v*` (e.g., `git tag v3.0.0`) triggers publish to GitHub Packages.
 
 ## Key Dependencies
 

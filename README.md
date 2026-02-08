@@ -1,6 +1,6 @@
 # Xala Platform UI
 
-Design system components built on Norwegian Designsystemet for modern React applications
+**Standalone** Norwegian Designsystemet-based React component library for modern web applications
 
 [![CI](https://github.com/Xala-Technologies/xala-platform-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/Xala-Technologies/xala-platform-ui/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
@@ -8,18 +8,25 @@ Design system components built on Norwegian Designsystemet for modern React appl
 
 ## Overview
 
-Xala Platform UI is a comprehensive React component library built on top of [Designsystemet](https://designsystemet.no/) - Norway's official design system. It provides a complete set of accessible, customizable UI components for building modern web applications.
+Xala Platform UI is a **standalone, copyable** React component library built on [Norwegian Designsystemet](https://designsystemet.no/). It provides a complete set of accessible, customizable UI components for building modern web applications.
+
+**Key Features:**
+- ✅ **Standalone Package** - Self-contained, no monorep dependencies
+- ✅ **Storybook Integrated** - Interactive component playground at root
+- ✅ **Verification Tools** - Built-in design token and boundary checks
+- ✅ **AI-Ready Documentation** - Comprehensive AI agent guides
 
 ## Features
 
-- **100+ Components** - Primitives, composed components, blocks, patterns, and shells
+- **250+ Components** - Primitives, components, layouts, and domain features
 - **Designsystemet Compliant** - Built on Norway's official design system
 - **TypeScript First** - Full type safety and IntelliSense support
 - **Accessible** - WCAG 2.1 AA compliant components
 - **Storybook Documentation** - Interactive component playground
 - **Tree-shakeable** - Import only what you need
-- **Theme Support** - Customizable design tokens
+- **Theme Support** - Customizable design tokens and Designsystemet themes
 - **React 18+** - Built for modern React
+- **3-Layer Architecture** - Simplified component hierarchy
 
 ## Installation
 
@@ -46,31 +53,48 @@ This package is published to GitHub Packages. Configure your `.npmrc`:
 ## Quick Start
 
 ```tsx
-import { Button, Card, Badge } from '@xala-technologies/platform-ui';
+import { Button, Card, Heading } from '@xala-technologies/platform-ui/primitives';
 
 function App() {
   return (
-    <Card>
-      <h1>Welcome</h1>
-      <Badge count={5} data-color="accent" />
-      <Button>Get Started</Button>
+    <Card data-color="neutral" data-size="medium">
+      <Heading level={1} data-size="large">Welcome</Heading>
+      <Button variant="primary">Get Started</Button>
     </Card>
   );
 }
 ```
 
+## Architecture
+
+### Simplified 3-Layer Structure
+
+Components are organized by complexity level:
+
+| Level | Layer | Description | Import Path |
+|-------|-------|-------------|-------------|
+| 0 | **primitives/** | Direct Designsystemet wrappers | `/primitives` |
+| 1 | **components/** | Composed components | `/components` |
+| 2 | **layouts/** | Application shells | `/layouts` |
+
+**Additional directories:**
+- **features/** - Domain-specific components (`/features/booking`, `/features/calendar`)
+- **themes/** - Designsystemet theme configurations
+- **tokens/** - Design token exports
+- **types/** - TypeScript type definitions
+
 ## Component Categories
 
 ### Primitives
-Basic building blocks from Designsystemet:
+Basic Designsystemet component wrappers:
 
 ```tsx
 import { 
   Button, 
   Card, 
-  Badge, 
-  Chip,
-  TextField,
+  Heading,
+  Paragraph,
+  Textfield,
   Select,
   Checkbox,
   Radio,
@@ -78,8 +102,8 @@ import {
 } from '@xala-technologies/platform-ui/primitives';
 ```
 
-### Composed Components
-Higher-level components combining primitives:
+### Components
+Higher-level composed components:
 
 ```tsx
 import { 
@@ -88,43 +112,29 @@ import {
   Drawer,
   Tabs,
   Accordion,
-  Breadcrumbs
-} from '@xala-technologies/platform-ui/composed';
+  ImageGallery,
+  Forms
+} from '@xala-technologies/platform-ui/components';
 ```
 
-### Blocks
-Feature-complete UI blocks:
-
-```tsx
-import { 
-  NotificationBell,
-  UserMenu,
-  SearchBar,
-  FilterPanel
-} from '@xala-technologies/platform-ui/blocks';
-```
-
-### Shells
-Layout components:
+### Layouts
+Application layout components:
 
 ```tsx
 import { 
   AppLayout,
   DashboardLayout,
   DashboardSidebar
-} from '@xala-technologies/platform-ui/shells';
+} from '@xala-technologies/platform-ui/layouts';
 ```
 
-### Patterns
-Common UI patterns:
+### Features
+Domain-specific feature components:
 
 ```tsx
-import { 
-  ResourceCard,
-  ResourceGrid,
-  SlotCalendar,
-  PricingSummary
-} from '@xala-technologies/platform-ui/patterns';
+import { BookingForm, BookingFlow } from '@xala-technologies/platform-ui/features/booking';
+import { SlotCalendar } from '@xala-technologies/platform-ui/features/calendar';
+import { RentalObjectCard } from '@xala-technologies/platform-ui/features/rental-objects';
 ```
 
 ## Theming
@@ -196,21 +206,48 @@ All components follow WCAG 2.1 AA guidelines:
 The package provides multiple entry points for optimal tree-shaking:
 
 ```tsx
-// Main export
+// ✅ Recommended (tree-shakeable subpath imports)
+import { Button } from '@xala-technologies/platform-ui/primitives';
+import { Data Table } from '@xala-technologies/platform-ui/components';
+import { AppLayout } from '@xala-technologies/platform-ui/layouts';
+import { BookingForm } from '@xala-technologies/platform-ui/features/booking';
+
+// ❌ Avoid (imports entire library)
 import { Button } from '@xala-technologies/platform-ui';
 
-// Specific categories
-import { Button } from '@xala-technologies/platform-ui/primitives';
-import { DataTable } from '@xala-technologies/platform-ui/composed';
-import { AppLayout } from '@xala-technologies/platform-ui/shells';
-import { ResourceCard } from '@xala-technologies/platform-ui/patterns';
-
-// Themes
+// Themes and tokens
 import { theme } from '@xala-technologies/platform-ui/themes';
-
-// Tokens
 import { tokens } from '@xala-technologies/platform-ui/tokens';
+
+// Styles (includes all CSS)
+import '@xala-technologies/platform-ui/styles';
 ```
+
+## AI Agent Documentation
+
+This package includes comprehensive AI coding agent documentation:
+
+- **[Getting Started for AI](docs/GETTING_STARTED_AI.md)** - Quick rules and examples
+- **[AI Agent Playbook](docs/AI_AGENT_PLAYBOOK.md)** - Complete HTML→Designsystemet translation
+- **[CLAUDE.md](CLAUDE.md)** - Full architecture and guidelines
+
+**Golden Rules for AI:**
+1. Never use raw HTML elements - use Designsystemet components
+2. No custom CSS - use data attributes
+3. Import from subpaths for tree-shaking
+
+## Storybook
+
+Integrated Storybook for interactive component exploration:
+
+```bash
+pnpm install
+pnpm storybook
+```
+
+Visit http://localhost:6006 to browse the component library.
+
+**Storybook Location:** `.storybook/` at package root
 
 ## Contributing
 

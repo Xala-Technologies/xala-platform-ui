@@ -4,24 +4,14 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
-  // Global ignores MUST be first
+  // Global ignores
   {
     ignores: [
-      '**/dist/**',
-      '**/node_modules/**',
-      '**/.storybook/**',
-      '**/storybook-static/**',
-      '**/stories/**',
-      '**/AccessibilityDashboard.tsx',
-      '**/apps/**',
-      // Domain-coupled components excluded from platform-ui build
-      '**/*Connected.tsx',
-      '**/features/booking/engine/**',
-      '**/features/calendar/components/**',
-      // Explicit paths for platform-ui package
-      'packages/platform-ui/src/features/**/*Connected.tsx',
-      'packages/platform-ui/src/features/booking/engine/**',
-      'packages/platform-ui/src/features/calendar/components/**',
+      'dist/**',
+      'node_modules/**',
+      '.storybook/**',
+      'storybook-static/**',
+      'src/stories/**',
     ],
   },
   {
@@ -53,7 +43,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
 
-      // TypeScript handles undefined variables better than ESLint
+      // TypeScript handles undefined checking - disable ESLint's no-undef
       'no-undef': 'off',
 
       // Boundary rules
@@ -74,13 +64,15 @@ export default [
         ],
       }],
 
-      // Design system rules - only flag semantic elements that should be replaced
-      // Note: Inline styles with design tokens (var(--ds-*)) are allowed per design system rules
-      // Note: Layout divs/span with design tokens are allowed
+      // Design system rules - flag semantic elements that should be replaced
+      // Flexibility: Composed components can extend design tokens and use div/span for layout
+      // Consistency: Always use Designsystemet components for semantic elements (Heading, Paragraph, Button)
+      // Note: Inline styles with design tokens (var(--ds-*)) are allowed
+      // Note: Layout divs/span with design tokens are allowed for composed components
       'no-restricted-syntax': ['warn',
         {
           selector: 'JSXElement[openingElement.name.name=/^(p|h1|h2|h3|h4|h5|h6|button)$/]',
-          message: '⚠️ DESIGN SYSTEM: Prefer Designsystemet components (Heading, Paragraph, Button) over raw HTML.',
+          message: '⚠️ DESIGN SYSTEM: Prefer Designsystemet components (Heading, Paragraph, Button) over raw HTML. Composed components can extend design tokens but should use semantic components.',
         },
       ],
     },
@@ -88,27 +80,6 @@ export default [
       react: {
         version: 'detect',
       },
-    },
-  },
-  // =========================================================================
-  // Platform-UI-Core: Enforce Digdir wrapper usage
-  // =========================================================================
-  {
-    files: ['packages/platform-ui-core/src/**/*.{ts,tsx}'],
-    ignores: [
-      // Allow wrapper files to import directly from Digdir
-      'packages/platform-ui-core/src/digdir/**',
-      'packages/platform-ui-core/src/primitives/components.ts',
-    ],
-    rules: {
-      'no-restricted-imports': ['error', {
-        patterns: [
-          {
-            group: ['@digdir/designsystemet-react'],
-            message: '❌ WRAPPER VIOLATION: Import from "src/digdir/" or "../digdir" instead of directly from @digdir/designsystemet-react.',
-          },
-        ],
-      }],
     },
   },
 ];

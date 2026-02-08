@@ -1,56 +1,99 @@
 {
-  "name": "@xala-technologies/platform-ui-monorepo",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Monorepo for Xala Platform UI packages and tools",
+  "name": "@xala-technologies/platform-ui",
+  "version": "2.0.0",
+  "description": "Norwegian Designsystemet-based React component library for Xala platform applications",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js",
+      "require": "./dist/primitives/index.cjs"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.cjs"
+    },
+    "./layouts": {
+      "types": "./dist/layouts/index.d.ts",
+      "import": "./dist/layouts/index.js",
+      "require": "./dist/layouts/index.cjs"
+    },
+    "./themes": {
+      "types": "./dist/themes/index.d.ts",
+      "import": "./dist/themes/index.js",
+      "require": "./dist/themes/index.cjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js",
+      "require": "./dist/tokens/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
+    },
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "import": "./dist/styles.js",
+      "require": "./dist/styles.cjs"
+    },
+    "./features/*": {
+      "types": "./dist/features/*/index.d.ts",
+      "import": "./dist/features/*/index.js",
+      "require": "./dist/features/*/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
-    "build": "pnpm --filter @xala-technologies/platform-ui build",
-    "build:all": "pnpm -r build",
-    "build:packages": "pnpm --filter './packages/*' build",
-    "dev": "pnpm --filter @xala-technologies/platform-ui dev",
-    "clean": "pnpm -r clean",
-    "typecheck": "pnpm --filter @xala-technologies/platform-ui typecheck",
-    "lint": "pnpm --filter @xala-technologies/platform-ui lint",
-    "lint:fix": "pnpm --filter @xala-technologies/platform-ui lint:fix",
-    "format": "pnpm -r format",
-    "format:check": "pnpm -r format:check",
-    "verify:boundaries": "pnpm --filter @xala-technologies/platform-ui verify:boundaries",
-    "verify:design-tokens": "pnpm --filter @xala-technologies/platform-ui verify:design-tokens",
-    "verify:accessibility": "pnpm --filter @xala-technologies/platform-ui verify:accessibility",
-    "verify:responsive": "pnpm --filter @xala-technologies/platform-ui verify:responsive",
-    "verify:all": "pnpm --filter @xala-technologies/platform-ui verify:all",
-    "verify:ux-lexicon": "node docs/ux-lexicon/scripts/verify-ux-lexicon.js",
-    "generate:atlas": "node docs/ux-lexicon/scripts/generate-atlas.js",
-    "verify:specs": "npx design-workflow validate",
-    "quality": "pnpm --filter @xala-technologies/platform-ui quality",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json}\"",
+    "quality": "pnpm typecheck && pnpm lint && pnpm format:check",
+    "verify:boundaries": "node scripts/verify-boundaries.js",
+    "verify:design-tokens": "node scripts/verify-design-tokens.js",
+    "verify:accessibility": "node scripts/scan-accessibility.js",
+    "verify:all": "pnpm verify:boundaries && pnpm verify:design-tokens",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test:storybook": "test-storybook",
-    "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpm storybook:build && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:127.0.0.1:6006 && pnpm test:storybook\"",
     "test:a11y": "pnpm test:storybook",
-    "test:a11y:scan": "node scripts/scan-accessibility.js",
-    "scan:a11y": "pnpm test:a11y",
     "test": "vitest",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest watch",
-    "test:unit:coverage": "vitest run --coverage",
     "test:integration": "vitest run --config vitest.integration.config.ts",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:debug": "playwright test --debug",
-    "test:all": "pnpm test:unit && pnpm test:integration && pnpm test:e2e",
-    "command-center": "pnpm --filter @xala-technologies/command-center dev",
-    "playground": "pnpm --filter @xala-technologies/playground dev",
-    "story-explorer": "pnpm --filter @xala-technologies/story-explorer dev",
-    "story-explorer:build": "pnpm --filter @xala-technologies/story-explorer build"
+    "test:e2e": "playwright test"
   },
   "keywords": [
     "xala",
     "xalatechnologies",
     "ui",
-    "monorepo",
-    "design-system"
+    "design-system",
+    "designsystemet",
+    "norwegian",
+    "react",
+    "components",
+    "typescript",
+    "accessibility"
   ],
   "author": "Xala Technologies",
   "license": "MIT",
@@ -62,10 +105,21 @@
     "url": "https://github.com/Xala-Technologies/xala-platform-ui/issues"
   },
   "homepage": "https://github.com/Xala-Technologies/xala-platform-ui#readme",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-css": "^1.0.0",
+    "@digdir/designsystemet-react": "^1.0.0",
+    "@fontsource/inter": "^5.2.8",
+    "@navikt/aksel-icons": "^8.3.0",
+    "dompurify": "^3.3.1",
+    "lucide-react": "^0.462.0",
+    "zod": "^3.23.8"
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
-    "@digdir/designsystemet-css": "^1.0.0",
-    "@fontsource/inter": "^5.2.8",
     "@playwright/test": "^1.57.0",
     "@storybook/addon-a11y": "^8.6.15",
     "@storybook/addon-coverage": "^3.0.0",
@@ -87,29 +141,23 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^1.2.0",
-    "@xala-technologies/i18n": "^1.0.0",
-    "@xala-technologies/i18n-platform": "^1.0.0",
     "axe-playwright": "^2.2.2",
     "concurrently": "^9.2.1",
+    "eslint": "^9.18.0",
     "globals": "^17.1.0",
     "http-server": "^14.1.1",
     "jsdom": "^25.0.1",
     "playwright": "^1.57.0",
     "prettier": "^3.2.5",
     "storybook": "^8.6.15",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
     "vitest": "^1.2.0",
     "wait-on": "^9.0.3"
-  },
-  "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
   },
   "packageManager": "pnpm@8.15.0",
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
-  },
-  "dependencies": {
-    "@xala-technologies/platform-ui": "workspace:*"
   }
 }

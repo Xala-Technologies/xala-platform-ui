@@ -1,77 +1,41 @@
-# Documentation
+# Platform UI Documentation
 
-Complete documentation for `@xala-technologies/platform-ui`
+Welcome to the **Xala Platform UI** documentation.
 
-## Quick Links
+## Quick Start
 
-### For Developers
-- [Getting Started](../README.md#installation)
-- [Design Tokens Guide](./guides/DESIGN_TOKENS.md)
-- [Contributing Guide](../CONTRIBUTING.md)
-- [Changelog](../CHANGELOG.md)
+- **For AI Coding Agents:** Start with [Getting Started for AI](./GETTING_STARTED_AI.md)
+- **For Developers:** See the main [README.md](../README.md)
+
+## Documentation
 
 ### For AI Agents
-- [AI Agents Guide](./governance/AGENTS.md)
-- [Governance Rules](./governance/GOVERNANCE.md)
+- **[Getting Started for AI](./GETTING_STARTED_AI.md)** - Quick rules and examples
+- **[AI Agent Playbook](./AI_AGENT_PLAYBOOK.md)** - Complete HTML→Designsystemet translation dictionary
 
-### Architecture
-- [Package Architecture](./architecture/ARCHITECTURE.md)
-- [Component Structure](./architecture/COMPONENTS.md)
-- [MVVM Architecture](./architecture/MVVM.md) ⭐ **NEW**
-- [Migration Guide](./architecture/MIGRATION.md)
-- [Path Updates](./architecture/PATH_UPDATES.md)
+### For Developers
+- **[Pure UI Refactoring Guide](./PURE_UI_REFACTORING_GUIDE.md)** - Legacy refactoring documentation
+- **[Storybook Documentation](./storybook/)** - Storybook-specific guides
 
-### MVVM Implementation
-- [MVVM Implementation Summary](./MVVM_IMPLEMENTATION_SUMMARY.md) ⭐ **NEW**
-- [MVVM Verification Report](./MVVM_VERIFICATION_REPORT.md)
-- [Complete MVVM Guide (Client-SDK)](../../Digilist/packages/client-sdk/MVVM_ARCHITECTURE.md)
+## Architecture
 
-## Documentation Structure
+The package uses a simplified 3-layer architecture:
 
-```
-docs/
-├── README.md                         # This file
-├── MVVM_IMPLEMENTATION_SUMMARY.md    # MVVM implementation overview ⭐ NEW
-├── MVVM_VERIFICATION_REPORT.md       # MVVM verification results ⭐ NEW
-├── governance/                       # Rules and standards
-│   ├── AGENTS.md                    # AI agent guidelines
-│   ├── GOVERNANCE.md                # Governance rules
-│   ├── VERIFICATION.md              # Verification scripts
-│   └── COMPLIANCE.md                # Design system compliance
-├── guides/                           # How-to guides
-│   ├── DESIGN_TOKENS.md             # Design token usage
-│   ├── STORYBOOK.md                 # Storybook documentation
-│   ├── TESTING.md                   # Testing guidelines
-│   └── ENHANCEMENTS.md              # Enhancements & testing implementation
-├── architecture/                     # Technical architecture
-│   ├── ARCHITECTURE.md              # Package architecture
-│   ├── COMPONENTS.md                # Component structure
-│   ├── MVVM.md                      # MVVM architecture guide ⭐ NEW
-│   ├── MIGRATION.md                 # Migration guide
-│   └── PATH_UPDATES.md              # Path updates documentation
-└── ui/                               # UI-specific documentation
-    └── ...
-```
+| Layer | Description |
+|-------|-------------|
+| **primitives/** | Direct Designsystemet wrappers (Button, Card, Textfield) |
+| **components/** | Composed components (DataTable, Modal, Forms) |
+| **layouts/** | Application shells (AppLayout, DashboardLayout) |
+
+See [CLAUDE.md](../CLAUDE.md) for complete architecture details.
 
 ## Key Principles
 
-### 1. UI Components Only
-This package contains **only** UI components. No business logic, API calls, or authentication.
-
-### 2. Designsystemet Design Tokens
-All components must use Designsystemet design tokens. No raw HTML, inline styles, or custom CSS.
-
-### 3. Accessibility First
-All components are WCAG 2.1 AA compliant with keyboard navigation and screen reader support.
-
-### 4. TypeScript Strict Mode
-Full type safety with strict TypeScript configuration.
+1. **No raw HTML elements** - Use Designsystemet components only
+2. **No custom CSS** - Style with data attributes
+3. **UI-only** - No business logic, API calls, or i18n
+4. **Layer hierarchy** - Lower layers cannot import from higher layers
 
 ## Contributing
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for contribution guidelines.
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/Xala-Technologies/xala-platform-ui/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Xala-Technologies/xala-platform-ui/discussions)
